@@ -136,7 +136,7 @@ def process_sources(dry_run=False):
                 raw_data = download_to_bytes(src["url"])
                 stats["downloaded"] += 1
                 # save as a file so subsequent logic can reuse
-                fname = tmpd / sanitize_filename(sid) + ".yaml"
+                fname = tmpd / f"{sanitize_filename(sid)}.yaml"
                 fname.write_bytes(raw_data)
             else:
                 print(f"Unknown source type: {typ}")
