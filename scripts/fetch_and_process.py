@@ -30,7 +30,7 @@ TEMPLATES_DIR = ROOT / "templates"
 SOURCES_FILE = ROOT / "sources.json"
 INDEX_FILE = ROOT / "templates_index.json"
 
-HEADERS = {"User-Agent":"TFnuclei-templates-fetcher/1.0 (+https://github.com/yourorg/TFnuclei-templates)"}
+HEADERS = {"User-Agent":"TFnuclei-templates-fetcher/1.0 (+https://github.com/xerocorps/TFnuclei-templates)"}
 
 def sanitize_filename(s: str) -> str:
     s = re.sub(r"[^\w\-.]+", "_", s)
