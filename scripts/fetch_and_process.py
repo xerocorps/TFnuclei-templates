@@ -177,7 +177,7 @@ def process_sources(dry_run=False):
                     out_path = TEMPLATES_DIR / out_name
 
                     # save canonical text (not necessarily the parsed dump to preserve original)
-                    out_path.write_text(canonical, encoding="utf-8')
+                    out_path.write_text(canonical, encoding="utf-8")
                     index[tid] = {
                         "source_id": sid,
                         "source_type": typ,
