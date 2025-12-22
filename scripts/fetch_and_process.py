@@ -119,7 +119,7 @@ def fetch_source_to_temp(source):
     """
     Download and extract (if archive) into a temp directory and return Path to it.
     """
-    sid = source.get("id") or source.get("repo") or source.get("url")
+    sid = source_identifier(src)
     typ = source.get("type")
     tmpd = Path(tempfile.mkdtemp(prefix="tf_nuc_"))
     try:
