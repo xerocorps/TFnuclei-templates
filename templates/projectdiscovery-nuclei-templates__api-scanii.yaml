@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"key"'
+    - '"message" : "pong"'
+  raw:
+  - 'GET https://api.scanii.com/v2.1/ping HTTP/1.1
+
+    Authorization: Basic {{base64(api + '':'' + secret)}}
+
+    Host: api.scanii.com
+
+    '
+id: api-scanii
+info:
+  author: daffainfo
+  description: Simple REST API that can scan submitted documents/files for the presence
+    of threats
+  metadata:
+    max-request: 1
+  name: Scanii API Test
+  reference:
+  - https://docs.scanii.com/v2.1/resources.html
+  - https://github.com/daffainfo/all-about-apikey/tree/main/scanii
+  severity: info
+  tags: token-spray,scanii
+self-contained: true

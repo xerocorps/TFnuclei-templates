@@ -1,0 +1,31 @@
+file:
+- extensions:
+  - conf
+  matchers:
+  - negative: true
+    type: word
+    words:
+    - set remoteauthtimeout
+  - condition: or
+    type: word
+    words:
+    - config system
+    - config router
+    - config firewall
+  matchers-condition: and
+id: remote-auth-timeout
+info:
+  author: pussycat0x
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Fortinet remote authentication timeout functionality is recommended
+    to be enabled. Lack of a set timeout can allow an attacker to act within that
+    threshold if the administrator is away from the computer, thereby making it possible
+    to obtain sensitive information, modify data, and/or execute unauthorized operations.
+  name: Fortinet Remote Authentication Timeout Not Set - Detect
+  reference:
+  - https://docs.fortinet.com/document/fortigate/6.4.0/hardening-your-fortigate/612504/hardening-your-fortigate
+  severity: info
+  tags: audit,config,file,firewall,fortigate

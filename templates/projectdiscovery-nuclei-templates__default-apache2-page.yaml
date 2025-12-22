@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '<title>Apache2 Debian Default Page: It works</title>'
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-apache2-page
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: http_server
+    shodan-query: http.title:"Apache2 Debian Default Page:"
+    vendor: apache
+  name: Apache2 Default Test Page
+  severity: info
+  tags: tech,apache,discovery

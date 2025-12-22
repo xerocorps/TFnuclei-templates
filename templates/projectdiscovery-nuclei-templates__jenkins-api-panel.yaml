@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - hudson.model.Hudson
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/xml'
+id: jenkins-api-panel
+info:
+  author: righettod
+  classification:
+    cpe: cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Jenkins API panel was detected.
+  metadata:
+    fofa-query: icon_hash=81586312
+    max-request: 1
+    product: jenkins
+    shodan-query:
+    - cpe:"cpe:2.3:a:jenkins:jenkins"
+    - http.favicon.hash:81586312
+    - product:"jenkins"
+    vendor: jenkins
+  name: Jenkins API Panel - Detect
+  severity: info
+  tags: panel,api,jenkins,discovery

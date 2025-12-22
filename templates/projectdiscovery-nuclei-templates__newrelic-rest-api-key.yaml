@@ -1,0 +1,19 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - (?i)NRRA-[a-f0-9]{42}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: newrelic-rest-api-key
+info:
+  author: Ice3man
+  metadata:
+    max-request: 1
+  name: REST API Key Disclosure
+  reference:
+  - https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#rest-api-key
+  severity: info
+  tags: exposure,token,vuln

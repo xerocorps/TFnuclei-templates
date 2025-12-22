@@ -1,0 +1,48 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - href="css/app\.min\.css\?v=([\d\.]+)"
+    type: regex
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>OpenNebula
+    - OpenNebula Systems
+    - target="_blank">OpenNebula
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: opennebula-panel
+info:
+  author: kh4sh3i,darses
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: 'OpenNebula login panel was detected.
+
+    '
+  metadata:
+    fofa-query:
+    - title="OpenNebula Sunstone Login"
+    - icon_hash="-119786698"
+    - icon_hash="656672194"
+    max-request: 1
+    shodan-query:
+    - http.html:"opennebula"
+    - title:"OpenNebula Sunstone Login"
+    - http.favicon.hash:-1616420987
+    - http.favicon.hash:656672194
+    verified: true
+  name: OpenNebula Login Panel - Detect
+  reference:
+  - https://opennebula.io/
+  - https://github.com/OpenNebula
+  severity: info
+  tags: panel,opennebula,discovery

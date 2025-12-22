@@ -1,0 +1,31 @@
+dns:
+- extractors:
+  - group: 1
+    regex:
+    - "IN\tTXT\t(.+DMARC.+)"
+    type: regex
+  matchers:
+  - part: answer
+    regex:
+    - "IN\tTXT\\t(.+DMARC.+)$"
+    type: regex
+  name: _dmarc.{{FQDN}}
+  type: TXT
+id: dmarc-detect
+info:
+  author: juliosmelo
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'DNS DMARC information was detected.
+
+    '
+  metadata:
+    max-request: 1
+  name: DNS DMARC - Detect
+  reference:
+  - https://dmarc.org/
+  - https://dmarc.org/wiki/FAQ#Why_is_DMARC_important.3F
+  severity: info
+  tags: dns,dmarc,discovery

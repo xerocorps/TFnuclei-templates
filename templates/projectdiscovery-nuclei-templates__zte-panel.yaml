@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <div class="type"><font id="">(.+)<\/font><\/div>
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - ZTE Corporation. All rights reserved. </div>
+    - <form name="fLogin" id="fLogin" method="post"  onsubmit="return false;" action="">
+  - part: header
+    type: word
+    words:
+    - Mini web server 1.0 ZTE corp 2005.
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: zte-panel
+info:
+  author: its0x08,idealphase
+  classification:
+    cpe: cpe:2.3:h:zte:nr8120a:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: 'ZTE panel was detected. ZTE Corporation is a global leader in telecommunications
+    and information technology. Founded in 1985 and listed on both the Hong Kong and
+    Shenzhen Stock Exchanges, the company has been committed to providing innovative
+    technologies and integrated solutions for global operators, government and enterprise,
+    and consumers from over 160 countries across the globe. ZTE Corporation is a global
+    leader in telecommunications and information technology. Founded in 1985 and listed
+    on both the Hong Kong and Shenzhen Stock Exchanges, the company has been committed
+    to providing innovative technologies and integrated solutions for global operators,
+    government and enterprise, and consumers from over 160 countries across the globe.
+
+    '
+  metadata:
+    max-request: 1
+    product: nr8120a
+    shodan-query: http.html:"ZTE Corporation"
+    vendor: zte
+    verified: true
+  name: ZTE Panel - Detect
+  reference:
+  - https://www.zte.com.cn/global/
+  severity: info
+  tags: panel,zte,discovery

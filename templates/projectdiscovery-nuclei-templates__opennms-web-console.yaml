@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - OpenNMS Web Console
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/opennms/login.jsp'
+id: opennms-web-console
+info:
+  author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:opennms:opennms:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: OpenNMS Web Console login panel was detected.
+  metadata:
+    max-request: 1
+    product: opennms
+    vendor: opennms
+  name: OpenNMS Web Console Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/5468
+  severity: info
+  tags: panel,login,edb,opennms,discovery

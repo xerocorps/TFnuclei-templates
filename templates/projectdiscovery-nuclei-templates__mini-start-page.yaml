@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Miniweb Start Page</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/start.html'
+  - '{{BaseURL}}/www/start.html'
+id: mini-start-page
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:miniweb_http_server_project:miniweb_http_server:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Miniweb Start Page login panel was detected.
+  metadata:
+    max-request: 2
+    product: miniweb_http_server
+    vendor: miniweb_http_server_project
+  name: Miniweb Start Page Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6500
+  severity: info
+  tags: edb,panel,miniweb_http_server_project,discovery

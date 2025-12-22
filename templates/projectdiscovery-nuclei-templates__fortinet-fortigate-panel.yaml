@@ -1,0 +1,33 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: etag
+    part: header
+    regex:
+    - '[Ee][Tt]ag: \"[\w\d]*\-([\w\d]{8})\"'
+    type: regex
+  - dsl:
+    - '"Release date: " + date_time("Jan 2, 2006", hex_to_dec(etag))'
+    type: dsl
+  matchers:
+  - dsl:
+    - status_code==200 && contains(body, "top.location=\"/remote/login\";")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: fortinet-fortigate-panel
+info:
+  author: bsysop,darses
+  description: 'Detect FortiGate SSL VPN login and extract release date.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query:
+    - cpe:"cpe:2.3:o:fortinet:fortios"
+    - http.html_hash:-1454941180
+  name: Fortinet FortiGate SSL VPN Login Panel - Detect
+  severity: info
+  tags: panel,fortigate,vpn,discovery

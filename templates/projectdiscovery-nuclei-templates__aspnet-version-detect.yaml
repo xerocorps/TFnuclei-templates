@@ -1,0 +1,39 @@
+http:
+- extractors:
+  - kval:
+    - X_AspNet_Version
+    type: kval
+  host-redirects: true
+  matchers:
+  - dsl:
+    - contains(tolower(header), "x-aspnet-version")
+    type: dsl
+  - negative: true
+    part: header
+    regex:
+    - (?i)^X-AspNet-Version:\s*$
+    type: regex
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/%3f'
+  stop-at-first-match: true
+id: aspnet-version-detect
+info:
+  author: lucky0x0d,PulseSecurity.co.nz
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'Detects version disclosed via ''X-AspNet-Version'' header.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: X-AspNet-Version
+    verified: true
+  name: AspNet Version Disclosure - Detect
+  severity: info
+  tags: tech,detect,aspnet,discovery

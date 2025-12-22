@@ -1,0 +1,37 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'version:'
+    - 'os:'
+    - 'files:'
+  - negative: true
+    part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/appspec.yml'
+  - '{{BaseURL}}/appspec.yaml'
+id: appspec-yml-disclosure
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: Appspec YML and YAML files are susceptible to information disclosure.
+  metadata:
+    max-request: 2
+  name: Appspec YML/YAML - Detect
+  reference:
+  - https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/appsec-yml-disclosure.json
+  severity: medium
+  tags: exposure,config,vuln

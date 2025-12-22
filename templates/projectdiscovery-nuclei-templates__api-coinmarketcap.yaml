@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"name"'
+    - '"symbol"'
+    - '"cmc_rank"'
+  raw:
+  - 'GET https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest HTTP/1.1
+
+    Host: pro-api.coinmarketcap.com
+
+    X-CMC_PRO_API_KEY: {{token}}
+
+    '
+id: api-coinmarketcap
+info:
+  author: daffainfo
+  description: Cryptocurrencies Prices
+  metadata:
+    max-request: 1
+  name: CoinMarketCap API Test
+  reference:
+  - https://coinmarketcap.com/api/documentation/v1
+  - https://github.com/daffainfo/all-about-apikey/tree/main/coinmarketcap
+  severity: info
+  tags: token-spray,coinmarketcap
+self-contained: true

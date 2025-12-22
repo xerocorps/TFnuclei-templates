@@ -1,0 +1,10 @@
+id: weblogic-workflow
+info:
+  author: dr_set
+  description: A simple workflow that runs all WebLogic related nuclei templates on
+    a given target.
+  name: WebLogic Security Checks
+workflows:
+- subtemplates:
+  - tags: weblogic
+  template: http/technologies/weblogic-detect.yaml

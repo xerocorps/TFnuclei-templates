@@ -1,0 +1,42 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - (?i)Copyright\s+([0-9\-]+)
+    - (?i)<td>Version<\/td>[\r\n\s]*<td>[\r\n\s]*<b>([0-9.]+)<\/b>
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_any(to_lower(body), "<title>apache activemq</title>", "<h2>welcome
+      to the apache activemq!</h2>", "manage activemq broker", "activemq console")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/'
+  - '{{BaseURL}}/demo/'
+  - '{{BaseURL}}'
+  stop-at-first-match: true
+id: activemq-panel
+info:
+  author: pdteam,righettod
+  classification:
+    cpe: cpe:2.3:a:apache:activemq:*:*:*:*:*:*:*:*
+    cwe-id: CWE-200
+  description: An Apache ActiveMQ implementation was discovered.
+  metadata:
+    max-request: 1
+    product: activemq
+    shodan-query:
+    - cpe:"cpe:2.3:a:apache:activemq"
+    - product:"activemq openwire transport"
+    - http.title:"Apache ActiveMQ"
+    vendor: apache
+  name: Apache ActiveMQ Exposure
+  reference:
+  - https://activemq.apache.org/
+  - https://activemq.apache.org/components/classic/documentation/rest
+  severity: info
+  tags: panel,activemq,apache,login,discovery

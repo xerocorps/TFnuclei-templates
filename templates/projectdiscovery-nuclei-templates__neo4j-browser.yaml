@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Neo4j Browser</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/browser/'
+id: neo4j-browser
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:neo4j:neo4j:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: The Neo4j Browser has been detected.
+  metadata:
+    fofa-query: title="neo4j browser"
+    google-query: intitle:"neo4j browser"
+    max-request: 1
+    product: neo4j
+    shodan-query:
+    - http.title:"Neo4j Browser"
+    - http.title:"neo4j browser"
+    vendor: neo4j
+  name: Neo4j Browser - Detect
+  severity: info
+  tags: neo4j,exposure,unauth,panel,discovery

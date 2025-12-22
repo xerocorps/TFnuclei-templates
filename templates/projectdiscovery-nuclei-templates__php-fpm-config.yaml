@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - FPM Configuration
+    - Pool Definitions
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/php-fpm.conf'
+id: php-fpm-config
+info:
+  author: sheikhrishad
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: PHP-FPM configuration page was detected.
+  metadata:
+    max-request: 1
+  name: PHP-FPM Configuration Page - Detect
+  reference:
+  - https://www.php.net/manual/en/install.fpm.php
+  severity: info
+  tags: config,exposure,php,vuln

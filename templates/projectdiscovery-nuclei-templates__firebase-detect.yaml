@@ -1,0 +1,19 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Could not parse auth token
+  method: GET
+  path:
+  - '{{BaseURL}}/.settings/rules.json?auth=FIREBASE_SECRET'
+id: firebase-detect
+info:
+  author: organiccrap
+  metadata:
+    max-request: 1
+  name: firebase detect
+  reference:
+  - http://ghostlulz.com/google-exposed-firebase-database/
+  severity: low
+  tags: tech,firebase,discovery

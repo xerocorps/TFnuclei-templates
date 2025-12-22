@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - To access the settings of your Airtame
+    - https://airtame.com/download
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: airtame-device-detect
+info:
+  author: princechaddha
+  metadata:
+    max-request: 1
+  name: Airtame Device Detect
+  severity: info
+  tags: tech,airtame,iot,discovery

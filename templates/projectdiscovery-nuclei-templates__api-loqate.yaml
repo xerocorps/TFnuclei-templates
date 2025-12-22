@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"Id":'
+    - '"Type":'
+    - '"Text":'
+  method: GET
+  path:
+  - https://api.addressy.com/Capture/Interactive/Find/v1.00/json3.ws?Key={{token}}&Countries=US,CA&Language=en&Limit=5&Text=BHAR
+id: api-loqate
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 1
+  name: Loqate API Test
+  reference:
+  - https://www.loqate.com/resources/support/apis/Capture/Interactive/Find/1.1/
+  severity: info
+  tags: token-spray,loqate
+self-contained: true

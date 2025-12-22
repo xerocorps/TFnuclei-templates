@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - dkey_check.php
+    - get_dkey_passwd
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: rg-uac-panel
+info:
+  author: princechaddha
+  classification:
+    cpe: cpe:2.3:o:ruijie:rg-uac_firmware:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Ruijie RG-UAC login panel was detected.
+  metadata:
+    fofa-query: body="get_verify_info"
+    max-request: 1
+    product: rg-uac_firmware
+    shodan-query:
+    - http.html:"Get_Verify_Info"
+    - http.html:"get_verify_info"
+    vendor: ruijie
+  name: Ruijie RG-UAC Login Panel - Detect
+  severity: info
+  tags: panel,ruijie,router,firewall,discovery

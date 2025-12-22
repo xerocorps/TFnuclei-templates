@@ -1,0 +1,28 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - 404 Blog is not found
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: hatenablog-takeover
+info:
+  author: pdteam
+  description: Hatenablog takeover was detected.
+  metadata:
+    max-request: 1
+  name: Hatenablog Takeover Detection
+  reference:
+  - https://beaglesecurity.com/blog/vulnerability/hatenablog-takeover-detection.html
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover,hatenablog,vuln

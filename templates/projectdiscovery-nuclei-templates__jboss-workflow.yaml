@@ -1,0 +1,10 @@
+id: jboss-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all JBoss related nuclei templates on a
+    given target.
+  name: JBoss Security Checks
+workflows:
+- subtemplates:
+  - tags: jboss
+  template: http/technologies/jboss-detect.yaml

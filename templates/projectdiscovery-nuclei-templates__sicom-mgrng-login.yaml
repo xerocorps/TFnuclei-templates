@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - <title>MGRNG Login</title>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/~sicom/mgrng/LoginForm.php'
+id: sicom-mgrng-login
+info:
+  author: sullo
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-668
+  description: 'Sicom MGRNG administrative login page found.
+
+    '
+  metadata:
+    max-request: 1
+  name: Sicom MGRNG - Administrative Login Found
+  severity: info
+  tags: sicom,mgrng,panel,discovery

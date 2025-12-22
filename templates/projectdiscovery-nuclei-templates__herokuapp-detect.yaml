@@ -1,0 +1,20 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - '[a-z0-9.-]+\.herokuapp\.com'
+    - '[a-z0-9.-]+\.herokucdn\.com'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: herokuapp-detect
+info:
+  author: alifathi-h1,righettod
+  description: Detected endpoints might be vulnerable to subdomain takeover or disclose
+    sensitive info
+  metadata:
+    max-request: 1
+  name: Detect websites using Herokuapp endpoints
+  severity: info
+  tags: heroku,tech,discovery

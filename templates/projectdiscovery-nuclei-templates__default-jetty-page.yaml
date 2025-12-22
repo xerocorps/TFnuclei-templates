@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <TITLE>Powered By Jetty</TITLE>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-jetty-page
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:eclipse:jetty:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: jetty
+    shodan-query: http.title:"Powered By Jetty"
+    vendor: eclipse
+  name: Jetty Default Page
+  severity: info
+  tags: tech,jetty,discovery

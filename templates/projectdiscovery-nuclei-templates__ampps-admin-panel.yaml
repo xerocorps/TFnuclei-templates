@@ -1,0 +1,35 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - mpps\.com">Powered By FREE ([A-Z 0-9.]+)<\/a>
+    type: regex
+  host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <a href="http://www.ampps.com">
+    - <title>Login</title>
+    - enduser/themes/default/js/universal.js
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/ampps-admin/index.php?act=login'
+id: ampps-admin-panel
+info:
+  author: deFr0ggy
+  classification:
+    cwe-id: CWE-200
+  description: An AMPPS Admin login panel was detected.
+  metadata:
+    max-request: 1
+  name: AMPPS Admin Login Panel
+  severity: info
+  tags: panel,ampps,login,discovery

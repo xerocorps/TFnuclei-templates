@@ -1,0 +1,39 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - /etc/wgetrc
+    - wget.info
+  - part: header
+    type: word
+    words:
+    - application/octet-stream
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wgetrc'
+  - '{{BaseURL}}/.wgetrc'
+  stop-at-first-match: true
+id: wgetrc-config
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:gnu:wget:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Wgetrc configuration file was detected.
+  metadata:
+    max-request: 2
+    product: wget
+    shodan-query: html:".wgetrc"
+    vendor: gnu
+    verified: true
+  name: Wgetrc Configuration File - Detect
+  reference:
+  - https://www.gnu.org/software/wget/manual/html_node/Wgetrc-Commands.html
+  severity: info
+  tags: devops,exposure,vuln

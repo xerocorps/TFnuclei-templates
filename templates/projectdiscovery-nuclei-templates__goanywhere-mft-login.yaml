@@ -1,0 +1,34 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: or
+    type: word
+    words:
+    - GoAnywhere Managed File Transfer
+    - GoAnywhere Web Client
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/goanywhere/auth/Login.xhtml'
+  - '{{BaseURL}}/webclient/Login.xhtml'
+id: goanywhere-mft-login
+info:
+  author: ritikchaddha,righettod
+  classification:
+    cpe: cpe:2.3:a:fortra:goanywhere_managed_file_transfer:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: GoAnywhere Managed File Transfer login panel was detected.
+  metadata:
+    max-request: 2
+    product: goanywhere_managed_file_transfer
+    shodan-query: http.html:"GoAnywhere Managed File Transfer"
+    vendor: fortra
+    verified: true
+  name: GoAnywhere Managed File Transfer Login Panel - Detect
+  severity: info
+  tags: panel,goanywhere,login,filetransfer,discovery

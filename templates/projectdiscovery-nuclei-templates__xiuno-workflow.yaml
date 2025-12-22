@@ -1,0 +1,12 @@
+id: xiuno-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Xiuno related nuclei templates on a
+    given target.
+  name: Xiuno Security Checks
+workflows:
+- matchers:
+  - name: xiuno
+    subtemplates:
+    - tags: xiuno
+  template: http/technologies/fingerprinthub-web-fingerprints.yaml

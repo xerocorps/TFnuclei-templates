@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - condition: or
+    dsl:
+    - contains_all(body, "phpdebugbar", "widget") && status_code == 200
+    - contains(header, "phpdebugbar-id")
+    - contains_all(body, "\"utime\"","\"datetime\"","{\"id") && contains(content_type,
+      "application/json")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/_debugbar/open'
+  stop-at-first-match: true
+id: php-debugbar-exposure
+info:
+  author: ritikchaddha,pdteam,DhiyaneshDk,geeknik
+  description: 'The DebugBar integrates easily into projects and can display profiling
+    data from any part of your application.This template detects exposed PHP Debug
+    Bars by looking for known response bodies and the `phpdebugbar-id` in headers.
+
+    '
+  metadata:
+    max-request: 2
+    shodan-query: html:"phpdebugbar"
+    verified: true
+  name: Php Debug Bar - Exposure
+  reference:
+  - https://hackerone.com/reports/1883806
+  - http://phpdebugbar.com/
+  - https://github.com/maximebf/php-debugbar
+  severity: high
+  tags: misconfig,php,phpdebug,exposure,debug,vuln

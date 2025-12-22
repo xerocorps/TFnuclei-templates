@@ -1,0 +1,39 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <a href="https://github.com/voxpupuli/puppetboard" target="_blank">([0-9.]+)</a></div>
+    type: regex
+  host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <a href="https://github.com/voxpupuli/puppetboard" target="_blank">
+    - puppetboard.css" rel="stylesheet"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: puppetboard-panel
+info:
+  author: c-sh0,daffainfo
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Puppetboard panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Puppetboard"
+    verified: true
+  name: Puppetboard Panel - Detect
+  reference:
+  - https://github.com/voxpupuli/puppetboard
+  severity: info
+  tags: panel,puppet,exposure,discovery

@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Jeedom</title>
+    - JEEDOM_PRODUCT_NAME
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php?v=d'
+id: jeedom-panel
+info:
+  author: pikpikcu,daffainfo
+  classification:
+    cpe: cpe:2.3:a:jeedom:jeedom:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Jeedom login panel was detected.
+  metadata:
+    fofa-query: title="jeedom"
+    google-query: intitle:"jeedom"
+    max-request: 1
+    product: jeedom
+    shodan-query:
+    - http.title:"Jeedom"
+    - http.title:"jeedom"
+    vendor: jeedom
+  name: Jeedom Login Panel - Detect
+  severity: info
+  tags: panel,jeedom,login,discovery

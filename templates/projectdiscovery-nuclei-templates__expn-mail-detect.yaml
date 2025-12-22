@@ -1,0 +1,26 @@
+id: expn-mail-detect
+info:
+  author: r3dg33k,userdehghani
+  description: 'The "EXPN" can be used by attackers to learn about valid usernames
+    on the target system. On some SMTP servers, EXPN can be used to show the subscribers
+    of a mailing list subscription lists are generally considered to be sensitive
+    information.
+
+    '
+  metadata:
+    max-request: 1
+  name: EXPN Mail Server Detect
+  severity: info
+  tags: mail,expn,network,detect,smtp,detection,tcp,discovery
+tcp:
+- host:
+  - '{{Hostname}}'
+  inputs:
+  - data: 65686c6f20636865636b746c730a
+    type: hex
+  matchers:
+  - type: word
+    words:
+    - 250-EXPN
+  port: 25,2525,465,587
+  read-size: 2048

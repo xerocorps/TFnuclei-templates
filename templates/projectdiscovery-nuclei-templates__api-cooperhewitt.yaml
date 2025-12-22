@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"stat":'
+    - '"formats":'
+    - '"default_format":'
+  method: GET
+  path:
+  - https://api.collection.cooperhewitt.org/rest/?method=api.spec.formats&access_token={{token}}
+id: api-cooperhewitt
+info:
+  author: daffainfo
+  description: Smithsonian Design Museum
+  metadata:
+    max-request: 1
+  name: Cooper Hewitt API
+  reference:
+  - https://collection.cooperhewitt.org/api/methods/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/cooper-hewitt
+  severity: info
+  tags: token-spray,cooperhewitt
+self-contained: true

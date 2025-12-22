@@ -1,0 +1,39 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <Name>([a-z0-9-._]+)
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <ListBucketResult xmlns=
+  - part: header
+    type: word
+    words:
+    - application/xml
+  - case-insensitive: true
+    negative: true
+    part: header
+    type: word
+    words:
+    - x-goog-metageneration
+    - x-goog-generation
+  matchers-condition: and
+  max-size: 1000
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: aws-object-listing
+info:
+  author: pdteam
+  description: Object listing is enabled in AWS bucket.
+  metadata:
+    max-request: 1
+  name: AWS bucket with Object listing
+  reference:
+  - https://mikey96.medium.com/cloud-based-storage-misconfigurations-critical-bounties-361647f78a29
+  severity: low
+  tags: aws,misconfig,bucket,vuln

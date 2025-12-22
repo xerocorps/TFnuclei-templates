@@ -1,0 +1,17 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - https://www\.google\.com/calendar/embed\?src=[A-Za-z0-9%@&;=\-_\./]+
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: google-calendar-link
+info:
+  author: Ice3man
+  metadata:
+    max-request: 1
+  name: Google Calendar URI Disclosure
+  severity: info
+  tags: exposure,token,google,vuln

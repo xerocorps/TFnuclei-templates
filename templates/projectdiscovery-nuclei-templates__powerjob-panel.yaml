@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>PowerJob</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: powerjob-panel
+info:
+  author: pikpikcu
+  classification:
+    cpe: cpe:2.3:a:powerjob:powerjob:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: PowerJob login panel was detected.
+  metadata:
+    fofa-query: title="PowerJob"
+    max-request: 1
+    product: powerjob
+    vendor: powerjob
+    verified: true
+  name: PowerJob Login Panel - Detect
+  severity: info
+  tags: panel,powerjob,discovery

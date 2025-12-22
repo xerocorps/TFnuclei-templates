@@ -1,0 +1,12 @@
+id: sourcebans-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all SourceBans related nuclei templates
+    on a given target.
+  name: SourceBans Security Checks
+workflows:
+- matchers:
+  - name: sourcebans
+    subtemplates:
+    - tags: sourcebans
+  template: http/technologies/fingerprinthub-web-fingerprints.yaml

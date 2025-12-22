@@ -1,0 +1,10 @@
+id: azkaban-workflow
+info:
+  author: pdteam
+  description: A simple workflow that runs all Azkaban related nuclei templates on
+    a given target.
+  name: Azkaban Security Checks
+workflows:
+- subtemplates:
+  - template: http/default-logins/azkaban/
+  template: http/exposed-panels/azkaban-web-client.yaml

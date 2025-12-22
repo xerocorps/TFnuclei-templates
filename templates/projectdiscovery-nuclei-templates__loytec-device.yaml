@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - device_info
+    - syslog
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/webui/device_info/device_info'
+id: loytec-device
+info:
+  author: pussycat0x
+  classification:
+    cpe: cpe:2.3:h:loytec:lvis-3me:*:*:*:*:*:*:*:*
+  description: Loytec Device info panel was detected.
+  metadata:
+    max-request: 1
+    product: lvis-3me
+    shodan-query: loytec
+    vendor: loytec
+    verified: true
+  name: Loytec Device Info Detection
+  severity: info
+  tags: iot,loytec,discovery

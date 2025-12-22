@@ -1,0 +1,17 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - sk_live_[0-9a-z]{32}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: picatic-api-key
+info:
+  author: Ice3man
+  metadata:
+    max-request: 1
+  name: Picatic API Key Disclosure
+  severity: info
+  tags: exposure,token,vuln

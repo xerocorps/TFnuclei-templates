@@ -1,0 +1,43 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - /jupyter/static/base/images/logo.png
+    - /jupyter/hub/logo
+    - Select items to perform actions on them.
+    - JupyterHub
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/jupyter/login'
+  - '{{BaseURL}}/jupyter/lab'
+  - '{{BaseURL}}/jupyter/hub/lti/launch'
+  - '{{BaseURL}}/hub/login'
+  stop-at-first-match: true
+id: jupyter-notebook
+info:
+  author: hakimkt,arafatansari
+  classification:
+    cpe: cpe:2.3:a:jupyter:notebook:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: 'Jupyter Notebook login panel was detected.
+
+    '
+  metadata:
+    max-request: 4
+    product: notebook
+    shodan-query: http.html:"JupyterHub"
+    vendor: jupyter
+  name: Jupyter Notebook Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/7970
+  severity: info
+  tags: edb,panel,jupyter,notebook,exposure,discovery

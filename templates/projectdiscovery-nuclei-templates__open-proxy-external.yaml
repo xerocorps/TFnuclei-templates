@@ -1,0 +1,52 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - contains_any(body_1, "<HostId>", "</HostId>")
+    - contains(header_2, "X-Interactsh-Version")
+    type: dsl
+  - condition: and
+    dsl:
+    - '!contains(body_3, "<HostId>")'
+    - '!contains(header_3, "X-Interactsh-Version")'
+    type: dsl
+  matchers-condition: and
+  raw:
+  - 'GET https://test.s3.amazonaws.com HTTP/1.1
+
+    Host: test.s3.amazonaws.com
+
+
+    '
+  - 'GET http://{{interactsh-url}} HTTP/1.1
+
+    Host: {{interactsh-url}}
+
+
+    '
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+
+    '
+  unsafe: true
+id: open-proxy-external
+info:
+  author: gtrrnr
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N
+    cvss-score: 5.8
+    cwe-id: CWE-441
+  description: The host is configured as a proxy which allows access to other hosts
+    on the external network.
+  metadata:
+    max-request: 3
+  name: Open Proxy To External Network
+  reference:
+  - https://en.wikipedia.org/wiki/Open_proxy
+  - https://www.acunetix.com/vulnerabilities/web/apache-configured-to-run-as-proxy/
+  remediation: Disable the proxy or restrict configuration to only allow access to
+    approved hosts/ports.
+  severity: medium
+  tags: exposure,config,proxy,misconfig,vuln

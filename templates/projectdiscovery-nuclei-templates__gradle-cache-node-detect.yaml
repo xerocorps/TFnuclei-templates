@@ -1,0 +1,33 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - (?i)"applicationVersion":"([0-9.]+)"
+    - (?i)Gradle\s+Enterprise\s+Build\s+Cache\s+Node\s+([0-9.]+)
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200 || status_code == 401
+    - contains_any(to_lower(body), "gradle enterprise build cache node", "com.gradle.error.fallback")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: gradle-cache-node-detect
+info:
+  author: Adam Crosser,righettod
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Gradle Enterprise Build Cache Node login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.html:"Gradle Enterprise Build Cache Node"
+    verified: true
+  name: Gradle Enterprise Build Cache Node Login Panel - Detect
+  reference:
+  - https://gradle.com/gradle-enterprise-solutions/build-cache/
+  severity: info
+  tags: panel,gradle,detect,discovery

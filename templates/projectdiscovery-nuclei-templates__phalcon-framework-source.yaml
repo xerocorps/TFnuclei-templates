@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Phalcon Framework
+    - AnythingHereController
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/anything_here'
+id: phalcon-framework-source
+info:
+  author: philippedelteil
+  description: Phalcon Framework source code was discovered.
+  metadata:
+    max-request: 1
+  name: Phalcon Framework - Source Code Leakage
+  severity: high
+  tags: exposure,debug,phalcon,vuln

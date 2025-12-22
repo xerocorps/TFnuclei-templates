@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - LDAP Account Manager
+    - Profile management
+    - Add profile
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/templates/config/profmanage.php'
+id: unauth-ldap-account-manager
+info:
+  author: tess
+  classification:
+    cpe: cpe:2.3:a:ldap-account-manager:ldap_account_manager:*:*:*:*:*:*:*:*
+  description: LDAP Account Manager is exposed to external users.
+  metadata:
+    max-request: 1
+    product: ldap_account_manager
+    shodan-query: http.title:"LDAP Account Manager"
+    vendor: ldap-account-manager
+    verified: true
+  name: Unauthenticated LDAP Account Manager
+  severity: medium
+  tags: ldap,misconfig,unauth,vuln

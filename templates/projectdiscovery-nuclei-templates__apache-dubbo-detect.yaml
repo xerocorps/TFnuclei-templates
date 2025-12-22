@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - Basic realm="dubbo"
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: apache-dubbo-detect
+info:
+  author: ffffffff0x
+  classification:
+    cpe: cpe:2.3:a:apache:dubbo:*:*:*:*:*:*:*:*
+  metadata:
+    fofa-query: app="APACHE-dubbo"
+    max-request: 1
+    product: dubbo
+    vendor: apache
+  name: Apache dubbo detect
+  severity: info
+  tags: apache,dubbo,tech,discovery

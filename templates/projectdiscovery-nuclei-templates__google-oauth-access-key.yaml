@@ -1,0 +1,17 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - ya29\.[0-9A-Za-z\-_]+
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: google-oauth-access-key
+info:
+  author: Ice3man
+  metadata:
+    max-request: 1
+  name: Google OAuth Access Key Disclosure
+  severity: info
+  tags: exposure,token,google,vuln

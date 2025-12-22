@@ -1,0 +1,21 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Froxlor Server Management Panel</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: froxlor-detect
+info:
+  author: pikpikcu
+  metadata:
+    max-request: 1
+  name: Froxlor Detect
+  severity: info
+  tags: tech,froxlor,discovery

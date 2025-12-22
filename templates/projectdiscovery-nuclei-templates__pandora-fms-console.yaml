@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Pandora FMS mobile</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pandora_console/mobile/'
+id: pandora-fms-console
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:pandorafms:pandora_fms:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Pandora FMS Mobile Console login panel was detected.
+  metadata:
+    fofa-query: title="pandora fms"
+    google-query: intitle:"pandora fms"
+    max-request: 1
+    product: pandora_fms
+    shodan-query: http.title:"pandora fms"
+    vendor: pandorafms
+  name: Pandora FMS Mobile Console Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6827
+  severity: info
+  tags: panel,edb,pandorafms,discovery

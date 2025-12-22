@@ -1,0 +1,28 @@
+id: expired-ssl
+info:
+  author: pdteam
+  description: 'After an SSL certificate expires, you will no longer be able to communicate
+    over a secure, encrypted HTTPS connection.
+
+    '
+  metadata:
+    max-request: 1
+  name: Expired SSL Certificate
+  reference:
+  - https://www.acunetix.com/vulnerabilities/web/tls-ssl-certificate-about-to-expire/
+  remediation: 'Purchase or generate a new SSL/TLS certificate to replace the existing
+    one.
+
+    '
+  severity: low
+  tags: ssl,tls,vuln
+ssl:
+- address: '{{Host}}:{{Port}}'
+  extractors:
+  - kval:
+    - not_after
+    type: kval
+  matchers:
+  - dsl:
+    - expired == true
+    type: dsl

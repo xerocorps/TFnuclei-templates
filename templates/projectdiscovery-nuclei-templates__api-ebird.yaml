@@ -1,0 +1,28 @@
+http:
+- headers:
+    X-eBirdApiToken: '{{token}}'
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"speciesCode":'
+    - '"comName":'
+    - '"sciName":'
+    - '"locId":'
+  method: GET
+  path:
+  - https://api.ebird.org/v2/data/obs/KZ/recent
+id: api-ebird
+info:
+  author: daffainfo
+  description: Retrieve recent or notable birding observations within a region
+  metadata:
+    max-request: 1
+  name: eBird API Test
+  reference:
+  - https://documenter.getpostman.com/view/664302/S1ENwy59
+  - https://github.com/daffainfo/all-about-apikey/tree/main/ebird
+  severity: info
+  tags: token-spray,ebird
+self-contained: true

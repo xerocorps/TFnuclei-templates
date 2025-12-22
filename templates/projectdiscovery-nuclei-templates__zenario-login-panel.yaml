@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - Welcome to Zenario
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/zenario/admin/welcome.php'
+id: zenario-login-panel
+info:
+  author: __Fazal
+  classification:
+    cpe: cpe:2.3:a:tribalsystems:zenario:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Zenario admin login panel was detected.
+  metadata:
+    max-request: 1
+    product: zenario
+    vendor: tribalsystems
+  name: Zenario Admin Login Panel - Detect
+  severity: info
+  tags: panel,zenario,tribalsystems,discovery

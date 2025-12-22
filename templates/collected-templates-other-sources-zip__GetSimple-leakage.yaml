@@ -1,0 +1,21 @@
+id: GetSimple-leakage
+info:
+  author: str1am
+  name: "GetSimple CMS\u7CFB\u7EDF3.3.15\u7248\u672C\u4FE1\u606F\u6CC4\u9732"
+  severity: medium
+  tags: GetSimple,leakage
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <PWD>
+    - <USR>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/data/users/admin.xml'

@@ -1,0 +1,30 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - \?([\d.]+)"
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - MobileIron System Manager
+  method: GET
+  path:
+  - '{{BaseURL}}/mics/login.jsp'
+id: mobileiron-sentry
+info:
+  author: pdteam
+  classification:
+    cpe: cpe:2.3:a:mobileiron:sentry:*:*:*:*:*:*:*:*
+  description: MobileIron Sentry panel was detected.
+  metadata:
+    max-request: 1
+    product: sentry
+    shodan-query: http.favicon.hash:967636089
+    vendor: mobileiron
+    verified: true
+  name: MobileIron Sentry Panel - Detect
+  reference:
+  - https://help.ivanti.com/mi/help/en_us/sntry/9.9.0/gdcl/Content/SentryGuide/MobileIron_Sentry_overvi.htm
+  severity: info
+  tags: panel,mobileiron,discovery

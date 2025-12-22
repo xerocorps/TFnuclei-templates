@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - BEGIN RSA PRIVATE KEY
+  - status:
+    - 200
+    type: status
+  - dsl:
+    - '!contains(tolower(body), "<html")'
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/privatekey.pem'
+id: stem-audio-table-private-keys
+info:
+  author: gy741
+  description: Private Key on STEM audio table was detected.
+  metadata:
+    max-request: 1
+  name: Detect Private Key on STEM Audio Table
+  reference:
+  - https://blog.grimm-co.com/2021/06/the-walls-have-ears.html
+  severity: high
+  tags: stem,config,exposure,iot,vuln

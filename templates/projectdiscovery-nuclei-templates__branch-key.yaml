@@ -1,0 +1,20 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - key_live_.{32}
+    type: regex
+id: branch-key
+info:
+  author: 0xh7ml
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Branch.io live key token was detected.
+  name: Branch.io Live Key - Detect
+  reference:
+  - https://github.com/BranchMetrics/android-branch-deep-linking-attribution/issues/74
+  severity: info
+  tags: file,keys,token

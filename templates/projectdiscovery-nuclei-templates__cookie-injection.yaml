@@ -1,0 +1,31 @@
+http:
+- fuzzing:
+  - fuzz:
+    - '{{reflection}}'
+    part: query
+    type: postfix
+  matchers:
+  - part: header
+    regex:
+    - (?m)(?i)(^set-cookie.*cookie_injection.*)
+    type: regex
+  payloads:
+    reflection:
+    - '{{first}}'
+  pre-condition:
+  - dsl:
+    - method == "GET"
+    type: dsl
+id: cookie-injection
+info:
+  author: pdteam
+  metadata:
+    max-request: 1
+  name: Parameter based cookie injection
+  reference:
+  - https://www.invicti.com/blog/web-security/understanding-cookie-poisoning-attacks/
+  - https://docs.imperva.com/bundle/on-premises-knowledgebase-reference-guide/page/cookie_injection.htm
+  severity: info
+  tags: reflected,dast,cookie,injection,vuln
+variables:
+  first: cookie_injection

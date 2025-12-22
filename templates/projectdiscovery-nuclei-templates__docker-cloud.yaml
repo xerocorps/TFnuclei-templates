@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: and
+    regex:
+    - '(?m)^  image:'
+    - '(?m)^  ports:'
+    type: regex
+  - condition: or
+    negative: true
+    part: header
+    type: word
+    words:
+    - application/json
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/docker-cloud.yml'
+id: docker-cloud
+info:
+  author: DhiyaneshDK
+  description: Docker cloud internal yaml file is exposed.
+  metadata:
+    google-query: intitle:"index of" "docker-cloud.yml"
+    max-request: 1
+    verified: true
+  name: Docker Cloud Yaml - File Disclosure
+  reference:
+  - https://www.exploit-db.com/ghdb/7959
+  severity: medium
+  tags: exposure,cloud,devops,docker,files,vuln

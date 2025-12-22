@@ -1,0 +1,18 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - cloudinary://[0-9]{15}:[0-9A-Za-z\-_]+@[0-9A-Za-z\-_]+
+    type: regex
+id: cloudinary-basic-auth
+info:
+  author: gaurang
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-200
+  description: Cloudinary basic authorization token was detected.
+  name: Cloudinary Basic Authorization - Detect
+  severity: high
+  tags: keys,file,token,cloudinary

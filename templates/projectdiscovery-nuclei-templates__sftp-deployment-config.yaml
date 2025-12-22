@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - '"host":'
+    - '"username":'
+    - '"password":'
+    - '"remotePath":'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/deployment-config.json'
+id: sftp-deployment-config
+info:
+  author: geeknik
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-200
+  description: 'Atom SFTP deployment configuration file was detected. File contains
+    server details and credentials.
+
+    '
+  metadata:
+    github-query: filename:deployment-config.json sftp
+    max-request: 1
+    verified: true
+  name: Atom SFTP Configuration File - Detect
+  reference:
+  - https://atom.io/packages/sftp-deployment
+  severity: high
+  tags: sftp,atom,config,exposure,vuln

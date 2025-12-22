@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - '"(v\d+.\d+.\d+.?\d?)"'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Metabase</title>
+    - window.MetabaseBootstrap
+    - window.MetabaseRoot
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/login'
+id: metabase-panel
+info:
+  author: revblock,daffainfo
+  classification:
+    cpe: cpe:2.3:a:metabase:metabase:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Metabase login panel was detected.
+  metadata:
+    fofa-query:
+    - title="metabase"
+    - app="metabase"
+    google-query: intitle:"metabase"
+    max-request: 1
+    product: metabase
+    shodan-query:
+    - http.title:"Metabase"
+    - http.title:"metabase"
+    vendor: metabase
+  name: Metabase Login Panel - Detect
+  severity: info
+  tags: panel,metabase,login,discovery

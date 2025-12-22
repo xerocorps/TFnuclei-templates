@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'Command: ls<BR>'
+    - sap
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/irj/helper.jsp?cmd=ls'
+  - '{{BaseURL}}/irj/cache.jsp?cmd=ls'
+id: sap-netweaver-backdoor
+info:
+  author: DhiyaneshDk
+  description: 'Detected a potential backdoor in SAP NetWeaver allowing unauthorized
+    command execution.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: html:"SAP NetWeaver Application Server Java"
+    verified: true
+  name: SAP NetWeaver - Backdoor Detection
+  reference:
+  - https://www.bleepingcomputer.com/news/security/sap-fixes-suspected-netweaver-zero-day-exploited-in-attacks/
+  severity: critical
+  tags: sap,netweaver,backdoor,vuln

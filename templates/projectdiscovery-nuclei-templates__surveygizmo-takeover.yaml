@@ -1,0 +1,27 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - data-html-name
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: surveygizmo-takeover
+info:
+  author: pdteam
+  description: surveygizmo takeover was detected.
+  metadata:
+    max-request: 1
+  name: surveygizmo takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover,vuln

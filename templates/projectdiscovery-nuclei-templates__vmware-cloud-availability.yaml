@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>VMware Cloud Director Availability</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ui/login'
+id: vmware-cloud-availability
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:vmware:cloud_director:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: VMware Cloud Director Availability login panel was detected.
+  metadata:
+    max-request: 1
+    product: cloud_director
+    shodan-query: title:"VMware Cloud Director Availability"
+    vendor: vmware
+    verified: true
+  name: VMware Cloud Director Availability Login Panel - Detect
+  severity: info
+  tags: panel,vmware,discovery

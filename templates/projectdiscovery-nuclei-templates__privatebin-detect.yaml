@@ -1,0 +1,42 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - privatebin\.[a-z]{2,3}\?([0-9.]+)
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_any(to_lower(body), "privatebin.js", "privatebin</title>", "content=\"privatebin")
+    type: dsl
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true
+id: privatebin-detect
+info:
+  author: righettod
+  classification:
+    cpe: cpe:2.3:a:privatebin:privatebin:*:*:*:*:*:*:*:*
+  description: 'PrivateBin was detected.
+
+    '
+  metadata:
+    fofa-query:
+    - title="PrivateBin"
+    - icon_hash="1358855492"
+    max-request: 1
+    product: privatebin
+    shodan-query:
+    - title:"PrivateBin"
+    - http.favicon.hash:1358855492
+    vendor: privatebin
+    verified: true
+  name: PrivateBin - Detect
+  reference:
+  - https://privatebin.info/
+  severity: info
+  tags: tech,privatebin,detect,discovery

@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Flowchart Maker & Online Diagram Software</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: drawio-flowchartmaker-panel
+info:
+  author: princechaddha
+  classification:
+    cpe: cpe:2.3:a:diagrams:drawio:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: draw.io Flowchart Maker panel was detected.
+  metadata:
+    fofa-query: title="flowchart maker"
+    google-query: intitle:"flowchart maker"
+    max-request: 1
+    product: drawio
+    shodan-query:
+    - http.title:"Flowchart Maker"
+    - http.title:"flowchart maker"
+    vendor: diagrams
+    verified: true
+  name: draw.io Flowchart Maker Panel - Detect
+  reference:
+  - https://github.com/jgraph/drawio
+  severity: info
+  tags: panel,drawio,oss,diagrams,discovery

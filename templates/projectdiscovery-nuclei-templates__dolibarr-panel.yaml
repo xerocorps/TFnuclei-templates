@@ -1,0 +1,43 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <td align="center">Dolibarr ([0-9.]+)<\/td>
+    - <td class="center">Dolibarr ([0-9.]+)<\/td>
+    - <div id="infoVersion">Dolibarr ([0-9.]+)<\/div>
+    - amp;version=([0-9.]+)
+    type: regex
+  matchers:
+  - part: header
+    type: word
+    words:
+    - 'Set-Cookie: DOLSESSID_'
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <meta name="author" content="Dolibarr Development Team">
+    - authentication mode = dolibarr
+    - Includes JS of Dolibarr
+    - <div class="login_table_title center" title="Dolibarr
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: dolibarr-panel
+info:
+  author: pikpikcu,daffainfo,righettod
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Dolibarr login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Dolibarr"
+  name: Dolibarr Login Panel - Detect
+  severity: info
+  tags: panel,dolibarr,discovery

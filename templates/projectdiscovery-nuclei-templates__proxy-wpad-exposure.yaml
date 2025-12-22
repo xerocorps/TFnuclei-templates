@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - FindProxyForURL
+    - url
+    - host
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wpad.dat'
+id: proxy-wpad-exposure
+info:
+  author: DhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Web Proxy Auto-Discovery configuration file was detected.
+  metadata:
+    max-request: 1
+    shodan-query: html:"wpad.dat"
+    verified: true
+  name: Web Proxy Auto-Discovery Configuration File - Detect
+  reference:
+  - https://en.wikipedia.org/wiki/Web_Proxy_Auto-Discovery_Protocol
+  severity: info
+  tags: config,exposure,proxy,vuln

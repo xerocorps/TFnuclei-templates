@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - HiveManager
+  - condition: and
+    part: body
+    type: word
+    words:
+    - HiveManager
+    - alt="Aerohive
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/hm/login.action'
+id: hivemanager-login-panel
+info:
+  author: binaryfigments,daffainfo
+  classification:
+    cpe: cpe:2.3:a:aerohive:hivemanager_classic:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: HiveManager login panel was detected.
+  metadata:
+    max-request: 1
+    product: hivemanager_classic
+    shodan-query: http.favicon.hash:1604363273
+    vendor: aerohive
+    verified: true
+  name: HiveManager Login Panel - Detect
+  severity: info
+  tags: panel,hivemanager,aerohive,discovery

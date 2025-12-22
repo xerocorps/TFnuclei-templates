@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Bandwidth
+    - ReportEventID
+    - ReadDiskDuration
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: pcdn-cache-node
+info:
+  author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:cache-base_project:cache-base:*:*:*:*:node.js:*:*:*
+  description: PCDN Cache Node dataset is exposed.
+  metadata:
+    max-request: 1
+    product: cache-base
+    shodan-query: title:"PCDN Cache Node Dataset"
+    vendor: cache-base_project
+    verified: true
+  name: PCDN Cache Node Dataset
+  severity: low
+  tags: node,pcdn,misconfig,vuln

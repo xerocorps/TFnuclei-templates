@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Idera Server Backup Manager SE  </title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.zul'
+id: server-backup-login
+info:
+  author: DhiyaneshDk,pathtaga
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Server Backup Manager SE login panel was detected.
+  metadata:
+    max-request: 1
+  name: Server Backup Manager SE Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6949
+  severity: info
+  tags: panel,paneil,idera,edb,discovery

@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - ng-app="faradayApp">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/#/login'
+id: faraday-login
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:faraday_project:faraday:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Faraday login panel was detected.
+  metadata:
+    max-request: 1
+    product: faraday
+    shodan-query: html:"faradayApp"
+    vendor: faraday_project
+  name: Faraday Login Panel - Detect
+  severity: info
+  tags: panel,faraday,discovery

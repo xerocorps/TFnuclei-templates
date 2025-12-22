@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - taxonid
+    - scientific_name
+    - subspecies
+  method: GET
+  path:
+  - http://apiv3.iucnredlist.org/api/v3/country/list?token={{token}}
+id: api-iucn
+info:
+  author: daffainfo
+  description: IUCN Red List of Threatened Species
+  metadata:
+    max-request: 1
+  name: IUCN API Test
+  reference:
+  - http://apiv3.iucnredlist.org/api/v3/docs
+  - https://github.com/daffainfo/all-about-apikey/tree/main/iucn
+  severity: info
+  tags: token-spray,iucn
+self-contained: true

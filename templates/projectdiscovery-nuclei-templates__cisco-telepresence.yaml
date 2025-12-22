@@ -1,0 +1,32 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - 'Cisco TelePresence MCU - login:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'
+id: cisco-telepresence
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:cisco:telepresence_tc:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Cisco TelePresence login panel was detected.
+  metadata:
+    max-request: 1
+    product: telepresence_tc
+    shodan-query: http.title:"Cisco Telepresence"
+    vendor: cisco
+    verified: true
+  name: Cisco TelePresence Login Panel - Detect
+  severity: info
+  tags: panel,cisco,discovery

@@ -1,0 +1,100 @@
+dns:
+- matchers:
+  - name: Office 365
+    type: word
+    words:
+    - mail.protection.outlook.com
+  - name: Google Apps
+    type: word
+    words:
+    - aspmx2.googlemail.com
+    - aspmx3.googlemail.com
+    - alt1.aspmx.l.google.com
+    - alt2.aspmx.l.google.com
+    - aspmx.l.google.com
+  - name: ProtonMail
+    type: word
+    words:
+    - mail.protonmail.ch
+    - mailsec.protonmail.ch
+  - name: Zoho Mail
+    type: word
+    words:
+    - mx.zoho.eu
+    - mx2.zoho.eu
+    - mx3.zoho.eu
+  - name: ForcePoint Email Security
+    type: word
+    words:
+    - in.mailcontrol.com
+  - name: E-Zorg NL
+    type: word
+    words:
+    - spamfilter02.ezorg.nl
+    - spamfilter01.ezorg.nl
+    - spamfilter.ezorg.nl
+    - spamfilter03.ezorg.nl
+  - name: Kerio Cloud EU
+    type: word
+    words:
+    - mx1.eu1.kerio.cloud
+    - mx2.eu1.kerio.cloud
+  - name: Kerio Cloud US
+    type: word
+    words:
+    - mx1.us1.kerio.cloud
+    - mx2.us1.kerio.cloud
+    - mx3.us1.kerio.cloud
+  - name: Proofpoint EU
+    type: word
+    words:
+    - mx1-eu1.ppe-hosted.com
+    - mx2-eu1.ppe-hosted.com
+  - name: Proofpoint US
+    type: word
+    words:
+    - mx1-us1.ppe-hosted.com
+    - mx2-us1.ppe-hosted.com
+  - name: Mimecast
+    type: word
+    words:
+    - mimecast.com
+  - name: Cisco IronPort
+    type: word
+    words:
+    - iphmx.com
+  - name: Trellix (FireEye)
+    type: word
+    words:
+    - fireeyecloud.com
+  - name: Symantec MessageLabs
+    type: word
+    words:
+    - messagelabs.com
+  - name: MailSpamProtection
+    type: word
+    words:
+    - mailspamprotection.com
+  - name: Retarus
+    type: word
+    words:
+    - retarus.com
+  - name: Rackspace Email
+    type: word
+    words:
+    - emailsrvr.com
+  matchers-condition: or
+  name: '{{FQDN}}'
+  type: MX
+id: mx-service-detector
+info:
+  author: binaryfigments,rxerium
+  classification:
+    cwe-id: CWE-200
+  description: An email service was detected. Check the email service or spam filter
+    that is used for a domain.
+  metadata:
+    max-request: 1
+  name: Email Service Detector
+  severity: info
+  tags: dns,service,discovery

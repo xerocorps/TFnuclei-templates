@@ -1,0 +1,17 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - access_token\$production\$[0-9a-z]{16}\$[0-9a-f]{32}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: braintree-access-token
+info:
+  author: Ice3man
+  metadata:
+    max-request: 1
+  name: PayPal Braintree Access Token Disclosure
+  severity: info
+  tags: exposure,token,paypal,vuln

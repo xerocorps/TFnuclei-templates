@@ -1,0 +1,66 @@
+name: "\U0001F6E0 Tests"
+true:
+  pull_request:
+    paths:
+    - '**.yaml'
+  workflow_dispatch: null
+jobs:
+  lint:
+    if: github.repository == 'projectdiscovery/nuclei-templates'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - uses: karancode/yamllint-github-action@v2.1.1
+      with:
+        yamllint_comment: true
+        yamllint_config_filepath: .yamllint
+        yamllint_strict: false
+  validate:
+    if: github.repository == 'projectdiscovery/nuclei-templates'
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - uses: projectdiscovery/actions/setup/nuclei@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Validate templates
+      run: nuclei -duc -validate -lfa -ud $GITHUB_WORKSPACE -w workflows/ -et .github/
+        -ept code -et helpers/payloads/
+  weak-matcher-checks:
+    env:
+      HONEYPOT_URL: http://honey.scanme.sh
+    if: github.repository == 'projectdiscovery/nuclei-templates'
+    needs: lint
+    permissions:
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - id: filter
+      uses: dorny/paths-filter@v3
+      with:
+        filters: "templates: &templates\n  - '**.yml'\n  - '**.yaml'\n  - '!.github/**'\n\
+          changed:\n  - added|modified: *templates\n"
+        list-files: shell
+    - uses: projectdiscovery/actions/setup/nuclei@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - env:
+        CHANGED_FILES: ${{ steps.filter.outputs.changed_files }}
+      id: check
+      if: steps.filter.outputs.changed == 'true'
+      run: bash weak-matcher-checks.sh
+      working-directory: .github/scripts/
+    - env:
+        COMMENT: ${{ steps.check.outputs.comment }}
+        GITHUB_TOKEN: ${{ secrets.PDTEAMX_CLASSIC_PAT }}
+      if: steps.check.outputs.weak == 'true'
+      uses: actions/github-script@v8
+      with:
+        script: "github.rest.issues.createComment({\n  issue_number: context.issue.number,\n\
+          \  owner: context.repo.owner,\n  repo: context.repo.repo,\n  body: process.env.COMMENT\n\
+          })\n\ngithub.rest.issues.addLabels({\n  issue_number: context.issue.number,\n\
+          \  owner: context.repo.owner,\n  repo: context.repo.repo,\n  labels: ['false-positive']\n\
+          })\n"

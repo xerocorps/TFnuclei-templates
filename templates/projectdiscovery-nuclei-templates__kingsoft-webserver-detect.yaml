@@ -1,0 +1,21 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Welcome to Kingsoft Web Server!</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: kingsoft-webserver-detect
+info:
+  author: princechaddha
+  metadata:
+    max-request: 1
+  name: Kingsoft Web Server Detect
+  severity: info
+  tags: tech,kingsoft,discovery

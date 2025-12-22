@@ -1,0 +1,47 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - data-build[iI]d="([0-9a-z_]*)
+    type: regex
+  matchers:
+  - condition: or
+    part: header
+    type: word
+    words:
+    - 'X-Tableau: Tableau Server'
+    - 'Server: Tableau'
+  - condition: or
+    part: body
+    type: word
+    words:
+    - VizPortalRun
+    - vizportal
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: tableau-server-detect
+info:
+  author: TechbrunchFR,aringo
+  description: 'Detects Salesforce Tableau Server and extracts the buildid.
+
+    '
+  metadata:
+    fofa-query:
+    - 'X-Tableau: Tableau Server'
+    - server=="Tableau"
+    - icon_hash="-1441956789"
+    max-request: 1
+    product: tableau_server
+    shodan-query:
+    - product:"Tableau Server"
+    - 'X-Tableau: Tableau Server'
+    - 'Server: Tableau'
+    - http.favicon.hash:-1441956789
+    vendor: salesforce
+    zoomeye-query: app:"Tableau Server"
+  name: Salesforce Tableau Server - Detect
+  severity: info
+  tags: tech,detect,tableau,salesforce,discovery

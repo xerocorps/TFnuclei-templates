@@ -1,0 +1,16 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Authenticate Please!</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/login'
+id: cockpit-detect
+info:
+  author: dwisiswant0
+  metadata:
+    max-request: 1
+  name: Detect Agentejo Cockpit
+  severity: info
+  tags: tech,cockpit,discovery

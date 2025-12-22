@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - Saferoads VMS
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'
+id: saferoads-vms-login
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Saferoads VMS login panel was detected.
+  metadata:
+    max-request: 1
+  name: Saferoads VMS Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6941
+  severity: info
+  tags: panel,edb,discovery

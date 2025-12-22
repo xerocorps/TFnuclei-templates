@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - SAS&reg; Logon Manager
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/SASLogon/login'
+id: sas-login-panel
+info:
+  author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:sas:base_sas:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: SAS login panel has been detected.
+  metadata:
+    fofa-query: icon_hash=957255151
+    max-request: 1
+    product: base_sas
+    shodan-query: http.favicon.hash:957255151
+    vendor: sas
+    verified: true
+  name: SAS Login Panel - Detect
+  severity: info
+  tags: sas,panel,discovery

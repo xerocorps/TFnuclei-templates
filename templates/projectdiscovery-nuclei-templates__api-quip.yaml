@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id":'
+    - '"name":'
+  raw:
+  - 'GET https://platform.quip.com/1/users/current HTTP/1.1
+
+    Host: platform.quip.com
+
+    Authorization: Bearer {{token}}
+
+    '
+id: api-quip
+info:
+  author: daffainfo
+  description: File Sharing and Storage for groups
+  metadata:
+    max-request: 1
+  name: Quip API Test
+  reference:
+  - https://quip.com/dev/automation/documentation
+  - https://github.com/daffainfo/all-about-apikey/tree/main/quip
+  severity: info
+  tags: token-spray,quip
+self-contained: true

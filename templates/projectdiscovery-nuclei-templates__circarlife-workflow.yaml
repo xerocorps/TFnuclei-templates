@@ -1,0 +1,10 @@
+id: circarlife-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all CirCarLife related nuclei templates
+    on a given target.
+  name: CirCarLife Security Checks
+workflows:
+- subtemplates:
+  - tags: circarlife
+  template: http/misconfiguration/installer/circarlife-setup.yaml

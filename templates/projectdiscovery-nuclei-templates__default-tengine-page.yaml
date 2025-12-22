@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Welcome to tengine
+    - Thank you for using tengine
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-tengine-page
+info:
+  author: pussycat0x
+  classification:
+    cpe: cpe:2.3:a:alibaba:tengine:*:*:*:*:nginx:*:*:*
+  metadata:
+    max-request: 1
+    product: tengine
+    shodan-query: http.title:"Welcome to tengine"
+    vendor: alibaba
+    verified: true
+  name: Tengine Default Page
+  severity: info
+  tags: tech,tengine,default-page,discovery

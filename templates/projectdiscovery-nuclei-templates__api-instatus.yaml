@@ -1,0 +1,29 @@
+http:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id":'
+    - '"subdomain":'
+    - '"name":'
+    - '"logoUrl":'
+  method: GET
+  path:
+  - https://api.instatus.com/v1/pages
+id: api-instatus
+info:
+  author: daffainfo
+  description: Post to and update maintenance and incidents on your status page through
+    an HTTP REST API
+  metadata:
+    max-request: 1
+  name: Instatus API Test
+  reference:
+  - https://instatus.com/help/api
+  - https://github.com/daffainfo/all-about-apikey/tree/main/instatus
+  severity: info
+  tags: token-spray,instatus
+self-contained: true

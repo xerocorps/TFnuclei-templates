@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - negative: true
+    part: body
+    type: word
+    words:
+    - invalid key
+  method: GET
+  path:
+  - https://api.trello.com/1/members/me?key={{key}}&token={{token}}
+id: api-trello
+info:
+  author: daffainfo
+  description: Boards, lists and cards to help you organize and prioritize your projects
+  metadata:
+    max-request: 1
+  name: Trello API Test
+  reference:
+  - https://developers.trello.com/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/trello
+  severity: info
+  tags: token-spray,trello
+self-contained: true

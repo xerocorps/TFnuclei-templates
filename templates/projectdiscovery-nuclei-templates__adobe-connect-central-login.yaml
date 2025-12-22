@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Adobe Connect Central Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/system/login'
+id: adobe-connect-central-login
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:adobe:connect:*:*:*:*:*:*:*:*
+    cwe-id: CWE-200
+  description: An Adobe Connect Central login panel was detected.
+  metadata:
+    fofa-query: title="openvpn connect"
+    google-query: intitle:"openvpn connect"
+    max-request: 1
+    product: connect
+    shodan-query: http.title:"openvpn connect"
+    vendor: adobe
+  name: Adobe Connect Central Login Panel
+  reference:
+  - https://www.adobe.com/products/adobeconnect.html
+  severity: info
+  tags: adobe,panel,connect-central,discovery

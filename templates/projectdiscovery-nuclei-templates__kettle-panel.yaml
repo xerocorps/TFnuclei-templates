@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - basic realm="Kettle"
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: kettle-panel
+info:
+  author: For3stCo1d
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Kettle panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: basic realm="Kettle"
+    verified: true
+  name: Kettle Panel - Detect
+  severity: info
+  tags: panel,kettle,discovery

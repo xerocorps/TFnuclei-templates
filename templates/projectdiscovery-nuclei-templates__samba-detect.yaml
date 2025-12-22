@@ -1,0 +1,61 @@
+id: samba-detect
+info:
+  author: pussycat0x
+  description: 'Samba allows file and print sharing between computers running Microsoft
+    Windows and computers running Unix. It is an implementation of dozens of services
+    and a dozen protocols, including: NetBIOS over TCP/IP (NBT) SMB (known as CIFS
+    in some versions)
+
+    '
+  metadata:
+    max-request: 1
+    product: dionaea
+    shodan-query: port:445
+    vendor: dionaea
+  name: Samba - Detection
+  severity: info
+  tags: js,network,samba,detect,linux,discovery
+javascript:
+- args:
+    Host: '{{Host}}'
+    Port: 445
+  code: 'let m = require("nuclei/smb");
+
+    let c = new m.SMBClient();
+
+    let response = c.ConnectSMBInfoMode(Host, Port);
+
+
+    const conditionsMet = (response.SupportV1 === true  && response.Version.VerString
+    === "SMB 1.0");
+
+
+    if (conditionsMet) {
+
+
+    if (response.NTLM === "") {
+
+    printedValue = "Samba detected";
+
+    } else {
+
+    printedValue = response.NTLM;
+
+    }
+
+    }
+
+    else {
+
+    process.exit(1);
+
+    }
+
+    '
+  extractors:
+  - dsl:
+    - response
+    type: dsl
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

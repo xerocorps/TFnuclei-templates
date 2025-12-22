@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - part: body
+    regex:
+    - '^{\"files\":'
+    type: regex
+  - part: header
+    type: word
+    words:
+    - text/plain
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/jquery-file-upload/server/php/'
+id: exposed-jquery-file-upload
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+    cwe-id: CWE-434
+  description: BlueImp jQuery-File-Upload does not require validation to upload files
+    to the server and  does not exclude file types, which can lead to a remote code
+    execution vulnerability.
+  metadata:
+    max-request: 1
+  name: BlueImp jQuery-File-Upload - Arbitrary File Upload
+  reference:
+  - https://www.exploit-db.com/exploits/45584
+  - https://github.com/blueimp/jQuery-File-Upload/blob/master/server/php/UploadHandler.php
+  severity: critical
+  tags: exposure,jquery,edb,misconfig,vuln

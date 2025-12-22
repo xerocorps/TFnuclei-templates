@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - Dashboard [Jenkins]
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/jenkins/'
+  stop-at-first-match: true
+id: unauthenticated-jenkins
+info:
+  author: dhiyaneshDK
+  description: Jenkins Dashboard is exposed to external users.
+  metadata:
+    max-request: 2
+  name: Jenkins Dashboard - Unauthenticated Access
+  severity: high
+  tags: jenkins,vuln

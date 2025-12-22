@@ -1,0 +1,18 @@
+file:
+- extensions:
+  - all
+  matchers:
+  - type: word
+    words:
+    - Landroid/webkit/SslErrorHandler;->proceed()V
+id: improper-certificate-validation
+info:
+  author: gaurang
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: Android improper certificate validation was detected.
+  name: Android Improper Certificate Validation - Detect
+  severity: medium
+  tags: android,file

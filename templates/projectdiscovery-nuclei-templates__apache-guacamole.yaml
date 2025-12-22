@@ -1,0 +1,25 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - '"VERSION":"[0-9]+\.2\.0"'
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - Apache Guacamole
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/translations/en.json'
+id: apache-guacamole
+info:
+  author: r3dg33k
+  metadata:
+    max-request: 1
+  name: Apache Guacamole Login Page and version detection
+  severity: info
+  tags: apache,guacamole,tech,login,discovery

@@ -1,0 +1,17 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - amzn\.mws\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: amazon-mws-auth-token
+info:
+  author: puzzlepeaches
+  metadata:
+    max-request: 1
+  name: Amazon MWS Auth Token
+  severity: info
+  tags: exposure,token,aws,amazon,auth,vuln

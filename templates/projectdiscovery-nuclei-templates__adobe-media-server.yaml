@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Adobe Media Server</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: adobe-media-server
+info:
+  author: dhiyaneshDK
+  classification:
+    cwe-id: CWE-200
+  description: An Adobe Media Server login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Adobe Media Server"
+  name: Adobe Media Server Login Panel
+  reference:
+  - https://helpx.adobe.com/support/adobe-media-server.html
+  severity: info
+  tags: panel,adobe,discovery

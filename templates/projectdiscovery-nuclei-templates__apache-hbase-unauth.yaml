@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <name>hbase.defaults.for.version</name>
+    - <source>hbase-default.xml</source>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/conf'
+id: apache-hbase-unauth
+info:
+  author: pikpikcu
+  description: Apache Hbase is exposed.
+  metadata:
+    max-request: 1
+  name: Apache Hbase Unauth
+  severity: medium
+  tags: apache,unauth,misconfig,vuln

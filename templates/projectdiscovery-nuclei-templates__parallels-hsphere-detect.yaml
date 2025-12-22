@@ -1,0 +1,40 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <title>Parallels H-Sphere</title>
+    - <TITLE>H-SPHERE</TITLE>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: parallels-hsphere-detect
+info:
+  author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:parallels:h-sphere:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Parallels H-Sphere login panel was detected.
+  metadata:
+    fofa-query:
+    - title="h-sphere"
+    - title="parallels h-sphere"
+    google-query:
+    - intitle:"h-sphere"
+    - intitle:"parallels h-sphere"
+    max-request: 1
+    product: h-sphere
+    shodan-query:
+    - title:"Parallels H-Sphere"
+    - http.title:"h-sphere"
+    - http.title:"parallels h-sphere"
+    vendor: parallels
+    verified: true
+  name: Parallels H-Sphere Login Panel - Detect
+  severity: info
+  tags: panel,parallels,hsphere,discovery

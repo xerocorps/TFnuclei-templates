@@ -1,0 +1,34 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    dsl:
+    - status_code==200
+    - contains(body, "SEAFILE_GLOBAL") && contains(body, "seafile-ui.css")
+    type: dsl
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/accounts/login/'
+id: seafile-panel
+info:
+  author: TechbrunchFR,righettod
+  classification:
+    cpe: cpe:2.3:a:seafile:seafile:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Seafile panel was detected.
+  metadata:
+    fofa-query: icon_hash=1552322396
+    max-request: 1
+    product: seafile
+    shodan-query: http.favicon.hash:1552322396
+    vendor: seafile
+    verified: true
+  name: Seafile Panel - Detect
+  reference:
+  - https://www.seafile.com/en/home/
+  - https://github.com/haiwen/seafile
+  severity: info
+  tags: sefile,panel,login,seafile,discovery

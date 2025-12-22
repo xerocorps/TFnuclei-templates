@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - Fuji Xerox Co., Ltd
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/hdstat.htm'
+id: fuji-xerox-printer-detect
+info:
+  author: gy741
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Fuji Xerox printer panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.html:"Fuji Xerox Co., Ltd"
+    verified: true
+  name: Fuji Xerox Printer Panel - Detect
+  severity: info
+  tags: iot,panel,fuji,printer,discovery

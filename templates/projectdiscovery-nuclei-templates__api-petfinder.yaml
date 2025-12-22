@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"token_type"'
+    - '"expires_in"'
+    - '"access_token"'
+  raw:
+  - 'POST https://api.petfinder.com/v2/oauth2/token HTTP/1.1
+
+    Host: api.petfinder.com
+
+    Content-Type: application/x-www-form-urlencoded
+
+    Content-Length: 81
+
+
+    grant_type=client_credentials&client_id={{id}}&client_secret={{secret}}
+
+    '
+id: api-petfinder
+info:
+  author: daffainfo
+  description: Petfinder is dedicated to helping pets find homes, another resource
+    to get pets adopted
+  metadata:
+    max-request: 1
+  name: Petfinder API Test
+  reference:
+  - https://www.petfinder.com/developers/v2/docs/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/petfinder
+  severity: info
+  tags: token-spray,petfinder
+self-contained: true

@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - RabbitMQ Management
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: rabbitmq-dashboard
+info:
+  author: fyoorer
+  classification:
+    cpe: cpe:2.3:a:vmware:rabbitmq:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: RabbitMQ Management panel was detected.
+  metadata:
+    max-request: 1
+    product: rabbitmq
+    shodan-query: cpe:"cpe:2.3:a:vmware:rabbitmq"
+    vendor: vmware
+  name: RabbitMQ Management Panel - Detect
+  severity: info
+  tags: panel,rabbitmq,vmware,discovery

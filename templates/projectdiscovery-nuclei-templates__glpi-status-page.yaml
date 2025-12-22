@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - GLPI_DB_OK
+    - GLPI_SESSION_DIR_OK
+    - GLPI_OK
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/status.php'
+id: glpi-status-page
+info:
+  author: canberbamber
+  classification:
+    cpe: cpe:2.3:a:glpi-project:glpi:*:*:*:*:*:*:*:*
+  description: 'A php status page that indicates if local or ldap identity is used
+    for glpi.
+
+    '
+  metadata:
+    max-request: 1
+    product: glpi
+    shodan-query: http.html:"glpi"
+    vendor: glpi-project
+    verified: true
+  name: GLPI Status Page - Detect
+  reference:
+  - https://buildmedia.readthedocs.org/media/pdf/glpi-user-documentation/latest/glpi-user-documentation.pdf
+  severity: info
+  tags: tech,status,glpi,discovery

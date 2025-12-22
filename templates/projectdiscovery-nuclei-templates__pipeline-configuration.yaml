@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - 'system:'
+    - 'project_name:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pipeline.yaml'
+id: pipeline-configuration
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:jenkins:pipeline\\:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: pipeline\\
+    shodan-query: html:"pipeline.yaml"
+    vendor: jenkins
+    verified: true
+  name: Pipeline Configuration Exposure
+  severity: info
+  tags: devops,exposure,cicd,files,vuln

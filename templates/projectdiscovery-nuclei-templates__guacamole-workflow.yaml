@@ -1,0 +1,12 @@
+id: guacamole-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Apache Guacamole related nuclei templates
+    on a given target.
+  name: Apache Guacamole Security Checks
+workflows:
+- matchers:
+  - name: guacamole
+    subtemplates:
+    - tags: guacamole
+  template: http/technologies/fingerprinthub-web-fingerprints.yaml

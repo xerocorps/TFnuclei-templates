@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Forcepoint Appliance</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: forcepoint-applicance
+info:
+  author: dhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Forcepoint Appliance"
+  name: Forcepoint Appliance
+  severity: info
+  tags: panel,forcepoint,discovery

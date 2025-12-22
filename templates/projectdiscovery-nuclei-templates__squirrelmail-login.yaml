@@ -1,0 +1,42 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - SquirrelMail
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/src/login.php'
+  - '{{BaseURL}}/webmail/src/login.php'
+  - '{{BaseURL}}/squirrelmail/src/login.php'
+  stop-at-first-match: true
+id: squirrelmail-login
+info:
+  author: dhiyaneshDk,ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:squirrelmail:squirrelmail:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: SquirrelMail login panel was detected.
+  metadata:
+    fofa-query: title="squirrelmail"
+    google-query: intitle:"squirrelmail"
+    max-request: 4
+    product: squirrelmail
+    shodan-query:
+    - title:"SquirrelMail"
+    - http.title:"squirrelmail"
+    - cpe:"cpe:2.3:a:squirrelmail:squirrelmail"
+    vendor: squirrelmail
+  name: SquirrelMail Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/7407
+  severity: info
+  tags: squirrelmail,edb,panel,discovery

@@ -1,0 +1,13 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - ghr_.{76}
+    type: regex
+id: github-refresh-token
+info:
+  author: tanq16
+  name: Github Refresh Token
+  severity: high
+  tags: file,keys,token,github

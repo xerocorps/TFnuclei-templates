@@ -1,0 +1,27 @@
+id: mongodb-unauth
+info:
+  author: pdteam
+  description: MongoDB was able to be accessed with no password. Note that MongoDB
+    does not require a password by default.
+  metadata:
+    max-request: 1
+  name: MongoDB - Unauthenticated Access
+  reference:
+  - https://github.com/orleven/Tentacle
+  - https://book.hacktricks.wiki/en/network-services-pentesting/27017-27018-mongodb.html
+  - https://www.mongodb.com/features/mongodb-authentication
+  remediation: Enable Authentication in MongoDB
+  severity: high
+  tags: network,mongodb,unauth,misconfig,tcp,vuln
+tcp:
+- host:
+  - '{{Hostname}}'
+  inputs:
+  - data: 480000000200000000000000d40700000000000061646d696e2e24636d6400000000000100000021000000026765744c6f670010000000737461727475705761726e696e67730000
+    type: hex
+  matchers:
+  - type: word
+    words:
+    - totalLinesWritten
+  port: 27017
+  read-size: 2048

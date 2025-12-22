@@ -1,0 +1,27 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Gradle Enterprise</title>
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: gradle-enterprise-panel
+info:
+  author: Adam Crosser
+  classification:
+    cpe: cpe:2.3:a:gradle:gradle_enterprise:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Gradle Enterprise logjn panel was detected.
+  metadata:
+    max-request: 1
+    product: gradle_enterprise
+    vendor: gradle
+  name: Gradle Enterprise Login Panel - Detect
+  severity: info
+  tags: panel,gradle,discovery

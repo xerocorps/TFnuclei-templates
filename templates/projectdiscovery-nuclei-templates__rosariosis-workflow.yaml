@@ -1,0 +1,10 @@
+id: rosariosis-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Rosario Student Information System
+    (rosariosis) related nuclei templates on a given target.
+  name: Rosario Student Information System (rosariosis) Security Checks
+workflows:
+- subtemplates:
+  - tags: rosariosis
+  template: http/technologies/rosariosis-detect.yaml

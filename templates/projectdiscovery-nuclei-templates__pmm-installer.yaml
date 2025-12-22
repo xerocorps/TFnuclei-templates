@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - PMM Installation Wizard
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/password-page/ovf/account-credentials-ovf'
+id: pmm-installer
+info:
+  author: pussycat0x
+  classification:
+    cpe: cpe:2.3:a:percona:monitoring_and_management:*:*:*:*:*:*:*:*
+  description: PMM is susceptible to the Installation page exposure due to misconfiguration.
+  metadata:
+    max-request: 1
+    product: monitoring_and_management
+    shodan-query: http.title:"PMM Installation Wizard"
+    vendor: percona
+    verified: true
+  name: PMM Installation Wizard
+  severity: high
+  tags: misconfig,exposure,install,pmm,vuln

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - FreePBX\s+([\d\.]+)\s+
+    type: regex
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>FreePBX
+    - FreePBX</title>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/config.php'
+id: freepbx-administration-panel
+info:
+  author: tess,darses
+  classification:
+    cpe: cpe:2.3:a:sangoma:freepbx:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: 'FreePBX admin panel was detected.
+
+    '
+  metadata:
+    fofa-query:
+    - title="FreePBX"
+    - icon_hash="-1908328911"
+    - icon_hash="1574423538"
+    max-request: 1
+    product: freepbx
+    shodan-query:
+    - http.title:"FreePBX"
+    - http.favicon.hash:-1908328911
+    - http.favicon.hash:1574423538
+    vendor: sangoma
+    verified: true
+  name: FreePBX Admin Panel - Detect
+  severity: info
+  tags: freepbx,panel,sangoma,discovery

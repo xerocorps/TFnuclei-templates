@@ -1,0 +1,26 @@
+headless:
+- steps:
+  - action: setheader
+    args:
+      key: User-Agent
+      part: request
+      value: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:111.0) Gecko/20100101 Firefox/111.0
+  - action: navigate
+    args:
+      url: '{{BaseURL}}'
+  - action: waitload
+  - action: screenshot
+    args:
+      fullpage: 'true'
+      mkdir: 'true'
+      to: '{{dir}}/{{filename}}'
+id: screenshot
+info:
+  author: V0idC0de,righettod,tarunKoyalwar
+  description: Takes a screenshot of the specified URLS.
+  name: Headless Http Screenshot
+  severity: info
+  tags: headless,screenshot,discovery
+variables:
+  dir: screenshots
+  filename: '{{replace(BaseURL,"/","_")}}'

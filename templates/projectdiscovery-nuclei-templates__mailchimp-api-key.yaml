@@ -1,0 +1,13 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - '[0-9a-f]{32}-us[0-9]{1,2}'
+    type: regex
+id: mailchimp-api-key
+info:
+  author: gaurang
+  name: Mailchimp API Key
+  severity: high
+  tags: keys,file,token,mailchimp

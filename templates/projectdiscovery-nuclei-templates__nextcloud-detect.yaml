@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - (?m)"version":"([0-9.]+)",
+    type: regex
+  host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - var nc_lastLogin
+    - var nc_pageLoad
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/login'
+  - '{{BaseURL}}/nextcloud/login'
+  - '{{BaseURL}}/nextcloud/index.php/login'
+  stop-at-first-match: true
+id: nextcloud-detect
+info:
+  author: skeltavik
+  classification:
+    cpe: cpe:2.3:a:nextcloud:nextcloud_server:*:*:*:*:*:*:*:*
+  description: 'Nextcloud is a suite of client-server software for creating and using
+    file hosting services
+
+    '
+  metadata:
+    max-request: 4
+    product: nextcloud_server
+    shodan-query: http.title:"Nextcloud"
+    vendor: nextcloud
+    verified: true
+  name: Nextcloud Detect
+  reference:
+  - https://nextcloud.com
+  severity: info
+  tags: tech,nextcloud,storage,discovery

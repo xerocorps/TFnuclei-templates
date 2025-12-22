@@ -1,0 +1,35 @@
+http:
+- host-redirects: true
+  matchers:
+  - type: word
+    words:
+    - <title>Kafka Center</title>
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: kafka-center-login
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:apache:kafka:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Apache Kafka Control Center login panel was detected.
+  metadata:
+    fofa-query:
+    - title="kafka center"
+    - title="kafka consumer offset monitor"
+    google-query:
+    - intitle:"kafka center"
+    - intitle:"kafka consumer offset monitor"
+    max-request: 1
+    product: kafka
+    shodan-query:
+    - http.title:"Kafka Center"
+    - http.title:"kafka center"
+    - http.title:"kafka consumer offset monitor"
+    vendor: apache
+  name: Apache Kafka Control Center Login Panel - Detect
+  severity: info
+  tags: panel,kafka,apache,discovery

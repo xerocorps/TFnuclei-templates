@@ -1,0 +1,27 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - Project doesnt exist... yet!
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: readme-takeover
+info:
+  author: pdteam
+  description: Readme.io takeover was detected.
+  metadata:
+    max-request: 1
+  name: Readme.io Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/41
+  severity: high
+  tags: takeover,readme,vuln

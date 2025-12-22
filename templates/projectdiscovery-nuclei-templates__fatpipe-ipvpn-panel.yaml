@@ -1,0 +1,31 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <h5>([0-9.a-z]+)<\/h5>
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - <title>FatPipe IPVPN&nbsp;| Log in</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/fpui/jsp/login.jsp'
+id: fatpipe-ipvpn-panel
+info:
+  author: dwisiswant0
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  metadata:
+    max-request: 1
+  name: "FatPipe IPVPN\xAE Panel - Detect"
+  reference:
+  - https://www.fatpipeinc.com/products/index.php
+  severity: info
+  tags: panel,ipvpn,fatpipe,discovery

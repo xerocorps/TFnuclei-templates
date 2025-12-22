@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - RosarioSIS=
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: rosariosis-detect
+info:
+  author: princechaddha
+  metadata:
+    max-request: 1
+  name: Rosariosis Detect
+  reference:
+  - https://github.com/francoisjacquet/rosariosis
+  - https://www.rosariosis.org/
+  severity: info
+  tags: tech,rosariosis,discovery

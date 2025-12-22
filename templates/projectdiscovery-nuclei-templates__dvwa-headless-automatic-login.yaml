@@ -1,0 +1,47 @@
+headless:
+- matchers:
+  - part: resp
+    type: word
+    words:
+    - You have logged in as
+  - part: resp
+    type: word
+    words:
+    - First time using DVWA
+  matchers-condition: or
+  steps:
+  - action: navigate
+    args:
+      url: '{{BaseURL}}/login.php'
+  - action: waitload
+  - action: click
+    args:
+      by: x
+      xpath: /html/body/div/div[2]/form/fieldset/input
+  - action: waitload
+  - action: text
+    args:
+      by: x
+      value: admin
+      xpath: /html/body/div/div[2]/form/fieldset/input
+  - action: click
+    args:
+      by: x
+      xpath: /html/body/div/div[2]/form/fieldset/input[2]
+  - action: waitload
+  - action: text
+    args:
+      by: x
+      value: password
+      xpath: /html/body/div/div[2]/form/fieldset/input[2]
+  - action: click
+    args:
+      by: x
+      xpath: /html/body/div/div[2]/form/fieldset/p/input
+  - action: waitload
+id: dvwa-headless-automatic-login
+info:
+  author: pdteam
+  name: DVWA Headless Automatic Login
+  severity: high
+  tags: headless,dvwa,vuln

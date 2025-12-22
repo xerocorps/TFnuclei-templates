@@ -1,0 +1,33 @@
+id: rdp-detect
+info:
+  author: pussycat0x
+  description: 'Detects if a target host is running Remote Desktop Protocol (RDP)
+    service on port 3389. This template helps identify Windows systems that have RDP
+    enabled, which is commonly used for remote administration but can also be a security
+    risk if not properly secured.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: port:"3389"
+    verified: true
+  name: RDP - Detection
+  severity: info
+  tags: js,network,rdp,info,enum,discovery
+javascript:
+- args:
+    Host: '{{Host}}'
+    Port: '3389'
+  code: 'let m = require(''nuclei/rdp'');
+
+    let response = m.IsRDP(Host,Port);
+
+    Export(response);
+
+    '
+  matchers:
+  - condition: and
+    dsl:
+    - success == true
+    - 'contains(response, "\"IsRDP\": true")'
+    type: dsl

@@ -1,0 +1,48 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - Version</span> ([0-9.]+)
+    type: regex
+  - group: 1
+    name: build
+    part: body
+    regex:
+    - Version</span> [0-9.]+ \(build (.*)\)</span>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Log in to TeamCity &mdash; TeamCity</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'
+id: teamcity-login-panel
+info:
+  author: princechaddha
+  classification:
+    cpe: cpe:2.3:a:jetbrains:teamcity:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: TeamCity login panel was detected.
+  metadata:
+    fofa-query: title=teamcity
+    google-query: intitle:teamcity
+    max-request: 1
+    product: teamcity
+    shodan-query:
+    - http.component:"TeamCity"
+    - http.title:teamcity
+    - http.component:"teamcity"
+    vendor: jetbrains
+    verified: true
+  name: TeamCity Login Panel - Detect
+  severity: info
+  tags: panel,teamcity,jetbrains,detect,discovery

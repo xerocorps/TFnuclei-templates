@@ -1,0 +1,19 @@
+file:
+- extensions:
+  - json
+  extractors:
+  - regex:
+    - '"electronVersion":"[^"]*"'
+    type: regex
+id: electron-version-detect
+info:
+  author: me9187
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  name: Electron Version - Detect
+  reference:
+  - https://www.electronjs.org/blog/chromium-rce-vulnerability/
+  severity: info
+  tags: electron,file

@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Cisco UCS KVM Direct</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: cisco-ucs-kvm-login
+info:
+  author: idealphase
+  classification:
+    cpe: cpe:2.3:a:cisco:unified_computing_system:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Cisco UCS Manager KVM login panel was detected.
+  metadata:
+    fofa-query: title="cisco ucs kvm direct"
+    google-query: intitle:"cisco ucs kvm direct"
+    max-request: 1
+    product: unified_computing_system
+    shodan-query:
+    - http.title:"Cisco UCS KVM Direct"
+    - http.title:"cisco ucs kvm direct"
+    vendor: cisco
+  name: Cisco UCS Manager KVM Login Panel - Detect
+  reference:
+  - https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/ucs-manager/GUI-User-Guides/Admin-Management/3-1/b_Cisco_UCS_Admin_Mgmt_Guide_3_1/b_Cisco_UCSM_GUI_Admin_Mgmt_Guide_3_1_chapter_01111.html
+  severity: info
+  tags: panel,cisco,ucs,kvm,discovery

@@ -1,0 +1,14 @@
+id: lotus-domino-workflow
+info:
+  author: CasperGN
+  description: A simple workflow that runs all Lotus Domino related nuclei templates
+    on a given target.
+  name: Lotus Domino Security Checks
+workflows:
+- matchers:
+  - name: lotus-domino
+    subtemplates:
+    - subtemplates:
+      - template: http/cves/2005/CVE-2005-2428.yaml
+      template: http/technologies/lotus-domino-version.yaml
+  template: http/technologies/tech-detect.yaml

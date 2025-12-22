@@ -1,0 +1,19 @@
+file:
+- extensions:
+  - all
+  matchers:
+  - regex:
+    - root-path name="[0-9A-Za-z\-_]{1,10}" path="."
+    - root-path name="[0-9A-Za-z\-_]{1,10}" path=""
+    type: regex
+id: insecure-provider-path
+info:
+  author: gaurang
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: Android insecure provider path was detected.
+  name: Android Insecure Provider Path - Detect
+  severity: medium
+  tags: android,file

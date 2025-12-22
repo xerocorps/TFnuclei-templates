@@ -1,0 +1,36 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - content="SOGo Web Interface"
+    - sg-default="SOGo
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/SOGo'
+  stop-at-first-match: true
+id: sogo-detect
+info:
+  author: righettod
+  classification:
+    cpe: cpe:2.3:a:alinto:sogo:*:*:*:*:*:*:*:*
+  description: This template will detect a running SOGo instance
+  metadata:
+    max-request: 2
+    product: sogo
+    shodan-query: http.title:"SOGo"
+    vendor: alinto
+    verified: true
+  name: SOGo Detect
+  reference:
+  - https://www.sogo.nu/
+  severity: info
+  tags: sogo,tech,discovery

@@ -1,0 +1,36 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <meta name=\"version\" content=\"(.*)\">
+    type: regex
+  host-redirects: true
+  matchers:
+  - condition: or
+    part: response
+    type: word
+    words:
+    - Jamf Pro Login
+    - Jamf Cloud Node
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: jamf-panel
+info:
+  author: pdteam,idealphase
+  classification:
+    cpe: cpe:2.3:a:jamf:jamf:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Jamf Mobile Device Management login panel was detected.
+  metadata:
+    max-request: 1
+    product: jamf
+    shodan-query: http.favicon.hash:1262005940
+    vendor: jamf
+  name: Jamf MDM Login Panel - Detect
+  severity: info
+  tags: jamf,panel,mdm,discovery

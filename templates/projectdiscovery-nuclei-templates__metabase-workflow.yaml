@@ -1,0 +1,10 @@
+id: metabase-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Metabase Pipeline related nuclei templates
+    on a given target.
+  name: Metabase Security Checks
+workflows:
+- subtemplates:
+  - tags: metabase
+  template: http/exposed-panels/metabase-panel.yaml

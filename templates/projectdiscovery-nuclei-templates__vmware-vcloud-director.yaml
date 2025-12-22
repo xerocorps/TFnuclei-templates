@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>VMware vCloud Director</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cloud/'
+id: vmware-vcloud-director
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:vmware:vcloud_director:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: VMware vCloud Director panel was detected.
+  metadata:
+    fofa-query: title="vmware vcloud director"
+    google-query: intitle:"vmware vcloud director"
+    max-request: 1
+    product: vcloud_director
+    shodan-query:
+    - title:"VMware vCloud Director"
+    - http.title:"vmware vcloud director"
+    vendor: vmware
+    verified: true
+  name: VMware vCloud Director Panel - Detect
+  severity: info
+  tags: panel,vmware,vcloud,discovery

@@ -1,0 +1,38 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - (?i)Update\s+Access\s+Key\s+Exp\s+Date\s+\(YYYY-MM-DD\):\s+([0-9\-]+)
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - Advanced System Management
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/cgi?form=1'
+  - '{{BaseURL}}/cgi-bin/cgi'
+  stop-at-first-match: true
+id: ibm-advanced-system-management
+info:
+  author: dhiyaneshDK,righettod
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: IBM Advanced System Management panel was detected.
+  metadata:
+    fofa-query: title="Advanced System Management"
+    max-request: 2
+    shodan-query: title:"Advanced System Management"
+    verified: true
+  name: IBM Advanced System Management Panel - Detect
+  reference:
+  - https://www.ibm.com/docs/en/power8/9080-MME?topic=operations-advanced-system-management
+  severity: info
+  tags: panel,ibm,login,detect,discovery

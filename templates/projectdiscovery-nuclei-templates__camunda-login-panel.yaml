@@ -1,0 +1,33 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <footer cam-widget-footer version="v([0-9.]+)"
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - Camunda Welcome
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/app/welcome/default/#!/login'
+  - '{{BaseURL}}/camunda/app/welcome/default/#!/login'
+id: camunda-login-panel
+info:
+  author: alifathi-h1
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Camunda login panel was detected.
+  metadata:
+    max-request: 2
+  name: Camunda Login Panel - Detect
+  reference:
+  - https://docs.camunda.org/manual/7.15/webapps/admin/user-management/
+  severity: info
+  tags: camunda,panel,login,discovery

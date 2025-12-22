@@ -1,0 +1,22 @@
+http:
+- extractors:
+  - regex:
+    - '"clientVersion":"[^"]*"'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/portal/info.jsp'
+id: vmware-horizon-version
+info:
+  author: veshraj
+  classification:
+    cpe: cpe:2.3:a:vmware:horizon_view:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: horizon_view
+    shodan-query: title:"Vmware Horizon"
+    vendor: vmware
+    verified: true
+  name: Vmware Horizon Version Detect
+  severity: info
+  tags: vmware,tech,discovery

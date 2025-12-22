@@ -1,0 +1,10 @@
+id: vmware-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all VMware Pipeline related nuclei templates
+    on a given target.
+  name: VMware Security Checks
+workflows:
+- subtemplates:
+  - tags: vmware
+  template: http/technologies/vmware/vmware-detect.yaml

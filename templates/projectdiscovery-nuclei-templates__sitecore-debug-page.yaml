@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - extranet\Anonymous
+  - status:
+    - 404
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sitecore/'''
+id: sitecore-debug-page
+info:
+  author: dhiyaneshDK
+  description: SiteCore debug page is exposed.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Welcome to Sitecore"
+  name: SiteCore Debug Page
+  severity: low
+  tags: debug,sitecore,misconfig,vuln

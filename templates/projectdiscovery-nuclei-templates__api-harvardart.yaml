@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"colorid"'
+    - '"name"'
+    - '"hex"'
+  method: GET
+  path:
+  - https://api.harvardartmuseums.org/color/34838442?apikey={{token}}
+id: api-harvardart
+info:
+  author: daffainfo
+  description: Harvard Art
+  metadata:
+    max-request: 1
+  name: Harvard Art Museums API Test
+  reference:
+  - https://github.com/harvardartmuseums/api-docs
+  - https://github.com/daffainfo/all-about-apikey/tree/main/harvard-art-museums
+  severity: info
+  tags: token-spray,harvardart
+self-contained: true

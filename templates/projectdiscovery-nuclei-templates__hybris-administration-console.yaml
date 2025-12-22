@@ -1,0 +1,36 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - hybris administration console
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/login'
+id: hybris-administration-console
+info:
+  author: princechaddha
+  classification:
+    cpe: cpe:2.3:a:sap:hybris:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Hybris Administration Console login panel was detected.
+  metadata:
+    fofa-query: title="hybris"
+    google-query: intitle:"hybris"
+    max-request: 1
+    product: hybris
+    shodan-query:
+    - title:"Hybris"
+    - http.title:"hybris"
+    vendor: sap
+    verified: true
+  name: Hybris Administration Console Login Panel - Detect
+  severity: info
+  tags: panel,hybris,sap,discovery

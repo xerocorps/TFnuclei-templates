@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>SHOUTcast Server</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.html'
+id: shoutcast-server
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:shoutcast:dnas:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: SHOUTcast Server panel was detected.
+  metadata:
+    max-request: 1
+    product: dnas
+    shodan-query: http.title:"SHOUTcast Server"
+    vendor: shoutcast
+  name: SHOUTcast Server Panel - Detect
+  severity: info
+  tags: panel,discovery

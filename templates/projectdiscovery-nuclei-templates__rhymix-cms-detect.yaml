@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - rx_sesskey1
+  - part: body
+    type: word
+    words:
+    - <meta name="generator" content="Rhymix" />
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: rhymix-cms-detect
+info:
+  author: gy741
+  description: Detects Rhymix CMS
+  metadata:
+    max-request: 1
+  name: Rhymix CMS Detect
+  reference:
+  - https://github.com/rhymix/rhymix
+  severity: info
+  tags: tech,rhymix,discovery

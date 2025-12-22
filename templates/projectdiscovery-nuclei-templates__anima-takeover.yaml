@@ -1,0 +1,27 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - If this is your website and you've just created it, try refreshing in a minute
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: anima-takeover
+info:
+  author: pdteam
+  description: Anima takeover was detected.
+  metadata:
+    max-request: 1
+  name: Anima Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/126
+  severity: high
+  tags: takeover,vuln

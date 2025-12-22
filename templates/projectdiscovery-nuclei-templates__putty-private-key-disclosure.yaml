@@ -1,0 +1,40 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - PuTTY-User-Key-File
+    - 'Encryption:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/my.ppk'
+  - '{{BaseURL}}/putty.ppk'
+  - '{{BaseURL}}/{{Hostname}}.ppk'
+  - '{{BaseURL}}/.ssh/putty.ppk'
+  - '{{BaseURL}}/.ssh/{{Hostname}}.ppk'
+  - '{{BaseURL}}/.putty/my.ppk'
+  - '{{BaseURL}}/.putty/putty.ppk'
+  - '{{BaseURL}}/.putty/{{Hostname}}.ppk'
+  stop-at-first-match: true
+id: putty-private-key-disclosure
+info:
+  author: DhiyaneshDk,geeknik
+  classification:
+    cpe: cpe:2.3:a:putty:putty:*:*:*:*:*:*:*:*
+  description: Putty internal user key file is exposed.
+  metadata:
+    github-query: filename:putty.ppk
+    max-request: 8
+    product: putty
+    vendor: putty
+    verified: true
+  name: Putty Private Key Disclosure
+  reference:
+  - https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/putty-private-key-disclosure.json
+  severity: medium
+  tags: exposure,files,vuln

@@ -1,0 +1,31 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - Oracle Containers for J2EE 10g \(.*\)
+    type: regex
+  matchers:
+  - condition: or
+    type: word
+    words:
+    - Welcome to Oracle Containers for J2EE 10g
+    - Administration Guide is included
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: oracle-containers-panel
+info:
+  author: dogasantos
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Oracle Containers for J2EE 10g panel was detected.
+  metadata:
+    max-request: 1
+  name: Oracle Containers for J2EE 10g Panel - Detect
+  severity: info
+  tags: panel,oracle,containers,discovery

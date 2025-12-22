@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - NoEscape - Login
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: noescape-login
+info:
+  author: DhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: NoEscape login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: title:"NoEscape - Login"
+    verified: true
+  name: NoEscape Login Panel - Detect
+  severity: info
+  tags: panel,noescape,discovery

@@ -1,0 +1,43 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - (?i)Copyright\s+([0-9-]+)\s+Micro\s+Focus
+    type: regex
+  host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Micro Focus Vibe
+    - baseVibeUrl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/ssf/s/portalLogin'
+id: microfocus-vibe-panel
+info:
+  author: ritikchaddha,righettod
+  classification:
+    cpe: cpe:2.3:a:microfocus:vibe:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Micro Focus Vibe login panel was detected.
+  metadata:
+    fofa-query: body="micro focus vibe"
+    max-request: 1
+    product: vibe
+    shodan-query:
+    - http.html:"Micro Focus Vibe"
+    - http.html:"micro focus vibe"
+    vendor: microfocus
+    verified: true
+  name: Micro Focus Vibe Login Panel - Detect
+  severity: info
+  tags: panel,microfocus,vibe,discovery

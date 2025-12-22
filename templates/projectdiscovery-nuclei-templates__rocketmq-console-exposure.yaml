@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>RocketMq-console-ng</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: rocketmq-console-exposure
+info:
+  author: pdteam
+  classification:
+    cpe: cpe:2.3:a:apache:rocketmq:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Apache RocketMQ Console panel was detected.
+  metadata:
+    fofa-query:
+    - title="rocketmq-console-ng"
+    - protocol="rocketmq"
+    - title="rocketmq"
+    google-query:
+    - intitle:"rocketmq"
+    - intitle:"rocketmq-console-ng"
+    max-request: 1
+    product: rocketmq
+    shodan-query:
+    - http.title:"RocketMq-console-ng"
+    - http.title:"rocketmq-console-ng"
+    - http.title:"rocketmq"
+    vendor: apache
+    verified: true
+  name: Apache RocketMQ Console Panel - Detect
+  severity: info
+  tags: panel,apache,discovery

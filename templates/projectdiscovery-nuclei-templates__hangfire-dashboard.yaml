@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - Hangfire\s+([0-9.]+)
+    type: regex
+  matchers:
+  - case-insensitive: true
+    condition: and
+    part: body
+    type: word
+    words:
+    - Hangfire Dashboard
+    - Realtime Graph
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/hangfire'
+  stop-at-first-match: true
+id: hangfire-dashboard
+info:
+  author: DhiyaneshDk,righettod
+  classification:
+    cpe: cpe:2.3:a:hangfire:hangfire:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Hangfire Dashboard panel was detected.
+  metadata:
+    fofa-query: "title=\"overview \u2013 hangfire dashboard\""
+    google-query: "intitle:\"overview \u2013 hangfire dashboard\""
+    max-request: 2
+    product: hangfire
+    shodan-query:
+    - "title:\"Overview \u2013 Hangfire Dashboard\""
+    - "http.title:\"overview \u2013 hangfire dashboard\""
+    vendor: hangfire
+    verified: true
+  name: Hangfire Dashboard Panel - Detect
+  severity: info
+  tags: panel,hangfire,discovery

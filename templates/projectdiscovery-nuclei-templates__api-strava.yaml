@@ -1,0 +1,24 @@
+http:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id"'
+    - '"username"'
+  method: GET
+  path:
+  - https://www.strava.com/api/v3/athlete
+id: api-strava
+info:
+  author: dwisiswant0
+  metadata:
+    max-request: 1
+  name: Strava API Test
+  reference:
+  - https://developers.strava.com/docs/getting-started/
+  severity: info
+  tags: token-spray,strava
+self-contained: true

@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - HP
+    - <h1>SNMP</h1>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/SSI/Auth/ip_snmp.htm'
+id: unauthorized-hp-printer
+info:
+  author: pussycat0x
+  description: HP Printer is exposed.
+  metadata:
+    max-request: 1
+  name: Unauthorized HP Printer
+  severity: high
+  tags: hp,iot,unauth,misconfig,vuln

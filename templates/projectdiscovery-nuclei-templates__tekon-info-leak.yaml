@@ -1,0 +1,38 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - -- Logs begin at
+    - end at
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-size: 2048
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/log.cgi'
+id: tekon-info-leak
+info:
+  author: gy741
+  classification:
+    cpe: cpe:2.3:o:tekon:kio_firmware:*:*:*:*:*:*:*:*
+  description: A vulnerability in Tekon allows remote unauthenticated users to disclose
+    the Log of the remote device
+  metadata:
+    max-request: 1
+    product: kio_firmware
+    shodan-query: "title:\"\u043A\u043E\u043D\u0442\u0440\u043E\u043B\u043B\u0435\u0440\
+      \""
+    vendor: tekon
+  name: Tekon - Unauthenticated Log Leak
+  reference:
+  - https://medium.com/@bertinjoseb/post-auth-rce-based-in-malicious-lua-plugin-script-upload-scada-controllers-located-in-russia-57044425ac38
+  severity: low
+  tags: tekon,exposure,unauth,vuln

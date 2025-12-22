@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - subrion.org" title="Open Source CMS">Subrion CMS
+    - Subrion CMS - Open Source Content Management System
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: subrion-cms-detect
+info:
+  author: pikpikcu
+  classification:
+    cpe: cpe:2.3:a:intelliants:subrion:*:*:*:*:*:*:*:*
+  metadata:
+    fofa-query: title="subrion"
+    max-request: 1
+    product: subrion
+    shodan-query: http.component:"Subrion"
+    vendor: intelliants
+  name: Subrion CMS Detect
+  severity: info
+  tags: subrion,tech,discovery

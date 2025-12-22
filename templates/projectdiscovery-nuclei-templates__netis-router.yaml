@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>AP setup</title>
+  - part: header
+    type: word
+    words:
+    - 'Server: netis'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.htm'
+id: netis-router
+info:
+  author: gy741
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Netis router login panel was detected.
+  metadata:
+    max-request: 1
+  name: Netis Router Login Panel - Detect
+  reference:
+  - https://www.tacnetsol.com/blog/cve-2019-8985-rce
+  severity: info
+  tags: panel,login,netis,router,discovery

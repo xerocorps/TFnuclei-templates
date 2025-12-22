@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <title>Selenoid UI</title>
+    - /manifest.json
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/login'
+id: selenoid-ui-exposure
+info:
+  author: pdteam
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Selenoid UI login panel was detected.
+  metadata:
+    max-request: 1
+  name: Selenoid UI Login Panel - Detect
+  severity: info
+  tags: panel,discovery

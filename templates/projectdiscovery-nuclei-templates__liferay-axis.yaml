@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - part: body
+    regex:
+    - .*<h2>And now\.\.\. Some Services<\/h2>.*
+    type: regex
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/axis'
+id: liferay-axis
+info:
+  author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:liferay:liferay_portal:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: liferay_portal
+    shodan-query: title:"Liferay"
+    vendor: liferay
+    verified: true
+  name: Liferay /api/axis - API Exposed
+  reference:
+  - https://github.com/ilmila/J2EEScan/blob/master/src/main/java/burp/j2ee/issues/impl/LiferayAPI.java
+  severity: info
+  tags: misconfig,exposure,liferay,api,vuln

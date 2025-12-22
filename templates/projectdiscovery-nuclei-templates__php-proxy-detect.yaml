@@ -1,0 +1,28 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <meta name="version" content="([0-9.]+)">
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>PHP-Proxy</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/proxy'
+id: php-proxy-detect
+info:
+  author: pikpikcu
+  metadata:
+    max-request: 2
+  name: PHP Proxy Detect
+  severity: info
+  tags: tech,php,proxy,discovery

@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    regex:
+    - '"role":"super_admin","name":"(.*)","password":"(.*)"'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.php'
+id: ruijie-information-disclosure
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-200
+  description: Ruijie login panel was detected and leaks authentication credentials.
+  metadata:
+    max-request: 1
+  name: Ruijie Login Panel - Detect
+  reference:
+  - https://www.ruijienetworks.com/
+  - https://www.cnblogs.com/cHr1s/p/14499858.html
+  severity: high
+  tags: ruijie,config,exposure,vuln

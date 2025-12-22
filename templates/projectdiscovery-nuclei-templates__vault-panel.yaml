@@ -1,0 +1,43 @@
+http:
+- extractors:
+  - json:
+    - .version
+    name: version
+    part: body_1
+    type: json
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200 || status_code == 429
+    - contains_any(to_lower(body), "vault-cluster", "vault/config/environment", "<title>vault</title>",
+      "hashicorp vault api")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/v1/sys/health'
+  - '{{BaseURL}}/ui/vault/auth'
+  - '{{BaseURL}}/ui/auth'
+  - '{{BaseURL}}/v1/sys/health?help=1'
+  stop-at-first-match: true
+id: vault-panel
+info:
+  author: DhiyaneshDK,righettod
+  classification:
+    cpe: cpe:2.3:a:hashicorp:vault:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Vault login panel was detected.
+  metadata:
+    fofa-query: icon_hash=-919788577
+    max-request: 4
+    product: vault
+    shodan-query: http.favicon.hash:-919788577
+    vendor: hashicorp
+    verified: true
+  name: Vault Login Panel - Detect
+  reference:
+  - https://developer.hashicorp.com/vault
+  - https://developer.hashicorp.com/vault/api-docs
+  - https://developer.hashicorp.com/vault/api-docs#help
+  severity: info
+  tags: panel,vault,detect,hashicorp,discovery

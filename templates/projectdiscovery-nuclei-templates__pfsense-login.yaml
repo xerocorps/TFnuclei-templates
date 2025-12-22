@@ -1,0 +1,43 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - <script src="\/js\/pfSense\.js\?(.+)"><\/script>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>pfSense - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: pfsense-login
+info:
+  author: idealphase
+  classification:
+    cpe: cpe:2.3:a:pfsense:pfsense:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: pfSense login panel was detected.
+  metadata:
+    fofa-query: title="pfsense - login"
+    google-query:
+    - intitle:"pfSense - Login"
+    - intitle:"pfsense - login"
+    max-request: 1
+    product: pfsense
+    shodan-query:
+    - http.title:"pfSense - Login"
+    - http.title:"pfsense - login"
+    vendor: pfsense
+  name: pfSense Login Panel - Detect
+  reference:
+  - https://www.pfsense.org/download/
+  - https://www.pfsense.org/getting-started/
+  severity: info
+  tags: panel,pfsense,discovery

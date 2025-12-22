@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - 'Set-Cookie: CmWebAdminSession'
+  - status:
+    - 301
+    - 302
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: codemeter-webadmin-panel
+info:
+  author: Techryptic (@Tech)
+  classification:
+    cpe: cpe:2.3:a:wibu:codemeter:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-668
+  description: CodeMeter WebAdmin panel was accessed.
+  metadata:
+    max-request: 1
+    product: codemeter
+    vendor: wibu
+  name: CodeMeter - WebAdmin Panel Access
+  severity: info
+  tags: codemeter,webadmin,panel,wibu,discovery

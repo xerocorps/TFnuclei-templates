@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <span class="version">([0-9.]+)
+    type: regex
+  headers:
+    Accept-Language: en-US,en;q=0.5
+  matchers:
+  - condition: or
+    type: word
+    words:
+    - Adminer</title>
+    - Adminer</a>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/adminer.php'
+  - '{{BaseURL}}/_adminer.php'
+  - '{{BaseURL}}/adminer/'
+  - '{{BaseURL}}/editor.php'
+  - '{{BaseURL}}/mysql.php'
+  - '{{BaseURL}}/sql.php'
+  - '{{BaseURL}}/wp-content/plugins/adminer/adminer.php'
+  - '{{BaseURL}}/admin.php'
+  - '{{BaseURL}}/modules/sfkdbmanage/adminer.php'
+  stop-at-first-match: true
+id: adminer-panel
+info:
+  author: random_robbie,meme-lord,ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:adminer:adminer:*:*:*:*:*:*:*:*
+    cwe-id: CWE-200
+  description: An Adminer login panel was detected.
+  metadata:
+    fofa-query:
+    - title="login - adminer"
+    - app="adminer" && body="4.7.8"
+    google-query: intitle:"login - adminer"
+    hunter-query: app.name="adminer"&&web.body="4.7.8"
+    max-request: 8
+    product: adminer
+    shodan-query:
+    - title:"Login - Adminer"
+    - cpe:"cpe:2.3:a:adminer:adminer"
+    - http.title:"login - adminer"
+    vendor: adminer
+    verified: true
+  name: Adminer Login Panel - Detect
+  reference:
+  - https://blog.sorcery.ie/posts/adminer/
+  severity: info
+  tags: panel,adminer,discovery

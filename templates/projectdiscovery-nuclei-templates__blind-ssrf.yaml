@@ -1,0 +1,34 @@
+http:
+- fuzzing:
+  - fuzz:
+    - https://{{ssrf}}
+    mode: single
+    part: query
+    values:
+    - https?://
+    - \./.*
+  matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
+  payloads:
+    ssrf:
+    - '{{interactsh-url}}'
+    - '{{FQDN}}.{{interactsh-url}}'
+    - '{{RDN}}.{{interactsh-url}}'
+    - '{{FQDN}}@{{interactsh-url}}'
+    - '{{RDN}}@{{interactsh-url}}'
+  pre-condition:
+  - dsl:
+    - method == "GET"
+    type: dsl
+  stop-at-first-match: true
+id: blind-ssrf
+info:
+  author: pdteam,AmirHossein Raeisi
+  metadata:
+    max-request: 3
+  name: Blind SSRF OAST Detection
+  severity: medium
+  tags: ssrf,dast,oast,vuln

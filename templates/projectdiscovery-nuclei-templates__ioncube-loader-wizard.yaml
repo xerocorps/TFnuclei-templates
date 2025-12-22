@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - ionCube Loader Wizard
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ioncube/loader-wizard.php'
+  - '{{BaseURL}}/loader-wizard.php'
+id: ioncube-loader-wizard
+info:
+  author: Mubassirpatel
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: An ioncube Loader Wizard was discovered.
+  metadata:
+    max-request: 2
+  name: ioncube Loader Wizard Disclosure
+  reference:
+  - https://firefart.at/post/multiple-vulnerabilities-in-ioncube-loader-wizard/
+  severity: medium
+  tags: ioncube,disclosure,exposure,vuln

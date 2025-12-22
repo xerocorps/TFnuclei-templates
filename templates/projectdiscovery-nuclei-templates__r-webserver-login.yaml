@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>R WebServer</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+id: r-webserver-login
+info:
+  author: pussycat0x
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: R WebServer login panel was detected.
+  metadata:
+    max-request: 1
+  name: R WebServer Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/7132
+  severity: info
+  tags: edb,panel,rwebserver,discovery

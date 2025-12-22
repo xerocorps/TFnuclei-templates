@@ -1,0 +1,12 @@
+id: artifactory-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Artifactory related nuclei templates
+    on a given target.
+  name: Artifactory Security Checks
+workflows:
+- matchers:
+  - name: artifactory
+    subtemplates:
+    - tags: artifactory
+  template: http/technologies/tech-detect.yaml

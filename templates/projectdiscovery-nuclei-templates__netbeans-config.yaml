@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: or
+    regex:
+    - (?mi)^src.dir=
+    - (?mi)^build.[a-zA-Z]+=
+    - (?mi)^jar.[a-zA-Z]+=
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/nbproject/project.properties'
+id: netbeans-config
+info:
+  author: sbani
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Netbeans configuration information was detected.
+  metadata:
+    max-request: 1
+  name: Netbeans Config - Detect
+  reference:
+  - https://netbeans.apache.org/
+  severity: info
+  tags: netbeans,config,exposure,vuln

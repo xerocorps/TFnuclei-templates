@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_any(to_lower(body), "<title>strapi admin</title>", "<title>welcome
+      to your strapi app</title>")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/auth/login'
+  - '{{BaseURL}}/admin/plugins/users-permissions/auth/login'
+  stop-at-first-match: true
+id: strapi-panel
+info:
+  author: idealphase,righettod
+  classification:
+    cpe: cpe:2.3:a:strapi:strapi:*:*:*:*:node.js:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: 'Strapi login panel was detected.
+
+    '
+  metadata:
+    max-request: 2
+    product: strapi
+    shodan-query: http.title:"strapi"
+    vendor: strapi
+  name: Strapi Login Panel - Detect
+  reference:
+  - https://github.com/strapi/strapi
+  - https://strapi.io/
+  severity: info
+  tags: panel,strapi,login,discovery

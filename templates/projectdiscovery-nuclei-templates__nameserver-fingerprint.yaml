@@ -1,0 +1,25 @@
+dns:
+- extractors:
+  - group: 1
+    regex:
+    - "IN\tNS\t(.+)"
+    type: regex
+  matchers:
+  - part: answer
+    regex:
+    - "IN\tNS\\t(.+)$"
+    type: regex
+  name: '{{FQDN}}'
+  type: NS
+id: nameserver-fingerprint
+info:
+  author: pdteam
+  classification:
+    cwe-id: CWE-200
+  description: An NS record was detected. An NS record delegates a subdomain to a
+    set of name servers.
+  metadata:
+    max-request: 1
+  name: NS Record Detection
+  severity: info
+  tags: dns,ns,discovery

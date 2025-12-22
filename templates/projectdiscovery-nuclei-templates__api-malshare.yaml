@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"md5":'
+    - '"sha1":'
+  method: GET
+  path:
+  - https://api.malshare.com/api.php?api_key={{token}}&action=getlist
+id: api-malshare
+info:
+  author: daffainfo
+  description: Malware Archive / file sourcing
+  metadata:
+    max-request: 1
+  name: MalShare API Test
+  reference:
+  - https://malshare.com/doc.php
+  - https://github.com/daffainfo/all-about-apikey/tree/main/malshare
+  severity: info
+  tags: token-spray,malshare
+self-contained: true

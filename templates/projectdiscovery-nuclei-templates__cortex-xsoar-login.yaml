@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_any(body, "<title>Cortex XSOAR</title>", "content=\"Cortex XSOAR\">")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/#/login'
+id: cortex-xsoar-login
+info:
+  author: dhiyaneshDK,r3dg33k
+  classification:
+    cpe: cpe:2.3:a:paloaltonetworks:cortex_xsoar:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Cortex XSOAR login panel was detected.
+  metadata:
+    fofa-query: title="cortex xsoar"
+    google-query: intitle:"cortex xsoar"
+    max-request: 1
+    product: cortex_xsoar
+    shodan-query: http.title:"Cortex XSOAR"
+    vendor: paloaltonetworks
+  name: Cortex XSOAR Login Panel - Detect
+  severity: info
+  tags: panel,soar,login,paloaltonetworks,detect,discovery

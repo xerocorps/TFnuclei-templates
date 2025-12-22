@@ -1,0 +1,29 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - "<h1 class=\"headline\">Uh oh. That page doesn\\\u2019t exist.</h1>"
+    - This page is reserved for artistic dogs.
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: intercom-takeover
+info:
+  author: pdteam
+  description: Intercom takeover was detected.
+  metadata:
+    max-request: 1
+  name: Intercom Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/69
+  severity: high
+  tags: takeover,intercom,vuln

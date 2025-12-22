@@ -1,0 +1,33 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - OVPN Config Download
+    - Config List
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: ovpn-config-exposed
+info:
+  author: tess
+  classification:
+    cpe: cpe:2.3:a:openvpn:connect:*:*:*:*:*:*:*:*
+    cwe-id: CWE-200
+  description: OVPS configuration download page was detected.
+  metadata:
+    max-request: 1
+    product: connect
+    shodan-query: http.title:"OVPN Config Download"
+    vendor: openvpn
+    verified: true
+  name: OVPN Configuration Download Page - Detect
+  severity: low
+  tags: config,ovpn,exposure,vuln

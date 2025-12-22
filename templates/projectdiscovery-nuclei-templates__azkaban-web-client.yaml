@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - Azkaban Web Client
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: azkaban-web-client
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:azkaban_project:azkaban:*:*:*:*:*:*:*:*
+    cwe-id: CWE-200
+  description: An Azkaban web client panel was discovered.
+  metadata:
+    max-request: 1
+    product: azkaban
+    shodan-query: http.title:"Azkaban Web Client"
+    vendor: azkaban_project
+  name: Azkaban Web Client
+  reference:
+  - https://azkaban.github.io/
+  severity: info
+  tags: panel,azkaban,discovery

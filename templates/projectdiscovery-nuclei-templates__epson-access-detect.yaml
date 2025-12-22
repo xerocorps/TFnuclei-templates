@@ -1,0 +1,35 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <title>([A-Z-0-9]+) Series</title>
+    type: regex
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - Epson Connect
+    - /IMAGE/EPSONLOGO.PNG
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/PRESENTATION/EPSONCONNECT'
+id: epson-access-detect
+info:
+  author: pussycat0x
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-668
+  description: A publicly available Epson device panel (printer, scanner, etc.) was
+    detected.
+  metadata:
+    max-request: 1
+  name: Epson Device Unauthorized Access Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6922
+  severity: info
+  tags: iot,printer,panel,unauth,epson,edb,discovery

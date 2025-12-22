@@ -1,0 +1,22 @@
+dns:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - v=spf1
+    - ' ptr '
+  name: '{{FQDN}}'
+  type: TXT
+id: spoofable-spf-records-ptr
+info:
+  author: binaryfigments
+  classification:
+    cwe-id: CWE-200
+  description: SPF records in DNS containing a PTR mechanism are spoofable.
+  metadata:
+    max-request: 1
+  name: Spoofable SPF Records with PTR Mechanism
+  reference:
+  - https://www.digitalocean.com/community/tutorials/how-to-use-an-spf-record-to-prevent-spoofing-improve-e-mail-reliability
+  severity: info
+  tags: dns,spf,discovery

@@ -1,0 +1,37 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - Copyright [1-9]\d* ?\-? ?[1-9]?\d*
+    - "\xA9 [1-9]\\d* ?\\-? ?[1-9]?\\d*"
+    - '&copy; [1-9]\d* ?\-? ?[1-9]?\d*'
+    - '&#169; [1-9]\d* ?\-? ?[1-9]?\d*'
+    type: regex
+  host-redirects: true
+  matchers:
+  - negative: true
+    part: body
+    type: word
+    words:
+    - '2025'
+  - part: body
+    regex:
+    - Copyright [1-9]\d* ?\-? ?[1-9]?\d*
+    - "\xA9 [1-9]\\d* ?\\-? ?[1-9]?\\d*"
+    - '&copy; [1-9]\d* ?\-? ?[1-9]?\d*'
+    - '&#169; [1-9]\d* ?\-? ?[1-9]?\d*'
+    type: regex
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: old-copyright
+info:
+  author: geeknik
+  metadata:
+    max-request: 1
+    verified: true
+  name: Find Pages with Old Copyright Dates
+  severity: info
+  tags: miscellaneous,misc,generic,vuln

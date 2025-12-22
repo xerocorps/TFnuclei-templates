@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - JHipster
+    - '@jhipster'
+    - Welcome, Java Hipster!
+    - jhipster-error
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/i18n/en.json'
+  stop-at-first-match: true
+id: jhipster-detect
+info:
+  author: righettod
+  classification:
+    cpe: cpe:2.3:a:jhipster:jhipster:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 2
+    product: jhipster
+    shodan-query: http.html:"JHipster"
+    vendor: jhipster
+    verified: true
+  name: JHipster Detect
+  severity: info
+  tags: tech,jhipster,discovery

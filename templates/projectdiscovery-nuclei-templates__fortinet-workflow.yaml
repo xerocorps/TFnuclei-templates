@@ -1,0 +1,10 @@
+id: fortinet-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all fortinet related nuclei templates on
+    a given target.
+  name: Fortinet Security Checks
+workflows:
+- subtemplates:
+  - tags: fortinet
+  template: http/exposed-panels/fortinet/fortinet-panel.yaml

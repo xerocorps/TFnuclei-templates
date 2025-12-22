@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - 'format:'
+    - 'default:'
+    - Redmine
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/settings.yml'
+  - '{{BaseURL}}/config/settings.yml'
+  - '{{BaseURL}}/redmine/config/settings.yml'
+  stop-at-first-match: true
+id: redmine-settings
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:redmine:redmine:*:*:*:*:*:*:*:*
+  metadata:
+    google-query: intitle:"index of" "settings.yml"
+    max-request: 3
+    product: redmine
+    vendor: redmine
+    verified: true
+  name: Redmine settings.yml File Disclosure
+  reference:
+  - https://www.exploit-db.com/ghdb/5796
+  severity: info
+  tags: misconfig,redmine,devops,files,exposure,vuln

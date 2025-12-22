@@ -1,0 +1,29 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - 404 - Page Not Found
+    - "Oops\u2026 looks like you got lost"
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: frontify-takeover
+info:
+  author: pdteam
+  description: frontify takeover was detected.
+  metadata:
+    max-request: 1
+  name: frontify takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/170
+  severity: high
+  tags: takeover,vuln

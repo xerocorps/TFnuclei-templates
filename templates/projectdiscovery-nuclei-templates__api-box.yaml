@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'total_count":'
+    - 'limit":'
+  raw:
+  - 'GET https://api.box.com/2.0/collections HTTP/1.1
+
+    Host: api.box.com
+
+    Authorization: Bearer {{token}}
+
+    '
+id: api-box
+info:
+  author: daffainfo
+  description: File Sharing and Storage Service
+  metadata:
+    max-request: 1
+  name: Box API Test
+  reference:
+  - https://developer.box.com/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/box
+  severity: info
+  tags: token-spray,box
+self-contained: true

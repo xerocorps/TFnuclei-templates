@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Appliance Management Console Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.do'
+id: sonic-wall-application
+info:
+  author: DhiyaneshDk,Tess
+  classification:
+    cpe: cpe:2.3:o:sonicwall:sma1000_firmware:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: SonicWall Appliance Management Console login panel was detected.
+  metadata:
+    fofa-query: title="appliance management console login"
+    google-query: intitle:"appliance management console login"
+    max-request: 1
+    product: sma1000_firmware
+    shodan-query:
+    - title:"Appliance Management Console Login"
+    - http.title:"appliance management console login"
+    vendor: sonicwall
+    verified: true
+  name: SonicWall Appliance Management Console Login Panel - Detect
+  severity: info
+  tags: panel,sonicwall,login,discovery

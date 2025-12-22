@@ -1,0 +1,27 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - '"repositories":'
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  max-redirects: 1
+  method: GET
+  path:
+  - '{{BaseURL}}/v2/_catalog'
+id: docker-registry
+info:
+  author: puzzlepeaches
+  description: Docker Registry Listing enabled.
+  metadata:
+    max-request: 1
+  name: Docker Registry Listing
+  reference:
+  - https://notsosecure.com/anatomy-of-a-hack-docker-registry
+  severity: medium
+  tags: misconfig,docker,devops,vuln

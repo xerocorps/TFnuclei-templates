@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Zend Server Test Page</title>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: zend-server-test-page
+info:
+  author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:zend:zend_server:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: zend_server
+    shodan-query: title:"Zend Server Test Page"
+    vendor: zend
+    verified: true
+  name: Zend Server Test Page
+  severity: info
+  tags: tech,zend,discovery

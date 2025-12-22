@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>MQ Console</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ibmmq/console/login.html'
+id: ibm-mqseries-web-console
+info:
+  author: righettod
+  classification:
+    cpe: cpe:2.3:a:ibm:mq:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: IBM MQ Web Console login panel was detected.
+  metadata:
+    max-request: 1
+    product: mq
+    vendor: ibm
+  name: IBM MQ Web Console Login Panel - Detect
+  reference:
+  - https://www.ibm.com/docs/en/ibm-mq/9.0?topic=console-getting-started-mq
+  severity: info
+  tags: panel,ibm,discovery

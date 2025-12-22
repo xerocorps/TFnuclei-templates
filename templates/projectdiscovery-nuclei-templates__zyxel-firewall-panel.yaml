@@ -1,0 +1,40 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <title>(.*)</title>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - /lib/mode_ana
+  - condition: or
+    part: body
+    type: word
+    words:
+    - VPN
+    - USG
+    - ATP
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: zyxel-firewall-panel
+info:
+  author: 0x240x23elu
+  classification:
+    cpe: cpe:2.3:o:zyxel:zywall_vpn50_firmware:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Zyxel Firewall panel was detected.
+  metadata:
+    max-request: 1
+    product: zywall_vpn50_firmware
+    shodan-query: http.favicon.hash:-440644339
+    vendor: zyxel
+    verified: true
+  name: Zyxel Firewall Panel - Detect
+  severity: info
+  tags: panel,xyxel,firewall,discovery

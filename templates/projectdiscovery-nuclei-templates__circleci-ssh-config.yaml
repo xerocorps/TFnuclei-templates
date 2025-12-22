@@ -1,0 +1,30 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - Host
+    - HostName
+    - IdentityFile
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/.circleci/ssh-config'
+id: circleci-ssh-config
+info:
+  author: geeknik
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: CircleCI ssh-config file was detected.
+  metadata:
+    max-request: 1
+  name: CircleCI SSH Configuration - Detect
+  severity: medium
+  tags: config,exposure,circleci,vuln

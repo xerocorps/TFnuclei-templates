@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - SonicWall Analyzer Login
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sgms/auth'
+id: sonicwall-analyzer-login
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:sonicwall:analyzer:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: SonicWall Analyzer login panel was detected.
+  metadata:
+    fofa-query: title="sonicwall analyzer login"
+    google-query: intitle:"sonicwall analyzer login"
+    max-request: 1
+    product: analyzer
+    shodan-query:
+    - title:"SonicWall Analyzer Login"
+    - http.title:"sonicwall analyzer login"
+    vendor: sonicwall
+    verified: true
+  name: SonicWall Analyzer Login Panel - Detect
+  severity: info
+  tags: panel,sonicwall,discovery

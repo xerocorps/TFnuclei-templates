@@ -1,0 +1,27 @@
+id: apache-activemq-detect
+info:
+  author: pussycat0x
+  description: 'Apache ActiveMQ is an open source message broker written in Java together
+    with a full Java Message Service client. It provides "Enterprise Features" which
+    in this case means fostering the communication from more than one client or server.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: product:"Apache ActiveMQ"
+    verified: true
+  name: Apache ActiveMQ Detection
+  severity: info
+  tags: network,activemq,oss,detect,apache,detection,tcp,discovery
+tcp:
+- host:
+  - '{{Hostname}}'
+  inputs:
+  - data: "HELP\n\n\0"
+  matchers:
+  - type: word
+    words:
+    - Unknown STOMP action
+    - norg.apache.activemq.transport.stomp
+  matchers-condition: and
+  port: 61613

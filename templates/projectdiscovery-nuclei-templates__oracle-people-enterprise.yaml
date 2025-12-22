@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - /signon.html
+    - <meta HTTP-EQUIV='Refresh' CONTENT='1
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: oracle-people-enterprise
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:oracle:peoplesoft_enterprise:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Oracle PeopleSoft Enterprise login panel detected.
+  metadata:
+    fofa-query: title="oracle peoplesoft enterprise"
+    google-query: intitle:"oracle peoplesoft enterprise"
+    max-request: 1
+    product: peoplesoft_enterprise
+    shodan-query:
+    - http.title:"Oracle Peoplesoft Enterprise"
+    - http.title:"oracle peoplesoft enterprise"
+    vendor: oracle
+  name: Oracle PeopleSoft Enterprise Login Panel - Detect
+  severity: info
+  tags: oracle,login,panel,discovery

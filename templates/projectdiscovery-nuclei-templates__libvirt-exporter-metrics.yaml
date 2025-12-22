@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '# HELP'
+    - libvirt_
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/metrics'
+id: libvirt-exporter-metrics
+info:
+  author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:redhat:libvirt:*:*:*:*:*:*:*:*
+  description: Libvirt Exporter is leaking metrics.
+  metadata:
+    max-request: 1
+    product: libvirt
+    shodan-query: title:"Libvirt"
+    vendor: redhat
+    verified: true
+  name: Libvirt Exporter Metrics
+  severity: low
+  tags: libvirt,exposure,debug,misconfig,vuln

@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - condition: or
+    regex:
+    - <form.*?method=("|')?post("|')?.*?>
+    - <form.*?(?i)(?-i)enctype=("|')?multipart\/form-data("|')?.*?>
+    - <input.*?type=("|')?file("|')?.*?>
+    type: regex
+  - condition: or
+    regex:
+    - type=["'](file)["']
+    - id="file"
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: exposed-file-upload-form
+info:
+  author: geeknik
+  classification:
+    cpe: cpe:2.3:a:creativedream_file_uploader_project:creativedream_file_uploader:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: creativedream_file_uploader
+    shodan-query: http.html:"multipart/form-data" html:"file"
+    vendor: creativedream_file_uploader_project
+    verified: true
+  name: Exposed File Upload Form
+  severity: info
+  tags: miscellaneous,exposure,upload,form,misc,generic,vuln

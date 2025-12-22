@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>GraphiQL
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: graphiql-detect
+info:
+  author: Adam Crosser
+  description: Detects the GraphiQL application
+  metadata:
+    max-request: 1
+  name: GraphiQL Detect
+  severity: info
+  tags: tech,graphiql,graphql,discovery

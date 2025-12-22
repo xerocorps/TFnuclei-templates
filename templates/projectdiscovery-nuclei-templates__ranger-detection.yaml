@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title> Ranger - Sign In</title>
+  - dsl:
+    - status_code==200 && ('1302629996' == mmh3(base64_py(body)))
+    name: favicon
+    type: dsl
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/login.jsp'
+  - '{{BaseURL}}/images/favicon.ico'
+  stop-at-first-match: true
+id: ranger-detection
+info:
+  author: For3stCo1d
+  classification:
+    cpe: cpe:2.3:a:apache:ranger:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 2
+    product: ranger
+    shodan-query: http.title:"Ranger - Sign In"
+    vendor: apache
+  name: Apache Ranger Detection
+  reference:
+  - https://github.com/apache/ranger
+  severity: info
+  tags: tech,apache,ranger,discovery

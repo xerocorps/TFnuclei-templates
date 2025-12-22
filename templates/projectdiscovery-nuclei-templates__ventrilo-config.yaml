@@ -1,0 +1,38 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - '[Server]'
+    - Name
+    - Phonetic
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ventrilo_srv.ini'
+id: ventrilo-config
+info:
+  author: geeknik
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-200
+  description: 'Ventrilo configuration file was detected, The file discloses the application''s
+    Adminpassword and Password.
+
+    '
+  metadata:
+    max-request: 1
+    verified: true
+  name: Ventrilo Configuration File - Detect
+  reference:
+  - https://www.ventrilo.com/setup.php
+  severity: high
+  tags: ventrilo,config,exposure,vuln

@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>FUEL CMS</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/fuel/login'
+id: fuelcms-panel
+info:
+  author: Adam Crosser
+  classification:
+    cpe: cpe:2.3:a:daylightstudio:fuel_cms:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Fuel CMS login panel was detected.
+  metadata:
+    fofa-query: title="fuel cms"
+    google-query: intitle:"fuel cms"
+    max-request: 1
+    product: fuel_cms
+    shodan-query: http.title:"fuel cms"
+    vendor: daylightstudio
+  name: Fuel CMS Login Panel - Detect
+  severity: info
+  tags: panel,fuelcms,oss,daylightstudio,discovery

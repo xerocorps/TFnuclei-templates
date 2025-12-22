@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'version:'
+    - 'environment:'
+    - 'dependencies:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pubspec.yaml'
+  - '{{BaseURL}}/assets/pubspec.yaml'
+  stop-at-first-match: true
+id: pubspec-config
+info:
+  author: DhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Pubspec YAML configuration file was detected.
+  metadata:
+    max-request: 2
+    shodan-query: html:"pubspec.yaml"
+    verified: true
+  name: Pubspec YAML Configuration File - Detect
+  reference:
+  - https://docs.flutter.dev/development/tools/pubspec
+  - https://xeladu.medium.com/the-flutter-pubspec-yaml-in-detail-eee5729d9df7
+  severity: info
+  tags: exposure,devops,pubsec,config,cicd,vuln

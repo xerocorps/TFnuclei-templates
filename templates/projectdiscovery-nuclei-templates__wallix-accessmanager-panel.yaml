@@ -1,0 +1,38 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    dsl:
+    - status_code==200
+    - contains(tolower(body), '<title>wallix access manager</title>')
+    type: dsl
+  - condition: and
+    dsl:
+    - status_code==200
+    - ('1745235488' == mmh3(base64_py(body)))
+    type: dsl
+  matchers-condition: or
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wabam'
+  - '{{BaseURL}}/wabam/favicon.ico'
+  stop-at-first-match: true
+id: wallix-accessmanager-panel
+info:
+  author: righettod
+  classification:
+    cpe: cpe:2.3:a:wallix:bastion_access_manager:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Wallix Access Manager panel was detected.
+  metadata:
+    max-request: 2
+    product: bastion_access_manager
+    shodan-query: http.title:"Wallix Access Manager"
+    vendor: wallix
+  name: Wallix Access Manager Panel - Detect
+  reference:
+  - https://www.wallix.com/privileged-access-management/access-manager/
+  severity: info
+  tags: panel,wallix,discovery

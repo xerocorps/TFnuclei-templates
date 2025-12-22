@@ -1,0 +1,42 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - '"v([0-9.]+)"'
+    type: regex
+  matchers:
+  - condition: or
+    type: word
+    words:
+    - <title>Kafka Topics UI - Browse Kafka Data</title>
+    - <title>UI for Apache Kafka</title>
+    - github.com/provectus/kafka-ui
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/info'
+  stop-at-first-match: true
+id: kafka-topics-ui
+info:
+  author: pdteam,righettod
+  classification:
+    cpe: cpe:2.3:a:provectus:ui:*:*:*:*:kafka:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Apache Kafka Topics panel was detected.
+  metadata:
+    max-request: 2
+    platform: kafka
+    product: ui
+    vendor: provectus
+  name: Apache Kafka Topics Panel - Detect
+  reference:
+  - https://kafka.apache.org/
+  - https://github.com/provectus/kafka-ui
+  severity: info
+  tags: panel,kafka,apache,detect,provectus,discovery

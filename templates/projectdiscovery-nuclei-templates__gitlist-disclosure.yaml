@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - GitList</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: gitlist-disclosure
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:gitlist:gitlist:*:*:*:*:*:*:*:*
+  description: GitList is exposed.
+  metadata:
+    max-request: 1
+    product: gitlist
+    shodan-query: title:"GitList"
+    vendor: gitlist
+  name: GitList Disclosure
+  severity: low
+  tags: gitlist,misconfig,vuln

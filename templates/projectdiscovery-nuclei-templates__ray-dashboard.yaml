@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Ray Dashboard
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: ray-dashboard
+info:
+  author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:ray_project:ray:*:*:*:*:*:*:*:*
+  description: Ray Dashboard is exposed.
+  metadata:
+    fofa-query:
+    - icon_hash=463802404
+    - body="ray dashboard"
+    max-request: 1
+    product: ray
+    shodan-query:
+    - http.favicon.hash:463802404
+    - http.html:"ray dashboard"
+    vendor: ray_project
+    verified: true
+  name: Ray Dashboard Exposure
+  severity: critical
+  tags: misconfig,exposure,ray,discovery

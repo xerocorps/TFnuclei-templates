@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - cgi-bin/webconf.exe?page=1
+    - <title>Web Control</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+id: epson-projector-detect
+info:
+  author: gy741
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Epson Projector login panel was detected.
+  metadata:
+    fofa-query: cgi-bin/webconf.exe
+    max-request: 1
+  name: Epson Projector Login Panel - Detect
+  severity: info
+  tags: iot,projector,panel,unauth,epson,discovery

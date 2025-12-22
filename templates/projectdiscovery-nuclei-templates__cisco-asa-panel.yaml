@@ -1,0 +1,28 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - /+CSCOU+/portal.css
+    - SSL VPN Service
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/+CSCOE+/logon.html'
+id: cisco-asa-panel
+info:
+  author: organiccrap
+  classification:
+    cpe: cpe:2.3:o:cisco:adaptive_security_appliance_software:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Cisco ASA VPN panel was detected.
+  metadata:
+    max-request: 1
+    product: adaptive_security_appliance_software
+    vendor: cisco
+  name: Cisco ASA VPN Panel - Detect
+  severity: info
+  tags: cisco,panel,discovery

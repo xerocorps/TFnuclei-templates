@@ -1,0 +1,20 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - AAAA[a-zA-Z0-9_-]{7}:[a-zA-Z0-9_-]{140}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: fcm-server-key
+info:
+  author: absshax
+  description: FCM Server Key is leaked.
+  metadata:
+    max-request: 1
+  name: FCM Server Key
+  reference:
+  - https://abss.me/posts/fcm-takeover
+  severity: high
+  tags: exposure,token,google,vuln

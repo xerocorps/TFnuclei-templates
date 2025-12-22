@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <html id="XenForo"
+    - <html id="XF"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php'
+id: xenforo-detect
+info:
+  author: dhiyaneshDk,daffainfo
+  classification:
+    cpe: cpe:2.3:a:xenforo:xenforo:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: xenforo
+    shodan-query: http.title:"XenForo"
+    vendor: xenforo
+  name: XenForo Forum Detection
+  severity: info
+  tags: tech,xenforo,discovery

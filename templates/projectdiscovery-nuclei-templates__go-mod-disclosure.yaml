@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - module
+    - go
+    - require (
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/go.mod'
+id: go-mod-disclosure
+info:
+  author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
+  description: go.mod internal file is exposed.
+  metadata:
+    max-request: 1
+    product: go
+    shodan-query: html:"go.mod"
+    vendor: golang
+    verified: true
+  name: Go.mod Disclosure
+  severity: low
+  tags: exposure,files,go,vuln

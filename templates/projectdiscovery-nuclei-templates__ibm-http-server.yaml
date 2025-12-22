@@ -1,0 +1,30 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - IBM HTTP Server ([0-9.]+)
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - <title>IBM HTTP Server</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: ibm-http-server
+info:
+  author: dhiyaneshDK,pussycat0x
+  classification:
+    cpe: cpe:2.3:a:ibm:http_server:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: http_server
+    shodan-query: http.title:"IBM-HTTP-Server"
+    vendor: ibm
+  name: Default IBM HTTP Server
+  severity: info
+  tags: tech,ibm,discovery

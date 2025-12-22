@@ -1,0 +1,23 @@
+id: ZhongkeWangwei-fileRead
+info:
+  author: Str1am
+  name: "Discuz\u8BBA\u575B\u7CFB\u7EDFconfig_global.php.bak\u7B49\u5907\u4EFD\u6587\
+    \u4EF6\u4FE1\u606F\u6CC4\u9732"
+  severity: high
+  tags: Discuz,leakage
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <?php
+    - dbuser
+    - dbpw
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/config/config_global.php.bak'

@@ -1,0 +1,42 @@
+name: "\U0001F4CB KEV & vKEV Tag Update"
+true:
+  schedule:
+  - cron: 0 3 * * *
+  workflow_dispatch: null
+jobs:
+  update-kev:
+    if: github.repository == 'projectdiscovery/nuclei-templates'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v5
+    - name: Setup Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: 'pip install requests pyyaml
+
+        '
+    - env:
+        VULNCHECK_API_KEY: ${{ secrets.VULNCHECK_API_KEY }}
+      name: Update KEV and vKEV tags
+      run: python .github/scripts/update-kev.py
+    - id: changes
+      name: Check for changes
+      run: "if git diff --quiet; then\n  echo \"changes=false\" >> $GITHUB_OUTPUT\n\
+        else\n  echo \"changes=true\" >> $GITHUB_OUTPUT\nfi\n"
+    - if: steps.changes.outputs.changes == 'true'
+      name: Setup Git
+      uses: projectdiscovery/actions/setup/git@v1
+    - if: steps.changes.outputs.changes == 'true'
+      name: Commit changes
+      uses: projectdiscovery/actions/commit@v1
+      with:
+        files: '**/cves/**/*.yaml'
+        message: "chore: update KEV and vKEV tags and metadata \U0001F916"
+    - if: steps.changes.outputs.changes == 'true'
+      name: Push changes
+      run: 'git pull origin $GITHUB_REF --rebase
+
+        git push origin $GITHUB_REF'

@@ -1,0 +1,31 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>UniFi Network</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: unifi-panel
+info:
+  author: TechbrunchFR
+  classification:
+    cpe: cpe:2.3:a:ui:unifi_network_application:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: UniFi Network login panel was detected.
+  metadata:
+    max-request: 1
+    product: unifi_network_application
+    shodan-query: http.title:"UniFi Network"
+    vendor: ui
+  name: UniFi Network Login Panel - Detect
+  severity: info
+  tags: unifi,ubnt,panel,discovery

@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Login
+    - Browse
+    - Welcome Guest
+  method: GET
+  path:
+  - '{{BaseURL}}/virtualems/Login.aspx'
+  - '{{BaseURL}}/VirtualEms/Login.aspx'
+id: virtual-ema-detect
+info:
+  author: iamthefrogy
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Virtual EMS login panel was detected.
+  metadata:
+    max-request: 2
+  name: Virtual EMS Login Panel - Detect
+  severity: info
+  tags: panel,ems,discovery

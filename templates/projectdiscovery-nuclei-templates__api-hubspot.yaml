@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"portalId":'
+    - '"ownerId":'
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"metaData":'
+    - '"portalId":'
+  matchers-condition: or
+  method: GET
+  path:
+  - https://api.hubapi.com/owners/v2/owners?hapikey={{token}}
+  - https://api.hubapi.com/contacts/v1/lists/static?count=3&hapikey={{token}}
+id: api-hubspot
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 2
+  name: HubSpot API Test
+  reference:
+  - https://legacydocs.hubspot.com/docs/methods/owners/get_owners
+  severity: info
+  tags: token-spray,hubspot
+self-contained: true

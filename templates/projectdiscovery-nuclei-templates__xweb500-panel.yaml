@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Xweb500</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/xweb500.cgi'
+id: xweb500-panel
+info:
+  author: princechaddha
+  classification:
+    cpe: cpe:2.3:o:emerson:dixell_xweb-500_firmware:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Xweb500 login panel was detected.
+  metadata:
+    google-query: inurl:"xweb500.cgi"
+    max-request: 1
+    product: dixell_xweb-500_firmware
+    vendor: emerson
+  name: Xweb500 Login Panel - Detect
+  severity: info
+  tags: panel,xweb500,discovery

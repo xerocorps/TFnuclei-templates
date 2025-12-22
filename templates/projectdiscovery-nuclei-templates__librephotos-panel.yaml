@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>LibrePhotos
+  - status:
+    - 200
+    - 404
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'
+id: librephotos-panel
+info:
+  author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:librephotos_project:librephotos:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: librephotos
+    shodan-query: title:"LibrePhotos"
+    vendor: librephotos_project
+    verified: true
+  name: LibrePhotos Panel - Detect
+  reference:
+  - https://github.com/LibrePhotos/librephotos
+  severity: info
+  tags: panel,librephotos,detect,login,discovery

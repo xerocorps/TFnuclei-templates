@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - 'parameters:'
+    - database_user
+    - database_password
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/parameters.yml'
+  - '{{BaseURL}}/app/config/parameters.yml'
+  - '{{BaseURL}}/parameters.yml.dist'
+  - '{{BaseURL}}/app/config/parameters.yml.dist'
+  stop-at-first-match: true
+id: parameters-config
+info:
+  author: DhiyaneshDK
+  description: Parameters.yml was discovered.
+  metadata:
+    max-request: 4
+    shodan-query: html:"parameters.yml"
+    verified: true
+  name: Parameters.yml - File Discovery
+  reference:
+  - https://www.exploit-db.com/ghdb/5986
+  severity: high
+  tags: exposure,cloud,devops,vuln

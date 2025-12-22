@@ -1,0 +1,19 @@
+file:
+- extensions:
+  - all
+  matchers:
+  - type: word
+    words:
+    - android.permission.USE_FINGERPRINT
+    - android.permission.USE_BIOMETRIC
+id: biometric-detect
+info:
+  author: gaurang
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Android Biometric/Fingerprint permission files were detected.
+  name: Android Biometric/Fingerprint - Detect
+  severity: info
+  tags: android,file,biometric

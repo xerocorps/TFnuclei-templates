@@ -1,0 +1,10 @@
+id: kibana-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Kibana related nuclei templates on
+    a given target.
+  name: Kibana Security Checks
+workflows:
+- subtemplates:
+  - tags: kibana
+  template: http/exposed-panels/kibana-panel.yaml

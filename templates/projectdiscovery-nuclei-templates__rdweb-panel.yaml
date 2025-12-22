@@ -1,0 +1,40 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: header
+    type: word
+    words:
+    - TSWAFeatureCheckCookie=true; path=/RDWeb/
+  - condition: and
+    part: response
+    type: word
+    words:
+    - <rdp-client-top-view>
+    - Microsoft Remote Desktop
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/RDWeb/'
+id: rdweb-panel
+info:
+  author: rxerium,sorrowx3
+  classification:
+    cpe: cpe:2.3:a:microsoft:remote_desktop:*:*:*:*:android:*:*:*
+  description: 'RD web access panel was discovered.
+
+    '
+  metadata:
+    fofa-query: body="rd web access"
+    max-request: 1
+    product: remote_desktop
+    shodan-query:
+    - html:"RD Web Access"
+    - http.html:"rd web access"
+    vendor: microsoft
+    verified: true
+  name: RD Web Access Panel - Detect
+  reference:
+  - https://rdweb.wvd.microsoft.com/webclient
+  severity: info
+  tags: panel,login,rdp,web-access,Microsoft,detect,microsoft,discovery

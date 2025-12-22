@@ -1,0 +1,16 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - Report Manager
+  method: GET
+  path:
+  - '{{BaseURL}}/Reports/Pages/Folder.aspx'
+id: sql-server-reporting
+info:
+  author: puzzlepeaches
+  metadata:
+    max-request: 1
+  name: Detect Microsoft SQL Server Reporting
+  severity: info
+  tags: tech,microsoft,discovery

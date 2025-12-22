@@ -1,0 +1,43 @@
+headless:
+- fuzzing:
+  - fuzz:
+    - '{{payload}}'
+    mode: single
+    part: query
+    type: postfix
+  matchers:
+  - part: body
+    type: word
+    words:
+    - '{{result}}'
+  payloads:
+    payload:
+    - '{{concat("{{", "{{first}}*{{second}}", "}}")}}'
+  steps:
+  - action: navigate
+    args:
+      url: '{{BaseURL}}'
+  - action: waitload
+id: angular-client-side-template-injection
+info:
+  author: theamanrawat
+  description: 'Detects Angular client-side template injection vulnerability.
+
+    '
+  impact: 'May lead to remote code execution or sensitive data exposure.
+
+    '
+  name: Angular Client-side-template-injection
+  reference:
+  - https://www.acunetix.com/vulnerabilities/web/angularjs-client-side-template-injection/
+  - https://portswigger.net/research/xss-without-html-client-side-template-injection-with-angularjs
+  remediation: 'Sanitize user inputs and avoid using user-controlled data in template
+    rendering.
+
+    '
+  severity: high
+  tags: angular,csti,dast,headless,xss,vuln
+variables:
+  first: '{{rand_int(1000, 9999)}}'
+  result: '{{to_number(first)*to_number(second)}}'
+  second: '{{rand_int(1000, 9999)}}'

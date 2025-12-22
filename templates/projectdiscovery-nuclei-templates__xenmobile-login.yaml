@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>XenMobile - Console - Logon</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/zdm/login_xdm_uc.jsp'
+id: xenmobile-login
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:citrix:xenmobile_device_manager_mdm:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Xenmobile Console login panel was detected.
+  metadata:
+    max-request: 1
+    product: xenmobile_device_manager_mdm
+    vendor: citrix
+  name: Xenmobile Console Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6675
+  severity: info
+  tags: panel,edb,citrix,discovery

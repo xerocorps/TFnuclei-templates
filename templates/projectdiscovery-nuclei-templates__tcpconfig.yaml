@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - TCP/IP Configuration
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/tcpconfig.html'
+id: tcpconfig
+info:
+  author: dhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: TCP/IP configuration information was detected.
+  metadata:
+    max-request: 1
+  name: Rockwell Automation TCP/IP Configuration Information - Detect
+  reference:
+  - https://www.rockwellautomation.com/
+  - https://www.exploit-db.com/ghdb/6782
+  severity: medium
+  tags: config,edb,logs,misconfig,vuln

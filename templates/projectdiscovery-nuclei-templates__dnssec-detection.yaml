@@ -1,0 +1,24 @@
+dns:
+- matchers:
+  - part: answer
+    regex:
+    - "IN\tDS\\t(.+)$"
+    type: regex
+  name: '{{FQDN}}'
+  type: DS
+id: dnssec-detection
+info:
+  author: pdteam
+  classification:
+    cwe-id: CWE-200
+  description: Domain Name System Security Extensions (DNSSEC) are enabled. The Delegation
+    of Signing (DS) record provides information about a signed zone file when DNSSEC
+    enabled.
+  metadata:
+    max-request: 1
+  name: DNSSEC Detection
+  reference:
+  - https://www.icann.org/resources/pages/dnssec-what-is-it-why-important-2019-03-05-en
+  - https://www.cyberciti.biz/faq/unix-linux-test-and-validate-dnssec-using-dig-command-line/
+  severity: info
+  tags: dns,dnssec,discovery

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <script src="apploader\.js\?v=(.+)" defer><\/script>
+    type: regex
+  host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Emby</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: emby-panel
+info:
+  author: idealphase
+  classification:
+    cpe: cpe:2.3:a:emby:emby:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: 'Emby login panel was detected.
+
+    '
+  metadata:
+    fofa-query: title="emby"
+    google-query: intitle:"emby"
+    max-request: 1
+    product: emby
+    shodan-query: http.title:"emby"
+    vendor: emby
+    verified: true
+  name: Emby Login Panel - Detect
+  reference:
+  - https://github.com/MediaBrowser/Emby
+  - https://emby.media/
+  severity: info
+  tags: panel,emby,oss,discovery

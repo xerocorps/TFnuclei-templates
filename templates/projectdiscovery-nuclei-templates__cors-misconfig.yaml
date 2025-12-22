@@ -1,0 +1,61 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - 'contains(tolower(header), ''access-control-allow-origin: {{cors_origin}}'')'
+    - 'contains(tolower(header), ''access-control-allow-credentials: true'')'
+    name: arbitrary-origin
+    type: dsl
+  payloads:
+    cors_origin:
+    - https://{{tolower(rand_base(5))}}{{RDN}}
+    - http://{{tolower(rand_base(5))}}{{RDN}}
+    - https://{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}{{tolower(rand_base(5))}}.com
+    - https://localhost.{{tolower(rand_base(5))}}.com
+    - http://localhost.{{tolower(rand_base(5))}}.com
+    - http://s{{RDN}}
+    - https://{{FQDN}}_.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}%60.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.$.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.~.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.=.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.+.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.&.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.*.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.).{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.(.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.'.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.!.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.;.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.,.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}.-.{{tolower(rand_base(5))}}.com
+    - https://{{FQDN}}._.{{tolower(rand_base(5))}}.com
+    - 'null'
+    - https://{{tolower(rand_base(5))}}.{{RDN}}
+    - http://{{tolower(rand_base(5))}}.{{RDN}}
+    - https://{{replace(FQDN,'.','a')}}
+    - http://{{replace(FQDN,'.','a')}}
+  raw:
+  - 'GET  HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Origin: {{cors_origin}}
+
+    '
+  stop-at-first-match: true
+id: cors-misconfig
+info:
+  author: nadino,g4l1t0,convisoappsec,pdteam,breno_css,nodauf,amirmsafari
+  metadata:
+    max-request: 29
+  name: CORS Misconfiguration
+  reference:
+  - https://portswigger.net/web-security/cors
+  - https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet
+  - https://www.corben.io/advanced-cors-techniques/
+  - https://www.geekboy.ninja/blog/exploiting-misconfigured-cors-cross-origin-resource-sharing/
+  severity: info
+  tags: cors,generic,misconfig,vuln

@@ -1,0 +1,37 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - Webalizer Version ([0-9.-]+)
+    type: regex
+  matchers:
+  - case-insensitive: true
+    condition: and
+    type: word
+    words:
+    - Webalizer Version
+    - Usage statistics for
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/webalizer/'
+id: exposed-webalizer
+info:
+  author: pdteam
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Webalizer panel was detected.
+  metadata:
+    google-query: intext:"webalizer"  intext:"Usage Statistics for"
+    max-request: 1
+    verified: true
+  name: Webalizer Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/197
+  severity: info
+  tags: panel,webalizer,edb,discovery

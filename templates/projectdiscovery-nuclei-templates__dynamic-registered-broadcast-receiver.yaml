@@ -1,0 +1,18 @@
+file:
+- extensions:
+  - all
+  matchers:
+  - type: word
+    words:
+    - ;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)
+id: dynamic-registered-broadcast-receiver
+info:
+  author: gaurang
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Android dynamic broadcast receiver register functionality was detected.
+  name: Android Dynamic Broadcast Receiver Register - Detect
+  severity: info
+  tags: android,file

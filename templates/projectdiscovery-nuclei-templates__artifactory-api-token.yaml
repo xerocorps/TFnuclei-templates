@@ -1,0 +1,19 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - (?:\s|=|:|"|^)AKC[a-zA-Z0-9]{10,}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: artifactory-api-token
+info:
+  author: Ice3man
+  metadata:
+    max-request: 1
+  name: Artifactory API Token Disclosure
+  reference:
+  - https://jfrog.com/help/r/jfrog-rest-apis/introduction-to-the-artifactory-rest-apis
+  severity: info
+  tags: exposure,token,artifactory,vuln

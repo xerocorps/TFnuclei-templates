@@ -1,0 +1,29 @@
+file:
+- extensions:
+  - conf
+  matchers:
+  - negative: true
+    type: word
+    words:
+    - service timestamps debug datetime msec show-timezone localtime
+  - type: word
+    words:
+    - configure terminal
+  matchers-condition: and
+id: configure-service-timestamps-debug
+info:
+  author: pussycat0x
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'The configuration for service timestamps on Cisco devices was not
+    implemented for debugging purposes. It''s important to note that timestamps can
+    be added to either debugging or logging messages independently.
+
+    '
+  name: Cisco Configure Service Timestamps for Debug - Detect
+  reference:
+  - https://www.cisco.com/E-Learning/bulk/public/tac/cim/cib/using_cisco_ios_software/cmdrefs/service_timestamps.htm
+  severity: info
+  tags: file,audit,cisco,config-audit,cisco-switch,router

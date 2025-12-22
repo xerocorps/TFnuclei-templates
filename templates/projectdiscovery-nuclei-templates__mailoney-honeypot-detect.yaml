@@ -1,0 +1,29 @@
+id: mailoney-honeypot-detect
+info:
+  author: UnaPibaGeek
+  description: 'A Mailoney (SMTP) honeypot has been identified.
+
+    The response to the ''HELP'' command differs from real installations, signaling
+    a possible deceptive setup.
+
+    '
+  metadata:
+    max-request: 1
+    product: exim
+    shodan-query: cpe:"cpe:2.3:a:exim:exim"
+    vendor: mailoney
+  name: Mailoney Honeypot - Detect
+  severity: info
+  tags: mailoney,exim,smtp,honeypot,ir,cti,network,tcp,discovery
+tcp:
+- host:
+  - '{{Hostname}}'
+  inputs:
+  - data: "HELP\r\n"
+    read: 1024
+  matchers:
+  - type: word
+    words:
+    - '502 Error: command "HELP" not implemented'
+  port: 25
+  read-size: 1024

@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Nutanix Web Console</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/console/'
+id: nutanix-web-console-login
+info:
+  author: gy741
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Nutanix Web Console login panel was detected.
+  metadata:
+    max-request: 1
+  name: Nutanix Web Console Login Panel - Detect
+  severity: info
+  tags: panel,nutanix,login,discovery

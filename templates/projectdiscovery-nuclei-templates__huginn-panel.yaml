@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_any(to_lower(body), "huginn</title>", "huginn</a>", "Huginn monitors")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/users/sign_in'
+id: huginn-panel
+info:
+  author: righettod
+  description: 'Huginn products was detected.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: http.favicon.hash:-1951475503
+    verified: true
+  name: Huginn Login Panel - Detect
+  reference:
+  - https://github.com/huginn/huginn
+  severity: info
+  tags: panel,huginn,login,discovery

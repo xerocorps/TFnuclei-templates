@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - '"expire_time":'
+    - '"jsapi_ticket":'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/jsapi_ticket.json'
+id: jsapi-ticket-json
+info:
+  author: DhiyaneshDK
+  description: JsAPI Ticket internal file is exposed.
+  metadata:
+    google-query: intitle:"index of" "jsapi_ticket.json"
+    max-request: 1
+    verified: true
+  name: JsAPI Ticket Json
+  reference:
+  - https://www.exploit-db.com/ghdb/6070
+  severity: low
+  tags: exposure,jsapi,files,vuln

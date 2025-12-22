@@ -1,0 +1,10 @@
+id: wordpress-workflow
+info:
+  author: kiblyn11,zomsop82
+  description: A simple workflow that runs all wordpress related nuclei templates
+    on a given target.
+  name: Wordpress Security Checks
+workflows:
+- subtemplates:
+  - tags: wordpress
+  template: http/technologies/wordpress-detect.yaml

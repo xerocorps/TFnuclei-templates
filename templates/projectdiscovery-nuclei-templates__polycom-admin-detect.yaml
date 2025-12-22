@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - SYSTEMSTATUS
+  - part: header
+    type: word
+    words:
+    - 'Server: lighttpd'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/systemstatus.xml'
+id: polycom-admin-detect
+info:
+  author: e_schultze_
+  classification:
+    cpe: cpe:2.3:h:polycom:vvx:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Polycom admin panel was detected.
+  metadata:
+    max-request: 1
+    product: vvx
+    vendor: polycom
+  name: Polycom Admin Panel - Detect
+  severity: info
+  tags: panel,polycom,discovery

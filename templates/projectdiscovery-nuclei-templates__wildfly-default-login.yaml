@@ -1,0 +1,37 @@
+http:
+- digest-password: admin
+  digest-username: admin
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - management-major-version
+    - product-version
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET /management HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: wildfly-default-login
+info:
+  author: s0obi
+  description: 'Wildfly default admin login credentials were successful.
+
+    '
+  metadata:
+    max-request: 1
+  name: Wildfly - Default Admin Login
+  reference:
+  - https://docs.wildfly.org/26.1/#administrator-guides
+  severity: high
+  tags: wildfly,default-login,vuln

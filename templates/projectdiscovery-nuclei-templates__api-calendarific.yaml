@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"holidays"'
+    - '"name"'
+    - '"description"'
+  method: GET
+  path:
+  - https://calendarific.com/api/v2/holidays?api_key={{token}}&country=US&year=2021
+id: api-calendarific
+info:
+  author: daffainfo
+  description: Worldwide Holidays
+  metadata:
+    max-request: 1
+  name: Calendarific API Test
+  reference:
+  - https://calendarific.com/api-documentation
+  - https://github.com/daffainfo/all-about-apikey/tree/main/calendarific
+  severity: info
+  tags: token-spray,calendarific
+self-contained: true

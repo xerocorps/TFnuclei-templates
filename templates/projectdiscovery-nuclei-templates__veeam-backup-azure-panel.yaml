@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - <title>Veeam Backup for Microsoft Azure</title>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: veeam-backup-azure-panel
+info:
+  author: dhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Veeam Backup for Microsoft Azure panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: title:"Veeam Backup for Microsoft Azure"
+  name: Veeam Backup for Microsoft Azure Panel - Detect
+  severity: info
+  tags: azure,panel,backup,veeam,microsoft,discovery

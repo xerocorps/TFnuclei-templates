@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - contains(tolower(header), "x-magento")
+    - status_code == 200
+    type: dsl
+  - condition: and
+    dsl:
+    - contains(body, "graphql-authorization")
+    - contains(body, "The current customer")
+    - status_code == 200
+    type: dsl
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/graphql?query=+{customerDownloadableProducts+{+items+{+date+download_url}}+}'
+id: magento-detect
+info:
+  author: TechbrunchFR
+  classification:
+    cpe: cpe:2.3:a:magento:magento:*:*:*:*:*:*:*:*
+  description: Identify Magento
+  metadata:
+    max-request: 2
+    product: magento
+    shodan-query: http.component:"Magento"
+    vendor: magento
+    verified: true
+  name: Magento Detect
+  reference:
+  - https://devdocs.magento.com/guides/v2.4/graphql/
+  severity: info
+  tags: magento,tech,discovery

@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - Path=/SecMail
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/SecMail/login.jsp'
+id: secmail-detect
+info:
+  author: johnk3r
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: SecMail login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: secmail
+  name: SecMail Login Panel - Detect
+  severity: info
+  tags: secmail,panel,discovery

@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - ': Web Accessibility Checker</title>'
+    - AChecker - Copyright
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/checker/login.php'
+id: achecker-panel
+info:
+  author: princechaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: AChecker login panel was detected.
+  metadata:
+    max-request: 1
+  name: AChecker Login - Panel Detect
+  reference:
+  - https://achecker.achecks.ca/checker/index.php
+  severity: info
+  tags: panel,achecker,discovery

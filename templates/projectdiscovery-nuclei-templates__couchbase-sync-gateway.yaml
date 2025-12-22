@@ -1,0 +1,34 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - version":"Couchbase Sync Gateway\/([0-9.(;a-z)]+)
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Couchbase Sync Gateway
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: couchbase-sync-gateway
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:couchbase:sync_gateway:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: sync_gateway
+    shodan-query: html:"Couchbase Sync Gateway"
+    vendor: couchbase
+  name: Couchbase Sync Gateway
+  severity: info
+  tags: tech,couchbase,discovery

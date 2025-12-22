@@ -1,0 +1,37 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - Web Client Version (.*)</span>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - EMS Web Client - Login
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/emswebclient/Login.aspx'
+  - '{{BaseURL}}/Login.aspx'
+  stop-at-first-match: true
+id: ems-webclient-panel
+info:
+  author: pussycat0x,daffainfo
+  classification:
+    cpe: cpe:2.3:a:ems_project:ems:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: EMS Web Client login panel was detected.
+  metadata:
+    google-query: inurl:EMSWebClient/
+    max-request: 2
+    product: ems
+    vendor: ems_project
+  name: EMS Web Client Login Panel - Detect
+  severity: info
+  tags: panel,ems,discovery

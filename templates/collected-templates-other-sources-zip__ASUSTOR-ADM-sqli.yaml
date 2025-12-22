@@ -1,0 +1,29 @@
+id: ASUSTOR-ADM-sqli
+info:
+  author: Str1am
+  name: ASUSTOR-ADM-sqli
+  reference:
+  - https://cn.0day.today/exploit/30889
+  severity: high
+  tags: ASUSTOR,sqli
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - album_not_exist
+  matchers-condition: and
+  raw:
+  - 'POST /photo-gallery/api/album/tree_lists/ HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    album_id=123456789&start=0&limit=100&order=name_asc&api=v2
+
+    '

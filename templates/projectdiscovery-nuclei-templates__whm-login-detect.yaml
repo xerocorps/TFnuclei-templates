@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>WHM Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+id: whm-login-detect
+info:
+  author: pussycat0x
+  classification:
+    cpe: cpe:2.3:a:cpanel:whm:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: WHM login panel was detected.
+  metadata:
+    max-request: 1
+    product: whm
+    vendor: cpanel
+  name: WHM Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/7128
+  severity: info
+  tags: edb,whm,panel,login,cpanel,discovery

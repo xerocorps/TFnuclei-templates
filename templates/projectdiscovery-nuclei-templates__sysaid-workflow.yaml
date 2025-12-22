@@ -1,0 +1,10 @@
+id: sysaid-workflow
+info:
+  author: pdteam
+  description: A simple workflow that runs all SysAid related nuclei templates on
+    a given target.
+  name: SysAid Security Checks
+workflows:
+- subtemplates:
+  - tags: sysaid
+  template: http/exposed-panels/sysaid-panel.yaml

@@ -1,0 +1,23 @@
+id: memcached-stats
+info:
+  author: pdteam
+  description: 'Memcached stats is used to return server statistics such as PID, version,
+    connections, etc.
+
+    '
+  metadata:
+    max-request: 1
+  name: Memcached stats disclosure
+  severity: low
+  tags: network,memcached,misconfig,tcp,vuln
+tcp:
+- host:
+  - '{{Hostname}}'
+  inputs:
+  - data: "stats\r\n\r\nquit\r\n"
+  matchers:
+  - type: word
+    words:
+    - 'STAT '
+  port: 11211
+  read-size: 2048

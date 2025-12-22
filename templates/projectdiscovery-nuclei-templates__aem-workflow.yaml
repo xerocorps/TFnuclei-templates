@@ -1,0 +1,10 @@
+id: aem-workflow
+info:
+  author: dhiyaneshDK
+  description: A simple workflow that runs all Adobe Experience Manager related nuclei
+    templates on a given target.
+  name: Adobe Experience Manager Security Checks
+workflows:
+- subtemplates:
+  - tags: aem
+  template: http/technologies/aem-detect.yaml

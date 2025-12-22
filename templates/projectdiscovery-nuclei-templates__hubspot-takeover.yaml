@@ -1,0 +1,30 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - Domain not found
+    - does not exist in our system
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: hubspot-takeover
+info:
+  author: pdteam
+  description: hubspot takeover was detected.
+  metadata:
+    max-request: 1
+  name: hubspot takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/59
+  - https://hackerone.com/reports/335330
+  severity: high
+  tags: takeover,hubspot,hackerone,vuln

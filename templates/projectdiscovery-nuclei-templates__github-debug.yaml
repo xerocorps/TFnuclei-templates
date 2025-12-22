@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - GitHub Debug
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: github-debug
+info:
+  author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:github:github:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: github
+    shodan-query: http.title:"GitHub Debug"
+    vendor: github
+    verified: true
+  name: GitHub Debug Page
+  severity: info
+  tags: misconfig,github,debug,vuln

@@ -1,0 +1,24 @@
+dns:
+- extractors:
+  - group: 1
+    regex:
+    - "IN\tPTR\t(.+)"
+    type: regex
+  matchers:
+  - part: answer
+    regex:
+    - "IN\tPTR\\t(.+)$"
+    type: regex
+  name: '{{FQDN}}'
+  type: PTR
+id: ptr-fingerprint
+info:
+  author: pdteam
+  classification:
+    cwe-id: CWE-200
+  description: A PTR record was detected. A PTR record refers to the domain name.
+  metadata:
+    max-request: 1
+  name: PTR Detected
+  severity: info
+  tags: dns,ptr,discovery

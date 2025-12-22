@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - Homepage | Gila CMS
+    - <meta name="generator" content="Gila CMS">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/user'
+  stop-at-first-match: true
+id: gilacms-detect
+info:
+  author: pikpikcu
+  metadata:
+    max-request: 2
+  name: GilaCMS Detect
+  severity: info
+  tags: tech,gilacms,discovery

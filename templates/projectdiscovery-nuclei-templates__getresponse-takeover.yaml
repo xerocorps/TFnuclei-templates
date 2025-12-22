@@ -1,0 +1,27 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - With GetResponse Landing Pages, lead generation has never been easier
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: getresponse-takeover
+info:
+  author: pdteam
+  description: Getresponse takeover was detected.
+  metadata:
+    max-request: 1
+  name: Getresponse Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/235
+  severity: high
+  tags: takeover,getresponse,vuln

@@ -1,0 +1,39 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>SugarCRM</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/index.php?action=Login&module=Users'
+  stop-at-first-match: true
+id: sugarcrm-panel
+info:
+  author: johnk3r
+  classification:
+    cpe: cpe:2.3:a:sugarcrm:sugarcrm:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: SugarCRM login panel was detected.
+  metadata:
+    fofa-query:
+    - title=sugarcrm
+    - body="sugarcrm inc. all rights reserved"
+    google-query:
+    - intitle:sugarcrm
+    - intext:"sugarcrm inc. all rights reserved"
+    max-request: 2
+    product: sugarcrm
+    shodan-query:
+    - http.title:sugarcrm
+    - http.html:"sugarcrm inc. all rights reserved"
+    vendor: sugarcrm
+  name: SugarCRM Login Panel - Detect
+  severity: info
+  tags: sugarcrm,panel,discovery

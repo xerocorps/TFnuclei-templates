@@ -1,0 +1,18 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - (?i)(facebook|fb)(.{0,20})?['"][0-9]{13,17}['"]
+    type: regex
+id: facebook-client-id
+info:
+  author: gaurang
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Facebook client ID token was detected.
+  name: Facebook Client ID - Detect
+  severity: info
+  tags: keys,file,token,facebook

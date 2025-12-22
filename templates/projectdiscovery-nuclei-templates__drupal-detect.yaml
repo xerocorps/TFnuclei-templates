@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_install
+    part: body
+    regex:
+    - class="site-version">([0-9.x-]+)
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Initial release
+    - Drupal 1.0.0
+  - part: body
+    type: word
+    words:
+    - content="Drupal
+  - condition: or
+    part: header
+    regex:
+    - (?i)x-drupal
+    - '(?i)x-generator: drupal'
+    type: regex
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/CHANGELOG.txt'
+  - '{{BaseURL}}/core/install.php'
+  - '{{BaseURL}}/user/login'
+  stop-at-first-match: true
+id: drupal-detect
+info:
+  author: 1nf1n7y,pathtaga
+  classification:
+    cpe: cpe:2.3:a:drupal:drupal:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  metadata:
+    max-request: 4
+    product: drupal
+    shodan-query:
+    - http.component:"drupal"
+    - cpe:"cpe:2.3:a:drupal:drupal"
+    vendor: drupal
+    verified: true
+  name: Drupal - Detect
+  severity: info
+  tags: tech,drupal,discovery

@@ -1,0 +1,28 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: header
+    type: word
+    words:
+    - october_session
+  - part: body
+    type: word
+    words:
+    - OctoberCMS
+  max-redirects: 1
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/modules/system/assets/js/framework.combined-min.js'
+  stop-at-first-match: true
+id: octobercms-detect
+info:
+  author: cyllective
+  description: Detects OctoberCMS
+  metadata:
+    max-request: 2
+  name: OctoberCMS detect
+  reference:
+  - https://github.com/octobercms/october
+  severity: info
+  tags: tech,octobercms,discovery

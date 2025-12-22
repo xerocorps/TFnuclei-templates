@@ -1,0 +1,22 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - \b(dt0[a-zA-Z]{1}[0-9]{2}\.[A-Z0-9]{24}\.[A-Z0-9]{64})\b
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: dynatrace-api-token
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 1
+    verified: true
+  name: Dynatrace API Token
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/dynatrace.yml
+  - https://www.dynatrace.com/support/help/dynatrace-api
+  - https://www.dynatrace.com/support/help/dynatrace-api/basics/dynatrace-api-authentication
+  severity: info
+  tags: dynatrace,token,exposure,vuln

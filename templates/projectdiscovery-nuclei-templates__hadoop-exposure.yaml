@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <div class="navbar-brand">Hadoop</div>
+  method: GET
+  path:
+  - '{{BaseURL}}/dfshealth.html'
+id: hadoop-exposure
+info:
+  author: pdteam
+  classification:
+    cpe: cpe:2.3:a:apache:hadoop:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Apache Hadoop panel was detected.
+  metadata:
+    max-request: 1
+    product: hadoop
+    vendor: apache
+  name: Apache Hadoop Panel - Detect
+  severity: info
+  tags: panel,apache,hadoop,discovery

@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - issuer
+    - authorization_endpoint
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.well-known/openid-configuration'
+id: oidc-detect
+info:
+  author: jarijaas
+  description: Detects OpenID Connect providers. See https://en.wikipedia.org/wiki/OpenID_Connect
+  metadata:
+    max-request: 1
+  name: Detect OpenID Connect provider
+  severity: info
+  tags: tech,oidc,discovery

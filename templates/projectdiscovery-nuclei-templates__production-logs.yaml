@@ -1,0 +1,36 @@
+http:
+- extractors:
+  - name: last_modified
+    part: header
+    regex:
+    - Last-Modified:.*
+    type: regex
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - Connecting to database specified by database.yml
+    - Started GET
+  - status:
+    - 200
+    type: status
+  - negative: true
+    part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/log/production.log'
+  - '{{BaseURL}}/logs/production.log'
+  - '{{BaseURL}}/production.log'
+id: production-logs
+info:
+  author: geeknik
+  description: Production log file was exposed.
+  metadata:
+    max-request: 3
+  name: Discover production log files
+  severity: info
+  tags: exposure,logs,rails,vuln

@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <TITLE>Test Page for the SSL/TLS-aware Apache Installation on Web Site</TITLE>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-ssltls-test-page
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: http_server
+    shodan-query: http.title:"Test Page for the SSL/TLS-aware Apache Installation
+      on Web Site"
+    vendor: apache
+  name: SSL/TLS-aware Test Page
+  severity: info
+  tags: tech,ssltls,discovery

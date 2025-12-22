@@ -1,0 +1,38 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Magento
+    - Admin Panel
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/admin'
+id: magento-admin-panel
+info:
+  author: TechbrunchFR,ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:magento:magento:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: 'Magento admin login panel was detected.
+
+    '
+  metadata:
+    max-request: 1
+    product: magento
+    shodan-query:
+    - http.component:"Magento"
+    - cpe:"cpe:2.3:a:magento:magento"
+    - http.component:"magento"
+    vendor: magento
+    verified: true
+  name: Magento Admin Login Panel - Detect
+  reference:
+  - https://docs.magento.com/user-guide/stores/store-urls-custom-admin.html
+  severity: info
+  tags: magento,panel,discovery

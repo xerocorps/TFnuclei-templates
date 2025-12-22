@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - '<title>zabbix-server: Zabbix</title>'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: zabbix-server-login
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:zabbix:zabbix:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Zabbix login panel was detected.
+  metadata:
+    fofa-query:
+    - icon_hash=892542951
+    - "app=\"zabbix-\u76D1\u63A7\u7CFB\u7EDF\" && body=\"saml\""
+    - title="zabbix-server"
+    google-query: intitle:"zabbix-server"
+    max-request: 1
+    product: zabbix
+    shodan-query:
+    - http.title:"zabbix-server"
+    - cpe:"cpe:2.3:a:zabbix:zabbix"
+    - http.favicon.hash:892542951
+    vendor: zabbix
+  name: Zabbix Login Panel - Detect
+  severity: info
+  tags: panel,zabbix,discovery

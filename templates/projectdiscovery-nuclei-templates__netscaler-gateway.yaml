@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Netscaler Gateway</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/vpn/index.html'
+id: netscaler-gateway
+info:
+  author: joeldeleep
+  classification:
+    cpe: cpe:2.3:a:citrix:netscaler_gateway:*:*:*:*:*:*:*:*
+    cwe-id: CWE-200
+  description: Citrix NetScaler is an application delivery controller that improves
+    the delivery speed and quality of applications to an end user.
+  metadata:
+    max-request: 1
+    product: netscaler_gateway
+    vendor: citrix
+  name: Netscaler Gateway
+  reference:
+  - https://stack.watch/product/citrix/netscaler-gateway/
+  remediation: Ensure proper access.
+  severity: info
+  tags: panel,netscaler,citrix,discovery

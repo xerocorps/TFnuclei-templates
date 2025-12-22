@@ -1,0 +1,10 @@
+id: jeedom-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Jeedom related nuclei templates on
+    a given target.
+  name: Jeedom Security Checks
+workflows:
+- subtemplates:
+  - tags: jeedom
+  template: http/exposed-panels/jeedom-panel.yaml

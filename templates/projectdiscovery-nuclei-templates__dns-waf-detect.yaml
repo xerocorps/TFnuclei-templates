@@ -1,0 +1,171 @@
+dns:
+- name: '{{FQDN}}'
+  type: CNAME
+- matchers:
+  - name: sanfor-shield
+    part: answer
+    type: word
+    words:
+    - .sangfordns.com
+  - name: 360panyun
+    part: answer
+    type: word
+    words:
+    - .360panyun.com
+  - name: baiduyun
+    part: answer
+    type: word
+    words:
+    - .yunjiasu-cdn.net
+  - name: chuangyudun
+    part: answer
+    type: word
+    words:
+    - .365cyd.cn
+    - .cyudun.net
+  - name: knownsec
+    part: answer
+    type: word
+    words:
+    - .jiashule.com
+    - .jiasule.org
+  - name: huaweicloud
+    part: answer
+    type: word
+    words:
+    - .huaweicloudwaf.com
+  - name: xinliuyun
+    part: answer
+    type: word
+    words:
+    - .ngaagslb.cn
+  - name: chinacache
+    part: answer
+    type: word
+    words:
+    - .chinacache.net
+    - .ccgslb.net
+  - name: nscloudwaf
+    part: answer
+    type: word
+    words:
+    - .nscloudwaf.com
+  - name: wangsu
+    part: answer
+    type: word
+    words:
+    - .wsssec.com
+    - .lxdns.com
+    - .wscdns.com
+    - .cdn20.com
+    - .cdn30.com
+    - .ourplat.net
+    - .wsdvs.com
+    - .wsglb0.com
+    - .wswebcdn.com
+    - .wswebpic.com
+    - .wsssec.com
+    - .wscloudcdn.com
+    - .mwcloudcdn.com
+  - name: qianxin
+    part: answer
+    type: word
+    words:
+    - .360safedns.com
+    - .360cloudwaf.com
+  - name: baiduyunjiasu
+    part: answer
+    type: word
+    words:
+    - .yunjiasu-cdn.net
+  - name: anquanbao
+    part: answer
+    type: word
+    words:
+    - .anquanbao.net
+  - name: aliyun
+    regex:
+    - \.w\.kunlun\w{2,3}\.com
+    type: regex
+  - name: aliyun-waf
+    regex:
+    - \.aliyunddos\d+\.com
+    - \.aliyunwaf\.com
+    - \.aligaofang\.com
+    - \.aliyundunwaf\.com
+    type: regex
+  - name: xuanwudun
+    part: answer
+    type: word
+    words:
+    - .saaswaf.com
+    - .dbappwaf.cn
+  - name: yundun
+    part: answer
+    type: word
+    words:
+    - .hwwsdns.cn
+    - .yunduncname.com
+  - name: knownsec-ns
+    part: answer
+    type: word
+    words:
+    - .jiasule.net
+  - name: chuangyudun
+    part: answer
+    type: word
+    words:
+    - .365cyd.net
+  - name: qianxin
+    part: answer
+    type: word
+    words:
+    - .360wzb.com
+  - name: anquanbao
+    part: answer
+    type: word
+    words:
+    - .anquanbao.com
+  - name: wangsu
+    part: answer
+    type: word
+    words:
+    - .chinanetcenter.com
+  - name: baiduyunjiasue
+    part: answer
+    type: word
+    words:
+    - .ns.yunjiasu.com
+  - name: chinacache
+    part: answer
+    type: word
+    words:
+    - .chinacache.com
+  - name: cloudflare
+    part: answer
+    type: word
+    words:
+    - ns.cloudflare.com
+  - name: edns
+    part: answer
+    type: word
+    words:
+    - .iidns.com
+  - name: ksyun
+    part: answer
+    type: word
+    words:
+    - .ksyunwaf.com
+  name: '{{FQDN}}'
+  type: NS
+id: dns-waf-detect
+info:
+  author: lu4nx
+  classification:
+    cwe-id: CWE-200
+  description: A DNS WAF was detected.
+  metadata:
+    max-request: 2
+  name: DNS WAF Detection
+  severity: info
+  tags: tech,waf,dns,discovery

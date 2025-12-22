@@ -1,0 +1,30 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - If you need specifics, here's the error
+    - Domain not found
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: gitbook-takeover
+info:
+  author: philippedelteil
+  description: gitbook takeover was detected.
+  metadata:
+    max-request: 1
+  name: gitbook takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/259
+  - https://hackerone.com/reports/223625
+  severity: high
+  tags: takeover,gitbook,hackerone,vuln

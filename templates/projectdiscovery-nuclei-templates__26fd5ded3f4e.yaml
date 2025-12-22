@@ -1,0 +1,42 @@
+name: "\U0001F527 CVE Enhancement"
+true:
+  push:
+    branches:
+    - main
+    paths:
+    - '**/cves/**/*.yaml'
+  workflow_dispatch: null
+jobs:
+  enhance:
+    if: github.repository == 'projectdiscovery/nuclei-templates'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: pip install requests
+    - id: files
+      name: Get changed CVE files
+      run: "# Get files changed in the last commit\nFILES=$(git diff --name-only HEAD~1\
+        \ HEAD | grep 'cves/.*\\.yaml$' || echo \"\")\nif [ -n \"$FILES\" ]; then\n\
+        \  echo \"changed=true\" >> $GITHUB_OUTPUT\n  echo \"$FILES\" > /tmp/cve_files.txt\n\
+        \  echo \"Changed CVE files:\"\n  cat /tmp/cve_files.txt\nelse\n  echo \"\
+        changed=false\" >> $GITHUB_OUTPUT\nfi\n"
+    - if: steps.files.outputs.changed == 'true'
+      name: Enhance CVE templates
+      run: "while read file; do\n  [ -f \"$file\" ] && python .github/scripts/enhance-cve-fields.py\
+        \ \"$file\"\ndone < /tmp/cve_files.txt\n"
+    - if: steps.files.outputs.changed == 'true'
+      name: Commit changes
+      run: "if ! git diff --quiet; then\n  git config user.name \"github-actions[bot]\"\
+        \n  git config user.email \"github-actions[bot]@users.noreply.github.com\"\
+        \n  git add -A\n  git commit -m \"chore: add impact and remediation fields\
+        \ \U0001F916\"\n  git pull origin $GITHUB_REF --rebase\n  git push origin\
+        \ $GITHUB_REF\nfi\n"

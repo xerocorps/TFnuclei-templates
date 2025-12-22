@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - DataEase doesn't work
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/#/login?redirect=%2F'
+id: dataease-panel
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:dataease:dataease:*:*:*:*:*:*:*:*
+  description: 'Dataease Login Panel is discovered
+
+    '
+  metadata:
+    fofa-query: body="dataease"
+    max-request: 1
+    product: dataease
+    shodan-query:
+    - html:"Dataease"
+    - http.html:"dataease"
+    vendor: dataease
+    verified: true
+  name: Dataease - Login Panel
+  reference:
+  - https://github.com/dataease/dataease
+  severity: info
+  tags: login,panel,dataease,discovery

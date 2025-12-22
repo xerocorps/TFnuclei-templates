@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Hikvision Digital Technology
+  - name: server
+    part: header
+    type: word
+    words:
+    - Hikvision-Webs
+  - dsl:
+    - '''999357577'' == mmh3(base64_py(body))'
+    name: favicon
+    type: dsl
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/favicon.ico'
+  - '{{BaseURL}}/doc/page/login.asp'
+  stop-at-first-match: true
+id: hikvision-detect
+info:
+  author: pdteam,its0x08
+  metadata:
+    fofa-query: icon_hash=999357577
+    max-request: 2
+    product: ds-2cd2026g2-iu\/sl_firmware
+    shodan-query: http.favicon.hash:999357577
+    vendor: hikvision
+    verified: true
+  name: Hikvision Panel
+  severity: info
+  tags: tech,hikvision,discovery

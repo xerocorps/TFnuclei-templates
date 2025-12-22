@@ -1,0 +1,12 @@
+id: vbulletin-workflow
+info:
+  author: pdteam
+  description: A simple workflow that runs all vBulletin related nuclei templates
+    on a given target.
+  name: vBulletin Security Checks
+workflows:
+- matchers:
+  - name: vbulletin
+    subtemplates:
+    - tags: vbulletin
+  template: http/technologies/tech-detect.yaml

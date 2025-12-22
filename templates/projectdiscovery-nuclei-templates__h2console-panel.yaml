@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code==200
+    - contains(tolower(body), '<title>h2 console</title>')
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/h2-console/login.jsp'
+id: h2console-panel
+info:
+  author: righettod
+  classification:
+    cpe: cpe:2.3:a:h2database:h2:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: H2 Console Web login panel was detected.
+  metadata:
+    fofa-query: title="h2 console"
+    google-query: intitle:"h2 console"
+    max-request: 1
+    product: h2
+    shodan-query:
+    - http.title:"H2 Console"
+    - http.title:"h2 console"
+    - cpe:"cpe:2.3:a:h2database:h2"
+    vendor: h2database
+  name: H2 Console Web Login Panel - Detect
+  reference:
+  - https://mp.weixin.qq.com/s/Yn5U8WHGJZbTJsxwUU3UiQ
+  - https://jfrog.com/blog/the-jndi-strikes-back-unauthenticated-rce-in-h2-database-console
+  severity: info
+  tags: panel,h2,console,h2database,discovery

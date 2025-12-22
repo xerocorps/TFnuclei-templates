@@ -1,0 +1,41 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Metasploit</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'
+id: metasploit-panel
+info:
+  author: lu4nx
+  classification:
+    cpe: cpe:2.3:a:rapid7:metasploit:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: 'Metasploit Web Panel is detected
+
+    '
+  metadata:
+    fofa-query:
+    - title="metasploit"
+    - title="metasploit - setup and configuration"
+    google-query:
+    - intitle:"metasploit"
+    - intitle:"metasploit - setup and configuration"
+    max-request: 1
+    product: metasploit
+    shodan-query:
+    - http.title:"metasploit"
+    - http.title:"metasploit - setup and configuration"
+    vendor: rapid7
+    verified: true
+    zoomeye-query: app="Metasploit"
+  name: Metasploit Panel - Detect
+  severity: info
+  tags: panel,metasploit,login,rapid7,discovery

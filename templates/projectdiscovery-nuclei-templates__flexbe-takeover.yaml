@@ -1,0 +1,33 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - Domain not configured
+    - flexbe.com
+  - status:
+    - 404
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: flexbe-takeover
+info:
+  author: 0x_Akoko
+  description: Flexbe takeover was detected.
+  metadata:
+    max-request: 1
+  name: Flexbe Subdomain Takeover
+  reference:
+  - https://web.archive.org/web/20211002185648/https://github.com/EdOverflow/can-i-take-over-xyz/issues/237
+  - https://help.flexbe.com/domains/
+  severity: high
+  tags: takeover,flexbe,vuln

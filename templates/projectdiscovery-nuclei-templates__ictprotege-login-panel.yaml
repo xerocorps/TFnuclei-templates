@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>ICT Protege WX&reg;</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.htm'
+id: ictprotege-login-panel
+info:
+  author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:o:ict:protege_wx_firmware:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  metadata:
+    fofa-query: title="ict protege wx&reg;"
+    google-query: intitle:"ict protege wx&reg;"
+    max-request: 1
+    product: protege_wx_firmware
+    shodan-query:
+    - title:"ICT Protege WX&reg;"
+    - http.title:"ict protege wx&reg;"
+    vendor: ict
+    verified: true
+  name: ICT Protege WX Login Panel - Detect
+  severity: info
+  tags: panel,ictprotege,ict,discovery

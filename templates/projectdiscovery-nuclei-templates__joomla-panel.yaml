@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <meta name="generator" content="Joomla! - Open Source Content Management" />
+    - /administrator/templates/isis/images/joomla.png
+  method: GET
+  path:
+  - '{{BaseURL}}/administrator/'
+id: joomla-panel
+info:
+  author: its0x08
+  classification:
+    cpe: cpe:2.3:a:joomla:joomla\!:*:*:*:*:*:*:*:*
+  metadata:
+    fofa-query: body="joomla! - open source content management"
+    max-request: 1
+    product: joomla\!
+    shodan-query:
+    - http.html:"joomla! - open source content management"
+    - http.component:"joomla"
+    - cpe:"cpe:2.3:a:joomla:joomla\!"
+    vendor: joomla
+  name: Joomla! Panel
+  severity: info
+  tags: panel,joomla,discovery

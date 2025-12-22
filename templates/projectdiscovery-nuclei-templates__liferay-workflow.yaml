@@ -1,0 +1,10 @@
+id: liferay-workflow
+info:
+  author: dwisiswant0
+  description: A simple workflow that runs all liferay related nuclei templates on
+    a given target.
+  name: Liferay Security Checks
+workflows:
+- subtemplates:
+  - template: http/cves/2020/CVE-2020-7961.yaml
+  template: http/exposed-panels/liferay-portal.yaml

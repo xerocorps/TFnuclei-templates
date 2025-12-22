@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Identity Services Engine</title>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/admin/'
+id: identity-services-engine
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:cisco:identity_services_engine:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Cisco Identity Services Engine admin login panel was detected.
+  metadata:
+    fofa-query: title="identity services engine"
+    google-query: intitle:"identity services engine"
+    max-request: 2
+    product: identity_services_engine
+    shodan-query:
+    - http.title:"Identity Services Engine"
+    - http.title:"identity services engine"
+    vendor: cisco
+  name: Cisco Identity Services Engine Admin Login Panel - Detect
+  severity: info
+  tags: panel,cisco,discovery

@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>druid monitor</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/druid/login.html'
+id: druid-panel
+info:
+  author: pikpikcu,daffainfo
+  classification:
+    cpe: cpe:2.3:a:apache:druid:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Druid Monitor login panel was detected.
+  metadata:
+    max-request: 1
+    product: druid
+    vendor: apache
+  name: Druid Monitor Login Panel - Detect
+  severity: info
+  tags: panel,druid,apache,discovery

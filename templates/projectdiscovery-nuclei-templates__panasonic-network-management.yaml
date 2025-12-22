@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <TITLE>Panasonic Network Camera Management System</TITLE>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/config/cam_portal.cgi'
+id: panasonic-network-management
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: Panasonic Network Camera Management System page with live views was
+    detected.
+  metadata:
+    max-request: 1
+  name: Panasonic Network Camera Management System - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6487
+  severity: medium
+  tags: iot,camera,panasonic,edb,discovery

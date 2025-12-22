@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - webcams and ip cameras server for windows
+  - negative: true
+    part: body
+    type: word
+    words:
+    - Please provide a valid username/password to access this server.
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/mobile.html'
+id: xp-webcam
+info:
+  author: aashiq
+  description: Searches for exposed webcams by querying the /mobile.html endpoint
+    and the existence of webcamXP in the body.
+  metadata:
+    max-request: 1
+  name: XP Webcam Viewer Page
+  severity: medium
+  tags: webcam,iot,discovery

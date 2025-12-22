@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Daybyday - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'
+id: daybyday-panel
+info:
+  author: pikpikcu,daffainfo
+  classification:
+    cpe: cpe:2.3:a:daybydaycrm:daybyday:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: DaybydayCRM login panel was detected.
+  metadata:
+    fofa-query: title="daybyday"
+    google-query: intitle:"daybyday"
+    max-request: 1
+    product: daybyday
+    shodan-query:
+    - http.title:"Daybyday"
+    - http.title:"daybyday"
+    vendor: daybydaycrm
+  name: DaybydayCRM Login Panel - Detect
+  severity: info
+  tags: panel,daybyday,daybydaycrm,discovery

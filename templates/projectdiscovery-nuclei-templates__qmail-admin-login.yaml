@@ -1,0 +1,40 @@
+http:
+- host-redirects: true
+  matchers:
+  - type: word
+    words:
+    - QmailAdmin
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/qmailadmin/qmailadmin.cgi'
+  - '{{BaseURL}}/cgi-bin/qmailadmin/qmailadmin'
+  - '{{BaseURL}}/cgi-bin/qmailadmin'
+  - '{{BaseURL}}/cgi-ssl/qmailadmin/qmailadmin'
+  stop-at-first-match: true
+id: qmail-admin-login
+info:
+  author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:qmail_project:qmail:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: QmailAdmin login panel was detected.
+  metadata:
+    fofa-query: title="qmailadmin"
+    google-query: intitle:"qmailadmin"
+    max-request: 5
+    product: qmail
+    shodan-query:
+    - title:"QmailAdmin"
+    - http.title:"qmailadmin"
+    vendor: qmail_project
+    verified: true
+  name: QmailAdmin Login Panel - Detect
+  severity: info
+  tags: qmail,panel,qmail_project,discovery

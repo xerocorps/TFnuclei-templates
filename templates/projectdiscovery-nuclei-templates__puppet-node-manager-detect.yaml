@@ -1,0 +1,21 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Puppet Node Manager</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: puppet-node-manager-detect
+info:
+  author: pussycat0x
+  metadata:
+    fofa-query: app="puppet-Node-Manager"
+    max-request: 1
+  name: Puppet Node Manager
+  severity: info
+  tags: node,tech,discovery

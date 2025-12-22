@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Welcome to the OGNL console!
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/struts/webconsole.html?debug=console'
+id: struts-ognl-console
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:apache:struts:*:*:*:*:*:*:*:*
+  description: 'This development console allows the evaluation of OGNL expressions
+    that could lead to Remote Command Execution
+
+    '
+  metadata:
+    max-request: 1
+    product: struts
+    shodan-query: html:"Struts Problem Report"
+    vendor: apache
+    verified: true
+  name: Apache Struts - OGNL Console
+  reference:
+  - https://github.com/PortSwigger/j2ee-scan/blob/master/src/main/java/burp/j2ee/issues/impl/ApacheStrutsWebConsole.java
+  remediation: Restrict access to the struts console on the production server
+  severity: unknown
+  tags: apache,struts,ognl,panel,misconfig,vuln

@@ -1,0 +1,29 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - <div class="notfound">
+    - 404 Not Found<br>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: cargocollective-takeover
+info:
+  author: pdteam
+  description: CargoCollective takeover was detected.
+  metadata:
+    max-request: 1
+  name: CargoCollective Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/152
+  severity: high
+  tags: takeover,cargocollective,vuln

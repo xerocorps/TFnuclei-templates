@@ -1,0 +1,21 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - AIza[0-9A-Za-z\-_]{35}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/hopfully404'
+id: google-api-key
+info:
+  author: Swissky
+  metadata:
+    max-request: 2
+  name: Google API Key
+  reference:
+  - https://cloud.google.com/docs/authentication/api-keys#securing
+  - https://support.google.com/googleapi/answer/6310037
+  severity: info
+  tags: exposure,token,google,vuln

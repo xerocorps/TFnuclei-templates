@@ -1,0 +1,37 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - \( GNU Board (.*) \)
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - GNU Board
+    - http://sir.kr
+  - part: header
+    type: word
+    words:
+    - text/plain
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/LICENSE.txt'
+id: gnuboard-detect
+info:
+  author: gy741
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Gnuboard CMS was detected.
+  metadata:
+    max-request: 1
+  name: Gnuboard CMS - Detect
+  reference:
+  - https://sir.kr/
+  severity: info
+  tags: tech,gnuboard,discovery

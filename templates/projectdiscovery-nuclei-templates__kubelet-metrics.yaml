@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_any(to_lower(body), "<title>kube metrics server</title>", "kube_configmap_",
+      "kube_pod_", "kube_secret_", "kube_deployment_", "kube_namespace_", "kube_service_")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+  - '{{BaseURL}}/metrics'
+  stop-at-first-match: true
+id: kubelet-metrics
+info:
+  author: sharath,righettod
+  description: 'Kube Metrics Server was detected.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Kube Metrics Server"
+    verified: true
+  name: Kubelet Metrics
+  reference:
+  - https://github.com/kubernetes-sigs/metrics-server
+  severity: info
+  tags: tech,k8s,kubernetes,devops,kubelet,discovery

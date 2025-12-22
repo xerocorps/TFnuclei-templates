@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - 'parameters:'
+  - negative: true
+    part: header
+    type: word
+    words:
+    - text/html
+    - application/javascript
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/phpstan.neon'
+id: phpstan-config
+info:
+  author: DhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: PHPStan configuration page was detected.
+  metadata:
+    max-request: 1
+    shodan-query: html:"phpstan.neon"
+    verified: true
+  name: PHPStan Configuration Page - Detect
+  reference:
+  - https://phpstan.org/
+  severity: info
+  tags: devops,exposure,vuln

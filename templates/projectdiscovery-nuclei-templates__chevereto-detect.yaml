@@ -1,0 +1,32 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <meta name="generator" content="(.*)">
+    type: regex
+  matchers:
+  - part: body
+    regex:
+    - content="Chevereto(.*)">
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: chevereto-detect
+info:
+  author: pikpikcu
+  classification:
+    cpe: cpe:2.3:a:chevereto:chevereto:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: chevereto
+    shodan-query: http.title:"Centreon"
+    vendor: chevereto
+  name: Chevereto detect
+  severity: info
+  tags: tech,chevereto,discovery

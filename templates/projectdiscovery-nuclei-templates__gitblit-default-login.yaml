@@ -1,0 +1,51 @@
+http:
+- attack: pitchfork
+  matchers:
+  - condition: and
+    part: set_cookie
+    type: word
+    words:
+    - JSESSIONID=
+    - Gitblit=
+  - status:
+    - 302
+    type: status
+  - dsl:
+    - len(body) == 0
+    type: dsl
+  matchers-condition: and
+  payloads:
+    password:
+    - admin
+    username:
+    - admin
+  raw:
+  - 'POST /?wicket:interface=:0:userPanel:loginForm::IFormSubmitListener:: HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    wicket%3AbookmarkablePage=%3Acom.gitblit.wicket.pages.MyDashboardPage&id1_hf_0=&username={{username}}&password={{password}}
+
+    '
+id: gitblit-default-login
+info:
+  author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:gitblit:gitblit:*:*:*:*:*:*:*:*
+  description: 'Gitblit Default login credentials were discovered.
+
+    '
+  metadata:
+    max-request: 1
+    product: gitblit
+    shodan-query: title:"Gitblit"
+    vendor: gitblit
+    verified: true
+  name: Gitblit - Default Login
+  reference:
+  - https://www.gitblit.com/administration.html
+  severity: high
+  tags: gitblit,default-login,vuln

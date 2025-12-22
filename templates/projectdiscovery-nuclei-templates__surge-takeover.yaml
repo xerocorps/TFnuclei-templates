@@ -1,0 +1,30 @@
+http:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - project not found
+  - status:
+    - 404
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: surge-takeover
+info:
+  author: pdteam
+  description: surge takeover was detected.
+  metadata:
+    max-request: 1
+  name: surge takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/198
+  severity: high
+  tags: takeover,vuln

@@ -1,0 +1,37 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - <div class="top">mikrotik routeros (.[0-9.]+) configuration page</div>
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - mikrotik routeros > administration
+    - configuration page
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: mikrotik-routeros-old
+info:
+  author: its0x08,DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:o:mikrotik:routeros:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: MikroTik RouterOS admin login panel was detected.
+  metadata:
+    fofa-query: title="mikrotik routeros > administration"
+    google-query: intitle:"mikrotik routeros > administration"
+    max-request: 1
+    product: routeros
+    shodan-query:
+    - title:"mikrotik routeros > administration"
+    - http.title:"mikrotik routeros > administration"
+    vendor: mikrotik
+    verified: true
+  name: MikroTik RouterOS Admin Login Panel - Detect
+  severity: info
+  tags: panel,login,mikrotik,discovery

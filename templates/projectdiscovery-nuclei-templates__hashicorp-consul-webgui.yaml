@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - CONSUL_VERSION:.*([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3})
+    type: regex
+  host-redirects: true
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Consul by HashiCorp</title>
+    - '%22%2C%22CONSUL_COPYRIGHT_URL%22%3A%22https%3A%2F%2Fwww.hashicorp.com%22'
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/ui/'
+id: hashicorp-consul-webgui
+info:
+  author: c-sh0
+  classification:
+    cpe: cpe:2.3:a:hashicorp:consul:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: HashiCorp Consul Web UI login panel was detected,
+  metadata:
+    fofa-query: title="consul by hashicorp"
+    google-query: intitle:"consul by hashicorp"
+    max-request: 1
+    product: consul
+    shodan-query:
+    - http.title:"Consul by HashiCorp"
+    - http.title:"consul by hashicorp"
+    - cpe:"cpe:2.3:a:hashicorp:consul"
+    vendor: hashicorp
+  name: HashiCorp Consul Web UI Login Panel - Detect
+  severity: info
+  tags: consul,webserver,panel,hashicorp,discovery

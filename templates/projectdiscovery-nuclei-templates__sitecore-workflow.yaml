@@ -1,0 +1,10 @@
+id: sitecore-workflow
+info:
+  author: pdteam
+  description: A simple workflow that runs all SiteCore related nuclei templates on
+    a given target.
+  name: SiteCore Security Checks
+workflows:
+- subtemplates:
+  - tags: sitecore
+  template: http/technologies/default-sitecore-page.yaml

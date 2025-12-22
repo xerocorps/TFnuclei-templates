@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>User Authentication
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sslvpn_logon.shtml'
+id: fireware-xtm-user-authentication
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:watchguard:fireware_xtm:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Fireware XTM login panel was detected.
+  metadata:
+    fofa-query: title="fireware xtm user authentication"
+    google-query: intitle:"fireware xtm user authentication"
+    max-request: 1
+    product: fireware_xtm
+    shodan-query:
+    - http.title:"Fireware XTM User Authentication"
+    - http.title:"fireware xtm user authentication"
+    vendor: watchguard
+  name: Fireware XTM Login Panel - Detect
+  severity: info
+  tags: panel,watchguard,discovery

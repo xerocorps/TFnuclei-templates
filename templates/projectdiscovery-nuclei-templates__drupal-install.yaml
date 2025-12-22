@@ -1,0 +1,26 @@
+http:
+- host-redirects: true
+  matchers:
+  - type: word
+    words:
+    - <title>Choose language | Drupal</title>
+  max-redirects: 1
+  method: GET
+  path:
+  - '{{BaseURL}}/install.php?profile=default'
+  - '{{BaseURL}}/core/install.php'
+  stop-at-first-match: true
+id: drupal-install
+info:
+  author: NkxxkN
+  description: Drupal Install panel exposed.
+  metadata:
+    max-request: 2
+    product: drupal
+    shodan-query:
+    - http.component:"drupal"
+    - cpe:"cpe:2.3:a:drupal:drupal"
+    vendor: drupal
+  name: Drupal Install
+  severity: high
+  tags: misconfig,drupal,install,exposure,vuln

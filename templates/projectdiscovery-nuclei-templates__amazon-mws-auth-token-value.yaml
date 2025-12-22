@@ -1,0 +1,18 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - amzn\.mws\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+    type: regex
+id: amazon-mws-auth-token-value
+info:
+  author: gaurang
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: Amazon MWS authentication token was detected.
+  name: Amazon MWS Authentication Token - Detect
+  severity: medium
+  tags: file,keys,token,amazon,auth,mws

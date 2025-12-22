@@ -1,0 +1,25 @@
+http:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id":'
+    - '"graphql_id":'
+    - '"email":'
+  method: GET
+  path:
+  - https://api.buildkite.com/v2/user
+id: api-buildkite
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 1
+  name: Buildkite API Test
+  reference:
+  - https://buildkite.com/docs/apis/rest-api/user
+  severity: info
+  tags: token-spray,buildkite
+self-contained: true

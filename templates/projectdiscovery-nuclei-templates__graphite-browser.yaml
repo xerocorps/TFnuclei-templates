@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Graphite Browser</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+id: graphite-browser
+info:
+  author: 0x_Akoko
+  classification:
+    cpe: cpe:2.3:a:graphite_project:graphite:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Graphite Browser login panel was detected.
+  metadata:
+    max-request: 1
+    product: graphite
+    shodan-query: http.title:"Graphite Browser"
+    vendor: graphite_project
+  name: Graphite Browser Login Panel - Detect
+  reference:
+  - https://graphiteapp.org/
+  severity: info
+  tags: graphite,panel,discovery

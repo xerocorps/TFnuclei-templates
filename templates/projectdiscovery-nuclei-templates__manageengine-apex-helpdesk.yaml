@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>APEX IT Help Desk</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/jsp/index.jsp'
+id: manageengine-apex-helpdesk
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:zohocorp:manageengine_analytics_plus:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: ZOHO MangageEngine APEX panel was detected.
+  metadata:
+    fofa-query:
+    - "app=\"zoho-\u6D41\u91CF\u7BA1\u7406\""
+    - title="apex it help desk"
+    google-query: intitle:"apex it help desk"
+    max-request: 1
+    product: manageengine_analytics_plus
+    shodan-query:
+    - http.title:"APEX IT Help Desk"
+    - http.title:"apex it help desk"
+    vendor: zohocorp
+  name: ZOHO ManageEngine APEX IT Help-Desk Panel - Detect
+  severity: info
+  tags: panel,zoho,manageengine,zohocorp,discovery

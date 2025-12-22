@@ -1,0 +1,18 @@
+file:
+- extensions:
+  - all
+  matchers:
+  - type: word
+    words:
+    - Landroid/webkit/WebView;->loadUrl(Ljava/lang/String;)V
+id: webview-load-url
+info:
+  author: gaurang
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: WebView loadUrl usage was detected.
+  name: WebView loadUrl - Detect
+  severity: info
+  tags: android,file,webview

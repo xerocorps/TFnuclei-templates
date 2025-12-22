@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - PowerLogic ION
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: powerlogic-ion
+info:
+  author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:h:schneider-electric:ion7600:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: PowerLogic ION panel was detected.
+  metadata:
+    max-request: 1
+    product: ion7600
+    vendor: schneider-electric
+  name: PowerLogic ION Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6810
+  severity: info
+  tags: panel,edb,schneider-electric,discovery

@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(body, "<?php exit; ?>")
+    - contains_any(body, "MailChimp API", "MailChimp lists", "mailchimp.com")
+    - regex("\\[(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})\\] (ERROR|WARNING):",
+      body)
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/uploads/mc4wp-debug.log'
+  - '{{BaseURL}}/wp-content/uploads/mc4wp-debug-log.php'
+  - '{{BaseURL}}/wp-content/uploads/mailchimp-for-wp/debug-log.php'
+  - '{{BaseURL}}/wp-content/uploads/sites/1/mc4wp-debug-log.php'
+  - '{{BaseURL}}/wp-content/uploads/sites/1/mailchimp-for-wp/debug-log.php'
+id: wp-mailchimp-log-exposure
+info:
+  author: aashiq,0x_Akoko
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: 'Detected WordPress Mailchimp for WordPress (MC4WP) debug log. The
+    log file may contain email addresses, Mailchimp API keys, and error details.
+
+    '
+  metadata:
+    max-request: 5
+    verified: true
+  name: WordPress MC4WP - Debug Log Exposure
+  reference:
+  - https://wordpress.org/plugins/mailchimp-for-wp/
+  severity: medium
+  tags: wordpress,wp-plugin,mailchimp,mc4wp,exposure,logs

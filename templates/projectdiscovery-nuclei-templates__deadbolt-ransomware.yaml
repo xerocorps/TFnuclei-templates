@@ -1,0 +1,16 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>ALL YOUR FILES HAVE BEEN LOCKED BY DEADBOLT.</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: deadbolt-ransomware
+info:
+  author: pdteam
+  metadata:
+    max-request: 1
+  name: Deadbolt Ransomware Detection
+  severity: info
+  tags: ransomware,deadbolt,vuln

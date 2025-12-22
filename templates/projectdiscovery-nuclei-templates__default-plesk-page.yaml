@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Web Server's Default Page</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-plesk-page
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:plesk:plesk:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: plesk
+    shodan-query: http.title:"Web Server's Default Page"
+    vendor: plesk
+  name: Plesk Default Test Page
+  severity: info
+  tags: tech,plesk,discovery

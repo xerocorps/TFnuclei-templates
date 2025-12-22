@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Supermicro BMC Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: supermicro-bmc-panel
+info:
+  author: idealphase
+  classification:
+    cpe: cpe:2.3:h:supermicro:x11ssv-m4f:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Supermicro BMC login panel was detected.
+  metadata:
+    google-query: intitle:"Supermicro BMC Login"
+    max-request: 1
+    product: x11ssv-m4f
+    shodan-query: http.title:"Supermicro BMC Login"
+    vendor: supermicro
+  name: Supermicro BMC Login Panel - Detect
+  reference:
+  - https://www.supermicro.com/en
+  - https://www.supermicro.com/en/solutions/management-software/bmc-resources
+  - https://www.supermicro.com/white_paper/IPMI_white_paper.pdf
+  severity: info
+  tags: panel,supermicro,bmc,discovery

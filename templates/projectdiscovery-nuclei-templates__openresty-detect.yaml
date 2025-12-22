@@ -1,0 +1,24 @@
+http:
+- extractors:
+  - part: header
+    regex:
+    - openresty/[0-9.]+
+    type: regex
+  matchers:
+  - part: server
+    type: word
+    words:
+    - openresty
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: openresty-detect
+info:
+  author: jcockhren
+  description: Some deployments of OpenResty spill their version numbers.
+  metadata:
+    max-request: 1
+    shodan-query: product:"OpenResty"
+  name: OpenResty detection
+  severity: info
+  tags: tech,openresty,discovery

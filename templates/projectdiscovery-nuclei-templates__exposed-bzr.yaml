@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - parent_location
+    - push_location
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/plain
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.bzr/branch/branch.conf'
+id: exposed-bzr
+info:
+  author: daffainfo
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Bazaar configuration was detected.
+  metadata:
+    max-request: 1
+  name: Bazaar Configuration - Detect
+  reference:
+  - http://doc.bazaar.canonical.com/beta/en/user-reference/configuration-help.html
+  severity: info
+  tags: config,exposure,vuln

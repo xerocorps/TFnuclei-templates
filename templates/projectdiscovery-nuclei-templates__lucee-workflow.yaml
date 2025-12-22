@@ -1,0 +1,10 @@
+id: lucee-workflow
+info:
+  author: geeknik,dhiyaneshDk
+  description: A simple workflow that runs all Lucee related nuclei templates on a
+    given target.
+  name: Lucee Detection Workflow
+workflows:
+- subtemplates:
+  - tags: lucee
+  template: http/technologies/lucee-detect.yaml

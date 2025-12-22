@@ -1,0 +1,33 @@
+dns:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
+  - type: word
+    words:
+    - NXDOMAIN
+  - part: answer
+    regex:
+    - "IN\tCNAME\t(.+)$"
+    type: regex
+  matchers-condition: and
+  name: '{{FQDN}}'
+  type: A
+id: detect-dangling-cname
+info:
+  author: pdteam,nytr0gen
+  classification:
+    cwe-id: CWE-200
+  description: A CNAME detect dangling condition was discovered. Most commonly this
+    relates to failing to remove records from the zone once they are no longer needed.
+  metadata:
+    max-request: 1
+  name: CNAME Detect Dangling
+  reference:
+  - https://securitytrails.com/blog/subdomain-takeover-tips
+  - https://nominetcyber.com/dangling-dns-is-no-laughing-matter/
+  - https://nabeelxy.medium.com/dangling-dns-records-are-a-real-vulnerability-361f2a29d37f
+  - https://docs.microsoft.com/en-us/azure/security/fundamentals/subdomain-takeover
+  severity: info
+  tags: dns,takeover,discovery

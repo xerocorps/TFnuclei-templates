@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'SuiteCRM Setup Wizard:'
+    - Checking Environment
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/install.php'
+id: suitecrm-installer
+info:
+  author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:salesagility:suitecrm:*:*:*:*:*:*:*:*
+  description: SuiteCRM is susceptible to the Installation page exposure due to misconfiguration.
+  metadata:
+    max-request: 1
+    product: suitecrm
+    shodan-query: title:"SuiteCRM"
+    vendor: salesagility
+    verified: true
+  name: SuiteCRM Installer Exposure
+  severity: high
+  tags: misconfig,suitecrm,install,vuln

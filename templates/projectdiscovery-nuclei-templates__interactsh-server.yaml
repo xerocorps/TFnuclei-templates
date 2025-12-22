@@ -1,0 +1,32 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - <b>(.*)<\/b> server
+    - from <b>(.*)<\/b>
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - Interactsh Server
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: interactsh-server
+info:
+  author: pdteam
+  classification:
+    cpe: cpe:2.3:a:projectdiscovery:interactsh:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: interactsh
+    shodan-query: http.html:"Interactsh Server"
+    vendor: projectdiscovery
+    verified: true
+  name: Interactsh Server
+  severity: info
+  tags: tech,interactsh,discovery

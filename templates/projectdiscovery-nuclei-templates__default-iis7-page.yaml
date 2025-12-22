@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>IIS7</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-iis7-page
+info:
+  author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:microsoft:iis:*:*:*:*:*:*:*:*
+  metadata:
+    max-request: 1
+    product: iis
+    shodan-query: http.title:"IIS7"
+    vendor: microsoft
+  name: IIS-7 Default Page
+  severity: info
+  tags: tech,iis,discovery
