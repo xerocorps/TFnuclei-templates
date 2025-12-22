@@ -456,9 +456,12 @@ def main():
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--similarity", type=float, default=SIMILARITY_THRESHOLD)
     args = parser.parse_args()
-    global SIMILARITY_THRESHOLD
-    SIMILARITY_THRESHOLD = args.similarity
+
+    # override module-level value safely
+    globals()["SIMILARITY_THRESHOLD"] = args.similarity
+
     stats = process_sources(dry_run=args.dry_run)
+
     # fail only if nothing saved
     if stats["saved"] == 0:
         sys.exit(2)
