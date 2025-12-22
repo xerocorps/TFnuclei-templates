@@ -41,6 +41,13 @@ def sanitize_filename(s: str) -> str:
     s = re.sub(r"[^\w\-.]+", "_", s)
     return s.strip("_")[:200]
 
+def source_identifier(source):
+    if source.get("repo"):
+        return source["repo"].replace("/", "__")
+    if source.get("url"):
+        return sanitize_filename(source["url"])
+    return "unknown-source"
+
 def download_to_bytes(url, timeout=60):
     r = requests.get(url, headers=HEADERS, timeout=timeout, stream=True)
     r.raise_for_status()
@@ -282,7 +289,7 @@ def process_sources(dry_run=False):
     candidates = []
 
     for src in sources:
-        sid = src.get("id") or src.get("repo") or src.get("url")
+        sid = source_identifier(src)
         typ = src.get("type")
         priority = int(src.get("priority", 0))
         print(f"[{datetime.utcnow().isoformat()}] Processing {sid} ({typ}) priority={priority}")
