@@ -2,7 +2,7 @@ name: Update Nuclei Templates
 
 on:
   schedule:
-    - cron: '*/5 * * * *'   # daily at 02:00 UTC (adjust if you want)
+    - cron: '0 2 * * *'   # daily at 02:00 UTC (adjust if you want)
   workflow_dispatch:
 
 jobs:
