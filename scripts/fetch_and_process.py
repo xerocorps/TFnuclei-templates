@@ -2,19 +2,14 @@
 """
 Advanced fetch + dedupe + scoring for Nuclei templates.
 
-Features:
-- Fetch github_repo / zip / raw (gist/raw)
-- Extract YAML files
-- Compute content_hash, structural_hash, canonicalized YAML
-- Group by template id, structural_hash, and fuzzy similarity
-- Score templates based on heuristics + source priority, prefer higher score
-- Write one canonical YAML per cluster to templates/
-- Write templates_index.json with provenance + duplicates list
-
-Usage:
-  python scripts/fetch_and_process.py [--dry-run] [--similarity N] [--min-score-diff M]
-
-Tune parameters near the top of the file.
+- Fetches sources listed in sources.json (github_repo, zip, raw/gist)
+- Extracts YAML files
+- Canonicalizes YAML and computes structural and content hashes
+- Groups templates by id / structural hash / fuzzy similarity
+- Scores templates using heuristics + source priority and picks one canonical template per cluster
+- Produces a raw_url for canonical templates when possible (best effort)
+- Writes templates/ and templates_index.json only if changes are detected
+- Usage: python scripts/fetch_and_process.py [--dry-run] [--similarity 0.82]
 """
 from pathlib import Path
 import json, os, sys, re, tempfile, shutil, io, hashlib, argparse
@@ -25,28 +20,25 @@ import yaml
 import difflib
 
 ROOT = Path(__file__).resolve().parents[1]
-TEMPLATES_DIR = ROOT / "templates"
 SOURCES_FILE = ROOT / "sources.json"
+TEMPLATES_DIR = ROOT / "templates"
+TMP_OUT_DIR = ROOT / "templates_out"
 INDEX_FILE = ROOT / "templates_index.json"
 
 HEADERS = {"User-Agent":"TFnuclei-templates-fetcher/1.0 (+https://github.com/yourorg/TFnuclei-templates)"}
 
-# ---- Tunables ----
-SIMILARITY_THRESHOLD = 0.82   # difflib SequenceMatcher ratio for fuzzy grouping (0..1)
-BUCKET_PREFIX_LEN = 8         # use first N chars of content-hash to bucket for faster fuzzy compare
-MIN_SCORE_DIFF = 0.0001       # ties resolved by higher source priority then earliest saved
-# -------------------
+# ---- Tunables (defaults) ----
+SIMILARITY_THRESHOLD = 0.82   # difflib ratio threshold for fuzzy grouping
+BUCKET_PREFIX_LEN = 8         # first N chars of hash used for bucketing
+# -----------------------------
+
+def log(*args, **kwargs):
+    ts = datetime.utcnow().isoformat()
+    print(f"[{ts}]", *args, **kwargs)
 
 def sanitize_filename(s: str) -> str:
     s = re.sub(r"[^\w\-.]+", "_", s)
     return s.strip("_")[:200]
-
-def source_identifier(source):
-    if source.get("repo"):
-        return source["repo"].replace("/", "__")
-    if source.get("url"):
-        return sanitize_filename(source["url"])
-    return "unknown-source"
 
 def download_to_bytes(url, timeout=60):
     r = requests.get(url, headers=HEADERS, timeout=timeout, stream=True)
@@ -67,7 +59,6 @@ def find_yaml_files(search_dir: Path):
             yield p
 
 def canonicalize_yaml_text(text: str):
-    """Return canonical YAML text (sorted keys) if possible, else a normalized text fallback."""
     try:
         obj = yaml.safe_load(text)
         canonical = yaml.safe_dump(obj, sort_keys=True)
@@ -81,15 +72,10 @@ def compute_sha256(text: str):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 def structuralize(obj):
-    """
-    Replace scalar values with placeholders, preserving keys and structure,
-    so we can compute a structure-only fingerprint.
-    """
     if isinstance(obj, dict):
         return {k: structuralize(v) for k, v in sorted(obj.items())}
     if isinstance(obj, list):
         return [structuralize(v) for v in obj]
-    # scalar -> placeholder token with type
     if isinstance(obj, str):
         return "<STR>"
     if isinstance(obj, (int, float, bool)):
@@ -115,68 +101,143 @@ def get_template_id_from_yaml_obj(obj):
             return info["name"].strip()
     return None
 
+def source_identifier(source):
+    """
+    Auto-derive a short source id from source entry.
+    For github_repo: owner__repo
+    For url-based sources: sanitized url
+    """
+    if source.get("repo"):
+        return source["repo"].replace("/", "__")
+    if source.get("url"):
+        return sanitize_filename(source["url"])
+    return "unknown_source"
+
+def parse_github_zip_url(url: str):
+    """
+    Try to extract (owner, repo, branch) if URL is a github archive url like:
+    https://github.com/owner/repo/archive/refs/heads/main.zip
+    returns (owner, repo, branch) or (None, None, None)
+    """
+    try:
+        # typical pattern: github.com/{owner}/{repo}/archive/refs/heads/{branch}.zip
+        m = re.search(r"github\.com/([^/]+)/([^/]+)/archive/refs/(?:heads|tags)/([^/]+)\.zip", url)
+        if m:
+            return m.group(1), m.group(2), m.group(3)
+        # sometimes: github.com/{owner}/{repo}/archive/{branch}.zip
+        m2 = re.search(r"github\.com/([^/]+)/([^/]+)/archive/([^/]+)\.zip", url)
+        if m2:
+            return m2.group(1), m2.group(2), m2.group(3)
+    except Exception:
+        pass
+    return None, None, None
+
 def fetch_source_to_temp(source):
     """
-    Download and extract (if archive) into a temp directory and return Path to it.
+    Downloads source and extracts into a temp dir.
+    Returns (tmp_path, meta) where meta describes type and useful info (branch if github).
     """
-    sid = source_identifier(src)
+    sid = source_identifier(source)
     typ = source.get("type")
     tmpd = Path(tempfile.mkdtemp(prefix="tf_nuc_"))
+    meta = {"type": typ}
     try:
         if typ == "github_repo":
             owner_repo = source["repo"]
+            owner, repo_name = owner_repo.split("/", 1)
+            meta["repo_owner"] = owner
+            meta["repo_name"] = repo_name
+            # Try branches in order; note which branch succeeded
             for branch in ("main", "master"):
                 zurl = f"https://github.com/{owner_repo}/archive/refs/heads/{branch}.zip"
                 try:
                     data = download_to_bytes(zurl)
                     if try_extract_zip_bytes(data, tmpd):
-                        return tmpd
+                        meta["branch"] = branch
+                        return tmpd, meta
                 except Exception:
                     continue
-            # if nothing extracted, leave empty tmpd (no YAMLs)
-            return tmpd
+            # No branch found -> return tmpd empty
+            return tmpd, meta
 
         elif typ == "zip":
-            data = download_to_bytes(source["url"])
+            url = source.get("url")
+            data = download_to_bytes(url)
+            # check if it's a GitHub-style archive (so we can later derive raw_url)
+            owner, repo_name, branch = parse_github_zip_url(url)
+            if owner and repo_name and branch:
+                meta.update({"repo_owner": owner, "repo_name": repo_name, "branch": branch, "zip_from_github": True})
             if try_extract_zip_bytes(data, tmpd):
-                return tmpd
-            # If it's not extractable, store as downloaded.zip and try to read YAMLs later
+                return tmpd, meta
+            # if not extractable, save raw file to tmp for later attempts
             (tmpd / "downloaded.zip").write_bytes(data)
-            return tmpd
+            return tmpd, meta
 
         elif typ in ("raw", "gist_raw"):
-            try:
-                raw_data = download_to_bytes(source["url"])
-                fname = tmpd / f"{sanitize_filename(sid)}.yaml"
-                fname.write_bytes(raw_data)
-                return tmpd
-            except Exception:
-                raise
+            url = source.get("url")
+            data = download_to_bytes(url)
+            # save as a yaml file
+            fname = tmpd / f"{sanitize_filename(sid)}.yaml"
+            fname.write_bytes(data)
+            meta["raw_url"] = url
+            return tmpd, meta
 
         else:
             raise RuntimeError(f"Unknown source type: {typ}")
-    except Exception:
-        # cleanup on failure by caller
+
+    except Exception as e:
+        # on failure, cleanup and re-raise
+        try:
+            shutil.rmtree(tmpd)
+        except Exception:
+            pass
         raise
 
-def score_template(parsed_obj, canonical_text, source_priority):
+def compute_raw_url_for_path(meta, file_path: Path, tmpd: Path):
     """
-    Heuristic scoring function. Higher is better.
-    Factors (weights):
-     - source_priority (dominant)
-     - has_id
-     - info.name present
-     - info.severity present
-     - number of keys/sections (more sections -> richer template)
-     - presence of 'requests' / 'requests' or 'matchers' / 'payloads'
-     - length (lines)
-     - references present
+    Best-effort raw URL for a file extracted from tmpd.
+    - For github_repo and github zip archives: construct raw.githubusercontent.com URL using owner/repo/branch/<path>
+    - For raw/gist: use provided url
+    - Otherwise: return None
     """
-    score = 0.0
-    # base from source priority (scaled)
-    score += float(source_priority) * 10.0
+    try:
+        if not file_path.exists():
+            return None
+        # path relative to tmp root: top-level folder is repo-branch or similar
+        rel = file_path.relative_to(tmpd)
+        parts = list(rel.parts)
+        if meta.get("type") == "github_repo":
+            owner = meta.get("repo_owner")
+            repo_name = meta.get("repo_name")
+            branch = meta.get("branch", "main")
+            # drop first top-level folder in archive (e.g. "repo-main/...")
+            if len(parts) >= 2:
+                inner_path = "/".join(parts[1:])
+            else:
+                inner_path = "/".join(parts)
+            return f"https://raw.githubusercontent.com/{owner}/{repo_name}/{branch}/{inner_path}"
+        if meta.get("zip_from_github"):
+            owner = meta.get("repo_owner")
+            repo_name = meta.get("repo_name")
+            branch = meta.get("branch")
+            if owner and repo_name and branch:
+                if len(parts) >= 2:
+                    inner_path = "/".join(parts[1:])
+                else:
+                    inner_path = "/".join(parts)
+                return f"https://raw.githubusercontent.com/{owner}/{repo_name}/{branch}/{inner_path}"
+        if meta.get("raw_url"):
+            # raw/gist source - return the raw url pointed to the saved file
+            return meta.get("raw_url")
+    except Exception:
+        pass
+    return None
 
-    # parsed object heuristics
+# ---------------- scoring and grouping ----------------
+
+def score_template(parsed_obj, canonical_text, source_priority):
+    score = 0.0
+    score += float(source_priority) * 10.0
     if isinstance(parsed_obj, dict):
         if "id" in parsed_obj and isinstance(parsed_obj["id"], str) and parsed_obj["id"].strip():
             score += 50.0
@@ -190,118 +251,69 @@ def score_template(parsed_obj, canonical_text, source_priority):
                 score += 5.0
             if info.get("reference") or info.get("references"):
                 score += 6.0
-
-        # structural richness: count top-level keys and important fields
         keys = set(parsed_obj.keys())
         score += min(len(keys) * 0.8, 25.0)
-
-        # presence of matching/request sections common to nuclei templates
         match_fields = 0
         for f in ("requests", "request", "matchers", "match", "payloads", "payload"):
             if f in parsed_obj:
                 match_fields += 1
         score += match_fields * 8.0
-
-    # length: give slight bonus for non-trivial templates (but avoid awarding long irrelevant files too much)
     line_count = len(canonical_text.splitlines())
     if line_count > 5:
         score += min((line_count / 25.0), 10.0)
-
-    # small tie-breaker: content uniqueness
-    # (we'll compare later using source priority and score)
-
     return score
 
 def choose_best_in_group(members):
-    """
-    members: list of dicts with keys:
-      - canonical (str)
-      - parsed (obj or None)
-      - content_hash (str)
-      - structural_hash (str or None)
-      - source_id, source_priority, source_url, path
-      - text_len
-    Returns: chosen member (the dict), others list
-    """
-    # compute scores
     for m in members:
         m['_score'] = score_template(m.get("parsed"), m.get("canonical"), m.get("source_priority", 0))
-
-    # sort by score desc, then by source_priority desc, then by text_len desc
     members.sort(key=lambda x: (x['_score'], x.get('source_priority',0), x.get('text_len',0)), reverse=True)
     chosen = members[0]
     others = members[1:]
     return chosen, others
 
-def fuzzy_grouping(candidates):
-    """
-    Agglomerative-ish clustering using buckets + difflib for speed.
-    candidates: list of dicts with keys 'content_hash' and 'canonical' and so on.
-    Returns list of groups (each group is list of candidate dicts).
-    """
-    # bucket by first N chars of content_hash
+def fuzzy_grouping(candidates, similarity_threshold):
     buckets = {}
     for c in candidates:
         key = c['content_hash'][:BUCKET_PREFIX_LEN]
         buckets.setdefault(key, []).append(c)
-
     groups = []
     visited = set()
-    for bkey, items in buckets.items():
-        # local greedy clustering
+    for items in buckets.values():
         for i, item in enumerate(items):
             if id(item) in visited:
                 continue
-            group = [item]
-            visited.add(id(item))
-            # compare to remaining in bucket
+            group = [item]; visited.add(id(item))
             for j in range(i+1, len(items)):
                 other = items[j]
                 if id(other) in visited:
                     continue
-                # quick exact structural match check
+                # structural exact
                 if item.get('structural_hash') and item.get('structural_hash') == other.get('structural_hash'):
                     group.append(other); visited.add(id(other)); continue
-                # else fuzzy compare canonical text
                 try:
                     ratio = difflib.SequenceMatcher(None, item['canonical'], other['canonical']).ratio()
                 except Exception:
                     ratio = 0.0
-                if ratio >= SIMILARITY_THRESHOLD:
-                    group.append(other)
-                    visited.add(id(other))
+                if ratio >= similarity_threshold:
+                    group.append(other); visited.add(id(other))
             groups.append(group)
     return groups
 
-def process_sources(dry_run=False):
-    with open(SOURCES_FILE, "r", encoding="utf-8") as f:
-        sources = json.load(f)
+# ---------------- main processing ----------------
 
-    # ensure templates dir
-    if TEMPLATES_DIR.exists():
-        shutil.rmtree(TEMPLATES_DIR)
-    TEMPLATES_DIR.mkdir(parents=True, exist_ok=True)
-
-    index = {"generated_at": datetime.utcnow().isoformat()+"Z", "count": 0, "templates": {}}
-    stats = {"downloaded":0, "yaml_found":0, "candidates":0, "clusters":0, "saved":0, "skipped":0, "errors":0}
-
-    # collect all YAML candidates from all sources into memory
+def gather_candidates(sources):
     candidates = []
-
-    for src in sources:
-        sid = source_identifier(src)
-        typ = src.get("type")
-        priority = int(src.get("priority", 0))
-        print(f"[{datetime.utcnow().isoformat()}] Processing {sid} ({typ}) priority={priority}")
-        tmpd = None
+    stats = {"downloaded":0, "yaml_found":0, "errors":0}
+    for source in sources:
+        sid = source_identifier(source)
+        priority = int(source.get("priority", 0))
+        typ = source.get("type")
+        log(f"Processing {sid} ({typ}) priority={priority}")
         try:
-            tmpd = fetch_source_to_temp(src)
+            tmpd, meta = fetch_source_to_temp(source)
             stats["downloaded"] += 1
-
-            # find yamls
             found = list(find_yaml_files(tmpd))
             stats["yaml_found"] += len(found)
-
             for p in found:
                 try:
                     text = p.read_text(encoding="utf-8", errors="replace")
@@ -309,39 +321,127 @@ def process_sources(dry_run=False):
                     content_hash = compute_sha256(canonical)
                     struct_hash = structural_hash_from_obj(parsed) if parsed is not None else None
                     tid = get_template_id_from_yaml_obj(parsed) if parsed is not None else None
+                    raw_url = compute_raw_url_for_path(meta, p, tmpd)
                     candidate = {
                         "template_id": tid,
                         "canonical": canonical,
                         "parsed": parsed,
                         "content_hash": content_hash,
                         "structural_hash": struct_hash,
+                        "source_repo": source.get("repo"),
+                        "source_url_field": source.get("url"),
                         "source_id": sid,
                         "source_type": typ,
-                        "source_url": src.get("url") or src.get("repo"),
                         "source_priority": priority,
                         "path": str(p),
-                        "text_len": len(canonical.splitlines())
+                        "text_len": len(canonical.splitlines()),
+                        "raw_url_candidate": raw_url
                     }
                     candidates.append(candidate)
                 except Exception as e:
-                    print(f"ERROR processing file {p}: {e}")
+                    log(f"ERROR processing file {p}: {e}")
                     stats["errors"] += 1
-
         except Exception as e:
-            print(f"ERROR fetching source {sid}: {e}")
+            log(f"ERROR fetching source {sid}: {e}")
             stats["errors"] += 1
         finally:
-            # cleanup temp dir
             try:
-                if tmpd and tmpd.exists():
+                if 'tmpd' in locals() and tmpd and tmpd.exists():
                     shutil.rmtree(tmpd)
             except Exception:
                 pass
+    return candidates, stats
 
-    stats["candidates"] = len(candidates)
-    print(f"[{datetime.utcnow().isoformat()}] Collected {len(candidates)} template candidates")
+def write_outputs_if_changed(idx_map, chosen_items, dry_run=False):
+    """
+    Build a temporary templates_out directory and index JSON.
+    Replace TEMPLATES_DIR and INDEX_FILE only if changes detected.
+    Returns True if changes were written, False if no changes.
+    """
+    # prepare tmp out dir
+    if TMP_OUT_DIR.exists():
+        shutil.rmtree(TMP_OUT_DIR)
+    TMP_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 1) Group by template_id when present
+    # write files to tmp out
+    for item in chosen_items:
+        src_label = sanitize_filename(item.get("source_id") or item.get("source_repo") or "unknown")
+        short_hash = item["content_hash"][:12]
+        out_name = f"{src_label}__{short_hash}.yaml"
+        out_path = TMP_OUT_DIR / out_name
+        out_path.write_text(item["canonical"], encoding="utf-8")
+
+    # compute whether TMP_OUT_DIR differs from current templates dir
+    changed = False
+    if not TEMPLATES_DIR.exists():
+        changed = True
+    else:
+        # compare filenames
+        existing_files = set(p.name for p in TEMPLATES_DIR.iterdir() if p.is_file())
+        new_files = set(p.name for p in TMP_OUT_DIR.iterdir() if p.is_file())
+        if existing_files != new_files:
+            changed = True
+        else:
+            # compare contents
+            for fn in new_files:
+                if (TEMPLATES_DIR / fn).read_bytes() != (TMP_OUT_DIR / fn).read_bytes():
+                    changed = True
+                    break
+
+    # If changed and not dry_run -> replace templates dir and write index file
+    if changed and not dry_run:
+        # atomically replace templates dir
+        backup = None
+        try:
+            if TEMPLATES_DIR.exists():
+                backup = ROOT / f"templates_backup_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+                TEMPLATES_DIR.rename(backup)
+            TMP_OUT_DIR.rename(TEMPLATES_DIR)
+            # write index
+            # add repository-level metadata
+            index_obj = {
+                "generated_at": datetime.utcnow().isoformat() + "Z",
+                "last_updated": datetime.utcnow().isoformat() + "Z",
+                "count": len(idx_map),
+                "templates": idx_map
+            }
+            with open(INDEX_FILE, "w", encoding="utf-8") as fh:
+                json.dump(index_obj, fh, indent=2)
+            # cleanup backup
+            if backup and backup.exists():
+                try:
+                    shutil.rmtree(backup)
+                except Exception:
+                    pass
+            log("Wrote new templates and updated index.")
+            return True
+        except Exception as e:
+            log("ERROR while replacing templates dir:", e)
+            # try to restore backup if present
+            try:
+                if backup and backup.exists() and not TEMPLATES_DIR.exists():
+                    backup.rename(TEMPLATES_DIR)
+            except Exception:
+                pass
+            raise
+    else:
+        # no changes -> remove tmp_out
+        try:
+            if TMP_OUT_DIR.exists():
+                shutil.rmtree(TMP_OUT_DIR)
+        except Exception:
+            pass
+        log("No changes detected; not updating templates/ or templates_index.json.")
+        return False
+
+def process_all(sources, similarity_threshold, dry_run=False):
+    # gather
+    candidates, gather_stats = gather_candidates(sources)
+    stats = {"downloaded": gather_stats["downloaded"], "yaml_found": gather_stats["yaml_found"], "candidates": len(candidates), "clusters": 0, "saved": 0, "errors": gather_stats["errors"]}
+
+    log(f"Collected {len(candidates)} candidates")
+
+    # by id
     by_id = {}
     no_id = []
     for c in candidates:
@@ -350,10 +450,9 @@ def process_sources(dry_run=False):
         else:
             no_id.append(c)
 
-    chosen_items = []   # final chosen canonical templates
-    duplicates_info = {}  # map canonical_content_hash -> list of duplicates
+    chosen_items = []
+    duplicates_info = {}
 
-    # resolve id groups
     for tid, members in by_id.items():
         chosen, others = choose_best_in_group(members)
         chosen_items.append(chosen)
@@ -362,13 +461,15 @@ def process_sources(dry_run=False):
             dup_list.append({
                 "template_id": o.get("template_id"),
                 "source_id": o.get("source_id"),
-                "source_url": o.get("source_url"),
+                "source_repo": o.get("source_repo"),
+                "source_url_field": o.get("source_url_field"),
                 "content_hash": o.get("content_hash"),
-                "structural_hash": o.get("structural_hash")
+                "structural_hash": o.get("structural_hash"),
+                "raw_url_candidate": o.get("raw_url_candidate")
             })
         duplicates_info[chosen["content_hash"]] = dup_list
 
-    # 2) For no-id templates, group by exact structural_hash first
+    # structural grouping for no-id
     structural_map = {}
     remaining = []
     for c in no_id:
@@ -389,18 +490,20 @@ def process_sources(dry_run=False):
                 dup_list.append({
                     "template_id": o.get("template_id"),
                     "source_id": o.get("source_id"),
-                    "source_url": o.get("source_url"),
+                    "source_repo": o.get("source_repo"),
+                    "source_url_field": o.get("source_url_field"),
                     "content_hash": o.get("content_hash"),
-                    "structural_hash": o.get("structural_hash")
+                    "structural_hash": o.get("structural_hash"),
+                    "raw_url_candidate": o.get("raw_url_candidate")
                 })
             duplicates_info[chosen["content_hash"]] = dup_list
 
-    # 3) Fuzzy cluster remaining (use bucketing + difflib)
+    # fuzzy grouping for remaining
     if remaining:
-        fuzzy_groups = fuzzy_grouping(remaining)
+        fuzzy_groups = fuzzy_grouping(remaining, similarity_threshold)
+        stats["clusters"] = len(fuzzy_groups)
         for group in fuzzy_groups:
             if len(group) == 1:
-                # single candidate -> keep as chosen
                 chosen_items.append(group[0])
             else:
                 chosen, others = choose_best_in_group(group)
@@ -410,61 +513,72 @@ def process_sources(dry_run=False):
                     dup_list.append({
                         "template_id": o.get("template_id"),
                         "source_id": o.get("source_id"),
-                        "source_url": o.get("source_url"),
+                        "source_repo": o.get("source_repo"),
+                        "source_url_field": o.get("source_url_field"),
                         "content_hash": o.get("content_hash"),
-                        "structural_hash": o.get("structural_hash")
+                        "structural_hash": o.get("structural_hash"),
+                        "raw_url_candidate": o.get("raw_url_candidate")
                     })
                 duplicates_info[chosen["content_hash"]] = dup_list
 
-    # 4) Save chosen_items into templates/ and write index
+    # prepare index map
     idx_map = {}
     for item in chosen_items:
-        # file name: <source>__<shorthash>.yaml
-        src_label = sanitize_filename(item.get("source_id") or "unknown")
+        src_label = sanitize_filename(item.get("source_id") or item.get("source_repo") or "unknown")
         short_hash = item["content_hash"][:12]
-        out_name = f"{src_label}__{short_hash}.yaml"
-        out_path = TEMPLATES_DIR / out_name
-        # write canonical YAML
-        if not dry_run:
-            out_path.write_text(item["canonical"], encoding="utf-8")
-        # index entry keyed by content_hash
+        filename = f"{src_label}__{short_hash}.yaml"
+        raw_url = item.get("raw_url_candidate")
         idx_map[item["content_hash"]] = {
             "template_id": item.get("template_id"),
-            "filename": str(Path("templates")/out_name),
+            "filename": str(Path("templates") / filename),
             "source_id": item.get("source_id"),
-            "source_url": item.get("source_url"),
+            "source_repo": item.get("source_repo"),
+            "source_url_field": item.get("source_url_field"),
             "source_priority": item.get("source_priority"),
             "structural_hash": item.get("structural_hash"),
             "text_len": item.get("text_len"),
-            "collected_at": datetime.utcnow().isoformat()+"Z",
+            "raw_url": raw_url,
+            "collected_at": datetime.utcnow().isoformat() + "Z",
             "duplicates": duplicates_info.get(item["content_hash"], [])
         }
-        stats["saved"] += 1
 
-    index["count"] = len(idx_map)
-    index["templates"] = idx_map
+    # write outputs only if changed
+    changed = write_outputs_if_changed(idx_map, chosen_items, dry_run=dry_run)
+    if changed:
+        stats["saved"] = len(idx_map)
 
-    if not dry_run:
-        with open(INDEX_FILE, "w", encoding="utf-8") as fh:
-            json.dump(index, fh, indent=2)
-
-    print("SUMMARY:", stats)
+    log("SUMMARY:", stats)
     return stats
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--similarity", type=float, default=SIMILARITY_THRESHOLD)
+    parser.add_argument("--dry-run", action="store_true", help="Don't write outputs (useful for testing)")
+    parser.add_argument("--similarity", type=float, default=SIMILARITY_THRESHOLD, help="Similarity threshold (0..1) for fuzzy grouping")
     args = parser.parse_args()
 
-    # override module-level value safely
+    # override module-level default safely
     globals()["SIMILARITY_THRESHOLD"] = args.similarity
 
-    stats = process_sources(dry_run=args.dry_run)
-
-    # fail only if nothing saved
-    if stats["saved"] == 0:
+    if not SOURCES_FILE.exists():
+        log("sources.json not found at", SOURCES_FILE)
         sys.exit(2)
+
+    with open(SOURCES_FILE, "r", encoding="utf-8") as fh:
+        try:
+            sources = json.load(fh)
+        except Exception as e:
+            log("Failed to parse sources.json:", e)
+            sys.exit(2)
+
+    stats = process_all(sources, globals()["SIMILARITY_THRESHOLD"], dry_run=args.dry_run)
+
+    # if nothing saved and no previous templates exist, consider failure
+    existing_templates_present = TEMPLATES_DIR.exists() and any(TEMPLATES_DIR.iterdir())
+    if stats.get("saved", 0) == 0 and not existing_templates_present:
+        log("No templates saved and no existing templates present -> failing")
+        sys.exit(2)
+
+    # success
     sys.exit(0)
 
 if __name__ == "__main__":
