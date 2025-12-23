@@ -2,98 +2,109 @@ name: Update Nuclei Templates
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: "0 3 * * *"   # daily
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  # chunked fetch jobs: adjust matrix.chunks to number of chunks you want
   fetch:
+    name: fetch (${{ matrix.chunk }})
     runs-on: ubuntu-latest
+    timeout-minutes: 360
     strategy:
       fail-fast: false
       matrix:
-        chunk: [0,1,2,3,4,5,6,7]   # <-- change this array to more chunks if needed
+        chunk: [0,1,2,3,4,5,6,7]
+
+    env:
+      CHUNK_SIZE: 25
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run chunk fetch (matrix.chunk=${{matrix.chunk}})
-        env:
-          CHUNK_INDEX: ${{ matrix.chunk }}
-          CHUNK_SIZE: 50                 # <-- number of sources per chunk; tune as needed
+      - name: Run chunk fetch
         run: |
           mkdir -p artifacts
-          python scripts/fetch_chunk.py --chunk-index ${CHUNK_INDEX} --chunk-size ${CHUNK_SIZE} --out artifacts/chunk-${CHUNK_INDEX}
+          python scripts/fetch_chunk.py \
+            --chunk-index ${{ matrix.chunk }} \
+            --chunk-size ${CHUNK_SIZE} \
+            --out artifacts/chunk-${{ matrix.chunk }}
 
+      # 🔒 CRITICAL: archive BEFORE upload (directory uploads are forbidden)
       - name: Archive chunk
         run: |
-          tar -czf artifacts/chunk-${{ matrix.chunk }}.tar.gz -C artifacts chunk-${{ matrix.chunk }}
-      
+          if [ -d artifacts/chunk-${{ matrix.chunk }} ]; then
+            tar -czf artifacts/chunk-${{ matrix.chunk }}.tar.gz \
+              -C artifacts chunk-${{ matrix.chunk }}
+          fi
+
+      - name: Verify archive
+        run: |
+          test -f artifacts/chunk-${{ matrix.chunk }}.tar.gz
+
       - name: Upload chunk artifact
         uses: actions/upload-artifact@v4
         with:
           name: chunk-${{ matrix.chunk }}
           path: artifacts/chunk-${{ matrix.chunk }}.tar.gz
 
-  # aggregator job: depends on fetch (will start after all fetch jobs finish)
+
   aggregate:
+    name: aggregate
     runs-on: ubuntu-latest
     needs: fetch
+    timeout-minutes: 360
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Download all chunks
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-      
-      - name: Extract chunks
-        run: |
-          for f in artifacts/*.tar.gz; do
-            tar -xzf "$f" -C artifacts
-          done
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Merge & dedupe and write templates (if changed)
-        env:
-          # allow merge script to push changes using GITHUB_TOKEN
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python scripts/merge_and_dedupe.py --chunks-dir artifacts_all --dry-run false
+      - name: Download all chunks
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
 
-      - name: Commit & push if changed
-        if: always()
+      - name: Extract chunks
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add templates templates_index.json || true
-            git commit -m "Auto-update nuclei templates: $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
-            git push || echo "Push failed (check permissions)"
+          for f in artifacts/**/*.tar.gz; do
+            tar -xzf "$f" -C artifacts
+          done
+
+      - name: Merge and deduplicate
+        run: |
+          python scripts/merge_and_dedupe.py artifacts
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add templates templates_index.json || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
           else
-            echo "No changes to commit."
+            git commit -m "chore: auto-update nuclei templates"
+            git push
           fi
