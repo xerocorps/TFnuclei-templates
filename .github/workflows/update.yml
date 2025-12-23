@@ -36,11 +36,16 @@ jobs:
         run: |
           mkdir -p artifacts
           python scripts/fetch_chunk.py --chunk-index ${CHUNK_INDEX} --chunk-size ${CHUNK_SIZE} --out artifacts/chunk-${CHUNK_INDEX}
+
+      - name: Archive chunk
+        run: |
+          tar -czf artifacts/chunk-${{ matrix.chunk }}.tar.gz -C artifacts chunk-${{ matrix.chunk }}
+      
       - name: Upload chunk artifact
         uses: actions/upload-artifact@v4
         with:
           name: chunk-${{ matrix.chunk }}
-          path: artifacts/chunk-${{ matrix.chunk }}
+          path: artifacts/chunk-${{ matrix.chunk }}.tar.gz
 
   # aggregator job: depends on fetch (will start after all fetch jobs finish)
   aggregate:
@@ -52,10 +57,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download all chunk artifacts
+      - name: Download all chunks
         uses: actions/download-artifact@v4
         with:
-          path: artifacts_all
+          path: artifacts
+      
+      - name: Extract chunks
+        run: |
+          for f in artifacts/*.tar.gz; do
+            tar -xzf "$f" -C artifacts
+          done
 
       - name: Set up Python
         uses: actions/setup-python@v4
