@@ -1,0 +1,32 @@
+http:
+- extractors:
+  - group: 2
+    part: body
+    regex:
+    - <li>(Version:[ \n\t]*([^<]+)[ \n\t]*)</li>
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - System Error
+  - status:
+    - 500
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/jw/web/;'
+id: joget-panel
+info:
+  author: Podalirius
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Joget panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.favicon.hash:-1343712810
+  name: Joget Panel - Detect
+  severity: info
+  tags: panel,joget

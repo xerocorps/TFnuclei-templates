@@ -1,0 +1,10 @@
+id: bomgar-workflow
+info:
+  author: pdteam
+  description: A simple workflow that runs all Bomgar related nuclei templates on
+    a given target.
+  name: Bomgar Security Checks
+workflows:
+- subtemplates:
+  - tags: bomgar
+  template: exposed-panels/bomgar-login-panel.yaml

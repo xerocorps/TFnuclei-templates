@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Live Helper Chat
+    - Please login
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/site_admin/user/login'
+id: livehelperchat-admin-panel
+info:
+  author: ritikchaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Live Helper Chat admin login panel was detected.
+  metadata:
+    fofa-query: title="Live Helper Chat"
+    max-request: 1
+    shodan-query: title:"Live Helper Chat"
+    verified: true
+  name: Live Helper Chat Admin Login Panel - Detect
+  severity: info
+  tags: livehelperchat,panel

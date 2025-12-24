@@ -1,0 +1,33 @@
+id: phpmyadmin-panel
+info:
+  author: pdteam
+  name: phpMyAdmin Panel
+  severity: low
+  tags: panel,phpmyadmin
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - v=([a-z0-9-._]+)
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - <title>phpMyAdmin
+    - pmahomme
+  method: GET
+  path:
+  - '{{BaseURL}}/phpmyadmin/'
+  - '{{BaseURL}}/admin//phpmyadmin/'
+  - '{{BaseURL}}/_phpmyadmin/'
+  - '{{BaseURL}}/administrator/components/com_joommyadmin/phpmyadmin/'
+  - '{{BaseURL}}/apache-default/phpmyadmin/'
+  - '{{BaseURL}}/blog/phpmyadmin/'
+  - '{{BaseURL}}/forum/phpmyadmin/'
+  - '{{BaseURL}}/php/phpmyadmin/'
+  - '{{BaseURL}}/typo3/phpmyadmin/'
+  - '{{BaseURL}}/web/phpmyadmin/'
+  - '{{BaseURL}}/xampp/phpmyadmin/'
+  - '{{BaseURL}}/phpMyAdmin/'
+  stop-at-first-match: true

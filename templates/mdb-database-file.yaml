@@ -1,0 +1,44 @@
+http:
+- matchers:
+  - binary:
+    - 000100005374616E64617264204A657420444200
+    part: body
+    type: binary
+  - part: header
+    type: word
+    words:
+    - application/x-msaccess
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-size: 500
+  payloads:
+    mdbPaths: helpers/wordlists/mdb-paths.txt
+  raw:
+  - 'GET {{mdbPaths}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Origin: {{BaseURL}}
+
+    Accept-Language: en-US,en;q=0.9
+
+    '
+  stop-at-first-match: true
+  threads: 50
+id: mdb-database-file
+info:
+  author: pdteam
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: Microsoft Access database file was detected.
+  metadata:
+    max-request: 341
+  name: Microsoft Access Database File - Detect
+  reference:
+  - https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05.5-Testing_for_MS_Access.html
+  severity: medium
+  tags: brute,mdb,asp

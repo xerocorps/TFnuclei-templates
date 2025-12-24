@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - There is no portal here ... sending you back to Aha!
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: aha-takeover
+info:
+  author: pdteam
+  description: An Aha subdomain takeover was detected.
+  metadata:
+    max-request: 1
+  name: Aha - Subdomain Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover

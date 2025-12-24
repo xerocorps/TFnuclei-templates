@@ -1,0 +1,36 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"name":'
+    - '"projects":'
+    - '"queue":'
+  - type: word
+    words:
+    - zuul_version
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/api/tenants'
+  - '{{BaseURL}}/api/status'
+  stop-at-first-match: true
+id: zuul-panel
+info:
+  author: Yuzhe-zhang-0
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: ZUUL panel was detected.
+  metadata:
+    max-request: 2
+    shodan-query: http.favicon.hash:-1127895693
+  name: Zuul Panel - Detect
+  reference:
+  - https://opendev.org/zuul/zuul
+  severity: info
+  tags: panel,zuul,cicd,oss

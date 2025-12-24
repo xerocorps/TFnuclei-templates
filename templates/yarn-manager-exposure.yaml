@@ -1,0 +1,20 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - hadoop
+    - resourcemanager
+    - 'logged in as: dr.who'
+  method: GET
+  path:
+  - '{{BaseURL}}/cluster/cluster'
+id: yarn-manager-exposure
+info:
+  author: pdteam
+  description: Apache YARN ResourceManager panel was detected.
+  metadata:
+    max-request: 1
+  name: Apache YARN ResourceManager Panel - Detect
+  severity: low
+  tags: panel,apache,yarn,exposure

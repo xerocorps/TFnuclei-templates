@@ -1,0 +1,14 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Types of profiles available
+  method: GET
+  path:
+  - '{{BaseURL}}/debug/pprof/'
+id: go-pprof
+info:
+  author: notnotnotveg
+  name: Go Debug PPROF
+  severity: info

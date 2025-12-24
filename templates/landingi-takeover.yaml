@@ -1,0 +1,16 @@
+id: landingi-takeover
+info:
+  author: pdcommunity
+  name: landingi takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - It looks like you're lost
+    - The page you are looking for is not found
+  method: GET
+  path:
+  - '{{BaseURL}}'

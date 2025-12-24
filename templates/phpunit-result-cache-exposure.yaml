@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - '"defects"'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.phpunit.result.cache'
+id: phpunit-result-cache-exposure
+info:
+  author: DhiyaneshDk
+  description: PHPUnit cache file is exposed.
+  metadata:
+    max-request: 1
+    shodan-query: .phpunit.result.cache
+    verified: true
+  name: PHPUnit Result Cache File Exposure
+  severity: low
+  tags: config,exposure,devops,files

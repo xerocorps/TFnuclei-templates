@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - https://api.dribbble.com/v2/user?access_token={{token}}
+id: api-dribbble
+info:
+  author: daffainfo
+  description: Dribbble is a self-promotion and social networking platform for digital
+    designers and creatives
+  metadata:
+    max-request: 1
+  name: Dribbble API Test
+  reference:
+  - https://developer.dribbble.com/v2/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/dribbble
+  severity: info
+  tags: token-spray,dribbble
+self-contained: true

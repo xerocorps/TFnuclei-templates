@@ -1,0 +1,22 @@
+id: solr-rce
+info:
+  author: str1am
+  name: "solr\u547D\u4EE4\u6267\u884C"
+  severity: high
+  tags: solr
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - responseHeader
+    - initArgs
+    - statusMessages
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/solr/supplierSearch_V2/dataimport'

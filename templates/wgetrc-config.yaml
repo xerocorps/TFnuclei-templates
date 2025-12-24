@@ -1,0 +1,28 @@
+id: wgetrc-config
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: html:".wgetrc"
+    verified: true
+  name: Wgetrc Configuration File Exposure
+  severity: medium
+  tags: devops,exposure
+requests:
+- matchers:
+  - type: word
+    words:
+    - /etc/wgetrc
+    - wget.info
+  - part: header
+    type: word
+    words:
+    - application/octet-stream
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wgetrc'
+  - '{{BaseURL}}/.wgetrc'
+  stop-at-first-match: true

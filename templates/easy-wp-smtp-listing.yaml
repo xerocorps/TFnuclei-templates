@@ -1,0 +1,20 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - debug
+    - log
+    - Index of
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-wp-smtp/'
+id: easy-wp-smtp-listing
+info:
+  author: PR3R00T
+  description: The WordPress Easy WP SMTP Plugin has its 'easy-wp-smtp' folder remotely
+    acccessible and its content available for access.
+  name: SMTP WP Plugin Directory listing enabled
+  reference: https://blog.nintechnet.com/wordpress-easy-wp-smtp-plugin-fixed-zero-day-vulnerability/
+  severity: high
+  tags: wordpress,wp-plugin,smtp

@@ -1,0 +1,20 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>SpamTitan</title>
+    - <h1><span class="title">Login</span></h1><div id=help><a href="javascript:void(0)">
+    - <img alt="Help" title="Help"
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: spamtitan-login-portal
+info:
+  author: Caddyshack2175
+  metadata:
+    max-request: 1
+  name: SpamTitan Login Portal
+  severity: info
+  tags: tech,login,portal,centreon

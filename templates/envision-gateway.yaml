@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>EnvisionGateway</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/#'
+id: envision-gateway
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"EnvisionGateway"
+  name: EnvisionGateway
+  reference:
+  - https://www.exploit-db.com/ghdb/7315
+  severity: low
+  tags: iot,edb

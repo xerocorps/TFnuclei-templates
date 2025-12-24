@@ -1,0 +1,25 @@
+id: laravel-env
+info:
+  author: d3sca
+  name: Laravel .env file accessible
+  severity: critical
+  tags: config,exposure
+requests:
+- matchers:
+  - regex:
+    - (?m)^APP_(NAME|ENV|KEY|DEBUG|URL)=
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.env'
+  - '{{BaseURL}}/.env.dev.local'
+  - '{{BaseURL}}/.env.development.local'
+  - '{{BaseURL}}/.env.prod.local'
+  - '{{BaseURL}}/.env.production.local'
+  - '{{BaseURL}}/.env.local'
+  - '{{BaseURL}}/.env.stage'
+  - '{{BaseURL}}/.env.live'

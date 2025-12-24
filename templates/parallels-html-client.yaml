@@ -1,0 +1,14 @@
+id: parallels-html-client
+info:
+  author: bauthard
+  name: Parallels HTML5 Client
+  severity: medium
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Parallels HTML5 Client</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/RASHTML5Gateway/'

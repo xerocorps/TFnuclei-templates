@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"address":'
+    - '"updated_at":'
+    - '"next_update_at":'
+  method: GET
+  path:
+  - https://api.covalenthq.com/v1/3/address/balances_v2/?&key={{token}}
+id: api-covalent
+info:
+  author: daffainfo
+  description: https://github.com/daffainfo/all-about-apikey/tree/main/covalent
+  metadata:
+    max-request: 1
+  name: Covalent API Test
+  reference:
+  - https://www.covalenthq.com/docs/api/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/covalent
+  severity: info
+  tags: token-spray,covalent
+self-contained: true

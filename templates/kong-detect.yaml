@@ -1,0 +1,29 @@
+http:
+- extractors:
+  - kval:
+    - server
+    type: kval
+  matchers:
+  - case-insensitive: true
+    condition: or
+    part: header
+    type: word
+    words:
+    - 'server: kong'
+    - x-kong-response-latency
+    - x-kong-upstream-latency
+    - x-kong-proxy-latency
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: kong-detect
+info:
+  author: geeknik,joshlarsen
+  description: The Cloud-Native API Gateway
+  metadata:
+    max-request: 1
+  name: Detect Kong
+  reference:
+  - https://github.com/Kong/kong
+  severity: info
+  tags: tech,kong

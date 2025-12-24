@@ -1,0 +1,16 @@
+id: missing-x-frame-options
+info:
+  author: kurohost
+  name: Clickjacking (Missing XFO header)
+  severity: low
+  tags: misc
+requests:
+- matchers:
+  - dsl:
+    - '!contains(tolower(all_headers), ''x-frame-options'')'
+    type: dsl
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

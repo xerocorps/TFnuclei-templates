@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Airflow 404 = lots of circles
+  - status:
+    - 404
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/{{randstr}}'
+id: airflow-detect
+info:
+  author: pdteam
+  metadata:
+    max-request: 1
+    shodan-query: http.html:"Apache Airflow"
+    verified: true
+  name: Apache Airflow
+  severity: info
+  tags: tech,apache,airflow,intrusive

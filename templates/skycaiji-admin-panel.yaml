@@ -1,0 +1,34 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - "com\">SkyCaiji<\\/a> ([A-Z0-9.]+) \u540E\u53F0\u7BA1\u7406<\\/p>"
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <p>Powered by <a href="https://www.skycaiji.com" target="_blank">
+    - <a href="/index.php?s=/Admin/Index/find_password">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php?s=/admin/Index/index'
+id: skycaiji-admin-panel
+info:
+  author: princechaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: SkyCaiji admin panel was detected.
+  metadata:
+    max-request: 1
+  name: SkyCaiji Admin Panel - Detect
+  severity: info
+  tags: panel,tech,skycaiji

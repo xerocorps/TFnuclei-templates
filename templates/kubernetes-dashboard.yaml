@@ -1,0 +1,14 @@
+id: kubernetes-dashboard
+info:
+  author: pdteam
+  name: Kubernetes Console Exposure
+  severity: low
+  tags: panel,kubernetes,devops
+requests:
+- matchers:
+  - type: word
+    words:
+    - Kubernetes Dashboard</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'

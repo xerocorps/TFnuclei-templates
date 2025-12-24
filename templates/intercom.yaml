@@ -1,0 +1,19 @@
+http:
+- host-redirects: true
+  matchers:
+  - type: word
+    words:
+    - intercom
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: intercom
+info:
+  author: tess
+  metadata:
+    max-request: 1
+  name: Intercom widget detection
+  reference: https://www.intercom.com
+  severity: info
+  tags: intercom,tech

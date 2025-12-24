@@ -1,0 +1,19 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - /adfs/portal/css/style.css
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/adfs/ls/idpinitiatedsignon.aspx'
+id: adfs-detect
+info:
+  author: Adam Crosser
+  description: Detects ADFS with forms-based authentication enabled.
+  metadata:
+    max-request: 1
+  name: ADFS Detect
+  severity: info
+  tags: tech,adfs

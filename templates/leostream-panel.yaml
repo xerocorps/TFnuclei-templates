@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Leostream</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: leostream-panel
+info:
+  author: praetorian-thendrickson
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Leostream login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Leostream"
+  name: Leostream Login Panel - Detect
+  reference:
+  - https://leostream.com
+  severity: info
+  tags: panel,leostream

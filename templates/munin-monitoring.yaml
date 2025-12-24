@@ -1,0 +1,14 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Munin
+  method: GET
+  path:
+  - '{{BaseURL}}/munin/localhost/'
+id: munin-monitoring
+info:
+  author: h0tak88r
+  name: Munin Monitoring
+  severity: info

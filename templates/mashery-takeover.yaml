@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - Unrecognized domain <strong>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: mashery-takeover
+info:
+  author: pdteam
+  description: mashery takeover was detected.
+  metadata:
+    max-request: 1
+  name: mashery takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/14
+  severity: high
+  tags: takeover

@@ -1,0 +1,45 @@
+http:
+- matchers:
+  - name: http-get
+    type: word
+    words:
+    - This is simplified WADL with user and core resources only
+    - http://jersey.java.net
+    - http://wadl.dev.java.net/2009/02
+  method: GET
+  path:
+  - '{{BaseURL}}/application.wadl'
+  - '{{BaseURL}}/application.wadl?detail=true'
+  - '{{BaseURL}}/api/application.wadl'
+  - '{{BaseURL}}/api/v1/application.wadl'
+  - '{{BaseURL}}/api/v2/application.wadl'
+  stop-at-first-match: true
+- matchers:
+  - name: http-options
+    type: word
+    words:
+    - This is simplified WADL with user and core resources only
+    - http://jersey.java.net
+    - http://wadl.dev.java.net/2009/02
+  method: OPTIONS
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/api/v1'
+  - '{{BaseURL}}/api/v2'
+  stop-at-first-match: true
+id: wadl-api
+info:
+  author: 0xrudra,manuelbua
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: WADL API was detected.
+  metadata:
+    max-request: 8
+  name: WADL API - Detect
+  reference:
+  - https://github.com/dwisiswant0/wadl-dumper
+  - https://www.nopsec.com/leveraging-exposed-wadl-xml-in-burp-suite/
+  severity: info
+  tags: exposure,api

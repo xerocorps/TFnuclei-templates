@@ -1,0 +1,21 @@
+id: securityspy-detect
+info:
+  author: pussycat0x
+  metadata:
+    shodan-dork: title:SecuritySpy
+  name: SecuritySpy Camera Detect
+  severity: medium
+  tags: unauth,iot,securityspy,panel,camera
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>SecuritySpy</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

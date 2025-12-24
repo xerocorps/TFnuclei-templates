@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>forma.lms installer</title>
+    - <h1>forma.lms - Installation</h1>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/install/'
+id: formalms-install
+info:
+  author: princechaddha
+  description: Formalms Installation is exposed.
+  metadata:
+    max-request: 1
+  name: Formalms Exposed Installation
+  severity: high
+  tags: misconfig,formalms

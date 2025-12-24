@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - 404 - Page Not Found
+    - Start Your New Landing Page Now!
+    - pagewiz
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: pagewiz-takeover
+info:
+  author: brabbit10
+  description: Pagewiz takeover was detected.
+  metadata:
+    max-request: 1
+  name: Pagewiz subdomain takeover
+  reference:
+  - https://help.pagewiz.com/hc/en-us/articles/115005391465-Page-URL
+  severity: high
+  tags: takeover

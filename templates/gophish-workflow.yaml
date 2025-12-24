@@ -1,0 +1,10 @@
+id: gophish-workflow
+info:
+  author: dhiyaneshDK
+  description: A simple workflow that runs all Go-Phish related nuclei templates on
+    a given target.
+  name: GoPhish Security Checks
+workflows:
+- subtemplates:
+  - tags: gophish
+  template: exposed-panels/gophish-login.yaml

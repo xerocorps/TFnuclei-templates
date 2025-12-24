@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - dsl:
+    - contains(tolower(body), 'woodwing studio server')
+    type: dsl
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/StudioServer/server/apps/login.php'
+  - '{{BaseURL}}/server/apps/login.php'
+  redirects: true
+  stop-at-first-match: true
+id: woodwing-panel
+info:
+  author: pdteam
+  metadata:
+    fofa-query: title=="WoodWing Studio Server"
+    max-request: 2
+    shodan-query: http.title:"WoodWing Studio Server"
+  name: Woodwing Studio Server - Panel
+  reference:
+  - https://twitter.com/ynsmroztas/status/1680961398011047936
+  severity: info
+  tags: woodwing,panel

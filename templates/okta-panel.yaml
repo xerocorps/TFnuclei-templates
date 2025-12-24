@@ -1,0 +1,28 @@
+http:
+- host-redirects: true
+  matchers:
+  - type: word
+    words:
+    - <title>Okta - Sign In</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: okta-panel
+info:
+  author: pussycat0x
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Okta login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"okta"
+  name: Okta Login Panel - Detect
+  severity: info
+  tags: panel,okta,login

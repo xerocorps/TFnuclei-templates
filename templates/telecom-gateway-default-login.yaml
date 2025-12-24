@@ -1,0 +1,39 @@
+http:
+- attack: pitchfork
+  host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - "<title>\u7535\u4FE1\u7F51\u5173\u670D\u52A1\u5668\u7BA1\u7406\u540E\u53F0</title>"
+    - index-shang.php
+    - di.php
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  payloads:
+    password:
+    - admin
+    username:
+    - admin
+  raw:
+  - 'POST /manager/login.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+
+    Name={{username}}&Pass={{password}}
+
+    '
+id: telecom-gateway-default-login
+info:
+  author: ritikchaddha
+  description: Telecom Gateway default admin login credentials were successful.
+  metadata:
+    max-request: 1
+  name: Telecom Gateway - Default Admin Login
+  severity: high
+  tags: default-login,telecom,gateway

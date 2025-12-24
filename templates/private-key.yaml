@@ -1,0 +1,18 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - '"BEGIN OPENSSH PRIVATE KEY"'
+    - '"BEGIN PRIVATE KEY"'
+    - '"BEGIN RSA PRIVATE KEY"'
+    - '"BEGIN DSA PRIVATE KEY"'
+    - '"BEGIN EC PRIVATE KEY"'
+    - '"BEGIN PGP PRIVATE KEY BLOCK"'
+    - '"ssh-rsa"'
+    type: regex
+id: private-key
+info:
+  author: gaurang
+  name: Private Key Detect
+  severity: high

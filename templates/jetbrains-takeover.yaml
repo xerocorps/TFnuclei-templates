@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - is not a registered InCloud YouTrack.
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: jetbrains-takeover
+info:
+  author: pdteam
+  description: Jetbrains takeover was detected.
+  metadata:
+    max-request: 1
+  name: Jetbrains Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/pull/107
+  severity: high
+  tags: takeover,jetbrains

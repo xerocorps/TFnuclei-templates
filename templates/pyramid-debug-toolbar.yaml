@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <title>Pyramid Debug Toolbar</title>
+    - Pyramid DebugToolbar</a>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/_debug_toolbar/'
+id: pyramid-debug-toolbar
+info:
+  author: geeknik
+  description: Pyramid Debug Toolbar provides a debug toolbar useful while you are
+    developing your Pyramid application.
+  metadata:
+    max-request: 1
+  name: Pyramid Debug Toolbar
+  reference:
+  - https://github.com/Pylons/pyramid_debugtoolbar
+  severity: medium
+  tags: pyramid,logs,exposure

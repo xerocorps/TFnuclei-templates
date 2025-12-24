@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"coord":'
+    - '"weather":'
+    - '"base":'
+  method: GET
+  path:
+  - https://api.openweathermap.org/data/2.5/weather?q=Chicago&appid={{token}}
+id: api-openweather
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 1
+  name: OpenWeather API Test
+  reference:
+  - https://openweathermap.org/current
+  severity: info
+  tags: token-spray,weather,openweather
+self-contained: true

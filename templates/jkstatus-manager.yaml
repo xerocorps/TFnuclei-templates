@@ -1,0 +1,35 @@
+http:
+- headers:
+    X-Forwarded-For: 127.0.0.1
+  matchers:
+  - type: word
+    words:
+    - JK Status Manager
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/status'
+  - '{{BaseURL}}/jkstatus'
+  - '{{BaseURL}}/jkstatus-auth'
+  - '{{BaseURL}}/jk-status'
+  - '{{BaseURL}}/jkmanager'
+  - '{{BaseURL}}/jkmanager-auth'
+  - '{{BaseURL}}/jdkstatus'
+  stop-at-first-match: true
+id: jkstatus-manager
+info:
+  author: pdteam,DhiyaneshDk
+  description: 'Exposed JKStatus manager which is a web-based tool that allows administrators
+    to monitor and manage the connections between the Apache HTTP Server and the Tomcat
+    application server.
+
+    '
+  metadata:
+    max-request: 8
+    shodan-query: html:"JK Status Manager"
+    verified: true
+  name: JK Status Manager - Detect
+  reference:
+  - https://github.com/PortSwigger/j2ee-scan/blob/master/src/main/java/burp/j2ee/issues/impl/JKStatus.java
+  severity: low
+  tags: config,jk,status,exposure

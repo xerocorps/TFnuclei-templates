@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"meta":'
+    - '"data":'
+    - '"url":'
+  method: GET
+  path:
+  - https://api.buttercms.com/v2/posts/?auth_token={{token}}
+id: api-buttercms
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 1
+  name: ButterCMS API Test
+  reference:
+  - https://buttercms.com/docs/api/#introduction
+  severity: info
+  tags: token-spray,buttercms
+self-contained: true

@@ -1,0 +1,39 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - \[\"Buildbot\", \"([0-9.]+)\"\]
+    type: regex
+  host-redirects: true
+  matchers:
+  - condition: or
+    part: body
+    regex:
+    - <title(.*)>Buildbot</title>
+    - buildbot_config
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: buildbot-panel
+info:
+  author: thardt-praetorian,daffainfo
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Buildbot panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"BuildBot"
+    verified: true
+  name: Buildbot Panel - Detect
+  reference:
+  - https://buildbot.net
+  severity: info
+  tags: panel,buildbot,cicd

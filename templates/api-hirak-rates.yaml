@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"token":'
+    - '"plan":'
+    - '"hits":'
+    - '"remain":'
+  method: GET
+  path:
+  - https://rates.hirak.site/stat/?token={{token}}
+id: api-hirak-rates
+info:
+  author: daffainfo
+  description: Exchange rates between 162 currency & 300 crypto currency update each
+    5 min, accurate, no limits
+  metadata:
+    max-request: 1
+  name: Hirak Exchange Rates API Test
+  reference:
+  - https://rates.hirak.site/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/hirak-exchange-rates
+  severity: info
+  tags: token-spray,hirak
+self-contained: true

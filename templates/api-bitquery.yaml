@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '"message": "No query string was present"'
+  raw:
+  - 'POST https://graphql.bitquery.io HTTP/1.1
+
+    Host: graphql.bitquery.io
+
+    X-API-KEY: {{token}}
+
+    '
+id: api-bitquery
+info:
+  author: daffainfo
+  description: Onchain GraphQL APIs & DEX APIs
+  metadata:
+    max-request: 1
+  name: Bitquery API Test
+  reference:
+  - https://graphql.bitquery.io/ide
+  - https://github.com/daffainfo/all-about-apikey/tree/main/bitquery
+  severity: info
+  tags: token-spray,bitquery
+self-contained: true

@@ -1,0 +1,13 @@
+id: rocketmq-console-exposure
+info:
+  author: pd-team
+  name: Apache RocketMQ Console Exposure
+  severity: medium
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>RocketMq-console-ng</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'

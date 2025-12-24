@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"results":'
+    - '"name":"databases"'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/query?db=db&q=SHOW%20DATABASES'
+id: unauthenticated-influxdb
+info:
+  author: pussycat0x
+  metadata:
+    shodan-dork: InfluxDB
+  name: Unauthentication InfluxDB Detection
+  severity: high
+  tags: unauth,db,influxdb,misconfig

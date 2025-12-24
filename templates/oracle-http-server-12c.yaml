@@ -1,0 +1,21 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Oracle HTTP Server 12c</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: oracle-http-server-12c
+info:
+  author: dhiyaneshDK
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Oracle HTTP Server 12c"
+  name: Oracle HTTP Server 12c
+  severity: info
+  tags: tech,oracle

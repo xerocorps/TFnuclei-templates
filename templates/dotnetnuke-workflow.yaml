@@ -1,0 +1,12 @@
+id: dotnetnuke-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all DotNetNuke related nuclei templates
+    on a given target.
+  name: DotNetNuke Security Checks
+workflows:
+- matchers:
+  - name: dotnetnuke
+    subtemplates:
+    - tags: dotnetnuke
+  template: technologies/tech-detect.yaml

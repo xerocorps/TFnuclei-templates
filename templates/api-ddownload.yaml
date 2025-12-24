@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"storage_left"'
+    - '"premium_traffic_left"'
+    - '"email"'
+  method: GET
+  path:
+  - https://api-v2.ddownload.com/api/account/info?key={{token}}
+id: api-ddownload
+info:
+  author: daffainfo
+  description: File Sharing and Storage
+  metadata:
+    max-request: 1
+  name: ddownload API Test
+  reference:
+  - https://ddownload.com/api
+  - https://github.com/daffainfo/all-about-apikey/tree/main/ddownload
+  severity: info
+  tags: token-spray,ddownload
+self-contained: true

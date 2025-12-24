@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - editorial-calendar
+  - dsl:
+    - compare_versions(version, '<= 3.7.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/editorial-calendar/readme.txt'
+  redirects: true
+id: editorial_calendar-7f01ad95-7a51-408c-917f-4350dbeabb2b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/editorial-calendar/
+    google-query: inurl:"/wp-content/plugins/editorial-calendar/"
+    shodan-query: http.html:"wp-content/plugins/editorial-calendar/"
+  name: 'Editorial Calendar <= 3.7.12 - Authenticated (Contributor+) Insecure Direct
+    Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7f01ad95-7a51-408c-917f-4350dbeabb2b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,editorial-calendar,low,candidate

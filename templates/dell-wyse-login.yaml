@@ -1,0 +1,19 @@
+id: dell-wyse-login
+info:
+  author: gy741
+  name: Dell Wyse Management Suite Login Panel
+  reference: https://research.nccgroup.com/2021/07/06/technical-advisory-arbitrary-file-read-in-dell-wyse-management-suite-cve-2021-21586-cve-2021-21587/
+  severity: info
+  tags: panel,dell,login
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Wyse Management Suite</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ccm-web/'

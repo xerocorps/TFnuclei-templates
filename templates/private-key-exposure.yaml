@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - Index of /node_modules/mqtt/test/helpers
+    - Parent Directory
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/node_modules/mqtt/test/helpers/'
+id: private-key-exposure
+info:
+  author: aashiq
+  description: Searches for private key exposure by attempting to query the helper
+    endpoint on node_modules
+  metadata:
+    max-request: 1
+  name: Private key exposure via helper detector
+  severity: high
+  tags: exposure,node,misconfig

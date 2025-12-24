@@ -1,0 +1,21 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - name: exception
+    part: body
+    regex:
+    - DataError
+    - IntegrityError
+    - ProgrammingError
+    - OperationalError
+    type: regex
+id: python-app-sql-exceptions
+info:
+  author: geeknik
+  description: Generic check for SQL exceptions in Python according to PEP 249
+  name: Python App SQL Exception Check
+  reference:
+  - https://www.python.org/dev
+  severity: medium
+  tags: file,logs,python,sql

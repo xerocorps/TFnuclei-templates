@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Index of /config
+    - Parent Directory
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/config/'
+id: configuration-listing
+info:
+  author: j33n1k4
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: Listing of sensitive configuration files containing items such as usernames,
+    passwords, and IP addresses was detected.
+  metadata:
+    max-request: 1
+  name: Sensitive Configuration Files Listing - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/7014
+  severity: medium
+  tags: config,listing,exposure,edb

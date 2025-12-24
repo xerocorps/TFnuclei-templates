@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Test Page for the HTTP Server on Fedora</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-fedora-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Test Page for the HTTP Server on Fedora"
+  name: Fedora Default Test Page
+  severity: info
+  tags: tech,fedora

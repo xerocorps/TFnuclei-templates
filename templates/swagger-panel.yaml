@@ -1,0 +1,21 @@
+id: swagger-panel
+info:
+  author: Ice3man
+  name: Swagger API Panel
+  severity: low
+requests:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - '"swagger":'
+    - Swagger UI
+  method: GET
+  path:
+  - '{{BaseURL}}/swagger/index.html'
+  - '{{BaseURL}}/swagger-ui.html'
+  - '{{BaseURL}}/swagger/swagger-ui.html'
+  - '{{BaseURL}}/api/swagger-ui.html'
+  - '{{BaseURL}}/api-docs/swagger.json'
+  - '{{BaseURL}}/swagger.json'
+  - '{{BaseURL}}/swagger/v1/swagger.json'

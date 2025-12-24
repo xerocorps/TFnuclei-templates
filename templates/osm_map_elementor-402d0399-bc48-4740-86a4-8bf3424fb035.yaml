@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - osm-map-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/osm-map-elementor/readme.txt'
+  redirects: true
+id: osm_map_elementor-402d0399-bc48-4740-86a4-8bf3424fb035
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/osm-map-elementor/
+    google-query: inurl:"/wp-content/plugins/osm-map-elementor/"
+    shodan-query: http.html:"wp-content/plugins/osm-map-elementor/"
+  name: 'OSM Map Widget for Elementor <= 1.2.2 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via id Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/402d0399-bc48-4740-86a4-8bf3424fb035?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,osm-map-elementor,low,candidate

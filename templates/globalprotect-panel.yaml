@@ -1,0 +1,13 @@
+id: globalprotect-panel
+info:
+  author: organiccrap
+  name: PaloAlto Networks GlobalProtect Panel
+  severity: low
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>GlobalProtect Portal</TITLE>
+  method: GET
+  path:
+  - '{{BaseURL}}/global-protect/login.esp'

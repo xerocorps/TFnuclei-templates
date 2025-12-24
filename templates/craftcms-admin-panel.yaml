@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - title="Powered by Craft CMS"
+  - part: body
+    type: word
+    words:
+    - <a id=\"poweredby\" href=\"http:\/\/craftcms.com\/\"
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/login'
+id: craftcms-admin-panel
+info:
+  author: Supr4s
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Craft CMS admin login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: 'X-Powered-By: Craft CMS'
+  name: Craft CMS Admin Login Panel - Detect
+  severity: info
+  tags: panel,craftcms

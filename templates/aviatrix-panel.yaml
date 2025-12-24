@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Aviatrix
+    - Controller</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: aviatrix-panel
+info:
+  author: pikpikcu,philippedelteil,daffainfo
+  classification:
+    cwe-id: CWE-200
+  description: An Aviatrix Cloud Controller login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Aviatrix Cloud Controller"
+  name: Aviatrix Cloud Controller Panel
+  reference:
+  - https://docs.aviatrix.com/HowTos/controller_config.html
+  severity: info
+  tags: panel,aviatrix

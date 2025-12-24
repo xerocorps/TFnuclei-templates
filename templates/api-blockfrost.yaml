@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"url":'
+    - '"version":'
+  raw:
+  - 'GET https://cardano-mainnet.blockfrost.io/api/v0/ HTTP/1.1
+
+    Host: cardano-mainnet.blockfrost.io
+
+    project_id: {{token}}
+
+    '
+id: api-blockfrost
+info:
+  author: daffainfo
+  description: Interaction with the Cardano mainnet and several testnets
+  metadata:
+    max-request: 1
+  name: Blockfrost API Test
+  reference:
+  - https://docs.blockfrost.io/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/blockfrost
+  severity: info
+  tags: token-spray,blockfrost
+self-contained: true

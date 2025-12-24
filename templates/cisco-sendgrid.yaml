@@ -1,0 +1,32 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <div class="top\-margin">Version ([0-9.]+)<\/div>
+    type: regex
+  matchers:
+  - regex:
+    - (?m)^<title>Cisco ServiceGrid (.*)<\/title>$
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pages/sdcall/Login.jsp'
+id: cisco-sendgrid
+info:
+  author: dhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Cisco ServiceGrid login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Cisco ServiceGrid"
+  name: Cisco ServiceGrid Login Panel - Detect
+  severity: info
+  tags: panel,cisco

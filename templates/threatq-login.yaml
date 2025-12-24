@@ -1,0 +1,35 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <script src="/assets/js/threatq.min.js\?(.*)
+    type: regex
+  matchers:
+  - condition: or
+    type: word
+    words:
+    - <title ng-bind="PageTitle.getTitle()">ThreatQ</title>
+    - <script src="/assets/js/threatq.min.js
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'
+id: threatq-login
+info:
+  author: idealphase
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: ThreatQ login panel was detected.
+  metadata:
+    max-request: 1
+  name: ThreatQ Login Panel - Detect
+  reference:
+  - https://www.threatq.com/threat-intelligence-platform/
+  severity: info
+  tags: panel,threatq

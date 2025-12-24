@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"verbose_msg":'
+    - '"scan_date":'
+    - '"permalink":'
+  raw:
+  - 'POST https://www.virustotal.com/vtapi/v2/url/scan HTTP/1.1
+
+    Host: www.virustotal.com
+
+    Content-Type: application/x-www-form-urlencoded
+
+    Content-Length: 86
+
+
+    apikey={{token}}&url=google.com
+
+    '
+id: api-virustotal
+info:
+  author: daffainfo
+  metadata:
+    max-request: 1
+  name: VirusTotal API Test
+  reference:
+  - https://developers.virustotal.com/reference
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Anti%20Malware/VirusTotal.md
+  severity: info
+  tags: token-spray,virustotal
+self-contained: true

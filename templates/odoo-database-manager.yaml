@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <title>Odoo</title>
+    - .o_database_delete
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/web/database/manager'
+id: odoo-database-manager
+info:
+  author: __Fazal,R3dg33k
+  description: Odoo database manager was discovered.
+  metadata:
+    shodan-query: title:"Odoo"
+    verified: true
+  name: Odoo - Database Manager Discovery
+  severity: critical
+  tags: panel,odoo,backup

@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    regex:
+    - <meta (.*)EmpireCMS(.*)>
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: empirecms-detect
+info:
+  author: princechaddha
+  metadata:
+    max-request: 1
+    shodan-query: http.html:EmpireCMS
+  name: EmpireCMS Detect
+  severity: info
+  tags: tech,empirecms

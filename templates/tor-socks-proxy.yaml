@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - This is a SOCKS Proxy
+    - HTTPTunnelPort
+    - SOCKSPort
+  - status:
+    - 501
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: tor-socks-proxy
+info:
+  author: geeknik
+  metadata:
+    max-request: 1
+  name: Detect tor SOCKS proxy
+  severity: info
+  tags: tech,tor,proxy

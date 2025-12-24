@@ -1,0 +1,13 @@
+id: wsdl-detect
+info:
+  author: jarijaas
+  name: wsdl-detect
+  severity: info
+requests:
+- matchers:
+  - type: word
+    words:
+    - wsdl:definitions
+  method: GET
+  path:
+  - '{{BaseURL}}/?wsdl'

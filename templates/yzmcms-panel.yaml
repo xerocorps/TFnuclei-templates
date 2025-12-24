@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - Powered By <a href="http://www.yzmcms.com"
+    - Powered By YzmCMS
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/index/login.html'
+id: yzmcms-panel
+info:
+  author: pikpikcu,daffainfo
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: YzmCMS login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"YzmCMS"
+  name: YzmCMS Login Panel - Detect
+  severity: info
+  tags: panel,yzmcms,login

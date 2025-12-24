@@ -1,0 +1,32 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - '<title>Coverity&reg; :: Sign in</title>'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 1
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: synopsys-coverity-panel
+info:
+  author: idealphase
+  description: "Coverity\xAE is a fast, accurate, and highly scalable static analysis\
+    \ (SAST) solution that helps development and security teams address security and\
+    \ quality defects early in the software development life cycle (SDLC), track and\
+    \ manage risks across the application portfolio, and ensure compliance with security\
+    \ and coding standards.\n"
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Coverity"
+    verified: true
+  name: Synopsys Coverity Panel
+  reference:
+  - https://www.synopsys.com/software-integrity/security-testing/static-analysis-sast.html
+  severity: info
+  tags: panel,coverity,synopsys

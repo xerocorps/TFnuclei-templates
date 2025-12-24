@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - '["env"]'
+    - Environment variables
+  method: GET
+  path:
+  - '{{BaseURL}}/assets/env.js'
+id: env-disclose
+info:
+  author: SirBugs
+  description: This Template checks disclosing secret information via /assets/env.js
+  name: env.js Disclosure
+  severity: high
+  tags: env, env.js, js

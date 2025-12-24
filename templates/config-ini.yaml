@@ -1,0 +1,91 @@
+id: config-ini
+info:
+  author: geeknik
+  description: 'Detects exposed INI configuration files containing actual credentials,
+
+    API keys, or database passwords with high-confidence pattern matching.
+
+    '
+  name: INI Configuration File Exposure with Credential Detection
+  severity: high
+requests:
+- extractors:
+  - group: 2
+    name: database_creds
+    regex:
+    - (db_password|database_password)\s*=\s*([^\s\n]+)
+    type: regex
+  - group: 2
+    name: api_keys
+    regex:
+    - (api_key|secret_key)\s*=\s*([a-zA-Z0-9_\-]{32,})
+    type: regex
+  - group: 1
+    name: aws_keys
+    regex:
+    - aws_access_key_id\s*=\s*(AKIA[0-9A-Z]{16})
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    regex:
+    - ^\[[\w\s]+\]
+    - ^\w[\w\s]*\s*=\s*.+
+    type: regex
+  - condition: or
+    regex:
+    - (db_password|database_password|db_pass|mysql_password|postgres_password)\s*=\s*[^\s\n]{8,}
+    - (db_user|database_user|mysql_user|postgres_user)\s*=\s*[^\s\n]+
+    - (api_key|apikey|api_secret)\s*=\s*[a-zA-Z0-9_\-]{32,}
+    - (secret_key|secret|private_key)\s*=\s*[a-zA-Z0-9_\-]{32,}
+    - (access_token|auth_token)\s*=\s*[a-zA-Z0-9_\-\.]{20,}
+    - aws_access_key_id\s*=\s*AKIA[0-9A-Z]{16}
+    - aws_secret_access_key\s*=\s*[a-zA-Z0-9/\+=]{40}
+    - connection_string\s*=\s*.*(password|pwd)=[^\s;]+
+    - dsn\s*=\s*.*(password|pwd)=[^\s;]+
+    - (smtp_password|mail_password|email_password)\s*=\s*[^\s\n]{6,}
+    - (encryption_key|encrypt_key|cipher_key)\s*=\s*[a-zA-Z0-9+/=]{16,}
+    type: regex
+  - negative: true
+    type: word
+    words:
+    - example_password
+    - your_password_here
+    - changeme
+    - INSERT_PASSWORD
+    - TODO
+    - PLACEHOLDER
+    - xxxxxx
+    - <password>
+    - password123
+    - test123
+  - negative: true
+    part: header
+    type: word
+    words:
+    - text/html
+    - application/json
+  - dsl:
+    - len(body) > 50 && len(body) < 65536
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/config.ini'
+  - '{{BaseURL}}/configuration.ini'
+  - '{{BaseURL}}/settings.ini'
+  - '{{BaseURL}}/database.ini'
+  - '{{BaseURL}}/db.ini'
+  - '{{BaseURL}}/app.ini'
+  - '{{BaseURL}}/application.ini'
+  - '{{BaseURL}}/.env.ini'
+  - '{{BaseURL}}/conf/config.ini'
+  - '{{BaseURL}}/config/config.ini'
+  - '{{BaseURL}}/config/database.ini'
+  - '{{BaseURL}}/config/settings.ini'
+  - '{{BaseURL}}/application/config.ini'
+  - '{{BaseURL}}/application/configs/application.ini'
+  - '{{BaseURL}}/app/config/config.ini'
+  - '{{BaseURL}}/etc/config.ini'

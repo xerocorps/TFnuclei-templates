@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - appShareUrl = 'share.voipmonitor.org'
+    - VoIPmonitor
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: voipmonitor-panel
+info:
+  author: Yanyun
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: VoIPmonitor login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"VoIPmonitor"
+  name: VoIPmonitor Login Panel - Detect
+  severity: info
+  tags: panel,voipmonitor,login

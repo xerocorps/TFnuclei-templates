@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - funnelforms-free
+  - dsl:
+    - compare_versions(version, '<= 3.7.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/funnelforms-free/readme.txt'
+  redirects: true
+id: funnelforms_free-9871f683-136e-45b5-90fb-a373a771014b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/funnelforms-free/
+    google-query: inurl:"/wp-content/plugins/funnelforms-free/"
+    shodan-query: http.html:"wp-content/plugins/funnelforms-free/"
+  name: "Interactive Contact Form and Multi Step Form Builder with Drag & Drop Editor\
+    \ \u2013 Funnelforms Free <= 3.7.3.2 - Missing Authorization to Unauthenticated\
+    \ Arbitrary Media Upload\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9871f683-136e-45b5-90fb-a373a771014b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,funnelforms-free,high,candidate

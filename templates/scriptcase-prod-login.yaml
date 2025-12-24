@@ -1,0 +1,37 @@
+http:
+- extractors:
+  - group: 2
+    name: version
+    part: body
+    regex:
+    - "(Vers&atilde;o|Version|Vers\xE3o)\\b.*\\s(\\d.*\\d)"
+    type: regex
+  matchers:
+  - condition: and
+    regex:
+    - (?i)(ScriptCase)
+    - (?i)(NetMake)
+    - (?i)(Login)
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/prod/lib/php/'
+  - '{{BaseURL}}/scriptcase/prod/lib/php/'
+  stop-at-first-match: true
+id: scriptcase-prod-login
+info:
+  author: Ricardo Maia (Brainfork)
+  metadata:
+    max-request: 2
+    shodan-query: title:"ScriptCase"
+    verified: true
+  name: ScriptCase Production Environment Login
+  reference:
+  - https://www.scriptcase.com.br
+  - https://www.scriptcase.net
+  severity: info
+  tags: panel,scriptcase

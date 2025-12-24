@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - name
+    - description
+    - main
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/bower.json'
+id: bower-json
+info:
+  author: oppsec,noraj
+  description: 'Bower is a package manager which stores package information in the
+    bower.json file
+
+    '
+  metadata:
+    max-request: 1
+  name: bower.json File Disclosure
+  reference:
+  - https://github.com/bower/spec/blob/master/json.md
+  severity: info
+  tags: exposure,files,bower

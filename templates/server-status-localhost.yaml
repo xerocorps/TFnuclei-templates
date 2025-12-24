@@ -1,0 +1,25 @@
+id: server-status-localhost
+info:
+  author: 0xr2r (https://twitter.com/x0xr2r)
+  description: Apache Server Status page is exposed, which may contain information
+    about pages visited by the users, their IPs or sensitive information such as session
+    tokens.
+  name: Apache Server Status Check
+  severity: medium
+  tags:
+  - server-info
+  - server-status
+  - balancer-manager
+  - apache
+  - information
+requests:
+- matchers:
+  - part: response
+    type: word
+    words:
+    - 'Server Version:'
+  method: GET
+  path:
+  - '{{BaseURL}}/server-info'
+  - '{{BaseURL}}/server-status'
+  - '{{BaseURL}}/balancer-manager'

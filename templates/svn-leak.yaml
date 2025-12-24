@@ -1,0 +1,14 @@
+expression: r0()
+id: svn-leak
+info:
+  author: zan8in
+  name: "SVM \u4EE3\u7801\u6258\u7BA1\u6CC4\u6F0F"
+  severity: high
+  verified: true
+rules:
+  r0:
+    expression: response.status == 200 && ("file\n".bmatches(response.body) || "dir\n".bmatches(response.body))
+      && "([0-9]){4}-([0-9]){2}-([0-9]){2}(.*)Z\n".bmatches(response.body)
+    request:
+      method: GET
+      path: /.svn/entries

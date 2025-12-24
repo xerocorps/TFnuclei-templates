@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <title>Home - Mongo Express</title>
+    - <title>system.users - Mongo Express</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/mongo-express/'
+  - '{{BaseURL}}/db/admin/system.users'
+id: unauthenticated-mongo-express
+info:
+  author: dhiyaneshDK,b0rn2r00t
+  description: Mongo Express was able to be access with no authentication requirements
+    in place.
+  metadata:
+    max-request: 3
+    shodan-query: title:"Home - Mongo Express"
+    verified: true
+  name: Mongo Express - Unauthenticated Access
+  reference:
+  - https://www.exploit-db.com/ghdb/5684
+  severity: high
+  tags: mongo,unauth,edb,misconfig

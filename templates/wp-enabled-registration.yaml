@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Register For This Site
+    - E-mail
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-login.php?action=register'
+id: wp-enabled-registration
+info:
+  author: Ratnadip Gajbhiye
+  metadata:
+    max-request: 1
+  name: WordPress user registration enabled
+  severity: info
+  tags: wordpress

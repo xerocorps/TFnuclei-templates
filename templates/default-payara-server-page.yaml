@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Payara Server - Server Running</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-payara-server-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Payara Server - Server Running"
+  name: Payara Server Default Page
+  severity: info
+  tags: tech,payara

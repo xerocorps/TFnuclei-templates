@@ -1,0 +1,33 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <FWRI>([0-9.]+)</FWRI>
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/xml
+  - condition: and
+    type: word
+    words:
+    - <RIMP>
+    - <HSI>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/xmldata?item=all'
+id: ilo-detect
+info:
+  author: milo2012
+  description: Version of HP iLO
+  metadata:
+    max-request: 1
+  name: HP iLO
+  severity: info
+  tags: tech,ilo

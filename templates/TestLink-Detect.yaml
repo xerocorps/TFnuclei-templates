@@ -1,0 +1,22 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - testlink
+  - status:
+    - 200
+    type: status
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/testlink/login.php'
+id: TestLink-Detect
+info:
+  author: YashVardhanTripathi
+  metadata:
+    max-request: 1
+  name: TestLink Detect
+  severity: info
+  tags: tech,testlink

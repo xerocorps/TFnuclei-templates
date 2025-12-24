@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - VMG1312-B10D
+    - Welcome to the Web-Based Configurator
+  - status:
+    - 401
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: zyxel-vmg1312b10d-login
+info:
+  author: princechaddha
+  metadata:
+    max-request: 1
+    shodan-query: http.html:"VMG1312-B10D"
+    verified: true
+  name: Zyxel VMG1312-B10D - Login Detection
+  severity: info
+  tags: tech,zyxel,modem,router,panel

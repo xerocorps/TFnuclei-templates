@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Wowza Streaming Engine Manager</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/enginemanager/ftu/welcome.htm'
+id: wowza-streaming-engine
+info:
+  author: dhiyaneshDK
+  description: Wowza Streaming Engine Manager panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Manager" product:"Wowza Streaming Engine"
+  name: Wowza Streaming Engine Manager Panel - Detect
+  severity: info
+  tags: panel

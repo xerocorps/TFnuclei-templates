@@ -1,0 +1,18 @@
+id: cobbler-exposed-directories
+info:
+  author: c-sh0
+  description: Searches for exposed Cobbler Directories
+  name: Exposed Cobbler Directories
+  severity: medium
+  tags: cobbler,exposure
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Index of /cobbler
+    - Index of /cblr
+  method: GET
+  path:
+  - '{{BaseURL}}/cobbler/'
+  - '{{BaseURL}}/cblr/'

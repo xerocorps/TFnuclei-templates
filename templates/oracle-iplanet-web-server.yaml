@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Oracle iPlanet Web Server
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: oracle-iplanet-web-server
+info:
+  author: pussycat0x
+  metadata:
+    fofa-query: app="Oracle-iPlanet-Web-Server
+    max-request: 1
+  name: Detect Oracle-iPlanet-Web-Server
+  severity: info
+  tags: tech,oracle

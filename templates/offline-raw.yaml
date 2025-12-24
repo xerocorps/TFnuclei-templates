@@ -1,0 +1,16 @@
+id: offline-raw
+info:
+  author: pdteam
+  name: Test Offline raw Template
+  severity: info
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '

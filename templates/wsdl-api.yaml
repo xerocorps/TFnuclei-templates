@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - wsdl:definitions
+  method: GET
+  path:
+  - '{{BaseURL}}/?wsdl'
+id: wsdl-api
+info:
+  author: jarijaas
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: WSDL API was detected.
+  metadata:
+    max-request: 1
+  name: WSDL API - Detect
+  reference: https://www.w3.org/TR/wsdl/
+  severity: info
+  tags: exposure,api

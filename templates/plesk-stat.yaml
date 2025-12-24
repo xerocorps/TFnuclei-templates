@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - Index of /plesk-stat
+    - Parent Directory
+  - condition: or
+    type: word
+    words:
+    - anon_ftpstat
+    - ftpstat
+    - webstat-ssl
+    - webstat
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/plesk-stat/'
+id: plesk-stat
+info:
+  author: th3.d1p4k
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: Webalizer log analyzer configuration was detected.
+  metadata:
+    max-request: 1
+  name: Webalizer Log Analyzer Configuration - Detect
+  reference:
+  - https://webalizer.net/
+  severity: medium
+  tags: config,exposure,plesk

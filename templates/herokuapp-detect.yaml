@@ -1,0 +1,17 @@
+id: herokuapp-detect
+info:
+  author: alifathi-h1
+  description: Detected endpoints might be vulnerable to subdomain takeover or disclose
+    sensitive info
+  name: Detect websites using Herokuapp endpoints
+  severity: info
+  tags: heroku,tech
+requests:
+- extractors:
+  - part: body
+    regex:
+    - '[a-z0-9.-]+\.herokuapp\.com'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

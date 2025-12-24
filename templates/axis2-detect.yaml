@@ -1,0 +1,15 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Service Description
+  method: GET
+  path:
+  - '{{BaseURL}}/axis2/services/listServices'
+  - '{{BaseURL}}/dswsbobje/services/listServices'
+id: axis2-detect
+info:
+  author: notnotnotveg
+  name: Apache Axis2
+  severity: info

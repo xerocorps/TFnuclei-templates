@@ -1,0 +1,23 @@
+id: Advantech-WebAccess
+info:
+  author: Str1am
+  description: "Advantech WebAccess SQL\u6CE8\u5165\u5BFC\u81F4\u8EAB\u4EFD\u9A8C\u8BC1\
+    \u7ED5\u8FC7"
+  name: Advantech WebAccess sqli
+  reference: http://www.str1am.top
+  severity: high
+  tags: Advantech,sqli
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - PROJECTLIST
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/BWMobileService/BWScadaRest.svc/'

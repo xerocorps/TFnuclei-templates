@@ -1,0 +1,32 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - 'Version: (.*)</span>'
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - www.bqe.com">BQE Software Inc.</a>
+    - Web Suite
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/ws2020/'
+  - '{{BaseURL}}/ws2021/'
+id: web-suite-detect
+info:
+  author: pikpikcu
+  metadata:
+    fofa-query: Web Suite 2021 Login
+    max-request: 3
+  name: Web Suite Detect
+  severity: info
+  tags: tech,web-suite

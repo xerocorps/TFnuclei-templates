@@ -1,0 +1,12 @@
+id: cherokee-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Cherokee related nuclei templates on
+    a given target.
+  name: Cherokee Security Checks
+workflows:
+- matchers:
+  - name: cherokee
+    subtemplates:
+    - tags: cherokee
+  template: technologies/tech-detect.yaml

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - noo-jobmonster
+  - dsl:
+    - compare_versions(version, '<= 4.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/noo-jobmonster/style.css'
+  redirects: true
+id: noo_jobmonster-6fa4aa8d-d7f1-4e91-bb2c-c9f80a4bb216
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/noo-jobmonster/
+    google-query: inurl:"/wp-content/themes/noo-jobmonster/"
+    shodan-query: http.html:"wp-content/themes/noo-jobmonster/"
+  name: 'Jobmonster - Job Board WordPress Theme <= 4.8.1 - Authentication Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6fa4aa8d-d7f1-4e91-bb2c-c9f80a4bb216?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-theme,noo-jobmonster,critical,candidate

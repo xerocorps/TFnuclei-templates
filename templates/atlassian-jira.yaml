@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - case-insensitive: true
+    type: word
+    words:
+    - ams-build-number
+    - com.atlassian.jira
+    - jira.webresources
+  - case-insensitive: true
+    part: header
+    type: word
+    words:
+    - 'location: /secure/setupmode!default.jspa'
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+id: atlassian-jira
+info:
+  author: cn-kali-team
+  metadata:
+    product: jira
+    vendor: atlassian
+    verified: true
+  name: atlassian-jira
+  severity: info
+  tags: detect,tech,atlassian-jira

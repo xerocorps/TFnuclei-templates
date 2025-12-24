@@ -1,0 +1,14 @@
+id: custom-dot-git-detect
+info:
+  author: 0xParthJ
+  name: custom-dot-git-detect
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Index of /.git</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/.git/'

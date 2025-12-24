@@ -1,0 +1,58 @@
+http:
+- attack: clusterbomb
+  extractors:
+  - group: 1
+    name: plugin
+    regex:
+    - 'Stable tag: (.*)'
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    regex:
+    - Stable tag
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    plugin: nuclei-custom-templates/wordlists/wp-themes-slugs.txt
+  raw:
+  - 'GET /wp-content/themes/{{plugin}}/readme.txt HTTP/1.1
+
+    Host: {{Host}}
+
+    Upgrade-Insecure-Requests: 1
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/121.0.6167.85 Safari/537.36
+
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+
+    Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+
+    Connection: close
+
+    '
+  redirects: false
+  stop-at-first-match: false
+  threads: 30
+id: wp-themes
+info:
+  author: Caddyshack2175
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
+  description: 'WordPress allows for the installation of themes to enhance the features
+    and functionality, and enhance user experience of the application. However keeping
+    WordPress core as well as plugins updated is critical to security and functionality
+    of WordPress applications.
+
+    '
+  name: Find WordPress Themes
+  reference:
+  - https://wordpress.org/themes/
+  severity: info
+  tags: information, discloser, wordpress, default-files, wp-themes, themes, enum,
+    enumeration

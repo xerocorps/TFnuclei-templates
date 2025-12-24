@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - CirCarLife Scada
+  - condition: and
+    type: word
+    words:
+    - <title>- setup</title>
+    - Network setup
+    - Modem setup
+    - Security setup
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/html/setup.html'
+id: circarlife-setup
+info:
+  author: geeknik
+  description: CirCarLife is an internet-connected electric vehicle charging station
+  name: Exposed CirCarLife Setup Page
+  reference: https://circontrol.com/
+  severity: critical
+  tags: scada,circontrol,circarlife,setup,exposure,panel

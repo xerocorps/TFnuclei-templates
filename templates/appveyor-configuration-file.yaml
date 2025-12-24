@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - 'install:'
+    - 'test_script:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.appveyor.yml'
+  - '{{BaseURL}}/appveyor.yml'
+  stop-at-first-match: true
+id: appveyor-configuration-file
+info:
+  author: DhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: AppVeyor configuration page was detected.
+  metadata:
+    max-request: 2
+    shodan-query: html:"appveyor.yml"
+    verified: true
+  name: AppVeyor Configuration Page - Detect
+  severity: medium
+  tags: config,exposure,devops

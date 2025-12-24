@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Welcome to Movable Type</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-movable-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: title:"Welcome to Movable Type"
+  name: Movable Default Page
+  severity: info
+  tags: tech,movable

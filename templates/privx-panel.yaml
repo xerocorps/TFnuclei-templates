@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>PrivX</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/login'
+id: privx-panel
+info:
+  author: korteke
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: SSH PrivX login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: title:"PrivX"
+  name: SSH PrivX Login Panel - Detect
+  reference:
+  - https://www.ssh.com/products/privx/
+  severity: info
+  tags: panel,privx

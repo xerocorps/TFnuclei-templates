@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    regex:
+    - <title>erxes(.*)</title>
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: erxes-detect
+info:
+  author: princechaddha
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"erxes"
+  name: Erxes Detect
+  severity: info
+  tags: tech,erxes

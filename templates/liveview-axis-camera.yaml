@@ -1,0 +1,43 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - AXIS (.*) Network Camera</title>
+    type: regex
+  host-redirects: true
+  matchers:
+  - condition: or
+    dsl:
+    - contains(tolower(body), "live view  - axis")
+    - contains(tolower(body), "live view - axis")
+    name: stream-view
+    type: dsl
+  - condition: and
+    dsl:
+    - status_code == 200
+    - '"1106649083" == mmh3(base64_py(body))'
+    name: logo
+    type: dsl
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/view/viewer_index.shtml'
+  - '{{BaseURL}}/pics/logo_70x29px.gif'
+  stop-at-first-match: true
+id: liveview-axis-camera
+info:
+  author: dhiyaneshDK,f1she3
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: AXIS Network Camera live view was detected.
+  metadata:
+    max-request: 2
+  name: AXIS Network Camera Live View - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6843
+  severity: info
+  tags: axis,edb,iot

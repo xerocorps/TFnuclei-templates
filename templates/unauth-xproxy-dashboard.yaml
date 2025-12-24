@@ -1,0 +1,23 @@
+id: unauth-xproxy-dashboard
+info:
+  author: pussycat0x
+  metadata:
+    fofa-dork: X-Proxy Dashboard
+  name: X-Proxy Dashboard Detect
+  severity: high
+  tags: xproxy,panel
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>X-Proxy</title>
+    - Dashboard</a>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

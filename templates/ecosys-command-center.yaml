@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Command Center RX</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: ecosys-command-center
+info:
+  author: princechaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: ECOSYS Command Center RX panel was detected.
+  metadata:
+    max-request: 1
+  name: ECOSYS Command Center RX Panel - Detect
+  severity: info
+  tags: panel,printer,ecosys,iot

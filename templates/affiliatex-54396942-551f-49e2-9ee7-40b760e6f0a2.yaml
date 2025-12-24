@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - affiliatex
+  - dsl:
+    - compare_versions(version, '<= 1.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/affiliatex/readme.txt'
+  redirects: true
+id: affiliatex-54396942-551f-49e2-9ee7-40b760e6f0a2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/affiliatex/
+    google-query: inurl:"/wp-content/plugins/affiliatex/"
+    shodan-query: http.html:"wp-content/plugins/affiliatex/"
+  name: 'AffiliateX <= 1.2.9 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/54396942-551f-49e2-9ee7-40b760e6f0a2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,affiliatex,low,candidate

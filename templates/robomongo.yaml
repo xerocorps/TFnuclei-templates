@@ -1,0 +1,28 @@
+id: robomongo
+info:
+  author: geeknik
+  description: MongoDB credentials file used by RoboMongo
+  name: Detect robomongo.json
+  severity: high
+  tags: mongodb,robomongo,auth
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - application/json
+  - condition: and
+    type: word
+    words:
+    - databaseName
+    - userName
+    - userPassword
+    - serverHost
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/db/robomongo.json'
+  - '{{BaseURL}}/robomongo.json'

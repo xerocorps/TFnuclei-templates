@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '<title>Apache2 Debian Default Page: It works</title>'
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-apache2-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Apache2 Debian Default Page:"
+  name: Apache2 Default Test Page
+  severity: info
+  tags: tech,apache

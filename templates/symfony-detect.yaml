@@ -1,0 +1,18 @@
+id: symfony-detect
+info:
+  author: grant
+  name: Detect Symfony Software
+  severity: info
+requests:
+- matchers:
+  - status:
+    - 403
+    type: status
+  - part: all
+    type: word
+    words:
+    - The Symfony Project
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/_fragment'

@@ -1,0 +1,38 @@
+http:
+- extractors:
+  - json:
+    - ."m.server" | select( . != null )
+    - ."m.homeserver" | .base_url | select( . != null )
+    - ."m.identity_server" | .base_url | select( . != null )
+    part: body
+    type: json
+  matchers:
+  - regex:
+    - '"m\.([a-z]+)":'
+    type: regex
+  - negative: true
+    part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/.well-known/matrix/server'
+  - '{{BaseURL}}/.well-known/matrix/client'
+  redirects: true
+id: matrix-detect
+info:
+  author: erethon
+  description: Detects Matrix servers based on .well-known entries. See https://en.wikipedia.org/wiki/Matrix_(protocol)
+  metadata:
+    max-request: 2
+  name: Matrix Server Detect
+  reference: https://spec.matrix.org/v1.3/server-server-api/#getwell-knownmatrixserver,
+    https://spec.matrix.org/v1.3/client-server-api/#getwell-knownmatrixclient
+  severity: info
+  tags: tech,matrix

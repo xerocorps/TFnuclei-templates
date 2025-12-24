@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <TITLE>Olivetti CRF</TITLE>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: olivetti-crf-detect
+info:
+  author: pussycat0x
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Olivetti CRF"
+  name: Olivetti CRF Detect
+  severity: info
+  tags: tech,olivetti

@@ -1,0 +1,23 @@
+http:
+- host-redirects: true
+  matchers:
+  - type: word
+    words:
+    - Versa Networks
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/versa/login.html'
+id: versa-sdwan
+info:
+  author: pdteam
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Versa SD-WAN login panel was detected.
+  metadata:
+    max-request: 1
+  name: Versa SD-WAN Login Panel - Detect
+  severity: info
+  tags: panel,versa,sdwan

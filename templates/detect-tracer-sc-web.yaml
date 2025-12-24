@@ -1,0 +1,26 @@
+id: detect-tracer-sc-web
+info:
+  author: geeknik
+  name: Detects Tracer SC Web UI
+  reference: https://www.trane.com/commercial/north-america/us/en/products-systems/building-management---automation/building-automation-systems/tracer-sc-plus.html
+  severity: info
+  tags: tracer,trane,iot
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - <title>Tracer SC</title>
+    - '> Tracer SC </div>'
+    - By accessing Tracer SC+,
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/hui/index.html'

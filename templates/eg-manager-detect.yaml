@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title> eG Innovations, Inc.</title>
+    - eG Innovations, Inc. All Rights Reserved
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/final/'
+id: eg-manager-detect
+info:
+  author: pikpikcu
+  metadata:
+    max-request: 1
+  name: eG Manager Detect
+  severity: info
+  tags: tech,eg

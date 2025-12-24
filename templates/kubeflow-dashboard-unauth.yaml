@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '{"runs":[{"id":'
+    - resource_references
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pipeline/apis/v1beta1/runs?page_size=5&sort_by=created_at%20desc'
+id: kubeflow-dashboard-unauth
+info:
+  author: dhiyaneshDk
+  description: Kubeflow internal data is exposed.
+  metadata:
+    max-request: 1
+  name: Kubeflow Unauth
+  reference:
+  - https://github.com/kubeflow/kubeflow
+  severity: high
+  tags: kubeflow,unauth,misconfig

@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '"repoKey"'
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/artifactory/ui/repodata?deploy=true'
+id: artifactory-anonymous-deploy
+info:
+  author: panch0r3d
+  description: Artifactory anonymous repo is exposed.
+  metadata:
+    max-request: 1
+  name: Artifactory anonymous deploy
+  reference:
+  - https://www.errno.fr/artifactory/Attacking_Artifactory.html
+  severity: high
+  tags: artifactory,misconfig

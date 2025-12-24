@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code==200
+    - ('1540720428' == mmh3(base64_py(body)))
+    type: dsl
+  - condition: and
+    dsl:
+    - status_code==200
+    - contains(tolower(body), 'sysaid help desk software')
+    type: dsl
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/favicon.ico'
+  - '{{BaseURL}}/Login.jsp'
+  stop-at-first-match: true
+id: sysaid-panel
+info:
+  author: pdteam
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: SysAid login panel was detected.
+  metadata:
+    max-request: 2
+  name: SysAid Login Panel - Detect
+  severity: info
+  tags: panel,sysaid,helpdesk

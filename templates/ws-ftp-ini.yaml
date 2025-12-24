@@ -1,0 +1,29 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - HOST=
+    - UID=
+    - DIR=
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/ws_ftp.ini'
+id: ws-ftp-ini
+info:
+  author: DhiyaneshDK
+  description: WS FTP file is disclosed.
+  metadata:
+    google-query: intitle:"Index of" ws_ftp.ini
+    max-request: 1
+    verified: true
+  name: WS FTP File Disclosure
+  severity: low
+  tags: exposure,ftp,files

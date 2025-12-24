@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - HTTP_ACCEPT
+    - HTTP_ACCEPT_ENCODING
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/test/test.cgi'
+id: cgi-test-page
+info:
+  author: YASH ANAND @yashanand155
+  metadata:
+    max-request: 1
+  name: CGI Test page
+  severity: info
+  tags: cgi,misconfig

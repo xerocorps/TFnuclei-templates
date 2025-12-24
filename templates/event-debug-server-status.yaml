@@ -1,0 +1,30 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - 'Version: <tt>([0-9.]+)'
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <h1>Event Debug Server Status</h1>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: event-debug-server-status
+info:
+  author: pussycat0x
+  description: Exposes server status,logs and internal information.
+  metadata:
+    max-request: 1
+    shodan-query: title:"Event Debug Server"
+    verified: true
+  name: Event Debug Server Status
+  severity: low
+  tags: event,exposure,debug

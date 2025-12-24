@@ -1,0 +1,39 @@
+http:
+- host-redirects: true
+  matchers:
+  - type: word
+    words:
+    - ARCHIBUS
+  - condition: or
+    type: word
+    words:
+    - Continue As a Guest
+    - login
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/archibus/login.axvw'
+  - '{{BaseURL}}/archibus/schema/ab-core/views/sign-in/ab-sign-in.jsp'
+  stop-at-first-match: true
+id: archibus-webcentral-panel
+info:
+  author: righettod,PJBorah,Hardik-Rathod
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Archibus Web Central login panel was detected.
+  metadata:
+    max-request: 3
+    shodan-query: http.favicon.hash:889652940
+    verified: true
+  name: Archibus Web Central Login - Panel Detect
+  reference:
+  - https://archibus.com/products/
+  severity: info
+  tags: panel,archibus

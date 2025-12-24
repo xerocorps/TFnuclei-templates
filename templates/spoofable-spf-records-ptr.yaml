@@ -1,0 +1,20 @@
+dns:
+- class: inet
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - v=spf1
+    - ' ptr '
+  name: '{{FQDN}}'
+  recursion: true
+  retries: 3
+  type: TXT
+id: spoofable-spf-records-ptr
+info:
+  author: binaryfigments
+  description: Check if TXT records in DNS for SPF records that have the PTR mechanism
+    that is spoofable.
+  name: Find spoofable SPF records containing the PTR mechanism
+  severity: info
+  tags: dns,spf

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - media-library-assistant
+  - dsl:
+    - compare_versions(version, '<= 2.81')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/media-library-assistant/readme.txt'
+  redirects: true
+id: media_library_assistant-21456889-058c-46a5-80c3-a0c8f90cd3bf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/media-library-assistant/
+    google-query: inurl:"/wp-content/plugins/media-library-assistant/"
+    shodan-query: http.html:"wp-content/plugins/media-library-assistant/"
+  name: 'Media Library Assistant <= 2.81 - Remote Code Execution via tax_query, meta_query,
+    date_query Parameters
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/21456889-058c-46a5-80c3-a0c8f90cd3bf?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,media-library-assistant,critical,candidate

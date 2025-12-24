@@ -1,0 +1,15 @@
+id: exposed-docker-api
+info:
+  author: CyberCavalcante
+  name: Exposed Docker API Check
+  severity: high
+network:
+- matchers:
+  - type: word
+    words:
+    - Docker
+  payload: null
+  ports:
+  - 2375
+  - 2376
+  protocol: tcp

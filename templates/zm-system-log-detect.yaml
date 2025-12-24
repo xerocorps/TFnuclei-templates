@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>ZM - System Log</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?view=log'
+  - '{{BaseURL}}/zm/?view=log'
+  stop-at-first-match: true
+id: zm-system-log-detect
+info:
+  author: pussycat0x
+  description: Zm system log file exposed.
+  metadata:
+    max-request: 2
+  name: zm-system-log-detect
+  reference: https://www.exploit-db.com/ghdb/6926
+  severity: low
+  tags: logs,zm,exposure

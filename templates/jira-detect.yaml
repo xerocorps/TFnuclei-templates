@@ -1,0 +1,14 @@
+id: jira-detect
+info:
+  author: bauthard
+  name: Detect Jira Issue Management Software
+  severity: low
+requests:
+- matchers:
+  - type: word
+    words:
+    - Project Management Software
+  method: GET
+  path:
+  - '{{BaseURL}}/secure/Dashboard.jspa'
+  - '{{BaseURL}}/jira/secure/Dashboard.jspa'

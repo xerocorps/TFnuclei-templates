@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Welcome to Zenphoto! This page will set up Zenphoto
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/zenphoto/zp-core/setup/index.php'
+  - '{{BaseURL}}/zp/zp-core/setup/index.php'
+  - '{{BaseURL}}/gallery/zp-core/setup/index.php'
+  - '{{BaseURL}}/zp-core/setup/index.php'
+  stop-at-first-match: true
+id: zenphoto-sensitive-info
+info:
+  author: qlkwej
+  description: Misconfiguration on Zenphoto version < 1.5.X which lead to sensitive
+    information disclosure
+  metadata:
+    max-request: 4
+  name: Zenphoto Installation Sensitive Information
+  severity: medium
+  tags: misconfig,unauth

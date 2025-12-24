@@ -1,0 +1,15 @@
+id: sonarqube-token
+info:
+  author: Ice3man
+  name: SonarQube Token Disclosure
+  severity: info
+  tags: exposure,token
+requests:
+- extractors:
+  - part: body
+    regex:
+    - sonar.{0,50}(?:"|'|`)?[0-9a-f]{40}(?:"|'|`)?
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

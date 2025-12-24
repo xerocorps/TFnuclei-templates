@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - Company Not Found
+    - There is no such company. Did you enter the right URL?
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: canny-takeover
+info:
+  author: pdteam
+  description: Canny takeover was detected.
+  metadata:
+    max-request: 1
+  name: Canny Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/114
+  severity: high
+  tags: takeover

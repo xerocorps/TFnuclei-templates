@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - responsive-posts-carousel-pro
+  - dsl:
+    - compare_versions(version, '<= 15.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/responsive-posts-carousel-pro/readme.txt'
+  redirects: true
+id: responsive_posts_carousel_pro-fa980215-3e8f-40e5-9855-12e9fd9258aa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/responsive-posts-carousel-pro/
+    google-query: inurl:"/wp-content/plugins/responsive-posts-carousel-pro/"
+    shodan-query: http.html:"wp-content/plugins/responsive-posts-carousel-pro/"
+  name: 'Responsive Posts Carousel WordPress Plugin <= 15.0 - Authenticated (Subscriber+)
+    Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fa980215-3e8f-40e5-9855-12e9fd9258aa?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,responsive-posts-carousel-pro,low,candidate

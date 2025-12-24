@@ -1,0 +1,19 @@
+id: basic-auth-detection
+info:
+  author: w4cky_
+  name: Basic auth detection
+  severity: low
+  tags: tech,basic-auth
+requests:
+- matchers:
+  - status:
+    - 401
+    type: status
+  - part: header
+    type: word
+    words:
+    - 'Www-Authenticate:'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

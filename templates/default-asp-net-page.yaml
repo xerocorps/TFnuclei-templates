@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Home Page - My ASP.NET Application
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-asp-net-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Home Page - My ASP.NET Application"
+  name: ASP.Net Test Page
+  severity: info
+  tags: tech,asp

@@ -1,0 +1,19 @@
+id: gespage-detect
+info:
+  author: pikpikcu
+  name: Gespage Detect
+  severity: info
+  tags: tech,gespage
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Login utilisateur Gespage</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/gespage/webapp/login.xhtml'

@@ -1,0 +1,30 @@
+id: foulenzer-cve
+info:
+  author: foulenzer
+  name: Advanced workflow detecting usual CVEs
+logic: 'shellshock()
+
+  nodejs()
+
+  struts2()
+
+  rails()
+
+  phpfpm_nginx()
+
+  rails2()
+
+  nextjs()
+
+  rails3()
+
+  '
+variables:
+  nextjs: cves/CVE-2020-5284.yaml
+  nodejs: cves/CVE-2017-14849.yaml
+  phpfpm_nginx: cves/CVE-2019-11043.yaml
+  rails: cves/CVE-2018-3760.yaml
+  rails2: cves/CVE-2019-5418.yaml
+  rails3: cves/CVE-2020-8163.yaml
+  shellshock: cves/CVE-2017-10075.yaml
+  struts2: cves/CVE-2017-5638.yaml

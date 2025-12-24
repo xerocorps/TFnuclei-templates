@@ -1,0 +1,21 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - <title>Microsoft Internet Information Services 8</title>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: microsoft-iis-8
+info:
+  author: dhiyaneshDK
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Microsoft Internet Information Services 8"
+  name: Microsoft Internet Information Services 8
+  severity: info
+  tags: tech,iis,microsoft

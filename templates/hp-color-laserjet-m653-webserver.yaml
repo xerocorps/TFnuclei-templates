@@ -1,0 +1,18 @@
+id: hp-color-laserjet-m653-webserver
+info:
+  author: alexrydzak
+  name: HP Color LaserJet M653 Web Server
+  severity: info
+  tags: hp,web,panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <strong class="product">HP Color LaserJet M653</strong>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/hp/device/DeviceStatus/Index'

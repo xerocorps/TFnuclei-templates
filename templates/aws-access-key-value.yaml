@@ -1,0 +1,19 @@
+id: aws-access-key-value
+info:
+  author: Swissky
+  name: AWS Access Key ID Value
+  severity: medium
+requests:
+- extractors:
+  - part: body
+    regex:
+    - (A3T[A-Z0-9]|AKIA|AGPA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+    type: regex
+  matchers:
+  - part: body
+    regex:
+    - (A3T[A-Z0-9]|AKIA|AGPA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

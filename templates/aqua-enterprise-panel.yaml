@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Aqua Enterprise</title>
+    - <title>Aqua Cloud Native Security Platform</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: aqua-enterprise-panel
+info:
+  author: idealphase
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'Aqua Enterprise panel was detected.
+
+    '
+  metadata:
+    google-query: intitle:"Aqua Cloud Native Security Platform"
+    max-request: 1
+    shodan-query: http.title:"Aqua Enterprise" || http.title:"Aqua Cloud Native Security
+      Platform"
+    verified: true
+  name: Aqua Enterprise - Panel Detect
+  reference:
+  - https://www.aquasec.com/
+  severity: info
+  tags: panel,aqua,aquasec

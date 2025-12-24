@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-hide-security-enhancer
+  - dsl:
+    - compare_versions(version, '<= 2.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-hide-security-enhancer/readme.txt'
+  redirects: true
+id: wp_hide_security_enhancer-43c7056e-39d8-467e-92ec-33a31e5dafc9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-hide-security-enhancer/
+    google-query: inurl:"/wp-content/plugins/wp-hide-security-enhancer/"
+    shodan-query: http.html:"wp-content/plugins/wp-hide-security-enhancer/"
+  name: 'WP Hide & Security Enhancer <= 2.5.1 - Missing Authorization to Unauthenticated
+    Arbitrary File Contents Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/43c7056e-39d8-467e-92ec-33a31e5dafc9?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-hide-security-enhancer,high,candidate

@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Default Parallels Plesk Panel Page</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-parallels-plesk
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 1
+    shodan-query: title:"Default Parallels Plesk Panel Page"
+    verified: true
+  name: Default Parallels Plesk Panel Page
+  severity: info
+  tags: tech,default-page,parallels,plesk

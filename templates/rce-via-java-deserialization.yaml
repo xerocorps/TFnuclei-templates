@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - org.jboss.invocation.MarshalledValue
+    - java.lang
+  method: GET
+  path:
+  - '{{BaseURL}}/josso/%5C../invoker/EJBInvokerServlet/'
+  - '{{BaseURL}}/josso/%5C../invoker/JMXInvokerServlet/'
+  - '{{BaseURL}}/invoker/JMXInvokerServlet/'
+  - '{{BaseURL}}/invoker/EJBInvokerServlet/'
+id: rce-via-java-deserialization
+info:
+  author: uhnysh
+  name: Java Deserialization [RCE]
+  severity: critical

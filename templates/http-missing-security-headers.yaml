@@ -1,0 +1,86 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    dsl:
+    - '!regex(''(?i)strict-transport-security'', header)'
+    - status_code != 301 && status_code != 302
+    name: strict-transport-security
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)content-security-policy'', header)'
+    - status_code != 301 && status_code != 302
+    name: content-security-policy
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)permissions-policy'', header)'
+    - status_code != 301 && status_code != 302
+    name: permissions-policy
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)x-frame-options'', header)'
+    - status_code != 301 && status_code != 302
+    name: x-frame-options
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)x-content-type-options'', header)'
+    - status_code != 301 && status_code != 302
+    name: x-content-type-options
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)x-permitted-cross-domain-policies'', header)'
+    - status_code != 301 && status_code != 302
+    name: x-permitted-cross-domain-policies
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)referrer-policy'', header)'
+    - status_code != 301 && status_code != 302
+    name: referrer-policy
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)clear-site-data'', header)'
+    - status_code != 301 && status_code != 302
+    name: clear-site-data
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)cross-origin-embedder-policy'', header)'
+    - status_code != 301 && status_code != 302
+    name: cross-origin-embedder-policy
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)cross-origin-opener-policy'', header)'
+    - status_code != 301 && status_code != 302
+    name: cross-origin-opener-policy
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)cross-origin-resource-policy'', header)'
+    - status_code != 301 && status_code != 302
+    name: cross-origin-resource-policy
+    type: dsl
+  matchers-condition: or
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: http-missing-security-headers
+info:
+  author: socketz,geeknik,G4L1T0,convisoappsec,kurohost,dawid-czarnecki,forgedhallpass,jub0bs
+  description: 'This template searches for missing HTTP security headers. The impact
+    of these missing headers can vary.
+
+    '
+  metadata:
+    max-request: 1
+  name: HTTP Missing Security Headers
+  severity: info
+  tags: misconfig,headers,generic

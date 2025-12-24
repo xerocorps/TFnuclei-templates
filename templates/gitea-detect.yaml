@@ -1,0 +1,28 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - Powered by Gitea(\s*)Version:(\s*)([\d.]+)
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - Powered by Gitea
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/user/login'
+  stop-at-first-match: true
+id: gitea-detect
+info:
+  author: pikpikcu
+  metadata:
+    max-request: 2
+  name: Gitea Detect
+  severity: info
+  tags: tech,gitea

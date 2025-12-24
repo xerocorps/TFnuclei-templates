@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - dsl:
+    - status_code == 404
+    type: dsl
+  - type: word
+    words:
+    - <a href="https://code42.com">Code42 homepage</a>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/404'
+id: code42-panel
+info:
+  author: Adam Crosser
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Code42 panel was detected.
+  metadata:
+    max-request: 1
+  name: Code42 Panel - Detect
+  severity: info
+  tags: panel,code42

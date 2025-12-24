@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <TITLE>CoDeSys WebVisualization</TITLE>
+    - webvisu.jar,minml.jar
+  - part: header
+    type: word
+    words:
+    - WAGO_Webs
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/plc/webvisu.htm'
+id: wago-plc-panel
+info:
+  author: github.com/its0x08
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: WAGO PLC panel was detected.
+  metadata:
+    max-request: 1
+  name: WAGO PLC Panel - Detect
+  severity: info
+  tags: panel,wago

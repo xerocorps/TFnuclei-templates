@@ -1,0 +1,35 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '"productInfo":.*"value":\s*"(.*)"'
+    type: regex
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - img/activemq.png
+    - ActiveMQ Artemis
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/console/hawtconfig.json'
+id: apache-activemq-artemis-detect
+info:
+  author: icarot
+  description: 'Detects a Apache ActiveMQ Artemis Console, the next generation message
+    broker by ActiveMQ.
+
+    '
+  metadata:
+    max-request: 1
+    product: activemq
+    shodan-query: title:"ActiveMQ Artemis Console"
+    vendor: apache
+  name: Apache ActiveMQ Artemis - Detection
+  reference:
+  - https://github.com/apache/activemq-artemis/
+  severity: info
+  tags: tech,activemq,artemis,apache,detect,discovery

@@ -1,0 +1,12 @@
+id: jetty-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Jetty related nuclei templates on a
+    given target.
+  name: Jetty Security Checks
+workflows:
+- matchers:
+  - name: jetty
+    subtemplates:
+    - tags: jetty
+  template: technologies/tech-detect.yaml

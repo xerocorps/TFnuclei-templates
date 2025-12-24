@@ -1,0 +1,12 @@
+id: tls-version
+info:
+  author: pdteam
+  name: TLS Version
+  severity: info
+  tags: ssl
+ssl:
+- address: '{{Host}}:{{Port}}'
+  extractors:
+  - json:
+    - ' .tls_version'
+    type: json

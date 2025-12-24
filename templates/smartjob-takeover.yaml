@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - Job Board Is Unavailable
+    - This job board website is either expired
+    - This job board website is either expired or its domain name is invalid.
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: smartjob-takeover
+info:
+  author: pdteam
+  description: Smartjob takeover was detected.
+  metadata:
+    max-request: 1
+  name: Smartjob Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/139
+  severity: high
+  tags: takeover

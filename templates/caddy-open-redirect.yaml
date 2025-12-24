@@ -1,0 +1,16 @@
+http:
+- matchers:
+  - part: header
+    regex:
+    - (?m)^(?:Location\s*?:\s*?)(?:https?:\/\/|\/\/|\/\\\\|\/\\)?(?:[a-zA-Z0-9\-_\.@]*)example\.com\/?(\/|[^.].*)?$
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}//example.com/%2F..'
+id: caddy-open-redirect
+info:
+  author: dhiyaneshDK
+  name: Caddy 2.4.6 Open Redirect (php_fastcgi)
+  reference: https://github.com/caddyserver/caddy/issues/4502
+  severity: medium
+  tags: redirect,caddy,server

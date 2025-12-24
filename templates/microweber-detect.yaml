@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '"generator" content="Microweber" />'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: microweber-detect
+info:
+  author: princechaddha
+  metadata:
+    max-request: 1
+    shodan-query: http.favicon.hash:780351152
+  name: Microweber Detect
+  reference:
+  - https://github.com/microweber/microweber
+  severity: info
+  tags: tech,microweber,oss

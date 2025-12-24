@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - "<title>\u5B89\u7F51\u79D1\u6280-\u667A\u80FD\u8DEF\u7531\u7CFB\u7EDF</title>"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'
+id: secnet-ac-panel
+info:
+  author: ritikchaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: SecNet login panel was detected.
+  metadata:
+    max-request: 1
+  name: SecNet Login Panel - Detect
+  severity: info
+  tags: secnet-ac,panel

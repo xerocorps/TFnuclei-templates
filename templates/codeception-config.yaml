@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'paths:'
+    - 'settings:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/codeception.yml'
+id: codeception-config
+info:
+  author: DhiyaneshDk
+  description: Codeception YAML configuration file was detected.
+  metadata:
+    max-request: 1
+    shodan-query: html:"codeception.yml"
+    verified: true
+  name: Codeception YAML Configuration File - Detect
+  severity: low
+  tags: exposure,devops,codeception,config,cicd

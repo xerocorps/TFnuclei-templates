@@ -1,0 +1,34 @@
+http:
+- body: ant=echo md5("antproxy.php");
+  headers:
+    Content-Type: application/x-www-form-urlencoded
+  matchers:
+  - part: body
+    type: word
+    words:
+    - 951d11e51392117311602d0c25435d7f
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: POST
+  path:
+  - '{{BaseURL}}/.antproxy.php'
+id: antsword-backdoor
+info:
+  author: ffffffff0x
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 10
+    cwe-id: CWE-553
+  description: An AntSword application backdoor shell was discovered.
+  metadata:
+    max-request: 1
+  name: AntSword Backdoor Detection
+  reference:
+  - https://github.com/AntSwordProject/AntSword-Labs/tree/master/bypass_disable_functions/9
+  remediation: Reinstall AnstSword on a new system due to the target system's compromise.
+    Follow best practices for securing PHP servers/applications via the php.ini and
+    other mechanisms.
+  severity: critical
+  tags: backdoor,antsword

@@ -1,0 +1,12 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - SG\.[a-zA-Z0-9]{22}\.[a-zA-Z0-9]{43}
+    type: regex
+id: sendgrid-api-key
+info:
+  author: gaurang
+  name: Sendgrid API Key
+  severity: high

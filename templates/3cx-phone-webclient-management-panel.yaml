@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - ' <title>3CX Webclient</title>'
+    - <meta name="description" content="3CX">
+  method: GET
+  path:
+  - '{{BaseURL}}/webclient/'
+id: 3cx-phone-webclient-management-panel
+info:
+  author: idealphase
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 3CX Phone System Web Client Management Console panel was detected.
+  metadata:
+    google-query: intitle:"3CX Webclient"
+    max-request: 1
+    shodan-query: http.title:"3CX Webclient"
+  name: 3CX Phone System Web Client Management Console - Panel Detect
+  reference:
+  - https://www.3cx.com/phone-system/
+  - https://www.3cx.com/blog/unified-communications/client-apps/
+  - https://medium.com/@frycos/pwning-3cx-phone-management-backends-from-the-internet-d0096339dd88
+  severity: info
+  tags: panel,3cx

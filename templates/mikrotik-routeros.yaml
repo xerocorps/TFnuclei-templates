@@ -1,0 +1,22 @@
+id: mikrotik-routeros
+info:
+  author: gy741
+  name: MikroTik RouterOS Login
+  reference: https://systemweakness.com/routeros-user-with-just-ftp-policy-can-write-to-filesystem-cve-2021-27221-e3e45d780dfe
+  severity: info
+  tags: panel,login
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - If this device is not in your possession, please contact your local network
+      administrator
+    - .mikrotik.com
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

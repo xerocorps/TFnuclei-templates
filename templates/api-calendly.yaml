@@ -1,0 +1,25 @@
+http:
+- headers:
+    X-Token: '{{token}}'
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"data":'
+    - '"id":'
+    - '"email":'
+  method: GET
+  path:
+  - https://calendly.com/api/v1/users/me
+id: api-calendly
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 1
+  name: Calendly API Test
+  reference:
+  - https://calendly.stoplight.io/docs/api-docs-v1/b3A6MTg3MDczNg-about-me
+  severity: info
+  tags: token-spray,calendly
+self-contained: true

@@ -1,0 +1,17 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <h1>Interactive Console</h1>
+  method: GET
+  path:
+  - '{{BaseURL}}/console'
+id: werkzeug-debugger-detect
+info:
+  author: pdteam
+  metadata:
+    max-request: 1
+  name: Werkzeug debugger console
+  severity: info
+  tags: tech,werkzeug

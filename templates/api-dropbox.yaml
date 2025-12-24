@@ -1,0 +1,24 @@
+http:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"account_id":'
+    - '"email":'
+  method: POST
+  path:
+  - https://api.dropboxapi.com/2/users/get_current_account
+id: api-dropbox
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 1
+  name: Dropbox API Test
+  reference:
+  - https://www.dropbox.com/developers/documentation/http/documentation
+  severity: info
+  tags: token-spray,dropbox
+self-contained: true

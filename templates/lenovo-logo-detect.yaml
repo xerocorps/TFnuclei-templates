@@ -1,0 +1,21 @@
+id: lenovo-logo-detect
+info:
+  author: c-sh0
+  description: Lenovo Logo Detection
+  name: Lenovo Logo Detection
+  severity: info
+  tags: tech,lenovo
+requests:
+- matchers:
+  - condition: or
+    dsl:
+    - status_code==200 && ("2039065151" == mmh3(base64_py(body)))
+    - status_code==200 && ("-969279495" == mmh3(base64_py(body)))
+    type: dsl
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/images/logo_horizontal.png'
+  - '{{BaseURL}}/images/logo_vertical.png'
+  redirects: true
+  stop-at-first-match: true

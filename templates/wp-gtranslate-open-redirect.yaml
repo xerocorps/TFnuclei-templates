@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - 'Location: www.pluginvulnerabilities.com'
+  - status:
+    - 301
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gtranslate/url_addon/gtranslate.php?glang=en&gurl=/www.pluginvulnerabilities.com'
+id: wp-gtranslate-open-redirect
+info:
+  author: dhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-601
+  description: Translate WordPress with GTranslate plugin before 2.8.11 contains an
+    open redirect vulnerability. An attacker can redirect a user to a malicious site
+    and possibly obtain sensitive information, modify data, and/or execute unauthorized
+    operations.
+  metadata:
+    max-request: 1
+  name: WordPress GTranslate <2.8.11 - Open Redirect
+  reference:
+  - https://www.pluginvulnerabilities.com/2017/02/17/open-redirect-vulnerability-in-gtranslate/
+  severity: medium
+  tags: redirect,wordpress

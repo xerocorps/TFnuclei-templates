@@ -1,0 +1,19 @@
+id: fortinet-detect
+info:
+  author: pikpikcu,daffainfo
+  name: Fortinet detected
+  severity: info
+  tags: tech,jboss
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title tiles:fragment="title">FORTINET LOGIN</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

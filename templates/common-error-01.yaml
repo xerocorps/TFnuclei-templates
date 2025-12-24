@@ -1,0 +1,55 @@
+id: common-error-01
+info:
+  name: Common case to trigger the error 02
+  risk: Info
+level: 2
+payloads:
+- '{{.prefix}}{{.params}}'
+requests:
+- detections:
+  - StatusCode() < 300 && StatusCode() >= 500 && StatusCode() != OriginStatusCode()
+    && !StringSearch("response", "Not found") && !StringSearch("response", "Request
+    Rejected") && !StringSearch("response", "Not found") && Math.abs(ContentLength()
+    - OriginContentLength()) > {{.length}} && CommonError()
+  generators:
+  - Header("{{.payload}}", "{{.head}}")
+type: fuzz
+variables:
+- head: 'User-Agent
+
+    Referer
+
+    Host
+
+    Origin
+
+    Authorization
+
+    X-Forwarded
+
+    X-Forwarded-By
+
+    X-Forwarded-For
+
+    '
+- prefix: '%ff
+
+    %23
+
+    %40
+
+    ..;/
+
+    ..%3B/
+
+    %0A
+
+    %0D
+
+    %00
+
+    ../
+
+    /////////////////////////////
+
+    '

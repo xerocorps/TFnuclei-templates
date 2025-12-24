@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>HTTP Server Test Page powered by CentOS-WebPanel.com</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-centos-test-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"HTTP Server Test Page powered by CentOS-WebPanel.com"
+  name: CentOs-WebPanel Test Page
+  severity: info
+  tags: tech,centos

@@ -1,0 +1,18 @@
+id: kafka-consumer-monitor
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"Kafka Consumer Offset Monitor"
+  name: Kafka Consumer Offset Monitor Exposure
+  severity: low
+  tags: panel,kafka
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Kafka Consumer Offset Monitor</title>
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Slocum Fleet Mission Control - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sfmc/login'
+id: slocum-login
+info:
+  author: pussycat0x
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Slocum Fleet Mission Control login panel was detected.
+  metadata:
+    max-request: 1
+  name: Slocum Fleet Mission Control Login Panel - Detect
+  severity: info
+  tags: panel,tech,slocum

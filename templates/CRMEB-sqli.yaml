@@ -1,0 +1,18 @@
+id: CRMEB-sqli
+info:
+  author: Str1am
+  name: BOA Web Server 0.94.14 - Access to arbitrary files as privileges
+  severity: high
+  tags: CRMEB,sqli
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Syntax error
+    - SQLSTATE
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/products?sid=1%27'

@@ -1,0 +1,29 @@
+id: firebase-config
+info:
+  author: geeknik
+  name: Detect Firebase Config
+  reference: https://github.com/firebase/firebaseui-web/blob/master/demo/public/sample-config.js
+  severity: high
+  tags: firebase,auth
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - condition: and
+    type: word
+    words:
+    - apiKey
+    - authDomain
+    - databaseURL
+    - storageBucket
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/public/sample-config.js'
+  - '{{BaseURL}}/public/config.js'
+  - '{{BaseURL}}/config.js'

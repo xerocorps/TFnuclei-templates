@@ -1,0 +1,25 @@
+http:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - id
+    - title
+    - type
+  method: GET
+  path:
+  - https://webexapis.com/v1/rooms
+id: api-webex
+info:
+  author: dwisiswant0
+  metadata:
+    max-request: 1
+  name: Cisco Webex API Test
+  reference:
+  - https://developer.webex.com/docs/getting-started
+  severity: info
+  tags: token-spray,cisco,webex
+self-contained: true

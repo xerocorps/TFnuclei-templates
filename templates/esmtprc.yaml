@@ -1,0 +1,28 @@
+id: esmtprc
+info:
+  author: geeknik
+  description: esmtp configuration file
+  name: esmtprc dotfile
+  reference: https://linux.die.net/man/5/esmtprc
+  severity: high
+  tags: esmtp,config
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - condition: and
+    part: body
+    type: word
+    words:
+    - hostname
+    - username
+    - password
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.esmtprc'

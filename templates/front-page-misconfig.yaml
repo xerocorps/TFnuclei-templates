@@ -1,0 +1,13 @@
+id: front-page-misconfig
+info:
+  author: JTeles
+  name: FrontPage configuration information discloure
+  severity: low
+requests:
+- matchers:
+  - size:
+    - 247
+    type: size
+  method: GET
+  path:
+  - '{{BaseURL}}/_vti_inf.html'

@@ -1,0 +1,33 @@
+http:
+- extractors:
+  - kval:
+    - x_flow_powered
+    type: kval
+  host-redirects: true
+  matchers:
+  - type: word
+    words:
+    - Neos comes with ABSOLUTELY NO WARRANTY
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/neos/login'
+id: neos-panel
+info:
+  author: k11h-de
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Neos CMS login panel was detected.
+  metadata:
+    max-request: 1
+  name: Neos CMS Login Panel - Detect
+  reference:
+  - https://github.com/neos/neos/blob/master/Configuration/Routes.yaml
+  severity: info
+  tags: panel,neos,cms,login

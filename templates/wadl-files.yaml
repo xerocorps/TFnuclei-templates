@@ -1,0 +1,18 @@
+id: wadl-files
+info:
+  author: 0xrudra
+  name: wadl file disclosure
+  severity: low
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - This is simplified WADL with user and core resources only
+    - '"http://jersey.java.net/"'
+    - http://wadl.dev.java.net/2009/02
+  method: GET
+  path:
+  - '{{BaseURL}}/application.wadl'
+  - '{{BaseURL}}/service?Wsdl'

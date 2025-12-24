@@ -1,0 +1,24 @@
+id: exposed-redis
+info:
+  author: pdteam
+  name: Redis Unauth Server
+  reference:
+  - https://redis.io/topics/security
+  severity: high
+  tags: network,redis,unauth
+network:
+- host:
+  - '{{Hostname}}'
+  - '{{Host}}:6379'
+  inputs:
+  - data: "info\r\nquit\r\n"
+  matchers:
+  - type: word
+    words:
+    - redis_version
+  - negative: true
+    type: word
+    words:
+    - redis_mode:sentinel
+  matchers-condition: and
+  read-size: 2048

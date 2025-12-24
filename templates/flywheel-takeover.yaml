@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - We're sorry, you've landed on a page that is hosted by Flywheel
+    - <h1>Oops! That's not the site<br>you're looking&nbsp;for.</h1>
+  - part: body
+    type: word
+    words:
+    - We are sorry, you've landed on a page that is hosted by Flywheel
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: flywheel-takeover
+info:
+  author: smaranchand
+  description: Flywheel takeover was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.html:"Flywheel"
+    verified: true
+  name: Flywheel Subdomain Takeover
+  reference:
+  - https://smaranchand.com.np/2021/06/flywheel-subdomain-takeover
+  severity: high
+  tags: takeover,flywheel

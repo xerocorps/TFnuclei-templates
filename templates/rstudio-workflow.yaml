@@ -1,0 +1,10 @@
+id: rstudio-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all RStudio related nuclei templates on
+    a given target.
+  name: RStudio Security Checks
+workflows:
+- subtemplates:
+  - tags: rstudio
+  template: exposed-panels/rstudio-detect.yaml

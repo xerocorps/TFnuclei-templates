@@ -1,0 +1,20 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>DBaaS Monitor</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/dbaas_monitor/login'
+id: oracle-dbass-detect
+info:
+  author: pussycat0x
+  metadata:
+    max-request: 1
+  name: Oracle DBaaS Monitor Detect
+  severity: info
+  tags: oracle,tech

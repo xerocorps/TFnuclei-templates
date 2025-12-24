@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Epson Web Control
+    - Basic Control
+    - Advanced
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/home'
+id: epson-web-control-detect
+info:
+  author: pussycat0x
+  classification:
+    cwe-id: CWE-200
+  description: An Epson printer web panel was discovered.
+  metadata:
+    max-request: 1
+  name: Epson Printer
+  reference:
+  - https://www.exploit-db.com/ghdb/6873
+  severity: info
+  tags: panel,unauth,epson,edb,iot,printer

@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '"><injectable>'
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: basic-xss-prober
+info:
+  author: nadino,geeknik
+  description: A cross-site scripting vulnerability was discovered via generic testing.
+    Manual testing is needed to verify exploitation.
+  metadata:
+    max-request: 1
+  name: Basic XSS Prober - Cross-Site Scripting
+  severity: high
+  tags: xss,generic

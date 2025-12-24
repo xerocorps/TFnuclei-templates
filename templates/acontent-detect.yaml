@@ -1,0 +1,24 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - '<title>AContent : Home</title>'
+    - AContent - Copyright 2010 by IDRC/IDI http://inclusivedesign.ca/
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: acontent-detect
+info:
+  author: pikpikcu
+  metadata:
+    max-request: 1
+  name: AContent Detect
+  severity: info
+  tags: tech,acontent

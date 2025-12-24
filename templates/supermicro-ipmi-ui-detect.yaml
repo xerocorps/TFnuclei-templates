@@ -1,0 +1,18 @@
+id: supermicro-ipmi-ui-detect
+info:
+  author: c-sh0
+  description: Supermicro IPMI UI Detection
+  name: Supermicro IPMI UI Detection
+  severity: info
+  tags: tech,ipmi,supermicro
+requests:
+- matchers:
+  - dsl:
+    - status_code==200 && ("1243049222" == mmh3(base64_py(body)))
+    type: dsl
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true
+  stop-at-first-match: true

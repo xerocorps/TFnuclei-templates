@@ -1,0 +1,21 @@
+headless:
+- matchers:
+  - type: word
+    words:
+    - test value
+  steps:
+  - action: setheader
+    args:
+      key: Test
+      part: request
+      value: test value
+  - action: navigate
+    args:
+      url: '{{BaseURL}}/'
+  - action: waitload
+id: headless-header-action
+info:
+  author: pdteam
+  name: Headless Header Action
+  severity: info
+  tags: headless

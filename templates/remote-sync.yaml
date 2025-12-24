@@ -1,0 +1,28 @@
+id: remote-sync
+info:
+  author: geeknik
+  description: Created by remote-sync for Atom, contains FTP and/or SCP/SFTP/SSH server
+    details and credentials
+  name: Remote Sync for Atom credentials
+  severity: high
+  tags: atom,sftp,scp,ssh,ftp
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - application/json
+  - condition: and
+    type: word
+    words:
+    - Remote Sync
+    - hostname
+    - username
+    - password
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.remote-sync.json'

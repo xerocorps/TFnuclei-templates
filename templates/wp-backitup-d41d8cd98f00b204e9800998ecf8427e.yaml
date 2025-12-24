@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-backitup
+  - dsl:
+    - compare_versions(version, '<=  1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-backitup/readme.txt'
+  redirects: true
+id: wp-backitup-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: "The Backup and Restore WordPress \u2013 Backup Plugin plugin for WordPress\
+    \ is vulnerable to authorization bypass due to a missing capability check on several\
+    \ functions in versions up to, and including, 1.9. This makes it possible for\
+    \ authenticated attackers, with subscriber-level permissions and above, to trigger\
+    \ manual backups. The attackers can download these backups via the vulnerability\
+    \ described in CVE-2014-9012."
+  metadata:
+    fofa-query: wp-content/plugins/wp-backitup/
+    google-query: inurl:"/wp-content/plugins/wp-backitup/"
+    shodan-query: 'vuln:'
+  name: "Backup and Restore WordPress \u2013 Backup Plugin <= 1.9 - Authorization\
+    \ Bypass"
+  reference: null
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-backitup,high

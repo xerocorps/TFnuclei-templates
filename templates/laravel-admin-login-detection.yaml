@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: or
+    type: word
+    words:
+    - Laravel
+    - Admin Login
+  - condition: or
+    regex:
+    - <title>.*Admin.*Laravel.*</title>
+    - <title>Login | Laravel</title>
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/admin'
+  redirects: true
+id: laravel-admin-login-detection
+info:
+  author: thanhnx1
+  description: 'Detects Laravel admin login panels by checking for specific text in
+    the page source and response status code, following redirects if necessary.
+
+    '
+  name: Laravel Admin Login Detection
+  severity: info
+  tags: laravel,login,admin

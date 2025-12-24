@@ -1,0 +1,34 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <li>LabTech</li>
+    - <form action="/WCC2/Search/search" id="searchForm method="post">
+    - <h1> Welcome to the LabTech Web Portal</h1>
+    - Universal Agent Uninstaller
+    - Technician Login
+    - <form action="/WCC2/Home/Login" autocomplete="off" method="post">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/WCC2/'
+id: labtech-panel
+info:
+  author: deFr0ggy
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: LabTech Web Portal login panel was detected.
+  metadata:
+    max-request: 1
+  name: LabTech Web Portal Login Panel - Detect
+  severity: info
+  tags: panel,labtech

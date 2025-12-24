@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>HP Media Vault
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: hp-media-vault-detect
+info:
+  author: pussycat0x
+  metadata:
+    fofa-query: app="HP-Media-Vault-Media-Server"
+    max-request: 1
+  name: HP Media Vault Detect
+  severity: info
+  tags: tech,hp

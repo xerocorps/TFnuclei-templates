@@ -1,0 +1,40 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - 'runtime:'
+    - 'spring:'
+    - 'datasource:'
+    - 'platform:'
+    - 'server:'
+    - 'job:'
+  - status:
+    - 200
+    type: status
+  - condition: and
+    dsl:
+    - '!contains(tolower(body), ''<html'')'
+    - '!contains(tolower(body), ''<body'')'
+    - '!contains(tolower(body), ''</h1>'')'
+    - '!contains(tolower(body), ''</h2>'')'
+    - '!contains(tolower(body), ''</h3>'')'
+    - '!contains(tolower(body), ''<?xml'')'
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/app.yaml'
+  - '{{BaseURL}}/app.yml'
+  - '{{BaseURL}}/application.yaml'
+  - '{{BaseURL}}/application.yml'
+  stop-at-first-match: true
+id: application-yaml
+info:
+  author: Cristi vlad (@cristivlad25)
+  description: Finds Application YAML files which often contain sensitive information.
+  metadata:
+    max-request: 4
+  name: application.yaml detection
+  severity: info
+  tags: misconfig

@@ -1,0 +1,25 @@
+http:
+- headers:
+    Authorization: Basic {{base64(token + ':')}}
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"object":'
+    - '"url":'
+    - '"data":'
+  method: GET
+  path:
+  - https://api.stripe.com/v1/charges
+id: api-stripe
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 1
+  name: Stripe API Test
+  reference:
+  - https://stripe.com/docs/api/authentication
+  severity: info
+  tags: token-spray,stripe
+self-contained: true

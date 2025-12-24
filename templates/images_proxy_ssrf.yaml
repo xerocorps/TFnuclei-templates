@@ -1,0 +1,19 @@
+id: images_proxy_ssrf
+info:
+  author: anonymous
+  name: Images Proxy SSRF
+  reference: No Reference
+  severity: high
+  tags: request, GET
+requests:
+- matchers:
+  - type: word
+    words:
+    - pong
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/imageProxy?url=https://pfelilpe.com/ping'

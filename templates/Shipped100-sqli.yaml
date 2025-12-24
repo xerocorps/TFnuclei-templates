@@ -1,0 +1,22 @@
+id: Shipped100-sqli
+info:
+  author: str1am
+  name: "\u5E1D\u53D1\u8D27100 M_id SQL\u6CE8\u5165\u6F0F\u6D1E\uFF08CNVD-2021-30193\uFF09"
+  reference:
+  - https://github.com/meljith-lab/mcon1/blob/821445cc974234cc6ce7367bc7fbcc4d6eb8aea5/yournuclei/shipped100-210609-054716.yaml
+  severity: high
+  tags: Shipped100,sqli
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Warning
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?M_id=1%27&type=product'

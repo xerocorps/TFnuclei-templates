@@ -1,0 +1,32 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - '"version"\s:\s"([0-9.]+)"'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - application/json
+  - part: body
+    regex:
+    - '"version"\s:\s"([0-9.]+)"'
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pdb/meta/v1/version'
+id: puppetdb-detect
+info:
+  author: c-sh0
+  metadata:
+    max-request: 1
+  name: PuppetDB Detection
+  reference:
+  - https://puppet.com/docs/puppetdb/7/api/meta/v1/version.html#pdbmetav1version
+  severity: info
+  tags: puppet,tech,exposure

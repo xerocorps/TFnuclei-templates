@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - DESCRIPTION=
+    - USER=
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/OA_HTML/bin/sqlnet.log'
+id: oracle-ebs-sqllog-disclosure
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: An Oracle EBS SQL log was discovered.
+  metadata:
+    max-request: 1
+  name: Oracle EBS - SQL Log Disclosure
+  reference:
+  - https://the-infosec.com/2017/03/29/do-you-know-what-your-erp-is-telling-us/
+  severity: medium
+  tags: oracle,ebs,logs,exposure

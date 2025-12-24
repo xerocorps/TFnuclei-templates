@@ -1,0 +1,39 @@
+http:
+- attack: clusterbomb
+  host-redirects: true
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - uid=
+    - gid=
+    - groups=
+  - regex:
+    - 'root:.*:0:0:'
+    type: regex
+  matchers-condition: or
+  payloads:
+    header: helpers/payloads/request-headers.txt
+    payload: helpers/payloads/command-injection.txt
+  raw:
+  - 'GET /?{{header}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    {{header}}: {{payload}}
+
+    '
+  stop-at-first-match: true
+id: header-command-injection
+info:
+  author: geeknik
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 10
+    cwe-id: CWE-77
+  description: Headers were tested for remote command injection vulnerabilities.
+  metadata:
+    max-request: 7650
+  name: Header - Remote Command Injection
+  severity: critical
+  tags: fuzzing,brute-force,rce

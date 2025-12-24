@@ -1,0 +1,30 @@
+http:
+- host-redirects: true
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - "<title>Log in to SCS RMC\xAE</title>"
+    - "SCS RMC\xAE</div>"
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: scs-landfill-control
+info:
+  author: geeknik
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: SCS Remote Monitoring and Control login panel was detected.
+  metadata:
+    max-request: 1
+  name: SCS Remote Monitoring and Control Login Panel - Detect
+  reference:
+  - https://www.scsengineers.com/services/remote-monitoring-control/
+  severity: info
+  tags: panel,scs,rmc,iot

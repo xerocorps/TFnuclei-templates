@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - <h1>Oops! We couldn&#8217;t find that page.</h1>
+  - dsl:
+    - '!contains(host,"bigcartel.com")'
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: bigcartel-takeover
+info:
+  author: pdteam
+  description: Bigcartel takeover was detected.
+  metadata:
+    max-request: 1
+  name: Bigcartel Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/158
+  severity: high
+  tags: takeover

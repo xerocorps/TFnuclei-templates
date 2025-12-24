@@ -1,0 +1,14 @@
+id: custom-smartclient-dev-console
+info:
+  author: 0xunknown
+  name: smartclient-dev-console-detect
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <TITLE>SmartClient Developer Console</TITLE>
+  method: GET
+  path:
+  - '{{BaseURL}}/isoversion/12.1.4.12.21/isomorphic/system/helpers/Log.html'

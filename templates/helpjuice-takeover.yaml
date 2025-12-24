@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - We could not find what you're looking for.
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: helpjuice-takeover
+info:
+  author: pdteam
+  description: helpjuice takeover was detected.
+  metadata:
+    max-request: 1
+  name: helpjuice takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover

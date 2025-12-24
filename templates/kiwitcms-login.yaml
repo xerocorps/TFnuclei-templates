@@ -1,0 +1,29 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - Version ([0-9.]+)
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - Kiwi TCMS
+  method: GET
+  path:
+  - '{{BaseURL}}/accounts/login/'
+id: kiwitcms-login
+info:
+  author: pdteam
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Kiwi TCMS login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: title:"Kiwi TCMS - Login",http.favicon.hash:-1909533337
+  name: Kiwi TCMS Login Panel - Detect
+  reference:
+  - https://kiwitcms.org
+  severity: info
+  tags: kiwitcms,panel

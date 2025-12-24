@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - herokucdn.com/error-pages/no-such-app.html
+  - condition: or
+    type: word
+    words:
+    - <title>No such app</title>
+    - <title>Heroku | Application Error</title>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: heroku-takeover
+info:
+  author: 0xPrial,pdteam
+  metadata:
+    max-request: 1
+  name: Heroku Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/38
+  severity: high
+  tags: takeover,heroku

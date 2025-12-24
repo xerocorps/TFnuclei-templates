@@ -1,0 +1,14 @@
+id: dir-listing
+info:
+  author: _harleo
+  name: Directory listing enabled
+  severity: medium
+requests:
+- matchers:
+  - type: word
+    words:
+    - Index of /
+    - '[To Parent Directory]'
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,28 @@
+id: weblogic-t3-detect
+info:
+  author: F1tz
+  description: Check T3 protocol status.
+  name: Detect Weblogic T3 Protocol
+  severity: info
+  tags: network,weblogic
+network:
+- host:
+  - '{{Hostname}}'
+  inputs:
+  - data: 't3 12.2.1
+
+      AS:255
+
+      HL:19
+
+      MS:10000000
+
+      PU:t3://us-l-breens:7001
+
+
+      '
+  matchers:
+  - type: word
+    words:
+    - HELO
+  read-size: 1024

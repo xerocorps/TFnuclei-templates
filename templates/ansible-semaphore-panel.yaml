@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Ansible Semaphore</title>
+  - regex:
+    - <title(.*)>Semaphore</title>
+    type: regex
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/login'
+id: ansible-semaphore-panel
+info:
+  author: Yuzhe-zhang-0
+  classification:
+    cwe-id: CWE-200
+  description: An Ansible Semaphore login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.html:"Semaphore</title>"
+  name: Ansible Semaphore Panel Detect
+  reference:
+  - https://ansible-semaphore.com/
+  - https://github.com/ansible-semaphore/semaphore
+  severity: info
+  tags: panel,ansible,semaphore,cicd,oss

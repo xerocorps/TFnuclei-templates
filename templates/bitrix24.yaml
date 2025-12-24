@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - case-insensitive: true
+    type: word
+    words:
+    - /bitrix/
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+id: bitrix24
+info:
+  author: cn-kali-team
+  metadata:
+    fofa-query:
+    - body="/bitrix/"
+    product: bitrix24
+    shodan-query:
+    - html:"/bitrix/"
+    - http.html:"/bitrix/"
+    vendor: bitrix24
+    verified: true
+  name: bitrix24
+  severity: info
+  tags: detect,tech,bitrix24

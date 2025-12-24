@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title ng-bind="$root.pageTitle">Zeppelin</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: apache-zeppelin-detect
+info:
+  author: pikpikcu
+  metadata:
+    fofa-query: app="APACHE-Zeppelin"
+    max-request: 1
+  name: Apache Zeppelin detect
+  severity: info
+  tags: apache,zeppelin,tech

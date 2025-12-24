@@ -1,0 +1,16 @@
+id: brightcove-takeover
+info:
+  author: pdteam
+  name: brightcove takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - '<p class="bc-gallery-error-code">Error Code: 404</p>'
+  method: GET
+  path:
+  - '{{BaseURL}}'

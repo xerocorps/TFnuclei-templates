@@ -1,0 +1,22 @@
+id: etcd-keys
+info:
+  author: sharath
+  description: Scans for etcd keys
+  name: Etcd Keys
+  severity: info
+  tags: tech,k8s,kubernetes,devops,etcd
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"node":'
+    - '"key":'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/v2/keys/'

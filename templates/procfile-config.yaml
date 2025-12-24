@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - regex:
+    - '^web:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Procfile'
+id: procfile-config
+info:
+  author: DhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Procfile configuration information was detected.
+  metadata:
+    max-request: 1
+    shodan-query: html:"Procfile"
+    verified: true
+  name: Procfile Config - Detect
+  severity: info
+  tags: devops,exposure,config

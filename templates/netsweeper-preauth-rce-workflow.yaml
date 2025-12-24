@@ -1,0 +1,8 @@
+id: netsweeper-preauth-rce-workflow
+info:
+  author: dwisiswant0
+  name: Netsweeper PreAuth RCE Workflow
+logic: "if netsweeper_webadmin() {\n  netsweeper_webadmin_cve_1()\n}\n"
+variables:
+  netsweeper_webadmin: technologies/netsweeper-webadmin-detect.yaml
+  netsweeper_webadmin_cve_1: cves/CVE-2020-13167.yaml

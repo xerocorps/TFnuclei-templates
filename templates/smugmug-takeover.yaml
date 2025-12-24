@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - '{"text":"Page Not Found"'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: smugmug-takeover
+info:
+  author: pdteam
+  description: Smugmug takeover was detected.
+  metadata:
+    max-request: 1
+  name: Smugmug Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/60
+  severity: high
+  tags: takeover,smugmug

@@ -1,0 +1,27 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <h1>Welcome to (.+)<\/h1>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - JBoss EAP 7
+  - part: body
+    regex:
+    - <title>Welcome to JBoss(.*)</title>
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: jboss-detect
+info:
+  author: daffainfo,idealphase
+  metadata:
+    max-request: 1
+  name: JBoss detected
+  severity: info
+  tags: tech,jboss

@@ -1,0 +1,19 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Test Page for the Apache HTTP Server on Red Hat Enterprise Linux</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-redhat-test-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Test Page for the Apache HTTP Server on Red Hat Enterprise
+      Linux"
+  name: Red Hat Enterprise Linux Test Page
+  severity: info
+  tags: tech,redhat

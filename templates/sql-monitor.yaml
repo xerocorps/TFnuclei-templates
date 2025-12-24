@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <p>JavaScript needs to be enabled for SQL Monitor to work properly.</p>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Account/LogIn?returnUrl=%2F&hasAttemptedCookie=True'
+id: sql-monitor
+info:
+  author: dhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: SQL Monitor was discovered.
+  metadata:
+    max-request: 1
+    shodan-query: html:"SQL Monitor"
+  name: SQL Monitor - Discovery
+  severity: info
+  tags: panel

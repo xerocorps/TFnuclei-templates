@@ -1,0 +1,36 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Login - Eventum</title>
+    - title="Eventum Issues search"
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'Database Error:'
+    - There seems to be a problem connecting to the database server specified in your
+      configuration file
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: eventum-panel
+info:
+  author: princechaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Eventum login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.favicon.hash:305412257
+    verified: true
+  name: Eventum Login Panel - Detect
+  severity: info
+  tags: panel,eventum

@@ -1,0 +1,34 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - konga_version = "(.*)";
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Konga</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: konga-panel
+info:
+  author: princechaddha
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Konga panel was detected.
+  metadata:
+    max-request: 1
+  name: Konga Panel - Detect
+  reference:
+  - https://github.com/pantsel/konga
+  severity: info
+  tags: tech,konga,oss,panel

@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - github-oauth
+    - github.com
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.composer-auth.json'
+  - '{{BaseURL}}/vendor/webmozart/assert/.composer-auth.json'
+  stop-at-first-match: true
+id: composer-auth-json
+info:
+  author: DhiyaneshDK
+  description: Composer Auth Josn file is disclosed.
+  metadata:
+    google-query: intext:"index of /" ".composer-auth.json"
+    max-request: 2
+    verified: true
+  name: Composer-auth Json File Disclosure
+  reference: https://www.exploit-db.com/ghdb/5768
+  severity: low
+  tags: exposure,devops,files

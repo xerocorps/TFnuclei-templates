@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - remove-schema
+  - dsl:
+    - compare_versions(version, '<= 1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/remove-schema/readme.txt'
+  redirects: true
+id: remove_schema-89635463-966d-4f7d-995d-ad83a502d95b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/remove-schema/
+    google-query: inurl:"/wp-content/plugins/remove-schema/"
+    shodan-query: http.html:"wp-content/plugins/remove-schema/"
+  name: 'Remove Schema <= 1.5 - Cross-Site Request Forgery Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/89635463-966d-4f7d-995d-ad83a502d95b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,remove-schema,medium,candidate

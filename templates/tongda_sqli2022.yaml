@@ -1,0 +1,15 @@
+id: tongda_sqli2022
+info:
+  author: Str1am
+  name: "\u901A\u8FBEoa sql\u6CE8\u5165"
+  severity: high
+  tags: tongda,sqli
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/general/management_center/portal/oa_engine/engine_manage_bulletin_number/query.php'

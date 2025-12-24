@@ -1,0 +1,28 @@
+http:
+- headers:
+    Range: 10000
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Index of /img/</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/img/'
+id: node-ecstatic-listing
+info:
+  author: DhiyaneshDK
+  description: Directiory listing enabled in Node ecstatic.
+  metadata:
+    max-request: 1
+    shodan-query: 'server: "ecstatic"'
+    verified: true
+  name: Node ecstatic Directory Listing
+  reference:
+  - https://tripla.dk/2020/03/26/multiple-vulnerabilities-in-nodejs-ecstatic-http-server-http-party/
+  severity: low
+  tags: node,js,listing,ecstatic

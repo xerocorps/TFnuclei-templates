@@ -1,0 +1,14 @@
+id: custom-oracle-ebs-ACPV-detect
+info:
+  author: 0xunknown
+  name: Custom-oracle-ebs-ACPV-detect
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <!-- ibeCZzpRuntimeIncl.jsp end -->
+  method: GET
+  path:
+  - '{{BaseURL}}/OA_HTML/ibeCAcpSSOReg.jsp'

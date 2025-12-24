@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - application/json
+  - condition: and
+    part: body
+    type: word
+    words:
+    - environment
+    - defaultLookback
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/config.json'
+id: unauthenticated-zipkin
+info:
+  author: dhiyaneshDk
+  description: Unauthenticated access to Zipkin was discovered.
+  metadata:
+    max-request: 1
+  name: Zipkin Discovery
+  reference:
+  - https://zipkin.io/
+  severity: high
+  tags: unauth,misconfig

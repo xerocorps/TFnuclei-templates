@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - dsl:
+    - '!contains(tolower(body), ''<html'')'
+    - '!contains(tolower(body), ''<body'')'
+    type: dsl
+  - part: header
+    type: word
+    words:
+    - application/octet-stream
+  - regex:
+    - '^([a-z0-9]+) '
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.git/logs/HEAD'
+id: git-logs-exposure
+info:
+  author: NullFuzz
+  description: Searches Git Logs files and passed URLs.
+  metadata:
+    max-request: 1
+  name: Git Logs Disclosure
+  severity: info
+  tags: logs,git,exposure

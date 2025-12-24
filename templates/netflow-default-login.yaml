@@ -1,0 +1,47 @@
+http:
+- attack: pitchfork
+  matchers:
+  - condition: or
+    part: set_cookie
+    type: word
+    words:
+    - NFA_Jsession=
+    - JSESSIONID
+  - part: location
+    type: word
+    words:
+    - /netflow;jsessionid
+  matchers-condition: and
+  payloads:
+    password:
+    - admin
+    username:
+    - admin
+  raw:
+  - 'POST /netflow/jspui/j_security_check HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    radiusUserEnabled=false&AUTHRULE_NAME=Authenticator&j_username={{username}}&j_password={{password}}&Submit=Login
+
+    '
+id: netflow-default-login
+info:
+  author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:zohocorp:manageengine_netflow_analyzer:*:*:*:*:*:*:*:*
+  description: 'Netflow Analyzer default login was discovered.
+
+    '
+  metadata:
+    max-request: 1
+    product: manageengine_netflow_analyzer
+    shodan-query: html:"Login - Netflow Analyzer"
+    vendor: zohocorp
+    verified: true
+  name: Netflow Analyzer - Default Login
+  severity: high
+  tags: default-login,netflow,misconfig,vuln

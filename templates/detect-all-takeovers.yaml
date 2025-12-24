@@ -1,0 +1,313 @@
+http:
+- matchers:
+  - name: acquia
+    type: word
+    words:
+    - If you are an Acquia Cloud customer and expect to see your site at this address
+    - The site you are looking for could not be found.
+  - name: agilecrm
+    type: word
+    words:
+    - Sorry, this page is no longer available.
+  - name: airee
+    type: word
+    words:
+    - "\u041E\u0448\u0438\u0431\u043A\u0430 402. \u0421\u0435\u0440\u0432\u0438\u0441\
+      \ \u0410\u0439\u0440\u0438.\u0440\u0444 \u043D\u0435 \u043E\u043F\u043B\u0430\
+      \u0447\u0435\u043D"
+  - name: aftership
+    type: word
+    words:
+    - Oops.</h2><p class="text-muted text-tight">The page you're looking for doesn't
+      exist.
+  - name: aha
+    type: word
+    words:
+    - There is no portal here ... sending you back to Aha!
+  - name: anima
+    type: word
+    words:
+    - If this is your website and you've just created it, try refreshing in a minute
+  - name: aws-bucket
+    type: word
+    words:
+    - The specified bucket does not exist
+  - name: bigcartel
+    type: word
+    words:
+    - <h1>Oops! We couldn&#8217;t find that page.</h1>
+  - name: bitbucket
+    type: word
+    words:
+    - The page you have requested does not exist
+    - Repository not found
+  - name: brightcove
+    type: word
+    words:
+    - '<p class="bc-gallery-error-code">Error Code: 404</p>'
+  - name: campaignmonitor
+    type: word
+    words:
+    - <strong>Trying to access your account?</strong>
+    - or <a href="mailto:help@createsend.com
+  - name: canny
+    type: word
+    words:
+    - Company Not Found
+    - There is no such company. Did you enter the right URL?
+  - name: cargo
+    type: word
+    words:
+    - If you're moving your domain away from Cargo you must make this configuration
+      through your registrar's DNS control panel.
+  - name: cargocollective
+    type: word
+    words:
+    - <div class="notfound">
+    - 404 Not Found<br>
+  - name: fastly
+    type: word
+    words:
+    - 'Fastly error: unknown domain:'
+  - name: feedpress
+    type: word
+    words:
+    - The feed has not been found.
+  - condition: and
+    name: frontify
+    part: body
+    type: word
+    words:
+    - 404 - Page Not Found
+    - "Oops\u2026 looks like you got lost"
+  - name: gemfury
+    type: word
+    words:
+    - '404: This page could not be found.'
+  - name: getresponse
+    type: word
+    words:
+    - With GetResponse Landing Pages, lead generation has never been easier
+  - name: ghost
+    type: word
+    words:
+    - The thing you were looking for is no longer here
+    - The thing you were looking for is no longer here, or never was
+  - name: github
+    type: word
+    words:
+    - There isn't a GitHub Pages site here.
+    - For root URLs (like http://example.com/) you must provide an index.html file
+  - name: hatenablog
+    type: word
+    words:
+    - 404 Blog is not found
+    - Sorry, we can't find the page you're looking for.
+  - name: helpjuice
+    type: word
+    words:
+    - We could not find what you're looking for.
+  - name: helprace
+    type: word
+    words:
+    - Alias not configured!
+    - Admin of this Helprace account needs to set up domain alias
+    - '(see Step 2 here: Using your own domain with Helprace).'
+  - name: helpscout
+    type: word
+    words:
+    - 'No settings were found for this company:'
+  - name: heroku
+    type: word
+    words:
+    - There's nothing here, yet.
+    - herokucdn.com/error-pages/no-such-app.html
+    - <title>No such app</title>
+  - name: hubspot
+    type: word
+    words:
+    - Domain not found
+    - does not exist in our system
+  - name: intercom
+    type: word
+    words:
+    - This page is reserved for artistic dogs.
+    - "<h1 class=\"headline\">Uh oh. That page doesn\u2019t exist.</h1>"
+  - name: jazzhr
+    type: word
+    words:
+    - This account no longer active
+  - name: jetbrains
+    type: word
+    words:
+    - is not a registered InCloud YouTrack.
+  - name: kinsta
+    type: word
+    words:
+    - No Site For Domain
+  - name: landingi
+    type: word
+    words:
+    - It looks like you're lost
+    - The page you are looking for is not found
+  - name: launchrock
+    type: word
+    words:
+    - It looks like you may have taken a wrong turn somewhere. Don't worry...it happens
+      to all of us.
+  - name: mashery
+    type: word
+    words:
+    - Unrecognized domain <strong>
+  - name: ngrok
+    type: word
+    words:
+    - ngrok.io not found
+    - Tunnel *.ngrok.io not found
+  - name: pantheon.io
+    type: word
+    words:
+    - The gods are wise, but do not know of the site which you seek.
+  - name: pingdom
+    type: word
+    words:
+    - Public Report Not Activated
+    - This public report page has not been activated by the user
+  - name: proposify
+    type: word
+    words:
+    - If you need immediate assistance, please contact <a href="mailto:support@proposify.biz
+  - name: readme
+    type: word
+    words:
+    - Project doesnt exist... yet!
+  - name: shopify
+    type: word
+    words:
+    - Sorry, this shop is currently unavailable.
+  - name: simplebooklet
+    type: word
+    words:
+    - We can't find this <a href="https://simplebooklet.com
+  - name: smartjob
+    type: word
+    words:
+    - Job Board Is Unavailable
+    - This job board website is either expired
+    - This job board website is either expired or its domain name is invalid.
+  - name: smartling
+    type: word
+    words:
+    - Domain is not configured
+  - name: smugmug
+    type: word
+    words:
+    - '{"text":"Page Not Found"'
+  - name: strikingly
+    type: word
+    words:
+    - But if you're looking to build your own website
+    - you've come to the right place.
+  - name: surge
+    type: word
+    words:
+    - project not found
+  - name: surveygizmo
+    type: word
+    words:
+    - data-html-name
+  - name: tave
+    type: word
+    words:
+    - '<h1>Error 404: Page Not Found</h1>'
+  - name: teamwork
+    type: word
+    words:
+    - Oops - We didn't find your site.
+  - name: thinkific
+    type: word
+    words:
+    - You may have mistyped the address or the page may have moved.
+  - name: tictail
+    type: word
+    words:
+    - Building a brand of your own?
+    - 'to target URL: <a href="https://tictail.com'
+    - Start selling on Tictail.
+  - name: tilda
+    type: word
+    words:
+    - Domain has been assigned
+  - name: tumblr
+    type: word
+    words:
+    - Whatever you were looking for doesn't currently exist at this address.
+    - There's nothing here.
+  - name: uberflip
+    type: word
+    words:
+    - Non-hub domain, The URL you've accessed does not provide a hub.
+  - name: unbounce
+    regex:
+    - ^The requested URL was not found on this server.$
+    type: regex
+  - name: uptimerobot
+    regex:
+    - ^page not found$
+    type: regex
+  - name: uservoice
+    type: word
+    words:
+    - This UserVoice subdomain is currently available!
+  - name: vend
+    type: word
+    words:
+    - Looks like you've traveled too far into cyberspace.
+  - name: webflow
+    type: word
+    words:
+    - <p class="description">The page you are looking for doesn't exist or has been
+      moved.</p>
+  - name: wishpond
+    type: word
+    words:
+    - https://www.wishpond.com/404?campaign=true
+  - name: wordpress
+    type: word
+    words:
+    - Do you want to register
+  - name: worksites
+    regex:
+    - (?:Company Not Found|you&rsquo;re looking for doesn&rsquo;t exist)
+    type: regex
+  - name: wufoo
+    type: word
+    words:
+    - Profile not found
+    - Hmmm....something is not right.
+  - name: zendesk
+    type: word
+    words:
+    - this help center no longer exists
+  - name: readthedocs
+    type: word
+    words:
+    - unknown to Read the Docs
+  - name: tilda
+    type: word
+    words:
+    - <title>Please renew your subscription</title>
+    - Please go to the site settings and put the domain name in the Domain tab.
+  - name: smart-jobboard
+    type: word
+    words:
+    - This job board website is either expired or its domain name is invalid.
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+id: detect-all-takeovers
+info:
+  author: melbadry9 & pxmme1337
+  name: Subdomain Takeover Detection
+  severity: high

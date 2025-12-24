@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - The gods are wise, but do not know of the site which you seek.
+  - dsl:
+    - '!contains(host,"apigee.io")'
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: pantheon-takeover
+info:
+  author: pdteam
+  description: Pantheon takeover was detected.
+  metadata:
+    max-request: 1
+  name: Pantheon Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/24
+  - https://medium.com/bug-bounty/how-i-took-over-several-stanford-subdomains-also-let-me-explain-you-the-pain-to-report-it-d84b08704be8
+  severity: high
+  tags: takeover

@@ -1,0 +1,38 @@
+id: unpatched-coldfusion
+info:
+  author: Daviey
+  classification:
+    cve-id: CVE-2021-21087
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 5.4
+    cwe-id: CWE-79
+  description: Adobe ColdFusion is susceptible to remote code execution. An attacker
+    can execute malware, obtain sensitive information, modify data, and/or gain full
+    control over a compromised system without entering necessary credentials.
+  metadata:
+    shodan-query: http.component:"Adobe ColdFusion"
+  name: Adobe ColdFusion - Remote Code Execution
+  reference:
+  - https://helpx.adobe.com/security/products/coldfusion/apsb21-16.html
+  - https://twitter.com/Daviey/status/1374070630283415558
+  severity: medium
+  tags: rce,adobe,misc,coldfusion
+requests:
+- matchers:
+  - regex:
+    - eval\(\"\(\"\+json\+\"\)\"\)
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cf_scripts/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/cf-scripts/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/CFIDE/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/cfide/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/CF_SFSD/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/cfide-scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/cfmx/CFIDE/scripts/ajax/package/cfajax.js'
+  stop-at-first-match: true

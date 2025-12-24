@@ -1,0 +1,9 @@
+id: yongyou-nc-beanshell-rce
+info:
+  author: soapffz
+  name: Yongyou Nc Beanshell Rce
+  severity: high
+workflows:
+- subtemplates:
+  - template: yongyou-nc-beanshell-rce.yaml
+  template: yongyou-nc-beanshell-detect.yaml

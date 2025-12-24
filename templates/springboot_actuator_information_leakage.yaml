@@ -1,0 +1,20 @@
+id: springboot_actuator_information_leakage
+info:
+  author: yueji0j1anke
+  description: Spring Boot Actuator Unauthorized
+  name: springboot_actuator_information_leakage
+  severity: critical
+  tags: actuator,unauthorized
+requests:
+- method: GET
+  path:
+  - '{{BaseURL}}/actuator'
+- matchers:
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/env'
+  stop-at-first-match: true

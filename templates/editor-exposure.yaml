@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - = true
+    - indent_style
+  - condition: and
+    negative: true
+    part: header
+    type: word
+    words:
+    - application/json
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.editorconfig'
+id: editor-exposure
+info:
+  author: DhiyaneshDk,daffainfo
+  description: Editor configuration file was detected.
+  metadata:
+    max-request: 1
+    shodan-query: html:"editorconfig"
+    verified: true
+  name: Editor Configuration File - Detect
+  severity: low
+  tags: config,exposure

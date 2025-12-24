@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - Please go to the site settings and put the domain name in the Domain tab.
+  - negative: true
+    type: word
+    words:
+    - <title>Please renew your subscription</title>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: tilda-takeover
+info:
+  author: pdteam
+  description: Tilda takeover was detected.
+  metadata:
+    max-request: 1
+  name: tilda takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/155
+  severity: high
+  tags: takeover

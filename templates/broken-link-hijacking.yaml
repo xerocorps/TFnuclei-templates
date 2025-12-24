@@ -1,0 +1,19 @@
+author: qaisar afridi
+id: broken-link-hijacking
+info:
+  description: Detects potential broken link hijacking vulnerabilities in the target
+  name: Broken Link Hijacking
+  severity: medium
+requests:
+- matchers:
+  - part: body
+    regex:
+    - window\.location\.href.*=.*malicious\.com
+    type: regex
+  method: GET
+  path:
+  - /link
+  - /hijack?redirect=http://malicious.com
+tags:
+- web
+- broken-link

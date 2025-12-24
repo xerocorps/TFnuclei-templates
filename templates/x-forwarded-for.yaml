@@ -1,0 +1,15 @@
+id: x-forwarded-for
+info:
+  author: Kabilan S
+  name: x-forwarded-for
+  severity: low
+requests:
+- headers:
+    X-Forwarded-For: evil.com
+  matchers:
+  - type: word
+    words:
+    - evil
+  method: GET
+  path:
+  - '{{BaseURL}}/'

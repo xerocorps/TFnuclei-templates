@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - NetScaler AAA</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/logon/LogonPoint/tmindex.html'
+id: netscaler-aaa-login
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
+    cwe-id: CWE-200
+  description: NetScaler AAA login panel was detected.
+  metadata:
+    max-request: 1
+  name: NetScaler AAA Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/6898
+  severity: critical
+  tags: panel,netscaler,login,edb

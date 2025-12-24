@@ -1,0 +1,34 @@
+id: springboot-actuator
+info:
+  author: that_juan_,dwisiswant0,wdahlenb,dr0pd34d
+  metadata:
+    shodan-query: http.favicon.hash:116323821
+  name: Detect Springboot Actuators
+  severity: medium
+  tags: tech,springboot,actuator
+requests:
+- extractors:
+  - json:
+    - .[] | to_entries | .[].key
+    name: available-endpoints
+    type: json
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"_links":'
+    - '"self":'
+    - '"health"'
+  - dsl:
+    - status_code==200 && ("116323821" == mmh3(base64_py(body)))
+    name: favicon
+    type: dsl
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/actuator'
+  - '{{BaseURL}}/favicon.ico'
+  - '{{BaseURL}}/actuator/favicon.ico'
+  stop-at-first-match: true

@@ -1,0 +1,23 @@
+id: glpi-cms-detect
+info:
+  author: dogasantos
+  name: GLPI Cms Detection
+  severity: info
+  tags: glpi,cms,php
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - CFG_GLPI
+    - _glpi_csrf_token
+    - GLPI Copyright
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/glpi/'
+  - '{{BaseURL}}/glpi2/'

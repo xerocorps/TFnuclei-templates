@@ -1,0 +1,14 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Load Balancer Manager
+  method: GET
+  path:
+  - '{{BaseURL}}/balancer-manager'
+id: apache-loadbalancer
+info:
+  author: h0tak88r
+  name: Apache Load Balancer Manager
+  severity: info

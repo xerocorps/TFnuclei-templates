@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - news-announcement-scroll
+  - dsl:
+    - compare_versions(version, '<= 9.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/news-announcement-scroll/readme.txt'
+  redirects: true
+id: news_announcement_scroll-b29113d6-7a9a-4e10-a446-147ec146ac93
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/news-announcement-scroll/
+    google-query: inurl:"/wp-content/plugins/news-announcement-scroll/"
+    shodan-query: http.html:"wp-content/plugins/news-announcement-scroll/"
+  name: 'News Announcement Scroll <= 9.0.0 -  Authenticated (Contributor+) SQL Injection
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b29113d6-7a9a-4e10-a446-147ec146ac93?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,news-announcement-scroll,low,candidate

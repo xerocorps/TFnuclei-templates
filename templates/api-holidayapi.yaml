@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"holidays":'
+    - '"name":'
+    - '"date":'
+  method: GET
+  path:
+  - https://holidayapi.com/v1/holidays?pretty&key={{token}}&country=US&year=2020&language=EN
+id: api-holidayapi
+info:
+  author: daffainfo
+  description: Historical data regarding holidays
+  metadata:
+    max-request: 1
+  name: Holiday API Test
+  reference:
+  - https://holidayapi.com/docs
+  - https://github.com/daffainfo/all-about-apikey/tree/main/holiday-api
+  severity: info
+  tags: token-spray,holidayapi
+self-contained: true

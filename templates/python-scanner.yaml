@@ -1,0 +1,39 @@
+file:
+- extensions:
+  - py
+  extractors:
+  - name: code-injection
+    regex:
+    - exec
+    - eval
+    - __import__
+    type: regex
+  - name: command-injection
+    regex:
+    - subprocess.call\(.*shell=True.*\)
+    - os.system
+    - os.popen
+    type: regex
+  - name: untrusted-source
+    regex:
+    - pickle.loads
+    - cPickle.loads
+    type: regex
+  - name: dangerous-yaml
+    regex:
+    - yaml.load
+    type: regex
+  - name: sqli
+    regex:
+    - cursor.execute
+    type: regex
+id: python-scanner
+info:
+  author: majidmc2
+  description: Indicators for dangerous Python functions
+  name: Python Scanner
+  reference:
+  - https://www.kevinlondon.com/2015/07/26/dangerous-python-functions.html
+  - https://www.kevinlondon.com/2015/08/15/dangerous-python-functions-pt2.html
+  severity: info
+  tags: python,file,sast

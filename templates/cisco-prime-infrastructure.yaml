@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - productName = "Prime Infrastructure"
+    - Cisco&nbsp;
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/webacs/pages/common/login.jsp'
+id: cisco-prime-infrastructure
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'A Cisco Prime Infrastructure login panel was discovered.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"prime infrastructure"
+  name: Cisco Prime Infrastructure Panel - Detect
+  severity: info
+  tags: panel,cisco

@@ -1,0 +1,23 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: or
+    part: body
+    regex:
+    - Powered by <a\s+[^>]+>PrestaShop
+    - <!-- /Block [a-z ]+ module (?:HEADER|TOP)?\s?-->
+    - <!-- /Module Block [a-z ]+ -->
+    type: regex
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: prestashop-detect
+info:
+  author: pdteam
+  metadata:
+    max-request: 1
+    shodan-query: http.component:"PrestaShop"
+  name: PrestaShop Tech Detection
+  severity: info
+  tags: tech,cms,prestashop

@@ -1,0 +1,28 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - (/var/www/[a-zA-Z0-9._/-]+)
+    type: regex
+  headers:
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    Accept-Language: en-US,en;q=0.5
+    Content-Type: application/x-www-form-urlencoded
+    User-Agent: Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0
+  matchers:
+  - type: word
+    words:
+    - Warning
+    - strpos() expects parameter 1 to be string, array given in
+    - drupal_parse_url()
+    - includes/common.inc
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?destination[]'
+id: drupal-full-path-disclosure
+info:
+  author: trainzment
+  name: Drupal Full Path Disclosure
+  severity: info
+  tags: drupal,exposure,fpd

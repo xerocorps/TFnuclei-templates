@@ -1,0 +1,38 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - \/Submitty\/Submitty\/releases\/tag\/([a-z0-9.]+)" target="_blank
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - submitty-banner
+    - https://submitty.org
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/authentication/login'
+id: submitty-login
+info:
+  author: princechaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Submitty login panel was detected.
+  metadata:
+    max-request: 1
+  name: Submitty Login Panel - Detect
+  reference:
+  - https://github.com/Submitty/Submitty
+  - https://rcos.io/
+  severity: info
+  tags: panel,submitty,oss

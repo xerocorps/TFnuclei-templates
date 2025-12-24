@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - If you're moving your domain away from Cargo you must make this configuration
+      through your registrar's DNS control panel.
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: cargo-takeover
+info:
+  author: pdteam
+  description: cargo takeover was detected.
+  metadata:
+    max-request: 1
+  name: cargo takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover

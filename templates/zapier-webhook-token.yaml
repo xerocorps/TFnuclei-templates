@@ -1,0 +1,15 @@
+id: zapier-webhook-token
+info:
+  author: Ice3man
+  name: Zapier Webhook Disclosure
+  severity: info
+  tags: exposure,token
+requests:
+- extractors:
+  - part: body
+    regex:
+    - https://(?:www.)?hooks\.zapier\.com/hooks/catch/[A-Za-z0-9]+/[A-Za-z0-9]+/
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

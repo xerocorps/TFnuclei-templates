@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - version
+    - dependencies
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/npm-shrinkwrap.json'
+id: npm-shrinkwrap-exposure
+info:
+  author: DhiyaneshDk,noraj
+  description: 'A file created by npm shrinkwrap. It is identical to package-lock.json.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: html:"npm-shrinkwrap.json"
+    verified: true
+  name: Node Shrinkwrap Exposure
+  reference:
+  - https://docs.npmjs.com/cli/v9/configuring-npm/npm-shrinkwrap-json
+  severity: info
+  tags: config,exposure,npm,files,node

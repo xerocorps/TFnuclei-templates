@@ -1,0 +1,14 @@
+id: home-assistant
+info:
+  author: fabaff
+  name: Detect Home Assistant
+  severity: low
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Home Assistant</title>
+  method: GET
+  path:
+  - '{{BaseURL}}:8123/'
+  - '{{BaseURL}}/'

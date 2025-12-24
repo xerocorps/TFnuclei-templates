@@ -1,0 +1,28 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>ZM - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: zoneminder-login
+info:
+  author: princechaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: ZoneMinder panel was detected.
+  metadata:
+    max-request: 1
+  name: ZoneMinder Login Panel - Detect
+  severity: info
+  tags: panel,zoneminder

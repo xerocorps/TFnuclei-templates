@@ -1,0 +1,14 @@
+id: custom-misc-server-detect
+info:
+  author: 0xunknown
+  name: Custom-cache-server-detect
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Misc server</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/misc/'

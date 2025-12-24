@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>MeshCentral - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: meshcentral-login
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: MeshCentral login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"MeshCentral - Login"
+  name: MeshCentral Login Panel - Detect
+  severity: info
+  tags: panel,meshcentral

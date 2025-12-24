@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - window.snipeit
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'
+id: snipeit-panel
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Snipe-IT panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.favicon.hash:431627549
+  name: Snipe-IT Panel - Detect
+  severity: info
+  tags: panel,snipeit,tech

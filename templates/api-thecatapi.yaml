@@ -1,0 +1,26 @@
+http:
+- headers:
+    x-api-key: '{{token}}'
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"country_code":'
+    - '"created_at":'
+  method: GET
+  path:
+  - https://api.thecatapi.com/v1/votes
+id: api-thecatapi
+info:
+  author: daffainfo
+  description: Pictures of cats from Tumblr
+  metadata:
+    max-request: 1
+  name: TheCatApi API Test
+  reference:
+  - https://docs.thecatapi.com/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/thecatapi
+  severity: info
+  tags: token-spray,thecatapi
+self-contained: true

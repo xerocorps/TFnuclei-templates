@@ -1,0 +1,34 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - version" align="right" valign="bottom">([0-9.a-z]+)<\/td>
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Extreme NetConfig UI</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php5'
+id: extreme-netconfig-ui
+info:
+  author: pussycat0x
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Extreme NetConfig UI panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Extreme NetConfig UI"
+  name: Extreme NetConfig UI Panel - Detect
+  severity: info
+  tags: panel,tech,hiveos,extreme

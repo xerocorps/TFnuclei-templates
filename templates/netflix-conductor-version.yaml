@@ -1,0 +1,39 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - conductor\-server\-([0-9.]+)\-
+    - '"version":"([0-9.]+)\-'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - application/json
+  - case-insensitive: true
+    part: body
+    type: word
+    words:
+    - CONDUCTOR_
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/admin/config'
+  - '{{BaseURL}}/api/sys'
+  stop-at-first-match: true
+id: netflix-conductor-version
+info:
+  author: c-sh0
+  description: Obtain netflix conductor version information
+  metadata:
+    max-request: 2
+    shodan-query: http.title:"Conductor UI", http.title:"Workflow UI"
+  name: Netflix Conductor Version Detection
+  reference:
+  - https://github.com/Netflix/conductor/blob/v1.6.0-rc1/ui/src/server.js#L17
+  - https://github.com/Netflix/conductor/blob/v3.1.0/rest/src/main/java/com/netflix/conductor/rest/controllers/AdminResource.java#L42
+  severity: info
+  tags: tech,netflix,conductor,api,misc

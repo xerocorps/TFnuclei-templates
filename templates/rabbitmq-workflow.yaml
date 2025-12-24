@@ -1,0 +1,8 @@
+id: rabbitmq-workflow
+info:
+  author: fyoorer
+  name: RabbitMQ Workflow
+logic: "if rabbitmq_dashboard() {\n  rabbitmq_default_admin()\n}\n"
+variables:
+  rabbitmq_dashboard: panels/rabbitmq-dashboard.yaml
+  rabbitmq_default_admin: security-misconfiguration/rabbitmq-default-admin.yaml

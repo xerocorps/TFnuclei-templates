@@ -1,0 +1,31 @@
+id: springboot-env
+info:
+  author: that_juan_ & dwisiswant0 & wdahlenb
+  description: Sensitive environment variables may not be masked
+  name: Detect Springboot Env Actuator
+  severity: high
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - JAVA_HOME
+    - sping.config.location
+    - spring.application.name
+    - local.server.port
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: header
+    type: word
+    words:
+    - application/json
+    - application/vnd.spring-boot.actuator
+    - application/vnd.spring-boot.actuator.v1+json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/env'
+  - '{{BaseURL}}/actuator/env'

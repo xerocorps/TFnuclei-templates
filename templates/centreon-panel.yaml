@@ -1,0 +1,35 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - v. (.*)
+    type: regex
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Centreon - IT & Network Monitoring</title>
+    - <input name="centreon_token" type="hidden"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/centreon/index.php'
+id: centreon-panel
+info:
+  author: pikpikcu,daffainfo
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Centreon login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Centreon"
+  name: Centreon Login Panel - Detect
+  severity: info
+  tags: panel,centreon,login

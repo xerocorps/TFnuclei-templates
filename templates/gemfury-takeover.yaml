@@ -1,0 +1,26 @@
+http:
+- host-redirects: true
+  matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - part: header
+    type: word
+    words:
+    - 'Location: https://gemfury.com/404'
+  matchers-condition: and
+  max-redirects: 1
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: gemfury-takeover
+info:
+  author: pdteam,daffainfo
+  description: Gemfury takeover was detected.
+  metadata:
+    max-request: 1
+  name: Gemfury Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/154
+  severity: high
+  tags: takeover,gemfury

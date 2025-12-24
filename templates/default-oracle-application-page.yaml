@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <TITLE>Oracle Application Server Containers for J2EE 10g</TITLE>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-oracle-application-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Oracle Application Server Containers"
+  name: Oracle Application Server Containers
+  severity: info
+  tags: tech,oracle

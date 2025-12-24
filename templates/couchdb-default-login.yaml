@@ -1,0 +1,63 @@
+http:
+- attack: clusterbomb
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '{"ok":true'
+    - '"name":"'
+    - '"roles":['
+  - condition: and
+    part: header
+    type: word
+    words:
+    - application/json
+    - AuthSession=
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - admin
+    - test
+    - password
+    - couchdb
+    username:
+    - admin
+    - administrator
+    - couchdb
+    - root
+  raw:
+  - 'POST /_session HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    name={{username}}&password={{password}}
+
+    '
+  stop-at-first-match: true
+id: couchdb-default-login
+info:
+  author: thefoggiest
+  classification:
+    cpe: cpe:2.3:a:apache:couchdb:*:*:*:*:*:*:*:*
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id: CWE-522
+  description: 'CouchDB weak admin credentials were discovered.
+
+    '
+  metadata:
+    fofa-query: app="APACHE-CouchDB"
+    max-request: 16
+    product: couchdb
+    vendor: apache
+    verified: true
+  name: CouchDB - Default Login
+  severity: high
+  tags: default-login,couchdb,misconfig

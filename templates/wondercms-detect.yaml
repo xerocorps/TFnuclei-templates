@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - 'Set-Cookie: wondercms_'
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Powered by WonderCMS
+    - https://www.wondercms.com
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: wondercms-detect
+info:
+  author: pikpikcu
+  metadata:
+    max-request: 1
+  name: WonderCMS Detect
+  severity: info
+  tags: tech,wondercms

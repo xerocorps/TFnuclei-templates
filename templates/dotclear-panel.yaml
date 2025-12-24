@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <body id="dotclear-admin" class="auth">
+    - <title>Dotclear</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/dc2/admin/auth.php'
+  - '{{BaseURL}}/auth.php'
+id: dotclear-panel
+info:
+  author: pikpikcu,daffainfo
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Dotclear admin login panel was detected.
+  metadata:
+    max-request: 2
+    shodan-query: http.title:"Dotclear"
+  name: Dotclear Admin Login Panel - Detect
+  severity: info
+  tags: panel,dotclear

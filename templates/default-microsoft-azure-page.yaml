@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Microsoft Azure App Service - Welcome</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-microsoft-azure-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Microsoft Azure App Service - Welcome"
+  name: Microsoft Azure Default Page
+  severity: info
+  tags: tech,azure,microsoft

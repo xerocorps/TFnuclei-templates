@@ -1,0 +1,14 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - kubernetesDashboard
+  method: GET
+  path:
+  - '{{BaseURL}}/dashboard/#!/namespace?namespace=default'
+id: kube-dashboard
+info:
+  author: h0tak88r
+  name: Kubernetes Dashboard Detection
+  severity: info

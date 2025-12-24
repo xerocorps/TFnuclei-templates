@@ -1,0 +1,29 @@
+id: ScanMySQLiErrorBased
+info:
+  author: Hernan Rodriguez
+  name: MySQLInjection Detected
+  severity: High
+requests:
+- extractors:
+  - part: body
+    regex:
+    - An error occurred | array_merge() | valid MySQL result |MySqlClient.|mysqli_.*|
+      SQL syntax.*MySQL|Warning.*mysql_.*
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}*'
+  - '{{BaseURL}}-'
+  - '{{BaseURL}}'''
+  - '{{BaseURL}}'')'
+  - '{{BaseURL}}`))'
+  - '{{BaseURL}}``'
+  - '{{BaseURL}};'
+  - '{{BaseURL}}//'
+  - '{{BaseURL}}'' AND id IS NULL; --'
+  - "{{BaseURL}}/*\u2026*/"
+  - '{{BaseURL}}-x()'
+  - '{{BaseURL}}[1]'
+  - '{{BaseURL}}/!1111''/'
+  - '{{BaseURL}}+'
+  - '{{BaseURL}} 1 or 1'

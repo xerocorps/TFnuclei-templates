@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"currency"'
+    - '"balance"'
+    - '"available"'
+  raw:
+  - 'GET https://api.blockchain.com/v3/exchange/accounts HTTP/1.1
+
+    Host: api.blockchain.com
+
+    X-API-Token: {{token}}
+
+    '
+id: api-blockchain
+info:
+  author: daffainfo
+  classification:
+    cwe-id: CWE-200
+  description: Bitcoin Payment, Wallet & Transaction Data
+  metadata:
+    max-request: 1
+  name: Blockchain API Test
+  reference:
+  - https://api.blockchain.com/v3/#/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/blockchain
+  severity: info
+  tags: token-spray,blockchain
+self-contained: true

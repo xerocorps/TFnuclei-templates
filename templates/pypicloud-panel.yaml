@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Pypicloud</title>
+    - <html ng-app="pypicloud">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'
+id: pypicloud-panel
+info:
+  author: Supras
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: PyPLCloud login panel was detected.
+  metadata:
+    google-query: intext:pypicloud
+    max-request: 1
+  name: PyPICloud Login Panel - Detect
+  reference:
+  - https://pypicloud.readthedocs.io/en/latest/
+  severity: info
+  tags: panel,pypicloud

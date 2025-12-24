@@ -1,0 +1,12 @@
+file:
+- extensions:
+  - all
+  matchers:
+  - type: word
+    words:
+    - Landroid/webkit/WebSettings;->setAllowUniversalAccessFromFileURLs(Z)V
+id: webview-universal-access
+info:
+  author: gaurang
+  name: Webview Universal Access enabled
+  severity: medium

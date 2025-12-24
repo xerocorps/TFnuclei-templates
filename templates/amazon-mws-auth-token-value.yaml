@@ -1,0 +1,12 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - amzn\.mws\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+    type: regex
+id: amazon-mws-auth-token-value
+info:
+  author: gaurang
+  name: Amazon MWS Auth Token
+  severity: medium

@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - condition: and
+    name: Incapsula
+    part: response
+    regex:
+    - Request unsuccessful. Incapsula incident ID
+    - 'X-Iinfo: '
+    type: regex
+  raw:
+  - 'POST / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    bad=<script>alert(1)</script>
+
+    '
+id: waf-detect-incapsula
+info:
+  author: Caddyshack2175
+  classification:
+    cwe-id: CWE-200
+  description: A web application firewall was detected.
+  metadata:
+    max-request: 1
+  name: WAF Detection
+  reference:
+  - https://www.imperva.com/products/web-application-firewall-waf/
+  severity: info
+  tags: waf,tech,misc

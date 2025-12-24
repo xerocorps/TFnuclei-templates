@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - condition: or
+    part: header
+    regex:
+    - (?i)X-Lucee-Version
+    - '(?i)X-CB-Server: LUCEE'
+    - '(?i)X-IDG-Appserver: Lucee'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: lucee-detect
+info:
+  author: geeknik
+  description: Lucee Server is a dynamic, Java based (JSR-223), tag and scripting
+    language used for rapid web application development -- https://github.com/lucee/Lucee/
+  metadata:
+    max-request: 1
+  name: Detect Lucee
+  severity: info
+  tags: tech,lucee

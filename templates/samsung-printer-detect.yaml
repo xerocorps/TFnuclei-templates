@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - SyncThru Web Service
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sws/index.html'
+id: samsung-printer-detect
+info:
+  author: pussycat0x
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Samsung printer panel was detected.
+  metadata:
+    fofa-query: app="SAMSUNG-Printer"
+    max-request: 1
+  name: Samsung Printer Panel - Detect
+  severity: info
+  tags: iot,panel,samsung,printer

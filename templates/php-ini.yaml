@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '[PHP]'
+    - short_open_tag
+    - safe_mode
+    - expose_php
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/php.ini'
+id: php-ini
+info:
+  author: geeknik,DhiyaneshDK
+  description: php.ini file is exposed.
+  metadata:
+    max-request: 1
+    shodan-query: php.ini
+    verified: true
+  name: Php.ini File Disclosure
+  reference: https://www.php.net/manual/en/configuration.file.php
+  severity: low
+  tags: config,exposure,files

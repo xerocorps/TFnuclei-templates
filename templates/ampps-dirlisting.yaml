@@ -1,0 +1,32 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>[AMPPS] - Web Local</title>
+    - Powered by AMPPS
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/client/'
+  - '{{BaseURL}}/files/'
+  - '{{BaseURL}}/icons/'
+id: ampps-dirlisting
+info:
+  author: deFr0ggy
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: AMPPS by Softaculous panel directory listing was detected.
+  metadata:
+    max-request: 3
+  name: AMPPS by Softaculous Panel - Directory Listing - Detect
+  severity: info
+  tags: panel,ampps,softaculous,misconfig

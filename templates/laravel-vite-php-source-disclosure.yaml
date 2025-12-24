@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <?php
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/public/index.php'
+  - '{{BaseURL}}:3000/public/index.php'
+id: laravel-vite-php-source-disclosure
+info:
+  author: trainzment
+  description: 'This template checks for PHP source code disclosure vulnerability
+    in Laravel applications using Vite. The vulnerability is confirmed if the response
+    body starts with "<?php".
+
+    '
+  name: Laravel Vite PHP Source Code Disclosure
+  severity: high
+  tags: laravel, vite

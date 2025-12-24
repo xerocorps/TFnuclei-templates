@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - SERVER_SOFTWARE =
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/test-cgi'
+id: oracle-test-cgi
+info:
+  author: DhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: title:"Oracle Application Server"
+    verified: true
+  name: Oracle Application Server test-cgi Page
+  severity: info
+  tags: oracle,exposure

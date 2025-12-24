@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>CaseManager</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'
+id: casemanager-panel
+info:
+  author: ffffffff0x
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: CaseManager login panel was detected.
+  metadata:
+    fofa-query: title="CaseManager"
+    max-request: 1
+  name: CaseManager Login Panel - Detect
+  severity: info
+  tags: casemanager,panel

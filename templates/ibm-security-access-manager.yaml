@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>IBM Security Access Manager</title>
+  - part: header
+    type: word
+    words:
+    - IBM Security Access Manager for Web
+  - condition: and
+    part: body
+    type: word
+    words:
+    - /mga/sps/authsvc/policy/forgot_username
+    - /mga/sps/authsvc/policy/forgot_password
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: ibm-security-access-manager
+info:
+  author: geeknik
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: IBM Security Access Manager login panel was detected.
+  metadata:
+    max-request: 1
+  name: IBM Security Access Manager Login Panel - Detect
+  reference:
+  - https://www.ibm.com/docs/en/sva/9.0.7?topic=overview-introduction-security-access-manager
+  severity: info
+  tags: panel,ibm

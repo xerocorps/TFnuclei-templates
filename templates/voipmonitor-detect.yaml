@@ -1,0 +1,20 @@
+id: voipmonitor-detect
+info:
+  author: Yanyun
+  name: VoipMonitor detect
+  severity: info
+  tags: tech,voipmonitor
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - share.voipmonitor.org
+    - VoIPmonitor
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

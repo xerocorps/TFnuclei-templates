@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Apache HTTP Server Test Page powered by CentOS</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-apache-test-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Apache HTTP Server Test Page powered by CentOS"
+  name: Apache HTTP Server Test Page
+  severity: info
+  tags: tech,apache

@@ -1,0 +1,34 @@
+id: glpi-project-detect
+info:
+  author: ricardomaia
+  metadata:
+    shodan-query: title:"glpi"
+    verified: true
+  name: GLPI Detect
+  reference:
+  - https://glpi-project.org/
+  severity: info
+  tags: tech,glpi
+requests:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '# GLPI changes\n\n.*\n.*\n.*\n##\s\[(\d+\.\d+|\d+\.\d+\.\d+)\]'
+    type: regex
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - GLPI changes
+    - glpi-project.org
+  - regex:
+    - (GLPI.*[C|c]opyright.*(|Teclib))
+    type: regex
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/CHANGELOG.md'
+  stop-at-first-match: true

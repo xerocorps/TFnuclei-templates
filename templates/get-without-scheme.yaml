@@ -1,0 +1,13 @@
+id: get-without-scheme
+info:
+  author: pdteam
+  name: Basic GET Request without scheme
+  severity: info
+requests:
+- matchers:
+  - type: word
+    words:
+    - ok
+  method: GET
+  path:
+  - '{{BaseURL}}'

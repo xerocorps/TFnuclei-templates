@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Welcome to VMware Site Recovery Manager</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/configure/app/landing/welcome-srm-va.html'
+id: vmware-site-recovery-manager
+info:
+  author: dhiyaneshDk
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: VMware Site Recovery Manger panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Welcome to VMware Site Recovery Manager"
+  name: VMware Site Recovery Manager Panel - Detect
+  severity: info
+  tags: panel,vmware,tech

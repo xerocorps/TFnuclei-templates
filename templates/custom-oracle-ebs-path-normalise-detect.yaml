@@ -1,0 +1,14 @@
+id: custom-oracle-ebs-path-normalise-detect
+info:
+  author: 0xParthJ
+  name: custom-oracle-ebs-path-normalise-detect
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <display-name>Forms Services</display-name>
+  method: GET
+  path:
+  - '{{BaseURL}}/forms/%C0%AE/WEB-INF/web.xml'

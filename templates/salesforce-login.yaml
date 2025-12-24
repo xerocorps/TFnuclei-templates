@@ -1,0 +1,26 @@
+id: salesforce-login
+info:
+  author: geeknik
+  name: Salesforce Credentials
+  severity: high
+  tags: salesforce,auth
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - jsforce.Connection
+    - conn.login
+    - conn.query
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/js/salesforce.js'
+  - '{{BaseURL}}/salesforce.js'

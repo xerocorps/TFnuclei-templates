@@ -1,0 +1,24 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - favicon\.ico\?_=([0-9.]+)
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - <title>Solr Admin</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/solr/'
+  - '{{BaseURL}}'
+  stop-at-first-match: true
+id: solr-exposure
+info:
+  author: pdteam
+  metadata:
+    shodan-query: http.title:"Solr Admin"
+  name: Apache Solr Exposure
+  severity: medium
+  tags: panel,solr,apache

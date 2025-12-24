@@ -1,0 +1,24 @@
+http:
+- headers:
+    X-AIO-Key: '{{token}}'
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"username":'
+    - '"id":'
+  method: GET
+  path:
+  - https://io.adafruit.com/api/v2/user
+id: api-adafruit-io
+info:
+  author: dwisiswant0
+  metadata:
+    max-request: 1
+  name: Adafruit IO API Test
+  reference:
+  - https://io.adafruit.com/api/docs/
+  severity: info
+  tags: token-spray,adafruit
+self-contained: true

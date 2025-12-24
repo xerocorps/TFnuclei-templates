@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>IIS7</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-iis7-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"IIS7"
+  name: IIS-7 Default Page
+  severity: info
+  tags: tech,iis

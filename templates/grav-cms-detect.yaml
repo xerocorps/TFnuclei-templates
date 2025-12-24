@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - 'Set-Cookie: grav-site-'
+  - part: body
+    type: word
+    words:
+    - <meta name="generator" content="GravCMS" />
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: grav-cms-detect
+info:
+  author: cyllective
+  description: Detects Grav CMS
+  metadata:
+    max-request: 1
+  name: Grav CMS Detect
+  reference:
+  - https://github.com/getgrav/grav
+  severity: info
+  tags: tech,grav,cms

@@ -1,0 +1,25 @@
+http:
+- headers:
+    x-api-Token: '{{token}}'
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"teams":'
+    - '"team_id":'
+    - '"name":'
+  method: GET
+  path:
+  - https://api.lokalise.com/api2/teams
+id: api-lokalise
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 1
+  name: Lokalise API Test
+  reference:
+  - https://app.lokalise.com/api2docs/curl/#resource-projects
+  severity: info
+  tags: token-spray,lokalise
+self-contained: true

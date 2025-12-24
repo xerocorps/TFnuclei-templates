@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>BigBlueButton</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: bigbluebutton-detect
+info:
+  author: pikpikcu
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"BigBlueButton"
+  name: BigBlueButton Detect
+  severity: info
+  tags: tech,bigbluebutton

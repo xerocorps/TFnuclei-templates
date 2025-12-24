@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-for-japan
+  - dsl:
+    - compare_versions(version, '<= 2.6.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-for-japan/readme.txt'
+  redirects: true
+id: woocommerce_for_japan-0fc675e8-8ba1-40b0-829e-7a48d5eb586d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-for-japan/
+    google-query: inurl:"/wp-content/plugins/woocommerce-for-japan/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-for-japan/"
+  name: 'Japanized For WooCommerce <= 2.6.4 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0fc675e8-8ba1-40b0-829e-7a48d5eb586d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocommerce-for-japan,high,candidate

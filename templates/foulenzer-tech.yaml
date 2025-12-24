@@ -1,0 +1,138 @@
+id: foulenzer-tech
+info:
+  author: hakluke (edited by @foulenzer)
+  name: WebApp tech detection
+  severity: info
+requests:
+- matchers:
+  - condition: or
+    name: atlassian-jira
+    part: body
+    type: word
+    words:
+    - System Dashboard
+    - atlassian.com/software/jira
+    - /secure/QuickSearch.jspa
+    - 'jira.core:'
+  - condition: or
+    name: kibana
+    part: body
+    regex:
+    - <title>Kibana</title>
+    type: regex
+  - condition: or
+    name: moodle
+    part: body
+    regex:
+    - moodle-filter
+    - moodle
+    - <img[^>]+moodlelogo
+    type: regex
+  - condition: or
+    name: zabbix
+    part: body
+    regex:
+    - <body[^>]+zbxCallPostScripts
+    type: regex
+  - condition: or
+    name: jenkins
+    part: body
+    regex:
+    - <span class="jenkins_ver"><a href="https://jenkins\.io/">Jenkins ver\. ([\d.]+)
+    type: regex
+  - condition: or
+    name: wordpress
+    part: body
+    regex:
+    - <link rel=["']stylesheet["'] [^>]+/wp-(?:content|includes)/
+    - <link[^>]+s\d+\.wp\.com
+    type: regex
+  - condition: or
+    name: drupal-commerce
+    part: body
+    regex:
+    - <[^>]+(?:id="block[_-]commerce[_-]cart[_-]cart|class="commerce[_-]product[_-]field)
+    type: regex
+  - condition: or
+    name: gitlab
+    part: body
+    regex:
+    - <meta content="https?://[^/]+/assets/gitlab_logo-
+    - <header class="navbar navbar-fixed-top navbar-gitlab with-horizontal-nav">
+    type: regex
+  - condition: or
+    name: vbulletin
+    regex:
+    - <div id="copyright">Powered by vBulletin
+    type: regex
+  - name: vbulletin
+    part: body
+    type: word
+    words:
+    - vBulletin.version
+    - content="vBulletin
+  - condition: or
+    name: typo3-cms
+    part: body
+    regex:
+    - <link[^>]+ href="/?typo3(?:conf|temp)/
+    - <img[^>]+ src="/?typo3(?:conf|temp)/
+    - "<!--\n\tThis website is powered by TYPO3"
+    type: regex
+  - condition: or
+    name: gitlist
+    part: body
+    regex:
+    - <p>Powered by <a[^>]+>GitList ([\d.]+)
+    type: regex
+  - condition: or
+    name: joomla
+    part: body
+    regex:
+    - (?:<div[^>]+id="wrapper_r"|<(?:link|script)[^>]+(?:feed|components)/com_|<table[^>]+class="pill)
+    - content\=\"Joomla\!
+    type: regex
+  - condition: or
+    name: atlassian-confluence
+    part: body
+    regex:
+    - Powered by <a href=[^>]+atlassian\.com/software/confluence(?:[^>]+>Atlassian
+      Confluence</a> ([\d.]+))?
+    type: regex
+  - condition: or
+    name: drupal
+    part: all
+    regex:
+    - <(?:link|style)[^>]+"/sites/(?:default|all)/(?:themes|modules)/
+    - X-Drupal
+    - x-drupal
+    - 'X-Generator: Drupal'
+    type: regex
+  - condition: or
+    name: gitweb
+    part: body
+    regex:
+    - <!-- git web interface version ([\d.]+)?
+    type: regex
+  - condition: or
+    name: gitea
+    part: body
+    regex:
+    - "<div class=\"ui left\">\\n\\s+\xA9 Gitea Version: ([\\d.]+)"
+    type: regex
+  - name: tomcat
+    part: header
+    type: word
+    words:
+    - Tomcat
+  - name: jenkins
+    part: header
+    type: word
+    words:
+    - X-Jenkins
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+  redirects: true

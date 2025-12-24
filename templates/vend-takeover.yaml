@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - Looks like you've traveled too far into cyberspace.
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: vend-takeover
+info:
+  author: pdteam
+  description: vend takeover was detected.
+  metadata:
+    max-request: 1
+  name: vend takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover

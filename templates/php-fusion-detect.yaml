@@ -1,0 +1,24 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - PHP-Fusion
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: php-fusion-detect
+info:
+  author: pikpikcu
+  metadata:
+    fofa-query: title="PHP-Fusion"
+    max-request: 1
+  name: PHP Fusion Detect
+  severity: info
+  tags: php,tech,php-fusion

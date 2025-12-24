@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - part: body
+    regex:
+    - (?m)<title>(.*)Photo Station(.*)<\/title>
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/photo/'
+id: qnap-photostation-panel
+info:
+  author: idealphase
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'QNAP Photo Station panel was detected.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Photo Station"
+    verified: true
+  name: QNAP Photo Station Panel - Detect
+  reference:
+  - https://www.qnap.com/th-th/software/photo-station
+  severity: info
+  tags: panel,photostation,qnap

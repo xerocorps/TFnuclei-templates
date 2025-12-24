@@ -1,0 +1,12 @@
+id: mismatched-ssl
+info:
+  author: pdteam
+  name: Mismatched SSL Certificate
+  severity: low
+  tags: ssl
+ssl:
+- address: '{{Host}}:{{Port}}'
+  matchers:
+  - dsl:
+    - mismatched == true
+    type: dsl

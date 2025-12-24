@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Advanced System Management</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/cgi'
+id: ibm-advanced-system-management
+info:
+  author: dhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: IBM Advanced System Management panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Advanced System Management"
+  name: IBM Advanced System Management Panel - Detect
+  severity: info
+  tags: panel,ibm

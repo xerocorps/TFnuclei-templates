@@ -1,0 +1,45 @@
+http:
+- attack: pitchfork
+  matchers:
+  - condition: and
+    dsl:
+    - contains(body, "Overview - Lucee Web Administrator")
+    - '!contains(body, "Access is protected")'
+    - status_code == 200
+    type: dsl
+  payloads:
+    password:
+    - connections
+    path:
+    - /lucee/admin/web.cfm
+    - /lucee/admin/server.cfm
+  raw:
+  - 'POST {{path}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    login_passwordweb={{password}}&lang=en&rememberMe=s&submit=submit
+
+    '
+  stop-at-first-match: true
+id: lucee-default-login
+info:
+  author: jpg0mez
+  classification:
+    cwe-id: CWE-1392
+  description: 'Lucee admin panel using the default login password was discovered.
+
+    '
+  metadata:
+    fofa-query: app="Lucee-Engine"
+    max-request: 1
+    shodan-query: html:"Lucee"
+    verified: true
+  name: Lucee - Default Login
+  reference:
+  - https://support.intranetconnections.com/hc/en-us/articles/115012060627-Lucee-Configuration
+  severity: high
+  tags: lucee,default-login

@@ -1,0 +1,27 @@
+id: wordpress-themes-detect
+info:
+  author: 0xcrypto, foulenzer
+  name: WordPress Theme Detection
+  severity: high
+  tags: fuzz,wordpress
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - == Description ==
+  matchers-condition: and
+  payloads:
+    theme:
+    - twentyfifteen
+    - shapely
+    - onepress
+  raw:
+  - 'GET /wp-content/themes/{{theme}}/readme.txt HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+  threads: 50

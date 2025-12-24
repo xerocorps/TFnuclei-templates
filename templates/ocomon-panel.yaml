@@ -1,0 +1,38 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - "Vers\xE3o: ([0-9.]+)"
+    - "Vers\xE3o:&nbsp;([0-9.]+)"
+    type: regex
+  host-redirects: true
+  matchers:
+  - regex:
+    - (?i)(OcoMon)
+    type: regex
+  - part: body
+    type: word
+    words:
+    - open_form/ticket_form_open.php
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: ocomon-panel
+info:
+  author: dogasantos
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: a tiny helpdesk system written in php
+  metadata:
+    max-request: 1
+    shodan-query: http.html:"OcoMon"
+    verified: true
+  name: OcoMon Login Panel - Detect
+  reference:
+  - https://sourceforge.net/projects/ocomonphp/
+  severity: info
+  tags: panel,ocomon,oss

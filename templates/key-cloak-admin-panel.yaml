@@ -1,0 +1,15 @@
+id: key-cloak-admin-panel
+info:
+  author: incogbyte
+  name: Keycloak Admin Panel
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <a href="http://www.keycloak.org">
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/admin/master/console/'

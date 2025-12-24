@@ -1,0 +1,19 @@
+id: adobe-component-login
+info:
+  author: dhiyaneshDK
+  name: Adobe Component Brower Login
+  reference: https://www.exploit-db.com/ghdb/6846
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Component Browser Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/CFIDE/componentutils/login.cfm'

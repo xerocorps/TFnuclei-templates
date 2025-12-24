@@ -1,0 +1,35 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <P align="right">([A-Za-z. 0-9]+)<\/P>
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - <TITLE>C-more -- the best HMI presented by AutomationDirect</TITLE>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.html'
+id: automation-direct
+info:
+  author: DhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: AutomationDirect panel was detected.
+  metadata:
+    google-query: intitle:"C-more -- the best HMI presented by AutomationDirect"
+    max-request: 1
+    shodan-query: http.title:"C-more -- the best HMI presented by AutomationDirect"
+  name: AutomationDirect Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/7295
+  severity: info
+  tags: panel,iot,edb

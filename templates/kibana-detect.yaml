@@ -1,0 +1,23 @@
+id: kibana-detect
+info:
+  author: petruknisme
+  name: Kibana Service Detection
+  severity: info
+requests:
+- headers:
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
+      Firefox/55
+  matchers:
+  - condition: or
+    type: word
+    words:
+    - <title>Kibana</title>
+    - kibanaLoaderWrap
+    - kibanaLoader
+    - xpack
+    - Elasticsearch B.V
+  method: GET
+  path:
+  - '{{BaseURL}}/login?next=%2F'
+  - '{{BaseURL}}/bundles/login.bundle.js'
+  - '{{BaseURL}}/bundles/kibana.style.css'

@@ -1,0 +1,41 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    regex:
+    - (?m)<title>Black Duck(.*)<\/title>
+    type: regex
+  - condition: or
+    part: body
+    type: word
+    words:
+    - ProtexLoginPage
+    - CCLoginPage
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: black-duck-panel
+info:
+  author: idealphase,ritikchaddha
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'Black Duck login panel was detected.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Black Duck"
+    verified: true
+  name: Black Duck Login Panel - Detect
+  reference:
+  - https://www.blackducksoftware.com/
+  - https://www.synopsys.com/software-integrity/security-testing/software-composition-analysis.html
+  severity: info
+  tags: panel,blackduck,synopsys

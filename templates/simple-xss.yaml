@@ -1,0 +1,14 @@
+id: simple-xss
+info:
+  name: XSS Fuzz
+  risk: High
+payloads:
+- abc<xsshere>abc
+requests:
+- redirect: true
+- detections:
+  - StatusCode() != 301 && StatusCode() != 302 && StringSearch("response", "<xsshere>")
+  generators:
+  - Query("[[.original]]{{.payload}}")
+  - Path("[[.original]]{{.payload}}", "*")
+type: fuzz

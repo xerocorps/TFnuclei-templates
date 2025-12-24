@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - ssh-dss
+    - ssh-ed25519
+    - ssh-rsa
+    - ecdsa-sha2-nistp256
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.ssh/authorized_keys'
+  - '{{BaseURL}}/_/.ssh/authorized_keys'
+id: ssh-authorized-keys
+info:
+  author: geeknik
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-200
+  description: SSH authorized keys file was detected.
+  metadata:
+    max-request: 2
+  name: SSH Authorized Keys File - Detect
+  reference:
+  - https://www.ssh.com/academy/ssh/authorized-key
+  severity: medium
+  tags: config,exposure,ssh

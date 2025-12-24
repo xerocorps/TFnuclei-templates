@@ -1,0 +1,16 @@
+id: druid-console-exposure
+info:
+  author: pdteam
+  name: Alibaba Druid Console Exposure
+  severity: medium
+  tags: panel
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - src="/druid.js"
+    - href="/druid.css"
+  method: GET
+  path:
+  - '{{BaseURL}}'

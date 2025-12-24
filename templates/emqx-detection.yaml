@@ -1,0 +1,16 @@
+id: emqx-detection
+info:
+  author: For3stCo1d
+  name: Emqx Detection
+  severity: info
+  tags: tech,emqx
+requests:
+- matchers:
+  - dsl:
+    - status_code==200 && ('-670975485' == mmh3(base64_py(body)))
+    name: favicon
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/static/emq.ico'

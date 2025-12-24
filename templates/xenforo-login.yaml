@@ -1,0 +1,16 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <title>XenForo</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php'
+id: xenforo-login
+info:
+  author: dhiyaneshDk
+  name: XenForo Login/Register
+  reference: https://www.shodan.io/search?query=http.title%3A%22XenForo%22
+  severity: info
+  tags: panel

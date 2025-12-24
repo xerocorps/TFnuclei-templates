@@ -1,0 +1,16 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - druid.host
+  method: GET
+  path:
+  - '{{BaseURL}}/status/properties'
+  - '{{BaseURL}}:8091/status/properties'
+  - '{{BaseURL}}:8083/status/properties'
+id: apache-druid-detect
+info:
+  author: h0tak88r
+  name: Apache Druid Detection
+  severity: info

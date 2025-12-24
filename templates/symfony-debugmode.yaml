@@ -1,0 +1,25 @@
+http:
+- matchers:
+  - condition: and
+    part: header
+    type: word
+    words:
+    - 'X-Debug-Token-Link:'
+    - /_profiler/
+  - part: body
+    type: word
+    words:
+    - debug mode</a> is enabled.
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: symfony-debugmode
+info:
+  author: organiccrap,pdteam
+  description: The remote Symfony installations appears to have left the 'debug' interface
+    enabled, allowing the disclosure and possible execution of arbitrary code.
+  name: Symfony Debug Mode
+  reference: https://github.com/synacktiv/eos
+  severity: high
+  tags: symfony,debug

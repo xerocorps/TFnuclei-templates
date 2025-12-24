@@ -1,0 +1,33 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <meta name="application-name" content="Buddy">
+    - Buddy App
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: buddy-panel
+info:
+  author: thardt-praetorian
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Buddy panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.favicon.hash:-850502287
+  name: Buddy Panel - Detect
+  reference:
+  - https://buddy.works
+  severity: info
+  tags: panel,buddy,cicd

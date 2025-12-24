@@ -1,0 +1,14 @@
+id: custom-connection-server-detect
+info:
+  author: 0xunknown
+  name: Custom ADXWebconnect Server
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>ConnectServer</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/adxwebconnect/index.jsp'

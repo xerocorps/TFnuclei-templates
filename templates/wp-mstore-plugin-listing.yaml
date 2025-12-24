@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Index of
+    - /wp-content/plugins/mstore-api
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mstore-api/'
+id: wp-mstore-plugin-listing
+info:
+  author: pussycat0x
+  description: Searches for sensitive directories present in the mstore-api plugin.
+  metadata:
+    google-query: inurl:/wp-content/plugins/mstore-api/
+    max-request: 1
+  name: Wordpress Plugin MStore API
+  severity: low
+  tags: wordpress,listing,wp-plugin

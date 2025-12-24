@@ -1,0 +1,28 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Sign in
+    - Matomo
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/matomo'
+  stop-at-first-match: true
+id: matomo-login-portal
+info:
+  author: Arr0way
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Matomo logjn panel was detected.
+  metadata:
+    max-request: 2
+  name: Matomo Login Panel - Detect
+  severity: info
+  tags: panel,matomo

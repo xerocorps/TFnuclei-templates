@@ -1,0 +1,23 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - .xsd
+    - Schemas
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/schema'
+id: xml-schema-detect
+info:
+  author: alph4byt3
+  metadata:
+    max-request: 1
+  name: XML Schema Detection
+  severity: info
+  tags: misc,generic

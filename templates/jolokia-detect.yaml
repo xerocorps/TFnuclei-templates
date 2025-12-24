@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - '"timestamp":'
+    - '"protocol":'
+    - '"agent":'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/jolokia/version'
+id: jolokia-detect
+info:
+  author: mavericknerd,dwisiswant0
+  metadata:
+    max-request: 1
+  name: Jolokia Version Disclosure
+  severity: info
+  tags: tech,jolokia

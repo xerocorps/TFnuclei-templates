@@ -1,0 +1,10 @@
+id: tikiwiki-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Tiki Wiki related nuclei templates
+    on a given target.
+  name: Tiki Wiki Security Checks
+workflows:
+- subtemplates:
+  - tags: tikiwiki
+  template: exposed-panels/tikiwiki-cms.yaml

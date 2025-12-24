@@ -1,0 +1,22 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Grandstream Device Configuration</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: grandstream-device-configuration
+info:
+  author: dhiyaneshDK
+  description: Exposed Grandstream device configuration page detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Grandstream Device Configuration"
+  name: Grandstream Device Configuration
+  severity: info
+  tags: iot

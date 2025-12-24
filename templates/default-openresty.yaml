@@ -1,0 +1,18 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Welcome to OpenResty!</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: default-openresty
+info:
+  author: dhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Welcome to OpenResty!"
+  name: OpenResty Default Page
+  severity: info
+  tags: tech,openresty

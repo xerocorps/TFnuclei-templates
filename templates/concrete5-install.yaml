@@ -1,0 +1,34 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - Version ([0-9.]+)
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Install concrete5</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php/install'
+  - '{{BaseURL}}/concrete5/index.php/install'
+  stop-at-first-match: true
+id: concrete5-install
+info:
+  author: osamahamad,princechaddha
+  description: A Concrete5 installation panel was discovered.
+  metadata:
+    max-request: 2
+    shodan-query: http.title:"Install concrete5"
+    verified: true
+  name: Concrete5 Install Panel
+  reference:
+  - https://documentation.concretecms.org/developers/introduction/installing-concrete-cms
+  severity: critical
+  tags: panel,install,concrete,cms

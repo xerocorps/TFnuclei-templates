@@ -1,0 +1,30 @@
+http:
+- host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Thruk Monitoring Webinterface</title>
+  - part: header
+    type: word
+    words:
+    - thruk_test=
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/thruk/cgi-bin/login.cgi?thruk/'
+id: thruk-login
+info:
+  author: ffffffff0x
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Thruk Monitoring panel was detected.
+  metadata:
+    fofa-query: title=="Thruk Monitoring Webinterface"
+    max-request: 1
+  name: Thruk Monitoring Panel - Detect
+  severity: info
+  tags: thruk,panel

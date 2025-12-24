@@ -1,0 +1,40 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - version ([0-9.]+)
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - Dynamicweb
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET /Admin/Access/default.aspx HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept-Encoding: gzip, deflate
+
+    '
+id: dynamicweb-panel
+info:
+  author: pdteam
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Dynamicweb login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.component:"Dynamicweb"
+  name: Dynamicweb Login Panel - Detect
+  reference:
+  - https://www.dynamicweb.com
+  severity: info
+  tags: panel,dynamicweb

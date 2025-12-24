@@ -1,0 +1,44 @@
+http:
+- attack: pitchfork
+  matchers:
+  - part: header
+    type: word
+    words:
+    - 'Set-Cookie: admin'
+  - negative: true
+    part: header
+    type: word
+    words:
+    - 'Set-Cookie: adminer_key'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - admin
+    username:
+    - admin
+  raw:
+  - 'POST /VisionHubWebApi/api/Login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Authorization: Basic {{base64(username + '':'' + password)}}
+
+    '
+id: visionhub-default-login
+info:
+  author: Techryptic (@Tech)
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id: CWE-522
+  description: VisionHub application default admin credentials were accepted.
+  metadata:
+    max-request: 1
+  name: VisionHub Default Login
+  reference:
+  - https://www.qognify.com/products/visionhub/
+  severity: high
+  tags: visionhub,default-login

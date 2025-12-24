@@ -1,0 +1,27 @@
+id: monitorix-exposure
+info:
+  author: geeknik
+  description: Monitorix is a free, open source, lightweight system monitoring tool
+    designed to monitor as many services and system resources as possible.
+  name: Monitorix
+  reference: https://www.monitorix.org/
+  severity: low
+  tags: monitorix,exposure,logs
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <!-- graph table begins -->
+    - Global kernel usage</b>
+    - Kernel usage per processor</b>
+    - <!-- graph table ends -->
+    - 1day.png'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/monitorix-cgi/monitorix.cgi?mode=localhost&graph=all&when=1day'

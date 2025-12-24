@@ -1,0 +1,27 @@
+http:
+- body: '{"l_from":"en","l_to":"fr","request_url":"https://www.website.com/","words":[{"w":"This
+    is a blue car","t":1},{"w":"This is a black car","t":1}]}'
+  headers:
+    Content-Type: application/json
+  matchers:
+  - case-insensitive: true
+    negative: true
+    part: body
+    type: word
+    words:
+    - does not exist
+    - Invalid authorization
+  method: POST
+  path:
+  - https://api.weglot.com/translate?api_key={{token}}
+id: api-weglot
+info:
+  author: zzeitlin
+  metadata:
+    max-request: 1
+  name: WeGlot API Test
+  reference:
+  - https://developers.weglot.com/api/reference
+  severity: info
+  tags: token-spray,weglot
+self-contained: true

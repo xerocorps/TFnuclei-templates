@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - part: body
+    type: word
+    words:
+    - The deployment could not be found on Vercel
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: vercel-takeover
+info:
+  author: brianlam38
+  description: Vercel takeover was detected.
+  metadata:
+    max-request: 1
+    shodan-query: html:"The deployment could not be found on Vercel"
+    verified: true
+  name: Vercel Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/pull/375
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/183
+  severity: high
+  tags: takeover,vercel

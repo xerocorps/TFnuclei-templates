@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>AMP - Application Management Panel</title>
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: amp-application-panel
+info:
+  author: DhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Application Management Panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: title:"AMP - Application Management Panel"
+    verified: true
+  name: Application Management Panel - Detect
+  severity: info
+  tags: panel,amp

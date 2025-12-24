@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - h5p
+  - dsl:
+    - compare_versions(version, '<= 1.15.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/h5p/readme.txt'
+  redirects: true
+id: h5p-2100071c-aa66-445b-acef-7655e64f47e0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/h5p/
+    google-query: inurl:"/wp-content/plugins/h5p/"
+    shodan-query: http.html:"wp-content/plugins/h5p/"
+  name: 'H5P <= 1.15.7 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2100071c-aa66-445b-acef-7655e64f47e0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,h5p,low,candidate

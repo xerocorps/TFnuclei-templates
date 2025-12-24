@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - <title>Intelbras</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'
+id: intelbras-login
+info:
+  author: DhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Intelbras router logjn panel was detected.
+  metadata:
+    google-query: intitle:"Intelbras" "All Rights Reserved" -.com
+    max-request: 1
+    shodan-query: http.title:"Intelbras"
+  name: Intelbras Router Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/7272
+  severity: info
+  tags: panel,edb

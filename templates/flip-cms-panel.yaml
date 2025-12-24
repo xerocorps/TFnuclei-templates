@@ -1,0 +1,40 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - "<span class=\"copy\">Copyright \xA9 2022 \u2022 v\\.(.+) \u2022 <a href=\"\
+      https:\\/\\/www.fliplab.it\" target=\"_blank\">"
+    type: regex
+  host-redirects: true
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Flip CMS</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: flip-cms-panel
+info:
+  author: idealphase
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'FlipCMS login panel was detected.
+
+    '
+  metadata:
+    max-request: 1
+    verified: true
+  name: FlipCMS Login Panel - Detect
+  reference:
+  - https://www.fliplab.it/
+  severity: info
+  tags: panel,flip,cms

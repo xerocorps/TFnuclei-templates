@@ -1,0 +1,23 @@
+id: polycom-admin-detect
+info:
+  author: e_schultze_
+  name: Polycom Admin Panel
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - SYSTEMSTATUS
+  - part: header
+    type: word
+    words:
+    - 'Server: lighttpd'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/systemstatus.xml'

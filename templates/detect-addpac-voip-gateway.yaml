@@ -1,0 +1,26 @@
+id: detect-addpac-voip-gateway
+info:
+  author: geeknik
+  name: Detect AddPac Technology GSM VoIP Gateway
+  reference:
+  - http://www.addpac.com/addpac_eng2/down.php?file=505_f16.pdf
+  severity: info
+  tags: network,addpac,apos,voip
+network:
+- extractors:
+  - regex:
+    - Kernel Version \d\.\d\d\.\d\d\d
+    type: regex
+  host:
+  - '{{Hostname}}'
+  - '{{Host}}:23'
+  inputs:
+  - data: '00'
+    type: hex
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - Welcome
+    - APOS(tm)
+    - User Access Verification

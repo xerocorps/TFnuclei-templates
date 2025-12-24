@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - type: word
+    words:
+    - info it worked if it ends with ok
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/npm-debug.log'
+  - '{{BaseURL}}/assets/npm-debug.log'
+  stop-at-first-match: true
+id: npm-log-file
+info:
+  author: sheikhrishad,DhiyaneshDk
+  description: NPM log file is exposed to external users.
+  metadata:
+    max-request: 2
+    shodan-query: html:"npm-debug.log"
+    verified: true
+  name: Publicly accessible NPM Log file
+  reference:
+  - https://github.com/maurosoria/dirsearch/blob/master/db/dicc.txt
+  severity: low
+  tags: npm,logs,exposure

@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - type: word
+    words:
+    - Public Report Not Activated
+    - This public report page has not been activated by the user
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: pingdom-takeover
+info:
+  author: pdteam
+  description: Pingdom takeover was detected.
+  metadata:
+    max-request: 1
+  name: Pingdom Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/144
+  severity: high
+  tags: takeover,pingdom

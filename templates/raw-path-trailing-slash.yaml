@@ -1,0 +1,12 @@
+id: raw-path-trailing-slash
+info:
+  author: pdteam
+  name: Test RAW HTTP Template with trailing slash
+  severity: info
+requests:
+- raw:
+  - 'GET /test/..;/..;/ HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Origin: {{BaseURL}}'

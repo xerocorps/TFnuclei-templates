@@ -1,0 +1,27 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - <title>(.+)<\/title>
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>HPE OfficeConnect Switch 1820 48G PoE+ (370W) J9984A</title>
+    - HPE OfficeConnect Switch
+    - 1820 48G PoE+ (370W)
+    - J9984A
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: hpe-officeconnect-switch-1820-48g-poe
+info:
+  author: Caddyshack2175
+  metadata:
+    max-request: 1
+  name: Hewlett Packard Enterprise OfficeConnect Switch 1820 48G PoE+ (370W) J9984A
+    (HP1820POE-P6-01)
+  severity: info
+  tags: tech,login,switch

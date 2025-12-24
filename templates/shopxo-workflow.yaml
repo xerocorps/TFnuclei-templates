@@ -1,0 +1,12 @@
+id: shopxo-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all ShopXO related nuclei templates on
+    a given target.
+  name: ShopXO Security Checks
+workflows:
+- matchers:
+  - name: shopxo
+    subtemplates:
+    - tags: shopxo
+  template: technologies/fingerprinthub-web-fingerprints.yaml

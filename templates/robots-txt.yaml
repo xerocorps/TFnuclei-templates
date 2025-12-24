@@ -1,0 +1,28 @@
+http:
+- host-redirects: true
+  matchers:
+  - type: word
+    words:
+    - 'User-agent:'
+    - 'Disallow:'
+    - 'Allow:'
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - dsl:
+    - len(body)>=140 && status_code==200
+    type: dsl
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/robots.txt'
+id: robots-txt
+info:
+  author: CasperGN,TheZakMan
+  metadata:
+    max-request: 1
+  name: robots.txt file
+  severity: info
+  tags: miscellaneous,misc,generic

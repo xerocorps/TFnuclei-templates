@@ -1,0 +1,10 @@
+id: gsoap-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all gSOAP related nuclei templates on a
+    given target.
+  name: gSOAP Security Checks
+workflows:
+- subtemplates:
+  - tags: gsoap
+  template: technologies/fingerprinthub-web-fingerprints.yaml

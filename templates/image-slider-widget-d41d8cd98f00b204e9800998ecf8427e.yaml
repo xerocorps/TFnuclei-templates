@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - image-slider-widget
+  - dsl:
+    - compare_versions(version, '<=  1.1.119')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/image-slider-widget/readme.txt'
+  redirects: true
+id: image-slider-widget-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The plugin Image Slider is vulnerable to SQL Injection via the post
+    parameter in the function ewic_duplicate_slider in versions up to, and including
+    1.1.119 due to insufficient sanitization before using it in an unprepared SQL
+    query. This make it possible for subscribers to append additional SQL queries
+    into already existing queries that can be used to extract sensitive information
+    from the database.
+  metadata:
+    fofa-query: wp-content/plugins/image-slider-widget/
+    google-query: inurl:"/wp-content/plugins/image-slider-widget/"
+    shodan-query: 'vuln:'
+  name: Image Slider <= 1.1.119 - Subscriber+ SQL Injection
+  reference: null
+  severity: critical
+  tags: cve,wordpress,wp-plugin,image-slider-widget,critical

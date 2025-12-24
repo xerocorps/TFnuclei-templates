@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    regex:
+    - (([\w\_]+)\.)?add[Ee]vent[Ll]istener\(["']?[\w\_]+["']?
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: addeventlistener-detect
+info:
+  author: yavolo,dwisiswant0
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+    cwe-id: CWE-79
+  description: EventListener contains a cross-site scripting vulnerability via the
+    document object model (DOM). An attacker can execute arbitrary script which can
+    then allow theft of cookie-based authentication credentials and launch of  other
+    attacks.
+  metadata:
+    max-request: 1
+  name: DOM EventListener - Cross-Site Scripting
+  reference:
+  - https://portswigger.net/web-security/dom-based/controlling-the-web-message-source
+  severity: info
+  tags: xss,misc

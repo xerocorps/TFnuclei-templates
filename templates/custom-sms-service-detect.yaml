@@ -1,0 +1,14 @@
+id: custom-sms-service-detect
+info:
+  author: 0xunknown
+  name: custom-sms-service-detect
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>SMS Interactive Test</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/sms/sms_test.php'

@@ -1,0 +1,63 @@
+http:
+- headers:
+    Accept: application/json
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - application/json
+  - part: body
+    type: word
+    words:
+    - etcdserver
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/version'
+- headers:
+    Accept: application/json
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - application/json
+  - part: body
+    type: word
+    words:
+    - node
+    - key
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/v2/keys/'
+- headers:
+    Accept: application/json
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - application/json
+  - part: body
+    type: word
+    words:
+    - node
+    - key
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/v2/keys/?recursive=true'
+id: etcd-scan
+info:
+  author: sharath,topscoder
+  description: Scans all open urls of etcd
+  name: Etcd Scan
+  severity: info

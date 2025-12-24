@@ -1,0 +1,23 @@
+id: liferay-portal-detect
+info:
+  author: organiccrap & dwisiswant0
+  name: Liferay Portal Detection
+  severity: low
+requests:
+- headers:
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
+      Firefox/55
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>json-web-services-api</title>
+    - There are no services matching that phrase.
+    - Unable to deserialize object
+  method: GET
+  path:
+  - '{{BaseURL}}/api/jsonws'
+  - '{{BaseURL}}:8080/api/jsonws'
+  - '{{BaseURL}}/api/jsonws/invoke'
+  - '{{BaseURL}}:8080/api/jsonws/invoke'

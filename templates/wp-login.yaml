@@ -1,0 +1,38 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    regex:
+    - Username or Email Address
+    - Password
+    - Lost your password?
+    - Remember Me
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-login.php'
+  - '{{BaseURL}}/wp-admin/'
+  - '{{BaseURL}}/login/'
+  - '{{BaseURL}}/admin/'
+  redirects: true
+  stop-at-first-match: true
+id: wp-login
+info:
+  author: Caddyshack2175
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L
+    cvss-score: 7.3
+  description: "The login page is the ghateway betwenn WordPress website and the admin\
+    \ or management dashboard of the site, typically known as the \"admin area\".\
+    \ \nA compromise on the interface and an attacker will gain control of the web-site,\
+    \ install back-doors, possibllly gain control of the host. \n"
+  name: WordPress Login URL/Interface Check
+  reference:
+  - https://kinsta.com/blog/wordpress-login-url/#change-your-wordpress-login-page-with-a-plugin
+  - https://kinsta.com/blog/wordpress-login-url/#change-your-wordpress-login-page-editing-your-htaccess-file
+  severity: high
+  tags: information, discloser, wordpress, login, admin, admin-interface

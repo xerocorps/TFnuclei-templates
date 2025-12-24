@@ -1,0 +1,39 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - <meta name="generator" content="GitBook ([0-9.]+)">
+    - (?m)<meta name=generator content="GitBook ([0-9.]+)">
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - gitbook.page.hasChanged
+    - <meta name="generator" content="GitBook
+  - condition: or
+    part: body
+    regex:
+    - <title>.*[Gg]it[bB]ook</title>
+    - "<title>.*\xB7 [Gg]it[bB]ook.*</title>"
+    type: regex
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: gitbook-detect
+info:
+  author: ffffffff0x,daffainfo
+  description: "GitBook is a collaborative documentation tool that allows anyone to\
+    \ document anything\u2014such as products and APIs\u2014and share knowledge through\
+    \ a user-friendly online platform."
+  metadata:
+    fofa: app="Introduction-GitBook"
+    max-request: 1
+    shodan-query: http.title:"gitbook"
+    verified: true
+  name: GitBook Detect
+  reference: https://www.gitbook.com/
+  severity: info
+  tags: tech,gitbook

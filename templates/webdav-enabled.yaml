@@ -1,0 +1,47 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - 'Ms-Author-Via: DAV'
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+  - 'OPTIONS / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+  - 'OPTIONS / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Authorization: Basic YW5vbnltb3VzOmFub255bW91cw==
+
+    '
+  stop-at-first-match: true
+id: webdav-enabled
+info:
+  author: tess
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'WebDAV protocol was detected.
+
+    '
+  metadata:
+    max-request: 3
+    shodan-query: 'Ms-Author-Via: DAV'
+    verified: true
+  name: WebDAV Protocol - Detect
+  reference:
+  - https://www.acunetix.com/vulnerabilities/web/webdav-enabled/
+  remediation: 'Recommended disabling if not currently in use.
+
+    '
+  severity: info
+  tags: webdav,misconfig,exposure

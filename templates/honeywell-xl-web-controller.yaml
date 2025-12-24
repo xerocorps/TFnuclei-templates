@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Honeywell XL Web Controller</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/standard/default.php'
+id: honeywell-xl-web-controller
+info:
+  author: dhiyaneshDK
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Honeywell Excel Web Control login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: title:"Honeywell XL Web Controller"
+    verified: true
+  name: Honeywell Excel Web Control Login Panel - Detect
+  reference:
+  - https://www.exploit-db.com/ghdb/7130
+  severity: info
+  tags: panel,honeywell,edb

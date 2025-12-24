@@ -1,0 +1,14 @@
+id: custom-register-page-detect
+info:
+  author: 0xUnknown
+  name: custom-page-detect
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Register</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/Account/Register'

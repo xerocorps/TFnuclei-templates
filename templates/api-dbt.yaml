@@ -1,0 +1,31 @@
+http:
+- headers:
+    Authorization: Token {{token}}
+    Content-Type: application/json
+  matchers:
+  - condition: or
+    negative: true
+    part: body
+    type: word
+    words:
+    - Invalid token
+    - Authentication credentials were not provided.
+  method: GET
+  path:
+  - https://cloud.getdbt.com/api/v2/accounts/
+id: api-dbt
+info:
+  author: dwisiswant0
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: dbt Cloud API test was conducted.
+  metadata:
+    max-request: 1
+  name: dbt Cloud API - Test
+  reference:
+  - https://docs.getdbt.com/docs/introduction
+  severity: info
+  tags: token-spray,dbt
+self-contained: true

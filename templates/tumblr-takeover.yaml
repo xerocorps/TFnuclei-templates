@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - dsl:
+    - Host != ip
+    type: dsl
+  - condition: and
+    type: word
+    words:
+    - Whatever you were looking for doesn't currently exist at this address.
+    - There's nothing here.
+  - condition: and
+    dsl:
+    - '!contains(host,"tumblr.com")'
+    - '!contains(host,"txmblr.com")'
+    - '!contains(host,"umblr.com")'
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: tumblr-takeover
+info:
+  author: pdteam,philippedelteil
+  description: tumblr takeover was detected.
+  metadata:
+    max-request: 1
+  name: tumblr takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/240
+  severity: high
+  tags: takeover

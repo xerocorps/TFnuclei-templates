@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Jeedom</title>
+    - JEEDOM_PRODUCT_NAME
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php?v=d'
+id: jeedom-panel
+info:
+  author: pikpikcu,daffainfo
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Jeedom login panel was detected.
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Jeedom"
+  name: Jeedom Login Panel - Detect
+  severity: info
+  tags: panel,jeedom,login

@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>EyesOfNetwork</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.php'
+id: eyesofnetwork-detect
+info:
+  author: praetorian-thendrickson
+  description: EyesOfNetwork detection
+  metadata:
+    max-request: 1
+  name: EyesOfNetwork Detect
+  reference:
+  - https://www.eyesofnetwork.com/en
+  severity: info
+  tags: tech,cisa,eyesofnetwork

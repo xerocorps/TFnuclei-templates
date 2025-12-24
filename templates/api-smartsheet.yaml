@@ -1,0 +1,31 @@
+http:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"sheets":'
+    - '"folders":'
+  matchers-condition: and
+  method: GET
+  path:
+  - https://api.smartsheet.com/2.0/home?include=source
+id: api-smartsheet
+info:
+  author: daffainfo
+  description: Allows you to programmatically access and Smartsheet data and account
+    information
+  metadata:
+    max-request: 1
+  name: Smartsheet API Test
+  reference:
+  - https://smartsheet.redoc.ly/
+  - https://github.com/daffainfo/all-about-apikey/tree/main/smartsheet
+  severity: info
+  tags: token-spray,smartsheet
+self-contained: true

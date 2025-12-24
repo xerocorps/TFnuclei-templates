@@ -1,0 +1,21 @@
+id: mongodb-detect
+info:
+  author: pdteam
+  name: MongoDB Detection
+  reference:
+  - https://github.com/orleven/Tentacle
+  severity: info
+  tags: network,mongodb
+network:
+- host:
+  - '{{Hostname}}'
+  - '{{Host}}:27017'
+  inputs:
+  - data: 3a000000a741000000000000d40700000000000061646d696e2e24636d640000000000ffffffff130000001069736d6173746572000100000000
+    type: hex
+  matchers:
+  - type: word
+    words:
+    - logicalSessionTimeout
+    - localTime
+  read-size: 2048
