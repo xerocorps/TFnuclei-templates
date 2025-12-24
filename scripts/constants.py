@@ -19,7 +19,7 @@ MAX_REPO_SIZE = 100_000_000  # 100MB max per repo download
 YAML_EXTENSIONS = ('.yaml', '.yml')
 
 # GitHub archive branches to try
-GITHUB_BRANCHES = ('main', 'master')
+GITHUB_BRANCHES = ('main', 'master', 'dev', 'develop')
 
 # Default chunk size for parallel processing
 DEFAULT_CHUNK_SIZE = 50

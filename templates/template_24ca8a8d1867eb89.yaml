@@ -1,9 +1,0 @@
-services:
-  erebus:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    image: erebus
-    ports:
-    - 3000:3000
-version: '3.4'

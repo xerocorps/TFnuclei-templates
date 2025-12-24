@@ -1,8 +1,0 @@
-id: bigip-pwner-workflow
-info:
-  author: dwisiswant0
-  name: F5 BIG-IP RCE Workflow
-logic: "if bigip_config_utility() {\n  bigip_cve_2020_5902()\n}\n"
-variables:
-  bigip_config_utility: technologies/bigip-config-utility-detect.yaml
-  bigip_cve_2020_5902: cves/CVE-2020-5902.yaml

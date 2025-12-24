@@ -17,7 +17,8 @@
 ## 🚀 Features
 
 - **400+ Sources**: Aggregates templates from GitHub repos, ZIP archives, and raw gists
-- **Auto-Deduplicated**: Removes duplicates by template ID and content hash
+- **Smart Deduplication**: 3-pass dedup using content hash, semantic fingerprint, and normalized IDs
+- **Priority Scoring**: Templates ranked by severity + CVE age (newer = higher priority)
 - **Daily Updates**: Automatically synced every day at 4 AM UTC
 - **Ready to Use**: No downloading or unzipping required - just clone and go!
 
@@ -31,6 +32,9 @@ git clone https://github.com/xerocorps/TFnuclei-templates.git
 
 # Use with nuclei
 nuclei -t TFnuclei-templates/templates/ -u https://example.com
+
+# Use only high-priority templates (critical/high severity)
+nuclei -t TFnuclei-templates/templates/ -severity critical,high -u https://example.com
 ```
 
 ### Option 2: Pull specific templates
@@ -74,7 +78,12 @@ Edit `sources.json` to add new template sources:
 ### Skip a Source (without deleting)
 
 ```json
-{ "type": "github_repo", "repo": "owner/repo-name", "skip": true }
+{
+  "type": "github_repo",
+  "repo": "owner/repo-name",
+  "skip": true,
+  "skip_reason": "repo_not_found"
+}
 ```
 
 After editing, either:
@@ -88,8 +97,15 @@ View `stats.json` for detailed statistics including:
 
 - Total template count
 - Severity breakdown (critical, high, medium, low, info)
-- Source success/failure counts
+- Deduplication breakdown (exact hash, semantic, normalized ID)
+- Source success/failure/skipped counts
 - Failed sources list
+
+View `templates_index.json` for template metadata including:
+
+- Priority score (higher = more important)
+- CVE year (when applicable)
+- Severity level
 
 ## 🏗️ Architecture
 
@@ -98,7 +114,8 @@ View `stats.json` for detailed statistics including:
 scripts/
   ├── constants.py            # Configuration
   ├── fetch_sources.py        # Download and extract templates
-  └── merge_templates.py      # Deduplicate and merge
+  ├── merge_templates.py      # Deduplicate and merge
+  └── semantic_fingerprint.py # Smart deduplication logic
 sources.json                  # List of template sources
 templates/                    # Deduplicated templates (output)
 templates_index.json          # Template index with metadata
@@ -109,8 +126,12 @@ stats.json                    # Fetch statistics
 
 1. **Setup**: Calculate number of parallel jobs based on source count
 2. **Fetch**: Download templates in parallel chunks (50 sources each)
-3. **Merge**: Deduplicate by template ID and content hash
-4. **Commit**: Push changes to the repository
+3. **Merge**: 3-pass deduplication:
+   - Pass 1: Exact content hash (byte-for-byte duplicates)
+   - Pass 2: Semantic fingerprint (same functionality, different metadata)
+   - Pass 3: Normalized ID (CVE-2024-1234-template → template)
+4. **Score**: Rank templates by severity weight and CVE age
+5. **Commit**: Push changes to the repository
 
 ## 📝 License
 

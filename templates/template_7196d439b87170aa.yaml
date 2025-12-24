@@ -1,9 +1,0 @@
-go:
-- 1.6
-- 1.9
-- '1.10'
-install:
-- go get github.com/mattn/goveralls
-language: go
-script:
-- $HOME/gopath/bin/goveralls -service=travis-ci
