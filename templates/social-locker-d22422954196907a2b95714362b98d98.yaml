@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-locker
+  - dsl:
+    - compare_versions(version, '<= 5.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-locker/readme.txt'
+  redirects: true
+id: social-locker-d22422954196907a2b95714362b98d98
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/social-locker/
+    google-query: inurl:"/wp-content/plugins/social-locker/"
+    shodan-query: 'vuln:'
+  name: 'OnePress Social Locker <= 5.6.2 - Cross-Site Request Forgery to Settings
+    Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/189430b2-cf7f-46e3-b5b0-c9515b64e731?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,social-locker,medium

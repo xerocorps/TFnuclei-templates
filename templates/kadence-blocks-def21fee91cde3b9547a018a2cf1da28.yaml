@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kadence-blocks
+  - dsl:
+    - compare_versions(version, '<= 3.2.31')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/kadence-blocks/readme.txt'
+  redirects: true
+id: kadence-blocks-def21fee91cde3b9547a018a2cf1da28
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/kadence-blocks/
+    google-query: inurl:"/wp-content/plugins/kadence-blocks/"
+    shodan-query: 'vuln:'
+  name: "Gutenberg Blocks by Kadence Blocks \u2013 Page Builder Features <= 3.2.31\
+    \ - Authenticated (Contributor+) DOM-Based Stored Cross-Site Scripting via CountUp\
+    \ Widget\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b38a69c7-91d4-43be-8650-eb1f0029bd44?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,kadence-blocks,low

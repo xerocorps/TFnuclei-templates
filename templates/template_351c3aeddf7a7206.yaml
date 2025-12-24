@@ -1,0 +1,26 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - exposure
+  description: Template to detect PHP Info disclosure through the environment variable
+  id: phpinfo-disclosure-env
+  matcher-condition: and
+  matchers:
+  - description: PHP Info page displaying environment variable
+    pattern: APP_ENV
+    type: env
+  name: PHP Info Disclosure via Environment Variable - Detect
+  requests:
+    condition: and
+    description: Attempt to access PHP Info page
+    method: GET
+    path:
+    - /phpinfo.php
+    - /info.php
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: High

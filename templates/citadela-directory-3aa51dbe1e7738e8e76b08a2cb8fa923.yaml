@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - citadela-directory
+  - dsl:
+    - compare_versions(version, '<= 5.18.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/citadela-directory/readme.txt'
+  redirects: true
+id: citadela-directory-3aa51dbe1e7738e8e76b08a2cb8fa923
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/citadela-directory/
+    google-query: inurl:"/wp-content/plugins/citadela-directory/"
+    shodan-query: 'vuln:'
+  name: 'Citadela Listing <= 5.18.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/911d083a-57d2-4574-a5b3-b299c368400c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,citadela-directory,medium

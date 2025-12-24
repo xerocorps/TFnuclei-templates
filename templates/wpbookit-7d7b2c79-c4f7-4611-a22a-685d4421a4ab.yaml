@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpbookit
+  - dsl:
+    - compare_versions(version, '<= 1.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpbookit/readme.txt'
+  redirects: true
+id: wpbookit-7d7b2c79-c4f7-4611-a22a-685d4421a4ab
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpbookit/
+    google-query: inurl:"/wp-content/plugins/wpbookit/"
+    shodan-query: http.html:"wp-content/plugins/wpbookit/"
+  name: 'WPBookit <= 1.0.6 - Unauthenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7d7b2c79-c4f7-4611-a22a-685d4421a4ab?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wpbookit,high,candidate

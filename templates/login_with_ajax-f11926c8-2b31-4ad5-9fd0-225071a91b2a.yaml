@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - login-with-ajax
+  - dsl:
+    - compare_versions(version, '<= 4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/login-with-ajax/readme.txt'
+  redirects: true
+id: login_with_ajax-f11926c8-2b31-4ad5-9fd0-225071a91b2a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/login-with-ajax/
+    google-query: inurl:"/wp-content/plugins/login-with-ajax/"
+    shodan-query: http.html:"wp-content/plugins/login-with-ajax/"
+  name: 'Login With Ajax <= 4.1 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f11926c8-2b31-4ad5-9fd0-225071a91b2a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,login-with-ajax,high,candidate

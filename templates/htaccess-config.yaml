@@ -1,0 +1,16 @@
+id: htaccess-config
+info:
+  author: Yash Anand @yashanand155
+  name: HTaccess config file
+  severity: info
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - RewriteRule
+    - </IfModule>
+    - <IfModule
+  method: GET
+  path:
+  - '{{BaseURL}}/.htaccess'

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easyjobs
+  - dsl:
+    - compare_versions(version, '<= 2.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easyjobs/readme.txt'
+  redirects: true
+id: easyjobs-33cdd58b-9e5e-492e-a211-78de592f0663
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easyjobs/
+    google-query: inurl:"/wp-content/plugins/easyjobs/"
+    shodan-query: http.html:"wp-content/plugins/easyjobs/"
+  name: 'easy.jobs <= 2.4.6 - Missing Authorization to Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/33cdd58b-9e5e-492e-a211-78de592f0663?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,easyjobs,high,candidate

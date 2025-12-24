@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dn-footer-contacts
+  - dsl:
+    - compare_versions(version, '<= 1.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/dn-footer-contacts/readme.txt'
+  redirects: true
+id: dn-footer-contacts-f15b5a40ad373ac80ecc303a755b93a7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/dn-footer-contacts/
+    google-query: inurl:"/wp-content/plugins/dn-footer-contacts/"
+    shodan-query: 'vuln:'
+  name: 'DN Footer Contacts <= 1.6.2 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9ea21bf9-9e2a-45d1-8cb7-db821ca13e70?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,dn-footer-contacts,low

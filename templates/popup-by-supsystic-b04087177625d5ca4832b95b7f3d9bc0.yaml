@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - popup-by-supsystic
+  - dsl:
+    - compare_versions(version, '< 1.7.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/popup-by-supsystic/readme.txt'
+  redirects: true
+id: popup-by-supsystic-b04087177625d5ca4832b95b7f3d9bc0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/popup-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/popup-by-supsystic/"
+    shodan-query: 'vuln:'
+  name: 'Popup by Supsystic < 1.7.9 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5db5ea76-f0b6-4e30-aebf-c3769d0b3480?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,popup-by-supsystic,medium

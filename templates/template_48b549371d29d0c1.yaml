@@ -1,0 +1,26 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - elasticsearch
+    - security
+    - settings exposure
+  description: Template to detect Elasticsearch instances with cluster settings exposure
+  id: elasticsearch-cluster-settings-exposure
+  matcher-condition: or
+  matchers:
+  - description: Elasticsearch cluster settings found in response body
+    pattern: '"persistent" :'
+    type: body
+  name: Elasticsearch Cluster Settings Exposure - Detect
+  requests:
+    description: Example request to trigger detection
+    method: GET
+    path:
+    - /_cluster/settings
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

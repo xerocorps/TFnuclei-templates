@@ -1,0 +1,26 @@
+http:
+- extractors:
+  - group: 1
+    regex:
+    - <title>(.+)<\/title>
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>HPE OfficeConnect Switch 1920S 24G 2SFP JL381A</title>
+    - HPE OfficeConnect Switch
+    - 1920S 24G 2SFP
+    - JL381A
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: hpe-officeconnect-switch-1920s-24g
+info:
+  author: Caddyshack2175
+  metadata:
+    max-request: 1
+  name: Hewlett Packard Enterprise OfficeConnect Switch 1920S 24G 2SFP JL381A ()
+  severity: info
+  tags: tech,login,switch

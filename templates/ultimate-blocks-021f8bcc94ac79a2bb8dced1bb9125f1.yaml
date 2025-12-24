@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-blocks
+  - dsl:
+    - compare_versions(version, '<= 3.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-blocks/readme.txt'
+  redirects: true
+id: ultimate-blocks-021f8bcc94ac79a2bb8dced1bb9125f1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-blocks/
+    google-query: inurl:"/wp-content/plugins/ultimate-blocks/"
+    shodan-query: 'vuln:'
+  name: "Ultimate Blocks \u2013 WordPress Blocks Plugin <= 3.0.8 - Authenticated(Contributor+)\
+    \ Stored Cross-Site Scripting via metabox\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/33e7006f-3fb9-4493-9ce5-67698c877159?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-blocks,low

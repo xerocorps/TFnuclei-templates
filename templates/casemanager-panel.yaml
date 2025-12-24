@@ -1,0 +1,20 @@
+id: casemanager-panel
+info:
+  author: ffffffff0x
+  metadata:
+    fofa-query: title="CaseManager"
+  name: CaseManager Panel
+  severity: info
+  tags: casemanager,panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>CaseManager</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

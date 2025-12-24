@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - azurecurve-shortcodes-in-comments
+  - dsl:
+    - compare_versions(version, '<= 2.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/azurecurve-shortcodes-in-comments/readme.txt'
+  redirects: true
+id: azurecurve_shortcodes_in_comments-22cc6da1-fd22-4b2a-90ab-24086879f0f6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/azurecurve-shortcodes-in-comments/
+    google-query: inurl:"/wp-content/plugins/azurecurve-shortcodes-in-comments/"
+    shodan-query: http.html:"wp-content/plugins/azurecurve-shortcodes-in-comments/"
+  name: 'azurecurve Shortcodes in Comments <= 2.0.2 - Unauthenticated Arbitrary Shortcode
+    Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/22cc6da1-fd22-4b2a-90ab-24086879f0f6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,azurecurve-shortcodes-in-comments,low,candidate

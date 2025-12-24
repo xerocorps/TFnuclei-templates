@@ -1,0 +1,420 @@
+CVE-2013-2251:
+  detections: cvescan|CVE-2013-2251
+  info: Apache Struts 2 remote code execution
+  itype: single
+  path: exploits/CVE-2013-2251
+  requires: python3 bash
+CVE-2017-0144:
+  detections: portenum|139||portenum|445
+  info: Windows SMB remote code execution
+  itype: single
+  path: exploits/CVE-2017-0144
+  requires: python3 bash python2
+CVE-2017-6360:
+  detections: cvescan|CVE-2017-6360
+  info: QNAP QTS command injection in `userConfig.cgi`
+  itype: single
+  path: exploits/CVE-2017-6360
+  requires: python3 bash curl
+CVE-2017-6361:
+  detections: cvescan|CVE-2017-6361
+  info: QNAP QTS command injection in `authLogin.cgi`
+  itype: single
+  path: exploits/CVE-2017-6361
+  requires: python3 bash curl
+CVE-2017-7494:
+  detections: portenum|139||portenum|445
+  info: Windows SMB code injection
+  itype: single
+  path: exploits/CVE-2017-7494
+  requires: python3 bash python2 smbclient
+CVE-2017-7529:
+  detections: cvescan|CVE-2017-7529
+  info: Nginx integer overflow
+  itype: single
+  path: exploits/CVE-2017-7529
+  requires: python3 bash
+CVE-2017-7921:
+  detections: cvescan|CVE-2019-7921
+  info: Hikvision IP Camera access bypass
+  itype: single
+  path: exploits/CVE-2019-7921
+  requires: python3 bash
+CVE-2018-0296:
+  detections: cvescan|CVE-2018-0296
+  info: CISCO ASA path traversal
+  itype: single
+  path: exploits/CVE-2018-0296
+  requires: python3 bash
+CVE-2018-11784:
+  detections: cvescan|CVE-2018-11784||favscan|tomcat
+  info: Apache Tomcat open redirect
+  itype: single
+  path: exploits/CVE-2018-11784
+  requires: python3 bash curl
+CVE-2018-13379:
+  detections: cvescan|CVE-2018-13379
+  info: Fortigate Pulse Connect Secure path traversal
+  itype: single
+  path: exploits/CVE-2018-13379
+  requires: python3 bash
+CVE-2018-3760:
+  detections: cvescan|CVE-2018-3760
+  info: Rails path traversal
+  itype: single
+  path: exploits/CVE-2018-3760
+  requires: python3 bash curl
+CVE-2018-6389:
+  detections: cvescan|CVE-2018-6389
+  info: Wordpress Denial of Service
+  itype: single
+  path: exploits/CVE-2018-6389
+  requires: python3 bash python2
+CVE-2019-11581:
+  detections: cvescan|CVE-2019-11581||favscan|jira
+  info: Jira code injection
+  itype: single
+  path: exploits/CVE-2019-11581
+  requires: python3 bash python2
+CVE-2019-17558:
+  detections: cvescan|CVE-2019-17558
+  info: Apache Solr remote code execution
+  itype: single
+  path: exploits/CVE-2019-17558
+  requires: python3 bash
+CVE-2019-7192:
+  detections: cvescan|CVE-2019-7192
+  info: QNAP remote code execution
+  itype: single
+  path: exploits/CVE-2019-7192
+  requires: python3 bash
+CVE-2020-0796:
+  detections: portenum|139||portenum|445
+  info: Windows SMBv3 Client/Server remote code execution
+  itype: single
+  path: exploits/CVE-2020-0796
+  requires: python3 bash
+CVE-2020-13379:
+  detections: cvescan|CVE-2020-13379
+  info: Grafana Denial of Service
+  itype: single
+  path: exploits/CVE-2020-13379
+  requires: python3 bash
+CVE-2020-14179:
+  detections: cvescan|CVE-2020-14179||favscan|jira
+  info: Jira information leakage
+  itype: single
+  path: exploits/CVE-2020-14179
+  requires: python3 bash
+CVE-2020-14181:
+  detections: cvescan|CVE-2020-14181||favscan|jira
+  info: Jira user enumeration
+  itype: single
+  path: exploits/CVE-2020-14181
+  requires: python3 bash
+CVE-2020-25213:
+  detections: cvescan|CVE-2020-25213
+  info: WP-File-Manager unrestricted file upload
+  itype: single
+  path: exploits/CVE-2020-25213
+  requires: python3 bash
+CVE-2020-25540:
+  detections: cvescan|CVE-2020-25540
+  info: ThinkAdmin arbitrary file read
+  itype: single
+  path: exploits/CVE-2020-25540
+  requires: python3 bash curl
+CVE-2020-3187:
+  detections: cvescan|CVE-2020-3187
+  info: Citrix directory traversal & remote code execution
+  itype: single
+  path: exploits/CVE-2020-3187
+  requires: python3 bash
+CVE-2020-3452:
+  detections: cvescan|CVE-2020-3452
+  info: CISCO ASA directory traversal
+  itype: single
+  path: exploits/CVE-2020-3452
+  requires: python3 bash
+CVE-2020-5221:
+  detections: servenum|ftp||portenum|21
+  info: uFTPd directory traversal
+  itype: single
+  path: exploits/CVE-2020-5221
+  requires: python3 bash
+CVE-2020-5405:
+  detections: cvescan|CVE-2020-5405
+  info: Spring Cloud directory traversal
+  itype: single
+  path: exploits/CVE-2020-5405
+  requires: python3 bash curl
+CVE-2020-5410:
+  detections: cvescan|CVE-2020-5410
+  info: Spring Cloud directory traversal
+  itype: single
+  path: exploits/CVE-2020-5410
+  requires: python3 bash curl
+CVE-2020-7473:
+  detections: cvescan|CVE-2020-7473
+  info: Citrix ShareFile StorageZones path traversal
+  itype: single
+  path: exploits/CVE-2020-7473
+  requires: python3 bash
+CVE-2020-8163:
+  detections: cvescan|CVE-2020-8163
+  info: Rails blind remote code exceution
+  itype: single
+  path: exploits/CVE-2020-8163
+  requires: python3 bash ruby
+CVE-2020-9047:
+  detections: cvescan|CVE-2020-9047
+  info: exacqVision remote code execution
+  itype: single
+  path: exploits/CVE-2020-9047
+  requires: python3 bash
+CVE-2022-21907:
+  detections: servenum|iis||headenum|iis||favscan|.*asp.*net.*||idscan|iis
+  info: IIS DoS (http.sys driver)
+  itype: single
+  path: exploits/CVE-2022-21907
+  requires: python3 bash
+anchor:
+  detections: idscan|anchor-detect
+  info: Anchor CMS version fingerprint
+  itype: list
+  path: fingerprints/anchor
+  requires: python3 bash nuclei
+apache:
+  detections: idscan|apache-tomcat-detect||favscan|apache
+  info: Apache Webserver version fingerprint
+  itype: list
+  path: fingerprints/apache
+  requires: python3 bash nuclei
+basic-xss-fuzz:
+  detections: urlenum|.
+  info: Basic XSS Fuzzing
+  itype: list
+  path: exploits/basic-xss-fuzz
+  requires: python3 bash ffuf qsreplace kxss dalfox curl
+bigtree:
+  detections: idscan|bigtree-detect
+  info: Bigtree CMS version fingerprint
+  itype: list
+  path: fingerprints/bigtree
+  requires: python3 bash nuclei
+bolt:
+  detections: idscan|bolt-detect
+  info: Bolt version fingerprint
+  itype: list
+  path: fingerprints/bolt
+  requires: python3 bash nuclei
+chamilo:
+  detections: idscan|chamilo-detect||favscan|chamilo
+  info: Chamilo LMS version fingerprint
+  itype: list
+  path: fingerprints/chamilo
+  requires: python3 bash nuclei
+ckeditor:
+  detections: idscan|ckeditor-detect
+  info: CKeditor version fingerprint
+  itype: list
+  path: fingerprints/ckeditor
+  requires: python3 bash nuclei
+cmsmadesimple:
+  detections: idscan|cmsmadesimple-detect
+  info: CMSMadeSimple version fingerprint
+  itype: list
+  path: fingerprints/cmsmadesimple
+  requires: python3 bash nuclei
+concrete5:
+  detections: idscan|concrete5-detect
+  info: Concrete5 version fingerprint
+  itype: list
+  path: fingerprints/concrete5
+  requires: python3 bash nuclei
+django:
+  detections: idscan|django-detect
+  info: Django version fingerprint
+  itype: list
+  path: fingerprints/django
+  requires: python3 bash nuclei
+dnn:
+  detections: idscan|dnn-detect||favscan|dnn||favscan|dotnetnuke
+  info: DNN version fingerprint
+  itype: list
+  path: fingerprints/dnn
+  requires: python3 bash nuclei
+drupal:
+  detections: idscan|drupal-detect||favscan|drupal
+  info: Drupal version fingerprint
+  itype: list
+  path: fingerprints/drupal
+  requires: python3 bash nuclei
+fckeditor:
+  detections: idscan|fckeditor-detect
+  info: FCKeditor version fingerprint
+  itype: list
+  path: fingerprints/fckeditor
+  requires: python3 bash nuclei
+flatcore:
+  detections: idscan|flatcore-detect
+  info: Flatcore version fingerprint
+  itype: list
+  path: fingerprints/flatcore
+  requires: python3 bash nuclei
+google-api-keys:
+  detections: vulnscan|google-api-key
+  info: Exposure of Insecure Google API Keys
+  itype: list
+  path: exploits/google-api-keys
+  requires: python3 bash nuclei
+host-header-injection:
+  detections: vulnscan|host-injection
+  info: Host Header injection using `Host`
+  itype: single
+  path: exploits/host-header-injection
+  requires: python3 bash curl
+joomla:
+  detections: idscan|joomla-detect||favscan|joomla
+  info: Joomla version fingerprint
+  itype: list
+  path: fingerprints/joomla
+  requires: python3 bash nuclei
+keyleaks:
+  detections: keysenum|.
+  info: Exposure of Insecure API Keys
+  itype: list
+  path: exploits/keyleaks
+  requires: python3 bash nuclei
+laravel:
+  detections: idscan|laravel-detect
+  info: Laravel version fingerprint
+  itype: list
+  path: fingerprints/laravel
+  requires: python3 bash nuclei
+liferay:
+  detections: idscan|liferay-portal-detect||favscan|liferay
+  info: Liferay version fingerprint
+  itype: list
+  path: fingerprints/liferay
+  requires: python3 bash nuclei
+magento:
+  detections: idscan|magento-detect||favscan|magento
+  info: Magento version fingerprint
+  itype: list
+  path: fingerprints/magento
+  requires: python3 bash nuclei
+mantisbt:
+  detections: idscan|mantisbt-detect||favscan|mantis
+  info: MantisBT version fingerprint
+  itype: list
+  path: fingerprints/mantisbt
+  requires: python3 bash nuclei
+mediaelement:
+  detections: idscan|mediaelement-detect
+  info: Mediaelement version fingerprint
+  itype: list
+  path: fingerprints/mediaelement
+  requires: python3 bash nuclei
+moodle:
+  detections: idscan|moodle-detect||favscan|moodle
+  info: Moodle version fingerprint
+  itype: list
+  path: fingerprints/moodle
+  requires: python3 bash nuclei
+opencart:
+  detections: idscan|opencart-detect
+  info: Opencart version fingerprint
+  itype: list
+  path: fingerprints/opencart
+  requires: python3 bash nuclei
+orchard:
+  detections: idscan|orchard-detect
+  info: Orchard CMS version fingerprint
+  itype: list
+  path: fingerprints/orchard
+  requires: python3 bash nuclei
+oscommerce:
+  detections: idscan|oscommerce-detect
+  info: OSCommerce version fingerprint
+  itype: list
+  path: fingerprints/oscommerce
+  requires: python3 bash nuclei
+phpmyadmin:
+  detections: idscan|phpmyadmin-panel||favscan|phpmyadmin
+  info: PHPMyAdmin version fingerprint
+  itype: list
+  path: fingerprints/phpmyadmin
+  requires: python3 bash nuclei
+prestashop:
+  detections: idscan|prestashop-detect
+  info: PrestaShop version fingerprint
+  itype: list
+  path: fingerprints/prestashop
+  requires: python3 bash nuclei
+punbb:
+  detections: idscan|punbb-detect
+  info: Punbb version fingerprint
+  itype: list
+  path: fingerprints/punbb
+  requires: python3 bash nuclei
+roundcube:
+  detections: idscan|roundcube-detect||favscan|roundcube
+  info: Roundcube version fingerprint
+  itype: list
+  path: fingerprints/roundcube
+  requires: python3 bash nuclei
+smf:
+  detections: idscan|smf-detect
+  info: SimpleMachines SMF version fingerprint
+  itype: list
+  path: fingerprints/smf
+  requires: python3 bash nuclei
+tinymce:
+  detections: idscan|tinymce-detect
+  info: TinyMCE version fingerprint
+  itype: list
+  path: fingerprints/tinymce
+  requires: python3 bash nuclei
+umbraco:
+  detections: idscan|umbraco-detect
+  info: Umbraco version fingerprint
+  itype: list
+  path: fingerprints/umbraco
+  requires: python3 bash nuclei
+wadl-endpoints-enum:
+  detections: vulnscan|wadl-files:http-get
+  info: Enumerates endpoints using wadl files
+  itype: single
+  path: exploits/wadl-endpoints-enum
+  requires: python3 bash wadl-dumper
+wapiti-scan:
+  detections: headenum|.
+  info: WebApp Vulnerability Scan using Wapiti
+  itype: single
+  path: exploits/wapiti-scan
+  requires: python3 bash wapiti md5sum
+web2py:
+  detections: idscan|web2py-detect
+  info: Web2py version fingerprint
+  itype: list
+  path: fingerprints/web2py
+  requires: python3 bash nuclei
+wordpress:
+  detections: idscan|wordpress-detect||favscan|wordpress
+  info: Wordpress version fingerprint
+  itype: list
+  path: fingerprints/wordpress
+  requires: python3 bash nuclei
+wp-user-enum:
+  detections: vulnscan|wordpress-user-enumeration
+  info: Wordpress user enumeration using `/wp-json/wp/v2/users` endpoint
+  itype: single
+  path: exploits/wp-user-enum
+  requires: python3 bash curl jq tr sort
+x-host-header-injection:
+  detections: vulnscan|host-header-injection
+  info: Host Header injection using `X-Forwarded-Host`
+  itype: single
+  path: exploits/x-host-header-injection
+  requires: python3 bash curl

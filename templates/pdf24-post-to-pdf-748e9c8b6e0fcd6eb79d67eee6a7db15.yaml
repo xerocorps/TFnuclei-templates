@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pdf24-post-to-pdf
+  - dsl:
+    - compare_versions(version, '<= 4.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pdf24-post-to-pdf/readme.txt'
+  redirects: true
+id: pdf24-post-to-pdf-748e9c8b6e0fcd6eb79d67eee6a7db15
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pdf24-post-to-pdf/
+    google-query: inurl:"/wp-content/plugins/pdf24-post-to-pdf/"
+    shodan-query: 'vuln:'
+  name: 'PDF24 Article To PDF <= 4.2.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/32419c04-bd10-431a-b87c-1975dacc2e01?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,pdf24-post-to-pdf,medium

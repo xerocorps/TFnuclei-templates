@@ -1,0 +1,25 @@
+id: plesk-obsidian
+info:
+  author: dhiyaneshDK
+  name: Plesk Obsidian
+  reference:
+  - https://www.exploit-db.com/ghdb/6951
+  severity: info
+  tags: panel,plesk
+requests:
+- extractors:
+  - group: 1
+    regex:
+    - (?i)<title>([A-Za-z 0-9.]+)</title>
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - Plesk Obsidian
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login_up.php'

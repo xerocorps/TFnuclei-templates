@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bb-ultimate-addon
+  - dsl:
+    - compare_versions(version, '<= 1.24.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bb-ultimate-addon/readme.txt'
+  redirects: true
+id: bb-ultimate-addon-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Ultimate Addons for Beaver Builder plugin for WordPress is vulnerable
+    to authorization bypass due to missing capability checks on the get-google-data()
+    and get-facebook-data() functions in versions up to, and including, 1.24.0. This
+    makes it possible for unauthorized attackers to log into any account on the associated
+    service, including admin.
+  metadata:
+    fofa-query: wp-content/plugins/bb-ultimate-addon/
+    google-query: inurl:"/wp-content/plugins/bb-ultimate-addon/"
+    shodan-query: 'vuln:'
+  name: Ultimate Addons for Beaver Builder <= 1.24.0 - Missing Authentication Bypass
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,bb-ultimate-addon,low

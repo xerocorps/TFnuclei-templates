@@ -1,0 +1,47 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - master-addons
+  - dsl:
+    - compare_versions(version, '<= 2.0.6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/master-addons/readme.txt'
+  redirects: true
+id: master_addons-485c9ee6-9cb5-45ca-86af-ee5d10ee6734
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/master-addons/
+    google-query: inurl:"/wp-content/plugins/master-addons/"
+    shodan-query: http.html:"wp-content/plugins/master-addons/"
+  name: 'Master Addons -- Free Widgets, Hover Effects, Toggle, Conditions, Animations
+    for Elementor <= 2.0.6.7 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Tooltip Module
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/485c9ee6-9cb5-45ca-86af-ee5d10ee6734?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,master-addons,low,candidate

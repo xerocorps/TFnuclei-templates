@@ -1,0 +1,12 @@
+id: kindeditor-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all KindEditor related nuclei templates
+    on a given target.
+  name: KindEditor Security Checks
+workflows:
+- matchers:
+  - name: kindeditor
+    subtemplates:
+    - tags: kindeditor
+  template: technologies/fingerprinthub-web-fingerprints.yaml

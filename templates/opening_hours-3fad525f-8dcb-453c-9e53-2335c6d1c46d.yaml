@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - opening-hours
+  - dsl:
+    - compare_versions(version, '<= 1.41')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/opening-hours/readme.txt'
+  redirects: true
+id: opening_hours-3fad525f-8dcb-453c-9e53-2335c6d1c46d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/opening-hours/
+    google-query: inurl:"/wp-content/plugins/opening-hours/"
+    shodan-query: http.html:"wp-content/plugins/opening-hours/"
+  name: "We\u2019re Open! <= 1.41 - Authenticated (Administrator+) Stored Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3fad525f-8dcb-453c-9e53-2335c6d1c46d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,opening-hours,low,candidate

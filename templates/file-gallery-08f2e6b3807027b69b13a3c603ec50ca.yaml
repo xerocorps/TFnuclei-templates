@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - file-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.8.5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/file-gallery/readme.txt'
+  redirects: true
+id: file-gallery-08f2e6b3807027b69b13a3c603ec50ca
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/file-gallery/
+    google-query: inurl:"/wp-content/plugins/file-gallery/"
+    shodan-query: 'vuln:'
+  name: 'File Gallery <= 1.8.5.4 - Reflected Cross-Site Scripting via post_id
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0b51caf3-eff4-491f-b354-7d8939548a64?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,file-gallery,medium

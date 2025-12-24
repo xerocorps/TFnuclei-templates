@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-courses
+  - dsl:
+    - compare_versions(version, '<= 3.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-courses/readme.txt'
+  redirects: true
+id: wp_courses-487e23c9-9100-4240-8992-c4c85930c4a6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N
+    cvss-score: 4.3
+  description: "The WP Courses LMS \u2013 Online Courses Builder, eLearning Courses,\
+    \ Courses Solution, Education Courses plugin for WordPress is vulnerable to Cross-Site\
+    \ Request Forgery in all versions up to, and including, 3.2.3. This is due to\
+    \ missing nonce validation on several functions hooked via AJAX in the ~/ajax/ajax-lesson-order.php\
+    \ file. This makes it possible for unauthenticated attackers to to perform several\
+    \ actions such as adding, deleting and renaming lesson modules via a forged request\
+    \ granted they can trick a site administrator into performing an action such as\
+    \ clicking on a link.\n"
+  metadata:
+    fofa-query: wp-content/plugins/wp-courses/
+    google-query: inurl:"/wp-content/plugins/wp-courses/"
+    shodan-query: http.html:"wp-content/plugins/wp-courses/"
+  name: 'WP Courses LMS <= 3.2.3 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/487e23c9-9100-4240-8992-c4c85930c4a6?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-courses,medium,production

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-basic-slider
+  - dsl:
+    - compare_versions(version, '<= 2.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-basic-slider/readme.txt'
+  redirects: true
+id: wc_basic_slider-75e5e1eb-300f-4ddf-aec5-4fae9dba0f5d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: 'The Unlimited Category slider for WooCommerce plugin for WordPress
+    is vulnerable to Cross-Site Request Forgery in versions up to, and including,
+    2.0.0. This is due to missing or incorrect nonce validation on the "cx_nonce"
+    function. This makes it possible for unauthenticated attackers to gain otherwise
+    restricted access to administrative actions via a forged request granted they
+    can trick a site administrator into performing an action such as clicking on a
+    link.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wc-basic-slider/
+    google-query: inurl:"/wp-content/plugins/wc-basic-slider/"
+    shodan-query: http.html:"wp-content/plugins/wc-basic-slider/"
+  name: 'Unlimited Category slider for WooCommerce <= 2.0.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/75e5e1eb-300f-4ddf-aec5-4fae9dba0f5d?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wc-basic-slider,medium,production

@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - directory listing
+    - enabled
+    - security
+  description: Template to detect if directory listing is enabled on the server
+  id: directory-listing-enabled
+  matcher-condition: or
+  matchers:
+  - description: Directory listing enabled on the server
+    pattern: Index of /uploads/
+    type: body
+  name: Directory Listing Enabled - Detect
+  requests:
+    method: GET
+    path:
+    - /uploads/
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

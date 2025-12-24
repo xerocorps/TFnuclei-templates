@@ -1,0 +1,24 @@
+id: public-tomcat-manager
+info:
+  author: Ahmed Sherif,geeknik
+  classification:
+    cwe-id: CWE-200
+  description: An Apache Tomcat Manager panel was discovered.
+  name: Apache Tomcat Manager Disclosure
+  severity: info
+  tags: panel,tomcat,apache
+requests:
+- matchers:
+  - type: word
+    words:
+    - Apache Tomcat
+  - condition: or
+    status:
+    - 401
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/manager/html'
+  - '{{BaseURL}}/host-manager/html'

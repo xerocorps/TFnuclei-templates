@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cm-download-manager
+  - dsl:
+    - compare_versions(version, '< 2.8.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cm-download-manager/readme.txt'
+  redirects: true
+id: cm-download-manager-96cae98b49c1d071005641b02ff13b78
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cm-download-manager/
+    google-query: inurl:"/wp-content/plugins/cm-download-manager/"
+    shodan-query: 'vuln:'
+  name: 'CM Download Manager <= 2.7.0 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/87d064fc-923a-41f1-a14f-09ff91b2aaee?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,cm-download-manager,high

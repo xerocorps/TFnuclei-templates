@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce
+  - dsl:
+    - compare_versions(version, '< 2.4.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce/readme.txt'
+  redirects: true
+id: woocommerce-8bcd18d4f1c6a17dff9a847d380fb87a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 5.5
+  description: The WooCommerce plugin for WordPress is vulnerable to Cross-Site Scripting
+    via the pay_price() function, in versions up to, and including, 2.4.8 due to insufficient
+    input sanitization and output escaping. This makes it possible for authenticated
+    attackers with administrator privileges to inject arbitrary web scripts in pages
+    that will execute whenever a user accesses an injected page.
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce/
+    google-query: inurl:"/wp-content/plugins/woocommerce/"
+    shodan-query: 'vuln:'
+  name: WooCommerce < 2.4.9 - Cross-site Scripting
+  reference:
+  - https://fortiguard.com/zeroday/FG-VD-15-095
+  - https://developer.woocommerce.com/2015/11/09/woocommerce-2-4-9-security-and-fix-release/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce,medium

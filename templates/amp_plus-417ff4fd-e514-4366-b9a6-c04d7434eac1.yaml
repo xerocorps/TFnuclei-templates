@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - amp-plus
+  - dsl:
+    - compare_versions(version, '<= 3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/amp-plus/readme.txt'
+  redirects: true
+id: amp_plus-417ff4fd-e514-4366-b9a6-c04d7434eac1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/amp-plus/
+    google-query: inurl:"/wp-content/plugins/amp-plus/"
+    shodan-query: http.html:"wp-content/plugins/amp-plus/"
+  name: 'AMP+ Plus <= 3.0 - Reflected Cross Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/417ff4fd-e514-4366-b9a6-c04d7434eac1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,amp-plus,low,candidate

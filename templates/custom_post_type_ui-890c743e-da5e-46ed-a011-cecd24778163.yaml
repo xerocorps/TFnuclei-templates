@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - custom-post-type-ui
+  - dsl:
+    - compare_versions(version, '<= 1.18.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/custom-post-type-ui/readme.txt'
+  redirects: true
+id: custom_post_type_ui-890c743e-da5e-46ed-a011-cecd24778163
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/custom-post-type-ui/
+    google-query: inurl:"/wp-content/plugins/custom-post-type-ui/"
+    shodan-query: http.html:"wp-content/plugins/custom-post-type-ui/"
+  name: 'Custom Post Type UI <= 1.18.1 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting via ''label'' Import Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/890c743e-da5e-46ed-a011-cecd24778163?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,custom-post-type-ui,low,candidate

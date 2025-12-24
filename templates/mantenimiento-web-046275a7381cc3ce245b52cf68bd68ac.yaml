@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mantenimiento-web
+  - dsl:
+    - compare_versions(version, '<= 0.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mantenimiento-web/readme.txt'
+  redirects: true
+id: mantenimiento-web-046275a7381cc3ce245b52cf68bd68ac
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mantenimiento-web/
+    google-query: inurl:"/wp-content/plugins/mantenimiento-web/"
+    shodan-query: 'vuln:'
+  name: 'Mantenimiento web <= 0.13 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aefb7e34-ec48-4e29-b3aa-85901e12d21c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mantenimiento-web,low

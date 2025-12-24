@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bbp-move-topics
+  - dsl:
+    - compare_versions(version, '<= 1.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bbp-move-topics/readme.txt'
+  redirects: true
+id: bbp-move-topics-1d1cfe2fb9fcca368b56b726965ef4e0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bbp-move-topics/
+    google-query: inurl:"/wp-content/plugins/bbp-move-topics/"
+    shodan-query: 'vuln:'
+  name: 'bbPress Move Topics <= 1.1.4 - PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2b23b71d-1231-44ce-b992-5e74ddafb4bd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bbp-move-topics,low

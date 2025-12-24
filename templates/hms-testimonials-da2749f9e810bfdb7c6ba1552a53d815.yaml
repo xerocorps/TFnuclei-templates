@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hms-testimonials
+  - dsl:
+    - compare_versions(version, '< 2.0.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hms-testimonials/readme.txt'
+  redirects: true
+id: hms-testimonials-da2749f9e810bfdb7c6ba1552a53d815
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hms-testimonials/
+    google-query: inurl:"/wp-content/plugins/hms-testimonials/"
+    shodan-query: 'vuln:'
+  name: 'HMS Testimonials <= 2.0.10 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0406b7a0-517d-4462-9b65-d4f708cf364d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,hms-testimonials,medium

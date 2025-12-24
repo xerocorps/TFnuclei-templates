@@ -1,0 +1,17 @@
+id: vercel-takeover
+info:
+  author: pdcommunity
+  name: vercel takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - The deployment could not be found on Vercel.
+    - DEPLOYMENT_NOT_FOUND
+  method: GET
+  path:
+  - '{{BaseURL}}'

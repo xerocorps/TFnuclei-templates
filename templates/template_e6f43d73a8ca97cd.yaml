@@ -1,0 +1,49 @@
+name: "\U0001F4DD Nmap FingerPrint Update"
+true:
+  push:
+    paths:
+    - service_fingerprint
+jobs:
+  build:
+    if: github.repository == '0x727/FingerprintHub'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@master
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11.0
+    - id: update-nmap-fingerprint
+      name: Update Nmap FingerPrint
+      run: 'python -m pip install --upgrade pip
+
+        pip install PyYAML
+
+        python .github/scripts/update_nmap_fingerprint.py
+
+        find . -path "*.pyc" -delete
+
+        echo "::set-output name=changes::$(git status -s | wc -l)"
+
+        '
+    - if: steps.update-nmap-fingerprint.outputs.changes > 0
+      name: Commit files
+      run: 'git config --local user.email "action@github.com"
+
+        git config --local user.name "GitHub Action"
+
+        git add .
+
+        git commit -m "Auto Update Nmap FingerPrint [$(date)] :robot:" -a
+
+        '
+    - if: steps.update-nmap-fingerprint.outputs.changes > 0
+      name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: ${{ github.ref }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}

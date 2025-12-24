@@ -1,0 +1,19 @@
+http:
+- matchers:
+  - part: body
+    regex:
+    - <?xml
+    - <add key=
+    type: word
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/web/Report/Rpt/Config/Config.xml'
+id: huace-Config-infoLeak
+info:
+  author: Co5mos
+  name: huace-Config-infoLeak
+  severity: critical

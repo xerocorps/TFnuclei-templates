@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - TYPE_LOGIN
+    - SafeCtrlAdminOpLogLogic
+    - AuditAdminOpLogLogic
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/runtime/admin_log_conf.cache'
+id: qianxin-tianqing-info-disclosure
+info:
+  author: Co5mos
+  metadata:
+    fofa-query: "app=\"360\u5929\u64CE\u7EC8\u7AEF\u5B89\u5168\u7BA1\u7406\u7CFB\u7EDF\
+      \""
+    max-request: 1
+    verified: true
+  name: Qianxin Tianqing - Info Disclosure
+  severity: critical
+  tags: exposure,files

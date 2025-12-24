@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-user-avatar
+  - dsl:
+    - compare_versions(version, '<= 4.14.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-user-avatar/readme.txt'
+  redirects: true
+id: wp-user-avatar-eb05b6f95d52cd689a95a4d7ab2f0de0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-user-avatar/
+    google-query: inurl:"/wp-content/plugins/wp-user-avatar/"
+    shodan-query: 'vuln:'
+  name: "Paid Membership Plugin, Ecommerce, User Registration Form, Login Form, User\
+    \ Profile & Restrict Content \u2013 ProfilePress <= 4.14.4 - Unauthenticated Stored\
+    \ Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4ffd74de-6629-4088-ba5c-ac9dd5c6322c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-user-avatar,high

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-thank-you-page-nextmove-lite
+  - dsl:
+    - compare_versions(version, '<= 2.18.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-thank-you-page-nextmove-lite/readme.txt'
+  redirects: true
+id: woo-thank-you-page-nextmove-lite-11617555ee568cec54e08460a976f218
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-thank-you-page-nextmove-lite/
+    google-query: inurl:"/wp-content/plugins/woo-thank-you-page-nextmove-lite/"
+    shodan-query: 'vuln:'
+  name: 'NextMove Lite <= 2.18.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b8add6b9-8d53-4239-bbbc-d32a562fd9b9?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-thank-you-page-nextmove-lite,medium

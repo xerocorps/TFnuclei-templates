@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - float-to-top-button
+  - dsl:
+    - compare_versions(version, '<= 2.3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/float-to-top-button/readme.txt'
+  redirects: true
+id: float_to_top_button-70fee28f-7a2b-4d57-9fca-04a805dca3f6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/float-to-top-button/
+    google-query: inurl:"/wp-content/plugins/float-to-top-button/"
+    shodan-query: http.html:"wp-content/plugins/float-to-top-button/"
+  name: 'Float to Top Button <= 2.3.6 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/70fee28f-7a2b-4d57-9fca-04a805dca3f6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,float-to-top-button,low,candidate

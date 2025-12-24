@@ -1,0 +1,13 @@
+id: apache-Tomcat-detect
+info:
+  author: glatisant
+  name: Apache Tomcat Detect
+  severity: info
+requests:
+- matchers:
+  - type: word
+    words:
+    - Tomcat
+  method: GET
+  path:
+  - '{{BaseURL}}/'

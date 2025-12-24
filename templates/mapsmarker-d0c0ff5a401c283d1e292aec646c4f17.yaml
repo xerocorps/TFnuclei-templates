@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mapsmarker
+  - dsl:
+    - compare_versions(version, '< 1.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mapsmarker/readme.txt'
+  redirects: true
+id: mapsmarker-d0c0ff5a401c283d1e292aec646c4f17
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: 'The Leaflet Maps Marker Pro plugin for WordPress is vulnerable to
+    arbitrary file uploads due to missing file type validation in versions up to,
+    and including, 1.5.7. This makes it possible for attackers to upload arbitrary
+    files on the affected sites server which may make remote code execution possible.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/mapsmarker/
+    google-query: inurl:"/wp-content/plugins/mapsmarker/"
+    shodan-query: 'vuln:'
+  name: 'Leaflet Maps Marker Pro < 1.5.8 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66969472-4b3c-4d56-b761-523ea854e3db?source=api-prod
+  severity: critical
+  tags: cve,wordpress,wp-plugin,mapsmarker,critical

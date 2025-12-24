@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-push-notification
+  - dsl:
+    - compare_versions(version, '<= 1.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-push-notification/readme.txt'
+  redirects: true
+id: all_push_notification-5e8311ea-5f38-4c15-be79-f1e913ac3d6e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-push-notification/
+    google-query: inurl:"/wp-content/plugins/all-push-notification/"
+    shodan-query: http.html:"wp-content/plugins/all-push-notification/"
+  name: 'All push notification for WP <= 1.5.3 - Cross-Site Request Forgery to SQL
+    Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5e8311ea-5f38-4c15-be79-f1e913ac3d6e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,all-push-notification,medium,candidate

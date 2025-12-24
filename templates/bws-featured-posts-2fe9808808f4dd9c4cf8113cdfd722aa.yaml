@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bws-featured-posts
+  - dsl:
+    - compare_versions(version, '< 1.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bws-featured-posts/readme.txt'
+  redirects: true
+id: bws-featured-posts-2fe9808808f4dd9c4cf8113cdfd722aa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bws-featured-posts/
+    google-query: inurl:"/wp-content/plugins/bws-featured-posts/"
+    shodan-query: 'vuln:'
+  name: 'Featured Posts by BestWebSoft < 1.0.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0f10c476-ce0c-4204-8f68-46c12dac1ade?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,bws-featured-posts,medium

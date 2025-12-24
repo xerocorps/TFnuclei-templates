@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - funnelcockpit
+  - dsl:
+    - compare_versions(version, '<= 1.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/funnelcockpit/readme.txt'
+  redirects: true
+id: funnelcockpit-1a5b5b9d-9549-4931-8b27-c8a0d5bcf53c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/funnelcockpit/
+    google-query: inurl:"/wp-content/plugins/funnelcockpit/"
+    shodan-query: http.html:"wp-content/plugins/funnelcockpit/"
+  name: 'FunnelCockpit <= 1.4.3 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1a5b5b9d-9549-4931-8b27-c8a0d5bcf53c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,funnelcockpit,low,candidate

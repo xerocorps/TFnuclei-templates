@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shareaholic
+  - dsl:
+    - compare_versions(version, '< 7.6.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shareaholic/readme.txt'
+  redirects: true
+id: shareaholic-620de525b6e01b63ed2e40490d986362
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shareaholic/
+    google-query: inurl:"/wp-content/plugins/shareaholic/"
+    shodan-query: 'vuln:'
+  name: "WordPress Social Sharing, Related Posts & Analytics \u2013 Shareaholic <\
+    \ 7.6.1.0 - Authenticated (Subscriber+) Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a0ea0d46-a6aa-4704-8e4e-051bedd4994e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shareaholic,low

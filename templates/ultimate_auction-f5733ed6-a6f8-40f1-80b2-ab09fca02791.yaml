@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-auction
+  - dsl:
+    - compare_versions(version, '<= 4.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-auction/readme.txt'
+  redirects: true
+id: ultimate_auction-f5733ed6-a6f8-40f1-80b2-ab09fca02791
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-auction/
+    google-query: inurl:"/wp-content/plugins/ultimate-auction/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-auction/"
+  name: 'Ultimate Auction <= 4.3.2 - Unauthenticated Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f5733ed6-a6f8-40f1-80b2-ab09fca02791?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-auction,low,candidate

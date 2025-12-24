@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpappninja
+  - dsl:
+    - compare_versions(version, '<= 11.41')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpappninja/readme.txt'
+  redirects: true
+id: wpappninja-699a83e0-1b92-4f16-9e8f-40576afaaa01
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpappninja/
+    google-query: inurl:"/wp-content/plugins/wpappninja/"
+    shodan-query: http.html:"wp-content/plugins/wpappninja/"
+  name: "WPMobile.App \u2014 Android and iOS Mobile Application <= 11.41 - Reflected\
+    \ Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/699a83e0-1b92-4f16-9e8f-40576afaaa01?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpappninja,medium,candidate

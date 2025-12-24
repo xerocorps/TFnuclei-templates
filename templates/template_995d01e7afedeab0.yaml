@@ -1,0 +1,34 @@
+name: "\U0001F528 Build Test"
+true:
+  pull_request: null
+  workflow_dispatch: null
+jobs:
+  build:
+    name: Test Builds
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.19
+    - name: Check out code
+      uses: actions/checkout@v3
+    - name: Build
+      run: go build .
+      working-directory: .
+    - name: Test
+      run: go test ./...
+      working-directory: .
+    - env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      name: install nuclei and nuclei templates
+      run: go run -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+    - name: Race Condition Tests
+      run: go run -race .
+      working-directory: .
+    strategy:
+      matrix:
+        os:
+        - ubuntu-latest
+        - windows-latest
+        - macOS-latest

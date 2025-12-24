@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - buddyforms
+  - dsl:
+    - compare_versions(version, '<= 2.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/buddyforms/readme.txt'
+  redirects: true
+id: buddyforms-20793de1-468f-4b9d-8e1f-b05dc204c0fb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/buddyforms/
+    google-query: inurl:"/wp-content/plugins/buddyforms/"
+    shodan-query: http.html:"wp-content/plugins/buddyforms/"
+  name: "Post, Registration and Profile Form Builder \u2013 FrontEnd Editor BuddyForms\
+    \ \u2013 Easy WordPress Forms <= 2.8.1 - Authenticated (Contributor+) Stored Cross-Site\
+    \ Scripting via Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/20793de1-468f-4b9d-8e1f-b05dc204c0fb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,buddyforms,low,candidate

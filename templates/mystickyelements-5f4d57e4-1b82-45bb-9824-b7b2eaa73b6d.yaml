@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mystickyelements
+  - dsl:
+    - compare_versions(version, '<= 2.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mystickyelements/readme.txt'
+  redirects: true
+id: mystickyelements-5f4d57e4-1b82-45bb-9824-b7b2eaa73b6d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mystickyelements/
+    google-query: inurl:"/wp-content/plugins/mystickyelements/"
+    shodan-query: http.html:"wp-content/plugins/mystickyelements/"
+  name: 'All-in-one Floating Contact Form <= 2.0.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5f4d57e4-1b82-45bb-9824-b7b2eaa73b6d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,mystickyelements,medium,candidate

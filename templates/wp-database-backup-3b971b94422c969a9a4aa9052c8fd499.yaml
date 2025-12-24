@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-database-backup
+  - dsl:
+    - compare_versions(version, '<= 5.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-database-backup/readme.txt'
+  redirects: true
+id: wp-database-backup-3b971b94422c969a9a4aa9052c8fd499
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: 'The WP Database Backup plugin for WordPress is vulnerable to unauthenticated
+    settings update that can lead to remote code execution via the wpsetting functionality
+    in versions up to, and including, 5.1.2. This makes it possible for unauthenticated
+    attackers to inject malicious code into settings that will execute when a back-up
+    is triggered by an unsuspecting user.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wp-database-backup/
+    google-query: inurl:"/wp-content/plugins/wp-database-backup/"
+    shodan-query: 'vuln:'
+  name: 'WP Database Backup <= 5.1.2 - Unauthenticated Settings Update to Remote Code
+    Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f8035ed9-d267-44da-9de4-cf3d6ece7059?source=api-prod
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-database-backup,critical

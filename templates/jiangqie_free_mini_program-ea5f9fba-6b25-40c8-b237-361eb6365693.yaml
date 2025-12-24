@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jiangqie-free-mini-program
+  - dsl:
+    - compare_versions(version, '<= 2.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jiangqie-free-mini-program/readme.txt'
+  redirects: true
+id: jiangqie_free_mini_program-ea5f9fba-6b25-40c8-b237-361eb6365693
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jiangqie-free-mini-program/
+    google-query: inurl:"/wp-content/plugins/jiangqie-free-mini-program/"
+    shodan-query: http.html:"wp-content/plugins/jiangqie-free-mini-program/"
+  name: 'JiangQie Free Mini Program <= 2.5.2 - Unauthenticated Arbitrary File Uplaod
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ea5f9fba-6b25-40c8-b237-361eb6365693?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,jiangqie-free-mini-program,low,candidate

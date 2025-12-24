@@ -1,0 +1,53 @@
+name: "\u270D\U0001F3FB CVE Annotate"
+true:
+  push:
+    branches:
+    - master
+  workflow_dispatch: null
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - id: meta
+      name: Get Github tag
+      run: 'echo "::set-output name=tag::$(curl --silent "https://api.github.com/repos/projectdiscovery/nuclei/releases/latest"
+        | jq -r .tag_name)"
+
+        '
+    - env:
+        VERSION: ${{ steps.meta.outputs.tag }}
+      if: steps.meta.outputs.tag != ''
+      name: Setup CVE annotate
+      run: 'wget -q https://github.com/projectdiscovery/nuclei/releases/download/${VERSION}/cve-annotate.zip
+
+        sudo unzip cve-annotate.zip -d /usr/local/bin
+
+        '
+      working-directory: /tmp
+    - id: cve-annotate
+      name: Generate CVE Annotations
+      run: 'cve-annotate -i ./cves/ -d .
+
+        echo "::set-output name=changes::$(git status -s | wc -l)"
+
+        '
+    - if: steps.cve-annotate.outputs.changes > 0
+      name: Commit files
+      run: 'git config --local user.email "action@github.com"
+
+        git config --local user.name "GitHub Action"
+
+        git pull
+
+        git add cves
+
+        git commit -m "Auto Generated CVE annotations [$(date)] :robot:" -a
+
+        '
+    - if: steps.cve-annotate.outputs.changes > 0
+      name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: ${{ github.ref }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}

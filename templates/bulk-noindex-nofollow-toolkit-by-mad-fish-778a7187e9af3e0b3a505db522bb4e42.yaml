@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bulk-noindex-nofollow-toolkit-by-mad-fish
+  - dsl:
+    - compare_versions(version, '<= 2.01')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bulk-noindex-nofollow-toolkit-by-mad-fish/readme.txt'
+  redirects: true
+id: bulk-noindex-nofollow-toolkit-by-mad-fish-778a7187e9af3e0b3a505db522bb4e42
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bulk-noindex-nofollow-toolkit-by-mad-fish/
+    google-query: inurl:"/wp-content/plugins/bulk-noindex-nofollow-toolkit-by-mad-fish/"
+    shodan-query: 'vuln:'
+  name: 'Bulk NoIndex & NoFollow Toolkit <= 2.01 - Reflected Cross-Site Scripting
+    via tab, order, and orderby
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/451d4ecd-f3d7-4029-8d39-85d2a7ed459c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,bulk-noindex-nofollow-toolkit-by-mad-fish,medium

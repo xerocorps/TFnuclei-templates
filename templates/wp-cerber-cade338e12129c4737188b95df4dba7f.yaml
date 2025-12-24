@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-cerber
+  - dsl:
+    - compare_versions(version, '<= 9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-cerber/readme.txt'
+  redirects: true
+id: wp-cerber-cade338e12129c4737188b95df4dba7f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-cerber/
+    google-query: inurl:"/wp-content/plugins/wp-cerber/"
+    shodan-query: 'vuln:'
+  name: 'WP Cerber Security <= 9.1 - Unauthenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6cd9cbba-10b0-4fb0-ad49-4593a307a615?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-cerber,high

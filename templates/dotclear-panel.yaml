@@ -1,0 +1,23 @@
+id: dotclear-panel
+info:
+  author: pikpikcu,daffainfo
+  metadata:
+    shodan-query: http.title:"Dotclear"
+  name: Dotclear Panel Login
+  severity: info
+  tags: panel,dotclear
+requests:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <body id="dotclear-admin" class="auth">
+    - <title>Dotclear</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/dc2/admin/auth.php'
+  - '{{BaseURL}}/auth.php'

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - suremembers
+  - dsl:
+    - compare_versions(version, '<= 1.10.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/suremembers/readme.txt'
+  redirects: true
+id: suremembers-f33e0019-e52e-464b-843d-a034e5205b2e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/suremembers/
+    google-query: inurl:"/wp-content/plugins/suremembers/"
+    shodan-query: http.html:"wp-content/plugins/suremembers/"
+  name: 'SureMembers <= 1.10.6 - Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f33e0019-e52e-464b-843d-a034e5205b2e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,suremembers,low,candidate

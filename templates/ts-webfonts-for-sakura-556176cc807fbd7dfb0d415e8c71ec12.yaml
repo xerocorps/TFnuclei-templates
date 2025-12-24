@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ts-webfonts-for-sakura
+  - dsl:
+    - compare_versions(version, '<= 3.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ts-webfonts-for-sakura/readme.txt'
+  redirects: true
+id: ts-webfonts-for-sakura-556176cc807fbd7dfb0d415e8c71ec12
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ts-webfonts-for-sakura/
+    google-query: inurl:"/wp-content/plugins/ts-webfonts-for-sakura/"
+    shodan-query: 'vuln:'
+  name: 'TS Webfonts for SAKURA  <= 3.1.0 - Authenticated (Admin+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/887a1697-608e-4bf8-8c15-188737cb22c6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ts-webfonts-for-sakura,low

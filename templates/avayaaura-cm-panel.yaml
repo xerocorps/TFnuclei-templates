@@ -1,0 +1,21 @@
+id: avayaaura-cm-panel
+info:
+  author: princechaddha
+  name: Avaya Aura Communication Manager (CM) Panel
+  severity: info
+  tags: panel,avaya
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Avaya Aura
+    - Communication Manager (CM)
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/common/login/webLogin'

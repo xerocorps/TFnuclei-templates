@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - silverorchid
+  - dsl:
+    - compare_versions(version, '<= 1.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/silverorchid/style.css'
+  redirects: true
+id: silverorchid-6b301a94eec61365322f909536d46549
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/silverorchid/
+    google-query: inurl:"/wp-content/themes/silverorchid/"
+    shodan-query: 'vuln:'
+  name: 'silverOrchid <= 1.5.0 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0ddc7488-4cc0-4e17-8c81-26cbcbe8bdae?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,silverorchid,high

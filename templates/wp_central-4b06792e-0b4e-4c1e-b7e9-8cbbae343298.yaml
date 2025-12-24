@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-central
+  - dsl:
+    - compare_versions(version, '< 1.4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-central/readme.txt'
+  redirects: true
+id: wp_central-4b06792e-0b4e-4c1e-b7e9-8cbbae343298
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: 'The wpCentral for WordPress is vulnerable to privilege escalation
+    in versions up to, and including, 1.4.7 due to missing authorization checks and
+    validation on the wpc_fetch_authkey() and my_wpc_signon() functions. This makes
+    it possible for authenticated users, with low-level privileges such as a subscriber,
+    to log in as a site administrator.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wp-central/
+    google-query: inurl:"/wp-content/plugins/wp-central/"
+    shodan-query: http.html:"wp-content/plugins/wp-central/"
+  name: 'wpCentral <= 1.4.7 - Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4b06792e-0b4e-4c1e-b7e9-8cbbae343298?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-central,low,production

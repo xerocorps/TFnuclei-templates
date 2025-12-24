@@ -1,0 +1,56 @@
+aiodnsbrute:
+  cmd: cd thirdparty && python3 -m aiodnsbrute.cli {target} -w ../{wordlist} -f ../{output}
+    -o csv -t {threads}
+  formats:
+    threads: 1024
+    wordlist: wordlists/mix.txt
+  health: cd thirdparty && python3 -m aiodnsbrute.cli --help
+amass:
+  cmd: ./thirdparty/amass/amass enum -passive -d {target} -o {output} -aw {alterations}
+    -w {wordlist}
+  formats:
+    alterations: wordlists/alterations.txt
+    wordlist: wordlists/subdomains-top1mil.txt
+  health: ./thirdparty/amass/amass --version
+dnscan:
+  cmd: python3 thirdparty/dnscan/dnscan.py -d {target} -w {wordlist} -o {output} -R
+    8.8.8.8
+  formats:
+    threads: 300
+    wordlist: wordlists/subdomains-top1mil.txt
+  health: python3 thirdparty/dnscan/dnscan.py -h
+dnsrecon:
+  cmd: python3 thirdparty/dnsrecon/dnsrecon.py -d {target} -D {wordlist} -t brt --threads
+    {threads} -c {output}
+  formats:
+    threads: 300
+    wordlist: wordlists/all.txt
+  health: python3 thirdparty/dnsrecon/dnsrecon.py -h
+report:
+  acunetix:
+    host: null
+    port: null
+    token: null
+  slack:
+    channel: null
+    token: null
+settings:
+  nuclei:
+    enable: true
+    interval: 86400
+    options: -impact high
+  scan:
+    timeout: 0
+subfinder:
+  cmd: ./thirdparty/subfinder/subfinder -d {target} -all -t {threads} -config {config}
+    -o {output} -v
+  formats:
+    config: config/thirdparty/subfinder.yaml
+    threads: 300
+  health: ./thirdparty/subfinder/subfinder --version
+sublist3r:
+  cmd: python3 thirdparty/sublist3r/sublist3r.py -d {target} -t {threads} -o {output}
+    -v
+  formats:
+    threads: 300
+  health: python3 thirdparty/sublist3r/sublist3r.py -h

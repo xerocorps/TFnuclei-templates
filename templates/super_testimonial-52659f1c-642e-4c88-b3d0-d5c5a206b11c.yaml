@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - super-testimonial
+  - dsl:
+    - compare_versions(version, '<= 2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/super-testimonial/readme.txt'
+  redirects: true
+id: super_testimonial-52659f1c-642e-4c88-b3d0-d5c5a206b11c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/super-testimonial/
+    google-query: inurl:"/wp-content/plugins/super-testimonial/"
+    shodan-query: http.html:"wp-content/plugins/super-testimonial/"
+  name: 'Super Testimonials <= 2.9 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/52659f1c-642e-4c88-b3d0-d5c5a206b11c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,super-testimonial,low,candidate

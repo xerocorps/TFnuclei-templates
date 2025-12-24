@@ -1,0 +1,47 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simply-gallery-block
+  - dsl:
+    - compare_versions(version, '<= 3.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simply-gallery-block/readme.txt'
+  redirects: true
+id: simply_gallery_block-3e7bd708-2e82-4fef-85f2-bf4f56f66bc4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simply-gallery-block/
+    google-query: inurl:"/wp-content/plugins/simply-gallery-block/"
+    shodan-query: http.html:"wp-content/plugins/simply-gallery-block/"
+  name: 'Gallery Blocks with Lightbox. Image Gallery, (HTML5 video , YouTube, Vimeo)
+    Video Gallery and Lightbox for native gallery <= 3.2.1 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting via galleryID and className Parameters
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3e7bd708-2e82-4fef-85f2-bf4f56f66bc4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simply-gallery-block,low,candidate

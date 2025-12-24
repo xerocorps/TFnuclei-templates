@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-notes
+  - dsl:
+    - compare_versions(version, '<= 1.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-notes/readme.txt'
+  redirects: true
+id: user_notes-703e251f-734d-4a7d-8b67-897aa6986b8c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-notes/
+    google-query: inurl:"/wp-content/plugins/user-notes/"
+    shodan-query: http.html:"wp-content/plugins/user-notes/"
+  name: 'User Notes <= 1.0.2 - Authenticated (Administrator+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/703e251f-734d-4a7d-8b67-897aa6986b8c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,user-notes,low,candidate

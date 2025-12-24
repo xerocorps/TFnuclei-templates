@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sitepress-multilingual-cms
+  - dsl:
+    - compare_versions(version, '<= 4.5.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sitepress-multilingual-cms/readme.txt'
+  redirects: true
+id: sitepress-multilingual-cms-02b64e1b932457cb893dd3b213a5200f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L
+    cvss-score: 5.4
+  description: The WPML plugin for WordPress contains several AJAX actions that fail
+    to perform capability checks or nonce checks. These allow authenticated users
+    to set content defaults, update language settings for legacy widgets, and abort
+    translations.
+  metadata:
+    fofa-query: wp-content/plugins/sitepress-multilingual-cms/
+    google-query: inurl:"/wp-content/plugins/sitepress-multilingual-cms/"
+    shodan-query: 'vuln:'
+  name: WPML <= 4.5.10 - Unprotected AJAX Actions
+  reference:
+  - https://wpml.org/changelog/2022/09/wpml-4-5-11-security-patch-update/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,sitepress-multilingual-cms,medium

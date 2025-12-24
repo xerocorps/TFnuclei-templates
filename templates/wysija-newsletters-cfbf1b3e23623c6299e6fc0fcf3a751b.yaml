@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wysija-newsletters
+  - dsl:
+    - compare_versions(version, '< 2.6.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wysija-newsletters/readme.txt'
+  redirects: true
+id: wysija-newsletters-cfbf1b3e23623c6299e6fc0fcf3a751b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wysija-newsletters/
+    google-query: inurl:"/wp-content/plugins/wysija-newsletters/"
+    shodan-query: 'vuln:'
+  name: 'MailPoet Newsletters (Previous) <= 2.6.10 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/557172d0-33ad-427a-b575-df529e2aaab0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wysija-newsletters,medium

@@ -1,0 +1,23 @@
+id: robots-txt
+info:
+  author: CasperGN
+  name: robots.txt file
+  severity: info
+  tags: misc
+requests:
+- matchers:
+  - type: word
+    words:
+    - 'Disallow:'
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - dsl:
+    - len(body)>=140 && status_code==200
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/robots.txt'
+  redirects: true

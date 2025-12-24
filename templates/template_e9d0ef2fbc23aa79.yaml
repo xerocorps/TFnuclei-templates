@@ -1,0 +1,26 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - mysql
+    - my.cnf
+    - config file
+    - exposure
+  description: Template to detect MySQL my.cnf configuration file exposure
+  id: mysql-my-cnf-disclosure
+  matchers:
+  - description: Nexus Repository banner found in response body
+    pattern: password\s*=\s*(.+)
+    type: body
+  name: MySQL my.cnf Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /etc/my.cnf
+    - /etc/mysql/my.cnf
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

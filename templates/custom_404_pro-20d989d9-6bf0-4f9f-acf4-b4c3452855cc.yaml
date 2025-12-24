@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - custom-404-pro
+  - dsl:
+    - compare_versions(version, '<= 3.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/custom-404-pro/readme.txt'
+  redirects: true
+id: custom_404_pro-20d989d9-6bf0-4f9f-acf4-b4c3452855cc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/custom-404-pro/
+    google-query: inurl:"/wp-content/plugins/custom-404-pro/"
+    shodan-query: http.html:"wp-content/plugins/custom-404-pro/"
+  name: 'Custom 404 Pro <= 3.7.0 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/20d989d9-6bf0-4f9f-acf4-b4c3452855cc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,custom-404-pro,low,candidate

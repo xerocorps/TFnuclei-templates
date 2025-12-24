@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - redirect-404-error-page-to-homepage-or-custom-page
+  - dsl:
+    - compare_versions(version, '<= 1.8.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/redirect-404-error-page-to-homepage-or-custom-page/readme.txt'
+  redirects: true
+id: redirect_404_error_page_to_homepage_or_custom_page-59ec4bbd-5192-45f8-8cfc-d43858b46901
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/redirect-404-error-page-to-homepage-or-custom-page/
+    google-query: inurl:"/wp-content/plugins/redirect-404-error-page-to-homepage-or-custom-page/"
+    shodan-query: http.html:"wp-content/plugins/redirect-404-error-page-to-homepage-or-custom-page/"
+  name: 'Redirect 404 Error Page to Homepage or Custom Page with Logs <= 1.8.7 - Authenticated
+    (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/59ec4bbd-5192-45f8-8cfc-d43858b46901?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,redirect-404-error-page-to-homepage-or-custom-page,low,candidate

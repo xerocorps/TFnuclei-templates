@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - imagerecycle-pdf-image-compression
+  - dsl:
+    - compare_versions(version, '<= 3.1.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/imagerecycle-pdf-image-compression/readme.txt'
+  redirects: true
+id: imagerecycle-pdf-image-compression-fda2c7d889a46f0c2fddcdff5162c7fc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/imagerecycle-pdf-image-compression/
+    google-query: inurl:"/wp-content/plugins/imagerecycle-pdf-image-compression/"
+    shodan-query: 'vuln:'
+  name: 'ImageRecycle pdf & image compression <= 3.1.13 - Cross-Site Request Forgery
+    to Settings Update in disableOptimization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b3900e4f-4ae4-4026-89df-b63bd869a763?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,imagerecycle-pdf-image-compression,medium

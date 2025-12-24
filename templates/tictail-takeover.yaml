@@ -1,0 +1,17 @@
+id: tictail-takeover
+info:
+  author: pdcommunity
+  name: tictail takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - Building a brand of your own?
+    - 'to target URL: <a href="https://tictail.com'
+    - Start selling on Tictail.
+  method: GET
+  path:
+  - '{{BaseURL}}'

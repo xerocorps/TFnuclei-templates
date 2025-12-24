@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-editor
+  - dsl:
+    - compare_versions(version, '<= 1.2.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-editor/readme.txt'
+  redirects: true
+id: wp_editor-9298820e-3753-41b3-8ba6-9fb494e215a8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-editor/
+    google-query: inurl:"/wp-content/plugins/wp-editor/"
+    shodan-query: http.html:"wp-content/plugins/wp-editor/"
+  name: 'WP Editor <= 1.2.9.1 - Authenticated (Administrator+) Directory Traversal
+    to Arbitrary File Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9298820e-3753-41b3-8ba6-9fb494e215a8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-editor,low,candidate

@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nex-forms-express-wp-form-builder
+  - dsl:
+    - compare_versions(version, '<= 8.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nex-forms-express-wp-form-builder/readme.txt'
+  redirects: true
+id: nex-forms-express-wp-form-builder-60c9588e845ade3b395c75cdd2749fb9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nex-forms-express-wp-form-builder/
+    google-query: inurl:"/wp-content/plugins/nex-forms-express-wp-form-builder/"
+    shodan-query: 'vuln:'
+  name: "NEX-Forms \u2013 Ultimate Form Builder <= 8.5.2 - Cross-Site Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a9b45e9b-57a6-4bfd-b9e4-d07780370f02?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,nex-forms-express-wp-form-builder,medium

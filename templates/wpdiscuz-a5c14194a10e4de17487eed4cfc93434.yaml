@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdiscuz
+  - dsl:
+    - compare_versions(version, '<= 7.6.18')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdiscuz/readme.txt'
+  redirects: true
+id: wpdiscuz-a5c14194a10e4de17487eed4cfc93434
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpdiscuz/
+    google-query: inurl:"/wp-content/plugins/wpdiscuz/"
+    shodan-query: 'vuln:'
+  name: "Comments \u2013 wpDiscuz <= 7.6.18 - Authenticated (Contributor+) Stored\
+    \ Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/005bf2f0-892f-4248-afe3-263ae3d2ac54?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpdiscuz,low

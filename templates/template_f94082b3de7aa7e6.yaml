@@ -1,0 +1,30 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - docker
+    - security
+    - misconfiguration
+    - api
+  description: Template to detect unauthorized access to Docker API due to misconfiguration.
+  id: docker-misconfigured-api
+  matcher-condition: or
+  matchers:
+  - description: Insecure connection to Docker API found in response body
+    pattern: API is accessible over HTTP
+    type: body
+  name: Docker API Misconfiguration
+  reference:
+  - https://docs.docker.com/engine/security/https/
+  requests:
+    condition: or
+    description: Attempt to retrieve list of containers
+    method: GET
+    path:
+    - /containers/json
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

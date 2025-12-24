@@ -1,0 +1,22 @@
+id: zenscrape-api-key
+info:
+  author: ritikchaddha
+  name: Zenscrape API Key
+  reference:
+  - https://github.com/trufflesecurity/trufflehog/blob/main/pkg/detectors/zenscrape/zenscrape.go
+  severity: info
+  tags: exposure,token,zenscrape,apikey
+requests:
+- extractors:
+  - part: body
+    regex:
+    - ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - zenscrape
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - better-elementor-addons
+  - dsl:
+    - compare_versions(version, '<= 1.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/better-elementor-addons/readme.txt'
+  redirects: true
+id: better-elementor-addons-c1fa4b3dcc36fdef44b0abf0e6c36148
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/better-elementor-addons/
+    google-query: inurl:"/wp-content/plugins/better-elementor-addons/"
+    shodan-query: 'vuln:'
+  name: 'Better Elementor Addons <= 1.4.1 - Authenticated(Contributor+) Local File
+    Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/437712f5-a493-4625-a314-856f0d0d9758?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,better-elementor-addons,low

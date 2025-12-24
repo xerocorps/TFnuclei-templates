@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - syntaxhighlighter
+  - dsl:
+    - compare_versions(version, '<= 3.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/syntaxhighlighter/readme.txt'
+  redirects: true
+id: syntaxhighlighter-92187edb-6388-45c0-b97f-16e83bb685f1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/syntaxhighlighter/
+    google-query: inurl:"/wp-content/plugins/syntaxhighlighter/"
+    shodan-query: http.html:"wp-content/plugins/syntaxhighlighter/"
+  name: 'SyntaxHighlighter Evolved <= 3.7.1 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/92187edb-6388-45c0-b97f-16e83bb685f1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,syntaxhighlighter,low,candidate

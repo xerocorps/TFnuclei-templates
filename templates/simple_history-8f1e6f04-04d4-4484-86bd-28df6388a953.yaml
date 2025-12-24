@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-history
+  - dsl:
+    - compare_versions(version, '<= 3.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-history/readme.txt'
+  redirects: true
+id: simple_history-8f1e6f04-04d4-4484-86bd-28df6388a953
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-history/
+    google-query: inurl:"/wp-content/plugins/simple-history/"
+    shodan-query: http.html:"wp-content/plugins/simple-history/"
+  name: 'Simple History <= 3.3.1 - Authenticated (Subscriber+) CSV Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8f1e6f04-04d4-4484-86bd-28df6388a953?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-history,low,candidate

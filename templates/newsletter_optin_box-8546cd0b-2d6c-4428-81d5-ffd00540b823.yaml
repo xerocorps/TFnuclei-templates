@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - newsletter-optin-box
+  - dsl:
+    - compare_versions(version, '<= 3.8.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/newsletter-optin-box/readme.txt'
+  redirects: true
+id: newsletter_optin_box-8546cd0b-2d6c-4428-81d5-ffd00540b823
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/newsletter-optin-box/
+    google-query: inurl:"/wp-content/plugins/newsletter-optin-box/"
+    shodan-query: http.html:"wp-content/plugins/newsletter-optin-box/"
+  name: 'Noptin <= 3.8.7 - Authenticated (Administrator+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8546cd0b-2d6c-4428-81d5-ffd00540b823?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,newsletter-optin-box,low,candidate

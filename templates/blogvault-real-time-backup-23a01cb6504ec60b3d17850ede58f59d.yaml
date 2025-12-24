@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - blogvault-real-time-backup
+  - dsl:
+    - compare_versions(version, '>= 1.40', '<= 1.44')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/blogvault-real-time-backup/readme.txt'
+  redirects: true
+id: blogvault-real-time-backup-23a01cb6504ec60b3d17850ede58f59d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/blogvault-real-time-backup/
+    google-query: inurl:"/wp-content/plugins/blogvault-real-time-backup/"
+    shodan-query: 'vuln:'
+  name: 'BlogVault WordPress Backup Plugin 1.40 - 1.44 - Unauthenticated PHP Object
+    Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/01139cbd-1116-4cf8-bdcb-cb182588d093?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,blogvault-real-time-backup,critical

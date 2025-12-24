@@ -1,0 +1,27 @@
+id: oracle-integrated-manager
+info:
+  author: dhiyaneshDk
+  name: Oracle(R) Integrated Lights Out Manager
+  reference:
+  - https://www.shodan.io/search?query=http.title%3A%22Oracle%28R%29+Integrated+Lights+Out+Manager%22&page=2
+  severity: info
+  tags: oracle,login,panel
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - id="hostname">([a-z0-9-]+)<\/span><\/td>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Oracle(R) Integrated Lights Out Manager - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/iPages/i_login.asp'

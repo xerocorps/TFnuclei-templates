@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - convertkit
+  - dsl:
+    - compare_versions(version, '<= 2.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/convertkit/readme.txt'
+  redirects: true
+id: convertkit-09013266f6ee68df44acf37c11fb9e63
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/convertkit/
+    google-query: inurl:"/wp-content/plugins/convertkit/"
+    shodan-query: 'vuln:'
+  name: 'ConvertKit <= 2.2.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cf3a16b6-7256-4fad-b3f2-d1d9d833f45e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,convertkit,medium

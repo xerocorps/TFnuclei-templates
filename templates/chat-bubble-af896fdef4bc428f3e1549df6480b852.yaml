@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - chat-bubble
+  - dsl:
+    - compare_versions(version, '<= 2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/chat-bubble/readme.txt'
+  redirects: true
+id: chat-bubble-af896fdef4bc428f3e1549df6480b852
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/chat-bubble/
+    google-query: inurl:"/wp-content/plugins/chat-bubble/"
+    shodan-query: 'vuln:'
+  name: 'Chat Bubble <= 2.3 - Cross-Site Request Forgery via cbb_submit_settings_data
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/206261fa-58b6-4407-b8e1-2315836b6c88?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,chat-bubble,medium

@@ -1,0 +1,60 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpschoolpress
+  - dsl:
+    - compare_versions(version, '< 2.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpschoolpress/readme.txt'
+  redirects: true
+id: wpschoolpress-d3cf7005ba425cca5f5b0559c862cc46
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L
+    cvss-score: 6.3
+  description: 'The WPSchoolPress plugin for WordPress is vulnerable to Cross-Site
+    Request Forgery in versions up to, and including, 2.2.4. This is due to missing
+    nonce validation on several functions called via AJAX actions in the /lib/wpsp-ajaxworks.php
+    file. This makes it possible for unauthenticated attackers to perform a multitude
+    of actions on behalf of other students or teachers, via a forged request granted
+    they can trick a site administrator into performing an action such as clicking
+    on a link.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wpschoolpress/
+    google-query: inurl:"/wp-content/plugins/wpschoolpress/"
+    shodan-query: 'vuln:'
+  name: 'WPSchoolPress <= 2.2.4 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1a2fb050-1a7c-45cc-86c7-02331d47f780?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpschoolpress,medium

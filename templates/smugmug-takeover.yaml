@@ -1,0 +1,15 @@
+id: smugmug-takeover
+info:
+  author: pdcommunity
+  name: smugmug takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - '{"text":"Page Not Found"'
+  method: GET
+  path:
+  - '{{BaseURL}}'

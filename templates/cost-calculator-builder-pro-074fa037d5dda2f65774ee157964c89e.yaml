@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cost-calculator-builder-pro
+  - dsl:
+    - compare_versions(version, '<= 3.1.75')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cost-calculator-builder-pro/readme.txt'
+  redirects: true
+id: cost-calculator-builder-pro-074fa037d5dda2f65774ee157964c89e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cost-calculator-builder-pro/
+    google-query: inurl:"/wp-content/plugins/cost-calculator-builder-pro/"
+    shodan-query: 'vuln:'
+  name: 'Cost Calculator Builder PRO <= 3.1.75 - Unauthenticated Arbitrary Email Sending
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/035ada56-541d-47b3-8348-3401d94bb509?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cost-calculator-builder-pro,low

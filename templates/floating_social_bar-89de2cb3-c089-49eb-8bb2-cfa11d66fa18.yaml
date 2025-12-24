@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - floating-social-bar
+  - dsl:
+    - compare_versions(version, '<= 1.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/floating-social-bar/readme.txt'
+  redirects: true
+id: floating_social_bar-89de2cb3-c089-49eb-8bb2-cfa11d66fa18
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/floating-social-bar/
+    google-query: inurl:"/wp-content/plugins/floating-social-bar/"
+    shodan-query: http.html:"wp-content/plugins/floating-social-bar/"
+  name: 'Floating Social Bar <= 1.1.7 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/89de2cb3-c089-49eb-8bb2-cfa11d66fa18?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,floating-social-bar,low,candidate

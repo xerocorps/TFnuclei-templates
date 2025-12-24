@@ -1,0 +1,27 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - security
+    - backup
+    - exposure
+  description: Template to detect backup exposure
+  id: backup-exposure
+  matcher-condition: and
+  matchers:
+  - description: Response body indicating the existence of a directory listing
+    pattern: Index of /backup
+    type: body
+  name: Backup Exposure - Detect
+  reference:
+  - https://owasp.org/www-project-top-ten/2017/A6_2017-Sensitive_Data_Exposure
+  requests:
+    description: Attempt to access backup directory
+    method: GET
+    path:
+    - /backup/
+  response:
+  - status:
+    - 200
+  severity: Medium

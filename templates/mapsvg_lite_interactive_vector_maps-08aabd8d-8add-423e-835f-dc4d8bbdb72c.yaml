@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mapsvg-lite-interactive-vector-maps
+  - dsl:
+    - compare_versions(version, '<= 8.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mapsvg-lite-interactive-vector-maps/readme.txt'
+  redirects: true
+id: mapsvg_lite_interactive_vector_maps-08aabd8d-8add-423e-835f-dc4d8bbdb72c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mapsvg-lite-interactive-vector-maps/
+    google-query: inurl:"/wp-content/plugins/mapsvg-lite-interactive-vector-maps/"
+    shodan-query: http.html:"wp-content/plugins/mapsvg-lite-interactive-vector-maps/"
+  name: 'MapSVG Lite <= 8.6.9 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/08aabd8d-8add-423e-835f-dc4d8bbdb72c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mapsvg-lite-interactive-vector-maps,low,candidate

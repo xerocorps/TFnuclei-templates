@@ -1,0 +1,40 @@
+id: reflections
+info:
+  author: tedm.infosec
+  description: Basic reflection check. Checks for reflections of unique strings in
+    the body.
+  name: Check for reflections
+  severity: info
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - zzz
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET /zzz HTTP 2.0
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept: */*
+
+    Connection: close
+
+    '
+  - 'GET /?zzz=zzz&term=zzz&q=zzz&query=zzz&search=zzz HTTP 2.0
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept: */*
+
+    Connection: close
+
+    '

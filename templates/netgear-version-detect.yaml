@@ -1,0 +1,25 @@
+id: netgear-version-detect
+info:
+  author: dwisiswant0
+  name: NETGEAR Router version detect
+  severity: info
+  tags: panel,router,netgear
+requests:
+- extractors:
+  - part: body
+    regex:
+    - Model=([^\s]+)
+    - Firmware=([^\s]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    regex:
+    - ^((((Re(adyShareSupportedLevel|gionTag)|InternetConnectionStatus|SOAPVersion|Firmware|Model)|Region)|LoginMethod)|ParentalControlSupported)=
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/currentsetting.htm'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uncode-core
+  - dsl:
+    - compare_versions(version, '<= 2.8.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/uncode-core/readme.txt'
+  redirects: true
+id: uncode-core-260cf687f9df7f3b9c880ee75b716d20
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/uncode-core/
+    google-query: inurl:"/wp-content/plugins/uncode-core/"
+    shodan-query: 'vuln:'
+  name: 'Uncode Core <= 2.8.8 - Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb5e6767-d0a9-4ac4-816f-6fb57b1e5f9b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,uncode-core,low

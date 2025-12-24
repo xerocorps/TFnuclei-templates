@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-to-google-my-business
+  - dsl:
+    - compare_versions(version, '< 3.1.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-to-google-my-business/readme.txt'
+  redirects: true
+id: post-to-google-my-business-4c002de7cf432d798be9c8176ca8d7ee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-to-google-my-business/
+    google-query: inurl:"/wp-content/plugins/post-to-google-my-business/"
+    shodan-query: 'vuln:'
+  name: 'Post to Google My Business <= 3.1.14 - Cross-Site Request Forgery to Dismiss
+    Notification
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/baa8e48f-769a-4f48-bc47-d55c179d1ca1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,post-to-google-my-business,medium

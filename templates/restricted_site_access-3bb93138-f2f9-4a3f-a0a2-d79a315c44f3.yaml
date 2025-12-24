@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - restricted-site-access
+  - dsl:
+    - compare_versions(version, '<= 7.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/restricted-site-access/readme.txt'
+  redirects: true
+id: restricted_site_access-3bb93138-f2f9-4a3f-a0a2-d79a315c44f3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/restricted-site-access/
+    google-query: inurl:"/wp-content/plugins/restricted-site-access/"
+    shodan-query: http.html:"wp-content/plugins/restricted-site-access/"
+  name: 'loader-utils (JS package) < 3.2.1 - Regular Expression Denial of Service
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3bb93138-f2f9-4a3f-a0a2-d79a315c44f3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,restricted-site-access,low,candidate

@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-seo-pack
+  - dsl:
+    - compare_versions(version, '< 2.3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-seo-pack/readme.txt'
+  redirects: true
+id: all-in-one-seo-pack-c74cfd5b24d9bda22a8302bbbe475a32
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+  description: "The All in One SEO \u2013 Best WordPress SEO Plugin \u2013 Easily\
+    \ Improve SEO Rankings & Increase Traffic plugin for WordPress is vulnerable to\
+    \ Stored Cross-Site Scripting via the HTTP_REFERER header in versions up to, and\
+    \ including, 2.3.6 due to insufficient input sanitization and output escaping.\
+    \ This makes it possible for unauthenticated attackers to inject arbitrary web\
+    \ scripts in pages that will execute whenever a user accesses an injected page."
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-seo-pack/
+    google-query: inurl:"/wp-content/plugins/all-in-one-seo-pack/"
+    shodan-query: 'vuln:'
+  name: "All in One SEO \u2013 Best WordPress SEO Plugin \u2013 Easily Improve SEO\
+    \ Rankings & Increase Traffic <= 2.3.6 - Stored Cross-Site Scripting"
+  reference:
+  - https://seclists.org/fulldisclosure/2016/Jul/23
+  - https://web.archive.org/web/20160508074631/http%3A//semperfiwebdesign.com/blog/all-in-one-seo-pack/all-in-one-seo-pack-release-history/
+  - https://sumofpwn.nl/advisory/2016/persistent_cross_site_scripting_in_all_in_one_seo_pack_wordpress_plugin.html
+  - https://wptavern.com/all-in-one-seo-2-3-7-patches-persistent-xss-vulnerability
+  - https://www.wordfence.com/blog/2016/07/xss-vulnerability-all-in-one-seo-pack-plugin/
+  severity: high
+  tags: cve,wordpress,wp-plugin,all-in-one-seo-pack,high

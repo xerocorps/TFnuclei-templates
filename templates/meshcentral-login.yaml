@@ -1,0 +1,21 @@
+id: meshcentral-login
+info:
+  author: dhiyaneshDk
+  metadata:
+    shodan-query: http.title:"MeshCentral - Login"
+  name: MeshCentral - Login
+  severity: info
+  tags: panel,meshcentral
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>MeshCentral - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

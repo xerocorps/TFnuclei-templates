@@ -1,0 +1,29 @@
+id: api-supportivekoala
+info:
+  author: daffainfo
+  name: Supportivekoala API Test
+  reference:
+  - https://developers.supportivekoala.com/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Development/Supportivekoala.md
+  severity: info
+  tags: token-spray,supportivekoala
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"_id"'
+    - '"template"'
+    - '"imageUrl"'
+  raw:
+  - 'GET https://api.supportivekoala.com/v1/images HTTP/1.1
+
+    Host: api.supportivekoala.com
+
+    Content-Type: application/json
+
+    Authorization: Bearer {{token}}
+
+    '
+self-contained: true

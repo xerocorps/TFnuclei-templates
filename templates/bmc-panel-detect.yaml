@@ -1,0 +1,15 @@
+id: bmc-panel-detect
+info:
+  author: pikpikcu
+  name: BMC Discovery Outpost Panel Detect
+  severity: info
+  tags: panel,bmc
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '<title>BMC Discovery Outpost: Login</title>'
+  method: GET
+  path:
+  - '{{BaseURL}}/adminlogin'

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-7
+  - dsl:
+    - compare_versions(version, '< 3.7.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-7/readme.txt'
+  redirects: true
+id: contact_form_7-e421cb35-e9f4-43f3-a39e-d51d197bc279
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-7/
+    google-query: inurl:"/wp-content/plugins/contact-form-7/"
+    shodan-query: http.html:"wp-content/plugins/contact-form-7/"
+  name: 'Contact Form 7 < 3.7.2 - CAPTCHA Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e421cb35-e9f4-43f3-a39e-d51d197bc279?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-form-7,low,candidate

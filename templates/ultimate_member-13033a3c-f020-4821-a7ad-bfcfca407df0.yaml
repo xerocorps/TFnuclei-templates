@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-member
+  - dsl:
+    - compare_versions(version, '< 2.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-member/readme.txt'
+  redirects: true
+id: ultimate_member-13033a3c-f020-4821-a7ad-bfcfca407df0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-member/
+    google-query: inurl:"/wp-content/plugins/ultimate-member/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-member/"
+  name: 'Ultimate Member < 2.0.4 - Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/13033a3c-f020-4821-a7ad-bfcfca407df0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-member,low,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bigcommerce
+  - dsl:
+    - compare_versions(version, '<= 5.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bigcommerce/readme.txt'
+  redirects: true
+id: bigcommerce-e42ef8d39a3467d5e1a7baf1b678f8db
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bigcommerce/
+    google-query: inurl:"/wp-content/plugins/bigcommerce/"
+    shodan-query: 'vuln:'
+  name: 'BigCommerce <= 5.0.7 - Unauthenticated Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e3a7e0b6-dc6d-4e3a-bb05-12d6ace330df?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bigcommerce,low

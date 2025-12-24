@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - RedSteel
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/RedSteel/style.css'
+  redirects: true
+id: redsteel-6c5d5d67fee0d1cbb6ce3f76fa93a233
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/RedSteel/
+    google-query: inurl:"/wp-content/themes/RedSteel/"
+    shodan-query: 'vuln:'
+  name: 'RedSteel (All Versions) - File Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6a216505-7ab3-4ec7-bb11-e1c6ceaa2aed?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,RedSteel,low

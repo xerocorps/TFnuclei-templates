@@ -1,0 +1,27 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - aws
+    - access key
+    - security
+    - sensitive information
+  description: Template to detect AWS access key ID values in request headers or parameters
+  id: aws-access-key
+  matcher-condition: and
+  matchers:
+  - description: AWS access key ID found in request body
+    pattern: (A3T[A-Z0-9]|AKIA|AGPA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+    type: body
+  name: AWS Access Key ID Value - Detect
+  requests:
+    description: Example request to trigger detection
+    method: GET
+    path:
+    - /
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Info

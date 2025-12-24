@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sign-up-sheets
+  - dsl:
+    - compare_versions(version, '<= 2.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sign-up-sheets/readme.txt'
+  redirects: true
+id: sign-up-sheets-1a6bc6a5a2c08c5e6e6543ee5950eb9e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sign-up-sheets/
+    google-query: inurl:"/wp-content/plugins/sign-up-sheets/"
+    shodan-query: 'vuln:'
+  name: 'Sign-up Sheets <= 2.2.8 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9999301a-002d-441b-bd66-6b7f4c46a8bf?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,sign-up-sheets,medium

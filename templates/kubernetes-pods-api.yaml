@@ -1,0 +1,19 @@
+id: kubernetes-pods-api
+info:
+  author: ilovebinbash
+  name: Kubernetes Pods API
+  severity: info
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - apiVersion
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}:10250/pods'

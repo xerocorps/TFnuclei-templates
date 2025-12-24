@@ -1,0 +1,15 @@
+id: samba-swat-panel
+info:
+  author: PR3R00T
+  name: Samba SWAT panel
+  severity: info
+  tags: panel,samba
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - Basic realm="SWAT"
+  method: GET
+  path:
+  - '{{BaseURL}}'

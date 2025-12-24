@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - addonify-quick-view
+  - dsl:
+    - compare_versions(version, '<= 1.2.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/addonify-quick-view/readme.txt'
+  redirects: true
+id: addonify_quick_view-c38eaab5-157c-43fa-ad67-6f063274ba69
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/addonify-quick-view/
+    google-query: inurl:"/wp-content/plugins/addonify-quick-view/"
+    shodan-query: http.html:"wp-content/plugins/addonify-quick-view/"
+  name: "Addonify \u2013 Quick View For WooCommerce <= 1.2.16 - Unauthenticated Full\
+    \ Path Dislcosure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c38eaab5-157c-43fa-ad67-6f063274ba69?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,addonify-quick-view,low,candidate

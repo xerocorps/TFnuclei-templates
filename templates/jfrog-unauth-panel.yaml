@@ -1,0 +1,24 @@
+donce: true
+id: jfrog-unauth-panel
+info:
+  name: JFrog Unauth Panel
+  risk: Potential
+params:
+- root: '{{.BaseURL}}'
+references:
+- links:
+  - https://www.ciphertechs.com/blog/jfrog-artifactory-advisory/
+replicate:
+  ports: '8081'
+requests:
+- detections:
+  - StatusCode() == 200 && StringSearch("body", '{"repoList":["') && StringSearch("resHeaders",
+    "application/json")
+  - StatusCode() == 200 && StringSearch("body", 'repoTypesList') && StringSearch("resHeaders",
+    "application/json")
+  headers:
+  - User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36
+      (KHTML, like Gecko) Chrome/87.0.4271.0 Safari/537.36
+  method: GET
+  redirect: false
+  url: '{{.root}}/artifactory/ui/repodata?deploy=true'

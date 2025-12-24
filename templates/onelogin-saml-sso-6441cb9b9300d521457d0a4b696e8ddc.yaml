@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - onelogin-saml-sso
+  - dsl:
+    - compare_versions(version, '< 2.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/onelogin-saml-sso/readme.txt'
+  redirects: true
+id: onelogin-saml-sso-6441cb9b9300d521457d0a4b696e8ddc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/onelogin-saml-sso/
+    google-query: inurl:"/wp-content/plugins/onelogin-saml-sso/"
+    shodan-query: 'vuln:'
+  name: 'OneLogin SAML-SSO Plugin < 2.1.6 - Authentication Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c5a5c209-0ccd-4fa9-b22d-05bb22247441?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,onelogin-saml-sso,critical

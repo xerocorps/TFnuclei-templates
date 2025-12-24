@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-download-monitor
+  - dsl:
+    - compare_versions(version, '<= 3.8.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-download-monitor/readme.txt'
+  redirects: true
+id: simple-download-monitor-bb755dd87c0d2aadf45c483935c4c825
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-download-monitor/
+    google-query: inurl:"/wp-content/plugins/simple-download-monitor/"
+    shodan-query: 'vuln:'
+  name: 'Simple Download Monitor <= 3.8.8 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b2670e15-a71a-4800-882d-5d04faeaeee1?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,simple-download-monitor,critical

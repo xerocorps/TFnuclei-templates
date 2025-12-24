@@ -1,0 +1,20 @@
+id: powerlogic-ion
+info:
+  author: dhiyaneshDK
+  name: PowerLogic ION Exposed
+  reference:
+  - https://www.exploit-db.com/ghdb/6810
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - PowerLogic ION
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

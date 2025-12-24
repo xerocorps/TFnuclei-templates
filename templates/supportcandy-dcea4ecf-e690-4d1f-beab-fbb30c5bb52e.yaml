@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - supportcandy
+  - dsl:
+    - compare_versions(version, '< 2.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/supportcandy/readme.txt'
+  redirects: true
+id: supportcandy-dcea4ecf-e690-4d1f-beab-fbb30c5bb52e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/supportcandy/
+    google-query: inurl:"/wp-content/plugins/supportcandy/"
+    shodan-query: http.html:"wp-content/plugins/supportcandy/"
+  name: "SupportCandy \u2013 Helpdesk & Support Ticket System <= 2.0.0 - Arbitrary\
+    \ File Upload\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dcea4ecf-e690-4d1f-beab-fbb30c5bb52e?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,supportcandy,critical,candidate

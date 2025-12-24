@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - checkout-mestres-wp
+  - dsl:
+    - compare_versions(version, '>= 8.6.5', '<= 8.7.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/checkout-mestres-wp/readme.txt'
+  redirects: true
+id: checkout_mestres_wp-9834fd5b-8445-4c6f-95f9-f0df785c65f8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/checkout-mestres-wp/
+    google-query: inurl:"/wp-content/plugins/checkout-mestres-wp/"
+    shodan-query: http.html:"wp-content/plugins/checkout-mestres-wp/"
+  name: 'Checkout Mestres do WP for WooCommerce 8.6.5 - 8.7.5 - Unauthenticated Arbitrary
+    Options Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9834fd5b-8445-4c6f-95f9-f0df785c65f8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,checkout-mestres-wp,low,candidate

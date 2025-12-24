@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - elasticpress
+  - dsl:
+    - compare_versions(version, '<= 4.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/elasticpress/readme.txt'
+  redirects: true
+id: elasticpress-2954a007-37ac-4811-a258-b3fdd738043f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/elasticpress/
+    google-query: inurl:"/wp-content/plugins/elasticpress/"
+    shodan-query: http.html:"wp-content/plugins/elasticpress/"
+  name: 'loader-utils (JS package) < 3.2.1 - Regular Expression Denial of Service
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2954a007-37ac-4811-a258-b3fdd738043f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,elasticpress,low,candidate

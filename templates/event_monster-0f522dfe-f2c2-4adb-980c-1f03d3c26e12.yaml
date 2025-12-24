@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - event-monster
+  - dsl:
+    - compare_versions(version, '<= 1.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/event-monster/readme.txt'
+  redirects: true
+id: event_monster-0f522dfe-f2c2-4adb-980c-1f03d3c26e12
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/event-monster/
+    google-query: inurl:"/wp-content/plugins/event-monster/"
+    shodan-query: http.html:"wp-content/plugins/event-monster/"
+  name: 'Event monster <= 1.4.3 - Information Exposure Via Visitors List Export
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0f522dfe-f2c2-4adb-980c-1f03d3c26e12?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,event-monster,low,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - listingpro-lead-form
+  - dsl:
+    - compare_versions(version, '<= 1.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/listingpro-lead-form/readme.txt'
+  redirects: true
+id: listingpro_lead_form-d2b9f92f-be68-4be2-a7e0-3ff5fcec641d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/listingpro-lead-form/
+    google-query: inurl:"/wp-content/plugins/listingpro-lead-form/"
+    shodan-query: http.html:"wp-content/plugins/listingpro-lead-form/"
+  name: 'ListingPro Lead Form <= 1.0.2 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d2b9f92f-be68-4be2-a7e0-3ff5fcec641d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,listingpro-lead-form,low,candidate

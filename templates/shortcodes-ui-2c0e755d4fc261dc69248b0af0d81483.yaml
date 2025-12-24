@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shortcodes-ui
+  - dsl:
+    - compare_versions(version, '<= 1.9.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shortcodes-ui/readme.txt'
+  redirects: true
+id: shortcodes-ui-2c0e755d4fc261dc69248b0af0d81483
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shortcodes-ui/
+    google-query: inurl:"/wp-content/plugins/shortcodes-ui/"
+    shodan-query: 'vuln:'
+  name: 'ShortCodes UI <= 1.9.8 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f6c14c65-a47c-4dc1-9d5a-f804061152e4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shortcodes-ui,low

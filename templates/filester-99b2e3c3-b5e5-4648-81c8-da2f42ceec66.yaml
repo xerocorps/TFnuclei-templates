@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - filester
+  - dsl:
+    - compare_versions(version, '<= 1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/filester/readme.txt'
+  redirects: true
+id: filester-99b2e3c3-b5e5-4648-81c8-da2f42ceec66
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/filester/
+    google-query: inurl:"/wp-content/plugins/filester/"
+    shodan-query: http.html:"wp-content/plugins/filester/"
+  name: "File Manager Pro \u2013 Filester <=  1.8 - Authenticated (Admin+) Arbitrary\
+    \ File Upload\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/99b2e3c3-b5e5-4648-81c8-da2f42ceec66?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,filester,low,candidate

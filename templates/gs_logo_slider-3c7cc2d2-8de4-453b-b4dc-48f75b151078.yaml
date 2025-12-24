@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gs-logo-slider
+  - dsl:
+    - compare_versions(version, '<= 3.7.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gs-logo-slider/readme.txt'
+  redirects: true
+id: gs_logo_slider-3c7cc2d2-8de4-453b-b4dc-48f75b151078
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gs-logo-slider/
+    google-query: inurl:"/wp-content/plugins/gs-logo-slider/"
+    shodan-query: http.html:"wp-content/plugins/gs-logo-slider/"
+  name: 'Logo Slider <= 3.7.3 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3c7cc2d2-8de4-453b-b4dc-48f75b151078?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gs-logo-slider,low,candidate

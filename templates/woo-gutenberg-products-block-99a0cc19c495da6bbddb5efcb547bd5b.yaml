@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-gutenberg-products-block
+  - dsl:
+    - compare_versions(version, '< 3.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-gutenberg-products-block/readme.txt'
+  redirects: true
+id: woo-gutenberg-products-block-99a0cc19c495da6bbddb5efcb547bd5b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-gutenberg-products-block/
+    google-query: inurl:"/wp-content/plugins/woo-gutenberg-products-block/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Blocks <= 3.7.0 - Authorization Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d0a311b7-5582-4581-bf4e-636d8a936ac6?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woo-gutenberg-products-block,high

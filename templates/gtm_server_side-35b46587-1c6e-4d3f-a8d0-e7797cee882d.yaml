@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gtm-server-side
+  - dsl:
+    - compare_versions(version, '<= 1.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gtm-server-side/readme.txt'
+  redirects: true
+id: gtm_server_side-35b46587-1c6e-4d3f-a8d0-e7797cee882d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 5.5
+  description: 'The GTM Server Side plugin for WordPress is vulnerable to Stored Cross-Site
+    Scripting via the ''GTM Server Side url'' field in versions up to, and including,
+    1.1.1 due to insufficient input sanitization and output escaping. This makes it
+    possible for authenticated attackers with administrative capabilities to inject
+    arbitrary web scripts in pages that will execute whenever a user accesses an injected
+    page. This only affects multi-site installations and installations where unfiltered_html
+    has been disabled.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/gtm-server-side/
+    google-query: inurl:"/wp-content/plugins/gtm-server-side/"
+    shodan-query: http.html:"wp-content/plugins/gtm-server-side/"
+  name: 'GTM Server Side <= 1.1.1 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/35b46587-1c6e-4d3f-a8d0-e7797cee882d?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,gtm-server-side,low,production

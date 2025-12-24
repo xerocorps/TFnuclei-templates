@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jupiterx-core
+  - dsl:
+    - compare_versions(version, '<= 2.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jupiterx-core/readme.txt'
+  redirects: true
+id: jupiterx_core-e92ce899-556f-4a17-8902-1919d485ee15
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jupiterx-core/
+    google-query: inurl:"/wp-content/plugins/jupiterx-core/"
+    shodan-query: http.html:"wp-content/plugins/jupiterx-core/"
+  name: 'JupiterX Core <= 2.0.6 - Information Disclosure, Modification, and Denial
+    of Service
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e92ce899-556f-4a17-8902-1919d485ee15?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,jupiterx-core,low,candidate

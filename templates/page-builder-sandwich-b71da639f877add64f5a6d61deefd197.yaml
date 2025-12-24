@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - page-builder-sandwich
+  - dsl:
+    - compare_versions(version, '<= 5.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/page-builder-sandwich/readme.txt'
+  redirects: true
+id: page-builder-sandwich-b71da639f877add64f5a6d61deefd197
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/page-builder-sandwich/
+    google-query: inurl:"/wp-content/plugins/page-builder-sandwich/"
+    shodan-query: 'vuln:'
+  name: "Page Builder Sandwich \u2013 Front End WordPress Page Builder Plugin <= 5.1.0\
+    \ - Sensitive Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8e98d92a-fe64-4591-972b-ed11542506b7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,page-builder-sandwich,low

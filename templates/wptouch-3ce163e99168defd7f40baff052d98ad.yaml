@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wptouch
+  - dsl:
+    - compare_versions(version, '<= 4.3.42')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wptouch/readme.txt'
+  redirects: true
+id: wptouch-3ce163e99168defd7f40baff052d98ad
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wptouch/
+    google-query: inurl:"/wp-content/plugins/wptouch/"
+    shodan-query: 'vuln:'
+  name: 'WPtouch <= 4.3.42 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3a0d85e8-33fa-46eb-b71b-d93715bc373e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wptouch,medium

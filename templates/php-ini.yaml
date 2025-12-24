@@ -1,0 +1,21 @@
+id: php-ini
+info:
+  author: geeknik
+  name: php.ini
+  severity: info
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - '[PHP]'
+    - short_open_tag
+    - safe_mode
+    - expose_php
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/php.ini'

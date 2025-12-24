@@ -1,0 +1,29 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - drupal
+    - security
+    - information disclosure
+    - JSON:API
+  description: Template to detect Drupal JSON:API endpoint exposing user listing information
+  id: drupal-jsonapi-user-listing
+  matcher-condition: and
+  matchers:
+  - description: Drupal JSON:API user listing found in response body
+    pattern: \"type\":\"user\"
+    type: body
+  name: Drupal JSON:API User Listing Information Disclosure
+  reference:
+  - https://www.drupal.org/security-advisory/SA-CORE-2020-012
+  requests:
+    description: Attempt to access Drupal JSON:API user listing endpoint
+    method: GET
+    path:
+    - /jsonapi/user/user
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

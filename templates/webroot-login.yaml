@@ -1,0 +1,22 @@
+id: webroot-login
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: title:"Webroot - Login"
+    verified: true
+  name: Webroot - Login
+  severity: info
+  tags: panel,webroot
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Webroot - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Login'

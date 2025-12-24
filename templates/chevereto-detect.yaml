@@ -1,0 +1,22 @@
+id: chevereto-detect
+info:
+  author: pikpikcu
+  name: Chevereto detect
+  severity: info
+  tags: tech,chevereto
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <meta name="generator" content="(.*)">
+    type: regex
+  matchers:
+  - part: body
+    regex:
+    - content="Chevereto(.*)">
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

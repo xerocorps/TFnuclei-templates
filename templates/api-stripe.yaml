@@ -1,0 +1,17 @@
+id: api-stripe
+info:
+  author: zzeitlin
+  name: Stripe API Test
+  reference: https://stripe.com/docs/api/authentication
+  severity: info
+  tags: token-spray,stripe
+requests:
+- headers:
+    Authorization: Basic {{base64(token + ':')}}
+  matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - https://api.stripe.com/v1/charges

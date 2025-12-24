@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-automatic
+  - dsl:
+    - compare_versions(version, '<= 3.92.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-automatic/readme.txt'
+  redirects: true
+id: wp-automatic-e3e0d5e5a9c056f86da86f210ff74770
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-automatic/
+    google-query: inurl:"/wp-content/plugins/wp-automatic/"
+    shodan-query: 'vuln:'
+  name: 'Automatic <= 3.92.0 - Unauthenticated Arbitrary File Download and Server-Side
+    Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/620e8931-64f0-4d9c-9a4c-1f5a703845ff?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-automatic,low

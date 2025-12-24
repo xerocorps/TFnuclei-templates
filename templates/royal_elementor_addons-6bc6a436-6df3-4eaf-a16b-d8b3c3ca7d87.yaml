@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - royal-elementor-addons
+  - dsl:
+    - compare_versions(version, '<= 1.7.1007')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/royal-elementor-addons/readme.txt'
+  redirects: true
+id: royal_elementor_addons-6bc6a436-6df3-4eaf-a16b-d8b3c3ca7d87
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/royal-elementor-addons/
+    google-query: inurl:"/wp-content/plugins/royal-elementor-addons/"
+    shodan-query: http.html:"wp-content/plugins/royal-elementor-addons/"
+  name: 'Royal Elementor Addons and Templates <= 1.7.1007 - Cross-Site Request Forgery
+    to Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6bc6a436-6df3-4eaf-a16b-d8b3c3ca7d87?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,royal-elementor-addons,medium,candidate

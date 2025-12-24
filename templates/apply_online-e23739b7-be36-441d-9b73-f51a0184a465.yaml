@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - apply-online
+  - dsl:
+    - compare_versions(version, '<= 2.6.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/apply-online/readme.txt'
+  redirects: true
+id: apply_online-e23739b7-be36-441d-9b73-f51a0184a465
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/apply-online/
+    google-query: inurl:"/wp-content/plugins/apply-online/"
+    shodan-query: http.html:"wp-content/plugins/apply-online/"
+  name: "ApplyOnline \u2013 Application Form Builder and Manager <= 2.6.7.1 - Missing\
+    \ Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e23739b7-be36-441d-9b73-f51a0184a465?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,apply-online,high,candidate

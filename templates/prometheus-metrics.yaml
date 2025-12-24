@@ -1,0 +1,25 @@
+id: prometheus-metrics
+info:
+  author: dhiyaneshDK, philippedelteil
+  name: Exposed Prometheus metrics
+  reference:
+  - https://github.com/prometheus/prometheus
+  - https://hackerone.com/reports/1026196
+  severity: low
+  tags: config,exposure,prometheus
+requests:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - cpu_seconds_total
+    - http_request_duration_seconds
+    - process_virtual_memory_bytes
+    - process_start_time_seconds
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/metrics'

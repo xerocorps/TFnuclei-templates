@@ -1,0 +1,22 @@
+id: api-googlebooks
+info:
+  author: daffainfo
+  name: Google Books API Test
+  reference:
+  - https://developers.google.com/books/docs/overview
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Books/Google%20Books.md
+  severity: info
+  tags: token-spray,google,books
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - kind
+    - id
+    - etag
+  method: GET
+  path:
+  - https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?key={{token}}
+self-contained: true

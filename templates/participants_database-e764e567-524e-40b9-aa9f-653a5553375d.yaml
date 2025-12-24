@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - participants-database
+  - dsl:
+    - compare_versions(version, '<= 2.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/participants-database/readme.txt'
+  redirects: true
+id: participants_database-e764e567-524e-40b9-aa9f-653a5553375d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/participants-database/
+    google-query: inurl:"/wp-content/plugins/participants-database/"
+    shodan-query: http.html:"wp-content/plugins/participants-database/"
+  name: 'Participants Database <= 2.4.5 - Cross Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e764e567-524e-40b9-aa9f-653a5553375d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,participants-database,low,candidate

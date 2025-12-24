@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - daves-wordpress-live-search
+  - dsl:
+    - compare_versions(version, '<= 4.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/daves-wordpress-live-search/readme.txt'
+  redirects: true
+id: daves-wordpress-live-search-f8b1a8cbb301e19f19350909e9e1bfd2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/daves-wordpress-live-search/
+    google-query: inurl:"/wp-content/plugins/daves-wordpress-live-search/"
+    shodan-query: 'vuln:'
+  name: 'Dave''s WordPress Live Search <= 4.8.1 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/046ecbe5-4b2f-40d3-8585-4d4230ba33f0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,daves-wordpress-live-search,low

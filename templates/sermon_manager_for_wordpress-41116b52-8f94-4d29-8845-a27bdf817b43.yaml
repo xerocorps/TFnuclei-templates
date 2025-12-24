@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sermon-manager-for-wordpress
+  - dsl:
+    - compare_versions(version, '<= 2.30.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sermon-manager-for-wordpress/readme.txt'
+  redirects: true
+id: sermon_manager_for_wordpress-41116b52-8f94-4d29-8845-a27bdf817b43
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sermon-manager-for-wordpress/
+    google-query: inurl:"/wp-content/plugins/sermon-manager-for-wordpress/"
+    shodan-query: http.html:"wp-content/plugins/sermon-manager-for-wordpress/"
+  name: 'Sermon Manager <= 2.30.0 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/41116b52-8f94-4d29-8845-a27bdf817b43?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sermon-manager-for-wordpress,low,candidate

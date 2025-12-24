@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - infusionsoft-official-opt-in-forms
+  - dsl:
+    - compare_versions(version, '<= 1.0.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/infusionsoft-official-opt-in-forms/readme.txt'
+  redirects: true
+id: infusionsoft-official-opt-in-forms-39c2b486a0b31167475300ead1cea594
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/infusionsoft-official-opt-in-forms/
+    google-query: inurl:"/wp-content/plugins/infusionsoft-official-opt-in-forms/"
+    shodan-query: 'vuln:'
+  name: 'Keap Official Opt-in Forms <= 1.0.11 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9a0f1006-8015-4e67-9b03-16d3ad3c0e77?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,infusionsoft-official-opt-in-forms,low

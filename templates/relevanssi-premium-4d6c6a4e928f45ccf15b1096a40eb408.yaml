@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - relevanssi-premium
+  - dsl:
+    - compare_versions(version, '< 2.25')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/relevanssi-premium/readme.txt'
+  redirects: true
+id: relevanssi-premium-4d6c6a4e928f45ccf15b1096a40eb408
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/relevanssi-premium/
+    google-query: inurl:"/wp-content/plugins/relevanssi-premium/"
+    shodan-query: 'vuln:'
+  name: 'Relevanssi Pro < 2.25 - Unauthenticated Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/550872c8-3663-48fa-ab3f-f90351f3e169?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,relevanssi-premium,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - foodbakery
+  - dsl:
+    - compare_versions(version, '<= 1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/foodbakery/style.css'
+  redirects: true
+id: foodbakery-9c91520c915358b75efbaea5cfac1273
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/foodbakery/
+    google-query: inurl:"/wp-content/themes/foodbakery/"
+    shodan-query: 'vuln:'
+  name: 'FoodBakery <= 1.9 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/607d1a6e-2277-4960-a5bd-95e94c510856?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,foodbakery,medium

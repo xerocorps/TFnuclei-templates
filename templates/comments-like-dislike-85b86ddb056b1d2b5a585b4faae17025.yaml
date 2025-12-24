@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - comments-like-dislike
+  - dsl:
+    - compare_versions(version, '<= 1.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/comments-like-dislike/readme.txt'
+  redirects: true
+id: comments-like-dislike-85b86ddb056b1d2b5a585b4faae17025
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/comments-like-dislike/
+    google-query: inurl:"/wp-content/plugins/comments-like-dislike/"
+    shodan-query: 'vuln:'
+  name: 'Comments Like Dislike <= 1.2.2 - IP Spoofing
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/33275cdc-21d4-42b7-bd0e-f5154faf2d6c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,comments-like-dislike,low

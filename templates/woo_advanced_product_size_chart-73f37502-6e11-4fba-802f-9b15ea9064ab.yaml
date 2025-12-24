@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-advanced-product-size-chart
+  - dsl:
+    - compare_versions(version, '<= 2.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-advanced-product-size-chart/readme.txt'
+  redirects: true
+id: woo_advanced_product_size_chart-73f37502-6e11-4fba-802f-9b15ea9064ab
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-advanced-product-size-chart/
+    google-query: inurl:"/wp-content/plugins/woo-advanced-product-size-chart/"
+    shodan-query: http.html:"wp-content/plugins/woo-advanced-product-size-chart/"
+  name: 'Product Size Charts Plugin for WooCommerce <= 2.4.5 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/73f37502-6e11-4fba-802f-9b15ea9064ab?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woo-advanced-product-size-chart,high,candidate

@@ -1,0 +1,27 @@
+id: novus-ip-camera
+info:
+  author: DhiyaneshDk
+  metadata:
+    google-dork: intitle:"NoVus IP camera" -com
+    verified: true
+  name: NoVus IP camera Login
+  reference:
+  - https://www.exploit-db.com/ghdb/8002
+  severity: info
+  tags: camera,novus,edb,iot,panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>NoVus IP camera</title>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Pages/login.htm'

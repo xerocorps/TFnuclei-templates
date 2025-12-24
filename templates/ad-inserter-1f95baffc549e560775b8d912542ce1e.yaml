@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ad-inserter
+  - dsl:
+    - compare_versions(version, '<= 2.7.30')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ad-inserter/readme.txt'
+  redirects: true
+id: ad-inserter-1f95baffc549e560775b8d912542ce1e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ad-inserter/
+    google-query: inurl:"/wp-content/plugins/ad-inserter/"
+    shodan-query: 'vuln:'
+  name: 'Ad Inserter <= 2.7.30 - Unauthenticated Sensitive Information Exposure via
+    ai-debug-processing-fe
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ce457c98-c55b-4b71-a80b-393eceb9effd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ad-inserter,low

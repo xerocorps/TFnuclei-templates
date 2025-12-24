@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-builder
+  - dsl:
+    - compare_versions(version, '<= 1.0.72')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-builder/readme.txt'
+  redirects: true
+id: contact-form-builder-e93ba8b12d3199c7aff3e2f69e4fca72
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-builder/
+    google-query: inurl:"/wp-content/plugins/contact-form-builder/"
+    shodan-query: 'vuln:'
+  name: 'WDContactFormBuilder <= 1.0.72 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7152253a-7bb8-4b5c-bffd-86e46df54b7e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-form-builder,low

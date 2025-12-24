@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - clickdesk-live-support-chat-plugin
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/clickdesk-live-support-chat-plugin/readme.txt'
+  redirects: true
+id: clickdesk_live_support_chat_plugin-cbcf65b9-0114-46e6-a51f-61d606c68e5c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/clickdesk-live-support-chat-plugin/
+    google-query: inurl:"/wp-content/plugins/clickdesk-live-support-chat-plugin/"
+    shodan-query: http.html:"wp-content/plugins/clickdesk-live-support-chat-plugin/"
+  name: "Live Chat from ClickDesk \u2013 Live Chat \u2013 Help Desk Plugin for Websites\
+    \ <= 2.0 - Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cbcf65b9-0114-46e6-a51f-61d606c68e5c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,clickdesk-live-support-chat-plugin,high,candidate

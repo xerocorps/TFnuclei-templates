@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-appointments
+  - dsl:
+    - compare_versions(version, '<= 3.11.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-appointments/readme.txt'
+  redirects: true
+id: easy-appointments-614356d7624d3e03cea54cab44aaedca
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easy-appointments/
+    google-query: inurl:"/wp-content/plugins/easy-appointments/"
+    shodan-query: 'vuln:'
+  name: 'Easy Appointments <= 3.11.9 - Cross-Site Request Forgery via multiple AJAX
+    actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/461cec8c-77e4-4f20-8dff-c4f675dc235f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,easy-appointments,medium

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sf-booking
+  - dsl:
+    - compare_versions(version, '<= 5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sf-booking/readme.txt'
+  redirects: true
+id: sf_booking-827b5482-cb42-4aaa-80b5-3d0143fcead8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sf-booking/
+    google-query: inurl:"/wp-content/plugins/sf-booking/"
+    shodan-query: http.html:"wp-content/plugins/sf-booking/"
+  name: 'Service Finder Bookings <= 5.0 - Unauthenticated Privilege Escalation via
+    Account Takeover
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/827b5482-cb42-4aaa-80b5-3d0143fcead8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sf-booking,low,candidate

@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - ecology_JSessionid
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: ecology-detect
+info:
+  author: ritikchaddha
+  metadata:
+    fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
+    max-request: 1
+    shodan-query: ecology_JSessionid
+    verified: true
+  name: Ecology Detection
+  severity: info
+  tags: ecology,tech

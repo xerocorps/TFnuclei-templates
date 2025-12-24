@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - slider-wd
+  - dsl:
+    - compare_versions(version, '<= 1.2.61')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/slider-wd/readme.txt'
+  redirects: true
+id: slider_wd-4aedc055-34f7-48aa-90d4-0c16f219f599
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/slider-wd/
+    google-query: inurl:"/wp-content/plugins/slider-wd/"
+    shodan-query: http.html:"wp-content/plugins/slider-wd/"
+  name: 'Slider by 10Web <= 1.2.61 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4aedc055-34f7-48aa-90d4-0c16f219f599?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,slider-wd,low,candidate

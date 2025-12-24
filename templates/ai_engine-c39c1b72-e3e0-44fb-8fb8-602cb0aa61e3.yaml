@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ai-engine
+  - dsl:
+    - compare_versions(version, '<= 3.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ai-engine/readme.txt'
+  redirects: true
+id: ai_engine-c39c1b72-e3e0-44fb-8fb8-602cb0aa61e3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ai-engine/
+    google-query: inurl:"/wp-content/plugins/ai-engine/"
+    shodan-query: http.html:"wp-content/plugins/ai-engine/"
+  name: 'AI Engine <= 3.1.8 - Authenticated (Subscriber+) PHP Object Injection via
+    PHAR Deserialization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c39c1b72-e3e0-44fb-8fb8-602cb0aa61e3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ai-engine,low,candidate

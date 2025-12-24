@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-bulk-editor
+  - dsl:
+    - compare_versions(version, '<= 1.1.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-bulk-editor/readme.txt'
+  redirects: true
+id: woo_bulk_editor-2f14b0b9-6ccd-4f53-b015-e8537127b909
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-bulk-editor/
+    google-query: inurl:"/wp-content/plugins/woo-bulk-editor/"
+    shodan-query: http.html:"wp-content/plugins/woo-bulk-editor/"
+  name: "BEAR \u2013 Bulk Editor and Products Manager Professional for WooCommerce\
+    \ by Pluginus.Net <= 1.1.4.2 - Reflected Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2f14b0b9-6ccd-4f53-b015-e8537127b909?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-bulk-editor,medium,candidate

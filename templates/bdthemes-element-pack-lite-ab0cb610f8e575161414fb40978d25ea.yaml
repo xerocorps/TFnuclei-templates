@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bdthemes-element-pack-lite
+  - dsl:
+    - compare_versions(version, '<= 5.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bdthemes-element-pack-lite/readme.txt'
+  redirects: true
+id: bdthemes-element-pack-lite-ab0cb610f8e575161414fb40978d25ea
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bdthemes-element-pack-lite/
+    google-query: inurl:"/wp-content/plugins/bdthemes-element-pack-lite/"
+    shodan-query: 'vuln:'
+  name: 'Element Pack Elementor Addons (Header Footer, Template Library, Dynamic Grid
+    & Carousel, Remote Arrows) <= 5.6.3 - Form Submission Admin Email Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3a703fc4-6c61-442e-a637-515e9f501575?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bdthemes-element-pack-lite,low

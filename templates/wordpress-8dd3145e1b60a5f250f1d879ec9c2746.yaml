@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_generator
+    regex:
+    - (?m)https:\/\/wordpress.org\/\?v=([0-9.]+)
+    type: regex
+  - group: 1
+    name: version_by_js
+    regex:
+    - wp-emoji-release\.min\.js\?ver=((\d+\.?)+)\b
+    type: regex
+  - group: 1
+    name: version_by_css
+    regex:
+    - install\.min\.css\?ver=((\d+\.?)+)\b
+    type: regex
+  matchers:
+  - dsl:
+    - compare_versions(version_by_generator, '>= 2.1', '<= 2.1.1')
+    - compare_versions(version_by_js, '>= 2.1', '<= 2.1.1')
+    - compare_versions(version_by_css, '>= 2.1', '<= 2.1.1')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/wp-admin/install.php'
+  - '{{BaseURL}}/feed/'
+  - '{{BaseURL}}/?feed=rss2'
+  redirects: true
+  stop-at-first-match: true
+id: wordpress-8dd3145e1b60a5f250f1d879ec9c2746
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    shodan-query: 'vuln:'
+  name: 'WordPress Core <= 2.1.2 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a6074c97-619d-4f47-97c7-781c7a38019d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-core,high

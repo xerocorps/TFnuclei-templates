@@ -1,0 +1,21 @@
+id: xml-schema-detect
+info:
+  author: alph4byt3
+  name: XML Schema Detection
+  severity: info
+  tags: misc
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - .xsd
+    - Schemas
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/schema'
+  redirects: true

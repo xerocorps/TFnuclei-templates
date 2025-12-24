@@ -1,0 +1,46 @@
+assignees:
+- cn-kali-team
+body:
+- attributes:
+    value: "\u8BF7\u6309\u7167\u63D0\u793A\u4FEE\u6539\u6307\u7EB9\uFF1A\u5982\u679C\
+      \u4E0D\u586B\u5199\u6D4B\u8BD5\u76EE\u6807\u5219\u65E0\u6CD5\u81EA\u52A8\u9A8C\
+      \u8BC1\u6307\u7EB9\uFF0C\u6307\u7EB9\u89C4\u5219\u6309\u7167markdown\u7684Yaml\u4EE3\
+      \u7801\u683C\u5F0F\u4FEE\u6539\u3002\n"
+  type: markdown
+- attributes:
+    value: "\u63D0\u4EA4\u524D\u8BF7\u5148\u5728\u672C\u5730\u9A8C\u8BC1\u6307\u7EB9\
+      \u89C4\u5219\uFF0C\u672C\u5730\u9A8C\u8BC1\u793A\u4F8B\uFF1A\n```bash\n\u279C\
+      \  ~ ./observer_ward_amd64 --verify 0x727/FingerprintHub/fingerprint/swagger.yaml\
+      \ -t http://httpbin.org\n[ http://httpbin.org |[\"swagger\"] | 9593 | 200 |\
+      \ httpbin.org ]\nImportant technology:\n\n+--------------------+---------+--------+-------------+-------------+----------+\n\
+      | url                | name    | length | status_code | title       | priority\
+      \ |\n+====================+=========+========+=============+=============+==========+\n\
+      | http://httpbin.org | swagger | 9593   | 200         | httpbin.org | 5    \
+      \    |\n+--------------------+---------+--------+-------------+-------------+----------+\n\
+      ```\n"
+  type: markdown
+- attributes:
+    description: "\u586B\u5199\u4E00\u4E2A\u5E26\u534F\u8BAE\u7684\u5916\u7F51\u6D4B\
+      \u8BD5\u76EE\u6807"
+    label: "\u6D4B\u8BD5\u76EE\u6807"
+    placeholder: https://www.example.com/
+  id: target
+  type: input
+  validations:
+    required: false
+- attributes:
+    description: "\u7C98\u8D34\u4F60\u9A8C\u8BC1\u8FC7\u540E\u7684Yaml\u6587\u4EF6\
+      \u5185\u5BB9"
+    label: "\u6307\u7EB9\u7684Yaml\u89C4\u5219"
+    placeholder: "```yaml\n\u53C2\u80030example\u6587\u4EF6\u683C\u5F0F\n```"
+    value: ' ```yaml
+
+      ```'
+  id: yaml_data
+  type: textarea
+  validations:
+    required: true
+description: "\u4FEE\u6539\u6307\u7EB9"
+labels: []
+name: "\u4FEE\u6539\u6307\u7EB9"
+title: "\u4FEE\u6539\u6307\u7EB9-[\u5168\u82F1\u6587\u7EC4\u4EF6\u540D\u79F0]"

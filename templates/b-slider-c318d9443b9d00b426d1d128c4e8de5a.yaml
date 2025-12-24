@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - b-slider
+  - dsl:
+    - compare_versions(version, '<= 1.1.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/b-slider/readme.txt'
+  redirects: true
+id: b-slider-c318d9443b9d00b426d1d128c4e8de5a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/b-slider/
+    google-query: inurl:"/wp-content/plugins/b-slider/"
+    shodan-query: 'vuln:'
+  name: 'B Slider - Slider for your block editor <= 1.1.12 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9cfe91e6-238b-4652-892c-0016c1330088?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,b-slider,low

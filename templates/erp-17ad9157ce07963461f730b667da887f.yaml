@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - erp
+  - dsl:
+    - compare_versions(version, '<= 1.12.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/erp/readme.txt'
+  redirects: true
+id: erp-17ad9157ce07963461f730b667da887f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/erp/
+    google-query: inurl:"/wp-content/plugins/erp/"
+    shodan-query: 'vuln:'
+  name: 'WP ERP <= 1.12.9 - Authenticated (Accounting Manager+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/592440ab-60ac-419f-b615-e5617460aea9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,erp,low

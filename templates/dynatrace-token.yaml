@@ -1,0 +1,12 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - dt0[a-zA-Z]{1}[0-9]{2}\.[A-Z0-9]{24}\.[A-Z0-9]{64}
+    type: regex
+id: dynatrace-token
+info:
+  author: gaurang
+  name: Dynatrace Token
+  severity: high

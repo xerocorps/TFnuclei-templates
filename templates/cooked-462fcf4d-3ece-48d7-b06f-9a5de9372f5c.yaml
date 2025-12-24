@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cooked
+  - dsl:
+    - compare_versions(version, '<= 1.7.15.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cooked/readme.txt'
+  redirects: true
+id: cooked-462fcf4d-3ece-48d7-b06f-9a5de9372f5c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cooked/
+    google-query: inurl:"/wp-content/plugins/cooked/"
+    shodan-query: http.html:"wp-content/plugins/cooked/"
+  name: "Cooked \u2013 Recipe Management <= 1.7.15.4 - Cross-Site Request Forgery\
+    \ to Template Apply\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/462fcf4d-3ece-48d7-b06f-9a5de9372f5c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,cooked,medium,candidate

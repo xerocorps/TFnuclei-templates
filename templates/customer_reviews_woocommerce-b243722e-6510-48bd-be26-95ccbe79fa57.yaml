@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - customer-reviews-woocommerce
+  - dsl:
+    - compare_versions(version, '< 5.38.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/customer-reviews-woocommerce/readme.txt'
+  redirects: true
+id: customer_reviews_woocommerce-b243722e-6510-48bd-be26-95ccbe79fa57
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 4.3
+  description: 'The Customer Reviews for WooCommerce plugin for WordPress is vulnerable
+    to Cross-Site Request Forgery in all versions up to 5.38.2 (exclusive). This is
+    due to missing or incorrect nonce validation on the manual_review_reminder, manual_wa_review_reminder,
+    and manual_review_reminder_conf functions. This makes it possible for unauthenticated
+    attackers to configure and send manual review reminders via a forged request granted
+    they can trick a site administrator into performing an action such as clicking
+    on a link.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/customer-reviews-woocommerce/
+    google-query: inurl:"/wp-content/plugins/customer-reviews-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/customer-reviews-woocommerce/"
+  name: 'Customer Reviews for WooCommerce <= 5.38.1 - Cross-Site Request Forgery via
+    manual review reminders
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b243722e-6510-48bd-be26-95ccbe79fa57?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,customer-reviews-woocommerce,medium,production

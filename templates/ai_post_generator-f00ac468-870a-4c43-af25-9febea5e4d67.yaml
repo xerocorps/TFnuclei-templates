@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ai-post-generator
+  - dsl:
+    - compare_versions(version, '<= 3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ai-post-generator/readme.txt'
+  redirects: true
+id: ai_post_generator-f00ac468-870a-4c43-af25-9febea5e4d67
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ai-post-generator/
+    google-query: inurl:"/wp-content/plugins/ai-post-generator/"
+    shodan-query: http.html:"wp-content/plugins/ai-post-generator/"
+  name: 'AI Post Generator | AutoWriter <= 3.5 - Missing Authorization to Authenticated
+    (Contributor+) Post/Page Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f00ac468-870a-4c43-af25-9febea5e4d67?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ai-post-generator,low,candidate

@@ -1,0 +1,21 @@
+id: hikvision-info-leak
+info:
+  author: pikpikcu
+  name: Hikvision Info Leak
+  severity: medium
+  tags: exposure,config
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <user name=
+    - password=
+  - part: header
+    type: word
+    words:
+    - text/xml
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/config/user.xml'

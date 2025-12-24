@@ -1,0 +1,22 @@
+id: weblogic-detect
+info:
+  author: pdteam
+  metadata:
+    shodan-query: product:"Oracle Weblogic"
+  name: Detect Weblogic
+  severity: info
+  tags: tech,weblogic
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - From RFC 2068
+    - Error 404--Not Found
+  - status:
+    - 404
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/{{randstr}}'

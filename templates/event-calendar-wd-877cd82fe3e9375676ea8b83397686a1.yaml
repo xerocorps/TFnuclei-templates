@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - event-calendar-wd
+  - dsl:
+    - compare_versions(version, '<= 1.1.21')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/event-calendar-wd/readme.txt'
+  redirects: true
+id: event-calendar-wd-877cd82fe3e9375676ea8b83397686a1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/event-calendar-wd/
+    google-query: inurl:"/wp-content/plugins/event-calendar-wd/"
+    shodan-query: 'vuln:'
+  name: 'EventCalendar <= 1.1.21 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f3a5bb9c-0fc3-4a1b-8b4d-a700cbf9dacc?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,event-calendar-wd,high

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cpt-bootstrap-carousel
+  - dsl:
+    - compare_versions(version, '<= 1.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cpt-bootstrap-carousel/readme.txt'
+  redirects: true
+id: cpt-bootstrap-carousel-2bccb9e5219a1bc7d99b8850f1e29af1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cpt-bootstrap-carousel/
+    google-query: inurl:"/wp-content/plugins/cpt-bootstrap-carousel/"
+    shodan-query: 'vuln:'
+  name: 'CPT Bootstrap Carousel <= 1.12 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/44370988-3c55-490e-b428-da9cb6df1a4b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cpt-bootstrap-carousel,low

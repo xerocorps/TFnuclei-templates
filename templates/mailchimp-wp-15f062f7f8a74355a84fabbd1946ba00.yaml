@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mailchimp-wp
+  - dsl:
+    - compare_versions(version, '<= 2.5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mailchimp-wp/readme.txt'
+  redirects: true
+id: mailchimp-wp-15f062f7f8a74355a84fabbd1946ba00
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mailchimp-wp/
+    google-query: inurl:"/wp-content/plugins/mailchimp-wp/"
+    shodan-query: 'vuln:'
+  name: 'Forms for Mailchimp by Optin Cat <= 2.5.4 - Authenticated (Editor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a7d5edee-04fb-41e0-be5e-ca3681956d2d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mailchimp-wp,low

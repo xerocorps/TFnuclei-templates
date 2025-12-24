@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - aryo-activity-log
+  - dsl:
+    - compare_versions(version, '< 2.3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/aryo-activity-log/readme.txt'
+  redirects: true
+id: aryo_activity_log-4ad45c7b-63d2-42ae-a7cf-2d60c6c4ae1d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/aryo-activity-log/
+    google-query: inurl:"/wp-content/plugins/aryo-activity-log/"
+    shodan-query: http.html:"wp-content/plugins/aryo-activity-log/"
+  name: 'Activity Log < 2.3.3 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4ad45c7b-63d2-42ae-a7cf-2d60c6c4ae1d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,aryo-activity-log,high,candidate

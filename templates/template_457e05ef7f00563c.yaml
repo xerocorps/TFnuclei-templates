@@ -1,0 +1,10 @@
+directive_name: niagara-fox
+directive_str: fox a 1 -1 fox hello\n{\nfox.version=s:1.0\nid=i:1\n};;\n
+matches:
+- pattern: ^fox a 0 -1 fox hello\n\{\nfox\.version=s:([\d.]+)\nid=i:\d+.*\napp\.name=s:Station\napp\.version=s:([\d.]+)\n
+  service: niagara-fox
+  version_info: s p/Tridium Niagara/ v/$2/ i/fox version $1/ cpe:/a:tridium:niagara:$2/
+ports:
+- 1911
+protocol: TCP
+rarity: 9

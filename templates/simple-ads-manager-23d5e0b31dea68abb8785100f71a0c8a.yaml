@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-ads-manager
+  - dsl:
+    - compare_versions(version, '< 2.7.97')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-ads-manager/readme.txt'
+  redirects: true
+id: simple-ads-manager-23d5e0b31dea68abb8785100f71a0c8a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-ads-manager/
+    google-query: inurl:"/wp-content/plugins/simple-ads-manager/"
+    shodan-query: 'vuln:'
+  name: 'Simple Ads Manager < 2.7.97 - Multiple SQL Injections
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1829b4b7-5042-4972-ad05-e9a7adbf3026?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,simple-ads-manager,critical

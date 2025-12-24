@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-splashing-images
+  - dsl:
+    - compare_versions(version, '<= 2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-splashing-images/readme.txt'
+  redirects: true
+id: wp-splashing-images-38a433af5f47cfe2acea00afd098c8d3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-splashing-images/
+    google-query: inurl:"/wp-content/plugins/wp-splashing-images/"
+    shodan-query: 'vuln:'
+  name: 'Splashing Images <= 2.1 - PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/efc2a21d-b6f9-405d-a9a0-779a736e5d94?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-splashing-images,low

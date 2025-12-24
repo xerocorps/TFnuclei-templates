@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wptouch
+  - dsl:
+    - compare_versions(version, '< 1.9.30')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wptouch/readme.txt'
+  redirects: true
+id: wptouch-1b7e22f9e07e0b8b88377b3ce41a8f5e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wptouch/
+    google-query: inurl:"/wp-content/plugins/wptouch/"
+    shodan-query: 'vuln:'
+  name: 'WPtouch < 1.9.30 - Open Redirect
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dac38b2e-4d38-4b16-b6a1-ed3c0561e7c2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wptouch,low

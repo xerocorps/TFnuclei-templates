@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leaflet-map
+  - dsl:
+    - compare_versions(version, '<= 2.23.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leaflet-map/readme.txt'
+  redirects: true
+id: leaflet_map-b0d7e56d-453f-4df0-8cf5-32d8bafc60d5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/leaflet-map/
+    google-query: inurl:"/wp-content/plugins/leaflet-map/"
+    shodan-query: http.html:"wp-content/plugins/leaflet-map/"
+  name: 'Leaflet Map < 3.0.0 -  Cross-Site Request Forgery to Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b0d7e56d-453f-4df0-8cf5-32d8bafc60d5?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,leaflet-map,medium,candidate

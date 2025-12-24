@@ -1,0 +1,16 @@
+id: aha-takeover
+info:
+  author: pdteam
+  name: Aha Takeover Detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - There is no portal here ... sending you back to Aha!
+  method: GET
+  path:
+  - '{{BaseURL}}'

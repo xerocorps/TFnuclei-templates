@@ -1,0 +1,27 @@
+id: api-bitcoinaverage
+info:
+  author: daffainfo
+  name: BitcoinAverage API Test
+  reference:
+  - https://apiv2.bitcoinaverage.com/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Cryptocurrency/BitcoinAverage.md
+  severity: info
+  tags: token-spray,bitcoinaverage
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"name"'
+    - '"display_name"'
+    - '"url"'
+  raw:
+  - 'GET https://apiv2.bitcoinaverage.com/exchanges/ticker/bitstamp HTTP/1.1
+
+    Host: apiv2.bitcoinaverage.com
+
+    x-ba-key: {{token}}
+
+    '
+self-contained: true

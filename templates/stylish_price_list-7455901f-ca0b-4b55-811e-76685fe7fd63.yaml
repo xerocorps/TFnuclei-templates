@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stylish-price-list
+  - dsl:
+    - compare_versions(version, '<= 7.1.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stylish-price-list/readme.txt'
+  redirects: true
+id: stylish_price_list-7455901f-ca0b-4b55-811e-76685fe7fd63
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stylish-price-list/
+    google-query: inurl:"/wp-content/plugins/stylish-price-list/"
+    shodan-query: http.html:"wp-content/plugins/stylish-price-list/"
+  name: 'Stylish Price List <= 7.1.11 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7455901f-ca0b-4b55-811e-76685fe7fd63?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stylish-price-list,low,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - puzzles
+  - dsl:
+    - compare_versions(version, '<= 4.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/puzzles/style.css'
+  redirects: true
+id: puzzles-3c22d064-348d-4335-beaf-22dcdcf88518
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/puzzles/
+    google-query: inurl:"/wp-content/themes/puzzles/"
+    shodan-query: http.html:"wp-content/themes/puzzles/"
+  name: 'Puzzles | WP Magazine / Review with Store WordPress Theme + RTL <= 4.2.4
+    - Missing Authorization to Authenticated (Subscriber+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3c22d064-348d-4335-beaf-22dcdcf88518?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,puzzles,low,candidate

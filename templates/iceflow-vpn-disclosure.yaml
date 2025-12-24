@@ -1,0 +1,28 @@
+id: iceflow-vpn-disclosure
+info:
+  author: pikpikcu
+  name: ICEFlow VPN Disclosure
+  severity: medium
+  tags: exposure,files
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - 'ICEFLOW VPN:'
+    - ICEFLOW SYSTEM
+    - ICEFLOW
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/log/system.log'
+  - '{{BaseURL}}/log/vpn.log'
+  - '{{BaseURL}}/log/access.log'
+  - '{{BaseURL}}/log/warn.log'
+  - '{{BaseURL}}/log/error.log'
+  - '{{BaseURL}}/log/debug.log'
+  - '{{BaseURL}}/log/mobile.log'
+  - '{{BaseURL}}/log/firewall.log'

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - image-hover-effects-ultimate
+  - dsl:
+    - compare_versions(version, '>= 9.8.1', '<= 9.8.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/image-hover-effects-ultimate/readme.txt'
+  redirects: true
+id: image-hover-effects-ultimate-8fb01a02e3b8bf7d819d4aa39e407a44
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/image-hover-effects-ultimate/
+    google-query: inurl:"/wp-content/plugins/image-hover-effects-ultimate/"
+    shodan-query: 'vuln:'
+  name: 'Image Hover Effects Ultimate 9.8.1 - 9.8.4 - Authenticated (Admin+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f00cdef3-d733-4e85-8099-204ef76096b4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,image-hover-effects-ultimate,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-page-visit-counter
+  - dsl:
+    - compare_versions(version, '<= 5.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-page-visit-counter/readme.txt'
+  redirects: true
+id: advanced-page-visit-counter-c4bc6d9c3270bcbd633d2fea0af96ce5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-page-visit-counter/
+    google-query: inurl:"/wp-content/plugins/advanced-page-visit-counter/"
+    shodan-query: 'vuln:'
+  name: 'Advanced Page Visit Counter  <= 5.0.8 - Unauthenticated Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f444568c-fe4c-4fa6-9b83-2d069f851360?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,advanced-page-visit-counter,high

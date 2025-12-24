@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ibs-mappro
+  - dsl:
+    - compare_versions(version, '<= 0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ibs-mappro/readme.txt'
+  redirects: true
+id: ibs-mappro-cd857c6d414718fc1803d3165f8a4af0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ibs-mappro/
+    google-query: inurl:"/wp-content/plugins/ibs-mappro/"
+    shodan-query: 'vuln:'
+  name: 'IBS Mappro < 1.0 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/77cea6a1-d5e8-459c-97cc-9dc8f7c0f48f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ibs-mappro,low

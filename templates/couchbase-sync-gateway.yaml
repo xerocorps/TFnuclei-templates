@@ -1,0 +1,29 @@
+id: couchbase-sync-gateway
+info:
+  author: dhiyaneshDk
+  metadata:
+    shodan-query: html:"Couchbase Sync Gateway"
+  name: Couchbase Sync Gateway
+  severity: info
+  tags: tech,couchbase
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - version":"Couchbase Sync Gateway\/([0-9.(;a-z)]+)
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Couchbase Sync Gateway
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

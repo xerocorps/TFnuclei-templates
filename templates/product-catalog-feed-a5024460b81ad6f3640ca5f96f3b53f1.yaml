@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - product-catalog-feed
+  - dsl:
+    - compare_versions(version, '<= 2.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/product-catalog-feed/readme.txt'
+  redirects: true
+id: product-catalog-feed-a5024460b81ad6f3640ca5f96f3b53f1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/product-catalog-feed/
+    google-query: inurl:"/wp-content/plugins/product-catalog-feed/"
+    shodan-query: 'vuln:'
+  name: 'Product Catalog Feed by PixelYourSite <= 2.1.0 - Reflected Cross-Site Scripting
+    via ''edit''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d82d1dd2-b5b5-490a-92e5-1a4d4ab0085d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,product-catalog-feed,medium

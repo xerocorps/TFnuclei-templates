@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - atarim-visual-collaboration
+  - dsl:
+    - compare_versions(version, '<= 3.31')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/atarim-visual-collaboration/readme.txt'
+  redirects: true
+id: atarim-visual-collaboration-7c32c453fd7fc000e587222b9fc52fd4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/atarim-visual-collaboration/
+    google-query: inurl:"/wp-content/plugins/atarim-visual-collaboration/"
+    shodan-query: 'vuln:'
+  name: 'Atarim <= 3.31 - Authenticated (Administrator+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5853aa0c-09cf-4af8-b75a-4ec95dfe94c3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,atarim-visual-collaboration,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - video-conferencing-with-zoom-api
+  - dsl:
+    - compare_versions(version, '<= 4.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/video-conferencing-with-zoom-api/readme.txt'
+  redirects: true
+id: video-conferencing-with-zoom-api-e161b19b213a793cbe6f99fcd9402a5f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/video-conferencing-with-zoom-api/
+    google-query: inurl:"/wp-content/plugins/video-conferencing-with-zoom-api/"
+    shodan-query: 'vuln:'
+  name: 'Video Conferencing with Zoom <= 4.2.1 - Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ba2515d9-ced0-4b49-87c4-04c8391c2608?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,video-conferencing-with-zoom-api,low

@@ -1,0 +1,32 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - joomla
+    - security
+    - exposure
+    - sensitive data
+  description: Template to detect if sensitive configuration file for Joomla is exposed
+  id: joomla-sensitive-config
+  matcher-condition: or
+  matchers:
+  - description: Joomla configuration file containing sensitive database information
+    pattern: public $password
+    type: body
+  - description: Joomla configuration file containing sensitive encryption key
+    pattern: public $secret
+    type: body
+  name: Joomla Sensitive Configuration File - Detect
+  reference:
+  - https://wpscan.com/vulnerability/10078
+  requests:
+    condition: and
+    description: Attempt to access Joomla configuration file
+    method: GET
+    path:
+    - /configuration.php
+  response:
+  - status:
+    - 200
+  severity: High

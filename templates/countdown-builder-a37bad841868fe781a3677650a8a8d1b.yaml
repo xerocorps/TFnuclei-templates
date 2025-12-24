@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - countdown-builder
+  - dsl:
+    - compare_versions(version, '< 2.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/countdown-builder/readme.txt'
+  redirects: true
+id: countdown-builder-a37bad841868fe781a3677650a8a8d1b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/countdown-builder/
+    google-query: inurl:"/wp-content/plugins/countdown-builder/"
+    shodan-query: 'vuln:'
+  name: 'Countdown & Clock <= 2.2.8 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/38191721-8d5d-4a13-8271-c7ca96c3f6b8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,countdown-builder,medium

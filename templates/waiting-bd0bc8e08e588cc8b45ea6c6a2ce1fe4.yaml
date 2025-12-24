@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - waiting
+  - dsl:
+    - compare_versions(version, '<= 0.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/waiting/readme.txt'
+  redirects: true
+id: waiting-bd0bc8e08e588cc8b45ea6c6a2ce1fe4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/waiting/
+    google-query: inurl:"/wp-content/plugins/waiting/"
+    shodan-query: 'vuln:'
+  name: 'Waiting: One-click countdowns <= 0.6.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7ffba592-6d0d-408f-89fa-079066750b0a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,waiting,medium

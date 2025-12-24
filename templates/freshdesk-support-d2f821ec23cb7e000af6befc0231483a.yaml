@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - freshdesk-support
+  - dsl:
+    - compare_versions(version, '<= 2.3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/freshdesk-support/readme.txt'
+  redirects: true
+id: freshdesk-support-d2f821ec23cb7e000af6befc0231483a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/freshdesk-support/
+    google-query: inurl:"/wp-content/plugins/freshdesk-support/"
+    shodan-query: 'vuln:'
+  name: 'Freshdesk (official) <= 2.3.6 - Open Redirect
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/36d2fbbf-ea0e-4785-9b83-b642e59c713d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,freshdesk-support,low

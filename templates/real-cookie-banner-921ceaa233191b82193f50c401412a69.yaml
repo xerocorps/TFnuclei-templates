@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - real-cookie-banner
+  - dsl:
+    - compare_versions(version, '< 2.14.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/real-cookie-banner/readme.txt'
+  redirects: true
+id: real-cookie-banner-921ceaa233191b82193f50c401412a69
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/real-cookie-banner/
+    google-query: inurl:"/wp-content/plugins/real-cookie-banner/"
+    shodan-query: 'vuln:'
+  name: 'WordPress Real Cookie Banner: GDPR (DSGVO) & ePrivacy Cookie Consent < 2.14.2
+    - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/18e51b35-90fa-4ea0-95f9-644ab864b406?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,real-cookie-banner,medium

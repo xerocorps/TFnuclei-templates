@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quick-paypal-payments
+  - dsl:
+    - compare_versions(version, '<= 5.7.25')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quick-paypal-payments/readme.txt'
+  redirects: true
+id: quick-paypal-payments-4f569165a9faa8fc10fe7533a97722e5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quick-paypal-payments/
+    google-query: inurl:"/wp-content/plugins/quick-paypal-payments/"
+    shodan-query: 'vuln:'
+  name: 'Quick Paypal Payments <= 5.7.25 - Authenticated (Contributor+) Cross Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b36303d6-ad28-4354-9f60-acc7df15f468?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,quick-paypal-payments,low

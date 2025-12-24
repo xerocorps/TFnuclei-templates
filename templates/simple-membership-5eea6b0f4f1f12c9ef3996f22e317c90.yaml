@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-membership
+  - dsl:
+    - compare_versions(version, '< 4.3.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-membership/readme.txt'
+  redirects: true
+id: simple-membership-5eea6b0f4f1f12c9ef3996f22e317c90
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-membership/
+    google-query: inurl:"/wp-content/plugins/simple-membership/"
+    shodan-query: 'vuln:'
+  name: 'Simple Membership <= 4.3.8 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/18fe9769-3681-4a5e-866a-640b4cc76199?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,simple-membership,medium

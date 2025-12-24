@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bft-autoresponder
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bft-autoresponder/readme.txt'
+  redirects: true
+id: bft-autoresponder-762e3f1f6fb570103aa5b17a74f97c77
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bft-autoresponder/
+    google-query: inurl:"/wp-content/plugins/bft-autoresponder/"
+    shodan-query: 'vuln:'
+  name: 'Arigato Autoresponder and Newsletter <= 2.7 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1d87d225-7de4-49f8-9cba-391d718af7fd?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,bft-autoresponder,critical

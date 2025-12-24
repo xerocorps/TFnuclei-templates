@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rsvpmaker
+  - dsl:
+    - compare_versions(version, '<= 10.6.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rsvpmaker/readme.txt'
+  redirects: true
+id: rsvpmaker-833ded2c1e3cfb06a590ae2ab9e13806
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rsvpmaker/
+    google-query: inurl:"/wp-content/plugins/rsvpmaker/"
+    shodan-query: 'vuln:'
+  name: 'RSVPMaker  <= 10.6.6 - Unauthenticated PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/647cc71d-4d3a-4722-b498-baaee2450809?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,rsvpmaker,critical

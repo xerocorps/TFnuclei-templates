@@ -1,0 +1,37 @@
+id: random-fuzz-03
+info:
+  name: Random Fuzz on Path Basic
+  risk: Info
+origin:
+  headers:
+  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
+      Firefox/55
+  method: GET
+  redirect: false
+  url: '{{.BaseURL}}/%00'
+params:
+- length: '1000'
+payloads:
+- ''''
+- \"
+- '`'
+- '%00'
+- \0
+- \u000
+- ..;
+- ..
+- '%00'
+- '%0A'
+- '%0D'
+- '%ff'
+- "\xB0"
+- /////////
+requests:
+- detections:
+  - StatusCode() < 300 && StatusCode() >= 500 && StatusCode() != OriginStatusCode()
+    && !StringSearch("response", "Not found") && !StringSearch("response", "Request
+    Rejected") && !StringSearch("response", "Not found") && Math.abs(ContentLength()
+    - OriginContentLength()) > {{.length}} && CommonError()
+  generators:
+  - Path("{{.payload}}", "*")
+type: fuzz

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lastudio-element-kit
+  - dsl:
+    - compare_versions(version, '<= 1.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lastudio-element-kit/readme.txt'
+  redirects: true
+id: lastudio_element_kit-59415c36-e48a-4c05-ad22-8d55a9e13bcd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lastudio-element-kit/
+    google-query: inurl:"/wp-content/plugins/lastudio-element-kit/"
+    shodan-query: http.html:"wp-content/plugins/lastudio-element-kit/"
+  name: 'LA-Studio Element Kit for Elementor <= 1.4.2 - Authenticated (Contributor+)
+    Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/59415c36-e48a-4c05-ad22-8d55a9e13bcd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,lastudio-element-kit,low,candidate

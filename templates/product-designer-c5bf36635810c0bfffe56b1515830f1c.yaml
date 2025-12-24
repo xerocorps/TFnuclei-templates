@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - product-designer
+  - dsl:
+    - compare_versions(version, '<= 1.0.33')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/product-designer/readme.txt'
+  redirects: true
+id: product-designer-c5bf36635810c0bfffe56b1515830f1c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/product-designer/
+    google-query: inurl:"/wp-content/plugins/product-designer/"
+    shodan-query: 'vuln:'
+  name: 'Product Designer <= 1.0.33 - Missing Authorization to Unauthenticated Arbitrary
+    Attachment Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2f127fe5-67b8-40e1-a916-c607410b08b3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,product-designer,high

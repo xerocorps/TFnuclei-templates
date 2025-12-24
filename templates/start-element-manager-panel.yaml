@@ -1,0 +1,19 @@
+id: start-element-manager-panel
+info:
+  author: princechaddha
+  name: Start Element Manager Panel Detect
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Start Element Manager</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

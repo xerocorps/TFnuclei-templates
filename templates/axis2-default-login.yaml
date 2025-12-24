@@ -1,0 +1,42 @@
+id: axis2-default-login
+info:
+  author: pikpikcu
+  name: Axis2 Default Login
+  severity: high
+  tags: axis,apache,default-login,axis2
+requests:
+- attack: pitchfork
+  matchers:
+  - type: word
+    words:
+    - <h1>Welcome to Axis2 Web Admin Module !!</h1>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - axis2
+    username:
+    - admin
+  raw:
+  - 'POST /axis2-admin/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    loginUsername={{username}}&loginPassword={{password}}
+
+    '
+  - 'POST /axis2/axis2-admin/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    userName={{username}}&password={{password}}&submit=+Login+
+
+    '

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - taxonomy-terms-order
+  - dsl:
+    - compare_versions(version, '< 1.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/taxonomy-terms-order/readme.txt'
+  redirects: true
+id: taxonomy-terms-order-b1b21190b446248fbdb06f901aa4690f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/taxonomy-terms-order/
+    google-query: inurl:"/wp-content/plugins/taxonomy-terms-order/"
+    shodan-query: 'vuln:'
+  name: 'Category Order and Taxonomy Terms Order <= 1.5.2.2 - Authenticated PHP Object
+    Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fe7e6a53-36c3-41fc-bae8-a9e1de2494ad?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,taxonomy-terms-order,low

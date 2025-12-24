@@ -1,0 +1,21 @@
+id: pandora-fms-console
+info:
+  author: dhiyaneshDk
+  name: Pandora FMS
+  reference:
+  - https://www.exploit-db.com/ghdb/6827
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Pandora FMS mobile</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pandora_console/mobile/'

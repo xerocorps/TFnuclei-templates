@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simpleshop-cz
+  - dsl:
+    - compare_versions(version, '<= 2.10.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simpleshop-cz/readme.txt'
+  redirects: true
+id: simpleshop_cz-9870db7f-0c8e-44a4-aa0f-13709d773756
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simpleshop-cz/
+    google-query: inurl:"/wp-content/plugins/simpleshop-cz/"
+    shodan-query: http.html:"wp-content/plugins/simpleshop-cz/"
+  name: 'SimpleShop <= 2.10.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9870db7f-0c8e-44a4-aa0f-13709d773756?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,simpleshop-cz,medium,candidate

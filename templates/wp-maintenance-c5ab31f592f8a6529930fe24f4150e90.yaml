@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-maintenance
+  - dsl:
+    - compare_versions(version, '<= 6.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-maintenance/readme.txt'
+  redirects: true
+id: wp-maintenance-c5ab31f592f8a6529930fe24f4150e90
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-maintenance/
+    google-query: inurl:"/wp-content/plugins/wp-maintenance/"
+    shodan-query: 'vuln:'
+  name: 'WP Maintenance <= 6.1.6 - Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/645328f3-2bcb-4287-952c-2e23ec57bb4e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-maintenance,low

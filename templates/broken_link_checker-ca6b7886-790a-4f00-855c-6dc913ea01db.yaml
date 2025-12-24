@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - broken-link-checker
+  - dsl:
+    - compare_versions(version, '< 1.10.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/broken-link-checker/readme.txt'
+  redirects: true
+id: broken_link_checker-ca6b7886-790a-4f00-855c-6dc913ea01db
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/broken-link-checker/
+    google-query: inurl:"/wp-content/plugins/broken-link-checker/"
+    shodan-query: http.html:"wp-content/plugins/broken-link-checker/"
+  name: 'Broken Link Checker < 1.10.2 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ca6b7886-790a-4f00-855c-6dc913ea01db?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,broken-link-checker,low,candidate

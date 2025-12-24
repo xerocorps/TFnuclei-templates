@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - heureka
+  - dsl:
+    - compare_versions(version, '<= 1.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/heureka/readme.txt'
+  redirects: true
+id: heureka-4b62d578b200d294e1baabf6da5bb48f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/heureka/
+    google-query: inurl:"/wp-content/plugins/heureka/"
+    shodan-query: 'vuln:'
+  name: 'Heureka <= 1.0.8 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/31f6ee4e-2106-42c8-8d52-0ce8e415c55f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,heureka,medium

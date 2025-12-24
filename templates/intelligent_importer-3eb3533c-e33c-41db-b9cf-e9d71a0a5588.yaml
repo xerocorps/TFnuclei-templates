@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - intelligent-importer
+  - dsl:
+    - compare_versions(version, '<= 5.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/intelligent-importer/readme.txt'
+  redirects: true
+id: intelligent_importer-3eb3533c-e33c-41db-b9cf-e9d71a0a5588
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/intelligent-importer/
+    google-query: inurl:"/wp-content/plugins/intelligent-importer/"
+    shodan-query: http.html:"wp-content/plugins/intelligent-importer/"
+  name: 'Catalog Importer, Scraper & Crawler <= 5.1.4 - Unauthenticated PHP Code Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3eb3533c-e33c-41db-b9cf-e9d71a0a5588?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,intelligent-importer,low,candidate

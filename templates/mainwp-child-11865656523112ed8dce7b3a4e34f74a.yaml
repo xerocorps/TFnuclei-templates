@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mainwp-child
+  - dsl:
+    - compare_versions(version, '< 2.0.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mainwp-child/readme.txt'
+  redirects: true
+id: mainwp-child-11865656523112ed8dce7b3a4e34f74a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mainwp-child/
+    google-query: inurl:"/wp-content/plugins/mainwp-child/"
+    shodan-query: 'vuln:'
+  name: "MainWP Child \u2013 Securely connects sites to the MainWP WordPress Manager\
+    \ Dashboard < 2.0.9.2 - Authentication Bypass\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/84019c69-32fd-4331-95d7-53ea1aaff616?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,mainwp-child,critical

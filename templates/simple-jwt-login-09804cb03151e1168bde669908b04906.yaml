@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-jwt-login
+  - dsl:
+    - compare_versions(version, '< 3.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-jwt-login/readme.txt'
+  redirects: true
+id: simple-jwt-login-09804cb03151e1168bde669908b04906
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-jwt-login/
+    google-query: inurl:"/wp-content/plugins/simple-jwt-login/"
+    shodan-query: 'vuln:'
+  name: 'Simple JWT Login <= 3.2.1 - Insecure Password Creation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/defd82dd-bda0-4f0c-88cb-4db983953097?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-jwt-login,low

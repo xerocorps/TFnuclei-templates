@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - booster-plus-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 7.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/booster-plus-for-woocommerce/readme.txt'
+  redirects: true
+id: booster_plus_for_woocommerce-e7222029-0dac-4c96-9bbd-4e040b65fb99
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/booster-plus-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/booster-plus-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/booster-plus-for-woocommerce/"
+  name: 'Booster Plus for WooCommerce <= 7.2.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e7222029-0dac-4c96-9bbd-4e040b65fb99?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,booster-plus-for-woocommerce,medium,candidate

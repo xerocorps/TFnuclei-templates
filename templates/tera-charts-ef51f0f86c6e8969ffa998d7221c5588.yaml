@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tera-charts
+  - dsl:
+    - compare_versions(version, '<= 0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tera-charts/readme.txt'
+  redirects: true
+id: tera-charts-ef51f0f86c6e8969ffa998d7221c5588
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tera-charts/
+    google-query: inurl:"/wp-content/plugins/tera-charts/"
+    shodan-query: 'vuln:'
+  name: 'Tera Charts < 1.0 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6bcc353f-cdf2-4e28-a0e0-ad149ecb1c3b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tera-charts,low

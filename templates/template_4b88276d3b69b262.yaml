@@ -1,0 +1,27 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - vrealize log insight
+    - vmware
+  description: Template to detect vRealize Log Insight
+  id: vrealize-log-insight
+  matchers:
+  - description: vRealize Log Insight banner found in response body
+    pattern: vRealize Log Insight
+    type: body
+  name: vRealize Log Insight - Detect
+  reference:
+  - https://www.vmware.com/products/vrealize-log-insight.html
+  requests:
+    condition: or
+    description: Attempt to access the vRealize Log Insight login page
+    method: GET
+    path:
+    - /loginsight/
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

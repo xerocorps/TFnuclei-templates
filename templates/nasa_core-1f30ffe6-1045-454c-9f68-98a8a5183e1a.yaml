@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nasa-core
+  - dsl:
+    - compare_versions(version, '<= 6.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nasa-core/readme.txt'
+  redirects: true
+id: nasa_core-1f30ffe6-1045-454c-9f68-98a8a5183e1a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nasa-core/
+    google-query: inurl:"/wp-content/plugins/nasa-core/"
+    shodan-query: http.html:"wp-content/plugins/nasa-core/"
+  name: 'Nasa Core <= 6.3.2 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1f30ffe6-1045-454c-9f68-98a8a5183e1a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,nasa-core,medium,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - visual-portfolio
+  - dsl:
+    - compare_versions(version, '<= 3.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/visual-portfolio/readme.txt'
+  redirects: true
+id: visual_portfolio-ab5e09d8-6fa3-4a5b-bee1-6648df4f4b3b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/visual-portfolio/
+    google-query: inurl:"/wp-content/plugins/visual-portfolio/"
+    shodan-query: http.html:"wp-content/plugins/visual-portfolio/"
+  name: 'Visual Portfolio, Photo Gallery & Post Grid <= 3.3.2 - Authenticated (Author+)
+    Stored Cross-Site Scripting via title_tag Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ab5e09d8-6fa3-4a5b-bee1-6648df4f4b3b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,visual-portfolio,low,candidate

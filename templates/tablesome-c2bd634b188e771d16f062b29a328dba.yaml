@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tablesome
+  - dsl:
+    - compare_versions(version, '<= 1.0.27')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tablesome/readme.txt'
+  redirects: true
+id: tablesome-c2bd634b188e771d16f062b29a328dba
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tablesome/
+    google-query: inurl:"/wp-content/plugins/tablesome/"
+    shodan-query: 'vuln:'
+  name: "Table & Contact Form 7 Database \u2013 Tablesome <= 1.0.27 - Reflected Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/49cba28f-43dc-4947-b4bb-8556cc0409ee?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,tablesome,medium

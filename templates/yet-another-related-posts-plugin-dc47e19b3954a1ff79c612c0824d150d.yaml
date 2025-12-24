@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yet-another-related-posts-plugin
+  - dsl:
+    - compare_versions(version, '< 4.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yet-another-related-posts-plugin/readme.txt'
+  redirects: true
+id: yet-another-related-posts-plugin-dc47e19b3954a1ff79c612c0824d150d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yet-another-related-posts-plugin/
+    google-query: inurl:"/wp-content/plugins/yet-another-related-posts-plugin/"
+    shodan-query: 'vuln:'
+  name: "YARPP \u2013 Yet Another Related Posts Plugin < 4.2.5 - Cross-Site Request\
+    \ Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/78759abf-4584-4beb-9ae7-39a5c3fe4b75?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,yet-another-related-posts-plugin,medium

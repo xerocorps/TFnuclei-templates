@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - clean-login
+  - dsl:
+    - compare_versions(version, '>= 1.12.6.3', '<= 1.12.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/clean-login/readme.txt'
+  redirects: true
+id: clean-login-6733635c12426825887a6212f424893f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: "The Clean Login for WordPress is vulnerable to Reflected Cross-Site\
+    \ Scripting via the \u2018url\u2019 parameter in version 1.12.6.3 due to insufficient\
+    \ input sanitization and output escaping. This makes it possible for unauthenticated\
+    \ attackers to inject arbitrary web scripts in pages that execute if they can\
+    \ successfully trick a user into performing an action such as clicking on a link."
+  metadata:
+    fofa-query: wp-content/plugins/clean-login/
+    google-query: inurl:"/wp-content/plugins/clean-login/"
+    shodan-query: 'vuln:'
+  name: Clean Login 1.12.6.3 - Cross-Site Scripting
+  reference:
+  - https://ithemes.com/blog/wordpress-vulnerability-report-august-2021-part-3/
+  - https://wpscan.com/vulnerability/6782ee79-6930-4a40-b416-d2248f78d995
+  - https://plugins.trac.wordpress.org/changeset/2579661
+  severity: medium
+  tags: cve,wordpress,wp-plugin,clean-login,medium

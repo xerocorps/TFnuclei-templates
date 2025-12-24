@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - business-directory-plugin
+  - dsl:
+    - compare_versions(version, '<= 5.10.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/business-directory-plugin/readme.txt'
+  redirects: true
+id: business-directory-plugin-f18a1f392974fb3d122e2a8ff2cf8dbc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/business-directory-plugin/
+    google-query: inurl:"/wp-content/plugins/business-directory-plugin/"
+    shodan-query: 'vuln:'
+  name: 'Business Directory Plugin <= 5.10.1 - Cross-Site Request Forgery to Arbitrary
+    File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/35e220c0-1e4d-4365-a1be-de66930fa559?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,business-directory-plugin,medium

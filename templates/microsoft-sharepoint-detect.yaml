@@ -1,0 +1,20 @@
+id: microsoft-sharepoint-detect
+info:
+  author: p-l-
+  description: Check for SharePoint, using HTTP header MicrosoftSharePointTeamServices
+  name: Microsoft SharePoint Detect
+  severity: info
+  tags: sharepoint,iis,microsoft,tech
+requests:
+- extractors:
+  - kval:
+    - MicrosoftSharePointTeamServices
+    type: kval
+  matchers:
+  - part: header
+    regex:
+    - (?i)(Microsoftsharepointteamservices:)
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profile-builder
+  - dsl:
+    - compare_versions(version, '<= 2.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profile-builder/readme.txt'
+  redirects: true
+id: profile-builder-2292af810deeb23ed0a72d7d23e269c5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profile-builder/
+    google-query: inurl:"/wp-content/plugins/profile-builder/"
+    shodan-query: 'vuln:'
+  name: 'Profile Builder <= 2.0.2 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cc358df9-7930-44da-8b33-d39db8a87b20?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,profile-builder,medium

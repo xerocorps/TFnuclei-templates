@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-7-to-database-extension
+  - dsl:
+    - compare_versions(version, '2.10.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-7-to-database-extension/readme.txt'
+  redirects: true
+id: contact_form_7_to_database_extension-c694f5e5-43eb-453c-98d7-0d575d53df1a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-7-to-database-extension/
+    google-query: inurl:"/wp-content/plugins/contact-form-7-to-database-extension/"
+    shodan-query: http.html:"wp-content/plugins/contact-form-7-to-database-extension/"
+  name: 'Contact Form 7 to Database Extension 2.10.32 - CSV Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c694f5e5-43eb-453c-98d7-0d575d53df1a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-form-7-to-database-extension,low,candidate

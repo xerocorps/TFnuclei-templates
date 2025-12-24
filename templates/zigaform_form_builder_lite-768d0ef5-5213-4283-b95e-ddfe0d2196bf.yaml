@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zigaform-form-builder-lite
+  - dsl:
+    - compare_versions(version, '<= 7.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zigaform-form-builder-lite/readme.txt'
+  redirects: true
+id: zigaform_form_builder_lite-768d0ef5-5213-4283-b95e-ddfe0d2196bf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zigaform-form-builder-lite/
+    google-query: inurl:"/wp-content/plugins/zigaform-form-builder-lite/"
+    shodan-query: http.html:"wp-content/plugins/zigaform-form-builder-lite/"
+  name: "Zigaform \u2013 Form Builder Lite <= 7.4.2 - Authenticated (Contributor+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/768d0ef5-5213-4283-b95e-ddfe0d2196bf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,zigaform-form-builder-lite,low,candidate

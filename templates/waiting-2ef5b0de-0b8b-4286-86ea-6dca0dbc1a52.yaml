@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - waiting
+  - dsl:
+    - compare_versions(version, '<= 0.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/waiting/readme.txt'
+  redirects: true
+id: waiting-2ef5b0de-0b8b-4286-86ea-6dca0dbc1a52
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/waiting/
+    google-query: inurl:"/wp-content/plugins/waiting/"
+    shodan-query: http.html:"wp-content/plugins/waiting/"
+  name: 'Waiting: One-click countdowns <= 0.6.2 - Authenticated (Administrator+) Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2ef5b0de-0b8b-4286-86ea-6dca0dbc1a52?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,waiting,low,candidate

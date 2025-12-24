@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - formidable
+  - dsl:
+    - compare_versions(version, '< 2.05.03')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/formidable/readme.txt'
+  redirects: true
+id: formidable-35dcf5d1224b0eaf221e473031e3f162
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+  description: 'The Formidable Form Builder plugin for WordPress is vulnerable to
+    Stored Cross-Site Scripting via multiple parameters submitted during form entries
+    like ''after_html'' in versions before 2.05.03 due to insufficient input sanitization
+    and output escaping. This makes it possible for unauthenticated attackers to inject
+    arbitrary web scripts that execute in a victim''s browser.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/formidable/
+    google-query: inurl:"/wp-content/plugins/formidable/"
+    shodan-query: 'vuln:'
+  name: 'Formidable Form Builder < 2.05.03 - Unauthenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/900fcaab-2424-4ae8-af18-95659db0dbe3?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,formidable,high

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - app-builder
+  - dsl:
+    - compare_versions(version, '<= 3.8.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/app-builder/readme.txt'
+  redirects: true
+id: app_builder-0488a421-e725-4b64-94ee-3a81f4bc5451
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/app-builder/
+    google-query: inurl:"/wp-content/plugins/app-builder/"
+    shodan-query: http.html:"wp-content/plugins/app-builder/"
+  name: 'App Builder <= 3.8.7 - Open Redirection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0488a421-e725-4b64-94ee-3a81f4bc5451?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,app-builder,low,candidate

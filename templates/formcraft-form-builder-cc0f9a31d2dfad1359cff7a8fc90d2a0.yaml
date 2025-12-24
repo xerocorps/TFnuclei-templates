@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - formcraft-form-builder
+  - dsl:
+    - compare_versions(version, '<= 3.9.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/formcraft-form-builder/readme.txt'
+  redirects: true
+id: formcraft-form-builder-cc0f9a31d2dfad1359cff7a8fc90d2a0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/formcraft-form-builder/
+    google-query: inurl:"/wp-content/plugins/formcraft-form-builder/"
+    shodan-query: 'vuln:'
+  name: 'FormCraft Premium <= 3.9.6 - Authenticated(Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/72b4f6bb-59dd-453c-b089-4777dcefb11f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,formcraft-form-builder,low

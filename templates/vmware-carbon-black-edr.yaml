@@ -1,0 +1,22 @@
+id: vmware-carbon-black-edr
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-dork: title:"VMware Carbon Black EDR"
+    verified: true
+  name: VMware Carbon Black EDR
+  severity: info
+  tags: panel,vmware
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - VMware Carbon Black EDR
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

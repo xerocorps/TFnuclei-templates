@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leaflet-maps-marker
+  - dsl:
+    - compare_versions(version, '<= 3.12.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leaflet-maps-marker/readme.txt'
+  redirects: true
+id: leaflet-maps-marker-df3c8802005ad44c6a7a79ae6b648390
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/leaflet-maps-marker/
+    google-query: inurl:"/wp-content/plugins/leaflet-maps-marker/"
+    shodan-query: 'vuln:'
+  name: 'Leaflet Maps Marker (Google Maps, OpenStreetMap, Bing Maps) <= 3.12.4 - Authenticated
+    (Admin+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e4414b5d-9ce5-4378-ab41-c82ae3bebd6e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,leaflet-maps-marker,low

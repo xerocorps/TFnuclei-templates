@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - backupwordpress
+  - dsl:
+    - compare_versions(version, '<= 3.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/backupwordpress/readme.txt'
+  redirects: true
+id: backupwordpress-981b1dcbf5dd03c61cae81ab1311692f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/backupwordpress/
+    google-query: inurl:"/wp-content/plugins/backupwordpress/"
+    shodan-query: 'vuln:'
+  name: 'BackUpWordPress <= 3.13 - Authenticated (Admin+) Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c2805cb0-8913-4487-8445-031b7d920e2d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,backupwordpress,low

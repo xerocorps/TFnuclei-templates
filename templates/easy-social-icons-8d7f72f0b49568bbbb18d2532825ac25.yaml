@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-social-icons
+  - dsl:
+    - compare_versions(version, '<= 3.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-social-icons/readme.txt'
+  redirects: true
+id: easy-social-icons-8d7f72f0b49568bbbb18d2532825ac25
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easy-social-icons/
+    google-query: inurl:"/wp-content/plugins/easy-social-icons/"
+    shodan-query: 'vuln:'
+  name: "Easy Social Icons <= 3.0.8 \u2013 Reflected Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8ef3a657-28ce-4a27-b4d8-617db8027ffc?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,easy-social-icons,medium

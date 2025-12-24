@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - visualcomposer
+  - dsl:
+    - compare_versions(version, '<= 45.8.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/visualcomposer/readme.txt'
+  redirects: true
+id: visualcomposer-9737aff8f892277d2263ad12214b31b5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/visualcomposer/
+    google-query: inurl:"/wp-content/plugins/visualcomposer/"
+    shodan-query: 'vuln:'
+  name: 'Visual Composer Website Builder <= 45.8.0 - Authenticated (Editor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/856e27ea-fec2-4805-bc66-f20b83b9610c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,visualcomposer,low

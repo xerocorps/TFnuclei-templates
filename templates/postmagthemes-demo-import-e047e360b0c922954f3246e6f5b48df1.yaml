@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - postmagthemes-demo-import
+  - dsl:
+    - compare_versions(version, '<= 1.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/postmagthemes-demo-import/readme.txt'
+  redirects: true
+id: postmagthemes-demo-import-e047e360b0c922954f3246e6f5b48df1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/postmagthemes-demo-import/
+    google-query: inurl:"/wp-content/plugins/postmagthemes-demo-import/"
+    shodan-query: 'vuln:'
+  name: 'PostmagThemes Demo Import <= 1.0.9 - Authenticated (Administrator+) Arbitrary
+    File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ca1fd2f3-7f3a-4227-b013-95e4ec59fce4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,postmagthemes-demo-import,low

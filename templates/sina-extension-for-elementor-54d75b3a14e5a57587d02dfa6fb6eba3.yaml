@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sina-extension-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 3.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sina-extension-for-elementor/readme.txt'
+  redirects: true
+id: sina-extension-for-elementor-54d75b3a14e5a57587d02dfa6fb6eba3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sina-extension-for-elementor/
+    google-query: inurl:"/wp-content/plugins/sina-extension-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Sina Extension for Elementor (Slider, Gallery, Form, Modal, Data Table, Tab,
+    Particle, Free Elementor Widgets & Elementor Templates) <= 3.5.3 - Authenticated
+    (Contributor+) Stored Cross-site Scriping via ''Sina Particle Layer''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eee04b1d-188a-4b92-a6f3-dfa843ca20d7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sina-extension-for-elementor,low

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - miraculouscore
+  - dsl:
+    - compare_versions(version, '< 2.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/miraculouscore/readme.txt'
+  redirects: true
+id: miraculouscore-c460e742-1008-4334-971c-999107851d62
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/miraculouscore/
+    google-query: inurl:"/wp-content/plugins/miraculouscore/"
+    shodan-query: http.html:"wp-content/plugins/miraculouscore/"
+  name: 'Miraculous Core < 2.0.9 - Unauthenticated Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c460e742-1008-4334-971c-999107851d62?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,miraculouscore,low,candidate

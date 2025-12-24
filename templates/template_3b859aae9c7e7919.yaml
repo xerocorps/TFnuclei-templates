@@ -1,0 +1,15 @@
+name: "\U0001F5D1\uFE0F Cache Purge"
+true:
+  push:
+    tags:
+    - '*'
+  workflow_dispatch: null
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - env:
+        CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+        CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+      name: Purge cache
+      uses: jakejarvis/cloudflare-purge-action@master

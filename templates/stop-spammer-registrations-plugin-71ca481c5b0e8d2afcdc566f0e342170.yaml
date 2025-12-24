@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stop-spammer-registrations-plugin
+  - dsl:
+    - compare_versions(version, '<= 2024.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stop-spammer-registrations-plugin/readme.txt'
+  redirects: true
+id: stop-spammer-registrations-plugin-71ca481c5b0e8d2afcdc566f0e342170
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stop-spammer-registrations-plugin/
+    google-query: inurl:"/wp-content/plugins/stop-spammer-registrations-plugin/"
+    shodan-query: 'vuln:'
+  name: 'Stop Spammers Security | Block Spam Users, Comments, Forms <= 2024.4 - Cross-Site
+    Request Forgery (CSRF) via sfs_process
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1998cadb-2eb3-4819-aa7c-59e4f777c7f8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,stop-spammer-registrations-plugin,medium

@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - video-playlist-and-gallery-plugin
+  - dsl:
+    - compare_versions(version, '<= 1.137')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/video-playlist-and-gallery-plugin/readme.txt'
+  redirects: true
+id: video-playlist-and-gallery-plugin-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: "The Cincopa video and media plug-in plugin for WordPress is vulnerable\
+    \ to Stored Cross-Site Scripting via Cross-Site Request Forgery via the \u2018\
+    cincopaafc\u2019 parameter in versions before 1.137 due to insufficient input\
+    \ sanitization and output escaping. This makes it possible for unauthenticated\
+    \ attackers to inject arbitrary web scripts in pages that will execute whenever\
+    \ a user accesses an injected page."
+  metadata:
+    fofa-query: wp-content/plugins/video-playlist-and-gallery-plugin/
+    google-query: inurl:"/wp-content/plugins/video-playlist-and-gallery-plugin/"
+    shodan-query: 'vuln:'
+  name: Cincopa video and media plug-in < 1.137 - Cross-Site Request Forgery to Stored
+    Cross-Site Scripting
+  reference: null
+  severity: medium
+  tags: cve,wordpress,wp-plugin,video-playlist-and-gallery-plugin,medium

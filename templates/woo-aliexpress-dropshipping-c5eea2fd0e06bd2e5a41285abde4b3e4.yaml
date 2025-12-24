@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-aliexpress-dropshipping
+  - dsl:
+    - compare_versions(version, '<= 2.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-aliexpress-dropshipping/readme.txt'
+  redirects: true
+id: woo-aliexpress-dropshipping-c5eea2fd0e06bd2e5a41285abde4b3e4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-aliexpress-dropshipping/
+    google-query: inurl:"/wp-content/plugins/woo-aliexpress-dropshipping/"
+    shodan-query: 'vuln:'
+  name: 'Sharkdropship dropshipping for Aliexpress, eBay, Amazon, etsy <= 2.1.1 -
+    Unauthenticated Arbitrary Content Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/02d994b7-2891-47d0-92d3-c33c4eac54f0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-aliexpress-dropshipping,low

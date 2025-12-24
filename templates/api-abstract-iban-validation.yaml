@@ -1,0 +1,22 @@
+id: api-abstract-iban-validation
+info:
+  author: daffainfo
+  description: A powerful REST API to validate IBAN quickly and securely
+  name: Abstract Api IBAN Validation Test
+  reference:
+  - https://www.abstractapi.com/api/iban-validation
+  - https://github.com/daffainfo/all-about-apikey/tree/main/abstract-iban-validation
+  severity: info
+  tags: token-spray,abstractapi
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"iban":'
+    - '"is_valid":'
+  method: GET
+  path:
+  - https://ibanvalidation.abstractapi.com/v1/?api_key={{token}}&iban=BE71096123456769
+self-contained: true

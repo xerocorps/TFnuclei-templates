@@ -1,0 +1,26 @@
+id: ftm-manager-panel
+info:
+  author: idealphase
+  description: FTM Manager Industry LTE Router.
+  metadata:
+    google-dork: intitle:"FTM manager"
+    shodan-query: http.html:"FTM manager"
+    verified: true
+  name: FTM Manager Panel
+  severity: info
+  tags: panel,ftm
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - FTM Manager
+    - login-panel
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

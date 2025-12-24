@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dtracker
+  - dsl:
+    - compare_versions(version, '<= 1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/dtracker/readme.txt'
+  redirects: true
+id: dtracker-f24db166-93d6-4a61-a8fe-455eebde0777
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/dtracker/
+    google-query: inurl:"/wp-content/plugins/dtracker/"
+    shodan-query: http.html:"wp-content/plugins/dtracker/"
+  name: 'Dtracker <= 1.5 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f24db166-93d6-4a61-a8fe-455eebde0777?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,dtracker,high,candidate

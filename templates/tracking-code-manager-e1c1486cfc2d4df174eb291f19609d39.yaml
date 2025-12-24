@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tracking-code-manager
+  - dsl:
+    - compare_versions(version, '<= 1.11.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tracking-code-manager/readme.txt'
+  redirects: true
+id: tracking-code-manager-e1c1486cfc2d4df174eb291f19609d39
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tracking-code-manager/
+    google-query: inurl:"/wp-content/plugins/tracking-code-manager/"
+    shodan-query: 'vuln:'
+  name: 'Tracking Code Manager < 1.11.5 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8f52fd57-abfe-48c4-a950-66d72a5a9627?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,tracking-code-manager,high

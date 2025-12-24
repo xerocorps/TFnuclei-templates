@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - the-plus-addons-for-elementor-page-builder
+  - dsl:
+    - compare_versions(version, '>= 4.0', '<= 4.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/the-plus-addons-for-elementor-page-builder/readme.txt'
+  redirects: true
+id: the_plus_addons_for_elementor_page_builder-aa698e7e-b1c7-4ead-aa2e-7fbfc9dfac80
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/the-plus-addons-for-elementor-page-builder/
+    google-query: inurl:"/wp-content/plugins/the-plus-addons-for-elementor-page-builder/"
+    shodan-query: http.html:"wp-content/plugins/the-plus-addons-for-elementor-page-builder/"
+  name: 'The Plus Addons for Elementor PRO <= 4.1.9 & The Plus Addons for Elementor
+    <= 2.0.6 - Authenticated (Contributor+) Arbitrary File Read
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aa698e7e-b1c7-4ead-aa2e-7fbfc9dfac80?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,the-plus-addons-for-elementor-page-builder,low,candidate

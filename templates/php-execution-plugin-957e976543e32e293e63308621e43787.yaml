@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - php-execution-plugin
+  - dsl:
+    - compare_versions(version, '<= 1.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/php-execution-plugin/readme.txt'
+  redirects: true
+id: php-execution-plugin-957e976543e32e293e63308621e43787
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/php-execution-plugin/
+    google-query: inurl:"/wp-content/plugins/php-execution-plugin/"
+    shodan-query: 'vuln:'
+  name: 'PHP Execution <= 1.0.0 - Cross Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a4f2112f-d5dc-4045-ac58-3895d6ac7179?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,php-execution-plugin,low

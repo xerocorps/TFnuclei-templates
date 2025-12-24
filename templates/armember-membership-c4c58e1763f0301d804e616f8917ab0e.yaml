@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - armember-membership
+  - dsl:
+    - compare_versions(version, '<= 4.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/armember-membership/readme.txt'
+  redirects: true
+id: armember-membership-c4c58e1763f0301d804e616f8917ab0e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/armember-membership/
+    google-query: inurl:"/wp-content/plugins/armember-membership/"
+    shodan-query: 'vuln:'
+  name: 'ARMember <= 4.0.2 - Authenticated (Administrator+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/668d4bd3-adde-4347-9169-67c3c96e1743?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,armember-membership,low

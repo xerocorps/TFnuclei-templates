@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - wordpress
+    - config
+    - disclosure
+  description: Template to detect WordPress configuration file disclosure
+  id: wordpress-config-disclosure
+  matcher-condition: or
+  matchers:
+  - description: WordPress database password found in the configuration file
+    pattern: DB_PASSWORD
+    type: body
+  name: WordPress Configuration File Disclosure - Detect
+  requests:
+    method: GET
+    path:
+    - /wp-config.php
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: High

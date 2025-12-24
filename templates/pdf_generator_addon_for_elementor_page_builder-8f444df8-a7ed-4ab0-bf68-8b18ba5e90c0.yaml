@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pdf-generator-addon-for-elementor-page-builder
+  - dsl:
+    - compare_versions(version, '<= 2.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pdf-generator-addon-for-elementor-page-builder/readme.txt'
+  redirects: true
+id: pdf_generator_addon_for_elementor_page_builder-8f444df8-a7ed-4ab0-bf68-8b18ba5e90c0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pdf-generator-addon-for-elementor-page-builder/
+    google-query: inurl:"/wp-content/plugins/pdf-generator-addon-for-elementor-page-builder/"
+    shodan-query: http.html:"wp-content/plugins/pdf-generator-addon-for-elementor-page-builder/"
+  name: 'PDF Generator Addon for Elementor Page Builder <= 2.0.1 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8f444df8-a7ed-4ab0-bf68-8b18ba5e90c0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,pdf-generator-addon-for-elementor-page-builder,low,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - citybook
+  - dsl:
+    - compare_versions(version, '<= 2.3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/citybook/style.css'
+  redirects: true
+id: citybook-37caa25cc0d6a65b77422ce1933add2f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/citybook/
+    google-query: inurl:"/wp-content/themes/citybook/"
+    shodan-query: 'vuln:'
+  name: 'CTHthemes CityBook <= 2.3.3, TownHub <= 1.0.5, and EasyBook <= 1.2.1 - Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/788e1c5c-67a9-4b06-a2cf-15c980e83618?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,citybook,high

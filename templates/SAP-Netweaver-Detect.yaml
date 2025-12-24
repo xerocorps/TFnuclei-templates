@@ -1,0 +1,13 @@
+id: SAP-Netweaver-Detect
+info:
+  author: rakeshmane10
+  name: SAP NetWeaver Detect
+  severity: info
+requests:
+- matchers:
+  - type: word
+    words:
+    - NetWeaver
+  method: GET
+  path:
+  - '{{BaseURL}}/irj/portal'

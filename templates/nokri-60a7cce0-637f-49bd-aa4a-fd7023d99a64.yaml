@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nokri
+  - dsl:
+    - compare_versions(version, '<= 1.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/nokri/style.css'
+  redirects: true
+id: nokri-60a7cce0-637f-49bd-aa4a-fd7023d99a64
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/nokri/
+    google-query: inurl:"/wp-content/themes/nokri/"
+    shodan-query: http.html:"wp-content/themes/nokri/"
+  name: "Nokri \u2013 Job Board WordPress Theme <= 1.6.2 - Unauthenticated Arbitrary\
+    \ Password Change\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/60a7cce0-637f-49bd-aa4a-fd7023d99a64?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,nokri,low,candidate

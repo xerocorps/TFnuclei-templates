@@ -1,0 +1,35 @@
+info:
+  author: drfabiocastro
+  classification:
+    country: any
+  description: Template to detect exposure of sensitive information in SFTP configuration
+    files
+  id: sftp-config-exposure
+  matcher-condition: and
+  matchers:
+  - pattern: host
+  - pattern: username
+  - pattern: password
+  - pattern: port
+  - description: Sensitive information found in response body
+    pattern: sftp, ftp or ftps
+    type: body
+  name: SFTP Configuration Exposure - Detect
+  requests:
+    description: Example request to trigger detection
+    method: GET
+    path:
+    - /sftp.config
+    - /sftp.conf
+    - /sftp.cfg
+    - /sftp-config.json
+  response:
+  - status:
+    - 200
+    - 401
+    - 403
+  severity: High
+  tags:
+  - sftp
+  - configuration
+  - exposure

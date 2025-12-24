@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-remove-tabs-and-fields
+  - dsl:
+    - compare_versions(version, '<= 1.68')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-remove-tabs-and-fields/readme.txt'
+  redirects: true
+id: wc-remove-tabs-and-fields-74b74e2c938a302c8cdc2c1565210ef3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wc-remove-tabs-and-fields/
+    google-query: inurl:"/wp-content/plugins/wc-remove-tabs-and-fields/"
+    shodan-query: 'vuln:'
+  name: 'Remove tabs and fields from WooCommerce <= 1.68 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eb828160-b537-4435-9d85-47e0d70a6704?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wc-remove-tabs-and-fields,medium

@@ -1,0 +1,25 @@
+info:
+  author: "F\xE1bio Castro"
+  classification:
+    tags:
+    - google
+    - maps
+    - api
+  description: List of regex patterns for Google Maps API Keys.
+  id: google-api-keys
+  matcher-condition: or
+  matchers:
+  - description: Matches Google Maps API Key in request bodies
+    pattern: AIza[0-9A-Za-z_-]{35}
+    type: body
+  name: Google Maps API Key
+  requests:
+    condition: and
+    description: Attempt to access the main page
+    method: GET
+    path:
+    - /
+  response:
+  - status:
+    - 200
+  severity: Info

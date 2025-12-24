@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - updraftplus
+  - dsl:
+    - compare_versions(version, '>= 2.22.14', '<= 2.23.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/updraftplus/readme.txt'
+  redirects: true
+id: updraftplus-c201e5a27f9df93f6581843a80621014
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/updraftplus/
+    google-query: inurl:"/wp-content/plugins/updraftplus/"
+    shodan-query: 'vuln:'
+  name: 'UpdraftPlus 1.22.14 to 1.23.2 and UpdraftPlus (Premium) 2.22.14 to 2.23.2
+    - Privilege Escalation via updraft_central_ajax_handler
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2e329432-c404-4312-969b-42cac345637d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,updraftplus,low

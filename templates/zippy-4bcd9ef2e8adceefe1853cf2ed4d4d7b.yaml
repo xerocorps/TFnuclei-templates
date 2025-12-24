@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zippy
+  - dsl:
+    - compare_versions(version, '<= 1.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zippy/readme.txt'
+  redirects: true
+id: zippy-4bcd9ef2e8adceefe1853cf2ed4d4d7b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zippy/
+    google-query: inurl:"/wp-content/plugins/zippy/"
+    shodan-query: 'vuln:'
+  name: 'Zippy <= 1.6.9 - Authenticated (Editor+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1d8c5b14-6a4c-4d66-85cc-b6ab3b886ff7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,zippy,low

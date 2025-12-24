@@ -1,0 +1,21 @@
+id: gryphon-login
+info:
+  author: pdteam
+  metadata:
+    shodan-query: http.title:"Gryphon"
+  name: Gryphon Panel
+  reference:
+  - https://gryphonconnect.com/software-release-updates/
+  severity: info
+  tags: gryphon,router
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - Gryphon
+    - Welcome to GryphonCare
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/luci/'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - magazine-basic
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/magazine-basic/style.css'
+  redirects: true
+id: magazine-basic-bc53814728f7ddc3136ebcae1ed5b06e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/magazine-basic/
+    google-query: inurl:"/wp-content/themes/magazine-basic/"
+    shodan-query: 'vuln:'
+  name: 'Magazine Basic (Unknown Versions) - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d07b5377-ce5f-4faa-ac72-78f5175913c3?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-theme,magazine-basic,critical

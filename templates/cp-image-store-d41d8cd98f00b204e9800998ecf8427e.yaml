@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cp-image-store
+  - dsl:
+    - compare_versions(version, '<= 1.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cp-image-store/readme.txt'
+  redirects: true
+id: cp-image-store-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The CP Image Store with Slideshow plugin for WordPress is vulnerable
+    to Directory Traversal in versions before 1.0.6 via the cpis_download_file function.
+    This allows unauthenticated attackers to download arbitrary files from the server,
+    which can contain sensitive information.
+  metadata:
+    fofa-query: wp-content/plugins/cp-image-store/
+    google-query: inurl:"/wp-content/plugins/cp-image-store/"
+    shodan-query: 'vuln:'
+  name: CP Image Store with Slideshow < 1.0.6 - Arbitrary File Download
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,cp-image-store,low

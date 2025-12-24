@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordfence
+  - dsl:
+    - compare_versions(version, '< 3.3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordfence/readme.txt'
+  redirects: true
+id: wordfence-ab5f854db923c72917d45a7921a9a16f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: "The Wordfence plugin for WordPress is vulnerable to Reflected Cross-Site\
+    \ Scripting via the \u2018email\u2019 parameter in versions before 3.3.7 due to\
+    \ insufficient input sanitization and output escaping. This makes it possible\
+    \ for unauthenticated attackers to inject arbitrary web scripts in pages that\
+    \ execute if they can successfully trick a user into performing an action such\
+    \ as clicking on a link."
+  metadata:
+    fofa-query: wp-content/plugins/wordfence/
+    google-query: inurl:"/wp-content/plugins/wordfence/"
+    shodan-query: 'vuln:'
+  name: Wordfence < 3.3.7 - Reflected Cross-Site Scripting
+  reference:
+  - https://seclists.org/fulldisclosure/2012/Oct/139
+  - https://www.wordfence.com/wp-content/uploads/2017/11/changelog_7.5.9.txt
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wordfence,medium

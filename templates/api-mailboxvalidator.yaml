@@ -1,0 +1,22 @@
+id: api-mailboxvalidator
+info:
+  author: daffainfo
+  name: MailboxValidator API Test
+  reference:
+  - https://www.mailboxvalidator.com/api-email-free
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Business/MailboxValidator.md
+  severity: info
+  tags: token-spray,mailboxvalidator
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"email_address":"test@test.com"'
+    - '"error_code":""'
+    - '"error_message":""'
+  method: GET
+  path:
+  - https://api.mailboxvalidator.com/v1/email/free?email=test@test.com&key={{token}}
+self-contained: true

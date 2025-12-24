@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - click-to-top
+  - dsl:
+    - compare_versions(version, '< 1.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/click-to-top/readme.txt'
+  redirects: true
+id: click-to-top-78a86132517e0271db60a3979bd52f00
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 5.5
+  description: The click-to-top plugin for WordPress is vulnerable to Stored Cross-Site
+    Scripting via the 'Type scroll text' field in versions up to, and including, 1.2.7
+    due to insufficient input sanitization and output escaping. This makes it possible
+    for attackers to inject arbitrary web scripts in pages that will execute whenever
+    a user accesses an injected page.
+  metadata:
+    fofa-query: wp-content/plugins/click-to-top/
+    google-query: inurl:"/wp-content/plugins/click-to-top/"
+    shodan-query: 'vuln:'
+  name: Click to top <= 1.2.7 - Authenticated (Admin+) Stored Cross-Site Scripting
+  reference:
+  - https://melbin.in/2020/08/17/stored-xss-vulnerability-in-change-wordpress-click-to-top-plugin/
+  - https://packetstormsecurity.com/files/158901/
+  - https://wordpress.org/plugins/click-to-top/#developers
+  - https://wpscan.com/vulnerability/574d8f9b-eb6b-4efd-9924-97e3e80f336a
+  severity: medium
+  tags: cve,wordpress,wp-plugin,click-to-top,medium

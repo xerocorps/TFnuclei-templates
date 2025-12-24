@@ -1,0 +1,12 @@
+id: dedecms-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all DedeCMS related nuclei templates on
+    a given target.
+  name: DedeCMS Security Checks
+workflows:
+- matchers:
+  - name: dedecms
+    subtemplates:
+    - tags: dedecms
+  template: technologies/fingerprinthub-web-fingerprints.yaml

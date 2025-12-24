@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dynamic-widgets
+  - dsl:
+    - compare_versions(version, '< 1.5.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/dynamic-widgets/readme.txt'
+  redirects: true
+id: dynamic-widgets-2de385f1897c49fd38e39c9e68dbecf8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/dynamic-widgets/
+    google-query: inurl:"/wp-content/plugins/dynamic-widgets/"
+    shodan-query: 'vuln:'
+  name: 'Dynamic Widgets <= 1.5.10 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8d4a546a-1c15-4fc5-a2ae-8640457a0c22?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,dynamic-widgets,high

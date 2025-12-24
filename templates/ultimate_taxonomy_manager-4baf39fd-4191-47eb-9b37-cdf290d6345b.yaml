@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-taxonomy-manager
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-taxonomy-manager/readme.txt'
+  redirects: true
+id: ultimate_taxonomy_manager-4baf39fd-4191-47eb-9b37-cdf290d6345b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-taxonomy-manager/
+    google-query: inurl:"/wp-content/plugins/ultimate-taxonomy-manager/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-taxonomy-manager/"
+  name: 'XYDAC Ultimate Taxonomy Manager <= 2.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4baf39fd-4191-47eb-9b37-cdf290d6345b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ultimate-taxonomy-manager,medium,candidate

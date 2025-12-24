@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leadin
+  - dsl:
+    - compare_versions(version, '< 8.8.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leadin/readme.txt'
+  redirects: true
+id: leadin-1ea4d45cf331d523fb06746cf5484bf4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/leadin/
+    google-query: inurl:"/wp-content/plugins/leadin/"
+    shodan-query: 'vuln:'
+  name: "HubSpot \u2013 CRM, Email Marketing, Live Chat, Forms & Analytics <= 8.8.13\
+    \ - Server Side Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66697f3e-c023-496d-b553-7d20352e33b5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,leadin,low

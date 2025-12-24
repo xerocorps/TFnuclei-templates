@@ -1,0 +1,47 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tagembed-widget
+  - dsl:
+    - compare_versions(version, '<= 4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tagembed-widget/readme.txt'
+  redirects: true
+id: tagembed_widget-cc6ed7d3-7a57-4146-997b-96d4a9063214
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tagembed-widget/
+    google-query: inurl:"/wp-content/plugins/tagembed-widget/"
+    shodan-query: http.html:"wp-content/plugins/tagembed-widget/"
+  name: 'Tagembed: Embed Twitter Feed, Google Reviews, YouTube Videos, TikTok, RSS
+    Feed & More Social Media Feeds <= 4.8 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cc6ed7d3-7a57-4146-997b-96d4a9063214?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tagembed-widget,low,candidate

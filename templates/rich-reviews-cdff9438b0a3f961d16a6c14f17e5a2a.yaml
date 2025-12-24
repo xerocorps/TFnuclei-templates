@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rich-reviews
+  - dsl:
+    - compare_versions(version, '<= 1.9.14')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rich-reviews/readme.txt'
+  redirects: true
+id: rich-reviews-cdff9438b0a3f961d16a6c14f17e5a2a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rich-reviews/
+    google-query: inurl:"/wp-content/plugins/rich-reviews/"
+    shodan-query: 'vuln:'
+  name: 'Rich Reviews by Starfish <= 1.9.14 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5cd5e6f3-b791-48a8-b7eb-42cdd8975530?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,rich-reviews,medium

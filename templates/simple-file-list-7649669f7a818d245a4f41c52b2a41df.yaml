@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-file-list
+  - dsl:
+    - compare_versions(version, '<= 6.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-file-list/readme.txt'
+  redirects: true
+id: simple-file-list-7649669f7a818d245a4f41c52b2a41df
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-file-list/
+    google-query: inurl:"/wp-content/plugins/simple-file-list/"
+    shodan-query: 'vuln:'
+  name: 'Simple File List <= 6.0.9 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c3f0032e-a6f4-47f5-b3eb-6f1c9bf9670c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-file-list,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-ads-manager
+  - dsl:
+    - compare_versions(version, '< 2.9.4.116')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-ads-manager/readme.txt'
+  redirects: true
+id: simple-ads-manager-78c6058e9a0b19f96ec0c2113f81f017
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-ads-manager/
+    google-query: inurl:"/wp-content/plugins/simple-ads-manager/"
+    shodan-query: 'vuln:'
+  name: 'Simple Ads Manager  < 2.9.4.116 - Denial of Service
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/964601d5-8460-41c5-9791-ff9e3af964e3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-ads-manager,low

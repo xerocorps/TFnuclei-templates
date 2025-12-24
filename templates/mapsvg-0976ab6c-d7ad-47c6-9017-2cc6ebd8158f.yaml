@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mapsvg
+  - dsl:
+    - compare_versions(version, '<= 8.5.31')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mapsvg/readme.txt'
+  redirects: true
+id: mapsvg-0976ab6c-d7ad-47c6-9017-2cc6ebd8158f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mapsvg/
+    google-query: inurl:"/wp-content/plugins/mapsvg/"
+    shodan-query: http.html:"wp-content/plugins/mapsvg/"
+  name: 'MapSVG <= 8.5.31 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0976ab6c-d7ad-47c6-9017-2cc6ebd8158f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mapsvg,low,candidate

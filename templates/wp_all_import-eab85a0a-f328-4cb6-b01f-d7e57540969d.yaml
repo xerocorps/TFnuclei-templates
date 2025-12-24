@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-all-import
+  - dsl:
+    - compare_versions(version, '<= 3.6.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-all-import/readme.txt'
+  redirects: true
+id: wp_all_import-eab85a0a-f328-4cb6-b01f-d7e57540969d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-all-import/
+    google-query: inurl:"/wp-content/plugins/wp-all-import/"
+    shodan-query: http.html:"wp-content/plugins/wp-all-import/"
+  name: 'Import any XML or CSV File to WordPress <= 3.6.8 - Authenticated (Administrator+)
+    Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eab85a0a-f328-4cb6-b01f-d7e57540969d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-all-import,low,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - charitable
+  - dsl:
+    - compare_versions(version, '< 1.7.0.14')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/charitable/readme.txt'
+  redirects: true
+id: charitable-8ca66865697e10551f6b8f5fdc104349
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/charitable/
+    google-query: inurl:"/wp-content/plugins/charitable/"
+    shodan-query: 'vuln:'
+  name: 'Charitable <= 1.7.0.13 - Authenticated(Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dbaedb36-6710-48ab-8bb5-e6065fa8df51?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,charitable,low

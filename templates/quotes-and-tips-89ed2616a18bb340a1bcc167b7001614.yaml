@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quotes-and-tips
+  - dsl:
+    - compare_versions(version, '< 1.20')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quotes-and-tips/readme.txt'
+  redirects: true
+id: quotes-and-tips-89ed2616a18bb340a1bcc167b7001614
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quotes-and-tips/
+    google-query: inurl:"/wp-content/plugins/quotes-and-tips/"
+    shodan-query: 'vuln:'
+  name: 'Quotes and Tips by BestWebSoft < 1.20 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c942fd74-7a2d-43ec-9806-cdfe21a83149?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,quotes-and-tips,high

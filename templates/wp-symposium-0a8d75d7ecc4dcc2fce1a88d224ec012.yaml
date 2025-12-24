@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-symposium
+  - dsl:
+    - compare_versions(version, '<= 12.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-symposium/readme.txt'
+  redirects: true
+id: wp-symposium-0a8d75d7ecc4dcc2fce1a88d224ec012
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: The WP Symposium plugin for WordPress is vulnerable to various SQL
+    Injections in versions up to, and including, 12.09 due to insufficient escaping
+    on the user supplied parameter and lack of sufficient preparation on the existing
+    SQL query.  This makes it possible for unauthenticated attackers to append additional
+    SQL queries into already existing queries that can be used to extract sensitive
+    information from the database.
+  metadata:
+    fofa-query: wp-content/plugins/wp-symposium/
+    google-query: inurl:"/wp-content/plugins/wp-symposium/"
+    shodan-query: 'vuln:'
+  name: WP Symposium <= 12.11 - SQL Injections
+  reference:
+  - https://www.securityfocus.com/bid/57478/
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-wp-symposium-multiple-sql-injection-vulnerabilities-12-09/
+  - https://wpscan.com/vulnerability/31ae56b1-ee85-47b7-bafa-a11a2c30b908
+  - http://web.archive.org/web/20191021092737/http%3A//ceriksen.com/2013/02/18/wp-symposium-multiple-sql-injection/
+  - https://plugins.trac.wordpress.org/browser/wp-symposium/tags/12.12/ajax/profile_functions.php?rev=641304#L1715
+  - https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=641304%40wp-symposium&new=641304%40wp-symposium&sfp_email=&sfph_mail=
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-symposium,critical

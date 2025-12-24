@@ -1,0 +1,14 @@
+id: apache-serverstatus
+info:
+  author: notnotnotveg
+  name: Apache Server Status Page
+  severity: info
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <h1>Apache Server Status for
+  method: GET
+  path:
+  - '{{BaseURL}}/server-status'

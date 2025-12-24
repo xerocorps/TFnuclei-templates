@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ip-address-blocker
+  - dsl:
+    - compare_versions(version, '<= 11.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ip-address-blocker/readme.txt'
+  redirects: true
+id: ip-address-blocker-ffb542cace3b3a0a87bdda23dd68251a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ip-address-blocker/
+    google-query: inurl:"/wp-content/plugins/ip-address-blocker/"
+    shodan-query: 'vuln:'
+  name: 'IP Blocker Lite <= 11.1.1 - IP Spoofing
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2598795e-ea66-4c73-8fcb-6a832f65de52?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ip-address-blocker,low

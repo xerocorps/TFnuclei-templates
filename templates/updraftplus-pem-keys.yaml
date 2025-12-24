@@ -1,0 +1,23 @@
+id: updraftplus-pem-keys
+info:
+  author: dhiyaneshDk
+  name: UpdraftPlus Plugin Pem Key
+  reference: https://www.exploit-db.com/ghdb/6437
+  severity: info
+  tags: wordpress,wp-plugin
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Index of /
+    - .pem
+    - updraftplus
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/updraftplus/includes/'

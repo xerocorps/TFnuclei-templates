@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-crowdfunding
+  - dsl:
+    - compare_versions(version, '<= 2.1.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-crowdfunding/readme.txt'
+  redirects: true
+id: wp_crowdfunding-972be091-64c4-4cb7-9563-70249c0db157
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-crowdfunding/
+    google-query: inurl:"/wp-content/plugins/wp-crowdfunding/"
+    shodan-query: http.html:"wp-content/plugins/wp-crowdfunding/"
+  name: 'WP Crowdfunding <= 2.1.12 - Missing Authorization to Authenticated (Subscriber+)
+    WooCommerce Installation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/972be091-64c4-4cb7-9563-70249c0db157?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-crowdfunding,low,candidate

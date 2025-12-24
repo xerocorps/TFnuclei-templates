@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-pdf-restaurant-menu-upload
+  - dsl:
+    - compare_versions(version, '<= 2.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-pdf-restaurant-menu-upload/readme.txt'
+  redirects: true
+id: easy_pdf_restaurant_menu_upload-382de43a-a714-4538-be12-76e74ad77327
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easy-pdf-restaurant-menu-upload/
+    google-query: inurl:"/wp-content/plugins/easy-pdf-restaurant-menu-upload/"
+    shodan-query: http.html:"wp-content/plugins/easy-pdf-restaurant-menu-upload/"
+  name: 'Easy restaurant menu manager <= 2.0.1 - Authenticated (Contributot+) Stored
+    Cross-Site Scripting via `nsc_eprm_menu_link` Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/382de43a-a714-4538-be12-76e74ad77327?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,easy-pdf-restaurant-menu-upload,low,candidate

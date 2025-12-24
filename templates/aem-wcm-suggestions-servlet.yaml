@@ -1,0 +1,22 @@
+id: aem-wcm-suggestions-servlet
+info:
+  author: DhiyaneshDk
+  name: AEM WCM Suggestions Servlet
+  reference: https://speakerdeck.com/0ang3el/hunting-for-security-bugs-in-aem-webapps?slide=96
+  severity: low
+  tags: aem
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - '{{randstr}}'
+    - '"results":'
+    - '"suggestions":'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/bin/wcm/contentfinder/connector/suggestions.json;%0aOJh.css?query_term=path%3a/&pre={{randstr}}'

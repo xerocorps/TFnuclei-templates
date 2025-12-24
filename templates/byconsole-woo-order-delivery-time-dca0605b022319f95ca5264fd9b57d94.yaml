@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - byconsole-woo-order-delivery-time
+  - dsl:
+    - compare_versions(version, '<= 2.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/byconsole-woo-order-delivery-time/readme.txt'
+  redirects: true
+id: byconsole-woo-order-delivery-time-dca0605b022319f95ca5264fd9b57d94
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/byconsole-woo-order-delivery-time/
+    google-query: inurl:"/wp-content/plugins/byconsole-woo-order-delivery-time/"
+    shodan-query: 'vuln:'
+  name: 'WooODT Lite <= 2.4.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ede4b8ad-3c12-4ed8-9eda-806afa580bad?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,byconsole-woo-order-delivery-time,medium

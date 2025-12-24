@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - health-check
+  - dsl:
+    - compare_versions(version, '<= 1.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/health-check/readme.txt'
+  redirects: true
+id: health-check-029bc10524096c5d6b42c53501db3fa1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/health-check/
+    google-query: inurl:"/wp-content/plugins/health-check/"
+    shodan-query: 'vuln:'
+  name: 'Health Check & Troubleshooting <= 1.2.3 - Path Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/95ad0139-eb12-4c02-95fb-cd19b6a6ab02?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,health-check,low

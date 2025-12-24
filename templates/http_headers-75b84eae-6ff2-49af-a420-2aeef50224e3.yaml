@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - http-headers
+  - dsl:
+    - compare_versions(version, '<= 1.18.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/http-headers/readme.txt'
+  redirects: true
+id: http_headers-75b84eae-6ff2-49af-a420-2aeef50224e3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/http-headers/
+    google-query: inurl:"/wp-content/plugins/http-headers/"
+    shodan-query: http.html:"wp-content/plugins/http-headers/"
+  name: 'HTTP Headers <= 1.18.10 - Authenticated(Administrator+) Remote Code Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/75b84eae-6ff2-49af-a420-2aeef50224e3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,http-headers,low,candidate

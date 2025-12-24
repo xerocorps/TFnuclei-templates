@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bulletproof-security
+  - dsl:
+    - compare_versions(version, '<= 5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bulletproof-security/readme.txt'
+  redirects: true
+id: bulletproof-security-64e0edecaa2bd3c08a4997e67d93a505
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bulletproof-security/
+    google-query: inurl:"/wp-content/plugins/bulletproof-security/"
+    shodan-query: 'vuln:'
+  name: 'BulletProof Security <= 5.1 - Sensitive Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4735c491-9595-42b8-bb1c-1b18c89fcf7a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bulletproof-security,low

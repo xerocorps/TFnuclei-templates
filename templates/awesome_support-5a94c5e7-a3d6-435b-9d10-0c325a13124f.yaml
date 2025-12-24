@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - awesome-support
+  - dsl:
+    - compare_versions(version, '<= 6.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/awesome-support/readme.txt'
+  redirects: true
+id: awesome_support-5a94c5e7-a3d6-435b-9d10-0c325a13124f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/awesome-support/
+    google-query: inurl:"/wp-content/plugins/awesome-support/"
+    shodan-query: http.html:"wp-content/plugins/awesome-support/"
+  name: 'Awesome Support <= 6.1.1 - Insecure Direct Object Reference to (Subscriber+)
+    Ticket Export
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5a94c5e7-a3d6-435b-9d10-0c325a13124f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,awesome-support,low,candidate

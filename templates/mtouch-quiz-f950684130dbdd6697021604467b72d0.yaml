@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mtouch-quiz
+  - dsl:
+    - compare_versions(version, '<= 3.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mtouch-quiz/readme.txt'
+  redirects: true
+id: mtouch-quiz-f950684130dbdd6697021604467b72d0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mtouch-quiz/
+    google-query: inurl:"/wp-content/plugins/mtouch-quiz/"
+    shodan-query: 'vuln:'
+  name: 'mTouch Quiz <= 3.1.2 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9bce7b25-fb64-44ac-b48f-00ef871610c6?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,mtouch-quiz,high

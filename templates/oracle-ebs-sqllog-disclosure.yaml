@@ -1,0 +1,28 @@
+id: oracle-ebs-sqllog-disclosure
+info:
+  confidence: Tentative
+  name: Oracle EBS SQL Log Disclosure
+  risk: Medium
+params:
+- root: '{{.BaseURL}}'
+references:
+- links:
+  - https://the-infosec.com/2017/03/29/do-you-know-what-your-erp-is-telling-us/
+requests:
+- detections:
+  - StatusCode() == 200 && StringSearch("body", "DESCRIPTION=") && StringSearch("body",
+    "USER=") && StringSearch("resHeaders", "text/plain")
+  headers:
+  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
+      Firefox/55
+  method: GET
+  redirect: false
+  url: '{{.root}}{{.prefix}}/bin//sqlnet.log'
+variables:
+- prefix: '/html
+
+    //html/
+
+    //OA_HTML/
+
+    '

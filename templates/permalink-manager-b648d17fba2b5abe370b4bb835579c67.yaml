@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - permalink-manager
+  - dsl:
+    - compare_versions(version, '<= 2.4.3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/permalink-manager/readme.txt'
+  redirects: true
+id: permalink-manager-b648d17fba2b5abe370b4bb835579c67
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/permalink-manager/
+    google-query: inurl:"/wp-content/plugins/permalink-manager/"
+    shodan-query: 'vuln:'
+  name: 'Permalink Manager Lite <= 2.4.3.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e7e67b84-6b75-49ca-b5cc-e80ad7f5c899?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,permalink-manager,medium

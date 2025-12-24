@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - aiomatic-automatic-ai-content-writer
+  - dsl:
+    - compare_versions(version, '<= 2.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/aiomatic-automatic-ai-content-writer/readme.txt'
+  redirects: true
+id: aiomatic_automatic_ai_content_writer-8e0ff2d6-65d2-4a54-b3e5-64b424013313
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/aiomatic-automatic-ai-content-writer/
+    google-query: inurl:"/wp-content/plugins/aiomatic-automatic-ai-content-writer/"
+    shodan-query: http.html:"wp-content/plugins/aiomatic-automatic-ai-content-writer/"
+  name: 'Aiomatic - AI Content Writer, Editor, ChatBot & AI Toolkit <= 2.5.0 - Authenticated
+    (Subscriber+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8e0ff2d6-65d2-4a54-b3e5-64b424013313?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,aiomatic-automatic-ai-content-writer,low,candidate

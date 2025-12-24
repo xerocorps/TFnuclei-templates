@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_generator
+    regex:
+    - (?m)https:\/\/wordpress.org\/\?v=([0-9.]+)
+    type: regex
+  - group: 1
+    name: version_by_js
+    regex:
+    - wp-emoji-release\.min\.js\?ver=((\d+\.?)+)\b
+    type: regex
+  - group: 1
+    name: version_by_css
+    regex:
+    - install\.min\.css\?ver=((\d+\.?)+)\b
+    type: regex
+  matchers:
+  - dsl:
+    - compare_versions(version_by_generator, '>= 5.8', '<= 5.8.1')
+    - compare_versions(version_by_js, '>= 5.8', '<= 5.8.1')
+    - compare_versions(version_by_css, '>= 5.8', '<= 5.8.1')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/wp-admin/install.php'
+  - '{{BaseURL}}/feed/'
+  - '{{BaseURL}}/?feed=rss2'
+  redirects: true
+  stop-at-first-match: true
+id: wordpress-0ba551a4-109d-4e28-b497-539264095134
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 5.3
+  description: 'WordPress Core in various versions less than version 5.8.2 contained
+    an expired DST Root CA X3 certificate. There is no significant security risk to
+    most WordPress users.
+
+    '
+  metadata:
+    shodan-query: 'vuln:'
+  name: 'WordPress Core < 5.8.2 - ca-bundle.crt contains expired certificate DST Root
+    CA X3
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0ba551a4-109d-4e28-b497-539264095134?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-core,medium,production

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ad-inserter
+  - dsl:
+    - compare_versions(version, '< 2.7.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ad-inserter/readme.txt'
+  redirects: true
+id: ad-inserter-50cd45a4660c7499bdd26776bec29235
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ad-inserter/
+    google-query: inurl:"/wp-content/plugins/ad-inserter/"
+    shodan-query: 'vuln:'
+  name: 'Ad Inserter <= 2.7.9 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3798fb5d-f7d6-4a93-8908-c9b1f93bb05a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ad-inserter,medium

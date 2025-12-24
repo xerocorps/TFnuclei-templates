@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lifterlms
+  - dsl:
+    - compare_versions(version, '< 4.21.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lifterlms/readme.txt'
+  redirects: true
+id: lifterlms-23f2186683fd0e47bc0ca96150a7cf56
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lifterlms/
+    google-query: inurl:"/wp-content/plugins/lifterlms/"
+    shodan-query: 'vuln:'
+  name: "LMS by LifterLMS \u2013 Online Course, Membership & Learning Management System\
+    \ Plugin <= 4.21.0 - Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/86b54c46-a637-4fc4-8d48-a02383c9814b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,lifterlms,high

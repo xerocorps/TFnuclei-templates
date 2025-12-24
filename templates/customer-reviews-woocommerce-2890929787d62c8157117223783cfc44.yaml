@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - customer-reviews-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 5.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/customer-reviews-woocommerce/readme.txt'
+  redirects: true
+id: customer-reviews-woocommerce-2890929787d62c8157117223783cfc44
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/customer-reviews-woocommerce/
+    google-query: inurl:"/wp-content/plugins/customer-reviews-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Customer Reviews for WooCommerce <= 5.3.5 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/43100062-c6bd-4d08-a88b-fbcf24f7e605?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,customer-reviews-woocommerce,medium

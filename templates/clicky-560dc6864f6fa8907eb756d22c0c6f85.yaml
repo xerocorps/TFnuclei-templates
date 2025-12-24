@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - clicky
+  - dsl:
+    - compare_versions(version, '< 1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/clicky/readme.txt'
+  redirects: true
+id: clicky-560dc6864f6fa8907eb756d22c0c6f85
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/clicky/
+    google-query: inurl:"/wp-content/plugins/clicky/"
+    shodan-query: 'vuln:'
+  name: 'Clicky by Yoast <= 1.5 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/42d56d6a-365a-4fa2-977f-a1328e0ec1b3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,clicky,high

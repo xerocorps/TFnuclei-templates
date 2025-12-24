@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-multisite-content-copier
+  - dsl:
+    - compare_versions(version, '<= 1.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-multisite-content-copier/readme.txt'
+  redirects: true
+id: wp-multisite-content-copier-8fd93cf03337c6fdde9fbfe4e43ac4bc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-multisite-content-copier/
+    google-query: inurl:"/wp-content/plugins/wp-multisite-content-copier/"
+    shodan-query: 'vuln:'
+  name: 'Multisite Content Copier/Updater <= 1.5.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/08940eaf-48fb-4e40-9667-cde710738542?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-multisite-content-copier,medium

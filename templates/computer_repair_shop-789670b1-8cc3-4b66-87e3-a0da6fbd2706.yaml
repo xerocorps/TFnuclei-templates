@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - computer-repair-shop
+  - dsl:
+    - compare_versions(version, '<= 3.8115')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/computer-repair-shop/readme.txt'
+  redirects: true
+id: computer_repair_shop-789670b1-8cc3-4b66-87e3-a0da6fbd2706
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/computer-repair-shop/
+    google-query: inurl:"/wp-content/plugins/computer-repair-shop/"
+    shodan-query: http.html:"wp-content/plugins/computer-repair-shop/"
+  name: 'Computer Repair Shop <= 3.8115 - Unauthenticated Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/789670b1-8cc3-4b66-87e3-a0da6fbd2706?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,computer-repair-shop,critical,candidate

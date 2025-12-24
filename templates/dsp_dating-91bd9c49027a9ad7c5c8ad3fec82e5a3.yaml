@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dsp_dating
+  - dsl:
+    - compare_versions(version, '<= 7.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/dsp_dating/readme.txt'
+  redirects: true
+id: dsp_dating-91bd9c49027a9ad7c5c8ad3fec82e5a3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/dsp_dating/
+    google-query: inurl:"/wp-content/plugins/dsp_dating/"
+    shodan-query: 'vuln:'
+  name: 'WPDating <= 7.4.1 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/79ef7b33-ea6b-4cf2-bed4-8177927ab650?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,dsp_dating,critical

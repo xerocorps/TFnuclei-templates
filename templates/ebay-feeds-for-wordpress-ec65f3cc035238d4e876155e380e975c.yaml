@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ebay-feeds-for-wordpress
+  - dsl:
+    - compare_versions(version, '<= 3.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ebay-feeds-for-wordpress/readme.txt'
+  redirects: true
+id: ebay-feeds-for-wordpress-ec65f3cc035238d4e876155e380e975c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ebay-feeds-for-wordpress/
+    google-query: inurl:"/wp-content/plugins/ebay-feeds-for-wordpress/"
+    shodan-query: 'vuln:'
+  name: 'WP eBay Product Feeds <= 3.3.1 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c4d552a7-499f-4946-b0ec-5f733c01a365?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ebay-feeds-for-wordpress,low

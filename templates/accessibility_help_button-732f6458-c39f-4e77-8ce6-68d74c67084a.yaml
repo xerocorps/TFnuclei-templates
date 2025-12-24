@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - accessibility-help-button
+  - dsl:
+    - compare_versions(version, '<= 1.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/accessibility-help-button/readme.txt'
+  redirects: true
+id: accessibility_help_button-732f6458-c39f-4e77-8ce6-68d74c67084a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/accessibility-help-button/
+    google-query: inurl:"/wp-content/plugins/accessibility-help-button/"
+    shodan-query: http.html:"wp-content/plugins/accessibility-help-button/"
+  name: 'Call Now Accessibility Button <= 1.0.2 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/732f6458-c39f-4e77-8ce6-68d74c67084a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,accessibility-help-button,low,candidate

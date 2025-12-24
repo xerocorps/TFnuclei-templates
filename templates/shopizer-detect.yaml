@@ -1,0 +1,20 @@
+id: shopizer-detect
+info:
+  author: pikpikcu
+  name: Shopizer Detection
+  severity: info
+  tags: tech,shopizer
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - Powered by <a href="http://www.shopizer.com"
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/shop/'

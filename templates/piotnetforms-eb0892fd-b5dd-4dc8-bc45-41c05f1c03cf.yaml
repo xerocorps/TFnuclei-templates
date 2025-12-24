@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - piotnetforms
+  - dsl:
+    - compare_versions(version, '<= 1.0.30')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/piotnetforms/readme.txt'
+  redirects: true
+id: piotnetforms-eb0892fd-b5dd-4dc8-bc45-41c05f1c03cf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/piotnetforms/
+    google-query: inurl:"/wp-content/plugins/piotnetforms/"
+    shodan-query: http.html:"wp-content/plugins/piotnetforms/"
+  name: 'Piotnet Forms <= 1.0.30 - Authenticated (Editor+) Path Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eb0892fd-b5dd-4dc8-bc45-41c05f1c03cf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,piotnetforms,low,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rsvpmaker
+  - dsl:
+    - compare_versions(version, '<= 9.9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rsvpmaker/readme.txt'
+  redirects: true
+id: rsvpmaker-1c69e1c55f79969d982a8df544e86041
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rsvpmaker/
+    google-query: inurl:"/wp-content/plugins/rsvpmaker/"
+    shodan-query: 'vuln:'
+  name: 'RSVPMaker <= 9.9.3 - Authenticated (Admin+) SQL Injection via $email value
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/44373541-adc5-4aa0-abde-0693f2760afb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,rsvpmaker,low

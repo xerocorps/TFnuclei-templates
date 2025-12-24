@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cm-download-manager
+  - dsl:
+    - compare_versions(version, '< 2.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cm-download-manager/readme.txt'
+  redirects: true
+id: cm-download-manager-a0341bf64b0c8b6fa11db4648bc1942e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cm-download-manager/
+    google-query: inurl:"/wp-content/plugins/cm-download-manager/"
+    shodan-query: 'vuln:'
+  name: 'CM Download Manager < 2.9.1 - Cross-Site Request Forgery via editHeader
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8dad1a7c-a5a5-486b-bf15-6fd455e6612c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,cm-download-manager,medium

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - 404-solution
+  - dsl:
+    - compare_versions(version, '< 2.34.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/404-solution/readme.txt'
+  redirects: true
+id: 404-solution-ec99b72280f7f2198e686f2f5da000fd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/404-solution/
+    google-query: inurl:"/wp-content/plugins/404-solution/"
+    shodan-query: 'vuln:'
+  name: '404 Solution <= 2.33.2 - Authenticated (Administrator+) SQL Injection via
+    orderby
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/14958861-305e-4a9b-b428-de204cd6781e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,404-solution,low

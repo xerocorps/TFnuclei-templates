@@ -1,0 +1,22 @@
+id: api-ipfind
+info:
+  author: daffainfo
+  name: IPFind API Test
+  reference:
+  - https://ipfind.io/documentation
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Development/IPFind.md
+  severity: info
+  tags: token-spray,ipfind
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"continent"'
+    - '"country"'
+    - '"zipCode"'
+  method: GET
+  path:
+  - https://app.ipfind.io/api/iplocation?apikey={{token}}
+self-contained: true

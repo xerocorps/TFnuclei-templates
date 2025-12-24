@@ -1,0 +1,30 @@
+id: graphql-wpgraphql-detect
+info:
+  author: princechaddha
+  name: Graphql wpgraphql Detect
+  reference: https://github.com/dolevf/graphw00f/blob/main/graphw00f/lib.py
+  severity: info
+  tags: tech,graphql,wordpress
+requests:
+- body: query { alias1$1:__typename }
+  headers:
+    Content-Type: application/json
+  method: POST
+  path:
+  - '{{BaseURL}}/'
+  redirects: true
+- body: ' '
+  headers:
+    Content-Type: application/json
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - 'GraphQL Request must include at least one of those two parameters: "query"
+      or "queryId"'
+    - 'Syntax Error: Expected Name, found $'
+  method: POST
+  path:
+  - '{{BaseURL}}/'
+  redirects: true

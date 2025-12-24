@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - edit-comments
+  - dsl:
+    - compare_versions(version, '<= 0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/edit-comments/readme.txt'
+  redirects: true
+id: edit-comments-1754dc2354d89458f65a6f9810e2ea26
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/edit-comments/
+    google-query: inurl:"/wp-content/plugins/edit-comments/"
+    shodan-query: 'vuln:'
+  name: 'Edit Comments <= 0.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9a93ecaf-582d-4689-ba1f-52731c4b1ab7?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,edit-comments,medium

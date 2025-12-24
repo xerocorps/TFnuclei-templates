@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sermon-browser
+  - dsl:
+    - compare_versions(version, '< 0.43.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sermon-browser/readme.txt'
+  redirects: true
+id: sermon-browser-5baf3b5d6c3e4134ebee58253be72ee1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sermon-browser/
+    google-query: inurl:"/wp-content/plugins/sermon-browser/"
+    shodan-query: 'vuln:'
+  name: 'Sermon Browser < 0.43.6 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/69a0262e-6061-4139-ac59-b1a13dd2f147?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,sermon-browser,high

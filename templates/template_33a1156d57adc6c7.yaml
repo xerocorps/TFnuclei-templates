@@ -1,0 +1,30 @@
+info:
+  author: drfabiocastro
+  classification:
+    country: any
+    tags:
+    - git
+    - metadata
+    - directory-exposure
+  description: Template to detect Git metadata directories exposed on web servers.
+  id: git-metadata-exposure
+  matcher-condition: or
+  matchers:
+  - description: Git repository configuration found in the response body
+    pattern: repositoryformatversion =
+    type: body
+  name: Git Metadata Directory Exposure
+  requests:
+    condition: or
+    description: Attempt to access Git metadata files
+    method: GET
+    path:
+    - /.git/config
+    - /.git/HEAD
+    - /.git/index
+    - /.git/logs/refs/stash
+    - /.git/logs/refs/remotes/origin/develop
+  response:
+  - status:
+    - 200
+  severity: Medium

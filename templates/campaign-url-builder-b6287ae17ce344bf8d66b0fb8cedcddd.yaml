@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - campaign-url-builder
+  - dsl:
+    - compare_versions(version, '<= 1.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/campaign-url-builder/readme.txt'
+  redirects: true
+id: campaign-url-builder-b6287ae17ce344bf8d66b0fb8cedcddd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/campaign-url-builder/
+    google-query: inurl:"/wp-content/plugins/campaign-url-builder/"
+    shodan-query: 'vuln:'
+  name: 'Campaign URL Builder <= 1.8.1 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b2839fdc-5904-4c3b-894f-7bf7e8b2986a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,campaign-url-builder,low

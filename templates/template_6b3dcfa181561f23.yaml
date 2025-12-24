@@ -1,0 +1,30 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - vercel
+    - deployment
+  description: Help detect instances where a Vercel deployment returns a 404 Page
+    Not Found error response.
+  id: vercel-detect
+  matcher-condition: and
+  matchers:
+  - pattern: This page could not be found
+  - description: Vercel deployment returned a 404 response
+    pattern: Get started by editing app/page.js
+    type: body
+  name: Vercel Response - Detect
+  reference:
+  - https://vercel.com/docs/platform/deployments#404-responses
+  requests:
+    description: Attempt to retrieve the root page of the Vercel deployment
+    method: GET
+    path:
+    - /
+    - _domains
+    - _logs
+  response:
+  - status:
+    - 404
+  severity: Low

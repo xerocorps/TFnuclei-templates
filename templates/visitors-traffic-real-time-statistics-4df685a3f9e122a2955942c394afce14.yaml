@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - visitors-traffic-real-time-statistics
+  - dsl:
+    - compare_versions(version, '<= 7.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/visitors-traffic-real-time-statistics/readme.txt'
+  redirects: true
+id: visitors-traffic-real-time-statistics-4df685a3f9e122a2955942c394afce14
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/visitors-traffic-real-time-statistics/
+    google-query: inurl:"/wp-content/plugins/visitors-traffic-real-time-statistics/"
+    shodan-query: 'vuln:'
+  name: 'Visitors Traffic Real Time Statistics <= 7.2 - Missing Authorization via
+    multiple AJAX actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f4aac424-abf3-4d6c-a0a4-a95e2cf89864?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,visitors-traffic-real-time-statistics,high

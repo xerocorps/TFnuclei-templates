@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - embed-articles
+  - dsl:
+    - compare_versions(version, '<= 7.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/embed-articles/readme.txt'
+  redirects: true
+id: embed-articles-3b93a8668deab690b4f38ca4463c9570
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/embed-articles/
+    google-query: inurl:"/wp-content/plugins/embed-articles/"
+    shodan-query: 'vuln:'
+  name: 'Embed Articles <= 7.0.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/643cca2d-5a9a-4561-adf8-af9f0b3b0242?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,embed-articles,medium

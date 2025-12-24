@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-post-submission
+  - dsl:
+    - compare_versions(version, '<= 1.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-post-submission/readme.txt'
+  redirects: true
+id: easy_post_submission-fe4c20d6-cf38-45c3-9733-ff1fbe4908f4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easy-post-submission/
+    google-query: inurl:"/wp-content/plugins/easy-post-submission/"
+    shodan-query: http.html:"wp-content/plugins/easy-post-submission/"
+  name: 'Easy Post Submission <= 1.7.0 - Unauthenticated Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fe4c20d6-cf38-45c3-9733-ff1fbe4908f4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,easy-post-submission,low,candidate

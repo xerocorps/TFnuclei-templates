@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-photo-gallery
+  - dsl:
+    - compare_versions(version, '< 1.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-photo-gallery/readme.txt'
+  redirects: true
+id: simple-photo-gallery-0ec47b51082b2ba023df774fa05d455b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+  description: The Simple Photo Gallery plugin for WordPress is vulnerable to Stored
+    Cross-Site Scripting in versions up to, and including, 1.8.0 due to insufficient
+    input sanitization and output escaping. This makes it possible for attackers to
+    inject arbitrary web scripts in pages that will execute whenever a user accesses
+    an injected page.
+  metadata:
+    fofa-query: wp-content/plugins/simple-photo-gallery/
+    google-query: inurl:"/wp-content/plugins/simple-photo-gallery/"
+    shodan-query: 'vuln:'
+  name: Simple Photo Gallery <= 1.8.0 - Stored Cross-Site Scripting
+  reference:
+  - https://web.archive.org/web/20191101060004/http%3A//www.rootlabs.com.br/xss-simple-photo-gallery/
+  - https://wordpress.org/plugins/simple-photo-gallery/changelog/
+  - https://www.openwall.com/lists/oss-security/2016/05/11/13
+  severity: high
+  tags: cve,wordpress,wp-plugin,simple-photo-gallery,high

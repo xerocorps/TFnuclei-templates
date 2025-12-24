@@ -1,0 +1,27 @@
+id: pyproject-toml
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: html:"pyproject.toml"
+    verified: true
+  name: Pyproject.toml Configuration Exposure
+  severity: info
+  tags: exposure,pyproject,pip,devops,cicd
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - '[tool.black]'
+    - exclude =
+  - condition: or
+    part: body
+    type: word
+    words:
+    - '[tool.poetry]'
+    - name =
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/pyproject.toml'

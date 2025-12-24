@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sales-page-addon
+  - dsl:
+    - compare_versions(version, '<= 1.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sales-page-addon/readme.txt'
+  redirects: true
+id: sales_page_addon-a3d14467-0c1d-4741-b533-37b9605c5fde
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sales-page-addon/
+    google-query: inurl:"/wp-content/plugins/sales-page-addon/"
+    shodan-query: http.html:"wp-content/plugins/sales-page-addon/"
+  name: "Sales Page Addon \u2013 Elementor & Beaver Builder <= 1.4.5 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a3d14467-0c1d-4741-b533-37b9605c5fde?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sales-page-addon,low,candidate

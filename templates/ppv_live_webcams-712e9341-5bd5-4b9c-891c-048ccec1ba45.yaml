@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ppv-live-webcams
+  - dsl:
+    - compare_versions(version, '<= 7.3.22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ppv-live-webcams/readme.txt'
+  redirects: true
+id: ppv_live_webcams-712e9341-5bd5-4b9c-891c-048ccec1ba45
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ppv-live-webcams/
+    google-query: inurl:"/wp-content/plugins/ppv-live-webcams/"
+    shodan-query: http.html:"wp-content/plugins/ppv-live-webcams/"
+  name: 'Paid Videochat Turnkey Site <= 7.3.22 - Authenticated (Admin+) Remote Code
+    Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/712e9341-5bd5-4b9c-891c-048ccec1ba45?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ppv-live-webcams,low,candidate

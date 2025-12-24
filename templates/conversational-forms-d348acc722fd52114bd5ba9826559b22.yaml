@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - conversational-forms
+  - dsl:
+    - compare_versions(version, '<= 1.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/conversational-forms/readme.txt'
+  redirects: true
+id: conversational-forms-d348acc722fd52114bd5ba9826559b22
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/conversational-forms/
+    google-query: inurl:"/wp-content/plugins/conversational-forms/"
+    shodan-query: 'vuln:'
+  name: 'Conversational Forms for ChatBot <= 1.1.8 - Unauthenticated Arbitrary File
+    Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/54db4d53-7c4f-47d9-811d-8282eaf2d074?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,conversational-forms,low

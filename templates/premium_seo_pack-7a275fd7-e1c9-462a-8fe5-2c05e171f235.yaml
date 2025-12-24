@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - premium-seo-pack
+  - dsl:
+    - compare_versions(version, '<= 1.6.001')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/premium-seo-pack/readme.txt'
+  redirects: true
+id: premium_seo_pack-7a275fd7-e1c9-462a-8fe5-2c05e171f235
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/premium-seo-pack/
+    google-query: inurl:"/wp-content/plugins/premium-seo-pack/"
+    shodan-query: http.html:"wp-content/plugins/premium-seo-pack/"
+  name: 'Premium SEO Pack <= 1.6.001 - Authenticated (Contributor+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7a275fd7-e1c9-462a-8fe5-2c05e171f235?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,premium-seo-pack,low,candidate

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gs-pinterest-portfolio
+  - dsl:
+    - compare_versions(version, '<= 1.8.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gs-pinterest-portfolio/readme.txt'
+  redirects: true
+id: gs_pinterest_portfolio-425cd0be-d17e-4c2b-bf29-3b850905a88e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gs-pinterest-portfolio/
+    google-query: inurl:"/wp-content/plugins/gs-pinterest-portfolio/"
+    shodan-query: http.html:"wp-content/plugins/gs-pinterest-portfolio/"
+  name: "WordPress Pinterest Plugin \u2013 Make a Popup, User Profile, Masonry and\
+    \ Gallery Layout <= 1.8.8 - Authenticated (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/425cd0be-d17e-4c2b-bf29-3b850905a88e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gs-pinterest-portfolio,low,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quiz-master-next
+  - dsl:
+    - compare_versions(version, '< 7.1.19')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quiz-master-next/readme.txt'
+  redirects: true
+id: quiz-master-next-71386177e2250de7ec37bbff5387b56f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 6.4
+  description: The Quiz And Survey Master plugin plugin for WordPress is vulnerable
+    to Cross-Site Scripting in versions up to, and including, 7.1.18 due to insufficient
+    input sanitization and output escaping on the IP value. This makes it possible
+    for attackers to inject arbitrary web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/plugins/quiz-master-next/
+    google-query: inurl:"/wp-content/plugins/quiz-master-next/"
+    shodan-query: 'vuln:'
+  name: Quiz And Survey Master <= 7.1.18 - Cross-Site Scripting
+  reference:
+  - https://plugins.trac.wordpress.org/changeset/2541886/
+  - https://patchstack.com/database/vulnerability/quiz-master-next/wordpress-quiz-and-survey-master-plugin-7-1-18-unauthenticated-stored-cross-site-scripting-xss-vulnerability
+  severity: medium
+  tags: cve,wordpress,wp-plugin,quiz-master-next,medium

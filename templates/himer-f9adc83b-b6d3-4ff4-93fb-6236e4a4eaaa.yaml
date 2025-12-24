@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - himer
+  - dsl:
+    - compare_versions(version, '<= 2.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/himer/style.css'
+  redirects: true
+id: himer-f9adc83b-b6d3-4ff4-93fb-6236e4a4eaaa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/himer/
+    google-query: inurl:"/wp-content/themes/himer/"
+    shodan-query: http.html:"wp-content/themes/himer/"
+  name: 'Himer <= 2.1.0 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f9adc83b-b6d3-4ff4-93fb-6236e4a4eaaa?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,himer,low,candidate

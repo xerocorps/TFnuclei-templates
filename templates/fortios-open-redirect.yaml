@@ -1,0 +1,20 @@
+id: fortios-open-redirect
+info:
+  author: 0x_Akoko
+  description: The FortiOS webui accepts a user-controlled input that specifies a
+    link to an external site, and uses that link in a redirect.
+  name: FortiOS (Fortinet) - Open Redirect and XSS
+  reference:
+  - https://seclists.org/fulldisclosure/2016/Mar/68
+  - http://www.fortiguard.com/advisory/fortios-open-redirect-vulnerability
+  severity: medium
+  tags: redirect,fortinet,fortios
+requests:
+- matchers:
+  - part: header
+    regex:
+    - (?m)^(?:Location\s*?:\s*?)(?:https?://|//)?(?:[a-zA-Z0-9\-_]*\.)?example\.com(?:\s*?)$
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/login?redir=http://www.example.com'

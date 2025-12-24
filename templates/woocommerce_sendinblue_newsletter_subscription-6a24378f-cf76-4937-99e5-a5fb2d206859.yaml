@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-sendinblue-newsletter-subscription
+  - dsl:
+    - compare_versions(version, '<= 4.0.17')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-sendinblue-newsletter-subscription/readme.txt'
+  redirects: true
+id: woocommerce_sendinblue_newsletter_subscription-6a24378f-cf76-4937-99e5-a5fb2d206859
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-sendinblue-newsletter-subscription/
+    google-query: inurl:"/wp-content/plugins/woocommerce-sendinblue-newsletter-subscription/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-sendinblue-newsletter-subscription/"
+  name: 'Sendinblue for WooCommerce <= 4.0.17 - Authenticated (Editor+) Arbitrary
+    File Download and Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6a24378f-cf76-4937-99e5-a5fb2d206859?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-sendinblue-newsletter-subscription,low,candidate

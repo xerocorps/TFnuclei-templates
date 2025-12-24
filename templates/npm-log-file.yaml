@@ -1,0 +1,18 @@
+id: npm-log-file
+info:
+  author: sheikhrishad
+  name: Publicly accessible NPM Log file
+  severity: low
+  tags: npm,logs,exposure
+requests:
+- matchers:
+  - type: word
+    words:
+    - info it worked if it ends with ok
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/npm-debug.log'

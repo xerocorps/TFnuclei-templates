@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leaflet-maps-marker-pro
+  - dsl:
+    - compare_versions(version, '< 1.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leaflet-maps-marker-pro/readme.txt'
+  redirects: true
+id: leaflet_maps_marker_pro-68b4ef1f-93cc-4fbd-9713-9cbc6ad59f5e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+    cvss-score: 7.5
+  description: 'The Leaflet Maps Marker Pro plugin for WordPress is vulnerable to
+    Arbitrary File Deletion in versions up to, and including, 1.5.7. This allows attackers
+    to delete the contents of arbitrary files on the server, which can contain sensitive
+    information.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/leaflet-maps-marker-pro/
+    google-query: inurl:"/wp-content/plugins/leaflet-maps-marker-pro/"
+    shodan-query: http.html:"wp-content/plugins/leaflet-maps-marker-pro/"
+  name: 'Leaflet Maps Marker Pro < 1.5.8 - Arbitrary File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/68b4ef1f-93cc-4fbd-9713-9cbc6ad59f5e?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,leaflet-maps-marker-pro,high,production

@@ -1,0 +1,13 @@
+id: debug-pprof
+info:
+  author: pdteam
+  name: pprof debug file
+  severity: low
+requests:
+- matchers:
+  - type: word
+    words:
+    - Types of profiles available
+  method: GET
+  path:
+  - '{{BaseURL}}/debug/pprof/'

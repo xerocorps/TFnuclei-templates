@@ -1,0 +1,32 @@
+id: hp-color-laserjet-detect
+info:
+  author: idealphase,gy741
+  metadata:
+    google-query: intitle:"HP Color LaserJet"
+    shodan-query: http.title:"HP Color LaserJet"
+  name: HP Color LaserJet detection
+  reference:
+  - http://www.hp.com/
+  - https://www.hp.com/us-en/shop/cv/printers
+  severity: info
+  tags: iot,hp
+requests:
+- extractors:
+  - group: 1
+    regex:
+    - <td class="mastheadTitle"><h1>HP Color LaserJet (.+)<\/h1><\/td>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>HP Color LaserJet
+    - <td class="mastheadTitle"><h1>HP Color LaserJet
+    - <strong class="product">HP Color LaserJet
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

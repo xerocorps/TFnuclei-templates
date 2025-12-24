@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - real-time-validation-for-gravity-forms
+  - dsl:
+    - compare_versions(version, '<= 1.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/real-time-validation-for-gravity-forms/readme.txt'
+  redirects: true
+id: real_time_validation_for_gravity_forms-d6fb5839-c4c3-422d-8418-5f4dc36cdb39
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/real-time-validation-for-gravity-forms/
+    google-query: inurl:"/wp-content/plugins/real-time-validation-for-gravity-forms/"
+    shodan-query: http.html:"wp-content/plugins/real-time-validation-for-gravity-forms/"
+  name: 'Real Time Validation for Gravity Forms <= 1.7.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d6fb5839-c4c3-422d-8418-5f4dc36cdb39?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,real-time-validation-for-gravity-forms,medium,candidate

@@ -1,0 +1,23 @@
+id: wordpress-takeover
+info:
+  author: pdteam,geeknik
+  name: WordPress takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover,wordpress
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Do you want to register
+    - .wordpress.com</em> doesn&#8217;t&nbsp;exist
+  - negative: true
+    type: word
+    words:
+    - cannot be registered
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

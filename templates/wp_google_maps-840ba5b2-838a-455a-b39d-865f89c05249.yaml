@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-google-maps
+  - dsl:
+    - compare_versions(version, '<= 9.0.46')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-google-maps/readme.txt'
+  redirects: true
+id: wp_google_maps-840ba5b2-838a-455a-b39d-865f89c05249
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-google-maps/
+    google-query: inurl:"/wp-content/plugins/wp-google-maps/"
+    shodan-query: http.html:"wp-content/plugins/wp-google-maps/"
+  name: 'WP Go Maps (formerly WP Google Maps) <= 9.0.46 - Cross-Site Request Forgery
+    to Plugin Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/840ba5b2-838a-455a-b39d-865f89c05249?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-google-maps,medium,candidate

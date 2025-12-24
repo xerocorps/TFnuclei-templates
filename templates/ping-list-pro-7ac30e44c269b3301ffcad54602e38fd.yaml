@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ping-list-pro
+  - dsl:
+    - compare_versions(version, '<= 1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ping-list-pro/readme.txt'
+  redirects: true
+id: ping-list-pro-7ac30e44c269b3301ffcad54602e38fd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ping-list-pro/
+    google-query: inurl:"/wp-content/plugins/ping-list-pro/"
+    shodan-query: 'vuln:'
+  name: 'Ping List Pro <= 1.1 - Cross-Site Request Forgery to Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6971eea0-9d0b-4a7f-be05-001c34770c2f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ping-list-pro,medium

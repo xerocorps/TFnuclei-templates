@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leadsquared-suite
+  - dsl:
+    - compare_versions(version, '<= 0.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leadsquared-suite/readme.txt'
+  redirects: true
+id: leadsquared-suite-37f6b98dbf59a389b13b2999dfc0934a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/leadsquared-suite/
+    google-query: inurl:"/wp-content/plugins/leadsquared-suite/"
+    shodan-query: 'vuln:'
+  name: 'LeadSquared Suite <= 0.7.4 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting via settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ef1aafc2-e47b-49da-8a4e-9111209308c2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,leadsquared-suite,low

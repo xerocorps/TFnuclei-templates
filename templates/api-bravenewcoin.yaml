@@ -1,0 +1,30 @@
+id: api-bravenewcoin
+info:
+  author: daffainfo
+  name: Brave New Coin API Test
+  reference:
+  - https://bravenewcoin.com/developers
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Cryptocurrency/Brave%20New%20Coin.md
+  severity: info
+  tags: token-spray,bravenewcoin
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"content":'
+    - '"id":'
+    - '"baseAssetId":'
+    - '"quoteAssetId":'
+  raw:
+  - 'GET https://bravenewcoin.p.rapidapi.com/market HTTP/1.1
+
+    X-Rapidapi-Host: bravenewcoin.p.rapidapi.com
+
+    X-Rapidapi-Key: {{token}}
+
+    Host: bravenewcoin.p.rapidapi.com
+
+    '
+self-contained: true

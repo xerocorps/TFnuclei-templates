@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vk-block-patterns
+  - dsl:
+    - compare_versions(version, '<= 1.31.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vk-block-patterns/readme.txt'
+  redirects: true
+id: vk_block_patterns-9af6c319-7660-4368-b2f8-1ed1d01ee73a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vk-block-patterns/
+    google-query: inurl:"/wp-content/plugins/vk-block-patterns/"
+    shodan-query: http.html:"wp-content/plugins/vk-block-patterns/"
+  name: 'VK Block Patterns <= 1.31.1.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9af6c319-7660-4368-b2f8-1ed1d01ee73a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,vk-block-patterns,medium,candidate

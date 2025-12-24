@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tokenico-cryptocurrency-token-launchpad-presale-ico-ido-airdrop
+  - dsl:
+    - compare_versions(version, '<= 2.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tokenico-cryptocurrency-token-launchpad-presale-ico-ido-airdrop/readme.txt'
+  redirects: true
+id: tokenico_cryptocurrency_token_launchpad_presale_ico_ido_airdrop-c5c5793f-4d98-4ec1-a9b6-6e7c3f8b6099
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tokenico-cryptocurrency-token-launchpad-presale-ico-ido-airdrop/
+    google-query: inurl:"/wp-content/plugins/tokenico-cryptocurrency-token-launchpad-presale-ico-ido-airdrop/"
+    shodan-query: http.html:"wp-content/plugins/tokenico-cryptocurrency-token-launchpad-presale-ico-ido-airdrop/"
+  name: 'Cryptocurrency (Token), Launchpad (Presale), ICO & IDO, Airdrop by TokenICO
+    <= 2.4.6 - Missing Authentication to Unauthenticated Presale Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c5c5793f-4d98-4ec1-a9b6-6e7c3f8b6099?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tokenico-cryptocurrency-token-launchpad-presale-ico-ido-airdrop,low,candidate

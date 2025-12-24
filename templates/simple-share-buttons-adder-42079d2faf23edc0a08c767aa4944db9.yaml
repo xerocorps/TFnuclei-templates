@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-share-buttons-adder
+  - dsl:
+    - compare_versions(version, '<= 3.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-share-buttons-adder/readme.txt'
+  redirects: true
+id: simple-share-buttons-adder-42079d2faf23edc0a08c767aa4944db9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-share-buttons-adder/
+    google-query: inurl:"/wp-content/plugins/simple-share-buttons-adder/"
+    shodan-query: 'vuln:'
+  name: 'Simple Share Buttons Adder <= 8.5.0 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3facf09f-2e5d-42d0-b0b3-3aea93febe48?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-share-buttons-adder,low

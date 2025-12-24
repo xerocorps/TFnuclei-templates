@@ -1,0 +1,29 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - web
+    - security
+    - grafana
+    - exposed
+  description: Template to detect exposed Grafana installations
+  id: exposed-grafana
+  name: Exposed Grafana - Detect
+  severity: Medium
+matcher-condition: or
+matchers:
+- description: Grafana banner found in response body
+  pattern: Grafana
+  type: body
+requests:
+  condition: or
+  description: Attempt to access Grafana URL
+  method: GET
+  path:
+  - /grafana
+  - /grafana/login
+response:
+- description: Successful response status
+  status:
+  - 200

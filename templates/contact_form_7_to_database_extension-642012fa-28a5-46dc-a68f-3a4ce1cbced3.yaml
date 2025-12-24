@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-7-to-database-extension
+  - dsl:
+    - compare_versions(version, '<= 2.8.29')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-7-to-database-extension/readme.txt'
+  redirects: true
+id: contact_form_7_to_database_extension-642012fa-28a5-46dc-a68f-3a4ce1cbced3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-7-to-database-extension/
+    google-query: inurl:"/wp-content/plugins/contact-form-7-to-database-extension/"
+    shodan-query: http.html:"wp-content/plugins/contact-form-7-to-database-extension/"
+  name: 'Contact Form DB <= 2.8.29 - Cross-site request forgery via a request in the
+    CF7DBPluginSubmissions page to wp-admin/admin.php
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/642012fa-28a5-46dc-a68f-3a4ce1cbced3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,contact-form-7-to-database-extension,medium,candidate

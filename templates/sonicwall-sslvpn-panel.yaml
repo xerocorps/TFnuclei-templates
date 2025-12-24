@@ -1,0 +1,14 @@
+id: sonicwall-sslvpn-panel
+info:
+  author: PR3R00T
+  name: SonicWall Virtual Office SSLVPN Panel
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Virtual Office</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/welcome'

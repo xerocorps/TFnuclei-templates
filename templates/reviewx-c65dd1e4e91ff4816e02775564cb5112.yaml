@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - reviewx
+  - dsl:
+    - compare_versions(version, '< 1.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/reviewx/readme.txt'
+  redirects: true
+id: reviewx-c65dd1e4e91ff4816e02775564cb5112
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/reviewx/
+    google-query: inurl:"/wp-content/plugins/reviewx/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Reviews Plugin with Multi-criteria Rating by ReviewX < 1.2.9
+    - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6c3032ae-eb86-47d0-b160-320a67a380e1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,reviewx,medium

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shiftnav-responsive-mobile-menu
+  - dsl:
+    - compare_versions(version, '<= 1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shiftnav-responsive-mobile-menu/readme.txt'
+  redirects: true
+id: shiftnav_responsive_mobile_menu-333607d4-ec77-48c2-8f07-14ffbab95fa4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shiftnav-responsive-mobile-menu/
+    google-query: inurl:"/wp-content/plugins/shiftnav-responsive-mobile-menu/"
+    shodan-query: http.html:"wp-content/plugins/shiftnav-responsive-mobile-menu/"
+  name: "ShiftNav \u2013 Responsive Mobile Menu <= 1.8 - Authenticated (Contributor+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/333607d4-ec77-48c2-8f07-14ffbab95fa4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shiftnav-responsive-mobile-menu,low,candidate

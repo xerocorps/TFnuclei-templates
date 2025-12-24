@@ -1,0 +1,39 @@
+id: black-duck-panel
+info:
+  author: idealphase,ritikchaddha
+  description: 'Black Duck Security Advisories help you avoid being caught off-guard
+    by open source vulnerabilities, both in development and production. And they provide
+    the critical data necessary to prioritize vulnerabilities for remediation, such
+    as exploit info, remediation guidance, severity scoring, and call path analysis.
+
+    '
+  metadata:
+    shodan-query: http.title:"Black Duck"
+    verified: true
+  name: Black Duck Panel
+  reference:
+  - https://www.blackducksoftware.com/
+  - https://www.synopsys.com/software-integrity/security-testing/software-composition-analysis.html
+  severity: info
+  tags: panel,blackduck,synopsys
+requests:
+- matchers:
+  - part: body
+    regex:
+    - (?m)<title>Black Duck(.*)<\/title>
+    type: regex
+  - condition: or
+    part: body
+    type: word
+    words:
+    - ProtexLoginPage
+    - CCLoginPage
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

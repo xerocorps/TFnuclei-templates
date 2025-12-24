@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ti-woocommerce-wishlist
+  - dsl:
+    - compare_versions(version, '<= 2.10.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ti-woocommerce-wishlist/readme.txt'
+  redirects: true
+id: ti_woocommerce_wishlist-8d08d381-d0ef-4f40-975d-51e919a7c872
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ti-woocommerce-wishlist/
+    google-query: inurl:"/wp-content/plugins/ti-woocommerce-wishlist/"
+    shodan-query: http.html:"wp-content/plugins/ti-woocommerce-wishlist/"
+  name: 'TI WooCommerce Wishlist <= 2.10.0 - Unauthenticated HTML Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8d08d381-d0ef-4f40-975d-51e919a7c872?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ti-woocommerce-wishlist,low,candidate

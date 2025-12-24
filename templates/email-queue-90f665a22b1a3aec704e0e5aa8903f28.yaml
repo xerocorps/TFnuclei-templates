@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - email-queue
+  - dsl:
+    - compare_versions(version, '< 1.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/email-queue/readme.txt'
+  redirects: true
+id: email-queue-90f665a22b1a3aec704e0e5aa8903f28
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/email-queue/
+    google-query: inurl:"/wp-content/plugins/email-queue/"
+    shodan-query: 'vuln:'
+  name: 'Email Queue by BestWebSoft < 1.1.2 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/153a9a08-66b3-40fd-963d-93058c863a80?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,email-queue,medium

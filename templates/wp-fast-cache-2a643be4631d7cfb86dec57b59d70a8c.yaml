@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-fast-cache
+  - dsl:
+    - compare_versions(version, '<= 1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-fast-cache/readme.txt'
+  redirects: true
+id: wp-fast-cache-2a643be4631d7cfb86dec57b59d70a8c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-fast-cache/
+    google-query: inurl:"/wp-content/plugins/wp-fast-cache/"
+    shodan-query: 'vuln:'
+  name: 'WP Fast Cache <= 1.4 - Cross-Site Request Forgery to Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/655e6486-e35f-4e7b-b894-55606d3eba56?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-fast-cache,medium

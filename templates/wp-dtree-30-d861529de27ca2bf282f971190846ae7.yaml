@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-dtree-30
+  - dsl:
+    - compare_versions(version, '<= 4.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-dtree-30/readme.txt'
+  redirects: true
+id: wp-dtree-30-d861529de27ca2bf282f971190846ae7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-dtree-30/
+    google-query: inurl:"/wp-content/plugins/wp-dtree-30/"
+    shodan-query: 'vuln:'
+  name: 'WP-dTree <= 4.4.5 - Authenticated (Administrator+) Stored Cross-Site Scripting
+    via plugin settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cde92185-d63a-47b3-a17e-3f2b2b20270c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-dtree-30,low

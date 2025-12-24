@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - html5-audio-player
+  - dsl:
+    - compare_versions(version, '<= 2.2.23')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/html5-audio-player/readme.txt'
+  redirects: true
+id: html5-audio-player-340df9993c4a78c9399a6184bff22bef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/html5-audio-player/
+    google-query: inurl:"/wp-content/plugins/html5-audio-player/"
+    shodan-query: 'vuln:'
+  name: 'Html5 Audio Player <= 2.2.23 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d84a934f-a807-4968-9db0-9a292767046b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,html5-audio-player,low

@@ -1,0 +1,23 @@
+fingerprint:
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - rmsie = /(msie\s|trident.*rv:)([\w.]+)/i
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - match = rmsie.exec(window.navigator.useragent
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+name: integrating-century-epbp-management-platform
+nuclei_tags:
+- []
+priority: 3

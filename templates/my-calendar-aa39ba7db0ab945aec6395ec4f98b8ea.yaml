@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - my-calendar
+  - dsl:
+    - compare_versions(version, '<= 2.3.29')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/my-calendar/readme.txt'
+  redirects: true
+id: my-calendar-aa39ba7db0ab945aec6395ec4f98b8ea
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: 'The My Calendar plugin for WordPress is vulnerable to Path Traversal
+    in versions up to, and including, 2.3.29 via the  ''edit_my_calendar_styles''
+    function in the ''my-calendar-styles.php'' file. This allows unauthenticated attackers
+    to overwrite the contents of all files the vulnerable service has access to, including
+    adding executable PHP to PHP files.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/my-calendar/
+    google-query: inurl:"/wp-content/plugins/my-calendar/"
+    shodan-query: 'vuln:'
+  name: 'My Calendar <= 2.3.29 - Path Traversal to Remote Code Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cfffe880-e3f9-4163-a726-e248433e1034?source=api-prod
+  severity: critical
+  tags: cve,wordpress,wp-plugin,my-calendar,critical

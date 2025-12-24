@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-slimstat
+  - dsl:
+    - compare_versions(version, '<= 5.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-slimstat/readme.txt'
+  redirects: true
+id: wp-slimstat-53da1fbff7543ca7fadceb006205b4a5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-slimstat/
+    google-query: inurl:"/wp-content/plugins/wp-slimstat/"
+    shodan-query: 'vuln:'
+  name: 'Slimstat Analytics <= 5.0.8 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting via settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3c14a863-2aed-4f65-a0e3-eb73e485ce85?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-slimstat,low

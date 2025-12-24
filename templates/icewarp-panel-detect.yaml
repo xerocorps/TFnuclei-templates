@@ -1,0 +1,28 @@
+id: icewarp-panel-detect
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: title:"icewarp"
+    verified: true
+  name: IceWarp Panel Detect
+  severity: info
+  tags: icewarp,panel
+requests:
+- extractors:
+  - group: 1
+    part: header
+    regex:
+    - 'Server: (.{4,20})'
+    type: regex
+  matchers:
+  - part: header
+    type: word
+    words:
+    - IceWarp
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/webmail/'

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shortpixel-adaptive-images
+  - dsl:
+    - compare_versions(version, '<= 3.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shortpixel-adaptive-images/readme.txt'
+  redirects: true
+id: shortpixel_adaptive_images-acb8c11f-e175-4361-b016-e1ebc1713be0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shortpixel-adaptive-images/
+    google-query: inurl:"/wp-content/plugins/shortpixel-adaptive-images/"
+    shodan-query: http.html:"wp-content/plugins/shortpixel-adaptive-images/"
+  name: 'ShortPixel Adaptive Images <= 3.6.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/acb8c11f-e175-4361-b016-e1ebc1713be0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,shortpixel-adaptive-images,medium,candidate

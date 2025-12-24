@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fulltext-search
+  - dsl:
+    - compare_versions(version, '<= 1.78.258')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fulltext-search/readme.txt'
+  redirects: true
+id: fulltext_search-97f96f18-3296-4e9b-adae-a073da520778
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fulltext-search/
+    google-query: inurl:"/wp-content/plugins/fulltext-search/"
+    shodan-query: http.html:"wp-content/plugins/fulltext-search/"
+  name: 'WP Fast Total Search <= 1.78.258 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/97f96f18-3296-4e9b-adae-a073da520778?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,fulltext-search,medium,candidate

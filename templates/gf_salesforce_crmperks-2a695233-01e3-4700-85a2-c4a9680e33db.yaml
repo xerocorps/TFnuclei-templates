@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gf-salesforce-crmperks
+  - dsl:
+    - compare_versions(version, '<= 1.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gf-salesforce-crmperks/readme.txt'
+  redirects: true
+id: gf_salesforce_crmperks-2a695233-01e3-4700-85a2-c4a9680e33db
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gf-salesforce-crmperks/
+    google-query: inurl:"/wp-content/plugins/gf-salesforce-crmperks/"
+    shodan-query: http.html:"wp-content/plugins/gf-salesforce-crmperks/"
+  name: 'WP Gravity Forms Salesforce <= 1.4.7 - Open Redirect
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2a695233-01e3-4700-85a2-c4a9680e33db?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gf-salesforce-crmperks,low,candidate

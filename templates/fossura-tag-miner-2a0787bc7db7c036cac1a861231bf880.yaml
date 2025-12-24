@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fossura-tag-miner
+  - dsl:
+    - compare_versions(version, '< 1.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fossura-tag-miner/readme.txt'
+  redirects: true
+id: fossura-tag-miner-2a0787bc7db7c036cac1a861231bf880
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fossura-tag-miner/
+    google-query: inurl:"/wp-content/plugins/fossura-tag-miner/"
+    shodan-query: 'vuln:'
+  name: 'Tag Miner (Automatic Tag Extraction) < 1.1.5 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a07a643e-1a4b-47fe-9e4a-b4cc070bce74?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,fossura-tag-miner,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - canto
+  - dsl:
+    - compare_versions(version, '<= 1.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/canto/readme.txt'
+  redirects: true
+id: canto-fe5f3960a19e415d65ec973837bc0064
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/canto/
+    google-query: inurl:"/wp-content/plugins/canto/"
+    shodan-query: 'vuln:'
+  name: 'Canto <= 1.9.0 - Blind Server-Side Request Forgery via get.php
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4a330416-f867-4a1a-a692-6003e231ed54?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,canto,low

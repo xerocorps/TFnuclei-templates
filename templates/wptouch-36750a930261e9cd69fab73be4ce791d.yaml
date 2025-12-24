@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wptouch
+  - dsl:
+    - compare_versions(version, '< 1.9.30')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wptouch/readme.txt'
+  redirects: true
+id: wptouch-36750a930261e9cd69fab73be4ce791d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The WPtouch plugin for WordPress is vulnerable to Open Redirect in
+    versions before 1.9.30. This is due to insufficient input sanitization via the
+    'wptouch_redirect' parameter. This makes it possible for attackers to construct
+    a URL which causes a redirection to an arbitrary external domain.
+  metadata:
+    fofa-query: wp-content/plugins/wptouch/
+    google-query: inurl:"/wp-content/plugins/wptouch/"
+    shodan-query: 'vuln:'
+  name: WPtouch < 1.9.30 - Open Redirect
+  reference:
+  - https://www.infosecmatter.com/nessus-plugin-library/?id=55443
+  - https://github.com/wp-plugins/wptouch
+  - https://wpscan.com/vulnerability/9f3f31b5-ed3b-4cc1-be9e-6dc2a8d51308
+  - https://web.archive.org/web/20150323192259/https%3A//www.securityfocus.com/bid/48348/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wptouch,medium

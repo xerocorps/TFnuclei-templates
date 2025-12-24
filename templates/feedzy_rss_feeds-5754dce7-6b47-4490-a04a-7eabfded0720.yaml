@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - feedzy-rss-feeds
+  - dsl:
+    - compare_versions(version, '<= 5.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/feedzy-rss-feeds/readme.txt'
+  redirects: true
+id: feedzy_rss_feeds-5754dce7-6b47-4490-a04a-7eabfded0720
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/feedzy-rss-feeds/
+    google-query: inurl:"/wp-content/plugins/feedzy-rss-feeds/"
+    shodan-query: http.html:"wp-content/plugins/feedzy-rss-feeds/"
+  name: "RSS Aggregator by Feedzy \u2013 Feed to Post, Autoblogging, News & YouTube\
+    \ Video Feeds Aggregator <= 5.1.1 - Unauthenticated Blind Server-Side Request\
+    \ Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5754dce7-6b47-4490-a04a-7eabfded0720?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,feedzy-rss-feeds,low,candidate

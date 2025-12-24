@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pagelayer
+  - dsl:
+    - compare_versions(version, '<= 1.8.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pagelayer/readme.txt'
+  redirects: true
+id: pagelayer-4897566181f162619234d6d629004922
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pagelayer/
+    google-query: inurl:"/wp-content/plugins/pagelayer/"
+    shodan-query: 'vuln:'
+  name: "Page Builder: Pagelayer \u2013 Drag and Drop website builder <= 1.8.3 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting via Custom Attributes\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/98bff131-dee2-4549-9167-69dc3f8d6b9d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,pagelayer,low

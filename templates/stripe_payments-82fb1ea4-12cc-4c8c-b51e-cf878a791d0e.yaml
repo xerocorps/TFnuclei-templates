@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stripe-payments
+  - dsl:
+    - compare_versions(version, '<= 2.0.63')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stripe-payments/readme.txt'
+  redirects: true
+id: stripe_payments-82fb1ea4-12cc-4c8c-b51e-cf878a791d0e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stripe-payments/
+    google-query: inurl:"/wp-content/plugins/stripe-payments/"
+    shodan-query: http.html:"wp-content/plugins/stripe-payments/"
+  name: 'Accept Stripe Payments <= 2.0.63 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/82fb1ea4-12cc-4c8c-b51e-cf878a791d0e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stripe-payments,low,candidate

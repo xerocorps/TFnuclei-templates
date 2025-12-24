@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - themify-builder
+  - dsl:
+    - compare_versions(version, '<= 5.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/themify-builder/readme.txt'
+  redirects: true
+id: themify-builder-5055f29804d2c88baf1b2a426d6960b3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/themify-builder/
+    google-query: inurl:"/wp-content/plugins/themify-builder/"
+    shodan-query: 'vuln:'
+  name: 'Themify Builder <= 5.3.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f62713c9-bf87-44be-9b7e-c088989bad77?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,themify-builder,medium

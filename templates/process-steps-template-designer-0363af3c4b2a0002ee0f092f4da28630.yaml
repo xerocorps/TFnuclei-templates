@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - process-steps-template-designer
+  - dsl:
+    - compare_versions(version, '<= 1.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/process-steps-template-designer/readme.txt'
+  redirects: true
+id: process-steps-template-designer-0363af3c4b2a0002ee0f092f4da28630
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/process-steps-template-designer/
+    google-query: inurl:"/wp-content/plugins/process-steps-template-designer/"
+    shodan-query: 'vuln:'
+  name: 'Process Steps Template Designer <= 1.2.1 - Cross-Site Request Forgery Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a98f6a68-5863-4147-86c4-8c19af469be3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,process-steps-template-designer,medium

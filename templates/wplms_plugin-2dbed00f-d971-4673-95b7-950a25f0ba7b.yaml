@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wplms_plugin
+  - dsl:
+    - compare_versions(version, '<= 1.9.9.5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wplms_plugin/readme.txt'
+  redirects: true
+id: wplms_plugin-2dbed00f-d971-4673-95b7-950a25f0ba7b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wplms_plugin/
+    google-query: inurl:"/wp-content/plugins/wplms_plugin/"
+    shodan-query: http.html:"wp-content/plugins/wplms_plugin/"
+  name: 'WPLMS <= 1.9.9.5.4 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2dbed00f-d971-4673-95b7-950a25f0ba7b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wplms_plugin,low,candidate

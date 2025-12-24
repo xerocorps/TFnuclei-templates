@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lock-user-account
+  - dsl:
+    - compare_versions(version, '<= 1.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lock-user-account/readme.txt'
+  redirects: true
+id: lock_user_account-63374c5c-0b0a-4091-9aee-2e6c1d17a1b2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lock-user-account/
+    google-query: inurl:"/wp-content/plugins/lock-user-account/"
+    shodan-query: http.html:"wp-content/plugins/lock-user-account/"
+  name: 'Lock User Account <= 1.0.5 - User Lock Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/63374c5c-0b0a-4091-9aee-2e6c1d17a1b2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,lock-user-account,low,candidate

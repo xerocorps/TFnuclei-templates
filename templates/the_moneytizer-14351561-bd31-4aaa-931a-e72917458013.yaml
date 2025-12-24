@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - the-moneytizer
+  - dsl:
+    - compare_versions(version, '<= 9.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/the-moneytizer/readme.txt'
+  redirects: true
+id: the_moneytizer-14351561-bd31-4aaa-931a-e72917458013
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/the-moneytizer/
+    google-query: inurl:"/wp-content/plugins/the-moneytizer/"
+    shodan-query: http.html:"wp-content/plugins/the-moneytizer/"
+  name: 'The Moneytizer <= 9.6.3 - Cross-Site Request Forgery via multiple AJAX actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/14351561-bd31-4aaa-931a-e72917458013?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,the-moneytizer,medium,candidate

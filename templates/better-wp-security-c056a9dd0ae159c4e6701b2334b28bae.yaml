@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - better-wp-security
+  - dsl:
+    - compare_versions(version, '< 5.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/better-wp-security/readme.txt'
+  redirects: true
+id: better-wp-security-c056a9dd0ae159c4e6701b2334b28bae
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:N
+    cvss-score: 3.3
+  description: 'The iThemes Security plugin for WordPress is vulnerable to Cross-Site
+    Scripting in versions up to, and including, 5.3.4 due to insufficient input sanitization
+    and output escaping. This makes it possible for authenticated attackers to inject
+    arbitrary web scripts in pages that will execute whenever a user accesses an injected
+    page.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/better-wp-security/
+    google-query: inurl:"/wp-content/plugins/better-wp-security/"
+    shodan-query: 'vuln:'
+  name: 'iThemes Security < 5.3.5 - Authenticated Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e9f0689d-aa35-4dfb-b264-5d7378ab1a54?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,better-wp-security,low

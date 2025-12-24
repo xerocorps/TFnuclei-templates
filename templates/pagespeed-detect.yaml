@@ -1,0 +1,18 @@
+id: pagespeed-detect
+info:
+  author: geeknik
+  metadata:
+    shodan-query: 'X-Mod-Pagespeed:'
+    verified: 'true'
+  name: Pagespeed Detection
+  severity: info
+  tags: tech,pagespeed
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - 'X-Mod-Pagespeed:'
+  method: GET
+  path:
+  - '{{BaseURL}}'

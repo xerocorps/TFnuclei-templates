@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - internal-links
+  - dsl:
+    - compare_versions(version, '<= 2.24.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/internal-links/readme.txt'
+  redirects: true
+id: internal-links-a6a984f0e01748d93c16f9e40d094549
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/internal-links/
+    google-query: inurl:"/wp-content/plugins/internal-links/"
+    shodan-query: 'vuln:'
+  name: 'Internal Link Juicer: SEO Auto Linker for WordPress <= 2.24.3 - Cross-Site
+    Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eef7f964-8330-4c57-a5f4-0280853dcf76?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,internal-links,medium

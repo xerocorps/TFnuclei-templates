@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yikes-inc-easy-mailchimp-extender
+  - dsl:
+    - compare_versions(version, '>= 3.0', '<= 5.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yikes-inc-easy-mailchimp-extender/readme.txt'
+  redirects: true
+id: yikes-inc-easy-mailchimp-extender-86c65655d43d3f2be65ec97d3edfcebb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yikes-inc-easy-mailchimp-extender/
+    google-query: inurl:"/wp-content/plugins/yikes-inc-easy-mailchimp-extender/"
+    shodan-query: 'vuln:'
+  name: 'Easy Forms for Mailchimp 3.0 - 5.0.6 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b8877261-c60c-4433-9a4d-f1a99cac66c0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,yikes-inc-easy-mailchimp-extender,high

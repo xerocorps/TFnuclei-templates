@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - best-restaurant-menu-by-pricelisto
+  - dsl:
+    - compare_versions(version, '<= 1.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/best-restaurant-menu-by-pricelisto/readme.txt'
+  redirects: true
+id: best_restaurant_menu_by_pricelisto-6a2dab39-f071-4261-a38d-06bd2062673d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/best-restaurant-menu-by-pricelisto/
+    google-query: inurl:"/wp-content/plugins/best-restaurant-menu-by-pricelisto/"
+    shodan-query: http.html:"wp-content/plugins/best-restaurant-menu-by-pricelisto/"
+  name: 'Best Restaurant Menu by PriceListo <= 1.4.3 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6a2dab39-f071-4261-a38d-06bd2062673d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,best-restaurant-menu-by-pricelisto,low,candidate

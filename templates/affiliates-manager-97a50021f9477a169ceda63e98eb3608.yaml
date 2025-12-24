@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - affiliates-manager
+  - dsl:
+    - compare_versions(version, '<= 2.9.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/affiliates-manager/readme.txt'
+  redirects: true
+id: affiliates-manager-97a50021f9477a169ceda63e98eb3608
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/affiliates-manager/
+    google-query: inurl:"/wp-content/plugins/affiliates-manager/"
+    shodan-query: 'vuln:'
+  name: 'Affiliates Manager <= 2.9.13 - CSV Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c9d5c661-bc81-4706-b930-6e3309f3d705?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,affiliates-manager,low

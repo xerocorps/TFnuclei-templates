@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-rocket
+  - dsl:
+    - compare_versions(version, '<= 1.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-rocket/readme.txt'
+  redirects: true
+id: social_rocket-168dd2d4-bffb-4187-afc7-02fef8cb51a7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/social-rocket/
+    google-query: inurl:"/wp-content/plugins/social-rocket/"
+    shodan-query: http.html:"wp-content/plugins/social-rocket/"
+  name: "Social Rocket \u2013 Social Sharing Plugin <= 1.3.4 - Missing Authorization\
+    \ to Settings Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/168dd2d4-bffb-4187-afc7-02fef8cb51a7?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,social-rocket,high,candidate

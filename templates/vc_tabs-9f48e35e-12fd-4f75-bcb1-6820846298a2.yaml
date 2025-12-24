@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vc-tabs
+  - dsl:
+    - compare_versions(version, '<= 3.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vc-tabs/readme.txt'
+  redirects: true
+id: vc_tabs-9f48e35e-12fd-4f75-bcb1-6820846298a2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vc-tabs/
+    google-query: inurl:"/wp-content/plugins/vc-tabs/"
+    shodan-query: http.html:"wp-content/plugins/vc-tabs/"
+  name: "Tabs \u2013 Responsive Tabs with WooCommerce Product Tab Extension <= 3.6.0\
+    \ - Authenticated (Admin+) Arbitrary Options Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9f48e35e-12fd-4f75-bcb1-6820846298a2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,vc-tabs,low,candidate

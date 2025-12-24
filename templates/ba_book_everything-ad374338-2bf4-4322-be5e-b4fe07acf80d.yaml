@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ba-book-everything
+  - dsl:
+    - compare_versions(version, '<= 1.6.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ba-book-everything/readme.txt'
+  redirects: true
+id: ba_book_everything-ad374338-2bf4-4322-be5e-b4fe07acf80d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ba-book-everything/
+    google-query: inurl:"/wp-content/plugins/ba-book-everything/"
+    shodan-query: http.html:"wp-content/plugins/ba-book-everything/"
+  name: 'BA Book Everything <= 1.6.8 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ad374338-2bf4-4322-be5e-b4fe07acf80d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ba-book-everything,low,candidate

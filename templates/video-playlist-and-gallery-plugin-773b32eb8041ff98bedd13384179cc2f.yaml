@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - video-playlist-and-gallery-plugin
+  - dsl:
+    - compare_versions(version, '<= 1.159')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/video-playlist-and-gallery-plugin/readme.txt'
+  redirects: true
+id: video-playlist-and-gallery-plugin-773b32eb8041ff98bedd13384179cc2f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/video-playlist-and-gallery-plugin/
+    google-query: inurl:"/wp-content/plugins/video-playlist-and-gallery-plugin/"
+    shodan-query: 'vuln:'
+  name: 'Post Video Players <= 1.159 - Cross-Site Request Forgery via cincopa_mp_mt_options_page
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/285d2b85-cdd0-4447-8cdc-b641751e4a5f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,video-playlist-and-gallery-plugin,medium

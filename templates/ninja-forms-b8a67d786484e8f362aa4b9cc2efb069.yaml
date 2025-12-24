@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ninja-forms
+  - dsl:
+    - compare_versions(version, '<= 3.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ninja-forms/readme.txt'
+  redirects: true
+id: ninja-forms-b8a67d786484e8f362aa4b9cc2efb069
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: "The Ninja Forms Contact Form \u2013 The Drag and Drop Form Builder\
+    \ for WordPress plugin for WordPress is vulnerable to Cross-Site Request Forgery\
+    \ in versions up to, and including 3.6.9, due to missing nonce validation on the\
+    \ import_fields_listener() function that makes it possible for unauthenticated\
+    \ attackers to import new form fields granted that can trick an attacker into\
+    \ performing an action such as clicking on a link.\nThis CSRF vulnerability can\
+    \ also be exploited to achieve PHP Object Injection due to the use of unserialize()\
+    \ on the user supplied file contents."
+  metadata:
+    fofa-query: wp-content/plugins/ninja-forms/
+    google-query: inurl:"/wp-content/plugins/ninja-forms/"
+    shodan-query: 'vuln:'
+  name: "Ninja Forms Contact Form \u2013 The Drag and Drop Form Builder for WordPress\
+    \ <= 3.6.9 - Cross-Site Request Forgery to Field Import and PHP Object Injection"
+  reference:
+  - https://plugins.trac.wordpress.org/changeset/2738397/ninja-forms/tags/3.6.10/includes/Admin/Menus/ImportExport.php
+  severity: high
+  tags: cve,wordpress,wp-plugin,ninja-forms,high

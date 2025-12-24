@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordpress-ping-optimizer
+  - dsl:
+    - compare_versions(version, '<= 2.35.1.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordpress-ping-optimizer/readme.txt'
+  redirects: true
+id: wordpress_ping_optimizer-8f9ce7a1-3e90-4b98-9fc2-4fcd37d332ed
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wordpress-ping-optimizer/
+    google-query: inurl:"/wp-content/plugins/wordpress-ping-optimizer/"
+    shodan-query: http.html:"wp-content/plugins/wordpress-ping-optimizer/"
+  name: 'WordPress Ping Optimizer <= 2.35.1.2.3 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8f9ce7a1-3e90-4b98-9fc2-4fcd37d332ed?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wordpress-ping-optimizer,medium,candidate

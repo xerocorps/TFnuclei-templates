@@ -1,0 +1,21 @@
+id: gocd-login
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: html:"GoCD Version"
+  name: GoCD Login
+  severity: info
+  tags: go,panel,gocd
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Login - Go</title>
+    - gocd-params
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/go/auth/login'

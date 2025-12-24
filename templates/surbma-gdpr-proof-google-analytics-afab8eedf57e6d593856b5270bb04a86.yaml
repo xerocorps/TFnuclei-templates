@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - surbma-gdpr-proof-google-analytics
+  - dsl:
+    - compare_versions(version, '<= 17.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/surbma-gdpr-proof-google-analytics/readme.txt'
+  redirects: true
+id: surbma-gdpr-proof-google-analytics-afab8eedf57e6d593856b5270bb04a86
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/surbma-gdpr-proof-google-analytics/
+    google-query: inurl:"/wp-content/plugins/surbma-gdpr-proof-google-analytics/"
+    shodan-query: 'vuln:'
+  name: 'Surbma | GDPR Proof Cookie Consent & Notice Bar <= 17.5.3 - Authenticated
+    (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/48b9f3e3-b7fd-4d7c-8f8b-b11ed977aa92?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,surbma-gdpr-proof-google-analytics,low

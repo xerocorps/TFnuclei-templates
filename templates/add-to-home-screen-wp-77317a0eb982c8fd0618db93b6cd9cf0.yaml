@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - add-to-home-screen-wp
+  - dsl:
+    - compare_versions(version, '<= 2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/add-to-home-screen-wp/readme.txt'
+  redirects: true
+id: add-to-home-screen-wp-77317a0eb982c8fd0618db93b6cd9cf0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/add-to-home-screen-wp/
+    google-query: inurl:"/wp-content/plugins/add-to-home-screen-wp/"
+    shodan-query: 'vuln:'
+  name: 'Add to home screen WP Plugin <= 2 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/145fec62-87a7-4641-9ce4-dca5afb47d69?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,add-to-home-screen-wp,low

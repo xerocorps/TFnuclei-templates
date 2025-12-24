@@ -1,0 +1,19 @@
+id: node-red-detect
+info:
+  author: pikpikcu
+  name: Node RED Detect
+  severity: info
+  tags: tech,apache
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Node-RED</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

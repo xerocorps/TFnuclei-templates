@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - json-rest-api
+  - dsl:
+    - compare_versions(version, '<= 1.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/json-rest-api/readme.txt'
+  redirects: true
+id: json-rest-api-e0fbcd26f6776722f7f846df7fa077db
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The WP REST API plugin for WordPress is vulnerable to Cross-Site Scripting
+    in versions up to, and including, 1.2.2 due to insufficient input sanitization
+    and output escaping. This makes it possible for unauthenticated attackers to inject
+    arbitrary web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/plugins/json-rest-api/
+    google-query: inurl:"/wp-content/plugins/json-rest-api/"
+    shodan-query: 'vuln:'
+  name: WP REST API <= 1.2.2 - Cross-Site Scripting
+  reference:
+  - http://wptavern.com/wp-rest-api-1-2-3-patches-xss-vulnerability
+  - https://github.com/WP-API/WP-API/releases/tag/2.0-beta4
+  - https://wpscan.com/vulnerability/04953e04-f726-4819-9729-5d22370d9fdd
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-wp-rest-api-wp-api-cross-site-scripting-1-2-2/
+  - https://patchstack.com/database/vulnerability/json-rest-api/wordpress-wp-rest-api-plugin-1-2-2-cross-site-scripting
+  severity: medium
+  tags: cve,wordpress,wp-plugin,json-rest-api,medium

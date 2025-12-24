@@ -1,0 +1,7 @@
+services:
+  app:
+    build: .
+    image: cve-2022-22965
+    ports:
+    - 8080:8080
+version: '3'

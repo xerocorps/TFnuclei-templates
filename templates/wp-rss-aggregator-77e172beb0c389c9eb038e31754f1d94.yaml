@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-rss-aggregator
+  - dsl:
+    - compare_versions(version, '<= 4.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-rss-aggregator/readme.txt'
+  redirects: true
+id: wp-rss-aggregator-77e172beb0c389c9eb038e31754f1d94
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L
+    cvss-score: 6.5
+  description: "The WP RSS Aggregator \u2013 News Feeds, Autoblogging, Youtube Video\
+    \ Feeds and More plugin for WordPress is vulnerable to authorization bypass due\
+    \ to a missing capability check on the wprss_check_if_blacklist_delete() function\
+    \ in versions up to, and including, 4.6.3. This makes it possible for unauthenticated\
+    \ attackers to delete arbitrary posts."
+  metadata:
+    fofa-query: wp-content/plugins/wp-rss-aggregator/
+    google-query: inurl:"/wp-content/plugins/wp-rss-aggregator/"
+    shodan-query: 'vuln:'
+  name: "WP RSS Aggregator \u2013 News Feeds, Autoblogging, Youtube Video Feeds and\
+    \ More <= 4.6.3 - Authorization Bypass"
+  reference:
+  - https://security.szurek.pl/en/wp-rss-aggregator-463-post-deletion/
+  - https://plugins.trac.wordpress.org/changeset/1023309
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-rss-aggregator,medium

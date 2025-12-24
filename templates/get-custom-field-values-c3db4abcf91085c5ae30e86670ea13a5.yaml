@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - get-custom-field-values
+  - dsl:
+    - compare_versions(version, '< 4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/get-custom-field-values/readme.txt'
+  redirects: true
+id: get-custom-field-values-c3db4abcf91085c5ae30e86670ea13a5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/get-custom-field-values/
+    google-query: inurl:"/wp-content/plugins/get-custom-field-values/"
+    shodan-query: 'vuln:'
+  name: 'Get Custom Field Values <= 4.0.1 - Authenticated(Contributor+) Stored Cross-Site
+    Scripting via Custom Meta Widget
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66e55302-f889-4054-817f-aadbdd3c88de?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,get-custom-field-values,low

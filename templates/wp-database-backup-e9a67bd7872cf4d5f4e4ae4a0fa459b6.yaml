@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-database-backup
+  - dsl:
+    - compare_versions(version, '<= 5.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-database-backup/readme.txt'
+  redirects: true
+id: wp-database-backup-e9a67bd7872cf4d5f4e4ae4a0fa459b6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-database-backup/
+    google-query: inurl:"/wp-content/plugins/wp-database-backup/"
+    shodan-query: 'vuln:'
+  name: 'WP Database Backup <= 5.1.2 - Unauthenticated Settings Update to Remote Code
+    Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f8035ed9-d267-44da-9de4-cf3d6ece7059?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-database-backup,critical

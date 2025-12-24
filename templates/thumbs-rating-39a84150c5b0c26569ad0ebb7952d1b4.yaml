@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - thumbs-rating
+  - dsl:
+    - compare_versions(version, '<= 5.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/thumbs-rating/readme.txt'
+  redirects: true
+id: thumbs-rating-39a84150c5b0c26569ad0ebb7952d1b4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/thumbs-rating/
+    google-query: inurl:"/wp-content/plugins/thumbs-rating/"
+    shodan-query: 'vuln:'
+  name: 'Thumbs Rating <= 5.0.0 - Race Condition
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cb1105fc-ed12-4a82-9cc4-4b45aa34cdc5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,thumbs-rating,low

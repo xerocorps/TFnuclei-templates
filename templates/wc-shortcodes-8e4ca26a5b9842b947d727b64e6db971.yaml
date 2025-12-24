@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-shortcodes
+  - dsl:
+    - compare_versions(version, '<= 3.46')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-shortcodes/readme.txt'
+  redirects: true
+id: wc-shortcodes-8e4ca26a5b9842b947d727b64e6db971
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wc-shortcodes/
+    google-query: inurl:"/wp-content/plugins/wc-shortcodes/"
+    shodan-query: 'vuln:'
+  name: 'Shortcodes by Angie Makes <= 3.46 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e20feb23-f78e-42e7-8922-e7cf37dbdcb1?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wc-shortcodes,high

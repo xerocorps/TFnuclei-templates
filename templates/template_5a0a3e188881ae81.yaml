@@ -1,0 +1,36 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - webserver
+    - litespeed
+    - exposure
+  description: Template to detect LiteSpeed Web Server and directory index pages.
+  id: litespeed-directory-listing
+  matcher-condition: and
+  matchers:
+  - description: LiteSpeed Web Server header found in the response
+    pattern: Proudly Served by LiteSpeed Web Server
+    type: header
+  - description: Directory listing page title found in the response body
+    pattern: <title>Index of /
+    type: body
+  name: LiteSpeed Directory Index Template
+  reference:
+  - https://www.litespeedtech.com/
+  requests:
+    condition: and
+    description: Attempt to access the web server root directory
+    method: GET
+    path:
+    - /
+  response:
+  - status:
+    - 200
+  severity: Info
+  whitelist:
+    description: Example whitelist for domain example.com
+    domains:
+    - '*.litespeedtech.com'
+    type: domain

@@ -1,0 +1,18 @@
+id: api-deviantart
+info:
+  author: zzeitlin
+  name: DeviantArt API Test
+  reference: https://www.deviantart.com/developers/authentication
+  severity: info
+  tags: token-spray,deviantart
+requests:
+- body: access_token={{token}}
+  matchers:
+  - negative: true
+    part: body
+    type: word
+    words:
+    - '"status":"error"'
+  method: POST
+  path:
+  - https://www.deviantart.com/api/v1/oauth2/placebo

@@ -1,0 +1,19 @@
+id: wso2-management-console
+info:
+  author: dhiyaneshDK
+  name: WSO2 Management Console
+  reference: https://www.exploit-db.com/ghdb/5691
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>WSO2 Management Console</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/carbon/admin/login.jsp'

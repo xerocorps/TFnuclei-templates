@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.20.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-elementor/readme.txt'
+  redirects: true
+id: ultimate-elementor-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Ultimate Addons for Elementor plugin for WordPress is vulnerable
+    to authorization bypass due to a missing capability check when logging in by Google
+    or Facebook in versions up to, and including, 1.20.0. This makes it possible for
+    attackers to authenticate as any other user, including an administrator.
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-elementor/
+    google-query: inurl:"/wp-content/plugins/ultimate-elementor/"
+    shodan-query: 'vuln:'
+  name: Ultimate Addons for Elementor < 1.20.1 - Authentication Bypass
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-elementor,low

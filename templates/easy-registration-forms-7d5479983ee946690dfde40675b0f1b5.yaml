@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-registration-forms
+  - dsl:
+    - compare_versions(version, '<= 2.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-registration-forms/readme.txt'
+  redirects: true
+id: easy-registration-forms-7d5479983ee946690dfde40675b0f1b5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easy-registration-forms/
+    google-query: inurl:"/wp-content/plugins/easy-registration-forms/"
+    shodan-query: 'vuln:'
+  name: 'Easy Registration Forms <= 2.0.6 - CSV Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/43a60896-3b88-4b36-b6d9-46812b8ba35b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,easy-registration-forms,low

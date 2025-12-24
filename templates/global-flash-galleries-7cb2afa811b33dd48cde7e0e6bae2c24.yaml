@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - global-flash-galleries
+  - dsl:
+    - compare_versions(version, '<= 0.13.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/global-flash-galleries/readme.txt'
+  redirects: true
+id: global-flash-galleries-7cb2afa811b33dd48cde7e0e6bae2c24
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/global-flash-galleries/
+    google-query: inurl:"/wp-content/plugins/global-flash-galleries/"
+    shodan-query: 'vuln:'
+  name: 'Global Flash Gallery < 0.13.4 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/92c5c282-9193-41b3-9c1e-cd700765f346?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,global-flash-galleries,high

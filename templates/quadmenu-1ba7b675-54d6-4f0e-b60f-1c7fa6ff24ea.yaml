@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quadmenu
+  - dsl:
+    - compare_versions(version, '<= 3.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quadmenu/readme.txt'
+  redirects: true
+id: quadmenu-1ba7b675-54d6-4f0e-b60f-1c7fa6ff24ea
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quadmenu/
+    google-query: inurl:"/wp-content/plugins/quadmenu/"
+    shodan-query: http.html:"wp-content/plugins/quadmenu/"
+  name: "WordPress Mega Menu \u2013 QuadMenu <= 3.2.0 - Cross-Site Request Forgery\
+    \ to Limited User Meta Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1ba7b675-54d6-4f0e-b60f-1c7fa6ff24ea?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,quadmenu,medium,candidate

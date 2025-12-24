@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - updraftcentral
+  - dsl:
+    - compare_versions(version, '0.8.23')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/updraftcentral/readme.txt'
+  redirects: true
+id: updraftcentral-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The UpdraftCentral Dashboard plugin 0.8.23 for WordPress is vulnerable
+    to Server-Side Request Forgery via the font parameter in the load_font action.
+    It allows an unauthenticated attacker to make a request to any internal and external
+    server.
+  metadata:
+    fofa-query: wp-content/plugins/updraftcentral/
+    google-query: inurl:"/wp-content/plugins/updraftcentral/"
+    shodan-query: 'vuln:'
+  name: UpdraftCentral Dashboard 0.8.23 - Server-Side Request Forgery
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,updraftcentral,low

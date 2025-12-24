@@ -1,0 +1,15 @@
+id: sonarqube-login
+info:
+  author: dhiyaneshDk
+  name: SonarQube panel detect
+  severity: info
+  tags: panel,sonarqube
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>SonarQube</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/sessions/new'

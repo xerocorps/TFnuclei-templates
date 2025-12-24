@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - guardgiant
+  - dsl:
+    - compare_versions(version, '<= 2.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/guardgiant/readme.txt'
+  redirects: true
+id: guardgiant-a85f43508ea8b25033be6e5420f0d4f0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/guardgiant/
+    google-query: inurl:"/wp-content/plugins/guardgiant/"
+    shodan-query: 'vuln:'
+  name: "WordPress Brute Force Protection \u2013 Stop Brute Force Attacks <= 2.2.5\
+    \ - Authenticated (Administrator+) SQL Injection via orderby\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0d3f7676-5ab0-4fe0-a0be-786f4cf84056?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,guardgiant,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-ads
+  - dsl:
+    - compare_versions(version, '< 1.17.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-ads/readme.txt'
+  redirects: true
+id: advanced-ads-11ce1478ed2fbec4fc8091c09060e6c4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-ads/
+    google-query: inurl:"/wp-content/plugins/advanced-ads/"
+    shodan-query: 'vuln:'
+  name: 'Advanced Ads <= 1.17.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/32ac72f7-6bcc-4b5d-925a-9c5fc0c1f065?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,advanced-ads,medium

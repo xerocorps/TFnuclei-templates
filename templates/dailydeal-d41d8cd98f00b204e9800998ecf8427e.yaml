@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dailydeal
+  - dsl:
+    - compare_versions(version, '<=  3.0.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/dailydeal/style.css'
+  redirects: true
+id: dailydeal-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Dailydeal by Templatic theme for WordPress is vulnerable to arbitrary
+    file uploads via CSRF due to missing or incorrect nonce validation in the 'upload-file.php'
+    file in versions up to, and including, 3.0.10. This makes it possible for unauthenticated
+    attackers to upload arbitrary files on the affected site's server which may make
+    remote code execution possible.
+  metadata:
+    fofa-query: wp-content/unknown/dailydeal/
+    google-query: inurl:"/wp-content/unknown/dailydeal/"
+    shodan-query: 'vuln:'
+  name: Dailydeal by Templatic < = 3.0.10 - Cross-Site Request Forgery to Arbitrary
+    File Upload
+  reference: null
+  severity: medium
+  tags: cve,wordpress,wp-theme,dailydeal,medium

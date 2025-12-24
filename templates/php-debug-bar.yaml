@@ -1,0 +1,26 @@
+id: php-debug-bar
+info:
+  author: dhiyaneshDk
+  name: PHP Debug bar
+  severity: high
+  tags: debug,logs,exposure
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id":"'
+    - '"datetime":'
+    - '"method"'
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/_debugbar/open?max=20&offset=0'

@@ -1,0 +1,30 @@
+id: roxy-fileman
+info:
+  author: liquidsec,DhiyaneshDk
+  metadata:
+    google-dork: intitle:"Roxy file manager"
+    verified: true
+  name: Roxy Fileman Detect
+  severity: info
+  tags: tech,fileupload,roxy,fileman
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - Roxy file manager
+    - '[{"p":"'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/index.html'
+  - '{{BaseURL}}/fileman/index.html'
+  - '{{BaseURL}}/fileman/php/fileslist.php'
+  - '{{BaseURL}}/fileman/asp_net/main.ashx'
+  redirects: true
+  stop-at-first-match: true

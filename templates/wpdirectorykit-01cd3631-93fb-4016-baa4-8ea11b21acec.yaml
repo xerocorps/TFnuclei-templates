@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdirectorykit
+  - dsl:
+    - compare_versions(version, '<= 1.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdirectorykit/readme.txt'
+  redirects: true
+id: wpdirectorykit-01cd3631-93fb-4016-baa4-8ea11b21acec
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpdirectorykit/
+    google-query: inurl:"/wp-content/plugins/wpdirectorykit/"
+    shodan-query: http.html:"wp-content/plugins/wpdirectorykit/"
+  name: 'WP Directory Kit <= 1.4.5 - Reflected Cross-Site Scripting via ''order_by''
+    Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/01cd3631-93fb-4016-baa4-8ea11b21acec?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpdirectorykit,medium,candidate

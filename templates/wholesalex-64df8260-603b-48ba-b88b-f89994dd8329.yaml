@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wholesalex
+  - dsl:
+    - compare_versions(version, '<= 1.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wholesalex/readme.txt'
+  redirects: true
+id: wholesalex-64df8260-603b-48ba-b88b-f89994dd8329
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wholesalex/
+    google-query: inurl:"/wp-content/plugins/wholesalex/"
+    shodan-query: http.html:"wp-content/plugins/wholesalex/"
+  name: 'WholesaleX <= 1.3.1 - Authenticated(Subscriber+) Missing Authorization via
+    multiple AJAX actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/64df8260-603b-48ba-b88b-f89994dd8329?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wholesalex,low,candidate

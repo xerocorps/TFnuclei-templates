@@ -1,0 +1,26 @@
+id: apache-cocoon-detect
+info:
+  author: ffffffff0x
+  metadata:
+    fofa-query: app="APACHE-Cocoon"
+    shodan-query: http.html:"Apache Cocoon"
+    verified: true
+  name: Apache Cocoon detect
+  severity: info
+  tags: apache,cocoon,tech
+requests:
+- extractors:
+  - part: header
+    regex:
+    - X\-Cocoon\-Version:([ 0-9.]+)
+    type: regex
+  matchers:
+  - part: header
+    type: word
+    words:
+    - X-Cocoon-Version
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

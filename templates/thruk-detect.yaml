@@ -1,0 +1,24 @@
+id: thruk-detect
+info:
+  author: ffffffff0x
+  metadata:
+    fofa-query: title=="Thruk Monitoring Webinterface"
+  name: thruk detect
+  severity: info
+  tags: thruk,tech
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Thruk Monitoring Webinterface
+  - part: header
+    type: word
+    words:
+    - /thruk/cgi-bin/login.cgi?thruk/
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

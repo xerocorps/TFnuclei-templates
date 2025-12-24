@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-seo-pack
+  - dsl:
+    - compare_versions(version, '< 2.2.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-seo-pack/readme.txt'
+  redirects: true
+id: all-in-one-seo-pack-ee3d74d479eb2c5168a8bc0c15227a1b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-seo-pack/
+    google-query: inurl:"/wp-content/plugins/all-in-one-seo-pack/"
+    shodan-query: 'vuln:'
+  name: 'All in One SEO <= 2.2.6.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/03ddef11-04cb-4639-afb0-f123b339b9ae?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,all-in-one-seo-pack,medium

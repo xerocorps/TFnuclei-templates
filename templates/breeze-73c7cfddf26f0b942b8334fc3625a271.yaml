@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - breeze
+  - dsl:
+    - compare_versions(version, '<= 2.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/breeze/readme.txt'
+  redirects: true
+id: breeze-73c7cfddf26f0b942b8334fc3625a271
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/breeze/
+    google-query: inurl:"/wp-content/plugins/breeze/"
+    shodan-query: 'vuln:'
+  name: "Breeze \u2013 WordPress Cache Plugin <= 2.0.2 - Unprotected AJAX Actions\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bc045440-a8ca-40d3-b198-421b197e6928?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,breeze,low

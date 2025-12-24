@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - print-o-matic
+  - dsl:
+    - compare_versions(version, '<= 2.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/print-o-matic/readme.txt'
+  redirects: true
+id: print-o-matic-762dc449f379d436e3e1666a2c496b9e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/print-o-matic/
+    google-query: inurl:"/wp-content/plugins/print-o-matic/"
+    shodan-query: 'vuln:'
+  name: 'Print-O-Matic <= 2.1.7 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dedb1a15-933b-4e8a-b82d-a154414c61ba?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,print-o-matic,low

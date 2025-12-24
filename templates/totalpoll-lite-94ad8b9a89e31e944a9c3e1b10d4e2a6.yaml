@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - totalpoll-lite
+  - dsl:
+    - compare_versions(version, '<= 4.8.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/totalpoll-lite/readme.txt'
+  redirects: true
+id: totalpoll-lite-94ad8b9a89e31e944a9c3e1b10d4e2a6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/totalpoll-lite/
+    google-query: inurl:"/wp-content/plugins/totalpoll-lite/"
+    shodan-query: 'vuln:'
+  name: 'Total Poll Lite <= 4.8.6 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7e3ae5e7-1f41-48cd-8aea-698e3b00066c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,totalpoll-lite,medium

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpjobboard
+  - dsl:
+    - compare_versions(version, '< 5.11.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpjobboard/readme.txt'
+  redirects: true
+id: wpjobboard-cc588948-151d-4bdb-96a2-cdfde2cb0965
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpjobboard/
+    google-query: inurl:"/wp-content/plugins/wpjobboard/"
+    shodan-query: http.html:"wp-content/plugins/wpjobboard/"
+  name: 'WPJobBoard < 5.11.1 - Authenticated (Subscriber+) Path Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cc588948-151d-4bdb-96a2-cdfde2cb0965?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpjobboard,low,candidate

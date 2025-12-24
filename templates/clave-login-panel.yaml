@@ -1,0 +1,19 @@
+id: clave-login-panel
+info:
+  author: __Fazal
+  name: Clave login panel
+  severity: info
+  tags: panel,clave,login
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - Clave
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/admin.php'
+  redirects: true

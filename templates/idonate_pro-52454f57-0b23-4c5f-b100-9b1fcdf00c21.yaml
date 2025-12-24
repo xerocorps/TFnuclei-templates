@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - idonate-pro
+  - dsl:
+    - compare_versions(version, '<= 2.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/idonate-pro/readme.txt'
+  redirects: true
+id: idonate_pro-52454f57-0b23-4c5f-b100-9b1fcdf00c21
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/idonate-pro/
+    google-query: inurl:"/wp-content/plugins/idonate-pro/"
+    shodan-query: http.html:"wp-content/plugins/idonate-pro/"
+  name: 'IDonatePro <= 2.1.9 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/52454f57-0b23-4c5f-b100-9b1fcdf00c21?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,idonate-pro,high,candidate

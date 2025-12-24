@@ -1,0 +1,26 @@
+id: cadvisor-exposure
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: title:"cAdvisor"
+    verified: true
+  name: cAdvisor Exposure
+  severity: medium
+  tags: exposure,misconfig,dashboard
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>cAdvisor - /</title>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/containers/'

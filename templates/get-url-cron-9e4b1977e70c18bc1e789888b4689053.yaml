@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - get-url-cron
+  - dsl:
+    - compare_versions(version, '<= 1.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/get-url-cron/readme.txt'
+  redirects: true
+id: get-url-cron-9e4b1977e70c18bc1e789888b4689053
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/get-url-cron/
+    google-query: inurl:"/wp-content/plugins/get-url-cron/"
+    shodan-query: 'vuln:'
+  name: 'Get URL Cron <= 1.4.7 - Missing Authorization via geturlcron_action_handle
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/766003e7-712e-481b-b09d-91d62a325718?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,get-url-cron,high

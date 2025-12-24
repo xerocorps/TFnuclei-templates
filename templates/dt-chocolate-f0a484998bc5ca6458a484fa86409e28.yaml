@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dt-chocolate
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/dt-chocolate/style.css'
+  redirects: true
+id: dt-chocolate-f0a484998bc5ca6458a484fa86409e28
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/dt-chocolate/
+    google-query: inurl:"/wp-content/themes/dt-chocolate/"
+    shodan-query: 'vuln:'
+  name: "Chocolate WP \u2013 Responsive Photography Theme (All Versions) - Full Path\
+    \ Disclosure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4c5dd7a4-0e9c-4e1e-8385-2e76b7b9b02e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,dt-chocolate,low

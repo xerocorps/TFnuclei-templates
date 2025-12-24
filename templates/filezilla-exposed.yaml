@@ -1,0 +1,26 @@
+id: filezilla-exposed
+info:
+  author: amsda
+  name: Filezilla
+  severity: medium
+  tags: exposure
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <FileZilla
+    - <Servers>
+  - part: header
+    type: word
+    words:
+    - xml
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/filezilla.xml'
+  - '{{BaseURL}}/sitemanager.xml'
+  - '{{BaseURL}}/FileZilla.xml'

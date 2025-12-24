@@ -1,0 +1,30 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - wordpress
+    - plugin
+    - security
+    - vulnerability
+  description: Template to detect vulnerable WordPress plugins
+  id: wordpress-plugin-vulnerability
+  matcher-condition: or
+  matchers:
+  - description: WordPress plugin readme file found in the response body
+    pattern: Contributors
+    type: body
+  name: WordPress Plugin Vulnerability - Detect
+  reference:
+  - https://wpvulndb.com/
+  requests:
+    condition: or
+    description: Attempt to retrieve WordPress plugin readme file
+    method: GET
+    path:
+    - /wp-content/plugins/*/readme.txt
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

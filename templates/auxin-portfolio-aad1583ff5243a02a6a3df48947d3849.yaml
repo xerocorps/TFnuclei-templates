@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - auxin-portfolio
+  - dsl:
+    - compare_versions(version, '<= 2.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/auxin-portfolio/readme.txt'
+  redirects: true
+id: auxin-portfolio-aad1583ff5243a02a6a3df48947d3849
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/auxin-portfolio/
+    google-query: inurl:"/wp-content/plugins/auxin-portfolio/"
+    shodan-query: 'vuln:'
+  name: 'Premium Portfolio Features for Phlox theme <= 2.3.2 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting via '' Grid Portfolios''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b0ea041b-f09d-4c62-aada-26afbc60b6f2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,auxin-portfolio,low

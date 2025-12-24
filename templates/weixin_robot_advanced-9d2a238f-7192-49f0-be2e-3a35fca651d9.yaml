@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - weixin-robot-advanced
+  - dsl:
+    - compare_versions(version, '<= 6.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/weixin-robot-advanced/readme.txt'
+  redirects: true
+id: weixin_robot_advanced-9d2a238f-7192-49f0-be2e-3a35fca651d9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/weixin-robot-advanced/
+    google-query: inurl:"/wp-content/plugins/weixin-robot-advanced/"
+    shodan-query: http.html:"wp-content/plugins/weixin-robot-advanced/"
+  name: "\u5FAE\u4FE1\u673A\u5668\u4EBA\u9AD8\u7EA7\u7248 <= 6.2.1 - Reflected Cross\
+    \ Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d2a238f-7192-49f0-be2e-3a35fca651d9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,weixin-robot-advanced,low,candidate

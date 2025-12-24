@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-seo-pack
+  - dsl:
+    - compare_versions(version, '< 2.3.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-seo-pack/readme.txt'
+  redirects: true
+id: all_in_one_seo_pack-c490e344-66da-4176-bd93-7e07a491bfa9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+  description: "The All in One SEO Pack plugin for WordPress is vulnerable to unauthenticated\
+    \ stored Cross-Site Scripting via unspecified vectors that make it possible for\
+    \ attackers to inject arbitrary web scripts into web pages that will execute when\
+    \ a victim accesses the page in versions up to, and including, 2.3.7. \nPlease\
+    \ note that this exploit only works if the user has enabled the sitemap module\
+    \ in the plugin.\n"
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-seo-pack/
+    google-query: inurl:"/wp-content/plugins/all-in-one-seo-pack/"
+    shodan-query: http.html:"wp-content/plugins/all-in-one-seo-pack/"
+  name: 'All in One SEO Pack <= 2.3.7 - Unauthenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c490e344-66da-4176-bd93-7e07a491bfa9?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,all-in-one-seo-pack,high,production

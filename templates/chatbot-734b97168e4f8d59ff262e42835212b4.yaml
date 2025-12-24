@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - chatbot
+  - dsl:
+    - compare_versions(version, '<= 5.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/chatbot/readme.txt'
+  redirects: true
+id: chatbot-734b97168e4f8d59ff262e42835212b4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/chatbot/
+    google-query: inurl:"/wp-content/plugins/chatbot/"
+    shodan-query: 'vuln:'
+  name: 'AI ChatBot <= 5.3.4 - Missing Authorization via openai_file_upload_callback
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/34b6475c-b5dd-42a1-98d1-9b5ae9ff4ad5?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,chatbot,high

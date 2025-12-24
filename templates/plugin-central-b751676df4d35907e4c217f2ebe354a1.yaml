@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - plugin-central
+  - dsl:
+    - compare_versions(version, '< 2.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/plugin-central/readme.txt'
+  redirects: true
+id: plugin-central-b751676df4d35907e4c217f2ebe354a1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/plugin-central/
+    google-query: inurl:"/wp-content/plugins/plugin-central/"
+    shodan-query: 'vuln:'
+  name: 'Plugin Central < 2.5.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9dd71a06-b3b5-431a-b6da-3b7db3a3907c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,plugin-central,medium

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - redux-framework
+  - dsl:
+    - compare_versions(version, '<= 4.2.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/redux-framework/readme.txt'
+  redirects: true
+id: redux_framework-2ba556d0-48f9-4953-a5aa-876284e56360
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/redux-framework/
+    google-query: inurl:"/wp-content/plugins/redux-framework/"
+    shodan-query: http.html:"wp-content/plugins/redux-framework/"
+  name: 'Gutenberg Template Library & Redux Framework <= 4.2.1 - Incorrect Authorization
+    Leading to Arbitrary Plugin Installation and Post Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2ba556d0-48f9-4953-a5aa-876284e56360?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,redux-framework,low,candidate

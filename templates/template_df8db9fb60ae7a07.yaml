@@ -1,0 +1,32 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - server
+    - configuration
+    - security
+    - exposure
+  description: Template to detect exposed server configuration files on a server
+  id: server-config-exposure
+  matcher-condition: or
+  matchers:
+  - description: Response body containing the Apache server status page
+    pattern: Apache Server Status for
+    type: body
+  - description: Response body containing a potential virtual host configuration
+    pattern: <VirtualHost>
+    type: body
+  name: Server Configuration Exposure - Detect
+  reference:
+  - https://www.owasp.org/index.php/Testing_Backup_and_Unreferenced_Files_(OTG-CONFIG-004)
+  requests:
+    condition: or
+    description: Attempt to access server configuration files
+    method: GET
+    path:
+    - /*.conf
+  response:
+  - status:
+    - 200
+  severity: High

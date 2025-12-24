@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ninja-forms
+  - dsl:
+    - compare_versions(version, '<= 3.3.21.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ninja-forms/readme.txt'
+  redirects: true
+id: ninja_forms-b5023e07-9976-44f3-81de-2eb4ba86b0ca
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ninja-forms/
+    google-query: inurl:"/wp-content/plugins/ninja-forms/"
+    shodan-query: http.html:"wp-content/plugins/ninja-forms/"
+  name: 'Ninja Forms Contact Form <= 3.3.21.1 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b5023e07-9976-44f3-81de-2eb4ba86b0ca?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,ninja-forms,critical,candidate

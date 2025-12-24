@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-mailerlite
+  - dsl:
+    - compare_versions(version, '<= 3.1.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-mailerlite/readme.txt'
+  redirects: true
+id: woo_mailerlite-e20deec4-f40c-4bd3-91f7-6a9d643a5520
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N
+    cvss-score: 6.5
+  description: 'The MailerLite - WooCommerce integration plugin for WordPress is vulnerable
+    to unauthorized data modification and deletion in all versions up to, and including,
+    3.1.3. This is due to missing capability checks on the resetIntegration() function.
+    This makes it possible for authenticated attackers, with Subscriber-level access
+    and above, to reset the plugin''s integration settings, delete all plugin options,
+    and drop the plugin''s database tables (woo_mailerlite_carts and woo_mailerlite_jobs),
+    resulting in complete loss of plugin data including customer abandoned cart information
+    and sync job history.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/woo-mailerlite/
+    google-query: inurl:"/wp-content/plugins/woo-mailerlite/"
+    shodan-query: http.html:"wp-content/plugins/woo-mailerlite/"
+  name: 'MailerLite - WooCommerce integration <= 3.1.3 - Missing Authorization to
+    Data Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e20deec4-f40c-4bd3-91f7-6a9d643a5520?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-mailerlite,low,production

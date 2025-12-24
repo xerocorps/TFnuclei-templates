@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - debug-log-manager
+  - dsl:
+    - compare_versions(version, '<= 2.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/debug-log-manager/readme.txt'
+  redirects: true
+id: debug_log_manager-33a54cae-0fa3-4c25-bf81-8423f5e01e84
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/debug-log-manager/
+    google-query: inurl:"/wp-content/plugins/debug-log-manager/"
+    shodan-query: http.html:"wp-content/plugins/debug-log-manager/"
+  name: 'Debug Log Manager <= 2.2.1 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/33a54cae-0fa3-4c25-bf81-8423f5e01e84?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,debug-log-manager,high,candidate

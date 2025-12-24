@@ -1,0 +1,23 @@
+id: exposed-svn
+info:
+  author: udit_thakkur,dwisiswant0
+  name: Exposed SVN Directory
+  severity: medium
+  tags: config,exposure,svn
+requests:
+- matchers:
+  - part: body
+    regex:
+    - (^10\s*dir|\.svn-base|has-props|svn:\/\/|([\da-f]{32}[\S+\r\n\s]+[\d]{4}-[\d]{2}-[\d]{2}T[\d]{2}:[\d]{2}:[\d]{2}.[\d]{6}Z))
+    type: regex
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/plain
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.svn/entries'

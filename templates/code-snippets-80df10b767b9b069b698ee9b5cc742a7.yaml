@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - code-snippets
+  - dsl:
+    - compare_versions(version, '<= 2.13.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/code-snippets/readme.txt'
+  redirects: true
+id: code-snippets-80df10b767b9b069b698ee9b5cc742a7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/code-snippets/
+    google-query: inurl:"/wp-content/plugins/code-snippets/"
+    shodan-query: 'vuln:'
+  name: 'Code Snippets <= 2.13.3 - Cross-Site Request Forgery to Remote Code Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0b230ff1-4971-4ec5-a0e9-21df90fc6e98?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,code-snippets,medium

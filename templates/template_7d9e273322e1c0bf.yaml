@@ -1,0 +1,13 @@
+directive_name: insteonPLM
+directive_str: \x02\x60
+matches:
+- pattern: ^\x02\x60...(.).\x9b\x06$
+  service: insteon-plm
+  version_info: ' p/Insteon SmartLinc PLM/ i/device type: $I(1,">")/'
+- pattern: ^\x02\x60...(.).[\x9c\x9d]\x06$
+  service: insteon-plm
+  version_info: ' p/Insteon Hub PLM/ i/device type: $I(1,">")/'
+ports:
+- 9761
+protocol: TCP
+rarity: 9

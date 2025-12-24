@@ -1,0 +1,27 @@
+id: api-smartsheet
+info:
+  author: daffainfo
+  name: Smartsheet API Test
+  reference:
+  - https://smartsheet.redoc.ly/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Business/Smartsheet.md
+  severity: info
+  tags: token-spray,smartsheet
+requests:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"sheets":'
+    - '"folders":'
+  matchers-condition: and
+  method: GET
+  path:
+  - https://api.smartsheet.com/2.0/home?include=source
+self-contained: true

@@ -1,0 +1,23 @@
+id: wordpress-tmm-db-migrate
+info:
+  author: dwisiswant0
+  name: WordPress ThemeMarkers DB Migration File
+  severity: info
+  tags: wordpress,wp-plugin,backups
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - application/zip
+  - part: body
+    regex:
+    - '[a-z0-9_]+.dat'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/uploads/tmm_db_migrate/tmm_db_migrate.zip'

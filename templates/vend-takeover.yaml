@@ -1,0 +1,15 @@
+id: vend-takeover
+info:
+  author: pdcommunity
+  name: vend takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - Looks like you've traveled too far into cyberspace.
+  method: GET
+  path:
+  - '{{BaseURL}}'

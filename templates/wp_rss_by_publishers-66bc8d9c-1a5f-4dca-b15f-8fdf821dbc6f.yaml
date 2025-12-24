@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-rss-by-publishers
+  - dsl:
+    - compare_versions(version, '<= 0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-rss-by-publishers/readme.txt'
+  redirects: true
+id: wp_rss_by_publishers-66bc8d9c-1a5f-4dca-b15f-8fdf821dbc6f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-rss-by-publishers/
+    google-query: inurl:"/wp-content/plugins/wp-rss-by-publishers/"
+    shodan-query: http.html:"wp-content/plugins/wp-rss-by-publishers/"
+  name: 'WP RSS By Publishers <= 0.1 - Authenticated (Admin+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66bc8d9c-1a5f-4dca-b15f-8fdf821dbc6f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-rss-by-publishers,low,candidate

@@ -1,0 +1,47 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - traveler
+  - dsl:
+    - compare_versions(version, '< 2.7.8.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/traveler/style.css'
+  redirects: true
+id: traveler-c824823c-68d0-4f41-ac22-c517763357eb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+  description: "The Traveler \u2013 Travel Booking WordPress Theme for WordPress is\
+    \ vulnerable to both Reflected and Stored Cross-Site Scripting in versions up\
+    \ to, and including, 2.7.8.5 due to insufficient input sanitization and output\
+    \ escaping. This makes it possible for attackers to inject arbitrary web scripts\
+    \ that execute in a victim's browser.\n"
+  metadata:
+    fofa-query: wp-content/themes/traveler/
+    google-query: inurl:"/wp-content/themes/traveler/"
+    shodan-query: http.html:"wp-content/themes/traveler/"
+  name: "Traveler \u2013 Travel Booking WordPress Theme < 2.7.8.6 - Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c824823c-68d0-4f41-ac22-c517763357eb?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-theme,traveler,high,production

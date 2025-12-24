@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sailing
+  - dsl:
+    - compare_versions(version, '< 4.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/sailing/style.css'
+  redirects: true
+id: sailing-ad20d235-26e1-4071-89ea-21e721ec9505
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/sailing/
+    google-query: inurl:"/wp-content/themes/sailing/"
+    shodan-query: http.html:"wp-content/themes/sailing/"
+  name: 'Sailing < 4.4.6 - Authenticated (Contributor+) Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ad20d235-26e1-4071-89ea-21e721ec9505?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,sailing,low,candidate

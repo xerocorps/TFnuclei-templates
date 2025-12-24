@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-404-redirect-to-homepage
+  - dsl:
+    - compare_versions(version, '< 1.21')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-404-redirect-to-homepage/readme.txt'
+  redirects: true
+id: all-404-redirect-to-homepage-a7b301ee8280dadaca04a32f779db373
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-404-redirect-to-homepage/
+    google-query: inurl:"/wp-content/plugins/all-404-redirect-to-homepage/"
+    shodan-query: 'vuln:'
+  name: 'All 404 Redirect to Homepage < 1.21 - Reflected Cross-Site Scripting via
+    tab Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8938c153-0640-418b-87ab-ae65d6c80b97?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,all-404-redirect-to-homepage,medium

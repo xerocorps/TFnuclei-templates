@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpschoolpress
+  - dsl:
+    - compare_versions(version, '< 2.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpschoolpress/readme.txt'
+  redirects: true
+id: wpschoolpress-e23d65411c4aa97f662c77422ac3d44c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpschoolpress/
+    google-query: inurl:"/wp-content/plugins/wpschoolpress/"
+    shodan-query: 'vuln:'
+  name: 'WPSchoolPress <= 2.2.4 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1a2fb050-1a7c-45cc-86c7-02331d47f780?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpschoolpress,medium

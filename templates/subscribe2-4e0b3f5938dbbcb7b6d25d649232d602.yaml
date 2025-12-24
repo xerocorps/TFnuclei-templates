@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - subscribe2
+  - dsl:
+    - compare_versions(version, '<= 10.42')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/subscribe2/readme.txt'
+  redirects: true
+id: subscribe2-4e0b3f5938dbbcb7b6d25d649232d602
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/subscribe2/
+    google-query: inurl:"/wp-content/plugins/subscribe2/"
+    shodan-query: 'vuln:'
+  name: 'Appsero <= 2.0.0 - Missing Authorization via handle_optin_optout
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/376c5091-7921-4470-acbf-44db53db38fc?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,subscribe2,high

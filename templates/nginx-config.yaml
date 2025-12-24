@@ -1,0 +1,21 @@
+id: nginx-config
+info:
+  author: sheikhrishad
+  name: Nginx Config file disclosure
+  severity: info
+  tags: config,exposure,nginx
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - server
+    - listen
+    - server_name
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/nginx.conf'

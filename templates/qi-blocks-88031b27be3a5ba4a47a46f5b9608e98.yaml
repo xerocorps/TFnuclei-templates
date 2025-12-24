@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - qi-blocks
+  - dsl:
+    - compare_versions(version, '<= 1.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/qi-blocks/readme.txt'
+  redirects: true
+id: qi-blocks-88031b27be3a5ba4a47a46f5b9608e98
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/qi-blocks/
+    google-query: inurl:"/wp-content/plugins/qi-blocks/"
+    shodan-query: 'vuln:'
+  name: 'Qi Blocks <= 1.2.9 - Authenticated (Author+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bdf00861-e31e-485c-a562-12dba56af1c7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,qi-blocks,low

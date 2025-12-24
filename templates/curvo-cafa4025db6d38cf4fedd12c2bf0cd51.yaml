@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - curvo
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/curvo/style.css'
+  redirects: true
+id: curvo-cafa4025db6d38cf4fedd12c2bf0cd51
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/curvo/
+    google-query: inurl:"/wp-content/themes/curvo/"
+    shodan-query: 'vuln:'
+  name: 'Curvo Theme (All Known Versions) - Cross-Site Request Forgery and Arbitrary
+    File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e8021ef2-e1ce-442a-965a-b2628fe48964?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,curvo,medium

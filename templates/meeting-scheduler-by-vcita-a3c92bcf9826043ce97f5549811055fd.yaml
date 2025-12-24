@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - meeting-scheduler-by-vcita
+  - dsl:
+    - compare_versions(version, '<= 4.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/meeting-scheduler-by-vcita/readme.txt'
+  redirects: true
+id: meeting-scheduler-by-vcita-a3c92bcf9826043ce97f5549811055fd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/meeting-scheduler-by-vcita/
+    google-query: inurl:"/wp-content/plugins/meeting-scheduler-by-vcita/"
+    shodan-query: 'vuln:'
+  name: 'Online Booking & Scheduling Calendar for WordPress by vcita <= 4.3.0 - Unauthenticated
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7e6a0bf9-4767-4d4c-9a1e-adcb3c7719d9?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,meeting-scheduler-by-vcita,high

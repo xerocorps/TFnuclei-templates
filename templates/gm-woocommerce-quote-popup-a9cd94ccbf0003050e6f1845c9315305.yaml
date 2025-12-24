@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gm-woocommerce-quote-popup
+  - dsl:
+    - compare_versions(version, '<= 3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gm-woocommerce-quote-popup/readme.txt'
+  redirects: true
+id: gm-woocommerce-quote-popup-a9cd94ccbf0003050e6f1845c9315305
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gm-woocommerce-quote-popup/
+    google-query: inurl:"/wp-content/plugins/gm-woocommerce-quote-popup/"
+    shodan-query: 'vuln:'
+  name: 'Product Enquiry for WooCommerce <= 3.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f18b7523-fa8f-4c5d-acd7-db0e2135c796?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,gm-woocommerce-quote-popup,medium

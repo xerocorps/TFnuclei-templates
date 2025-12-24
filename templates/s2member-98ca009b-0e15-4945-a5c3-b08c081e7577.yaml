@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - s2member
+  - dsl:
+    - compare_versions(version, '<= 250905')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/s2member/readme.txt'
+  redirects: true
+id: s2member-98ca009b-0e15-4945-a5c3-b08c081e7577
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/s2member/
+    google-query: inurl:"/wp-content/plugins/s2member/"
+    shodan-query: http.html:"wp-content/plugins/s2member/"
+  name: 's2Member <= 250905 - Unauthenticated Remote Code Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/98ca009b-0e15-4945-a5c3-b08c081e7577?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,s2member,critical,candidate

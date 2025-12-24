@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - consultstreet
+  - dsl:
+    - compare_versions(version, '<= 3.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/consultstreet/style.css'
+  redirects: true
+id: consultstreet-7a4332a2-b26e-43b8-be4a-50ac54a1ab2b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/consultstreet/
+    google-query: inurl:"/wp-content/themes/consultstreet/"
+    shodan-query: http.html:"wp-content/themes/consultstreet/"
+  name: 'Consultstreet <= 3.0.0 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7a4332a2-b26e-43b8-be4a-50ac54a1ab2b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,consultstreet,high,candidate

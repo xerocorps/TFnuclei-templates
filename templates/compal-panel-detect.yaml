@@ -1,0 +1,15 @@
+id: compal-panel-detect
+info:
+  author: fabaff
+  name: Compal CH7465LG panel detect
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <!--for router status S-->
+  method: GET
+  path:
+  - '{{BaseURL}}/common_page/login.html'

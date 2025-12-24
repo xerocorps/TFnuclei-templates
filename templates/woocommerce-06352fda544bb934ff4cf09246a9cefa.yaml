@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce
+  - dsl:
+    - compare_versions(version, '>= 6.3', '< 6.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce/readme.txt'
+  redirects: true
+id: woocommerce-06352fda544bb934ff4cf09246a9cefa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 4.3
+  description: 'The WooCommerce plugin for WordPress is vulnerable to authorization
+    bypass due to a missing capability check and nonce check on the PayPal order updates
+    functionality in versions up to, and including, 6.3.0. This makes it possible
+    for authenticated attackers to change the status of arbitrary orders that have
+    been created with PayPal.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce/
+    google-query: inurl:"/wp-content/plugins/woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce < 6.3.1 - Unauthorized Order Status Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2ed1f200-5a27-4905-ac88-394b214bb430?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce,low

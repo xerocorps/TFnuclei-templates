@@ -1,0 +1,23 @@
+id: cerebro-panel
+info:
+  author: huowuzhao,elder tao
+  name: Cerebro Panel
+  reference:
+  - https://github.com/lmenezes/cerebro
+  severity: info
+  tags: panel,cerebro
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <small>([a-z0-9.]+)</small>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Cerebro</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

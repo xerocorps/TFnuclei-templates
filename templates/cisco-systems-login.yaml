@@ -1,0 +1,27 @@
+id: cisco-systems-login
+info:
+  author: dhiyaneshDk,idealphase
+  metadata:
+    google-query: intitle:"Cisco Systems Login"
+    shodan-query: http.title:"Cisco Systems Login"
+  name: Cisco Systems Login
+  severity: info
+  tags: panel,cisco
+requests:
+- extractors:
+  - group: 1
+    regex:
+    - <script src="javascript\/translate\.js\?ver=(.+)"><\/script>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - Cisco Systems Login
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

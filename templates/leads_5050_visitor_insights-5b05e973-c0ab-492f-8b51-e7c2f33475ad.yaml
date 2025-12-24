@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leads-5050-visitor-insights
+  - dsl:
+    - compare_versions(version, '< 1.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leads-5050-visitor-insights/readme.txt'
+  redirects: true
+id: leads_5050_visitor_insights-5b05e973-c0ab-492f-8b51-e7c2f33475ad
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 5.3
+  description: 'The Leads5050 Visitor Insights plugin for WordPress is vulnerable
+    to Arbitrary License Change in versions before 1.0.4. This is due to insufficient
+    access control on the leads5050_set_license AJAX action. This makes it possible
+    for unauthenticated attackers to set and modify arbitrary licenses in the plugin
+    settings.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/leads-5050-visitor-insights/
+    google-query: inurl:"/wp-content/plugins/leads-5050-visitor-insights/"
+    shodan-query: http.html:"wp-content/plugins/leads-5050-visitor-insights/"
+  name: 'leads5050-visitor-insights < 1.0.4 - Unauthenticated Arbitrary License Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5b05e973-c0ab-492f-8b51-e7c2f33475ad?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,leads-5050-visitor-insights,medium,production

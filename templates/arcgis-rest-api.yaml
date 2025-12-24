@@ -1,0 +1,23 @@
+id: arcgis-rest-api
+info:
+  author: Podalirius
+  classification:
+    cwe-id: CWE-200
+  description: ArcGIS documents were discovered.
+  name: ArcGIS Exposed Docs
+  reference:
+  - https://enterprise.arcgis.com/en/
+  severity: info
+  tags: api,arcgis,cms
+requests:
+- matchers:
+  - type: word
+    words:
+    - ArcGIS REST API
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/server/sdk/rest/index.html'

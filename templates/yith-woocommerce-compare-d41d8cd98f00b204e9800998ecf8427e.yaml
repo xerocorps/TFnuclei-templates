@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yith-woocommerce-compare
+  - dsl:
+    - compare_versions(version, '<=  2.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yith-woocommerce-compare/readme.txt'
+  redirects: true
+id: yith-woocommerce-compare-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The YITH WooCommerce Compare plugin for WordPress is vulnerable to
+    PHP Object Injection in versions up to, and including, 2.0.9 via deserialization
+    of untrusted input from the 'yith_woocompare_list' cookie. This allows unauthenticated
+    attackers to inject a PHP Object. It has been confirmed that this vulnerability
+    allows attackers to execute arbitrary PHP code.
+  metadata:
+    fofa-query: wp-content/plugins/yith-woocommerce-compare/
+    google-query: inurl:"/wp-content/plugins/yith-woocommerce-compare/"
+    shodan-query: 'vuln:'
+  name: YITH WooCommerce Compare <= 2.0.9 - Unauthenticated PHP Object Injection
+  reference: null
+  severity: critical
+  tags: cve,wordpress,wp-plugin,yith-woocommerce-compare,critical

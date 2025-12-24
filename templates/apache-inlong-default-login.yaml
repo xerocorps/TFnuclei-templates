@@ -1,0 +1,50 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"success":true'
+    - '"errMsg":null'
+    - '"data":true'
+  - part: content_type
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /inlong/manager/api/anno/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+
+    {"username":"{{username}}","password":"{{password}}"}
+
+    '
+id: apache-inlong-default-login
+info:
+  author: icarot
+  classification:
+    cpe: cpe:2.3:a:apache:inlong:1.13.0:*:*:*:*:*:*:*
+  description: 'Apache InLong server enables default admin credentials. An attacker
+    can execute unauthorized operations.
+
+    '
+  metadata:
+    fofa-query: icon_hash="1155196680"
+    max-request: 1
+    product: inlong
+    vendor: apache
+  name: Apache InLong - Default Login
+  reference:
+  - https://github.com/apache/inlong/
+  severity: high
+  tags: apache,inlong,default-login,misconfig,vuln
+variables:
+  password: inlong
+  username: admin

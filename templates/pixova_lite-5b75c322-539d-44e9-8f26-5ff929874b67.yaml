@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pixova-lite
+  - dsl:
+    - compare_versions(version, '<= 2.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/pixova-lite/style.css'
+  redirects: true
+id: pixova_lite-5b75c322-539d-44e9-8f26-5ff929874b67
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/pixova-lite/
+    google-query: inurl:"/wp-content/themes/pixova-lite/"
+    shodan-query: http.html:"wp-content/themes/pixova-lite/"
+  name: 'Epsilon Framework Themes (Various Versions) - Function Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5b75c322-539d-44e9-8f26-5ff929874b67?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,pixova-lite,low,candidate

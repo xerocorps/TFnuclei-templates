@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quiz-master-next
+  - dsl:
+    - compare_versions(version, '<= 8.1.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quiz-master-next/readme.txt'
+  redirects: true
+id: quiz-master-next-9c27e663aba7a239e83deb03c8058a1d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quiz-master-next/
+    google-query: inurl:"/wp-content/plugins/quiz-master-next/"
+    shodan-query: 'vuln:'
+  name: 'Quiz And Survey Master <= 8.1.10 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Question Title
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/19cb39d4-f2b4-4f94-8896-ba714567e1ed?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,quiz-master-next,low

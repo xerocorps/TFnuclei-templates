@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - geodirectory
+  - dsl:
+    - compare_versions(version, '<= 2.3.48')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/geodirectory/readme.txt'
+  redirects: true
+id: geodirectory-95c1b1e70843031bcccc1624733c0f6f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/geodirectory/
+    google-query: inurl:"/wp-content/plugins/geodirectory/"
+    shodan-query: 'vuln:'
+  name: "GeoDirectory \u2013 WordPress Business Directory Plugin, or Classified Directory\
+    \ <= 2.3.48 - Authenticated (Contributor+) Stored Cross-Site Scripting via 'gd_single_tabs'\
+    \ Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5a91e786-f570-4c6c-b1c7-0110774cb808?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,geodirectory,low

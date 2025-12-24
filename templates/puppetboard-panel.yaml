@@ -1,0 +1,19 @@
+id: puppetboard-panel
+info:
+  author: c-sh0
+  metadata:
+    shodan-query: http.title:"Puppetboard"
+  name: Puppetlabs Puppetboard detection
+  severity: info
+  tags: panel,puppet,tech,exposure
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Puppetboard</title>
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

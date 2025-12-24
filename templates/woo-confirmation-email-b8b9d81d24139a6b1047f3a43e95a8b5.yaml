@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-confirmation-email
+  - dsl:
+    - compare_versions(version, '<= 3.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-confirmation-email/readme.txt'
+  redirects: true
+id: woo-confirmation-email-b8b9d81d24139a6b1047f3a43e95a8b5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-confirmation-email/
+    google-query: inurl:"/wp-content/plugins/woo-confirmation-email/"
+    shodan-query: 'vuln:'
+  name: 'User Email Verification for WooCommerce <= 3.3.0 - Unauthenticated Arbitrary
+    Options Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/56fce928-108d-4e59-8746-3699a9db427e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-confirmation-email,low

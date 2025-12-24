@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ulisting
+  - dsl:
+    - compare_versions(version, '<= 2.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ulisting/readme.txt'
+  redirects: true
+id: ulisting-4181b26e-89c7-4020-a3d4-29bdc88d7438
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ulisting/
+    google-query: inurl:"/wp-content/plugins/ulisting/"
+    shodan-query: http.html:"wp-content/plugins/ulisting/"
+  name: "Directory Listings WordPress plugin \u2013 uListing <= 2.2.0 - Authenticated\
+    \ (Subscriber+) Privilege Escalation\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4181b26e-89c7-4020-a3d4-29bdc88d7438?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ulisting,low,candidate

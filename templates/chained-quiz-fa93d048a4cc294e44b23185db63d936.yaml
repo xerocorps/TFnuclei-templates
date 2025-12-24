@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - chained-quiz
+  - dsl:
+    - compare_versions(version, '< 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/chained-quiz/readme.txt'
+  redirects: true
+id: chained-quiz-fa93d048a4cc294e44b23185db63d936
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/chained-quiz/
+    google-query: inurl:"/wp-content/plugins/chained-quiz/"
+    shodan-query: 'vuln:'
+  name: 'Chained Quiz Plugin < 1.0 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dc8dc895-8caa-4a37-80f0-3a5516c25dfe?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,chained-quiz,high

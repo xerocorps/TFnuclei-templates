@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yop-poll
+  - dsl:
+    - compare_versions(version, '< 6.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yop-poll/readme.txt'
+  redirects: true
+id: yop-poll-49ef1b80f5ab1976fe9cf5ffc4d77cc1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yop-poll/
+    google-query: inurl:"/wp-content/plugins/yop-poll/"
+    shodan-query: 'vuln:'
+  name: 'YOP Poll <= 6.1.4 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3e2e8dfb-df74-41b7-9b3b-0f5d7b1c545b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,yop-poll,low

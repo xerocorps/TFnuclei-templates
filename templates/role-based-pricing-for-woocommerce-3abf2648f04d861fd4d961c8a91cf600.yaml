@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - role-based-pricing-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 1.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/role-based-pricing-for-woocommerce/readme.txt'
+  redirects: true
+id: role-based-pricing-for-woocommerce-3abf2648f04d861fd4d961c8a91cf600
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/role-based-pricing-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/role-based-pricing-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Role Based Pricing for WooCommerce <= 1.6.1 - Authenticated (Subscriber+)
+    Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/62402e53-ff46-410e-9cc1-a87b677e6526?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,role-based-pricing-for-woocommerce,low

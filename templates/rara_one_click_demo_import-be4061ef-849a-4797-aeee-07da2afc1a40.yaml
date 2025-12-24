@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rara-one-click-demo-import
+  - dsl:
+    - compare_versions(version, '<= 1.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rara-one-click-demo-import/readme.txt'
+  redirects: true
+id: rara_one_click_demo_import-be4061ef-849a-4797-aeee-07da2afc1a40
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rara-one-click-demo-import/
+    google-query: inurl:"/wp-content/plugins/rara-one-click-demo-import/"
+    shodan-query: http.html:"wp-content/plugins/rara-one-click-demo-import/"
+  name: 'Rara One Click Demo Import <= 1.2.9 - Cross-Site Request Forgery to Arbitrary
+    File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/be4061ef-849a-4797-aeee-07da2afc1a40?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,rara-one-click-demo-import,medium,candidate

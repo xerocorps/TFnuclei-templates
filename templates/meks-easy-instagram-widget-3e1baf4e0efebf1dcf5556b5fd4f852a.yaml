@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - meks-easy-instagram-widget
+  - dsl:
+    - compare_versions(version, '< 1.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/meks-easy-instagram-widget/readme.txt'
+  redirects: true
+id: meks-easy-instagram-widget-3e1baf4e0efebf1dcf5556b5fd4f852a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/meks-easy-instagram-widget/
+    google-query: inurl:"/wp-content/plugins/meks-easy-instagram-widget/"
+    shodan-query: 'vuln:'
+  name: 'Meks Easy Photo Feed Widget < 1.2.4 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/23a94578-f395-4ec1-8a08-52ca233cc832?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,meks-easy-instagram-widget,low

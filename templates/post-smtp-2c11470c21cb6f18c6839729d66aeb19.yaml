@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-smtp
+  - dsl:
+    - compare_versions(version, '< 2.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-smtp/readme.txt'
+  redirects: true
+id: post-smtp-2c11470c21cb6f18c6839729d66aeb19
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-smtp/
+    google-query: inurl:"/wp-content/plugins/post-smtp/"
+    shodan-query: 'vuln:'
+  name: 'Post SMTP <= 2.6.0 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3816a6cf-8157-4ad9-83f6-93c9b6c6275f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,post-smtp,low

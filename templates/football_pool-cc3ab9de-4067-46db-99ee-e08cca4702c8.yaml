@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - football-pool
+  - dsl:
+    - compare_versions(version, '<= 2.12.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/football-pool/readme.txt'
+  redirects: true
+id: football_pool-cc3ab9de-4067-46db-99ee-e08cca4702c8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/football-pool/
+    google-query: inurl:"/wp-content/plugins/football-pool/"
+    shodan-query: http.html:"wp-content/plugins/football-pool/"
+  name: 'Football Pool <= 2.12.6 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cc3ab9de-4067-46db-99ee-e08cca4702c8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,football-pool,low,candidate

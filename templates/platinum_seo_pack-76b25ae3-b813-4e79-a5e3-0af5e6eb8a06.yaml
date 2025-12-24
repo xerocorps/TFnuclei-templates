@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - platinum-seo-pack
+  - dsl:
+    - compare_versions(version, '<= 2.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/platinum-seo-pack/readme.txt'
+  redirects: true
+id: platinum_seo_pack-76b25ae3-b813-4e79-a5e3-0af5e6eb8a06
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/platinum-seo-pack/
+    google-query: inurl:"/wp-content/plugins/platinum-seo-pack/"
+    shodan-query: http.html:"wp-content/plugins/platinum-seo-pack/"
+  name: 'Platinum SEO <= 2.4.0 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/76b25ae3-b813-4e79-a5e3-0af5e6eb8a06?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,platinum-seo-pack,low,candidate

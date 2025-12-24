@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sprout-invoices
+  - dsl:
+    - compare_versions(version, '<= 9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sprout-invoices/readme.txt'
+  redirects: true
+id: sprout-invoices-0575b83688b1ba101b0f5f0b89ac6466
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sprout-invoices/
+    google-query: inurl:"/wp-content/plugins/sprout-invoices/"
+    shodan-query: 'vuln:'
+  name: "Client Invoicing by Sprout Invoices \u2013 Easy Estimates and Invoices for\
+    \ WordPress <= 9.3 - Missing Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5cdbd5fd-bb12-4202-b6c7-f314ad8987f5?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,sprout-invoices,high

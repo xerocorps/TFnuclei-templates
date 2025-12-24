@@ -1,0 +1,20 @@
+id: api-youtube
+info:
+  author: zzeitlin
+  name: YouTube API Test
+  reference: https://developers.google.com/youtube/v3/docs
+  severity: info
+  tags: token-spray,youtube
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - quotaExceeded
+  - status:
+    - 200
+    type: status
+  matchers-condition: or
+  method: GET
+  path:
+  - https://www.googleapis.com/youtube/v3/activities?part=contentDetails&maxResults=25&channelId=UC-lHJZR3Gqxm24_Vd_AJ5Yw&key={{token}}

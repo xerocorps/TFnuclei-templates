@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordpress-gallery-plugin
+  - dsl:
+    - compare_versions(version, '<= 1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordpress-gallery-plugin/readme.txt'
+  redirects: true
+id: wordpress_gallery_plugin-875fbe6e-436c-445c-bd0c-0e6beae3fbf2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wordpress-gallery-plugin/
+    google-query: inurl:"/wp-content/plugins/wordpress-gallery-plugin/"
+    shodan-query: http.html:"wp-content/plugins/wordpress-gallery-plugin/"
+  name: 'WordPress Gallery Plugin <= 1.4 - Cross-Site Request Forgery to Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/875fbe6e-436c-445c-bd0c-0e6beae3fbf2?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wordpress-gallery-plugin,medium,candidate

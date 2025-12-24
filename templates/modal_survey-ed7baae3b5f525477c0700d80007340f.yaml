@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - modal_survey
+  - dsl:
+    - compare_versions(version, '<= 2.0.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/modal_survey/readme.txt'
+  redirects: true
+id: modal_survey-ed7baae3b5f525477c0700d80007340f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/modal_survey/
+    google-query: inurl:"/wp-content/plugins/modal_survey/"
+    shodan-query: 'vuln:'
+  name: 'Modal Survey <= 2.0.1.8 - PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e30fe90a-774c-41ba-b28e-8b8128fd72cc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,modal_survey,low

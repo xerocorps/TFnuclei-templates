@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - slideshow-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/slideshow-gallery/readme.txt'
+  redirects: true
+id: slideshow-gallery-128fc79fa6e9a8dfcf8277beeb30e2f8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/slideshow-gallery/
+    google-query: inurl:"/wp-content/plugins/slideshow-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Slideshow Gallery <= 1.6.5 - Cross-Site Scripting via method
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b5ba2813-56ff-45d0-966a-f83da862ec13?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,slideshow-gallery,high

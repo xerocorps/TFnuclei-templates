@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shopmagic-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 4.5.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shopmagic-for-woocommerce/readme.txt'
+  redirects: true
+id: shopmagic_for_woocommerce-3b8cfb2b-8f08-4d35-a3d9-ced734f7960e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shopmagic-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/shopmagic-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/shopmagic-for-woocommerce/"
+  name: "Free Follow-Up Emails & Marketing Automation for WooCommerce \u2013 ShopMagic\
+    \ <= 4.5.6 - Unauthenticated Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3b8cfb2b-8f08-4d35-a3d9-ced734f7960e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shopmagic-for-woocommerce,low,candidate

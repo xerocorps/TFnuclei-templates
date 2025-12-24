@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - c9-blocks
+  - dsl:
+    - compare_versions(version, '<= 1.7.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/c9-blocks/readme.txt'
+  redirects: true
+id: c9_blocks-e3e682fb-e821-45cb-a087-d97d42a3743e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/c9-blocks/
+    google-query: inurl:"/wp-content/plugins/c9-blocks/"
+    shodan-query: http.html:"wp-content/plugins/c9-blocks/"
+  name: 'C9 Blocks <= 1.7.7 - Unauthenticated Full Path Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e3e682fb-e821-45cb-a087-d97d42a3743e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,c9-blocks,low,candidate

@@ -1,0 +1,21 @@
+id: aem-querybuilder-json-servlet
+info:
+  author: DhiyaneshDk
+  name: AEM QueryBuilder Json Servlet
+  reference: https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/querybuilder-predicate-reference.html
+  severity: info
+  tags: aem
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - success
+    - results
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/bin/querybuilder.json'

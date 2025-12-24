@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - userpro
+  - dsl:
+    - compare_versions(version, '<= 4.9.34')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/userpro/readme.txt'
+  redirects: true
+id: userpro-741028c9-6021-4522-b7e5-b31f0c3a9f10
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/userpro/
+    google-query: inurl:"/wp-content/plugins/userpro/"
+    shodan-query: http.html:"wp-content/plugins/userpro/"
+  name: 'UserPro <= 4.9.34 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/741028c9-6021-4522-b7e5-b31f0c3a9f10?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,userpro,medium,candidate

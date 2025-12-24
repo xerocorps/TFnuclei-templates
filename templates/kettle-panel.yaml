@@ -1,0 +1,18 @@
+id: kettle-panel
+info:
+  author: For3stCo1d
+  metadata:
+    shodan-query: basic realm="Kettle"
+    verified: true
+  name: Kettle Panel
+  severity: info
+  tags: panel,kettle
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - basic realm="Kettle"
+  method: GET
+  path:
+  - '{{BaseURL}}'

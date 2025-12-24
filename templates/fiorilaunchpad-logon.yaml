@@ -1,0 +1,21 @@
+id: fiorilaunchpad-logon
+info:
+  author: dhiyaneshDK
+  name: FioriLaunchpad Logon
+  reference: https://www.exploit-db.com/ghdb/6793
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <title>Logon</title>
+    - fioriLogin
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html?saml2=disabled'

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - unlimited-elements-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.5.107')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/unlimited-elements-for-elementor/readme.txt'
+  redirects: true
+id: unlimited-elements-for-elementor-8c6a40eb23fd83346d8076d1c02fe7a3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/unlimited-elements-for-elementor/
+    google-query: inurl:"/wp-content/plugins/unlimited-elements-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Unlimited Elements for Elementor <= 1.5.107 - Authenticated (Contributor+)
+    SQL Injection via data[post_ids][0]
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b155f8ca-9d09-47d7-a7c2-7744df029c19?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,unlimited-elements-for-elementor,low

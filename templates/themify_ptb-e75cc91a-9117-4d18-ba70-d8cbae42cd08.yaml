@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - themify-ptb
+  - dsl:
+    - compare_versions(version, '<= 2.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/themify-ptb/readme.txt'
+  redirects: true
+id: themify_ptb-e75cc91a-9117-4d18-ba70-d8cbae42cd08
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/themify-ptb/
+    google-query: inurl:"/wp-content/plugins/themify-ptb/"
+    shodan-query: http.html:"wp-content/plugins/themify-ptb/"
+  name: 'Post Type Builder <= 2.1.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e75cc91a-9117-4d18-ba70-d8cbae42cd08?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,themify-ptb,medium,candidate

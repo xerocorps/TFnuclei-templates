@@ -1,0 +1,20 @@
+id: geo-webserver
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"GeoWebServer"
+  name: GeoWebServer Detector
+  severity: info
+  tags: panel,geowebserver
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - <TITLE>GeoWebServer</TITLE>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

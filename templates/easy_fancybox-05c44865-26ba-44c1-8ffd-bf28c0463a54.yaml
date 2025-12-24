@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-fancybox
+  - dsl:
+    - compare_versions(version, '<= 2.3.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-fancybox/readme.txt'
+  redirects: true
+id: easy_fancybox-05c44865-26ba-44c1-8ffd-bf28c0463a54
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easy-fancybox/
+    google-query: inurl:"/wp-content/plugins/easy-fancybox/"
+    shodan-query: http.html:"wp-content/plugins/easy-fancybox/"
+  name: 'Firelight Lightbox <= 2.3.15 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/05c44865-26ba-44c1-8ffd-bf28c0463a54?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,easy-fancybox,low,candidate

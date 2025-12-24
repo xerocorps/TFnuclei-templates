@@ -1,0 +1,29 @@
+id: centreon-panel
+info:
+  author: pikpikcu,daffainfo
+  metadata:
+    shodan-query: http.title:"Centreon"
+  name: Centreon Login Panel
+  severity: info
+  tags: panel,centreon,login
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - v. (.*)
+    type: regex
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Centreon - IT & Network Monitoring</title>
+    - <input name="centreon_token" type="hidden"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/centreon/index.php'

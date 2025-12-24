@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - miwoftp
+  - dsl:
+    - compare_versions(version, '< 1.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/miwoftp/readme.txt'
+  redirects: true
+id: miwoftp-dfaa084c44c4eae728e12c813096dea1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/miwoftp/
+    google-query: inurl:"/wp-content/plugins/miwoftp/"
+    shodan-query: 'vuln:'
+  name: 'MiwoFTP < 1.0.5 - Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2db8e79f-e70b-421f-8120-7aa65e704deb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,miwoftp,low

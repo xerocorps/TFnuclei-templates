@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cm-ad-changer
+  - dsl:
+    - compare_versions(version, '<= 2.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cm-ad-changer/readme.txt'
+  redirects: true
+id: cm_ad_changer-4115a8d8-4651-41a8-94a7-5ebe8d23ee42
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cm-ad-changer/
+    google-query: inurl:"/wp-content/plugins/cm-ad-changer/"
+    shodan-query: http.html:"wp-content/plugins/cm-ad-changer/"
+  name: 'CM Ad Changer <= 2.0.5 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4115a8d8-4651-41a8-94a7-5ebe8d23ee42?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,cm-ad-changer,medium,candidate

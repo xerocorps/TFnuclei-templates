@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - calculated-fields-form
+  - dsl:
+    - compare_versions(version, '<= 5.1.56')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/calculated-fields-form/readme.txt'
+  redirects: true
+id: calculated-fields-form-27d4e10ea7ea078834766018a67ec960
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/calculated-fields-form/
+    google-query: inurl:"/wp-content/plugins/calculated-fields-form/"
+    shodan-query: 'vuln:'
+  name: 'Calculated Fields Form Professional <= 5.1.56 - Unauthenticated Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/45bfa9fb-f35b-4fd4-8553-cf87bf69df6b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,calculated-fields-form,high

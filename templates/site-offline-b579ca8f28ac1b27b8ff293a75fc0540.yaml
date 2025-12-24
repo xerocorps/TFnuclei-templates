@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - site-offline
+  - dsl:
+    - compare_versions(version, '<= 1.5.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/site-offline/readme.txt'
+  redirects: true
+id: site-offline-b579ca8f28ac1b27b8ff293a75fc0540
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/site-offline/
+    google-query: inurl:"/wp-content/plugins/site-offline/"
+    shodan-query: 'vuln:'
+  name: 'Site Offline <= 1.5.6 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/96f30a22-f218-48e7-9796-b9f1d5becc2c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,site-offline,low

@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - newsletter
+  - dsl:
+    - compare_versions(version, '<= 3.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/newsletter/readme.txt'
+  redirects: true
+id: newsletter-6d8fa44359c56fd34f8bec5ec27ad44e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N
+    cvss-score: 4.3
+  description: "The Newsletter plugin is susceptible to an Open Redirect vulnerability.\
+    \ This issue is due to the fact user input it taken, and trusted, without validation.\
+    \ This user input is used when tracking link clicks, via the \u2018newsletter/statistics/link.php\u2019\
+    \ script. User input is Base64 encoded, and split on the \u2018;\u2019 character,\
+    \ the third column of which can be manipulated in order to control where the user\
+    \ is redirected to.\n"
+  metadata:
+    fofa-query: wp-content/plugins/newsletter/
+    google-query: inurl:"/wp-content/plugins/newsletter/"
+    shodan-query: 'vuln:'
+  name: 'Newsletter <= 3.8.2 - Open Redirect
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/db2a2ca9-a12c-412d-80f7-66f1dc3e09af?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,newsletter,medium

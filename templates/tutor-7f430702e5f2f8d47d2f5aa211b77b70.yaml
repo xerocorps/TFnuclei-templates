@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tutor
+  - dsl:
+    - compare_versions(version, '<= 2.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tutor/readme.txt'
+  redirects: true
+id: tutor-7f430702e5f2f8d47d2f5aa211b77b70
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tutor/
+    google-query: inurl:"/wp-content/plugins/tutor/"
+    shodan-query: 'vuln:'
+  name: "Tutor LMS \u2013 eLearning and online course solution <= 2.6.2 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting via 'tutor_instructor_list' Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/324fc401-04ca-4707-8727-b8c3a66f7fd6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tutor,low

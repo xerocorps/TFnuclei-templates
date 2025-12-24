@@ -1,0 +1,50 @@
+http:
+- host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - type=dberror
+    - MySQL Error
+  - condition: or
+    status:
+    - 200
+    - 503
+    type: status
+  matchers-condition: and
+  max-redirects: 3
+  raw:
+  - 'POST /search.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    contenttypeid=7&do=process&humanverify=1&cat[]=-1%27
+
+    '
+id: vbulletin-search-sqli
+info:
+  author: MaStErChO
+  classification:
+    cpe: cpe:2.3:a:vbulletin:vbulletin:*:*:*:*:*:*:*:*
+  description: 'vBulletin 4 is vulnerable to an SQL injection vulnerability, which
+    may allow an attacker can execute malicious SQL statements that control a web
+    application''s database server.
+
+    '
+  metadata:
+    max-request: 1
+    product: vbulletin
+    shodan-query: http.component:"vBulletin"
+    vendor: vbulletin
+    verified: true
+  name: vBulletin `Search.php` - SQL Injection
+  reference:
+  - https://www.exploit-db.com/exploits/17314
+  - https://web.archive.org/web/20181129123620/https://j0hnx3r.org/vbulletin-4-x-sql-injection-vulnerability/
+  remediation: Upgrade to the latest version of vBulletin.
+  severity: high
+  tags: vbulletin,sqli,vuln

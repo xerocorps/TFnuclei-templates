@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-ticket
+  - dsl:
+    - compare_versions(version, '< 5.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-ticket/readme.txt'
+  redirects: true
+id: wp_ticket-b27338c7-2fbc-4985-a25e-8e2a9fdef8c3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 4.4
+  description: 'The Customer Service Software & Support Ticket System plugin for WordPress
+    is vulnerable to Stored Cross-Site Scripting via admin settings in versions up
+    to, and including, 5.12.0  due to insufficient input sanitization and output escaping.
+    This makes it possible for authenticated attackers, with administrator-level permissions
+    and above, to inject arbitrary web scripts in pages that will execute whenever
+    a user accesses an injected page. This only affects multi-site installations and
+    installations where unfiltered_html has been disabled.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wp-ticket/
+    google-query: inurl:"/wp-content/plugins/wp-ticket/"
+    shodan-query: http.html:"wp-content/plugins/wp-ticket/"
+  name: 'Customer Service Software & Support Ticket System <= 5.12.0 - Authenticated
+    (Administrator+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b27338c7-2fbc-4985-a25e-8e2a9fdef8c3?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-ticket,low,production

@@ -1,0 +1,22 @@
+id: awstats-config
+info:
+  author: sheikhrishad
+  name: AWStats config
+  severity: info
+  tags: config,exposure
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - AWSTATS CONFIGURE
+    - MAIN SETUP SECTION
+  - condition: and
+    type: word
+    words:
+    - Index of /awstats
+    - Parent Directory
+  method: GET
+  path:
+  - '{{BaseURL}}/awstats/'
+  - '{{BaseURL}}/awstats.conf'

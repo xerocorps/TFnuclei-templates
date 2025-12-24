@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fatal-error-notify
+  - dsl:
+    - compare_versions(version, '<= 1.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fatal-error-notify/readme.txt'
+  redirects: true
+id: fatal-error-notify-c90c028a9c10e24d0650366923ed951b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fatal-error-notify/
+    google-query: inurl:"/wp-content/plugins/fatal-error-notify/"
+    shodan-query: 'vuln:'
+  name: 'Fatal Error Notify <= 1.5.2 - Cross-Site Request Forgery to Test Error Email
+    Sending
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/08b75cac-7b1d-4bed-a1b7-bd1e872f2b4f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,fatal-error-notify,medium

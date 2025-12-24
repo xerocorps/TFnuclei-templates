@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sina-extension-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 3.5.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sina-extension-for-elementor/readme.txt'
+  redirects: true
+id: sina-extension-for-elementor-84a77ed66617ca2854175fcec5c1de42
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sina-extension-for-elementor/
+    google-query: inurl:"/wp-content/plugins/sina-extension-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Sina Extension for Elementor <= 3.5.5 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via read_more_text Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/da6dcf5c-bb70-4227-a784-55cf28980308?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sina-extension-for-elementor,low

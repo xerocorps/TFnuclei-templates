@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-job-portal
+  - dsl:
+    - compare_versions(version, '<= 2.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-job-portal/readme.txt'
+  redirects: true
+id: wp_job_portal-5fdba3c5-382e-4d2b-83d8-0e0cebf2e63c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-job-portal/
+    google-query: inurl:"/wp-content/plugins/wp-job-portal/"
+    shodan-query: http.html:"wp-content/plugins/wp-job-portal/"
+  name: 'WP Job Portal <= 2.2.8 - Insecure Direct Object Reference to Authenticated
+    (Subscriber+) User Photo Disconnection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5fdba3c5-382e-4d2b-83d8-0e0cebf2e63c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-job-portal,low,candidate

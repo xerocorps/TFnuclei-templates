@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - events-made-easy
+  - dsl:
+    - compare_versions(version, '< 1.5.50')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/events-made-easy/readme.txt'
+  redirects: true
+id: events-made-easy-64ec2cd5da32655f6effa9ef0ed7dc0c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/events-made-easy/
+    google-query: inurl:"/wp-content/plugins/events-made-easy/"
+    shodan-query: 'vuln:'
+  name: 'Events Made Easy < 1.5.50 - Cross-Site Request Forgery to Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/914e17ce-ab09-4e9f-9466-0ed21712cf66?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,events-made-easy,medium

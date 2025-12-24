@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profile-builder
+  - dsl:
+    - compare_versions(version, '<= 3.6.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profile-builder/readme.txt'
+  redirects: true
+id: profile_builder-7b44130c-b526-4670-bde2-e47fe823ac62
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profile-builder/
+    google-query: inurl:"/wp-content/plugins/profile-builder/"
+    shodan-query: http.html:"wp-content/plugins/profile-builder/"
+  name: "Profile Builder \u2013 User Profile & User Registration Forms <= 3.6.4 -\
+    \ Cross-Site Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7b44130c-b526-4670-bde2-e47fe823ac62?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,profile-builder,medium,candidate

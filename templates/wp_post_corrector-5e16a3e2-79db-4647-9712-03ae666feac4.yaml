@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-post-corrector
+  - dsl:
+    - compare_versions(version, '<= 1.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-post-corrector/readme.txt'
+  redirects: true
+id: wp_post_corrector-5e16a3e2-79db-4647-9712-03ae666feac4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-post-corrector/
+    google-query: inurl:"/wp-content/plugins/wp-post-corrector/"
+    shodan-query: http.html:"wp-content/plugins/wp-post-corrector/"
+  name: 'WP Post Corrector <= 1.0.2 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5e16a3e2-79db-4647-9712-03ae666feac4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-post-corrector,low,candidate

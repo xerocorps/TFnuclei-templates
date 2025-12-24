@@ -1,0 +1,16 @@
+id: worksites-takeover
+info:
+  author: melbadry9
+  name: worksites takeover detection
+  reference:
+  - https://blog.melbadry9.xyz/dangling-dns/xyz-services/ddns-worksites
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - regex:
+    - (?:Company Not Found|you&rsquo;re looking for doesn&rsquo;t exist)
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

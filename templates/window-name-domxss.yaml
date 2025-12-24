@@ -1,0 +1,53 @@
+headless:
+- extractors:
+  - kval:
+    - alerts
+    part: alerts
+    type: kval
+  matchers:
+  - part: alerts
+    type: word
+    words:
+    - 'sink:'
+  steps:
+  - action: setheader
+    args:
+      key: Content-Security-Policy
+      part: response
+      value: 'default-src * ''unsafe-inline'' ''unsafe-eval'' data: blob:;'
+  - action: script
+    args:
+      code: "(function() {window.alerts = [];\n\nfunction logger(found) {\n\twindow.alerts.push(found);\n\
+        }\n\nfunction getStackTrace () {\n  var stack;\n  try {\n    throw new Error('');\n\
+        \  }\n  catch (error) {\n    stack = error.stack || '';\n  }\n  stack = stack.split('\\\
+        n').map(function (line) { return line.trim(); });\n  return stack.splice(stack[0]\
+        \ == 'Error' ? 2 : 1);\n}\nwindow.name = \"{{randstr_1}}'\\\"<>\";\n\nvar\
+        \ oldEval = eval;\nvar oldDocumentWrite = document.write;\nvar setter = Object.getOwnPropertyDescriptor(Element.prototype,\
+        \ 'innerHTML').set;\nObject.defineProperty(Element.prototype, 'innerHTML',\
+        \ {\n  set: function innerHTML_Setter(val) {\n    if (val.includes(\"{{randstr_1}}'\\\
+        \"<>\")) {\n      logger({sink: 'innerHTML', source: 'window.name', code:\
+        \ val, stack: getStackTrace()});\n    }\n    return setter.call(this, val)\n\
+        \  }\n});\neval = function(data) {\n  if (data.includes(\"{{randstr_1}}'\\\
+        \"<>\")) {\n    logger({sink: 'eval' ,source: 'window.name', code: data, stack:\
+        \ getStackTrace()});\n  }\n  return oldEval.apply(this, arguments);\n};\n\
+        document.write = function(data) {\n  if (data.includes(\"{{randstr_1}}'\\\"\
+        <>\")) {\n    logger({sink: 'document.write' ,source: 'window.name', code:\
+        \ data, stack: getStackTrace()});\n  }\n  return oldEval.apply(this, arguments);\n\
+        };\n})();\n"
+      hook: true
+  - action: navigate
+    args:
+      url: '{{BaseURL}}'
+  - action: waitload
+  - action: script
+    args:
+      code: window.alerts
+    name: alerts
+id: window-name-domxss
+info:
+  author: pdteam
+  name: window.name - DOM Cross-Site Scripting
+  reference:
+  - https://public-firing-range.appspot.com/dom/index.html
+  severity: medium
+  tags: headless,xss,domxss

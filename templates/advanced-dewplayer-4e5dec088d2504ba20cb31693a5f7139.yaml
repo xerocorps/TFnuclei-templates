@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-dewplayer
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-dewplayer/readme.txt'
+  redirects: true
+id: advanced-dewplayer-4e5dec088d2504ba20cb31693a5f7139
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-dewplayer/
+    google-query: inurl:"/wp-content/plugins/advanced-dewplayer/"
+    shodan-query: 'vuln:'
+  name: 'Advanced Dewplayer < 1.3 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5f319613-2709-449c-9e13-b0f95ee0b88b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-dewplayer,low

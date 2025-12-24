@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cost-of-goods-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 3.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cost-of-goods-for-woocommerce/readme.txt'
+  redirects: true
+id: cost_of_goods_for_woocommerce-b6a228f6-5c72-4c26-8b02-61158b96bd8e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cost-of-goods-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/cost-of-goods-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/cost-of-goods-for-woocommerce/"
+  name: 'Cost of Goods for WooCommerce <= 3.7.0 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b6a228f6-5c72-4c26-8b02-61158b96bd8e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cost-of-goods-for-woocommerce,low,candidate

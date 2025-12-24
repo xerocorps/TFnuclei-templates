@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - eexamhall
+  - dsl:
+    - compare_versions(version, '<= 4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/eexamhall/readme.txt'
+  redirects: true
+id: eexamhall-cb68215d678c37902347bbc03e903b37
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/eexamhall/
+    google-query: inurl:"/wp-content/plugins/eexamhall/"
+    shodan-query: 'vuln:'
+  name: 'eExamhall <= 4.0 - Cross Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d80d583f-42c8-48fb-b757-88346c740b0e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,eexamhall,low

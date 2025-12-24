@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kk-star-ratings
+  - dsl:
+    - compare_versions(version, '<= 5.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/kk-star-ratings/readme.txt'
+  redirects: true
+id: kk_star_ratings-003694f8-23be-4c94-899d-76b9b8488202
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/kk-star-ratings/
+    google-query: inurl:"/wp-content/plugins/kk-star-ratings/"
+    shodan-query: http.html:"wp-content/plugins/kk-star-ratings/"
+  name: 'kk Star Ratings <= 5.4.5 - Race Condition to Multiple User Voting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/003694f8-23be-4c94-899d-76b9b8488202?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,kk-star-ratings,low,candidate

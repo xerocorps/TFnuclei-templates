@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdevart-vertical-menu
+  - dsl:
+    - compare_versions(version, '<= 1.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdevart-vertical-menu/readme.txt'
+  redirects: true
+id: wpdevart-vertical-menu-9eac315050f2b88e93d70c5214f80d90
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpdevart-vertical-menu/
+    google-query: inurl:"/wp-content/plugins/wpdevart-vertical-menu/"
+    shodan-query: 'vuln:'
+  name: 'Responsive Vertical Icon Menu <= 1.5.8 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fe7f75b4-f315-44f7-8e67-1680eeee3942?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpdevart-vertical-menu,medium

@@ -1,0 +1,21 @@
+id: cisco-sd-wan
+info:
+  author: z3bd
+  name: Cisco SD-WAN panel
+  reference:
+  - https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-bufovulns-B5NrSHbj
+  severity: info
+  tags: panel,cisco
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - SD-Wan Center
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

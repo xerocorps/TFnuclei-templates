@@ -1,0 +1,20 @@
+id: plesk-onyx-login
+info:
+  author: dhiyaneshDK
+  name: Plesk Onyx login portal
+  reference:
+  - https://www.exploit-db.com/ghdb/6501
+  severity: info
+  tags: panel,plesk,login
+requests:
+- matchers:
+  - type: word
+    words:
+    - Plesk Onyx
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login_up.php'

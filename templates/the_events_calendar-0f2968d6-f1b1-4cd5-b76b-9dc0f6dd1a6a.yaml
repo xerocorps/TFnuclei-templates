@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - the-events-calendar
+  - dsl:
+    - compare_versions(version, '<= 6.15.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/the-events-calendar/readme.txt'
+  redirects: true
+id: the_events_calendar-0f2968d6-f1b1-4cd5-b76b-9dc0f6dd1a6a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/the-events-calendar/
+    google-query: inurl:"/wp-content/plugins/the-events-calendar/"
+    shodan-query: http.html:"wp-content/plugins/the-events-calendar/"
+  name: 'The Events Calendar <= 6.15.2 - Missing Authorization to Unauthenticated
+    Password-Protected Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0f2968d6-f1b1-4cd5-b76b-9dc0f6dd1a6a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,the-events-calendar,high,candidate

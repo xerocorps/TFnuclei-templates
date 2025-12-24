@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - LayerSlider
+  - dsl:
+    - compare_versions(version, '<= 7.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/LayerSlider/readme.txt'
+  redirects: true
+id: layerslider-2848c9d7c3ce4b8f96ef00a84d5fd515
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/LayerSlider/
+    google-query: inurl:"/wp-content/plugins/LayerSlider/"
+    shodan-query: 'vuln:'
+  name: 'LayerSlider <= 7.1.1 - Admin+ Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/78fce739-5cc7-4a7f-bf3b-665f35ef3579?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,LayerSlider,high

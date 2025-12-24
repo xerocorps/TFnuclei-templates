@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - SCv1
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/SCv1/style.css'
+  redirects: true
+id: scv1-119cdc16fe916df3add67c8763d4fc01
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/SCv1/
+    google-query: inurl:"/wp-content/themes/SCv1/"
+    shodan-query: 'vuln:'
+  name: 'SCv1 Theme (All Known Versions) - Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d9d7dc61-1e28-426b-a9da-3a36134e7821?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,SCv1,low

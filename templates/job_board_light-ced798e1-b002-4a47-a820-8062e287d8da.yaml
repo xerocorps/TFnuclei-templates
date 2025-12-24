@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - job-board-light
+  - dsl:
+    - compare_versions(version, '<= 1.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/job-board-light/readme.txt'
+  redirects: true
+id: job_board_light-ced798e1-b002-4a47-a820-8062e287d8da
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/job-board-light/
+    google-query: inurl:"/wp-content/plugins/job-board-light/"
+    shodan-query: http.html:"wp-content/plugins/job-board-light/"
+  name: 'JobBoard Job listing <= 1.2.7 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ced798e1-b002-4a47-a820-8062e287d8da?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,job-board-light,high,candidate

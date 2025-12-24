@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - travelpayouts
+  - dsl:
+    - compare_versions(version, '<= 1.1.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/travelpayouts/readme.txt'
+  redirects: true
+id: travelpayouts-04f2ebf8-5721-4db7-8fc0-f2ae05e94239
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/travelpayouts/
+    google-query: inurl:"/wp-content/plugins/travelpayouts/"
+    shodan-query: http.html:"wp-content/plugins/travelpayouts/"
+  name: 'Travelpayouts <= 1.1.12 - Cross-Site Request Forgery to Settings Import
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/04f2ebf8-5721-4db7-8fc0-f2ae05e94239?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,travelpayouts,medium,candidate

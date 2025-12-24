@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kormosala
+  - dsl:
+    - compare_versions(version, '<= 1.0.22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/kormosala/style.css'
+  redirects: true
+id: kormosala-26154f5e5852c4296204c79016f642dd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/kormosala/
+    google-query: inurl:"/wp-content/themes/kormosala/"
+    shodan-query: 'vuln:'
+  name: 'Kormosala <= 1.0.22 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/01d0016c-f693-426a-94cb-5611760fd2d0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,kormosala,medium

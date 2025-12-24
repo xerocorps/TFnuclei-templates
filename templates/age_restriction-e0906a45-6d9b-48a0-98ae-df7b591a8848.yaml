@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - age-restriction
+  - dsl:
+    - compare_versions(version, '<= 3.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/age-restriction/readme.txt'
+  redirects: true
+id: age_restriction-e0906a45-6d9b-48a0-98ae-df7b591a8848
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/age-restriction/
+    google-query: inurl:"/wp-content/plugins/age-restriction/"
+    shodan-query: http.html:"wp-content/plugins/age-restriction/"
+  name: 'Premium Age Verification / Restriction for WordPress <= 3.0.2 - Unauthenticated
+    Arbitrary File Read and Write via remote_tunnel.php
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e0906a45-6d9b-48a0-98ae-df7b591a8848?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,age-restriction,low,candidate

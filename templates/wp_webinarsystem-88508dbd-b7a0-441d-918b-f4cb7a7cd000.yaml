@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-webinarsystem
+  - dsl:
+    - compare_versions(version, '<= 1.33.24')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-webinarsystem/readme.txt'
+  redirects: true
+id: wp_webinarsystem-88508dbd-b7a0-441d-918b-f4cb7a7cd000
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-webinarsystem/
+    google-query: inurl:"/wp-content/plugins/wp-webinarsystem/"
+    shodan-query: http.html:"wp-content/plugins/wp-webinarsystem/"
+  name: "WordPress Webinar Plugin \u2013 WebinarPress <= 1.33.24 - Missing Authorization\
+    \ to Authenticated (Subscriber+) Webinar Updates\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/88508dbd-b7a0-441d-918b-f4cb7a7cd000?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-webinarsystem,low,candidate

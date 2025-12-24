@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bb-ultimate-addon
+  - dsl:
+    - compare_versions(version, '<= 1.35.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bb-ultimate-addon/readme.txt'
+  redirects: true
+id: bb_ultimate_addon-38a5be0c-f905-4e27-b5c3-8c0606d71a61
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bb-ultimate-addon/
+    google-query: inurl:"/wp-content/plugins/bb-ultimate-addon/"
+    shodan-query: http.html:"wp-content/plugins/bb-ultimate-addon/"
+  name: 'Ultimate Addons for Beaver Builder <= 1.35.13 - Authenticated(Contributor+)
+    Directory Traversal to Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/38a5be0c-f905-4e27-b5c3-8c0606d71a61?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bb-ultimate-addon,low,candidate

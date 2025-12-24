@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - google-authenticator
+  - dsl:
+    - compare_versions(version, '<= 0.47')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/google-authenticator/readme.txt'
+  redirects: true
+id: google-authenticator-d7bf8d58389266ff3a748f598f2702d0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/google-authenticator/
+    google-query: inurl:"/wp-content/plugins/google-authenticator/"
+    shodan-query: 'vuln:'
+  name: 'Google Authenticator <= 0.47 - Improper Authentication
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f3bbc23b-94af-4f4f-8b5f-6af41108fd93?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,google-authenticator,low

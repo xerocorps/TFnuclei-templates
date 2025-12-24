@@ -1,0 +1,36 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - django
+    - security
+    - debugging
+  description: Template to detect if Django Debug mode is enabled
+  id: django-debug-enabled
+  matcher-condition: or
+  matchers:
+  - pattern: Welcome to Django
+  - pattern: Page not found (404)
+  - description: Django welcome page found in response body
+    pattern: DEBUG = True in your Django settings file
+    type: body
+  - description: Internal Server Error message found in response body when Debug mode
+      is enabled
+    pattern: Internal Server Error
+    type: body
+  name: Django Debug Enabled
+  reference:
+  - https://docs.djangoproject.com/en/3.2/ref/settings/#debug
+  requests:
+    condition: or
+    description: Attempt to retrieve the website
+    method: GET
+    path:
+    - /non-exists
+  response:
+  - description: Successful or Internal Server Error response status
+    status:
+    - 200
+    - 500
+  severity: Medium

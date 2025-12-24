@@ -1,0 +1,21 @@
+id: netlify-takeover
+info:
+  author: 0xPrial,pdteam
+  name: netlify takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover,netlify
+requests:
+- matchers:
+  - type: word
+    words:
+    - 'Not found - Request ID:'
+  - part: header
+    type: word
+    words:
+    - Netlify
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

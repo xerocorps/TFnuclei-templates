@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - formidable
+  - dsl:
+    - compare_versions(version, '< 2.05.03')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/formidable/readme.txt'
+  redirects: true
+id: formidable-78d7fd12ea65803c4a919c6d94cd6456
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/formidable/
+    google-query: inurl:"/wp-content/plugins/formidable/"
+    shodan-query: 'vuln:'
+  name: 'Formidable Form Builder < 2.05.03 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c0e6f20a-3a5c-4782-9852-9891b93d765f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,formidable,medium

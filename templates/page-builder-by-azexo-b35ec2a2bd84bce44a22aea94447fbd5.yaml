@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - page-builder-by-azexo
+  - dsl:
+    - compare_versions(version, '<= 1.27.133')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/page-builder-by-azexo/readme.txt'
+  redirects: true
+id: page-builder-by-azexo-b35ec2a2bd84bce44a22aea94447fbd5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/page-builder-by-azexo/
+    google-query: inurl:"/wp-content/plugins/page-builder-by-azexo/"
+    shodan-query: 'vuln:'
+  name: 'Page Builder by AZEXO <= 1.27.133 - Cross-Site Request Forgery to Stored
+    Cross-Site Scripting via azh_save
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2efeffa2-b21a-4aa1-93b0-51c775758ab1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,page-builder-by-azexo,medium

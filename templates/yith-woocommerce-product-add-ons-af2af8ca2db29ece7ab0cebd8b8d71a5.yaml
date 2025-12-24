@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yith-woocommerce-product-add-ons
+  - dsl:
+    - compare_versions(version, '< 4.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yith-woocommerce-product-add-ons/readme.txt'
+  redirects: true
+id: yith-woocommerce-product-add-ons-af2af8ca2db29ece7ab0cebd8b8d71a5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yith-woocommerce-product-add-ons/
+    google-query: inurl:"/wp-content/plugins/yith-woocommerce-product-add-ons/"
+    shodan-query: 'vuln:'
+  name: 'YITH WooCommerce Product Add-Ons <= 4.3.0 - Authenticated(Shop Manager+)
+    PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7edd06d9-3897-4644-a77e-e58ab6d14c95?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,yith-woocommerce-product-add-ons,low

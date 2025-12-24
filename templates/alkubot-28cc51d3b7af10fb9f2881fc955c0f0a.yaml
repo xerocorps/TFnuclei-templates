@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - alkubot
+  - dsl:
+    - compare_versions(version, '< 3.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/alkubot/readme.txt'
+  redirects: true
+id: alkubot-28cc51d3b7af10fb9f2881fc955c0f0a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/alkubot/
+    google-query: inurl:"/wp-content/plugins/alkubot/"
+    shodan-query: 'vuln:'
+  name: "Alkubot \u2013 Gamify discounts, sell more and give less at the right time\
+    \ < 3.0.0 - Cross-Site Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7193b373-a0c9-4cd7-8a53-4f35ceff8f23?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,alkubot,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zarzadzanie_kontem
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zarzadzanie_kontem/readme.txt'
+  redirects: true
+id: zarzadzanie_kontem-8ddb37c6c3ab472d4eda177c23c07e30
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zarzadzanie_kontem/
+    google-query: inurl:"/wp-content/plugins/zarzadzanie_kontem/"
+    shodan-query: 'vuln:'
+  name: 'Zarzadzanie Kontem (Unknown Versions) - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/580f5cd1-2cda-4e8e-81b5-36ce39ebd907?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,zarzadzanie_kontem,critical

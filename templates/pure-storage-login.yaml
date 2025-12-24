@@ -1,0 +1,20 @@
+id: pure-storage-login
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"Pure Storage Login"
+  name: Pure Storage Login
+  severity: info
+  tags: panel,purestorage
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Pure Storage Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - if-so
+  - dsl:
+    - compare_versions(version, '<= 1.8.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/if-so/readme.txt'
+  redirects: true
+id: if_so-ecd4ed5d-333c-40c1-a241-683b657ba417
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/if-so/
+    google-query: inurl:"/wp-content/plugins/if-so/"
+    shodan-query: http.html:"wp-content/plugins/if-so/"
+  name: 'If-So Dynamic Content Personalization <= 1.8.0.2 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ecd4ed5d-333c-40c1-a241-683b657ba417?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,if-so,low,candidate

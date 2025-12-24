@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zoho-crm-forms
+  - dsl:
+    - compare_versions(version, '<= 1.7.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zoho-crm-forms/readme.txt'
+  redirects: true
+id: zoho-crm-forms-f8059eca038a04246494ff94eefe1f1c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zoho-crm-forms/
+    google-query: inurl:"/wp-content/plugins/zoho-crm-forms/"
+    shodan-query: 'vuln:'
+  name: 'Zoho CRM Lead Magnet  <= 1.7.5.8 - Missing Authorization to Authenticated
+    (Subscriber+) Arbitrary Options Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/57caddaa-c548-4f07-ab34-327df62951b5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,zoho-crm-forms,low

@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-author-image
+  - dsl:
+    - compare_versions(version, '<=  1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-author-image/readme.txt'
+  redirects: true
+id: easy-author-image-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Easy Author Image plugin for WordPress is vulnerable to Sensitive
+    Data Exposure in versions up to, and including, 1.5 via the 'alt' field. This
+    can allow unauthorized attackers to extract sensitive email data.
+  metadata:
+    fofa-query: wp-content/plugins/easy-author-image/
+    google-query: inurl:"/wp-content/plugins/easy-author-image/"
+    shodan-query: 'vuln:'
+  name: Easy Author Image <= 1.5 - Email Information Exposure
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,easy-author-image,low

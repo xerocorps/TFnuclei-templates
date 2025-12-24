@@ -1,0 +1,29 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - moveit
+    - installation
+  description: Template to detect MOVEit File Transfer installations
+  id: moveit-transfer-detect
+  matcher-condition: and
+  matchers:
+  - pattern: stylesheet_MOVEit
+  - pattern: MOVEit Automation
+  - pattern: MOVEitPopUp
+  - description: MOVEit File Transfer installation detected in the response body
+    pattern: moveit.transfer
+    type: body
+  name: MOVEit File Transfer - Detect
+  requests:
+    description: Attempt to access the MOVEit File Transfer installation
+    method: GET
+    path:
+    - /
+    - /human.aspx
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

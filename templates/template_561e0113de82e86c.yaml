@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - nexus
+    - config file
+    - exposure
+  description: Template to detect Nexus Repository Manager configuration file exposure
+  id: nexus-repo-config-exposure
+  matchers:
+  - pattern: application-port\s+=\s+\w+
+    type: body
+  - pattern: nexus-args\s+=\s+\w+
+    type: body
+  name: Nexus Repository Configuration Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /opt/nexus/etc/nexus-default.properties
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

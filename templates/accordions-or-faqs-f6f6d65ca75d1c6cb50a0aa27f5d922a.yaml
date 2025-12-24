@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - accordions-or-faqs
+  - dsl:
+    - compare_versions(version, '<= 2.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/accordions-or-faqs/readme.txt'
+  redirects: true
+id: accordions-or-faqs-f6f6d65ca75d1c6cb50a0aa27f5d922a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/accordions-or-faqs/
+    google-query: inurl:"/wp-content/plugins/accordions-or-faqs/"
+    shodan-query: 'vuln:'
+  name: 'Accordions <= 2.3.5 - Authenticated (Administrator+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/50d8dc95-4a60-4a1a-bb9f-ba48b58d868e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,accordions-or-faqs,low

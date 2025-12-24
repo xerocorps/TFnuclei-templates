@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ameliabooking
+  - dsl:
+    - compare_versions(version, '<= 1.0.75')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ameliabooking/readme.txt'
+  redirects: true
+id: ameliabooking-f55c3476b5c9c9b48f2320fef7d91f96
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ameliabooking/
+    google-query: inurl:"/wp-content/plugins/ameliabooking/"
+    shodan-query: 'vuln:'
+  name: 'Amelia <= 1.0.75 - Unauthenticated Reflected Cross-Site Scripting via ''code''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8a41f96d-216f-4e5a-a28d-665b052666fb?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ameliabooking,medium

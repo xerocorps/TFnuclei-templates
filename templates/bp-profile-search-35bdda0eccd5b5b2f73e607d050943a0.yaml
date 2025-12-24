@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bp-profile-search
+  - dsl:
+    - compare_versions(version, '<= 4.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bp-profile-search/readme.txt'
+  redirects: true
+id: bp-profile-search-35bdda0eccd5b5b2f73e607d050943a0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bp-profile-search/
+    google-query: inurl:"/wp-content/plugins/bp-profile-search/"
+    shodan-query: 'vuln:'
+  name: 'BP Profile Search <= 4.5.3 - PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d0c144b-609b-4b4a-bfb2-de38b5969a9e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bp-profile-search,low

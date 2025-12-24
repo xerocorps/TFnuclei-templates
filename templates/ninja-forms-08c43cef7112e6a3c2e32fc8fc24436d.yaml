@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ninja-forms
+  - dsl:
+    - compare_versions(version, '<= 2.9.28')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ninja-forms/readme.txt'
+  redirects: true
+id: ninja-forms-08c43cef7112e6a3c2e32fc8fc24436d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ninja-forms/
+    google-query: inurl:"/wp-content/plugins/ninja-forms/"
+    shodan-query: 'vuln:'
+  name: 'Ninja Forms Contact Form <= 2.9.28 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7bd89bd9-4f99-4828-bacc-15d2cfe13066?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ninja-forms,high

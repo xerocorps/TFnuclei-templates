@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - eventer
+  - dsl:
+    - compare_versions(version, '<= 3.9.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/eventer/readme.txt'
+  redirects: true
+id: eventer-bd42c89e-57db-458f-910c-404a5615f280
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/eventer/
+    google-query: inurl:"/wp-content/plugins/eventer/"
+    shodan-query: http.html:"wp-content/plugins/eventer/"
+  name: 'Eventer - WordPress Event & Booking Manager Plugin <= 3.9.9.2 - Authenticated
+    (Subscriber+) SQL Injection via reg_id
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bd42c89e-57db-458f-910c-404a5615f280?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,eventer,low,candidate

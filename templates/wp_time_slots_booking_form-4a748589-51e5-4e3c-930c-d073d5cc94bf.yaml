@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-time-slots-booking-form
+  - dsl:
+    - compare_versions(version, '<= 1.1.82')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-time-slots-booking-form/readme.txt'
+  redirects: true
+id: wp_time_slots_booking_form-4a748589-51e5-4e3c-930c-d073d5cc94bf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-time-slots-booking-form/
+    google-query: inurl:"/wp-content/plugins/wp-time-slots-booking-form/"
+    shodan-query: http.html:"wp-content/plugins/wp-time-slots-booking-form/"
+  name: 'WP Time Slots Booking Form <= 1.1.82 - Improper Authorization Checks
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4a748589-51e5-4e3c-930c-d073d5cc94bf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-time-slots-booking-form,low,candidate

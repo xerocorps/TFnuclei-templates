@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - afterpay-gateway-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 3.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/afterpay-gateway-for-woocommerce/readme.txt'
+  redirects: true
+id: afterpay-gateway-for-woocommerce-bfbcdaef618edbfda755125cc0644c65
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/afterpay-gateway-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/afterpay-gateway-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Afterpay Gateway for WooCommerce <= 3.5.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ac381ed7-ff6a-4fbc-965b-80f3804b3c5f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,afterpay-gateway-for-woocommerce,medium

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - font-awesome
+  - dsl:
+    - compare_versions(version, '<= 4.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/font-awesome/readme.txt'
+  redirects: true
+id: font-awesome-3079756d74d0b205214380f9ac6f1ecc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/font-awesome/
+    google-query: inurl:"/wp-content/plugins/font-awesome/"
+    shodan-query: 'vuln:'
+  name: 'Font Awesome <= 4.3.1 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/36759c8a-351b-448c-a79e-05465e99b4c2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,font-awesome,low

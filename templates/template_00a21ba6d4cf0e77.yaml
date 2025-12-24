@@ -1,0 +1,29 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - cpanel
+    - management
+    - hosting
+  description: cPanel Control Panel
+  id: cpanel-detection
+  matcher-condition: and
+  matchers:
+  - description: cPanel login page banner found in response body
+    pattern: cPanel, L.L.C.
+    type: body
+  name: cPanel Detection
+  reference:
+  - https://docs.cpanel.net/
+  requests:
+    condition: and
+    description: Attempt to access the cPanel control panel login page
+    method: GET
+    path:
+    - /cpanel/
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Low

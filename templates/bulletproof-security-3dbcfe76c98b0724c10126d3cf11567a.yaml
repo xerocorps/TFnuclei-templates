@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bulletproof-security
+  - dsl:
+    - compare_versions(version, '<= .48.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bulletproof-security/readme.txt'
+  redirects: true
+id: bulletproof-security-3dbcfe76c98b0724c10126d3cf11567a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bulletproof-security/
+    google-query: inurl:"/wp-content/plugins/bulletproof-security/"
+    shodan-query: 'vuln:'
+  name: 'BulletProof Security <= .48.9 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d875969e-3749-4f0b-a807-36609bfca4d3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,bulletproof-security,high

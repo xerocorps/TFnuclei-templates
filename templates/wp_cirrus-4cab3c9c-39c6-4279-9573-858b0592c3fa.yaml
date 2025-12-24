@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-cirrus
+  - dsl:
+    - compare_versions(version, '<= 0.6.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-cirrus/readme.txt'
+  redirects: true
+id: wp_cirrus-4cab3c9c-39c6-4279-9573-858b0592c3fa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-cirrus/
+    google-query: inurl:"/wp-content/plugins/wp-cirrus/"
+    shodan-query: http.html:"wp-content/plugins/wp-cirrus/"
+  name: 'WP-Cirrus <= 0.6.11 - Authenticated (Administrator+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4cab3c9c-39c6-4279-9573-858b0592c3fa?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-cirrus,low,candidate

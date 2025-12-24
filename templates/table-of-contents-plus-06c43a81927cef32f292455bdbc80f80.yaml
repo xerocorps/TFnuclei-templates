@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - table-of-contents-plus
+  - dsl:
+    - compare_versions(version, '<= 2106')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/table-of-contents-plus/readme.txt'
+  redirects: true
+id: table-of-contents-plus-06c43a81927cef32f292455bdbc80f80
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/table-of-contents-plus/
+    google-query: inurl:"/wp-content/plugins/table-of-contents-plus/"
+    shodan-query: 'vuln:'
+  name: 'Table of Contents Plus <= 2106 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1e4c655c-9cdf-4106-9cf5-fc153de12d14?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,table-of-contents-plus,low

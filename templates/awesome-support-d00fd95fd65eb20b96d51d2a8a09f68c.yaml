@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - awesome-support
+  - dsl:
+    - compare_versions(version, '<= 6.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/awesome-support/readme.txt'
+  redirects: true
+id: awesome-support-d00fd95fd65eb20b96d51d2a8a09f68c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/awesome-support/
+    google-query: inurl:"/wp-content/plugins/awesome-support/"
+    shodan-query: 'vuln:'
+  name: 'Awesome Support <= 6.1.4 - Authenticated (Submitter+) Arbitrary File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f32cd8e4-51bf-4fdf-ae14-155f8661dbdb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,awesome-support,low

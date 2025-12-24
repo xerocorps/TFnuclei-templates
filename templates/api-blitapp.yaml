@@ -1,0 +1,29 @@
+id: api-blitapp
+info:
+  author: daffainfo
+  name: Blitapp API Test
+  reference:
+  - https://blitapp.com/api/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Development/Blitapp.md
+  severity: info
+  tags: token-spray,blitapp
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id"'
+    - '"name"'
+    - '"apps"'
+  raw:
+  - 'GET https://blitapp.com/api/scheduledcapture HTTP/1.1
+
+    Host: blitapp.com
+
+    Accept: application/json
+
+    Api-key: {{token}}
+
+    '
+self-contained: true

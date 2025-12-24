@@ -1,0 +1,15 @@
+id: drupal-version-disclosure
+info:
+  author: glatisant
+  name: Drupal Version Disclosure
+  severity: info
+requests:
+- matchers:
+  - type: word
+    words:
+    - site-version
+  method: GET
+  path:
+  - '{{BaseURL}}/core/install.php?profile=default'
+  - '{{BaseURL}}/drupal/core/install.php?profile=default'
+  - '{{BaseURL}}/blog/core/install.php?profile=default'

@@ -1,0 +1,14 @@
+id: couchdb-fauxton
+info:
+  author: pdteam
+  name: Apache CouchDB Fauxton Exposure
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Project Fauxton</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,22 @@
+id: open-stack-dashboard-login
+info:
+  author: dhiyaneshDK,hackergautam
+  name: OpenStack Dashboard
+  reference:
+  - https://www.exploit-db.com/ghdb/6464
+  severity: info
+  tags: panel,openstack
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Login - OpenStack Dashboard</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/dashboard/auth/login/'
+  - '{{BaseURL}}/horizon/auth/login/?next=/horizon/'
+  redirects: true

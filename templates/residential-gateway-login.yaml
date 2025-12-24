@@ -1,0 +1,26 @@
+id: residential-gateway-login
+info:
+  author: idealphase
+  metadata:
+    google-query: intitle:"Login - Residential Gateway"
+    shodan-query: http.title:"Login - Residential Gateway"
+  name: Residential Gateway Login
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Login - Residential Gateway</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/cgi-bin/wwwctrl.cgi?action=home'
+  redirects: true
+  stop-at-first-match: true

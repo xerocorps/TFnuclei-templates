@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-anti-fraud
+  - dsl:
+    - compare_versions(version, '<= 3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-anti-fraud/readme.txt'
+  redirects: true
+id: woocommerce-anti-fraud-4597a2e95deecc38a5d07bc070c4f2e7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-anti-fraud/
+    google-query: inurl:"/wp-content/plugins/woocommerce-anti-fraud/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Anti-Fraud <= 3.2 - Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/27337cf2-18a0-4f26-a674-3ab2003b4838?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-anti-fraud,low

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - whmpress
+  - dsl:
+    - compare_versions(version, '<= 6.2-revision-5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/whmpress/readme.txt'
+  redirects: true
+id: whmpress-7d264e88-7137-48ff-8ce3-5fff77e2474a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/whmpress/
+    google-query: inurl:"/wp-content/plugins/whmpress/"
+    shodan-query: http.html:"wp-content/plugins/whmpress/"
+  name: 'WHMpress <= 6.2-revision-5 - Missing Authorization to Authenticated (Subscriber+)
+    Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7d264e88-7137-48ff-8ce3-5fff77e2474a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,whmpress,low,candidate

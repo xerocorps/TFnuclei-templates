@@ -1,0 +1,27 @@
+id: api-lob
+info:
+  author: daffainfo
+  name: Lob API Test
+  reference:
+  - https://docs.lob.com/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Data%20Validation/Lob.md
+  severity: info
+  tags: token-spray,lob
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id"'
+    - '"description"'
+    - '"name"'
+  raw:
+  - 'GET https://api.lob.com/v1/addresses HTTP/1.1
+
+    Authorization: Basic {{base64(token + '':'')}}
+
+    Host: api.lob.com
+
+    '
+self-contained: true

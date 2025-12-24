@@ -1,0 +1,16 @@
+id: activemq-panel
+info:
+  author: pdteam
+  name: Apache ActiveMQ Exposure
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <h2>Welcome to the Apache ActiveMQ!</h2>
+    - <title>Apache ActiveMQ</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'

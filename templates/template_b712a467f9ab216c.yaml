@@ -1,0 +1,41 @@
+name: "\u270D\U0001F3FB CVE Annotate"
+true:
+  push:
+    branches:
+    - master
+  workflow_dispatch: null
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+    - id: cve-annotate
+      name: Generate CVE Annotations
+      run: "if ! which cve-annotate > /dev/null; then\n  echo -e \"Command cve-annotate\
+        \ not found! Installing\\c\"\n  go install github.com/projectdiscovery/nuclei/v2/cmd/cve-annotate@dev\n\
+        fi\ncve-annotate -i ./cves/ -d .\necho \"::set-output name=changes::$(git\
+        \ status -s | wc -l)\"\n"
+    - if: steps.cve-annotate.outputs.changes > 0
+      name: Commit files
+      run: 'git config --local user.email "action@github.com"
+
+        git config --local user.name "GitHub Action"
+
+        git add cves
+
+        git commit -m "Auto Generated CVE annotations [$(date)] :robot:" -a
+
+        '
+    - if: steps.cve-annotate.outputs.changes > 0
+      name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: ${{ github.ref }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}

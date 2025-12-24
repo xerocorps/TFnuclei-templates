@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - css-javascript-toolbox
+  - dsl:
+    - compare_versions(version, '<=  8.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/css-javascript-toolbox/readme.txt'
+  redirects: true
+id: css-javascript-toolbox-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The CSS & JavaScript Toolbox plugin for WordPress is vulnerable to
+    Sensitive Data Exposure in versions up to, and including, 8.4.1 by accessing '/wp-content/plugins/css-javascript-toolbox/models/uninstall/db/mysql/uninstall.sql'
+    on a vulnerable sites. This can allow unauthenticated attackers to extract sensitive
+    data such as the database backup.
+  metadata:
+    fofa-query: wp-content/plugins/css-javascript-toolbox/
+    google-query: inurl:"/wp-content/plugins/css-javascript-toolbox/"
+    shodan-query: 'vuln:'
+  name: CSS & JavaScript Toolbox <= 8.4.1 - Information Exposure
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,css-javascript-toolbox,low

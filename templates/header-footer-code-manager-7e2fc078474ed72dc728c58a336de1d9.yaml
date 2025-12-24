@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - header-footer-code-manager
+  - dsl:
+    - compare_versions(version, '< 1.1.14')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/header-footer-code-manager/readme.txt'
+  redirects: true
+id: header-footer-code-manager-7e2fc078474ed72dc728c58a336de1d9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/header-footer-code-manager/
+    google-query: inurl:"/wp-content/plugins/header-footer-code-manager/"
+    shodan-query: 'vuln:'
+  name: 'Header Footer Code Manager <= 1.1.13 - Authenticated SQL Injections
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/00323c12-151d-42e4-a85c-76400bce1ec8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,header-footer-code-manager,low

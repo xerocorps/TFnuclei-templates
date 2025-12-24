@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - food-and-drink-menu
+  - dsl:
+    - compare_versions(version, '<= 2.4.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/food-and-drink-menu/readme.txt'
+  redirects: true
+id: food_and_drink_menu-03f9d9bb-6a87-4da9-bbb0-65203d7250e9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/food-and-drink-menu/
+    google-query: inurl:"/wp-content/plugins/food-and-drink-menu/"
+    shodan-query: http.html:"wp-content/plugins/food-and-drink-menu/"
+  name: 'Restaurant Menu and Food Ordering <= 2.4.16 - Missing Authorization to Menu
+    Creation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/03f9d9bb-6a87-4da9-bbb0-65203d7250e9?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,food-and-drink-menu,high,candidate

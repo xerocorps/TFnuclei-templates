@@ -1,0 +1,19 @@
+id: sitecore-login-panel
+info:
+  author: b4uh0lz
+  name: Sitecore Login Panel
+  severity: info
+  tags: panel,sitecore,login
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - Sitecore Login
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sitecore/admin/login.aspx'

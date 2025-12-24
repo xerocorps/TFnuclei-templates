@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - store-locator-widget
+  - dsl:
+    - compare_versions(version, '<= 2025r1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/store-locator-widget/readme.txt'
+  redirects: true
+id: store_locator_widget-c65b6793-42e3-40cb-a6fe-b000c879d41f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/store-locator-widget/
+    google-query: inurl:"/wp-content/plugins/store-locator-widget/"
+    shodan-query: http.html:"wp-content/plugins/store-locator-widget/"
+  name: 'Store Locator Widget <= 2025r1 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c65b6793-42e3-40cb-a6fe-b000c879d41f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,store-locator-widget,low,candidate

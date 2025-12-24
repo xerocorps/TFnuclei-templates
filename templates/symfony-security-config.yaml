@@ -1,0 +1,26 @@
+id: symfony-security-config
+info:
+  author: dahse89
+  name: Symfony Security Configuration Exposure
+  reference:
+  - https://symfony2-document.readthedocs.io/en/latest/book/security.html
+  - https://symfony.com/doc/current/reference/configuration/security.html
+  severity: info
+  tags: config,exposure,symfony
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'security:'
+    - 'firewalls:'
+    - 'access_control:'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/config/packages/security.yaml'
+  - '{{BaseURL}}/app/config/security.yml'

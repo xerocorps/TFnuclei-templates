@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - maxbuttons
+  - dsl:
+    - compare_versions(version, '<= 9.7.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/maxbuttons/readme.txt'
+  redirects: true
+id: maxbuttons-4cd8e1d07c24433f81b2881428158931
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/maxbuttons/
+    google-query: inurl:"/wp-content/plugins/maxbuttons/"
+    shodan-query: 'vuln:'
+  name: 'WordPress Button Plugin MaxButtons <= 9.7.6 - Authenticated(Contributor+)
+    Stored Cross-Site Scripting via shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bca0e8a0-d837-42d8-a9d3-35e0c820eb43?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,maxbuttons,low

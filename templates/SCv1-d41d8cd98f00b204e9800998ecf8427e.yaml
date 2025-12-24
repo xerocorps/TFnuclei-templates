@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - SCv1
+  - dsl:
+    - compare_versions(version, '*')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/SCv1/style.css'
+  redirects: true
+id: SCv1-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The SCv1 Theme for WordPress is vulnerable to Arbitrary File Download
+    in all known versions. This is due to insufficient sanitization of user input
+    on the 'file' parameter. This makes it possible for unauthenticated attackers
+    to download arbitrary files, including configuration files.
+  metadata:
+    fofa-query: wp-content/unknown/SCv1/
+    google-query: inurl:"/wp-content/unknown/SCv1/"
+    shodan-query: 'vuln:'
+  name: SCv1 Theme (All Known Versions) - Arbitrary File Download
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-theme,SCv1,low

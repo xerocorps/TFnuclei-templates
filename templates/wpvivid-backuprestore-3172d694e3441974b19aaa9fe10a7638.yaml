@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpvivid-backuprestore
+  - dsl:
+    - compare_versions(version, '0.9.76')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpvivid-backuprestore/readme.txt'
+  redirects: true
+id: wpvivid-backuprestore-3172d694e3441974b19aaa9fe10a7638
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H
+    cvss-score: 6.5
+  description: 'The WPvivid Backup plugin for WordPress is vulnerable to Path Traversal
+    in version 0.9.76 due to a newly introduced delete_upload_incomplete_backup AJAX
+    action. This allows administrator-level attackers to delete arbitrary files on
+    the server.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wpvivid-backuprestore/
+    google-query: inurl:"/wp-content/plugins/wpvivid-backuprestore/"
+    shodan-query: 'vuln:'
+  name: 'WPvivid Backup 0.9.76 - Authenticated (Administrator+) Arbitrary File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/af7adacf-7189-401f-b7c9-845eb328ca76?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpvivid-backuprestore,low

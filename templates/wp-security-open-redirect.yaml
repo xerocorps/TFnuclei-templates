@@ -1,0 +1,24 @@
+id: wp-security-open-redirect
+info:
+  author: akincibor
+  description: 'The All In One WP Security & Firewall plugin suffers from open redirect
+    and exposure of the actual URL of the "hidden login page" feature.
+
+    '
+  metadata:
+    verified: true
+  name: All In One WP Security & Firewall <= 4.4.1 - Open Redirect & Hidden Login
+    Page Exposure
+  reference:
+  - https://wpscan.com/vulnerability/9898
+  severity: low
+  tags: wp-plugin,redirect,wordpress,wp
+requests:
+- matchers:
+  - part: header
+    regex:
+    - (?m)^(?:Location\s*?:\s*?)(?:https?:\/\/|\/\/|\/\\\\|\/\\)?(?:[a-zA-Z0-9\-_\.@]*)interact\.sh\/?(\/|[^.].*)?$
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/?aiowpsec_do_log_out=1&after_logout=https://interact.sh'

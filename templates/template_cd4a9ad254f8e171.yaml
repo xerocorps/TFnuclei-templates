@@ -1,0 +1,15 @@
+directive_name: tarantool
+directive_str: show info\r\n
+matches:
+- pattern: '---\r\ninfo:\r\n  version: \"([^\"]*)\"\r\n  uptime: (\d*)\r\n  pid: (\d*)\r\n  (?:[._\w\s]*:
+    .*\r\n)*  config: \"([^\"]*)\"'
+  service: tarantool
+  version_info: ' p/Tarantool/ v/$1/ i/Uptime: $2, PID: $3, Config: $4/'
+- pattern: '^Name: HAProxy\nVersion: (\d[\w._~+-]*)\n.*\nUptime: (.+)\n'
+  service: haproxy-stats
+  version_info: 's p/HAProxy stats socket/ v/$1/ i/uptime: $2/ cpe:/a:haproxy:haproxy:$1/'
+ports:
+- 9001
+- 33015
+protocol: TCP
+rarity: 8

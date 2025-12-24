@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - corner-ad
+  - dsl:
+    - compare_versions(version, '<= 1.0.56')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/corner-ad/readme.txt'
+  redirects: true
+id: corner-ad-9afb359225bf78c04019ab7bd948026a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/corner-ad/
+    google-query: inurl:"/wp-content/plugins/corner-ad/"
+    shodan-query: 'vuln:'
+  name: 'Corner Ad <= 1.0.56 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0a6c5e9a-754f-41c8-b27b-caa133b5070f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,corner-ad,medium

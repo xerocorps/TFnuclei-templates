@@ -1,0 +1,24 @@
+id: api-abstract-exchange-rates
+info:
+  author: daffainfo
+  description: Get live and historical data from 60+ fiat and crypto currencies via
+    a modern REST API
+  name: Abstract Api Exchange Rates Test
+  reference:
+  - https://www.abstractapi.com/api/exchange-rate-api
+  - https://github.com/daffainfo/all-about-apikey/tree/main/abstract-exchange-rates
+  severity: info
+  tags: token-spray,abstractapi
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"base":'
+    - '"last_updated":'
+    - '"exchange_rate":'
+  method: GET
+  path:
+  - https://exchange-rates.abstractapi.com/v1/live/?api_key={{token}}&base=USD
+self-contained: true

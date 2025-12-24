@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - newstatpress
+  - dsl:
+    - compare_versions(version, '<= 1.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/newstatpress/readme.txt'
+  redirects: true
+id: newstatpress-70ffcd64564fb4ede035a5d4bd4a6ce2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/newstatpress/
+    google-query: inurl:"/wp-content/plugins/newstatpress/"
+    shodan-query: 'vuln:'
+  name: 'NewStatPress <= 1.0.3 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d8eae69-722a-45ea-a3ca-d4a39a63c4b3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,newstatpress,high

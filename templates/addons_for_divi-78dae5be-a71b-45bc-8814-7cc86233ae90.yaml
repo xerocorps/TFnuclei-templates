@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - addons-for-divi
+  - dsl:
+    - compare_versions(version, '<= 3.6.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/addons-for-divi/readme.txt'
+  redirects: true
+id: addons_for_divi-78dae5be-a71b-45bc-8814-7cc86233ae90
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/addons-for-divi/
+    google-query: inurl:"/wp-content/plugins/addons-for-divi/"
+    shodan-query: http.html:"wp-content/plugins/addons-for-divi/"
+  name: "Divi Torque Lite \u2013 Divi Theme and Extra Theme <= 3.6.6 - Authenticated\
+    \ (Author+) Stored Cross-Site Scripting via SVG Upload\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/78dae5be-a71b-45bc-8814-7cc86233ae90?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,addons-for-divi,low,candidate

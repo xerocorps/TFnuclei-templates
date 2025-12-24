@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - etruel-del-post-copies
+  - dsl:
+    - compare_versions(version, '<= 6.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/etruel-del-post-copies/readme.txt'
+  redirects: true
+id: etruel_del_post_copies-92ab1f56-5ca6-48e8-b380-ac2e302d63d2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/etruel-del-post-copies/
+    google-query: inurl:"/wp-content/plugins/etruel-del-post-copies/"
+    shodan-query: http.html:"wp-content/plugins/etruel-del-post-copies/"
+  name: 'WP Delete Post Copies <= 6.0.2 - Authenticated (Admin+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/92ab1f56-5ca6-48e8-b380-ac2e302d63d2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,etruel-del-post-copies,low,candidate

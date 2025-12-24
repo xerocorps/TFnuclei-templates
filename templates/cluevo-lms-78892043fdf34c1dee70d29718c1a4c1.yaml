@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cluevo-lms
+  - dsl:
+    - compare_versions(version, '< 1.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cluevo-lms/readme.txt'
+  redirects: true
+id: cluevo-lms-78892043fdf34c1dee70d29718c1a4c1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cluevo-lms/
+    google-query: inurl:"/wp-content/plugins/cluevo-lms/"
+    shodan-query: 'vuln:'
+  name: 'CLUEVO E-Learning Platform <= 1.8.0 - Authenticated Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c1a0d446-63b6-4265-a542-345d766faf15?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cluevo-lms,low

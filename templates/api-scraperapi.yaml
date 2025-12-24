@@ -1,0 +1,22 @@
+id: api-scraperapi
+info:
+  author: daffainfo
+  name: ScraperAPI API Test
+  reference:
+  - https://www.scraperapi.com/documentation/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Development/ScraperAPI.md
+  severity: info
+  tags: token-spray,scraperapi
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"concurrencyLimit"'
+    - '"concurrentRequests"'
+    - '"requestLimit"'
+  method: GET
+  path:
+  - http://api.scraperapi.com/account?api_key={{token}}
+self-contained: true

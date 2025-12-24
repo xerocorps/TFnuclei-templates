@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - css3-rotating-words
+  - dsl:
+    - compare_versions(version, '<= 5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/css3-rotating-words/readme.txt'
+  redirects: true
+id: css3-rotating-words-098c8be288876d7ed3132db6d67e1e7e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/css3-rotating-words/
+    google-query: inurl:"/wp-content/plugins/css3-rotating-words/"
+    shodan-query: 'vuln:'
+  name: 'Animated Rotating Words <= 5.4 - Cross-Site Request Forgery via save_admin_options
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/15b7008f-07fc-4f8a-b214-8ac0c4cf6d99?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,css3-rotating-words,medium

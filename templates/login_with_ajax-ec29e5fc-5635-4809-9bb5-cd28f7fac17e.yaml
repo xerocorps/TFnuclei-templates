@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - login-with-ajax
+  - dsl:
+    - compare_versions(version, '<= 4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/login-with-ajax/readme.txt'
+  redirects: true
+id: login_with_ajax-ec29e5fc-5635-4809-9bb5-cd28f7fac17e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/login-with-ajax/
+    google-query: inurl:"/wp-content/plugins/login-with-ajax/"
+    shodan-query: http.html:"wp-content/plugins/login-with-ajax/"
+  name: 'Login With Ajax <= 4.1 - Cross-Site Request Forgery to Notice Dismissal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ec29e5fc-5635-4809-9bb5-cd28f7fac17e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,login-with-ajax,medium,candidate

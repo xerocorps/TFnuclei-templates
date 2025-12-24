@@ -1,0 +1,22 @@
+id: api-orbintelligence
+info:
+  author: daffainfo
+  name: ORB Intelligence API Test
+  reference:
+  - https://api.orb-intelligence.com/docs/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Business/ORB%20Intelligence.md
+  severity: info
+  tags: token-spray,orbintelligence
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"entity_type":'
+    - '"company_status":'
+    - '"orb_num":'
+  method: GET
+  path:
+  - https://api.orb-intelligence.com/3/fetch/1/?api_key={{token}}
+self-contained: true

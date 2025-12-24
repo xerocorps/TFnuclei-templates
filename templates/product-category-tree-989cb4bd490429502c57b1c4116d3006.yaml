@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - product-category-tree
+  - dsl:
+    - compare_versions(version, '<= 2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/product-category-tree/readme.txt'
+  redirects: true
+id: product-category-tree-989cb4bd490429502c57b1c4116d3006
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/product-category-tree/
+    google-query: inurl:"/wp-content/plugins/product-category-tree/"
+    shodan-query: 'vuln:'
+  name: 'Product Category Tree <= 2.5 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/147e47f8-c40b-4ae7-8627-b32b36e4d14f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,product-category-tree,medium

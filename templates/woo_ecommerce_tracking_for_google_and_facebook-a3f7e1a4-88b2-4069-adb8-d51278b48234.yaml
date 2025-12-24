@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-ecommerce-tracking-for-google-and-facebook
+  - dsl:
+    - compare_versions(version, '<= 3.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-ecommerce-tracking-for-google-and-facebook/readme.txt'
+  redirects: true
+id: woo_ecommerce_tracking_for_google_and_facebook-a3f7e1a4-88b2-4069-adb8-d51278b48234
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-ecommerce-tracking-for-google-and-facebook/
+    google-query: inurl:"/wp-content/plugins/woo-ecommerce-tracking-for-google-and-facebook/"
+    shodan-query: http.html:"wp-content/plugins/woo-ecommerce-tracking-for-google-and-facebook/"
+  name: 'WooCommerce Enhanced Ecommerce Analytics Integration with Conversion Tracking
+    <= 3.7.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a3f7e1a4-88b2-4069-adb8-d51278b48234?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-ecommerce-tracking-for-google-and-facebook,medium,candidate

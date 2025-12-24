@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bigcontact
+  - dsl:
+    - compare_versions(version, '<= 1.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bigcontact/readme.txt'
+  redirects: true
+id: bigcontact-b0403adb-08c4-4697-a7d9-50e39d46cd43
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bigcontact/
+    google-query: inurl:"/wp-content/plugins/bigcontact/"
+    shodan-query: http.html:"wp-content/plugins/bigcontact/"
+  name: 'BigContact <= 1.5.8 - Cross-Site Request Forgery leading to Plugin Settings
+    Updates
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b0403adb-08c4-4697-a7d9-50e39d46cd43?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,bigcontact,medium,candidate

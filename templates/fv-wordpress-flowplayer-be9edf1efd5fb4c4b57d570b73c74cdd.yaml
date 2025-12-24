@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fv-wordpress-flowplayer
+  - dsl:
+    - compare_versions(version, '<= 7.2.0.727')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fv-wordpress-flowplayer/readme.txt'
+  redirects: true
+id: fv-wordpress-flowplayer-be9edf1efd5fb4c4b57d570b73c74cdd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fv-wordpress-flowplayer/
+    google-query: inurl:"/wp-content/plugins/fv-wordpress-flowplayer/"
+    shodan-query: 'vuln:'
+  name: 'FV Flowplayer Video Player <= 7.2.0.727 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eb613de8-d298-471f-b585-2da3b5500f10?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,fv-wordpress-flowplayer,medium

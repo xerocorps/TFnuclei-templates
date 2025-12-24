@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rich-reviews
+  - dsl:
+    - compare_versions(version, '<= 1.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rich-reviews/readme.txt'
+  redirects: true
+id: rich-reviews-258084dc396f116f89aeee2e9e16b734
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+  description: The Rich Review plugin for WordPress is vulnerable to Stored Cross-Site
+    Scripting via the POST body 'update' parameter in versions up to, and including,
+    1.7.4 due to insufficient input sanitization and output escaping. This makes it
+    possible for unauthenticated attackers to inject arbitrary web scripts in pages
+    that will execute whenever a user accesses an injected page.
+  metadata:
+    fofa-query: wp-content/plugins/rich-reviews/
+    google-query: inurl:"/wp-content/plugins/rich-reviews/"
+    shodan-query: 'vuln:'
+  name: Rich Reviews <= 1.7.4 - Stored Cross-Site Scripting
+  reference:
+  - https://www.wordfence.com/blog/2019/09/rich-reviews-plugin-vulnerability-exploited-in-the-wild/
+  - https://wordpress.org/support/topic/plugin-not-supported-open-to-malware-uninstall-now/
+  - https://wpscan.com/vulnerability/81bdc004-9b9c-49e2-b337-35a6d8395c5d
+  severity: high
+  tags: cve,wordpress,wp-plugin,rich-reviews,high

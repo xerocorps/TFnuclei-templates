@@ -1,0 +1,15 @@
+id: dir-listing-2
+info:
+  author: notnotnotveg
+  name: Directory Listing
+  severity: info
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Index of
+  method: GET
+  path:
+  - '{{BaseURL}}/logs/'
+  - '{{BaseURL}}/etc/'

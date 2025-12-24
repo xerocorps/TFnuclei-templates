@@ -1,0 +1,15 @@
+id: kafka-monitoring
+info:
+  author: pdteam
+  name: Apache Kafka Monitor Exposure
+  severity: low
+  tags: panel,kafka,apache
+requests:
+- matchers:
+  - type: word
+    words:
+    - '>KafkaMonitor</a>'
+    - '>Kafka Monitor GUI</h1>'
+  method: GET
+  path:
+  - '{{BaseURL}}'

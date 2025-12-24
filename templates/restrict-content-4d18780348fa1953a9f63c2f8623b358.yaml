@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - restrict-content
+  - dsl:
+    - compare_versions(version, '<= 3.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/restrict-content/readme.txt'
+  redirects: true
+id: restrict-content-4d18780348fa1953a9f63c2f8623b358
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/restrict-content/
+    google-query: inurl:"/wp-content/plugins/restrict-content/"
+    shodan-query: 'vuln:'
+  name: 'Restrict Content <= 3.2.7 - Information Exposure via legacy log file
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ad2d5070-ddc6-4478-abe5-776e197a4507?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,restrict-content,low

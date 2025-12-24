@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdatatables
+  - dsl:
+    - compare_versions(version, '<= 2.0.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdatatables/readme.txt'
+  redirects: true
+id: wpdatatables-21f4a73fd5b6386a7f609ae712882535
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpdatatables/
+    google-query: inurl:"/wp-content/plugins/wpdatatables/"
+    shodan-query: 'vuln:'
+  name: 'wpDataTables Lite plugin <= 2.0.11 - SQL injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c4831a75-9d2b-4808-8b23-f1e9750fd905?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpdatatables,low

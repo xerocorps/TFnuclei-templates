@@ -1,0 +1,28 @@
+id: ftpconfig
+info:
+  author: geeknik
+  description: Created by remote-ssh for Atom, contains SFTP/SSH server details and
+    credentials
+  name: Atom remote-ssh ftpconfig
+  severity: high
+  tags: atom,ftp,config
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - protocol
+    - host
+    - port
+    - user
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.ftpconfig'

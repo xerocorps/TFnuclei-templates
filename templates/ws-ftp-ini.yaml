@@ -1,0 +1,27 @@
+id: ws-ftp-ini
+info:
+  author: DhiyaneshDK
+  metadata:
+    google-dork: intitle:"Index of" ws_ftp.ini
+    verified: true
+  name: WS FTP File Disclosure
+  severity: low
+  tags: exposure,ftp
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - HOST=
+    - UID=
+    - DIR=
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/ws_ftp.ini'
+  redirects: true

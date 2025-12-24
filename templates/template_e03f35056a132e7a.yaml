@@ -1,0 +1,29 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - wordpress
+    - plugin
+    - contact-form-7
+    - forms
+  description: Template to detect the presence of Contact Form 7 plugin.
+  id: contact-form-7-plugin
+  matcher-condition: or
+  matchers:
+  - description: Contact Form 7 plugin detected in the response body
+    pattern: Contact Form 7
+    type: body
+  name: Contact Form 7 Plugin Detection
+  reference:
+  - https://wordpress.org/plugins/contact-form-7/
+  requests:
+    condition: and
+    description: Attempt to access the Contact Form 7 plugin directory
+    method: GET
+    path:
+    - /wp-content/plugins/contact-form-7/
+  response:
+  - status:
+    - 200
+  severity: Low

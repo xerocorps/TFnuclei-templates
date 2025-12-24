@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - booking-package
+  - dsl:
+    - compare_versions(version, '< 1.5.29')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/booking-package/readme.txt'
+  redirects: true
+id: booking_package-8c5a065a-a81e-4963-af54-21f145632bed
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/booking-package/
+    google-query: inurl:"/wp-content/plugins/booking-package/"
+    shodan-query: http.html:"wp-content/plugins/booking-package/"
+  name: 'Booking Package <= 1.5.28 - Unauthenticated Sensitive Data Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8c5a065a-a81e-4963-af54-21f145632bed?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,booking-package,low,candidate

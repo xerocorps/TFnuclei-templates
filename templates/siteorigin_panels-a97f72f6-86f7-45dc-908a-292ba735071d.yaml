@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - siteorigin-panels
+  - dsl:
+    - compare_versions(version, '<= 2.29.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/siteorigin-panels/readme.txt'
+  redirects: true
+id: siteorigin_panels-a97f72f6-86f7-45dc-908a-292ba735071d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/siteorigin-panels/
+    google-query: inurl:"/wp-content/plugins/siteorigin-panels/"
+    shodan-query: http.html:"wp-content/plugins/siteorigin-panels/"
+  name: 'Page Builder by SiteOrigin <= 2.29.15 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via ''siteorigin_widget'' Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a97f72f6-86f7-45dc-908a-292ba735071d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,siteorigin-panels,low,candidate

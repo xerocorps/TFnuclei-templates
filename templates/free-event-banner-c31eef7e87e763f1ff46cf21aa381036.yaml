@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - free-event-banner
+  - dsl:
+    - compare_versions(version, '<= 1.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/free-event-banner/readme.txt'
+  redirects: true
+id: free-event-banner-c31eef7e87e763f1ff46cf21aa381036
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/free-event-banner/
+    google-query: inurl:"/wp-content/plugins/free-event-banner/"
+    shodan-query: 'vuln:'
+  name: 'Event Banner <= 1.3 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7c500c5b-04b9-47d7-9296-dd5378cd5ab0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,free-event-banner,medium

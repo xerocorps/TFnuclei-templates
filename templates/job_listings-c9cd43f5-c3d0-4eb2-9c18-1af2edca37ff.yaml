@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - job-listings
+  - dsl:
+    - compare_versions(version, '>= 0.1', '<= 0.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/job-listings/readme.txt'
+  redirects: true
+id: job_listings-c9cd43f5-c3d0-4eb2-9c18-1af2edca37ff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/job-listings/
+    google-query: inurl:"/wp-content/plugins/job-listings/"
+    shodan-query: http.html:"wp-content/plugins/job-listings/"
+  name: 'Job Listings 0.1 - 0.1.1 - Unauthenticated Privilege Escalation via register_action
+    Function
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c9cd43f5-c3d0-4eb2-9c18-1af2edca37ff?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,job-listings,low,candidate

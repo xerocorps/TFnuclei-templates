@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordpress-popular-posts
+  - dsl:
+    - compare_versions(version, '<= 7.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordpress-popular-posts/readme.txt'
+  redirects: true
+id: wordpress_popular_posts-c38ac8d6-c6de-4be7-bf7b-198e085a0ad2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wordpress-popular-posts/
+    google-query: inurl:"/wp-content/plugins/wordpress-popular-posts/"
+    shodan-query: http.html:"wp-content/plugins/wordpress-popular-posts/"
+  name: 'WordPress Popular Posts <= 7.1.0 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c38ac8d6-c6de-4be7-bf7b-198e085a0ad2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wordpress-popular-posts,low,candidate

@@ -1,0 +1,26 @@
+id: highmail-admin-panel
+info:
+  author: ritikchaddha
+  metadata:
+    fofa-query: title="HighMail"
+    shodan-query: title:"HighMail"
+    verified: true
+  name: HighMail Admin Panel
+  severity: info
+  tags: highmail,panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - HighMail
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/login'
+  redirects: true
+  stop-at-first-match: true

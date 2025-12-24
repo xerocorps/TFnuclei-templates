@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - buddypress-xprofile-custom-fields-type
+  - dsl:
+    - compare_versions(version, '<=  2.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/buddypress-xprofile-custom-fields-type/readme.txt'
+  redirects: true
+id: buddypress-xprofile-custom-fields-type-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The BuddyPress Xprofile Custom Fields Type plugin for WordPress is
+    vulnerable to Arbitrary File Deletion in versions up to, and including, 2.6.3.
+    This is due to insufficient input sanitization and output escaping. This makes
+    it possible for authenticated attackers with low-level privileges and above to
+    arbitrarily delete files, such as wp-config.php.
+  metadata:
+    fofa-query: wp-content/plugins/buddypress-xprofile-custom-fields-type/
+    google-query: inurl:"/wp-content/plugins/buddypress-xprofile-custom-fields-type/"
+    shodan-query: 'vuln:'
+  name: BuddyPress Xprofile Custom Fields Type <= 2.6.3 - Arbitrary File Deletion
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,buddypress-xprofile-custom-fields-type,low

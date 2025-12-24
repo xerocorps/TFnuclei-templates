@@ -1,0 +1,17 @@
+id: flywheel-takeover
+info:
+  author: smaranchand
+  name: Flywheel Subdomain Takeover
+  reference: https://smaranchand.com.np/2021/06/flywheel-subdomain-takeover
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - We're sorry, you've landed on a page that is hosted by Flywheel
+    - <h1>Oops! That's not the site<br>you're looking&nbsp;for.</h1>
+  method: GET
+  path:
+  - '{{BaseURL}}'

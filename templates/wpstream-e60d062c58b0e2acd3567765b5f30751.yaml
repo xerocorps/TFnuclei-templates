@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpstream
+  - dsl:
+    - compare_versions(version, '<= 4.4.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpstream/readme.txt'
+  redirects: true
+id: wpstream-e60d062c58b0e2acd3567765b5f30751
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpstream/
+    google-query: inurl:"/wp-content/plugins/wpstream/"
+    shodan-query: 'vuln:'
+  name: "WpStream \u2013 Live Streaming, Video on Demand, Pay Per View <= 4.4.10 -\
+    \ Cross-Site Request Forgery via wpstream_settings\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0219851f-7fce-42e0-ba82-77af84b17d9f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpstream,medium

@@ -1,0 +1,23 @@
+id: vernemq-status
+info:
+  author: geeknik
+  name: VerneMQ Status Check
+  reference:
+  - https://github.com/vernemq/vernemq
+  severity: info
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - <title>VerneMQ Status
+    - Issues
+    - Cluster Overview
+    - Node Status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/status'

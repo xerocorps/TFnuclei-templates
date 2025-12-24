@@ -1,0 +1,26 @@
+id: osquery-fleet-detect
+info:
+  author: Adam Crosser
+  metadata:
+    shodan-query: http.favicon.hash:-1529860313
+  name: OSQuery Fleet Detection
+  reference:
+  - https://fleetdm.com/
+  severity: info
+  tags: panel,fleet,osquery
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Fleet
+    - osquery
+    - /assets/bundle
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

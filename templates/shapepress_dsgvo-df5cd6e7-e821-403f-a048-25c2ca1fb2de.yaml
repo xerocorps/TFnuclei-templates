@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shapepress-dsgvo
+  - dsl:
+    - compare_versions(version, '<= 3.1.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shapepress-dsgvo/readme.txt'
+  redirects: true
+id: shapepress_dsgvo-df5cd6e7-e821-403f-a048-25c2ca1fb2de
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shapepress-dsgvo/
+    google-query: inurl:"/wp-content/plugins/shapepress-dsgvo/"
+    shodan-query: http.html:"wp-content/plugins/shapepress-dsgvo/"
+  name: 'WP DSGVO Tools (GDPR) <= 3.1.32 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/df5cd6e7-e821-403f-a048-25c2ca1fb2de?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shapepress-dsgvo,low,candidate

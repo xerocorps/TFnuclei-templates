@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-coupon-usage
+  - dsl:
+    - compare_versions(version, '<= 6.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-coupon-usage/readme.txt'
+  redirects: true
+id: woo_coupon_usage-28f22a48-7445-4104-9b76-60520e7a290e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-coupon-usage/
+    google-query: inurl:"/wp-content/plugins/woo-coupon-usage/"
+    shodan-query: http.html:"wp-content/plugins/woo-coupon-usage/"
+  name: 'Coupon Affiliates <= 6.4.1 - Missing Authorization to Unauthenticated Settings
+    Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/28f22a48-7445-4104-9b76-60520e7a290e?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woo-coupon-usage,high,candidate

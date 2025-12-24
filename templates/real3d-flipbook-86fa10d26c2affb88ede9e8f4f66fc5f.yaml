@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - real3d-flipbook
+  - dsl:
+    - compare_versions(version, '<= 1.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/real3d-flipbook/readme.txt'
+  redirects: true
+id: real3d-flipbook-86fa10d26c2affb88ede9e8f4f66fc5f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/real3d-flipbook/
+    google-query: inurl:"/wp-content/plugins/real3d-flipbook/"
+    shodan-query: 'vuln:'
+  name: 'Real3D Flipbook <= 1.0.0 - File Upload to User Controlled Location
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7dab03b8-6ed9-4f08-bd52-0f507de882de?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,real3d-flipbook,low

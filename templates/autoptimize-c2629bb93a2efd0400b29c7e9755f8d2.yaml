@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - autoptimize
+  - dsl:
+    - compare_versions(version, '< 2.7.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/autoptimize/readme.txt'
+  redirects: true
+id: autoptimize-c2629bb93a2efd0400b29c7e9755f8d2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/autoptimize/
+    google-query: inurl:"/wp-content/plugins/autoptimize/"
+    shodan-query: 'vuln:'
+  name: 'Autoptimize <= 2.7.7 - Unsafe File Upload to Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c95210ba-65f6-4bf8-8986-f537f1854d02?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,autoptimize,high

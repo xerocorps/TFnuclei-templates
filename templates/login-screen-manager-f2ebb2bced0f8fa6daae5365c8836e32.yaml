@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - login-screen-manager
+  - dsl:
+    - compare_versions(version, '<= 3.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/login-screen-manager/readme.txt'
+  redirects: true
+id: login-screen-manager-f2ebb2bced0f8fa6daae5365c8836e32
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/login-screen-manager/
+    google-query: inurl:"/wp-content/plugins/login-screen-manager/"
+    shodan-query: 'vuln:'
+  name: 'Login Screen Manager <= 3.5.2 - Authenticated(Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4d6c37ec-4a17-41b8-a29e-2a9adb382cea?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,login-screen-manager,low

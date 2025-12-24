@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - request-a-quote
+  - dsl:
+    - compare_versions(version, '<= 2.3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/request-a-quote/readme.txt'
+  redirects: true
+id: request-a-quote-5c3ba5da3bfa5e70cbe1ad582fd3682e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/request-a-quote/
+    google-query: inurl:"/wp-content/plugins/request-a-quote/"
+    shodan-query: 'vuln:'
+  name: 'Request a Quote <= 2.3.7 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3504b703-b95b-4d22-8883-a575b398c9ea?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,request-a-quote,low

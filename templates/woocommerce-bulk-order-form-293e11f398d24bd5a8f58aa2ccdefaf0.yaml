@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-bulk-order-form
+  - dsl:
+    - compare_versions(version, '<= 3.5.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-bulk-order-form/readme.txt'
+  redirects: true
+id: woocommerce-bulk-order-form-293e11f398d24bd5a8f58aa2ccdefaf0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-bulk-order-form/
+    google-query: inurl:"/wp-content/plugins/woocommerce-bulk-order-form/"
+    shodan-query: 'vuln:'
+  name: 'Quick/Bulk Order Form for WooCommerce <= 3.5.7 - Authenticated (Shop manager+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/898af9aa-72c4-46a6-afc2-76dd17672fbc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-bulk-order-form,low

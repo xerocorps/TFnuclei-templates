@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - msmc-redirect-after-comment
+  - dsl:
+    - compare_versions(version, '<= 2.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/msmc-redirect-after-comment/readme.txt'
+  redirects: true
+id: msmc-redirect-after-comment-4f35c187d46cd0c2d10c42c585603438
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/msmc-redirect-after-comment/
+    google-query: inurl:"/wp-content/plugins/msmc-redirect-after-comment/"
+    shodan-query: 'vuln:'
+  name: 'MSMC Redirect After Comment <= 2.1.2 - Cross-Site Request Forgery to Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5b2db550-c1cf-4c5b-91b1-349da3fd859d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,msmc-redirect-after-comment,medium

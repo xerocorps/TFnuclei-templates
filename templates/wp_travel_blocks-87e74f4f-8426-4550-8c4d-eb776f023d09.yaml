@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-travel-blocks
+  - dsl:
+    - compare_versions(version, '<= 3.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-travel-blocks/readme.txt'
+  redirects: true
+id: wp_travel_blocks-87e74f4f-8426-4550-8c4d-eb776f023d09
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-travel-blocks/
+    google-query: inurl:"/wp-content/plugins/wp-travel-blocks/"
+    shodan-query: http.html:"wp-content/plugins/wp-travel-blocks/"
+  name: 'WP Travel Gutenberg Blocks <= 3.6.0 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/87e74f4f-8426-4550-8c4d-eb776f023d09?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-travel-blocks,low,candidate

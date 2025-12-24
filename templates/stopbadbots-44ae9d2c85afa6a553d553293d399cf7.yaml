@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stopbadbots
+  - dsl:
+    - compare_versions(version, '<= 10.24')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stopbadbots/readme.txt'
+  redirects: true
+id: stopbadbots-44ae9d2c85afa6a553d553293d399cf7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stopbadbots/
+    google-query: inurl:"/wp-content/plugins/stopbadbots/"
+    shodan-query: 'vuln:'
+  name: 'Block Bad Bots and Stop Bad Bots Crawlers and Spiders and Anti Spam Protection
+    <= 10.24 - Missing Authorization to Information Expsoure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c77d94ae-528d-4525-b16d-96529bee08c0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,stopbadbots,high

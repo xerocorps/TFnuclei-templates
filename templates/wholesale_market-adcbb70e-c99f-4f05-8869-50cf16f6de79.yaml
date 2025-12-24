@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wholesale-market
+  - dsl:
+    - compare_versions(version, '<= 2.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wholesale-market/readme.txt'
+  redirects: true
+id: wholesale_market-adcbb70e-c99f-4f05-8869-50cf16f6de79
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wholesale-market/
+    google-query: inurl:"/wp-content/plugins/wholesale-market/"
+    shodan-query: http.html:"wp-content/plugins/wholesale-market/"
+  name: 'Wholesale Market <= 2.2.0 - Information Disclosure via Unauthenticated Arbitrary
+    File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/adcbb70e-c99f-4f05-8869-50cf16f6de79?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wholesale-market,low,candidate

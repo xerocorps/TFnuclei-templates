@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-orders-tracking
+  - dsl:
+    - compare_versions(version, '<= 1.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-orders-tracking/readme.txt'
+  redirects: true
+id: woo-orders-tracking-599c2c8548a1c37ed2db250ad779415b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-orders-tracking/
+    google-query: inurl:"/wp-content/plugins/woo-orders-tracking/"
+    shodan-query: 'vuln:'
+  name: 'Orders Tracking for WooCommerce <= 1.2.5 - Authenticated (Administrator+)
+    Directory Traversal via ''file_url''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5a62e8b2-7606-4842-8be5-dff8634539d0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-orders-tracking,low

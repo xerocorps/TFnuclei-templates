@@ -1,0 +1,28 @@
+id: extreme-netconfig-ui
+info:
+  author: pussycat0x
+  metadata:
+    shodan-dork: http.title:"Extreme NetConfig UI"
+  name: Extreme NetConfig UI
+  severity: info
+  tags: panel,tech,hiveos,extreme
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - version" align="right" valign="bottom">([0-9.a-z]+)<\/td>
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Extreme NetConfig UI</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php5'

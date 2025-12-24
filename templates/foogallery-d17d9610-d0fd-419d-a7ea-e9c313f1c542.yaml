@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - foogallery
+  - dsl:
+    - compare_versions(version, '<= 2.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/foogallery/readme.txt'
+  redirects: true
+id: foogallery-d17d9610-d0fd-419d-a7ea-e9c313f1c542
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/foogallery/
+    google-query: inurl:"/wp-content/plugins/foogallery/"
+    shodan-query: http.html:"wp-content/plugins/foogallery/"
+  name: "Best WordPress Gallery Plugin \u2013 FooGallery <= 2.4.7 -Authenticated(Administrator+)\
+    \ Stored Cross-Site Scripting via settings\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d17d9610-d0fd-419d-a7ea-e9c313f1c542?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,foogallery,low,candidate

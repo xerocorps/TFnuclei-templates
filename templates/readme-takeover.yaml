@@ -1,0 +1,15 @@
+id: readme-takeover
+info:
+  author: pdcommunity
+  name: readme takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - Project doesnt exist... yet!
+  method: GET
+  path:
+  - '{{BaseURL}}'

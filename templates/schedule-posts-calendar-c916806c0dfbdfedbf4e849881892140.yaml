@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - schedule-posts-calendar
+  - dsl:
+    - compare_versions(version, '<= 5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/schedule-posts-calendar/readme.txt'
+  redirects: true
+id: schedule-posts-calendar-c916806c0dfbdfedbf4e849881892140
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/schedule-posts-calendar/
+    google-query: inurl:"/wp-content/plugins/schedule-posts-calendar/"
+    shodan-query: 'vuln:'
+  name: 'Schedule Posts Calendar <= 5.2 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting via admin settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/61c815c2-a5ea-431c-bfde-c08a4eb5fda6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,schedule-posts-calendar,low

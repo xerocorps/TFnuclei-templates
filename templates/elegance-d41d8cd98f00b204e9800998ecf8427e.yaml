@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - elegance
+  - dsl:
+    - compare_versions(version, '<=  2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/elegance/style.css'
+  redirects: true
+id: elegance-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Elegance Theme for WordPress is vulnerable to Arbitrary File Download
+    in versions up to, and including, 2.4. This is due to the '_mysite_download_skin'
+    parameter in the 'dl-skin.php' file. This makes it possible for unauthenticated
+    attackers to download any file within the server of the vulnerable service.
+  metadata:
+    fofa-query: wp-content/unknown/elegance/
+    google-query: inurl:"/wp-content/unknown/elegance/"
+    shodan-query: 'vuln:'
+  name: Elegance <= 2.4 - Arbitrary File Download
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-theme,elegance,low

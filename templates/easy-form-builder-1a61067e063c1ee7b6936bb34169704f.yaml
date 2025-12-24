@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-form-builder
+  - dsl:
+    - compare_versions(version, '<= 3.3.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-form-builder/readme.txt'
+  redirects: true
+id: easy-form-builder-1a61067e063c1ee7b6936bb34169704f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easy-form-builder/
+    google-query: inurl:"/wp-content/plugins/easy-form-builder/"
+    shodan-query: 'vuln:'
+  name: 'Easy Form Builder <= 3.3.8 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a018ba2b-8188-41f9-bdab-64cae3362e0e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,easy-form-builder,low

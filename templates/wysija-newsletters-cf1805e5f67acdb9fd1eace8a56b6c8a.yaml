@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wysija-newsletters
+  - dsl:
+    - compare_versions(version, '<= 2.6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wysija-newsletters/readme.txt'
+  redirects: true
+id: wysija-newsletters-cf1805e5f67acdb9fd1eace8a56b6c8a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wysija-newsletters/
+    google-query: inurl:"/wp-content/plugins/wysija-newsletters/"
+    shodan-query: 'vuln:'
+  name: 'MailPoet Newsletters <= 2.6.7 - Authorization Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2e3194a7-5b3d-4805-9a35-50ebe65aa6ae?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wysija-newsletters,high

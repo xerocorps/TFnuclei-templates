@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-page-access-restriction
+  - dsl:
+    - compare_versions(version, '<= 1.0.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-page-access-restriction/readme.txt'
+  redirects: true
+id: simple_page_access_restriction-845caaa9-185f-4f06-bae0-d10e2c6ab373
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-page-access-restriction/
+    google-query: inurl:"/wp-content/plugins/simple-page-access-restriction/"
+    shodan-query: http.html:"wp-content/plugins/simple-page-access-restriction/"
+  name: 'Simple Page Access Restriction <= 1.0.32 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/845caaa9-185f-4f06-bae0-d10e2c6ab373?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,simple-page-access-restriction,medium,candidate

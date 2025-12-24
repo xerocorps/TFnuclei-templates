@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ninja-forms
+  - dsl:
+    - compare_versions(version, '<= 3.8.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ninja-forms/readme.txt'
+  redirects: true
+id: ninja_forms-6a6eb430-cf86-4e13-a4f7-173fada9fddf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ninja-forms/
+    google-query: inurl:"/wp-content/plugins/ninja-forms/"
+    shodan-query: http.html:"wp-content/plugins/ninja-forms/"
+  name: "Ninja Forms Contact Form \u2013 The Drag and Drop Form Builder for WordPress\
+    \ <= 3.8.0 - Authenticated (Author+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6a6eb430-cf86-4e13-a4f7-173fada9fddf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ninja-forms,low,candidate

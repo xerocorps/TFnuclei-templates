@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tlp-team
+  - dsl:
+    - compare_versions(version, '<= 4.4.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tlp-team/readme.txt'
+  redirects: true
+id: tlp_team-46951d8d-f8f1-4fb5-b02a-1a19edd154e6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tlp-team/
+    google-query: inurl:"/wp-content/plugins/tlp-team/"
+    shodan-query: http.html:"wp-content/plugins/tlp-team/"
+  name: "Team \u2013 Team Members Showcase Plugin <= 4.4.9 - Missing Authorization\
+    \ to Authenticated (Subscriber+) Settings Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/46951d8d-f8f1-4fb5-b02a-1a19edd154e6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tlp-team,low,candidate

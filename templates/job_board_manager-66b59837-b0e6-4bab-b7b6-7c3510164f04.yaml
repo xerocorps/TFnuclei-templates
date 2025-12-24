@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - job-board-manager
+  - dsl:
+    - compare_versions(version, '<= 2.1.59')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/job-board-manager/readme.txt'
+  redirects: true
+id: job_board_manager-66b59837-b0e6-4bab-b7b6-7c3510164f04
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/job-board-manager/
+    google-query: inurl:"/wp-content/plugins/job-board-manager/"
+    shodan-query: http.html:"wp-content/plugins/job-board-manager/"
+  name: 'Job Board Manager <= 2.1.59 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66b59837-b0e6-4bab-b7b6-7c3510164f04?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,job-board-manager,medium,candidate

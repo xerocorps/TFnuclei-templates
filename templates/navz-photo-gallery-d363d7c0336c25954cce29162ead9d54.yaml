@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - navz-photo-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/navz-photo-gallery/readme.txt'
+  redirects: true
+id: navz-photo-gallery-d363d7c0336c25954cce29162ead9d54
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/navz-photo-gallery/
+    google-query: inurl:"/wp-content/plugins/navz-photo-gallery/"
+    shodan-query: 'vuln:'
+  name: 'ACF Photo Gallery Field <= 1.9 - Authenticated (Subscriber+) Arbitrary Usermeta
+    Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/689511e0-1355-4fcb-8a72-d819abc8e9a3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,navz-photo-gallery,low

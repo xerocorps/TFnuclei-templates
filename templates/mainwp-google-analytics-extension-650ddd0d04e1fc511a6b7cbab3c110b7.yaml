@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mainwp-google-analytics-extension
+  - dsl:
+    - compare_versions(version, '<= 4.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mainwp-google-analytics-extension/readme.txt'
+  redirects: true
+id: mainwp-google-analytics-extension-650ddd0d04e1fc511a6b7cbab3c110b7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mainwp-google-analytics-extension/
+    google-query: inurl:"/wp-content/plugins/mainwp-google-analytics-extension/"
+    shodan-query: 'vuln:'
+  name: 'MainWP Google Analytics Extension <= 4.0.4 - Authenticated (Subscriber+)
+    SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/11fd8768-0168-4e3b-9c2d-659fc4101a73?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mainwp-google-analytics-extension,low

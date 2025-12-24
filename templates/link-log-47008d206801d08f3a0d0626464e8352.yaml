@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - link-log
+  - dsl:
+    - compare_versions(version, '<= 1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/link-log/readme.txt'
+  redirects: true
+id: link-log-47008d206801d08f3a0d0626464e8352
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/link-log/
+    google-query: inurl:"/wp-content/plugins/link-log/"
+    shodan-query: 'vuln:'
+  name: "Link Log \u2013 external link click monitor <= 1.4 - HTTP Response Splitting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/71371a44-fed4-4aea-9f86-a37ca26a57b1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,link-log,low

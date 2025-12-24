@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - essence
+  - dsl:
+    - compare_versions(version, '< 1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/essence/style.css'
+  redirects: true
+id: essence-db73028a77d38b068a940d57019fb507
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/essence/
+    google-query: inurl:"/wp-content/themes/essence/"
+    shodan-query: 'vuln:'
+  name: 'Essence < 1.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/559b7250-5b10-4a01-925e-73ed4fa7ca3d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,essence,medium

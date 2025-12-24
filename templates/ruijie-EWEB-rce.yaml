@@ -1,0 +1,23 @@
+id: ruijie-EWEB-rce
+info:
+  author: str1am
+  name: "\u9510\u6377VPN\u8D8A\u6743\u7ED1\u5B9A&\u4FE1\u606F\u6CC4\u9732"
+  reference:
+  - https://github.com/EdgeSecurityTeam/Vulnerability/blob/main/%E9%94%90%E6%8D%B7-EWEB%E7%BD%91%E7%AE%A1%E7%B3%BB%E7%BB%9FRCE.md
+  severity: high
+  tags: ruijie,rce
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /guest_auth/guestIsUp.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101
+    Firefox/92.0
+
+    '

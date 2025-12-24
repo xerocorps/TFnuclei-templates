@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wptools
+  - dsl:
+    - compare_versions(version, '<= 5.24')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wptools/readme.txt'
+  redirects: true
+id: wptools-bb995311-8837-4db5-a25d-37e41d932774
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wptools/
+    google-query: inurl:"/wp-content/plugins/wptools/"
+    shodan-query: http.html:"wp-content/plugins/wptools/"
+  name: 'WP Tools <= 5.24 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb995311-8837-4db5-a25d-37e41d932774?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wptools,medium,candidate

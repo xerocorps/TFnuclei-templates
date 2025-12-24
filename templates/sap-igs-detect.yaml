@@ -1,0 +1,33 @@
+id: sap-igs-detect
+info:
+  author: _generic_human_
+  description: Detection of SAP Internet Graphics Server (IGS)
+  name: SAP Internet Graphics Server (IGS) Detection
+  severity: info
+  tags: sap,tech,igs
+requests:
+- extractors:
+  - kval:
+    - Server
+    part: header
+    type: kval
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - SAP IGS
+    - is running
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - SAP Internet Graphics Server
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

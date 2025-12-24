@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - userplus
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/userplus/readme.txt'
+  redirects: true
+id: userplus-1148b18d-7af1-41c6-bd7f-1b2d53cb44e6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/userplus/
+    google-query: inurl:"/wp-content/plugins/userplus/"
+    shodan-query: http.html:"wp-content/plugins/userplus/"
+  name: 'UserPlus <= 2.0 - Authenticated (Editor+) Registration Form Update to Privilege
+    Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1148b18d-7af1-41c6-bd7f-1b2d53cb44e6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,userplus,low,candidate

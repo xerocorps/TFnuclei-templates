@@ -1,0 +1,20 @@
+id: struts-problem-report
+info:
+  author: dhiyaneshDK
+  name: Apache Struts in Dev Mode
+  reference:
+  - https://www.exploit-db.com/ghdb/4278
+  severity: low
+  tags: exposure,apache,struts,debug
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Struts Problem Report</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

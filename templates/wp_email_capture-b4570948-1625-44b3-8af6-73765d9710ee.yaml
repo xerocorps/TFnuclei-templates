@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-email-capture
+  - dsl:
+    - compare_versions(version, '<= 3.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-email-capture/readme.txt'
+  redirects: true
+id: wp_email_capture-b4570948-1625-44b3-8af6-73765d9710ee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-email-capture/
+    google-query: inurl:"/wp-content/plugins/wp-email-capture/"
+    shodan-query: http.html:"wp-content/plugins/wp-email-capture/"
+  name: "WordPress Email Marketing Plugin \u2013 WP Email Capture <= 3.10 - Information\
+    \ Exposure via wp_email_capture_options_process\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b4570948-1625-44b3-8af6-73765d9710ee?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-email-capture,low,candidate

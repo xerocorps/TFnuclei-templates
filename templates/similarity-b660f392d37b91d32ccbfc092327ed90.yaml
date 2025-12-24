@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - similarity
+  - dsl:
+    - compare_versions(version, '<= 3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/similarity/readme.txt'
+  redirects: true
+id: similarity-b660f392d37b91d32ccbfc092327ed90
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/similarity/
+    google-query: inurl:"/wp-content/plugins/similarity/"
+    shodan-query: 'vuln:'
+  name: 'Similarity <= 3.0 - Cross-Site Request Forgery to Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/086eea65-9669-4397-9e35-76df4ee31e70?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,similarity,medium

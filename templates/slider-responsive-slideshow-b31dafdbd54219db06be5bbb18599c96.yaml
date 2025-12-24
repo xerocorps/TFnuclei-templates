@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - slider-responsive-slideshow
+  - dsl:
+    - compare_versions(version, '<= 1.3.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/slider-responsive-slideshow/readme.txt'
+  redirects: true
+id: slider-responsive-slideshow-b31dafdbd54219db06be5bbb18599c96
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/slider-responsive-slideshow/
+    google-query: inurl:"/wp-content/plugins/slider-responsive-slideshow/"
+    shodan-query: 'vuln:'
+  name: "Slider Responsive Slideshow \u2013 Image slider, Gallery slideshow <= 1.3.8\
+    \ - Authenticated (Contributor+) PHP Object Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d35266cd-41e6-4358-afaa-bc008962f2e1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,slider-responsive-slideshow,low

@@ -1,0 +1,21 @@
+id: api-screenshotapi
+info:
+  author: daffainfo
+  name: ScreenshotAPI API Test
+  reference:
+  - https://docs.screenshotapi.net/?ref=webflow
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Development/Screenshot%20API.md
+  severity: info
+  tags: token-spray,screenshotapi
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - screenshot
+    - url
+  method: GET
+  path:
+  - https://shot.screenshotapi.net/screenshot?token={{token}}&url=https://example.com
+self-contained: true

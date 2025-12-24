@@ -1,0 +1,31 @@
+id: nessus-panel
+info:
+  author: joanbono,tess
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
+    cwe-id: CWE-200
+  description: Tenable Nessus panel was detected.
+  metadata:
+    shodan-query: title:"Nessus"
+    verified: true
+  name: Tenable Nessus Panel - Detect
+  severity: info
+  tags: panel,nessus
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - NessusWWW
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Nessus</title>
+    - window.location = '/unsupported6.html';
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/server/status'

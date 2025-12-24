@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - geo-mashup
+  - dsl:
+    - compare_versions(version, '<= 1.13.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/geo-mashup/readme.txt'
+  redirects: true
+id: geo_mashup-88e74cb2-7b6f-43ac-bb30-4763c5afe493
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/geo-mashup/
+    google-query: inurl:"/wp-content/plugins/geo-mashup/"
+    shodan-query: http.html:"wp-content/plugins/geo-mashup/"
+  name: 'Geo Mashup <= 1.13.13 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via geo_mashup_visible_posts_list Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/88e74cb2-7b6f-43ac-bb30-4763c5afe493?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,geo-mashup,low,candidate

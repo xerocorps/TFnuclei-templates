@@ -1,0 +1,15 @@
+id: stridercd-detection
+info:
+  author: Adam Crosser
+  name: StriderCD Panel
+  severity: info
+  tags: panel,cicd
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title class='StriderBlock_title'>Strider
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+  redirects: true

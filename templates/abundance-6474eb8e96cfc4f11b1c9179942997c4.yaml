@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - abundance
+  - dsl:
+    - compare_versions(version, '>0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/abundance/style.css'
+  redirects: true
+id: abundance-6474eb8e96cfc4f11b1c9179942997c4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The Abundance theme for WordPress is vulnerable to Cross-Site Scripting
+    due to insufficient input sanitization and output escaping. This makes it possible
+    for unauthenticated attackers to inject arbitrary web scripts that execute in
+    a victim's browser.
+  metadata:
+    fofa-query: wp-content/themes/abundance/
+    google-query: inurl:"/wp-content/themes/abundance/"
+    shodan-query: 'vuln:'
+  name: Abundance (All Versions) - Cross-Site Scripting
+  reference:
+  - https://jannefi.blogspot.com/2012/10/xss-vulnerability-in-wp-themes-by-kriesi.html
+  - https://wpscan.com/vulnerability/b74b044f-052f-4ae2-8ec5-dfade38211ce
+  - http://web.archive.org/web/20160606215743/https%3A//themeforest.net/item/abundance-ecommerce-business-theme/759562?ref=Kriesi
+  severity: medium
+  tags: cve,wordpress,wp-theme,abundance,medium

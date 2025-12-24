@@ -1,0 +1,10 @@
+after_success:
+- bash <(curl -s https://codecov.io/bash)
+before_install:
+- go get -t -v ./...
+go:
+- 1.8.x
+- 1.x
+language: go
+script:
+- ./test.sh

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - themify-portfolio-post
+  - dsl:
+    - compare_versions(version, '<= 1.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/themify-portfolio-post/readme.txt'
+  redirects: true
+id: themify-portfolio-post-7ef5c2e16b99908a18594fba378209dd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/themify-portfolio-post/
+    google-query: inurl:"/wp-content/plugins/themify-portfolio-post/"
+    shodan-query: 'vuln:'
+  name: 'Themify Portfolio Post <= 1.2.0 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a67df40b-7179-47a7-9cde-1c512ecc2253?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,themify-portfolio-post,low

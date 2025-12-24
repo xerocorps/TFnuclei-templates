@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jobboardwp
+  - dsl:
+    - compare_versions(version, '<= 1.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jobboardwp/readme.txt'
+  redirects: true
+id: jobboardwp-3bb0ade095b811a07058e97785c9e18a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jobboardwp/
+    google-query: inurl:"/wp-content/plugins/jobboardwp/"
+    shodan-query: 'vuln:'
+  name: "JobBoardWP \u2013 Job Board Listings and Submissions <= 1.0.7 - Stored Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6b2e61aa-617b-450e-8859-50b1012fc0c3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,jobboardwp,high

@@ -1,0 +1,13 @@
+request:
+  paths: false
+  payloads:
+  - ''''
+response:
+  patterns:
+  - You have an error in your SQL syntax;
+  statusCode: 500
+template:
+  author: zoidsec
+  description: Error Based SQL Injection Discovery
+  name: mysql-sqli
+  severity: high

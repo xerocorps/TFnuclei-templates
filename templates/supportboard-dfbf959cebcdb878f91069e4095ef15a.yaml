@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - supportboard
+  - dsl:
+    - compare_versions(version, '< 1.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/supportboard/readme.txt'
+  redirects: true
+id: supportboard-dfbf959cebcdb878f91069e4095ef15a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/supportboard/
+    google-query: inurl:"/wp-content/plugins/supportboard/"
+    shodan-query: 'vuln:'
+  name: 'Support Board <= 1.2.8 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2d90737b-fc4b-45a3-b970-64468e9eb431?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,supportboard,low

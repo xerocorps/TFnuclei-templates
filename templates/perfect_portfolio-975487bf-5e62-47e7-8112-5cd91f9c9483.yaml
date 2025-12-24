@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - perfect-portfolio
+  - dsl:
+    - compare_versions(version, '<= 1.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/perfect-portfolio/style.css'
+  redirects: true
+id: perfect_portfolio-975487bf-5e62-47e7-8112-5cd91f9c9483
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/perfect-portfolio/
+    google-query: inurl:"/wp-content/themes/perfect-portfolio/"
+    shodan-query: http.html:"wp-content/themes/perfect-portfolio/"
+  name: 'Perfect Portfolio <= 1.2.0 - Cross-Site Request Forgery to Notice Dismissal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/975487bf-5e62-47e7-8112-5cd91f9c9483?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,perfect-portfolio,medium,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-wp-security-and-firewall
+  - dsl:
+    - compare_versions(version, '<= 5.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-wp-security-and-firewall/readme.txt'
+  redirects: true
+id: all-in-one-wp-security-and-firewall-94fae1e288032668bb48295efd1117fc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-wp-security-and-firewall/
+    google-query: inurl:"/wp-content/plugins/all-in-one-wp-security-and-firewall/"
+    shodan-query: 'vuln:'
+  name: 'All-In-One Security (AIOS) <= 5.1.4 - Authenticated (Admin+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a3ae55ad-b192-4dde-8a7c-3a4fd71d3475?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,all-in-one-wp-security-and-firewall,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - memphis-documents-library
+  - dsl:
+    - compare_versions(version, '<= 3.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/memphis-documents-library/readme.txt'
+  redirects: true
+id: memphis-documents-library-a66eb58e5831090a4c3b5ebfcedbd224
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/memphis-documents-library/
+    google-query: inurl:"/wp-content/plugins/memphis-documents-library/"
+    shodan-query: 'vuln:'
+  name: 'Memphis Documents Library <= 3.1.5 - Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f2febf69-b146-4ca5-bfa9-f5477da5cd6c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,memphis-documents-library,low

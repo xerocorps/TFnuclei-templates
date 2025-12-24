@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zero-bs-crm
+  - dsl:
+    - compare_versions(version, '<= 5.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zero-bs-crm/readme.txt'
+  redirects: true
+id: zero-bs-crm-c7af71a2d3b83612a8a75d3f014b7a98
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zero-bs-crm/
+    google-query: inurl:"/wp-content/plugins/zero-bs-crm/"
+    shodan-query: 'vuln:'
+  name: 'Jetpack CRM <= 5.5.0 - Authenticated (Client+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e1dbd0e2-8c6c-4127-b37c-269af3b7f71c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,zero-bs-crm,low

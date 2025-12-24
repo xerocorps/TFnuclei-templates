@@ -1,0 +1,22 @@
+id: wazuh-detect
+info:
+  author: cyllective
+  description: Detects wazuh
+  name: wazuh detect
+  references:
+  - https://github.com/wazuh/wazuh
+  severity: info
+  tags: tech,wazuh
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - '&quot;id&quot;:&quot;wazuh&quot;'
+    - '&quot;title&quot;:&quot;Wazuh&quot;'
+    - '&quot;icon&quot;:&quot;plugins/wazuh/img/icon_blue.png&quot;'
+    - '&quot;url&quot;:&quot;/app/wazuh&quot;'
+  method: GET
+  path:
+  - '{{BaseURL}}/app/login'

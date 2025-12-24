@@ -1,0 +1,10 @@
+id: pandora-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Pandora FMS related nuclei templates
+    on a given target.
+  name: Pandora FMS Security Checks
+workflows:
+- subtemplates:
+  - tags: pandora
+  template: exposed-panels/pandora-fms-console.yaml

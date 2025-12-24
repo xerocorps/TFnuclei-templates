@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hmenu
+  - dsl:
+    - compare_versions(version, '<= 1.16.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hmenu/readme.txt'
+  redirects: true
+id: hmenu-17872fe4-b566-44ca-8218-3677fb75cb1c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hmenu/
+    google-query: inurl:"/wp-content/plugins/hmenu/"
+    shodan-query: http.html:"wp-content/plugins/hmenu/"
+  name: 'Hero Mega Menu - Responsive WordPress Menu Plugin <= 1.16.5 - Missing Authorization
+    to Authenticated (Subscriber+) Arbitrary Directory Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/17872fe4-b566-44ca-8218-3677fb75cb1c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,hmenu,low,candidate

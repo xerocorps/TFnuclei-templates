@@ -1,0 +1,28 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - wamp
+    - xdebug
+    - configuration
+    - development
+  description: Template to detect the presence of Xdebug in a WAMP (Windows, Apache,
+    MySQL, PHP) server configuration
+  id: wamp-xdebug
+  matcher-condition: and
+  matchers:
+  - description: Xdebug configuration detected in phpinfo.php page
+    pattern: xdebug.remote_connect_back</td><td class="v">On</td><td class="v">On</td>
+    type: body
+  name: WAMP Xdebug - Detect
+  requests:
+    description: Attempt to access phpinfo.php page
+    method: GET
+    path:
+    - /?phpinfo=-1
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Info

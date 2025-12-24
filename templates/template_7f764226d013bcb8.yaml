@@ -1,0 +1,26 @@
+detail:
+  author: jujumanman (https://github.com/jujumanman)
+  links:
+  - https://blog.csdn.net/zy15667076526/article/details/111413979
+  - https://github.com/vulhub/vulhub/tree/master/h2database/h2-console-unacc
+expression: r0() && r1()
+manual: true
+name: poc-yaml-h2-database-web-console-unauthorized-access
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"Welcome to H2")
+    output:
+      search: '"location.href = ''(?P<token>.+?)''".bsubmatch(response.body)'
+      token: search["token"]
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /h2-console
+  r1:
+    expression: response.status == 200 && response.body.bcontains(b"Generic H2")
+    request:
+      cache: true
+      method: GET
+      path: /h2-console/{{token}}
+transport: http

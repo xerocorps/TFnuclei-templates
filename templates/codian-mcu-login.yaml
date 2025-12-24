@@ -1,0 +1,22 @@
+id: codian-mcu-login
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"Codian MCU - Home page"
+  name: Codian MCU Login
+  reference:
+  - https://www.exploit-db.com/ghdb/7404
+  severity: info
+  tags: iot
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Codian MCU - login:</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'

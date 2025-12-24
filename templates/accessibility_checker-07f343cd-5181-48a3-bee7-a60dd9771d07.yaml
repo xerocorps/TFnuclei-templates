@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - accessibility-checker
+  - dsl:
+    - compare_versions(version, '<= 1.30.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/accessibility-checker/readme.txt'
+  redirects: true
+id: accessibility_checker-07f343cd-5181-48a3-bee7-a60dd9771d07
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/accessibility-checker/
+    google-query: inurl:"/wp-content/plugins/accessibility-checker/"
+    shodan-query: http.html:"wp-content/plugins/accessibility-checker/"
+  name: 'Accessibility Checker by Equalize Digital <= 1.30.0 - Authenticated (Contributor+)
+    Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/07f343cd-5181-48a3-bee7-a60dd9771d07?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,accessibility-checker,low,candidate

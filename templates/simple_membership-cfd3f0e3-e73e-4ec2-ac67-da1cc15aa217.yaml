@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-membership
+  - dsl:
+    - compare_versions(version, '< 3.5.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-membership/readme.txt'
+  redirects: true
+id: simple_membership-cfd3f0e3-e73e-4ec2-ac67-da1cc15aa217
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-membership/
+    google-query: inurl:"/wp-content/plugins/simple-membership/"
+    shodan-query: http.html:"wp-content/plugins/simple-membership/"
+  name: 'Simple Membership <= 3.5.6 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cfd3f0e3-e73e-4ec2-ac67-da1cc15aa217?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,simple-membership,high,candidate

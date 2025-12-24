@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - real-spaces
+  - dsl:
+    - compare_versions(version, '<= 3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/real-spaces/style.css'
+  redirects: true
+id: real_spaces-e2b24858-dfcd-46f3-9552-c7acc63a1ee7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/real-spaces/
+    google-query: inurl:"/wp-content/themes/real-spaces/"
+    shodan-query: http.html:"wp-content/themes/real-spaces/"
+  name: 'Real Spaces - WordPress Properties Directory Theme <= 3.6 - Unauthenticated
+    Privilege Escalation to Administrator via ''imic_agent_register''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e2b24858-dfcd-46f3-9552-c7acc63a1ee7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,real-spaces,low,candidate

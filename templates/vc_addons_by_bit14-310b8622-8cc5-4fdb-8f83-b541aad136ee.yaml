@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vc-addons-by-bit14
+  - dsl:
+    - compare_versions(version, '<= 1.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vc-addons-by-bit14/readme.txt'
+  redirects: true
+id: vc_addons_by_bit14-310b8622-8cc5-4fdb-8f83-b541aad136ee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vc-addons-by-bit14/
+    google-query: inurl:"/wp-content/plugins/vc-addons-by-bit14/"
+    shodan-query: http.html:"wp-content/plugins/vc-addons-by-bit14/"
+  name: 'Web and WooCommerce Addons for WPBakery Builder <= 1.4.7 - Authenticated
+    (Editor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/310b8622-8cc5-4fdb-8f83-b541aad136ee?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,vc-addons-by-bit14,low,candidate

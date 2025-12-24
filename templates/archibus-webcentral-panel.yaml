@@ -1,0 +1,32 @@
+id: archibus-webcentral-panel
+info:
+  author: righettod
+  metadata:
+    shodan-query: http.favicon.hash:889652940
+    verified: true
+  name: Archibus Web Central Panel
+  reference:
+  - https://archibus.com/products/
+  severity: info
+  tags: panel,archibus
+requests:
+- matchers:
+  - type: word
+    words:
+    - ARCHIBUS
+  - condition: or
+    type: word
+    words:
+    - login
+    - Sign Out
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/archibus/login.axvw'
+  redirects: true
+  stop-at-first-match: true

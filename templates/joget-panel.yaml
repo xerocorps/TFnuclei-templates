@@ -1,0 +1,26 @@
+id: joget-panel
+info:
+  author: Podalirius
+  metadata:
+    shodan-query: http.favicon.hash:-1343712810
+  name: JoGet Login Panel
+  severity: info
+  tags: panel,joget
+requests:
+- extractors:
+  - group: 2
+    part: body
+    regex:
+    - <li>(Version:[ \n\t]*([^<]+)[ \n\t]*)</li>
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - System Error
+  - status:
+    - 500
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/jw/web/;'

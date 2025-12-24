@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - smio-push-notification
+  - dsl:
+    - compare_versions(version, '<= 10.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/smio-push-notification/readme.txt'
+  redirects: true
+id: smio_push_notification-5ac30f59-45d0-4c28-ad90-e04452ee60dd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/smio-push-notification/
+    google-query: inurl:"/wp-content/plugins/smio-push-notification/"
+    shodan-query: http.html:"wp-content/plugins/smio-push-notification/"
+  name: 'Smart Notification <= 10.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5ac30f59-45d0-4c28-ad90-e04452ee60dd?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,smio-push-notification,medium,candidate

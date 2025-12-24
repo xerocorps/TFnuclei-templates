@@ -1,0 +1,49 @@
+body:
+- attributes:
+    value: 'Thanks for taking the time to contribute a Nuclei template!
+
+
+      :warning: **Please submit only one template per issue. This helps us manage
+      and review contributions more effectively.**
+
+      '
+  type: markdown
+- attributes:
+    description: Please search to see if an template or issue already exists for the
+      template you contributed.
+    label: Is there an existing template for this?
+    options:
+    - label: I have searched the existing templates.
+      required: true
+  type: checkboxes
+- attributes:
+    description: Please copy and paste the Nuclei template below. This will be automatically
+      formatted into code, so no need for backticks.
+    label: Nuclei Template
+    render: yaml
+  type: textarea
+- attributes:
+    description: 'Please copy and paste any relevant dumped responses (`-dresp`/`-debug-resp`).
+      This will be automatically formatted into code, so no need for backticks.
+
+
+      :warning: **Please redact any literal target hosts/URLs or other sensitive information.**
+
+      '
+    label: Relevant dumped responses
+    render: shell
+  type: textarea
+- attributes:
+    description: 'Links? References? Anything that can speed up the review or validation
+      process.
+
+      '
+    label: Anything else?
+  type: textarea
+  validations:
+    required: false
+description: Contributing Nuclei template.
+labels:
+- template-contribution
+name: Template Contribution
+title: '[TEMPLATE CONTRIBUTION] ...'

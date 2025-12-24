@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - envira-gallery-lite
+  - dsl:
+    - compare_versions(version, '<= 1.8.7.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/envira-gallery-lite/readme.txt'
+  redirects: true
+id: envira-gallery-lite-32368ae6a5469d45a7caf21e1380210d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/envira-gallery-lite/
+    google-query: inurl:"/wp-content/plugins/envira-gallery-lite/"
+    shodan-query: 'vuln:'
+  name: 'Envira Photo Gallery <= 1.8.7.3 - Cross-Site Request Forgery to Notice Dismissal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7f341562-232e-437f-8d3d-83a06402e8ef?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,envira-gallery-lite,medium

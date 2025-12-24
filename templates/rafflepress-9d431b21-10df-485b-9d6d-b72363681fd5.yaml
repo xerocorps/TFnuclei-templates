@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rafflepress
+  - dsl:
+    - compare_versions(version, '<= 1.12.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rafflepress/readme.txt'
+  redirects: true
+id: rafflepress-9d431b21-10df-485b-9d6d-b72363681fd5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rafflepress/
+    google-query: inurl:"/wp-content/plugins/rafflepress/"
+    shodan-query: http.html:"wp-content/plugins/rafflepress/"
+  name: 'Giveaways and Contests by RafflePress <= 1.12.16 - Authenticated (Admin+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d431b21-10df-485b-9d6d-b72363681fd5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,rafflepress,low,candidate

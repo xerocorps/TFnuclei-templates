@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yookassa
+  - dsl:
+    - compare_versions(version, '<= 2.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yookassa/readme.txt'
+  redirects: true
+id: yookassa-0d6079cde92dabe1a0bc023f069129fe
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yookassa/
+    google-query: inurl:"/wp-content/plugins/yookassa/"
+    shodan-query: 'vuln:'
+  name: "\u042EKassa \u0434\u043B\u044F WooCommerce <= 2.3.0 - Cross-Site Request\
+    \ Forgery to Settings Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7a027f8f-bec8-456c-804b-b18fdb9532db?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,yookassa,medium

@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-statistics
+  - dsl:
+    - compare_versions(version, '< 12.6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-statistics/readme.txt'
+  redirects: true
+id: wp-statistics-315896a15baa7dad7359362607cbcb34
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+  description: The WP Statistics plugin for WordPress is vulnerable to Stored Cross-Site
+    Scripting via IP spoofing in versions up to, and including, [up to affected version]
+    due to insufficient input sanitization and output escaping. This makes it possible
+    for [authentication-level] attackers [inject user-level requirements if available
+    and authentication is required] to inject arbitrary web scripts in pages that
+    will execute whenever a user accesses an injected page.
+  metadata:
+    fofa-query: wp-content/plugins/wp-statistics/
+    google-query: inurl:"/wp-content/plugins/wp-statistics/"
+    shodan-query: 'vuln:'
+  name: WP Statistics <= 12.6.6.1 - Unauthenticated Stored Cross-Site Scripting via
+    IP Manipulation
+  reference:
+  - https://blog.sucuri.net/2019/07/wordpress-plugin-wp-statistics-unauthenticated-stored-xss-under-certain-configurations.html
+  - https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=2115352%40wp-statistics&new=2115352%40wp-statistics&sfp_email=&sfph_mail=
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-statistics,high

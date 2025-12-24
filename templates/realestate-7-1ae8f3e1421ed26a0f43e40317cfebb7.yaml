@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - realestate-7
+  - dsl:
+    - compare_versions(version, '<= 3.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/realestate-7/style.css'
+  redirects: true
+id: realestate-7-1ae8f3e1421ed26a0f43e40317cfebb7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/realestate-7/
+    google-query: inurl:"/wp-content/themes/realestate-7/"
+    shodan-query: 'vuln:'
+  name: 'Real Estate 7 Theme <= 3.3.1 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/952aec28-a380-4c6d-8391-b21cddf90a5c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,realestate-7,high

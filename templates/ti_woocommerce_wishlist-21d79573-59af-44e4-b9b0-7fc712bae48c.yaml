@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ti-woocommerce-wishlist
+  - dsl:
+    - compare_versions(version, '<= 2.10.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ti-woocommerce-wishlist/readme.txt'
+  redirects: true
+id: ti_woocommerce_wishlist-21d79573-59af-44e4-b9b0-7fc712bae48c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ti-woocommerce-wishlist/
+    google-query: inurl:"/wp-content/plugins/ti-woocommerce-wishlist/"
+    shodan-query: http.html:"wp-content/plugins/ti-woocommerce-wishlist/"
+  name: 'TI WooCommerce Wishlist <= 2.10.0 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/21d79573-59af-44e4-b9b0-7fc712bae48c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ti-woocommerce-wishlist,high,candidate

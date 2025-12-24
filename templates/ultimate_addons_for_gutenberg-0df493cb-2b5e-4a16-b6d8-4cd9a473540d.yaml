@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-addons-for-gutenberg
+  - dsl:
+    - compare_versions(version, '<= 2.7.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-addons-for-gutenberg/readme.txt'
+  redirects: true
+id: ultimate_addons_for_gutenberg-0df493cb-2b5e-4a16-b6d8-4cd9a473540d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-addons-for-gutenberg/
+    google-query: inurl:"/wp-content/plugins/ultimate-addons-for-gutenberg/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-addons-for-gutenberg/"
+  name: 'Spectra <= 2.7.9 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0df493cb-2b5e-4a16-b6d8-4cd9a473540d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-addons-for-gutenberg,low,candidate

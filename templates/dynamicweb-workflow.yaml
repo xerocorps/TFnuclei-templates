@@ -1,0 +1,10 @@
+id: dynamicweb-workflow
+info:
+  author: pdteam
+  description: A simple workflow that runs all dynamicweb related nuclei templates
+    on a given target.
+  name: Dynamicweb Security Checks
+workflows:
+- subtemplates:
+  - tags: dynamicweb
+  template: exposed-panels/dynamicweb-panel.yaml

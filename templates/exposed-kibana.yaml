@@ -1,0 +1,23 @@
+id: exposed-kibana
+info:
+  author: Shine
+  name: Exposed Kibana
+  severity: medium
+requests:
+- matchers:
+  - type: word
+    words:
+    - kibanaWelcomeView
+    - cluster_uuid
+    - kibanaWelcomeLogo
+    - kibanaWelcomeTitle
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+  - '{{BaseURL}}:5601/'
+  - '{{BaseURL}}/app/kibana/'
+  - '{{BaseURL}}:5601/app/kibana/'

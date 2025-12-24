@@ -1,0 +1,23 @@
+id: netsurveillance-web
+info:
+  author: DhiyaneshDK
+  metadata:
+    google-dork: intitle:"NETSurveillance WEB"
+    shodan-query: http.title:"NETSurveillance WEB"
+  name: NETSurveillance WEB
+  reference:
+  - https://www.exploit-db.com/ghdb/7288
+  severity: info
+  tags: tech,iot
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>NetSurveillance WEB</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Login.htm'

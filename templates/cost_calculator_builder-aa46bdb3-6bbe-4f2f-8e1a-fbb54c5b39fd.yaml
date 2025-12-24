@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cost-calculator-builder
+  - dsl:
+    - compare_versions(version, '<= 3.5.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cost-calculator-builder/readme.txt'
+  redirects: true
+id: cost_calculator_builder-aa46bdb3-6bbe-4f2f-8e1a-fbb54c5b39fd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cost-calculator-builder/
+    google-query: inurl:"/wp-content/plugins/cost-calculator-builder/"
+    shodan-query: http.html:"wp-content/plugins/cost-calculator-builder/"
+  name: 'Cost Calculator Builder <= 3.5.32 - Authenticated (Subscriber+) Missing Authorization
+    via get_cc_orders/update_order_status Functions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aa46bdb3-6bbe-4f2f-8e1a-fbb54c5b39fd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cost-calculator-builder,low,candidate

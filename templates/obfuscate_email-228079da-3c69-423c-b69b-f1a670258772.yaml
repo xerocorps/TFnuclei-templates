@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - obfuscate-email
+  - dsl:
+    - compare_versions(version, '<= 3.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/obfuscate-email/readme.txt'
+  redirects: true
+id: obfuscate_email-228079da-3c69-423c-b69b-f1a670258772
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/obfuscate-email/
+    google-query: inurl:"/wp-content/plugins/obfuscate-email/"
+    shodan-query: http.html:"wp-content/plugins/obfuscate-email/"
+  name: 'Obfuscate Email <= 3.8.1 - Unauthenticated Full Path Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/228079da-3c69-423c-b69b-f1a670258772?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,obfuscate-email,low,candidate

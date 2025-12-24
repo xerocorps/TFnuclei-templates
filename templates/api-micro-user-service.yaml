@@ -1,0 +1,24 @@
+id: api-micro-user-service
+info:
+  author: daffainfo
+  name: Micro User Service API Test
+  reference:
+  - https://m3o.com/user
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Authentication/Micro%20User%20Service.md
+  severity: info
+  tags: token-spray,micro-user-service
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"username":'
+    - '"email":'
+    - '"created":'
+    - '"updated":'
+  raw:
+  - "POST https://api.m3o.com/v1/user/Read HTTP/1.1\nHost: api.m3o.com\nContent-Type:\
+    \ application/json\nAuthorization: Bearer {{token}}\nContent-Length: 21\n\n{\n\
+    \  \"id\": \"usrid-1\"\n}\n"
+self-contained: true

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - automatorwp
+  - dsl:
+    - compare_versions(version, '< 1.7.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/automatorwp/readme.txt'
+  redirects: true
+id: automatorwp-9b95fe0e-4677-4667-9a84-96801b547088
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/automatorwp/
+    google-query: inurl:"/wp-content/plugins/automatorwp/"
+    shodan-query: http.html:"wp-content/plugins/automatorwp/"
+  name: 'AutomatorWP <= 1.7.5 - Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9b95fe0e-4677-4667-9a84-96801b547088?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,automatorwp,low,candidate

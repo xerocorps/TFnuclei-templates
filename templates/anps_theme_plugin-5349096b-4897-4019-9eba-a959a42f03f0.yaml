@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - anps_theme_plugin
+  - dsl:
+    - compare_versions(version, '<= 1.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/anps_theme_plugin/readme.txt'
+  redirects: true
+id: anps_theme_plugin-5349096b-4897-4019-9eba-a959a42f03f0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/anps_theme_plugin/
+    google-query: inurl:"/wp-content/plugins/anps_theme_plugin/"
+    shodan-query: http.html:"wp-content/plugins/anps_theme_plugin/"
+  name: 'Anps Theme plugin <= 1.1.1 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5349096b-4897-4019-9eba-a959a42f03f0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,anps_theme_plugin,low,candidate

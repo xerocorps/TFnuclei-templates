@@ -1,0 +1,16 @@
+id: yopass-panel
+info:
+  author: Adam Crosser
+  metadata:
+    shodan-query: title:"Yopass"
+  name: Yopass Application Exposure
+  severity: info
+  tags: panel,yopass
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Yopass
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - directorist
+  - dsl:
+    - compare_versions(version, '<= 7.4.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/directorist/readme.txt'
+  redirects: true
+id: directorist-7c52eaaeb3df74723506e5283a261006
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/directorist/
+    google-query: inurl:"/wp-content/plugins/directorist/"
+    shodan-query: 'vuln:'
+  name: 'Directorist <= 7.4.2.1 - Authenticated (Subscriber+) Insecure Direct Object
+    Reference to Arbitrary User Password Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/86ff2412-23c6-450e-b351-ba994d68aae6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,directorist,low

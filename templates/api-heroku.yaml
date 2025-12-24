@@ -1,0 +1,22 @@
+id: api-heroku
+info:
+  author: zzeitlin
+  name: Heroku API Test
+  reference: https://devcenter.heroku.com/articles/platform-api-quickstart#calling-the-api
+  severity: info
+  tags: token-spray,heroku
+requests:
+- headers:
+    Accept: application/vnd.heroku+json; version=3
+    Authorization: Bearer {{token}}
+  matchers:
+  - condition: or
+    status:
+    - 200
+    - 201
+    - 202
+    - 206
+    type: status
+  method: POST
+  path:
+  - https://api.heroku.com/apps

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-grid
+  - dsl:
+    - compare_versions(version, '<= 2.2.74')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-grid/readme.txt'
+  redirects: true
+id: post-grid-6d2e15c2260be99939f967356c290efb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-grid/
+    google-query: inurl:"/wp-content/plugins/post-grid/"
+    shodan-query: 'vuln:'
+  name: 'Post Grid, Form Maker, Popup Maker, WooCommerce Blocks, Post Blocks, Post
+    Carousel  <= 2.2.74 - Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e23dcadf-5858-4b8e-8b48-d3133c40cd89?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,post-grid,low

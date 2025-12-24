@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - download-monitor
+  - dsl:
+    - compare_versions(version, '<= 4.9.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/download-monitor/readme.txt'
+  redirects: true
+id: download-monitor-a109f02a6e60e7229dc862be7c6c02fb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/download-monitor/
+    google-query: inurl:"/wp-content/plugins/download-monitor/"
+    shodan-query: 'vuln:'
+  name: 'Download Monitor <= 4.9.13 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c454a958-91c4-4847-91f6-dedebf857964?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,download-monitor,high

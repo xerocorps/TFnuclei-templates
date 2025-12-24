@@ -1,0 +1,29 @@
+id: mfiles-web-detect
+info:
+  author: Nodauf
+  metadata:
+    shodan-query: http.html:"M-Files Web"
+    verified: true
+  name: M-Files Web Panel Detect
+  reference:
+  - https://www.m-files.com/about/trust-center/security-advisories/
+  severity: info
+  tags: panel,m-files
+requests:
+- matchers:
+  - part: body
+    regex:
+    - <title>(.*)M-Files Web(.*)</title>
+    type: regex
+  - condition: or
+    part: body
+    type: word
+    words:
+    - M-Files user
+    - M-Files authentication
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/Login.aspx'
+  stop-at-first-match: true

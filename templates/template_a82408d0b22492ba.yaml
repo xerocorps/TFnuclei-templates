@@ -1,0 +1,29 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - web
+    - security
+    - sonarqube
+    - exposed
+  description: Template to detect exposed SonarQube installations
+  id: exposed-sonarqube
+  name: Exposed SonarQube - Detect
+  severity: Medium
+matcher-condition: or
+matchers:
+- description: SonarQube banner found in response body
+  pattern: SonarQube
+  type: body
+requests:
+  condition: or
+  description: Attempt to access SonarQube URL
+  method: GET
+  path:
+  - /sonarqube
+  - /sonar
+response:
+- description: Successful response status
+  status:
+  - 200

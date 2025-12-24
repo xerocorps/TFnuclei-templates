@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quiz-maker
+  - dsl:
+    - compare_versions(version, '<= 6.5.9.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quiz-maker/readme.txt'
+  redirects: true
+id: quiz_maker-a71191f3-1151-4f8c-b6fe-86983b034557
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quiz-maker/
+    google-query: inurl:"/wp-content/plugins/quiz-maker/"
+    shodan-query: http.html:"wp-content/plugins/quiz-maker/"
+  name: 'Quiz Maker <= 6.5.9.8 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a71191f3-1151-4f8c-b6fe-86983b034557?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,quiz-maker,low,candidate

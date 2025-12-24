@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - taggator
+  - dsl:
+    - compare_versions(version, '< 1.33')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/taggator/readme.txt'
+  redirects: true
+id: taggator-1236a25d8424da269ef14543653dbd51
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/taggator/
+    google-query: inurl:"/wp-content/plugins/taggator/"
+    shodan-query: 'vuln:'
+  name: 'TagGator Plugin < 1.33 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/21e4b1fe-993b-4898-a523-e0a858c30a38?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,taggator,critical

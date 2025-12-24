@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - flexi-quote-rotator
+  - dsl:
+    - compare_versions(version, '<= 0.9.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/flexi-quote-rotator/readme.txt'
+  redirects: true
+id: flexi-quote-rotator-93ce8dfe4373184c3737f2fd99eab570
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/flexi-quote-rotator/
+    google-query: inurl:"/wp-content/plugins/flexi-quote-rotator/"
+    shodan-query: 'vuln:'
+  name: 'Flexi Quote Rotator <= 0.9.4 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7cfeed0f-ab3e-4b35-9b69-08cc7e7ffb45?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,flexi-quote-rotator,low

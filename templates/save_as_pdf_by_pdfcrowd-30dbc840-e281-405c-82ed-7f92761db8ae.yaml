@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - save-as-pdf-by-pdfcrowd
+  - dsl:
+    - compare_versions(version, '<= 4.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/save-as-pdf-by-pdfcrowd/readme.txt'
+  redirects: true
+id: save_as_pdf_by_pdfcrowd-30dbc840-e281-405c-82ed-7f92761db8ae
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/save-as-pdf-by-pdfcrowd/
+    google-query: inurl:"/wp-content/plugins/save-as-pdf-by-pdfcrowd/"
+    shodan-query: http.html:"wp-content/plugins/save-as-pdf-by-pdfcrowd/"
+  name: 'Save as PDF plugin by Pdfcrowd <= 4.0.0 - Authenticated (Administrator+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/30dbc840-e281-405c-82ed-7f92761db8ae?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,save-as-pdf-by-pdfcrowd,low,candidate

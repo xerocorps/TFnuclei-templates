@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - buddyforms
+  - dsl:
+    - compare_versions(version, '<= 2.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/buddyforms/readme.txt'
+  redirects: true
+id: buddyforms-b1bff743ade02d08e4ca219946b52db7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: "The Post, Registration and Profile Form Builder \u2013 FrontEnd Editor\
+    \ BuddyForms \u2013 Easy WordPress Forms plugin for WordPress is vulnerable to\
+    \ Stored Cross-Site Scripting via several parameters in versions up to, and including,\
+    \ 2.6.9 due to insufficient input sanitization and output escaping. This makes\
+    \ it possible for attackers to inject arbitrary web scripts in pages that will\
+    \ execute whenever a user accesses an injected page."
+  metadata:
+    fofa-query: wp-content/plugins/buddyforms/
+    google-query: inurl:"/wp-content/plugins/buddyforms/"
+    shodan-query: 'vuln:'
+  name: "Post, Registration and Profile Form Builder \u2013 FrontEnd Editor BuddyForms\
+    \ \u2013 Easy WordPress Forms <= 2.6.9 - Cross-Site Scripting"
+  reference:
+  - https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=2748848%40buddyforms%2Ftrunk&old=2746171%40buddyforms%2Ftrunk&sfp_email=&sfph_mail=
+  severity: medium
+  tags: cve,wordpress,wp-plugin,buddyforms,medium

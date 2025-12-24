@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gdpr-cookie-consent
+  - dsl:
+    - compare_versions(version, '<= 3.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gdpr-cookie-consent/readme.txt'
+  redirects: true
+id: gdpr-cookie-consent-52efd5694def7b4daad5be2d4f736f03
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gdpr-cookie-consent/
+    google-query: inurl:"/wp-content/plugins/gdpr-cookie-consent/"
+    shodan-query: 'vuln:'
+  name: 'WP Cookie Consent ( for GDPR, CCPA & ePrivacy ) <= 3.0.2 - Missing Authorization
+    to Unauthenticated Arbitrary Post Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4b9abbf1-d9f5-4406-9d0c-bc2f9891d0e8?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,gdpr-cookie-consent,high

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - likebtn-like-button
+  - dsl:
+    - compare_versions(version, '<= 2.6.37')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/likebtn-like-button/readme.txt'
+  redirects: true
+id: likebtn-like-button-2a2618782683f380349877c0f702a5c5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/likebtn-like-button/
+    google-query: inurl:"/wp-content/plugins/likebtn-like-button/"
+    shodan-query: 'vuln:'
+  name: 'Like Button Rating <= 2.6.37 - Unauthorised Vote Export to Email & IP Addresses
+    Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6a19972e-6ff9-4d18-a327-5cafef96a637?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,likebtn-like-button,low

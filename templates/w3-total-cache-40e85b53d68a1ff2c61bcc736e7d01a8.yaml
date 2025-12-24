@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - w3-total-cache
+  - dsl:
+    - compare_versions(version, '<= 0.9.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/w3-total-cache/readme.txt'
+  redirects: true
+id: w3-total-cache-40e85b53d68a1ff2c61bcc736e7d01a8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 7.2
+  description: 'The W3 Total Cache plugin for WordPress is vulnerable to Authenticated
+    Arbitrary Code Execution via settings import in versions up to, and including,
+    0.9.4.1. This makes it possible for authenticated attackers to inject and execute
+    arbitrary code.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/w3-total-cache/
+    google-query: inurl:"/wp-content/plugins/w3-total-cache/"
+    shodan-query: 'vuln:'
+  name: 'W3 Total Cache <= 0.9.4.1 - Arbitrary Code Execution via settings import
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eb367998-5c5c-4c4d-81cb-519023f028e6?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,w3-total-cache,low

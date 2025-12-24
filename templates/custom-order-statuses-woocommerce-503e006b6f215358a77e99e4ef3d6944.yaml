@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - custom-order-statuses-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 2.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/custom-order-statuses-woocommerce/readme.txt'
+  redirects: true
+id: custom-order-statuses-woocommerce-503e006b6f215358a77e99e4ef3d6944
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/custom-order-statuses-woocommerce/
+    google-query: inurl:"/wp-content/plugins/custom-order-statuses-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Custom Order Status for WooCommerce <= 2.3.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ab2a4903-2c69-48da-bd4a-79b39b78806c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,custom-order-statuses-woocommerce,medium

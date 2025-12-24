@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - oopspam-anti-spam
+  - dsl:
+    - compare_versions(version, '<= 1.2.53')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/oopspam-anti-spam/readme.txt'
+  redirects: true
+id: oopspam_anti_spam-b5137bc2-912b-4e25-966e-515e8d9fc21c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/oopspam-anti-spam/
+    google-query: inurl:"/wp-content/plugins/oopspam-anti-spam/"
+    shodan-query: http.html:"wp-content/plugins/oopspam-anti-spam/"
+  name: 'OOPSpam Anti-Spam: Spam Protection for WordPress Forms & Comments (No CAPTCHA)
+    <= 1.2.53 - Unauthenticated IP Header Spoofing
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b5137bc2-912b-4e25-966e-515e8d9fc21c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,oopspam-anti-spam,low,candidate

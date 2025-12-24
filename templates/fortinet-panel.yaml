@@ -1,0 +1,21 @@
+id: fortinet-panel
+info:
+  author: pikpikcu,daffainfo
+  metadata:
+    shodan-query: http.title:"FORTINET LOGIN"
+  name: Fortinet Panel Login
+  severity: info
+  tags: panel,fortinet
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title tiles:fragment="title">FORTINET LOGIN</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

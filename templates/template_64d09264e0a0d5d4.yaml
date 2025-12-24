@@ -1,0 +1,117 @@
+fingerprint:
+- favicon_hash: []
+  headers:
+    Location: /owa/
+    Server: Microsoft
+  keyword: []
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 302
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - <!-- owapage = asp.auth_logon_aspx
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - /exchweb/bin/auth/owalogon.asp
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - /exchweb/bin/auth/owalogon.asp?url=
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - href="/owa/auth/
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - window.location.replace("/owa/" + window.location.hash);</script></head><body></body>
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - <meta http-equiv="refresh" content="0;url=/owa">
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - themes/resources/segoeui-semibold.ttf
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - <div class="signinheader">outlook</div>
+  - owalogocontainer
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - /owa/
+  - owapage = asp.auth_logon_aspx
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - /owa/
+  - showpasswordcheck
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - outlook
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+name: microsoft-exchange
+nuclei_tags:
+- - exchange
+priority: 3

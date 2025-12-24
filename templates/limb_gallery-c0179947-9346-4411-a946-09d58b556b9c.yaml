@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - limb-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.5.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/limb-gallery/readme.txt'
+  redirects: true
+id: limb_gallery-c0179947-9346-4411-a946-09d58b556b9c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/limb-gallery/
+    google-query: inurl:"/wp-content/plugins/limb-gallery/"
+    shodan-query: http.html:"wp-content/plugins/limb-gallery/"
+  name: "WordPress Gallery Plugin \u2013 Limb Image Gallery <= 1.5.7 - Authenticated\
+    \ (Subscriber+) Arbitrary File Download\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c0179947-9346-4411-a946-09d58b556b9c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,limb-gallery,low,candidate

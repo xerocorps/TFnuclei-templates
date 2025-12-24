@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - slider-hero
+  - dsl:
+    - compare_versions(version, '<= 8.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/slider-hero/readme.txt'
+  redirects: true
+id: slider-hero-22ec06dd60662d0030577b8498a74515
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/slider-hero/
+    google-query: inurl:"/wp-content/plugins/slider-hero/"
+    shodan-query: 'vuln:'
+  name: 'Slider Hero <= 8.2.0 - Cross-Site Request Forgery Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e6d195cd-4df8-4926-b834-d695fc05f81d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,slider-hero,medium

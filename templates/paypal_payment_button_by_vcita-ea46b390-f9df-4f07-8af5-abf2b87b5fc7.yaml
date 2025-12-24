@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - paypal-payment-button-by-vcita
+  - dsl:
+    - compare_versions(version, '<= 3.20.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/paypal-payment-button-by-vcita/readme.txt'
+  redirects: true
+id: paypal_payment_button_by_vcita-ea46b390-f9df-4f07-8af5-abf2b87b5fc7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/paypal-payment-button-by-vcita/
+    google-query: inurl:"/wp-content/plugins/paypal-payment-button-by-vcita/"
+    shodan-query: http.html:"wp-content/plugins/paypal-payment-button-by-vcita/"
+  name: "Online Payments \u2013 Get Paid with PayPal, Square & Stripe <= 3.20.0 -\
+    \ Authenticated (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ea46b390-f9df-4f07-8af5-abf2b87b5fc7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,paypal-payment-button-by-vcita,low,candidate

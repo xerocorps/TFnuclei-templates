@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-digital-downloads
+  - dsl:
+    - compare_versions(version, '< 3.1.1.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-digital-downloads/readme.txt'
+  redirects: true
+id: easy-digital-downloads-b7a00b644197c523b12d21f112f9354d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: The Easy Digital Downloads plugin for WordPress is vulnerable to Unauthenticated
+    Arbitrary Password Resets to Privilege Escalation in versions up to, and including,
+    3.1.1.4.1. This is due to a lack of validation of a password reset key in the
+    edd_validate_password_reset function. This makes it possible for unauthenticated
+    attackers to reset the password of any user on a vulnerable site, including an
+    administrator, if they have the email or username of the targeted account.
+  metadata:
+    fofa-query: wp-content/plugins/easy-digital-downloads/
+    google-query: inurl:"/wp-content/plugins/easy-digital-downloads/"
+    shodan-query: 'vuln:'
+  name: Easy Digital Downloads <= 3.1.1.4.1 - Unauthenticated Arbitrary Password Reset
+    to Privilege Escalation
+  reference:
+  - https://plugins.trac.wordpress.org/changeset/2906668/easy-digital-downloads/trunk/includes/users/lost-password.php
+  severity: critical
+  tags: cve,wordpress,wp-plugin,easy-digital-downloads,critical

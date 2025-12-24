@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - exports-and-reports
+  - dsl:
+    - compare_versions(version, '<= 0.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/exports-and-reports/readme.txt'
+  redirects: true
+id: exports_and_reports-8dc41ac8-1126-4fcc-942e-89e15b1ebfb7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/exports-and-reports/
+    google-query: inurl:"/wp-content/plugins/exports-and-reports/"
+    shodan-query: http.html:"wp-content/plugins/exports-and-reports/"
+  name: 'Exports and Reports <= 0.9.1 - CSV Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8dc41ac8-1126-4fcc-942e-89e15b1ebfb7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,exports-and-reports,low,candidate

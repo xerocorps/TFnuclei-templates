@@ -1,0 +1,37 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - vmware
+    - aria-operations
+    - security
+  description: Template to detect the VMware Aria Operations service
+  id: vmware-aria-operations
+  matcher-condition: and
+  matchers:
+  - pattern: VMware Aria Operations</title>
+  - description: VMware Aria Operations page title found in response body
+    pattern: Operations for Logs - Login | </title>
+    type: body
+  - description: VMware Aria Operations configuration found in response body
+    pattern: window.AriaConfig = {
+    type: body
+  name: VMware Aria Operations Detected
+  reference:
+  - https://www.vmware.com/security/advisories/VMSA-2023-0007.html
+  requests:
+    condition: or
+    description: Attempt to retrieve VMware Aria Operations web page
+    headers:
+    - name: User-Agent
+      value: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/58.0.3029.110 Safari/537.3
+    method: GET
+    path:
+    - /
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

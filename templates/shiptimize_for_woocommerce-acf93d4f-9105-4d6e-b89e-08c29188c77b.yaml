@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shiptimize-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 3.1.86')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shiptimize-for-woocommerce/readme.txt'
+  redirects: true
+id: shiptimize_for_woocommerce-acf93d4f-9105-4d6e-b89e-08c29188c77b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shiptimize-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/shiptimize-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/shiptimize-for-woocommerce/"
+  name: 'Shiptimize for WooCommerce <= 3.1.86 - Missing Authorization to Authenticated
+    (Subscriber+) Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/acf93d4f-9105-4d6e-b89e-08c29188c77b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shiptimize-for-woocommerce,low,candidate

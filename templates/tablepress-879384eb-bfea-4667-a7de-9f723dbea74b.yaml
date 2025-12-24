@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tablepress
+  - dsl:
+    - compare_versions(version, '<= 2.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tablepress/readme.txt'
+  redirects: true
+id: tablepress-879384eb-bfea-4667-a7de-9f723dbea74b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tablepress/
+    google-query: inurl:"/wp-content/plugins/tablepress/"
+    shodan-query: http.html:"wp-content/plugins/tablepress/"
+  name: "TablePress \u2013 Tables in WordPress made easy <= 2.3 - Authenticated (Author+)\
+    \ Server-Side Request Forgery via DNS Rebind\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/879384eb-bfea-4667-a7de-9f723dbea74b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tablepress,low,candidate

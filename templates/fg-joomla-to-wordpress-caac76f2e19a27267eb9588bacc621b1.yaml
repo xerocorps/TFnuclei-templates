@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fg-joomla-to-wordpress
+  - dsl:
+    - compare_versions(version, '< 3.31.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fg-joomla-to-wordpress/readme.txt'
+  redirects: true
+id: fg-joomla-to-wordpress-caac76f2e19a27267eb9588bacc621b1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fg-joomla-to-wordpress/
+    google-query: inurl:"/wp-content/plugins/fg-joomla-to-wordpress/"
+    shodan-query: 'vuln:'
+  name: 'FG Joomla to WordPress < 3.31.0 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8806a1b7-03c9-40a8-a1ef-f122329e0443?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fg-joomla-to-wordpress,low

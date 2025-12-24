@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - searchterms-tagging-2
+  - dsl:
+    - compare_versions(version, '<= 1.535')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/searchterms-tagging-2/readme.txt'
+  redirects: true
+id: searchterms-tagging-2-ae9101b1c145e92464f5d9017d4f52ef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/searchterms-tagging-2/
+    google-query: inurl:"/wp-content/plugins/searchterms-tagging-2/"
+    shodan-query: 'vuln:'
+  name: 'searchterms-tagging-2 <= 1.535 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb2df482-30bf-49e5-b1e2-06e102d2dd1b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,searchterms-tagging-2,medium

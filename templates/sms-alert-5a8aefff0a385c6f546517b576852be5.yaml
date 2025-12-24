@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sms-alert
+  - dsl:
+    - compare_versions(version, '< 3.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sms-alert/readme.txt'
+  redirects: true
+id: sms-alert-5a8aefff0a385c6f546517b576852be5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sms-alert/
+    google-query: inurl:"/wp-content/plugins/sms-alert/"
+    shodan-query: 'vuln:'
+  name: "SMS Alert Order Notifications \u2013 WooCommerce <= 3.4.6 - Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/215ea2de-538b-4f24-98f8-67b8314453cd?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,sms-alert,high

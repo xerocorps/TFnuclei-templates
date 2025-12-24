@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - currency-switcher
+  - dsl:
+    - compare_versions(version, '<= 1.2.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/currency-switcher/readme.txt'
+  redirects: true
+id: currency_switcher-b919f11b-c57f-4511-8fd6-9e83d2855266
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/currency-switcher/
+    google-query: inurl:"/wp-content/plugins/currency-switcher/"
+    shodan-query: http.html:"wp-content/plugins/currency-switcher/"
+  name: 'WPCS <= 1.2.0.3 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b919f11b-c57f-4511-8fd6-9e83d2855266?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,currency-switcher,low,candidate

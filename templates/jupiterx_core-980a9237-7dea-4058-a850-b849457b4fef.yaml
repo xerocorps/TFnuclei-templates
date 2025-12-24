@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jupiterx-core
+  - dsl:
+    - compare_versions(version, '<= 3.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jupiterx-core/readme.txt'
+  redirects: true
+id: jupiterx_core-980a9237-7dea-4058-a850-b849457b4fef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jupiterx-core/
+    google-query: inurl:"/wp-content/plugins/jupiterx-core/"
+    shodan-query: http.html:"wp-content/plugins/jupiterx-core/"
+  name: 'JupiterX Core <= 3.3.5 - Unauthenticated Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/980a9237-7dea-4058-a850-b849457b4fef?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,jupiterx-core,critical,candidate

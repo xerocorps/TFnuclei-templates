@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - the-plus-addons-for-elementor-page-builder
+  - dsl:
+    - compare_versions(version, '<= 5.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/the-plus-addons-for-elementor-page-builder/readme.txt'
+  redirects: true
+id: the-plus-addons-for-elementor-page-builder-db6d6e5d12628c106e7955a2ccfde5c2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/the-plus-addons-for-elementor-page-builder/
+    google-query: inurl:"/wp-content/plugins/the-plus-addons-for-elementor-page-builder/"
+    shodan-query: 'vuln:'
+  name: 'The Plus Addons for Elementor <= 5.4.2 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a412e682-869a-46ba-a2d0-d84ed542adc9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,the-plus-addons-for-elementor-page-builder,low

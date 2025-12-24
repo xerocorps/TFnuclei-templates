@@ -1,0 +1,16 @@
+id: hashicorp-boundary-detect
+info:
+  author: codexlynx
+  description: Detects HashiCorp Boundary
+  name: HashiCorp Boundary Detect
+  severity: info
+  tags: tech,hashicorp
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - HashiCorp Boundary
+  method: GET
+  path:
+  - '{{BaseURL}}'

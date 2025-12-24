@@ -1,0 +1,21 @@
+id: cold-fusion-cfcache-map
+info:
+  author: geeknik
+  name: Discover Cold Fusion cfcache.map Files
+  reference: https://securiteam.com/windowsntfocus/5bp081f0ac/
+  severity: low
+  tags: exposure,coldfusion,adobe
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Mapping=
+    - SourceTimeStamp=
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cfcache.map'

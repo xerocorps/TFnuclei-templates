@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ameliabooking
+  - dsl:
+    - compare_versions(version, '< 1.0.48')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ameliabooking/readme.txt'
+  redirects: true
+id: ameliabooking-c3ac21bf069e8e981f23c9e7fb5f0d68
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ameliabooking/
+    google-query: inurl:"/wp-content/plugins/ameliabooking/"
+    shodan-query: 'vuln:'
+  name: "Appointment and Event Booking Calendar for WordPress \u2013 Amelia <= 1.0.47\
+    \ - Information Disclosure and SMS Spam\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a4a0bf16-1a13-4955-8198-fa195fb65905?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ameliabooking,low

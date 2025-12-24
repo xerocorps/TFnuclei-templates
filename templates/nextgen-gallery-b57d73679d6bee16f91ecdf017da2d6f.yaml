@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nextgen-gallery
+  - dsl:
+    - compare_versions(version, '<= 3.28')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nextgen-gallery/readme.txt'
+  redirects: true
+id: nextgen-gallery-b57d73679d6bee16f91ecdf017da2d6f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nextgen-gallery/
+    google-query: inurl:"/wp-content/plugins/nextgen-gallery/"
+    shodan-query: 'vuln:'
+  name: 'NextGEN Gallery <= 3.28 - Cross-Site Request Forgery leading to  Post Thumbnail
+    Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a841456c-2a01-4caf-bebe-e018b92697d8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,nextgen-gallery,medium

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mycred
+  - dsl:
+    - compare_versions(version, '< 2.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mycred/readme.txt'
+  redirects: true
+id: mycred-a3936c4b-2326-41dc-b7d6-a8cf43752ddb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mycred/
+    google-query: inurl:"/wp-content/plugins/mycred/"
+    shodan-query: http.html:"wp-content/plugins/mycred/"
+  name: 'myCred <= 2.5 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a3936c4b-2326-41dc-b7d6-a8cf43752ddb?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,mycred,medium,candidate

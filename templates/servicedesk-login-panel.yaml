@@ -1,0 +1,20 @@
+id: servicedesk-login-panel
+info:
+  author: aashiq
+  description: Searches for ServiceDesk login panels by trying to query the "/servicedesk/customer/user/login"
+    endpoint
+  name: Servicedesk Login Panel Detector
+  severity: info
+  tags: servicedesk,confluence,jira,panel
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - https://confluence.atlassian.com
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/servicedesk/customer/user/login'

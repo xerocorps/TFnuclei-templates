@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-refund-and-exchange-lite
+  - dsl:
+    - compare_versions(version, '<= 4.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-refund-and-exchange-lite/readme.txt'
+  redirects: true
+id: woo_refund_and_exchange_lite-5f88a21d-28a9-4c91-9bf9-6b69f6a420e8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-refund-and-exchange-lite/
+    google-query: inurl:"/wp-content/plugins/woo-refund-and-exchange-lite/"
+    shodan-query: http.html:"wp-content/plugins/woo-refund-and-exchange-lite/"
+  name: 'Return Refund and Exchange For WooCommerce <= 4.4.5 - Unauthenticated Sensitive
+    Information Exposure Through Unprotected Directory
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5f88a21d-28a9-4c91-9bf9-6b69f6a420e8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-refund-and-exchange-lite,low,candidate

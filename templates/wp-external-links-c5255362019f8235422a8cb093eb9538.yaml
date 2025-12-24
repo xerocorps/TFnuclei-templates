@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-external-links
+  - dsl:
+    - compare_versions(version, '< 1.81')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-external-links/readme.txt'
+  redirects: true
+id: wp-external-links-c5255362019f8235422a8cb093eb9538
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 6.4
+  description: 'The WP External Links plugin for WordPress is vulnerable to Stored
+    Cross-Site Scripting via several parameters in versions before 1.81 due to insufficient
+    input sanitization and output escaping. This makes it possible for authenticated
+    attackers to inject arbitrary web scripts in pages that will execute whenever
+    a user accesses an injected page.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wp-external-links/
+    google-query: inurl:"/wp-content/plugins/wp-external-links/"
+    shodan-query: 'vuln:'
+  name: 'WP External Links < 1.81 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3621801a-231b-4678-bfb5-fbf18e58a658?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-external-links,low

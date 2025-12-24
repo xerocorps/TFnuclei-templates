@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - seraphinite-accelerator
+  - dsl:
+    - compare_versions(version, '<= 2.20.47')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/seraphinite-accelerator/readme.txt'
+  redirects: true
+id: seraphinite-accelerator-7f3919973096ab79ec3577b4313ba522
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/seraphinite-accelerator/
+    google-query: inurl:"/wp-content/plugins/seraphinite-accelerator/"
+    shodan-query: 'vuln:'
+  name: 'Seraphinite Accelerator <= 2.20.47 - Unauthenticated Sensitive Information
+    Exposure via Log File
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a5991df2-1aab-4d07-9e30-1257aa9ec884?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,seraphinite-accelerator,low

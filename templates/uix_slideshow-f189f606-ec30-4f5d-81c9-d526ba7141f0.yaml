@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uix-slideshow
+  - dsl:
+    - compare_versions(version, '<= 1.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/uix-slideshow/readme.txt'
+  redirects: true
+id: uix_slideshow-f189f606-ec30-4f5d-81c9-d526ba7141f0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/uix-slideshow/
+    google-query: inurl:"/wp-content/plugins/uix-slideshow/"
+    shodan-query: http.html:"wp-content/plugins/uix-slideshow/"
+  name: 'Uix Slideshow <= 1.6.5 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f189f606-ec30-4f5d-81c9-d526ba7141f0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,uix-slideshow,low,candidate

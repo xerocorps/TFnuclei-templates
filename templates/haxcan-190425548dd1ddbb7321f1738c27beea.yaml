@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - haxcan
+  - dsl:
+    - compare_versions(version, '<= 1.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/haxcan/readme.txt'
+  redirects: true
+id: haxcan-190425548dd1ddbb7321f1738c27beea
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/haxcan/
+    google-query: inurl:"/wp-content/plugins/haxcan/"
+    shodan-query: 'vuln:'
+  name: 'Haxcan <= 1.0.0 - Authenticated (Admin+) Path Traversal to Arbitrary File
+    Read
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4d265120-992b-4138-b77a-1cf529e4d742?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,haxcan,low

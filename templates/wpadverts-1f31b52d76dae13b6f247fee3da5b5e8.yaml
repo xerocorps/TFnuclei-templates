@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpadverts
+  - dsl:
+    - compare_versions(version, '<= 2.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpadverts/readme.txt'
+  redirects: true
+id: wpadverts-1f31b52d76dae13b6f247fee3da5b5e8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpadverts/
+    google-query: inurl:"/wp-content/plugins/wpadverts/"
+    shodan-query: 'vuln:'
+  name: "WPAdverts \u2013 Classifieds Plugin <= 2.1.2 - Cross-Site Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/776de802-5748-4b71-930b-6ff9e597ed93?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpadverts,medium

@@ -1,0 +1,17 @@
+id: public-tomcat-detect
+info:
+  author: thanhnx
+  name: tomcat manager disclosure
+  severity: info
+requests:
+- matchers:
+  - type: word
+    words:
+    - Apache Tomcat
+  - status:
+    - 401
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}:8080/manager/html'

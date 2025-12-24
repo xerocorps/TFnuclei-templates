@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - floating-tweets
+  - dsl:
+    - compare_versions(version, '<= 1.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/floating-tweets/readme.txt'
+  redirects: true
+id: floating-tweets-f2a18bccdffa194d11234b602b77036c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/floating-tweets/
+    google-query: inurl:"/wp-content/plugins/floating-tweets/"
+    shodan-query: 'vuln:'
+  name: 'Floating Tweets <= 1.0.1 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/502cf45c-1350-4534-a806-6e248912ef6d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,floating-tweets,low

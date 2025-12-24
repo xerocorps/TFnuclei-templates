@@ -1,0 +1,200 @@
+dns:
+- class: inet
+  matchers:
+  - condition: or
+    name: 000domains
+    type: word
+    words:
+    - ns1.000domains.com
+    - ns2.000domains.com
+    - fwns1.000domains.com
+    - fwns2.000domains.com
+  - condition: or
+    name: azure
+    type: word
+    words:
+    - .azure-dns.com
+    - .azure-dns.net
+    - .azure-dns.org
+    - .azure-dns.info
+  - condition: or
+    name: bizland
+    type: word
+    words:
+    - ns1.bizland.com
+    - ns2.bizland.com
+  - name: cloudflare
+    type: word
+    words:
+    - ns.cloudflare.com
+  - condition: or
+    name: digitalocean
+    type: word
+    words:
+    - ns1.digitalocean.com
+    - ns2.digitalocean.com
+    - ns2.digitalocean.com
+  - name: dnsmadeeasy
+    type: word
+    words:
+    - .dnsmadeeasy.com
+  - condition: or
+    name: dnsimple
+    type: word
+    words:
+    - ns1.dnsimple.com
+    - ns2.dnsimple.com
+    - ns3.dnsimple.com
+    - ns4.dnsimple.com
+  - condition: or
+    name: domain
+    type: word
+    words:
+    - ns1.domain.com
+    - ns2.domain.com
+  - condition: or
+    name: dotster
+    type: word
+    words:
+    - ns1.dotster.com
+    - ns2.dotster.com
+  - condition: or
+    name: easydns
+    type: word
+    words:
+    - dns1.easydns.com
+    - dns2.easydns.com
+    - dns3.easydns.com
+    - dns4.easydns.com
+  - name: googledomains
+    type: word
+    words:
+    - .googledomains.com
+  - condition: or
+    name: hurricane-electric
+    type: word
+    words:
+    - ns1.he.net
+    - ns2.he.net
+    - ns3.he.net
+    - ns4.he.net
+    - ns5.he.net
+  - condition: or
+    name: linode
+    type: word
+    words:
+    - ns1.linode.com
+    - ns1.linode.com
+  - condition: or
+    name: mediatemple
+    type: word
+    words:
+    - ns1.mediatemple.net
+    - ns2.mediatemple.net
+  - condition: or
+    name: mydomain
+    type: word
+    words:
+    - ns1.mydomain.com
+    - ns2.mydomain.com
+  - name: name
+    type: word
+    words:
+    - .name.com
+  - name: nsone
+    type: word
+    words:
+    - .nsone.net
+  - condition: or
+    name: tierranet
+    type: word
+    words:
+    - ns1.domaindiscover.com
+    - ns2.domaindiscover.com
+  - condition: or
+    name: yahoo
+    type: word
+    words:
+    - yns1.yahoo.com
+    - yns2.yahoo.com
+  - condition: or
+    name: domainpeople
+    type: word
+    words:
+    - ns1.domainpeople.com
+    - ns2.domainpeople.com
+  - condition: or
+    name: hover
+    type: word
+    words:
+    - ns1.hover.com
+    - ns2.hover.com
+  - name: networksolutions
+    type: word
+    words:
+    - .worldnic.com
+  - name: activision
+    type: word
+    words:
+    - .activision.com
+  - name: aws-route53
+    type: word
+    words:
+    - .awsdns-
+  - condition: or
+    name: apple
+    type: word
+    words:
+    - a.ns.apple.com
+    - b.ns.apple.com
+    - c.ns.apple.com
+    - d.ns.apple.com
+  - condition: or
+    name: capitalone
+    type: word
+    words:
+    - ns1.capitalone.com
+    - ns2.capitalone.com
+    - ns3.capitalone.com
+  - condition: or
+    name: csust
+    type: word
+    words:
+    - 0xd0a1.csust.netm
+    - 0xd0a2.csust.net
+    - 0xd0a3.csust.net
+    - 0xd0a4.csust.net
+  - condition: or
+    name: disney
+    type: word
+    words:
+    - ns1.twdcns.com
+    - ns2.twdcns.com
+    - ns3.twdcns.info
+    - ns4.twdcns.info
+    - ns5.twdcns.co.uk
+    - ns6.twdcns.co.uk
+  - condition: or
+    name: lowes
+    type: word
+    words:
+    - authns1.lowes.com
+    - authns2.lowes.com
+  - condition: or
+    name: tmobile
+    type: word
+    words:
+    - ns10.tmobileus.com
+    - ns10.tmobileus.net
+  matchers-condition: or
+  name: '{{FQDN}}'
+  recursion: true
+  retries: 3
+  type: NS
+id: nameserver-detection
+info:
+  author: pdteam
+  name: NS Detection
+  reference: https://github.com/indianajson/can-i-take-over-dns
+  severity: info
+  tags: dns,ns

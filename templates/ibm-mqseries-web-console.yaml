@@ -1,0 +1,20 @@
+id: ibm-mqseries-web-console
+info:
+  author: righettod
+  name: IBM MQSeries web console
+  reference:
+  - https://www.ibm.com/docs/en/ibm-mq/9.0?topic=console-getting-started-mq
+  severity: info
+  tags: panel,ibm
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>MQ Console</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ibmmq/console/login.html'

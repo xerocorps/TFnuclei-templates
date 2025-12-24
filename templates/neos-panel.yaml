@@ -1,0 +1,28 @@
+id: neos-panel
+info:
+  author: k11h-de
+  description: detection of default route to admin login panel based on warranty disclainer
+    in footer
+  name: Neos CMS Login Panel
+  reference:
+  - https://github.com/neos/neos/blob/master/Configuration/Routes.yaml
+  severity: info
+  tags: panel,neos,cms,login
+requests:
+- extractors:
+  - kval:
+    - x_flow_powered
+    type: kval
+  matchers:
+  - type: word
+    words:
+    - Neos comes with ABSOLUTELY NO WARRANTY
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/neos/login'
+  redirects: true

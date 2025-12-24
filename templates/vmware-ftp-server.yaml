@@ -1,0 +1,22 @@
+id: vmware-ftp-server
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-dork: title:"VMWARE FTP SERVER"
+    verified: true
+  name: VMware FTP Server
+  severity: info
+  tags: panel,vmware,ftp
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - VMWARE FTP SERVER
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

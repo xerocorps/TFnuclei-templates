@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - houzez-theme-functionality
+  - dsl:
+    - compare_versions(version, '<= 3.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/houzez-theme-functionality/readme.txt'
+  redirects: true
+id: houzez_theme_functionality-5a9bbe79-a4c3-42eb-8d4d-47d26dbe9f43
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/houzez-theme-functionality/
+    google-query: inurl:"/wp-content/plugins/houzez-theme-functionality/"
+    shodan-query: http.html:"wp-content/plugins/houzez-theme-functionality/"
+  name: 'Houzez Theme - Functionality <= 3.2.2 - Authenticated (Seller+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5a9bbe79-a4c3-42eb-8d4d-47d26dbe9f43?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,houzez-theme-functionality,low,candidate

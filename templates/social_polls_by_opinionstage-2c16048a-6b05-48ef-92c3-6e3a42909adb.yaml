@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-polls-by-opinionstage
+  - dsl:
+    - compare_versions(version, '<= 19.12.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-polls-by-opinionstage/readme.txt'
+  redirects: true
+id: social_polls_by_opinionstage-2c16048a-6b05-48ef-92c3-6e3a42909adb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/social-polls-by-opinionstage/
+    google-query: inurl:"/wp-content/plugins/social-polls-by-opinionstage/"
+    shodan-query: http.html:"wp-content/plugins/social-polls-by-opinionstage/"
+  name: 'Poll, Survey & Quiz Maker Plugin by Opinion Stage <= 19.12.0 - Cross-Site
+    Request Forgery to Account Disconnection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2c16048a-6b05-48ef-92c3-6e3a42909adb?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,social-polls-by-opinionstage,medium,candidate

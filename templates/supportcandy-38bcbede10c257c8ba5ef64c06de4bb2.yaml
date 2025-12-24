@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - supportcandy
+  - dsl:
+    - compare_versions(version, '< 2.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/supportcandy/readme.txt'
+  redirects: true
+id: supportcandy-38bcbede10c257c8ba5ef64c06de4bb2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/supportcandy/
+    google-query: inurl:"/wp-content/plugins/supportcandy/"
+    shodan-query: 'vuln:'
+  name: "SupportCandy \u2013 Helpdesk & Support Ticket System <= 2.2.6 - Cross-Site\
+    \ Request Forgery to Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1a10af61-6451-4dda-aeda-ba8fa44bee35?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,supportcandy,medium

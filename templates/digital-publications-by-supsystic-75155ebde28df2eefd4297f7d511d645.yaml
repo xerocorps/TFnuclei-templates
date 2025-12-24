@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - digital-publications-by-supsystic
+  - dsl:
+    - compare_versions(version, '<= 1.7.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/digital-publications-by-supsystic/readme.txt'
+  redirects: true
+id: digital-publications-by-supsystic-75155ebde28df2eefd4297f7d511d645
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/digital-publications-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/digital-publications-by-supsystic/"
+    shodan-query: 'vuln:'
+  name: 'Digital Publications by Supsystic <= 1.7.3 - Authenticated (Admin+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/277942cb-f4ca-4197-8f61-2e0cb03115a6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,digital-publications-by-supsystic,low

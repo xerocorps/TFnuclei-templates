@@ -1,0 +1,16 @@
+id: tave-takeover
+info:
+  author: pdteam
+  name: tave takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - '<h1>Error 404: Page Not Found</h1>'
+  method: GET
+  path:
+  - '{{BaseURL}}'

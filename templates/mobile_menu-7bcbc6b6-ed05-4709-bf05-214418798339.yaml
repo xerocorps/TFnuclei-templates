@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mobile-menu
+  - dsl:
+    - compare_versions(version, '<= 2.8.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mobile-menu/readme.txt'
+  redirects: true
+id: mobile_menu-7bcbc6b6-ed05-4709-bf05-214418798339
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mobile-menu/
+    google-query: inurl:"/wp-content/plugins/mobile-menu/"
+    shodan-query: http.html:"wp-content/plugins/mobile-menu/"
+  name: "WP Mobile Menu \u2013 The Mobile-Friendly Responsive Menu <= 2.8.4.2 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting via Image Alt\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7bcbc6b6-ed05-4709-bf05-214418798339?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mobile-menu,low,candidate

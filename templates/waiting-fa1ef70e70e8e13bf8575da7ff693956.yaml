@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - waiting
+  - dsl:
+    - compare_versions(version, '<= 0.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/waiting/readme.txt'
+  redirects: true
+id: waiting-fa1ef70e70e8e13bf8575da7ff693956
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L
+    cvss-score: 6.3
+  description: 'The Waiting: One-click countdowns plugin for WordPress is vulnerable
+    to authorization bypass due to missing capability checks on its AJAX calls in
+    versions up to, and including, 0.6.2. This makes it possible for authenticated
+    attackers, with subscriber-level permissions and above, to create and delete countdowns
+    as well as manipulate other plugin settings.'
+  metadata:
+    fofa-query: wp-content/plugins/waiting/
+    google-query: inurl:"/wp-content/plugins/waiting/"
+    shodan-query: 'vuln:'
+  name: 'Waiting: One-click countdowns <= 0.6.2 - Missing Authorization'
+  reference:
+  - https://plugins.trac.wordpress.org/browser/waiting/trunk/waiting.php?rev=2826039
+  severity: medium
+  tags: cve,wordpress,wp-plugin,waiting,medium

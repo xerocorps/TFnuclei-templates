@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - complianz-gdpr
+  - dsl:
+    - compare_versions(version, '<= 6.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/complianz-gdpr/readme.txt'
+  redirects: true
+id: complianz-gdpr-e4156f72c1747c7b6f8a8f87b62be8ce
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/complianz-gdpr/
+    google-query: inurl:"/wp-content/plugins/complianz-gdpr/"
+    shodan-query: 'vuln:'
+  name: 'Complianz <= 6.4.4 (Premium <= 6.4.6.1)  - Cross-Site Request Forgery to
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/47941722-acaf-4f72-a64d-d01dc5e84adf?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,complianz-gdpr,medium

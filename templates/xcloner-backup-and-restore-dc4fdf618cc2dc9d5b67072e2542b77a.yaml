@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - xcloner-backup-and-restore
+  - dsl:
+    - compare_versions(version, '< 3.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/xcloner-backup-and-restore/readme.txt'
+  redirects: true
+id: xcloner-backup-and-restore-dc4fdf618cc2dc9d5b67072e2542b77a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/xcloner-backup-and-restore/
+    google-query: inurl:"/wp-content/plugins/xcloner-backup-and-restore/"
+    shodan-query: 'vuln:'
+  name: 'Backup, Restore and Migrate WordPress Sites With the XCloner Plugin <= 3.1.1
+    - Sensitive Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/15abde72-515a-4e1c-af4c-d9da56a5cbe2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,xcloner-backup-and-restore,low

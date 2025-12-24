@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - link-library
+  - dsl:
+    - compare_versions(version, '<= 7.6.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/link-library/readme.txt'
+  redirects: true
+id: link-library-2c5bca06e46c67122d9216a21f3ebc1a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/link-library/
+    google-query: inurl:"/wp-content/plugins/link-library/"
+    shodan-query: 'vuln:'
+  name: 'Link Library <= 7.6.11 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via link-library Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/30c9c4b9-6905-4d8a-bc55-5cd6f6201d25?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,link-library,low

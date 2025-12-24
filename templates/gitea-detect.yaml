@@ -1,0 +1,26 @@
+id: gitea-detect
+info:
+  author: pikpikcu
+  name: Gitea Detect
+  severity: info
+  tags: tech,gitea
+requests:
+- extractors:
+  - part: body
+    regex:
+    - 'Powered by Gitea Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - Powered by Gitea
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/user/login'
+  stop-at-first-match: true

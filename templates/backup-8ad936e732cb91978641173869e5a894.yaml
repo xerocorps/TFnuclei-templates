@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - backup
+  - dsl:
+    - compare_versions(version, '< 1.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/backup/readme.txt'
+  redirects: true
+id: backup-8ad936e732cb91978641173869e5a894
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: "The WordPress Backup and Migrate Plugin \u2013 Backup Guard plugin\
+    \ for WordPress is vulnerable to arbitrary file uploads due to missing file type\
+    \ validation in the backup_guard_get_import_backup() function in versions up to,\
+    \ and including, 1.0.2. This makes it possible for authenticated attackers, with\
+    \ subscriber-level permissions and above, to upload arbitrary files on the affected\
+    \ sites server which may make remote code execution possible."
+  metadata:
+    fofa-query: wp-content/plugins/backup/
+    google-query: inurl:"/wp-content/plugins/backup/"
+    shodan-query: 'vuln:'
+  name: "WordPress Backup and Migrate Plugin \u2013 Backup Guard < 1.0.3 - Arbitrary\
+    \ File Upload"
+  reference:
+  - https://www.pritect.net/blog/backup-guard-1-0-3-security-vulnerability
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-wordpress-backup-and-migrate-backup-guard-arbitrary-file-upload-1-0-2/
+  severity: high
+  tags: cve,wordpress,wp-plugin,backup,high

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - software-license-manager
+  - dsl:
+    - compare_versions(version, '< 4.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/software-license-manager/readme.txt'
+  redirects: true
+id: software_license_manager-484ad4ef-9d0d-4dc5-8bb4-d81d0311ebf8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/software-license-manager/
+    google-query: inurl:"/wp-content/plugins/software-license-manager/"
+    shodan-query: http.html:"wp-content/plugins/software-license-manager/"
+  name: 'Software License Manager <= 4.5.0 - Cross-Site Request Forgery leading to
+    Arbitrary Domain Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/484ad4ef-9d0d-4dc5-8bb4-d81d0311ebf8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,software-license-manager,medium,candidate

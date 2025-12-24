@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - debug-log-manager
+  - dsl:
+    - compare_versions(version, '<= 2.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/debug-log-manager/readme.txt'
+  redirects: true
+id: debug_log_manager-53dfe8e5-5f13-4c8c-a62e-9da57379da7a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/debug-log-manager/
+    google-query: inurl:"/wp-content/plugins/debug-log-manager/"
+    shodan-query: http.html:"wp-content/plugins/debug-log-manager/"
+  name: 'Debug Log Manager <= 2.2.2 - Directory Listing to Sensitive Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/53dfe8e5-5f13-4c8c-a62e-9da57379da7a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,debug-log-manager,low,candidate

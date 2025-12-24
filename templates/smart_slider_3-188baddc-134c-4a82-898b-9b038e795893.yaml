@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - smart-slider-3
+  - dsl:
+    - compare_versions(version, '<= 3.5.1.28')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/smart-slider-3/readme.txt'
+  redirects: true
+id: smart_slider_3-188baddc-134c-4a82-898b-9b038e795893
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/smart-slider-3/
+    google-query: inurl:"/wp-content/plugins/smart-slider-3/"
+    shodan-query: http.html:"wp-content/plugins/smart-slider-3/"
+  name: 'Smart Slider 3 <= 3.5.1.28 - Authenticated (Administrator+) SQL Injection
+    via `sliderid` Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/188baddc-134c-4a82-898b-9b038e795893?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,smart-slider-3,low,candidate

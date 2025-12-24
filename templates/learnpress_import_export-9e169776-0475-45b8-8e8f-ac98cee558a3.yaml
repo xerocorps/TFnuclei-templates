@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - learnpress-import-export
+  - dsl:
+    - compare_versions(version, '<= 4.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/learnpress-import-export/readme.txt'
+  redirects: true
+id: learnpress_import_export-9e169776-0475-45b8-8e8f-ac98cee558a3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/learnpress-import-export/
+    google-query: inurl:"/wp-content/plugins/learnpress-import-export/"
+    shodan-query: http.html:"wp-content/plugins/learnpress-import-export/"
+  name: 'LearnPress Export Import <= 4.0.9 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9e169776-0475-45b8-8e8f-ac98cee558a3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,learnpress-import-export,medium,candidate

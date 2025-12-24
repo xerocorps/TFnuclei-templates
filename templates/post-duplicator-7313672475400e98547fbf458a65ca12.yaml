@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-duplicator
+  - dsl:
+    - compare_versions(version, '<= 2.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-duplicator/readme.txt'
+  redirects: true
+id: post-duplicator-7313672475400e98547fbf458a65ca12
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-duplicator/
+    google-query: inurl:"/wp-content/plugins/post-duplicator/"
+    shodan-query: 'vuln:'
+  name: 'Post Duplicator <= 2.16 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5a9000e3-a313-48f7-88cd-3041c8da8288?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,post-duplicator,high

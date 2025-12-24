@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - realestate-7
+  - dsl:
+    - compare_versions(version, '<= 3.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/realestate-7/style.css'
+  redirects: true
+id: realestate_7-eb58dd93-3789-46c6-bfca-7866427e077d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/realestate-7/
+    google-query: inurl:"/wp-content/themes/realestate-7/"
+    shodan-query: http.html:"wp-content/themes/realestate-7/"
+  name: 'Real Estate 7 <= 3.5.2 - Unauthenticated Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eb58dd93-3789-46c6-bfca-7866427e077d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,realestate-7,low,candidate

@@ -1,0 +1,28 @@
+file:
+- extensions:
+  - js
+  extractors:
+  - name: Extracted-Token
+    regex:
+    - (?i)(([a-z0-9]+)[-|_])?(key|password|passwd|pass|pwd|private|credential|auth|cred|creds|secret|access|token)([-|_][a-z]+)?(\s)*(:|=)+
+    type: regex
+  - name: Extracted-Varaibles-Name
+    regex:
+    - (?i)(var|const|let)\s+([a-z_$][0-9a-z_$]*)\s*=
+    type: regex
+  - name: Extracted-Endpoints
+    regex:
+    - (?i)('|")((\.{0,2})|([a-z0-9-_]*))/([a-z0-9-_/=:&?\.]+)('|")
+    - (?i)}\s*/[a-z0-9-_?=&/]+
+    - (?i)path\s*(:|=)\s*('|")[a-z0-9-_?=&:\./]+('|")
+    type: regex
+  - name: Extracted-URI
+    regex:
+    - (?i)([a-z]{0,10}):(//|/)[a-z0-9\./?&-_=:]+
+    type: regex
+id: js-analyse
+info:
+  author: ayadim
+  name: js-analyse
+  severity: low
+  tags: file,bbh,bbh-js,bbh-js-analyse,bbh-fingerprint,bbh-fingerprint-js

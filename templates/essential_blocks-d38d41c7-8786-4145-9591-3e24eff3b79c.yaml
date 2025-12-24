@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - essential-blocks
+  - dsl:
+    - compare_versions(version, '<= 4.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/essential-blocks/readme.txt'
+  redirects: true
+id: essential_blocks-d38d41c7-8786-4145-9591-3e24eff3b79c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/essential-blocks/
+    google-query: inurl:"/wp-content/plugins/essential-blocks/"
+    shodan-query: http.html:"wp-content/plugins/essential-blocks/"
+  name: 'Essential Blocks <= 4.0.6 - Cross-Site Request Forgery via save
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d38d41c7-8786-4145-9591-3e24eff3b79c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,essential-blocks,medium,candidate

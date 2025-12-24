@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - aspose-cloud-ebook-generator
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/aspose-cloud-ebook-generator/readme.txt'
+  redirects: true
+id: aspose-cloud-ebook-generator-e2fe4d24f87bfdef6b2280f71fc8f89f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/aspose-cloud-ebook-generator/
+    google-query: inurl:"/wp-content/plugins/aspose-cloud-ebook-generator/"
+    shodan-query: 'vuln:'
+  name: 'Aspose Cloud eBook Generator <= 1.0 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/abb41236-d711-41d3-a1cd-2c23467e269a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,aspose-cloud-ebook-generator,low

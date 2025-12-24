@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-crowdfunding
+  - dsl:
+    - compare_versions(version, '<= 2.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-crowdfunding/readme.txt'
+  redirects: true
+id: wp_crowdfunding-294b5bd1-a7c8-4c06-b107-e80bf3b35da8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-crowdfunding/
+    google-query: inurl:"/wp-content/plugins/wp-crowdfunding/"
+    shodan-query: http.html:"wp-content/plugins/wp-crowdfunding/"
+  name: 'WP Crowdfunding <= 2.1.6 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/294b5bd1-a7c8-4c06-b107-e80bf3b35da8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-crowdfunding,low,candidate

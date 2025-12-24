@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Project-Id-Version: Avada Builder ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fusion-builder
+  - dsl:
+    - compare_versions(version, '<= 3.11.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fusion-builder/languages/fusion-builder.pot'
+  redirects: true
+id: fusion_builder-7c54588f-6436-406f-93cb-b08965586d11
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fusion-builder/
+    google-query: inurl:"/wp-content/plugins/fusion-builder/"
+    shodan-query: http.html:"wp-content/plugins/fusion-builder/"
+  name: 'Avada Builder <= 3.11.11 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting in Multiple Widgets
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7c54588f-6436-406f-93cb-b08965586d11?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fusion-builder,low,candidate

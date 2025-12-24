@@ -1,0 +1,15 @@
+id: sonicwall-management-panel
+info:
+  author: PR3R00T
+  name: SonicWall Management Panel
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>SonicWall - Authentication</title>
+    - SonicWall Administrator
+  method: GET
+  path:
+  - '{{BaseURL}}/auth.html'

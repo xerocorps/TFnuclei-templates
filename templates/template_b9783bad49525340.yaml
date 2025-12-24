@@ -1,0 +1,19 @@
+detail:
+  author: p0wd3r,sharecast
+  links:
+  - https://github.com/vulhub/vulhub/tree/master/hadoop/unauthorized-yarn
+expression: r0()
+manual: true
+name: poc-yaml-hadoop-yarn-unauth
+rules:
+  r0:
+    expression: response.status == 200 && response.content_type.contains("json") &&
+      response.body.bcontains(b"resourceManagerVersionBuiltOn") && response.body.bcontains(b"hadoopVersion")
+    request:
+      cache: true
+      follow_redirects: true
+      headers:
+        Content-Type: application/json
+      method: GET
+      path: /ws/v1/cluster/info
+transport: http

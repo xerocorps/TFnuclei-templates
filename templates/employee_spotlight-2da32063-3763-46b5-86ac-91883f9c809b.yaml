@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - employee-spotlight
+  - dsl:
+    - compare_versions(version, '<= 5.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/employee-spotlight/readme.txt'
+  redirects: true
+id: employee_spotlight-2da32063-3763-46b5-86ac-91883f9c809b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/employee-spotlight/
+    google-query: inurl:"/wp-content/plugins/employee-spotlight/"
+    shodan-query: http.html:"wp-content/plugins/employee-spotlight/"
+  name: 'Multiple Plugins by eMarket Design <= Various Versions - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2da32063-3763-46b5-86ac-91883f9c809b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,employee-spotlight,low,candidate

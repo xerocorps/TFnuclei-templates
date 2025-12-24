@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - where-did-they-go-from-here
+  - dsl:
+    - compare_versions(version, '<= 3.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/where-did-they-go-from-here/readme.txt'
+  redirects: true
+id: where_did_they_go_from_here-2b27a7b1-6fee-433f-8102-4a3745a8dfed
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/where-did-they-go-from-here/
+    google-query: inurl:"/wp-content/plugins/where-did-they-go-from-here/"
+    shodan-query: http.html:"wp-content/plugins/where-did-they-go-from-here/"
+  name: "WZ Followed Posts \u2013 Display what visitors are reading <= 3.1.0 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2b27a7b1-6fee-433f-8102-4a3745a8dfed?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,where-did-they-go-from-here,low,candidate

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordpress-database-reset
+  - dsl:
+    - compare_versions(version, '<= 3.22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordpress-database-reset/readme.txt'
+  redirects: true
+id: wordpress_database_reset-a2e493cf-d022-404d-a501-a6671e6116f4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wordpress-database-reset/
+    google-query: inurl:"/wp-content/plugins/wordpress-database-reset/"
+    shodan-query: http.html:"wp-content/plugins/wordpress-database-reset/"
+  name: 'Database Reset <= 3.22 - Cross-Site Request Forgery to WP Reset Plugin Installation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a2e493cf-d022-404d-a501-a6671e6116f4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wordpress-database-reset,medium,candidate

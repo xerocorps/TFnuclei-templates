@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gamipress-button
+  - dsl:
+    - compare_versions(version, '<= 1.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gamipress-button/readme.txt'
+  redirects: true
+id: gamipress_button-af39e563-5d88-460d-b02d-1aaa111c89dd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gamipress-button/
+    google-query: inurl:"/wp-content/plugins/gamipress-button/"
+    shodan-query: http.html:"wp-content/plugins/gamipress-button/"
+  name: "GamiPress \u2013 Button <= 1.0.7 - Authenticated(Contributor+) Stored Cross-Site\
+    \ Scripting via Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/af39e563-5d88-460d-b02d-1aaa111c89dd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gamipress-button,low,candidate

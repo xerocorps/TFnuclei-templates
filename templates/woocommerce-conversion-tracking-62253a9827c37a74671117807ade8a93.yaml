@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-conversion-tracking
+  - dsl:
+    - compare_versions(version, '<= 2.0.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-conversion-tracking/readme.txt'
+  redirects: true
+id: woocommerce-conversion-tracking-62253a9827c37a74671117807ade8a93
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-conversion-tracking/
+    google-query: inurl:"/wp-content/plugins/woocommerce-conversion-tracking/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Conversion Tracking <= 2.0.11 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bf798142-4daf-41f5-8416-701d03476520?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocommerce-conversion-tracking,high

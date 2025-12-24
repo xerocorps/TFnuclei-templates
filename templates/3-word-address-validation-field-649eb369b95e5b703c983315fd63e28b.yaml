@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - 3-word-address-validation-field
+  - dsl:
+    - compare_versions(version, '<= 4.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/3-word-address-validation-field/readme.txt'
+  redirects: true
+id: 3-word-address-validation-field-649eb369b95e5b703c983315fd63e28b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/3-word-address-validation-field/
+    google-query: inurl:"/wp-content/plugins/3-word-address-validation-field/"
+    shodan-query: 'vuln:'
+  name: 'what3words Address Field <= 4.0.0 - Authenticated (Administrator+) Sensitive
+    Information Exposure in class-w3w-autosuggest-public.php
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/770fe29d-601b-487b-b102-d5027f09fc24?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,3-word-address-validation-field,low

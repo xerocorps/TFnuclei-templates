@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - soundslides
+  - dsl:
+    - compare_versions(version, '<= 1.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/soundslides/readme.txt'
+  redirects: true
+id: soundslides-cdd7e9d1-a580-4b32-9365-7ce17cdc37cd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/soundslides/
+    google-query: inurl:"/wp-content/plugins/soundslides/"
+    shodan-query: http.html:"wp-content/plugins/soundslides/"
+  name: 'Soundslides <= 1.4.2 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via soundslides Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cdd7e9d1-a580-4b32-9365-7ce17cdc37cd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,soundslides,low,candidate

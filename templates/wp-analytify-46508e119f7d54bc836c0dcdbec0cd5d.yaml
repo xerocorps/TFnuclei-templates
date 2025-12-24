@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-analytify
+  - dsl:
+    - compare_versions(version, '<= 4.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-analytify/readme.txt'
+  redirects: true
+id: wp-analytify-46508e119f7d54bc836c0dcdbec0cd5d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-analytify/
+    google-query: inurl:"/wp-content/plugins/wp-analytify/"
+    shodan-query: 'vuln:'
+  name: "Analytify \u2013 Google Analytics Dashboard For WordPress <= 4.2.2 - Cross-Site\
+    \ Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c6efb57a-9638-44d1-a8d1-8eeadcc81ecc?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-analytify,medium

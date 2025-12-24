@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ml-slider
+  - dsl:
+    - compare_versions(version, '<= 3.94.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ml-slider/readme.txt'
+  redirects: true
+id: ml_slider-91e0b45c-e73f-408a-94b8-fdbc5da64b20
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ml-slider/
+    google-query: inurl:"/wp-content/plugins/ml-slider/"
+    shodan-query: http.html:"wp-content/plugins/ml-slider/"
+  name: "Slider, Gallery, and Carousel by MetaSlider \u2013 Image Slider, Video Slider\
+    \ <= 3.94.0 - Authenticated (Editor+) PHP Object Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/91e0b45c-e73f-408a-94b8-fdbc5da64b20?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ml-slider,low,candidate

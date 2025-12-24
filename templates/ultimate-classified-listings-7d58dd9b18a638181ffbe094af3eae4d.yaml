@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-classified-listings
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-classified-listings/readme.txt'
+  redirects: true
+id: ultimate-classified-listings-7d58dd9b18a638181ffbe094af3eae4d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-classified-listings/
+    google-query: inurl:"/wp-content/plugins/ultimate-classified-listings/"
+    shodan-query: 'vuln:'
+  name: 'Ultimate Classified Listings <= 1.2 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/19f8eb9b-f416-4ef4-bb75-f561579ce22f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ultimate-classified-listings,medium

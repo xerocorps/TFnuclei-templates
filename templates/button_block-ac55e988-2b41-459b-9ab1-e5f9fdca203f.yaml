@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - button-block
+  - dsl:
+    - compare_versions(version, '<= 1.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/button-block/readme.txt'
+  redirects: true
+id: button_block-ac55e988-2b41-459b-9ab1-e5f9fdca203f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/button-block/
+    google-query: inurl:"/wp-content/plugins/button-block/"
+    shodan-query: http.html:"wp-content/plugins/button-block/"
+  name: "Button Block \u2013 Get fully customizable & multi-functional buttons <=\
+    \ 1.1.5 - Authenticated (Contributor+) Post Disclosure via Post Duplication\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ac55e988-2b41-459b-9ab1-e5f9fdca203f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,button-block,low,candidate

@@ -1,0 +1,24 @@
+id: exposed-bitkeeper
+info:
+  author: daffainfo
+  name: Exposed BitKeeper Directory
+  reference:
+  - https://www.bitkeeper.org/man/config-etc.html
+  severity: low
+  tags: config,exposure
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - BitKeeper configuration
+    - logging
+    - email
+    - description
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/BitKeeper/etc/config'

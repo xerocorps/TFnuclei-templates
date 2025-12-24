@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - optimole-wp
+  - dsl:
+    - compare_versions(version, '<= 4.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/optimole-wp/readme.txt'
+  redirects: true
+id: optimole_wp-9288ed60-b14b-4188-84d4-efe770093551
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/optimole-wp/
+    google-query: inurl:"/wp-content/plugins/optimole-wp/"
+    shodan-query: http.html:"wp-content/plugins/optimole-wp/"
+  name: 'Image optimization service by Optimole <= 4.1.0 - Insecure Direct Object
+    Reference to Authenticated (Author+) Media Offload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9288ed60-b14b-4188-84d4-efe770093551?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,optimole-wp,low,candidate

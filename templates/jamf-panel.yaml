@@ -1,0 +1,28 @@
+id: jamf-panel
+info:
+  author: pdteam,idealphase
+  metadata:
+    shodan-query: http.favicon.hash:1262005940
+  name: JAMF MDM Panel
+  severity: info
+  tags: jamf,panel,mdm
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <meta name=\"version\" content=\"(.*)\">
+    type: regex
+  matchers:
+  - condition: or
+    part: response
+    type: word
+    words:
+    - Jamf Pro Login
+    - Jamf Cloud Node
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

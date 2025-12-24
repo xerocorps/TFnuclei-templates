@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mailmunch
+  - dsl:
+    - compare_versions(version, '<= 3.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mailmunch/readme.txt'
+  redirects: true
+id: mailmunch-59b690af32a30b0e60018ea1b5ce5d2a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mailmunch/
+    google-query: inurl:"/wp-content/plugins/mailmunch/"
+    shodan-query: 'vuln:'
+  name: "MailMunch \u2013 Grow your Email List <= 3.1.6 - Authenticated (Contributor+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b27201c7-453b-4953-b364-42ca7bf012f0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mailmunch,low

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - host-webfonts-local
+  - dsl:
+    - compare_versions(version, '<= 4.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/host-webfonts-local/readme.txt'
+  redirects: true
+id: host_webfonts_local-b90640d2-d6f4-4c3b-8e9b-038d57f5fd6f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/host-webfonts-local/
+    google-query: inurl:"/wp-content/plugins/host-webfonts-local/"
+    shodan-query: http.html:"wp-content/plugins/host-webfonts-local/"
+  name: 'OMGF <= 4.5.3 - Unauthenticated Path Traversal in REST API
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b90640d2-d6f4-4c3b-8e9b-038d57f5fd6f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,host-webfonts-local,low,candidate

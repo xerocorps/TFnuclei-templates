@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - loginpress-pro
+  - dsl:
+    - compare_versions(version, '< 3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/loginpress-pro/readme.txt'
+  redirects: true
+id: loginpress-pro-41631da6b40f9ac269b952322e69cf3b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/loginpress-pro/
+    google-query: inurl:"/wp-content/plugins/loginpress-pro/"
+    shodan-query: 'vuln:'
+  name: 'LoginPress Pro < 3.0 - Captcha Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6763d445-0d4f-4ac0-b41a-a30e09fcb21c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,loginpress-pro,low

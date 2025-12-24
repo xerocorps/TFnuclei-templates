@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - master-slider
+  - dsl:
+    - compare_versions(version, '< 2.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/master-slider/readme.txt'
+  redirects: true
+id: master-slider-0c3c33e4408a2cbde1e1d3e43400bc27
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/master-slider/
+    google-query: inurl:"/wp-content/plugins/master-slider/"
+    shodan-query: 'vuln:'
+  name: 'Master Slider - Responsive Touch Slider <= 2.5.1 - Authenticated Blind SQL
+    Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9391474f-8cf8-4e8b-b3e6-39b397b7b6b6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,master-slider,low

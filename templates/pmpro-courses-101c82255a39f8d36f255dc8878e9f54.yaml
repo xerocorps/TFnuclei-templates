@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pmpro-courses
+  - dsl:
+    - compare_versions(version, '< 1.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pmpro-courses/readme.txt'
+  redirects: true
+id: pmpro-courses-101c82255a39f8d36f255dc8878e9f54
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pmpro-courses/
+    google-query: inurl:"/wp-content/plugins/pmpro-courses/"
+    shodan-query: 'vuln:'
+  name: 'Paid Memberships Pro - Courses for Membership Add On <= 1.2.4 - Authenticated
+    (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/55fac183-bd8d-4e16-b25a-784861897deb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,pmpro-courses,low

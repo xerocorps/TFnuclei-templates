@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - meks-easy-ads-widget
+  - dsl:
+    - compare_versions(version, '<= 2.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/meks-easy-ads-widget/readme.txt'
+  redirects: true
+id: meks_easy_ads_widget-14ae1f7a-be81-4f4f-8cea-7afb824186aa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/meks-easy-ads-widget/
+    google-query: inurl:"/wp-content/plugins/meks-easy-ads-widget/"
+    shodan-query: http.html:"wp-content/plugins/meks-easy-ads-widget/"
+  name: 'Meks Easy Ads Widget <= 2.0.8 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/14ae1f7a-be81-4f4f-8cea-7afb824186aa?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,meks-easy-ads-widget,low,candidate

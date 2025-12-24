@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bit-form
+  - dsl:
+    - compare_versions(version, '<= 2.13.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bit-form/readme.txt'
+  redirects: true
+id: bit_form-952a61e8-4be1-4974-9076-4493708bf51e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bit-form/
+    google-query: inurl:"/wp-content/plugins/bit-form/"
+    shodan-query: http.html:"wp-content/plugins/bit-form/"
+  name: "Bit Form \u2013 Contact Form Plugin <= 2.13.10 - Authenticated (Administrator+)\
+    \ Arbitrary File Upload\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/952a61e8-4be1-4974-9076-4493708bf51e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bit-form,low,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - modal-dialog
+  - dsl:
+    - compare_versions(version, '< 3.5.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/modal-dialog/readme.txt'
+  redirects: true
+id: modal-dialog-97c8ed2774dace2967ee80397b432321
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/modal-dialog/
+    google-query: inurl:"/wp-content/plugins/modal-dialog/"
+    shodan-query: 'vuln:'
+  name: 'Modal Dialog <= 3.5.14 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/99140d47-88bb-48a1-863a-93a558541800?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,modal-dialog,medium

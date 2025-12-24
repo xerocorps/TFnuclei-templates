@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lws-hide-login
+  - dsl:
+    - compare_versions(version, '<= 2.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lws-hide-login/readme.txt'
+  redirects: true
+id: lws-hide-login-4a0fdd3939bffa759435178b943a6005
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lws-hide-login/
+    google-query: inurl:"/wp-content/plugins/lws-hide-login/"
+    shodan-query: 'vuln:'
+  name: 'LWS Hide Login <= 2.1.6 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7678b80f-3184-4979-b1f4-25cd75836010?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,lws-hide-login,medium

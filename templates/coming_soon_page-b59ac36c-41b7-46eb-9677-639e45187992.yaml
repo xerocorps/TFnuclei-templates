@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - coming-soon-page
+  - dsl:
+    - compare_versions(version, '< 3.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/coming-soon-page/readme.txt'
+  redirects: true
+id: coming_soon_page-b59ac36c-41b7-46eb-9677-639e45187992
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/coming-soon-page/
+    google-query: inurl:"/wp-content/plugins/coming-soon-page/"
+    shodan-query: http.html:"wp-content/plugins/coming-soon-page/"
+  name: 'Coming soon and Maintenance mode <= 3.5.2 - Authenticated Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b59ac36c-41b7-46eb-9677-639e45187992?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,coming-soon-page,low,candidate

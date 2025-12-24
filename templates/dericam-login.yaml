@@ -1,0 +1,23 @@
+id: dericam-login
+info:
+  author: dhiyaneshDk
+  metadata:
+    shodan-query: http.title:"Dericam"
+  name: Dericam Login
+  reference:
+  - https://www.exploit-db.com/ghdb/7354
+  severity: info
+  tags: panel,dericam
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Dericam</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

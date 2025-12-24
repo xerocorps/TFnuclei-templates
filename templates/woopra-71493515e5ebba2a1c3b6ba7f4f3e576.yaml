@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woopra
+  - dsl:
+    - compare_versions(version, '< 1.4.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woopra/readme.txt'
+  redirects: true
+id: woopra-71493515e5ebba2a1c3b6ba7f4f3e576
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woopra/
+    google-query: inurl:"/wp-content/plugins/woopra/"
+    shodan-query: 'vuln:'
+  name: 'Woopra Analytics Plugin < 1.4.3.2 - Remote Code Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a22932d8-14d4-43a1-86ba-7afadc0bec1a?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,woopra,critical

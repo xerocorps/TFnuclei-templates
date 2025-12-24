@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tour-booking-manager
+  - dsl:
+    - compare_versions(version, '<= 1.8.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tour-booking-manager/readme.txt'
+  redirects: true
+id: tour_booking_manager-94356695-d2b1-4144-a0ca-b638d4e70d8f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tour-booking-manager/
+    google-query: inurl:"/wp-content/plugins/tour-booking-manager/"
+    shodan-query: http.html:"wp-content/plugins/tour-booking-manager/"
+  name: 'WpTravelly <= 1.8.7 - Authenticated (Contributor+) PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/94356695-d2b1-4144-a0ca-b638d4e70d8f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tour-booking-manager,low,candidate

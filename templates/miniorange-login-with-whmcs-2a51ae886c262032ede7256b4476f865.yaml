@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - miniorange-login-with-whmcs
+  - dsl:
+    - compare_versions(version, '<= 1.11.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/miniorange-login-with-whmcs/readme.txt'
+  redirects: true
+id: miniorange-login-with-whmcs-2a51ae886c262032ede7256b4476f865
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/miniorange-login-with-whmcs/
+    google-query: inurl:"/wp-content/plugins/miniorange-login-with-whmcs/"
+    shodan-query: 'vuln:'
+  name: 'Login with WHMCS <= 1.11.3 - Authentication Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5d07d5e9-be7c-4c16-b931-d909ed8be361?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,miniorange-login-with-whmcs,critical

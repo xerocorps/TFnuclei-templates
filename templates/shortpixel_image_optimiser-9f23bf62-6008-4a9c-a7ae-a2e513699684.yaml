@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shortpixel-image-optimiser
+  - dsl:
+    - compare_versions(version, '< 5.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shortpixel-image-optimiser/readme.txt'
+  redirects: true
+id: shortpixel_image_optimiser-9f23bf62-6008-4a9c-a7ae-a2e513699684
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 6.6
+  description: 'The ShortPixel Image Optimizer plugin for WordPress is vulnerable
+    to PHP Object Injection in versions up to, and including, 5.4.1 via deserialization
+    of untrusted input in post content. This allows authenticated attackers with editor
+    capabilities or above to inject a PHP Object. No POP chain is present in the vulnerable
+    plugin. If a POP chain is present via an additional plugin or theme installed
+    on the target system, it could allow the attacker to delete arbitrary files, retrieve
+    sensitive data, or execute code.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/shortpixel-image-optimiser/
+    google-query: inurl:"/wp-content/plugins/shortpixel-image-optimiser/"
+    shodan-query: http.html:"wp-content/plugins/shortpixel-image-optimiser/"
+  name: 'ShortPixel Image Optimizer <= 5.4.1 - Authenticated(Editor+) PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9f23bf62-6008-4a9c-a7ae-a2e513699684?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,shortpixel-image-optimiser,low,production

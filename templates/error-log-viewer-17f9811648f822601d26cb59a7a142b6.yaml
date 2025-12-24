@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - error-log-viewer
+  - dsl:
+    - compare_versions(version, '<= 1.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/error-log-viewer/readme.txt'
+  redirects: true
+id: error-log-viewer-17f9811648f822601d26cb59a7a142b6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/error-log-viewer/
+    google-query: inurl:"/wp-content/plugins/error-log-viewer/"
+    shodan-query: 'vuln:'
+  name: 'Error Log Viewer by BestWebSoft <= 1.1.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c9fc747c-3b13-4a49-a181-fe6a952a4ce3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,error-log-viewer,medium

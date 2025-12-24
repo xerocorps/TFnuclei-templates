@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kingcomposer
+  - dsl:
+    - compare_versions(version, '<= 2.9.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/kingcomposer/readme.txt'
+  redirects: true
+id: kingcomposer-cee657e0bb3c97b5804e9d7bcf12fa17
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/kingcomposer/
+    google-query: inurl:"/wp-content/plugins/kingcomposer/"
+    shodan-query: 'vuln:'
+  name: "Page Builder: KingComposer \u2013 Free Drag and Drop page builder by King-Theme\
+    \ <= 2.9.4 - Reflected Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d52cdc45-efea-46b5-9004-f3169e807747?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,kingcomposer,medium

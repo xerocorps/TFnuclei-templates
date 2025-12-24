@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - enfold
+  - dsl:
+    - compare_versions(version, '< 3.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/enfold/style.css'
+  redirects: true
+id: enfold-9b8430fa71d240de5a81cacb6390f9c0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/enfold/
+    google-query: inurl:"/wp-content/themes/enfold/"
+    shodan-query: 'vuln:'
+  name: 'Enfold < 3.0.1 - Unspecified Vulnerability
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d4f3d386-98cc-4b5a-b13f-841e812bb37f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,enfold,low

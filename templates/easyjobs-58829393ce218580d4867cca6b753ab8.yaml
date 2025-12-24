@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easyjobs
+  - dsl:
+    - compare_versions(version, '< 1.4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easyjobs/readme.txt'
+  redirects: true
+id: easyjobs-58829393ce218580d4867cca6b753ab8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easyjobs/
+    google-query: inurl:"/wp-content/plugins/easyjobs/"
+    shodan-query: 'vuln:'
+  name: 'EasyJobs <= 1.4.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d3c4b62b-c8b1-40b8-b250-d9da94208c62?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,easyjobs,medium

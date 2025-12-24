@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - backup
+  - dsl:
+    - compare_versions(version, '< 1.1.47')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/backup/readme.txt'
+  redirects: true
+id: backup-e42a9c2ca6da6ad00e6abf9dcbdaa680
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/backup/
+    google-query: inurl:"/wp-content/plugins/backup/"
+    shodan-query: 'vuln:'
+  name: 'Backup Guard <= 1.1.46 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/463fd745-92ea-4e55-b470-a5f08884169f?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,backup,high

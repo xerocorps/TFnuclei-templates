@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tiare-membership
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tiare-membership/readme.txt'
+  redirects: true
+id: tiare_membership-6cf01a38-1fba-4c93-b3fa-acfdd5b19410
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tiare-membership/
+    google-query: inurl:"/wp-content/plugins/tiare-membership/"
+    shodan-query: http.html:"wp-content/plugins/tiare-membership/"
+  name: 'Tiare Membership <= 1.2 - Unauthenticated Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6cf01a38-1fba-4c93-b3fa-acfdd5b19410?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tiare-membership,low,candidate

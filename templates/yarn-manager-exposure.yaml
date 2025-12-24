@@ -1,0 +1,17 @@
+id: yarn-manager-exposure
+info:
+  author: pdteam
+  name: Apache Yarn ResourceManager Exposure / Unauthenticated Access
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - hadoop
+    - resourcemanager
+    - 'logged in as: dr.who'
+  method: GET
+  path:
+  - '{{BaseURL}}/cluster/cluster'

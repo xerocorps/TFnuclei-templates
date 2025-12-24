@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - startklar-elmentor-forms-extwidgets
+  - dsl:
+    - compare_versions(version, '<= 1.7.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/startklar-elmentor-forms-extwidgets/readme.txt'
+  redirects: true
+id: startklar-elmentor-forms-extwidgets-61ac98acd239c65b6c8ad0facf1da6de
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/startklar-elmentor-forms-extwidgets/
+    google-query: inurl:"/wp-content/plugins/startklar-elmentor-forms-extwidgets/"
+    shodan-query: 'vuln:'
+  name: 'Startklar Elementor Addons <= 1.7.15 - Unauthenticated Path Traversal to
+    Arbitrary Directory Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/baa20290-9c01-4f8d-adeb-fbfb15b9d6a9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,startklar-elmentor-forms-extwidgets,low

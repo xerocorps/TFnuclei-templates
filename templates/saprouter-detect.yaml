@@ -1,0 +1,18 @@
+id: saprouter-detect
+info:
+  author: randomstr1ng
+  name: SAPRouter Detection
+  severity: info
+  tags: network,sap
+network:
+- host:
+  - '{{Hostname}}'
+  - '{{Hostname}}:3299'
+  inputs:
+  - data: 57484f415245594f553f0a
+    type: hex
+  matchers:
+  - type: word
+    words:
+    - SAProuter
+  read-size: 1024

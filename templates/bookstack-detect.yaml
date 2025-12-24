@@ -1,0 +1,39 @@
+id: bookstack-detect
+info:
+  author: cyllective
+  description: Detects BookStack
+  name: BookStack detect
+  reference: https://github.com/BookStackApp/BookStack
+  severity: info
+  tags: tech,bookstack
+requests:
+- attack: sniper
+  extractors:
+  - group: 1
+    part: body
+    regex:
+    - (?:app\.js|(?:print\-)?styles\.css)\?version=([\w\.\-]+)["']>
+    type: regex
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>BookStack</title>
+    - <span class="logo-text">BookStack</span>
+  matchers-condition: and
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /login HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

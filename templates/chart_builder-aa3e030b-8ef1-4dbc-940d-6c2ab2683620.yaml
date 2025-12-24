@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - chart-builder
+  - dsl:
+    - compare_versions(version, '<= 3.5.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/chart-builder/readme.txt'
+  redirects: true
+id: chart_builder-aa3e030b-8ef1-4dbc-940d-6c2ab2683620
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/chart-builder/
+    google-query: inurl:"/wp-content/plugins/chart-builder/"
+    shodan-query: http.html:"wp-content/plugins/chart-builder/"
+  name: "Chartify \u2013 WordPress Chart Plugin <= 3.5.9 - Missing Authentication\
+    \ for Administrative Function\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aa3e030b-8ef1-4dbc-940d-6c2ab2683620?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,chart-builder,low,candidate

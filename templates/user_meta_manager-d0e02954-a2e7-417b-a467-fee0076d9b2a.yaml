@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-meta-manager
+  - dsl:
+    - compare_versions(version, '<= 3.4.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-meta-manager/readme.txt'
+  redirects: true
+id: user_meta_manager-d0e02954-a2e7-417b-a467-fee0076d9b2a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-meta-manager/
+    google-query: inurl:"/wp-content/plugins/user-meta-manager/"
+    shodan-query: http.html:"wp-content/plugins/user-meta-manager/"
+  name: 'User Meta Manager <= 3.4.9 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d0e02954-a2e7-417b-a467-fee0076d9b2a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,user-meta-manager,medium,candidate

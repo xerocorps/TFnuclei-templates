@@ -1,0 +1,31 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - filezilla
+    - security
+    - configuration files
+    - medium
+  description: Template to detect exposed FileZilla configuration files
+  id: filezilla-exposed
+  matcher-condition: or
+  matchers:
+  - pattern: <FileZilla
+  - description: FileZilla configuration file containing exposed host information
+    pattern: <Servers>
+    type: body
+  name: FileZilla Exposed - Detect
+  requests:
+    condition: and
+    description: Attempt to retrieve FileZilla configuration files
+    method: GET
+    path:
+    - /filezilla.xml
+    - /sitemanager.xml
+    - /FileZilla.xml
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

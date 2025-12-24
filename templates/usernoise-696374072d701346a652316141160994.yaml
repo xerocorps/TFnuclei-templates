@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - usernoise
+  - dsl:
+    - compare_versions(version, '< 3.7.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/usernoise/readme.txt'
+  redirects: true
+id: usernoise-696374072d701346a652316141160994
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/usernoise/
+    google-query: inurl:"/wp-content/plugins/usernoise/"
+    shodan-query: 'vuln:'
+  name: 'Usernoise modal feedback / contact form < 3.7.9 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9c42095d-c5b5-448a-8c6e-9a6c0e15a660?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,usernoise,high

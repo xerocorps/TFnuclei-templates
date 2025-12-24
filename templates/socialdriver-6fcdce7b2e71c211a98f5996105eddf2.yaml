@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - socialdriver
+  - dsl:
+    - compare_versions(version, '< 2024')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/socialdriver/readme.txt'
+  redirects: true
+id: socialdriver-6fcdce7b2e71c211a98f5996105eddf2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/socialdriver/
+    google-query: inurl:"/wp-content/plugins/socialdriver/"
+    shodan-query: 'vuln:'
+  name: 'SocialDriver < 2024 - Prototype Pollution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/24ac60fe-d751-43c7-89c1-5c0c9651e8f8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,socialdriver,low

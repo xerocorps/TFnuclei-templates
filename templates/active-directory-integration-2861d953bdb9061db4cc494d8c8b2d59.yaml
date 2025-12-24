@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - active-directory-integration
+  - dsl:
+    - compare_versions(version, '<= 1.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/active-directory-integration/readme.txt'
+  redirects: true
+id: active-directory-integration-2861d953bdb9061db4cc494d8c8b2d59
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/active-directory-integration/
+    google-query: inurl:"/wp-content/plugins/active-directory-integration/"
+    shodan-query: 'vuln:'
+  name: 'Active Directory Integration <= 1.1.8 - Authenticated (Admin+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ba0fdd81-767a-4858-acdb-e60fd5e15aab?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,active-directory-integration,low

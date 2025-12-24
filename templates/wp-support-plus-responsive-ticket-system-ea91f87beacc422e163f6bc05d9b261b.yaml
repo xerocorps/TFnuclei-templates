@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-support-plus-responsive-ticket-system
+  - dsl:
+    - compare_versions(version, '<= 7.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-support-plus-responsive-ticket-system/readme.txt'
+  redirects: true
+id: wp-support-plus-responsive-ticket-system-ea91f87beacc422e163f6bc05d9b261b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: "The WP Support Plus Responsive Ticket System plugin for WordPress\
+    \ is vulnerable to generic SQL Injection via the \"$_POST[\u2018cat_id\u2019]\"\
+    \ parameter in versions up to, and including, 7.1.4 due to insufficient escaping\
+    \ on the user supplied parameter and lack of sufficient preparation on the existing\
+    \ SQL query.  This makes it possible for authenticated attackers to append additional\
+    \ SQL queries into already existing queries that can be used to extract sensitive\
+    \ information from the database.\n"
+  metadata:
+    fofa-query: wp-content/plugins/wp-support-plus-responsive-ticket-system/
+    google-query: inurl:"/wp-content/plugins/wp-support-plus-responsive-ticket-system/"
+    shodan-query: 'vuln:'
+  name: 'WP Support Plus Responsive Ticket System <= 7.1.4 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c1690fe3-f03f-4640-9948-2109d73a841c?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-support-plus-responsive-ticket-system,low

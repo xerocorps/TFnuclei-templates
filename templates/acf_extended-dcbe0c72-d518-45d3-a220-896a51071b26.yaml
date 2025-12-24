@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - acf-extended
+  - dsl:
+    - compare_versions(version, '<= 0.8.9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/acf-extended/readme.txt'
+  redirects: true
+id: acf_extended-dcbe0c72-d518-45d3-a220-896a51071b26
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/acf-extended/
+    google-query: inurl:"/wp-content/plugins/acf-extended/"
+    shodan-query: http.html:"wp-content/plugins/acf-extended/"
+  name: 'Advanced Custom Fields: Extended <= 0.8.9.3 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dcbe0c72-d518-45d3-a220-896a51071b26?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,acf-extended,low,candidate

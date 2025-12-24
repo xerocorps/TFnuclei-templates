@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - button-generation
+  - dsl:
+    - compare_versions(version, '<= 2.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/button-generation/readme.txt'
+  redirects: true
+id: button-generation-04aaf1283178944abca5e30243f4272b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/button-generation/
+    google-query: inurl:"/wp-content/plugins/button-generation/"
+    shodan-query: 'vuln:'
+  name: "Button Generator \u2013 easily Button Builder <= 2.3.5 - Cross-Site Request\
+    \ Forgery in tools-data-base.php\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/af803612-96ae-41ee-8ad3-8f9319b147e8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,button-generation,medium

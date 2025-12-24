@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - debug-functions-time
+  - dsl:
+    - compare_versions(version, '<= 1.40')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/debug-functions-time/readme.txt'
+  redirects: true
+id: debug-functions-time-2df258451ffd3064fdb981dedfeff909
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/debug-functions-time/
+    google-query: inurl:"/wp-content/plugins/debug-functions-time/"
+    shodan-query: 'vuln:'
+  name: 'Find Slow Functions & Actions & Filters & Hooks <= 1.40 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cce4a7cc-d93c-4d0e-ba63-b73bee0ea181?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,debug-functions-time,medium

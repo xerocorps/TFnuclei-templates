@@ -1,0 +1,16 @@
+id: default-tomcat-page
+info:
+  author: dhiyaneshDk
+  name: Tomcat Default Page
+  reference: https://www.shodan.io/search?query=http.title%3A%22Apache+Tomcat%22
+  severity: info
+  tags: tech,tomcat
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Apache Tomcat
+  method: GET
+  path:
+  - '{{BaseURL}}'

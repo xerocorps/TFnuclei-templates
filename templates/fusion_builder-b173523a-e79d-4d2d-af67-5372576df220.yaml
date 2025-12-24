@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Project-Id-Version: Avada Builder ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fusion-builder
+  - dsl:
+    - compare_versions(version, '<= 3.11.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fusion-builder/languages/fusion-builder.pot'
+  redirects: true
+id: fusion_builder-b173523a-e79d-4d2d-af67-5372576df220
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fusion-builder/
+    google-query: inurl:"/wp-content/plugins/fusion-builder/"
+    shodan-query: http.html:"wp-content/plugins/fusion-builder/"
+  name: 'Fusion Builder <= 3.11.1 - Reflected Cross-Site Scripting via User Register
+    Element
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b173523a-e79d-4d2d-af67-5372576df220?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,fusion-builder,medium,candidate

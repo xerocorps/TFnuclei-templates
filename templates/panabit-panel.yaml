@@ -1,0 +1,25 @@
+id: panabit-panel
+info:
+  author: ffffffff0x
+  metadata:
+    fofa-query: "app=\"Panabit-\u667A\u80FD\u7F51\u5173\""
+  name: Panabit Panel Detect
+  reference:
+  - https://www.panabit.com/
+  severity: info
+  tags: panabit,panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Panabit</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/login/login.htm'
+  redirects: true

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - photocrati-theme
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/photocrati-theme/style.css'
+  redirects: true
+id: photocrati-theme-0a150f507d497a4c6ba1ef399225c469
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/photocrati-theme/
+    google-query: inurl:"/wp-content/themes/photocrati-theme/"
+    shodan-query: 'vuln:'
+  name: 'Photocrati (Unknown Versions) - Multiple Vulnerabilities
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/99746867-597b-49df-aa9e-548456a58542?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,photocrati-theme,low

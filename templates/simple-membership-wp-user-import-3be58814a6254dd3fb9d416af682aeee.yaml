@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-membership-wp-user-import
+  - dsl:
+    - compare_versions(version, '<= 1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-membership-wp-user-import/readme.txt'
+  redirects: true
+id: simple-membership-wp-user-import-3be58814a6254dd3fb9d416af682aeee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-membership-wp-user-import/
+    google-query: inurl:"/wp-content/plugins/simple-membership-wp-user-import/"
+    shodan-query: 'vuln:'
+  name: 'Simple Membership WP user Import <= 1.7 - Authenticated (Admin+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6f781533-b633-4452-95bd-c32ed0de2ea9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-membership-wp-user-import,low

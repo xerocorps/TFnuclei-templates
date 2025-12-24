@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vikbooking
+  - dsl:
+    - compare_versions(version, '<= 1.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vikbooking/readme.txt'
+  redirects: true
+id: vikbooking-dad61029b2e4a3dbd5090c75f2489ff8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vikbooking/
+    google-query: inurl:"/wp-content/plugins/vikbooking/"
+    shodan-query: 'vuln:'
+  name: 'VikBooking Hotel Booking Engine & PMS <= 1.6.1 - Cross-Site Request Forgery
+    in multiple functions in admin/controller.php
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2b670550-cf04-4db1-95e7-0330b5793c58?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,vikbooking,medium

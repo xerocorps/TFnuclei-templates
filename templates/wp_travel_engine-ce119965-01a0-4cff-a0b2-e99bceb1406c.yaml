@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-travel-engine
+  - dsl:
+    - compare_versions(version, '<= 6.6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-travel-engine/readme.txt'
+  redirects: true
+id: wp_travel_engine-ce119965-01a0-4cff-a0b2-e99bceb1406c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-travel-engine/
+    google-query: inurl:"/wp-content/plugins/wp-travel-engine/"
+    shodan-query: http.html:"wp-content/plugins/wp-travel-engine/"
+  name: "WP Travel Engine \u2013 Tour Booking Plugin \u2013 Tour Operator Software\
+    \ <= 6.6.7 - Unauthenticated Local File Inclusion\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ce119965-01a0-4cff-a0b2-e99bceb1406c?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-travel-engine,critical,candidate

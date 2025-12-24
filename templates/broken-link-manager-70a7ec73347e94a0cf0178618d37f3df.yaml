@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - broken-link-manager
+  - dsl:
+    - compare_versions(version, '< 0.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/broken-link-manager/readme.txt'
+  redirects: true
+id: broken-link-manager-70a7ec73347e94a0cf0178618d37f3df
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/broken-link-manager/
+    google-query: inurl:"/wp-content/plugins/broken-link-manager/"
+    shodan-query: 'vuln:'
+  name: 'Broken Link Manager < 0.6.0 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a7982828-bc67-48ee-be80-3203b081e29b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,broken-link-manager,high

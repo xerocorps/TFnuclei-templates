@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shorten-url
+  - dsl:
+    - compare_versions(version, '<= 1.6.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shorten-url/readme.txt'
+  redirects: true
+id: shorten-url-c198952b396329ba86e83697fed0151f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shorten-url/
+    google-query: inurl:"/wp-content/plugins/shorten-url/"
+    shodan-query: 'vuln:'
+  name: 'Short URL <= 1.6.8 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/95c5a219-0b04-424c-a3dd-d705b1b41ddc?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,shorten-url,medium

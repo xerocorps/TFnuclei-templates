@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-b2b-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 1.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-b2b-for-woocommerce/readme.txt'
+  redirects: true
+id: all_in_one_b2b_for_woocommerce-bd53bc57-b10e-47a7-8c10-96bf1f1e82a5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-b2b-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/all-in-one-b2b-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/all-in-one-b2b-for-woocommerce/"
+  name: 'All in One B2B for WooCommerce <= 1.0.3 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bd53bc57-b10e-47a7-8c10-96bf1f1e82a5?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,all-in-one-b2b-for-woocommerce,medium,candidate

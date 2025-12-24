@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rezgo
+  - dsl:
+    - compare_versions(version, '4.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rezgo/readme.txt'
+  redirects: true
+id: rezgo-26bcf3f897bab277c32fe85f1493ee87
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rezgo/
+    google-query: inurl:"/wp-content/plugins/rezgo/"
+    shodan-query: 'vuln:'
+  name: 'Rezgo Online Booking <= 4.1.7 - Reflected Cross-Site-Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d8ba1a2f-d4f9-4cfe-9a42-ec2e116aed1b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,rezgo,low

@@ -1,0 +1,10 @@
+id: zimbra-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Zimbra related nuclei templates on
+    a given target.
+  name: Zimbra Security Checks
+workflows:
+- subtemplates:
+  - tags: zimbra
+  template: exposed-panels/zimbra-web-client.yaml

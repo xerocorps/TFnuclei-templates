@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ecwid-shopping-cart
+  - dsl:
+    - compare_versions(version, '<= 6.11.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ecwid-shopping-cart/readme.txt'
+  redirects: true
+id: ecwid-shopping-cart-6df4dcc6b1386bf7996806de13282739
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ecwid-shopping-cart/
+    google-query: inurl:"/wp-content/plugins/ecwid-shopping-cart/"
+    shodan-query: 'vuln:'
+  name: 'Ecwid Ecommerce Shopping Cart <= 6.11.3 - Cross Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0f02cc66-7782-45fe-ae5e-340ff7ae1fe9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ecwid-shopping-cart,low

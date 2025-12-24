@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - idonate
+  - dsl:
+    - compare_versions(version, '>= 2.0.0', '<= 2.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/idonate/readme.txt'
+  redirects: true
+id: idonate-bb0625ec-5ac9-4896-ac11-87fc9287f68a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/idonate/
+    google-query: inurl:"/wp-content/plugins/idonate/"
+    shodan-query: http.html:"wp-content/plugins/idonate/"
+  name: 'IDonate 2.0.0 - 2.1.9 - Insecure Direct Object Reference to Authenticated
+    (Subscriber+) Arbitrary User Deletion via admin_post_donor_delete Function
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb0625ec-5ac9-4896-ac11-87fc9287f68a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,idonate,low,candidate

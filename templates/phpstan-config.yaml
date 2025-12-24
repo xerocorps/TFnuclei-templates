@@ -1,0 +1,27 @@
+id: phpstan-config
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: html:"phpstan.neon"
+    verified: true
+  name: PHPStan Configuration Exposure
+  severity: low
+  tags: devops,exposure
+requests:
+- matchers:
+  - type: word
+    words:
+    - 'parameters:'
+  - negative: true
+    part: header
+    type: word
+    words:
+    - text/html
+    - application/javascript
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/phpstan.neon'

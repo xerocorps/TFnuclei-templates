@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - supportcandy
+  - dsl:
+    - compare_versions(version, '< 2.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/supportcandy/readme.txt'
+  redirects: true
+id: supportcandy-6771777aa551b2fb7549aa8906a5d545
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/supportcandy/
+    google-query: inurl:"/wp-content/plugins/supportcandy/"
+    shodan-query: 'vuln:'
+  name: 'SupportCandy <= 2.2.6 - Stored Cross-Site Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9fc6d947-4b6e-4dcb-9f20-02e39b4e730e?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,supportcandy,high

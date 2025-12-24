@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - siteguard
+  - dsl:
+    - compare_versions(version, '<= 1.7.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/siteguard/readme.txt'
+  redirects: true
+id: siteguard-97e730e92a8f28145dd73dd763731b77
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/siteguard/
+    google-query: inurl:"/wp-content/plugins/siteguard/"
+    shodan-query: 'vuln:'
+  name: 'SiteGuard WP Plugin <= 1.7.6 - Login Page Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/458aeb60-8610-49e8-8f77-2e306bfe7277?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,siteguard,low

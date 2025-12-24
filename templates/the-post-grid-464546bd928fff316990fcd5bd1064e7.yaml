@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - the-post-grid
+  - dsl:
+    - compare_versions(version, '<= 7.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/the-post-grid/readme.txt'
+  redirects: true
+id: the-post-grid-464546bd928fff316990fcd5bd1064e7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/the-post-grid/
+    google-query: inurl:"/wp-content/plugins/the-post-grid/"
+    shodan-query: 'vuln:'
+  name: 'The Post Grid <= 7.7.1 - Authenticated(Contributor+) Stored Cross-Site Scripting
+    via section title tag
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fc870ce5-1352-43f2-b80b-45065ceed750?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,the-post-grid,low

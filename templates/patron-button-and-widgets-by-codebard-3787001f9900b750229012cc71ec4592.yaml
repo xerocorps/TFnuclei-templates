@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - patron-button-and-widgets-by-codebard
+  - dsl:
+    - compare_versions(version, '<= 2.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/patron-button-and-widgets-by-codebard/readme.txt'
+  redirects: true
+id: patron-button-and-widgets-by-codebard-3787001f9900b750229012cc71ec4592
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/patron-button-and-widgets-by-codebard/
+    google-query: inurl:"/wp-content/plugins/patron-button-and-widgets-by-codebard/"
+    shodan-query: 'vuln:'
+  name: 'CodeBard''s Patron Button and Widgets for Patreon <= 2.2.0 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/afff886c-92e6-41fc-9a88-befc158ad403?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,patron-button-and-widgets-by-codebard,medium

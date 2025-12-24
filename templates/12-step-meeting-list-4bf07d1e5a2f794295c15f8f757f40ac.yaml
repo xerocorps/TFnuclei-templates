@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - 12-step-meeting-list
+  - dsl:
+    - compare_versions(version, '<= 3.14.33')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/12-step-meeting-list/readme.txt'
+  redirects: true
+id: 12-step-meeting-list-4bf07d1e5a2f794295c15f8f757f40ac
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/12-step-meeting-list/
+    google-query: inurl:"/wp-content/plugins/12-step-meeting-list/"
+    shodan-query: 'vuln:'
+  name: '12 Step Meeting List <= 3.14.33 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/19071f16-fa14-447c-ac71-73e1b4c783e1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,12-step-meeting-list,medium

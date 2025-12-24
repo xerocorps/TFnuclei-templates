@@ -1,0 +1,29 @@
+id: gespage-panel
+info:
+  author: pikpikcu,daffainfo
+  metadata:
+    shodan-query: Path=/gespage
+  name: Gespage Panel Login
+  severity: info
+  tags: panel,gespage
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - '\(Ver: ([0-9._A-Z]+)\)'
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <link rel="stylesheet" href="css/gespage.css" />
+    - <link rel="stylesheet" href="css/menugrey.css" />
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/gespage/webapp/login.xhtml'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - arforms
+  - dsl:
+    - compare_versions(version, '<= 6.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/arforms/readme.txt'
+  redirects: true
+id: arforms-b23989c2-6cd7-4e55-b019-324644e7521a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/arforms/
+    google-query: inurl:"/wp-content/plugins/arforms/"
+    shodan-query: http.html:"wp-content/plugins/arforms/"
+  name: 'ARForms - Premium WordPress Form Builder <= 6.4.0 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b23989c2-6cd7-4e55-b019-324644e7521a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,arforms,medium,candidate

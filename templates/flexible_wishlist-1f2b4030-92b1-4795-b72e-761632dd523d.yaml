@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - flexible-wishlist
+  - dsl:
+    - compare_versions(version, '<= 1.2.26')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/flexible-wishlist/readme.txt'
+  redirects: true
+id: flexible_wishlist-1f2b4030-92b1-4795-b72e-761632dd523d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/flexible-wishlist/
+    google-query: inurl:"/wp-content/plugins/flexible-wishlist/"
+    shodan-query: http.html:"wp-content/plugins/flexible-wishlist/"
+  name: "Flexible Wishlist for WooCommerce \u2013 Ecommerce Wishlist & Save for later\
+    \ <= 1.2.26 - Cross-Site Request Forgery to Wishlist Creation/Modification\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1f2b4030-92b1-4795-b72e-761632dd523d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,flexible-wishlist,medium,candidate

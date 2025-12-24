@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - users-ultra
+  - dsl:
+    - compare_versions(version, '<= 3.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/users-ultra/readme.txt'
+  redirects: true
+id: users_ultra-1d9ffbf3-520a-4563-85e1-27c1cc544856
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/users-ultra/
+    google-query: inurl:"/wp-content/plugins/users-ultra/"
+    shodan-query: http.html:"wp-content/plugins/users-ultra/"
+  name: 'Users Ultra Membership, Users Community and Member Profiles With PayPal Integration
+    Plugin <= 3.1.0 - Unauthenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1d9ffbf3-520a-4563-85e1-27c1cc544856?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,users-ultra,critical,candidate

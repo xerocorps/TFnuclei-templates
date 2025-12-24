@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - filedownload
+  - dsl:
+    - compare_versions(version, '<= 1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/filedownload/readme.txt'
+  redirects: true
+id: filedownload-f1e98579-6e23-4309-9db5-e47d1e77ab07
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/filedownload/
+    google-query: inurl:"/wp-content/plugins/filedownload/"
+    shodan-query: http.html:"wp-content/plugins/filedownload/"
+  name: 'File Download <= 1.4 - Open Proxy
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f1e98579-6e23-4309-9db5-e47d1e77ab07?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,filedownload,low,candidate

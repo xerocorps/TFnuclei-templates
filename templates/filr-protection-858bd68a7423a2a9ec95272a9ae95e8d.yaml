@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - filr-protection
+  - dsl:
+    - compare_versions(version, '< 1.2.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/filr-protection/readme.txt'
+  redirects: true
+id: filr-protection-858bd68a7423a2a9ec95272a9ae95e8d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/filr-protection/
+    google-query: inurl:"/wp-content/plugins/filr-protection/"
+    shodan-query: 'vuln:'
+  name: "Filr \u2013 Secure document library <= 1.2.2 - Missing Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/02d4bc64-d05d-4151-bc38-523cbb2ef60c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,filr-protection,high

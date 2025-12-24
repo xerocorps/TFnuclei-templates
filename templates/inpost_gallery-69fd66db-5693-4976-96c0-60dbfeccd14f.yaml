@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - inpost-gallery
+  - dsl:
+    - compare_versions(version, '<= 2.1.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/inpost-gallery/readme.txt'
+  redirects: true
+id: inpost_gallery-69fd66db-5693-4976-96c0-60dbfeccd14f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/inpost-gallery/
+    google-query: inurl:"/wp-content/plugins/inpost-gallery/"
+    shodan-query: http.html:"wp-content/plugins/inpost-gallery/"
+  name: 'InPost Gallery <= 2.1.4.1 - Reflected Cross-Site Scripting via ''imgurl''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/69fd66db-5693-4976-96c0-60dbfeccd14f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,inpost-gallery,medium,candidate

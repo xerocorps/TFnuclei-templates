@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - reviewx
+  - dsl:
+    - compare_versions(version, '<= 1.6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/reviewx/readme.txt'
+  redirects: true
+id: reviewx-c11bbb1b2d29d849bd05365a31c759f9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/reviewx/
+    google-query: inurl:"/wp-content/plugins/reviewx/"
+    shodan-query: 'vuln:'
+  name: 'ReviewX <= 1.6.7 - Unauthenticated CSV Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cc465757-4295-4a75-90f6-92c4be4e8944?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,reviewx,low

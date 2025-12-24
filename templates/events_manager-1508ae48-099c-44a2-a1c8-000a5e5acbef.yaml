@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - events-manager
+  - dsl:
+    - compare_versions(version, '<= 6.6.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/events-manager/readme.txt'
+  redirects: true
+id: events_manager-1508ae48-099c-44a2-a1c8-000a5e5acbef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/events-manager/
+    google-query: inurl:"/wp-content/plugins/events-manager/"
+    shodan-query: http.html:"wp-content/plugins/events-manager/"
+  name: "Events Manager \u2013 Calendar, Bookings, Tickets, and more! <= 6.6.4.1 -\
+    \ Missing Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1508ae48-099c-44a2-a1c8-000a5e5acbef?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,events-manager,high,candidate

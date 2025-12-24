@@ -1,0 +1,27 @@
+id: okiko-sfiler-portal
+info:
+  author: johnk3r
+  name: OKIKO S-Filer Portal Detect
+  reference:
+  - https://www.shodan.io/search?query=sfiler
+  severity: info
+  tags: okiko,panel
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <br\/>S\-Filer\/([A-Za-z 0-9.]+)<\/p>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>S-Filer Portal - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sfiler/Login.action'

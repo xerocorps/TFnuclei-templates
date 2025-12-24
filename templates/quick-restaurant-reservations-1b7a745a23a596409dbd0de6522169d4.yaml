@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quick-restaurant-reservations
+  - dsl:
+    - compare_versions(version, '<= 1.5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quick-restaurant-reservations/readme.txt'
+  redirects: true
+id: quick-restaurant-reservations-1b7a745a23a596409dbd0de6522169d4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quick-restaurant-reservations/
+    google-query: inurl:"/wp-content/plugins/quick-restaurant-reservations/"
+    shodan-query: 'vuln:'
+  name: 'Quick Restaurant Reservations <= 1.5.4 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/801b593c-2822-4ac4-8411-29ef1e1484b1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,quick-restaurant-reservations,medium

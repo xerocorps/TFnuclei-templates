@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ip-based-login
+  - dsl:
+    - compare_versions(version, '<= 2.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ip-based-login/readme.txt'
+  redirects: true
+id: ip_based_login-0c30cfa6-dee2-40d2-b5ac-06451e9218fb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ip-based-login/
+    google-query: inurl:"/wp-content/plugins/ip-based-login/"
+    shodan-query: http.html:"wp-content/plugins/ip-based-login/"
+  name: 'IP Based Login <= 2.4.3 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0c30cfa6-dee2-40d2-b5ac-06451e9218fb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ip-based-login,low,candidate

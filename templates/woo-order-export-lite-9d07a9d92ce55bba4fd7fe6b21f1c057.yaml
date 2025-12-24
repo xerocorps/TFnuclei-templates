@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-order-export-lite
+  - dsl:
+    - compare_versions(version, '<= 3.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-order-export-lite/readme.txt'
+  redirects: true
+id: woo-order-export-lite-9d07a9d92ce55bba4fd7fe6b21f1c057
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-order-export-lite/
+    google-query: inurl:"/wp-content/plugins/woo-order-export-lite/"
+    shodan-query: 'vuln:'
+  name: 'Advanced Order Export For WooCommerce <= 3.3.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5a425e1c-9b18-468f-975a-57239ce24601?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-order-export-lite,medium

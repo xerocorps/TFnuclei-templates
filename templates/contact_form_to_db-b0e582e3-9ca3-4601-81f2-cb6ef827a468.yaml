@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-to-db
+  - dsl:
+    - compare_versions(version, '<= 1.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-to-db/readme.txt'
+  redirects: true
+id: contact_form_to_db-b0e582e3-9ca3-4601-81f2-cb6ef827a468
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-to-db/
+    google-query: inurl:"/wp-content/plugins/contact-form-to-db/"
+    shodan-query: http.html:"wp-content/plugins/contact-form-to-db/"
+  name: 'Contact Form to DB by BestWebSoft <= 1.7.1 - Authenticated (Administrator+)
+    SQL Injection via ''s''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b0e582e3-9ca3-4601-81f2-cb6ef827a468?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-form-to-db,low,candidate

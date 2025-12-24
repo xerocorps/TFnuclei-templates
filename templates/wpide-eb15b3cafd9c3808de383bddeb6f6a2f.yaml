@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpide
+  - dsl:
+    - compare_versions(version, '<= 2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpide/readme.txt'
+  redirects: true
+id: wpide-eb15b3cafd9c3808de383bddeb6f6a2f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpide/
+    google-query: inurl:"/wp-content/plugins/wpide/"
+    shodan-query: 'vuln:'
+  name: 'WPide <= 2.6 - Authenticated (Administrator+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c77db815-e401-4410-b6ec-e6668dd988ab?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpide,low

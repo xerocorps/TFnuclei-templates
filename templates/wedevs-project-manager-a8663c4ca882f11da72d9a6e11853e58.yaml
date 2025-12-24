@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wedevs-project-manager
+  - dsl:
+    - compare_versions(version, '<= 2.6.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wedevs-project-manager/readme.txt'
+  redirects: true
+id: wedevs-project-manager-a8663c4ca882f11da72d9a6e11853e58
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wedevs-project-manager/
+    google-query: inurl:"/wp-content/plugins/wedevs-project-manager/"
+    shodan-query: 'vuln:'
+  name: 'WP Project Manager <= 2.6.4 - Arbitrary Usermeta Update to Authenticated
+    (Subscriber+) Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6a5e4708-db3e-483c-852f-1a487825cf92?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wedevs-project-manager,low

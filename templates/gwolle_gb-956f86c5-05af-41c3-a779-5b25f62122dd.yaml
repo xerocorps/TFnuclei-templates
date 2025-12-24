@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gwolle-gb
+  - dsl:
+    - compare_versions(version, '<= 4.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gwolle-gb/readme.txt'
+  redirects: true
+id: gwolle_gb-956f86c5-05af-41c3-a779-5b25f62122dd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gwolle-gb/
+    google-query: inurl:"/wp-content/plugins/gwolle-gb/"
+    shodan-query: http.html:"wp-content/plugins/gwolle-gb/"
+  name: 'Gwolle Guestbook <= 4.9.2 - Unauthenticated Stored Cross-Site Scripting via
+    `gwolle_gb_content` Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/956f86c5-05af-41c3-a779-5b25f62122dd?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,gwolle-gb,high,candidate

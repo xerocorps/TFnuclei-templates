@@ -1,0 +1,21 @@
+id: zhiyuan-oa-session-leak
+info:
+  author: pikpikcu
+  name: Zhiyuan Oa Session Leak
+  reference: https://www.zhihuifly.com/t/topic/3345
+  severity: medium
+  tags: zhiyuan,leak,disclosure
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <usrID>
+    - <sessionID>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/yyoa/ext/https/getSessionList.jsp?cmd=getAll'

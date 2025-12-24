@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - automatic-pages-for-privacy-policy-terms-about-and-contact
+  - dsl:
+    - compare_versions(version, '<= 1.41')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/automatic-pages-for-privacy-policy-terms-about-and-contact/readme.txt'
+  redirects: true
+id: automatic-pages-for-privacy-policy-terms-about-and-contact-b7325b359a59bada6a293ee140654b13
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/automatic-pages-for-privacy-policy-terms-about-and-contact/
+    google-query: inurl:"/wp-content/plugins/automatic-pages-for-privacy-policy-terms-about-and-contact/"
+    shodan-query: 'vuln:'
+  name: 'Automatic pages for Privacy Policy, Terms, About, Contact us <= 1.41 - Reflected
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d36d97fb-2fce-4248-8955-7d66919487e3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,automatic-pages-for-privacy-policy-terms-about-and-contact,medium

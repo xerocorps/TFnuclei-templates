@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-products-filter
+  - dsl:
+    - compare_versions(version, '< 1.2.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-products-filter/readme.txt'
+  redirects: true
+id: woocommerce-products-filter-2fb6afef30002e0c0c3737ad65980900
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-products-filter/
+    google-query: inurl:"/wp-content/plugins/woocommerce-products-filter/"
+    shodan-query: 'vuln:'
+  name: 'WOOF - Products Filter for WooCommerce <= 1.2.6.2 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d94c0775-3852-463f-b393-1a12e63548e0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-products-filter,medium

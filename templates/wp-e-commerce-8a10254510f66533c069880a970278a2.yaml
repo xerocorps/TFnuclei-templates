@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-e-commerce
+  - dsl:
+    - compare_versions(version, '<= 3.15.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-e-commerce/readme.txt'
+  redirects: true
+id: wp-e-commerce-8a10254510f66533c069880a970278a2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-e-commerce/
+    google-query: inurl:"/wp-content/plugins/wp-e-commerce/"
+    shodan-query: 'vuln:'
+  name: 'WP eCommerce <= 3.15.1 - Unauthenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0ba5da2b-6944-4243-a4f2-0f887abf7a66?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-e-commerce,critical

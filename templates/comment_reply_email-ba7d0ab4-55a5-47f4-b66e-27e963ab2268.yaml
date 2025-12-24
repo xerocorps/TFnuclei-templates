@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - comment-reply-email
+  - dsl:
+    - compare_versions(version, '<= 1.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/comment-reply-email/readme.txt'
+  redirects: true
+id: comment_reply_email-ba7d0ab4-55a5-47f4-b66e-27e963ab2268
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/comment-reply-email/
+    google-query: inurl:"/wp-content/plugins/comment-reply-email/"
+    shodan-query: http.html:"wp-content/plugins/comment-reply-email/"
+  name: 'Comment Reply Email <= 1.0.3 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ba7d0ab4-55a5-47f4-b66e-27e963ab2268?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,comment-reply-email,low,candidate

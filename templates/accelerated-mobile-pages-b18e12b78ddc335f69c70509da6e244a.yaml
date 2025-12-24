@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - accelerated-mobile-pages
+  - dsl:
+    - compare_versions(version, '<= 1.0.92.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/accelerated-mobile-pages/readme.txt'
+  redirects: true
+id: accelerated-mobile-pages-b18e12b78ddc335f69c70509da6e244a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/accelerated-mobile-pages/
+    google-query: inurl:"/wp-content/plugins/accelerated-mobile-pages/"
+    shodan-query: 'vuln:'
+  name: 'Accelerated Mobile Pages <= 1.0.92.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/85ca96a6-7992-424b-8b88-9a0751925223?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,accelerated-mobile-pages,medium

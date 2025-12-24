@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - td-cloud-library
+  - dsl:
+    - compare_versions(version, '< 3.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/td-cloud-library/readme.txt'
+  redirects: true
+id: td_cloud_library-f97414f7-3544-4ecf-908a-a0215e322e68
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/td-cloud-library/
+    google-query: inurl:"/wp-content/plugins/td-cloud-library/"
+    shodan-query: http.html:"wp-content/plugins/td-cloud-library/"
+  name: 'tagDiv Cloud Library < 3.9.2 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f97414f7-3544-4ecf-908a-a0215e322e68?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,td-cloud-library,low,candidate

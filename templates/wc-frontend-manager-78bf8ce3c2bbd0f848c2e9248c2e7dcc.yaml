@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-frontend-manager
+  - dsl:
+    - compare_versions(version, '<= 6.5.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-frontend-manager/readme.txt'
+  redirects: true
+id: wc-frontend-manager-78bf8ce3c2bbd0f848c2e9248c2e7dcc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wc-frontend-manager/
+    google-query: inurl:"/wp-content/plugins/wc-frontend-manager/"
+    shodan-query: 'vuln:'
+  name: 'WCFM Frontend Manager <= 6.5.13 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/798b57ad-0922-435c-8b4d-8a96b388b314?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wc-frontend-manager,medium

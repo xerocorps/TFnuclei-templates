@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - laposta-signup-embed
+  - dsl:
+    - compare_versions(version, '< 1.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/laposta-signup-embed/readme.txt'
+  redirects: true
+id: laposta-signup-embed-4849bdada7df841b295a99e05b26c1da
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/laposta-signup-embed/
+    google-query: inurl:"/wp-content/plugins/laposta-signup-embed/"
+    shodan-query: 'vuln:'
+  name: 'Laposta Signup Embed <= 1.1.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4c0cbf44-f6b4-408d-9a96-98f45d890822?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,laposta-signup-embed,medium

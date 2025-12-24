@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yellow-pencil-visual-theme-customizer
+  - dsl:
+    - compare_versions(version, '<= 7.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yellow-pencil-visual-theme-customizer/readme.txt'
+  redirects: true
+id: yellow-pencil-visual-theme-customizer-cd5d4bac29031e93a7a4051cacd4a326
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yellow-pencil-visual-theme-customizer/
+    google-query: inurl:"/wp-content/plugins/yellow-pencil-visual-theme-customizer/"
+    shodan-query: 'vuln:'
+  name: 'YellowPencil Visual CSS Style Editor <= 7.5.8 - Reflected Cross-Site Scripting
+    liveLink
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/967ff273-33f3-4580-928a-7764583429aa?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,yellow-pencil-visual-theme-customizer,medium

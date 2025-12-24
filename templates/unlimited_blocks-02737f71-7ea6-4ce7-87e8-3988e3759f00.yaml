@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - unlimited-blocks
+  - dsl:
+    - compare_versions(version, '<= 1.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/unlimited-blocks/readme.txt'
+  redirects: true
+id: unlimited_blocks-02737f71-7ea6-4ce7-87e8-3988e3759f00
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/unlimited-blocks/
+    google-query: inurl:"/wp-content/plugins/unlimited-blocks/"
+    shodan-query: http.html:"wp-content/plugins/unlimited-blocks/"
+  name: "Gutenberg Blocks \u2013 Unlimited blocks For Gutenberg <= 1.2.8 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/02737f71-7ea6-4ce7-87e8-3988e3759f00?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,unlimited-blocks,low,candidate

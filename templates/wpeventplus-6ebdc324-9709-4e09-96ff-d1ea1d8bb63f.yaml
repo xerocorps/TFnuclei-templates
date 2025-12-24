@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpeventplus
+  - dsl:
+    - compare_versions(version, '<= 2.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpeventplus/readme.txt'
+  redirects: true
+id: wpeventplus-6ebdc324-9709-4e09-96ff-d1ea1d8bb63f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpeventplus/
+    google-query: inurl:"/wp-content/plugins/wpeventplus/"
+    shodan-query: http.html:"wp-content/plugins/wpeventplus/"
+  name: 'WordPress Events Calendar Registration & Tickets <= 2.6.0 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6ebdc324-9709-4e09-96ff-d1ea1d8bb63f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpeventplus,medium,candidate

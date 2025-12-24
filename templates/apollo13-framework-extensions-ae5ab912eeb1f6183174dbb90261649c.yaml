@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - apollo13-framework-extensions
+  - dsl:
+    - compare_versions(version, '<= 1.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/apollo13-framework-extensions/readme.txt'
+  redirects: true
+id: apollo13-framework-extensions-ae5ab912eeb1f6183174dbb90261649c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/apollo13-framework-extensions/
+    google-query: inurl:"/wp-content/plugins/apollo13-framework-extensions/"
+    shodan-query: 'vuln:'
+  name: 'Apollo13 Framework Extensions <= 1.9.2 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/33386b7b-fae3-42a4-96d3-df3cdc342317?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,apollo13-framework-extensions,low

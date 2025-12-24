@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_generator
+    regex:
+    - (?m)https:\/\/wordpress.org\/\?v=([0-9.]+)
+    type: regex
+  - group: 1
+    name: version_by_js
+    regex:
+    - wp-emoji-release\.min\.js\?ver=((\d+\.?)+)\b
+    type: regex
+  - group: 1
+    name: version_by_css
+    regex:
+    - install\.min\.css\?ver=((\d+\.?)+)\b
+    type: regex
+  matchers:
+  - dsl:
+    - compare_versions(version_by_generator, '>= 4.5', '<= 4.5.2')
+    - compare_versions(version_by_js, '>= 4.5', '<= 4.5.2')
+    - compare_versions(version_by_css, '>= 4.5', '<= 4.5.2')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/wp-admin/install.php'
+  - '{{BaseURL}}/feed/'
+  - '{{BaseURL}}/?feed=rss2'
+  redirects: true
+  stop-at-first-match: true
+id: wordpress-a9498085-87c7-47e7-aac8-c0397264a7eb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    shodan-query: 'vuln:'
+  name: 'WordPress Core < 4.5.3 - Cross-Site Scripting via Attachment Name
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a9498085-87c7-47e7-aac8-c0397264a7eb?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-core,high,candidate

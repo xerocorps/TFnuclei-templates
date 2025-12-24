@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-courses
+  - dsl:
+    - compare_versions(version, '<= 3.2.21')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-courses/readme.txt'
+  redirects: true
+id: wp_courses-760e999e-cac9-493f-9737-ad0cf055c880
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-courses/
+    google-query: inurl:"/wp-content/plugins/wp-courses/"
+    shodan-query: http.html:"wp-content/plugins/wp-courses/"
+  name: "WP Courses LMS \u2013 Online Courses Builder, eLearning Courses, Courses\
+    \ Solution, Education Courses <= 3.2.21 - Missing Authorization to Authenticated\
+    \ (Subscriber+) Arbitrary User Meta Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/760e999e-cac9-493f-9737-ad0cf055c880?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-courses,low,candidate

@@ -1,0 +1,60 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-abandoned-cart
+  - dsl:
+    - compare_versions(version, '< 5.14.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-abandoned-cart/readme.txt'
+  redirects: true
+id: woocommerce-abandoned-cart-e0cb04ee660329ab9d88d049006d960a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N
+    cvss-score: 4.3
+  description: 'The Abandoned Cart Lite for WooCommerce plugin for WordPress is vulnerable
+    to Cross-Site Request Forgery in versions up to, and including, 5.14.1. This is
+    due to missing or incorrect nonce validation on the ''delete_expired_used_coupon_code''
+    function. This makes it possible for unauthenticated attackers to delete expired
+    coupon codes granted they can trick a site administrator into performing an action
+    such as clicking on a link. The impact of this vulnerability is unknown.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-abandoned-cart/
+    google-query: inurl:"/wp-content/plugins/woocommerce-abandoned-cart/"
+    shodan-query: 'vuln:'
+  name: 'Abandoned Cart Lite for WooCommerce <= 5.14.1 - Cross-Site Request Forgery
+    via delete_expired_used_coupon_code
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a1e51a99-f5d4-47d4-bead-00ca1f5f72c2?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-abandoned-cart,medium

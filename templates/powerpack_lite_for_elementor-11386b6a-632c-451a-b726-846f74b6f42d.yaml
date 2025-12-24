@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - powerpack-lite-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 2.7.18')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/powerpack-lite-for-elementor/readme.txt'
+  redirects: true
+id: powerpack_lite_for_elementor-11386b6a-632c-451a-b726-846f74b6f42d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/powerpack-lite-for-elementor/
+    google-query: inurl:"/wp-content/plugins/powerpack-lite-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/powerpack-lite-for-elementor/"
+  name: 'PowerPack Addons for Elementor <= 2.7.18 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via Twitter Tweet Widget
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/11386b6a-632c-451a-b726-846f74b6f42d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,powerpack-lite-for-elementor,low,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uncanny-automator-pro
+  - dsl:
+    - compare_versions(version, '< 5.3.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/uncanny-automator-pro/readme.txt'
+  redirects: true
+id: uncanny_automator_pro-cffb3b61-fefc-4bf8-9904-55a7143aeef1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/uncanny-automator-pro/
+    google-query: inurl:"/wp-content/plugins/uncanny-automator-pro/"
+    shodan-query: http.html:"wp-content/plugins/uncanny-automator-pro/"
+  name: 'Uncanny Automator Pro < 5.3.0.1 - Cross-Site Request Forgery to License Setting
+    Reset
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cffb3b61-fefc-4bf8-9904-55a7143aeef1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,uncanny-automator-pro,medium,candidate

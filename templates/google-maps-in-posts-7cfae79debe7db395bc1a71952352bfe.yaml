@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - google-maps-in-posts
+  - dsl:
+    - compare_versions(version, '<= 1.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/google-maps-in-posts/readme.txt'
+  redirects: true
+id: google-maps-in-posts-7cfae79debe7db395bc1a71952352bfe
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/google-maps-in-posts/
+    google-query: inurl:"/wp-content/plugins/google-maps-in-posts/"
+    shodan-query: 'vuln:'
+  name: 'Google Maps in Posts <= 1.5.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f5a827b1-7f66-4a24-9e31-c3f3e36b4772?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,google-maps-in-posts,medium

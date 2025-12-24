@@ -1,0 +1,17 @@
+id: api-spotify
+info:
+  author: zzeitlin
+  name: Spotify API Test
+  reference: https://developer.spotify.com/documentation/general/guides/authorization-guide/
+  severity: info
+  tags: token-spray,spotify
+requests:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - https://api.spotify.com/v1/me

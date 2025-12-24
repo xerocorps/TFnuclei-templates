@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdirectorykit
+  - dsl:
+    - compare_versions(version, '<= 1.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdirectorykit/readme.txt'
+  redirects: true
+id: wpdirectorykit-d77844c18df31f20b34384ab00a96178
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpdirectorykit/
+    google-query: inurl:"/wp-content/plugins/wpdirectorykit/"
+    shodan-query: 'vuln:'
+  name: 'WP Directory Kit <= 1.1.9 - Open Redirect
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0f01ee24-544b-45cb-9cf3-7db8263d8e54?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpdirectorykit,low

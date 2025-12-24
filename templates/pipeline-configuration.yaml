@@ -1,0 +1,23 @@
+id: pipeline-configuration
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: html:"pipeline.yaml"
+    verified: true
+  name: Pipleline Configuration Exposure
+  severity: info
+  tags: devops,exposure,cicd
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - 'system:'
+    - 'project_name:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pipeline.yaml'

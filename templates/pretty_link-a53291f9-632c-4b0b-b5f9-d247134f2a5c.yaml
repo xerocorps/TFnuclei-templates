@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pretty-link
+  - dsl:
+    - compare_versions(version, '<= 3.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pretty-link/readme.txt'
+  redirects: true
+id: pretty_link-a53291f9-632c-4b0b-b5f9-d247134f2a5c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pretty-link/
+    google-query: inurl:"/wp-content/plugins/pretty-link/"
+    shodan-query: http.html:"wp-content/plugins/pretty-link/"
+  name: 'Shortlinks by Pretty Links <= 3.6.2 - Reflected Cross-Site Scripting via
+    post_status
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a53291f9-632c-4b0b-b5f9-d247134f2a5c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,pretty-link,medium,candidate

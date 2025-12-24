@@ -1,0 +1,16 @@
+id: amazon-docker-config
+info:
+  author: pdteam
+  name: Dockerrun AWS Configuration Exposure
+  severity: medium
+  tags: config,exposure,aws,devops
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - AWSEBDockerrunVersion
+    - containerDefinitions
+  method: GET
+  path:
+  - '{{BaseURL}}/Dockerrun.aws.json'

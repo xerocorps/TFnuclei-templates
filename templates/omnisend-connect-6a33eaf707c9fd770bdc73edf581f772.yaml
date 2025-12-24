@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - omnisend-connect
+  - dsl:
+    - compare_versions(version, '<= 1.13.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/omnisend-connect/readme.txt'
+  redirects: true
+id: omnisend-connect-6a33eaf707c9fd770bdc73edf581f772
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/omnisend-connect/
+    google-query: inurl:"/wp-content/plugins/omnisend-connect/"
+    shodan-query: 'vuln:'
+  name: 'Email Marketing for WooCommerce by Omnisend <= 1.13.8 - Sensitive Information
+    Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cc2cd74d-b828-4524-b33d-c806bfd970b9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,omnisend-connect,low

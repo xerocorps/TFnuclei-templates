@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - media-library-assistant
+  - dsl:
+    - compare_versions(version, '<= 3.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/media-library-assistant/readme.txt'
+  redirects: true
+id: media-library-assistant-e335c6a8da8d55616b8546867a24900e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/media-library-assistant/
+    google-query: inurl:"/wp-content/plugins/media-library-assistant/"
+    shodan-query: 'vuln:'
+  name: 'Media Library Assistant <= 3.07 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/639009f6-9877-45a9-b9f3-7256bc6f3360?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,media-library-assistant,medium

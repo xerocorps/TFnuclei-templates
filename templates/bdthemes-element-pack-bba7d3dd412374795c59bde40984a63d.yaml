@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bdthemes-element-pack
+  - dsl:
+    - compare_versions(version, '<= 7.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bdthemes-element-pack/readme.txt'
+  redirects: true
+id: bdthemes-element-pack-bba7d3dd412374795c59bde40984a63d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bdthemes-element-pack/
+    google-query: inurl:"/wp-content/plugins/bdthemes-element-pack/"
+    shodan-query: 'vuln:'
+  name: 'Element Pack - Addon for Elementor Page Builder WordPress Plugin <= 7.9.0
+    - Authenticated(Contributor+) Stored Cross-Site Scripting via Wrapper Link URL
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1903527e-d7d9-48a0-b59d-65ec5e14def2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bdthemes-element-pack,low

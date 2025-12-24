@@ -1,0 +1,28 @@
+id: nagvis-panel
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: http.html:"NagVis"
+    verified: true
+  name: Nagvis Panel Detect
+  severity: info
+  tags: panel,nagvis
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - /nagvis/userfiles
+    - <title>NagVis
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/nagvis/frontend/nagvis-js/index.php'
+  redirects: true
+  stop-at-first-match: true

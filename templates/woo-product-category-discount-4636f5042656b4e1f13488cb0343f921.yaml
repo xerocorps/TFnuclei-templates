@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-product-category-discount
+  - dsl:
+    - compare_versions(version, '<= 4.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-product-category-discount/readme.txt'
+  redirects: true
+id: woo-product-category-discount-4636f5042656b4e1f13488cb0343f921
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-product-category-discount/
+    google-query: inurl:"/wp-content/plugins/woo-product-category-discount/"
+    shodan-query: 'vuln:'
+  name: 'Category Discount Woocommerce <= 4.11 - Cross-Site Request Forgery via wpcd_save_discount()
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f04dee5b-d16f-4ef0-88a4-1567e2287bd5?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-product-category-discount,medium

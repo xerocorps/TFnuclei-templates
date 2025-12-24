@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - accesspress-lite
+  - dsl:
+    - compare_versions(version, '<= 2.92')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/accesspress-lite/style.css'
+  redirects: true
+id: accesspress-lite-4e4b0c9d94ab1b4da1d632c804d14f1c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/accesspress-lite/
+    google-query: inurl:"/wp-content/themes/accesspress-lite/"
+    shodan-query: 'vuln:'
+  name: 'AccessPress Themes and Plugin <= Various Versions - Authenticated (Subscriber+)
+    Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4ef1a097-955c-4a0e-a1a2-b34ae2903d0e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,accesspress-lite,low

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - blog2social
+  - dsl:
+    - compare_versions(version, '< 5.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/blog2social/readme.txt'
+  redirects: true
+id: blog2social-9a954643ceffda8786725a993148110d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/blog2social/
+    google-query: inurl:"/wp-content/plugins/blog2social/"
+    shodan-query: 'vuln:'
+  name: 'Blog2Social: Social Media Auto Post & Scheduler < 5.9.0 - Reflected Cross-Site
+    Scripting via b2s_id Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/81108abb-69e5-4571-8209-484b4b0f5617?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,blog2social,medium

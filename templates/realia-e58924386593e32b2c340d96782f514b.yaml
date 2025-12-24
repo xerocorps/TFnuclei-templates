@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - realia
+  - dsl:
+    - compare_versions(version, '<= 1.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/realia/readme.txt'
+  redirects: true
+id: realia-e58924386593e32b2c340d96782f514b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/realia/
+    google-query: inurl:"/wp-content/plugins/realia/"
+    shodan-query: 'vuln:'
+  name: 'Realia <= 1.4.0 - Arbitrary Post Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0ee4fe34-e6ae-4f37-a1a7-ebb153ae7a67?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,realia,low

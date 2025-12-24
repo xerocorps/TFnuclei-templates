@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - element-ready-lite
+  - dsl:
+    - compare_versions(version, '<= 6.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/element-ready-lite/readme.txt'
+  redirects: true
+id: element_ready_lite-a33c0e7e-42d3-442e-886e-e0a71cdbf628
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/element-ready-lite/
+    google-query: inurl:"/wp-content/plugins/element-ready-lite/"
+    shodan-query: http.html:"wp-content/plugins/element-ready-lite/"
+  name: 'ElementsReady Addons for Elementor <= 6.4.7 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a33c0e7e-42d3-442e-886e-e0a71cdbf628?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,element-ready-lite,low,candidate

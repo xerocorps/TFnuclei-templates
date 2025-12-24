@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-mstoreapp-mobile-app
+  - dsl:
+    - compare_versions(version, '<= 2.08')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-mstoreapp-mobile-app/readme.txt'
+  redirects: true
+id: woo_mstoreapp_mobile_app-c959fac5-d881-403d-85e0-edf4cb1be02e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-mstoreapp-mobile-app/
+    google-query: inurl:"/wp-content/plugins/woo-mstoreapp-mobile-app/"
+    shodan-query: http.html:"wp-content/plugins/woo-mstoreapp-mobile-app/"
+  name: 'Mstoreapp Mobile <= 2.08 & <= 9.0.1 - Unauthenticated Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c959fac5-d881-403d-85e0-edf4cb1be02e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-mstoreapp-mobile-app,low,candidate

@@ -1,0 +1,20 @@
+id: epmp-login
+info:
+  author: dhiyaneshDk
+  name: ePMP 2000 Login
+  reference: https://www.exploit-db.com/ghdb/6826
+  severity: info
+  tags: iot
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>ePMP</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

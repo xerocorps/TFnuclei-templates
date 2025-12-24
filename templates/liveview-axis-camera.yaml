@@ -1,0 +1,19 @@
+id: liveview-axis-camera
+info:
+  author: dhiyaneshDK
+  name: Live view AXIS Network Camera
+  reference: https://www.exploit-db.com/ghdb/6843
+  severity: info
+  tags: iot
+requests:
+- matchers:
+  - type: word
+    words:
+    - Live view  - AXIS
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/view/viewer_index.shtml'

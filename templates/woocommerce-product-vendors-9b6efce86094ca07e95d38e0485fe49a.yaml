@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-product-vendors
+  - dsl:
+    - compare_versions(version, '<= 2.1.76')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-product-vendors/readme.txt'
+  redirects: true
+id: woocommerce-product-vendors-9b6efce86094ca07e95d38e0485fe49a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-product-vendors/
+    google-query: inurl:"/wp-content/plugins/woocommerce-product-vendors/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Product Vendors <= 2.1.76 - Authenticated (Vendor admin+) SQL
+    Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ed8f8984-bea6-44aa-9bde-5b40b455767f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-product-vendors,low

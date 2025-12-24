@@ -1,0 +1,23 @@
+id: jamf-login
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: title:"Jamf Pro"
+    verified: true
+  name: Jamf Pro Login
+  severity: info
+  tags: panel,jamf
+requests:
+- matchers:
+  - regex:
+    - <title>Jamf Pro Login(.*)</title>
+    type: regex
+  - status:
+    - 401
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

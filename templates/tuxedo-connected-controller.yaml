@@ -1,0 +1,20 @@
+id: tuxedo-connected-controller
+info:
+  author: dhiyaneshDk
+  name: Tuxedo Connected Controller
+  reference: https://www.exploit-db.com/ghdb/6486
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Tuxedo Connected Controller</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'

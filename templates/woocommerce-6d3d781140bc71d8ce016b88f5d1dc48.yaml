@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce
+  - dsl:
+    - compare_versions(version, '< 4.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce/readme.txt'
+  redirects: true
+id: woocommerce-6d3d781140bc71d8ce016b88f5d1dc48
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The WooCommerce plugin for WordPress is vulnerable to Reflected Cross-Site
+    Scripting due to missing sanitization and escaping in SelectWoo, that makes it
+    possible for attackers to inject arbitrary web scripts. This affects versions
+    up to 4.2.1.
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce/
+    google-query: inurl:"/wp-content/plugins/woocommerce/"
+    shodan-query: 'vuln:'
+  name: WooCommerce <= 4.2.0 - Reflected Cross-Site Scripting
+  reference:
+  - https://woocommerce.wordpress.com/2020/06/22/woocommerce-4-2-1-security-and-fix-release/
+  - https://github.com/woocommerce/selectWoo/releases/tag/1.0.7
+  - https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/changelog.txt
+  - https://github.com/woocommerce/selectWoo/commit/b12317d5dcfd7da5f5c699db8fe2018eebc3b546
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce,medium

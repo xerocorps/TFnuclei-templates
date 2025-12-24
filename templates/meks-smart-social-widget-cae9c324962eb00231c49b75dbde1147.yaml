@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - meks-smart-social-widget
+  - dsl:
+    - compare_versions(version, '<= 1.6.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/meks-smart-social-widget/readme.txt'
+  redirects: true
+id: meks-smart-social-widget-cae9c324962eb00231c49b75dbde1147
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/meks-smart-social-widget/
+    google-query: inurl:"/wp-content/plugins/meks-smart-social-widget/"
+    shodan-query: 'vuln:'
+  name: 'Meks Smart Social Widget <= 1.6.4 - Authenticated (Admin+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/578ed437-98b7-495b-91fd-45b882f39d95?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,meks-smart-social-widget,low

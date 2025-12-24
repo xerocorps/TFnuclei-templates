@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - buddyboss-platform
+  - dsl:
+    - compare_versions(version, '<= 2.7.70')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/buddyboss-platform/readme.txt'
+  redirects: true
+id: buddyboss_platform-42743c2f-053b-4f14-bf11-865f978ec017
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/buddyboss-platform/
+    google-query: inurl:"/wp-content/plugins/buddyboss-platform/"
+    shodan-query: http.html:"wp-content/plugins/buddyboss-platform/"
+  name: 'BuddyBoss Platform <= 2.7.70 - Authenticated (Subscriber+) Stored Cross-Site
+    Scripting via ''link_title''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/42743c2f-053b-4f14-bf11-865f978ec017?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,buddyboss-platform,low,candidate

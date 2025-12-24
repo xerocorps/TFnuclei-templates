@@ -1,0 +1,20 @@
+id: jetty-showcontexts-enable
+info:
+  author: dhiyaneshDK
+  name: Jetty showContexts Enable in DefaultHandler
+  reference:
+  - https://github.com/jaeles-project/jaeles-signatures/blob/master/common/jetty-showcontexts-enable.yaml
+  severity: low
+  tags: jetty
+requests:
+- matchers:
+  - type: word
+    words:
+    - 'Contexts known to this server are:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

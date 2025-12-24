@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - addons-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 8.3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/addons-for-elementor/readme.txt'
+  redirects: true
+id: addons-for-elementor-7c2a94c65e9dec423e8344028c09f506
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/addons-for-elementor/
+    google-query: inurl:"/wp-content/plugins/addons-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Elementor Addons by Livemesh <= 8.3.7 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via Marquee Text Widget, Testimonials Widget, and Testimonial
+    Slider Widgets
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/58dfd766-7156-4aec-b8db-76908b775ba0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,addons-for-elementor,low

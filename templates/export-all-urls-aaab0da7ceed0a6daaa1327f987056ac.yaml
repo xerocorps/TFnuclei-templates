@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - export-all-urls
+  - dsl:
+    - compare_versions(version, '<= 4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/export-all-urls/readme.txt'
+  redirects: true
+id: export-all-urls-aaab0da7ceed0a6daaa1327f987056ac
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/export-all-urls/
+    google-query: inurl:"/wp-content/plugins/export-all-urls/"
+    shodan-query: 'vuln:'
+  name: 'Export All URLs <= 4.5 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/066c9327-6d72-41f9-895e-d14fe6471832?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,export-all-urls,medium

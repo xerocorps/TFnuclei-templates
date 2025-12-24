@@ -1,0 +1,48 @@
+flow: 'http()
+
+  javascript()
+
+  '
+http:
+- host-redirects: true
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: cookies-without-secure
+info:
+  author: vthiery,RJ Coleman
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+  description: 'Checks whether cookies in the HTTP response contain the Secure attribute.
+    If the Secure flag is set, it means that the cookie can only be transmitted over
+    HTTPS
+
+    '
+  impact: 'Lack of Secure flag on cookies allows the cookie to be sent over unsecure
+    HTTP, making it vulnerable to man-in-the-middle (MITM) attacks.
+
+    '
+  metadata:
+    max-request: 1
+    verified: true
+  name: Cookies without Secure attribute - Detect
+  reference:
+  - https://owasp.org/www-community/controls/SecureCookieAttribute
+  remediation: 'Ensure that all cookies are set with the Secure attribute to prevent
+    MITM attacks.
+
+    '
+  severity: info
+  tags: misconfig,http,cookie,generic,vuln
+javascript:
+- code: "content = template.http_all_headers\nconst setCookieLines = content\n  .split(/\\\
+    r\\n/)\n  .filter(line => line.trim().toLowerCase().startsWith('set-cookie:'));\n\
+    const nonSecureCookies = setCookieLines.filter(line => !line.toLowerCase().includes('secure'));\n\
+    const cookieNames = nonSecureCookies.map(line => {\n  const match = line.match(/set-cookie:\\\
+    s*([^=]+)=/i);\n  return match ? match[1] : null;\n}).filter(Boolean);\ncookieNames\n"
+  extractors:
+  - regex:
+    - '[a-zA-Z0-9_-]+'
+    type: regex

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - elementskit-lite
+  - dsl:
+    - compare_versions(version, '<= 3.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/elementskit-lite/readme.txt'
+  redirects: true
+id: elementskit-lite-87ba0a93b883572493426b530fd60dcc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/elementskit-lite/
+    google-query: inurl:"/wp-content/plugins/elementskit-lite/"
+    shodan-query: 'vuln:'
+  name: 'ElementsKit Elementor addons <= 3.0.4 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1822fd58-0dba-4b15-9702-32e3aa4405b3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,elementskit-lite,low

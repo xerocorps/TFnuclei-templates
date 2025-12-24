@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - js-support-ticket
+  - dsl:
+    - compare_versions(version, '<= 2.7.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/js-support-ticket/readme.txt'
+  redirects: true
+id: js_support_ticket-fa75366a-651c-43d0-a32b-cdabf5b07b66
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/js-support-ticket/
+    google-query: inurl:"/wp-content/plugins/js-support-ticket/"
+    shodan-query: http.html:"wp-content/plugins/js-support-ticket/"
+  name: "JS Help Desk \u2013 Best Help Desk & Support Plugin <= 2.7.7 - Authenticated\
+    \ (Administrator+) Arbitrary File Upload\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fa75366a-651c-43d0-a32b-cdabf5b07b66?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,js-support-ticket,low,candidate

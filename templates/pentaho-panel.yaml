@@ -1,0 +1,16 @@
+id: pentaho-panel
+info:
+  author: princechaddha,dhiyaneshDK
+  metadata:
+    shodan-query: pentaho
+  name: Pentaho Panel
+  severity: info
+  tags: panel,pentaho
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Pentaho User Console - Login</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/pentaho/Login'

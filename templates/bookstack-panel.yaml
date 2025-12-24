@@ -1,0 +1,36 @@
+id: bookstack-panel
+info:
+  author: cyllective,daffainfo
+  description: A platform to create documentation/wiki content built with PHP & Laravel
+  metadata:
+    shodan-query: http.title:"BookStack"
+  name: BookStack Panel Login
+  reference:
+  - https://github.com/BookStackApp/BookStack
+  severity: info
+  tags: panel,bookstack
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - (?:app\.js|(?:print\-)?styles\.css)\?version=([\w\.\-]+)["']>
+    type: regex
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>BookStack</title>
+    - <span class="logo-text">BookStack</span>
+  - part: header
+    type: word
+    words:
+    - 'Set-Cookie: bookstack_session'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

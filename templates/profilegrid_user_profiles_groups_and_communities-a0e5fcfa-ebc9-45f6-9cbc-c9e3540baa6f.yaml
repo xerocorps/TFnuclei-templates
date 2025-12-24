@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profilegrid-user-profiles-groups-and-communities
+  - dsl:
+    - compare_versions(version, '<= 5.9.3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profilegrid-user-profiles-groups-and-communities/readme.txt'
+  redirects: true
+id: profilegrid_user_profiles_groups_and_communities-a0e5fcfa-ebc9-45f6-9cbc-c9e3540baa6f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profilegrid-user-profiles-groups-and-communities/
+    google-query: inurl:"/wp-content/plugins/profilegrid-user-profiles-groups-and-communities/"
+    shodan-query: http.html:"wp-content/plugins/profilegrid-user-profiles-groups-and-communities/"
+  name: "ProfileGrid \u2013 User Profiles, Groups and Communities <= 5.9.3.6 - Missing\
+    \ Authorization to Authenticated (Subscriber+) Arbitrary User Meta Deletion\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a0e5fcfa-ebc9-45f6-9cbc-c9e3540baa6f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,profilegrid-user-profiles-groups-and-communities,low,candidate

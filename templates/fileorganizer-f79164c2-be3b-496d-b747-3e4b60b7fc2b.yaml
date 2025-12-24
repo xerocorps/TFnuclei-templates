@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fileorganizer
+  - dsl:
+    - compare_versions(version, '<= 1.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fileorganizer/readme.txt'
+  redirects: true
+id: fileorganizer-f79164c2-be3b-496d-b747-3e4b60b7fc2b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fileorganizer/
+    google-query: inurl:"/wp-content/plugins/fileorganizer/"
+    shodan-query: http.html:"wp-content/plugins/fileorganizer/"
+  name: 'FileOrganizer <= 1.0.9 - Authenticated (Subscriber+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f79164c2-be3b-496d-b747-3e4b60b7fc2b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fileorganizer,low,candidate

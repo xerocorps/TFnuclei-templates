@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vernissage
+  - dsl:
+    - compare_versions(version, '<= 1.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/vernissage/style.css'
+  redirects: true
+id: vernissage-56405a91-259c-4700-bbc1-ffe0d77f3974
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/vernissage/
+    google-query: inurl:"/wp-content/themes/vernissage/"
+    shodan-query: http.html:"wp-content/themes/vernissage/"
+  name: 'Vernissage <= 1.2.9 - Arbitrary Options Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/56405a91-259c-4700-bbc1-ffe0d77f3974?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,vernissage,low,candidate

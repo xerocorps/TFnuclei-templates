@@ -1,0 +1,22 @@
+id: sidekiq-dashboard
+info:
+  author: dhiyaneshDK
+  name: sidekiq-dashboard
+  reference:
+  - https://sidekiq.org
+  - https://github.com/mperham/sidekiq
+  severity: medium
+  tags: unauth,panel,sidekiq
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Sidekiq</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sidekiq'

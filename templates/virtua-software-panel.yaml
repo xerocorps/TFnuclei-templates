@@ -1,0 +1,22 @@
+id: virtua-software-panel
+info:
+  author: princechaddha
+  metadata:
+    shodan-query: http.favicon.hash:876876147
+    verified: true
+  name: Virtua Software Panel
+  severity: info
+  tags: panel,virtua
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title id="tituloPagina">Virtua Software</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

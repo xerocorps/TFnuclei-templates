@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wechat-reward
+  - dsl:
+    - compare_versions(version, '<= 1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wechat-reward/readme.txt'
+  redirects: true
+id: wechat-reward-7f155dfe1d3cce8791fd074724b6b008
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wechat-reward/
+    google-query: inurl:"/wp-content/plugins/wechat-reward/"
+    shodan-query: 'vuln:'
+  name: 'Wechat Reward <= 1.7 - Cross-Site Request Forgery to Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4b0f5c2c-f01a-4a09-99c2-2b7dfe3bcd05?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wechat-reward,medium

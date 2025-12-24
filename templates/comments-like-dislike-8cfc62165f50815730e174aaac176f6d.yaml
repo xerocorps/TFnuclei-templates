@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - comments-like-dislike
+  - dsl:
+    - compare_versions(version, '< 1.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/comments-like-dislike/readme.txt'
+  redirects: true
+id: comments-like-dislike-8cfc62165f50815730e174aaac176f6d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/comments-like-dislike/
+    google-query: inurl:"/wp-content/plugins/comments-like-dislike/"
+    shodan-query: 'vuln:'
+  name: 'Comments Like Dislike <= 1.1.2 - Add Like/Dislike Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f71e60b9-68e9-408a-8047-7f74b7fb72b2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,comments-like-dislike,low

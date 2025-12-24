@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - review-schema
+  - dsl:
+    - compare_versions(version, '<= 2.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/review-schema/readme.txt'
+  redirects: true
+id: review_schema-9b4de243-d337-4f29-a766-bcafb3848d1c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/review-schema/
+    google-query: inurl:"/wp-content/plugins/review-schema/"
+    shodan-query: http.html:"wp-content/plugins/review-schema/"
+  name: 'Review Schema <= 2.2.4 - Authenticated (Contributor+) Local File Inclusion
+    via Post Meta
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9b4de243-d337-4f29-a766-bcafb3848d1c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,review-schema,low,candidate

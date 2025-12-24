@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - iwjob
+  - dsl:
+    - compare_versions(version, '<= 3.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/iwjob/readme.txt'
+  redirects: true
+id: iwjob-f86602f7-8e19-4728-b614-263c36bda565
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/iwjob/
+    google-query: inurl:"/wp-content/plugins/iwjob/"
+    shodan-query: http.html:"wp-content/plugins/iwjob/"
+  name: 'InWave Jobs <= 3.5.8 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f86602f7-8e19-4728-b614-263c36bda565?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,iwjob,high,candidate

@@ -1,0 +1,21 @@
+id: teradici-pcoip-panel
+info:
+  author: princechaddha
+  name: Teradici PCoIP Zero Client Panel
+  severity: info
+  tags: panel,teradici,pcoip
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <h4>PCoIP&#174 Zero Client</h4>
+    - terastyle.css
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'

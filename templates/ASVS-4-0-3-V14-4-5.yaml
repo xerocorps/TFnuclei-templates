@@ -1,0 +1,49 @@
+http:
+- extractors:
+  - kval:
+    - Strict_Transport_Security
+    name: Strict-Transport-Security
+    part: header
+    type: kval
+  matchers:
+  - name: '''Strict-Transport-Security'' (HSTS) header does not exist.'
+    negative: true
+    part: header
+    type: word
+    words:
+    - 'Strict-Transport-Security:'
+  - name: '''Strict-Transport-Security'' (HSTS) header does not include subdomains.'
+    negative: true
+    part: header
+    regex:
+    - (?i)Strict-Transport-Security:\s*.*\bincludeSubdomains\b
+    type: regex
+  raw:
+  - 'GET {{BaseURL}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Connection: close
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/116.0.0.0 Safari/537.36
+
+    Accept: */*
+
+    '
+  stop-at-first-match: true
+id: ASVS-4-0-3-V14-4-5
+info:
+  author: Hamed Salimian
+  classification:
+    cwe-id: CWE-523
+  description: 'Verify that a Strict-Transport-Security header is included on all
+    responses and for all subdomains, such as Strict-Transport-Security: max-age=15724800;
+    includeSubdomains.
+
+    '
+  name: ASVS 14.4.5 Check
+  reference:
+  - https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
+  severity: low
+  tags: asvs,14.4.5

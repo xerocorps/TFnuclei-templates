@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-addons-for-beaver-builder
+  - dsl:
+    - compare_versions(version, '<= 1.24.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-addons-for-beaver-builder/readme.txt'
+  redirects: true
+id: ultimate-addons-for-beaver-builder-69ad1465e32b50f09add60d551971886
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-addons-for-beaver-builder/
+    google-query: inurl:"/wp-content/plugins/ultimate-addons-for-beaver-builder/"
+    shodan-query: 'vuln:'
+  name: "Ultimate Addons for Beaver Builder \u2013 Lite <= 1.24.3 - Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f70b66ad-55fb-45f8-944a-2c8712071113?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ultimate-addons-for-beaver-builder,high

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - paid-memberships-pro
+  - dsl:
+    - compare_versions(version, '< 2.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/paid-memberships-pro/readme.txt'
+  redirects: true
+id: paid-memberships-pro-800a9d312cf8fe92abae30bbe9154062
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/paid-memberships-pro/
+    google-query: inurl:"/wp-content/plugins/paid-memberships-pro/"
+    shodan-query: 'vuln:'
+  name: "Paid Memberships Pro \u2013 Restrict Member Access to Content, Courses, Communities\
+    \ \u2013 Free or Paid Subscriptions <= 2.5.2 - IDOR to Sensitive Information Disclosure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0eb90948-b2b6-4e30-b903-95b7bce5d734?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,paid-memberships-pro,low

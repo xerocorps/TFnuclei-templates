@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-topbar
+  - dsl:
+    - compare_versions(version, '<= 4.02')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-topbar/readme.txt'
+  redirects: true
+id: wp-topbar-27628df6076d5a1d6b094f150b593a9d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The WP-TopBar plugin for WordPress is vulnerable to Cross-Site Request
+    Forgery in versions up to, and including, 4.02. This is due to missing or incorrect
+    nonce validation in the admin pages. This makes it possible for unauthenticated
+    attackers to gain otherwise restricted access and perform subsequent Stored Cross-Site
+    Scripting attacks via a forged request granted they can trick a site administrator
+    into performing an action such as clicking on a link.
+  metadata:
+    fofa-query: wp-content/plugins/wp-topbar/
+    google-query: inurl:"/wp-content/plugins/wp-topbar/"
+    shodan-query: 'vuln:'
+  name: WP-TopBar <= 4.02 - Cross-Site Request Forgery to Stored Cross-Site Scripting
+  reference:
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-wp-topbar-cross-site-scripting-and-cross-site-request-forgery-vulnerabilities-4-02/
+  - https://wpscan.com/vulnerability/380bfdd2-5bb5-4416-9a5a-e037d0c2858a
+  - https://www.exploit-db.com/exploits/21393
+  - https://packetstormsecurity.com/files/116716/WordPress-Wp-TopBar-4.02-CSRF-XSS.html
+  - https://wordpress.org/plugins/wp-topbar/#developers
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-topbar,medium

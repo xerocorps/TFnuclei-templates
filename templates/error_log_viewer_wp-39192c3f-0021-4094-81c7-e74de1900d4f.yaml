@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - error-log-viewer-wp
+  - dsl:
+    - compare_versions(version, '<= 1.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/error-log-viewer-wp/readme.txt'
+  redirects: true
+id: error_log_viewer_wp-39192c3f-0021-4094-81c7-e74de1900d4f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/error-log-viewer-wp/
+    google-query: inurl:"/wp-content/plugins/error-log-viewer-wp/"
+    shodan-query: http.html:"wp-content/plugins/error-log-viewer-wp/"
+  name: 'Error Log Viewer <= 1.0.5 - Authenticated (Subscriber+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/39192c3f-0021-4094-81c7-e74de1900d4f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,error-log-viewer-wp,low,candidate

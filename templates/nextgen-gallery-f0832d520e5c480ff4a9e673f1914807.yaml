@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nextgen-gallery
+  - dsl:
+    - compare_versions(version, '<= 3.38')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nextgen-gallery/readme.txt'
+  redirects: true
+id: nextgen-gallery-f0832d520e5c480ff4a9e673f1914807
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nextgen-gallery/
+    google-query: inurl:"/wp-content/plugins/nextgen-gallery/"
+    shodan-query: 'vuln:'
+  name: "WordPress Gallery Plugin \u2013 NextGEN Gallery <= 3.38 - Authenticated (Admin+)\
+    \ PHAR Deserialization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/edaec73f-25b5-4ace-afef-844eb4143bf2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,nextgen-gallery,low

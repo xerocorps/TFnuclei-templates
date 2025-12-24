@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simply-poll
+  - dsl:
+    - compare_versions(version, '<= 1.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simply-poll/readme.txt'
+  redirects: true
+id: simply-poll-97da42df5c5188113e86642aebebebff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simply-poll/
+    google-query: inurl:"/wp-content/plugins/simply-poll/"
+    shodan-query: 'vuln:'
+  name: 'Simply Poll <= 1.4.1 - Cross-Site Request Forgery and Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/63323552-354b-44b6-81a4-0b6e82480910?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,simply-poll,medium

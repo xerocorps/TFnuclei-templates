@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - betterlinks
+  - dsl:
+    - compare_versions(version, '<= 1.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/betterlinks/readme.txt'
+  redirects: true
+id: betterlinks-e81e58faf106cbd4526f30f15647d120
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/betterlinks/
+    google-query: inurl:"/wp-content/plugins/betterlinks/"
+    shodan-query: 'vuln:'
+  name: 'BetterLinks <= 1.6.0 - Improper Authorization to Data Import and Export
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/92b8829e-a8eb-4fdb-a772-9efbb5aaeb6c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,betterlinks,low

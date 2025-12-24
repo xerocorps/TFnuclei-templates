@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tainacan
+  - dsl:
+    - compare_versions(version, '<= 0.20.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tainacan/readme.txt'
+  redirects: true
+id: tainacan-5e847519857e15b2f99df9a5e7a22922
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tainacan/
+    google-query: inurl:"/wp-content/plugins/tainacan/"
+    shodan-query: 'vuln:'
+  name: 'Tainacan <= 0.20.6 - Unauthenticated Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/db4b6c65-f6e2-46de-81d7-a31541d0a67a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tainacan,low

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sql-shortcode
+  - dsl:
+    - compare_versions(version, '<=  1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sql-shortcode/readme.txt'
+  redirects: true
+id: sql-shortcode-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The SQL Shortcode plugin for WordPress is vulnerable to SQL Execution
+    in versions up to, and including, 1.1. This is due to the user inputted information
+    being directly submitted to an SQL query. This makes it possible for authenticated
+    attackers to execute arbitrary SQL code.
+  metadata:
+    fofa-query: wp-content/plugins/sql-shortcode/
+    google-query: inurl:"/wp-content/plugins/sql-shortcode/"
+    shodan-query: 'vuln:'
+  name: SQL Shortcode <= 1.1 - SQL Execution
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,sql-shortcode,low

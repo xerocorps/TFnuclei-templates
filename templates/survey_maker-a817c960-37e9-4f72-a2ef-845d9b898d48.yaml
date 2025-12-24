@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - survey-maker
+  - dsl:
+    - compare_versions(version, '<= 2.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/survey-maker/readme.txt'
+  redirects: true
+id: survey_maker-a817c960-37e9-4f72-a2ef-845d9b898d48
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/survey-maker/
+    google-query: inurl:"/wp-content/plugins/survey-maker/"
+    shodan-query: http.html:"wp-content/plugins/survey-maker/"
+  name: 'Survey Maker <= 2.0.6 - Unauthenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a817c960-37e9-4f72-a2ef-845d9b898d48?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,survey-maker,high,candidate

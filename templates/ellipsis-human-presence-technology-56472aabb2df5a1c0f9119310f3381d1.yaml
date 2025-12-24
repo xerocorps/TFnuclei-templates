@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ellipsis-human-presence-technology
+  - dsl:
+    - compare_versions(version, '< 2.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ellipsis-human-presence-technology/readme.txt'
+  redirects: true
+id: ellipsis-human-presence-technology-56472aabb2df5a1c0f9119310f3381d1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ellipsis-human-presence-technology/
+    google-query: inurl:"/wp-content/plugins/ellipsis-human-presence-technology/"
+    shodan-query: 'vuln:'
+  name: "Human Presence \u2013 Stop Form Spam Without ReCaptcha < 2.0.9 - Reflected\
+    \ Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/33e010dd-d9b2-410c-8397-638def946fbe?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ellipsis-human-presence-technology,medium

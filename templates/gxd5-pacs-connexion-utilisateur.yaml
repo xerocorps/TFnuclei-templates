@@ -1,0 +1,20 @@
+id: gxd5-pacs-connexion-utilisateur
+info:
+  author: dhiyaneshDK
+  name: GXD5 Pacs Connexion utilisateur
+  reference:
+  - https://www.shodan.io/search?query=http.title%3A%22GXD5+Pacs+Connexion+utilisateur%22
+  severity: info
+  tags: panel,login
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>GXD5 Pacs Connexion utilisateur</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

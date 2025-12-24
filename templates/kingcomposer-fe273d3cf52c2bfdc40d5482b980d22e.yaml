@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kingcomposer
+  - dsl:
+    - compare_versions(version, '<= 2.9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/kingcomposer/readme.txt'
+  redirects: true
+id: kingcomposer-fe273d3cf52c2bfdc40d5482b980d22e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/kingcomposer/
+    google-query: inurl:"/wp-content/plugins/kingcomposer/"
+    shodan-query: 'vuln:'
+  name: 'Page Builder: KingComposer < 2.9.4 - Authorization Bypass due to Improper
+    Access Control
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1bdba04e-df4d-4094-877e-611d69e2e25d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,kingcomposer,high

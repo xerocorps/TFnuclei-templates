@@ -1,0 +1,15 @@
+id: slack-user-token
+info:
+  author: Ice3man
+  name: Slack User token disclosure
+  severity: info
+  tags: exposure,token,slack
+requests:
+- extractors:
+  - part: body
+    regex:
+    - xoxp-[0-9A-Za-z\-]{72}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

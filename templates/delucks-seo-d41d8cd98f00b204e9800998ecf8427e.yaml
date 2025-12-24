@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - delucks-seo
+  - dsl:
+    - compare_versions(version, '<=  2.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/delucks-seo/readme.txt'
+  redirects: true
+id: delucks-seo-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The DELUCKS SEO plugin for WordPress is vulnerable to Stored Cross-Site
+    Scripting via the saveSettings() function that had no capability checks in versions
+    up to, and including, 2.1.7 due to insufficient input sanitization and output
+    escaping. This makes it possible for unauthenticated attackers to inject arbitrary
+    web scripts in pages that execute whenever a victim accesses the page.
+  metadata:
+    fofa-query: wp-content/plugins/delucks-seo/
+    google-query: inurl:"/wp-content/plugins/delucks-seo/"
+    shodan-query: 'vuln:'
+  name: DELUCKS SEO < 2.1.8 -  Stored Cross Site Scripting
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,delucks-seo,low

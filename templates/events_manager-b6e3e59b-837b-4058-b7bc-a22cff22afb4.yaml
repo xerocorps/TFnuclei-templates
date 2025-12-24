@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - events-manager
+  - dsl:
+    - compare_versions(version, '>= 7.0.1', '<= 7.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/events-manager/readme.txt'
+  redirects: true
+id: events_manager-b6e3e59b-837b-4058-b7bc-a22cff22afb4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/events-manager/
+    google-query: inurl:"/wp-content/plugins/events-manager/"
+    shodan-query: http.html:"wp-content/plugins/events-manager/"
+  name: 'Event Manager <= 7.0.3 - Reflected Cross-Site Scripting via `calendar_header`
+    Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b6e3e59b-837b-4058-b7bc-a22cff22afb4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,events-manager,medium,candidate

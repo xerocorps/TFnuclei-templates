@@ -1,0 +1,25 @@
+id: adselfservice-version-detect
+info:
+  author: SaK1
+  name: ADSelfService Version Detect
+  severity: info
+  tags: panel,zoho,manageengine
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - '"BUILD_NUMBER":"([0-9]+)"'
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"PRODUCT_NAME":"ManageEngine ADSelfService'
+  - status:
+    - 200
+    type: status
+  method: POST
+  path:
+  - '{{BaseURL}}/servlet/GetProductVersion'

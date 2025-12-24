@@ -1,0 +1,41 @@
+fingerprint:
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - WebSockets request was expected
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - not a WebSocket handshake
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - wss://
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - ws://
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+name: websocket
+nuclei_tags:
+- []
+priority: 3

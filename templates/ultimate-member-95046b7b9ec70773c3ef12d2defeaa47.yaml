@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-member
+  - dsl:
+    - compare_versions(version, '>= 1.0', '<= 2.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-member/readme.txt'
+  redirects: true
+id: ultimate-member-95046b7b9ec70773c3ef12d2defeaa47
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-member/
+    google-query: inurl:"/wp-content/plugins/ultimate-member/"
+    shodan-query: 'vuln:'
+  name: "Ultimate Member \u2013 User Profile, User Registration, Login & Membership\
+    \ Plugin <= 2.5.0 - Authenticated (Admin+) Directory Traversal\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/04cd8da4-9da3-4c80-a77e-c2f792391593?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-member,low

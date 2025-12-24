@@ -1,0 +1,18 @@
+id: beyondtrust-panel
+info:
+  author: r3dg33k,nuk3s3c
+  description: Detects default Login page for Beyond Trust PAM solution
+  metadata:
+    shodan-query: http.html:"BeyondInsight"
+  name: BeyondTrust Login Panel
+  severity: info
+  tags: beyondtrust,pam,panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>BeyondInsight</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/WebConsole/'

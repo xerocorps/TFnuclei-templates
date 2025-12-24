@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - animate-it
+  - dsl:
+    - compare_versions(version, '<= 2.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/animate-it/readme.txt'
+  redirects: true
+id: animate-it-6b9a7df6e910b5db4188ee83ba7e9885
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/animate-it/
+    google-query: inurl:"/wp-content/plugins/animate-it/"
+    shodan-query: 'vuln:'
+  name: 'Animate It <= 2.3.5 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/49b296a5-8721-4835-b2c1-ab45045be595?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,animate-it,medium

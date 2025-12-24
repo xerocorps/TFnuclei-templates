@@ -1,0 +1,18 @@
+id: tyan-rmm-ui-detect
+info:
+  author: c-sh0
+  description: Tyan Remote Management Module (RMM) UI Detection
+  name: Tyan Remote Management Module (RMM) UI Detection
+  severity: info
+  tags: tech,bmc,tyan
+requests:
+- matchers:
+  - dsl:
+    - status_code==200 && ("588388261" == mmh3(base64_py(body)))
+    type: dsl
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true
+  stop-at-first-match: true

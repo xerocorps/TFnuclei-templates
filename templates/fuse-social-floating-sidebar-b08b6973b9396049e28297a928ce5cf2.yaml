@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fuse-social-floating-sidebar
+  - dsl:
+    - compare_versions(version, '<= 5.4.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fuse-social-floating-sidebar/readme.txt'
+  redirects: true
+id: fuse-social-floating-sidebar-b08b6973b9396049e28297a928ce5cf2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fuse-social-floating-sidebar/
+    google-query: inurl:"/wp-content/plugins/fuse-social-floating-sidebar/"
+    shodan-query: 'vuln:'
+  name: 'Fuse Social Floating Sidebar <= 5.4.10 - Authenticated (Author+) Stored Cross-Site
+    Scripting via File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1a3137a1-8e46-44c6-8edd-ad9fc4d66e0b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fuse-social-floating-sidebar,low

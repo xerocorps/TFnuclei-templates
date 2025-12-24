@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cleantalk-spam-protect
+  - dsl:
+    - compare_versions(version, '<= 6.43.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cleantalk-spam-protect/readme.txt'
+  redirects: true
+id: cleantalk_spam_protect-d7eb5fad-bb62-4f0b-ad52-b16c3e442b62
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cleantalk-spam-protect/
+    google-query: inurl:"/wp-content/plugins/cleantalk-spam-protect/"
+    shodan-query: http.html:"wp-content/plugins/cleantalk-spam-protect/"
+  name: 'Spam protection, Anti-Spam, FireWall by CleanTalk <= 6.43.2 - Authorization
+    Bypass via Reverse DNS Spoofing to Unauthenticated Arbitrary Plugin Installation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d7eb5fad-bb62-4f0b-ad52-b16c3e442b62?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,cleantalk-spam-protect,high,candidate

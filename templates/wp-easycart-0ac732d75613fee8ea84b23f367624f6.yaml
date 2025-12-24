@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-easycart
+  - dsl:
+    - compare_versions(version, '<= 5.5.19')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-easycart/readme.txt'
+  redirects: true
+id: wp-easycart-0ac732d75613fee8ea84b23f367624f6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-easycart/
+    google-query: inurl:"/wp-content/plugins/wp-easycart/"
+    shodan-query: 'vuln:'
+  name: 'WP EasyCart <= 5.5.19 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/78e27833-d5e5-4ed9-b8a2-98a14586651a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-easycart,high

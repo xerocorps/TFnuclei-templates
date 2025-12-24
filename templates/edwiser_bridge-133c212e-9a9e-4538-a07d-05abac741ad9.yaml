@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - edwiser-bridge
+  - dsl:
+    - compare_versions(version, '<= 3.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/edwiser-bridge/readme.txt'
+  redirects: true
+id: edwiser_bridge-133c212e-9a9e-4538-a07d-05abac741ad9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/edwiser-bridge/
+    google-query: inurl:"/wp-content/plugins/edwiser-bridge/"
+    shodan-query: http.html:"wp-content/plugins/edwiser-bridge/"
+  name: "Edwiser Bridge \u2013 WordPress Moodle LMS Integration <= 3.0.8 - Reflected\
+    \ Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/133c212e-9a9e-4538-a07d-05abac741ad9?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,edwiser-bridge,medium,candidate

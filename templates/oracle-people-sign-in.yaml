@@ -1,0 +1,25 @@
+id: oracle-people-sign-in
+info:
+  author: idealphase
+  metadata:
+    shodan-query: http.title:"Oracle PeopleSoft Sign-in"
+  name: Oracle Peoplesoft Sign-in
+  severity: info
+  tags: oracle,panel
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Oracle PeopleSoft Sign-in</title>
+    - alt="Oracle PeopleSoft Sign-in" title="Oracle PeopleSoft Sign-in"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

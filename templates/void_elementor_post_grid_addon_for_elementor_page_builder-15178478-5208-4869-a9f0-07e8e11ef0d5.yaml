@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - void-elementor-post-grid-addon-for-elementor-page-builder
+  - dsl:
+    - compare_versions(version, '<= 2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/void-elementor-post-grid-addon-for-elementor-page-builder/readme.txt'
+  redirects: true
+id: void_elementor_post_grid_addon_for_elementor_page_builder-15178478-5208-4869-a9f0-07e8e11ef0d5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/void-elementor-post-grid-addon-for-elementor-page-builder/
+    google-query: inurl:"/wp-content/plugins/void-elementor-post-grid-addon-for-elementor-page-builder/"
+    shodan-query: http.html:"wp-content/plugins/void-elementor-post-grid-addon-for-elementor-page-builder/"
+  name: 'Void Elementor Post Grid Addon for Elementor Page builder <= 2.3 - Authenticated
+    (Contributor+) Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/15178478-5208-4869-a9f0-07e8e11ef0d5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,void-elementor-post-grid-addon-for-elementor-page-builder,low,candidate

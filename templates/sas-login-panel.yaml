@@ -1,0 +1,21 @@
+id: sas-login-panel
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: http.favicon.hash:957255151
+    verified: true
+  name: SAS Login Panel
+  severity: info
+  tags: sas,panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - SAS&reg; Logon Manager
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/SASLogon/login'

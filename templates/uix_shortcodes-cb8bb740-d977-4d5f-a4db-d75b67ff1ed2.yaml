@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uix-shortcodes
+  - dsl:
+    - compare_versions(version, '<= 2.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/uix-shortcodes/readme.txt'
+  redirects: true
+id: uix_shortcodes-cb8bb740-d977-4d5f-a4db-d75b67ff1ed2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/uix-shortcodes/
+    google-query: inurl:"/wp-content/plugins/uix-shortcodes/"
+    shodan-query: http.html:"wp-content/plugins/uix-shortcodes/"
+  name: 'Uix Shortcodes <= 2.0.3 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cb8bb740-d977-4d5f-a4db-d75b67ff1ed2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,uix-shortcodes,low,candidate

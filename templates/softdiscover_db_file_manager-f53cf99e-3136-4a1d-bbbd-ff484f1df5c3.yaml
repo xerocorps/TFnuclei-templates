@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - softdiscover-db-file-manager
+  - dsl:
+    - compare_versions(version, '<= 1.4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/softdiscover-db-file-manager/readme.txt'
+  redirects: true
+id: softdiscover_db_file_manager-f53cf99e-3136-4a1d-bbbd-ff484f1df5c3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/softdiscover-db-file-manager/
+    google-query: inurl:"/wp-content/plugins/softdiscover-db-file-manager/"
+    shodan-query: http.html:"wp-content/plugins/softdiscover-db-file-manager/"
+  name: 'File Manager, Code Editor, and Backup by Managefy <= 1.4.8 - Authenticated
+    (Admin+) Path Traversal to Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f53cf99e-3136-4a1d-bbbd-ff484f1df5c3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,softdiscover-db-file-manager,low,candidate

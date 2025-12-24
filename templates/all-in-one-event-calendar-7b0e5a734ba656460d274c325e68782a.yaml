@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-event-calendar
+  - dsl:
+    - compare_versions(version, '< 1.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-event-calendar/readme.txt'
+  redirects: true
+id: all-in-one-event-calendar-7b0e5a734ba656460d274c325e68782a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-event-calendar/
+    google-query: inurl:"/wp-content/plugins/all-in-one-event-calendar/"
+    shodan-query: 'vuln:'
+  name: 'All-in-One Events Calendar < 1.10 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f23d80ae-a686-4e89-a8c0-648289521c58?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,all-in-one-event-calendar,critical

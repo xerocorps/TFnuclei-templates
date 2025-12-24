@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - job-manager
+  - dsl:
+    - compare_versions(version, '<= 0.7.25')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/job-manager/readme.txt'
+  redirects: true
+id: job-manager-479d3c3f9ec6425b27806c05c736c84c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/job-manager/
+    google-query: inurl:"/wp-content/plugins/job-manager/"
+    shodan-query: 'vuln:'
+  name: 'Job Manager <= 0.7.25 - Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fec590e7-c15e-4063-892a-a945333d848e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,job-manager,low

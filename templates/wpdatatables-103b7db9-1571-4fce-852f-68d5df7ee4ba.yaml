@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdatatables
+  - dsl:
+    - compare_versions(version, '< 3.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdatatables/readme.txt'
+  redirects: true
+id: wpdatatables-103b7db9-1571-4fce-852f-68d5df7ee4ba
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpdatatables/
+    google-query: inurl:"/wp-content/plugins/wpdatatables/"
+    shodan-query: http.html:"wp-content/plugins/wpdatatables/"
+  name: 'wpDataTables (Premium) <= 3.4.1 - Improper Access Control leading to Table
+    Permission Takeover
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/103b7db9-1571-4fce-852f-68d5df7ee4ba?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpdatatables,low,candidate

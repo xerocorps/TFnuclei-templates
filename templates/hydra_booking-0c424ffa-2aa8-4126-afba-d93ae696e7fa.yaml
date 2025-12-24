@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hydra-booking
+  - dsl:
+    - compare_versions(version, '<= 1.1.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hydra-booking/readme.txt'
+  redirects: true
+id: hydra_booking-0c424ffa-2aa8-4126-afba-d93ae696e7fa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hydra-booking/
+    google-query: inurl:"/wp-content/plugins/hydra-booking/"
+    shodan-query: http.html:"wp-content/plugins/hydra-booking/"
+  name: 'Hydra Booking <= 1.1.32 - Authenticated (Custom role+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0c424ffa-2aa8-4126-afba-d93ae696e7fa?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,hydra-booking,low,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - metform
+  - dsl:
+    - compare_versions(version, '<= 3.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/metform/readme.txt'
+  redirects: true
+id: metform-5759a006d3637acad9b6004a66e300f9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/metform/
+    google-query: inurl:"/wp-content/plugins/metform/"
+    shodan-query: 'vuln:'
+  name: 'Metform Elementor Contact Form Builder <= 3.1.2 - Unauthenticated Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/05f7d9fe-e95f-4ddf-9bce-2aeac3c2e946?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,metform,high

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shopbuilder
+  - dsl:
+    - compare_versions(version, '<= 2.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shopbuilder/readme.txt'
+  redirects: true
+id: shopbuilder-4a2fcae1d1c05e7bbeab328d0476c3ba
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shopbuilder/
+    google-query: inurl:"/wp-content/plugins/shopbuilder/"
+    shodan-query: 'vuln:'
+  name: "ShopBuilder \u2013 Elementor WooCommerce Builder Addons <= 2.1.8 - Unauthenticated\
+    \ Sensitive Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d0f216fc-7073-42da-a3cc-7452fa9775bd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shopbuilder,low

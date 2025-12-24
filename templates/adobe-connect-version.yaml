@@ -1,0 +1,23 @@
+id: adobe-connect-version
+info:
+  author: dhiyaneshDk
+  name: Adobe Connect Central Version
+  severity: info
+  tags: adobe
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - package=
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/version.txt'

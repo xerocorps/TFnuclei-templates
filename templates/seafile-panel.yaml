@@ -1,0 +1,21 @@
+id: seafile-panel
+info:
+  author: TechbrunchFR
+  metadata:
+    shodan-query: http.favicon.hash:1552322396
+  name: Seafile Panel
+  reference:
+  - https://www.seafile.com/en/home/
+  - https://github.com/haiwen/seafile
+  severity: info
+  tags: sefile,panel
+requests:
+- matchers:
+  - dsl:
+    - status_code==200 && ("1552322396" == mmh3(base64_py(body)))
+    type: dsl
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/media/favicons/favicon.png'
+  redirects: true

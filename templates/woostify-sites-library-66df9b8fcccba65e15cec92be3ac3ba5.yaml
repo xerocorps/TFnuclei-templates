@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woostify-sites-library
+  - dsl:
+    - compare_versions(version, '< 1.4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woostify-sites-library/readme.txt'
+  redirects: true
+id: woostify-sites-library-66df9b8fcccba65e15cec92be3ac3ba5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woostify-sites-library/
+    google-query: inurl:"/wp-content/plugins/woostify-sites-library/"
+    shodan-query: 'vuln:'
+  name: 'Woostify Sites Library
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/977ab23a-06b2-4f54-a2c2-3be2316eaceb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woostify-sites-library,low

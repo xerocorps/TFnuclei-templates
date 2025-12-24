@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - xo-event-calendar
+  - dsl:
+    - compare_versions(version, '<= 2.3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/xo-event-calendar/readme.txt'
+  redirects: true
+id: xo-event-calendar-96f73677ea9187c9036fb5c040e5612c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/xo-event-calendar/
+    google-query: inurl:"/wp-content/plugins/xo-event-calendar/"
+    shodan-query: 'vuln:'
+  name: 'XO Event Calendar <= 2.3.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f4e8ad18-fa25-414c-8a94-9ad9bd3c2e31?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,xo-event-calendar,medium

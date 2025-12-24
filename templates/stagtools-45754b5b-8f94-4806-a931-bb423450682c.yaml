@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stagtools
+  - dsl:
+    - compare_versions(version, '<= 2.3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stagtools/readme.txt'
+  redirects: true
+id: stagtools-45754b5b-8f94-4806-a931-bb423450682c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stagtools/
+    google-query: inurl:"/wp-content/plugins/stagtools/"
+    shodan-query: http.html:"wp-content/plugins/stagtools/"
+  name: 'Stagtools <= 2.3.6 - Authenticated(Contributor+) Stored Cross-Site Scripting
+    via shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/45754b5b-8f94-4806-a931-bb423450682c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stagtools,low,candidate

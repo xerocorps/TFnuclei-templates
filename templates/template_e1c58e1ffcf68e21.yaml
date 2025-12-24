@@ -1,0 +1,26 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - editor
+    - security
+    - file exposure
+  description: Template to detect exposure of editor configuration files
+  id: editor-file-exposure
+  matcher-condition: and
+  matchers:
+  - description: Editor configuration file found in response body
+    pattern: '*'
+    type: body
+  name: Editor File Exposure - Detect
+  requests:
+    description: Attempt to access editor configuration file
+    method: GET
+    path:
+    - /.editorconfig
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

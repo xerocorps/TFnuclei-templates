@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - article2pdf
+  - dsl:
+    - compare_versions(version, '0.27')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/article2pdf/readme.txt'
+  redirects: true
+id: article2pdf-0af80be2-b80b-4a25-9df6-a8ae75ad9cdd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/article2pdf/
+    google-query: inurl:"/wp-content/plugins/article2pdf/"
+    shodan-query: http.html:"wp-content/plugins/article2pdf/"
+  name: 'article2pdf 0.24 - 0.27 - Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0af80be2-b80b-4a25-9df6-a8ae75ad9cdd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,article2pdf,low,candidate

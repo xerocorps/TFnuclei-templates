@@ -1,0 +1,25 @@
+id: ampps-dirlisting
+info:
+  author: deFr0ggy
+  name: AMPPS by Softaculous - Directory Listing
+  severity: info
+  tags: panel,ampps,softaculous,misconfig
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>[AMPPS] - Web Local</title>
+    - Powered by AMPPS
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/client/'
+  - '{{BaseURL}}/files/'
+  - '{{BaseURL}}/icons/'
+  redirects: true

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - photo-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.5.68')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/photo-gallery/readme.txt'
+  redirects: true
+id: photo-gallery-647ab791fd0a03310ccf0f76128594fc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/photo-gallery/
+    google-query: inurl:"/wp-content/plugins/photo-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Photo Gallery by 10Web <= 1.5.68 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/99c89e29-a21d-4c32-9459-18c7b08b9ff0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,photo-gallery,high

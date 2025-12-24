@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ali2woo-lite
+  - dsl:
+    - compare_versions(version, '<= 3.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ali2woo-lite/readme.txt'
+  redirects: true
+id: ali2woo-lite-c9a3a378b3ad5fd68a3f7daa0d902447
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ali2woo-lite/
+    google-query: inurl:"/wp-content/plugins/ali2woo-lite/"
+    shodan-query: 'vuln:'
+  name: 'AliExpress Dropshipping with AliNext Lite <= 3.3.5 - Authenticated (Subscriber+)
+    Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c3248327-6e10-420e-83cf-a23296eb2e6f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ali2woo-lite,low

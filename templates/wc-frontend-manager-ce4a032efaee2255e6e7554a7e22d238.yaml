@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-frontend-manager
+  - dsl:
+    - compare_versions(version, '<= 6.7.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-frontend-manager/readme.txt'
+  redirects: true
+id: wc-frontend-manager-ce4a032efaee2255e6e7554a7e22d238
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wc-frontend-manager/
+    google-query: inurl:"/wp-content/plugins/wc-frontend-manager/"
+    shodan-query: 'vuln:'
+  name: "WCFM \u2013 Frontend Manager for WooCommerce <= 6.7.8 - Authenticated (Shop\
+    \ manager+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e30e4615-f9b6-4ff6-a227-82cace868f93?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wc-frontend-manager,low

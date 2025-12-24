@@ -1,0 +1,22 @@
+id: wago-plc-panel
+info:
+  author: github.com/its0x08
+  name: WAGO PLC Panel
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <TITLE>CoDeSys WebVisualization</TITLE>
+    - webvisu.jar,minml.jar
+  - part: header
+    type: word
+    words:
+    - WAGO_Webs
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/plc/webvisu.htm'

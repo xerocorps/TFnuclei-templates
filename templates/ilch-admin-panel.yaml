@@ -1,0 +1,22 @@
+id: ilch-admin-panel
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: http.title:"Ilch"
+    verified: true
+  name: Ilch CMS Admin Panel
+  severity: info
+  tags: panel,ilch,cms
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - ilch_token
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php/admin/admin/login/index/'

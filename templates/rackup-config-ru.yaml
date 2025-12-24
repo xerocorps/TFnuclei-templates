@@ -1,0 +1,30 @@
+id: rackup-config-ru
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: html:"config.ru"
+    verified: true
+  name: Rackup config.ru Configuration Exposure
+  reference:
+  - https://raw.githubusercontent.com/maurosoria/dirsearch/master/db/dicc.txt
+  - https://learn.co/lessons/config-ru-tutorial
+  severity: info
+  tags: exposure,files,config,rackup
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - run Rails.application
+    - /config/environment
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Bundler.require
+    - require 'rubygems'
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/config.ru'

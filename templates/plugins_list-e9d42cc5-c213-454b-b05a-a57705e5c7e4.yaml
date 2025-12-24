@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - plugins-list
+  - dsl:
+    - compare_versions(version, '<= 2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/plugins-list/readme.txt'
+  redirects: true
+id: plugins_list-e9d42cc5-c213-454b-b05a-a57705e5c7e4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/plugins-list/
+    google-query: inurl:"/wp-content/plugins/plugins-list/"
+    shodan-query: http.html:"wp-content/plugins/plugins-list/"
+  name: 'Plugins List <= 2.5 - Authenticated (Author+) Stored Cross-Site Scripting
+    via replace_plugin_list_tags
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e9d42cc5-c213-454b-b05a-a57705e5c7e4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,plugins-list,low,candidate

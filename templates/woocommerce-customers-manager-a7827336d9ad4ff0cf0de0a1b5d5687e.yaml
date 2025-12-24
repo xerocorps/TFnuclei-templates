@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-customers-manager
+  - dsl:
+    - compare_versions(version, '<= 29.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-customers-manager/readme.txt'
+  redirects: true
+id: woocommerce-customers-manager-a7827336d9ad4ff0cf0de0a1b5d5687e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-customers-manager/
+    google-query: inurl:"/wp-content/plugins/woocommerce-customers-manager/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Customers Manager <= 29.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c4c438e0-ea25-4372-8e4e-5d7163cc3447?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-customers-manager,medium

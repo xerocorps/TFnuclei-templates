@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-media-directory
+  - dsl:
+    - compare_versions(version, '<= 1.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-media-directory/readme.txt'
+  redirects: true
+id: simple-media-directory-857ccb1ac0a78063630c7c9966ebeb9c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-media-directory/
+    google-query: inurl:"/wp-content/plugins/simple-media-directory/"
+    shodan-query: 'vuln:'
+  name: 'Simple Video Directory <= 1.4.3 - Authenticated (Admin+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/85b2557e-0420-4087-a6d8-1d54fd269261?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-media-directory,low

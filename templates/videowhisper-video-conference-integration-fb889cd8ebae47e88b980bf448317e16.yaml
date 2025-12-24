@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - videowhisper-video-conference-integration
+  - dsl:
+    - compare_versions(version, '<= 3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/videowhisper-video-conference-integration/readme.txt'
+  redirects: true
+id: videowhisper-video-conference-integration-fb889cd8ebae47e88b980bf448317e16
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The Webcam Video Conference plugin for WordPress is vulnerable to Cross-Site
+    Scripting in versions up to, and including, 3.1 due to insufficient input sanitization
+    and output escaping. This makes it possible for unauthenticated attackers to inject
+    arbitrary web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/plugins/videowhisper-video-conference-integration/
+    google-query: inurl:"/wp-content/plugins/videowhisper-video-conference-integration/"
+    shodan-query: 'vuln:'
+  name: Webcam Video Conference <= 3.1 - Cross-Site Scripting
+  reference:
+  - https://packetstormsecurity.com/files/122943/
+  - https://plugins.trac.wordpress.org/browser/videowhisper-video-conference-integration/trunk/readme.txt
+  - https://wordpress.org/plugins/videowhisper-video-conference-integration/#description
+  severity: medium
+  tags: cve,wordpress,wp-plugin,videowhisper-video-conference-integration,medium

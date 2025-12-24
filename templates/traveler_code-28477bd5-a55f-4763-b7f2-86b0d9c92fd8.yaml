@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - traveler-code
+  - dsl:
+    - compare_versions(version, '<= 3.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/traveler-code/readme.txt'
+  redirects: true
+id: traveler_code-28477bd5-a55f-4763-b7f2-86b0d9c92fd8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/traveler-code/
+    google-query: inurl:"/wp-content/plugins/traveler-code/"
+    shodan-query: http.html:"wp-content/plugins/traveler-code/"
+  name: 'Traveler Code <= 3.1.1 - Authenticated (Subscriber+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/28477bd5-a55f-4763-b7f2-86b0d9c92fd8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,traveler-code,low,candidate

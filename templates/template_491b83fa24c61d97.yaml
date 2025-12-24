@@ -1,0 +1,29 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - sendgrid
+    - security
+    - configuration
+    - exposure
+  description: Template to detect potential exposure of SendGrid .env configuration
+    files
+  id: sendgrid-env-exposure
+  matcher-condition: or
+  matchers:
+  - description: SendGrid .env configuration file containing API key
+    pattern: SENDGRID_API_KEY
+    type: body
+  name: SendGrid .env File Exposure - Detect
+  requests:
+    condition: or
+    description: Attempt to retrieve SendGrid .env configuration files
+    method: GET
+    path:
+    - /sendgrid.env
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

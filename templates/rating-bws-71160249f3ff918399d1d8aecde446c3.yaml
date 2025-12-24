@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rating-bws
+  - dsl:
+    - compare_versions(version, '<= 1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rating-bws/readme.txt'
+  redirects: true
+id: rating-bws-71160249f3ff918399d1d8aecde446c3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rating-bws/
+    google-query: inurl:"/wp-content/plugins/rating-bws/"
+    shodan-query: 'vuln:'
+  name: 'Rating by BestWebSoft <= 1.5 - Rating Denial of Service
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3511a3d3-1e6e-41ba-a8b9-67f8f7eef157?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,rating-bws,low

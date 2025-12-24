@@ -1,0 +1,40 @@
+id: epson-unauthorized-access-detect
+info:
+  author: pussycat0x
+  name: Epson Printer
+  reference: https://www.exploit-db.com/ghdb/6922
+  severity: medium
+  tags: iot,printer,panel,unauth
+requests:
+- attack: sniper
+  extractors:
+  - group: 1
+    part: body
+    regex:
+    - <title>([A-Z-0-9]+) Series</title>
+    type: regex
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - Epson Connect
+    - /IMAGE/EPSONLOGO.PNG
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /PRESENTATION/EPSONCONNECT HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

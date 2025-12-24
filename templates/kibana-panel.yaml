@@ -1,0 +1,30 @@
+id: kibana-panel
+info:
+  author: petruknisme,daffainfo,c-sh0
+  metadata:
+    shodan-query: http.title:"Kibana"
+  name: Kibana Panel Login
+  severity: info
+  tags: panel,kibana
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Kibana</title>
+    - <title>Elastic</title>
+    - <title>Kibana Login</title>
+  - part: header
+    regex:
+    - (?i)(Kbn-Name)
+    type: regex
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/login'
+  - '{{BaseURL}}/app/kibana'
+  redirects: true
+  stop-at-first-match: true

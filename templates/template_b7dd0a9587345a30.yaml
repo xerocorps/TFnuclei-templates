@@ -1,0 +1,26 @@
+archives:
+- format: zip
+  replacements:
+    darwin: macOS
+before:
+  hooks:
+  - go mod tidy
+builds:
+- binary: '{{ .ProjectName }}'
+  env:
+  - CGO_ENABLED=0
+  goarch:
+  - amd64
+  - 386
+  - arm
+  - arm64
+  goos:
+  - windows
+  - linux
+  - darwin
+  ignore:
+  - goarch: '386'
+    goos: darwin
+  main: main.go
+checksum:
+  algorithm: sha256

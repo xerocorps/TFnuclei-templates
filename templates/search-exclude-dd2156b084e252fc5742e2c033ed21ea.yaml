@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - search-exclude
+  - dsl:
+    - compare_versions(version, '<= 1.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/search-exclude/readme.txt'
+  redirects: true
+id: search-exclude-dd2156b084e252fc5742e2c033ed21ea
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/search-exclude/
+    google-query: inurl:"/wp-content/plugins/search-exclude/"
+    shodan-query: 'vuln:'
+  name: 'Search Exclude <= 1.2.6 - Authenticated (Editor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/211aa83e-e97b-4fd7-8cfe-308ac698c17e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,search-exclude,low

@@ -1,0 +1,26 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - openssh
+    - security
+    - configuration
+  description: OpenSSH server installations with weak configurations
+  id: openssh-server-weak-config
+  matchers:
+  - description: Authorized SSH keys found in the server configuration
+    pattern: ssh-rsa
+    type: body
+  name: OpenSSH Server Configuration Weakness - Detect
+  reference:
+  - https://www.ssh.com/iam/ssh-key-management/
+  requests:
+    description: Attempt to retrieve authorized SSH keys
+    method: GET
+    path:
+    - /.ssh/authorized_keys
+  response:
+  - status:
+    - 200
+  severity: High

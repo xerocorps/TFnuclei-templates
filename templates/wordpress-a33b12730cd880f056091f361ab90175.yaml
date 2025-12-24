@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_generator
+    regex:
+    - (?m)https:\/\/wordpress.org\/\?v=([0-9.]+)
+    type: regex
+  - group: 1
+    name: version_by_js
+    regex:
+    - wp-emoji-release\.min\.js\?ver=((\d+\.?)+)\b
+    type: regex
+  - group: 1
+    name: version_by_css
+    regex:
+    - install\.min\.css\?ver=((\d+\.?)+)\b
+    type: regex
+  matchers:
+  - dsl:
+    - compare_versions(version_by_generator, '5.0')
+    - compare_versions(version_by_js, '5.0')
+    - compare_versions(version_by_css, '5.0')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/wp-admin/install.php'
+  - '{{BaseURL}}/feed/'
+  - '{{BaseURL}}/?feed=rss2'
+  redirects: true
+  stop-at-first-match: true
+id: wordpress-a33b12730cd880f056091f361ab90175
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    shodan-query: 'vuln:'
+  name: 'WordPress Core < 5.0.1 - PHAR Unserialization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1f846ffa-0dfa-4549-845a-7884a390462a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-core,low

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - b-slider
+  - dsl:
+    - compare_versions(version, '<= 2.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/b-slider/readme.txt'
+  redirects: true
+id: b_slider-ac245316-228e-4508-b3fe-f7071fb1bc8e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/b-slider/
+    google-query: inurl:"/wp-content/plugins/b-slider/"
+    shodan-query: http.html:"wp-content/plugins/b-slider/"
+  name: 'B Slider - Gutenberg Slider Block for WP <= 2.0.0 - Authenticated (Subscriber+)
+    Server-Side Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ac245316-228e-4508-b3fe-f7071fb1bc8e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,b-slider,low,candidate

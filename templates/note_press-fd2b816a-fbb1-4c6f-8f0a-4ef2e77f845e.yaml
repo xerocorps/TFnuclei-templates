@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - note-press
+  - dsl:
+    - compare_versions(version, '<= 0.1.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/note-press/readme.txt'
+  redirects: true
+id: note_press-fd2b816a-fbb1-4c6f-8f0a-4ef2e77f845e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/note-press/
+    google-query: inurl:"/wp-content/plugins/note-press/"
+    shodan-query: http.html:"wp-content/plugins/note-press/"
+  name: 'Note Press <= 0.1.10 - Authenticated (Admin+) SQL Injection via Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fd2b816a-fbb1-4c6f-8f0a-4ef2e77f845e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,note-press,low,candidate

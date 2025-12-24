@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - helloprint
+  - dsl:
+    - compare_versions(version, '<= 1.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/helloprint/readme.txt'
+  redirects: true
+id: helloprint-c508d38c-f5e3-4193-8209-0083a8a18da4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/helloprint/
+    google-query: inurl:"/wp-content/plugins/helloprint/"
+    shodan-query: http.html:"wp-content/plugins/helloprint/"
+  name: 'Helloprint <= 1.4.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c508d38c-f5e3-4193-8209-0083a8a18da4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,helloprint,medium,candidate

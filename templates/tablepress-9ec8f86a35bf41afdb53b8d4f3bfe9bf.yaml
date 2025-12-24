@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tablepress
+  - dsl:
+    - compare_versions(version, '<= 2.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tablepress/readme.txt'
+  redirects: true
+id: tablepress-9ec8f86a35bf41afdb53b8d4f3bfe9bf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tablepress/
+    google-query: inurl:"/wp-content/plugins/tablepress/"
+    shodan-query: 'vuln:'
+  name: 'TablePress <= 2.2.4 - Authenticated(Author+) Server Side Request Forgery(SSRF)
+    via _get_import_files
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8de52b68-c273-4561-98b0-e51afd6cd47b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tablepress,low

@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-responsive-thumbnail-slider
+  - dsl:
+    - compare_versions(version, '< 1.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-responsive-thumbnail-slider/readme.txt'
+  redirects: true
+id: wp-responsive-thumbnail-slider-053335d1e7bf19fa6996b1d17033fe9e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L
+    cvss-score: 7.1
+  description: "The Thumbnail carousel slider plugin for WordPress is vulnerable to\
+    \ Stored Cross-Site Scripting and Cross-Site Request Forgery via the \u2018title\u2019\
+    \ parameter in versions before 1.0.1 due to insufficient input sanitization and\
+    \ output escaping. This makes it possible for attackers to inject arbitrary web\
+    \ scripts in pages that will execute whenever a user accesses an injected page.\
+    \ The Stored Cross-Site scripting vulnerability requires authentication with admin-level\
+    \ privileges while the Cross-Site Request Forgery does not require any authentication."
+  metadata:
+    fofa-query: wp-content/plugins/wp-responsive-thumbnail-slider/
+    google-query: inurl:"/wp-content/plugins/wp-responsive-thumbnail-slider/"
+    shodan-query: 'vuln:'
+  name: Thumbnail carousel slider < 1.0.1 - Stored Cross-Site Scripting and Cross-Site
+    Request Forgery
+  reference:
+  - https://cxsecurity.com/issue/WLB-2015080167
+  - https://patchstack.com/database/vulnerability/wp-responsive-thumbnail-slider/wordpress-thumbnail-carousel-slider-plugin-1-0-stored-cross-site-scripting-xss-and-cross-site-request-forgery-csrf-vulnerabilities
+  - https://wpscan.com/vulnerability/ab7ac7d5-a68d-4af7-a38a-65aa940337f1
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-responsive-thumbnail-slider,high

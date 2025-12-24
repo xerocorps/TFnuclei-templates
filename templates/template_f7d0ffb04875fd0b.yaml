@@ -1,0 +1,32 @@
+name: "\U0001F4DD Template Checksum"
+true:
+  push:
+    branches:
+    - main
+    paths:
+    - '**.yaml'
+  workflow_dispatch: null
+env:
+  CHECKSUM_FILE: templates-checksum.txt
+jobs:
+  checksum:
+    if: github.repository == 'projectdiscovery/nuclei-templates'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: projectdiscovery/actions/generate/checksum@v1
+      with:
+        checksum-file: ${{ env.CHECKSUM_FILE }}
+        templates-directory: ${{ github.workspace }}
+    - run: git status
+    - uses: projectdiscovery/actions/setup/git@v1
+    - uses: projectdiscovery/actions/commit@v1
+      with:
+        files: ${{ env.CHECKSUM_FILE }}
+        message: "chore: generate templates checksum \U0001F916"
+    - name: Push changes
+      run: 'git pull origin $GITHUB_REF --rebase
+
+        git push origin $GITHUB_REF
+
+        '

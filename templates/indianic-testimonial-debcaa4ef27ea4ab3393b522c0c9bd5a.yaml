@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - indianic-testimonial
+  - dsl:
+    - compare_versions(version, '< 2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/indianic-testimonial/readme.txt'
+  redirects: true
+id: indianic-testimonial-debcaa4ef27ea4ab3393b522c0c9bd5a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/indianic-testimonial/
+    google-query: inurl:"/wp-content/plugins/indianic-testimonial/"
+    shodan-query: 'vuln:'
+  name: 'Testimonial < 2.3 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/96fc3ead-7ae4-4d2c-a0b5-13f3e3bf429b?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,indianic-testimonial,critical

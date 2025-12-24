@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bello
+  - dsl:
+    - compare_versions(version, '< 1.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/bello/style.css'
+  redirects: true
+id: bello-b8c3418fdc34081537cf5f3687890318
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/bello/
+    google-query: inurl:"/wp-content/themes/bello/"
+    shodan-query: 'vuln:'
+  name: 'Bello - Directory & Listing  - < 1.6.0 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c2f10cc4-82a8-4668-b1e5-a08a0f79b59c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,bello,high

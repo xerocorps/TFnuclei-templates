@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kalium
+  - dsl:
+    - compare_versions(version, '<= 3.18.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/kalium/style.css'
+  redirects: true
+id: kalium-966159e8-e393-4eba-a8cd-8f343762b0b8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/kalium/
+    google-query: inurl:"/wp-content/themes/kalium/"
+    shodan-query: http.html:"wp-content/themes/kalium/"
+  name: 'Kalium <= 3.18.3 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/966159e8-e393-4eba-a8cd-8f343762b0b8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,kalium,medium,candidate

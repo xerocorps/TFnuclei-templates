@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - constant-contact-forms-by-mailmunch
+  - dsl:
+    - compare_versions(version, '<= 2.0.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/constant-contact-forms-by-mailmunch/readme.txt'
+  redirects: true
+id: constant-contact-forms-by-mailmunch-ec8e2ce0bc06e1e43acfdb3abb1da046
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/constant-contact-forms-by-mailmunch/
+    google-query: inurl:"/wp-content/plugins/constant-contact-forms-by-mailmunch/"
+    shodan-query: 'vuln:'
+  name: 'Constant Contact Forms by MailMunch <= 2.0.11 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a84bd9c8-97bd-4572-8bfa-5191d98c9523?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,constant-contact-forms-by-mailmunch,low

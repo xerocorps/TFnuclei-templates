@@ -1,0 +1,17 @@
+id: addeventlistener-detect
+info:
+  author: yavolo,dwisiswant0
+  name: DOM EventListener detection
+  reference:
+  - https://portswigger.net/web-security/dom-based/controlling-the-web-message-source
+  severity: info
+  tags: xss,misc
+requests:
+- matchers:
+  - part: body
+    regex:
+    - (([\w\_]+)\.)?add[Ee]vent[Ll]istener\(["']?[\w\_]+["']?
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

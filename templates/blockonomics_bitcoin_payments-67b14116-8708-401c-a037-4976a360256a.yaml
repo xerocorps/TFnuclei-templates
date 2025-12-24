@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - blockonomics-bitcoin-payments
+  - dsl:
+    - compare_versions(version, '<= 3.5.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/blockonomics-bitcoin-payments/readme.txt'
+  redirects: true
+id: blockonomics_bitcoin_payments-67b14116-8708-401c-a037-4976a360256a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/blockonomics-bitcoin-payments/
+    google-query: inurl:"/wp-content/plugins/blockonomics-bitcoin-payments/"
+    shodan-query: http.html:"wp-content/plugins/blockonomics-bitcoin-payments/"
+  name: "WordPress Bitcoin Payments \u2013 Blockonomics <= 3.5.7 - Reflected Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/67b14116-8708-401c-a037-4976a360256a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,blockonomics-bitcoin-payments,medium,candidate

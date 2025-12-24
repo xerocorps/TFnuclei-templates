@@ -1,0 +1,35 @@
+id: confluence-detect
+info:
+  author: philippedelteil
+  description: Allows you to detect Atlassian Confluence instances
+  metadata:
+    shodan-query: http.component:"Atlassian Confluence"
+  name: Confluence Detect
+  severity: info
+  tags: tech,confluence,atlassian
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - Atlassian Confluence ([a-z0-9-._]+)
+    type: regex
+  matchers:
+  - case-insensitive: true
+    part: header
+    type: word
+    words:
+    - -confluence-
+  - part: body
+    type: word
+    words:
+    - confluence-base-url
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/pages'
+  - '{{BaseURL}}/confluence'
+  - '{{BaseURL}}/wiki'
+  redirects: true
+  stop-at-first-match: true

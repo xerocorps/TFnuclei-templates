@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tlp-team
+  - dsl:
+    - compare_versions(version, '<= 5.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tlp-team/readme.txt'
+  redirects: true
+id: tlp_team-e16b8686-a502-4a73-b955-10f2800fd5dc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tlp-team/
+    google-query: inurl:"/wp-content/plugins/tlp-team/"
+    shodan-query: http.html:"wp-content/plugins/tlp-team/"
+  name: 'Team <= 5.0.6 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e16b8686-a502-4a73-b955-10f2800fd5dc?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,tlp-team,high,candidate

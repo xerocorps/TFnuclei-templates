@@ -1,0 +1,17 @@
+detail:
+  author: wulalalaaa(https://github.com/wulalalaaa)
+  links:
+  - https://storm.apache.org/releases/current/STORM-UI-REST-API.html
+expression: r0()
+manual: true
+name: poc-yaml-apache-storm-unauthorized-access
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"{\"totalMem\":")
+      && response.body.bcontains(b"\"stormVersion\":")
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /api/v1/cluster/summary
+transport: http

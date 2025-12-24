@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vikrentcar
+  - dsl:
+    - compare_versions(version, '<= 1.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vikrentcar/readme.txt'
+  redirects: true
+id: vikrentcar-4a4c085a-1601-4c1a-ac17-0f2cf5d02489
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vikrentcar/
+    google-query: inurl:"/wp-content/plugins/vikrentcar/"
+    shodan-query: http.html:"wp-content/plugins/vikrentcar/"
+  name: 'VikRentCar Car Rental Management System <= 1.4.2 - Cross-Site Request Forgery
+    to Authenticated (Subscriber+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4a4c085a-1601-4c1a-ac17-0f2cf5d02489?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,vikrentcar,low,candidate

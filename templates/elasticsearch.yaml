@@ -1,0 +1,19 @@
+id: elasticsearch
+info:
+  author: Shine
+  name: ElasticSearch Information Disclosure
+  severity: low
+  tags: elastic,unauth
+requests:
+- matchers:
+  - type: word
+    words:
+    - '"took":'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/_cat/indices?v'
+  - '{{BaseURL}}/_all/_search'

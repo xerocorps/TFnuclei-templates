@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-page-widget
+  - dsl:
+    - compare_versions(version, '<= 3.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-page-widget/readme.txt'
+  redirects: true
+id: wp-page-widget-e0b4c943a2025772e31a22b6ec3c092c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-page-widget/
+    google-query: inurl:"/wp-content/plugins/wp-page-widget/"
+    shodan-query: 'vuln:'
+  name: 'WP Page Widget <= 3.9 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4e6654b6-90ae-4a5e-bff3-82848813872a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-page-widget,medium

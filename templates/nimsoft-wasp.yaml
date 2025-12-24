@@ -1,0 +1,21 @@
+id: nimsoft-wasp
+info:
+  author: Nullfuzz
+  description: Detect Nimsoft Wasp WebPage
+  name: Nimsoft Wasp Detection
+  severity: info
+  tags: nimsoft,exposure,tech
+requests:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - 'Powered by <b>Nimsoft WASP '
+    - <title>WASP</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

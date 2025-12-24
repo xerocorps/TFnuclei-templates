@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - chained-quiz
+  - dsl:
+    - compare_versions(version, '<= 1.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/chained-quiz/readme.txt'
+  redirects: true
+id: chained-quiz-2c95bd427c3b5e4a30b73e3de82fcd34
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 6.4
+  description: "The Chained Quiz for WordPress is vulnerable to Stored Cross-Site\
+    \ Scripting via the \u2018chained_admin_subject', 'chained_user_subject', 'chained_sender_name',\
+    \ 'chained_sender_email' and 'go_ahead_value' values in versions up to, and including,\
+    \ 1.1.9.0 due to insufficient input sanitization and output escaping. This makes\
+    \ it possible for authentication-level attackers Admin level access is required\
+    \ to inject arbitrary web scripts in pages that will execute whenever a user accesses\
+    \ an injected page.\n"
+  metadata:
+    fofa-query: wp-content/plugins/chained-quiz/
+    google-query: inurl:"/wp-content/plugins/chained-quiz/"
+    shodan-query: 'vuln:'
+  name: 'Chained Quiz <= 1.1.9 -Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b3bae191-9395-481c-93bf-b17cf5f87271?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,chained-quiz,medium

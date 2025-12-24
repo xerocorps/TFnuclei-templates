@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - news-element
+  - dsl:
+    - compare_versions(version, '<= 1.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/news-element/readme.txt'
+  redirects: true
+id: news_element-ec0d80f7-96fb-466d-9701-9751f71b926d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/news-element/
+    google-query: inurl:"/wp-content/plugins/news-element/"
+    shodan-query: http.html:"wp-content/plugins/news-element/"
+  name: 'News Element Elementor Blog Magazine <= 1.0.5 - Unauthenticated Local File
+    Inlcusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ec0d80f7-96fb-466d-9701-9751f71b926d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,news-element,low,candidate

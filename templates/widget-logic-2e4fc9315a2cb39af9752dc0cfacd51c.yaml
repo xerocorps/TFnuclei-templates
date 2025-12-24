@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - widget-logic
+  - dsl:
+    - compare_versions(version, '< 5.10.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/widget-logic/readme.txt'
+  redirects: true
+id: widget-logic-2e4fc9315a2cb39af9752dc0cfacd51c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/widget-logic/
+    google-query: inurl:"/wp-content/plugins/widget-logic/"
+    shodan-query: 'vuln:'
+  name: 'Widget Logic < 5.10.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a4999de1-07b7-49ef-8897-267b836bc469?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,widget-logic,medium

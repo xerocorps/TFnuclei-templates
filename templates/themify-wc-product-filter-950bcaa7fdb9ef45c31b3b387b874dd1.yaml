@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - themify-wc-product-filter
+  - dsl:
+    - compare_versions(version, '<= 1.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/themify-wc-product-filter/readme.txt'
+  redirects: true
+id: themify-wc-product-filter-950bcaa7fdb9ef45c31b3b387b874dd1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/themify-wc-product-filter/
+    google-query: inurl:"/wp-content/plugins/themify-wc-product-filter/"
+    shodan-query: 'vuln:'
+  name: "Themify \u2013 WooCommerce Product Filter <= 1.4.3 - Reflected Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2f621cfa-d02e-4414-bb1d-6e23da3c92b9?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,themify-wc-product-filter,medium

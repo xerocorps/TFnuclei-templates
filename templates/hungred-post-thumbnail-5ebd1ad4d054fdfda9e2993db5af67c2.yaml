@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hungred-post-thumbnail
+  - dsl:
+    - compare_versions(version, '<= 2.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hungred-post-thumbnail/readme.txt'
+  redirects: true
+id: hungred-post-thumbnail-5ebd1ad4d054fdfda9e2993db5af67c2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hungred-post-thumbnail/
+    google-query: inurl:"/wp-content/plugins/hungred-post-thumbnail/"
+    shodan-query: 'vuln:'
+  name: 'Hungred Post Thumbnail <= 2.1.9 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bd7ee2d7-4588-4cb9-86ca-0daef421dd86?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,hungred-post-thumbnail,critical

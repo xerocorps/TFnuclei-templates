@@ -1,0 +1,22 @@
+id: openemr-detect
+info:
+  author: pussycat0x
+  metadata:
+    fofa-query: app="OpenEMR"
+    shodan-query: http.html:"OpenEMR"
+  name: OpenEMR Product Detect
+  severity: info
+  tags: panel,openemr
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '"title":"OpenEMR Product Registration"'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/interface/login/login.php?site=default'

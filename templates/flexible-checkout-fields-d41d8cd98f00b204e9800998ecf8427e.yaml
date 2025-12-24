@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - flexible-checkout-fields
+  - dsl:
+    - compare_versions(version, '<= 2.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/flexible-checkout-fields/readme.txt'
+  redirects: true
+id: flexible-checkout-fields-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Flexible Checkout Fields for WooCommerce  plugin for WordPress
+    is vulnerable to Unauthenticated Arbitrary Plugin Settings update, in addition
+    to Stored Cross-Site Scripting in versions up to, and including, 2.3.1. This is
+    due to missing authorization checks on the updateSettingsAction() function which
+    is called via an admin_init hook, along with missing sanitization and escaping
+    on the settings that are stored.
+  metadata:
+    fofa-query: wp-content/plugins/flexible-checkout-fields/
+    google-query: inurl:"/wp-content/plugins/flexible-checkout-fields/"
+    shodan-query: 'vuln:'
+  name: Flexible Checkout Fields for WooCommerce <= 2.3.1 - Unauthenticated Arbitrary
+    Plugin Settings Update
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,flexible-checkout-fields,low

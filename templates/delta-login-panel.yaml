@@ -1,0 +1,21 @@
+id: delta-login-panel
+info:
+  author: gy741
+  metadata:
+    shodan-query: http.html:"Delta Controls ORCAview"
+  name: Delta Controls Admin Login Panel
+  severity: info
+  tags: panel,delta
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Delta Controls ORCAview
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/deltaweb/hmi_login.asp'

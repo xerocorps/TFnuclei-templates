@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-product-filter
+  - dsl:
+    - compare_versions(version, '<= 1.4.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-product-filter/readme.txt'
+  redirects: true
+id: woo-product-filter-15ddd53e381b651ce74b382cf87f05eb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-product-filter/
+    google-query: inurl:"/wp-content/plugins/woo-product-filter/"
+    shodan-query: 'vuln:'
+  name: 'Product Filter by WooBeWoo <= 1.4.9 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/30b6b0bf-e632-4e83-89ee-a424382534da?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woo-product-filter,high

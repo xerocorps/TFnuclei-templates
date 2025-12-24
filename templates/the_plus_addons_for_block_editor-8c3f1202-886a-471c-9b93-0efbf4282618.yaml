@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - the-plus-addons-for-block-editor
+  - dsl:
+    - compare_versions(version, '<= 3.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/the-plus-addons-for-block-editor/readme.txt'
+  redirects: true
+id: the_plus_addons_for_block_editor-8c3f1202-886a-471c-9b93-0efbf4282618
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/the-plus-addons-for-block-editor/
+    google-query: inurl:"/wp-content/plugins/the-plus-addons-for-block-editor/"
+    shodan-query: http.html:"wp-content/plugins/the-plus-addons-for-block-editor/"
+  name: 'The Plus Blocks for Block Editor | Gutenberg <= 3.2.5 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8c3f1202-886a-471c-9b93-0efbf4282618?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,the-plus-addons-for-block-editor,medium,candidate

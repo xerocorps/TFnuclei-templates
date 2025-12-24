@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zapier
+  - dsl:
+    - compare_versions(version, '<= 1.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zapier/readme.txt'
+  redirects: true
+id: zapier-701dc461-88e7-40bf-a4fb-f92723b6e05e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zapier/
+    google-query: inurl:"/wp-content/plugins/zapier/"
+    shodan-query: http.html:"wp-content/plugins/zapier/"
+  name: 'Zapier for WordPress <= 1.5.1 - Authenticated (Subscriber+) Blind Server-Side
+    Request Forgery via updated_user Function
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/701dc461-88e7-40bf-a4fb-f92723b6e05e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,zapier,low,candidate

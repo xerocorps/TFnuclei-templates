@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - error-log-viewer
+  - dsl:
+    - compare_versions(version, '<= 1.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/error-log-viewer/readme.txt'
+  redirects: true
+id: error_log_viewer-9455eccb-9f32-4e4e-8fe4-f345bf6e8da7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/error-log-viewer/
+    google-query: inurl:"/wp-content/plugins/error-log-viewer/"
+    shodan-query: http.html:"wp-content/plugins/error-log-viewer/"
+  name: 'Error Log Viewer by BestWebSoft <= 1.1.6 - Authenticated (Administrator+)
+    Arbitrary File Read
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9455eccb-9f32-4e4e-8fe4-f345bf6e8da7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,error-log-viewer,low,candidate

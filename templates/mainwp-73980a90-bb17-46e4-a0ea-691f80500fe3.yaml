@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mainwp
+  - dsl:
+    - compare_versions(version, '<= 4.5.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mainwp/readme.txt'
+  redirects: true
+id: mainwp-73980a90-bb17-46e4-a0ea-691f80500fe3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mainwp/
+    google-query: inurl:"/wp-content/plugins/mainwp/"
+    shodan-query: http.html:"wp-content/plugins/mainwp/"
+  name: 'MainWP Dashboard <= 4.5.1.2 - Authenticated(Administrator+) CSS Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/73980a90-bb17-46e4-a0ea-691f80500fe3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mainwp,low,candidate

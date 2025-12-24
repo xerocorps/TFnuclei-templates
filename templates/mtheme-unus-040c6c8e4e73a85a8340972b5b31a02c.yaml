@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mTheme-Unus
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/mTheme-Unus/style.css'
+  redirects: true
+id: mtheme-unus-040c6c8e4e73a85a8340972b5b31a02c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/mTheme-Unus/
+    google-query: inurl:"/wp-content/themes/mTheme-Unus/"
+    shodan-query: 'vuln:'
+  name: 'mTheme-Unus (All Versions) - Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/741915a7-c88d-41e1-9347-1d5d6494d051?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-theme,mTheme-Unus,critical

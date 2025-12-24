@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - 5star
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/5star/style.css'
+  redirects: true
+id: 5star-55aea70d85279c96b75d2499c2f11203
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/5star/
+    google-query: inurl:"/wp-content/themes/5star/"
+    shodan-query: 'vuln:'
+  name: '5 Star (Unspecified Version) - Cross-Site Request Forgery to Arbitrary File
+    Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b2cea890-b131-47cd-9050-a484fb1895f6?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,5star,medium

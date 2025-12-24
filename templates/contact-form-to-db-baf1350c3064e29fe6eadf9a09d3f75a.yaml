@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-to-db
+  - dsl:
+    - compare_versions(version, '<= 1.5.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-to-db/readme.txt'
+  redirects: true
+id: contact-form-to-db-baf1350c3064e29fe6eadf9a09d3f75a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-to-db/
+    google-query: inurl:"/wp-content/plugins/contact-form-to-db/"
+    shodan-query: 'vuln:'
+  name: 'Contact Form to DB <= 1.5.6 - Multiple Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/98e47920-fb99-478d-9d6c-1612e8b4aca1?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,contact-form-to-db,high

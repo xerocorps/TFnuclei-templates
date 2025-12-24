@@ -1,0 +1,24 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - grafana
+    - credentials
+    - security
+  description: Template to detect Grafana default credentials
+  id: grafana-default-credentials
+  matchers:
+  - pattern: name="username" value="admin".*name="password"
+    type: body
+  name: Grafana Default Credentials - Detect
+  requests:
+  - method: GET
+    path:
+    - /login
+    - /login/*
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: High

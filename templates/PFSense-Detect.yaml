@@ -1,0 +1,23 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - pfsense
+  - status:
+    - 200
+    - 301
+    - 302
+    type: status
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true
+id: PFSense-Detect
+info:
+  author: YashVardhanTripathi
+  metadata: null
+  name: PFsense Detect
+  severity: info
+  tags: tech, PFSense

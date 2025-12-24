@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - essential-blocks
+  - dsl:
+    - compare_versions(version, '<= 3.8.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/essential-blocks/readme.txt'
+  redirects: true
+id: essential-blocks-04f2d656af8d26dc5ae258614d51b5c9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/essential-blocks/
+    google-query: inurl:"/wp-content/plugins/essential-blocks/"
+    shodan-query: 'vuln:'
+  name: 'Essential Blocks for Gutenberg <= 3.8.5 -  Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1ddfd5d9-a7e4-42a8-8419-9a35b4781d3c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,essential-blocks,medium

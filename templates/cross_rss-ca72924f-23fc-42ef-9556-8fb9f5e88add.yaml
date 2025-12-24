@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cross-rss
+  - dsl:
+    - compare_versions(version, '<= 1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cross-rss/readme.txt'
+  redirects: true
+id: cross_rss-ca72924f-23fc-42ef-9556-8fb9f5e88add
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cross-rss/
+    google-query: inurl:"/wp-content/plugins/cross-rss/"
+    shodan-query: http.html:"wp-content/plugins/cross-rss/"
+  name: 'Cross-RSS <= 1.7 - Path Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ca72924f-23fc-42ef-9556-8fb9f5e88add?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cross-rss,low,candidate

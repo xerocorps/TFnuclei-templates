@@ -1,0 +1,35 @@
+dns:
+- matchers:
+  - name: zendesk
+    type: word
+    words:
+    - zendesk.com
+  - name: github
+    type: word
+    words:
+    - github.io
+  - name: announcekit
+    type: word
+    words:
+    - cname.announcekit.app
+  - name: wix
+    type: word
+    words:
+    - wixdns.net
+  matchers-condition: or
+  name: '{{FQDN}}'
+  type: CNAME
+id: cname-service-detection
+info:
+  author: pdteam
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
+    cwe-id: CWE-200
+  description: A CNAME service was detected.
+  name: CNAME Service Detection
+  reference:
+  - https://ns1.com/resources/cname
+  severity: info
+  tags: dns,service

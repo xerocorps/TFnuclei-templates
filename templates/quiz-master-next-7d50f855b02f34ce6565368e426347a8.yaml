@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quiz-master-next
+  - dsl:
+    - compare_versions(version, '<= 7.1.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quiz-master-next/readme.txt'
+  redirects: true
+id: quiz-master-next-7d50f855b02f34ce6565368e426347a8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: Cross-site scripting vulnerability in Quiz And Survey Master versions
+    prior to 7.1.14 allows a remote attacker to inject arbitrary script via unspecified
+    vectors.
+  metadata:
+    fofa-query: wp-content/plugins/quiz-master-next/
+    google-query: inurl:"/wp-content/plugins/quiz-master-next/"
+    shodan-query: 'vuln:'
+  name: Quiz and Survey Master <= 7.1.13 - SQL Injection
+  reference:
+  - https://plugins.trac.wordpress.org/changeset/2503364/quiz-master-next
+  - https://www.tenable.com/plugins/was/113023
+  - https://jvn.jp/en/jp/JVN65388002/
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-quiz-and-survey-master-best-quiz-exam-and-survey-sql-injection-7-1-13/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,quiz-master-next,medium

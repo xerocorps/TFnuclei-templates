@@ -1,0 +1,14 @@
+id: werkzeug-debug
+info:
+  author: notnotnotveg
+  name: werkzeug-debug
+  severity: informative
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Werkzeug
+  method: GET
+  path:
+  - '{{BaseURL}}/console'

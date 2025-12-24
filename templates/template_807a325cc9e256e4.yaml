@@ -1,0 +1,58 @@
+directive_name: NCP
+directive_str: \x44\x6d\x64\x54\0\0\0\x17\0\0\0\x01\0\0\0\0\x11\x11\0\xff\x01\xff\x13
+matches:
+- pattern: ^\0\0$
+  service: audioworks
+  version_info: ' p/AudioWorks sound server/ o/IRIX/ cpe:/o:sgi:irix/a'
+- pattern: ^\0\0\0\(\0\0\0\x01\0\0\0\0\0\0\0\x04\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x01\0\0\0\0\0\0\0\x01\0\0\0\x01\0\0\0\(\0\0\0\x01\0\0\0\0\0\0\0\x04\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x01\0\0\0\0\0\0\0\x01\0\0\0\x01
+  service: jute
+  version_info: ' p/Apache ZooKeeper/ cpe:/a:apache:zookeeper/'
+- pattern: ^\x74\x4e\x63\x50\0\0\0\x10\x33\x33
+  service: ncp
+  version_info: ' p/Novell NetWare NCP/ cpe:/o:novell:netware/'
+- pattern: ^X\0\0\0$
+  service: srun
+  version_info: ' p/Caucho Resin JSP Engine srun/ cpe:/a:caucho:resin/'
+- pattern: ^\0\0\0\x01\0\x17\0\x14\0\x06\0\0\0.\0\0\0\0\0\0
+  service: progress
+  version_info: s p/Progress Database/ cpe:/a:progress:database/
+- pattern: ^DmdT\0\0\0\x17\0\0\0\x01\xa8\xff\xff\xff
+  service: pigpio
+  version_info: ' p/pigpiod/ cpe:/a:pigpio:pigpiod/'
+- pattern: ^DmdT\0\0\0\x17\0\0\0\x01$
+  service: appleevents
+  version_info: ' p/Apple Remote Events/ o/Mac OS X/ cpe:/o:apple:mac_os_x/a'
+- pattern: ^Q$
+  service: resin-watchdog
+  version_info: ' p/Caucho Resin Pro Watchdog/ cpe:/a:caucho:resin/'
+- pattern: ^\0\0\0\(\0\0\0\x01\0\0\0\0\0\0\0\x02\0\0\0\x02\0\0.*\0\0\0\0\0\0\0\x03\0\0\0\0\0\0\0\x03\0\0\0\x01
+  service: smpp
+  version_info: s p/Apache Zookeeper smpp/
+- pattern: ^\x04\xef\xef\xb3\0\0\0\x01\x01\0\xc4\x01\0\0\0\0
+  service: softplc
+  version_info: ' p/CODESYS SoftPLC/ cpe:/a:3s-software:codesys_runtime_system/'
+- pattern: ^\d+SESSIONDENIED&REASON=Protocol violation\n$
+  service: tuxedo-wsl
+  version_info: ' p/BEA Tuxedo WorkStation Listener/ cpe:/a:bea:tuxedo/'
+- pattern: '^\xff\xfd\x98\xff\xfb\x01\xff\xfd\x18\xff\xfd\x98Welcome to UniData Telnet
+    Server\r\nlogin: '
+  service: telnet
+  version_info: ' p/Rocket UniData RDBMS telnetd/'
+- pattern: ^R:ERROR:6 \"Syntax Error\"\r\n
+  service: textui
+  version_info: ' p/Vantage InFusion home automation controller port/'
+ports:
+- 524
+- 1200
+- 1217
+- 2000
+- 3000
+- 3001
+- 3002
+- 3003
+- 3004
+- 3005
+- 3031
+- 6802
+protocol: TCP
+rarity: 6

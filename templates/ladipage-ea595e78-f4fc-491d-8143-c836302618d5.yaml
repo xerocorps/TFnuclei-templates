@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ladipage
+  - dsl:
+    - compare_versions(version, '<= 4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ladipage/readme.txt'
+  redirects: true
+id: ladipage-ea595e78-f4fc-491d-8143-c836302618d5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ladipage/
+    google-query: inurl:"/wp-content/plugins/ladipage/"
+    shodan-query: http.html:"wp-content/plugins/ladipage/"
+  name: 'LadiApp <= 4.4 - Cross-Site Request Forgery via save_config()
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ea595e78-f4fc-491d-8143-c836302618d5?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ladipage,medium,candidate

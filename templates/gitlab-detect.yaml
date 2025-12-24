@@ -1,0 +1,23 @@
+id: gitlab-detect
+info:
+  author: ehsahil
+  metadata:
+    shodan-query: http.title:"GitLab"
+  name: Detect Gitlab
+  severity: info
+  tags: panel,gitlab
+requests:
+- matchers:
+  - type: word
+    words:
+    - GitLab
+    - https://about.gitlab.com
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/users/sign_in'
+  redirects: true

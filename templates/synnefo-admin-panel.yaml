@@ -1,0 +1,18 @@
+id: synnefo-admin-panel
+info:
+  author: impramodsargar
+  name: Synnefo Admin Panel Exposure
+  severity: info
+  tags: panel,synnefo
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Synnefo Admin</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/synnefoclient/'

@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - inpost-gallery
+  - dsl:
+    - compare_versions(version, '< 2.1.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/inpost-gallery/readme.txt'
+  redirects: true
+id: inpost-gallery-1cc1cf9dc34095b462a7b36e1a07f468
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 6.4
+  description: The InPost Gallery plugin for WordPress is vulnerable to Stored Cross-Site
+    Scripting via the 'admin_thumb_width' parameter in versions up to, and including,
+    2.1.2 due to insufficient input sanitization and output escaping. This makes it
+    possible for authenticated attackers, with subscriber-level permissions and above,
+    to inject arbitrary web scripts in pages that will execute whenever a user accesses
+    an injected page.
+  metadata:
+    fofa-query: wp-content/plugins/inpost-gallery/
+    google-query: inurl:"/wp-content/plugins/inpost-gallery/"
+    shodan-query: 'vuln:'
+  name: InPost Gallery <= 2.1.2 - Cross-Site Scripting
+  reference:
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-inpost-gallery-multiple-vulnerabilities-2-1-2/
+  - https://web.archive.org/web/20210618153327/www.pluginvulnerabilities.com/2016/10/20/authenticated-persistent-cross-site-xss-vulnerability-in-inpost-gallery/
+  - https://wordpress.org/plugins/inpost-gallery/#developers
+  severity: medium
+  tags: cve,wordpress,wp-plugin,inpost-gallery,medium

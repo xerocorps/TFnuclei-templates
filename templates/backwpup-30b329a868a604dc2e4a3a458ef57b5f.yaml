@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - backwpup
+  - dsl:
+    - compare_versions(version, '< 1.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/backwpup/readme.txt'
+  redirects: true
+id: backwpup-30b329a868a604dc2e4a3a458ef57b5f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/backwpup/
+    google-query: inurl:"/wp-content/plugins/backwpup/"
+    shodan-query: 'vuln:'
+  name: "BackWPup \u2013 WordPress Backup Plugin < 1.4.1 - Directory Traversal\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e8a7d3b1-ceb7-4ff9-84e4-bc58a597b2cf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,backwpup,low

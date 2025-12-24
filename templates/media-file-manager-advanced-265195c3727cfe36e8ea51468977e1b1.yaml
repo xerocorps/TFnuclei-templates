@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - media-file-manager-advanced
+  - dsl:
+    - compare_versions(version, '<= 1.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/media-file-manager-advanced/readme.txt'
+  redirects: true
+id: media-file-manager-advanced-265195c3727cfe36e8ea51468977e1b1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/media-file-manager-advanced/
+    google-query: inurl:"/wp-content/plugins/media-file-manager-advanced/"
+    shodan-query: 'vuln:'
+  name: 'Media File Manager Advanced <= 1.1.5 - Improper Access Control
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e4e6e410-5778-41f7-a259-daa506bfb161?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,media-file-manager-advanced,low

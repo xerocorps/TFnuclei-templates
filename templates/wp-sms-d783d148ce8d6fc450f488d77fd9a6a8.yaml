@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-sms
+  - dsl:
+    - compare_versions(version, '<= 6.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-sms/readme.txt'
+  redirects: true
+id: wp-sms-d783d148ce8d6fc450f488d77fd9a6a8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-sms/
+    google-query: inurl:"/wp-content/plugins/wp-sms/"
+    shodan-query: 'vuln:'
+  name: 'WP SMS <= 6.6.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1e07e570-e4c0-472c-b582-40a87a6507bf?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-sms,medium

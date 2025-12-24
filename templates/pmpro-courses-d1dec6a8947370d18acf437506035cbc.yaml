@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pmpro-courses
+  - dsl:
+    - compare_versions(version, '< 1.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pmpro-courses/readme.txt'
+  redirects: true
+id: pmpro-courses-d1dec6a8947370d18acf437506035cbc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pmpro-courses/
+    google-query: inurl:"/wp-content/plugins/pmpro-courses/"
+    shodan-query: 'vuln:'
+  name: 'Paid Memberships Pro - Courses for Membership Add On <= 1.2.3 - Missing Authorization
+    to Authenticated (Subscriber+) Course Modifications
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b2dee8d2-e1ab-455c-b922-92881f62fc5c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,pmpro-courses,low

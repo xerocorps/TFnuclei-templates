@@ -1,0 +1,21 @@
+id: kkfileview-panel
+info:
+  author: arafatansari
+  metadata:
+    shodan-query: http.title:"kkFileView"
+    verified: true
+  name: kkFileView Panel Detect
+  severity: info
+  tags: panel,kkfileview
+requests:
+- matchers:
+  - type: word
+    words:
+    - "<title>kkFileView\u6F14\u793A\u9996\u9875</title>"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index'

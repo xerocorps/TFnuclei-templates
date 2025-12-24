@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - alma-gateway-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 5.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/alma-gateway-for-woocommerce/readme.txt'
+  redirects: true
+id: alma-gateway-for-woocommerce-ccb17366a534a4b55a00c6ace0331954
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/alma-gateway-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/alma-gateway-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: "Alma \u2013 Pay in installments or later for WooCommerce <= 5.2.0 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/044d7480-ccd7-4ce8-bb5d-367ba5d0217c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,alma-gateway-for-woocommerce,low

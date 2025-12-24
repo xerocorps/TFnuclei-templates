@@ -1,0 +1,13 @@
+directive_name: NJE
+directive_str: \xd6\xd7\xc5\xd5@@@@\xc6\xc1\xd2\xc5@@@@\0\0\0\0\xc6\xc1\xd2\xc5@@@@\0\0\0\0\0
+matches:
+- pattern: ^\xd5\xc1\xd2
+  service: nje
+  version_info: ' p/IBM Network Job Entry (JES)/'
+- pattern: ^\xc1\xc3\xd2
+  service: nje
+  version_info: ' p/IBM Network Job Entry (JES)/'
+ports:
+- 175
+protocol: TCP
+rarity: 9

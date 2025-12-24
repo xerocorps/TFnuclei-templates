@@ -1,0 +1,22 @@
+id: oracle-people-enterprise
+info:
+  author: dhiyaneshDk
+  name: Oracle Peoplesoft Enterprise
+  reference:
+  - https://www.shodan.io/search?query=http.title%3A%22Oracle+Peoplesoft+Enterprise%22
+  severity: info
+  tags: oracle,login,panel
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - /signon.html
+    - <meta HTTP-EQUIV='Refresh' CONTENT='1
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

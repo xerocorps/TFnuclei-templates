@@ -1,0 +1,29 @@
+id: api-nownodes
+info:
+  author: daffainfo
+  name: Nownodes API Test
+  reference:
+  - https://nownodes.io/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Blockchain/Nownodes.md
+  severity: info
+  tags: token-spray,nownodes
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"coin":'
+    - '"host":'
+    - '"version":'
+  raw:
+  - 'GET https://bsc-blockbook.nownodes.io/api HTTP/1.1
+
+    Host: bsc-blockbook.nownodes.io
+
+    api-key: {{token}}
+
+    Content-Type: application/json
+
+    '
+self-contained: true

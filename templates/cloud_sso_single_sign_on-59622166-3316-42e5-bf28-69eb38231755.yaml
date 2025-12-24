@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cloud-sso-single-sign-on
+  - dsl:
+    - compare_versions(version, '<= 1.0.19')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cloud-sso-single-sign-on/readme.txt'
+  redirects: true
+id: cloud_sso_single_sign_on-59622166-3316-42e5-bf28-69eb38231755
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cloud-sso-single-sign-on/
+    google-query: inurl:"/wp-content/plugins/cloud-sso-single-sign-on/"
+    shodan-query: http.html:"wp-content/plugins/cloud-sso-single-sign-on/"
+  name: 'Cloud SAML SSO <= 1.0.19 - Missing Authorization to Unauthenticated Settings
+    Modification via set_organization_settings Action
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/59622166-3316-42e5-bf28-69eb38231755?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,cloud-sso-single-sign-on,high,candidate

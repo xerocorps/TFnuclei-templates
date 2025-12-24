@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fox-lms
+  - dsl:
+    - compare_versions(version, '>= 1.0.4.7', '<= 1.0.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fox-lms/readme.txt'
+  redirects: true
+id: fox_lms-de4f8d45-9522-4a32-bc98-be8dbf3a5cf1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fox-lms/
+    google-query: inurl:"/wp-content/plugins/fox-lms/"
+    shodan-query: http.html:"wp-content/plugins/fox-lms/"
+  name: "Fox LMS \u2013 WordPress LMS Plugin 1.0.4.7 - 1.0.5.1 - Unauthenticated Privilege\
+    \ Escalation via 'createOrder'\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/de4f8d45-9522-4a32-bc98-be8dbf3a5cf1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fox-lms,low,candidate

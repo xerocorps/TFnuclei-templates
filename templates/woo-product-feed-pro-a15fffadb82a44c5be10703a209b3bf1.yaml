@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-product-feed-pro
+  - dsl:
+    - compare_versions(version, '<= 12.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-product-feed-pro/readme.txt'
+  redirects: true
+id: woo-product-feed-pro-a15fffadb82a44c5be10703a209b3bf1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-product-feed-pro/
+    google-query: inurl:"/wp-content/plugins/woo-product-feed-pro/"
+    shodan-query: 'vuln:'
+  name: 'Product Feed PRO for WooCommerce <= 12.4.0 - Cross-Site Request Forgery via
+    update_project
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c5b0939a-1699-483c-9a4f-7978155e6ad1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-product-feed-pro,medium

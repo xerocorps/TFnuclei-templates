@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpcom-member
+  - dsl:
+    - compare_versions(version, '<= 1.5.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpcom-member/readme.txt'
+  redirects: true
+id: wpcom_member-ec7f3e0c-a07c-4082-9b6b-12d0fbe0fdc8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpcom-member/
+    google-query: inurl:"/wp-content/plugins/wpcom-member/"
+    shodan-query: http.html:"wp-content/plugins/wpcom-member/"
+  name: 'WPCOM Member <= 1.5.2.1 - Unauthenticated Privilege Escalation via User Meta
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ec7f3e0c-a07c-4082-9b6b-12d0fbe0fdc8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpcom-member,low,candidate

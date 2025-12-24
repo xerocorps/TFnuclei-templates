@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dzs-videogallery
+  - dsl:
+    - compare_versions(version, '<= 8.60')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/dzs-videogallery/readme.txt'
+  redirects: true
+id: dzs-videogallery-f315c398a785e3e1c29e85fb8d0d2813
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/dzs-videogallery/
+    google-query: inurl:"/wp-content/plugins/dzs-videogallery/"
+    shodan-query: 'vuln:'
+  name: 'DZS Video Gallery <= 8.60 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/101f8390-7fd1-427d-a62e-83c527adedec?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,dzs-videogallery,medium

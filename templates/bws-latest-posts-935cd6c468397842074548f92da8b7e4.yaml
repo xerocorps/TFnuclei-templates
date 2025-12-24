@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bws-latest-posts
+  - dsl:
+    - compare_versions(version, '< 0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bws-latest-posts/readme.txt'
+  redirects: true
+id: bws-latest-posts-935cd6c468397842074548f92da8b7e4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bws-latest-posts/
+    google-query: inurl:"/wp-content/plugins/bws-latest-posts/"
+    shodan-query: 'vuln:'
+  name: 'Latest Posts by BestWebSoft < 0.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b8580107-bbc1-4d6e-bb72-f1efc404d7b3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,bws-latest-posts,medium

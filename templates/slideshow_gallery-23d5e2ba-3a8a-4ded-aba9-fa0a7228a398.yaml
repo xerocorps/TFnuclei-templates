@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - slideshow-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/slideshow-gallery/readme.txt'
+  redirects: true
+id: slideshow_gallery-23d5e2ba-3a8a-4ded-aba9-fa0a7228a398
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/slideshow-gallery/
+    google-query: inurl:"/wp-content/plugins/slideshow-gallery/"
+    shodan-query: http.html:"wp-content/plugins/slideshow-gallery/"
+  name: 'Slideshow Gallery <= 1.8 - Unauthenticated Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/23d5e2ba-3a8a-4ded-aba9-fa0a7228a398?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,slideshow-gallery,low,candidate

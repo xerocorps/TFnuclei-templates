@@ -1,0 +1,27 @@
+id: s3cfg-config
+info:
+  author: geeknik,DhiyaneshDK
+  name: S3CFG Configuration - File Exposure
+  reference:
+  - https://s3tools.org/kb/item14.htm
+  severity: unknown
+  tags: amazon,s3,exposure,config
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - access_key
+    - bucket_location
+    - secret_key
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.s3cfg'

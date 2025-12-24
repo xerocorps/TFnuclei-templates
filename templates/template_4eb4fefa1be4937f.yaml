@@ -1,0 +1,47 @@
+name: Update README with Templates
+true:
+  pull_request:
+    branches:
+    - dev
+  push:
+    branches:
+    - dev
+    paths:
+    - '**.yaml'
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+    - name: Initialize and update submodules (if needed)
+      run: git submodule update --init --recursive
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+    - name: Run Python script to update README
+      run: python .github/scripts/update-readme.py
+    - name: Set up GPG
+      run: 'echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
+
+        git config --global user.name "Signing Bot"
+
+        git config --global user.email "github-actions@github.com"
+
+        git config --global commit.gpgSign true
+
+        git config --global user.signingkey ${{ secrets.GPG_KEY_ID }}
+
+        '
+    - name: Commit changes if any
+      run: "git add README.md\nif ! git diff --cached --quiet; then\n  git commit\
+        \ -S -m \"Update README table\"\nelse\n  echo \"No changes to commit\"\nfi\n"
+    - name: Push changes
+      run: 'git pull origin dev --rebase
+
+        git push origin dev
+
+        '

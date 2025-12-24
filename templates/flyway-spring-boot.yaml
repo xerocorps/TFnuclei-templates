@@ -1,0 +1,30 @@
+id: flyway-spring-boot
+info:
+  author: ELSFA7110
+  description: this endpoint to retrieve the migrations
+  name: Detect flyway spring boot Actuator
+  severity: low
+  tags: springboot,exposure
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - flyway
+    - flywayBeans
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: header
+    type: word
+    words:
+    - application/json
+    - application/vnd.spring-boot.actuator
+    - application/vnd.spring-boot.actuator.v1+json
+    - application/vnd.spring-boot.actuator.v2+json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/actuator/flyway'

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - popup-images
+  - dsl:
+    - compare_versions(version, '>0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/popup-images/readme.txt'
+  redirects: true
+id: popup-images-363d51725f983b0bcb6e842c4c588d4b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The Popup Images plugin for WordPress is vulnerable to Cross-Site Scripting
+    due to insufficient input sanitization and output escaping. This makes it possible
+    for unauthenticated attackers to inject arbitrary web scripts that execute in
+    a victim's browser.
+  metadata:
+    fofa-query: wp-content/plugins/popup-images/
+    google-query: inurl:"/wp-content/plugins/popup-images/"
+    shodan-query: 'vuln:'
+  name: Popup Images (Unknown Version) - Cross-Site Scripting
+  reference:
+  - https://packetstormsecurity.com/files/126872/
+  - https://wpscan.com/vulnerability/ff01fe51-bbdc-47db-b260-f3b454654361
+  severity: medium
+  tags: cve,wordpress,wp-plugin,popup-images,medium

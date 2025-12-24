@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - feed-them-social
+  - dsl:
+    - compare_versions(version, '<= 3.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/feed-them-social/readme.txt'
+  redirects: true
+id: feed-them-social-48ed163461cd954db4dd6546a282872c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/feed-them-social/
+    google-query: inurl:"/wp-content/plugins/feed-them-social/"
+    shodan-query: 'vuln:'
+  name: 'Feed Them Social <= 3.0.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/736d08ca-3f65-4232-96a9-303bafbf3471?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,feed-them-social,medium

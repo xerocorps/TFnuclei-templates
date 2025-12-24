@@ -1,0 +1,49 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-social-icons
+  - dsl:
+    - compare_versions(version, '<= 3.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-social-icons/readme.txt'
+  redirects: true
+id: easy_social_icons-7dfa84ed-0edf-4a75-8ec3-986c3880353c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 5.5
+  description: 'The Easy Social Icons plugin for WordPress is vulnerable to admin-level
+    stored Cross-Site Scripting due to missing sanitization on several variables in
+    versions up to, and including, 3.1.4.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/easy-social-icons/
+    google-query: inurl:"/wp-content/plugins/easy-social-icons/"
+    shodan-query: http.html:"wp-content/plugins/easy-social-icons/"
+  name: 'Easy Social Icons <= 3.1.4 - Admin+ Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7dfa84ed-0edf-4a75-8ec3-986c3880353c?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,easy-social-icons,medium,production

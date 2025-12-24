@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sirv
+  - dsl:
+    - compare_versions(version, '<= 6.8.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sirv/readme.txt'
+  redirects: true
+id: sirv-1a845e865ab8f1892066d61b9f43b848
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sirv/
+    google-query: inurl:"/wp-content/plugins/sirv/"
+    shodan-query: 'vuln:'
+  name: "Image Optimizer, Resizer and CDN \u2013 Sirv <= 6.8.0 - Authenticated (Administrator+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d44f8891-cc24-4f6f-9032-3a4c632c6fb6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sirv,low

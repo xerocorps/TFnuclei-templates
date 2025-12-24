@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gs-facebook-comments
+  - dsl:
+    - compare_versions(version, '<= 1.7.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gs-facebook-comments/readme.txt'
+  redirects: true
+id: gs-facebook-comments-021c3c4ad0444ee2823d576b1ce78478
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gs-facebook-comments/
+    google-query: inurl:"/wp-content/plugins/gs-facebook-comments/"
+    shodan-query: 'vuln:'
+  name: 'WP Social Comments <= 1.7.2 - Missing Authorization to Authenticated (Subscriber+)
+    Settings Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c2f209e1-4837-404b-8e3e-63a9d842a944?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gs-facebook-comments,low

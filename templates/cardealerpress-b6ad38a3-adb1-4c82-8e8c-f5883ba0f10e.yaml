@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cardealerpress
+  - dsl:
+    - compare_versions(version, '<= 6.8.2505.00')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cardealerpress/readme.txt'
+  redirects: true
+id: cardealerpress-b6ad38a3-adb1-4c82-8e8c-f5883ba0f10e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cardealerpress/
+    google-query: inurl:"/wp-content/plugins/cardealerpress/"
+    shodan-query: http.html:"wp-content/plugins/cardealerpress/"
+  name: 'CarDealerPress <= 6.8.2505.00 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via saleclass Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b6ad38a3-adb1-4c82-8e8c-f5883ba0f10e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cardealerpress,low,candidate

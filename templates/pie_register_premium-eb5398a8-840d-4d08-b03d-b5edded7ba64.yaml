@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pie-register-premium
+  - dsl:
+    - compare_versions(version, '< 3.8.3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pie-register-premium/readme.txt'
+  redirects: true
+id: pie_register_premium-eb5398a8-840d-4d08-b03d-b5edded7ba64
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pie-register-premium/
+    google-query: inurl:"/wp-content/plugins/pie-register-premium/"
+    shodan-query: http.html:"wp-content/plugins/pie-register-premium/"
+  name: 'Pie Register Premium < 3.8.3.3 - Unauthenticated Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eb5398a8-840d-4d08-b03d-b5edded7ba64?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,pie-register-premium,high,candidate

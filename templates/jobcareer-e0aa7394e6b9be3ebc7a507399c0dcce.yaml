@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jobcareer
+  - dsl:
+    - compare_versions(version, '<= 3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jobcareer/readme.txt'
+  redirects: true
+id: jobcareer-e0aa7394e6b9be3ebc7a507399c0dcce
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jobcareer/
+    google-query: inurl:"/wp-content/plugins/jobcareer/"
+    shodan-query: 'vuln:'
+  name: 'JobCareer <= 3.4 - Multiple Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/31b52500-c53c-4606-b57c-cd14bb66afa9?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,jobcareer,high

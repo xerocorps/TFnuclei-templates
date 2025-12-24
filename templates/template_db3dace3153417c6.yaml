@@ -1,0 +1,35 @@
+cache:
+  directories:
+  - $HOME/.cache
+  - $HOME/bin
+  - $HOME/gopath/pkg/mod
+  go: true
+go:
+- 1.11
+- 1.12
+- master
+install: true
+language: go
+matrix:
+  include:
+  - go: 1.7
+    install: go get -t
+  - go: 1.8
+    install: go get -t
+  - go: 1.9
+    install: go get -t
+  - go: 1.10.x
+    install: go get -t
+  - after_success: bash <(curl -s https://codecov.io/bash)
+    env: task=coverage
+    go: 1.x
+    script: GO111MODULE=on go test -race -covermode=atomic -coverprofile=coverage.txt
+  - env: task=bench
+    go: 1.x
+    script: GO111MODULE=on ./script/bench
+  - env: task=clean
+    go: 1.x
+    install: curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh
+      | bash -s -- -b $HOME/bin v1.16.0
+    script: GO111MODULE=on ./script/clean
+script: GO111MODULE=on go test -race

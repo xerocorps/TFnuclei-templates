@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - awesome-support
+  - dsl:
+    - compare_versions(version, '<= 6.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/awesome-support/readme.txt'
+  redirects: true
+id: awesome-support-0928f0fb94fa92c1b937ba28e37fc1c9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/awesome-support/
+    google-query: inurl:"/wp-content/plugins/awesome-support/"
+    shodan-query: 'vuln:'
+  name: 'Awesome Support <= 6.1.5 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d69915e9-af9b-4c07-ac43-21c6e350c3c4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,awesome-support,medium

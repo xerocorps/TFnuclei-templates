@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - gitlab
+    - config file
+    - exposure
+  description: Template to detect GitLab configuration file exposure
+  id: gitlab-config-exposure
+  matchers:
+  - pattern: gitlab_rails\["time_zone"\]\s+=\s+"\w+"
+    type: body
+  - pattern: gitlab_rails\["ldap_enabled"\]\s+=\s+\w+
+    type: body
+  name: GitLab Configuration Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /etc/gitlab/gitlab.rb
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

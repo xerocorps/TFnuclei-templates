@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-polls-by-opinionstage
+  - dsl:
+    - compare_versions(version, '<= 19.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-polls-by-opinionstage/readme.txt'
+  redirects: true
+id: social_polls_by_opinionstage-ba86268a-7bd6-40ed-9af6-29409245675d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/social-polls-by-opinionstage/
+    google-query: inurl:"/wp-content/plugins/social-polls-by-opinionstage/"
+    shodan-query: http.html:"wp-content/plugins/social-polls-by-opinionstage/"
+  name: 'Poll, Survey & Quiz Maker Plugin by Opinion Stage <= 19.9.0 - Incorrect Authorization
+    to Authenticated (Contributor+) Plugin Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ba86268a-7bd6-40ed-9af6-29409245675d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,social-polls-by-opinionstage,low,candidate

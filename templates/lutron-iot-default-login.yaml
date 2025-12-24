@@ -1,0 +1,25 @@
+id: lutron-iot-default-login
+info:
+  author: geeknik
+  name: Lutron IOT Device Default Login
+  reference: https://www.lutron.com
+  severity: high
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <TITLE>LUTRON</TITLE>
+    - '>DeviceIP</A>'
+    - '>Get Database Info as XML</A>'
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login?login=lutron&password=lutron'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jetpack
+  - dsl:
+    - compare_versions(version, '>= 2.9', '<= 2.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jetpack/readme.txt'
+  redirects: true
+id: jetpack-20a45301e048f4098def8ae1a07f6493
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jetpack/
+    google-query: inurl:"/wp-content/plugins/jetpack/"
+    shodan-query: 'vuln:'
+  name: 'Jetpack < 2.9.3 - Security Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f8650a2e-346f-45fb-b5f5-ee99a470b2fc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,jetpack,low

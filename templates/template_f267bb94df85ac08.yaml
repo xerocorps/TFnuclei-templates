@@ -1,0 +1,32 @@
+name: "\U0001F6E0 Template Validate"
+true:
+- push
+- pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - id: nuclei-latest
+      name: Get latest Nuclei release version
+      uses: actions/github-script@v5
+      with:
+        result-encoding: string
+        script: "const release = await github.rest.repos.getLatestRelease({\n  owner:\
+          \ 'projectdiscovery',\n  repo: 'nuclei',\n});\n\nreturn release.data.name\n"
+    - env:
+        VERSION: ${{ steps.nuclei-latest.outputs.result }}
+      if: steps.nuclei-latest.outputs.result != ''
+      name: Setup Nuclei
+      run: 'wget -q https://github.com/projectdiscovery/nuclei/releases/download/${VERSION}/nuclei_${VERSION:1}_linux_amd64.zip
+
+        sudo unzip nuclei*.zip -d /usr/local/bin
+
+        '
+      working-directory: /tmp
+    - name: Template Validation
+      run: 'cp -r ${{ github.workspace }} $HOME
+
+        nuclei -validate -t .
+
+        nuclei -validate -w ./workflows'

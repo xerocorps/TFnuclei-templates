@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - videowhisper-video-conference-integration
+  - dsl:
+    - compare_versions(version, '< 4.51')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/videowhisper-video-conference-integration/readme.txt'
+  redirects: true
+id: videowhisper-video-conference-integration-25f7de7aa31a1ddc790031437b28b003
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/videowhisper-video-conference-integration/
+    google-query: inurl:"/wp-content/plugins/videowhisper-video-conference-integration/"
+    shodan-query: 'vuln:'
+  name: 'Webcam Video Conference < 4.51 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6a4d5a40-2ec0-468e-bafb-a713629f6006?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,videowhisper-video-conference-integration,critical

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wishlist-and-compare
+  - dsl:
+    - compare_versions(version, '<= 1.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wishlist-and-compare/readme.txt'
+  redirects: true
+id: wishlist-and-compare-e4dcd27010c90ac4ef6cda8879ad7b32
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wishlist-and-compare/
+    google-query: inurl:"/wp-content/plugins/wishlist-and-compare/"
+    shodan-query: 'vuln:'
+  name: 'Wishlist and Compare for WooCommerce <= 1.0.4 - Authorization Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d99614e6-4543-4594-9a46-71ecc986be45?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wishlist-and-compare,high

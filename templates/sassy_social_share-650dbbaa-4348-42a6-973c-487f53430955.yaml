@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sassy-social-share
+  - dsl:
+    - compare_versions(version, '< 3.3.40')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sassy-social-share/readme.txt'
+  redirects: true
+id: sassy_social_share-650dbbaa-4348-42a6-973c-487f53430955
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sassy-social-share/
+    google-query: inurl:"/wp-content/plugins/sassy-social-share/"
+    shodan-query: http.html:"wp-content/plugins/sassy-social-share/"
+  name: 'Sassy Social Share <= 3.3.39 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/650dbbaa-4348-42a6-973c-487f53430955?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,sassy-social-share,medium,candidate

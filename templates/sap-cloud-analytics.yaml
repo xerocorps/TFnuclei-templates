@@ -1,0 +1,26 @@
+id: sap-cloud-analytics
+info:
+  author: righettod
+  metadata:
+    shodan-query: http.html:"SAP Analytics Cloud"
+    verified: 'true'
+  name: SAP Analytics Cloud
+  severity: info
+  tags: panel,sap,cloudanalytics
+requests:
+- host-redirects: true
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - SAP Analytics Cloud
+    - /approuter/
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'

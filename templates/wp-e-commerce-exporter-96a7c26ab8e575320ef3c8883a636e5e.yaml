@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-e-commerce-exporter
+  - dsl:
+    - compare_versions(version, '<= 1.6.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-e-commerce-exporter/readme.txt'
+  redirects: true
+id: wp-e-commerce-exporter-96a7c26ab8e575320ef3c8883a636e5e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-e-commerce-exporter/
+    google-query: inurl:"/wp-content/plugins/wp-e-commerce-exporter/"
+    shodan-query: 'vuln:'
+  name: "WP e-Commerce \u2013 Store Exporter <= 1.6.6 - Missing Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/668ba3a9-d53c-45ab-854f-1a9e83dd54b8?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-e-commerce-exporter,high

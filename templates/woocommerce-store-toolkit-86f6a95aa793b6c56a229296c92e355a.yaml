@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-store-toolkit
+  - dsl:
+    - compare_versions(version, '<= 1.5.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-store-toolkit/readme.txt'
+  redirects: true
+id: woocommerce-store-toolkit-86f6a95aa793b6c56a229296c92e355a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-store-toolkit/
+    google-query: inurl:"/wp-content/plugins/woocommerce-store-toolkit/"
+    shodan-query: 'vuln:'
+  name: 'Store Toolkit for WooCommerce <= 1.5.6 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/26399541-a6a7-4c01-b72c-1ebf73f18c84?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocommerce-store-toolkit,high

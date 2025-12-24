@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fluent-support
+  - dsl:
+    - compare_versions(version, '<= 1.5.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fluent-support/readme.txt'
+  redirects: true
+id: fluent-support-5bf3f9aeb865e8088dbec7ccc654a8ee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fluent-support/
+    google-query: inurl:"/wp-content/plugins/fluent-support/"
+    shodan-query: 'vuln:'
+  name: 'Fluent Support <= 1.5.7 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dcf54e27-e2d1-4d87-8eb6-2881054b70fe?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fluent-support,low

@@ -1,0 +1,32 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - truffle
+    - configuration
+    - security
+    - exposure
+  description: Template to detect the exposure of Truffle configuration files
+  id: truffle-config-exposure
+  matcher-condition: and
+  matchers:
+  - description: Truffle configuration file found in the response body
+    pattern: truffle-config
+    type: body
+  - description: Configuration file for Truffle found in the response body
+    pattern: 'db: {'
+    type: body
+  name: Truffle Configuration Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /truffle-config.js
+    - /config/truffle.js
+    - /truffle-configuration
+    - /configuration/truffle
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pie-register
+  - dsl:
+    - compare_versions(version, '>= 2.0.14', '<= 2.0.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pie-register/readme.txt'
+  redirects: true
+id: pie-register-e6af63e846634d68d939ef0bfc91f80d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: "The Pie Register plugin for WordPress is vulnerable to SQL Injection\
+    \ via the show_dash_widget\u2019 and \u2018invitaion_code\u2019 parameter in versions\
+    \ 2.0.14-2.0.15 due to insufficient escaping on the user supplied parameter and\
+    \ lack of sufficient preparation on the existing SQL query."
+  metadata:
+    fofa-query: wp-content/plugins/pie-register/
+    google-query: inurl:"/wp-content/plugins/pie-register/"
+    shodan-query: 'vuln:'
+  name: Pie Register 2.0.14-2.0.15 - SQL Injection
+  reference:
+  - https://g0blin.co.uk/g0blin-00040/
+  - https://wpscan.com/vulnerability/f0b9e57d-e319-415d-8333-48586c111108
+  severity: critical
+  tags: cve,wordpress,wp-plugin,pie-register,critical

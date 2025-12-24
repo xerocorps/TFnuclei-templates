@@ -1,0 +1,27 @@
+id: api-mojoauth
+info:
+  author: daffainfo
+  name: MojoAuth API Test
+  reference:
+  - https://mojoauth.com/docs/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Authentication/MojoAuth.md
+  severity: info
+  tags: token-spray,mojoauth
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"keys"'
+    - '"kty"'
+    - '"kid"'
+  raw:
+  - 'POST https://api.mojoauth.com/token/jwks HTTP/1.1
+
+    Host: api.mojoauth.com
+
+    X-API-Key: {{token}}
+
+    '
+self-contained: true

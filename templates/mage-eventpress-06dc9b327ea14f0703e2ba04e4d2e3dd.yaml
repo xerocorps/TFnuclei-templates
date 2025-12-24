@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mage-eventpress
+  - dsl:
+    - compare_versions(version, '<= 3.8.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mage-eventpress/readme.txt'
+  redirects: true
+id: mage-eventpress-06dc9b327ea14f0703e2ba04e4d2e3dd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mage-eventpress/
+    google-query: inurl:"/wp-content/plugins/mage-eventpress/"
+    shodan-query: 'vuln:'
+  name: 'Event Manager for WooCommerce <= 3.8.6 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting via ''mep_get_option'' function
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c2f4c1de-7eeb-45c4-bbff-ec85f2cda5aa?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mage-eventpress,low

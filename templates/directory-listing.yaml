@@ -1,0 +1,29 @@
+expression: r0() || r1() || r2()
+id: directory-listing
+info:
+  author: zan8in
+  name: "\u76EE\u5F55\u6D4F\u89C8 \u5217\u76EE\u5F55"
+  severity: info
+  verified: true
+rules:
+  r0:
+    expression: response.status == 200  && response.body.bcontains(b'<title>Index
+      of /images</title>') && response.body.bcontains(b'<h1>Index of /images</h1>')
+    request:
+      follow_redirects: true
+      method: GET
+      path: /images
+  r1:
+    expression: response.status == 200  && response.body.bcontains(b'<title>Index
+      of /js</title>') && response.body.bcontains(b'<h1>Index of /js</h1>')
+    request:
+      follow_redirects: true
+      method: GET
+      path: /js
+  r2:
+    expression: response.status == 200  && response.body.bcontains(b'<title>Index
+      of /css</title>') && response.body.bcontains(b'<h1>Index of /css</h1>')
+    request:
+      follow_redirects: true
+      method: GET
+      path: /css

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - 12-step-meeting-list
+  - dsl:
+    - compare_versions(version, '<= 3.18.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/12-step-meeting-list/readme.txt'
+  redirects: true
+id: 12_step_meeting_list-51296ab5-da96-4461-89f7-9e93f8032b03
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/12-step-meeting-list/
+    google-query: inurl:"/wp-content/plugins/12-step-meeting-list/"
+    shodan-query: http.html:"wp-content/plugins/12-step-meeting-list/"
+  name: '12 Step Meeting List <= 3.18.3 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/51296ab5-da96-4461-89f7-9e93f8032b03?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,12-step-meeting-list,low,candidate

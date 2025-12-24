@@ -1,0 +1,23 @@
+id: circarlife-default-login
+info:
+  author: geeknik
+  name: CirCarLife SCADA Default Login
+  reference: https://www.exploit-db.com/exploits/45384
+  severity: critical
+  tags: circarlife,scada,iot,auth
+requests:
+- headers:
+    Authorization: Basic YWRtaW46MTIzNAo=
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - <title>OCPP Engine - Setup</title>
+    - Application Parameters
+  matchers-condition: and
+  method: POST
+  path:
+  - '{{BaseURL}}/html/setup.html'

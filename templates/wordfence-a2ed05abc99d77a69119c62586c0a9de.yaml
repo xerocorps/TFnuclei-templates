@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordfence
+  - dsl:
+    - compare_versions(version, '< 5.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordfence/readme.txt'
+  redirects: true
+id: wordfence-a2ed05abc99d77a69119c62586c0a9de
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+  description: The Wordfence plugin for WordPress is vulnerable to Stored Cross-Site
+    Scripting via the Referer Header in versions up to, and including, 5.2.2 due to
+    insufficient input sanitization and output escaping. This makes it possible for
+    unauthenticated attackers to inject arbitrary web scripts in pages that will execute
+    whenever a user accesses an injected page.
+  metadata:
+    fofa-query: wp-content/plugins/wordfence/
+    google-query: inurl:"/wp-content/plugins/wordfence/"
+    shodan-query: 'vuln:'
+  name: Wordfence <= 5.2.2 - Stored Cross-Site Scripting
+  reference:
+  - https://vexatioustendencies.com/wordpress-plugin-vulnerability-dump-part-2/
+  - https://www.wordfence.com/wp-content/uploads/2017/11/changelog_7.5.9.txt
+  severity: high
+  tags: cve,wordpress,wp-plugin,wordfence,high

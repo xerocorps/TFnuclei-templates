@@ -1,0 +1,19 @@
+id: eatery-restaurant-open-redirect
+info:
+  author: 0x_Akoko
+  description: The WordPress Attitude Themes allows remote attackers to redirect users
+    to an attacker controlled URL.
+  name: WordPress Attitude Themes 1.1.1 Open Redirection
+  reference:
+  - https://cxsecurity.com/issue/WLB-2020030183
+  severity: low
+  tags: wordpress,wp-theme,redirect
+requests:
+- matchers:
+  - part: header
+    regex:
+    - (?m)^(?:Location\s*?:\s*?)(?:https?://|//)?(?:[a-zA-Z0-9\-_\.@]*)interact\.sh.*$
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/eatery/nav.php?-Menu-=https://interact.sh/'

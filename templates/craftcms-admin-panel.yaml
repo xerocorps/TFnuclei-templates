@@ -1,0 +1,21 @@
+id: craftcms-admin-panel
+info:
+  author: Supras
+  metadata:
+    shodan-query: 'X-Powered-By: Craft CMS'
+  name: Craft CMS admin panel
+  severity: info
+  tags: panel,craftcms
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - title="Powered by Craft CMS"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/login'

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - slider-wd
+  - dsl:
+    - compare_versions(version, '<= 1.2.57')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/slider-wd/readme.txt'
+  redirects: true
+id: slider-wd-6d1defd71e3879f050f2beece2fd7283
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/slider-wd/
+    google-query: inurl:"/wp-content/plugins/slider-wd/"
+    shodan-query: 'vuln:'
+  name: "Slider by 10Web \u2013 Responsive Image Slider <= 1.2.57 - Authenticated\
+    \ (Contributor+) SQL Injection via id Parameter\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/74d635b6-2b4a-49af-af5c-6bfa1b5d220e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,slider-wd,low

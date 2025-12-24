@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - noo-jobmonster
+  - dsl:
+    - compare_versions(version, '<= 4.7.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/noo-jobmonster/style.css'
+  redirects: true
+id: noo_jobmonster-e6facfb9-16d8-42dc-9c7d-fd1dd1342f81
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/noo-jobmonster/
+    google-query: inurl:"/wp-content/themes/noo-jobmonster/"
+    shodan-query: http.html:"wp-content/themes/noo-jobmonster/"
+  name: 'Jobmonster <= 4.7.8 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e6facfb9-16d8-42dc-9c7d-fd1dd1342f81?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,noo-jobmonster,medium,candidate

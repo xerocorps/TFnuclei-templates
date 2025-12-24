@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - smart-wishlist-for-more-convert
+  - dsl:
+    - compare_versions(version, '<= 1.8.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/smart-wishlist-for-more-convert/readme.txt'
+  redirects: true
+id: smart_wishlist_for_more_convert-2c11f469-b136-4429-87a1-083d7d5e6695
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/smart-wishlist-for-more-convert/
+    google-query: inurl:"/wp-content/plugins/smart-wishlist-for-more-convert/"
+    shodan-query: http.html:"wp-content/plugins/smart-wishlist-for-more-convert/"
+  name: 'MC Woocommerce Wishlist <= 1.8.9 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2c11f469-b136-4429-87a1-083d7d5e6695?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,smart-wishlist-for-more-convert,low,candidate

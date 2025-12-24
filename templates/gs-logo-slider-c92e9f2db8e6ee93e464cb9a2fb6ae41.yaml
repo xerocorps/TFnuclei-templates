@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gs-logo-slider
+  - dsl:
+    - compare_versions(version, '<= 3.3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gs-logo-slider/readme.txt'
+  redirects: true
+id: gs-logo-slider-c92e9f2db8e6ee93e464cb9a2fb6ae41
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gs-logo-slider/
+    google-query: inurl:"/wp-content/plugins/gs-logo-slider/"
+    shodan-query: 'vuln:'
+  name: "GS Logo Slider \u2013 Ticker, Grid, List, Table & Filter Views <= 3.3.7 -\
+    \ Authenticated (Contributor+) Stored Cross-Site Scripting via Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8d4f018c-483b-4435-a8b1-f18e5f843507?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gs-logo-slider,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-page-widget
+  - dsl:
+    - compare_versions(version, '< 2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-page-widget/readme.txt'
+  redirects: true
+id: wp-page-widget-5bba371a890ac052a8d6656f6bf4f0fc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-page-widget/
+    google-query: inurl:"/wp-content/plugins/wp-page-widget/"
+    shodan-query: 'vuln:'
+  name: 'WP Page Widget <= 2.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3acc1464-18cf-4085-8cb4-946563d70b16?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-page-widget,medium

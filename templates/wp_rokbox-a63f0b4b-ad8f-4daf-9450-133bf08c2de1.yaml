@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp_rokbox
+  - dsl:
+    - compare_versions(version, '<= 2.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp_rokbox/readme.txt'
+  redirects: true
+id: wp_rokbox-a63f0b4b-ad8f-4daf-9450-133bf08c2de1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+  description: 'The WordPress RokBox plugin is vulnerable to Sensitive Data Exposure
+    in versions up to, and including, 2.13 via the error_log. This can allow unauthenticated
+    attackers to extract sensitive data including error logs which may disclose full
+    paths.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wp_rokbox/
+    google-query: inurl:"/wp-content/plugins/wp_rokbox/"
+    shodan-query: http.html:"wp-content/plugins/wp_rokbox/"
+  name: 'WordPress RokBox <= 2.13 - Sensitive Data Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a63f0b4b-ad8f-4daf-9450-133bf08c2de1?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp_rokbox,medium,production

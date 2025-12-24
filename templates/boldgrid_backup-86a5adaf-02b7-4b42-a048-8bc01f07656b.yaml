@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - boldgrid-backup
+  - dsl:
+    - compare_versions(version, '<= 1.14.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/boldgrid-backup/readme.txt'
+  redirects: true
+id: boldgrid_backup-86a5adaf-02b7-4b42-a048-8bc01f07656b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/boldgrid-backup/
+    google-query: inurl:"/wp-content/plugins/boldgrid-backup/"
+    shodan-query: http.html:"wp-content/plugins/boldgrid-backup/"
+  name: 'Total Upkeep by BoldGrid <= 1.14.9 - Unauthenticated Backup Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/86a5adaf-02b7-4b42-a048-8bc01f07656b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,boldgrid-backup,low,candidate

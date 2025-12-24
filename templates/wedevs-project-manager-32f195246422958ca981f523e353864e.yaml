@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wedevs-project-manager
+  - dsl:
+    - compare_versions(version, '<= 2.4.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wedevs-project-manager/readme.txt'
+  redirects: true
+id: wedevs-project-manager-32f195246422958ca981f523e353864e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wedevs-project-manager/
+    google-query: inurl:"/wp-content/plugins/wedevs-project-manager/"
+    shodan-query: 'vuln:'
+  name: 'WP Project Manager <= 2.4.13 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ef5859b7-0f15-43ad-9f45-aa846d045f5d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wedevs-project-manager,low

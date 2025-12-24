@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - demo-awesome
+  - dsl:
+    - compare_versions(version, '<= 1.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/demo-awesome/readme.txt'
+  redirects: true
+id: demo-awesome-dc8d30e4cf8db39a8482e526d66b59d3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/demo-awesome/
+    google-query: inurl:"/wp-content/plugins/demo-awesome/"
+    shodan-query: 'vuln:'
+  name: 'Demo Awesome <= 1.0.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4c929ac5-bd12-4aa3-8797-96ad140daf3e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,demo-awesome,medium

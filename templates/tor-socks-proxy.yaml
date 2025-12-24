@@ -1,0 +1,20 @@
+id: tor-socks-proxy
+info:
+  author: geeknik
+  name: Detect tor SOCKS proxy
+  severity: info
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - This is a SOCKS Proxy
+    - HTTPTunnelPort
+    - SOCKSPort
+  - status:
+    - 501
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

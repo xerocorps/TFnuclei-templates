@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - video-grid
+  - dsl:
+    - compare_versions(version, '<= 1.21')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/video-grid/readme.txt'
+  redirects: true
+id: video_grid-c92e166d-2ede-4280-a875-d30c0cf6f467
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/video-grid/
+    google-query: inurl:"/wp-content/plugins/video-grid/"
+    shodan-query: http.html:"wp-content/plugins/video-grid/"
+  name: 'Video Grid <= 1.21 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c92e166d-2ede-4280-a875-d30c0cf6f467?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,video-grid,medium,candidate

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - knowledgebase-helpdesk-pro
+  - dsl:
+    - compare_versions(version, '<= 7.9.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/knowledgebase-helpdesk-pro/readme.txt'
+  redirects: true
+id: knowledgebase_helpdesk_pro-17dd0477-daa8-4c51-a40e-44fba62b2d7c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/knowledgebase-helpdesk-pro/
+    google-query: inurl:"/wp-content/plugins/knowledgebase-helpdesk-pro/"
+    shodan-query: http.html:"wp-content/plugins/knowledgebase-helpdesk-pro/"
+  name: 'KBx Pro Ultimate <= 7.9.8 - Authenticated (Subscriber+) Arbitrary File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/17dd0477-daa8-4c51-a40e-44fba62b2d7c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,knowledgebase-helpdesk-pro,low,candidate

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-private-files
+  - dsl:
+    - compare_versions(version, '<= 1.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-private-files/readme.txt'
+  redirects: true
+id: user-private-files-613b0a587a8d2529c332b0b0bfe7e2d8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-private-files/
+    google-query: inurl:"/wp-content/plugins/user-private-files/"
+    shodan-query: 'vuln:'
+  name: "Frontend File Manager & Sharing \u2013 User Private Files <= 1.1.0 - Sensitive\
+    \ Information Disclosure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/afc9114b-80b7-4caf-ab6b-35747ff5057b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,user-private-files,low

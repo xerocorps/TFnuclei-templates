@@ -1,0 +1,21 @@
+id: snyk-ignore-file-disclosure
+info:
+  author: dhiyaneshDk
+  name: Snyk Ignore File Disclosure
+  reference:
+  - https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/snyk-ignore-file-disclosure.json
+  severity: info
+  tags: exposure,files
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.snyk'

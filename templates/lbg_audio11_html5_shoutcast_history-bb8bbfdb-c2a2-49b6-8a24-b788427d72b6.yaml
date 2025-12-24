@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lbg-audio11-html5-shoutcast_history
+  - dsl:
+    - compare_versions(version, '<= 2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lbg-audio11-html5-shoutcast_history/readme.txt'
+  redirects: true
+id: lbg_audio11_html5_shoutcast_history-bb8bbfdb-c2a2-49b6-8a24-b788427d72b6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lbg-audio11-html5-shoutcast_history/
+    google-query: inurl:"/wp-content/plugins/lbg-audio11-html5-shoutcast_history/"
+    shodan-query: http.html:"wp-content/plugins/lbg-audio11-html5-shoutcast_history/"
+  name: 'CLEVER <= 2.6 - Unauthenticated Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb8bbfdb-c2a2-49b6-8a24-b788427d72b6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,lbg-audio11-html5-shoutcast_history,low,candidate

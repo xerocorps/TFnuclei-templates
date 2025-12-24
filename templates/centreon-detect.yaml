@@ -1,0 +1,19 @@
+id: centreon-detect
+info:
+  author: pikpikcu
+  name: Centreon Detect
+  severity: info
+  tags: tech,centreon
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Centreon - IT & Network Monitoring</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/centreon/index.php'

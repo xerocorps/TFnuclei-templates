@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vk-blocks
+  - dsl:
+    - compare_versions(version, '<= 1.57.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vk-blocks/readme.txt'
+  redirects: true
+id: vk-blocks-936253f24c59e2505e5e7a2a832a106f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vk-blocks/
+    google-query: inurl:"/wp-content/plugins/vk-blocks/"
+    shodan-query: 'vuln:'
+  name: 'VK Blocks <= 1.57.0.5 - Authenticated(Contributor+) Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b90b7f6c-df7f-48a5-b283-cf5facbd71e5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,vk-blocks,low

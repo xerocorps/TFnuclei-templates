@@ -1,0 +1,29 @@
+id: racksnet-login
+info:
+  author: idealphase
+  description: "Start a new dimension of network automation with racksnet\xAE, Cloud\
+    \ and SDN. Because only racksnet\xAE offers you powerful options such as multi-vendor\
+    \ automation, multi-site management and a cloud that adapts to your needs, instead\
+    \ of the other way around."
+  metadata:
+    google-query: intitle:"My Datacenter - Login"
+    shodan-query: http.title:"My Datacenter - Login"
+  name: racksnet network automation & management software login
+  reference:
+  - https://racksnet.com/en/
+  - https://racksnet.com/en/product-overview/
+  severity: info
+  tags: panel,racksnet
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - My Datacenter - Login
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

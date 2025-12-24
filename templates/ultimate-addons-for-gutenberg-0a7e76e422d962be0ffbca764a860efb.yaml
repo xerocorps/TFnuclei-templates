@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-addons-for-gutenberg
+  - dsl:
+    - compare_versions(version, '<= 1.14.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-addons-for-gutenberg/readme.txt'
+  redirects: true
+id: ultimate-addons-for-gutenberg-0a7e76e422d962be0ffbca764a860efb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L
+    cvss-score: 5.5
+  description: The Ultimate Addons for Gutenberg plugin for WordPress is vulnerable
+    to Authenticated Settings Change in versions up to, and including, 1.14.7. This
+    is due to [state why the vulnerability is created]. This makes it possible for
+    authenticated attackers with Subscriber+ roles to update WordPress settings.
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-addons-for-gutenberg/
+    google-query: inurl:"/wp-content/plugins/ultimate-addons-for-gutenberg/"
+    shodan-query: 'vuln:'
+  name: "Spectra \u2013 WordPress Gutenberg Blocks <= 1.14.7 - Authenticated Settings\
+    \ Change"
+  reference:
+  - https://blog.nintechnet.com/wordpress-ultimate-addons-for-gutenberg-plugin-fixed-vulnerability/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ultimate-addons-for-gutenberg,medium

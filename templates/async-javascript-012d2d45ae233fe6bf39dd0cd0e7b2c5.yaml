@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - async-javascript
+  - dsl:
+    - compare_versions(version, '<= 2.20.12.09')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/async-javascript/readme.txt'
+  redirects: true
+id: async-javascript-012d2d45ae233fe6bf39dd0cd0e7b2c5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/async-javascript/
+    google-query: inurl:"/wp-content/plugins/async-javascript/"
+    shodan-query: 'vuln:'
+  name: 'Async Javascript <= 2.20.12.09 - Authenticated (Admin+) Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d0586453-76ec-4ec9-9965-780af7cb31ec?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,async-javascript,low

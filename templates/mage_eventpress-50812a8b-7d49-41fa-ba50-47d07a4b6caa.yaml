@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mage-eventpress
+  - dsl:
+    - compare_versions(version, '<= 4.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mage-eventpress/readme.txt'
+  redirects: true
+id: mage_eventpress-50812a8b-7d49-41fa-ba50-47d07a4b6caa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mage-eventpress/
+    google-query: inurl:"/wp-content/plugins/mage-eventpress/"
+    shodan-query: http.html:"wp-content/plugins/mage-eventpress/"
+  name: "Event Manager and Tickets Selling Plugin for WooCommerce \u2013 WpEvently\
+    \ <= 4.1.1 - Authenticated (Contributor+) PHP Object Injection in mep_event_meta_save\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/50812a8b-7d49-41fa-ba50-47d07a4b6caa?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mage-eventpress,low,candidate

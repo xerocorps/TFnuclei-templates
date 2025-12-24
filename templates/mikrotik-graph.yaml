@@ -1,0 +1,20 @@
+id: mikrotik-graph
+info:
+  author: dhiyaneshDK
+  name: Mikrotik Router Graphing
+  reference: https://www.exploit-db.com/ghdb/4395
+  severity: low
+  tags: unauth
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Traffic and system resource graphing
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/graphs/'

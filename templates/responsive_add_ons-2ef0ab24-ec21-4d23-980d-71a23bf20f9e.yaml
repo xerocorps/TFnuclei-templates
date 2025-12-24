@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - responsive-add-ons
+  - dsl:
+    - compare_versions(version, '< 2.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/responsive-add-ons/readme.txt'
+  redirects: true
+id: responsive_add_ons-2ef0ab24-ec21-4d23-980d-71a23bf20f9e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/responsive-add-ons/
+    google-query: inurl:"/wp-content/plugins/responsive-add-ons/"
+    shodan-query: http.html:"wp-content/plugins/responsive-add-ons/"
+  name: 'Responsive Ready Sites Importer <= 2.2.6 -  Unprotected AJAX Actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2ef0ab24-ec21-4d23-980d-71a23bf20f9e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,responsive-add-ons,low,candidate

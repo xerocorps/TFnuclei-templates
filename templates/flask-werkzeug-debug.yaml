@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Werkzeug powered traceback interpreter
+  - status:
+    - 500
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: flask-werkzeug-debug
+info:
+  author: DhiyaneshDk
+  description: Flask Werkzeug Debugger is exposed.
+  metadata:
+    max-request: 1
+    shodan-query: html:"Werkzeug powered traceback interpreter"
+    verified: true
+  name: Flask Werkzeug Debugger Exposure
+  severity: low
+  tags: werkzeug,exposure,debug,misconfig

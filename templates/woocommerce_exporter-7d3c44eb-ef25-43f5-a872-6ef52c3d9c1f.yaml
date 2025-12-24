@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-exporter
+  - dsl:
+    - compare_versions(version, '<= 2.7.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-exporter/readme.txt'
+  redirects: true
+id: woocommerce_exporter-7d3c44eb-ef25-43f5-a872-6ef52c3d9c1f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-exporter/
+    google-query: inurl:"/wp-content/plugins/woocommerce-exporter/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-exporter/"
+  name: "Store Exporter for WooCommerce \u2013 Export Products, Export Orders, Export\
+    \ Subscriptions, and More <= 2.7.2.1 - Reflected Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7d3c44eb-ef25-43f5-a872-6ef52c3d9c1f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-exporter,medium,candidate

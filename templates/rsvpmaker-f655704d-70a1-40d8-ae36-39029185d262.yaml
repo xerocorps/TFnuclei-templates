@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rsvpmaker
+  - dsl:
+    - compare_versions(version, '<= 10.6.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rsvpmaker/readme.txt'
+  redirects: true
+id: rsvpmaker-f655704d-70a1-40d8-ae36-39029185d262
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rsvpmaker/
+    google-query: inurl:"/wp-content/plugins/rsvpmaker/"
+    shodan-query: http.html:"wp-content/plugins/rsvpmaker/"
+  name: 'RSVPMarker  <= 10.6.6 - Unauthenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f655704d-70a1-40d8-ae36-39029185d262?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,rsvpmaker,critical,candidate

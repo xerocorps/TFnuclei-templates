@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - library-viewer
+  - dsl:
+    - compare_versions(version, '<= 2.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/library-viewer/readme.txt'
+  redirects: true
+id: library_viewer-b12a7e57-a45f-407a-9dd9-843a628d73ac
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/library-viewer/
+    google-query: inurl:"/wp-content/plugins/library-viewer/"
+    shodan-query: http.html:"wp-content/plugins/library-viewer/"
+  name: 'Library Viewer <= 2.0.6 - Open Redirect via ''redirect_to''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b12a7e57-a45f-407a-9dd9-843a628d73ac?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,library-viewer,low,candidate

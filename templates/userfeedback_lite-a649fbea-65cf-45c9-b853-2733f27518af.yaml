@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - userfeedback-lite
+  - dsl:
+    - compare_versions(version, '<= 1.0.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/userfeedback-lite/readme.txt'
+  redirects: true
+id: userfeedback_lite-a649fbea-65cf-45c9-b853-2733f27518af
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/userfeedback-lite/
+    google-query: inurl:"/wp-content/plugins/userfeedback-lite/"
+    shodan-query: http.html:"wp-content/plugins/userfeedback-lite/"
+  name: "User Feedback \u2013 Create Interactive Feedback Form, User Surveys, and\
+    \ Polls in Seconds <= 1.0.13 - Unauthenticated Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a649fbea-65cf-45c9-b853-2733f27518af?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,userfeedback-lite,high,candidate

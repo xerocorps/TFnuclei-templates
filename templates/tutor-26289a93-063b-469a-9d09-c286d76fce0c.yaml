@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tutor
+  - dsl:
+    - compare_versions(version, '<= 3.8.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tutor/readme.txt'
+  redirects: true
+id: tutor-26289a93-063b-469a-9d09-c286d76fce0c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tutor/
+    google-query: inurl:"/wp-content/plugins/tutor/"
+    shodan-query: http.html:"wp-content/plugins/tutor/"
+  name: "Tutor LMS \u2013 eLearning and online course solution <= 3.8.3 - Missing\
+    \ Authorization to Unauthenticated Payment Status Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/26289a93-063b-469a-9d09-c286d76fce0c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,tutor,high,candidate

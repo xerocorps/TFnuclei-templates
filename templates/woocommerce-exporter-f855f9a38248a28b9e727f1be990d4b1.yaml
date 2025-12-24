@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-exporter
+  - dsl:
+    - compare_versions(version, '< 1.8.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-exporter/readme.txt'
+  redirects: true
+id: woocommerce-exporter-f855f9a38248a28b9e727f1be990d4b1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-exporter/
+    google-query: inurl:"/wp-content/plugins/woocommerce-exporter/"
+    shodan-query: 'vuln:'
+  name: "WooCommerce \u2013 Store Exporter <= 1.8.3 - Missing Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d748e0f8-fe00-4751-9c24-561fd27e62c3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocommerce-exporter,high

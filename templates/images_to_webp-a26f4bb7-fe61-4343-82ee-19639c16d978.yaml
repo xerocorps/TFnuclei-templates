@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - images-to-webp
+  - dsl:
+    - compare_versions(version, '< 1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/images-to-webp/readme.txt'
+  redirects: true
+id: images_to_webp-a26f4bb7-fe61-4343-82ee-19639c16d978
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/images-to-webp/
+    google-query: inurl:"/wp-content/plugins/images-to-webp/"
+    shodan-query: http.html:"wp-content/plugins/images-to-webp/"
+  name: 'Images to WebP < 1.9 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a26f4bb7-fe61-4343-82ee-19639c16d978?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,images-to-webp,medium,candidate

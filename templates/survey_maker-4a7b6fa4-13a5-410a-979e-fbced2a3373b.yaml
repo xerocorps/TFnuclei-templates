@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - survey-maker
+  - dsl:
+    - compare_versions(version, '<= 5.1.9.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/survey-maker/readme.txt'
+  redirects: true
+id: survey_maker-4a7b6fa4-13a5-410a-979e-fbced2a3373b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/survey-maker/
+    google-query: inurl:"/wp-content/plugins/survey-maker/"
+    shodan-query: http.html:"wp-content/plugins/survey-maker/"
+  name: 'Survey Maker <= 5.1.9.4 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4a7b6fa4-13a5-410a-979e-fbced2a3373b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,survey-maker,high,candidate

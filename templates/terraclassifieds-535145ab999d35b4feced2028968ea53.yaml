@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - terraclassifieds
+  - dsl:
+    - compare_versions(version, '<= 2.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/terraclassifieds/readme.txt'
+  redirects: true
+id: terraclassifieds-535145ab999d35b4feced2028968ea53
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/terraclassifieds/
+    google-query: inurl:"/wp-content/plugins/terraclassifieds/"
+    shodan-query: 'vuln:'
+  name: 'TerraClassifieds <= 2.0.3 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4a6e5f89-ebc0-413a-a76e-3cf4339430ba?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,terraclassifieds,medium

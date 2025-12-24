@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nextend-facebook-connect
+  - dsl:
+    - compare_versions(version, '< 1.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nextend-facebook-connect/readme.txt'
+  redirects: true
+id: nextend_facebook_connect-2111df14-63a3-4e3c-87b8-d0e71812d32c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nextend-facebook-connect/
+    google-query: inurl:"/wp-content/plugins/nextend-facebook-connect/"
+    shodan-query: http.html:"wp-content/plugins/nextend-facebook-connect/"
+  name: 'Nextend Social Login and Register <= 1.5.0 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2111df14-63a3-4e3c-87b8-d0e71812d32c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,nextend-facebook-connect,high,candidate

@@ -1,0 +1,24 @@
+id: ms-adcs-detect
+info:
+  author: divya_mudgal
+  name: MS Active Directory Certificate Services Detector
+  severity: info
+  tags: microsoft,ad,panel
+requests:
+- extractors:
+  - kval:
+    - location
+    type: kval
+  matchers:
+  - condition: or
+    status:
+    - 302
+    - 301
+    type: status
+  - dsl:
+    - contains(tolower(all_headers), '/certsrv')
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

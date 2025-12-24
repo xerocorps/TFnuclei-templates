@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yet-another-related-posts-plugin
+  - dsl:
+    - compare_versions(version, '<= 5.30.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yet-another-related-posts-plugin/readme.txt'
+  redirects: true
+id: yet_another_related_posts_plugin-1091862b-784b-496f-a951-6784544cb51b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yet-another-related-posts-plugin/
+    google-query: inurl:"/wp-content/plugins/yet-another-related-posts-plugin/"
+    shodan-query: http.html:"wp-content/plugins/yet-another-related-posts-plugin/"
+  name: 'YARPP <= 5.30.4 - Authenticated (Subscriber+) Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1091862b-784b-496f-a951-6784544cb51b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,yet-another-related-posts-plugin,low,candidate

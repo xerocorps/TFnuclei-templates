@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - live-composer-page-builder
+  - dsl:
+    - compare_versions(version, '<= 2.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/live-composer-page-builder/readme.txt'
+  redirects: true
+id: live_composer_page_builder-4b15c991-5256-405c-8382-85dba6f032ba
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/live-composer-page-builder/
+    google-query: inurl:"/wp-content/plugins/live-composer-page-builder/"
+    shodan-query: http.html:"wp-content/plugins/live-composer-page-builder/"
+  name: "Live Composer \u2013 Free WordPress Website Builder <= 2.0.2 - Authenticated\
+    \ (Contributor+) PHP Object Injection via dslc_module_posts_output Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4b15c991-5256-405c-8382-85dba6f032ba?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,live-composer-page-builder,low,candidate

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - aspose-pdf-exporter
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/aspose-pdf-exporter/readme.txt'
+  redirects: true
+id: aspose-pdf-exporter-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Aspose.PDF Exporter plugin for WordPress is vulnerable to Arbitrary
+    File Download in versions up to, and including, 1.0. This is due to insufficient
+    input sanitization of the 'file' parameter. This makes it possible for unauthenticated
+    attackers to download any file, including configuration files.
+  metadata:
+    fofa-query: wp-content/plugins/aspose-pdf-exporter/
+    google-query: inurl:"/wp-content/plugins/aspose-pdf-exporter/"
+    shodan-query: 'vuln:'
+  name: Aspose.PDF Exporter < 2.0 - Arbitrary File Download
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,aspose-pdf-exporter,low

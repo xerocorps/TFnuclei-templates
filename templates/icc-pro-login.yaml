@@ -1,0 +1,28 @@
+id: icc-pro-login
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: title:"Login to ICC PRO system"
+    verified: true
+  name: ICC Pro System Login
+  reference:
+  - https://www.exploit-db.com/ghdb/7980
+  severity: info
+  tags: panel,icc-pro,edb
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Login to ICC PRO system</title>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Account/Login'

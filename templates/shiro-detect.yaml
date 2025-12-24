@@ -1,0 +1,19 @@
+id: shiro-detect
+info:
+  author: AresX
+  name: Detect Shiro Framework
+  severity: info
+  tags: tech,shiro
+requests:
+- headers:
+    Cookie: JSESSIONID={{randstr}};rememberMe=123;
+  matchers:
+  - part: header
+    type: word
+    words:
+    - rememberMe=deleteMe
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

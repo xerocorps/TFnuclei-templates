@@ -1,0 +1,19 @@
+id: fuelcms-panel
+info:
+  author: Adam Crosser
+  name: Fuel CMS Panel
+  severity: info
+  tags: panel,fuelcms,oss
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>FUEL CMS</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/fuel/login'

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - show-me-the-cookies
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/show-me-the-cookies/readme.txt'
+  redirects: true
+id: show_me_the_cookies-65d15ceb-ab39-4088-a289-7244063aedf8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/show-me-the-cookies/
+    google-query: inurl:"/wp-content/plugins/show-me-the-cookies/"
+    shodan-query: http.html:"wp-content/plugins/show-me-the-cookies/"
+  name: 'Show Me The Cookies <= 1.0 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/65d15ceb-ab39-4088-a289-7244063aedf8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,show-me-the-cookies,low,candidate

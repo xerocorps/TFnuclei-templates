@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - anycomment
+  - dsl:
+    - compare_versions(version, '<= 0.0.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/anycomment/readme.txt'
+  redirects: true
+id: anycomment-ff4363070fd7cb0cfe4d0b03d9e057ef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/anycomment/
+    google-query: inurl:"/wp-content/plugins/anycomment/"
+    shodan-query: 'vuln:'
+  name: 'AnyComment <= 0.0.32 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ebbee05c-fd32-4dd9-99d3-716ba604b859?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,anycomment,high

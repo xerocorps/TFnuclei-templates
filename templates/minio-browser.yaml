@@ -1,0 +1,20 @@
+id: minio-browser
+info:
+  author: pikpikcu
+  metadata:
+    shodan-query: title:"MinIO Browser"
+  name: MinIO Browser
+  severity: info
+  tags: panel,minio
+requests:
+- matchers:
+  - dsl:
+    - contains(tolower(body), '<title>minio browser</title>')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/minio/login'

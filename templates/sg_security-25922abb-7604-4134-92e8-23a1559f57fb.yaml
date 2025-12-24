@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sg-security
+  - dsl:
+    - compare_versions(version, '<= 1.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sg-security/readme.txt'
+  redirects: true
+id: sg_security-25922abb-7604-4134-92e8-23a1559f57fb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sg-security/
+    google-query: inurl:"/wp-content/plugins/sg-security/"
+    shodan-query: http.html:"wp-content/plugins/sg-security/"
+  name: 'SiteGround Security <= 1.5.8 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/25922abb-7604-4134-92e8-23a1559f57fb?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,sg-security,high,candidate

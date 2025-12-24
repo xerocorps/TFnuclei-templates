@@ -1,0 +1,62 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_generator
+    regex:
+    - (?m)https:\/\/wordpress.org\/\?v=([0-9.]+)
+    type: regex
+  - group: 1
+    name: version_by_js
+    regex:
+    - wp-emoji-release\.min\.js\?ver=((\d+\.?)+)\b
+    type: regex
+  - group: 1
+    name: version_by_css
+    regex:
+    - install\.min\.css\?ver=((\d+\.?)+)\b
+    type: regex
+  matchers:
+  - dsl:
+    - compare_versions(version_by_generator, '>= 6.0', '<= 6.0.2')
+    - compare_versions(version_by_js, '>= 6.0', '<= 6.0.2')
+    - compare_versions(version_by_css, '>= 6.0', '<= 6.0.2')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/wp-admin/install.php'
+  - '{{BaseURL}}/feed/'
+  - '{{BaseURL}}/?feed=rss2'
+  redirects: true
+  stop-at-first-match: true
+id: wordpress-38979e27-2023-4f84-a708-1732b4117066
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 5.5
+  description: 'WordPress Core is vulnerable to Stored Cross-Site Scripting via the
+    Customizer in versions up to 6.0.3. This is due to insufficient escaping on the
+    ''Blog Name'' value that could be edited and become executable with the right
+    payload while in the theme customizer. This would make it possible for authenticated
+    attacker with access to customize a theme, such as administrators to inject malicious
+    JavaScript into the page.
+
+    '
+  metadata:
+    shodan-query: 'vuln:'
+  name: 'WordPress Core < 6.0.3 - Authenticated (Admin+) Stored Cross-Site Scripting
+    via Customizer
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/38979e27-2023-4f84-a708-1732b4117066?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-core,low,production

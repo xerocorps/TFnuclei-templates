@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp_rokbox
+  - dsl:
+    - compare_versions(version, '<= 2.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp_rokbox/readme.txt'
+  redirects: true
+id: wp_rokbox-581792f3-7b57-418c-802b-2ff04f5b83bf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+  description: 'The WordPress RokBox plugin is vulnerable to Full Path Disclosure
+    in versions up to, and including, 2.13 via the ''rokbox.php'' and ''thumb.php''
+    files. This can allow unauthenticated attackers to extract full paths to otherwise
+    restricted files.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wp_rokbox/
+    google-query: inurl:"/wp-content/plugins/wp_rokbox/"
+    shodan-query: http.html:"wp-content/plugins/wp_rokbox/"
+  name: 'WordPress RokBox <= 2.13 - Full Path Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/581792f3-7b57-418c-802b-2ff04f5b83bf?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp_rokbox,high,production

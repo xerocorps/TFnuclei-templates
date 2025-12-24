@@ -1,0 +1,18 @@
+id: annotation-timeout
+info:
+  author: pdteam
+  name: Basic Annotation Timeout
+  severity: info
+requests:
+- matchers:
+  - type: word
+    words:
+    - This is test matcher text
+  raw:
+  - '@timeout: 5s
+
+    GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '

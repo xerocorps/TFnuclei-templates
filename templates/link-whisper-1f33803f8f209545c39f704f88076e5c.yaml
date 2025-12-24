@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - link-whisper
+  - dsl:
+    - compare_versions(version, '<= 0.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/link-whisper/readme.txt'
+  redirects: true
+id: link-whisper-1f33803f8f209545c39f704f88076e5c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/link-whisper/
+    google-query: inurl:"/wp-content/plugins/link-whisper/"
+    shodan-query: 'vuln:'
+  name: 'Link Whisper Free <= 0.6.9
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8155585e-c29c-484c-ab2e-371b5723539e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,link-whisper,low

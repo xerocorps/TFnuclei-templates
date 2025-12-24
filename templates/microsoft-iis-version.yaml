@@ -1,0 +1,26 @@
+id: microsoft-iis-version
+info:
+  author: Wlayzz
+  description: Some Microsoft IIS servers have the version on the response header.
+    Useful when you need to find specific CVEs on your targets.
+  name: Microsoft IIS version detect
+  severity: info
+  tags: tech,microsoft,iis
+requests:
+- extractors:
+  - kval:
+    - Server
+    part: header
+    type: kval
+  matchers:
+  - part: header
+    type: word
+    words:
+    - IIS
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

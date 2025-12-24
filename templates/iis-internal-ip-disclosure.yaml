@@ -1,0 +1,41 @@
+id: iis-internal-ip-disclosure
+info:
+  author: WillD96
+  name: IIS Internal IP Disclosure Template
+  reference:
+  - https://support.kemptechnologies.com/hc/en-us/articles/203522429-How-to-Mitigate-Against-Internal-IP-Address-Domain-Name-Disclosure-In-Real-Server-Redirect
+  severity: info
+  tags: iis,misconfig,disclosure
+requests:
+- extractors:
+  - part: location
+    regex:
+    - ([0-9]{1,3}[\.]){3}[0-9]{1,3}
+    type: regex
+  matchers:
+  - part: location
+    regex:
+    - ([0-9]{1,3}[\.]){3}[0-9]{1,3}
+    type: regex
+  - status:
+    - 301
+    - 302
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET / HTTP/1.0
+
+    Accept: */*
+
+
+    '
+  - 'GET / HTTP/1.0
+
+    Host:
+
+    Accept: */*
+
+
+    '
+  stop-at-first-match: true
+  unsafe: true

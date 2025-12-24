@@ -1,0 +1,26 @@
+id: azure-pipelines-exposed
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: html:"azure-pipelines.yml"
+    verified: true
+  name: Azure Pipelines Configuration File Disclosure
+  severity: medium
+  tags: config,exposure,azure,microsoft,cloud,devops
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - 'trigger:'
+    - 'pool:'
+    - 'variables:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.azure-pipelines.yml'
+  - '{{BaseURL}}/azure-pipelines.yml'
+  stop-at-first-match: true

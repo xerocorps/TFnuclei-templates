@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-list
+  - dsl:
+    - compare_versions(version, '<= 2.9.41')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-list/readme.txt'
+  redirects: true
+id: contact-list-36fd8cc242cb9405f0f01adc83d3b2ee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-list/
+    google-query: inurl:"/wp-content/plugins/contact-list/"
+    shodan-query: 'vuln:'
+  name: "Contact List \u2013 Easy Business Directory, Staff Directory and Address\
+    \ Book Plugin <= 2.9.41 - Reflected Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/926246a7-2f0d-4472-ae0a-fa3d95e5810f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,contact-list,medium

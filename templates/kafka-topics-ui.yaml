@@ -1,0 +1,14 @@
+id: kafka-topics-ui
+info:
+  author: pdteam
+  name: Apache Kafka Topics UI Exposure
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Kafka Topics UI - Browse Kafka Data</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'

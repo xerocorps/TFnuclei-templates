@@ -1,0 +1,25 @@
+id: rundeck-login
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: title:"Rundeck"
+    verified: true
+  name: RunDeck Login
+  severity: info
+  tags: panel,rundeck
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Rundeck - Login</title>
+  - part: body
+    type: word
+    words:
+    - RUNDECK ENTERPRISE - Login</title>
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/user/login'
+  redirects: true

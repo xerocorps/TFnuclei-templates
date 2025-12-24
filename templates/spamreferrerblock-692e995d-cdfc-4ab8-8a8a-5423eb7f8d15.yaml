@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - spamreferrerblock
+  - dsl:
+    - compare_versions(version, '<= 2.22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/spamreferrerblock/readme.txt'
+  redirects: true
+id: spamreferrerblock-692e995d-cdfc-4ab8-8a8a-5423eb7f8d15
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/spamreferrerblock/
+    google-query: inurl:"/wp-content/plugins/spamreferrerblock/"
+    shodan-query: http.html:"wp-content/plugins/spamreferrerblock/"
+  name: 'Download SpamReferrerBlock <= 2.22 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/692e995d-cdfc-4ab8-8a8a-5423eb7f8d15?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,spamreferrerblock,low,candidate

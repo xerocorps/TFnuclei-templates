@@ -1,0 +1,30 @@
+id: supermicro-bmc-panel
+info:
+  author: idealphase
+  description: baseboard management controller (BMC) which provides an efficient interface
+    that enables IT administrators to manage the health of the server through temperature/voltage
+    readings and common server maintenance tasks like BIOS upgrades and debug OS remotely
+    through KVM consoles.
+  metadata:
+    google-dork: intitle:"Supermicro BMC Login"
+    shodan-query: http.title:"Supermicro BMC Login"
+  name: Supermicro BMC Login Panel
+  reference:
+  - https://www.supermicro.com/en
+  - https://www.supermicro.com/en/solutions/management-software/bmc-resources
+  - https://www.supermicro.com/white_paper/IPMI_white_paper.pdf
+  severity: info
+  tags: panel,supermicro,bmc
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Supermicro BMC Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

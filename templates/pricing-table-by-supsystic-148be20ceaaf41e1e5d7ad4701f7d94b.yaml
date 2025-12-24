@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pricing-table-by-supsystic
+  - dsl:
+    - compare_versions(version, '<= 1.9.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pricing-table-by-supsystic/readme.txt'
+  redirects: true
+id: pricing-table-by-supsystic-148be20ceaaf41e1e5d7ad4701f7d94b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pricing-table-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/pricing-table-by-supsystic/"
+    shodan-query: 'vuln:'
+  name: 'Pricing Table by Supsystic <= 1.9.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2d390a7e-f790-4953-b3cb-be31cfec6fb0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,pricing-table-by-supsystic,medium

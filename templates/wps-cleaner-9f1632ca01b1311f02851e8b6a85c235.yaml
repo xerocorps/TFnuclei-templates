@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wps-cleaner
+  - dsl:
+    - compare_versions(version, '<= 1.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wps-cleaner/readme.txt'
+  redirects: true
+id: wps-cleaner-9f1632ca01b1311f02851e8b6a85c235
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wps-cleaner/
+    google-query: inurl:"/wp-content/plugins/wps-cleaner/"
+    shodan-query: 'vuln:'
+  name: 'WPS Cleaner <= 1.4.4 - Arbitrary Media File Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8bd04a52-ed59-4305-831e-646ab5801d36?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wps-cleaner,low

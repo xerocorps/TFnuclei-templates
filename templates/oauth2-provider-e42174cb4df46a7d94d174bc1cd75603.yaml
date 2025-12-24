@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - oauth2-provider
+  - dsl:
+    - compare_versions(version, '<= 4.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/oauth2-provider/readme.txt'
+  redirects: true
+id: oauth2-provider-e42174cb4df46a7d94d174bc1cd75603
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/oauth2-provider/
+    google-query: inurl:"/wp-content/plugins/oauth2-provider/"
+    shodan-query: 'vuln:'
+  name: 'WP OAuth Server (OAuth Authentication) <= 4.2.1 - Authenticated (Administrator+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a07bd233-902c-402c-9055-f3085246da78?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,oauth2-provider,low

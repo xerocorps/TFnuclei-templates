@@ -1,0 +1,20 @@
+id: forcepoint-applicance
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"Forcepoint Appliance"
+  name: Forcepoint Appliance
+  severity: info
+  tags: panel,forcepoint
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Forcepoint Appliance</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

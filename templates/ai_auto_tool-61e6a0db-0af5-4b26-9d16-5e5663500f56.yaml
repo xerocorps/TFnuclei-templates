@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ai-auto-tool
+  - dsl:
+    - compare_versions(version, '<= 2.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ai-auto-tool/readme.txt'
+  redirects: true
+id: ai_auto_tool-61e6a0db-0af5-4b26-9d16-5e5663500f56
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ai-auto-tool/
+    google-query: inurl:"/wp-content/plugins/ai-auto-tool/"
+    shodan-query: http.html:"wp-content/plugins/ai-auto-tool/"
+  name: 'Ai Auto Tool Content Writing Assistant (Gemini Writer, ChatGPT ) All in One
+    <= 2.2.6 - Authenticated (Subscriber+) Server-Side Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/61e6a0db-0af5-4b26-9d16-5e5663500f56?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ai-auto-tool,low,candidate

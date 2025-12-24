@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - restricted-site-access
+  - dsl:
+    - compare_versions(version, '<= 7.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/restricted-site-access/style.css'
+  redirects: true
+id: restricted-site-access-cbd6e680080f9a7ed9355cf1094142ce
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/restricted-site-access/
+    google-query: inurl:"/wp-content/themes/restricted-site-access/"
+    shodan-query: 'vuln:'
+  name: 'Restricted Site Access  <= 7.4.1 - IP Spoofing to Protection Mechanism Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/804169d3-a53a-42ba-821d-e9647ac075c4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,restricted-site-access,low

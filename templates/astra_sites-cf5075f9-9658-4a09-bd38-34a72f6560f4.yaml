@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - astra-sites
+  - dsl:
+    - compare_versions(version, '<= 4.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/astra-sites/readme.txt'
+  redirects: true
+id: astra_sites-cf5075f9-9658-4a09-bd38-34a72f6560f4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/astra-sites/
+    google-query: inurl:"/wp-content/plugins/astra-sites/"
+    shodan-query: http.html:"wp-content/plugins/astra-sites/"
+  name: "Starter Templates \u2014 Elementor, WordPress & Beaver Builder Templates\
+    \ <= 4.1.6 - Authenticated (Contributor+) Server-Side Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cf5075f9-9658-4a09-bd38-34a72f6560f4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,astra-sites,low,candidate

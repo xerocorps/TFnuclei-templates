@@ -1,0 +1,24 @@
+id: activecollab-detect
+info:
+  author: ffffffff0x
+  metadata:
+    fofa-query: app="ActiveCollab"
+  name: activecollab detect
+  severity: info
+  tags: acsoft,tech,activecollab
+requests:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - http://www.activecollab.com
+    - <form method="post" id="system_form_2" class="uniForm focusFirstField">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

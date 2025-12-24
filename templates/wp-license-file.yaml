@@ -1,0 +1,18 @@
+id: wp-license-file
+info:
+  author: yashgoti
+  name: WordPress license file disclosure
+  severity: info
+  tags: wordpress
+requests:
+- matchers:
+  - type: word
+    words:
+    - WordPress - Web publishing software
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/license.txt'

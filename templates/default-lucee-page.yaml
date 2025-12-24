@@ -1,0 +1,22 @@
+id: default-lucee-page
+info:
+  author: dhiyaneshDk
+  name: Lucee Default Page
+  reference: https://www.shodan.io/search?query=http.title%3A%22Lucee%22
+  severity: info
+  tags: tech,lucee
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - Lucee ([0-9.\-A-Z]+) on your system
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Rapid web development with Lucee!</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'

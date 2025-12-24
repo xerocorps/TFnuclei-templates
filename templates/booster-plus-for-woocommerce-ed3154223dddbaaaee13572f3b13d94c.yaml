@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - booster-plus-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 5.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/booster-plus-for-woocommerce/readme.txt'
+  redirects: true
+id: booster-plus-for-woocommerce-ed3154223dddbaaaee13572f3b13d94c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/booster-plus-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/booster-plus-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Booster for WooCommerce (Free <= 5.6.2 and Premium <= 5.6.0) - Authenticated
+    (Subscriber+) Order Modification
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/48784892-443f-452c-9fe9-12e73af1cf7f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,booster-plus-for-woocommerce,low

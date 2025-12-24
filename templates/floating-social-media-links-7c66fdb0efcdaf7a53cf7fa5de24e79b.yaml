@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - floating-social-media-links
+  - dsl:
+    - compare_versions(version, '< 1.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/floating-social-media-links/readme.txt'
+  redirects: true
+id: floating-social-media-links-7c66fdb0efcdaf7a53cf7fa5de24e79b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/floating-social-media-links/
+    google-query: inurl:"/wp-content/plugins/floating-social-media-links/"
+    shodan-query: 'vuln:'
+  name: 'Floating Social Media Links < 1.4.3 - Remote File Inclusion via fsml-hideshow.js.php
+    wpp parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/43d1f708-58bd-4d42-b8dd-0c1247546577?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,floating-social-media-links,critical

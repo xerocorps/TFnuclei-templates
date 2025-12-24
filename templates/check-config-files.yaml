@@ -1,0 +1,19 @@
+id: check-config-files
+info:
+  author: SirBugs
+  name: Check for config.php.new leaks
+  reference: https://example.com/reference
+  severity: info
+  tags: config, hostname, dbName, leaks
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - hostname
+    - dbName
+  method: GET
+  path:
+  - /common/config.php.new
+  - /config.php.new

@@ -1,0 +1,32 @@
+id: mspcontrol-login
+info:
+  author: idealphase
+  description: MSPControl is a Windows hosting control panel for Cloud Computing Companies
+    and IT Providers to automate the provisioning of a full suite of hosted services
+    on Windows servers.
+  metadata:
+    google-query: intitle:"MSPControl - Sign In"
+    shodan-query: http.title:"MSPControl - Sign In"
+  name: MSPControl Login
+  reference:
+  - https://mspcontrol.org/
+  - https://mspcontrol.org/downloads/
+  severity: info
+  tags: panel,mspcontrol
+requests:
+- headers:
+    Cookie: UserCulture=en-US
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - MSPControl - Sign In
+    - Sign In to Control Panel
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Default.aspx?pid=Login'

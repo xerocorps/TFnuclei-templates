@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - top-10
+  - dsl:
+    - compare_versions(version, '< 2.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/top-10/readme.txt'
+  redirects: true
+id: top-10-0bf2d1e180ba75216d2caec0d1016987
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 7.4
+  description: "The Top 10 \u2013 Popular posts plugin for WordPress plugin for WordPress\
+    \ is vulnerable to generic SQL Injection via the \u2018get_results\u2019 parameter\
+    \ in versions up to, and including, 2.4.3 due to insufficient escaping on the\
+    \ user supplied parameter and lack of sufficient preparation on the existing SQL\
+    \ query.  This makes it possible for authenticated attackers with admin level\
+    \ access to append additional SQL queries into already existing queries that can\
+    \ be used to extract sensitive information from the database.\n"
+  metadata:
+    fofa-query: wp-content/plugins/top-10/
+    google-query: inurl:"/wp-content/plugins/top-10/"
+    shodan-query: 'vuln:'
+  name: "Top 10 \u2013 Popular posts plugin for WordPress <= 2.4.3 - SQL Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9b320755-1255-4331-8176-ee67d8d4873e?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,top-10,low

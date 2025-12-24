@@ -1,0 +1,8 @@
+id: sap-netweaver-workflow
+info:
+  author: dwisiswant0
+  name: SAP NetWaver Workflow
+logic: "if sap_netweaver_as_java() {\n  sap_netweaver_as_java_cve_1()\n}\n"
+variables:
+  sap_netweaver_as_java: technologies/sap-netweaver-as-java-detect.yaml
+  sap_netweaver_as_java_cve_1: cves/CVE-2020-6287.yaml

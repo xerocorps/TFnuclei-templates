@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ays-facebook-popup-likebox
+  - dsl:
+    - compare_versions(version, '<= 3.7.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ays-facebook-popup-likebox/readme.txt'
+  redirects: true
+id: ays-facebook-popup-likebox-2d26024bb074ec5ab6fc592243477742
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ays-facebook-popup-likebox/
+    google-query: inurl:"/wp-content/plugins/ays-facebook-popup-likebox/"
+    shodan-query: 'vuln:'
+  name: "Popup Like box \u2013 Page <= 3.7.2 - Authenticated (Administrator+) Stored\
+    \ Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/87b49bae-05e6-44cd-86a1-8df3249a25f9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ays-facebook-popup-likebox,low

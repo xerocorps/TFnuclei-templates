@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - my-calendar
+  - dsl:
+    - compare_versions(version, '< 2.3.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/my-calendar/readme.txt'
+  redirects: true
+id: my-calendar-4546eb5dafe68360767eb3c84ba91716
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/my-calendar/
+    google-query: inurl:"/wp-content/plugins/my-calendar/"
+    shodan-query: 'vuln:'
+  name: 'My Calendar < 2.3.10 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d8a56a1c-6af0-47e6-906c-bb3eb1440eb9?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,my-calendar,medium

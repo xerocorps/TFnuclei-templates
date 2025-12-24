@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - new-album-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/new-album-gallery/readme.txt'
+  redirects: true
+id: new_album_gallery-cc7075a6-5609-42ab-a4cb-9d33686c7de0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/new-album-gallery/
+    google-query: inurl:"/wp-content/plugins/new-album-gallery/"
+    shodan-query: http.html:"wp-content/plugins/new-album-gallery/"
+  name: "Album Gallery \u2013 WordPress Gallery <= 1.6.3 - Authenticated (Editor+)\
+    \ PHP Object Injection via Gallery Meta\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cc7075a6-5609-42ab-a4cb-9d33686c7de0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,new-album-gallery,low,candidate

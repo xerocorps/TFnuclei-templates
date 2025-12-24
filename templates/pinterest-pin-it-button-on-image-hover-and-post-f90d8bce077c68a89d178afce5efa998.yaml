@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pinterest-pin-it-button-on-image-hover-and-post
+  - dsl:
+    - compare_versions(version, '< 3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pinterest-pin-it-button-on-image-hover-and-post/readme.txt'
+  redirects: true
+id: pinterest-pin-it-button-on-image-hover-and-post-f90d8bce077c68a89d178afce5efa998
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pinterest-pin-it-button-on-image-hover-and-post/
+    google-query: inurl:"/wp-content/plugins/pinterest-pin-it-button-on-image-hover-and-post/"
+    shodan-query: 'vuln:'
+  name: 'Weblizar Pin It Button On Image Hover And Post < 3.4 - Authorization Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6528041a-0217-43d5-bf29-9208e23aadd9?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,pinterest-pin-it-button-on-image-hover-and-post,high

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-count-plus
+  - dsl:
+    - compare_versions(version, '<= 3.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-count-plus/readme.txt'
+  redirects: true
+id: social_count_plus-35d69a35-ec19-474a-a09b-0200bfa9e1db
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: 'The Social Count Plus plugin for WordPress is vulnerable to Reflected
+    Cross-Site Scripting in versions up to, and including, 5.3.3 due to insufficient
+    input sanitization and output escaping on add_query_arg and remove_query_arg.
+    This makes it possible for attackers to inject arbitrary web scripts that execute
+    in a victim''s browser.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/social-count-plus/
+    google-query: inurl:"/wp-content/plugins/social-count-plus/"
+    shodan-query: http.html:"wp-content/plugins/social-count-plus/"
+  name: 'Social Count Plus <= 5.3.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/35d69a35-ec19-474a-a09b-0200bfa9e1db?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,social-count-plus,medium,production

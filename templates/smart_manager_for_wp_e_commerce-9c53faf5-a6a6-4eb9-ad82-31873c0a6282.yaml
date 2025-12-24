@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - smart-manager-for-wp-e-commerce
+  - dsl:
+    - compare_versions(version, '<= 8.45.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/smart-manager-for-wp-e-commerce/readme.txt'
+  redirects: true
+id: smart_manager_for_wp_e_commerce-9c53faf5-a6a6-4eb9-ad82-31873c0a6282
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/smart-manager-for-wp-e-commerce/
+    google-query: inurl:"/wp-content/plugins/smart-manager-for-wp-e-commerce/"
+    shodan-query: http.html:"wp-content/plugins/smart-manager-for-wp-e-commerce/"
+  name: 'Smart Manager <= 8.45.0 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9c53faf5-a6a6-4eb9-ad82-31873c0a6282?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,smart-manager-for-wp-e-commerce,high,candidate

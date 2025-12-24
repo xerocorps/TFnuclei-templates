@@ -1,0 +1,21 @@
+id: concourse-ci-panel
+info:
+  author: praetorian-thendrickson
+  metadata:
+    shodan-query: title:"Concourse"
+  name: Concourse CI Panel Detect
+  reference:
+  - https://github.com/concourse/concourse
+  - https://concourse-ci.org
+  severity: info
+  tags: panel,concourse,oss
+requests:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <title>Concourse</title>
+    - login to Concourse
+  method: GET
+  path:
+  - '{{BaseURL}}'

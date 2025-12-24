@@ -1,0 +1,21 @@
+id: ruijie-information-disclosure
+info:
+  author: pikpikcu
+  name: Ruijie Information Disclosure
+  reference: https://www.cnblogs.com/cHr1s/p/14499858.html
+  severity: high
+  tags: ruijie,config,exposure
+requests:
+- matchers:
+  - condition: and
+    part: body
+    regex:
+    - '"role":"super_admin","name":"(.*)","password":"(.*)"'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.php'

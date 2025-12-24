@@ -1,0 +1,35 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - tomcat
+    - server
+    - version
+    - disclosure
+  description: Template to detect Apache Tomcat server and its version
+  id: tomcat-version-disclosure
+  matcher-condition: or
+  matchers:
+  - description: Apache Tomcat server found in response headers
+    pattern: Apache Tomcat
+    type: header
+  - description: Apache Coyote server found in response headers
+    pattern: 'Server: Apache-Coyote'
+    type: header
+  - description: Apache Tomcat version found in response body
+    pattern: Apache Tomcat Version
+    type: body
+  name: Apache Tomcat Version Disclosure
+  requests:
+    condition: or
+    description: Attempt to retrieve Tomcat home page
+    method: GET
+    path:
+    - /
+  response:
+  - description: Successful response status
+    status:
+    - 200
+    - 302
+  severity: Low

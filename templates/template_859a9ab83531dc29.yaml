@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - sonarqube
+    - config file
+    - exposure
+  description: Template to detect SonarQube configuration file exposure
+  id: sonarqube-config-exposure
+  matchers:
+  - pattern: sonar.web.port=\d+
+    type: body
+  - pattern: sonar.jdbc.password=\w+
+    type: body
+  name: SonarQube Configuration Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /opt/sonarqube/conf/sonar.properties
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

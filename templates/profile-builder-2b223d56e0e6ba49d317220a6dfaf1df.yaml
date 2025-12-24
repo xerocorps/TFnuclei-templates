@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profile-builder
+  - dsl:
+    - compare_versions(version, '<= 2.1.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profile-builder/readme.txt'
+  redirects: true
+id: profile-builder-2b223d56e0e6ba49d317220a6dfaf1df
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profile-builder/
+    google-query: inurl:"/wp-content/plugins/profile-builder/"
+    shodan-query: 'vuln:'
+  name: 'Profile Builder <= 2.1.3 - Missing Access Controls
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1bd80ab9-260a-46c5-949e-c1d5dcb32523?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,profile-builder,low

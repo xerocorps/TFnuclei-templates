@@ -1,0 +1,8 @@
+id: liferay-rce-workflow
+info:
+  author: dwisiswant0
+  name: Liferay RCE Workflow
+logic: "if liferay_portal() {\n  liferay_portal_cve()\n}\n"
+variables:
+  liferay_portal: technologies/liferay-portal-detect.yaml
+  liferay_portal_cve: cves/CVE-2020-7961.yaml

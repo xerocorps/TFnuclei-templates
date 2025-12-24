@@ -1,0 +1,20 @@
+id: grandstream-device-configuration
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"Grandstream Device Configuration"
+  name: Grandstream Device Configuration
+  severity: info
+  tags: iot
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Grandstream Device Configuration</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

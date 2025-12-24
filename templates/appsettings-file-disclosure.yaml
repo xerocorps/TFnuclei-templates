@@ -1,0 +1,30 @@
+id: appsettings-file-disclosure
+info:
+  author: DhiyaneshDK,tess
+  description: 'appsetting.json file discloses the DB connection strings containing
+    sensitive information.
+
+    '
+  metadata:
+    verified: true
+  name: Application Setting file disclosure
+  reference:
+  - https://twitter.com/hacker_/status/1518003548855930882?s=20&t=BVauK0yUjVl5yL7rwy0Eag
+  severity: high
+  tags: exposure
+requests:
+- matchers:
+  - type: word
+    words:
+    - ConnectionStrings
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/appsettings.json'

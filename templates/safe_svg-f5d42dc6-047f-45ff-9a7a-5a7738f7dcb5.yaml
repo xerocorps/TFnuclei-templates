@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - safe-svg
+  - dsl:
+    - compare_versions(version, '<= 2.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/safe-svg/readme.txt'
+  redirects: true
+id: safe_svg-f5d42dc6-047f-45ff-9a7a-5a7738f7dcb5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/safe-svg/
+    google-query: inurl:"/wp-content/plugins/safe-svg/"
+    shodan-query: http.html:"wp-content/plugins/safe-svg/"
+  name: 'Safe SVG <= 2.2.5 - Authenticated (Author+) Stored Cross-Site Scripting via
+    SVG
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f5d42dc6-047f-45ff-9a7a-5a7738f7dcb5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,safe-svg,low,candidate

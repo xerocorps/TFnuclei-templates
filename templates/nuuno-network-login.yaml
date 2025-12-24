@@ -1,0 +1,21 @@
+id: nuuno-network-login
+info:
+  author: dhiyaneshDK
+  name: NUUO Network Video Recorder Login
+  reference:
+  - https://www.exploit-db.com/ghdb/6840
+  severity: info
+  tags: iot,panel,nuuo
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>NUUO Network Video Recorder Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

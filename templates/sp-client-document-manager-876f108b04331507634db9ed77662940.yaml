@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sp-client-document-manager
+  - dsl:
+    - compare_versions(version, '<= 2.6.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sp-client-document-manager/readme.txt'
+  redirects: true
+id: sp-client-document-manager-876f108b04331507634db9ed77662940
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sp-client-document-manager/
+    google-query: inurl:"/wp-content/plugins/sp-client-document-manager/"
+    shodan-query: 'vuln:'
+  name: 'SP Projects & Document Manager <= 2.5.9.5 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fd05991d-382b-460c-b89f-e1f7dfac9e60?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,sp-client-document-manager,high

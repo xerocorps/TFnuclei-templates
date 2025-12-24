@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-job-manager
+  - dsl:
+    - compare_versions(version, '<= 2.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-job-manager/readme.txt'
+  redirects: true
+id: wp_job_manager-6d53cd00-3d7b-4096-bc25-354fd4020f8b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-job-manager/
+    google-query: inurl:"/wp-content/plugins/wp-job-manager/"
+    shodan-query: http.html:"wp-content/plugins/wp-job-manager/"
+  name: 'WP Job Manager <= 2.2.2 - Unauthenticated Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6d53cd00-3d7b-4096-bc25-354fd4020f8b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-job-manager,low,candidate

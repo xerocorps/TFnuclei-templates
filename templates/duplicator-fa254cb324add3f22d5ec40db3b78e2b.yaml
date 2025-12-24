@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - duplicator
+  - dsl:
+    - compare_versions(version, '<= 0.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/duplicator/readme.txt'
+  redirects: true
+id: duplicator-fa254cb324add3f22d5ec40db3b78e2b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/duplicator/
+    google-query: inurl:"/wp-content/plugins/duplicator/"
+    shodan-query: 'vuln:'
+  name: "Duplicator \u2013 WordPress Migration Plugin <= 0.4.4 - Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1b69831e-19ab-4812-b657-dc4febe15077?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,duplicator,high

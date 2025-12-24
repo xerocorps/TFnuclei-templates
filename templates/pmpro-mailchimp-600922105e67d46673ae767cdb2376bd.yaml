@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pmpro-mailchimp
+  - dsl:
+    - compare_versions(version, '<= 2.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pmpro-mailchimp/readme.txt'
+  redirects: true
+id: pmpro-mailchimp-600922105e67d46673ae767cdb2376bd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pmpro-mailchimp/
+    google-query: inurl:"/wp-content/plugins/pmpro-mailchimp/"
+    shodan-query: 'vuln:'
+  name: "Paid Memberships Pro \u2013 Mailchimp Add On <= 2.3.4 - Unauthenticated Information\
+    \ Disclosure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/415c2648-4fcb-4226-baac-9e75db79bfdf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,pmpro-mailchimp,low

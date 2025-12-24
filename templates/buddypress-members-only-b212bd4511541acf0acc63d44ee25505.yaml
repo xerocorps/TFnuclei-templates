@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - buddypress-members-only
+  - dsl:
+    - compare_versions(version, '<= 3.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/buddypress-members-only/readme.txt'
+  redirects: true
+id: buddypress-members-only-b212bd4511541acf0acc63d44ee25505
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/buddypress-members-only/
+    google-query: inurl:"/wp-content/plugins/buddypress-members-only/"
+    shodan-query: 'vuln:'
+  name: 'BuddyPress Members Only <= 3.3.5 - Improper Access Control to Sensitive Information
+    Exposure via REST API
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dcfead67-d75d-46ae-ac68-a34643ac2f52?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,buddypress-members-only,low

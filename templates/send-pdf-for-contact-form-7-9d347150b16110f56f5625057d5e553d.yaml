@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - send-pdf-for-contact-form-7
+  - dsl:
+    - compare_versions(version, '<= 0.9.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/send-pdf-for-contact-form-7/readme.txt'
+  redirects: true
+id: send-pdf-for-contact-form-7-9d347150b16110f56f5625057d5e553d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/send-pdf-for-contact-form-7/
+    google-query: inurl:"/wp-content/plugins/send-pdf-for-contact-form-7/"
+    shodan-query: 'vuln:'
+  name: 'Send PDF for Contact Form 7 <= 0.9.9.1 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9f4a939c-ba6c-4401-8139-a57e727ceb0f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,send-pdf-for-contact-form-7,low

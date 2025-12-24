@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-word-count
+  - dsl:
+    - compare_versions(version, '<= 3.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-word-count/readme.txt'
+  redirects: true
+id: wp-word-count-af581059ef09012fbb5d50b63728191c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-word-count/
+    google-query: inurl:"/wp-content/plugins/wp-word-count/"
+    shodan-query: 'vuln:'
+  name: 'WP Word Count <= 3.2.3 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6f7e632f-eada-4a3f-9e92-ba00c6aa503e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-word-count,low

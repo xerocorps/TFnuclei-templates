@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-confirmation-email
+  - dsl:
+    - compare_versions(version, '<= 3.1.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-confirmation-email/readme.txt'
+  redirects: true
+id: woo-confirmation-email-bc1f7607e13a9ba07dca46d18abcd02c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-confirmation-email/
+    google-query: inurl:"/wp-content/plugins/woo-confirmation-email/"
+    shodan-query: 'vuln:'
+  name: 'Woo Confirmation Email < 3.2.0 - Improper Access Control
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fccfe581-16aa-4a6e-a6aa-60c05e4d26cb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-confirmation-email,low

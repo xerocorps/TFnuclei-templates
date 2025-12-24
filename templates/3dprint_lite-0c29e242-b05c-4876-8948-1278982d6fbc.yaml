@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - 3dprint-lite
+  - dsl:
+    - compare_versions(version, '<= 2.0.9.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/3dprint-lite/readme.txt'
+  redirects: true
+id: 3dprint_lite-0c29e242-b05c-4876-8948-1278982d6fbc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/3dprint-lite/
+    google-query: inurl:"/wp-content/plugins/3dprint-lite/"
+    shodan-query: http.html:"wp-content/plugins/3dprint-lite/"
+  name: '3DPrint Lite <= 2.0.9.9 - Cross-Site Request Forgery to Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0c29e242-b05c-4876-8948-1278982d6fbc?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,3dprint-lite,medium,candidate

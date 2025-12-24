@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpcf7-redirect
+  - dsl:
+    - compare_versions(version, '< 2.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpcf7-redirect/readme.txt'
+  redirects: true
+id: wpcf7-redirect-c8c16c617550c7db690dbef59bc3b26a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpcf7-redirect/
+    google-query: inurl:"/wp-content/plugins/wpcf7-redirect/"
+    shodan-query: 'vuln:'
+  name: 'Redirection for Contact Form 7 <= 2.3.3 - Authenticated Arbitrary Plugin
+    Installation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2ee6ffb3-9a4a-4564-bfef-116a12268c3c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpcf7-redirect,low

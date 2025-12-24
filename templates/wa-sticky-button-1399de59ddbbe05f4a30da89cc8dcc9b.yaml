@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wa-sticky-button
+  - dsl:
+    - compare_versions(version, '<= 1.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wa-sticky-button/readme.txt'
+  redirects: true
+id: wa-sticky-button-1399de59ddbbe05f4a30da89cc8dcc9b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wa-sticky-button/
+    google-query: inurl:"/wp-content/plugins/wa-sticky-button/"
+    shodan-query: 'vuln:'
+  name: 'WP Sticky Button <= 1.3 - Unauthenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c80e6f0b-ccca-4755-b64e-cfcebc5cc1fe?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wa-sticky-button,high

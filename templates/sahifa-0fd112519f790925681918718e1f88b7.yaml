@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sahifa
+  - dsl:
+    - compare_versions(version, '<= 2.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/sahifa/style.css'
+  redirects: true
+id: sahifa-0fd112519f790925681918718e1f88b7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/sahifa/
+    google-query: inurl:"/wp-content/themes/sahifa/"
+    shodan-query: 'vuln:'
+  name: 'Sahifa <= 2.4.0 - Full Path Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f125a9d4-7399-47ae-9b5d-4cfe12c4c177?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,sahifa,low

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - media-file-manager
+  - dsl:
+    - compare_versions(version, '<= 1.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/media-file-manager/readme.txt'
+  redirects: true
+id: media_file_manager-37aedfb3-bc98-4a8f-bc19-af7778ff1a14
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/media-file-manager/
+    google-query: inurl:"/wp-content/plugins/media-file-manager/"
+    shodan-query: http.html:"wp-content/plugins/media-file-manager/"
+  name: 'Media File Manager <= 1.4.2 - Directory Traversal to Arbitrary File Read
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/37aedfb3-bc98-4a8f-bc19-af7778ff1a14?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,media-file-manager,low,candidate

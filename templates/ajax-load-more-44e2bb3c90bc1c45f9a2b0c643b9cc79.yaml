@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ajax-load-more
+  - dsl:
+    - compare_versions(version, '< 2.11.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ajax-load-more/readme.txt'
+  redirects: true
+id: ajax-load-more-44e2bb3c90bc1c45f9a2b0c643b9cc79
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ajax-load-more/
+    google-query: inurl:"/wp-content/plugins/ajax-load-more/"
+    shodan-query: 'vuln:'
+  name: 'Ajax Load More < 2.11.2 - Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c1bb3ab9-afbb-40e7-967a-45f737777dcf?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,ajax-load-more,critical

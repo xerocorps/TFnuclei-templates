@@ -1,0 +1,29 @@
+id: unpatched-coldfusion
+info:
+  author: Daviey
+  name: Adobe ColdFusion - Improper Input Validation - Arbitrary Code Execution
+  reference: '- https://helpx.adobe.com/security/products/coldfusion/apsb21-16.html
+
+    - https://twitter.com/Daviey/status/1374070630283415558
+
+    '
+  severity: info
+  tags: rce,adobe,misc
+requests:
+- matchers:
+  - regex:
+    - eval\(\"\(\"\+json\+\"\)\"\)
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cf_scripts/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/cf-scripts/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/CFIDE/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/cfide/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/CF_SFSD/scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/cfide-scripts/ajax/package/cfajax.js'
+  - '{{BaseURL}}/cfmx/CFIDE/scripts/ajax/package/cfajax.js'

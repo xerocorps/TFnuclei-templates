@@ -1,0 +1,23 @@
+id: star-network-utility
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: http.html:"Network Utility"
+    verified: true
+  name: Star Network Utility Detect
+  severity: info
+  tags: panel,network,utility
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Star Micronics
+    - Network Utility
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

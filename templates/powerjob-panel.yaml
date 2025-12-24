@@ -1,0 +1,22 @@
+id: powerjob-panel
+info:
+  author: pikpikcu
+  metadata:
+    fofa-query: title="PowerJob"
+    verified: true
+  name: PowerJob Login Panel
+  severity: info
+  tags: panel,powerjob
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>PowerJob</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

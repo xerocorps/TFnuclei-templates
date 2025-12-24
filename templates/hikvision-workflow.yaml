@@ -1,0 +1,10 @@
+id: hikvision-workflow
+info:
+  author: pdteam
+  description: A simple workflow that runs all Hikvision related nuclei templates
+    on a given target.
+  name: Hikvision Security Checks
+workflows:
+- subtemplates:
+  - template: cves/2021/CVE-2021-36260.yaml
+  template: technologies/hikvision-detection.yaml

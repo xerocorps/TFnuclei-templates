@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yith-color-and-label-variations-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 1.25.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yith-color-and-label-variations-for-woocommerce/readme.txt'
+  redirects: true
+id: yith-color-and-label-variations-for-woocommerce-a472e8d344476ac1fe5c7a6c4cbb802f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yith-color-and-label-variations-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/yith-color-and-label-variations-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'YITH plugins by YITHEMES <= (Various Versions) - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f002d061-4e9d-49be-9d4c-c470ec97f653?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,yith-color-and-label-variations-for-woocommerce,medium

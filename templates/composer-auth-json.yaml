@@ -1,0 +1,26 @@
+id: composer-auth-json
+info:
+  author: DhiyaneshDK
+  metadata:
+    google-query: intext:"index of /" ".composer-auth.json"
+    verified: true
+  name: Composer-auth Json File Disclosure
+  reference: https://www.exploit-db.com/ghdb/5768
+  severity: low
+  tags: exposure,devops
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - github-oauth
+    - github.com
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.composer-auth.json'
+  - '{{BaseURL}}/vendor/webmozart/assert/.composer-auth.json'
+  stop-at-first-match: true

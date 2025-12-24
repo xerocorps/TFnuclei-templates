@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - popup-builder
+  - dsl:
+    - compare_versions(version, '<= 4.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/popup-builder/readme.txt'
+  redirects: true
+id: popup-builder-33163017874b4cf74fe1bf988054837e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/popup-builder/
+    google-query: inurl:"/wp-content/plugins/popup-builder/"
+    shodan-query: 'vuln:'
+  name: "Popup Builder \u2013 Create highly converting, mobile friendly marketing\
+    \ popups <= 4.3.1 - Missing Authorization and Nonce Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9f86ec30-7a9d-4c36-8559-bde331c8b958?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,popup-builder,high

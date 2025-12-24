@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - filebird
+  - dsl:
+    - compare_versions(version, '<= 5.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/filebird/readme.txt'
+  redirects: true
+id: filebird-e159bd1c9a057a06ed1585f1613bdf95
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/filebird/
+    google-query: inurl:"/wp-content/plugins/filebird/"
+    shodan-query: 'vuln:'
+  name: "FileBird \u2013 WordPress Media Library Folders & File Manager <= 5.6.3 -\
+    \ Authenticated (Author+) Insecure Direct Object Reference\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/82cde234-ae87-438f-911e-bdd0e3ac1132?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,filebird,low

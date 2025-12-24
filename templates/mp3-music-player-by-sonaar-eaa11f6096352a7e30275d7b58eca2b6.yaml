@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mp3-music-player-by-sonaar
+  - dsl:
+    - compare_versions(version, '<= 4.10.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mp3-music-player-by-sonaar/readme.txt'
+  redirects: true
+id: mp3-music-player-by-sonaar-eaa11f6096352a7e30275d7b58eca2b6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mp3-music-player-by-sonaar/
+    google-query: inurl:"/wp-content/plugins/mp3-music-player-by-sonaar/"
+    shodan-query: 'vuln:'
+  name: 'MP3 Audio Player for Music, Radio & Podcast by Sonaar <= 4.10.1 - Unauthenticated
+    Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9576408b-d048-4e36-bc1a-c01c9f586365?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mp3-music-player-by-sonaar,low

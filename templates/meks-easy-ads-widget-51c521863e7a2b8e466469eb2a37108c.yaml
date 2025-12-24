@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - meks-easy-ads-widget
+  - dsl:
+    - compare_versions(version, '<= 2.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/meks-easy-ads-widget/readme.txt'
+  redirects: true
+id: meks-easy-ads-widget-51c521863e7a2b8e466469eb2a37108c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/meks-easy-ads-widget/
+    google-query: inurl:"/wp-content/plugins/meks-easy-ads-widget/"
+    shodan-query: 'vuln:'
+  name: 'Meks Easy Ads Widget <= 2.0.8 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/14ae1f7a-be81-4f4f-8cea-7afb824186aa?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,meks-easy-ads-widget,low

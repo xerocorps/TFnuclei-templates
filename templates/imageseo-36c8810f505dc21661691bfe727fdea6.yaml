@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - imageseo
+  - dsl:
+    - compare_versions(version, '<= 3.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/imageseo/readme.txt'
+  redirects: true
+id: imageseo-36c8810f505dc21661691bfe727fdea6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/imageseo/
+    google-query: inurl:"/wp-content/plugins/imageseo/"
+    shodan-query: 'vuln:'
+  name: 'Optimize Images ALT Text (alt tag) & names for SEO using AI <= 3.1.1 - Unauthenticated
+    Full Path Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a11083dd-7a5f-483b-a854-2697ddc54262?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,imageseo,low

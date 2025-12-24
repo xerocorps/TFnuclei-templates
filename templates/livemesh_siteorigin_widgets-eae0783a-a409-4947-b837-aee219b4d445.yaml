@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - livemesh-siteorigin-widgets
+  - dsl:
+    - compare_versions(version, '<= 3.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/livemesh-siteorigin-widgets/readme.txt'
+  redirects: true
+id: livemesh_siteorigin_widgets-eae0783a-a409-4947-b837-aee219b4d445
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/livemesh-siteorigin-widgets/
+    google-query: inurl:"/wp-content/plugins/livemesh-siteorigin-widgets/"
+    shodan-query: http.html:"wp-content/plugins/livemesh-siteorigin-widgets/"
+  name: 'Livemesh SiteOrigin Widgets <= 3.9.1 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via Hero Header and Pricing Table Widgets
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eae0783a-a409-4947-b837-aee219b4d445?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,livemesh-siteorigin-widgets,low,candidate

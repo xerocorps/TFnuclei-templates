@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - best-woocommerce-feed
+  - dsl:
+    - compare_versions(version, '<= 7.3.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/best-woocommerce-feed/readme.txt'
+  redirects: true
+id: best-woocommerce-feed-b97fc2565dd574eec2be30a866171222
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/best-woocommerce-feed/
+    google-query: inurl:"/wp-content/plugins/best-woocommerce-feed/"
+    shodan-query: 'vuln:'
+  name: 'Product Feed Manager <= 7.3.15 - Authenticated (Admin+) Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7a20b65a-6d3a-41fc-80c5-94cce0459a6b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,best-woocommerce-feed,low

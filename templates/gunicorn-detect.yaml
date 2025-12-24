@@ -1,0 +1,24 @@
+id: gunicorn-detect
+info:
+  author: joanbono
+  description: Gunicorn Python WSGI HTTP Server for UNIX
+  name: Detect Gunicorn Server
+  reference:
+  - https://github.com/benoitc/gunicorn
+  severity: info
+  tags: tech,gunicorn
+requests:
+- extractors:
+  - kval:
+    - Server
+    part: header
+    type: kval
+  matchers:
+  - part: header
+    regex:
+    - gunicorn+
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

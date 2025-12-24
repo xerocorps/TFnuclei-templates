@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - betterdocs
+  - dsl:
+    - compare_versions(version, '<= 3.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/betterdocs/readme.txt'
+  redirects: true
+id: betterdocs-2d113191-b550-4752-b536-644206ab56c1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/betterdocs/
+    google-query: inurl:"/wp-content/plugins/betterdocs/"
+    shodan-query: http.html:"wp-content/plugins/betterdocs/"
+  name: "BetterDocs \u2013 Best Documentation, FAQ & Knowledge Base Plugin with AI\
+    \ Support & Instant Answer For Elementor & Gutenberg <= 3.4.2 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting via Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2d113191-b550-4752-b536-644206ab56c1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,betterdocs,low,candidate

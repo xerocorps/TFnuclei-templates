@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - relevanssi
+  - dsl:
+    - compare_versions(version, '< 3.3.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/relevanssi/readme.txt'
+  redirects: true
+id: relevanssi-b5d7155472e76b79a2def4a7142c110a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/relevanssi/
+    google-query: inurl:"/wp-content/plugins/relevanssi/"
+    shodan-query: 'vuln:'
+  name: "Relevanssi \u2013 A Better Search < 3.3.8 - Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e8a864ff-2c0e-40c3-8c4e-dc034d8838b9?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,relevanssi,high

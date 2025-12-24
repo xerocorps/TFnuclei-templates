@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - learnpress
+  - dsl:
+    - compare_versions(version, '<= 4.1.6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/learnpress/readme.txt'
+  redirects: true
+id: learnpress-ba996de35dc55a8e9e23040a12844b76
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/learnpress/
+    google-query: inurl:"/wp-content/plugins/learnpress/"
+    shodan-query: 'vuln:'
+  name: "LearnPress \u2013 WordPress LMS Plugin <= 4.1.6.7 - Reflected Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d7bee25e-7574-4d3d-ad58-9b30d99de525?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,learnpress,medium

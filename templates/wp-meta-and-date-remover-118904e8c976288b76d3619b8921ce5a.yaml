@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-meta-and-date-remover
+  - dsl:
+    - compare_versions(version, '<= 2.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-meta-and-date-remover/readme.txt'
+  redirects: true
+id: wp-meta-and-date-remover-118904e8c976288b76d3619b8921ce5a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-meta-and-date-remover/
+    google-query: inurl:"/wp-content/plugins/wp-meta-and-date-remover/"
+    shodan-query: 'vuln:'
+  name: 'WP Meta and Date Remover <= 2.3.0 - Cross-Site Request Forgery via updateSettings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/faa9ad87-44b2-47b3-a05c-52e59af7255a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-meta-and-date-remover,medium

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - genki-pre-publish-reminder
+  - dsl:
+    - compare_versions(version, '<= 1.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/genki-pre-publish-reminder/readme.txt'
+  redirects: true
+id: genki_pre_publish_reminder-15b86ae0-93f0-4035-80c3-b3a713077b32
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/genki-pre-publish-reminder/
+    google-query: inurl:"/wp-content/plugins/genki-pre-publish-reminder/"
+    shodan-query: http.html:"wp-content/plugins/genki-pre-publish-reminder/"
+  name: 'Genki Pre-Publish Reminder <= 1.4.1 - Cross-Site Request Forgery to Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/15b86ae0-93f0-4035-80c3-b3a713077b32?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,genki-pre-publish-reminder,medium,candidate

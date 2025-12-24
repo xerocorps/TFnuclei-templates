@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-product-vendors
+  - dsl:
+    - compare_versions(version, '<= 2.1.65')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-product-vendors/readme.txt'
+  redirects: true
+id: woocommerce-product-vendors-e65deec0d7cebc19330f693029704214
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-product-vendors/
+    google-query: inurl:"/wp-content/plugins/woocommerce-product-vendors/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Products Vendor <= 2.1.65 - Insecure Direct Object Reference
+    to Note Creation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/57465fce-e8ad-41ac-9dd6-e340ec314913?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-product-vendors,low

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - market-exporter
+  - dsl:
+    - compare_versions(version, '<= 2.0.22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/market-exporter/readme.txt'
+  redirects: true
+id: market_exporter-bf51e9ef-7a4b-4f5b-82ae-0de6bcd90758
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/market-exporter/
+    google-query: inurl:"/wp-content/plugins/market-exporter/"
+    shodan-query: http.html:"wp-content/plugins/market-exporter/"
+  name: 'Market Exporter <= 2.0.22 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bf51e9ef-7a4b-4f5b-82ae-0de6bcd90758?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,market-exporter,medium,candidate

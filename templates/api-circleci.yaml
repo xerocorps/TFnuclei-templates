@@ -1,0 +1,15 @@
+id: api-circleci
+info:
+  author: zzeitlin
+  name: CircleCI API Test
+  reference: https://circleci.com/docs/api/v1
+  severity: info
+  tags: token-spray,circle,circleci
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - https://circleci.com/api/v1.1/me?circle-token={{token}}

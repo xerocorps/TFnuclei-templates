@@ -1,0 +1,47 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - surveyjs
+  - dsl:
+    - compare_versions(version, '<= 1.12.17')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/surveyjs/readme.txt'
+  redirects: true
+id: surveyjs-e9404fe4-855e-4eb4-81c4-5246f6e9be0c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/surveyjs/
+    google-query: inurl:"/wp-content/plugins/surveyjs/"
+    shodan-query: http.html:"wp-content/plugins/surveyjs/"
+  name: 'SurveyJS: Drag & Drop WordPress Form Builder to create, style and embed multiple
+    forms of any complexity <= 1.12.17 - Missing Authorization to Authenticated (Subscriber+)
+    Arbitrary File Deletion via SurveyJS_DeleteFile
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e9404fe4-855e-4eb4-81c4-5246f6e9be0c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,surveyjs,low,candidate

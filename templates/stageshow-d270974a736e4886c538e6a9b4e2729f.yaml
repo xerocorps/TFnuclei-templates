@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stageshow
+  - dsl:
+    - compare_versions(version, '< 5.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stageshow/readme.txt'
+  redirects: true
+id: stageshow-d270974a736e4886c538e6a9b4e2729f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stageshow/
+    google-query: inurl:"/wp-content/plugins/stageshow/"
+    shodan-query: 'vuln:'
+  name: 'StageShow < 5.0.9 - Open Redirect
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bbc8ccc1-7b72-44fb-8bf5-e7cb46081ed5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stageshow,low

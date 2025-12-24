@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - masterslider
+  - dsl:
+    - compare_versions(version, '<= 3.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/masterslider/readme.txt'
+  redirects: true
+id: masterslider-5fa205b3d5bfa3a167e965af5f702902
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/masterslider/
+    google-query: inurl:"/wp-content/plugins/masterslider/"
+    shodan-query: 'vuln:'
+  name: 'Master Slider Pro <= 3.6.5 - Authenticated (Editor+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a69a5249-f9ab-4489-a032-33dd482fdc96?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,masterslider,low

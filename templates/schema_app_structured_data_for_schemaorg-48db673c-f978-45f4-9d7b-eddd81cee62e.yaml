@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - schema-app-structured-data-for-schemaorg
+  - dsl:
+    - compare_versions(version, '<= 2.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/schema-app-structured-data-for-schemaorg/readme.txt'
+  redirects: true
+id: schema_app_structured_data_for_schemaorg-48db673c-f978-45f4-9d7b-eddd81cee62e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/schema-app-structured-data-for-schemaorg/
+    google-query: inurl:"/wp-content/plugins/schema-app-structured-data-for-schemaorg/"
+    shodan-query: http.html:"wp-content/plugins/schema-app-structured-data-for-schemaorg/"
+  name: 'Schema App Structured Data <= 2.2.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/48db673c-f978-45f4-9d7b-eddd81cee62e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,schema-app-structured-data-for-schemaorg,medium,candidate

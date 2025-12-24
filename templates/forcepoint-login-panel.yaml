@@ -1,0 +1,25 @@
+id: forcepoint-login-panel
+info:
+  author: husain
+  name: Forcepoint Login panel
+  reference:
+  - https://www.forcepoint.com/product/email-security
+  severity: info
+  tags: forcepoint,panel,login
+requests:
+- extractors:
+  - part: body
+    regex:
+    - Version&[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z];[0-9]+\.[0-9]
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - Forcepoint Email Security
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pem/login/pages/login.jsf'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - thirstyaffiliates
+  - dsl:
+    - compare_versions(version, '<= 3.11.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/thirstyaffiliates/readme.txt'
+  redirects: true
+id: thirstyaffiliates-74a23c66-3b72-4eab-9e65-c1b9c601f906
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/thirstyaffiliates/
+    google-query: inurl:"/wp-content/plugins/thirstyaffiliates/"
+    shodan-query: http.html:"wp-content/plugins/thirstyaffiliates/"
+  name: 'ThirstyAffiliates <= 3.11.8 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/74a23c66-3b72-4eab-9e65-c1b9c601f906?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,thirstyaffiliates,low,candidate

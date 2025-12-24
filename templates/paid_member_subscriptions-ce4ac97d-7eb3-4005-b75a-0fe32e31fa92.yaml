@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - paid-member-subscriptions
+  - dsl:
+    - compare_versions(version, '<= 2.11.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/paid-member-subscriptions/readme.txt'
+  redirects: true
+id: paid_member_subscriptions-ce4ac97d-7eb3-4005-b75a-0fe32e31fa92
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/paid-member-subscriptions/
+    google-query: inurl:"/wp-content/plugins/paid-member-subscriptions/"
+    shodan-query: http.html:"wp-content/plugins/paid-member-subscriptions/"
+  name: "Paid Membership Subscriptions \u2013 Effortless Memberships, Recurring Payments\
+    \ & Content Restriction <= 2.11.0 - Cross-Site Request Forgery to Notice Dismissal\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ce4ac97d-7eb3-4005-b75a-0fe32e31fa92?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,paid-member-subscriptions,medium,candidate

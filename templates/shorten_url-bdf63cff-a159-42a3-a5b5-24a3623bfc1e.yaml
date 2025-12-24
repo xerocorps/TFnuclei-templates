@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shorten-url
+  - dsl:
+    - compare_versions(version, '<= 1.6.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shorten-url/readme.txt'
+  redirects: true
+id: shorten_url-bdf63cff-a159-42a3-a5b5-24a3623bfc1e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shorten-url/
+    google-query: inurl:"/wp-content/plugins/shorten-url/"
+    shodan-query: http.html:"wp-content/plugins/shorten-url/"
+  name: 'Short URL <= 1.6.8 - Authenticated (Subscriber+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bdf63cff-a159-42a3-a5b5-24a3623bfc1e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shorten-url,low,candidate

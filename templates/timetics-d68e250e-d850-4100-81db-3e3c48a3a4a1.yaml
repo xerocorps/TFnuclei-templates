@@ -1,0 +1,47 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - timetics
+  - dsl:
+    - compare_versions(version, '<= 1.0.27')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/timetics/readme.txt'
+  redirects: true
+id: timetics-d68e250e-d850-4100-81db-3e3c48a3a4a1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/timetics/
+    google-query: inurl:"/wp-content/plugins/timetics/"
+    shodan-query: http.html:"wp-content/plugins/timetics/"
+  name: 'WP Timetics- AI-powered Appointment Booking Calendar and Online Scheduling
+    Plugin <= 1.0.27 - Missing Authorization to Authenticated (Subscriber+) Arbitrary
+    User Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d68e250e-d850-4100-81db-3e3c48a3a4a1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,timetics,low,candidate

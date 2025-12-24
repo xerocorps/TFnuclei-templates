@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - boldgrid-easy-seo
+  - dsl:
+    - compare_versions(version, '<= 1.6.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/boldgrid-easy-seo/readme.txt'
+  redirects: true
+id: boldgrid_easy_seo-0a308fde-1c44-4c34-ace5-6820dc949f53
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/boldgrid-easy-seo/
+    google-query: inurl:"/wp-content/plugins/boldgrid-easy-seo/"
+    shodan-query: http.html:"wp-content/plugins/boldgrid-easy-seo/"
+  name: "BoldGrid Easy SEO \u2013 Simple and Effective SEO <= 1.6.13 - Authenticated(Contributor+)\
+    \ Stored Cross-Site Scripting via Meta Description\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0a308fde-1c44-4c34-ace5-6820dc949f53?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,boldgrid-easy-seo,low,candidate

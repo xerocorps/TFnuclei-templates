@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-simple-firewall
+  - dsl:
+    - compare_versions(version, '< 17.0.18')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-simple-firewall/readme.txt'
+  redirects: true
+id: wp-simple-firewall-e1a8474b636a65c6a97e32de154bc168
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-simple-firewall/
+    google-query: inurl:"/wp-content/plugins/wp-simple-firewall/"
+    shodan-query: 'vuln:'
+  name: 'Shield Security <= 17.0.17 - Unauthenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/162dff28-94ea-4a47-a6cb-a13317cf1a04?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-simple-firewall,high

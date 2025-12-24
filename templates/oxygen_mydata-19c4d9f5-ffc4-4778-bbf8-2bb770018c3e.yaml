@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - oxygen-mydata
+  - dsl:
+    - compare_versions(version, '<= 1.0.64')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/oxygen-mydata/readme.txt'
+  redirects: true
+id: oxygen_mydata-19c4d9f5-ffc4-4778-bbf8-2bb770018c3e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/oxygen-mydata/
+    google-query: inurl:"/wp-content/plugins/oxygen-mydata/"
+    shodan-query: http.html:"wp-content/plugins/oxygen-mydata/"
+  name: 'Oxygen MyData for WooCommerce <= 1.0.64 - Unauthenticated Arbitrary File
+    Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/19c4d9f5-ffc4-4778-bbf8-2bb770018c3e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,oxygen-mydata,low,candidate

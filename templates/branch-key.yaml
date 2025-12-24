@@ -1,0 +1,15 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - key_live_.{32}
+    type: regex
+id: branch-key
+info:
+  author: 0xh7ml
+  name: Branch.io Live Key
+  reference:
+  - https://github.com/BranchMetrics/android-branch-deep-linking-attribution/issues/74
+  severity: info
+  tags: token,file

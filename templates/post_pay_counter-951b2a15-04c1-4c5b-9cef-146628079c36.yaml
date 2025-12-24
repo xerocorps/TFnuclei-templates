@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-pay-counter
+  - dsl:
+    - compare_versions(version, '< 2.731')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-pay-counter/readme.txt'
+  redirects: true
+id: post_pay_counter-951b2a15-04c1-4c5b-9cef-146628079c36
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-pay-counter/
+    google-query: inurl:"/wp-content/plugins/post-pay-counter/"
+    shodan-query: http.html:"wp-content/plugins/post-pay-counter/"
+  name: 'Post Pay Counter < 2.731 - Arbitrary Settings Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/951b2a15-04c1-4c5b-9cef-146628079c36?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,post-pay-counter,low,candidate

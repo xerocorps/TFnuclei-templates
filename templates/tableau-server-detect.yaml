@@ -1,0 +1,31 @@
+id: tableau-server-detect
+info:
+  author: TechbrunchFR
+  description: Detects Tableau Server and extract the buildId
+  name: Detect Tableau Server
+  severity: info
+  tags: tech,tableau
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - data-buildId="([0-9a-z_]*)
+    type: regex
+  matchers:
+  - condition: or
+    part: header
+    type: word
+    words:
+    - 'X-Tableau: Tableau Server'
+    - 'Server: Tableau'
+  - condition: or
+    part: body
+    type: word
+    words:
+    - VizPortalRun
+    - vizportal
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'

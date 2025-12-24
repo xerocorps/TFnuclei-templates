@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-social-login
+  - dsl:
+    - compare_versions(version, '<= 2.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-social-login/readme.txt'
+  redirects: true
+id: woo-social-login-d6ff5be910b5d6bdcf7d2ef1b1e7a302
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-social-login/
+    google-query: inurl:"/wp-content/plugins/woo-social-login/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce - Social Login <= 2.6.2 - Email Verification due to Insufficient
+    Randomness
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/97fbbf5b-d3c7-47ce-b251-ce1fe38af152?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-social-login,low

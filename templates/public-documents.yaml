@@ -1,0 +1,37 @@
+id: public-documents
+info:
+  author: geeknik
+  name: Alerts on pages that contain links to Excel, Word or CSV documents
+  severity: info
+requests:
+- extractors:
+  - name: public_xls
+    part: body
+    regex:
+    - \b([a-zA-Z0-9_\\.\-\(\):])+\.(xls[x]?)\b
+    type: regex
+  - name: public_doc
+    part: body
+    regex:
+    - \b([a-zA-Z0-9_\\.\-\(\):])+\.(doc[x]?)\b
+    type: regex
+  - name: public_csv
+    part: body
+    regex:
+    - \b([a-zA-Z0-9_\\.\-\(\):])+\.(csv)\b
+    type: regex
+  matchers:
+  - part: header
+    type: word
+    words:
+    - text/html
+  - condition: or
+    regex:
+    - \b([a-zA-Z0-9_\\.\-\(\):])+\.(xls[x]?)\b
+    - \b([a-zA-Z0-9_\\.\-\(\):])+\.(doc[x]?)\b
+    - \b([a-zA-Z0-9_\\.\-\(\):])+\.(csv)\b
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gift-message-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 1.7.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gift-message-for-woocommerce/readme.txt'
+  redirects: true
+id: gift_message_for_woocommerce-b1a12f7a-0f0d-47df-9266-4680d86f7e02
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gift-message-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/gift-message-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/gift-message-for-woocommerce/"
+  name: 'Gift Message for WooCommerce <= 1.7.8 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b1a12f7a-0f0d-47df-9266-4680d86f7e02?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,gift-message-for-woocommerce,medium,candidate

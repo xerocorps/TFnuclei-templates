@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fluentform
+  - dsl:
+    - compare_versions(version, '>= 5.1.16', '<= 6.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fluentform/readme.txt'
+  redirects: true
+id: fluentform-938e5d6b-1ad6-4021-a148-1d1c9e8a0a83
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fluentform/
+    google-query: inurl:"/wp-content/plugins/fluentform/"
+    shodan-query: http.html:"wp-content/plugins/fluentform/"
+  name: "Fluent Forms \u2013 Customizable Contact Forms, Survey, Quiz, & Conversational\
+    \ Form Builder 5.1.16 - 6.1.1 - Authenticated (Subscriber+) PHP Object Injection\
+    \ To Arbitrary File Read\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/938e5d6b-1ad6-4021-a148-1d1c9e8a0a83?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fluentform,low,candidate

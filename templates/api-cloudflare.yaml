@@ -1,0 +1,25 @@
+id: api-cloudflare
+info:
+  author: ffffffff0x
+  name: Cloudflare API Test
+  reference:
+  - https://dash.cloudflare.com/profile/api-tokens
+  severity: info
+  tags: token-spray,cloudflare
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - This API Token is valid and active
+  raw:
+  - 'GET https://api.cloudflare.com/client/v4/user/tokens/verify HTTP/1.1
+
+    Host: api.cloudflare.com
+
+    Authorization: Bearer {{token}}
+
+    Content-Type:application/json
+
+    '
+self-contained: true

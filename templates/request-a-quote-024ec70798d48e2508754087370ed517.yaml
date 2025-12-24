@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - request-a-quote
+  - dsl:
+    - compare_versions(version, '< 2.3.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/request-a-quote/readme.txt'
+  redirects: true
+id: request-a-quote-024ec70798d48e2508754087370ed517
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/request-a-quote/
+    google-query: inurl:"/wp-content/plugins/request-a-quote/"
+    shodan-query: 'vuln:'
+  name: 'Request a Quote <= 2.3.10 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9854d09a-2fab-46e6-9fc1-ff6d68df2662?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,request-a-quote,medium

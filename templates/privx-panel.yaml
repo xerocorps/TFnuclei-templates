@@ -1,0 +1,24 @@
+id: privx-panel
+info:
+  author: korteke
+  description: A SSH PrivX login page was detected.
+  metadata:
+    shodan-query: title:"PrivX"
+  name: SSH PrivX Login Page
+  reference:
+  - https://www.ssh.com/products/privx/
+  severity: info
+  tags: panel,privx
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>PrivX</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/login'

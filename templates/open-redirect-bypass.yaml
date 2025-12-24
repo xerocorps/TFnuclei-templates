@@ -1,0 +1,34 @@
+id: open-redirect-bypass
+info:
+  author: h0tak88r
+  description: Detects open redirect vulnerabilities by checking if the server redirects
+    to an external domain.
+  name: Open Redirect Vulnerability Detection
+  reference:
+  - https://owasp.org/www-community/attacks/Open_redirect
+  severity: low
+  tags: open-redirect, misconfiguration
+requests:
+- extractors:
+  - name: location
+    regex:
+    - 'Location: (https?://[^\s]+)'
+    type: regex
+  matchers:
+  - condition: and
+    part: header
+    type: word
+    words:
+    - evil.com
+  - status:
+    - 301
+    - 302
+    - 303
+    - 307
+    - 308
+    type: status
+  max-redirects: 5
+  method: GET
+  path:
+  - '{{BaseURL}}//evil.com/'
+  redirects: true

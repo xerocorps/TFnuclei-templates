@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - donate-with-qrcode
+  - dsl:
+    - compare_versions(version, '<= 1.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/donate-with-qrcode/readme.txt'
+  redirects: true
+id: donate-with-qrcode-a639148d08d3721b86a0b181900c3cab
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/donate-with-qrcode/
+    google-query: inurl:"/wp-content/plugins/donate-with-qrcode/"
+    shodan-query: 'vuln:'
+  name: 'Donate With QRCode <= 1.4.5 - Cross-Site Request Forgery to Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/97c441c3-ae8b-4b7a-8480-da81c0f339ab?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,donate-with-qrcode,medium

@@ -1,0 +1,24 @@
+id: openbmcs-detect
+info:
+  author: ffffffff0x
+  name: openbmcs-detect
+  severity: info
+  tags: openbmcs,detect
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - BMS - Login
+    - Copyright all rights reserved by Open BMCS
+    - OpenBMCS does not support Internet Explorer
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - timeline-event-history
+  - dsl:
+    - compare_versions(version, '<= 3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/timeline-event-history/readme.txt'
+  redirects: true
+id: timeline-event-history-80aa459f22289c5647643a43aa575b7c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/timeline-event-history/
+    google-query: inurl:"/wp-content/plugins/timeline-event-history/"
+    shodan-query: 'vuln:'
+  name: 'Timeline Event History <= 3.1 - Authenticated (Contributor+) PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/107afaa6-6c0b-43fb-9713-ebc4f1189ea6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,timeline-event-history,low

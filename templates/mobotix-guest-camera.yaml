@@ -1,0 +1,19 @@
+id: mobotix-guest-camera
+info:
+  author: dhiyaneshDK
+  name: MOBOTIX Guest Camera
+  reference: https://www.exploit-db.com/ghdb/6848
+  severity: info
+  tags: iot
+requests:
+- matchers:
+  - type: word
+    words:
+    - MOBOTIX
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/guestimage.html'

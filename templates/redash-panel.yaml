@@ -1,0 +1,23 @@
+id: redash-panel
+info:
+  author: princechaddha
+  metadata:
+    shodan-query: http.favicon.hash:698624197
+  name: Redash Panel Detect
+  severity: info
+  tags: panel,redash
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Login to Redash</title>
+    - <title>Login | Redash</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

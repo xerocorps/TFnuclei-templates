@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shortpixel-image-optimiser
+  - dsl:
+    - compare_versions(version, '<= 5.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shortpixel-image-optimiser/readme.txt'
+  redirects: true
+id: shortpixel_image_optimiser-3607420e-3f02-425d-a708-f785ce66f2db
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shortpixel-image-optimiser/
+    google-query: inurl:"/wp-content/plugins/shortpixel-image-optimiser/"
+    shodan-query: http.html:"wp-content/plugins/shortpixel-image-optimiser/"
+  name: 'ShortPixel Image Optimizer <= 5.6.3 - Authenticated (Editor+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3607420e-3f02-425d-a708-f785ce66f2db?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shortpixel-image-optimiser,low,candidate

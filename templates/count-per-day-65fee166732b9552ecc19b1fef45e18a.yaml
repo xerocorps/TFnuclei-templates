@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - count-per-day
+  - dsl:
+    - compare_versions(version, '<= 3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/count-per-day/readme.txt'
+  redirects: true
+id: count-per-day-65fee166732b9552ecc19b1fef45e18a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/count-per-day/
+    google-query: inurl:"/wp-content/plugins/count-per-day/"
+    shodan-query: 'vuln:'
+  name: 'Count per Day <= 3.1 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6d48c52b-f42f-4c25-892f-3cce9ed8cbee?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,count-per-day,high

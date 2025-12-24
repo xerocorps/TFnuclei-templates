@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - seo-by-rank-math
+  - dsl:
+    - compare_versions(version, '<= 1.0.218')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/seo-by-rank-math/readme.txt'
+  redirects: true
+id: seo_by_rank_math-b108e2e9-e5af-464a-98d9-bb40a2b65c14
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/seo-by-rank-math/
+    google-query: inurl:"/wp-content/plugins/seo-by-rank-math/"
+    shodan-query: http.html:"wp-content/plugins/seo-by-rank-math/"
+  name: 'Rank Math SEO <= 1.0.218 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b108e2e9-e5af-464a-98d9-bb40a2b65c14?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,seo-by-rank-math,low,candidate

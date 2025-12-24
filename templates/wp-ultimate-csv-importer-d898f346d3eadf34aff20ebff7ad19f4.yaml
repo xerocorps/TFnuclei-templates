@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-ultimate-csv-importer
+  - dsl:
+    - compare_versions(version, '< 3.6.75')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-ultimate-csv-importer/readme.txt'
+  redirects: true
+id: wp-ultimate-csv-importer-d898f346d3eadf34aff20ebff7ad19f4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+  description: The Ultimate CSV Importer plugin for WordPress is vulnerable to Sensitive
+    Data Exposure in versions up to, and including, 3.6.74 via the modules/export/templates/export.php
+    file. This can allow unauthenticated attackers to extract sensitive data including
+    emails, passwords and usernames.
+  metadata:
+    fofa-query: wp-content/plugins/wp-ultimate-csv-importer/
+    google-query: inurl:"/wp-content/plugins/wp-ultimate-csv-importer/"
+    shodan-query: 'vuln:'
+  name: Ultimate CSV Importer < 3.6.75 - Information Disclosure
+  reference:
+  - https://g0blin.co.uk/g0blin-00025/
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-ultimate-csv-importer-information-disclosure-3-6-74/
+  - https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/gather/wp_ultimate_csv_importer_user_extract.rb
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-ultimate-csv-importer,high

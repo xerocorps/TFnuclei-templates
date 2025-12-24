@@ -1,0 +1,28 @@
+id: osticket-panel
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: http.html:"powered by osTicket"
+    verified: true
+  name: OSTicket Panel Detect
+  severity: info
+  tags: panel,osticket
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - powered by osTicket
+    - content="osTicket
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/login.php'
+  redirects: true
+  stop-at-first-match: true

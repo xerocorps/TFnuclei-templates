@@ -1,0 +1,20 @@
+id: exposed-mysql-initial
+info:
+  author: ELSFA7110
+  name: Exposed mysql.initial
+  reference: https://hackerone.com/reports/1081817
+  severity: info
+  tags: config,exposure
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Roundcube Webmail initial database structure
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/mysql.initial.sql'

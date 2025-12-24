@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-multivendor-marketplace
+  - dsl:
+    - compare_versions(version, '<= 3.4.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-multivendor-marketplace/readme.txt'
+  redirects: true
+id: wc-multivendor-marketplace-3520dd33e33571324d1f9521aa0d9fdc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wc-multivendor-marketplace/
+    google-query: inurl:"/wp-content/plugins/wc-multivendor-marketplace/"
+    shodan-query: 'vuln:'
+  name: 'WCFM Marketplace <= 3.4.12 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5c2cc9a3-cd20-4c9e-baa4-1aea69f84331?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wc-multivendor-marketplace,medium

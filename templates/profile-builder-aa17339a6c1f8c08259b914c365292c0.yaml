@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profile-builder
+  - dsl:
+    - compare_versions(version, '< 3.9.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profile-builder/readme.txt'
+  redirects: true
+id: profile-builder-aa17339a6c1f8c08259b914c365292c0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profile-builder/
+    google-query: inurl:"/wp-content/plugins/profile-builder/"
+    shodan-query: 'vuln:'
+  name: 'Profile Builder <= 3.9.7 - Missing Authorization to Initial Page Creation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7d25cca1-eb57-4ba2-8923-a3c56f41ce22?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,profile-builder,high

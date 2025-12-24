@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - knr-author-list-widget
+  - dsl:
+    - compare_versions(version, '< 3.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/knr-author-list-widget/readme.txt'
+  redirects: true
+id: knr-author-list-widget-8be38009c2b17ae1122861229dce91c1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/knr-author-list-widget/
+    google-query: inurl:"/wp-content/plugins/knr-author-list-widget/"
+    shodan-query: 'vuln:'
+  name: 'Axact Author List Widget < 3.0.0 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c317fe6a-b691-40bb-a646-a06a8337da31?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,knr-author-list-widget,critical

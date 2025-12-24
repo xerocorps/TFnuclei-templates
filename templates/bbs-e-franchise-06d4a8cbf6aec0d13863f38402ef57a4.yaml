@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bbs-e-franchise
+  - dsl:
+    - compare_versions(version, '< 1.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bbs-e-franchise/readme.txt'
+  redirects: true
+id: bbs-e-franchise-06d4a8cbf6aec0d13863f38402ef57a4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bbs-e-franchise/
+    google-query: inurl:"/wp-content/plugins/bbs-e-franchise/"
+    shodan-query: 'vuln:'
+  name: 'BBS e-Franchise < 1.1.4 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/92321a3e-947b-4013-9b36-8bd6ea361f20?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,bbs-e-franchise,critical

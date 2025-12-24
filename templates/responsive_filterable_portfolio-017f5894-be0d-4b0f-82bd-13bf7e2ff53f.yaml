@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - responsive-filterable-portfolio
+  - dsl:
+    - compare_versions(version, '<= 1.0.24')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/responsive-filterable-portfolio/readme.txt'
+  redirects: true
+id: responsive_filterable_portfolio-017f5894-be0d-4b0f-82bd-13bf7e2ff53f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/responsive-filterable-portfolio/
+    google-query: inurl:"/wp-content/plugins/responsive-filterable-portfolio/"
+    shodan-query: http.html:"wp-content/plugins/responsive-filterable-portfolio/"
+  name: 'Responsive Filterable Portfolio <= 1.0.24 - Authenticated (Admin+) Arbitrary
+    File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/017f5894-be0d-4b0f-82bd-13bf7e2ff53f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,responsive-filterable-portfolio,low,candidate

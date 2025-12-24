@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pennews
+  - dsl:
+    - compare_versions(version, '< 6.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/pennews/style.css'
+  redirects: true
+id: pennews-5ebe8caf-6963-4ed0-8552-62513bb0e947
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/pennews/
+    google-query: inurl:"/wp-content/themes/pennews/"
+    shodan-query: http.html:"wp-content/themes/pennews/"
+  name: 'PenNews < 6.7.4 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5ebe8caf-6963-4ed0-8552-62513bb0e947?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,pennews,high,candidate

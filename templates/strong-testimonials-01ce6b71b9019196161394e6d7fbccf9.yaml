@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - strong-testimonials
+  - dsl:
+    - compare_versions(version, '<= 2.31.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/strong-testimonials/readme.txt'
+  redirects: true
+id: strong-testimonials-01ce6b71b9019196161394e6d7fbccf9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/strong-testimonials/
+    google-query: inurl:"/wp-content/plugins/strong-testimonials/"
+    shodan-query: 'vuln:'
+  name: 'Strong Testimonials <= 2.31.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c49c97cf-78e9-4da2-ab0d-ff014c29feaa?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,strong-testimonials,medium

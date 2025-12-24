@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - enteraddons
+  - dsl:
+    - compare_versions(version, '<= 2.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/enteraddons/readme.txt'
+  redirects: true
+id: enteraddons-009583d0b629cac4f565babd45c49708
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/enteraddons/
+    google-query: inurl:"/wp-content/plugins/enteraddons/"
+    shodan-query: 'vuln:'
+  name: "Enter Addons \u2013 Ultimate Template Builder for Elementor <= 2.1.5 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting via Heading widget\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/62a4dd6a-f970-483e-b1a8-d57f604b7b66?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,enteraddons,low

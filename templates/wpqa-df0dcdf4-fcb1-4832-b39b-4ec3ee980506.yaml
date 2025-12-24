@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpqa
+  - dsl:
+    - compare_versions(version, '< 5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpqa/readme.txt'
+  redirects: true
+id: wpqa-df0dcdf4-fcb1-4832-b39b-4ec3ee980506
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpqa/
+    google-query: inurl:"/wp-content/plugins/wpqa/"
+    shodan-query: http.html:"wp-content/plugins/wpqa/"
+  name: 'WPQA - Builder forms Addon For WordPress < 5.2 - Insecure Direct Object Reference
+    to Profile Picture Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/df0dcdf4-fcb1-4832-b39b-4ec3ee980506?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpqa,low,candidate

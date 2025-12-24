@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - inactive-logout
+  - dsl:
+    - compare_versions(version, '< 3.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/inactive-logout/readme.txt'
+  redirects: true
+id: inactive-logout-e40ee9448760c2f02fe5f4d2fa27b938
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/inactive-logout/
+    google-query: inurl:"/wp-content/plugins/inactive-logout/"
+    shodan-query: 'vuln:'
+  name: 'Inactive Logout <= 3.2.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d9189eb3-be7f-42e1-92cc-b48af5615eb9?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,inactive-logout,medium

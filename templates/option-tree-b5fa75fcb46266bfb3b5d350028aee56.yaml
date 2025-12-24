@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - option-tree
+  - dsl:
+    - compare_versions(version, '<= 2.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/option-tree/readme.txt'
+  redirects: true
+id: option-tree-b5fa75fcb46266bfb3b5d350028aee56
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/option-tree/
+    google-query: inurl:"/wp-content/plugins/option-tree/"
+    shodan-query: 'vuln:'
+  name: 'Option Tree <= 2.6.0 - PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ec29bc37-db27-4bf3-b55f-15c4a7274acd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,option-tree,low

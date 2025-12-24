@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - paid-memberships-pro
+  - dsl:
+    - compare_versions(version, '<= 2.9.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/paid-memberships-pro/readme.txt'
+  redirects: true
+id: paid_memberships_pro-103a7e7b-74bb-4691-8670-c66ed2144596
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/paid-memberships-pro/
+    google-query: inurl:"/wp-content/plugins/paid-memberships-pro/"
+    shodan-query: http.html:"wp-content/plugins/paid-memberships-pro/"
+  name: 'Paid Memberships Pro <= 2.9.11 - Authenticated (Subscriber+) SQL Injection
+    via Shortcodes
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/103a7e7b-74bb-4691-8670-c66ed2144596?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,paid-memberships-pro,low,candidate

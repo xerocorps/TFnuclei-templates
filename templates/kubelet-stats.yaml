@@ -1,0 +1,22 @@
+id: kubelet-stats
+info:
+  author: sharath
+  description: Scans for kubelet stats
+  name: Kubelet Stats
+  severity: info
+  tags: tech,k8s,kubernetes,devops,kubelet
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"node":'
+    - '"nodeName":'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/stats/summary'

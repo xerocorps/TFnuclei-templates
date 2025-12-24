@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stax-addons-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stax-addons-for-elementor/readme.txt'
+  redirects: true
+id: stax-addons-for-elementor-4b3989b786361039f18125eb4df25681
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stax-addons-for-elementor/
+    google-query: inurl:"/wp-content/plugins/stax-addons-for-elementor/"
+    shodan-query: 'vuln:'
+  name: "Elementor Addons, Widgets and Enhancements \u2013 Stax <= 1.4.3 - Cross-Site\
+    \ Request Forgery via toggle_widget\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c12094bd-aa23-4f9b-92e1-d1d4284fb2a0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,stax-addons-for-elementor,medium

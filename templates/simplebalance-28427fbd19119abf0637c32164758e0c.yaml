@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simplebalance
+  - dsl:
+    - compare_versions(version, '>0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/simplebalance/style.css'
+  redirects: true
+id: simplebalance-28427fbd19119abf0637c32164758e0c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: "The Simple Balance theme for WordPress is vulnerable to Reflected\
+    \ Cross-Site Scripting via the \u2018s\u2019 parameter in versions up to, and\
+    \ including, 2.2 due to insufficient input sanitization and output escaping. This\
+    \ makes it possible for unauthenticated attackers to inject arbitrary web scripts\
+    \ in pages that execute if they can successfully trick a user into performing\
+    \ an action such as clicking on a link."
+  metadata:
+    fofa-query: wp-content/themes/simplebalance/
+    google-query: inurl:"/wp-content/themes/simplebalance/"
+    shodan-query: 'vuln:'
+  name: Simple Balance <= 2.2 - Cross-Site Scripting
+  reference:
+  - https://packetstormsecurity.com/files/106341/
+  - https://web.archive.org/web/20150208175455/http%3A//blogsessive.com/blogging-tools/download-simple-balance-22-xmas-edition/
+  severity: medium
+  tags: cve,wordpress,wp-theme,simplebalance,medium

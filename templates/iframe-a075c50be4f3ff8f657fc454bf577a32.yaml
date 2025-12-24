@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - iframe
+  - dsl:
+    - compare_versions(version, '<= 4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/iframe/readme.txt'
+  redirects: true
+id: iframe-a075c50be4f3ff8f657fc454bf577a32
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/iframe/
+    google-query: inurl:"/wp-content/plugins/iframe/"
+    shodan-query: 'vuln:'
+  name: 'iFrame <= 4.8 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via srcdoc
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66f392d0-d5fb-4a8c-b972-becfac6cf6e7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,iframe,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - subscribe2
+  - dsl:
+    - compare_versions(version, '<= 10.37')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/subscribe2/readme.txt'
+  redirects: true
+id: subscribe2-eb16eaf3be2cffdd5cea7872dc96be38
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/subscribe2/
+    google-query: inurl:"/wp-content/plugins/subscribe2/"
+    shodan-query: 'vuln:'
+  name: 'Subscribe2 <= 10.37 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0e43d6fc-28f1-4208-a529-f264304fe8aa?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,subscribe2,medium

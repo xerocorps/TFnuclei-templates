@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tablesome
+  - dsl:
+    - compare_versions(version, '<= 1.0.33')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tablesome/readme.txt'
+  redirects: true
+id: tablesome-0f466f42ae94782b7c708f6954691bb3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tablesome/
+    google-query: inurl:"/wp-content/plugins/tablesome/"
+    shodan-query: 'vuln:'
+  name: "Table & Contact Form 7 Database \u2013 Tablesome <= 1.0.33 - Unauthenticated\
+    \ Sensitive Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5b680158-0752-46bd-a5bb-343b65c0aeb4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tablesome,low

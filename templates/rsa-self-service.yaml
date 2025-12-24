@@ -1,0 +1,23 @@
+id: rsa-self-service
+info:
+  author: PR3R00T
+  name: Detect RSA Self-Service Panel
+  severity: info
+  tags: panel,rsa
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Self-Service Console
+    - RSA
+    - AM_Self_Service_Console
+    - console-selfservice
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/console-selfservice/SelfService.do'

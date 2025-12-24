@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - miniorange-2-factor-authentication
+  - dsl:
+    - compare_versions(version, '<= 5.5.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/miniorange-2-factor-authentication/readme.txt'
+  redirects: true
+id: miniorange-2-factor-authentication-5e6c6131b903247388ffb9f509e30621
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/miniorange-2-factor-authentication/
+    google-query: inurl:"/wp-content/plugins/miniorange-2-factor-authentication/"
+    shodan-query: 'vuln:'
+  name: 'miniOrange''s Google Authenticator <= 5.5.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb929679-85bb-4d5b-9a99-e6081d55019f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,miniorange-2-factor-authentication,medium

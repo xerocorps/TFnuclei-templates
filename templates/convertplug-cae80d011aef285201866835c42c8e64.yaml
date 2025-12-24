@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - convertplug
+  - dsl:
+    - compare_versions(version, '< 3.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/convertplug/readme.txt'
+  redirects: true
+id: convertplug-cae80d011aef285201866835c42c8e64
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/convertplug/
+    google-query: inurl:"/wp-content/plugins/convertplug/"
+    shodan-query: 'vuln:'
+  name: 'ConvertPlug <= 3.4.2 - Unauthenticated Administrator Creation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/268b77b9-af1d-41c8-9f24-99b60eb04cc4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,convertplug,low

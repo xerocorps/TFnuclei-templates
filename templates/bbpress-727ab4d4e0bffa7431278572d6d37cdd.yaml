@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bbpress
+  - dsl:
+    - compare_versions(version, '< 2.5.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bbpress/readme.txt'
+  redirects: true
+id: bbpress-727ab4d4e0bffa7431278572d6d37cdd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bbpress/
+    google-query: inurl:"/wp-content/plugins/bbpress/"
+    shodan-query: 'vuln:'
+  name: 'bbPress < 2.5.9 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fcb76d10-fc60-4b19-9b47-1b98f8400a96?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,bbpress,high

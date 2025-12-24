@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - digital-publications-by-supsystic
+  - dsl:
+    - compare_versions(version, '<= 1.7.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/digital-publications-by-supsystic/readme.txt'
+  redirects: true
+id: digital-publications-by-supsystic-fe27d7b7f3165bc60c70c0e9aa68569f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/digital-publications-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/digital-publications-by-supsystic/"
+    shodan-query: 'vuln:'
+  name: 'Digital Publications by Supsystic <= 1.7.7 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/763f0c23-49c8-4e7a-b1c1-d33eb5b1b7c2?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,digital-publications-by-supsystic,high

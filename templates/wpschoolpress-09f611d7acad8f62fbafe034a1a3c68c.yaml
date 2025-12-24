@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpschoolpress
+  - dsl:
+    - compare_versions(version, '< 2.1.17')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpschoolpress/readme.txt'
+  redirects: true
+id: wpschoolpress-09f611d7acad8f62fbafe034a1a3c68c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpschoolpress/
+    google-query: inurl:"/wp-content/plugins/wpschoolpress/"
+    shodan-query: 'vuln:'
+  name: "School Management System \u2013 WPSchoolPress <= 2.1.16 - Stored Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/850f554f-abb5-4b9f-9b7b-67439abb1a31?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wpschoolpress,high

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-cron-manager
+  - dsl:
+    - compare_versions(version, '<= 2.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-cron-manager/readme.txt'
+  redirects: true
+id: advanced_cron_manager-7c8faa22-ff1f-4267-b690-a2c51c4807f5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-cron-manager/
+    google-query: inurl:"/wp-content/plugins/advanced-cron-manager/"
+    shodan-query: http.html:"wp-content/plugins/advanced-cron-manager/"
+  name: "Advanced Cron Manager \u2013 debug & control  <= 2.5.2 - Authenticated (Admin+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7c8faa22-ff1f-4267-b690-a2c51c4807f5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-cron-manager,low,candidate

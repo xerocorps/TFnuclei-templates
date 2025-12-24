@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - prime-mover
+  - dsl:
+    - compare_versions(version, '<= 1.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/prime-mover/readme.txt'
+  redirects: true
+id: prime-mover-7be4a5d85c0be6b79c9fd75d603a61da
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/prime-mover/
+    google-query: inurl:"/wp-content/plugins/prime-mover/"
+    shodan-query: 'vuln:'
+  name: 'Prime Mover <= 1.9.2 - Sensitive Information Exposure via Directory Listing
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/806d3919-7a10-43f3-9c68-ce38ba359a35?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,prime-mover,low

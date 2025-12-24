@@ -1,0 +1,18 @@
+id: elmah-log-file
+info:
+  author: shine
+  name: elmah.axd Disclosure
+  severity: medium
+  tags: logs,exposure
+requests:
+- matchers:
+  - type: word
+    words:
+    - Error Log for
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/elmah.axd'

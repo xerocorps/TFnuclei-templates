@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gutenverse
+  - dsl:
+    - compare_versions(version, '<= 2.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gutenverse/readme.txt'
+  redirects: true
+id: gutenverse-690e7f00-d9db-4912-9438-7fcbcb026800
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gutenverse/
+    google-query: inurl:"/wp-content/plugins/gutenverse/"
+    shodan-query: http.html:"wp-content/plugins/gutenverse/"
+  name: 'Gutenverse <= 2.2.1 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via countdown Block
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/690e7f00-d9db-4912-9438-7fcbcb026800?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gutenverse,low,candidate

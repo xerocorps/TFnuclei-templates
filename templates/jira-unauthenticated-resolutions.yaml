@@ -1,0 +1,25 @@
+id: jira-unauthenticated-resolutions
+info:
+  author: TESS
+  name: Jira Unauthenticated Resolutions
+  severity: info
+  tags: atlassian,jira
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - self
+    - description
+    - name
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - atlassian.xsrf.token
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/rest/api/2/resolution'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - double-opt-in-for-download
+  - dsl:
+    - compare_versions(version, '< 2.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/double-opt-in-for-download/readme.txt'
+  redirects: true
+id: double-opt-in-for-download-3f62dcc2e7a2196e7f5f5ed5fb55b2d1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/double-opt-in-for-download/
+    google-query: inurl:"/wp-content/plugins/double-opt-in-for-download/"
+    shodan-query: 'vuln:'
+  name: 'Double Opt-In for Download <= 2.0.8 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/540ac650-6bfd-4ee2-b3c8-b6444a209b6a?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,double-opt-in-for-download,critical

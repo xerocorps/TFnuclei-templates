@@ -1,0 +1,22 @@
+id: api-taiga
+info:
+  author: dwisiswant0
+  name: Taiga API Test
+  reference:
+  - https://docs.taiga.io/api.html
+  severity: info
+  tags: token-spray,taiga
+requests:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"auth_code":'
+    - '"state":'
+  method: GET
+  path:
+  - https://api.taiga.io/api/v1/application-tokens
+self-contained: true

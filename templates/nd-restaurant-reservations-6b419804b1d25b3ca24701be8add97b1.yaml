@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nd-restaurant-reservations
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nd-restaurant-reservations/readme.txt'
+  redirects: true
+id: nd-restaurant-reservations-6b419804b1d25b3ca24701be8add97b1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nd-restaurant-reservations/
+    google-query: inurl:"/wp-content/plugins/nd-restaurant-reservations/"
+    shodan-query: 'vuln:'
+  name: 'Restaurant Reservations <= 2.0 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1d72ff0c-cbee-42a6-8bee-29a5e522a18d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,nd-restaurant-reservations,low

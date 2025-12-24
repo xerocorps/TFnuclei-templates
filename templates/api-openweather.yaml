@@ -1,0 +1,15 @@
+id: api-openweather
+info:
+  author: zzeitlin
+  name: OpenWeather API Test
+  reference: https://openweathermap.org/current
+  severity: info
+  tags: token-spray,weather,openweather
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - https://api.openweathermap.org/data/2.5/weather?q=Chicago&appid={{token}}

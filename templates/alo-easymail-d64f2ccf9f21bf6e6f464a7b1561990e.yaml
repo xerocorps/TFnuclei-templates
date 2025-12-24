@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - alo-easymail
+  - dsl:
+    - compare_versions(version, '< 2.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/alo-easymail/readme.txt'
+  redirects: true
+id: alo-easymail-d64f2ccf9f21bf6e6f464a7b1561990e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/alo-easymail/
+    google-query: inurl:"/wp-content/plugins/alo-easymail/"
+    shodan-query: 'vuln:'
+  name: 'ALO EasyMail Newsletter <= 2.6.01 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a68f024d-b80d-4e6c-8420-5e0dde87d8f0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,alo-easymail,medium

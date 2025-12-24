@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - compact-wp-audio-player
+  - dsl:
+    - compare_versions(version, '<= 1.9.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/compact-wp-audio-player/readme.txt'
+  redirects: true
+id: compact_wp_audio_player-0d82ab22-da6d-4526-a70a-519589b29187
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/compact-wp-audio-player/
+    google-query: inurl:"/wp-content/plugins/compact-wp-audio-player/"
+    shodan-query: http.html:"wp-content/plugins/compact-wp-audio-player/"
+  name: 'Compact WP Audio Player <= 1.9.6 - Setting Change via Cross-Site Request
+    Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0d82ab22-da6d-4526-a70a-519589b29187?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,compact-wp-audio-player,medium,candidate

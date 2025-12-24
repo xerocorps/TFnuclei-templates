@@ -1,0 +1,25 @@
+id: ixcache-panel
+info:
+  author: ffffffff0x
+  metadata:
+    fofa-query: app="iXCache"
+  name: iXCache Panel Detect
+  reference:
+  - https://www.panabit.com/cn/product/iXCache/
+  severity: info
+  tags: ixcache,panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>iXCache</title>
+  - status:
+    - 302
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

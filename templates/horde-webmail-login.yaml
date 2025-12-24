@@ -1,0 +1,23 @@
+id: horde-webmail-login
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: http.favicon.hash:2104916232
+    verified: true
+  name: Horde WebMail Login
+  severity: info
+  tags: horde,webmail,panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - Welcome to Horde
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/horde/imp/login.php'
+  - '{{BaseURL}}/imp/login.php'
+  stop-at-first-match: true

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - link-whisper
+  - dsl:
+    - compare_versions(version, '<= 0.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/link-whisper/readme.txt'
+  redirects: true
+id: link_whisper-29b09367-6a27-4024-a71c-233aaee6c310
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/link-whisper/
+    google-query: inurl:"/wp-content/plugins/link-whisper/"
+    shodan-query: http.html:"wp-content/plugins/link-whisper/"
+  name: 'Link Whisper Free <= 0.6.3 - Missing Authorization via init()
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/29b09367-6a27-4024-a71c-233aaee6c310?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,link-whisper,high,candidate

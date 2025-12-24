@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-custom-fields
+  - dsl:
+    - compare_versions(version, '<= 5.7.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-custom-fields/readme.txt'
+  redirects: true
+id: advanced_custom_fields-5eab8a5d-8eb8-495f-a953-b468360cc5d5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N
+    cvss-score: 5.4
+  description: 'Advanced Custom Fields before 5.7.12 fails to sanitize user-supplied
+    input before passing it to the unserialize() function. This allows low-level authenticated
+    users to call PHP Objects and possibly achieve remote code execution if a usable
+    gadget is present in a plugin or theme installed on the same site as the vulnerable
+    plugin.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/advanced-custom-fields/
+    google-query: inurl:"/wp-content/plugins/advanced-custom-fields/"
+    shodan-query: http.html:"wp-content/plugins/advanced-custom-fields/"
+  name: 'Advanced Custom Fields <= 5.7.11 - PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5eab8a5d-8eb8-495f-a953-b468360cc5d5?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-custom-fields,low,production

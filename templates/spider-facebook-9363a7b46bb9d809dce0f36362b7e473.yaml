@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - spider-facebook
+  - dsl:
+    - compare_versions(version, '<= 1.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/spider-facebook/readme.txt'
+  redirects: true
+id: spider-facebook-9363a7b46bb9d809dce0f36362b7e473
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/spider-facebook/
+    google-query: inurl:"/wp-content/plugins/spider-facebook/"
+    shodan-query: 'vuln:'
+  name: 'Spider Facebook <= 1.0.8 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fd15f5c3-f4c3-40d3-b0ae-eee7ed9ed434?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,spider-facebook,critical

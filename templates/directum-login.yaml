@@ -1,0 +1,23 @@
+id: directum-login
+info:
+  author: pikpikcu
+  metadata:
+    fofa-query: title="Directum"
+  name: Directum Login Panel
+  severity: info
+  tags: directum,panel
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - DIRECTUM Login
+    - Directum Login
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Login.aspx'

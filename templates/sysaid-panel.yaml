@@ -1,0 +1,24 @@
+id: sysaid-panel
+info:
+  author: pdteam
+  name: SysAid Panel
+  severity: info
+  tags: panel,sysaid,helpdesk
+requests:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code==200
+    - ('1540720428' == mmh3(base64_py(body)))
+    type: dsl
+  - condition: and
+    dsl:
+    - status_code==200
+    - contains(tolower(body), 'sysaid help desk software')
+    type: dsl
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/favicon.ico'
+  - '{{BaseURL}}/Login.jsp'
+  stop-at-first-match: true

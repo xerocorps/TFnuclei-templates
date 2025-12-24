@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - login-block-ips
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/login-block-ips/readme.txt'
+  redirects: true
+id: login-block-ips-22885ce6e7030f3c3ba38b7a30eabe60
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/login-block-ips/
+    google-query: inurl:"/wp-content/plugins/login-block-ips/"
+    shodan-query: 'vuln:'
+  name: 'Login Block IPs <= 1.0.0 - IP Spoofing to Protection Mechanism Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3e772760-f390-417f-82d0-f415a6ef837d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,login-block-ips,low

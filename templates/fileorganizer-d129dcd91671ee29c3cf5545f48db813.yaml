@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fileorganizer
+  - dsl:
+    - compare_versions(version, '<= 1.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fileorganizer/readme.txt'
+  redirects: true
+id: fileorganizer-d129dcd91671ee29c3cf5545f48db813
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fileorganizer/
+    google-query: inurl:"/wp-content/plugins/fileorganizer/"
+    shodan-query: 'vuln:'
+  name: 'FileOrganizer <= 1.0.7 - Sensitive Information Exposure via Directory Listing
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/78e7b65d-91f8-477e-b992-3148c1b65d7b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fileorganizer,low

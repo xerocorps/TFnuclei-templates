@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - blog-designer-pack
+  - dsl:
+    - compare_versions(version, '<= 4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/blog-designer-pack/readme.txt'
+  redirects: true
+id: blog_designer_pack-7bcd9611-8f1e-42da-a47b-abcbe0cfd849
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/blog-designer-pack/
+    google-query: inurl:"/wp-content/plugins/blog-designer-pack/"
+    shodan-query: http.html:"wp-content/plugins/blog-designer-pack/"
+  name: 'News & Blog Designer Pack <= 4.0 - Unauthenticated Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7bcd9611-8f1e-42da-a47b-abcbe0cfd849?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,blog-designer-pack,critical,candidate

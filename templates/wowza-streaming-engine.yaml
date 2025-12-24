@@ -1,0 +1,20 @@
+id: wowza-streaming-engine
+info:
+  author: dhiyaneshDK
+  name: Wowza Streaming Engine
+  reference:
+  - https://www.shodan.io/search?query=http.title%3A%22Manager%22+product%3A%22Wowza+Streaming+Engine%22
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Wowza Streaming Engine Manager</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/enginemanager/ftu/welcome.htm'

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - moowoodle
+  - dsl:
+    - compare_versions(version, '<= 3.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/moowoodle/readme.txt'
+  redirects: true
+id: moowoodle-ed7da783-7c93-4847-9939-e88251930b70
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/moowoodle/
+    google-query: inurl:"/wp-content/plugins/moowoodle/"
+    shodan-query: http.html:"wp-content/plugins/moowoodle/"
+  name: "MooWoodle \u2013 WordPress & Moodle LMS Integration Bridge <= 3.2.4 - Unauthenticated\
+    \ Sensitive Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ed7da783-7c93-4847-9939-e88251930b70?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,moowoodle,low,candidate

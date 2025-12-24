@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uploader
+  - dsl:
+    - compare_versions(version, '<= 1.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/uploader/readme.txt'
+  redirects: true
+id: uploader-e1daa4eaee831821101085a5bd704d91
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/uploader/
+    google-query: inurl:"/wp-content/plugins/uploader/"
+    shodan-query: 'vuln:'
+  name: 'Uploader <= 1.0.4 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/14f86410-a21c-43ee-8d78-6fcce3a5b99b?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,uploader,critical

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - blogroll-fun
+  - dsl:
+    - compare_versions(version, '<= 0.8.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/blogroll-fun/readme.txt'
+  redirects: true
+id: blogroll-fun-ac035dad8502e6d379e7796cdb889e8e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/blogroll-fun/
+    google-query: inurl:"/wp-content/plugins/blogroll-fun/"
+    shodan-query: 'vuln:'
+  name: "Blogroll Fun \u2013 Show Last Post and Last Update Time < 0.8.5 - Reflected\
+    \ Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2b2fa832-ed1b-47e9-b9eb-049541530ab6?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,blogroll-fun,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - persuasion
+  - dsl:
+    - compare_versions(version, '<= 2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/persuasion/style.css'
+  redirects: true
+id: persuasion-c120ac9875ecad90ea86b5afe33b5238
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/persuasion/
+    google-query: inurl:"/wp-content/themes/persuasion/"
+    shodan-query: 'vuln:'
+  name: 'Persuasion <= 2.4 - Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c0377d27-0439-46d3-a02c-a693b1ed0bfd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,persuasion,low

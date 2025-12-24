@@ -1,0 +1,29 @@
+id: graphql-hypergraphql-detect
+info:
+  author: princechaddha
+  name: Graphql Hypergraphql Detect
+  reference: https://github.com/dolevf/graphw00f/blob/main/graphw00f/lib.py
+  severity: info
+  tags: tech,graphql,hypergraphql
+requests:
+- body: zzz { __typename }
+  headers:
+    Content-Type: application/json
+  method: POST
+  path:
+  - '{{BaseURL}}/'
+  redirects: true
+- body: query { alias1:__typename @deprecated }
+  headers:
+    Content-Type: application/json
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - 'Validation error of type InvalidSyntax: Invalid query syntax.'
+    - 'Validation error of type UnknownDirective: Unknown directive deprecated @ ''__typename'''
+  method: POST
+  path:
+  - '{{BaseURL}}/'
+  redirects: true

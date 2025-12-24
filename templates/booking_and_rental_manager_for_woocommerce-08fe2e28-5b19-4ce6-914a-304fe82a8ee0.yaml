@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - booking-and-rental-manager-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 2.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/booking-and-rental-manager-for-woocommerce/readme.txt'
+  redirects: true
+id: booking_and_rental_manager_for_woocommerce-08fe2e28-5b19-4ce6-914a-304fe82a8ee0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/booking-and-rental-manager-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/booking-and-rental-manager-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/booking-and-rental-manager-for-woocommerce/"
+  name: 'Booking and Rental Manager <= 2.2.8 - Authenticated (Contributor+) Local
+    File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/08fe2e28-5b19-4ce6-914a-304fe82a8ee0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,booking-and-rental-manager-for-woocommerce,low,candidate

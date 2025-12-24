@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pie-register
+  - dsl:
+    - compare_versions(version, '< 3.7.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pie-register/readme.txt'
+  redirects: true
+id: pie_register-03926855-d2cc-4105-9927-5871002cb7a0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pie-register/
+    google-query: inurl:"/wp-content/plugins/pie-register/"
+    shodan-query: http.html:"wp-content/plugins/pie-register/"
+  name: 'Pie Register <= 3.7.1.5 - Authentication Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/03926855-d2cc-4105-9927-5871002cb7a0?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,pie-register,critical,candidate

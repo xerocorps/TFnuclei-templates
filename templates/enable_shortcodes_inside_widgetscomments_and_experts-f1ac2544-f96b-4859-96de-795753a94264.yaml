@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - enable-shortcodes-inside-widgetscomments-and-experts
+  - dsl:
+    - compare_versions(version, '<= 1.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/enable-shortcodes-inside-widgetscomments-and-experts/readme.txt'
+  redirects: true
+id: enable_shortcodes_inside_widgetscomments_and_experts-f1ac2544-f96b-4859-96de-795753a94264
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/enable-shortcodes-inside-widgetscomments-and-experts/
+    google-query: inurl:"/wp-content/plugins/enable-shortcodes-inside-widgetscomments-and-experts/"
+    shodan-query: http.html:"wp-content/plugins/enable-shortcodes-inside-widgetscomments-and-experts/"
+  name: 'Enable Shortcodes inside Widgets,Comments and Experts <= 1.0.0 - Unauthenticated
+    Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f1ac2544-f96b-4859-96de-795753a94264?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,enable-shortcodes-inside-widgetscomments-and-experts,low,candidate

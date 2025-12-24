@@ -1,0 +1,17 @@
+id: wordpress-directory-listing
+info:
+  author: Manas_Harsh
+  name: Wordpress directory listing
+  severity: info
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - Index of /wp-content/uploads
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/uploads/'

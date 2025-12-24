@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - chatbot
+  - dsl:
+    - compare_versions(version, '<= 7.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/chatbot/readme.txt'
+  redirects: true
+id: chatbot-b2136a08-93be-4611-9eff-6a9258401b96
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/chatbot/
+    google-query: inurl:"/wp-content/plugins/chatbot/"
+    shodan-query: http.html:"wp-content/plugins/chatbot/"
+  name: 'AI ChatBot for WordPress <= 7.1.0 - Authenticated (Admin+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b2136a08-93be-4611-9eff-6a9258401b96?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,chatbot,low,candidate

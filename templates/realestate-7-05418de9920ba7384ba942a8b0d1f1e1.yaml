@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - realestate-7
+  - dsl:
+    - compare_versions(version, '< 3.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/realestate-7/readme.txt'
+  redirects: true
+id: realestate-7-05418de9920ba7384ba942a8b0d1f1e1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/realestate-7/
+    google-query: inurl:"/wp-content/plugins/realestate-7/"
+    shodan-query: 'vuln:'
+  name: 'WP Pro Real Estate 7 < 3.1.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/97c24208-46b2-48a0-a87b-78e642c044cd?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,realestate-7,medium

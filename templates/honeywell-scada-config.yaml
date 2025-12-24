@@ -1,0 +1,22 @@
+id: honeywell-scada-config
+info:
+  author: alperenkesk
+  name: Honeywell Scada System Information Disclosure
+  reference:
+  - https://www.exploit-db.com/exploits/44734
+  severity: low
+  tags: scada,config,exposure
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - DeviceSubClass
+    - IPAddress
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/web_caps/webCapsConfig'

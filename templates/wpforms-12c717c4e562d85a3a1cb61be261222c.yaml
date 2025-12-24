@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpforms
+  - dsl:
+    - compare_versions(version, '<= 1.8.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpforms/readme.txt'
+  redirects: true
+id: wpforms-12c717c4e562d85a3a1cb61be261222c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpforms/
+    google-query: inurl:"/wp-content/plugins/wpforms/"
+    shodan-query: 'vuln:'
+  name: 'Contact Form by WPForms (Free and Premium) <= 1.8.1.2 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b10303e0-c864-4088-91d1-d38c24094812?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpforms,medium

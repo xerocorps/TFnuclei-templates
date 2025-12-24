@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-registration
+  - dsl:
+    - compare_versions(version, '<= 3.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-registration/readme.txt'
+  redirects: true
+id: user_registration-d03459d8-b1f2-4270-a294-403754db1f2f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-registration/
+    google-query: inurl:"/wp-content/plugins/user-registration/"
+    shodan-query: http.html:"wp-content/plugins/user-registration/"
+  name: "User Registration \u2013 Custom Registration Form, Login Form, and User Profile\
+    \ WordPress Plugin <= 3.1.5 - Missing Authorization to Authenticated (Subscriber+)\
+    \ Privilege Escalation\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d03459d8-b1f2-4270-a294-403754db1f2f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,user-registration,low,candidate

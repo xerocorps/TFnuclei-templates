@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - updraftplus
+  - dsl:
+    - compare_versions(version, '>= 0.7.4', '<= 1.16.68')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/updraftplus/readme.txt'
+  redirects: true
+id: updraftplus-58c63799-7d6a-417d-9992-4ab425ae1f1e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/updraftplus/
+    google-query: inurl:"/wp-content/plugins/updraftplus/"
+    shodan-query: http.html:"wp-content/plugins/updraftplus/"
+  name: 'UpdraftPlus WordPress Backup Plugin <= 1.16.68 - Reflected Cross-Site Scripting
+    via updraft_restore
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/58c63799-7d6a-417d-9992-4ab425ae1f1e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,updraftplus,medium,candidate

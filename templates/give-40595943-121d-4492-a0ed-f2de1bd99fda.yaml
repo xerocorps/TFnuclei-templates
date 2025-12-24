@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - give
+  - dsl:
+    - compare_versions(version, '<= 3.22.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/give/readme.txt'
+  redirects: true
+id: give-40595943-121d-4492-a0ed-f2de1bd99fda
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/give/
+    google-query: inurl:"/wp-content/plugins/give/"
+    shodan-query: http.html:"wp-content/plugins/give/"
+  name: 'Give <= 3.22.0 - Missing Authorization to Unauthenticated Arbitrary Earning
+    Reports Disclosure via give_reports_earnings Function
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/40595943-121d-4492-a0ed-f2de1bd99fda?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,give,high,candidate

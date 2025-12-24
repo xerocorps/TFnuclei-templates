@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - theagency
+  - dsl:
+    - compare_versions(version, '>0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/theagency/style.css'
+  redirects: true
+id: theagency-7d8285b8a06ee27def592d28a059c05a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The TheAgency theme for WordPress is vulnerable to Cross-Site Scripting
+    due to insufficient input sanitization and output escaping. This makes it possible
+    for unauthenticated attackers to inject arbitrary web scripts that execute in
+    a victim's browser.
+  metadata:
+    fofa-query: wp-content/themes/theagency/
+    google-query: inurl:"/wp-content/themes/theagency/"
+    shodan-query: 'vuln:'
+  name: TheAgency (All Versions) - Cross-Site Scripting
+  reference:
+  - https://jannefi.blogspot.com/2012/09/xss-vulnerability-in-multiple-premium.html
+  severity: medium
+  tags: cve,wordpress,wp-theme,theagency,medium

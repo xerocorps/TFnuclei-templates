@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - w3-total-cache
+  - dsl:
+    - compare_versions(version, '<= 2.8.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/w3-total-cache/readme.txt'
+  redirects: true
+id: w3_total_cache-7cd8f7da-86d4-4e58-8ce8-f1d147fdcdcc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/w3-total-cache/
+    google-query: inurl:"/wp-content/plugins/w3-total-cache/"
+    shodan-query: http.html:"wp-content/plugins/w3-total-cache/"
+  name: 'W3 Total Cache <= 2.8.12 - Unauthenticated Command Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7cd8f7da-86d4-4e58-8ce8-f1d147fdcdcc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,w3-total-cache,low,candidate

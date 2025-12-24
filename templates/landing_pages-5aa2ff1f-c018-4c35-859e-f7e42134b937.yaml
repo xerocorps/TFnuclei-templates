@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - landing-pages
+  - dsl:
+    - compare_versions(version, '<= 1.8.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/landing-pages/readme.txt'
+  redirects: true
+id: landing_pages-5aa2ff1f-c018-4c35-859e-f7e42134b937
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/landing-pages/
+    google-query: inurl:"/wp-content/plugins/landing-pages/"
+    shodan-query: http.html:"wp-content/plugins/landing-pages/"
+  name: 'WordPress Landing Pages <= 1.8.7 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5aa2ff1f-c018-4c35-859e-f7e42134b937?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,landing-pages,high,candidate

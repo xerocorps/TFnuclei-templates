@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - certificate
+    - self-signed
+    - security
+    - monitoring
+  description: Template to detect self-signed SSL/TLS certificates
+  id: self-signed-cert
+  matcher-condition: or
+  matchers:
+  - pattern: Self-signed certificate
+    type: body
+  name: Self-signed Certificate Detected - Alert
+  reference:
+  - https://www.rfc-editor.org/rfc/rfc5280.html
+  requests:
+    condition: or
+    description: Attempt to establish SSL/TLS connection to the monitored endpoint
+    method: GET
+    path:
+    - /
+  severity: Medium

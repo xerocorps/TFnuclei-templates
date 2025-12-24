@@ -1,0 +1,27 @@
+id: api-coinapi
+info:
+  author: daffainfo
+  name: CoinAPI API Test
+  reference:
+  - https://docs.coinapi.io/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Cryptocurrency/CoinAPI.md
+  severity: info
+  tags: token-spray,coinapi
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"exchange_id":'
+    - '"website":'
+    - '"name":'
+  raw:
+  - 'GET https://rest.coinapi.io/v1/exchanges HTTP/1.1
+
+    Host: rest.coinapi.io
+
+    X-CoinAPI-Key: {{token}}
+
+    '
+self-contained: true

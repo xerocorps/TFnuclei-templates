@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vr-calendar-sync
+  - dsl:
+    - compare_versions(version, '<= 2.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vr-calendar-sync/readme.txt'
+  redirects: true
+id: vr_calendar_sync-57dbafe8-dcb3-4ac9-ad5e-76baf1963850
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vr-calendar-sync/
+    google-query: inurl:"/wp-content/plugins/vr-calendar-sync/"
+    shodan-query: http.html:"wp-content/plugins/vr-calendar-sync/"
+  name: 'VR Calendar <= 2.4.7 - Cross-Site Request Forgery to Calendar Sync
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/57dbafe8-dcb3-4ac9-ad5e-76baf1963850?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,vr-calendar-sync,medium,candidate

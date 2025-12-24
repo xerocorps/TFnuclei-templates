@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - page-generator
+  - dsl:
+    - compare_versions(version, '<= 1.6.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/page-generator/readme.txt'
+  redirects: true
+id: page-generator-17bb960ac7549a558ee675604ef7b363
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/page-generator/
+    google-query: inurl:"/wp-content/plugins/page-generator/"
+    shodan-query: 'vuln:'
+  name: 'Page Generator <= 1.6.4 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4baf9b27-a06e-412f-8227-6b418e709ff1?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,page-generator,high

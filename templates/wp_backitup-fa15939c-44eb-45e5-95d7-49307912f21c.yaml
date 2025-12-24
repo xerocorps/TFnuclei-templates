@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-backitup
+  - dsl:
+    - compare_versions(version, '<= 1.50')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-backitup/readme.txt'
+  redirects: true
+id: wp_backitup-fa15939c-44eb-45e5-95d7-49307912f21c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-backitup/
+    google-query: inurl:"/wp-content/plugins/wp-backitup/"
+    shodan-query: http.html:"wp-content/plugins/wp-backitup/"
+  name: 'Backup and Restore Wordpress <= 1.50 - Cross-Site Request Forgery to Backup
+    Trigger
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fa15939c-44eb-45e5-95d7-49307912f21c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-backitup,medium,candidate

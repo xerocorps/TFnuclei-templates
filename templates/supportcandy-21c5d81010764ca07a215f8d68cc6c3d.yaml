@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - supportcandy
+  - dsl:
+    - compare_versions(version, '< 2.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/supportcandy/readme.txt'
+  redirects: true
+id: supportcandy-21c5d81010764ca07a215f8d68cc6c3d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/supportcandy/
+    google-query: inurl:"/wp-content/plugins/supportcandy/"
+    shodan-query: 'vuln:'
+  name: 'SupportCandy <= 2.2.6 - Cross-Site Request Forgery to Arbitrary Ticket Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9e1fa691-3934-4e15-b339-e679976d6d5c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,supportcandy,medium

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - employee-directory
+  - dsl:
+    - compare_versions(version, '<= 4.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/employee-directory/readme.txt'
+  redirects: true
+id: employee_directory-6d06d721-ab48-43ae-81d6-bd0b3177a7bf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/employee-directory/
+    google-query: inurl:"/wp-content/plugins/employee-directory/"
+    shodan-query: http.html:"wp-content/plugins/employee-directory/"
+  name: 'Employee Directory <= 4.5.1 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via noaccess_msg Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6d06d721-ab48-43ae-81d6-bd0b3177a7bf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,employee-directory,low,candidate

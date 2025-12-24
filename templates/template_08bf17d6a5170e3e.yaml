@@ -1,0 +1,32 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - azure
+    - security
+    - tenant-id
+  description: Template to detect Microsoft Azure Domain Tenant ID leakage
+  id: azure-domain-tenant-id
+  matcher-condition: or
+  matchers:
+  - description: Azure Domain Tenant ID found in the OpenID configuration file
+    pattern: authorization_endpoint
+    type: body
+  - description: Azure Domain Tenant ID found in the OpenID configuration file
+    pattern: token_endpoint
+    type: body
+  name: Microsoft Azure Domain Tenant ID - Detect
+  reference:
+  - https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory
+  requests:
+    condition: or
+    description: Attempt to retrieve Azure OpenID configuration files
+    method: GET
+    path:
+    - /.well-known/openid-configuration
+    - /.well-known/oauth-authorization-server
+  response:
+  - status:
+    - 200
+  severity: Medium

@@ -1,0 +1,21 @@
+id: hp-laserjet-detect
+info:
+  author: dhiyaneshDk
+  name: HP LaserJet
+  reference:
+  - https://www.exploit-db.com/ghdb/6459
+  severity: low
+  tags: iot
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - HP LaserJet Professional
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/SSI/index.htm'

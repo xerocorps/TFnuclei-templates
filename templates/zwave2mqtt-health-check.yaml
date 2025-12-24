@@ -1,0 +1,28 @@
+id: zwave2mqtt-health-check
+info:
+  author: geeknik
+  name: Zwave2MQTT Health Check
+  reference:
+  - https://github.com/OpenZWave/Zwave2Mqtt#health-check-endpoints
+  severity: info
+requests:
+- headers:
+    Accept: text/plain
+  matchers:
+  - condition: or
+    status:
+    - 200
+    - 500
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - dsl:
+    - len(body) < 1
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/health/mqtt'
+  - '{{BaseURL}}/health/zwave'

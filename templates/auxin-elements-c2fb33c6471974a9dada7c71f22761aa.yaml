@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - auxin-elements
+  - dsl:
+    - compare_versions(version, '<= 2.15.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/auxin-elements/readme.txt'
+  redirects: true
+id: auxin-elements-c2fb33c6471974a9dada7c71f22761aa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/auxin-elements/
+    google-query: inurl:"/wp-content/plugins/auxin-elements/"
+    shodan-query: 'vuln:'
+  name: 'Shortcodes and extra features for Phlox theme <= 2.15.4 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting via shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/95d61096-8e44-4b70-a409-c02cb3d1e32c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,auxin-elements,low

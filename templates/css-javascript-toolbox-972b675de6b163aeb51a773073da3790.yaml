@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - css-javascript-toolbox
+  - dsl:
+    - compare_versions(version, '<= 8.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/css-javascript-toolbox/readme.txt'
+  redirects: true
+id: css-javascript-toolbox-972b675de6b163aeb51a773073da3790
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/css-javascript-toolbox/
+    google-query: inurl:"/wp-content/plugins/css-javascript-toolbox/"
+    shodan-query: 'vuln:'
+  name: 'CSS & JavaScript Toolbox <= 8.4.1 - Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/868b7492-c550-4c06-adb0-3478eb7d9b55?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,css-javascript-toolbox,low

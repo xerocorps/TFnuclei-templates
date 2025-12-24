@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - broken-link-checker
+  - dsl:
+    - compare_versions(version, '<= 1.11.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/broken-link-checker/readme.txt'
+  redirects: true
+id: broken-link-checker-710c38e6c890bce941d59fd55706027e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/broken-link-checker/
+    google-query: inurl:"/wp-content/plugins/broken-link-checker/"
+    shodan-query: 'vuln:'
+  name: 'Broken Link Checker <= 1.11.16 - Authenticated (Admin+) PHAR Deserialization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/62fd472e-208b-48db-8f98-3d935c7a678c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,broken-link-checker,low

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - favorites
+  - dsl:
+    - compare_versions(version, '<= 2.3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/favorites/readme.txt'
+  redirects: true
+id: favorites-38a87046-9a46-40c2-b10d-d1a7d5ef8742
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/favorites/
+    google-query: inurl:"/wp-content/plugins/favorites/"
+    shodan-query: http.html:"wp-content/plugins/favorites/"
+  name: 'Favorites <= 2.3.3 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/38a87046-9a46-40c2-b10d-d1a7d5ef8742?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,favorites,low,candidate

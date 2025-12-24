@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - most-and-least-read-posts-widget
+  - dsl:
+    - compare_versions(version, '<= 2.5.20')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/most-and-least-read-posts-widget/readme.txt'
+  redirects: true
+id: most_and_least_read_posts_widget-c67f01c0-8b49-48e3-88da-49b39d6b0a4a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/most-and-least-read-posts-widget/
+    google-query: inurl:"/wp-content/plugins/most-and-least-read-posts-widget/"
+    shodan-query: http.html:"wp-content/plugins/most-and-least-read-posts-widget/"
+  name: 'Most And Least Read Posts Widget <= 2.5.20 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c67f01c0-8b49-48e3-88da-49b39d6b0a4a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,most-and-least-read-posts-widget,low,candidate

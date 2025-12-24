@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gmap-embed
+  - dsl:
+    - compare_versions(version, '<= 1.9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gmap-embed/readme.txt'
+  redirects: true
+id: gmap_embed-fea688c7-88d6-424b-90e2-f82eb37c5a0e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gmap-embed/
+    google-query: inurl:"/wp-content/plugins/gmap-embed/"
+    shodan-query: http.html:"wp-content/plugins/gmap-embed/"
+  name: "Maps Plugin using Google Maps for WordPress \u2013 WP Google Map <= 1.9.3\
+    \ - Authenticated (Admin+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fea688c7-88d6-424b-90e2-f82eb37c5a0e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gmap-embed,low,candidate

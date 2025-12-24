@@ -1,0 +1,48 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jetpack
+  - dsl:
+    - compare_versions(version, '<= 3.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jetpack/readme.txt'
+  redirects: true
+id: jetpack-9b86a259-b102-411a-8d4c-c131737b90d8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 4.9
+  description: "The Jetpack \u2013 WP Security, Backup, Speed, & Growth plugin for\
+    \ WordPress is vulnerable to Sensitive Data Exposure in versions up to, and including,\
+    \ 3.9.1. This makes it possible for authenticated attackers with database access\
+    \ to extract sensitive data including plaintext credentials due to plaintext storage\
+    \ of those credentials.\n"
+  metadata:
+    fofa-query: wp-content/plugins/jetpack/
+    google-query: inurl:"/wp-content/plugins/jetpack/"
+    shodan-query: http.html:"wp-content/plugins/jetpack/"
+  name: "Jetpack \u2013 WP Security, Backup, Speed, & Growth <= 3.9.1 - Sensitive\
+    \ Information Disclosure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9b86a259-b102-411a-8d4c-c131737b90d8?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,jetpack,low,production

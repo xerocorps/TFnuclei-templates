@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - database-sync
+  - dsl:
+    - compare_versions(version, '< 0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/database-sync/readme.txt'
+  redirects: true
+id: database-sync-cdbcec71297901c2ebe3c40c2f8801eb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/database-sync/
+    google-query: inurl:"/wp-content/plugins/database-sync/"
+    shodan-query: 'vuln:'
+  name: 'Database Sync < 0.5 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/578b17d4-16cf-449a-9d99-cd9a0f7a8418?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,database-sync,medium

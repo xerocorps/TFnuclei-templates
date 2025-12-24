@@ -1,0 +1,20 @@
+id: api-tinypng
+info:
+  author: zzeitlin
+  name: TinyPNG API Test
+  reference: https://tinypng.com/developers
+  severity: info
+  tags: token-spray,tinypng
+requests:
+- headers:
+    Authorization: Basic {{base64('api:' + token)}}
+  matchers:
+  - condition: or
+    part: header
+    type: word
+    words:
+    - Compression-Count
+    - compression-count
+  method: POST
+  path:
+  - https://api.tinify.com/shrink

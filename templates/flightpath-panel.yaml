@@ -1,0 +1,21 @@
+id: flightpath-panel
+info:
+  author: princechaddha
+  metadata:
+    shodan-query: http.title:"flightpath"
+  name: FlightPath Panel
+  severity: info
+  tags: panel,flightpath
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Login | FlightPath</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

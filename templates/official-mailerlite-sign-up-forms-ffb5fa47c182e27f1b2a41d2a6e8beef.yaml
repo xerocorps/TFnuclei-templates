@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - official-mailerlite-sign-up-forms
+  - dsl:
+    - compare_versions(version, '< 1.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/official-mailerlite-sign-up-forms/readme.txt'
+  redirects: true
+id: official-mailerlite-sign-up-forms-ffb5fa47c182e27f1b2a41d2a6e8beef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/official-mailerlite-sign-up-forms/
+    google-query: inurl:"/wp-content/plugins/official-mailerlite-sign-up-forms/"
+    shodan-query: 'vuln:'
+  name: 'MailerLite Signup Forms < 1.4.4 - Unauthenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ec9cd4a8-286e-43d7-8cb6-6cc363800e20?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,official-mailerlite-sign-up-forms,critical

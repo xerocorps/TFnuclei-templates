@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bangladeshi-payment-gateways
+  - dsl:
+    - compare_versions(version, '<= 2.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bangladeshi-payment-gateways/readme.txt'
+  redirects: true
+id: bangladeshi_payment_gateways-e869800a-6fbc-4a1a-97fd-92ecbf3305ff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bangladeshi-payment-gateways/
+    google-query: inurl:"/wp-content/plugins/bangladeshi-payment-gateways/"
+    shodan-query: http.html:"wp-content/plugins/bangladeshi-payment-gateways/"
+  name: 'Appsero <= 1.2.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e869800a-6fbc-4a1a-97fd-92ecbf3305ff?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,bangladeshi-payment-gateways,medium,candidate

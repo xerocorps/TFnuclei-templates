@@ -1,0 +1,28 @@
+id: phpbb-installer
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: html:"Installation Panel"
+    verified: true
+  name: phpBB Installation File Exposure
+  severity: high
+  tags: misconfig,phpbb,install,exposure
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Installation Panel
+    - Introduction
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/install/app.php'

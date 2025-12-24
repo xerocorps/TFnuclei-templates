@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zip-recipes
+  - dsl:
+    - compare_versions(version, '<= 8.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zip-recipes/readme.txt'
+  redirects: true
+id: zip-recipes-84bd586d09af86f84b5fd420a4f11f51
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zip-recipes/
+    google-query: inurl:"/wp-content/plugins/zip-recipes/"
+    shodan-query: 'vuln:'
+  name: 'Recipe Maker For Your Food Blog from Zip Recipes <= 8.0.7 - Cross-Site Request
+    Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ebd1483a-949d-4edb-9b86-007879d2d207?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,zip-recipes,medium

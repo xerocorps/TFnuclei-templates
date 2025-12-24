@@ -1,0 +1,21 @@
+id: api-square
+info:
+  author: zzeitlin
+  name: Square API Test
+  reference: https://developer.squareup.com/explorer/square/locations-api/list-locations
+  severity: info
+  tags: token-spray,square
+requests:
+- headers:
+    Authorization: Bearer {{token}}
+    Content-Type: application/json
+  matchers:
+  - negative: true
+    part: body
+    type: word
+    words:
+    - errors
+  method: GET
+  path:
+  - https://connect.squareup.com/v2/locations
+  - https://connect.squareupsandbox.com/v2/locations

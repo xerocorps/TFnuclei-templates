@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - page-flip-image-gallery
+  - dsl:
+    - compare_versions(version, '<= 0.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/page-flip-image-gallery/readme.txt'
+  redirects: true
+id: page-flip-image-gallery-820df2f96e4e493eaefbc71aae198b84
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/page-flip-image-gallery/
+    google-query: inurl:"/wp-content/plugins/page-flip-image-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Page Flip Image Gallery <= 0.2.2 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/44e3158c-6163-4780-a1d5-ca101ba92074?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,page-flip-image-gallery,low

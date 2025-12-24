@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bbs-e-popup
+  - dsl:
+    - compare_versions(version, '<= 2.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bbs-e-popup/readme.txt'
+  redirects: true
+id: bbs_e_popup-8f715947-e379-4a05-9ab8-5d9e94ffc136
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bbs-e-popup/
+    google-query: inurl:"/wp-content/plugins/bbs-e-popup/"
+    shodan-query: http.html:"wp-content/plugins/bbs-e-popup/"
+  name: 'BBS e-Popup <= 2.4.5 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8f715947-e379-4a05-9ab8-5d9e94ffc136?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,bbs-e-popup,medium,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - userswp
+  - dsl:
+    - compare_versions(version, '< 1.2.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/userswp/readme.txt'
+  redirects: true
+id: userswp-bc4f0b425e52cd9c80ba225fa12c9618
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/userswp/
+    google-query: inurl:"/wp-content/plugins/userswp/"
+    shodan-query: 'vuln:'
+  name: 'UsersWP <= 1.2.3 - Subscriber+ User Avatar Override
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f31b42c8-cf82-49cf-ac4c-d42a28252d66?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,userswp,low

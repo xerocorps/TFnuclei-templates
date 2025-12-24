@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-multi-currency
+  - dsl:
+    - compare_versions(version, '<=  2.1.17')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-multi-currency/readme.txt'
+  redirects: true
+id: woocommerce-multi-currency-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The WooCommerce Multi Currency plugin for WordPress is vulnerable to
+    authorization bypass due to a missing capability check on the wmc_bulk_fixed_price
+    function in versions up to, and including, 2.1.17. This makes it possible for
+    authenticated attackers, with subscriber-level permissions and above, to make
+    changes to product prices.
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-multi-currency/
+    google-query: inurl:"/wp-content/plugins/woocommerce-multi-currency/"
+    shodan-query: 'vuln:'
+  name: WooCommerce Multi Currency <= 2.1.17 - Missing Authorization
+  reference: null
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocommerce-multi-currency,high

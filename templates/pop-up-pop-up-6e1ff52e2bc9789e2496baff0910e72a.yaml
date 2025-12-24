@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pop-up-pop-up
+  - dsl:
+    - compare_versions(version, '<= 1.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pop-up-pop-up/readme.txt'
+  redirects: true
+id: pop-up-pop-up-6e1ff52e2bc9789e2496baff0910e72a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pop-up-pop-up/
+    google-query: inurl:"/wp-content/plugins/pop-up-pop-up/"
+    shodan-query: 'vuln:'
+  name: 'Inisev Plugins (Various Versions) - Cross-Site Request Forgery on handle_installation
+    function
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ab7c8926-c762-49b1-bc97-4b7a2f4f97fc?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,pop-up-pop-up,medium

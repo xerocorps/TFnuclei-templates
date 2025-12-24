@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cimy-header-image-rotator
+  - dsl:
+    - compare_versions(version, '<= 6.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cimy-header-image-rotator/readme.txt'
+  redirects: true
+id: cimy-header-image-rotator-58ef67c03339b2d7a4b4531f1477feda
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cimy-header-image-rotator/
+    google-query: inurl:"/wp-content/plugins/cimy-header-image-rotator/"
+    shodan-query: 'vuln:'
+  name: 'Cimy Header Image Rotator <= 6.1.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3cfec2b8-1df0-4f3f-b6cc-ed0adecaeb16?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,cimy-header-image-rotator,medium

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpextended
+  - dsl:
+    - compare_versions(version, '<= 3.0.14')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpextended/readme.txt'
+  redirects: true
+id: wpextended-b58e7192-2159-4f77-baba-05a57a545c7b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpextended/
+    google-query: inurl:"/wp-content/plugins/wpextended/"
+    shodan-query: http.html:"wp-content/plugins/wpextended/"
+  name: "The Ultimate WordPress Toolkit \u2013 WP Extended <= 3.0.14 - Reflected Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b58e7192-2159-4f77-baba-05a57a545c7b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpextended,medium,candidate

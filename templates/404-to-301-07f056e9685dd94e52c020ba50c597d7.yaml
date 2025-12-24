@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - 404-to-301
+  - dsl:
+    - compare_versions(version, '<= 3.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/404-to-301/readme.txt'
+  redirects: true
+id: 404-to-301-07f056e9685dd94e52c020ba50c597d7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 6.4
+  description: The 404 to 301 plugin for WordPress is vulnerable to authorization
+    bypass due to missing capability checks on the open_redirect & save_redirect functions
+    in versions up to, and including, 3.0.7. This makes it possible for authenticated
+    attackers to view, create and edit redirections.
+  metadata:
+    fofa-query: wp-content/plugins/404-to-301/
+    google-query: inurl:"/wp-content/plugins/404-to-301/"
+    shodan-query: 'vuln:'
+  name: 404 to 301 <= 3.0.7 - Missing Authorization to Redirect Creation
+  reference:
+  - https://plugins.trac.wordpress.org/changeset/2546695/404-to-301
+  - https://blog.nintechnet.com/broken-access-control-vulnerability-fixed-in-wordpress-404-to-301-plugin/
+  - https://wpscan.com/vulnerability/9f147107-bc5a-4a01-9979-cd9e16061f12
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-404-to-301-redirect-log-and-notify-404-errors-security-bypass-3-0-7/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,404-to-301,medium

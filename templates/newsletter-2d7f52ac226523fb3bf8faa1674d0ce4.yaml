@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - newsletter
+  - dsl:
+    - compare_versions(version, '<= 6.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/newsletter/readme.txt'
+  redirects: true
+id: newsletter-2d7f52ac226523fb3bf8faa1674d0ce4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:L
+    cvss-score: 5.5
+  description: The Newsletter plugin for WordPress is vulnerable to CSV Injection
+    in versions up to, and including, 6.5.3 by the use of Microsoft Excel DDE function,
+    or to leak data via maliciously injected hyperlinks. This allows non-privileged
+    attackers to embed untrusted input into exported CSV files, which can result in
+    code execution when these files are downloaded and opened on a local system with
+    a vulnerable configuration.
+  metadata:
+    fofa-query: wp-content/plugins/newsletter/
+    google-query: inurl:"/wp-content/plugins/newsletter/"
+    shodan-query: 'vuln:'
+  name: Newsletter <= 6.5.3 - CSV Injection
+  reference:
+  - https://fortiguard.com/zeroday/FG-VD-20-045
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-newsletter-csv-injection-6-5-3/
+  - https://wpscan.com/vulnerability/10135
+  severity: medium
+  tags: cve,wordpress,wp-plugin,newsletter,medium

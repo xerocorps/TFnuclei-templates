@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - designthemes-lms
+  - dsl:
+    - compare_versions(version, '<= 1.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/designthemes-lms/readme.txt'
+  redirects: true
+id: designthemes_lms-c880470f-3f81-47a2-b450-7074410e9f43
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/designthemes-lms/
+    google-query: inurl:"/wp-content/plugins/designthemes-lms/"
+    shodan-query: http.html:"wp-content/plugins/designthemes-lms/"
+  name: 'DesignThemes LMS <= 1.0.4 - Unauthenticated Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c880470f-3f81-47a2-b450-7074410e9f43?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,designthemes-lms,low,candidate

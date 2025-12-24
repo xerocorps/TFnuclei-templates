@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-job-manager
+  - dsl:
+    - compare_versions(version, '< 1.26.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-job-manager/readme.txt'
+  redirects: true
+id: wp-job-manager-3c422eaad4c24853702cd2afe361bcd2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-job-manager/
+    google-query: inurl:"/wp-content/plugins/wp-job-manager/"
+    shodan-query: 'vuln:'
+  name: 'WP Job Manager <= 1.26.1 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d8029737-f3ad-4025-948a-ba0298c0869d?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-job-manager,critical

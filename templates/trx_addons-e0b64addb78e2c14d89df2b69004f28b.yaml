@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - trx_addons
+  - dsl:
+    - compare_versions(version, '>= 1.70.3', '< 1.70.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/trx_addons/readme.txt'
+  redirects: true
+id: trx_addons-e0b64addb78e2c14d89df2b69004f28b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/trx_addons/
+    google-query: inurl:"/wp-content/plugins/trx_addons/"
+    shodan-query: 'vuln:'
+  name: 'ThemeREX Addons (Various Versions) - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1a14b674-620e-4247-a200-92d9f23acbca?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,trx_addons,high

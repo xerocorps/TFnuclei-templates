@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - google-sitemap-plugin
+  - dsl:
+    - compare_versions(version, '< 3.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/google-sitemap-plugin/readme.txt'
+  redirects: true
+id: google-sitemap-plugin-80d12b8139d65ac724872ec60f711c4e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/google-sitemap-plugin/
+    google-query: inurl:"/wp-content/plugins/google-sitemap-plugin/"
+    shodan-query: 'vuln:'
+  name: "Sitemap by BestWebSoft \u2013 WordPress XML Site Map Page Generator Plugin\
+    \ < 3.0.8 - Reflected Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e409a4af-9998-4b77-8f6b-50ae1b70da2d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,google-sitemap-plugin,medium

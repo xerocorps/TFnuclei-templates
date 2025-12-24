@@ -1,0 +1,28 @@
+id: teamcity-login-panel
+info:
+  author: princechaddha
+  metadata:
+    shodan-query: http.component:"TeamCity"
+    verified: true
+  name: TeamCity Login Panel
+  severity: info
+  tags: panel,teamcity,jetbrains
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - Version<\/span> ([0-9. (a-z)]+)<\/span>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Log in to TeamCity &mdash; TeamCity</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'

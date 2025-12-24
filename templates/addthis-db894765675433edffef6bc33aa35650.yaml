@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - addthis
+  - dsl:
+    - compare_versions(version, '< 5.0.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/addthis/readme.txt'
+  redirects: true
+id: addthis-db894765675433edffef6bc33aa35650
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/addthis/
+    google-query: inurl:"/wp-content/plugins/addthis/"
+    shodan-query: 'vuln:'
+  name: 'AddThis <= 5.0.12 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/76345533-ec81-4a6e-bb20-12449dd63a27?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,addthis,high

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stock-sync-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 2.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stock-sync-for-woocommerce/readme.txt'
+  redirects: true
+id: stock-sync-for-woocommerce-644815e9b3a6fe76e1f446978217cf20
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stock-sync-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/stock-sync-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Stock Sync for WooCommerce <= 2.4.0 - Reflected Cross-Site Scripting via
+    page parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/adcaf2db-2026-46bb-8fbc-0400d7c1e296?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,stock-sync-for-woocommerce,medium

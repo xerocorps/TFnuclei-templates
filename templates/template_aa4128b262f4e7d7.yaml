@@ -1,0 +1,24 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - wordpress
+    - wp-config.php
+    - config file
+    - exposure
+  description: Template to detect WordPress wp-config.php file exposure
+  id: wordpress-wp-config-exposure
+  matchers:
+  - pattern: DB_PASSWORD
+    type: body
+  name: WordPress wp-config.php Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /var/www/html/wp-config.php
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

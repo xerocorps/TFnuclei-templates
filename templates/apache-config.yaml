@@ -1,0 +1,18 @@
+id: apache-config
+info:
+  author: sheikhrishad
+  name: Apache Config file disclosure
+  severity: low
+  tags: config,exposure,apache
+requests:
+- matchers:
+  - condition: or
+    dsl:
+    - contains(body, '<Directory') && contains(body, '</Directory>') && status_code
+      == 200
+    - contains(body, '<VirtualHost') && contains(body, '</VirtualHost>') && status_code
+      == 200
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/apache.conf'

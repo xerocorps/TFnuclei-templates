@@ -1,0 +1,15 @@
+id: flowci-detection
+info:
+  author: Adam Crosser
+  name: FlowCI Detection
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>flow-web-x
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+  redirects: true

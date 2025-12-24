@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - redux-framework
+  - dsl:
+    - compare_versions(version, '<= 4.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/redux-framework/readme.txt'
+  redirects: true
+id: redux_framework-cabf776d-8749-45a8-94c1-7d1eef93a183
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/redux-framework/
+    google-query: inurl:"/wp-content/plugins/redux-framework/"
+    shodan-query: http.html:"wp-content/plugins/redux-framework/"
+  name: 'Redux Framework <= 4.5.8 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via data Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cabf776d-8749-45a8-94c1-7d1eef93a183?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,redux-framework,low,candidate

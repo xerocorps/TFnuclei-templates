@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - travel-agency
+  - dsl:
+    - compare_versions(version, '<= 1.4.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/travel-agency/style.css'
+  redirects: true
+id: travel_agency-4c7fe6e7-f776-4fd5-8341-b95237a63d4e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/travel-agency/
+    google-query: inurl:"/wp-content/themes/travel-agency/"
+    shodan-query: http.html:"wp-content/themes/travel-agency/"
+  name: 'Travel Agency <= 1.4.9 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4c7fe6e7-f776-4fd5-8341-b95237a63d4e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,travel-agency,medium,candidate

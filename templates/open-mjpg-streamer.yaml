@@ -1,0 +1,23 @@
+id: open-mjpg-streamer
+info:
+  author: gboddin
+  description: Open mjpg-streamer service sharing webcam/camera feed
+  name: open-mjpg-streamer
+  reference:
+  - https://github.com/jacksonliam/mjpg-streamer
+  severity: medium
+  tags: iot,webcam
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - MJPG-Streamer/0.2
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-size: 2048
+  method: GET
+  path:
+  - '{{BaseURL}}/?action=stream'

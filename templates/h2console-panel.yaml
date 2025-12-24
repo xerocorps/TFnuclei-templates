@@ -1,0 +1,21 @@
+id: h2console-panel
+info:
+  author: righettod
+  metadata:
+    shodan-query: http.title:"H2 Console"
+  name: H2 console web panel
+  reference:
+  - https://mp.weixin.qq.com/s/Yn5U8WHGJZbTJsxwUU3UiQ
+  - https://jfrog.com/blog/the-jndi-strikes-back-unauthenticated-rce-in-h2-database-console
+  severity: info
+  tags: panel,h2,console
+requests:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code==200
+    - contains(tolower(body), '<title>h2 console</title>')
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/h2-console/login.jsp'

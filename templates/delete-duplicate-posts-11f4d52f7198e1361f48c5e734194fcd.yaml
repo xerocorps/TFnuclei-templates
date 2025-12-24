@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - delete-duplicate-posts
+  - dsl:
+    - compare_versions(version, '< 4.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/delete-duplicate-posts/readme.txt'
+  redirects: true
+id: delete-duplicate-posts-11f4d52f7198e1361f48c5e734194fcd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/delete-duplicate-posts/
+    google-query: inurl:"/wp-content/plugins/delete-duplicate-posts/"
+    shodan-query: 'vuln:'
+  name: 'Delete Duplicate Posts <= 4.8.9 - Missing Authorization via AJAX Actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f603a25f-7d56-4cf4-89aa-de87ee49522a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,delete-duplicate-posts,high

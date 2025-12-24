@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-auctions
+  - dsl:
+    - compare_versions(version, '<= 3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-auctions/readme.txt'
+  redirects: true
+id: wp_auctions-0cd62935-f865-43ff-b727-f17b6fc5976d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-auctions/
+    google-query: inurl:"/wp-content/plugins/wp-auctions/"
+    shodan-query: http.html:"wp-content/plugins/wp-auctions/"
+  name: 'WordPress Auction Plugin <= 3.7 - Authenticated (Editor+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0cd62935-f865-43ff-b727-f17b6fc5976d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-auctions,low,candidate

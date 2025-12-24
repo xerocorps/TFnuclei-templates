@@ -1,0 +1,31 @@
+donce: true
+id: git-leak-01
+info:
+  confidence: Certain
+  name: Git Leak Source
+  risk: Medium
+params:
+- root: '{{.BaseURL}}'
+reference:
+- author: 856057
+requests:
+- detections:
+  - 'StatusCode() == 200 && StringSearch("response","ref: refs")'
+  - StatusCode() == 200 && StringSearch("response","[remote ") && StringSearch("response","[branch
+    ")
+  headers:
+  - User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36
+      (KHTML, like Gecko) Chrome/80.0.3984.0 Safari/537.36
+  method: GET
+  redirect: false
+  url: '{{.root}}/{{.gitfile}}'
+variables:
+- gitfile: '.git/HEAD
+
+    .git/config
+
+    .git/logs/HEAD
+
+    .git/refs/tags
+
+    '

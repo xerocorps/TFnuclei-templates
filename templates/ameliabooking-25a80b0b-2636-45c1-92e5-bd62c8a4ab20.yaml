@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ameliabooking
+  - dsl:
+    - compare_versions(version, '< 1.0.49')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ameliabooking/readme.txt'
+  redirects: true
+id: ameliabooking-25a80b0b-2636-45c1-92e5-bd62c8a4ab20
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ameliabooking/
+    google-query: inurl:"/wp-content/plugins/ameliabooking/"
+    shodan-query: http.html:"wp-content/plugins/ameliabooking/"
+  name: "Appointment and Event Booking Calendar for WordPress \u2013 Amelia < 1.0.49\
+    \ - Arbitrary Booking Update and Sensitive Data Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/25a80b0b-2636-45c1-92e5-bd62c8a4ab20?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ameliabooking,low,candidate

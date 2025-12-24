@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sina-extension-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 3.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sina-extension-for-elementor/readme.txt'
+  redirects: true
+id: sina_extension_for_elementor-e699f521-9133-41b0-b667-528da78fec06
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sina-extension-for-elementor/
+    google-query: inurl:"/wp-content/plugins/sina-extension-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/sina-extension-for-elementor/"
+  name: 'Sina Extension for Elementor <= 3.6.0 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via Fancy Text, Countdown Widget, and Login Form Shortcodes
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e699f521-9133-41b0-b667-528da78fec06?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sina-extension-for-elementor,low,candidate

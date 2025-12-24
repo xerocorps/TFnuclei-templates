@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - copy-or-move-comments
+  - dsl:
+    - compare_versions(version, '<= 5.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/copy-or-move-comments/readme.txt'
+  redirects: true
+id: copy-or-move-comments-1b89ce817cfd72c5a239ed59d72fb8cb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/copy-or-move-comments/
+    google-query: inurl:"/wp-content/plugins/copy-or-move-comments/"
+    shodan-query: 'vuln:'
+  name: 'Copy Or Move Comments <= 5.0.4 - Authenticated (Subscriber+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e2b020c3-0eb9-4ff1-b94e-e32452695b5d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,copy-or-move-comments,low

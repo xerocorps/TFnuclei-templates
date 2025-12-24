@@ -1,0 +1,12 @@
+id: opensns-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all OpenSNS related nuclei templates on
+    a given target.
+  name: OpenSNS Security Checks
+workflows:
+- matchers:
+  - name: opensns
+    subtemplates:
+    - tags: opensns
+  template: technologies/favicon-detection.yaml

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - modern-events-calendar-lite
+  - dsl:
+    - compare_versions(version, '<= 5.16.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/modern-events-calendar-lite/readme.txt'
+  redirects: true
+id: modern-events-calendar-lite-9c656c02e6c760dc6664c0b520b9bd24
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/modern-events-calendar-lite/
+    google-query: inurl:"/wp-content/plugins/modern-events-calendar-lite/"
+    shodan-query: 'vuln:'
+  name: 'Modern Events Calendar Lite <= 5.16.4 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b3aa7b27-a335-4f82-a50a-45becdd5ef4e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,modern-events-calendar-lite,low

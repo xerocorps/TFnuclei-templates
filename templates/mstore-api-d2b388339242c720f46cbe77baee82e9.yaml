@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mstore-api
+  - dsl:
+    - compare_versions(version, '<= 3.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mstore-api/readme.txt'
+  redirects: true
+id: mstore-api-d2b388339242c720f46cbe77baee82e9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mstore-api/
+    google-query: inurl:"/wp-content/plugins/mstore-api/"
+    shodan-query: 'vuln:'
+  name: 'MStore API <= 3.9.2 - Authentication Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f00761a7-fe24-49a3-b3e3-a471e05815c1?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,mstore-api,critical

@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - reflex-gallery
+  - dsl:
+    - compare_versions(version, '< 3.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/reflex-gallery/readme.txt'
+  redirects: true
+id: reflex-gallery-91ae5436fce68220a4addf8438a7c32f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/reflex-gallery/
+    google-query: inurl:"/wp-content/plugins/reflex-gallery/"
+    shodan-query: 'vuln:'
+  name: "ReFlex Gallery \xBB WordPress Photo Gallery < 3.1.4 - Arbitrary File Upload\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/44e54ac5-8091-4154-a14c-5cd67647f722?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,reflex-gallery,critical

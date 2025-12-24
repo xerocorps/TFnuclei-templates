@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-event-planner
+  - dsl:
+    - compare_versions(version, '<= 1.5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-event-planner/readme.txt'
+  redirects: true
+id: simple-event-planner-e36a69b44b89ff02531389bf94190722
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-event-planner/
+    google-query: inurl:"/wp-content/plugins/simple-event-planner/"
+    shodan-query: 'vuln:'
+  name: 'Simple Event Planner <= 1.5.4 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/43c9b6f2-2b72-4326-8080-f41606c0880c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-event-planner,low

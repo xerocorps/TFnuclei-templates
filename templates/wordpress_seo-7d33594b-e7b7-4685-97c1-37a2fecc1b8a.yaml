@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordpress-seo
+  - dsl:
+    - compare_versions(version, '<= 1.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordpress-seo/readme.txt'
+  redirects: true
+id: wordpress_seo-7d33594b-e7b7-4685-97c1-37a2fecc1b8a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L
+    cvss-score: 6.5
+  description: 'The Yoast SEO plugin for WordPress is vulnerable to authorization
+    bypass due to a missing capability check on the reset settings function in versions
+    up to, and including, 1.4.6. This makes it possible for unauthorized attackers
+    to reset the plugin''s settings.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wordpress-seo/
+    google-query: inurl:"/wp-content/plugins/wordpress-seo/"
+    shodan-query: http.html:"wp-content/plugins/wordpress-seo/"
+  name: 'Yoast SEO <= 1.4.6 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7d33594b-e7b7-4685-97c1-37a2fecc1b8a?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wordpress-seo,medium,production

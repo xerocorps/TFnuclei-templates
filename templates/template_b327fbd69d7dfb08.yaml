@@ -1,0 +1,46 @@
+name: "\U0001F4DD Readme Update"
+true:
+  workflow_dispatch: null
+  workflow_run:
+    types:
+    - completed
+    workflows:
+    - "\U0001F5D2 Templates Stats"
+jobs:
+  build:
+    if: github.repository == '0xKayala/Custom-Nuclei-Templates'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install tree
+      run: sudo apt-get install tree -y
+    - name: Check out code
+      uses: actions/checkout@master
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.8'
+    - id: readme-update
+      name: Update README
+      run: 'python .github/scripts/update-readme.py
+
+        git status -s | wc -l | xargs -I {} echo CHANGES={} >> $GITHUB_OUTPUT
+
+        '
+    - if: steps.readme-update.outputs.CHANGES > 0
+      name: Commit files
+      run: 'git config --local user.email "action@github.com"
+
+        git config --local user.name "GitHub Action"
+
+        git commit -m "Auto README Update [$(date)] :robot:" -a
+
+        '
+    - if: steps.readme-update.outputs.CHANGES > 0
+      name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: ${{ github.ref }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}

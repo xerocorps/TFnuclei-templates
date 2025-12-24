@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - landing-page-cat
+  - dsl:
+    - compare_versions(version, '<= 1.7.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/landing-page-cat/readme.txt'
+  redirects: true
+id: landing_page_cat-9772aa85-15e6-4254-9e76-e5794d71084b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/landing-page-cat/
+    google-query: inurl:"/wp-content/plugins/landing-page-cat/"
+    shodan-query: http.html:"wp-content/plugins/landing-page-cat/"
+  name: "Landing Page Cat \u2013 Coming Soon Page, Maintenance Page & Squeeze Pages\
+    \ <= 1.7.6 - Reflected Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9772aa85-15e6-4254-9e76-e5794d71084b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,landing-page-cat,medium,candidate

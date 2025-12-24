@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zita-site-library
+  - dsl:
+    - compare_versions(version, '<= 1.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zita-site-library/readme.txt'
+  redirects: true
+id: zita_site_library-6d9f5901-dc11-4877-b753-deb9c03f4a4e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zita-site-library/
+    google-query: inurl:"/wp-content/plugins/zita-site-library/"
+    shodan-query: http.html:"wp-content/plugins/zita-site-library/"
+  name: 'Zita Elementor Site Library <= 1.6.1 - Missing Authorization to Authenticated
+    (Subscriber+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6d9f5901-dc11-4877-b753-deb9c03f4a4e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,zita-site-library,low,candidate

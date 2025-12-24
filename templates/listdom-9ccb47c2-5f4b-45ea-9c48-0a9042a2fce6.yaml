@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - listdom
+  - dsl:
+    - compare_versions(version, '<= 3.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/listdom/readme.txt'
+  redirects: true
+id: listdom-9ccb47c2-5f4b-45ea-9c48-0a9042a2fce6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/listdom/
+    google-query: inurl:"/wp-content/plugins/listdom/"
+    shodan-query: http.html:"wp-content/plugins/listdom/"
+  name: "Listdom \u2013 Business Directory and Classified Ads Listings WordPress Plugin\
+    \ <= 3.7.0 - Authenticated (Contributor+) Stored Cross-Site Scripting via shortcode\
+    \ Parameter\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9ccb47c2-5f4b-45ea-9c48-0a9042a2fce6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,listdom,low,candidate

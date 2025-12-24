@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - html5-audio-player
+  - dsl:
+    - compare_versions(version, '>= 2.4.0', '<= 2.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/html5-audio-player/readme.txt'
+  redirects: true
+id: html5_audio_player-989b4b9d-e22e-46a7-8ebc-5c8b33f98111
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/html5-audio-player/
+    google-query: inurl:"/wp-content/plugins/html5-audio-player/"
+    shodan-query: http.html:"wp-content/plugins/html5-audio-player/"
+  name: "HTML5 Audio Player \u2013 The Ultimate No-Code Podcast, MP3 & Audio Player\
+    \ 2.4.0 - 2.5.1 - Unauthenticated Server-Side Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/989b4b9d-e22e-46a7-8ebc-5c8b33f98111?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,html5-audio-player,low,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpvr
+  - dsl:
+    - compare_versions(version, '<= 8.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpvr/readme.txt'
+  redirects: true
+id: wpvr-57a5ea0eb5a4a3fcfcc4312fa7b47d71
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpvr/
+    google-query: inurl:"/wp-content/plugins/wpvr/"
+    shodan-query: 'vuln:'
+  name: 'WP VR <= 8.2.7 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/13a0dd72-1124-4b5d-9bad-fe4fea8e3e68?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpvr,medium

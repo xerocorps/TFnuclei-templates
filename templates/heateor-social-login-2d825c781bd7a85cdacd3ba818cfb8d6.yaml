@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - heateor-social-login
+  - dsl:
+    - compare_versions(version, '<= 1.1.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/heateor-social-login/readme.txt'
+  redirects: true
+id: heateor-social-login-2d825c781bd7a85cdacd3ba818cfb8d6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/heateor-social-login/
+    google-query: inurl:"/wp-content/plugins/heateor-social-login/"
+    shodan-query: 'vuln:'
+  name: 'Heateor Social Login WordPress <= 1.1.32 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/755a2c02-f442-46ca-9b45-644b7098b1e3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,heateor-social-login,low

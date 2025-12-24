@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gd-bbpress-attachments
+  - dsl:
+    - compare_versions(version, '< 2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gd-bbpress-attachments/readme.txt'
+  redirects: true
+id: gd_bbpress_attachments-7a1f91a3-6b8d-4be4-817c-9c88d2349723
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gd-bbpress-attachments/
+    google-query: inurl:"/wp-content/plugins/gd-bbpress-attachments/"
+    shodan-query: http.html:"wp-content/plugins/gd-bbpress-attachments/"
+  name: 'GD bbPress Attachments < 2.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7a1f91a3-6b8d-4be4-817c-9c88d2349723?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,gd-bbpress-attachments,medium,candidate

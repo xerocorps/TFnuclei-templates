@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jetpack
+  - dsl:
+    - compare_versions(version, '<= 13.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jetpack/readme.txt'
+  redirects: true
+id: jetpack-f1010c706c1a58d9010086770ef411ba
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jetpack/
+    google-query: inurl:"/wp-content/plugins/jetpack/"
+    shodan-query: 'vuln:'
+  name: "Jetpack \u2013 WP Security, Backup, Speed, & Growth <= 13.3.1 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting via wpvideo Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/11dceac7-7ff8-4384-9046-919c38947c32?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,jetpack,low

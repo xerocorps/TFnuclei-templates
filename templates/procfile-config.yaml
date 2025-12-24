@@ -1,0 +1,21 @@
+id: procfile-config
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: html:"Procfile"
+    verified: true
+  name: Procfile Configuration File Exposure
+  severity: info
+  tags: devops,exposure,config
+requests:
+- matchers:
+  - regex:
+    - '^web:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Procfile'

@@ -1,0 +1,35 @@
+info:
+  author: twitter/drfabiocastro
+  classification:
+    country: any
+    tags:
+    - git
+    - config
+    - file-exposure
+  description: Template to detect Git configuration files exposed on web servers.
+  id: git-config-exposure
+  matcher-condition: or
+  matchers:
+  - description: Git repository configuration found in the response body
+    pattern: repositoryformatversion =
+    type: body
+  - description: Git repository configuration found in the response body
+    pattern: core.repositoryformatversion
+    type: body
+  - description: Git repository configuration found in the response body
+    pattern: core.filemode
+    type: body
+  - description: Git repository configuration found in the response body
+    pattern: core.bare
+    type: body
+  name: Git Configuration Exposure
+  requests:
+    condition: or
+    description: Attempt to access Git configuration files
+    method: GET
+    path:
+    - /.git/config
+  response:
+  - status:
+    - 200
+  severity: Medium

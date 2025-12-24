@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - phoenix-media-rename
+  - dsl:
+    - compare_versions(version, '<= 3.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/phoenix-media-rename/readme.txt'
+  redirects: true
+id: phoenix_media_rename-d75d0f16-015b-49cd-a0d1-41e007fc7398
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/phoenix-media-rename/
+    google-query: inurl:"/wp-content/plugins/phoenix-media-rename/"
+    shodan-query: http.html:"wp-content/plugins/phoenix-media-rename/"
+  name: 'Phoenix Media Rename <= 3.4.2 - Author Arbitrary Media File Renaming
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d75d0f16-015b-49cd-a0d1-41e007fc7398?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,phoenix-media-rename,low,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - s2member-pro
+  - dsl:
+    - compare_versions(version, '<= 250214')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/s2member-pro/readme.txt'
+  redirects: true
+id: s2member_pro-d3326e9d-504f-444f-baf7-03989594f483
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/s2member-pro/
+    google-query: inurl:"/wp-content/plugins/s2member-pro/"
+    shodan-query: http.html:"wp-content/plugins/s2member-pro/"
+  name: 's2Member Pro <= 250214 - Authenticated (Contributor+) Local File Inclusion
+    to Remote Code Execution via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d3326e9d-504f-444f-baf7-03989594f483?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,s2member-pro,low,candidate

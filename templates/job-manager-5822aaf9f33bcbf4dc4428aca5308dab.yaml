@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - job-manager
+  - dsl:
+    - compare_versions(version, '< 0.7.23')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/job-manager/readme.txt'
+  redirects: true
+id: job-manager-5822aaf9f33bcbf4dc4428aca5308dab
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/job-manager/
+    google-query: inurl:"/wp-content/plugins/job-manager/"
+    shodan-query: 'vuln:'
+  name: 'Job Manager - < 0.7.23 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8c107e4c-1ba5-4c22-ad56-bd03342a3418?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,job-manager,high

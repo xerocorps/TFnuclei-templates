@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yotuwp-easy-youtube-embed
+  - dsl:
+    - compare_versions(version, '<= 1.3.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yotuwp-easy-youtube-embed/readme.txt'
+  redirects: true
+id: yotuwp-easy-youtube-embed-383d794c51c6ce781175b4f6e5cba4e6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yotuwp-easy-youtube-embed/
+    google-query: inurl:"/wp-content/plugins/yotuwp-easy-youtube-embed/"
+    shodan-query: 'vuln:'
+  name: 'Video Gallery <= 1.3.12 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/93b5bc57-3bfa-4477-a9d4-f0563008cf94?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,yotuwp-easy-youtube-embed,low

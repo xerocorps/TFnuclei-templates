@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yt-player
+  - dsl:
+    - compare_versions(version, '< 1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yt-player/readme.txt'
+  redirects: true
+id: yt_player-0dbed7a2-730d-42f2-9d57-3f07900d33e3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yt-player/
+    google-query: inurl:"/wp-content/plugins/yt-player/"
+    shodan-query: http.html:"wp-content/plugins/yt-player/"
+  name: 'Video Player for YouTube <= 1.3 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0dbed7a2-730d-42f2-9d57-3f07900d33e3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,yt-player,high,candidate

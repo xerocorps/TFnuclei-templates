@@ -1,0 +1,21 @@
+id: sitefinity-login
+info:
+  author: dhiyaneshDK
+  description: This template identifies the Sitefinity login page.
+  name: Sitefinity Login
+  reference:
+  - https://www.exploit-db.com/ghdb/6722
+  severity: info
+  tags: panel,sitefinity
+requests:
+- matchers:
+  - type: word
+    words:
+    - Telerik.Sitefinity.Web.UI.UserPreferences
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/Sitefinity/Authenticate/SWT'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpforo
+  - dsl:
+    - compare_versions(version, '<= 2.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpforo/readme.txt'
+  redirects: true
+id: wpforo-1e1cee395da2709f43055d35dac994e6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpforo/
+    google-query: inurl:"/wp-content/plugins/wpforo/"
+    shodan-query: 'vuln:'
+  name: 'wpForo Forum <= 2.2.3 - Authenticated (Subscriber+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5607a60e-a04a-4d28-bb04-bdacf8e97c56?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpforo,low

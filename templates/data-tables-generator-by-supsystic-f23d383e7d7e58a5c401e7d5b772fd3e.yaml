@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - data-tables-generator-by-supsystic
+  - dsl:
+    - compare_versions(version, '<= 1.9.91')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/data-tables-generator-by-supsystic/readme.txt'
+  redirects: true
+id: data-tables-generator-by-supsystic-f23d383e7d7e58a5c401e7d5b772fd3e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/data-tables-generator-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/data-tables-generator-by-supsystic/"
+    shodan-query: 'vuln:'
+  name: 'Data Tables Generator by Supsystic <= 1.9.91 - Missing Authorization on AJAX
+    Actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/56f9d46f-5c21-4e8e-8e77-c96c4a0562d1?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,data-tables-generator-by-supsystic,high

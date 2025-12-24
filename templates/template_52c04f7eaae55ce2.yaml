@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - tomcat
+    - server.xml
+    - config file
+    - exposure
+  description: Template to detect Tomcat server.xml configuration file exposure
+  id: tomcat-server-xml-disclosure
+  matchers:
+  - pattern: username=['"](.+?)['"]\s+password=['"](.+?)['"]
+    type: body
+  name: Tomcat server.xml Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /conf/server.xml
+    - /tomcat/conf/server.xml
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

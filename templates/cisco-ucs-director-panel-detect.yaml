@@ -1,0 +1,17 @@
+id: cisco-ucs-director-panel-detect
+info:
+  author: joanbono
+  name: Cisco UCS Director panel
+  severity: info
+requests:
+- headers:
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
+      (KHTML, like Gecko)
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <h1 class="text-center">Cisco UCS Director</h1>
+  method: GET
+  path:
+  - '{{BaseURL}}/app/ui/login.jsp'

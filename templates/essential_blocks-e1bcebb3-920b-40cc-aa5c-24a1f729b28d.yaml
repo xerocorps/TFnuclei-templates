@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - essential-blocks
+  - dsl:
+    - compare_versions(version, '<= 4.5.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/essential-blocks/readme.txt'
+  redirects: true
+id: essential_blocks-e1bcebb3-920b-40cc-aa5c-24a1f729b28d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/essential-blocks/
+    google-query: inurl:"/wp-content/plugins/essential-blocks/"
+    shodan-query: http.html:"wp-content/plugins/essential-blocks/"
+  name: "Essential Blocks \u2013 Page Builder Gutenberg Blocks, Patterns & Templates\
+    \ <= 4.5.12 - Authenticated (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e1bcebb3-920b-40cc-aa5c-24a1f729b28d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,essential-blocks,low,candidate

@@ -1,0 +1,32 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - nginx
+    - server
+    - version
+    - detection
+  description: Template to detect Nginx server and its version
+  id: nginx-server-detection
+  matcher-condition: or
+  matchers:
+  - description: Nginx server found in response headers
+    pattern: 'Server: nginx'
+    type: header
+  - description: Nginx version found in response headers
+    pattern: nginx/
+    type: header
+  name: Nginx Server Detection
+  requests:
+    condition: or
+    description: Attempt to retrieve Nginx home page
+    method: GET
+    path:
+    - /
+  response:
+  - description: Successful response status
+    status:
+    - 200
+    - 302
+  severity: Low

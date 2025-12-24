@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - findeo
+  - dsl:
+    - compare_versions(version, '<= 1.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/findeo/readme.txt'
+  redirects: true
+id: findeo-1e463be985879455bd6b29f96c9563d1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/findeo/
+    google-query: inurl:"/wp-content/plugins/findeo/"
+    shodan-query: 'vuln:'
+  name: 'Realteo <= 1.2.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7cb81956-856a-49cc-a437-a2094d958b5d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,findeo,medium

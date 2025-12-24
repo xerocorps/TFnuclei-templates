@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - learnpress
+  - dsl:
+    - compare_versions(version, '<= 3.2.6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/learnpress/readme.txt'
+  redirects: true
+id: learnpress-1d79432d-7977-4279-ac69-8e9db682800e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/learnpress/
+    google-query: inurl:"/wp-content/plugins/learnpress/"
+    shodan-query: http.html:"wp-content/plugins/learnpress/"
+  name: 'LearnPress <= 3.2.6.7 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1d79432d-7977-4279-ac69-8e9db682800e?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,learnpress,critical,candidate

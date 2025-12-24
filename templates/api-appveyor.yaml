@@ -1,0 +1,23 @@
+id: api-appveyor
+info:
+  author: dwisiswant0
+  name: AppVeyor API Test
+  reference:
+  - https://www.appveyor.com/docs/api/
+  severity: info
+  tags: token-spray,appveyor
+requests:
+- headers:
+    Authorization: Bearer {{token}}
+    Content-Type: application/json
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"roleId":'
+    - '"created":'
+  method: GET
+  path:
+  - https://ci.appveyor.com/api/roles
+self-contained: true

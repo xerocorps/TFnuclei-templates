@@ -1,0 +1,22 @@
+id: microfocus-filr-panel
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: http.html:"Micro Focus Filr"
+    verified: true
+  name: Micro Focus Filr Panel
+  severity: info
+  tags: panel,microfocus,filr
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Micro Focus Filr
+  - status:
+    - 404
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/filr/login'

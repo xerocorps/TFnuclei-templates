@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wdesignkit
+  - dsl:
+    - compare_versions(version, '<= 1.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wdesignkit/readme.txt'
+  redirects: true
+id: wdesignkit-2e936214-ee25-4763-ba7a-b5308cc09a57
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wdesignkit/
+    google-query: inurl:"/wp-content/plugins/wdesignkit/"
+    shodan-query: http.html:"wp-content/plugins/wdesignkit/"
+  name: "WDesignKit \u2013 Elementor & Gutenberg Starter Templates, Patterns, Cloud\
+    \ Workspace & Widget Builder <= 1.2.3 - Authenticated (Contributor+) Stored Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2e936214-ee25-4763-ba7a-b5308cc09a57?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wdesignkit,low,candidate

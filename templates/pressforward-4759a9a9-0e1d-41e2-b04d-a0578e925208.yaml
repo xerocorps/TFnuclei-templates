@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pressforward
+  - dsl:
+    - compare_versions(version, '<= 5.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pressforward/readme.txt'
+  redirects: true
+id: pressforward-4759a9a9-0e1d-41e2-b04d-a0578e925208
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pressforward/
+    google-query: inurl:"/wp-content/plugins/pressforward/"
+    shodan-query: http.html:"wp-content/plugins/pressforward/"
+  name: 'PressForward <= 5.9.1 - Authenticated (Subscriber+) Server-Side Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4759a9a9-0e1d-41e2-b04d-a0578e925208?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,pressforward,low,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - manage-notification-emails
+  - dsl:
+    - compare_versions(version, '<= 1.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/manage-notification-emails/readme.txt'
+  redirects: true
+id: manage-notification-emails-9a0bef344f783f5c7d133e234e37c591
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/manage-notification-emails/
+    google-query: inurl:"/wp-content/plugins/manage-notification-emails/"
+    shodan-query: 'vuln:'
+  name: 'Manage Notification E-mails <= 1.8.2 - Cross-Site Request Forgery to Plugin
+    Options Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5ab0d9a2-ca77-439b-bced-8ab5d7b0518a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,manage-notification-emails,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-login-history
+  - dsl:
+    - compare_versions(version, '1.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-login-history/readme.txt'
+  redirects: true
+id: user-login-history-a111abda881ccef6c2c2e9a9ac9b314c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-login-history/
+    google-query: inurl:"/wp-content/plugins/user-login-history/"
+    shodan-query: 'vuln:'
+  name: 'User Login History <= 1.7.0 - SQL Injection via OrderBy
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6fb2d9ec-1082-4209-9fc9-6f10ba3a2398?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,user-login-history,critical

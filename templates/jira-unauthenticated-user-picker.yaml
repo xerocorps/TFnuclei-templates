@@ -1,0 +1,13 @@
+id: jira-unauthenticated-user-picker
+info:
+  author: TechbrunchFR
+  name: Jira Unauthenticated User Picker
+  severity: High
+requests:
+- matchers:
+  - type: word
+    words:
+    - user-picker
+  method: GET
+  path:
+  - '{{BaseURL}}/secure/popups/UserPickerBrowser.jspa'

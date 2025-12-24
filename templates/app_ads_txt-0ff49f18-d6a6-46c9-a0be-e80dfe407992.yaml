@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - app-ads-txt
+  - dsl:
+    - compare_versions(version, '<= 1.1.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/app-ads-txt/readme.txt'
+  redirects: true
+id: app_ads_txt-0ff49f18-d6a6-46c9-a0be-e80dfe407992
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/app-ads-txt/
+    google-query: inurl:"/wp-content/plugins/app-ads-txt/"
+    shodan-query: http.html:"wp-content/plugins/app-ads-txt/"
+  name: 'Ads.txt & App-ads.txt Manager for WordPress <= 1.1.7.1 - Authenticated (Administrator+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0ff49f18-d6a6-46c9-a0be-e80dfe407992?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,app-ads-txt,low,candidate

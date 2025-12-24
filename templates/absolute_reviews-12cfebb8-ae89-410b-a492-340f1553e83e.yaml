@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - absolute-reviews
+  - dsl:
+    - compare_versions(version, '<= 1.1.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/absolute-reviews/readme.txt'
+  redirects: true
+id: absolute_reviews-12cfebb8-ae89-410b-a492-340f1553e83e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/absolute-reviews/
+    google-query: inurl:"/wp-content/plugins/absolute-reviews/"
+    shodan-query: http.html:"wp-content/plugins/absolute-reviews/"
+  name: 'Absolute Reviews <= 1.1.3 - Authenticated (Contributor+) Stored DOM-Based
+    Cross-Site Scripting via Criteria Name
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/12cfebb8-ae89-410b-a492-340f1553e83e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,absolute-reviews,low,candidate

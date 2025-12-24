@@ -1,0 +1,18 @@
+id: s3-torrent
+info:
+  author: ambassify
+  description: Detects if endpoint allows magic S3 torrent argument to download files
+  name: S3 torrent Downloads Allowed
+  severity: info
+  tags: misconfig,aws,s3,bucket
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - RequestTorrentOfBucketError
+    - s3-tracker
+  method: GET
+  path:
+  - '{{BaseURL}}/?torrent'

@@ -1,0 +1,19 @@
+id: nutanix-web-console-login
+info:
+  author: gy741
+  description: Default Credentials of admin:admin on Nutanix web console.
+  name: Nutanix web console login page
+  severity: info
+  tags: panel,nutanix,login
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Nutanix Web Console</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/console/'

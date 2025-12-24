@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-simple-registration
+  - dsl:
+    - compare_versions(version, '<= 1.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-simple-registration/readme.txt'
+  redirects: true
+id: woocommerce_simple_registration-9c32fcaf-afc3-4493-8cd8-6f49bbe40c7b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-simple-registration/
+    google-query: inurl:"/wp-content/plugins/woocommerce-simple-registration/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-simple-registration/"
+  name: 'Simple Registration for WooCommerce <= 1.5.8 - Cross-Site Request Forgery
+    to Privilege Escalation via Role Request Approval
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9c32fcaf-afc3-4493-8cd8-6f49bbe40c7b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-simple-registration,medium,candidate

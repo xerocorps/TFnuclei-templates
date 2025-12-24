@@ -1,0 +1,28 @@
+id: mautic-installer
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: html:"Mautic Installation"
+    verified: true
+  name: Mautic Installer Exposure
+  severity: high
+  tags: misconfig,mautic,install
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Mautic Installation - Environment Check
+    - Ready to Install!
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/installer'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-predictive-search
+  - dsl:
+    - compare_versions(version, '<= 6.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-predictive-search/readme.txt'
+  redirects: true
+id: woocommerce-predictive-search-0976b52c3f887bec0ebf8a676a97046b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-predictive-search/
+    google-query: inurl:"/wp-content/plugins/woocommerce-predictive-search/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Predictive Search <= 6.0.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/34d01610-0edc-488f-83e8-975206c0a02c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-predictive-search,medium

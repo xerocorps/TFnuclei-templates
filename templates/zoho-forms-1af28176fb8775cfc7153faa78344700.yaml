@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zoho-forms
+  - dsl:
+    - compare_versions(version, '<= 3.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zoho-forms/readme.txt'
+  redirects: true
+id: zoho-forms-1af28176fb8775cfc7153faa78344700
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zoho-forms/
+    google-query: inurl:"/wp-content/plugins/zoho-forms/"
+    shodan-query: 'vuln:'
+  name: 'Zoho Forms <= 3.0.1 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/57e9b09c-adfb-4fc2-8d2b-41cfc1f73e22?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,zoho-forms,low

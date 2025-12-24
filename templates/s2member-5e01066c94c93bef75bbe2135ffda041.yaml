@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - s2member
+  - dsl:
+    - compare_versions(version, '<= 240315')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/s2member/readme.txt'
+  redirects: true
+id: s2member-5e01066c94c93bef75bbe2135ffda041
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/s2member/
+    google-query: inurl:"/wp-content/plugins/s2member/"
+    shodan-query: 'vuln:'
+  name: 's2Member <= 240315 - Limited Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/26e7dd3f-5bdd-47d2-a013-82db72b4eae6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,s2member,low

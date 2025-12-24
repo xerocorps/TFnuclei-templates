@@ -1,0 +1,18 @@
+id: sharecenter-login
+info:
+  author: dhiyaneshDk
+  name: ShareCenter Login Page
+  reference:
+  - https://www.exploit-db.com/ghdb/6892
+  severity: info
+  tags: panel,login
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - ShareCenter
+    - Please Select Your Account
+  method: GET
+  path:
+  - '{{BaseURL}}'

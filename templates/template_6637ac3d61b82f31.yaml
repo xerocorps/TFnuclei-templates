@@ -1,0 +1,32 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - jenkins
+    - security
+    - cross-site scripting
+    - vulnerability
+  description: Template to detect cross-site scripting vulnerability in Jenkins Audit
+    Trail plugin (CVE-2020-2123)
+  id: jenkins-audit-trail-xss
+  matcher-condition: and
+  matchers:
+  - pattern: Jenkins Manage
+  - description: Jenkins Manage page found in response body
+    pattern: <h1>sample
+    type: body
+  name: Jenkins Audit Trail Cross-Site Scripting (CVE-2020-2123) - Detect
+  reference:
+  - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-2123
+  requests:
+    description: Attempt to access Jenkins Manage page
+    method: GET
+    path:
+    - /descriptorByName/AuditTrailPlugin/regexCheck?value=*j%3Ch1%3Esample
+    - /jenkins/descriptorByName/AuditTrailPlugin/regexCheck?value=*j%3Ch1%3Esample
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

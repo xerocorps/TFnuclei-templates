@@ -1,0 +1,24 @@
+id: wordpress-user-enum
+info:
+  author: r3dg33k
+  name: Wordpress User Enumeration
+  severity: info
+  tags: wordpress
+requests:
+- extractors:
+  - part: header
+    regex:
+    - author\/\w+
+    type: regex
+  matchers:
+  - part: header
+    regex:
+    - '(?i)Location: http(s|):\/\/[\w\.\-]+\/author\/\w+'
+    type: regex
+  - status:
+    - 301
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?author=1'

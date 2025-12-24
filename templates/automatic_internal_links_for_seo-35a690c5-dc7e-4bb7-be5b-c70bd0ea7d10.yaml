@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - automatic-internal-links-for-seo
+  - dsl:
+    - compare_versions(version, '<= 1.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/automatic-internal-links-for-seo/readme.txt'
+  redirects: true
+id: automatic_internal_links_for_seo-35a690c5-dc7e-4bb7-be5b-c70bd0ea7d10
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/automatic-internal-links-for-seo/
+    google-query: inurl:"/wp-content/plugins/automatic-internal-links-for-seo/"
+    shodan-query: http.html:"wp-content/plugins/automatic-internal-links-for-seo/"
+  name: "Internal Linking for SEO traffic & Ranking \u2013 Auto internal links (100%\
+    \ automatic) <= 1.2.1 - Authenticated (Administrator+) SQL Injection via post_id\
+    \ Parameter\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/35a690c5-dc7e-4bb7-be5b-c70bd0ea7d10?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,automatic-internal-links-for-seo,low,candidate

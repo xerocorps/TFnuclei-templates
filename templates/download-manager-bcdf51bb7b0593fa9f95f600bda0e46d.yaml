@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - download-manager
+  - dsl:
+    - compare_versions(version, '<= 2.9.45')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/download-manager/readme.txt'
+  redirects: true
+id: download-manager-bcdf51bb7b0593fa9f95f600bda0e46d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/download-manager/
+    google-query: inurl:"/wp-content/plugins/download-manager/"
+    shodan-query: 'vuln:'
+  name: 'WordPress Download Manager <= 2.9.45 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f52aede5-21c3-46b9-800e-860a677a4b90?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,download-manager,medium

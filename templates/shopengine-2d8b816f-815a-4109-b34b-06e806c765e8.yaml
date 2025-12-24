@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shopengine
+  - dsl:
+    - compare_versions(version, '<= 4.8.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shopengine/readme.txt'
+  redirects: true
+id: shopengine-2d8b816f-815a-4109-b34b-06e806c765e8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shopengine/
+    google-query: inurl:"/wp-content/plugins/shopengine/"
+    shodan-query: http.html:"wp-content/plugins/shopengine/"
+  name: "ShopEngine Elementor WooCommerce Builder Addon \u2013 All in One WooCommerce\
+    \ Solution <= 4.8.3 - Insufficient Authorization to Authenticated (Editor+) Settings\
+    \ Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2d8b816f-815a-4109-b34b-06e806c765e8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,shopengine,low,candidate

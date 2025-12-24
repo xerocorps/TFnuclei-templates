@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - complianz-gdpr
+  - dsl:
+    - compare_versions(version, '<= 6.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/complianz-gdpr/readme.txt'
+  redirects: true
+id: complianz_gdpr-d5c704f9-4fcb-455e-a1c7-f48d47b12dec
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/complianz-gdpr/
+    google-query: inurl:"/wp-content/plugins/complianz-gdpr/"
+    shodan-query: http.html:"wp-content/plugins/complianz-gdpr/"
+  name: 'Complianz - GDPR/CCPA Cookie Consent <= 6.4.4 - Cross-Site Request Forgery
+    via run_sync
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d5c704f9-4fcb-455e-a1c7-f48d47b12dec?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,complianz-gdpr,medium,candidate

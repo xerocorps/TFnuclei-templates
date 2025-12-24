@@ -1,0 +1,28 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - openvpn
+    - security
+    - configuration
+  description: Template to detect exposed OpenVPN configuration files
+  id: ovpn-file-disclosure
+  name: OpenVPN Configuration File Exposure - Detect
+  severity: Medium
+matcher-condition: and
+matchers:
+- description: OpenVPN configuration file containing client configuration
+  pattern: client
+  type: body
+requests:
+  condition: and
+  description: Attempt to retrieve OpenVPN configuration files
+  method: GET
+  path:
+  - /*.ovpn
+  - /*.conf
+response:
+- description: Successful response status
+  status:
+  - 200

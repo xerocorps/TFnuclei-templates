@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - verge3d
+  - dsl:
+    - compare_versions(version, '<= 4.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/verge3d/readme.txt'
+  redirects: true
+id: verge3d-0dbce573-fced-4c0f-ba1e-2932c166545c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/verge3d/
+    google-query: inurl:"/wp-content/plugins/verge3d/"
+    shodan-query: http.html:"wp-content/plugins/verge3d/"
+  name: 'Verge3D <= 4.9.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0dbce573-fced-4c0f-ba1e-2932c166545c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,verge3d,medium,candidate

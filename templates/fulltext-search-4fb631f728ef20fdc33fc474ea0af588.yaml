@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fulltext-search
+  - dsl:
+    - compare_versions(version, '<= 1.59.211')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fulltext-search/readme.txt'
+  redirects: true
+id: fulltext-search-4fb631f728ef20fdc33fc474ea0af588
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fulltext-search/
+    google-query: inurl:"/wp-content/plugins/fulltext-search/"
+    shodan-query: 'vuln:'
+  name: 'WP Fast Total Search <= 1.59.211 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via WPFTS Live Search Widget
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ec4d27d6-b54f-4fac-9a49-6798da4f0acc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fulltext-search,low

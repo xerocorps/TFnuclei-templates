@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mainwp-file-uploader-extension
+  - dsl:
+    - compare_versions(version, '<= 4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mainwp-file-uploader-extension/readme.txt'
+  redirects: true
+id: mainwp-file-uploader-extension-f370a1017de46702c2ad04dcf48c0ff9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mainwp-file-uploader-extension/
+    google-query: inurl:"/wp-content/plugins/mainwp-file-uploader-extension/"
+    shodan-query: 'vuln:'
+  name: 'MainWP File Uploader Extension <= 4.1 - Authenticated (Subscriber+) Arbitrary
+    File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3a0faf14-77bf-4776-8685-12a348a4a6c8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mainwp-file-uploader-extension,low

@@ -1,0 +1,30 @@
+id: eventum-panel
+info:
+  author: princechaddha
+  metadata:
+    shodan-query: http.favicon.hash:305412257
+    verified: true
+  name: Eventum Panel Detect
+  severity: info
+  tags: panel,eventum
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Login - Eventum</title>
+    - title="Eventum Issues search"
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'Database Error:'
+    - There seems to be a problem connecting to the database server specified in your
+      configuration file
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

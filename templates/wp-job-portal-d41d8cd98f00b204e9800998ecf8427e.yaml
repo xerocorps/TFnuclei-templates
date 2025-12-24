@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-job-portal
+  - dsl:
+    - compare_versions(version, '<=  1.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-job-portal/readme.txt'
+  redirects: true
+id: wp-job-portal-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The WP Job Portal plugin for WordPress is vulnerable to Cross-Site
+    Request Forgery in versions up to, and including, 1.1.9. This is due to missing
+    or incorrect nonce validation on the ajaxhandler function. This makes it possible
+    for unauthenticated attackers to modify plugin settings (e.g., delete the company
+    logo) via a forged request granted they can trick a site administrator into performing
+    an action such as clicking on a link.
+  metadata:
+    fofa-query: wp-content/plugins/wp-job-portal/
+    google-query: inurl:"/wp-content/plugins/wp-job-portal/"
+    shodan-query: 'vuln:'
+  name: WP Job Portal <= 1.1.9 - Cross-Site Request Forgery to Settings Modification
+  reference: null
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-job-portal,medium

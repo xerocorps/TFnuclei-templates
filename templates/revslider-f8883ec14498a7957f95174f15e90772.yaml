@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - revslider
+  - dsl:
+    - compare_versions(version, '<= 6.7.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/revslider/readme.txt'
+  redirects: true
+id: revslider-f8883ec14498a7957f95174f15e90772
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/revslider/
+    google-query: inurl:"/wp-content/plugins/revslider/"
+    shodan-query: 'vuln:'
+  name: 'Slider Revolution <= 6.7.10 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Elementor wrapperid and zindex
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/457b5066-da37-4877-9abe-c912bc201f29?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,revslider,low

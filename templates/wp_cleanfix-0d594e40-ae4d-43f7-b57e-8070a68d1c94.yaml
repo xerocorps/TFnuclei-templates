@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-cleanfix
+  - dsl:
+    - compare_versions(version, '<= 3.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-cleanfix/readme.txt'
+  redirects: true
+id: wp_cleanfix-0d594e40-ae4d-43f7-b57e-8070a68d1c94
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-cleanfix/
+    google-query: inurl:"/wp-content/plugins/wp-cleanfix/"
+    shodan-query: http.html:"wp-content/plugins/wp-cleanfix/"
+  name: 'WP Cleanfix <= 3.0.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0d594e40-ae4d-43f7-b57e-8070a68d1c94?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-cleanfix,medium,candidate

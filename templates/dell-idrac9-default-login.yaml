@@ -1,0 +1,40 @@
+id: dell-idrac9-default-login
+info:
+  author: kophjager007,milo2012
+  name: DELL iDRAC9 Default Login
+  severity: high
+  tags: dell,idrac,default-login
+requests:
+- matchers:
+  - condition: or
+    status:
+    - 201
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - '"authResult":0'
+  matchers-condition: and
+  raw:
+  - 'POST /sysmgmt/2015/bmc/session HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0
+
+    Accept: application/json, text/plain, */*
+
+    Accept-Language: en-US,en;q=0.5
+
+    Accept-Encoding: gzip, deflate
+
+    User: "root"
+
+    Password: "calvin"
+
+    Content-Length: 0
+
+    Connection: close
+
+    '

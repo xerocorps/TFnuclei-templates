@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - give
+  - dsl:
+    - compare_versions(version, '<= 2.25.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/give/readme.txt'
+  redirects: true
+id: give-82d57f69fbcd943e0cf2669193b70172
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/give/
+    google-query: inurl:"/wp-content/plugins/give/"
+    shodan-query: 'vuln:'
+  name: 'GiveWP <= 2.25.1 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via give_form_grid shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cc5f7a07-8117-4305-a72c-6afed80b6bcf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,give,low

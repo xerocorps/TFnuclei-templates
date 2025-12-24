@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uncode
+  - dsl:
+    - compare_versions(version, '< 2.9.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/uncode/style.css'
+  redirects: true
+id: uncode-07a0ffbe-bcc1-4686-bd91-a98cf1e2aeec
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/uncode/
+    google-query: inurl:"/wp-content/themes/uncode/"
+    shodan-query: http.html:"wp-content/themes/uncode/"
+  name: 'Uncode < 2.9.4.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/07a0ffbe-bcc1-4686-bd91-a98cf1e2aeec?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,uncode,medium,candidate

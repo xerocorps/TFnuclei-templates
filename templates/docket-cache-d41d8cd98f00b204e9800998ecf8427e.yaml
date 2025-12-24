@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - docket-cache
+  - dsl:
+    - compare_versions(version, '<=  21.08.01')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/docket-cache/readme.txt'
+  redirects: true
+id: docket-cache-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: "The Docket Cache \u2013 Object Cache Accelerator plugin for WordPress\
+    \ is vulnerable to Reflected Cross-Site Scripting via the \u2018s\u2019 parameter\
+    \ in versions up to, and including, 21.08.01 due to insufficient input sanitization\
+    \ and output escaping. This makes it possible for unauthenticated attackers to\
+    \ inject arbitrary web scripts in pages that execute if they can successfully\
+    \ trick a user into performing an action such as clicking on a link."
+  metadata:
+    fofa-query: wp-content/plugins/docket-cache/
+    google-query: inurl:"/wp-content/plugins/docket-cache/"
+    shodan-query: 'vuln:'
+  name: "Docket Cache \u2013 Object Cache Accelerator <= 21.08.01 - Reflected Cross-Site\
+    \ Scripting"
+  reference: null
+  severity: high
+  tags: cve,wordpress,wp-plugin,docket-cache,high

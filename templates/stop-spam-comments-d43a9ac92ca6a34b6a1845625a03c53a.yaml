@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stop-spam-comments
+  - dsl:
+    - compare_versions(version, '<= 0.2.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stop-spam-comments/readme.txt'
+  redirects: true
+id: stop-spam-comments-d43a9ac92ca6a34b6a1845625a03c53a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stop-spam-comments/
+    google-query: inurl:"/wp-content/plugins/stop-spam-comments/"
+    shodan-query: 'vuln:'
+  name: 'Stop Spam Comments <= 0.2.1.2 - Protection Mechanism Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/62061cf9-cdbf-4cb2-9890-36bdcbc65c21?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stop-spam-comments,low

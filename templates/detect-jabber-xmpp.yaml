@@ -1,0 +1,24 @@
+id: detect-jabber-xmpp
+info:
+  author: geeknik
+  description: Jabber is the original name of the Extensible Messaging and Presence
+    Protocol (XMPP), the open technology for instant messaging and presence.
+  name: Detects Jabber XMPP Instance
+  reference:
+  - https://datatracker.ietf.org/doc/html/rfc6120
+  severity: info
+  tags: network,jabber,xmpp,messaging
+network:
+- host:
+  - '{{Hostname}}'
+  - '{{Host}}:5222'
+  inputs:
+  - data: 'a
+
+      '
+  matchers:
+  - condition: or
+    type: word
+    words:
+    - stream:stream xmlns:stream
+    - stream:error xmlns:stream

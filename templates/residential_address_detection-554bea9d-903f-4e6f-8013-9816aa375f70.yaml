@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - residential-address-detection
+  - dsl:
+    - compare_versions(version, '<= 2.5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/residential-address-detection/readme.txt'
+  redirects: true
+id: residential_address_detection-554bea9d-903f-4e6f-8013-9816aa375f70
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/residential-address-detection/
+    google-query: inurl:"/wp-content/plugins/residential-address-detection/"
+    shodan-query: http.html:"wp-content/plugins/residential-address-detection/"
+  name: 'Residential Address Detection <= 2.5.4 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/554bea9d-903f-4e6f-8013-9816aa375f70?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,residential-address-detection,high,candidate

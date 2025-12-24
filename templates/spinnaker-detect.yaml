@@ -1,0 +1,20 @@
+id: spinnaker-detect
+info:
+  author: Adam Crosser
+  description: Detects the Spinnaker continuous delivery software
+  name: Spinnaker Detect
+  severity: info
+  tags: tech,spinnaker
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <spinnaker ng-if="!authenticating"></spinnaker>
+  - dsl:
+    - contains(tolower(all_headers), 'x-spinnaker-priority')
+    type: dsl
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'

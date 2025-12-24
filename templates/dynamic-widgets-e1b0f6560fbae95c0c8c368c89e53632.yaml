@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dynamic-widgets
+  - dsl:
+    - compare_versions(version, '<= 1.5.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/dynamic-widgets/readme.txt'
+  redirects: true
+id: dynamic-widgets-e1b0f6560fbae95c0c8c368c89e53632
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/dynamic-widgets/
+    google-query: inurl:"/wp-content/plugins/dynamic-widgets/"
+    shodan-query: 'vuln:'
+  name: 'Dynamic Widgets <= 1.5.10 - Authenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8c5a6fcb-72f0-4188-b883-d1dcaf1d13ff?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,dynamic-widgets,low

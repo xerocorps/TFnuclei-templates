@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - import-external-attachments
+  - dsl:
+    - compare_versions(version, '<= 1.5.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/import-external-attachments/readme.txt'
+  redirects: true
+id: import_external_attachments-2c4faf5b-70bf-4682-89bb-aa3fc19b29e8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/import-external-attachments/
+    google-query: inurl:"/wp-content/plugins/import-external-attachments/"
+    shodan-query: http.html:"wp-content/plugins/import-external-attachments/"
+  name: 'Import external attachments <= 1.5.12 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2c4faf5b-70bf-4682-89bb-aa3fc19b29e8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,import-external-attachments,medium,candidate

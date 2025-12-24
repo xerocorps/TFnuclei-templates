@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - depicter
+  - dsl:
+    - compare_versions(version, '<= 3.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/depicter/readme.txt'
+  redirects: true
+id: depicter-3ce17fea4c036fb2d7cf59de1d67d3ba
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/depicter/
+    google-query: inurl:"/wp-content/plugins/depicter/"
+    shodan-query: 'vuln:'
+  name: 'Depicter <= 3.0.2 - Authenticated (Contributor+) Arbitrary Nonce Generation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dd7c3a5d-b8aa-45cb-983c-55ba7e3d72f3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,depicter,low

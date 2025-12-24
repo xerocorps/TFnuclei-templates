@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - smart-google-code-inserter
+  - dsl:
+    - compare_versions(version, '< 3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/smart-google-code-inserter/readme.txt'
+  redirects: true
+id: smart-google-code-inserter-0111ca3d7ed8e65498f4fc9f3eb2f2ed
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/smart-google-code-inserter/
+    google-query: inurl:"/wp-content/plugins/smart-google-code-inserter/"
+    shodan-query: 'vuln:'
+  name: 'Smart Google Code Inserter < 3.5 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c3f3e56e-bbb6-4ceb-811d-447ed837d176?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,smart-google-code-inserter,high

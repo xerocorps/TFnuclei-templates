@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hospital-management
+  - dsl:
+    - compare_versions(version, '<= 08-03-2018')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hospital-management/readme.txt'
+  redirects: true
+id: hospital_management-f8f92355-e664-4aeb-9094-9c8aa49cd3e7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hospital-management/
+    google-query: inurl:"/wp-content/plugins/hospital-management/"
+    shodan-query: http.html:"wp-content/plugins/hospital-management/"
+  name: 'Mojoomla Hospital Management System for WordPress Theme < 22-05-2018 - SQL
+    Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f8f92355-e664-4aeb-9094-9c8aa49cd3e7?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,hospital-management,critical,candidate

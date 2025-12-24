@@ -1,0 +1,23 @@
+id: linksys-wifi-login
+info:
+  author: pussycat0x
+  metadata:
+    shodan-dork: http.title:"Linksys Smart WI-FI"
+  name: Linksys Smart Wi-Fi
+  severity: info
+  tags: tech,panel,linksys,iot
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Linksys Smart Wi-Fi</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

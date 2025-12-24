@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cookie-law-bar
+  - dsl:
+    - compare_versions(version, '<= 1.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cookie-law-bar/readme.txt'
+  redirects: true
+id: cookie-law-bar-6d794c403c67dacce057a24e014202d4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cookie-law-bar/
+    google-query: inurl:"/wp-content/plugins/cookie-law-bar/"
+    shodan-query: 'vuln:'
+  name: 'Cookie Law Bar <= 1.2.1 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f65cb1f6-e72e-4848-b72c-99b83e5401e8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cookie-law-bar,low

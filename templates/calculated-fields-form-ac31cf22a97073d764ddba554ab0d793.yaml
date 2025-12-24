@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - calculated-fields-form
+  - dsl:
+    - compare_versions(version, '<= 1.0.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/calculated-fields-form/readme.txt'
+  redirects: true
+id: calculated-fields-form-ac31cf22a97073d764ddba554ab0d793
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/calculated-fields-form/
+    google-query: inurl:"/wp-content/plugins/calculated-fields-form/"
+    shodan-query: 'vuln:'
+  name: 'Calculated Fields Form <= 1.0.11 - Cross-Site Request Forgery to SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5c75c156-225c-465a-8d03-35a6669e9c04?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,calculated-fields-form,medium

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - amazon-auto-links
+  - dsl:
+    - compare_versions(version, '<= 5.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/amazon-auto-links/readme.txt'
+  redirects: true
+id: amazon-auto-links-20a868da15f9cf17e443cb54655f0219
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/amazon-auto-links/
+    google-query: inurl:"/wp-content/plugins/amazon-auto-links/"
+    shodan-query: 'vuln:'
+  name: 'Auto Amazon Links <= 5.1.1 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8b2a5938-232e-487c-b31b-f48e2b9acb65?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,amazon-auto-links,low

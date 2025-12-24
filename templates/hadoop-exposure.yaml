@@ -1,0 +1,14 @@
+id: hadoop-exposure
+info:
+  author: pdteam
+  name: Apache Hadoop Exposure
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <div class="navbar-brand">Hadoop</div>
+  method: GET
+  path:
+  - '{{BaseURL}}/dfshealth.html'

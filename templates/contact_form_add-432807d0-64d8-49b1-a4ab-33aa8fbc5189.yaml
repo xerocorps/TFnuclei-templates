@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-add
+  - dsl:
+    - compare_versions(version, '<= 1.9.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-add/readme.txt'
+  redirects: true
+id: contact_form_add-432807d0-64d8-49b1-a4ab-33aa8fbc5189
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-add/
+    google-query: inurl:"/wp-content/plugins/contact-form-add/"
+    shodan-query: http.html:"wp-content/plugins/contact-form-add/"
+  name: 'Form Builder <= 1.9.9.0 - Unauthenticated CSV Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/432807d0-64d8-49b1-a4ab-33aa8fbc5189?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-form-add,low,candidate

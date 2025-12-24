@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-job-board
+  - dsl:
+    - compare_versions(version, '<= 2.9.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-job-board/readme.txt'
+  redirects: true
+id: simple-job-board-fc75e846a4b7cfc4113b06125b630f14
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-job-board/
+    google-query: inurl:"/wp-content/plugins/simple-job-board/"
+    shodan-query: 'vuln:'
+  name: 'Simple Job Board <= 2.9.6 - Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/838ccf02-2b01-42f8-b5bf-6fafbb2db673?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-job-board,low

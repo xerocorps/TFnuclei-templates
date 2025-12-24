@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - seo-redirection
+  - dsl:
+    - compare_versions(version, '<= 7.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/seo-redirection/readme.txt'
+  redirects: true
+id: seo-redirection-816b5123924f776c40a4d22289e83e7a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H
+    cvss-score: 6.5
+  description: "The SEO Redirection Plugin \u2013 301 Redirect Manager plugin for\
+    \ WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and\
+    \ including, 7.8. This is due to missing or incorrect nonce validation. This makes\
+    \ it possible for unauthenticated attackers to delete arbitrary redirects via\
+    \ a forged request granted they can trick a site administrator into performing\
+    \ an action such as clicking on a link."
+  metadata:
+    fofa-query: wp-content/plugins/seo-redirection/
+    google-query: inurl:"/wp-content/plugins/seo-redirection/"
+    shodan-query: 'vuln:'
+  name: "SEO Redirection Plugin \u2013 301 Redirect Manager <= 7.8 - Cross-Site Request\
+    \ Forgery"
+  reference:
+  - https://ithemes.com/blog/wordpress-vulnerability-report-september-2021-part-4/#ib-toc-anchor-2
+  - https://wpscan.com/vulnerability/f85bf3c3-75aa-485c-a8ac-2f58c0c960e1
+  - https://wordpress.org/plugins/seo-redirection/#developers
+  - https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=2598555%40seo-redirection&new=2598555%40seo-redirection&sfp_email=&sfph_mail=
+  severity: medium
+  tags: cve,wordpress,wp-plugin,seo-redirection,medium

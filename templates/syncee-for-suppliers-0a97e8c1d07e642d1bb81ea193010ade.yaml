@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - syncee-for-suppliers
+  - dsl:
+    - compare_versions(version, '<= 1.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/syncee-for-suppliers/readme.txt'
+  redirects: true
+id: syncee-for-suppliers-0a97e8c1d07e642d1bb81ea193010ade
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/syncee-for-suppliers/
+    google-query: inurl:"/wp-content/plugins/syncee-for-suppliers/"
+    shodan-query: 'vuln:'
+  name: 'Syncee for Suppliers <= 1.0.5 - Missing Authorization to Sensitive Information
+    Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c3172e21-c2e4-4ec0-ad0f-4433303efcfb?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,syncee-for-suppliers,high

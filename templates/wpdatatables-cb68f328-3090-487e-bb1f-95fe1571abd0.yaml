@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdatatables
+  - dsl:
+    - compare_versions(version, '<= 2.0.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdatatables/readme.txt'
+  redirects: true
+id: wpdatatables-cb68f328-3090-487e-bb1f-95fe1571abd0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpdatatables/
+    google-query: inurl:"/wp-content/plugins/wpdatatables/"
+    shodan-query: http.html:"wp-content/plugins/wpdatatables/"
+  name: 'wpDataTables Lite plugin <= 2.0.11 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cb68f328-3090-487e-bb1f-95fe1571abd0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wpdatatables,high,candidate

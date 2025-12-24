@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - brooklyn
+  - dsl:
+    - compare_versions(version, '<= 4.9.7.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/brooklyn/style.css'
+  redirects: true
+id: brooklyn-dfe069b4692f1734cd0bc91bb7798cb9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/brooklyn/
+    google-query: inurl:"/wp-content/themes/brooklyn/"
+    shodan-query: 'vuln:'
+  name: 'Brooklyn <= 4.9.7.6 - PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5dd962a5-ec0e-415f-8efa-91e78bb80d16?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,brooklyn,low

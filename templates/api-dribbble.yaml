@@ -1,0 +1,18 @@
+id: api-dribbble
+info:
+  author: daffainfo
+  name: Dribbble API Test
+  reference:
+  - https://developer.dribbble.com/v2/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Art-Design/Dribbble.md
+  severity: info
+  tags: token-spray,dribbble
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - https://api.dribbble.com/v2/user?access_token={{token}}
+self-contained: true

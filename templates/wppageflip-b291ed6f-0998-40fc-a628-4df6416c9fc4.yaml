@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wppageflip
+  - dsl:
+    - compare_versions(version, '< 3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wppageflip/readme.txt'
+  redirects: true
+id: wppageflip-b291ed6f-0998-40fc-a628-4df6416c9fc4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wppageflip/
+    google-query: inurl:"/wp-content/plugins/wppageflip/"
+    shodan-query: http.html:"wp-content/plugins/wppageflip/"
+  name: 'A Page Flip Book < 3.0 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b291ed6f-0998-40fc-a628-4df6416c9fc4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wppageflip,low,candidate

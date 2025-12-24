@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rsvp
+  - dsl:
+    - compare_versions(version, '<= 2.7.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rsvp/readme.txt'
+  redirects: true
+id: rsvp-4ac44e4f-7052-465c-82ab-c3f23a62c898
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rsvp/
+    google-query: inurl:"/wp-content/plugins/rsvp/"
+    shodan-query: http.html:"wp-content/plugins/rsvp/"
+  name: 'RSVP and Event Management <= 2.7.7 - Unauthenticated Sensitive Information
+    Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4ac44e4f-7052-465c-82ab-c3f23a62c898?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,rsvp,low,candidate

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fancybox-for-wordpress
+  - dsl:
+    - compare_versions(version, '< 3.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fancybox-for-wordpress/readme.txt'
+  redirects: true
+id: fancybox_for_wordpress-646e3a57-92e1-4502-a0dd-8921e99cfe2d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fancybox-for-wordpress/
+    google-query: inurl:"/wp-content/plugins/fancybox-for-wordpress/"
+    shodan-query: http.html:"wp-content/plugins/fancybox-for-wordpress/"
+  name: 'FancyBox for WordPress <= 3.0.2 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/646e3a57-92e1-4502-a0dd-8921e99cfe2d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,fancybox-for-wordpress,high,candidate

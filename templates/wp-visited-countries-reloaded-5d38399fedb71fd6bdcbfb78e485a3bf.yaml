@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-visited-countries-reloaded
+  - dsl:
+    - compare_versions(version, '<= 3.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-visited-countries-reloaded/readme.txt'
+  redirects: true
+id: wp-visited-countries-reloaded-5d38399fedb71fd6bdcbfb78e485a3bf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-visited-countries-reloaded/
+    google-query: inurl:"/wp-content/plugins/wp-visited-countries-reloaded/"
+    shodan-query: 'vuln:'
+  name: 'WP Visited Countries Reloaded <= 3.1.0 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ea24cb9e-88a5-45a2-93f8-544afef5a83b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-visited-countries-reloaded,high

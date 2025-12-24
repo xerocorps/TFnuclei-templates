@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nmedia-user-file-uploader
+  - dsl:
+    - compare_versions(version, '< 18.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nmedia-user-file-uploader/readme.txt'
+  redirects: true
+id: nmedia-user-file-uploader-08efc3db1e1ccf236a3fce33bf817811
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 9.9
+  description: The Frontend File Manager plugin for WordPress is vulnerable to Authenticated
+    Settings Change in versions up to, and including, 18.2. This is due to lacking
+    capability checks and a security nonce, all on the wpfm_save_settings AJAX action.
+    This makes it possible for subscriber-level attackers to edit the plugin settings,
+    such as the allowed upload file types.  This can lead to remote code execution
+    through other vulnerabilities.
+  metadata:
+    fofa-query: wp-content/plugins/nmedia-user-file-uploader/
+    google-query: inurl:"/wp-content/plugins/nmedia-user-file-uploader/"
+    shodan-query: 'vuln:'
+  name: Frontend File Manager <= 18.2 - Authenticated Settings Change leading to Arbitrary
+    File Upload
+  reference:
+  - https://blog.nintechnet.com/wordpress-frontend-file-manager-plugin-fixed-multiple-critical-vulnerabilities/
+  severity: critical
+  tags: cve,wordpress,wp-plugin,nmedia-user-file-uploader,critical

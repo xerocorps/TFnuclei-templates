@@ -1,0 +1,43 @@
+id: wifisky-default-login
+info:
+  author: pikpikcu
+  name: Wifisky Default Login
+  severity: high
+  tags: default-login,wifisky
+requests:
+- attack: sniper
+  matchers:
+  - part: header
+    type: word
+    words:
+    - text/html
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"success":"true"'
+    - '"data":'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'POST /login.php?action=login&type=admin HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    Accept: */*
+
+    X-Requested-With: XMLHttpRequest
+
+    Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+
+    Connection: close
+
+
+    username=admin&password=admin
+
+    '
+  threads: 100

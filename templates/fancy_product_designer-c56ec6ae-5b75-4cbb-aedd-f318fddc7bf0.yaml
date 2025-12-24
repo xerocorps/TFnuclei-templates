@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fancy-product-designer
+  - dsl:
+    - compare_versions(version, '<= 6.4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fancy-product-designer/readme.txt'
+  redirects: true
+id: fancy_product_designer-c56ec6ae-5b75-4cbb-aedd-f318fddc7bf0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fancy-product-designer/
+    google-query: inurl:"/wp-content/plugins/fancy-product-designer/"
+    shodan-query: http.html:"wp-content/plugins/fancy-product-designer/"
+  name: 'Fancy Product Designer | WooCommerce WordPress <= 6.4.8 - Unauthenticated
+    Server-Side Request Forgery via Race Condition
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c56ec6ae-5b75-4cbb-aedd-f318fddc7bf0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fancy-product-designer,low,candidate

@@ -1,0 +1,17 @@
+id: custom-splunk-info-disclose-detect
+info:
+  author: pdteam
+  name: Custom Splunk Info Disclosure
+  severity: medium
+  tags: config,exposure
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - links
+    - origin
+    - updated
+  method: GET
+  path:
+  - '{{BaseURL}}/en-US/splunkd/__raw/services/server/info/server-info?output_mode=json'

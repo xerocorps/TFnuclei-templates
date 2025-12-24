@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - WP_Estimation_Form
+  - dsl:
+    - compare_versions(version, '< 9.644')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/WP_Estimation_Form/readme.txt'
+  redirects: true
+id: wp_estimation_form-74fbc2e4c2e32c4d2b634afb2b8ecbeb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/WP_Estimation_Form/
+    google-query: inurl:"/wp-content/plugins/WP_Estimation_Form/"
+    shodan-query: 'vuln:'
+  name: 'WP Cost Estimation <= 9.642 - Missing Authorization to Arbitrary File Upload/Delete
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ae50aa5d-95e3-4650-9dbf-118b4ba3abda?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,WP_Estimation_Form,high

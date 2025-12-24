@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - getastra
+  - dsl:
+    - compare_versions(version, '<= 0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/getastra/readme.txt'
+  redirects: true
+id: getastra-ee12b4e4-f29d-4d7a-82ef-963971951c84
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/getastra/
+    google-query: inurl:"/wp-content/plugins/getastra/"
+    shodan-query: http.html:"wp-content/plugins/getastra/"
+  name: 'Astra Security Suite <= 0.2 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ee12b4e4-f29d-4d7a-82ef-963971951c84?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,getastra,high,candidate

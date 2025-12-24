@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - letterpress
+  - dsl:
+    - compare_versions(version, '<= 1.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/letterpress/readme.txt'
+  redirects: true
+id: letterpress-61f8ea5cfa3182c252fbee8b03e6f67a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/letterpress/
+    google-query: inurl:"/wp-content/plugins/letterpress/"
+    shodan-query: 'vuln:'
+  name: 'LetterPress <= 1.2.2 - Authenticated (Administrator+) Stored Cross-Site Scripting
+    via settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d3f9e624-c176-403c-a3c5-7bd11027ebe5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,letterpress,low

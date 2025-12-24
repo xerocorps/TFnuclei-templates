@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-users-media
+  - dsl:
+    - compare_versions(version, '<= 4.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-users-media/readme.txt'
+  redirects: true
+id: wp-users-media-638dfb5c0091169bb11e8597db7b2d12
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-users-media/
+    google-query: inurl:"/wp-content/plugins/wp-users-media/"
+    shodan-query: 'vuln:'
+  name: 'WP Users Media <= 4.2.3 - Cross-Site Request Forgery in wpusme_save_settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/07a82335-d738-4c14-b385-04843f12e4ef?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-users-media,medium

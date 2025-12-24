@@ -1,0 +1,26 @@
+id: docker-compose-config
+info:
+  author: meme-lord & blckraven & geeknik
+  name: docker-compose.yml exposure
+  severity: medium
+  tags: config,exposure,devops
+requests:
+- matchers:
+  - dsl:
+    - 'regex("^version: ", body) && contains(body, "services:")'
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/docker-compose.yml'
+  - '{{BaseURL}}/docker-compose.prod.yml'
+  - '{{BaseURL}}/docker-compose.production.yml'
+  - '{{BaseURL}}/docker-compose.staging.yml'
+  - '{{BaseURL}}/docker-compose.dev.yml'
+  - '{{BaseURL}}/docker-compose-dev.yml'
+  - '{{BaseURL}}/docker-compose.override.yml'
+  redirects: true

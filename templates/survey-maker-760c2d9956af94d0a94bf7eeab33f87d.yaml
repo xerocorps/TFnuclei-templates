@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - survey-maker
+  - dsl:
+    - compare_versions(version, '<= 3.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/survey-maker/readme.txt'
+  redirects: true
+id: survey-maker-760c2d9956af94d0a94bf7eeab33f87d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/survey-maker/
+    google-query: inurl:"/wp-content/plugins/survey-maker/"
+    shodan-query: 'vuln:'
+  name: 'Survey Maker < 3.1.2 - Authenticated (Subscriber+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d72a965-5d81-4619-ad8b-46960a89bf1b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,survey-maker,low

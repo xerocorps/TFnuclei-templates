@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - so-widgets-bundle
+  - dsl:
+    - compare_versions(version, '<= 1.58.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/so-widgets-bundle/readme.txt'
+  redirects: true
+id: so_widgets_bundle-6f7c164f-2f78-4857-94b9-077c2dea13df
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/so-widgets-bundle/
+    google-query: inurl:"/wp-content/plugins/so-widgets-bundle/"
+    shodan-query: http.html:"wp-content/plugins/so-widgets-bundle/"
+  name: 'SiteOrigin Widgets Bundle <= 1.58.1 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6f7c164f-2f78-4857-94b9-077c2dea13df?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,so-widgets-bundle,low,candidate

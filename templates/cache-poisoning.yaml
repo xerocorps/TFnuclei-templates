@@ -1,0 +1,24 @@
+id: cache-poisoning
+info:
+  author: mrpentestguy
+  name: Cache Poisoning
+  reference:
+  - https://blog.melbadry9.xyz/fuzzing/nuclei-cache-poisoning
+  - https://portswigger.net/research/practical-web-cache-poisoning
+  severity: medium
+  tags: cache,generic
+requests:
+- attack: sniper
+  matchers:
+  - dsl:
+    - contains(body_2, "cache.example.com")
+    type: dsl
+  payloads:
+    headers: helpers/payloads/request-headers.txt
+  raw:
+  - "GET /?mel=9 HTTP/1.1\nHost: {{Hostname}}\n\xA7headers\xA7: cache.example.com\n"
+  - 'GET /?mel=9 HTTP/1.1
+
+    '
+  redirects: true
+  req-condition: true

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - portfolio-filter-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/portfolio-filter-gallery/readme.txt'
+  redirects: true
+id: portfolio-filter-gallery-78bc98f56f8d60f65227d525a33f5b1d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/portfolio-filter-gallery/
+    google-query: inurl:"/wp-content/plugins/portfolio-filter-gallery/"
+    shodan-query: 'vuln:'
+  name: "Portfolio Gallery \u2013 Image Gallery Plugin <= 1.1.2 - Cross-Site Request\
+    \ Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/25dd83c5-2ebe-4976-8e97-650e5eadbe43?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,portfolio-filter-gallery,medium

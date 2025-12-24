@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - molongui-authorship
+  - dsl:
+    - compare_versions(version, '<= 4.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/molongui-authorship/readme.txt'
+  redirects: true
+id: molongui_authorship-538e9ce3-2d48-44ad-bd08-8eead3ef15c3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/molongui-authorship/
+    google-query: inurl:"/wp-content/plugins/molongui-authorship/"
+    shodan-query: http.html:"wp-content/plugins/molongui-authorship/"
+  name: "Author Box, Guest Author and Co-Authors for Your Posts \u2013 Molongui <=\
+    \ 4.7.4 - Information Exposure via ma_debug\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/538e9ce3-2d48-44ad-bd08-8eead3ef15c3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,molongui-authorship,low,candidate

@@ -1,0 +1,20 @@
+id: emessage-panel
+info:
+  author: ffffffff0x
+  metadata:
+    fofa-query: title="emessage"
+  name: Emessage Panel Detect
+  severity: info
+  tags: panel,emessage
+requests:
+- matchers:
+  - regex:
+    - (?i)<title>emessage.*</title>
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.jsp'

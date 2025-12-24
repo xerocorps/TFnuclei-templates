@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - photoblocks-grid-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.1.40')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/photoblocks-grid-gallery/readme.txt'
+  redirects: true
+id: photoblocks-grid-gallery-6620060d19b5f161dddef728168e96c5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/photoblocks-grid-gallery/
+    google-query: inurl:"/wp-content/plugins/photoblocks-grid-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Gallery Photoblocks <= 1.1.40 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ede6c4d1-e4bd-44c0-a66a-fffc0e1b22f6?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,photoblocks-grid-gallery,medium

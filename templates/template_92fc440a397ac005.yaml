@@ -1,0 +1,35 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - postgresql
+    - security
+    - password
+    - weak
+    - misconfiguration
+  description: Template to detect PostgreSQL server instances with weak passwords
+  id: postgresql-weak-password
+  matcher-condition: and
+  matchers:
+  - description: PostgreSQL server using md5 or password authentication method found
+      in response body
+    pattern: auth-method
+    type: body
+  - description: PostgreSQL server login error message found in response body
+    pattern: access denied for user
+    type: body
+  name: Detect PostgreSQL Server with Weak Password
+  reference:
+  - https://www.postgresql.org/docs/current/auth-password.html
+  requests:
+    condition: or
+    description: Attempt to retrieve PostgreSQL server login page
+    method: GET
+    path:
+    - /
+  response:
+  - description: Unauthorized response status
+    status:
+    - 401
+  severity: High

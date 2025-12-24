@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - multi-rating
+  - dsl:
+    - compare_versions(version, '<= 5.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/multi-rating/readme.txt'
+  redirects: true
+id: multi-rating-fee6d305d8448a1b6afd09f68f9ab4ff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/multi-rating/
+    google-query: inurl:"/wp-content/plugins/multi-rating/"
+    shodan-query: 'vuln:'
+  name: 'Multi Rating <= 5.0.5 - Cross Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d0dcf95e-1540-48ed-a4a2-f803d67ea141?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,multi-rating,low

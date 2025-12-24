@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - waiting
+  - dsl:
+    - compare_versions(version, '<= 0.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/waiting/readme.txt'
+  redirects: true
+id: waiting-a31f1134eb60333e444359cc1ca8820c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/waiting/
+    google-query: inurl:"/wp-content/plugins/waiting/"
+    shodan-query: 'vuln:'
+  name: 'Waiting: One-click countdowns <= 0.6.2 - Missing Authorization Checks leading
+    to Authenticated (Subscriber+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/38cc5a39-6ec3-4ce9-b9ad-d4ca5dafe9a7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,waiting,low

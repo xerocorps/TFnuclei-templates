@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-google-map-plugin
+  - dsl:
+    - compare_versions(version, '< 3.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-google-map-plugin/readme.txt'
+  redirects: true
+id: wp-google-map-plugin-7ece7bbf6aea37cb5fa05be9e0711f93
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-google-map-plugin/
+    google-query: inurl:"/wp-content/plugins/wp-google-map-plugin/"
+    shodan-query: 'vuln:'
+  name: 'WP Google Map Plugin <= 3.1.1 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/94f803f4-0a06-4b77-9483-5c63f6dfd2f0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-google-map-plugin,high

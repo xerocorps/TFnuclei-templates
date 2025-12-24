@@ -1,0 +1,22 @@
+id: vmware-vcloud-director
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-dork: title:"VMware vCloud Director"
+    verified: true
+  name: VMware vCloud Director
+  severity: info
+  tags: panel,vmware,vcloud
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>VMware vCloud Director</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cloud/'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-job-board
+  - dsl:
+    - compare_versions(version, '< 2.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-job-board/readme.txt'
+  redirects: true
+id: simple-job-board-b8c4678c8c8d22ceaed50ffbf977a0f0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-job-board/
+    google-query: inurl:"/wp-content/plugins/simple-job-board/"
+    shodan-query: 'vuln:'
+  name: 'Simple Job Board <= 2.4.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/564a1631-fe33-40f6-a0eb-37868be07171?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,simple-job-board,medium

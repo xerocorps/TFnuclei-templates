@@ -1,0 +1,49 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jetpack
+  - dsl:
+    - compare_versions(version, '<= 3.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jetpack/readme.txt'
+  redirects: true
+id: jetpack-8fed9427a662c2253ca7cb69bc4dba68
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+  description: Jetpack up to 3.7.1 is affected by an information disclosure vulnerability.
+  metadata:
+    fofa-query: wp-content/plugins/jetpack/
+    google-query: inurl:"/wp-content/plugins/jetpack/"
+    shodan-query: 'vuln:'
+  name: Jetpack <= 3.7.1 - Information disclosure
+  reference:
+  - https://jetpack.me/2015/09/30/jetpack-3-7-1-and-3-7-2-security-and-maintenance-releases/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,jetpack,medium

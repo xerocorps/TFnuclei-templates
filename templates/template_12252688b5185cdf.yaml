@@ -1,0 +1,30 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - web
+    - security
+    - phpmyadmin
+    - exposed
+  description: Template to detect exposed phpMyAdmin installations
+  id: exposed-phpmyadmin
+  name: Exposed phpMyAdmin - Detect
+  severity: Medium
+matcher-condition: or
+matchers:
+- description: phpMyAdmin banner found in response body
+  pattern: phpMyAdmin
+  type: body
+requests:
+  condition: or
+  description: Attempt to access phpMyAdmin URL
+  method: GET
+  path:
+  - /phpmyadmin
+  - /phpMyAdmin
+  - /PMA
+response:
+- description: Successful response status
+  status:
+  - 200

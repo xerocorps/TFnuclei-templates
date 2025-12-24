@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - levelfourstorefront
+  - dsl:
+    - compare_versions(version, '<= 8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/levelfourstorefront/readme.txt'
+  redirects: true
+id: levelfourstorefront-d3038db6477fd22af639f63c3c474aff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/levelfourstorefront/
+    google-query: inurl:"/wp-content/plugins/levelfourstorefront/"
+    shodan-query: 'vuln:'
+  name: 'L4 Shopping Cart Plugin < 8.1.1 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/848f3b21-fb44-45c4-944e-7c4c62448ffc?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,levelfourstorefront,critical

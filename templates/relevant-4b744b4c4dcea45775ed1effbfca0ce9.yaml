@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - relevant
+  - dsl:
+    - compare_versions(version, '< 1.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/relevant/readme.txt'
+  redirects: true
+id: relevant-4b744b4c4dcea45775ed1effbfca0ce9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/relevant/
+    google-query: inurl:"/wp-content/plugins/relevant/"
+    shodan-query: 'vuln:'
+  name: "Relevant \u2013 Related, Featured, Latest, and Popular Posts by BestWebSoft\
+    \ < 1.2.0 - Reflected Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ea189072-aa96-441b-ad5e-b6433da06d22?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,relevant,medium

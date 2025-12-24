@@ -1,0 +1,23 @@
+id: vidyo-login
+info:
+  author: johnk3r
+  metadata:
+    shodan-query: http.favicon.hash:-1970367401
+  name: Vidyo Portal Login
+  severity: info
+  tags: panel,vidyo
+requests:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - <title>Vidyo Admin</title>
+    - <title>VidyoRouter Configuration</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/login.html?lang=en'
+  - '{{BaseURL}}/vr2conf/login.html'

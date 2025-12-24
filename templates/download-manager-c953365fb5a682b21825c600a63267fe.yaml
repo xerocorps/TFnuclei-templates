@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - download-manager
+  - dsl:
+    - compare_versions(version, '<= 2.7.94')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/download-manager/readme.txt'
+  redirects: true
+id: download-manager-c953365fb5a682b21825c600a63267fe
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 6.4
+  description: The Download Manager plugin for WordPress is vulnerable to Stored Cross-Site
+    Scripting via the file name of the uploaded file in versions up to, and including,
+    2.7.95 due to insufficient input sanitization and output escaping. This makes
+    it possible for authenticated attackers to inject arbitrary web scripts in pages
+    that will execute whenever a user accesses an injected page.
+  metadata:
+    fofa-query: wp-content/plugins/download-manager/
+    google-query: inurl:"/wp-content/plugins/download-manager/"
+    shodan-query: 'vuln:'
+  name: WordPress Download Manager <= 2.7.94 - Stored Cross-Site Scripting
+  reference:
+  - https://plugins.trac.wordpress.org/changeset/1199505/download-manager
+  - https://packetstormsecurity.com/files/132716/
+  - https://wpscan.com/vulnerability/2d592bc0-5ab8-43ba-927e-32f8323630bf
+  severity: medium
+  tags: cve,wordpress,wp-plugin,download-manager,medium

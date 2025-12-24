@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - happy-elementor-addons
+  - dsl:
+    - compare_versions(version, '<= 3.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/happy-elementor-addons/readme.txt'
+  redirects: true
+id: happy-elementor-addons-2eb956491d451a1e1d4ae93f7f77e489
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/happy-elementor-addons/
+    google-query: inurl:"/wp-content/plugins/happy-elementor-addons/"
+    shodan-query: 'vuln:'
+  name: 'Happy Addons for Elementor <= 3.8.2 - Cross-Site Request Forgery via handle_optin_optout()
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/27439d44-f2ff-4c20-965f-25d12c83781c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,happy-elementor-addons,medium

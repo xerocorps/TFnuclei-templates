@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - final-tiles-grid-gallery-lite
+  - dsl:
+    - compare_versions(version, '<= 3.6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/final-tiles-grid-gallery-lite/readme.txt'
+  redirects: true
+id: final_tiles_grid_gallery_lite-830663b6-0786-48c7-9ffd-ac3ba2bd3e0c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/final-tiles-grid-gallery-lite/
+    google-query: inurl:"/wp-content/plugins/final-tiles-grid-gallery-lite/"
+    shodan-query: http.html:"wp-content/plugins/final-tiles-grid-gallery-lite/"
+  name: 'Image Photo Gallery Final Tiles Grid <= 3.6.7 - Missing Authorization to
+    Authenticated (Contributor+) Gallery Management
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/830663b6-0786-48c7-9ffd-ac3ba2bd3e0c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,final-tiles-grid-gallery-lite,low,candidate

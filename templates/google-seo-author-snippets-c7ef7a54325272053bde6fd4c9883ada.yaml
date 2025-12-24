@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - google-seo-author-snippets
+  - dsl:
+    - compare_versions(version, '< 1.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/google-seo-author-snippets/readme.txt'
+  redirects: true
+id: google-seo-author-snippets-c7ef7a54325272053bde6fd4c9883ada
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The Google SEO Pressor for Rich snippets plugin for WordPress is vulnerable
+    to Cross-Site Scripting via several parameters in versions before 1.2.7 due to
+    insufficient input sanitization and output escaping. This makes it possible for
+    attackers to inject arbitrary web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/plugins/google-seo-author-snippets/
+    google-query: inurl:"/wp-content/plugins/google-seo-author-snippets/"
+    shodan-query: 'vuln:'
+  name: Google SEO Pressor for Rich snippets <= 1.2.2 - Cross-Site Scripting
+  reference:
+  - https://0x62626262.wordpress.com/2016/04/21/google-seo-pressor-snippet-plugin-xss-vulnerability/
+  - https://wordpress.org/plugins/google-seo-author-snippets/#developers
+  - https://plugins.trac.wordpress.org/changeset/1375655
+  severity: medium
+  tags: cve,wordpress,wp-plugin,google-seo-author-snippets,medium

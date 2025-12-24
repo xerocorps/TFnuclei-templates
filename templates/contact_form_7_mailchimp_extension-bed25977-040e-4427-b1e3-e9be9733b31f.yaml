@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-7-mailchimp-extension
+  - dsl:
+    - compare_versions(version, '<= 0.5.70')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-7-mailchimp-extension/readme.txt'
+  redirects: true
+id: contact_form_7_mailchimp_extension-bed25977-040e-4427-b1e3-e9be9733b31f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-7-mailchimp-extension/
+    google-query: inurl:"/wp-content/plugins/contact-form-7-mailchimp-extension/"
+    shodan-query: http.html:"wp-content/plugins/contact-form-7-mailchimp-extension/"
+  name: 'Contact Form 7 Extension For Mailchimp <= 0.5.70 - Authenticated (Subscriber+)
+    Server-Side Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bed25977-040e-4427-b1e3-e9be9733b31f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-form-7-mailchimp-extension,low,candidate

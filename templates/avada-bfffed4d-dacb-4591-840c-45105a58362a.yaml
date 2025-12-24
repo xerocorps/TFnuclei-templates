@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - Avada
+  - dsl:
+    - compare_versions(version, '<= 7.11.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/Avada/style.css'
+  redirects: true
+id: avada-bfffed4d-dacb-4591-840c-45105a58362a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/Avada/
+    google-query: inurl:"/wp-content/themes/Avada/"
+    shodan-query: http.html:"wp-content/themes/Avada/"
+  name: 'Avada <= 7.11.1 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bfffed4d-dacb-4591-840c-45105a58362a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,Avada,high,candidate

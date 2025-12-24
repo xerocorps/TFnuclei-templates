@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - drag-and-drop-file-upload-for-elementor-forms
+  - dsl:
+    - compare_versions(version, '<= 1.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/drag-and-drop-file-upload-for-elementor-forms/readme.txt'
+  redirects: true
+id: drag_and_drop_file_upload_for_elementor_forms-ee39e64f-b728-4754-93ea-d9bd70c6c82c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/drag-and-drop-file-upload-for-elementor-forms/
+    google-query: inurl:"/wp-content/plugins/drag-and-drop-file-upload-for-elementor-forms/"
+    shodan-query: http.html:"wp-content/plugins/drag-and-drop-file-upload-for-elementor-forms/"
+  name: 'Drag and Drop File Upload for Elementor Forms <= 1.4.3 - Unauthenticated
+    Arbitrary File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ee39e64f-b728-4754-93ea-d9bd70c6c82c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,drag-and-drop-file-upload-for-elementor-forms,low,candidate

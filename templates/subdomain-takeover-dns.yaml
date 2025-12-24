@@ -1,0 +1,50 @@
+dns:
+- class: inet
+  matchers:
+  - type: word
+    words:
+    - azure-api.net
+    - azure-mobile.net
+    - azure-dns.org
+    - azure-dns.net
+    - azure-dns.com
+    - azure-dns.info
+    - azurecontainer.io
+    - azurecr.io
+    - azuredatalakestore.net
+    - azureedge.net
+    - azurefd.net
+    - azurehdinsight.net
+    - azurewebsites.net
+    - azurewebsites.windows.net
+    - blob.core.windows.net
+    - cloudapp.azure.com
+    - cloudapp.net
+    - database.windows.net
+    - redis.cache.windows.net
+    - search.windows.net
+    - servicebus.windows.net
+    - trafficmanager.net
+    - visualstudio.com
+    - zendesk.com
+    - mailgun.org
+    - hosted-by-discourse.com
+    - icn.bg
+    - netlify.com
+    - netlify.app
+    - 104.198.14.52
+  - type: word
+    words:
+    - NXDOMAIN
+    - SERVFAIL
+    - REFUSED
+  matchers-condition: and
+  name: '{{FQDN}}'
+  recursion: true
+  retries: 2
+  type: A
+id: subdomain-takeover-dns
+info:
+  author: glatisant
+  name: Subdomain Takover detection using DNS
+  severity: medium

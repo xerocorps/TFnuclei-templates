@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - essential-addons-elementor
+  - dsl:
+    - compare_versions(version, '<= 5.8.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/essential-addons-elementor/readme.txt'
+  redirects: true
+id: essential_addons_elementor-7fdad62e-d43a-4eb8-a637-0a257f3f18d4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/essential-addons-elementor/
+    google-query: inurl:"/wp-content/plugins/essential-addons-elementor/"
+    shodan-query: http.html:"wp-content/plugins/essential-addons-elementor/"
+  name: 'Essential Addons for Elementor Pro <= 5.8.11 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting via ''title_html_tag''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7fdad62e-d43a-4eb8-a637-0a257f3f18d4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,essential-addons-elementor,low,candidate

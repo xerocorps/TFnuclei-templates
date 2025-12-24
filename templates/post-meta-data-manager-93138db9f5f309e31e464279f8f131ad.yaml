@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-meta-data-manager
+  - dsl:
+    - compare_versions(version, '<= 1.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-meta-data-manager/readme.txt'
+  redirects: true
+id: post-meta-data-manager-93138db9f5f309e31e464279f8f131ad
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-meta-data-manager/
+    google-query: inurl:"/wp-content/plugins/post-meta-data-manager/"
+    shodan-query: 'vuln:'
+  name: 'Post Meta Data Manager <= 1.2.1 - Cross-Site Request Forgery to Post, Term,
+    and User Meta Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d49b8c44-4dad-4990-a8a8-116b424a7dfa?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,post-meta-data-manager,medium

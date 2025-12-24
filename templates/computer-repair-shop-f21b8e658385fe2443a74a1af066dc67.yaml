@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - computer-repair-shop
+  - dsl:
+    - compare_versions(version, '<= 3.72')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/computer-repair-shop/readme.txt'
+  redirects: true
+id: computer-repair-shop-f21b8e658385fe2443a74a1af066dc67
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: 'The plugin CRM WordPress Plugin for WordPress is vulnerable to SQL
+    injection via several parameters in versions up to, and including, 3.72 due to
+    insufficient escaping on the user-supplied parameter and lack of sufficient preparation
+    of the SQL query. This makes it possible for an attacker to append additional
+    SQL queries into already existing queries that can be used to extract sensitive
+    information from the database.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/computer-repair-shop/
+    google-query: inurl:"/wp-content/plugins/computer-repair-shop/"
+    shodan-query: 'vuln:'
+  name: "CRM WordPress Plugin \u2013 RepairBuddy <= 3.72 - SQL Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/642a6d42-100f-4461-b568-35e089287902?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,computer-repair-shop,high

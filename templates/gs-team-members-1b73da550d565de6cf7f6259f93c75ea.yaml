@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gs-team-members
+  - dsl:
+    - compare_versions(version, '<= 2.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gs-team-members/readme.txt'
+  redirects: true
+id: gs-team-members-1b73da550d565de6cf7f6259f93c75ea
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gs-team-members/
+    google-query: inurl:"/wp-content/plugins/gs-team-members/"
+    shodan-query: 'vuln:'
+  name: 'GS Team Members <= 2.2.3 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c146f89c-5df3-4aaf-b880-0ce6016dfb6d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gs-team-members,low

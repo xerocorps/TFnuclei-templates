@@ -1,0 +1,47 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bit-form
+  - dsl:
+    - compare_versions(version, '>= 2.0', '<= 2.13.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bit-form/readme.txt'
+  redirects: true
+id: bit_form-4deb128d-0163-4a8e-9591-87352f74c3ef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bit-form/
+    google-query: inurl:"/wp-content/plugins/bit-form/"
+    shodan-query: http.html:"wp-content/plugins/bit-form/"
+  name: 'Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment
+    Contact Form & Custom Contact Form builder 2.0 - 2.13.9 - Authenticated (Administrator+)
+    Arbitrary File Read And Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4deb128d-0163-4a8e-9591-87352f74c3ef?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bit-form,low,candidate

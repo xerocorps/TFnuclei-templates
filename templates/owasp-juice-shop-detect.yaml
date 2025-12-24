@@ -1,0 +1,21 @@
+id: owasp-juice-shop-detect
+info:
+  author: pikpikcu
+  name: OWASP Juice Shop
+  reference:
+  - https://fofa.so/result?qbase64=dGl0bGU9Ik9XQVNQIEp1aWNlIFNob3Ai
+  severity: info
+  tags: tech,owasp
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>OWASP Juice Shop</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

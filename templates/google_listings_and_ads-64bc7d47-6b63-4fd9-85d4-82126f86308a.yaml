@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - google-listings-and-ads
+  - dsl:
+    - compare_versions(version, '<= 2.8.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/google-listings-and-ads/readme.txt'
+  redirects: true
+id: google_listings_and_ads-64bc7d47-6b63-4fd9-85d4-82126f86308a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/google-listings-and-ads/
+    google-query: inurl:"/wp-content/plugins/google-listings-and-ads/"
+    shodan-query: http.html:"wp-content/plugins/google-listings-and-ads/"
+  name: 'Google for WooCommerce <= 2.8.6 - Information Disclosure via Publicly Accessible
+    PHP Info File
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/64bc7d47-6b63-4fd9-85d4-82126f86308a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,google-listings-and-ads,low,candidate

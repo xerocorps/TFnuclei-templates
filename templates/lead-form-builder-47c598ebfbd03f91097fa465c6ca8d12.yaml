@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lead-form-builder
+  - dsl:
+    - compare_versions(version, '< 1.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lead-form-builder/readme.txt'
+  redirects: true
+id: lead-form-builder-47c598ebfbd03f91097fa465c6ca8d12
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lead-form-builder/
+    google-query: inurl:"/wp-content/plugins/lead-form-builder/"
+    shodan-query: 'vuln:'
+  name: 'Responsive Contact Form Builder & Lead Generation Plugin < 1.7.0 - Authenticated
+    (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6fbcab49-5765-497b-a98e-d87c5b468b11?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,lead-form-builder,low

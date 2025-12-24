@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uber-grid
+  - dsl:
+    - compare_versions(version, '<= 1.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/uber-grid/readme.txt'
+  redirects: true
+id: uber_grid-36dcf1c4-1e0a-4ab6-a1b3-a9fe3aaddd0b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/uber-grid/
+    google-query: inurl:"/wp-content/plugins/uber-grid/"
+    shodan-query: http.html:"wp-content/plugins/uber-grid/"
+  name: "WordPress Portfolio Builder \u2013 Portfolio Gallery <= 1.1.7 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting via Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/36dcf1c4-1e0a-4ab6-a1b3-a9fe3aaddd0b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,uber-grid,low,candidate

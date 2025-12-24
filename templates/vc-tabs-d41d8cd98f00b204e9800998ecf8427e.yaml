@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vc-tabs
+  - dsl:
+    - compare_versions(version, '<= 3.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vc-tabs/readme.txt'
+  redirects: true
+id: vc-tabs-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Responsive Tabs with WooCommerce Product Tab Extension plugin for
+    WordPress is vulnerable to authorization bypass due to missing capability checks
+    in versions up to, and including, 3.5.4.  As a result, unauthenticated users could
+    update arbitrary options.
+  metadata:
+    fofa-query: wp-content/plugins/vc-tabs/
+    google-query: inurl:"/wp-content/plugins/vc-tabs/"
+    shodan-query: 'vuln:'
+  name: Responsive Tabs with WooCommerce Product Tab Extension <= 3.5.4 - Unauthenticated
+    Arbitrary Option Update
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,vc-tabs,low

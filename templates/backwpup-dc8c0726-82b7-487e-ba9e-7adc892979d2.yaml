@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - backwpup
+  - dsl:
+    - compare_versions(version, '< 3.0.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/backwpup/readme.txt'
+  redirects: true
+id: backwpup-dc8c0726-82b7-487e-ba9e-7adc892979d2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/backwpup/
+    google-query: inurl:"/wp-content/plugins/backwpup/"
+    shodan-query: http.html:"wp-content/plugins/backwpup/"
+  name: 'BackWPup < 3.0.13 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dc8c0726-82b7-487e-ba9e-7adc892979d2?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,backwpup,high,candidate

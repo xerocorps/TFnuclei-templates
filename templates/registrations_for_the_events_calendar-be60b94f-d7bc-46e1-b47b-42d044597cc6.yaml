@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - registrations-for-the-events-calendar
+  - dsl:
+    - compare_versions(version, '<= 2.13.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/registrations-for-the-events-calendar/readme.txt'
+  redirects: true
+id: registrations_for_the_events_calendar-be60b94f-d7bc-46e1-b47b-42d044597cc6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/registrations-for-the-events-calendar/
+    google-query: inurl:"/wp-content/plugins/registrations-for-the-events-calendar/"
+    shodan-query: http.html:"wp-content/plugins/registrations-for-the-events-calendar/"
+  name: 'Registrations for the Events Calendar <= 2.13.2 - Authenticated (Admin+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/be60b94f-d7bc-46e1-b47b-42d044597cc6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,registrations-for-the-events-calendar,low,candidate

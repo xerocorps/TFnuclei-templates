@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-to-csv
+  - dsl:
+    - compare_versions(version, '<= 1.3.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-to-csv/readme.txt'
+  redirects: true
+id: post-to-csv-fce6077e244dbcdfe3e25c2e547c4824
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-to-csv/
+    google-query: inurl:"/wp-content/plugins/post-to-csv/"
+    shodan-query: 'vuln:'
+  name: 'Post to CSV by BestWebSoft <= 1.3.8 - Authenticated (Author+) CSV Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3be1a1af-baab-4e57-a2c7-5e6963f986cc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,post-to-csv,low

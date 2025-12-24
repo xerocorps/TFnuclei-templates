@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - thrive-theme
+  - dsl:
+    - compare_versions(version, '< 3.24.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/thrive-theme/style.css'
+  redirects: true
+id: thrive_theme-3b345dfe-3945-405a-9825-c88816b2adee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/thrive-theme/
+    google-query: inurl:"/wp-content/themes/thrive-theme/"
+    shodan-query: http.html:"wp-content/themes/thrive-theme/"
+  name: 'Thrive Theme Builder < 3.24.0 - Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3b345dfe-3945-405a-9825-c88816b2adee?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,thrive-theme,low,candidate

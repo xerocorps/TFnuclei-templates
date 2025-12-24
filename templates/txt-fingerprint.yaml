@@ -1,0 +1,24 @@
+dns:
+- extractors:
+  - group: 1
+    regex:
+    - "IN\tTXT\t(.+)"
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - "IN\tTXT"
+  name: '{{FQDN}}'
+  type: TXT
+id: txt-fingerprint
+info:
+  author: pdteam
+  classification:
+    cwe-id: CWE-200
+  description: A DNS TXT record was detected. The TXT record lets a domain admin leave
+    notes on a DNS server.
+  name: DNS TXT Record Detected
+  reference:
+  - https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/
+  severity: info
+  tags: dns,txt

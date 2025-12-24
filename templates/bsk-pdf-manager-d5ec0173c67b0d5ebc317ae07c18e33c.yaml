@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bsk-pdf-manager
+  - dsl:
+    - compare_versions(version, '<= 3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bsk-pdf-manager/readme.txt'
+  redirects: true
+id: bsk-pdf-manager-d5ec0173c67b0d5ebc317ae07c18e33c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bsk-pdf-manager/
+    google-query: inurl:"/wp-content/plugins/bsk-pdf-manager/"
+    shodan-query: 'vuln:'
+  name: 'BSK PDF Manager <= 3.6 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/37506a9e-a225-4519-a24e-8678c31cc106?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bsk-pdf-manager,low

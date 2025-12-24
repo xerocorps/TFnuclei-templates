@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bft-autoresponder
+  - dsl:
+    - compare_versions(version, '<= 2.5.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bft-autoresponder/readme.txt'
+  redirects: true
+id: bft_autoresponder-7863f63c-11b5-43ac-9d68-8eb9925cdf7e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bft-autoresponder/
+    google-query: inurl:"/wp-content/plugins/bft-autoresponder/"
+    shodan-query: http.html:"wp-content/plugins/bft-autoresponder/"
+  name: 'Arigato Autoresponder and Newsletter <= 2.5.1.8 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7863f63c-11b5-43ac-9d68-8eb9925cdf7e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,bft-autoresponder,medium,candidate

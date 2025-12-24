@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - custom-registration-form-builder-with-submission-manager
+  - dsl:
+    - compare_versions(version, '<= 5.0.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/custom-registration-form-builder-with-submission-manager/readme.txt'
+  redirects: true
+id: custom-registration-form-builder-with-submission-manager-5763647ccbd5d9fd35c9f36cc4adbf7d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/custom-registration-form-builder-with-submission-manager/
+    google-query: inurl:"/wp-content/plugins/custom-registration-form-builder-with-submission-manager/"
+    shodan-query: 'vuln:'
+  name: 'Registration Magic <= 5.0.1.8 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/547e5814-0201-4dbf-9d2d-8028ca055402?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,custom-registration-form-builder-with-submission-manager,medium

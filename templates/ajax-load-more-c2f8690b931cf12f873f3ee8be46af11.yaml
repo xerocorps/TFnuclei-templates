@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ajax-load-more
+  - dsl:
+    - compare_versions(version, '<= 5.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ajax-load-more/readme.txt'
+  redirects: true
+id: ajax-load-more-c2f8690b931cf12f873f3ee8be46af11
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ajax-load-more/
+    google-query: inurl:"/wp-content/plugins/ajax-load-more/"
+    shodan-query: 'vuln:'
+  name: "WordPress Infinite Scroll \u2013 Ajax Load More <= 5.5.3 - Authenticated\
+    \ (Admin+) Arbitrary File Read\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6d643d07-7533-430b-a1d8-8e66a2a2c5e6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ajax-load-more,low

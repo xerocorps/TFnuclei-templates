@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp_rokbox
+  - dsl:
+    - compare_versions(version, '<= 2.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp_rokbox/readme.txt'
+  redirects: true
+id: wp_rokbox-10af3a9811748946c98408da9dbde995
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 5.3
+  description: 'The WordPress RokBox plugin is vulnerable to Abuse of Functionality
+    via the ''src'' parameter in the ''thumb.php'' file in versions up to, and including,
+    2.13. This makes it possible for unauthenticated attackers to use implemented
+    functions for unintended/malicious reasons.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wp_rokbox/
+    google-query: inurl:"/wp-content/plugins/wp_rokbox/"
+    shodan-query: 'vuln:'
+  name: 'WordPress RokBox <= 2.13 - Abuse of Functionality
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ec2181cb-dfb2-43d5-90e8-c68d0d98c98b?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp_rokbox,medium

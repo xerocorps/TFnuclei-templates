@@ -1,0 +1,241 @@
+id: kube-api-scan
+info:
+  author: sharath
+  description: Scans all open urls of kube api server
+  name: Kube API Scan
+  severity: info
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - major
+    - minor
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/version'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - NamespaceList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/namespaces'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - NodeList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/nodes'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ''
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/roles'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - SecretList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/secrets'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ServiceList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/services'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ServiceAccountList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/serviceaccounts'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - APIResourceList
+    - resources
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/apis/apps/v1/'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - DaemonSetList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/apis/apps/v1/daemonsets'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - DeploymentList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/apis/apps/v1/deployments'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ClusterRoleList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/apis/rbac.authorization.k8s.io/v1beta1/clusterroles'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - PodList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/namespaces/default/pods'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ConfigMapList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/namespaces/default/configmaps'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - SecretList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/namespaces/default/secrets'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ServiceAccountList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/namespaces/default/serviceaccounts'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ServiceList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/namespaces/default/services'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - APIGroup
+    - versions
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/apis/node.k8s.io/'
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - DeploymentList
+    - items
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/apis/apps/v1/namespaces/default/deployments'

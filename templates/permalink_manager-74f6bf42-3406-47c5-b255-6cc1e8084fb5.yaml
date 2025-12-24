@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - permalink-manager
+  - dsl:
+    - compare_versions(version, '<= 2.4.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/permalink-manager/readme.txt'
+  redirects: true
+id: permalink_manager-74f6bf42-3406-47c5-b255-6cc1e8084fb5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/permalink-manager/
+    google-query: inurl:"/wp-content/plugins/permalink-manager/"
+    shodan-query: http.html:"wp-content/plugins/permalink-manager/"
+  name: 'Plugin Permalink <= 2.4.3.1 - Missing Authorization via get_uri_editor
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/74f6bf42-3406-47c5-b255-6cc1e8084fb5?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,permalink-manager,high,candidate

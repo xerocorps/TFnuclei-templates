@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - event-calendar-wd
+  - dsl:
+    - compare_versions(version, '<= 1.1.50')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/event-calendar-wd/readme.txt'
+  redirects: true
+id: event_calendar_wd-835941f1-e2f6-41aa-9a46-cdbeb5741d20
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/event-calendar-wd/
+    google-query: inurl:"/wp-content/plugins/event-calendar-wd/"
+    shodan-query: http.html:"wp-content/plugins/event-calendar-wd/"
+  name: 'Event Calendar <= 1.1.50 - Subscriber+ Event Creation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/835941f1-e2f6-41aa-9a46-cdbeb5741d20?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,event-calendar-wd,low,candidate

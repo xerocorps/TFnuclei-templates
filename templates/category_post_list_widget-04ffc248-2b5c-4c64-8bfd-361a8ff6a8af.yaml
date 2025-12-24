@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - category-post-list-widget
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/category-post-list-widget/readme.txt'
+  redirects: true
+id: category_post_list_widget-04ffc248-2b5c-4c64-8bfd-361a8ff6a8af
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/category-post-list-widget/
+    google-query: inurl:"/wp-content/plugins/category-post-list-widget/"
+    shodan-query: http.html:"wp-content/plugins/category-post-list-widget/"
+  name: 'Category Post List Widget <= 2.0 - Cross-Site Request Forgery via get_cplw_settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/04ffc248-2b5c-4c64-8bfd-361a8ff6a8af?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,category-post-list-widget,medium,candidate

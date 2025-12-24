@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-settings
+  - dsl:
+    - compare_versions(version, '<= 3.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-settings/readme.txt'
+  redirects: true
+id: advanced_settings-4e7f72d8-beef-4304-8d05-4741fb6165b1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-settings/
+    google-query: inurl:"/wp-content/plugins/advanced-settings/"
+    shodan-query: http.html:"wp-content/plugins/advanced-settings/"
+  name: 'Advanced Settings <= 3.1.1 - Authenticated (Author+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4e7f72d8-beef-4304-8d05-4741fb6165b1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-settings,low,candidate

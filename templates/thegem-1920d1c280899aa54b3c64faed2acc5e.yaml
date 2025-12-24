@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - thegem
+  - dsl:
+    - compare_versions(version, '< 5.8.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/thegem/style.css'
+  redirects: true
+id: thegem-1920d1c280899aa54b3c64faed2acc5e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/thegem/
+    google-query: inurl:"/wp-content/themes/thegem/"
+    shodan-query: 'vuln:'
+  name: 'TheGem < 5.8.1.1 - Authenticated (Subscriber+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6134c76d-754b-4e54-aa4e-b791d9321b8e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,thegem,low

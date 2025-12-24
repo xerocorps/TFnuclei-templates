@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - GoogleAlertandtwitterplugin
+  - dsl:
+    - compare_versions(version, '3.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/GoogleAlertandtwitterplugin/readme.txt'
+  redirects: true
+id: googlealertandtwitterplugin-de34191d92ce4aaa972bd125848c090e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/GoogleAlertandtwitterplugin/
+    google-query: inurl:"/wp-content/plugins/GoogleAlertandtwitterplugin/"
+    shodan-query: 'vuln:'
+  name: 'Google Alert and Twitter Plugin <= 3.1.5 - Multiple Vulnerabilities
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/181e41d6-1599-4229-ace8-0bdb5735858f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,GoogleAlertandtwitterplugin,low

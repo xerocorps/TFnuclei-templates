@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lawpress
+  - dsl:
+    - compare_versions(version, '<= 1.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lawpress/readme.txt'
+  redirects: true
+id: lawpress-86ba4092-5d92-476c-b4e4-24429a077c60
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lawpress/
+    google-query: inurl:"/wp-content/plugins/lawpress/"
+    shodan-query: http.html:"wp-content/plugins/lawpress/"
+  name: "LawPress \u2013 Law Firm Website Management <= 1.4.5 - Reflected Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/86ba4092-5d92-476c-b4e4-24429a077c60?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,lawpress,medium,candidate

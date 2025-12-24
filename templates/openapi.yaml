@@ -1,0 +1,24 @@
+id: openapi
+info:
+  author: pdteam
+  name: OpenAPI
+  severity: info
+  tags: exposure,api
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - application/openapi+json
+  - condition: and
+    type: word
+    words:
+    - openapi
+    - paths
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/openapi.json'

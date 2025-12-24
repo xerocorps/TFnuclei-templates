@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rs-wp-books-showcase
+  - dsl:
+    - compare_versions(version, '<= 6.7.40')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rs-wp-books-showcase/readme.txt'
+  redirects: true
+id: rs_wp_books_showcase-ff13b72f-7175-42c1-a24a-2570dd57bb3e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rs-wp-books-showcase/
+    google-query: inurl:"/wp-content/plugins/rs-wp-books-showcase/"
+    shodan-query: http.html:"wp-content/plugins/rs-wp-books-showcase/"
+  name: 'RS WP Book Showcase <= 6.7.40 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ff13b72f-7175-42c1-a24a-2570dd57bb3e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,rs-wp-books-showcase,low,candidate

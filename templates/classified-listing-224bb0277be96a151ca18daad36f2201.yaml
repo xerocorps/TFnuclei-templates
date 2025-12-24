@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - classified-listing
+  - dsl:
+    - compare_versions(version, '<= 3.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/classified-listing/readme.txt'
+  redirects: true
+id: classified-listing-224bb0277be96a151ca18daad36f2201
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/classified-listing/
+    google-query: inurl:"/wp-content/plugins/classified-listing/"
+    shodan-query: 'vuln:'
+  name: 'Classified Listing <= 3.0.4 - Cross-Site Request Forgery to Account Takeover
+    via rtcl_update_user_account
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5439651e-5557-4b13-813a-4fc0ad876104?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,classified-listing,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - secure-html5-video-player
+  - dsl:
+    - compare_versions(version, '<= 3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/secure-html5-video-player/readme.txt'
+  redirects: true
+id: secure-html5-video-player-9922ae219f735a15938a043a15a3808e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/secure-html5-video-player/
+    google-query: inurl:"/wp-content/plugins/secure-html5-video-player/"
+    shodan-query: 'vuln:'
+  name: 'Secure HTML5 Video Player < 3.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4d2b8bc2-68c2-40aa-b8b0-a0584549f303?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,secure-html5-video-player,medium

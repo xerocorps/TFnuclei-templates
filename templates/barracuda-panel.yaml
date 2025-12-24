@@ -1,0 +1,23 @@
+id: barracuda-panel
+info:
+  author: dhiyaneshDK
+  classification:
+    cwe-id: CWE-200
+  description: The Barracuda SSL VPN is an integrated hardware and software solution
+    enabling secure, clientless remote access to internal network resources from any
+    web browser.
+  name: Barracuda SSL VPN Log In
+  severity: info
+  tags: barracuda,panel,vpn
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - Barracuda SSL VPN
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/default/showLogon.do'

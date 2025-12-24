@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-live-chat-support
+  - dsl:
+    - compare_versions(version, '<= 7.1.02')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-live-chat-support/readme.txt'
+  redirects: true
+id: wp-live-chat-support-8f30375b40082f6b34bd60ae55ed822c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-live-chat-support/
+    google-query: inurl:"/wp-content/plugins/wp-live-chat-support/"
+    shodan-query: 'vuln:'
+  name: 'WP Live Chat Support <= 7.1.02 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1ee1a4de-25be-46fa-907e-1856862ae52e?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-live-chat-support,high

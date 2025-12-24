@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stream
+  - dsl:
+    - compare_versions(version, '<= 3.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stream/readme.txt'
+  redirects: true
+id: stream-76d4bb676580c6a749ba1a66f811d318
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stream/
+    google-query: inurl:"/wp-content/plugins/stream/"
+    shodan-query: 'vuln:'
+  name: 'Stream <= 3.0.5 - Sensitive Data Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ecd68933-e808-4816-b9d2-7491194f2347?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stream,low

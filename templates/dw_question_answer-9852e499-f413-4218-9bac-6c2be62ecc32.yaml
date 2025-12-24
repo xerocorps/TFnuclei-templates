@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dw-question-answer
+  - dsl:
+    - compare_versions(version, '<= 1.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/dw-question-answer/readme.txt'
+  redirects: true
+id: dw_question_answer-9852e499-f413-4218-9bac-6c2be62ecc32
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/dw-question-answer/
+    google-query: inurl:"/wp-content/plugins/dw-question-answer/"
+    shodan-query: http.html:"wp-content/plugins/dw-question-answer/"
+  name: 'DW Question & Answer <= 1.5.8 - Cross-Site Request Forgery Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9852e499-f413-4218-9bac-6c2be62ecc32?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,dw-question-answer,medium,candidate

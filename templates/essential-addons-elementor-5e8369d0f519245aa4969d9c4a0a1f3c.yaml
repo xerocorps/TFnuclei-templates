@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - essential-addons-elementor
+  - dsl:
+    - compare_versions(version, '<= 5.8.14')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/essential-addons-elementor/readme.txt'
+  redirects: true
+id: essential-addons-elementor-5e8369d0f519245aa4969d9c4a0a1f3c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/essential-addons-elementor/
+    google-query: inurl:"/wp-content/plugins/essential-addons-elementor/"
+    shodan-query: 'vuln:'
+  name: "Essential Addons for Elementor PRO \u2013 Best Elementor Templates, Widgets,\
+    \ Kits & WooCommerce Builders <= 5.8.14 - Authenticated (Contributor+) Stored\
+    \ Cross-Site Scripting via Team Member Carousel Widget\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f7773b98-537f-4f4e-98d6-db61d2bffe8c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,essential-addons-elementor,low

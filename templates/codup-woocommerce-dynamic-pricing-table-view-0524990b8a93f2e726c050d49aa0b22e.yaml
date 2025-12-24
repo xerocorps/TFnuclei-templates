@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - codup-woocommerce-dynamic-pricing-table-view
+  - dsl:
+    - compare_versions(version, '<= 1.2.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/codup-woocommerce-dynamic-pricing-table-view/readme.txt'
+  redirects: true
+id: codup-woocommerce-dynamic-pricing-table-view-0524990b8a93f2e726c050d49aa0b22e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/codup-woocommerce-dynamic-pricing-table-view/
+    google-query: inurl:"/wp-content/plugins/codup-woocommerce-dynamic-pricing-table-view/"
+    shodan-query: 'vuln:'
+  name: 'Codup WooCommerce Dynamic Pricing Table View <= 1.2.1.4 - Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4ba416c5-47d6-4b05-8a31-af9137e04d2b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,codup-woocommerce-dynamic-pricing-table-view,high

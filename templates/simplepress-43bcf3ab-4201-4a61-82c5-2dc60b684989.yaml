@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simplepress
+  - dsl:
+    - compare_versions(version, '<= 6.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simplepress/readme.txt'
+  redirects: true
+id: simplepress-43bcf3ab-4201-4a61-82c5-2dc60b684989
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simplepress/
+    google-query: inurl:"/wp-content/plugins/simplepress/"
+    shodan-query: http.html:"wp-content/plugins/simplepress/"
+  name: 'Simple:Press <= 6.8 - Authenticated (Subscriber+) Path Traversal to Arbitrary
+    File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/43bcf3ab-4201-4a61-82c5-2dc60b684989?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simplepress,low,candidate

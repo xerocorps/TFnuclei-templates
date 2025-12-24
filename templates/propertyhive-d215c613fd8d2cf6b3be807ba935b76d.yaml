@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - propertyhive
+  - dsl:
+    - compare_versions(version, '<= 2.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/propertyhive/readme.txt'
+  redirects: true
+id: propertyhive-d215c613fd8d2cf6b3be807ba935b76d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/propertyhive/
+    google-query: inurl:"/wp-content/plugins/propertyhive/"
+    shodan-query: 'vuln:'
+  name: 'PropertyHive <= 2.0.8 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e10fc7e4-11ec-409b-9f16-b38adceaf622?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,propertyhive,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - polldaddy
+  - dsl:
+    - compare_versions(version, '<= 2.0.24')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/polldaddy/readme.txt'
+  redirects: true
+id: polldaddy-91caf87bf673c19f51d5ae087623632c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/polldaddy/
+    google-query: inurl:"/wp-content/plugins/polldaddy/"
+    shodan-query: 'vuln:'
+  name: 'Crowdsignal Dashboard <= 2.0.24 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7b0d5d92-1aba-4a0a-a989-a2d797112ade?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,polldaddy,high

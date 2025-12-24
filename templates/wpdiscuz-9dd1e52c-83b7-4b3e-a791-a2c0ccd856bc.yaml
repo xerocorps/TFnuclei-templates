@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdiscuz
+  - dsl:
+    - compare_versions(version, '< 7.6.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdiscuz/readme.txt'
+  redirects: true
+id: wpdiscuz-9dd1e52c-83b7-4b3e-a791-a2c0ccd856bc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: 'The wpDiscuz plugin for WordPress is vulnerable to SQL Injection via
+    the ''visibleCommentIds'' parameter in versions up to, and including, 7.6.5 due
+    to insufficient escaping on the user supplied parameter and lack of sufficient
+    preparation on the existing SQL query.  This makes it possible for unauthenticated
+    attackers to append additional SQL queries into already existing queries that
+    can be used to extract sensitive information from the database. This requires
+    the ''Live Update'' functionality to be enabled for subscriber+ exploitation,
+    and the ''Enable Live Update for Guests'' setting enabled for unauthenticated
+    exploitation.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wpdiscuz/
+    google-query: inurl:"/wp-content/plugins/wpdiscuz/"
+    shodan-query: http.html:"wp-content/plugins/wpdiscuz/"
+  name: 'wpDiscuz <= 7.6.5 - Unauthenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9dd1e52c-83b7-4b3e-a791-a2c0ccd856bc?source=api-prod
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wpdiscuz,critical,production

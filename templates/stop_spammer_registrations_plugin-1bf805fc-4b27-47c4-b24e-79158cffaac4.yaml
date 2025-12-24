@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stop-spammer-registrations-plugin
+  - dsl:
+    - compare_versions(version, '< 2021.18')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stop-spammer-registrations-plugin/readme.txt'
+  redirects: true
+id: stop_spammer_registrations_plugin-1bf805fc-4b27-47c4-b24e-79158cffaac4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stop-spammer-registrations-plugin/
+    google-query: inurl:"/wp-content/plugins/stop-spammer-registrations-plugin/"
+    shodan-query: http.html:"wp-content/plugins/stop-spammer-registrations-plugin/"
+  name: 'Stop Spammers Security <= 2021.17 - Authenticated (Admin+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1bf805fc-4b27-47c4-b24e-79158cffaac4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stop-spammer-registrations-plugin,low,candidate

@@ -1,0 +1,68 @@
+headless:
+- extractors:
+  - kval:
+    - alerts
+    part: alerts
+    type: kval
+  matchers:
+  - part: alerts
+    type: word
+    words:
+    - __proto__
+  steps:
+  - action: setheader
+    args:
+      key: Content-Security-Policy
+      part: response
+      value: 'default-src * ''unsafe-inline'' ''unsafe-eval'' data: blob:;'
+  - action: setheader
+    args:
+      key: X-Frame-Options
+      part: response
+      value: foo
+  - action: setheader
+    args:
+      key: If-None-Match
+      part: response
+      value: foo
+  - action: script
+    args:
+      code: "// Hooking code adapted from https://github.com/msrkp/PPScan/blob/main/scripts/content_script.js\n\
+        (function() {window.alerts = [];\n\nfunction logger(found) {\n\twindow.alerts.push(found);\n\
+        }\n\nfunction check() {\n    loc = location.href;\n\n    if (loc.indexOf(\"\
+        e32a5ec9c99\") >= 0 && loc.search(\"a0def12bce\") == -1) {\n        setTimeout(function()\
+        \ {\n            if (Object.prototype.e32a5ec9c99 == \"ddcb362f1d60\") {\n\
+        \                logger(location.href);\n            }\n            var url\
+        \ = new URL(location.origin + location.pathname);\n            url.hash =\
+        \ \"__proto__[a0def12bce]=ddcb362f1d60&__proto__.a0def12bce=ddcb362f1d60&dummy\"\
+        ;\n            location = url.href;\n        }, 5 * 1000);\n    } else if\
+        \ (loc.search(\"a0def12bce\") != -1) {\n        setTimeout(function() {\n\
+        \            if (Object.prototype.a0def12bce == \"ddcb362f1d60\") {\n    \
+        \            logger(location.href);\n            }\n            window.close();\n\
+        \        }, 5 * 1000);\n    } else {\n        var url = new URL(loc);\n  \
+        \      url.searchParams.append(\"__proto__[e32a5ec9c99]\", \"ddcb362f1d60\"\
+        );\n        url.searchParams.append(\"__proto__.e32a5ec9c99\", \"ddcb362f1d60\"\
+        );\n        location = url.href;\n    }\n}\n\nwindow.onload = function() {\n\
+        \    if (Object.prototype.e32a5ec9c99 == \"ddcb362f1d60\" ||  Object.prototype.a0def12bce\
+        \ == \"ddcb362f1d60\") {\n        logger(location.href);\n    } else {\n \
+        \       check();\n    }\n};\n\nvar timerID = setInterval(function() {\n  \
+        \  if (Object.prototype.e32a5ec9c99 == \"ddcb362f1d60\" || Object.prototype.a0def12bce\
+        \ == \"ddcb362f1d60\") {\n        logger(location.href);\n        clearInterval(timerID);\n\
+        \    }\n}, 5 * 1000)})();\n"
+      hook: true
+  - action: navigate
+    args:
+      url: '{{BaseURL}}'
+  - action: waitload
+  - action: script
+    args:
+      code: window.alerts
+    name: alerts
+id: prototype-pollution-check
+info:
+  author: pdteam
+  name: Prototype Pollution Check
+  reference:
+  - https://github.com/msrkp/PPScan
+  severity: medium
+  tags: headless

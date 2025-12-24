@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tracking-code-manager
+  - dsl:
+    - compare_versions(version, '<= 2.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tracking-code-manager/readme.txt'
+  redirects: true
+id: tracking_code_manager-443d2e80-31db-40ac-9c35-88eec841ebba
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tracking-code-manager/
+    google-query: inurl:"/wp-content/plugins/tracking-code-manager/"
+    shodan-query: http.html:"wp-content/plugins/tracking-code-manager/"
+  name: 'Tracking Code Manager <= 2.3.0 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/443d2e80-31db-40ac-9c35-88eec841ebba?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tracking-code-manager,low,candidate

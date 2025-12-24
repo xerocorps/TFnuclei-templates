@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - eshop-magic
+  - dsl:
+    - compare_versions(version, '< 0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/eshop-magic/readme.txt'
+  redirects: true
+id: eshop-magic-3a46dbf561c8f41200269fa9f209e93b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/eshop-magic/
+    google-query: inurl:"/wp-content/plugins/eshop-magic/"
+    shodan-query: 'vuln:'
+  name: 'Eshop Magic < 0.2 - Arbitrary File Read
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a2363a40-b627-44da-af8e-98821685c3ea?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,eshop-magic,low

@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zingiri-tickets
+  - dsl:
+    - compare_versions(version, '<=  3.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zingiri-tickets/readme.txt'
+  redirects: true
+id: zingiri-tickets-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Zingiri Tickets plugin for WordPress is vulnerable to Sensitive
+    Data Exposure via the 'log.txt' file. This can allow unauthenticated attackers
+    to extract sensitive data including Admin username and/or password hashes.
+  metadata:
+    fofa-query: wp-content/plugins/zingiri-tickets/
+    google-query: inurl:"/wp-content/plugins/zingiri-tickets/"
+    shodan-query: 'vuln:'
+  name: Zingiri Tickets <= 3.0.3 - Sensitive Information Disclosure
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,zingiri-tickets,low

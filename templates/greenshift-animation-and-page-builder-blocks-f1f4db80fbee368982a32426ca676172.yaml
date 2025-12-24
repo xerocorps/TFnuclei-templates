@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - greenshift-animation-and-page-builder-blocks
+  - dsl:
+    - compare_versions(version, '<= 4.9.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/greenshift-animation-and-page-builder-blocks/readme.txt'
+  redirects: true
+id: greenshift-animation-and-page-builder-blocks-f1f4db80fbee368982a32426ca676172
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/greenshift-animation-and-page-builder-blocks/
+    google-query: inurl:"/wp-content/plugins/greenshift-animation-and-page-builder-blocks/"
+    shodan-query: 'vuln:'
+  name: "Greenshift \u2013 animation and page builder blocks <= 4.9.9 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting via Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/abbdf198-b6f3-41dd-ada1-b14fc9946142?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,greenshift-animation-and-page-builder-blocks,low

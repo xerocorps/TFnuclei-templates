@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - multi-plugin-installer
+  - dsl:
+    - compare_versions(version, '< 1.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/multi-plugin-installer/readme.txt'
+  redirects: true
+id: multi-plugin-installer-9c68265a8945b18cae964ee9b5d06d79
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/multi-plugin-installer/
+    google-query: inurl:"/wp-content/plugins/multi-plugin-installer/"
+    shodan-query: 'vuln:'
+  name: 'Multi Plugin Installer < 1.2.0 - Arbitrary File Read
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2ba4a8bb-c67c-42c5-8c4e-229756babc5f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,multi-plugin-installer,low

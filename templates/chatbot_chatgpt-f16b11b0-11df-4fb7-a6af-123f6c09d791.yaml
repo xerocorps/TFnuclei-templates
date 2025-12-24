@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - chatbot-chatgpt
+  - dsl:
+    - compare_versions(version, '<= 2.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/chatbot-chatgpt/readme.txt'
+  redirects: true
+id: chatbot_chatgpt-f16b11b0-11df-4fb7-a6af-123f6c09d791
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/chatbot-chatgpt/
+    google-query: inurl:"/wp-content/plugins/chatbot-chatgpt/"
+    shodan-query: http.html:"wp-content/plugins/chatbot-chatgpt/"
+  name: 'Kognetiks Chatbot for WordPress <= 2.1.8 - Cross-Site Request Forgery to
+    Authenticated (Subscriber+) Assistant Modification
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f16b11b0-11df-4fb7-a6af-123f6c09d791?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,chatbot-chatgpt,low,candidate

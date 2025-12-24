@@ -1,0 +1,32 @@
+name: "\U0001F4DD CVE JSON Metadata"
+true:
+  push:
+    branches:
+    - main
+    paths:
+    - '**/cves/**'
+  workflow_dispatch: null
+jobs:
+  cve2json:
+    if: github.repository == 'projectdiscovery/nuclei-templates'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: projectdiscovery/actions/setup/go@v1
+      with:
+        go-version: stable
+    - run: go run main.go $GITHUB_WORKSPACE/http/cves/,$GITHUB_WORKSPACE/network/cves/,$GITHUB_WORKSPACE/javascript/cves/
+        $GITHUB_WORKSPACE/cves.json
+      working-directory: .github/scripts/yaml2json
+    - run: md5sum cves.json | cut -d' ' -f1 > cves.json-checksum.txt
+    - uses: projectdiscovery/actions/setup/git@v1
+    - uses: projectdiscovery/actions/commit@v1
+      with:
+        files: cves.json*
+        message: "chore: generate CVEs metadata \U0001F916"
+    - name: Push changes
+      run: 'git pull origin $GITHUB_REF --rebase
+
+        git push origin $GITHUB_REF
+
+        '

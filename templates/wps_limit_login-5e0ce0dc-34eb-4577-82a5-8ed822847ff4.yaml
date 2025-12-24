@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wps-limit-login
+  - dsl:
+    - compare_versions(version, '< 1.4.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wps-limit-login/readme.txt'
+  redirects: true
+id: wps_limit_login-5e0ce0dc-34eb-4577-82a5-8ed822847ff4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: 'The WPS Limit Login plugin for WordPress is vulnerable to authentication
+    bypass in versions up to, and including, 1.4.6. This is due to flawed implementation
+    of the get_address() method. This makes it possible for unauthenticated attackers  to
+    run automated scripts to brute force passwords by changing the supplied IP Address
+    in the HTTP header of the request. .
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/wps-limit-login/
+    google-query: inurl:"/wp-content/plugins/wps-limit-login/"
+    shodan-query: http.html:"wp-content/plugins/wps-limit-login/"
+  name: 'WPS Limit Login < 1.4.6.1 - Authorization Bypass via IP Spoofing
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5e0ce0dc-34eb-4577-82a5-8ed822847ff4?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,wps-limit-login,high,production

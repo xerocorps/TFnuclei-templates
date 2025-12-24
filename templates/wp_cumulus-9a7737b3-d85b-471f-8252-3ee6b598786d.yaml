@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-cumulus
+  - dsl:
+    - compare_versions(version, '<= 1.22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-cumulus/readme.txt'
+  redirects: true
+id: wp_cumulus-9a7737b3-d85b-471f-8252-3ee6b598786d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-cumulus/
+    google-query: inurl:"/wp-content/plugins/wp-cumulus/"
+    shodan-query: http.html:"wp-content/plugins/wp-cumulus/"
+  name: 'WP-Cumulus <= 1.22 - Cross-Site Scripting via tagcloud
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9a7737b3-d85b-471f-8252-3ee6b598786d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-cumulus,high,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordfence
+  - dsl:
+    - compare_versions(version, '< 5.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordfence/readme.txt'
+  redirects: true
+id: wordfence-99c06c1767af88062f6ec55e0dce921b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N
+    cvss-score: 6.5
+  description: The Wordfence Plugin is vulnerable to multiple protection mechanism
+    bypasses in version up to, and including, 5.2.3. These allow unauthenticated attackers
+    to bypass exploit protection and throttling restrictions.
+  metadata:
+    fofa-query: wp-content/plugins/wordfence/
+    google-query: inurl:"/wp-content/plugins/wordfence/"
+    shodan-query: 'vuln:'
+  name: Wordfence <= 5.2.3 - Multiple Protection Mechanism Bypasses
+  reference:
+  - https://vexatioustendencies.com/wordfence-v5-2-3-2-stored-xss-insufficient-logging-throttle-bypass-exploit-detection-bypass/
+  - https://www.wordfence.com/wp-content/uploads/2017/11/changelog_7.5.9.txt
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wordfence,medium

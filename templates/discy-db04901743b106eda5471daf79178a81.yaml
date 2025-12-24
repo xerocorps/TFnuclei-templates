@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - discy
+  - dsl:
+    - compare_versions(version, '<= 5.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/discy/style.css'
+  redirects: true
+id: discy-db04901743b106eda5471daf79178a81
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/discy/
+    google-query: inurl:"/wp-content/themes/discy/"
+    shodan-query: 'vuln:'
+  name: 'WPQA - Builder forms Addon For WordPress (<= 5.9.2),  Himer (<= 1.9.3) and
+    Discy (<= 5.5.3) - Authenticated (Subscriber+) Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/085da0fa-9487-4938-94ea-c1593be7c023?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,discy,low

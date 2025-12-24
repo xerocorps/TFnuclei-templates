@@ -1,0 +1,28 @@
+id: http-etcd-unauthenticated-api-data-leak
+info:
+  author: dhiyaneshDk
+  name: etcd Unauthenticated HTTP API Leak
+  reference: https://hackerone.com/reports/1088429
+  severity: high
+  tags: unauth
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"roles"'
+    - '"permissions"'
+    - '"role"'
+    - '"kv"'
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/plain
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/v2/auth/roles'

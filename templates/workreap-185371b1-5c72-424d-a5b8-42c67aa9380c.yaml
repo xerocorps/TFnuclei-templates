@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - workreap
+  - dsl:
+    - compare_versions(version, '<= 3.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/workreap/readme.txt'
+  redirects: true
+id: workreap-185371b1-5c72-424d-a5b8-42c67aa9380c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/workreap/
+    google-query: inurl:"/wp-content/plugins/workreap/"
+    shodan-query: http.html:"wp-content/plugins/workreap/"
+  name: 'Workreap <= 3.3.2 - Authenticated (Subscriber+) Arbitrary File Upload via
+    ''workreap_temp_upload_to_media''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/185371b1-5c72-424d-a5b8-42c67aa9380c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,workreap,low,candidate

@@ -1,0 +1,21 @@
+id: wondercms-detect
+info:
+  author: pikpikcu
+  name: WonderCMS Detect
+  severity: info
+  tags: tech,wondercms
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Powered by WonderCMS
+    - https://www.wondercms.com
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-plugin
+  - dsl:
+    - compare_versions(version, '<= 4.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-plugin/readme.txt'
+  redirects: true
+id: contact_form_plugin-32506176-6e74-4889-9cbd-111a57980b0c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-plugin/
+    google-query: inurl:"/wp-content/plugins/contact-form-plugin/"
+    shodan-query: http.html:"wp-content/plugins/contact-form-plugin/"
+  name: 'Contact Form by BestWebSoft <= 4.3.5 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/32506176-6e74-4889-9cbd-111a57980b0c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,contact-form-plugin,high,candidate

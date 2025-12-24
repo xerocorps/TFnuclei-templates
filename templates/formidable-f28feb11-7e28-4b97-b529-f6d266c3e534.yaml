@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - formidable
+  - dsl:
+    - compare_versions(version, '<= 5.5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/formidable/readme.txt'
+  redirects: true
+id: formidable-f28feb11-7e28-4b97-b529-f6d266c3e534
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L
+    cvss-score: 4.7
+  description: 'The Formidable Form Builder plugin for WordPress is vulnerable to
+    Server-Side Request Forgery in versions up to, and including, 5.5.4 due to insufficient
+    URL restrictions on the ''plugin'' parameter passed to the the install_addon function.
+    This makes it possible for authenticated users, with administrative privileges,
+    to make web requests to arbitrary locations originating from the web application
+    and can be used to query and modify information from internal services.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/formidable/
+    google-query: inurl:"/wp-content/plugins/formidable/"
+    shodan-query: http.html:"wp-content/plugins/formidable/"
+  name: 'Formidable Forms <= 5.5.4 - Authenticated (Admin+) Server-Side Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f28feb11-7e28-4b97-b529-f6d266c3e534?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,formidable,low,production

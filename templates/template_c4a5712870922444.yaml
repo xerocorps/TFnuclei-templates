@@ -1,0 +1,28 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - web
+    - security
+    - kibana
+    - exposed
+  description: Template to detect exposed Kibana installations
+  id: exposed-kibana
+  name: Exposed Kibana - Detect
+  severity: Medium
+matcher-condition: or
+matchers:
+- description: Kibana banner found in response body
+  pattern: Kibana
+  type: body
+requests:
+  condition: or
+  description: Attempt to access Kibana URL
+  method: GET
+  path:
+  - /kibana
+  - /kibana/login
+response:
+- status:
+  - 200

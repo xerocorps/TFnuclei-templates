@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - push-notification-for-post-and-buddypress
+  - dsl:
+    - compare_versions(version, '<= 2.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/push-notification-for-post-and-buddypress/readme.txt'
+  redirects: true
+id: push_notification_for_post_and_buddypress-e39c4730-f5b3-4554-9e4f-bbbbcb41cf61
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/push-notification-for-post-and-buddypress/
+    google-query: inurl:"/wp-content/plugins/push-notification-for-post-and-buddypress/"
+    shodan-query: http.html:"wp-content/plugins/push-notification-for-post-and-buddypress/"
+  name: 'Push Notification for Post and BuddyPress <= 2.11 - Missing Authorization
+    to Unauthenticated Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e39c4730-f5b3-4554-9e4f-bbbbcb41cf61?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,push-notification-for-post-and-buddypress,high,candidate

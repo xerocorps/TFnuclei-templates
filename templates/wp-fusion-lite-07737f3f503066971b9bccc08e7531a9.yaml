@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-fusion-lite
+  - dsl:
+    - compare_versions(version, '<= 3.42.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-fusion-lite/readme.txt'
+  redirects: true
+id: wp-fusion-lite-07737f3f503066971b9bccc08e7531a9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-fusion-lite/
+    google-query: inurl:"/wp-content/plugins/wp-fusion-lite/"
+    shodan-query: 'vuln:'
+  name: "WP Fusion Lite \u2013 Marketing Automation and CRM Integration for WordPress\
+    \ <= 3.42.10 - Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1b245791-6aac-4ee3-9278-5b7c01f13263?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-fusion-lite,low

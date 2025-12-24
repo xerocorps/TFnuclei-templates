@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wa-sticky-button
+  - dsl:
+    - compare_versions(version, '<= 1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wa-sticky-button/readme.txt'
+  redirects: true
+id: wa_sticky_button-a39e9b54-6beb-4dbd-a4cf-ba05e73a58a0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wa-sticky-button/
+    google-query: inurl:"/wp-content/plugins/wa-sticky-button/"
+    shodan-query: http.html:"wp-content/plugins/wa-sticky-button/"
+  name: 'WP Sticky Button <= 1.4 - Missing Authorization to Arbitrary Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a39e9b54-6beb-4dbd-a4cf-ba05e73a58a0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wa-sticky-button,high,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - notificationx
+  - dsl:
+    - compare_versions(version, '< 1.8.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/notificationx/readme.txt'
+  redirects: true
+id: notificationx-1c51279651c2c00909ff58e814023d8b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/notificationx/
+    google-query: inurl:"/wp-content/plugins/notificationx/"
+    shodan-query: 'vuln:'
+  name: 'NotificationX <= 1.8.2 - Cross-Site Request Forgery Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3ebe7680-a76d-4178-a729-f0d79d861912?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,notificationx,medium

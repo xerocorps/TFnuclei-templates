@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ajax-search-lite
+  - dsl:
+    - compare_versions(version, '<= 4.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ajax-search-lite/readme.txt'
+  redirects: true
+id: ajax-search-lite-ef3e4f5af3cb5b879cea1e0aae28ebcc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ajax-search-lite/
+    google-query: inurl:"/wp-content/plugins/ajax-search-lite/"
+    shodan-query: 'vuln:'
+  name: 'Ajax Search Lite <= 4.11 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f5e6cb50-8262-406b-b01e-37d62a4bd394?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ajax-search-lite,medium

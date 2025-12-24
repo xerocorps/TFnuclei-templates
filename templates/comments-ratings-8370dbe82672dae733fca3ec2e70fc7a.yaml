@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - comments-ratings
+  - dsl:
+    - compare_versions(version, '<= 1.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/comments-ratings/readme.txt'
+  redirects: true
+id: comments-ratings-8370dbe82672dae733fca3ec2e70fc7a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/comments-ratings/
+    google-query: inurl:"/wp-content/plugins/comments-ratings/"
+    shodan-query: 'vuln:'
+  name: 'Comments Ratings <= 1.1.6 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2bbf9526-1a82-496e-b762-6fa114ba8d46?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,comments-ratings,medium

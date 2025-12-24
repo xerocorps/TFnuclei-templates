@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-multivendor-membership
+  - dsl:
+    - compare_versions(version, '<= 2.10.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-multivendor-membership/readme.txt'
+  redirects: true
+id: wc-multivendor-membership-d5cf6deab406e3a313cea3859f0cbcee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wc-multivendor-membership/
+    google-query: inurl:"/wp-content/plugins/wc-multivendor-membership/"
+    shodan-query: 'vuln:'
+  name: 'WCFM Membership <= 2.10.0 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9c6577a2-6722-4d3b-958d-1143dca414cd?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wc-multivendor-membership,high

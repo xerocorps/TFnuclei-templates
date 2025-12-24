@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-menu-bar-cart
+  - dsl:
+    - compare_versions(version, '<= 2.11.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-menu-bar-cart/readme.txt'
+  redirects: true
+id: woocommerce-menu-bar-cart-3cbb04316e1c2c49d8ed30e1387b67a0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-menu-bar-cart/
+    google-query: inurl:"/wp-content/plugins/woocommerce-menu-bar-cart/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Menu Cart <= 2.11.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b0b223e8-7659-4220-acb6-70dfd4c101f4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-menu-bar-cart,medium

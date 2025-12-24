@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gmace
+  - dsl:
+    - compare_versions(version, '<= 1.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gmace/readme.txt'
+  redirects: true
+id: gmace-b3523535-6938-4922-8126-8386861ca512
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gmace/
+    google-query: inurl:"/wp-content/plugins/gmace/"
+    shodan-query: http.html:"wp-content/plugins/gmace/"
+  name: 'GMAce <= 1.5.2 - Authenticated(Admin+) Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b3523535-6938-4922-8126-8386861ca512?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gmace,low,candidate

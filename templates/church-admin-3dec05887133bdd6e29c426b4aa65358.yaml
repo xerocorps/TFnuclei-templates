@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - church-admin
+  - dsl:
+    - compare_versions(version, '<= 3.7.29')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/church-admin/readme.txt'
+  redirects: true
+id: church-admin-3dec05887133bdd6e29c426b4aa65358
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/church-admin/
+    google-query: inurl:"/wp-content/plugins/church-admin/"
+    shodan-query: 'vuln:'
+  name: 'Church Admin <= 3.7.29 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e85efdc1-cffc-411a-a2f7-6fa1132e2910?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,church-admin,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gd-rating-system
+  - dsl:
+    - compare_versions(version, '< 2.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gd-rating-system/readme.txt'
+  redirects: true
+id: gd-rating-system-7a54894c91f9ae7e23e3a987f60ed76e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gd-rating-system/
+    google-query: inurl:"/wp-content/plugins/gd-rating-system/"
+    shodan-query: 'vuln:'
+  name: 'GD Rating System <= 2.3 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/44210443-26f8-4626-aee2-4a19d87fdd43?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gd-rating-system,low

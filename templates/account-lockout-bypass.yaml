@@ -1,0 +1,30 @@
+id: account-lockout-bypass
+info:
+  author: qaisar
+  description: 'Detects potential account lockout bypass issues during authentication.
+
+    '
+  name: Account Lockout Bypass Test
+  severity: medium
+requests:
+- data:
+  - key: username
+    payloads:
+    - admin
+    - testuser
+    type: dynamic
+  - key: password
+    payloads:
+    - password123
+    - pass123
+    type: dynamic
+  headers:
+    content-type:
+    - application/x-www-form-urlencoded
+  method: POST
+  path:
+  - /login
+  - /signin
+  - /auth
+tags:
+- web

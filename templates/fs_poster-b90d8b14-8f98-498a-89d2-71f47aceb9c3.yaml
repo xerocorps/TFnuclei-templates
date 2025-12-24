@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fs-poster
+  - dsl:
+    - compare_versions(version, '<= 6.5.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fs-poster/readme.txt'
+  redirects: true
+id: fs_poster-b90d8b14-8f98-498a-89d2-71f47aceb9c3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fs-poster/
+    google-query: inurl:"/wp-content/plugins/fs-poster/"
+    shodan-query: http.html:"wp-content/plugins/fs-poster/"
+  name: 'FS Poster <= 6.5.8 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b90d8b14-8f98-498a-89d2-71f47aceb9c3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,fs-poster,medium,candidate

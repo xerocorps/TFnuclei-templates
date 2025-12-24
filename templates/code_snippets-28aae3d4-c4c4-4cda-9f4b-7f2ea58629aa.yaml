@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - code-snippets
+  - dsl:
+    - compare_versions(version, '< 3.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/code-snippets/readme.txt'
+  redirects: true
+id: code_snippets-28aae3d4-c4c4-4cda-9f4b-7f2ea58629aa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/code-snippets/
+    google-query: inurl:"/wp-content/plugins/code-snippets/"
+    shodan-query: http.html:"wp-content/plugins/code-snippets/"
+  name: 'Code Snippets <= 3.5.0 - Cross-Site Request Forgery via load
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/28aae3d4-c4c4-4cda-9f4b-7f2ea58629aa?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,code-snippets,medium,candidate

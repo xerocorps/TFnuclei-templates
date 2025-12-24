@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - podlove-podcasting-plugin-for-wordpress
+  - dsl:
+    - compare_versions(version, '<= 3.8.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/podlove-podcasting-plugin-for-wordpress/readme.txt'
+  redirects: true
+id: podlove-podcasting-plugin-for-wordpress-d9d295f295dd2ea7d4bbc074e1b79f41
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/podlove-podcasting-plugin-for-wordpress/
+    google-query: inurl:"/wp-content/plugins/podlove-podcasting-plugin-for-wordpress/"
+    shodan-query: 'vuln:'
+  name: 'Podlove Podcast Publisher <= 3.8.3 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/17f2b07d-82de-4e25-9b17-ef4a1132e6c0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,podlove-podcasting-plugin-for-wordpress,medium

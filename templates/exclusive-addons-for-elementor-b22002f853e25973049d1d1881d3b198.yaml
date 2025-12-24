@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - exclusive-addons-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 2.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/exclusive-addons-for-elementor/readme.txt'
+  redirects: true
+id: exclusive-addons-for-elementor-b22002f853e25973049d1d1881d3b198
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/exclusive-addons-for-elementor/
+    google-query: inurl:"/wp-content/plugins/exclusive-addons-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Exclusive Addons for Elementor <= 2.6.9 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via Countdown Timer Widget
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f40956e0-6e5c-4965-84f8-2420ad14a299?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,exclusive-addons-for-elementor,low

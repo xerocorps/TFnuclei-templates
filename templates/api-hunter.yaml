@@ -1,0 +1,22 @@
+id: api-hunter
+info:
+  author: daffainfo
+  name: Hunter API Test
+  reference:
+  - https://hunter.io/api-documentation/v2
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Development/Hunter.md
+  severity: info
+  tags: token-spray,hunter
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"domain"'
+    - '"disposable"'
+    - '"webmail"'
+  method: GET
+  path:
+  - https://api.hunter.io/v2/domain-search?domain=stripe.com&api_key={{token}}
+self-contained: true

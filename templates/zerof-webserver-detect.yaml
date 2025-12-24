@@ -1,0 +1,19 @@
+id: zerof-webserver-detect
+info:
+  author: princechaddha
+  name: ZEROF Web Server Detect
+  severity: info
+  tags: tech,zerof
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>ZEROF Web Server</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - dsl:
+    - '!contains(header, "Content-Disposition: attachment; filename=")'
+    name: '"Content-Disposition: attachment; filename=" header does not exist.'
+    type: dsl
+  raw:
+  - 'GET {{BaseURL}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Connection: close
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/116.0.0.0 Safari/537.36
+
+    Accept: */*
+
+    '
+id: ASVS-4-0-3-V14-4-2
+info:
+  author: Hamed Salimian
+  classification:
+    cwe-id: CWE-116
+  description: 'Verify that all API responses contain a Content-Disposition: attachment;
+    filename="api.json" header (or other appropriate filename for the content type).
+
+    '
+  name: ASVS 14.4.2 Check
+  reference:
+  - https://github.com/OWASP/ASVS/issues/1009
+  - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition
+  severity: low
+  tags: asvs,14.4.2

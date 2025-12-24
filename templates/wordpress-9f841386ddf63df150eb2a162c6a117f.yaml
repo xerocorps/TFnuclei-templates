@@ -1,0 +1,61 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_generator
+    regex:
+    - (?m)https:\/\/wordpress.org\/\?v=([0-9.]+)
+    type: regex
+  - group: 1
+    name: version_by_js
+    regex:
+    - wp-emoji-release\.min\.js\?ver=((\d+\.?)+)\b
+    type: regex
+  - group: 1
+    name: version_by_css
+    regex:
+    - install\.min\.css\?ver=((\d+\.?)+)\b
+    type: regex
+  matchers:
+  - dsl:
+    - compare_versions(version_by_generator, '>= 6.0', '<= 6.0.2')
+    - compare_versions(version_by_js, '>= 6.0', '<= 6.0.2')
+    - compare_versions(version_by_css, '>= 6.0', '<= 6.0.2')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/wp-admin/install.php'
+  - '{{BaseURL}}/feed/'
+  - '{{BaseURL}}/?feed=rss2'
+  redirects: true
+  stop-at-first-match: true
+id: wordpress-9f841386ddf63df150eb2a162c6a117f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N
+    cvss-score: 5.4
+  description: 'WordPress Core is vulnerable to open redirect in versions up to 6.0.3.
+    This is due to insufficient validation of the ''Referer'' header and _wp_http_referer
+    request parameter when a user accesses a link with an expired or invalid nonce.
+    This would make it possible for an attacker to redirect a victim to a potentially
+    malicious site, granted they could trick the victim into performing an action
+    such as clicking on a link.
+
+    '
+  metadata:
+    shodan-query: 'vuln:'
+  name: 'WordPress Core < 6.0.3 - Open Redirect
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/19c88a9a-1f97-4a46-b759-9ca030d577e7?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-core,medium

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-pdf-invoices-packing-slips
+  - dsl:
+    - compare_versions(version, '<= 4.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/readme.txt'
+  redirects: true
+id: woocommerce_pdf_invoices_packing_slips-d2053171-a213-43bf-bd15-2f42a178c3a8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-pdf-invoices-packing-slips/
+    google-query: inurl:"/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-pdf-invoices-packing-slips/"
+  name: 'WooCommerce PDF Invoices & Packing Slips <= 4.9.1 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d2053171-a213-43bf-bd15-2f42a178c3a8?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocommerce-pdf-invoices-packing-slips,high,candidate

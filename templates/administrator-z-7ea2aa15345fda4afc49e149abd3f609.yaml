@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - administrator-z
+  - dsl:
+    - compare_versions(version, '<= 2022.9.28')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/administrator-z/readme.txt'
+  redirects: true
+id: administrator-z-7ea2aa15345fda4afc49e149abd3f609
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/administrator-z/
+    google-query: inurl:"/wp-content/plugins/administrator-z/"
+    shodan-query: 'vuln:'
+  name: 'Administrator Z <= 2022.9.28 - Unauthorized File Upload via ACF
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2061a442-eccd-4a57-a5c5-a432fcea8394?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,administrator-z,low

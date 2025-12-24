@@ -1,0 +1,19 @@
+id: octoprint-panel
+info:
+  author: affix
+  name: OctoPrint Login
+  severity: info
+  tags: octoprint,panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>OctoPrint Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/login/'

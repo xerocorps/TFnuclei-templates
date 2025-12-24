@@ -1,0 +1,23 @@
+id: api-vercel
+info:
+  author: dwisiswant0
+  name: Vercel API Test
+  reference:
+  - https://vercel.com/docs/rest-api
+  severity: info
+  tags: token-spray,vercel
+requests:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"user":'
+    - '"username":'
+    - '"email":'
+  method: GET
+  path:
+  - https://api.vercel.com/www/user
+self-contained: true

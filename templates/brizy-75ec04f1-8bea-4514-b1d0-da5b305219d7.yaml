@@ -1,0 +1,43 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - brizy
+  - dsl:
+    - compare_versions(version, '<= 2.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/brizy/readme.txt'
+  redirects: true
+id: brizy-75ec04f1-8bea-4514-b1d0-da5b305219d7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/brizy/
+    google-query: inurl:"/wp-content/plugins/brizy/"
+    shodan-query: http.html:"wp-content/plugins/brizy/"
+  name: "Brizy \u2013 Page Builder <= 2.5.1 - Cross-Site Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/75ec04f1-8bea-4514-b1d0-da5b305219d7?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,brizy,medium,candidate

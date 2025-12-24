@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - notificationx
+  - dsl:
+    - compare_versions(version, '<= 2.9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/notificationx/readme.txt'
+  redirects: true
+id: notificationx-338edb1d-101a-4b6e-ac25-b59bd3e17f8b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/notificationx/
+    google-query: inurl:"/wp-content/plugins/notificationx/"
+    shodan-query: http.html:"wp-content/plugins/notificationx/"
+  name: "NotificationX \u2013 Live Sales Notification, WooCommerce Sales Popup, FOMO,\
+    \ Social Proof, Announcement Banner & Floating Notification Top Bar <= 2.9.3 -\
+    \ Authenticated (Admin+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/338edb1d-101a-4b6e-ac25-b59bd3e17f8b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,notificationx,low,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - order-your-posts-manually
+  - dsl:
+    - compare_versions(version, '<= 2.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/order-your-posts-manually/readme.txt'
+  redirects: true
+id: order-your-posts-manually-aa33553a98c00b66e1987c53e508726d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/order-your-posts-manually/
+    google-query: inurl:"/wp-content/plugins/order-your-posts-manually/"
+    shodan-query: 'vuln:'
+  name: 'Order Your Posts Manually <= 2.2.5 - Authenticated (Administrator+) SQL Injection
+    via ''sortdata''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66da0ad7-18a3-42b9-b59a-5927c6bc836b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,order-your-posts-manually,low

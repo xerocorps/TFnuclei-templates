@@ -1,0 +1,19 @@
+id: api-slack
+info:
+  author: zzeitlin
+  name: Slack API Test
+  reference: https://api.slack.com/methods/auth.test
+  severity: info
+  tags: token-spray,slack
+requests:
+- headers:
+    Authorization: Bearer {{token}}
+  matchers:
+  - negative: true
+    part: body
+    type: word
+    words:
+    - error
+  method: POST
+  path:
+  - https://slack.com/api/auth.test

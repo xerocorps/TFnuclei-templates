@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - instagram-slider-widget
+  - dsl:
+    - compare_versions(version, '<= 2.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/instagram-slider-widget/readme.txt'
+  redirects: true
+id: instagram_slider_widget-96b6ac2c-a732-4d9a-9060-922ca482d1b2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/instagram-slider-widget/
+    google-query: inurl:"/wp-content/plugins/instagram-slider-widget/"
+    shodan-query: http.html:"wp-content/plugins/instagram-slider-widget/"
+  name: 'Social Slider Feed <= 2.2.8 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/96b6ac2c-a732-4d9a-9060-922ca482d1b2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,instagram-slider-widget,low,candidate

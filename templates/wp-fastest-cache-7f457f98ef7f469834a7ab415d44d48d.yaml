@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-fastest-cache
+  - dsl:
+    - compare_versions(version, '<= 1.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-fastest-cache/readme.txt'
+  redirects: true
+id: wp-fastest-cache-7f457f98ef7f469834a7ab415d44d48d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-fastest-cache/
+    google-query: inurl:"/wp-content/plugins/wp-fastest-cache/"
+    shodan-query: 'vuln:'
+  name: 'WP Fastest Cache <= 1.1.2 - Missing Authorization to Cache Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ae643666-70cb-4eb4-a183-e1649264ded4?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-fastest-cache,high

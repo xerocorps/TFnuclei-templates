@@ -1,0 +1,39 @@
+id: shellscripts
+info:
+  author: panch0r3d
+  name: Published shellscripts
+  severity: info
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - part: body
+    regex:
+    - .*?bin.*?sh
+    - .*?bin.*?bash
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.build.sh'
+  - '{{BaseURL}}/.jenkins.sh'
+  - '{{BaseURL}}/.travis.sh'
+  - '{{BaseURL}}/install.sh'
+  - '{{BaseURL}}/update.sh'
+  - '{{BaseURL}}/config.sh'
+  - '{{BaseURL}}/build.sh'
+  - '{{BaseURL}}/setup.sh'
+  - '{{BaseURL}}/run.sh'
+  - '{{BaseURL}}/backup.sh'
+  - '{{BaseURL}}/compile.sh'
+  - '{{BaseURL}}/env.sh'
+  - '{{BaseURL}}/init.sh'
+  - '{{BaseURL}}/startup.sh'
+  - '{{BaseURL}}/wp-setup.sh'
+  - '{{BaseURL}}/deploy.sh'
+  - '{{BaseURL}}/aws.sh'

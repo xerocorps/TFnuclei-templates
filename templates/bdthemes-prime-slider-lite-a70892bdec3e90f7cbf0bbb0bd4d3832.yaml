@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bdthemes-prime-slider-lite
+  - dsl:
+    - compare_versions(version, '<= 3.14.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bdthemes-prime-slider-lite/readme.txt'
+  redirects: true
+id: bdthemes-prime-slider-lite-a70892bdec3e90f7cbf0bbb0bd4d3832
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bdthemes-prime-slider-lite/
+    google-query: inurl:"/wp-content/plugins/bdthemes-prime-slider-lite/"
+    shodan-query: 'vuln:'
+  name: "Prime Slider \u2013 Addons For Elementor (Revolution of a slider, Hero Slider,\
+    \ Media Slider, Drag Drop Slider, Video Slider, Product Slider, Ecommerce Slider)\
+    \ <= 3.14.0 - Authenticated (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e5a2ed81-254e-460c-b3a4-0cb38e089142?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bdthemes-prime-slider-lite,low

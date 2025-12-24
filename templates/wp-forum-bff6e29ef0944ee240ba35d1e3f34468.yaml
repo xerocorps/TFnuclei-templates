@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-forum
+  - dsl:
+    - compare_versions(version, '<= 1.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-forum/readme.txt'
+  redirects: true
+id: wp-forum-bff6e29ef0944ee240ba35d1e3f34468
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-forum/
+    google-query: inurl:"/wp-content/plugins/wp-forum/"
+    shodan-query: 'vuln:'
+  name: 'WP-Forum <= 1.7.4 - Remote SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c1d354fc-8137-44fa-980a-215dbeb7d15c?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-forum,critical

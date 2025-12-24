@@ -1,0 +1,31 @@
+id: phpminiadmin-panel
+info:
+  author: nullfuzz
+  description: 'phpMiniAdmin  is a third-party tool that you can use to manipulate
+    MySQL databases.
+
+    '
+  metadata:
+    shodan-query: http.html:"phpMiniAdmin"
+    verified: true
+  name: PhpMiniAdmin Panel
+  reference:
+  - https://github.com/osalabs/phpminiadmin
+  severity: info
+  tags: panel,phpminiadmin
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - phpMiniAdmin ([0-9._]+)
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(body, '<title>phpMiniAdmin')
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/phpminiadmin.php'

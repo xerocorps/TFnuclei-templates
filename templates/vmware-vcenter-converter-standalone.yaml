@@ -1,0 +1,22 @@
+id: vmware-vcenter-converter-standalone
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-dork: title:"VMware vCenter Converter Standalone"
+    verified: true
+  name: VMware vCenter Converter Standalone
+  severity: info
+  tags: panel,vmware,vcenter
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - VMware vCenter Converter Standalone
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

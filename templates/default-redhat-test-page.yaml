@@ -1,0 +1,16 @@
+id: default-redhat-test-page
+info:
+  author: dhiyaneshDk
+  name: Red Hat Enterprise Linux Test Page
+  reference: https://www.shodan.io/search?query=http.title%3A%22Test+Page+for+the+Apache+HTTP+Server+on+Red+Hat+Enterprise+Linux%22
+  severity: info
+  tags: tech,redhat
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Test Page for the Apache HTTP Server on Red Hat Enterprise Linux</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'

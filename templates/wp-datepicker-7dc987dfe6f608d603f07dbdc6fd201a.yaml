@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-datepicker
+  - dsl:
+    - compare_versions(version, '<= 2.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-datepicker/readme.txt'
+  redirects: true
+id: wp-datepicker-7dc987dfe6f608d603f07dbdc6fd201a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-datepicker/
+    google-query: inurl:"/wp-content/plugins/wp-datepicker/"
+    shodan-query: 'vuln:'
+  name: 'WP Datepicker <= 2.1.0 - Missing Authorization to Authenticated (Subscriber+)
+    Arbitrary Options Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/45a42f20-a4d7-4c8e-a144-505a6723a2a0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-datepicker,low

@@ -1,0 +1,26 @@
+id: fatpipe-ipvpn-panel
+info:
+  author: dwisiswant0
+  name: "FatPipe IPVPN\xAE Panel Detect"
+  reference:
+  - https://www.fatpipeinc.com/products/index.php
+  severity: info
+  tags: panel,ipvpn,fatpipe
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <h5>([0-9.a-z]+)<\/h5>
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - <title>FatPipe IPVPN&nbsp;| Log in</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/fpui/jsp/login.jsp'

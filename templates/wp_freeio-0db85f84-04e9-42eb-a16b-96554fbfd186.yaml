@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-freeio
+  - dsl:
+    - compare_versions(version, '<= 1.2.21')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-freeio/readme.txt'
+  redirects: true
+id: wp_freeio-0db85f84-04e9-42eb-a16b-96554fbfd186
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-freeio/
+    google-query: inurl:"/wp-content/plugins/wp-freeio/"
+    shodan-query: http.html:"wp-content/plugins/wp-freeio/"
+  name: 'WP Freeio <= 1.2.21 - Unauthenticated Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0db85f84-04e9-42eb-a16b-96554fbfd186?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-freeio,low,candidate

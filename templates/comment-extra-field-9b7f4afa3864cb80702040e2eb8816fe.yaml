@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - comment-extra-field
+  - dsl:
+    - compare_versions(version, '<= 1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/comment-extra-field/readme.txt'
+  redirects: true
+id: comment-extra-field-9b7f4afa3864cb80702040e2eb8816fe
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/comment-extra-field/
+    google-query: inurl:"/wp-content/plugins/comment-extra-field/"
+    shodan-query: 'vuln:'
+  name: 'Comment Extra Fields <= 1.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b7240711-e575-41ff-ba39-0255ca2aa9f5?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,comment-extra-field,medium

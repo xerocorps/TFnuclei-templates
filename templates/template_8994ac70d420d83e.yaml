@@ -1,0 +1,29 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - aws
+    - docker
+    - configuration
+    - exposure
+  description: Template to detect the AWS Dockerrun configuration page
+  id: dockerrun-aws-config-page
+  matcher-condition: and
+  matchers:
+  - description: AWS Dockerrun configuration page found in response body
+    pattern: AWS Elastic Beanstalk
+    type: body
+  name: Dockerrun AWS Configuration Page - Detect
+  requests:
+    condition: and
+    description: Attempt to retrieve AWS Dockerrun configuration file
+    method: GET
+    path:
+    - /Dockerrun.aws.json
+    - /Dockerrun.aws.yml
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

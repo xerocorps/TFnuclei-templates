@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - eventon-lite
+  - dsl:
+    - compare_versions(version, '<= 2.2.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/eventon-lite/readme.txt'
+  redirects: true
+id: eventon-lite-784b3ad66752676549870272c0296b7f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/eventon-lite/
+    google-query: inurl:"/wp-content/plugins/eventon-lite/"
+    shodan-query: 'vuln:'
+  name: 'EventON <= 2.2.15 - Missing Authorization to Unauthenticated Stored Cross-Site
+    Scripting and Plugin Settings Updates
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/12f3dc64-322d-4015-8c57-eaa41c9a1829?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,eventon-lite,high

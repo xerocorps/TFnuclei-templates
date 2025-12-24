@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bck-tu-dong-xac-nhan-thanh-toan-chuyen-khoan-ngan-hang
+  - dsl:
+    - compare_versions(version, '<= 2.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bck-tu-dong-xac-nhan-thanh-toan-chuyen-khoan-ngan-hang/readme.txt'
+  redirects: true
+id: bck-tu-dong-xac-nhan-thanh-toan-chuyen-khoan-ngan-hang-bfc4552a806fc1a78f0377901539aa3f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bck-tu-dong-xac-nhan-thanh-toan-chuyen-khoan-ngan-hang/
+    google-query: inurl:"/wp-content/plugins/bck-tu-dong-xac-nhan-thanh-toan-chuyen-khoan-ngan-hang/"
+    shodan-query: 'vuln:'
+  name: "Thanh To\xE1n Qu\xE9t M\xE3 QR Code T\u1EF1 \u0110\u1ED9ng \u2013 MoMo, ViettelPay,\
+    \ VNPay v\xE0 40 ng\xE2n h\xE0ng Vi\u1EC7t Nam <= 2.0.0 - Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/28bdad82-f09a-461f-b826-3f458f121fea?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,bck-tu-dong-xac-nhan-thanh-toan-chuyen-khoan-ngan-hang,high

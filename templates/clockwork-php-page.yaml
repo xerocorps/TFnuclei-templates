@@ -1,0 +1,23 @@
+id: clockwork-php-page
+info:
+  author: organiccrap
+  name: Clockwork PHP page exposure
+  severity: high
+requests:
+- headers:
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
+      Firefox/55
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Clockwork</title>
+    - <html ng-app="Clockwork" ng-csp="">
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/__clockwork/app'

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-forms
+  - dsl:
+    - compare_versions(version, '< 1.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-forms/readme.txt'
+  redirects: true
+id: advanced_forms-3c021686-3c9d-4382-be5c-9d4bf989cdcd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-forms/
+    google-query: inurl:"/wp-content/plugins/advanced-forms/"
+    shodan-query: http.html:"wp-content/plugins/advanced-forms/"
+  name: 'Advanced Forms for ACF <= 1.6.8 - Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3c021686-3c9d-4382-be5c-9d4bf989cdcd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-forms,low,candidate

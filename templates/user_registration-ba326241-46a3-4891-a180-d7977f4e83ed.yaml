@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-registration
+  - dsl:
+    - compare_versions(version, '<= 4.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-registration/readme.txt'
+  redirects: true
+id: user_registration-ba326241-46a3-4891-a180-d7977f4e83ed
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-registration/
+    google-query: inurl:"/wp-content/plugins/user-registration/"
+    shodan-query: http.html:"wp-content/plugins/user-registration/"
+  name: 'User Registration & Membership <= 4.3.0 - Authenticated (Admin+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ba326241-46a3-4891-a180-d7977f4e83ed?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,user-registration,low,candidate

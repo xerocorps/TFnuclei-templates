@@ -1,0 +1,20 @@
+id: gitbook-detect
+info:
+  author: ffffffff0x
+  metadata:
+    fofa: app="Introduction-GitBook"
+    shodan-dork: http.title:"gitbook"
+  name: gitbook-detect
+  severity: info
+  tags: gitbook,tech
+requests:
+- matchers:
+  - condition: or
+    part: body
+    regex:
+    - <title>.*[Gg]it[bB]ook</title>
+    - "<title>.*\xB7 [Gg]it[bB]ook.*</title>"
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tk-google-fonts
+  - dsl:
+    - compare_versions(version, '<= 2.2.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tk-google-fonts/readme.txt'
+  redirects: true
+id: tk_google_fonts-7546b0b7-8081-4762-9e20-76dfb3c8a8a7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tk-google-fonts/
+    google-query: inurl:"/wp-content/plugins/tk-google-fonts/"
+    shodan-query: http.html:"wp-content/plugins/tk-google-fonts/"
+  name: 'TK Google Fonts GDPR Compliant <= 2.2.11 - Missing Authorization to Font
+    Addition
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7546b0b7-8081-4762-9e20-76dfb3c8a8a7?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,tk-google-fonts,high,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - order-tracking
+  - dsl:
+    - compare_versions(version, '<= 3.3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/order-tracking/readme.txt'
+  redirects: true
+id: order-tracking-6d11bfd5f9b2923bb6774f3b2aea71ab
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/order-tracking/
+    google-query: inurl:"/wp-content/plugins/order-tracking/"
+    shodan-query: 'vuln:'
+  name: 'Order Tracking Pro <= 3.3.6 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/81f9a4c6-971f-4f6d-8bb1-e97bf75cf8d3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,order-tracking,low

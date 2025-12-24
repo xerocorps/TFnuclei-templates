@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - send-users-email
+  - dsl:
+    - compare_versions(version, '<= 1.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/send-users-email/readme.txt'
+  redirects: true
+id: send_users_email-5063c9e3-cc3e-4ea3-b588-f9273579ac0c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/send-users-email/
+    google-query: inurl:"/wp-content/plugins/send-users-email/"
+    shodan-query: http.html:"wp-content/plugins/send-users-email/"
+  name: 'Send Users Email <= 1.5.1 - Unauthenticated Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5063c9e3-cc3e-4ea3-b588-f9273579ac0c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,send-users-email,low,candidate

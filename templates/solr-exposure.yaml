@@ -1,0 +1,14 @@
+id: solr-exposure
+info:
+  author: pdteam
+  name: Apache Solr Exposure
+  severity: medium
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Solr Admin</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/solr/'

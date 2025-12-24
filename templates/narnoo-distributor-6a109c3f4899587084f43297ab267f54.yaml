@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - narnoo-distributor
+  - dsl:
+    - compare_versions(version, '<= 2.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/narnoo-distributor/readme.txt'
+  redirects: true
+id: narnoo-distributor-6a109c3f4899587084f43297ab267f54
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/narnoo-distributor/
+    google-query: inurl:"/wp-content/plugins/narnoo-distributor/"
+    shodan-query: 'vuln:'
+  name: 'Narnoo Distributor <= 2.5.1 - Path Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bc860f44-c8ee-4b32-9702-7214e213790b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,narnoo-distributor,low

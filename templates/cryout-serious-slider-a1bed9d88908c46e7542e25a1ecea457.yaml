@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cryout-serious-slider
+  - dsl:
+    - compare_versions(version, '<= 1.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cryout-serious-slider/readme.txt'
+  redirects: true
+id: cryout-serious-slider-a1bed9d88908c46e7542e25a1ecea457
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cryout-serious-slider/
+    google-query: inurl:"/wp-content/plugins/cryout-serious-slider/"
+    shodan-query: 'vuln:'
+  name: 'Serious Slider <= 1.2.4 - Authenticated (Editor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d21191c-32ef-4de6-8e95-ad66779e42f9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cryout-serious-slider,low

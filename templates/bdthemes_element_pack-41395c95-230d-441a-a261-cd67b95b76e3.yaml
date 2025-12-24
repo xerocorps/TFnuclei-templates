@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bdthemes-element-pack
+  - dsl:
+    - compare_versions(version, '<= 7.19.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bdthemes-element-pack/readme.txt'
+  redirects: true
+id: bdthemes_element_pack-41395c95-230d-441a-a261-cd67b95b76e3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bdthemes-element-pack/
+    google-query: inurl:"/wp-content/plugins/bdthemes-element-pack/"
+    shodan-query: http.html:"wp-content/plugins/bdthemes-element-pack/"
+  name: 'Element Pack Pro <= 7.19.2 - Authenticated (Contributor+) Arbitrary File
+    Read and PHAR Deserialization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/41395c95-230d-441a-a261-cd67b95b76e3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bdthemes-element-pack,low,candidate

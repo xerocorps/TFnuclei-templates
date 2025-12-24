@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - filebird
+  - dsl:
+    - compare_versions(version, '<= 5.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/filebird/readme.txt'
+  redirects: true
+id: filebird-d5a6e9f4-dbc3-4af0-b9e4-4c9ad7b5fe9f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/filebird/
+    google-query: inurl:"/wp-content/plugins/filebird/"
+    shodan-query: http.html:"wp-content/plugins/filebird/"
+  name: 'Filebird <= 5.1.4 - Missing Authorization via resAdminPermissionsCheck
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d5a6e9f4-dbc3-4af0-b9e4-4c9ad7b5fe9f?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,filebird,high,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - amazon-product-in-a-post-plugin
+  - dsl:
+    - compare_versions(version, '< 3.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/amazon-product-in-a-post-plugin/readme.txt'
+  redirects: true
+id: amazon-product-in-a-post-plugin-d983383ac1f96dc90524e93ede3ac0bd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/amazon-product-in-a-post-plugin/
+    google-query: inurl:"/wp-content/plugins/amazon-product-in-a-post-plugin/"
+    shodan-query: 'vuln:'
+  name: 'Amazon Product in a Post Plugin < 3.5.3 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bd9e5654-387e-4fc3-a6eb-2eface298a9c?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,amazon-product-in-a-post-plugin,critical

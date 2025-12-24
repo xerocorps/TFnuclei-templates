@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yith-woocommerce-gift-cards-premium
+  - dsl:
+    - compare_versions(version, '<= 3.23.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yith-woocommerce-gift-cards-premium/readme.txt'
+  redirects: true
+id: yith-woocommerce-gift-cards-premium-1db27e41414383237c1a9614dd8e2026
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yith-woocommerce-gift-cards-premium/
+    google-query: inurl:"/wp-content/plugins/yith-woocommerce-gift-cards-premium/"
+    shodan-query: 'vuln:'
+  name: 'YITH WooCommerce Gift Cards Premium <= 3.23.1 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1e77760b-4e61-462c-9245-0e40f161d565?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,yith-woocommerce-gift-cards-premium,high

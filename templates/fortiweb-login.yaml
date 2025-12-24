@@ -1,0 +1,22 @@
+id: fortiweb-login
+info:
+  author: PR3R00T
+  name: Fortinet FortiWeb Login Panel
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Please login
+    - ftnt-fortinet-grid
+    - main-fortiweb.css
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - iq-block-country
+  - dsl:
+    - compare_versions(version, '<= 1.2.18')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/iq-block-country/readme.txt'
+  redirects: true
+id: iq-block-country-5688651051c37c692461afddbc15e295
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/iq-block-country/
+    google-query: inurl:"/wp-content/plugins/iq-block-country/"
+    shodan-query: 'vuln:'
+  name: 'iQ Block Country <= 1.2.18 - Country Blocking Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/abc983c6-aa30-4d1b-b6af-99b5ba1c8481?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,iq-block-country,low

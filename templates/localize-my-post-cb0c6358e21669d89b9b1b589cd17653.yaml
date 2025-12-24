@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - localize-my-post
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/localize-my-post/readme.txt'
+  redirects: true
+id: localize-my-post-cb0c6358e21669d89b9b1b589cd17653
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/localize-my-post/
+    google-query: inurl:"/wp-content/plugins/localize-my-post/"
+    shodan-query: 'vuln:'
+  name: 'Localize My Post <= 1.0 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3969e890-76e0-484a-ad16-6e2642e2ae53?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,localize-my-post,low

@@ -1,0 +1,15 @@
+id: readthedocs-takeover
+info:
+  author: pdcommunity
+  name: readthedocs takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - unknown to Read the Docs
+  method: GET
+  path:
+  - '{{BaseURL}}'

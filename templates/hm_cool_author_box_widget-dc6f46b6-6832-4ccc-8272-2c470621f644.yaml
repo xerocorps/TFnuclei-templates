@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hm-cool-author-box-widget
+  - dsl:
+    - compare_versions(version, '<= 3.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hm-cool-author-box-widget/readme.txt'
+  redirects: true
+id: hm_cool_author_box_widget-dc6f46b6-6832-4ccc-8272-2c470621f644
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hm-cool-author-box-widget/
+    google-query: inurl:"/wp-content/plugins/hm-cool-author-box-widget/"
+    shodan-query: http.html:"wp-content/plugins/hm-cool-author-box-widget/"
+  name: 'Cool Author Box <= 3.0.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dc6f46b6-6832-4ccc-8272-2c470621f644?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,hm-cool-author-box-widget,medium,candidate

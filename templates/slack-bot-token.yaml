@@ -1,0 +1,15 @@
+id: slack-bot-token
+info:
+  author: nadino
+  name: Slack access token
+  severity: info
+  tags: exposure,token,slack
+requests:
+- extractors:
+  - part: body
+    regex:
+    - xoxb-[0-9A-Za-z\-]{51}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

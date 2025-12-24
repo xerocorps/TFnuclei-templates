@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gallery-photo-gallery
+  - dsl:
+    - compare_versions(version, '<= 5.1.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gallery-photo-gallery/readme.txt'
+  redirects: true
+id: gallery_photo_gallery-db48a271-e649-4dbe-901b-aa55eba9123b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gallery-photo-gallery/
+    google-query: inurl:"/wp-content/plugins/gallery-photo-gallery/"
+    shodan-query: http.html:"wp-content/plugins/gallery-photo-gallery/"
+  name: 'Photo Gallery by Ays <= 5.1.3 - Reflected Cross-Site Scripting via ays_gpg_settings_tab
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/db48a271-e649-4dbe-901b-aa55eba9123b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,gallery-photo-gallery,medium,candidate

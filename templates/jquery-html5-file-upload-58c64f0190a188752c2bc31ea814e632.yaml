@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jquery-html5-file-upload
+  - dsl:
+    - compare_versions(version, '<= 3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jquery-html5-file-upload/readme.txt'
+  redirects: true
+id: jquery-html5-file-upload-58c64f0190a188752c2bc31ea814e632
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jquery-html5-file-upload/
+    google-query: inurl:"/wp-content/plugins/jquery-html5-file-upload/"
+    shodan-query: 'vuln:'
+  name: 'jQuery HTML5 File Upload <= 3.0 - Unauthenticated Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7c312478-0d6e-400b-81c2-172c2c5798ff?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,jquery-html5-file-upload,low

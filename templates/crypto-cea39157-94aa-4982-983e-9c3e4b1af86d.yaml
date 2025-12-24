@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - crypto
+  - dsl:
+    - compare_versions(version, '<= 2.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/crypto/readme.txt'
+  redirects: true
+id: crypto-cea39157-94aa-4982-983e-9c3e4b1af86d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/crypto/
+    google-query: inurl:"/wp-content/plugins/crypto/"
+    shodan-query: http.html:"wp-content/plugins/crypto/"
+  name: 'Crypto <= 2.15 - Cross-Site Request Forgery to Authentication Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cea39157-94aa-4982-983e-9c3e4b1af86d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,crypto,medium,candidate

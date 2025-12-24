@@ -1,0 +1,18 @@
+id: somfy-login
+info:
+  author: DhiyaneshDK
+  name: Somfy Login Page
+  severity: info
+  tags: panel,login
+requests:
+- matchers:
+  - type: word
+    words:
+    - Home motion by Somfy
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/m_login.htm'

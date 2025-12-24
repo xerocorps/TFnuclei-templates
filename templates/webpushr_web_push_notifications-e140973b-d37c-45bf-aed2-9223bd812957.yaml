@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - webpushr-web-push-notifications
+  - dsl:
+    - compare_versions(version, '<= 4.34.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/webpushr-web-push-notifications/readme.txt'
+  redirects: true
+id: webpushr_web_push_notifications-e140973b-d37c-45bf-aed2-9223bd812957
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/webpushr-web-push-notifications/
+    google-query: inurl:"/wp-content/plugins/webpushr-web-push-notifications/"
+    shodan-query: http.html:"wp-content/plugins/webpushr-web-push-notifications/"
+  name: 'Webpushr <= 4.34.0 - Cross-Site Request Forgery to Local File Inclusion via
+    menu
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e140973b-d37c-45bf-aed2-9223bd812957?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,webpushr-web-push-notifications,medium,candidate

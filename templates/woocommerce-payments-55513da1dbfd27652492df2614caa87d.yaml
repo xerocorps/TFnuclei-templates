@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-payments
+  - dsl:
+    - compare_versions(version, '<= 5.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-payments/readme.txt'
+  redirects: true
+id: woocommerce-payments-55513da1dbfd27652492df2614caa87d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-payments/
+    google-query: inurl:"/wp-content/plugins/woocommerce-payments/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Payments <= 5.9.0 - Authenticated (Shop manager+) SQL Injection
+    via currency parameters
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e1f0ec5c-6853-4df9-816a-1790f3dc86e0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-payments,low

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-coupon-usage
+  - dsl:
+    - compare_versions(version, '<= 4.11.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-coupon-usage/readme.txt'
+  redirects: true
+id: woo-coupon-usage-4e91ed533b02172e2546b5db236836cd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-coupon-usage/
+    google-query: inurl:"/wp-content/plugins/woo-coupon-usage/"
+    shodan-query: 'vuln:'
+  name: "WooCommerce Affiliate Plugin \u2013 Coupon Affiliates <= 4.11.0.1 - Reflected\
+    \ Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bdd0bdf3-6952-4b87-a3e8-156757d22e74?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-coupon-usage,medium

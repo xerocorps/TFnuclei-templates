@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - miwoftp
+  - dsl:
+    - compare_versions(version, '<= 1.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/miwoftp/readme.txt'
+  redirects: true
+id: miwoftp-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The MiwoFTP plugin for WordPress is vulnerable to Cross-Site Request
+    Forgery in versions up to, and including, 1.0.6. This makes it possible for unauthenticated
+    attackers to delete arbitrary files via forged request granted they can trick
+    a site administrator into performing an action such as clicking on a link.
+  metadata:
+    fofa-query: wp-content/plugins/miwoftp/
+    google-query: inurl:"/wp-content/plugins/miwoftp/"
+    shodan-query: 'vuln:'
+  name: MiwoFTP < 1.0.6 - Cross-Site Request Forgery to Arbitrary File Deletion
+  reference: null
+  severity: medium
+  tags: cve,wordpress,wp-plugin,miwoftp,medium

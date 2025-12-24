@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-share-buttons-by-supsystic
+  - dsl:
+    - compare_versions(version, '<= 2.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-share-buttons-by-supsystic/readme.txt'
+  redirects: true
+id: social-share-buttons-by-supsystic-e8e85d3dabe23db33e42f9d651279594
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/social-share-buttons-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/social-share-buttons-by-supsystic/"
+    shodan-query: 'vuln:'
+  name: 'Social Share Buttons by Supsystic <= 2.2.3 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c43c8c01-3f8a-4ae4-8113-d410850e721d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,social-share-buttons-by-supsystic,medium

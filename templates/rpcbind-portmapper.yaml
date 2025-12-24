@@ -1,0 +1,43 @@
+id: rpcbind-portmapper
+info:
+  author: geeknik
+  name: Detects RPCBind Portmapper Services
+  reference: https://book.hacktricks.xyz/pentesting/pentesting-rpcbind
+  severity: info
+  tags: network,rpcbind,portmap
+network:
+- host:
+  - '{{Hostname}}:111'
+  inputs:
+  - data: 8000002836ed646d0000000000000002000186a0000000040000000400000000000000000000000000000000
+    type: hex
+  matchers:
+  - type: word
+    words:
+    - /run/rpcbind.sock
+  - condition: and
+    name: RPC_Users
+    type: word
+    words:
+    - rusersd
+    - udp
+  - condition: and
+    name: NIS
+    type: word
+    words:
+    - ypbind
+    - superuser
+  - condition: and
+    name: NFS
+    type: word
+    words:
+    - nfs
+    - tcp
+    - udp
+  - condition: and
+    name: Portmap
+    type: word
+    words:
+    - udp
+    - tcp
+    - portmapper

@@ -1,0 +1,33 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - apache
+    - exposure
+  description: Template to detect Apache directory exposure
+  id: apache-directory-exposure
+  matcher-condition: or
+  matchers:
+  - description: Apache directory listing page indicating directory exposure
+    pattern: Index of /
+    type: body
+  - description: Apache web server default page indicating directory exposure
+    pattern: Apache Software Foundation
+    type: body
+  name: Apache Directory Exposure - Detect
+  reference:
+  - https://httpd.apache.org/docs/2.4/urlmapping.html#misc
+  requests:
+    condition: or
+    description: Attempt to access hidden version control directories
+    method: GET
+    path:
+    - /.git/
+    - /.svn/
+    - /.hg/
+    - /.bzr/
+  response:
+  - status:
+    - 200
+  severity: Medium

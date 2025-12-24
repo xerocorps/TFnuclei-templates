@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - file-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.8.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/file-gallery/readme.txt'
+  redirects: true
+id: file_gallery-c11be4ba-1bed-4234-b475-468394b7be90
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/file-gallery/
+    google-query: inurl:"/wp-content/plugins/file-gallery/"
+    shodan-query: http.html:"wp-content/plugins/file-gallery/"
+  name: 'File Gallery <= 1.8.5.3 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via file_gallery_shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c11be4ba-1bed-4234-b475-468394b7be90?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,file-gallery,low,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sola-testimonials
+  - dsl:
+    - compare_versions(version, '<= 3.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sola-testimonials/readme.txt'
+  redirects: true
+id: sola_testimonials-54998b69-7dc5-49a4-8b8b-3419de73ed47
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sola-testimonials/
+    google-query: inurl:"/wp-content/plugins/sola-testimonials/"
+    shodan-query: http.html:"wp-content/plugins/sola-testimonials/"
+  name: 'Super Testimonials <= 3.0.0 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via alignment Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/54998b69-7dc5-49a4-8b8b-3419de73ed47?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sola-testimonials,low,candidate

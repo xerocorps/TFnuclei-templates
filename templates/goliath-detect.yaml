@@ -1,0 +1,22 @@
+id: goliath-detect
+info:
+  author: geeknik
+  description: Goliath is a non-blocking Ruby web server framework -- https://github.com/postrank-labs/goliath
+  name: Detect Goliath
+  severity: info
+  tags: goliath
+requests:
+- extractors:
+  - kval:
+    - Server
+    part: header
+    type: kval
+  matchers:
+  - part: header
+    regex:
+    - Goliath+
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

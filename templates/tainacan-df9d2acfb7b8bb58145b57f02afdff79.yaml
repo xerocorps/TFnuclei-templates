@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tainacan
+  - dsl:
+    - compare_versions(version, '<= 0.20.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tainacan/readme.txt'
+  redirects: true
+id: tainacan-df9d2acfb7b8bb58145b57f02afdff79
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tainacan/
+    google-query: inurl:"/wp-content/plugins/tainacan/"
+    shodan-query: 'vuln:'
+  name: 'Tainacan <= 0.20.7 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/70da8039-6526-47fa-934d-53fa29ca1bf0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,tainacan,high

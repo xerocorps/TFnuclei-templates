@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - constant-contact-forms
+  - dsl:
+    - compare_versions(version, '<= 1.14.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/constant-contact-forms/readme.txt'
+  redirects: true
+id: constant-contact-forms-1194956fa52ef69a4da0c09e5d4d6ba2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/constant-contact-forms/
+    google-query: inurl:"/wp-content/plugins/constant-contact-forms/"
+    shodan-query: 'vuln:'
+  name: 'Constant Contact Forms <= 1.14.0 - Missing Authorization via constant_contact_optin_ajax_handler
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/85b6262c-2576-4177-a683-44464dba0978?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,constant-contact-forms,high

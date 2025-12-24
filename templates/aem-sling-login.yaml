@@ -1,0 +1,31 @@
+id: aem-sling-login
+info:
+  author: dhiyaneshDk
+  metadata:
+    shodan-query:
+    - http.title:"AEM Sign In"
+    - http.component:"Adobe Experience Manager"
+  name: AEM Sling Login
+  reference:
+  - https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/aem2.txt
+  severity: info
+  tags: panel,aem,adobe,sling
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - <title>Login</title>
+    - j_username
+    - j_password
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/system/sling/cqform/defaultlogin.html'

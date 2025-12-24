@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - paid-memberships-pro
+  - dsl:
+    - compare_versions(version, '<= 2.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/paid-memberships-pro/readme.txt'
+  redirects: true
+id: paid-memberships-pro-f87dfa30a091b5b0090c7f657f146b61
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/paid-memberships-pro/
+    google-query: inurl:"/wp-content/plugins/paid-memberships-pro/"
+    shodan-query: 'vuln:'
+  name: 'Paid Memberships Pro <= 2.5.0 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8a68d036-9109-4bc0-9451-47fa2f9fa628?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,paid-memberships-pro,high

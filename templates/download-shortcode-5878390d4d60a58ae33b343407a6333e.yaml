@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - download-shortcode
+  - dsl:
+    - compare_versions(version, '<= 0.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/download-shortcode/readme.txt'
+  redirects: true
+id: download-shortcode-5878390d4d60a58ae33b343407a6333e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/download-shortcode/
+    google-query: inurl:"/wp-content/plugins/download-shortcode/"
+    shodan-query: 'vuln:'
+  name: 'Download Shortcode <= 0.2.3 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5bae7516-e9dd-4c0c-b687-9cbe09b4c8bc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,download-shortcode,low

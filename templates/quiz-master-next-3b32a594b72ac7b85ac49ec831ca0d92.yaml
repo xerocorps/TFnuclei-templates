@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quiz-master-next
+  - dsl:
+    - compare_versions(version, '< 4.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quiz-master-next/readme.txt'
+  redirects: true
+id: quiz-master-next-3b32a594b72ac7b85ac49ec831ca0d92
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: The Quiz And Survey Master plugin for WordPress is vulnerable to Multiple
+    SQL Injections via several parameters in versions before 4.4.4 due to insufficient
+    escaping on the user supplied parameter and lack of sufficient preparation on
+    the existing SQL query. This makes it possible for authenticated attackers of
+    low-privilege to append additional SQL queries into already existing queries that
+    can be used to extract sensitive information from the database.
+  metadata:
+    fofa-query: wp-content/plugins/quiz-master-next/
+    google-query: inurl:"/wp-content/plugins/quiz-master-next/"
+    shodan-query: 'vuln:'
+  name: Quiz And Survey Master < 4.4.4 - Multiple SQL Injections
+  reference:
+  - http://cinu.pl/research/wp-plugins/mail_b882d56ac6bb1795ed5434cd200356a2.html
+  - http://blog.cinu.pl/2015/11/php-static-code-analysis-vs-top-1000-wordpress-plugins.html
+  - https://wordpress.org/plugins/quiz-master-next/#developers
+  severity: high
+  tags: cve,wordpress,wp-plugin,quiz-master-next,high

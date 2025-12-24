@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - embedpress
+  - dsl:
+    - compare_versions(version, '<= 3.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/embedpress/readme.txt'
+  redirects: true
+id: embedpress-ef7e72c2aba26adf51e53fff53012d89
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/embedpress/
+    google-query: inurl:"/wp-content/plugins/embedpress/"
+    shodan-query: 'vuln:'
+  name: 'EmbedPress <= 3.9.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d41fb15c-9e0b-46d2-b60b-4213facc02a7?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,embedpress,medium

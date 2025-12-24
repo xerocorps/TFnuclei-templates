@@ -1,0 +1,15 @@
+id: kinsta-takeover
+info:
+  author: pdcommunity
+  name: kinsta takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - No Site For Domain
+  method: GET
+  path:
+  - '{{BaseURL}}'

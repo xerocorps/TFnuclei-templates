@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - restaurant-cafe-addon-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/restaurant-cafe-addon-for-elementor/readme.txt'
+  redirects: true
+id: restaurant-cafe-addon-for-elementor-c3660c9b9a5bf9af646702a497c03fcd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/restaurant-cafe-addon-for-elementor/
+    google-query: inurl:"/wp-content/plugins/restaurant-cafe-addon-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Restaurant & Cafe Addon for Elementor <= 1.5.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d986739-d6a5-491d-948f-4c58af75369a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,restaurant-cafe-addon-for-elementor,medium

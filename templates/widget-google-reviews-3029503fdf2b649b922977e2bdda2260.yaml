@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - widget-google-reviews
+  - dsl:
+    - compare_versions(version, '<= 3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/widget-google-reviews/readme.txt'
+  redirects: true
+id: widget-google-reviews-3029503fdf2b649b922977e2bdda2260
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/widget-google-reviews/
+    google-query: inurl:"/wp-content/plugins/widget-google-reviews/"
+    shodan-query: 'vuln:'
+  name: 'Plugin for Google Reviews <= 3.1 - Authenticated(Contributor+) Stored Cross-Site
+    Scripting via shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a8971d54-b54e-4e62-9db2-fa87d2564599?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,widget-google-reviews,low

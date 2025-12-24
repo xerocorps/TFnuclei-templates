@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - elementor
+  - dsl:
+    - compare_versions(version, '<= 3.25.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/elementor/readme.txt'
+  redirects: true
+id: elementor-b1305be5-8267-475f-b962-62e3930116e1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/elementor/
+    google-query: inurl:"/wp-content/plugins/elementor/"
+    shodan-query: http.html:"wp-content/plugins/elementor/"
+  name: "Elementor Website Builder \u2013 More than Just a Page Builder <= 3.25.7\
+    \ - Authenticated (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b1305be5-8267-475f-b962-62e3930116e1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,elementor,low,candidate

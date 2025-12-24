@@ -1,0 +1,20 @@
+id: wildfly-panel
+info:
+  author: righettod
+  description: Try to detect the presence of a WildFly (ex-JBoss) instance via the
+    login panel
+  name: WildFly Instance Detection Template
+  severity: info
+  tags: panel,jboss,wildfly
+requests:
+- matchers:
+  - type: word
+    words:
+    - Welcome to WildFly
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

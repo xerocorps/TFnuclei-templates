@@ -1,0 +1,25 @@
+id: api-ebird
+info:
+  author: daffainfo
+  name: eBird API Test
+  reference:
+  - https://documenter.getpostman.com/view/664302/S1ENwy59
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Animals/eBird.md
+  severity: info
+  tags: token-spray,ebird
+requests:
+- headers:
+    X-eBirdApiToken: '{{token}}'
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"speciesCode":'
+    - '"comName":'
+    - '"sciName":'
+    - '"locId":'
+  method: GET
+  path:
+  - https://api.ebird.org/v2/data/obs/KZ/recent
+self-contained: true

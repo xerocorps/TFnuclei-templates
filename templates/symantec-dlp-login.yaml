@@ -1,0 +1,21 @@
+id: symantec-dlp-login
+info:
+  author: princechaddha
+  metadata:
+    shodan-query: http.title:"Symantec Data Loss Prevention"
+  name: Symantec Data Loss Prevention
+  severity: info
+  tags: symantec,panel,login
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Symantec Data Loss Prevention</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ProtectManager/Logon'

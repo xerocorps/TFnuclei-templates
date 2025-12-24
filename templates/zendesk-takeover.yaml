@@ -1,0 +1,15 @@
+id: zendesk-takeover
+info:
+  author: pdcommunity
+  name: zendesk takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - this help center no longer exists
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ldap-login-for-intranet-sites
+  - dsl:
+    - compare_versions(version, '<= 4.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ldap-login-for-intranet-sites/readme.txt'
+  redirects: true
+id: ldap_login_for_intranet_sites-3eedc57b-79cc-4569-b6d6-676a22aa1e06
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ldap-login-for-intranet-sites/
+    google-query: inurl:"/wp-content/plugins/ldap-login-for-intranet-sites/"
+    shodan-query: http.html:"wp-content/plugins/ldap-login-for-intranet-sites/"
+  name: 'Active Directory Integration / LDAP Integration <= 4.1.4 - Authenticated
+    (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3eedc57b-79cc-4569-b6d6-676a22aa1e06?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ldap-login-for-intranet-sites,low,candidate

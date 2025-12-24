@@ -1,0 +1,19 @@
+id: totemomail-detect
+info:
+  author: johnk3r
+  name: Detect totemomail - Secure email communication
+  severity: info
+  tags: totemomail,panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - "<title>WebMail login: totemomail\xAE WebMail</title>"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/responsiveUI/webmail/folder.xhtml'

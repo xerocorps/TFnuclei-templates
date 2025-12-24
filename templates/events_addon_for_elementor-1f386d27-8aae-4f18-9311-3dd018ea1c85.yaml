@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - events-addon-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 2.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/events-addon-for-elementor/readme.txt'
+  redirects: true
+id: events_addon_for_elementor-1f386d27-8aae-4f18-9311-3dd018ea1c85
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/events-addon-for-elementor/
+    google-query: inurl:"/wp-content/plugins/events-addon-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/events-addon-for-elementor/"
+  name: 'Events Addon for Elementor <= 2.2.2 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1f386d27-8aae-4f18-9311-3dd018ea1c85?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,events-addon-for-elementor,low,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - update-theme-and-plugins-from-zip-file
+  - dsl:
+    - compare_versions(version, '<= 2.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/update-theme-and-plugins-from-zip-file/readme.txt'
+  redirects: true
+id: update-theme-and-plugins-from-zip-file-9bc5ff2ebe49c4cd7112793a34cf410c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/update-theme-and-plugins-from-zip-file/
+    google-query: inurl:"/wp-content/plugins/update-theme-and-plugins-from-zip-file/"
+    shodan-query: 'vuln:'
+  name: 'Update Theme and Plugins from Zip File <= 2.0.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e59293a6-cc61-4913-9ed0-13fa16299705?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,update-theme-and-plugins-from-zip-file,medium

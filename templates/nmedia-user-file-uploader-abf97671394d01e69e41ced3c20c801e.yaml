@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nmedia-user-file-uploader
+  - dsl:
+    - compare_versions(version, '< 18.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nmedia-user-file-uploader/readme.txt'
+  redirects: true
+id: nmedia-user-file-uploader-abf97671394d01e69e41ced3c20c801e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N
+    cvss-score: 8.6
+  description: The Frontend File Manager plugin for WordPress is vulnerable to Unauthenticated
+    Content Injection in versions up to, and including, 18.2. This is due to lacking
+    authorization protections, checks against users editing other's posts, and lacking
+    a security nonce, all on the wpfm_edit_file_title_desc AJAX action. This makes
+    it possible for unauthenticated attackers to edit the content and title of every
+    page on the site.
+  metadata:
+    fofa-query: wp-content/plugins/nmedia-user-file-uploader/
+    google-query: inurl:"/wp-content/plugins/nmedia-user-file-uploader/"
+    shodan-query: 'vuln:'
+  name: Frontend File Manager <= 18.2 - Unauthenticated Content Injection
+  reference:
+  - https://blog.nintechnet.com/wordpress-frontend-file-manager-plugin-fixed-multiple-critical-vulnerabilities/
+  severity: high
+  tags: cve,wordpress,wp-plugin,nmedia-user-file-uploader,high

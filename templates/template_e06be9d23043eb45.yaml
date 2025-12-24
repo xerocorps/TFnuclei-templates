@@ -1,0 +1,46 @@
+body:
+- attributes:
+    value: 'Thanks for taking the time to fill out this template request issue!
+
+      '
+  type: markdown
+- attributes:
+    description: Please search to see if an template or issue already exists for the
+      template you contributed.
+    label: Is there an existing template for this?
+    options:
+    - label: I have searched the existing templates.
+      required: true
+  type: checkboxes
+- attributes:
+    description: "Examples:\n  - CVE-202A-YYYYY\n  - CVE-202B-YYYYY\n  - Exploit X\n\
+      \  - Misconfiguration X\n  - Technology X Detection\n"
+    label: Template requests
+    value: '- ...
+
+      '
+  type: textarea
+- attributes:
+    description: 'Links? References (e.g. PoC, exploit, blog post, etc.)? Anything
+      that can speed up template creation, such as:
+
+      - Detailed vulnerability descriptions
+
+      - Sample payloads or exploit code
+
+      - Expected responses or indicators of successful exploitation
+
+      - Affected software versions or configurations
+
+      - Any known limitations or edge cases
+
+      '
+    label: Anything else?
+  type: textarea
+  validations:
+    required: false
+description: Requesting new Nuclei templates.
+labels:
+- template-requests
+name: Template Requests
+title: '[TEMPLATE REQUEST] ...'

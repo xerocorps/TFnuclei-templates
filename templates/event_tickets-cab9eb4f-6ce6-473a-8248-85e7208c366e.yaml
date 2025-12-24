@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - event-tickets
+  - dsl:
+    - compare_versions(version, '<= 5.26.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/event-tickets/readme.txt'
+  redirects: true
+id: event_tickets-cab9eb4f-6ce6-473a-8248-85e7208c366e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/event-tickets/
+    google-query: inurl:"/wp-content/plugins/event-tickets/"
+    shodan-query: http.html:"wp-content/plugins/event-tickets/"
+  name: 'Event Tickets <= 5.26.3 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cab9eb4f-6ce6-473a-8248-85e7208c366e?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,event-tickets,high,candidate

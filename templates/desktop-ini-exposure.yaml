@@ -1,0 +1,31 @@
+id: desktop-ini-exposure
+info:
+  author: dhiyaneshDk
+  metadata:
+    shodan-query: html:"desktop.ini"
+  name: desktop.ini exposure
+  severity: info
+  tags: exposure,config
+requests:
+- matchers:
+  - condition: and
+    negative: true
+    part: header
+    type: word
+    words:
+    - application/json
+    - application/html
+  - condition: or
+    part: body
+    type: word
+    words:
+    - '[.ShellClassInfo]'
+    - '[LocalizedFileNames]'
+    - '[ViewState]'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/desktop.ini'

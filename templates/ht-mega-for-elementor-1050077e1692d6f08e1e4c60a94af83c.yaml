@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ht-mega-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 2.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ht-mega-for-elementor/readme.txt'
+  redirects: true
+id: ht-mega-for-elementor-1050077e1692d6f08e1e4c60a94af83c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ht-mega-for-elementor/
+    google-query: inurl:"/wp-content/plugins/ht-mega-for-elementor/"
+    shodan-query: 'vuln:'
+  name: "HT Mega \u2013 Absolute Addons For Elementor <= 2.4.7 - Missing Authorization\
+    \ to Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/249ad768-3706-47c6-ad1d-f11900b87608?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ht-mega-for-elementor,high

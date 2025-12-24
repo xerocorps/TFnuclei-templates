@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - affiliate-toolkit-starter
+  - dsl:
+    - compare_versions(version, '<= 3.4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/affiliate-toolkit-starter/readme.txt'
+  redirects: true
+id: affiliate-toolkit-starter-a3f3e9cd8c92ca6bacbb8782a0b184d8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/affiliate-toolkit-starter/
+    google-query: inurl:"/wp-content/plugins/affiliate-toolkit-starter/"
+    shodan-query: 'vuln:'
+  name: "affiliate-toolkit \u2013 WordPress Affiliate Plugin <= 3.4.3 - Reflected\
+    \ Cross-Site Scripting via keyword\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0f45738b-fff6-438e-8870-508c622c1752?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,affiliate-toolkit-starter,medium

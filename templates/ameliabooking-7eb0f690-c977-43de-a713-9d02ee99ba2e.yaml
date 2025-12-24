@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ameliabooking
+  - dsl:
+    - compare_versions(version, '>= 1.2.18', '<= 1.2.36')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ameliabooking/readme.txt'
+  redirects: true
+id: ameliabooking-7eb0f690-c977-43de-a713-9d02ee99ba2e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ameliabooking/
+    google-query: inurl:"/wp-content/plugins/ameliabooking/"
+    shodan-query: http.html:"wp-content/plugins/ameliabooking/"
+  name: 'Amelia 1.2.18 - 1.2.36 - Unauthenticated Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7eb0f690-c977-43de-a713-9d02ee99ba2e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ameliabooking,low,candidate

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-courses
+  - dsl:
+    - compare_versions(version, '<= 3.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-courses/readme.txt'
+  redirects: true
+id: wp_courses-1127fe1e-4359-4dff-93a7-392a8bfded51
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 4.3
+  description: "The WP Courses LMS \u2013 Online Courses Builder, eLearning Courses,\
+    \ Courses Solution, Education Courses plugin for WordPress is vulnerable to unauthorized\
+    \ modification of data due to missing capability checks on several functions in\
+    \ the ~/ajax/ajax-lesson-order.php file hooked via AJAX in all versions up to,\
+    \ and including, 3.2.3. This makes it possible for authenticated attackers, with\
+    \ subscriber-level access and above, to perform several actions such as adding,\
+    \ deleting and renaming lesson modules.\n"
+  metadata:
+    fofa-query: wp-content/plugins/wp-courses/
+    google-query: inurl:"/wp-content/plugins/wp-courses/"
+    shodan-query: http.html:"wp-content/plugins/wp-courses/"
+  name: 'WP Courses LMS <= 3.2.3 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1127fe1e-4359-4dff-93a7-392a8bfded51?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-courses,low,production

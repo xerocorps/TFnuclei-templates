@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-championship
+  - dsl:
+    - compare_versions(version, '<= 9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-championship/readme.txt'
+  redirects: true
+id: wp_championship-bd1838c4-00df-4177-84be-1f8c19ceae4e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-championship/
+    google-query: inurl:"/wp-content/plugins/wp-championship/"
+    shodan-query: http.html:"wp-content/plugins/wp-championship/"
+  name: 'wp-championship <= 9.2 - Multiple Cross-Site Request Forgery Vulnerabilities
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bd1838c4-00df-4177-84be-1f8c19ceae4e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-championship,medium,candidate

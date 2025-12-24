@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sunshine-photo-cart
+  - dsl:
+    - compare_versions(version, '<= 3.4.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sunshine-photo-cart/readme.txt'
+  redirects: true
+id: sunshine_photo_cart-5b00cf9b-60c3-44a4-98a7-ee0f3e763c87
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sunshine-photo-cart/
+    google-query: inurl:"/wp-content/plugins/sunshine-photo-cart/"
+    shodan-query: http.html:"wp-content/plugins/sunshine-photo-cart/"
+  name: 'Sunshine Photo Cart <= 3.4.10 - Unauthenticated PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5b00cf9b-60c3-44a4-98a7-ee0f3e763c87?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,sunshine-photo-cart,critical,candidate

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bunnycdn
+  - dsl:
+    - compare_versions(version, '<= 2.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bunnycdn/readme.txt'
+  redirects: true
+id: bunnycdn-bf27fbdf9981c0ce969a56c8bc135c9b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bunnycdn/
+    google-query: inurl:"/wp-content/plugins/bunnycdn/"
+    shodan-query: 'vuln:'
+  name: "bunny.net \u2013 WordPress CDN Plugin <= 2.0.1 - Authenticated (Administrator+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3a31147b-791c-436f-9407-43485ec2ef50?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bunnycdn,low

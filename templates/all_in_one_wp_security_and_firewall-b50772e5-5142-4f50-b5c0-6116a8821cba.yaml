@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-wp-security-and-firewall
+  - dsl:
+    - compare_versions(version, '<= 5.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-wp-security-and-firewall/readme.txt'
+  redirects: true
+id: all_in_one_wp_security_and_firewall-b50772e5-5142-4f50-b5c0-6116a8821cba
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-wp-security-and-firewall/
+    google-query: inurl:"/wp-content/plugins/all-in-one-wp-security-and-firewall/"
+    shodan-query: http.html:"wp-content/plugins/all-in-one-wp-security-and-firewall/"
+  name: "All-In-One Security (AIOS) \u2013 Security and Firewall <= 5.2.5 - Reflected\
+    \ Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b50772e5-5142-4f50-b5c0-6116a8821cba?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,all-in-one-wp-security-and-firewall,medium,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contentstudio
+  - dsl:
+    - compare_versions(version, '<= 1.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contentstudio/readme.txt'
+  redirects: true
+id: contentstudio-715289e1084123cadd340a7ee6940dfa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contentstudio/
+    google-query: inurl:"/wp-content/plugins/contentstudio/"
+    shodan-query: 'vuln:'
+  name: 'ContentStudio <= 1.1.8 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c4039a27-0100-49c5-8dce-cf015a08ef04?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,contentstudio,high

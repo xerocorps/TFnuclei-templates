@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - melhor-envio-cotacao
+  - dsl:
+    - compare_versions(version, '<= 2.11.19')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/melhor-envio-cotacao/readme.txt'
+  redirects: true
+id: melhor_envio_cotacao-8a345197-d8ba-47ef-a88c-c9e45ddc0319
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N
+    cvss-score: 5.4
+  description: 'The Melhor Envio plugin for WordPress is vulnerable to authenticated
+    settings changes and Cross-Site Request Forgery in versions up to, and including,
+    2.11.19. This allowed any authenticated user to directly modify plugin settings,
+    and allowed unauthenticated users to modify the same settings if they could trick
+    an authenticated user into performing an action, such as clicking a link.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/melhor-envio-cotacao/
+    google-query: inurl:"/wp-content/plugins/melhor-envio-cotacao/"
+    shodan-query: http.html:"wp-content/plugins/melhor-envio-cotacao/"
+  name: 'Melhor Envio <= 2.11.19 - Cross-Site Request Forgery and Authenticated Settings
+    Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8a345197-d8ba-47ef-a88c-c9e45ddc0319?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,melhor-envio-cotacao,low,production

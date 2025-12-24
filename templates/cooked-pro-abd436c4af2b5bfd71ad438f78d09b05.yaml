@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cooked-pro
+  - dsl:
+    - compare_versions(version, '<= 1.7.15.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cooked-pro/readme.txt'
+  redirects: true
+id: cooked-pro-abd436c4af2b5bfd71ad438f78d09b05
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cooked-pro/
+    google-query: inurl:"/wp-content/plugins/cooked-pro/"
+    shodan-query: 'vuln:'
+  name: 'Cooked Pro <= 1.7.15.4 - Cross-Site Request Forgery to Template Apply
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/462fcf4d-3ece-48d7-b06f-9a5de9372f5c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,cooked-pro,medium

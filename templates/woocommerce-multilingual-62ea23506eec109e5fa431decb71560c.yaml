@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-multilingual
+  - dsl:
+    - compare_versions(version, '<= 5.3.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-multilingual/readme.txt'
+  redirects: true
+id: woocommerce-multilingual-62ea23506eec109e5fa431decb71560c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-multilingual/
+    google-query: inurl:"/wp-content/plugins/woocommerce-multilingual/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Multilingual & Multicurrency with WPML <= 5.3.3.1 - Authenticated
+    (Shop Manager+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8b0f58b8-46d6-4deb-bfcc-806bb635b060?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-multilingual,low

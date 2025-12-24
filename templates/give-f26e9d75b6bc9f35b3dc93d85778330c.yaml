@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - give
+  - dsl:
+    - compare_versions(version, '<= 2.25.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/give/readme.txt'
+  redirects: true
+id: give-f26e9d75b6bc9f35b3dc93d85778330c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 5.3
+  description: 'The GiveWP for WordPress is vulnerable to Cross-Site Request Forgery
+    in versions up to, and including, 2.25.2. This is due to missing or incorrect
+    nonce validation on the give_ajax_store_payment_note function. This makes it possible
+    for unauthenticated attackers to add donation notes via a forged request granted
+    they can trick a site administrator into performing an action such as clicking
+    on a link.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/give/
+    google-query: inurl:"/wp-content/plugins/give/"
+    shodan-query: 'vuln:'
+  name: 'GiveWP <= 2.25.2 - Cross-Site Request Forgery via give_ajax_store_payment_note
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d09a0b62-6556-4be5-a6f2-0cb0edcced3b?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,give,medium

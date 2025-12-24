@@ -1,0 +1,34 @@
+id: movable-type-login-1
+info:
+  author: dhiyaneshDk
+  metadata:
+    shodan-query: "title:\"\u30B5\u30A4\u30F3\u30A4\u30F3 | Movable Type Pro\""
+  name: Movable Type Pro
+  severity: info
+  tags: panel,movable
+requests:
+- attack: sniper
+  matchers:
+  - part: body
+    type: word
+    words:
+    - Movable Type Pro
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /mt/admin HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

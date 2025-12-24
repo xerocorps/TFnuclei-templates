@@ -1,0 +1,57 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - ci/cd
+    - security
+    - exposure
+  description: Template to detect potential exposure of CI/CD pipeline configuration
+    files
+  id: pipeline-config-exposure
+  matcher-condition: or
+  matchers:
+  - description: Pipeline configuration file found
+    pattern: 'pipeline:'
+    type: body
+  name: CI/CD Pipeline Configuration Exposure - Detect
+  requests:
+    condition: or
+    description: Attempt to retrieve CI/CD pipeline configuration file
+    method: GET
+    path:
+    - /.gitlab-ci.yml
+    - /.travis.yml
+    - /azure-pipelines.yml
+    - /circle.yml
+    - /Jenkinsfile
+    - /.github/workflows/*.yml
+    - /bitbucket-pipelines.yml
+    - /bitbucket-pipelines.yaml
+    - /buildspec.yml
+    - /cloudbuild.yaml
+    - /wercker.yml
+    - /appveyor.yml
+    - /codeship-steps.yml
+    - /drone.yml
+    - /spinnaker.yml
+    - /teamcity.yml
+    - /cricleci.yml
+    - /.drone.yml
+    - /travis.ci
+    - /jenkins.yml
+    - /gitlab-ci.yaml
+    - /wercker.yaml
+    - /.github/workflows/ci.yml
+    - /build.gradle
+    - /deploy.yaml
+    - /.semaphore/semaphore.yml
+    - /.azure-pipelines.yml
+    - /concourse.yml
+    - /fabric8-pipeline.yml
+    - /.circleci/config.yml
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

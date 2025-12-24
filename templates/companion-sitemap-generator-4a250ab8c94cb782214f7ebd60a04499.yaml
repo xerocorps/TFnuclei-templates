@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - companion-sitemap-generator
+  - dsl:
+    - compare_versions(version, '<= 4.5.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/companion-sitemap-generator/readme.txt'
+  redirects: true
+id: companion-sitemap-generator-4a250ab8c94cb782214f7ebd60a04499
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/companion-sitemap-generator/
+    google-query: inurl:"/wp-content/plugins/companion-sitemap-generator/"
+    shodan-query: 'vuln:'
+  name: 'Companion Sitemap Generator <= 4.5.1.1 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ccf0d482-b4a1-47a8-8741-0970531e9630?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,companion-sitemap-generator,low

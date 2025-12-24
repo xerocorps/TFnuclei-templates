@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ova-events-manager
+  - dsl:
+    - compare_versions(version, '<= 1.8.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ova-events-manager/readme.txt'
+  redirects: true
+id: ova_events_manager-53f12e61-fdb0-4838-b733-fc4d7a4ff016
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ova-events-manager/
+    google-query: inurl:"/wp-content/plugins/ova-events-manager/"
+    shodan-query: http.html:"wp-content/plugins/ova-events-manager/"
+  name: 'Ovatheme Events Manager <= 1.8.6 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/53f12e61-fdb0-4838-b733-fc4d7a4ff016?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ova-events-manager,high,candidate

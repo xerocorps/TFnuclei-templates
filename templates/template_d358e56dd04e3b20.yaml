@@ -1,0 +1,14 @@
+directive_name: pervasive-relational
+directive_str: Client string for PARC version 1 Wire Encryption version 1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0
+matches:
+- pattern: ^\0{255}
+  service: psql
+  version_info: ' p/Pervasive.SQL Server - Relational Engine/'
+- pattern: ^\0Server string for PARC version 1 Wire Encryption version 1\0
+  service: psql
+  version_info: ' p/Pervasive.SQL Server - Relational Engine/ i/encrypted/'
+ports:
+- 1583
+- 3351
+protocol: TCP
+rarity: 8

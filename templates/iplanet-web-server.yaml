@@ -1,0 +1,21 @@
+id: iplanet-web-server
+info:
+  author: pussycat0x
+  metadata:
+    fofa-query: app="iPlanet-Web-Server,-Enterprise-Edition-4.1"
+  name: Detect iPlanet Webserver Detection
+  severity: info
+  tags: tech,webserver
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - iPlanet
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - push-notification-for-post-and-buddypress
+  - dsl:
+    - compare_versions(version, '< 1.64')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/push-notification-for-post-and-buddypress/readme.txt'
+  redirects: true
+id: push-notification-for-post-and-buddypress-87654db6955354f5bcd20cc2f2f16ee6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/push-notification-for-post-and-buddypress/
+    google-query: inurl:"/wp-content/plugins/push-notification-for-post-and-buddypress/"
+    shodan-query: 'vuln:'
+  name: 'Push Notification for Post and BuddyPress <= 1.63 - Missing Authorization
+    to Unauthenticated Admin Notice Dismissal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/228a3c72-fbb0-48bc-8066-6ca954a14421?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,push-notification-for-post-and-buddypress,high

@@ -1,0 +1,20 @@
+id: gophish-login
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"Gophish - Login"
+  name: Gophish Login
+  severity: info
+  tags: panel,gophish
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Gophish - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uploadify-integration
+  - dsl:
+    - compare_versions(version, '<= 0.9.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/uploadify-integration/readme.txt'
+  redirects: true
+id: uploadify-integration-bb9a1ec5a272d1a7292d17de8fd51e06
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/uploadify-integration/
+    google-query: inurl:"/wp-content/plugins/uploadify-integration/"
+    shodan-query: 'vuln:'
+  name: 'Uploadify Integration <= 0.9.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e8fa1f97-72f6-4e84-bee4-0d3f7e16eb96?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,uploadify-integration,medium

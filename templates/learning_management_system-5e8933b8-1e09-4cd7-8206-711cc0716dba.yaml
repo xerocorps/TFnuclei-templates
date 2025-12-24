@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - learning-management-system
+  - dsl:
+    - compare_versions(version, '< 1.6.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/learning-management-system/readme.txt'
+  redirects: true
+id: learning_management_system-5e8933b8-1e09-4cd7-8206-711cc0716dba
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/learning-management-system/
+    google-query: inurl:"/wp-content/plugins/learning-management-system/"
+    shodan-query: http.html:"wp-content/plugins/learning-management-system/"
+  name: 'Masteriyo - LMS for WordPress <= 1.6.7 - Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5e8933b8-1e09-4cd7-8206-711cc0716dba?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,learning-management-system,low,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - robo-gallery
+  - dsl:
+    - compare_versions(version, '< 2.0.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/robo-gallery/readme.txt'
+  redirects: true
+id: robo-gallery-a741a42faf71ce0d83b9dde328def4a5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/robo-gallery/
+    google-query: inurl:"/wp-content/plugins/robo-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Photo Gallery, Images, Slider in Rbs Image Gallery <= 2.0.14 - Remote Code
+    Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/abdd6aaa-830e-4a79-acfb-93dc4a26f599?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,robo-gallery,critical

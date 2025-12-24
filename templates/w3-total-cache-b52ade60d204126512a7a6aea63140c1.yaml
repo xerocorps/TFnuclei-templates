@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - w3-total-cache
+  - dsl:
+    - compare_versions(version, '<= 0.9.7.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/w3-total-cache/readme.txt'
+  redirects: true
+id: w3-total-cache-b52ade60d204126512a7a6aea63140c1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N
+    cvss-score: 4.3
+  description: 'W3 Total Cache in versions 0.5 up to 0.9.7.3 does not sufficiently
+    validate the "openssl_verify" result in "/services/MessageValidator/MessageValidator.php".
+    A remote attacker can create a specially crafted certificate and bypass cryptographic
+    checks.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/w3-total-cache/
+    google-query: inurl:"/wp-content/plugins/w3-total-cache/"
+    shodan-query: 'vuln:'
+  name: 'W3 Total Cache <= 0.9.7.3 - Improper Input Validation via openssl_verify
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b002d1a1-a536-4865-b263-594390941ed4?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,w3-total-cache,medium

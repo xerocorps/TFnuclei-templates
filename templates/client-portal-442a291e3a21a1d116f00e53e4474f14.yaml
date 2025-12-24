@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - client-portal
+  - dsl:
+    - compare_versions(version, '<= 1.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/client-portal/readme.txt'
+  redirects: true
+id: client-portal-442a291e3a21a1d116f00e53e4474f14
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/client-portal/
+    google-query: inurl:"/wp-content/plugins/client-portal/"
+    shodan-query: 'vuln:'
+  name: 'Client Portal <= 1.1.8 - Cross-Site Request Forgery via cp_create_private_pages_for_all_users
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c3319993-6f2c-425d-8cb2-ab26f7a52139?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,client-portal,medium

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-quickview
+  - dsl:
+    - compare_versions(version, '<= 2.2.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-quickview/readme.txt'
+  redirects: true
+id: woo_quickview-4135e93e-596d-4ada-86ad-4f161e7ed38e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-quickview/
+    google-query: inurl:"/wp-content/plugins/woo-quickview/"
+    shodan-query: http.html:"wp-content/plugins/woo-quickview/"
+  name: 'Quick View for WooCommerce <= 2.2.16 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4135e93e-596d-4ada-86ad-4f161e7ed38e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-quickview,low,candidate

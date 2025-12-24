@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tracked-tweets
+  - dsl:
+    - compare_versions(version, '<= 0.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tracked-tweets/readme.txt'
+  redirects: true
+id: tracked-tweets-e9e51797251a406604f344d3330f40b1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tracked-tweets/
+    google-query: inurl:"/wp-content/plugins/tracked-tweets/"
+    shodan-query: 'vuln:'
+  name: 'Tracked Tweets <= 0.2.9 - Cross-Site Request Forgery to Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5d762b22-5563-454f-8c1c-485a2a3a0d0f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,tracked-tweets,medium

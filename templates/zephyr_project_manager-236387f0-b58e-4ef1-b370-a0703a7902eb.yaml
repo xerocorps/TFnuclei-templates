@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - zephyr-project-manager
+  - dsl:
+    - compare_versions(version, '<= 3.3.93')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/zephyr-project-manager/readme.txt'
+  redirects: true
+id: zephyr_project_manager-236387f0-b58e-4ef1-b370-a0703a7902eb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/zephyr-project-manager/
+    google-query: inurl:"/wp-content/plugins/zephyr-project-manager/"
+    shodan-query: http.html:"wp-content/plugins/zephyr-project-manager/"
+  name: 'Zephyr Project Manager <= 3.3.93 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/236387f0-b58e-4ef1-b370-a0703a7902eb?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,zephyr-project-manager,medium,candidate

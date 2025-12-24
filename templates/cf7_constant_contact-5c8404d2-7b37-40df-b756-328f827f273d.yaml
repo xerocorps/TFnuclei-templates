@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cf7-constant-contact
+  - dsl:
+    - compare_versions(version, '<= 1.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cf7-constant-contact/readme.txt'
+  redirects: true
+id: cf7_constant_contact-5c8404d2-7b37-40df-b756-328f827f273d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cf7-constant-contact/
+    google-query: inurl:"/wp-content/plugins/cf7-constant-contact/"
+    shodan-query: http.html:"wp-content/plugins/cf7-constant-contact/"
+  name: 'Integration for Contact Form 7 and Constant Contact <= 1.1.4 - Open Redirect
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5c8404d2-7b37-40df-b756-328f827f273d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cf7-constant-contact,low,candidate

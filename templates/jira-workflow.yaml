@@ -1,0 +1,10 @@
+id: jira-workflow
+info:
+  author: micha3lb3n
+  description: A simple workflow that runs all Jira related nuclei templates on a
+    given target.
+  name: Jira Security Checks
+workflows:
+- subtemplates:
+  - tags: jira
+  template: exposed-panels/jira-detect.yaml

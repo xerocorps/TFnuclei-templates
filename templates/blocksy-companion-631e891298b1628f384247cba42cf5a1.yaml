@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - blocksy-companion
+  - dsl:
+    - compare_versions(version, '<= 2.0.28')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/blocksy-companion/readme.txt'
+  redirects: true
+id: blocksy-companion-631e891298b1628f384247cba42cf5a1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/blocksy-companion/
+    google-query: inurl:"/wp-content/plugins/blocksy-companion/"
+    shodan-query: 'vuln:'
+  name: 'Blocksy Companion <= 2.0.28 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3bb15611-85a4-4efb-81e5-7352c348c4a9?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,blocksy-companion,medium

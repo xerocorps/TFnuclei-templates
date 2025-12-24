@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dt-chocolate
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/dt-chocolate/style.css'
+  redirects: true
+id: dt-chocolate-60f758cbc6f707e447518079d21ee889
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:N
+    cvss-score: 4.7
+  description: The DT Chocolate theme for WordPress is vulnerable to Open Redirect
+    in versions up to, and including, 1.0. This is due to a lack of sanitization of
+    user-supplied input via the 'image' parameter. This makes it possible for attackers
+    to redirect users to arbitrary websites.
+  metadata:
+    fofa-query: wp-content/themes/dt-chocolate/
+    google-query: inurl:"/wp-content/themes/dt-chocolate/"
+    shodan-query: 'vuln:'
+  name: DT Chocolate <= 1.0 - Open Redirect
+  reference:
+  - https://cxsecurity.com/issue/WLB-2013020011
+  severity: medium
+  tags: cve,wordpress,wp-theme,dt-chocolate,medium

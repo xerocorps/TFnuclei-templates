@@ -1,0 +1,10 @@
+directive_name: mqtt
+directive_str: \x10\x10\x00\x04MQTT\x04\x02\x00\x1e\x00\x04nmap
+matches:
+- pattern: ^\x20\x02\x00.$
+  service: mqtt
+  version_info: ''
+ports:
+- 1883
+protocol: TCP
+rarity: 9

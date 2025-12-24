@@ -1,0 +1,23 @@
+id: sage-panel
+info:
+  author: pikpikcu,daffainfo
+  metadata:
+    shodan-query: http.title:"Sage X3"
+  name: Sage X3 Login Panel
+  severity: info
+  tags: panel,sage,login
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Sage  X3</title>
+    - '''/auth/sage-id/registerStart'''
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/login/page'

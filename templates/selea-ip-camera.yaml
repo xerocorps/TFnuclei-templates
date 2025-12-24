@@ -1,0 +1,25 @@
+id: selea-ip-camera
+info:
+  author: geeknik
+  description: Selea Targa IP OCR-ANPR Camera Unauthenticated RTP/RTSP/M-JPEG Stream
+    Disclosure -- https://www.zeroscience.mk/en/vulnerabilities/ZSL-2021-5619.php
+  name: Detect Selea Targa IP OCR-ANPR Camera
+  severity: info
+  tags: iot
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - SeleaCPSHttpServer
+  - part: body
+    type: word
+    words:
+    - Selea CarPlateServer
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,18 @@
+id: workspaceone-uem-dashboard
+info:
+  author: hanlaomo
+  name: Workspace ONE Unified Endpoint Management (UEM) AirWatch
+  severity: info
+  tags: panel,workspaceone
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Workspace
+    - Login
+    - AirWatch
+  method: GET
+  path:
+  - '{{BaseURL}}/AirWatch/Login'

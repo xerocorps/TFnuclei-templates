@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-e-commerce
+  - dsl:
+    - compare_versions(version, '<= 3.8.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-e-commerce/readme.txt'
+  redirects: true
+id: wp_e_commerce-5c42a966-0035-4c12-8aa1-226a0157d98f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: "The WP eCommerce plugin for WordPress is vulnerable to generic SQL\
+    \ Injection via the \u2018view_purchlogs_by_status\u2019 parameter in versions\
+    \ up to, and including, 3.8.9 due to insufficient escaping on the user supplied\
+    \ parameter and lack of sufficient preparation on the existing SQL query.  This\
+    \ makes it possible for unauthenticated attackers to append additional SQL queries\
+    \ into already existing queries that can be used to extract sensitive information\
+    \ from the database.\n"
+  metadata:
+    fofa-query: wp-content/plugins/wp-e-commerce/
+    google-query: inurl:"/wp-content/plugins/wp-e-commerce/"
+    shodan-query: http.html:"wp-content/plugins/wp-e-commerce/"
+  name: 'WP eCommerce <= 3.8.9 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5c42a966-0035-4c12-8aa1-226a0157d98f?source=api-prod
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-e-commerce,critical,production

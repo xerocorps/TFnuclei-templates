@@ -1,0 +1,19 @@
+id: otobo-open-redirect
+info:
+  author: 0x_Akoko
+  description: There is a open redirect vulnerability in Otobo
+  name: Open Redirect in Otobo
+  reference:
+  - https://github.com/rotheross/otobo
+  - https://huntr.dev/bounties/de64ac71-9d06-47cb-b643-891db02f2a1f/
+  severity: medium
+  tags: redirect,otobo
+requests:
+- matchers:
+  - part: header
+    regex:
+    - (?m)^(?:Location\s*?:\s*?)(?:https?://|//)?(?:[a-zA-Z0-9\-_]*\.)?example\.com(?:\s*?)$
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/otobo/index.pl?Action=ExternalURLJump;URL=http://www.example.com'

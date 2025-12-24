@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mage-eventpress
+  - dsl:
+    - compare_versions(version, '<= 4.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mage-eventpress/readme.txt'
+  redirects: true
+id: mage_eventpress-2c66905d-6e53-4062-b63f-b9a249ebd3e1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mage-eventpress/
+    google-query: inurl:"/wp-content/plugins/mage-eventpress/"
+    shodan-query: http.html:"wp-content/plugins/mage-eventpress/"
+  name: 'WpEvently <= 4.2.9 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2c66905d-6e53-4062-b63f-b9a249ebd3e1?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,mage-eventpress,high,candidate

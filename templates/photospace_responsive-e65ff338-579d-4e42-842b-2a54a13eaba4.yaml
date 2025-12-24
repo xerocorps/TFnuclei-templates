@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - photospace-responsive
+  - dsl:
+    - compare_versions(version, '<= 2.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/photospace-responsive/readme.txt'
+  redirects: true
+id: photospace_responsive-e65ff338-579d-4e42-842b-2a54a13eaba4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/photospace-responsive/
+    google-query: inurl:"/wp-content/plugins/photospace-responsive/"
+    shodan-query: http.html:"wp-content/plugins/photospace-responsive/"
+  name: 'Photospace Responsive <= 2.2.0 - Authenticated (Author+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e65ff338-579d-4e42-842b-2a54a13eaba4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,photospace-responsive,low,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - database-sync
+  - dsl:
+    - compare_versions(version, '<= 0.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/database-sync/readme.txt'
+  redirects: true
+id: database_sync-ef9ee3e3-f6b7-400f-a977-2a3230c3b080
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/database-sync/
+    google-query: inurl:"/wp-content/plugins/database-sync/"
+    shodan-query: http.html:"wp-content/plugins/database-sync/"
+  name: 'Database Sync <= 0.5.1 - Authenticated (Subscriber+) Sensitive Information
+    Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ef9ee3e3-f6b7-400f-a977-2a3230c3b080?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,database-sync,low,candidate

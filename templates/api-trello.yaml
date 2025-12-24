@@ -1,0 +1,20 @@
+id: api-trello
+info:
+  author: daffainfo
+  name: Trello API Test
+  reference:
+  - https://developers.trello.com/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Business/Trello.md
+  severity: info
+  tags: token-spray,trello
+requests:
+- matchers:
+  - negative: true
+    part: body
+    type: word
+    words:
+    - invalid key
+  method: GET
+  path:
+  - https://api.trello.com/1/members/me?key={{key}}&token={{token}}
+self-contained: true

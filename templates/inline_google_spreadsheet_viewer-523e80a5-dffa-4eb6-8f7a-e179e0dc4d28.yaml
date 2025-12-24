@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - inline-google-spreadsheet-viewer
+  - dsl:
+    - compare_versions(version, '<= 0.13.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/inline-google-spreadsheet-viewer/readme.txt'
+  redirects: true
+id: inline_google_spreadsheet_viewer-523e80a5-dffa-4eb6-8f7a-e179e0dc4d28
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/inline-google-spreadsheet-viewer/
+    google-query: inurl:"/wp-content/plugins/inline-google-spreadsheet-viewer/"
+    shodan-query: http.html:"wp-content/plugins/inline-google-spreadsheet-viewer/"
+  name: 'Inline Google Spreadsheet Viewer <= 0.13.2 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/523e80a5-dffa-4eb6-8f7a-e179e0dc4d28?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,inline-google-spreadsheet-viewer,low,candidate

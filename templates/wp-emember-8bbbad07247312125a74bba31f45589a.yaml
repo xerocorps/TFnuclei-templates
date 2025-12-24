@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-emember
+  - dsl:
+    - compare_versions(version, '<= 10.6.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-emember/readme.txt'
+  redirects: true
+id: wp-emember-8bbbad07247312125a74bba31f45589a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-emember/
+    google-query: inurl:"/wp-content/plugins/wp-emember/"
+    shodan-query: 'vuln:'
+  name: 'WP eMember <= 10.6.6 - Reflected Cross-Site Scripting via $_SERVER[''REQUEST_URI'']
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1ceae0dc-205a-4a24-a912-b632c9ca7e6f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-emember,medium

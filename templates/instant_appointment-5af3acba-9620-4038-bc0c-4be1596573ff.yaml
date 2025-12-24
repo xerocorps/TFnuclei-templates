@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - instant-appointment
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/instant-appointment/readme.txt'
+  redirects: true
+id: instant_appointment-5af3acba-9620-4038-bc0c-4be1596573ff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/instant-appointment/
+    google-query: inurl:"/wp-content/plugins/instant-appointment/"
+    shodan-query: http.html:"wp-content/plugins/instant-appointment/"
+  name: 'Instant Appointment <= 1.2 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5af3acba-9620-4038-bc0c-4be1596573ff?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,instant-appointment,medium,candidate

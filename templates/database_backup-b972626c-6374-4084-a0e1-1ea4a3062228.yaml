@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - database-backup
+  - dsl:
+    - compare_versions(version, '<= 2.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/database-backup/readme.txt'
+  redirects: true
+id: database_backup-b972626c-6374-4084-a0e1-1ea4a3062228
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/database-backup/
+    google-query: inurl:"/wp-content/plugins/database-backup/"
+    shodan-query: http.html:"wp-content/plugins/database-backup/"
+  name: 'Database Backup and check Tables Automated With Scheduler 2024 <= 2.32 -
+    Authenticated (Admin+) Arbitrary File Read
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b972626c-6374-4084-a0e1-1ea4a3062228?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,database-backup,low,candidate

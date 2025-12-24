@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - health-check
+  - dsl:
+    - compare_versions(version, '<= 1.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/health-check/readme.txt'
+  redirects: true
+id: health-check-97a72fbd8c533b9225a6b8922ab1f6f8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H
+    cvss-score: 8
+  description: 'The Health Check & Troubleshooting plugin for WordPress is vulnerable
+    to Cross-Site Request Forgery in versions up to, and including, 1.2.3. This is
+    due to missing or incorrect nonce validation. This makes it possible for authenticated
+    attackers to call AJAX actions (vulnerable actions listed in resource) via forged
+    request granted they can trick a site administrator into performing an action
+    such as clicking on a link.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/health-check/
+    google-query: inurl:"/wp-content/plugins/health-check/"
+    shodan-query: 'vuln:'
+  name: 'Health Check & Troubleshooting <= 1.2.3 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bfd16372-9173-4168-8604-5c117d05c349?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,health-check,low

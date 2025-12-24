@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - hugo
+    - static-site-generator
+    - website
+  description: Template to detect websites built with Hugo.
+  id: hugo-detect
+  matchers:
+  - description: Hugo powered website found in the response body
+    pattern: poweredByHugo
+    type: body
+  - description: Hugo powered website found in the response body
+    pattern: <meta name="generator" content="Hugo
+    type: body
+  name: Hugo Website Detection
+  requests:
+    condition: and
+    description: Attempt to access a page on the website.
+    method: GET
+    path:
+    - /
+  severity: Low

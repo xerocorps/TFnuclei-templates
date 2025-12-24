@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - popup-box
+  - dsl:
+    - compare_versions(version, '<= 3.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/popup-box/readme.txt'
+  redirects: true
+id: popup_box-84ec28d1-8634-41df-ab1e-b56ed84f2809
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/popup-box/
+    google-query: inurl:"/wp-content/plugins/popup-box/"
+    shodan-query: http.html:"wp-content/plugins/popup-box/"
+  name: 'Popup Box <= 3.2.4 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/84ec28d1-8634-41df-ab1e-b56ed84f2809?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,popup-box,medium,candidate

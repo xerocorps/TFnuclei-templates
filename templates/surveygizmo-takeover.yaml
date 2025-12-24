@@ -1,0 +1,16 @@
+id: surveygizmo-takeover
+info:
+  author: pdteam
+  name: surveygizmo takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - data-html-name
+  method: GET
+  path:
+  - '{{BaseURL}}'

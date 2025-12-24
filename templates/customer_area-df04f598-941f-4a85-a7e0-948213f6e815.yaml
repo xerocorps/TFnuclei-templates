@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - customer-area
+  - dsl:
+    - compare_versions(version, '<= 8.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/customer-area/readme.txt'
+  redirects: true
+id: customer_area-df04f598-941f-4a85-a7e0-948213f6e815
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/customer-area/
+    google-query: inurl:"/wp-content/plugins/customer-area/"
+    shodan-query: http.html:"wp-content/plugins/customer-area/"
+  name: 'WP Customer Area <= 8.2.5 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/df04f598-941f-4a85-a7e0-948213f6e815?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,customer-area,high,candidate

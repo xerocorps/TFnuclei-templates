@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-business-directory-pro
+  - dsl:
+    - compare_versions(version, '< 15.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-business-directory-pro/readme.txt'
+  redirects: true
+id: simple_business_directory_pro-2988bb1f-0a32-4e9b-8096-46476879317b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-business-directory-pro/
+    google-query: inurl:"/wp-content/plugins/simple-business-directory-pro/"
+    shodan-query: http.html:"wp-content/plugins/simple-business-directory-pro/"
+  name: 'Simple Business Directory Pro < 15.6.9 - Unauthenticated Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2988bb1f-0a32-4e9b-8096-46476879317b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-business-directory-pro,low,candidate

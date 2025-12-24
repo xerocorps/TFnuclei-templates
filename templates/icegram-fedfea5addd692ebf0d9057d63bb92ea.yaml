@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - icegram
+  - dsl:
+    - compare_versions(version, '< 2.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/icegram/readme.txt'
+  redirects: true
+id: icegram-fedfea5addd692ebf0d9057d63bb92ea
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/icegram/
+    google-query: inurl:"/wp-content/plugins/icegram/"
+    shodan-query: 'vuln:'
+  name: 'Icegram <= 2.0.4 - Reflected Cross-Site Scripting via message_id
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/07aeed92-f3e9-4a25-a7e0-b364cb98f5dd?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,icegram,medium

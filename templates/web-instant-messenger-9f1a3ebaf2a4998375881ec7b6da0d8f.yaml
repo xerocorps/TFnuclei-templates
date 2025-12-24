@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - web-instant-messenger
+  - dsl:
+    - compare_versions(version, '<= 1.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/web-instant-messenger/readme.txt'
+  redirects: true
+id: web-instant-messenger-9f1a3ebaf2a4998375881ec7b6da0d8f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/web-instant-messenger/
+    google-query: inurl:"/wp-content/plugins/web-instant-messenger/"
+    shodan-query: 'vuln:'
+  name: 'Web Instant Messenger <= 1.1.2 and LocalWeb In One <= 1.6.4 - Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2f3328c2-290f-410b-a6c8-2825d415f511?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,web-instant-messenger,high

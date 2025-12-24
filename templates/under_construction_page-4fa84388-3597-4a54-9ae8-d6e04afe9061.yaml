@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - under-construction-page
+  - dsl:
+    - compare_versions(version, '<= 3.96')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/under-construction-page/readme.txt'
+  redirects: true
+id: under_construction_page-4fa84388-3597-4a54-9ae8-d6e04afe9061
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/under-construction-page/
+    google-query: inurl:"/wp-content/plugins/under-construction-page/"
+    shodan-query: http.html:"wp-content/plugins/under-construction-page/"
+  name: 'Under Construction <= 3.96 - Cross-Site Request Forgery via admin_action_install_weglot
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4fa84388-3597-4a54-9ae8-d6e04afe9061?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,under-construction-page,medium,candidate

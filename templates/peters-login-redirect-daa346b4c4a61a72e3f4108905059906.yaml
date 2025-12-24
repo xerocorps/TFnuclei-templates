@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - peters-login-redirect
+  - dsl:
+    - compare_versions(version, '< 3.0.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/peters-login-redirect/readme.txt'
+  redirects: true
+id: peters-login-redirect-daa346b4c4a61a72e3f4108905059906
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/peters-login-redirect/
+    google-query: inurl:"/wp-content/plugins/peters-login-redirect/"
+    shodan-query: 'vuln:'
+  name: 'LoginWP < 3.0.0.5 - Reflected Cross-Site Scripting via rul_login_url, rul_logout_url
+    Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/64827b61-42ea-454a-b41d-85ce8d6ad866?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,peters-login-redirect,medium

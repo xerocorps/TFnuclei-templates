@@ -1,0 +1,16 @@
+id: ansible-config-disclosure
+info:
+  author: pdteam
+  name: Ansible Configuration Exposure
+  severity: medium
+  tags: config,exposure
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - '[defaults]'
+    - '[inventory]'
+  method: GET
+  path:
+  - '{{BaseURL}}/ansible.cfg'

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - unlimited-elements-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.5.102')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/unlimited-elements-for-elementor/readme.txt'
+  redirects: true
+id: unlimited-elements-for-elementor-6e3ec859b211cb43593329605a8cda45
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/unlimited-elements-for-elementor/
+    google-query: inurl:"/wp-content/plugins/unlimited-elements-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Unlimited Elements For Elementor (Free Widgets, Addons, Templates) <= 1.5.102
+    - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f629fc93-84ce-4c33-b1c0-3a3194aac477?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,unlimited-elements-for-elementor,medium

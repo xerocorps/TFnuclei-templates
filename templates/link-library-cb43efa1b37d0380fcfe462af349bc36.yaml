@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - link-library
+  - dsl:
+    - compare_versions(version, '<= 7.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/link-library/readme.txt'
+  redirects: true
+id: link-library-cb43efa1b37d0380fcfe462af349bc36
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/link-library/
+    google-query: inurl:"/wp-content/plugins/link-library/"
+    shodan-query: 'vuln:'
+  name: 'Link Library <= 7.2.7 - Missing Authorization Checks
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/27d0f627-aeee-46de-a319-861af00fdbf4?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,link-library,high

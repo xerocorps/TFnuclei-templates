@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - image-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/image-gallery/readme.txt'
+  redirects: true
+id: image_gallery-655c08e6-4ef2-438e-b381-1bc3748c3771
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/image-gallery/
+    google-query: inurl:"/wp-content/plugins/image-gallery/"
+    shodan-query: http.html:"wp-content/plugins/image-gallery/"
+  name: 'ImagePress - Image Gallery <= 1.2.2 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting via Plugin Settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/655c08e6-4ef2-438e-b381-1bc3748c3771?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,image-gallery,low,candidate

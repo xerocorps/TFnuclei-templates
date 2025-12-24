@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - workreap
+  - dsl:
+    - compare_versions(version, '< 2.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/workreap/style.css'
+  redirects: true
+id: workreap-b37766e2-95d2-4a95-9381-ed65ce09b3d6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/workreap/
+    google-query: inurl:"/wp-content/themes/workreap/"
+    shodan-query: http.html:"wp-content/themes/workreap/"
+  name: 'Workreap < 2.6.3 - Insecure Direct Objection Reference to Private Message
+    Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b37766e2-95d2-4a95-9381-ed65ce09b3d6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,workreap,low,candidate

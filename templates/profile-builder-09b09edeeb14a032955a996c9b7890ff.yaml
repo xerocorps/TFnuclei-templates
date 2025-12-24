@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profile-builder
+  - dsl:
+    - compare_versions(version, '<= 3.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profile-builder/readme.txt'
+  redirects: true
+id: profile-builder-09b09edeeb14a032955a996c9b7890ff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profile-builder/
+    google-query: inurl:"/wp-content/plugins/profile-builder/"
+    shodan-query: 'vuln:'
+  name: "Profile Builder \u2013 User Profile & User Registration Forms <= 3.9.0 -\
+    \ Sensitive Information Disclosure via Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bbedad66-a5a6-4fb5-b03e-0ecf9fbef19a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,profile-builder,low

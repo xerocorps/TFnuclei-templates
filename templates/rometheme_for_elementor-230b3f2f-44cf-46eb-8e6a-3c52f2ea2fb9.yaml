@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rometheme-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rometheme-for-elementor/readme.txt'
+  redirects: true
+id: rometheme_for_elementor-230b3f2f-44cf-46eb-8e6a-3c52f2ea2fb9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rometheme-for-elementor/
+    google-query: inurl:"/wp-content/plugins/rometheme-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/rometheme-for-elementor/"
+  name: 'RomethemeKit For Elementor <= 1.5.3 - Missing Authorization in save_options
+    and reset_widgets
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/230b3f2f-44cf-46eb-8e6a-3c52f2ea2fb9?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,rometheme-for-elementor,high,candidate

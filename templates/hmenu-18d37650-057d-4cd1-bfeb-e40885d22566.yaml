@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hmenu
+  - dsl:
+    - compare_versions(version, '<= 1.16.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hmenu/readme.txt'
+  redirects: true
+id: hmenu-18d37650-057d-4cd1-bfeb-e40885d22566
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hmenu/
+    google-query: inurl:"/wp-content/plugins/hmenu/"
+    shodan-query: http.html:"wp-content/plugins/hmenu/"
+  name: 'Hero Mega Menu - Responsive WordPress Menu Plugin <= 1.16.5 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/18d37650-057d-4cd1-bfeb-e40885d22566?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,hmenu,medium,candidate

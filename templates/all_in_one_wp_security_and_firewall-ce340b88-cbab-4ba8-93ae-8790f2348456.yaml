@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-wp-security-and-firewall
+  - dsl:
+    - compare_versions(version, '<= 5.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-wp-security-and-firewall/readme.txt'
+  redirects: true
+id: all_in_one_wp_security_and_firewall-ce340b88-cbab-4ba8-93ae-8790f2348456
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-wp-security-and-firewall/
+    google-query: inurl:"/wp-content/plugins/all-in-one-wp-security-and-firewall/"
+    shodan-query: http.html:"wp-content/plugins/all-in-one-wp-security-and-firewall/"
+  name: 'All In One WP Security & Firewall <= 5.1.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ce340b88-cbab-4ba8-93ae-8790f2348456?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,all-in-one-wp-security-and-firewall,medium,candidate

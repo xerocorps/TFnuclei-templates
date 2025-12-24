@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-multi-currency
+  - dsl:
+    - compare_versions(version, '<= 2.3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-multi-currency/readme.txt'
+  redirects: true
+id: woocommerce_multi_currency-3c2e41ba-e37d-47c7-bdcb-f9a3801c045a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-multi-currency/
+    google-query: inurl:"/wp-content/plugins/woocommerce-multi-currency/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-multi-currency/"
+  name: 'CURCY <= 2.3.7 - Missing Authorization to Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3c2e41ba-e37d-47c7-bdcb-f9a3801c045a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocommerce-multi-currency,high,candidate

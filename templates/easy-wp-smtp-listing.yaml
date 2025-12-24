@@ -1,0 +1,18 @@
+id: easy-wp-smtp-listing
+info:
+  author: PR3R00T
+  name: SMTP WP Plugin Directory listing enabled
+  reference: https://blog.nintechnet.com/wordpress-easy-wp-smtp-plugin-fixed-zero-day-vulnerability/
+  severity: high
+  tags: wordpress,wp-plugin
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - debug
+    - log
+    - Index of
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-wp-smtp/'

@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - careerfy
+  - dsl:
+    - compare_versions(version, '<= 3.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/careerfy/style.css'
+  redirects: true
+id: careerfy-57bb9cc65153e1b57dc147be45b44d46
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: "The Careerfy - Job Board WordPress Theme theme for WordPress is vulnerable\
+    \ to Reflected Cross-Site Scripting via the \u2018location\u2019 parameter in\
+    \ versions up to, and including, 3.9.0 due to insufficient input sanitization\
+    \ and output escaping. This makes it possible for unauthenticated attackers to\
+    \ inject arbitrary web scripts in pages that execute if they can successfully\
+    \ trick a user into performing an action such as clicking on a link.\n"
+  metadata:
+    fofa-query: wp-content/themes/careerfy/
+    google-query: inurl:"/wp-content/themes/careerfy/"
+    shodan-query: 'vuln:'
+  name: 'Careerfy - Job Board WordPress Theme <= 3.9.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eedada2a-5543-46b1-a3d2-5e5b86a05ff9?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-theme,careerfy,medium

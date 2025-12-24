@@ -1,0 +1,30 @@
+id: fiori-launchpad
+info:
+  author: DhiyaneshDk
+  metadata:
+    google-dork: sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html -site:sap.com
+    verified: true
+  name: Fiori Launchpad Login
+  reference:
+  - https://www.exploit-db.com/ghdb/7941
+  severity: info
+  tags: sap,fiori,edb,panel
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Logon</title>
+    - SAP SE
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html'

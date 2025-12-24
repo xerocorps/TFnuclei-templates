@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - waiting
+  - dsl:
+    - compare_versions(version, '<= 0.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/waiting/readme.txt'
+  redirects: true
+id: waiting-3a2e11dcd8f25a00fda1fc349dee7101
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L
+    cvss-score: 6.3
+  description: 'The Waiting: One-click countdowns plugin for WordPress is vulnerable
+    to Cross-Site Request Forgery in versions up to, and including, 0.6.2. This is
+    due to missing or incorrect nonce validation on its AJAX actions. This makes it
+    possible for unauthenticated attackers to create and delete countdowns, via forged
+    request granted they can trick a site administrator into performing an action
+    such as clicking on a link.'
+  metadata:
+    fofa-query: wp-content/plugins/waiting/
+    google-query: inurl:"/wp-content/plugins/waiting/"
+    shodan-query: 'vuln:'
+  name: 'Waiting: One-click countdowns <= 0.6.2 - Cross-Site Request Forgery'
+  reference:
+  - https://plugins.trac.wordpress.org/browser/waiting/trunk/waiting.php?rev=2826039
+  severity: medium
+  tags: cve,wordpress,wp-plugin,waiting,medium

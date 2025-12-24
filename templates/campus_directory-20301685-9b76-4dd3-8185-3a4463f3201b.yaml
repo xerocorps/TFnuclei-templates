@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - campus-directory
+  - dsl:
+    - compare_versions(version, '<= 1.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/campus-directory/readme.txt'
+  redirects: true
+id: campus_directory-20301685-9b76-4dd3-8185-3a4463f3201b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/campus-directory/
+    google-query: inurl:"/wp-content/plugins/campus-directory/"
+    shodan-query: http.html:"wp-content/plugins/campus-directory/"
+  name: "Faculty Staff and Student Directory Plugin \u2013 Campus Directory <= 1.9.0\
+    \ - Authenticated (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/20301685-9b76-4dd3-8185-3a4463f3201b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,campus-directory,low,candidate

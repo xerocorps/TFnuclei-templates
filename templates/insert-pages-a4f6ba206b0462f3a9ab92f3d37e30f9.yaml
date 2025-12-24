@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - insert-pages
+  - dsl:
+    - compare_versions(version, '<= 3.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/insert-pages/readme.txt'
+  redirects: true
+id: insert-pages-a4f6ba206b0462f3a9ab92f3d37e30f9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/insert-pages/
+    google-query: inurl:"/wp-content/plugins/insert-pages/"
+    shodan-query: 'vuln:'
+  name: 'Insert Pages <= 3.6.1 - Contributor+ Arbitrary Posts/Pages Access
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1ee47f62-93f5-40ed-8c1d-555a21eb714a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,insert-pages,low

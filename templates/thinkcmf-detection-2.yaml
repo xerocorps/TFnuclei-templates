@@ -1,0 +1,19 @@
+id: thinkcmf-detection-2
+info:
+  author: pikpikcu,daffainfo
+  name: Detect ThinkCMF
+  severity: info
+  tags: panel,thinkcmf,login
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <meta name="author" content="ThinkCMF">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

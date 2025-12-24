@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - broken-link-checker
+  - dsl:
+    - compare_versions(version, '<= 1.10.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/broken-link-checker/readme.txt'
+  redirects: true
+id: broken-link-checker-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Broken Link Checker plugin for WordPress is vulnerable to Cross-Site
+    Scripting in versions up to, and including, 1.10.5 due to insufficient input sanitization
+    and output escaping and the use of add_query_arg/remove_query_arg. This makes
+    it possible for attackers to inject arbitrary web scripts that execute in a victim's
+    browser.
+  metadata:
+    fofa-query: wp-content/plugins/broken-link-checker/
+    google-query: inurl:"/wp-content/plugins/broken-link-checker/"
+    shodan-query: 'vuln:'
+  name: Broken Link Checker < 1.10.6 - Reflected Cross Site Scripting
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,broken-link-checker,low

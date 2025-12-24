@@ -1,0 +1,25 @@
+id: security-txt
+info:
+  author: bad5ect0r
+  description: The website defines a security policy.
+  name: Security.txt File
+  severity: info
+  tags: misc
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - 'Contact:'
+  - condition: and
+    dsl:
+    - len(body) <= 1024 && len(body) > 0
+    type: dsl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.well-known/security.txt'
+  - '{{BaseURL}}/security.txt'

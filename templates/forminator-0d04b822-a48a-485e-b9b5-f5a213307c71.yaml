@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - forminator
+  - dsl:
+    - compare_versions(version, '<= 1.29.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/forminator/readme.txt'
+  redirects: true
+id: forminator-0d04b822-a48a-485e-b9b5-f5a213307c71
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/forminator/
+    google-query: inurl:"/wp-content/plugins/forminator/"
+    shodan-query: http.html:"wp-content/plugins/forminator/"
+  name: 'Forminator <= 1.29.1 - HubSpot Developer API Key Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0d04b822-a48a-485e-b9b5-f5a213307c71?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,forminator,low,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-bank
+  - dsl:
+    - compare_versions(version, '<= 3.0.30')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-bank/readme.txt'
+  redirects: true
+id: contact-bank-f8c4a9f969bf3384efcfcdce6b45ff1d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-bank/
+    google-query: inurl:"/wp-content/plugins/contact-bank/"
+    shodan-query: 'vuln:'
+  name: 'Contact Bank <= 3.0.30 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1a367b5a-cfba-41fa-9243-256a391a4661?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-bank,low

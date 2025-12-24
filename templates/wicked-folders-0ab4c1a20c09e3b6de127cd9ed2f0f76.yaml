@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wicked-folders
+  - dsl:
+    - compare_versions(version, '<= 2.18.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wicked-folders/readme.txt'
+  redirects: true
+id: wicked-folders-0ab4c1a20c09e3b6de127cd9ed2f0f76
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wicked-folders/
+    google-query: inurl:"/wp-content/plugins/wicked-folders/"
+    shodan-query: 'vuln:'
+  name: 'Wicked Folders <= 2.18.16 - Missing Authorization via ajax_unassign_folders
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/29358ea9-21b7-4294-8fc9-0d38e689cf53?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wicked-folders,high

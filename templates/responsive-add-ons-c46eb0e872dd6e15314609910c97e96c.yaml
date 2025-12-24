@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - responsive-add-ons
+  - dsl:
+    - compare_versions(version, '<= 2.6.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/responsive-add-ons/readme.txt'
+  redirects: true
+id: responsive-add-ons-c46eb0e872dd6e15314609910c97e96c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 5.5
+  description: "The Responsive Starter Templates \u2013 Elementor & WordPress Templates\
+    \ is vulnerable to Stored Cross-Site Scripting in versions up to, and including,\
+    \ 2.6.8. This allows authenticated users with administrator-level permissions\
+    \ to inject arbitrary web scripts in pages that will execute whenever a user accesses\
+    \ an injected page.\n"
+  metadata:
+    fofa-query: wp-content/plugins/responsive-add-ons/
+    google-query: inurl:"/wp-content/plugins/responsive-add-ons/"
+    shodan-query: 'vuln:'
+  name: "Responsive Starter Templates \u2013 Elementor & WordPress Templates <= 2.6.8\
+    \ - Authenticated (Admin+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b290e792-2473-4ba5-b66c-b6ca65445c0e?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,responsive-add-ons,low

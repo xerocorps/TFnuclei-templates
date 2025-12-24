@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rb-internal-links
+  - dsl:
+    - compare_versions(version, '<= 2.0.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rb-internal-links/readme.txt'
+  redirects: true
+id: rb-internal-links-3fe29e1952446a3ed4b56520b5c46d29
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rb-internal-links/
+    google-query: inurl:"/wp-content/plugins/rb-internal-links/"
+    shodan-query: 'vuln:'
+  name: 'RB Internal Links <= 2.0.16 - Cross-Site Request Forgery to Settings update
+    and Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2be6c7d8-6dd4-4701-9baa-694496e7388a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,rb-internal-links,medium

@@ -1,0 +1,27 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - amazon
+    - mws
+    - marketplace web service
+    - auth token
+  description: Template to detect Amazon MWS (Marketplace Web Service) Auth Tokens
+  id: amazon-mws-auth-token-detect
+  matcher-condition: and
+  matchers:
+  - description: Amazon MWS Auth Token detected in the response body
+    pattern: amzn\.mws\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+    type: body
+  name: Amazon MWS Auth Token - Detect
+  requests:
+    description: Attempt to access the Amazon MWS Auth Token
+    method: GET
+    path:
+    - /
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Info

@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shared-counts
+  - dsl:
+    - compare_versions(version, '<= 1.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shared-counts/readme.txt'
+  redirects: true
+id: shared-counts-a373b72180eac7d3a2004b2cf1e99c7f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 5.3
+  description: "The Shared Counts \u2013 Social Media Share Buttons plugin for WordPress\
+    \ is vulnerable to unauthorized access to functionality due to a missing capability\
+    \ check on the email_ajax function. This makes it possible for unauthenticated\
+    \ attackers to send arbitrary emails.\n"
+  metadata:
+    fofa-query: wp-content/plugins/shared-counts/
+    google-query: inurl:"/wp-content/plugins/shared-counts/"
+    shodan-query: 'vuln:'
+  name: "Shared Counts \u2013 Social Media Share Buttons <= 1.4.1 - Missing Authorization\
+    \ to Arbitrary Email Sending\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/975293a1-7b69-4e10-93a3-74c00562c758?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,shared-counts,high

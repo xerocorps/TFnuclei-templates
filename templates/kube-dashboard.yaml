@@ -1,0 +1,14 @@
+id: kube-dashboard
+info:
+  author: notnotnotveg
+  name: Kubernetes Dashboard Detection
+  severity: informative
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - kubernetesDashboard
+  method: GET
+  path:
+  - '{{BaseURL}}/dashboard/#!/namespace?namespace=default'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - modula-best-grid-gallery
+  - dsl:
+    - compare_versions(version, '<= 2.6.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/modula-best-grid-gallery/readme.txt'
+  redirects: true
+id: modula-best-grid-gallery-079778f05037a411fa95071197884b5c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/modula-best-grid-gallery/
+    google-query: inurl:"/wp-content/plugins/modula-best-grid-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Modula Image Gallery <= 2.6.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/354c2c6c-5ba1-4bbe-88e4-9d219b66802a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,modula-best-grid-gallery,medium

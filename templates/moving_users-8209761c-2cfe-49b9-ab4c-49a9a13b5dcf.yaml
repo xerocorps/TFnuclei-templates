@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - moving-users
+  - dsl:
+    - compare_versions(version, '<= 1.05')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/moving-users/readme.txt'
+  redirects: true
+id: moving_users-8209761c-2cfe-49b9-ab4c-49a9a13b5dcf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/moving-users/
+    google-query: inurl:"/wp-content/plugins/moving-users/"
+    shodan-query: http.html:"wp-content/plugins/moving-users/"
+  name: 'Moving Users <= 1.05 - Unauthenticated Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8209761c-2cfe-49b9-ab4c-49a9a13b5dcf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,moving-users,low,candidate

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - instantio
+  - dsl:
+    - compare_versions(version, '<= 1.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/instantio/readme.txt'
+  redirects: true
+id: instantio-a3bcf746a75a658f210e374c99f7debd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/instantio/
+    google-query: inurl:"/wp-content/plugins/instantio/"
+    shodan-query: 'vuln:'
+  name: "Instantio \u2013 WooCommerce Quick Checkout | Instant Checkout, Side Cart\
+    \ & Popup Cart <= 1.2.5 - Cross Site Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a7f82847-433d-49b1-815d-b0d9e70068c2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,instantio,low

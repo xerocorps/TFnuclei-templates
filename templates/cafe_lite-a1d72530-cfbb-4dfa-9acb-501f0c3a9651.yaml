@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cafe-lite
+  - dsl:
+    - compare_versions(version, '<= 2.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cafe-lite/readme.txt'
+  redirects: true
+id: cafe_lite-a1d72530-cfbb-4dfa-9acb-501f0c3a9651
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cafe-lite/
+    google-query: inurl:"/wp-content/plugins/cafe-lite/"
+    shodan-query: http.html:"wp-content/plugins/cafe-lite/"
+  name: 'Clever Addons for Elementor <= 2.2.0 - Authenticated (Author+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a1d72530-cfbb-4dfa-9acb-501f0c3a9651?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cafe-lite,low,candidate

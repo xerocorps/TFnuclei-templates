@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tableberg
+  - dsl:
+    - compare_versions(version, '<= 0.6.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tableberg/readme.txt'
+  redirects: true
+id: tableberg-b0660d9a-9f36-42a6-bffa-15ac1afcfaf3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tableberg/
+    google-query: inurl:"/wp-content/plugins/tableberg/"
+    shodan-query: http.html:"wp-content/plugins/tableberg/"
+  name: 'Table Block by Tableberg <= 0.6.10 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b0660d9a-9f36-42a6-bffa-15ac1afcfaf3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tableberg,low,candidate

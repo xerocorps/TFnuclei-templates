@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - donate-with-qrcode
+  - dsl:
+    - compare_versions(version, '<= 1.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/donate-with-qrcode/readme.txt'
+  redirects: true
+id: donate_with_qrcode-9a4c327c-f756-4f50-8121-363791c6bd8c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/donate-with-qrcode/
+    google-query: inurl:"/wp-content/plugins/donate-with-qrcode/"
+    shodan-query: http.html:"wp-content/plugins/donate-with-qrcode/"
+  name: 'Donate With QRCode <= 1.4.4 - Authenticated (Subscriber+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9a4c327c-f756-4f50-8121-363791c6bd8c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,donate-with-qrcode,low,candidate

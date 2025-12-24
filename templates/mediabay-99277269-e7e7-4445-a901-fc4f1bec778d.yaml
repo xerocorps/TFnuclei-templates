@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mediabay
+  - dsl:
+    - compare_versions(version, '<= 1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mediabay/readme.txt'
+  redirects: true
+id: mediabay-99277269-e7e7-4445-a901-fc4f1bec778d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mediabay/
+    google-query: inurl:"/wp-content/plugins/mediabay/"
+    shodan-query: http.html:"wp-content/plugins/mediabay/"
+  name: 'Mediabay - WordPress Media Library Folders <= 1.4 - Authenticated (Subscriber+)
+    SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/99277269-e7e7-4445-a901-fc4f1bec778d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mediabay,low,candidate

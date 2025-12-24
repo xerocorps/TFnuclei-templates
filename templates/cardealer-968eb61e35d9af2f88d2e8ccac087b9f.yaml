@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cardealer
+  - dsl:
+    - compare_versions(version, '<= 3.04')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cardealer/readme.txt'
+  redirects: true
+id: cardealer-968eb61e35d9af2f88d2e8ccac087b9f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cardealer/
+    google-query: inurl:"/wp-content/plugins/cardealer/"
+    shodan-query: 'vuln:'
+  name: 'Car Dealer <= 3.04 - Missing Authorization to Arbitrary Plugin Installation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/621e3b3f-9647-41ec-aa06-e961e3525fea?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,cardealer,high

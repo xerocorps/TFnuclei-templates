@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - smooth-dynamic-slider
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/smooth-dynamic-slider/readme.txt'
+  redirects: true
+id: smooth_dynamic_slider-87135f68-8010-40ff-8507-3111cf8e86e2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/smooth-dynamic-slider/
+    google-query: inurl:"/wp-content/plugins/smooth-dynamic-slider/"
+    shodan-query: http.html:"wp-content/plugins/smooth-dynamic-slider/"
+  name: 'Smooth Dynamic Slider <= 1.0 - Reflected Cross-Site Scriptign
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/87135f68-8010-40ff-8507-3111cf8e86e2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,smooth-dynamic-slider,low,candidate

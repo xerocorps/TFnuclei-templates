@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - awake
+  - dsl:
+    - compare_versions(version, '<= 3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/awake/style.css'
+  redirects: true
+id: awake-5a4c808779b61131f00ea6f5bed49fd0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/awake/
+    google-query: inurl:"/wp-content/themes/awake/"
+    shodan-query: 'vuln:'
+  name: 'Awake <= 3.3 - Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e2510cee-d9d7-4b30-bf94-254a1dec9bd8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,awake,low

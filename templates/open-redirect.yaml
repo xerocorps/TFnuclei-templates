@@ -1,0 +1,24 @@
+id: open-redirect
+info:
+  author: MR.iambatman
+  description: redirect
+  name: open-redirect
+  severity: medium
+requests:
+- attack: clusterbomb
+  matchers:
+  - status:
+    - 302
+    - 301
+    - 307
+    type: status
+  payloads:
+    header: helpers/payloads/openredirect.txt
+  raw:
+  - "GET /\xA7header\xA7 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11;\
+    \ Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0\n"
+  - "POST /\xA7header\xA7 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11;\
+    \ Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0\n"
+  - "PUT /\xA7header\xA7 HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11;\
+    \ Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0\n"
+  redirects: true

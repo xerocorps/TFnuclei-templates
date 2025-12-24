@@ -1,0 +1,21 @@
+id: manageengine-adaudit
+info:
+  author: dhiyaneshDK,PR3R00T
+  name: ZOHO ManageEngine ADAudit/ADManager Panel
+  reference:
+  - https://www.shodan.io/search?query=http.title%3A%22ManageEngine+-+ADManager+Plus%22
+  severity: info
+  tags: panel,zoho,manageengine
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>ManageEngine - ADManager Plus</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/authorization.do'

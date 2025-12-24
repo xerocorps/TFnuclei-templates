@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leaflet-maps-marker
+  - dsl:
+    - compare_versions(version, '<= 2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leaflet-maps-marker/readme.txt'
+  redirects: true
+id: leaflet_maps_marker-9d0eb69a-3c94-40c2-acdf-6310190197a6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/leaflet-maps-marker/
+    google-query: inurl:"/wp-content/plugins/leaflet-maps-marker/"
+    shodan-query: http.html:"wp-content/plugins/leaflet-maps-marker/"
+  name: 'Leaflet Maps Marker (Google Maps, OpenStreetMap, Bing Maps) < 2.3.1 - Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d0eb69a-3c94-40c2-acdf-6310190197a6?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,leaflet-maps-marker,high,candidate

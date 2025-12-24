@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - video-conferencing-with-zoom-api
+  - dsl:
+    - compare_versions(version, '<= 3.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/video-conferencing-with-zoom-api/readme.txt'
+  redirects: true
+id: video-conferencing-with-zoom-api-b9cd4c5888a1359561e3ee682e6d034e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/video-conferencing-with-zoom-api/
+    google-query: inurl:"/wp-content/plugins/video-conferencing-with-zoom-api/"
+    shodan-query: 'vuln:'
+  name: 'Video Conferencing with Zoom <= 3.9.2 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/33707b80-5cc1-4678-bf87-8c5131634c94?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,video-conferencing-with-zoom-api,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - restrict-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/restrict-for-elementor/readme.txt'
+  redirects: true
+id: restrict-for-elementor-b95fdfa2a43d5b36772255b837cd4fac
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/restrict-for-elementor/
+    google-query: inurl:"/wp-content/plugins/restrict-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Restrict for Elementor <= 1.0.6 - Protection Mechanism Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/14993c04-7fe3-4c42-a605-2e431df14d79?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,restrict-for-elementor,low

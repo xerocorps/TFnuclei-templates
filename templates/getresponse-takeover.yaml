@@ -1,0 +1,15 @@
+id: getresponse-takeover
+info:
+  author: pdteam
+  name: getresponse takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - With GetResponse Landing Pages, lead generation has never been easier
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,25 @@
+id: 3cx-phone-management-panel
+info:
+  author: idealphase
+  metadata:
+    google-query: intitle:"3CX Phone System Management Console"
+    shodan-query:
+    - http.title:"3CX Phone System Management Console"
+    - http.favicon.hash:970132176
+  name: 3CX Phone System Management Console Detect
+  reference:
+  - https://www.3cx.com/
+  - https://www.3cx.com/phone-system/
+  - https://medium.com/@frycos/pwning-3cx-phone-management-backends-from-the-internet-d0096339dd88
+  severity: info
+  tags: panel,3cx
+requests:
+- matchers:
+  - condition: or
+    type: word
+    words:
+    - 3CX Phone System Management Console
+    - Welcome to the 3CX Management Console
+  method: GET
+  path:
+  - '{{BaseURL}}'

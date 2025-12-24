@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vrview
+  - dsl:
+    - compare_versions(version, '<= 1.1.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vrview/readme.txt'
+  redirects: true
+id: vrview-bbf78892bf7c37a6490c4d31df46ae4c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vrview/
+    google-query: inurl:"/wp-content/plugins/vrview/"
+    shodan-query: 'vuln:'
+  name: 'VRView <= 1.1.3 and WP-VR-view <= 1.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d6c906b3-8819-409c-946a-eeb9d938142d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,vrview,medium

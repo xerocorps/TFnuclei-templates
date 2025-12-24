@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lingotek-translation
+  - dsl:
+    - compare_versions(version, '<= 1.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lingotek-translation/readme.txt'
+  redirects: true
+id: lingotek-translation-fbd3ccacc3379feb6d9be830c4430b76
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lingotek-translation/
+    google-query: inurl:"/wp-content/plugins/lingotek-translation/"
+    shodan-query: 'vuln:'
+  name: 'Lingotek Translation <= 1.1.8 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4fbeee29-751a-48c9-a875-393441f62dde?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,lingotek-translation,high

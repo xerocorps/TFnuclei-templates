@@ -1,0 +1,27 @@
+id: konga-panel
+info:
+  author: princechaddha
+  name: Konga Panel Detect
+  reference:
+  - https://github.com/pantsel/konga
+  severity: info
+  tags: tech,konga,oss
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - konga_version = "(.*)";
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Konga</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

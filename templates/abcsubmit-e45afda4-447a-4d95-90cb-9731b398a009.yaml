@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - abcsubmit
+  - dsl:
+    - compare_versions(version, '<= 1.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/abcsubmit/readme.txt'
+  redirects: true
+id: abcsubmit-e45afda4-447a-4d95-90cb-9731b398a009
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/abcsubmit/
+    google-query: inurl:"/wp-content/plugins/abcsubmit/"
+    shodan-query: http.html:"wp-content/plugins/abcsubmit/"
+  name: 'Create custom forms for WordPress with a smart form plugin for smart businesses
+    <= 1.2.4 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e45afda4-447a-4d95-90cb-9731b398a009?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,abcsubmit,low,candidate

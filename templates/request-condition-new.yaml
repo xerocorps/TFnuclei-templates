@@ -1,0 +1,17 @@
+id: request-condition-new
+info:
+  author: pd-team
+  name: request-condition-new
+  severity: info
+requests:
+- id: first
+  method: GET
+  path:
+  - '{{BaseURL}}/200'
+- matchers:
+  - dsl:
+    - first_status_code==200 && status_code==400
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/400'

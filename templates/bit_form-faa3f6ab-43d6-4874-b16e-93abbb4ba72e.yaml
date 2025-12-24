@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bit-form
+  - dsl:
+    - compare_versions(version, '<= 1.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bit-form/readme.txt'
+  redirects: true
+id: bit_form-faa3f6ab-43d6-4874-b16e-93abbb4ba72e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bit-form/
+    google-query: inurl:"/wp-content/plugins/bit-form/"
+    shodan-query: http.html:"wp-content/plugins/bit-form/"
+  name: 'Bit Form <= 1.8.1 - Unauthenticated Arbitrary File Upload to Remote Code
+    Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/faa3f6ab-43d6-4874-b16e-93abbb4ba72e?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,bit-form,critical,candidate

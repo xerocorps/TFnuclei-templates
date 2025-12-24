@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profilegrid-user-profiles-groups-and-communities
+  - dsl:
+    - compare_versions(version, '<= 5.9.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profilegrid-user-profiles-groups-and-communities/readme.txt'
+  redirects: true
+id: profilegrid_user_profiles_groups_and_communities-95d2a05d-67ae-45b1-8add-0dcf73d43181
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profilegrid-user-profiles-groups-and-communities/
+    google-query: inurl:"/wp-content/plugins/profilegrid-user-profiles-groups-and-communities/"
+    shodan-query: http.html:"wp-content/plugins/profilegrid-user-profiles-groups-and-communities/"
+  name: "ProfileGrid \u2013 User Profiles, Groups and Communities <= 5.9.4.2 - Authenticated\
+    \ (Subscriber+) Limited Server-Side Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/95d2a05d-67ae-45b1-8add-0dcf73d43181?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,profilegrid-user-profiles-groups-and-communities,low,candidate

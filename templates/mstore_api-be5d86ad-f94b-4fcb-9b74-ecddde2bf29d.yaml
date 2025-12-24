@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mstore-api
+  - dsl:
+    - compare_versions(version, '<= 4.17.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mstore-api/readme.txt'
+  redirects: true
+id: mstore_api-be5d86ad-f94b-4fcb-9b74-ecddde2bf29d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mstore-api/
+    google-query: inurl:"/wp-content/plugins/mstore-api/"
+    shodan-query: http.html:"wp-content/plugins/mstore-api/"
+  name: "MStore API \u2013 Create Native Android & iOS Apps On The Cloud <= 4.17.4\
+    \ - Unauthenticated Limited Privilege Escalation\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/be5d86ad-f94b-4fcb-9b74-ecddde2bf29d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mstore-api,low,candidate

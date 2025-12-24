@@ -1,0 +1,24 @@
+dns:
+- extractors:
+  - group: 1
+    regex:
+    - "IN\tCNAME\t(.+)"
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - "IN\tCNAME"
+  name: '{{FQDN}}'
+  type: CNAME
+id: cname-fingerprint
+info:
+  author: pdteam
+  classification:
+    cwe-id: CWE-200
+  description: A CNAME DNS record was discovered.
+  name: CNAME Fingerprint
+  reference:
+  - https://www.theregister.com/2021/02/24/dns_cname_tracking/
+  - https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/
+  severity: info
+  tags: dns,cname

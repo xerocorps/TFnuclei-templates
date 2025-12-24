@@ -1,0 +1,49 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-seo-pack
+  - dsl:
+    - compare_versions(version, '< 2.3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-seo-pack/readme.txt'
+  redirects: true
+id: all_in_one_seo_pack-4f018e22-bf07-4371-afc1-3e664ea1c5a3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+  description: "The All in One SEO \u2013 Best WordPress SEO Plugin \u2013 Easily\
+    \ Improve SEO Rankings & Increase Traffic plugin for WordPress is vulnerable to\
+    \ Stored Cross-Site Scripting via the HTTP_REFERER header in versions up to, and\
+    \ including, 2.3.6 due to insufficient input sanitization and output escaping.\
+    \ This makes it possible for unauthenticated attackers to inject arbitrary web\
+    \ scripts in pages that will execute whenever a user accesses an injected page.\n"
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-seo-pack/
+    google-query: inurl:"/wp-content/plugins/all-in-one-seo-pack/"
+    shodan-query: http.html:"wp-content/plugins/all-in-one-seo-pack/"
+  name: "All in One SEO \u2013 Best WordPress SEO Plugin \u2013 Easily Improve SEO\
+    \ Rankings & Increase Traffic <= 2.3.6 - Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4f018e22-bf07-4371-afc1-3e664ea1c5a3?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,all-in-one-seo-pack,high,production

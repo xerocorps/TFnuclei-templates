@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - users-ultra
+  - dsl:
+    - compare_versions(version, '< 1.5.64')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/users-ultra/readme.txt'
+  redirects: true
+id: users-ultra-c2f26e843c5f69ff1d6cbb9694dd312e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/users-ultra/
+    google-query: inurl:"/wp-content/plugins/users-ultra/"
+    shodan-query: 'vuln:'
+  name: 'Users Ultra Membership Plugin <= 1.5.63 - Authenticated Blind SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/49754f41-b809-4a97-ab8f-233f51dc058f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,users-ultra,low

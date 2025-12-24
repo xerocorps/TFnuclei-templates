@@ -1,0 +1,16 @@
+id: default-plesk-page
+info:
+  author: dhiyaneshDk
+  name: Plesk Default Test Page
+  reference: https://www.shodan.io/search?query=http.title%3A%22Web+Server%27s+Default+Page%22
+  severity: info
+  tags: tech,plesk
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Web Server's Default Page</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'

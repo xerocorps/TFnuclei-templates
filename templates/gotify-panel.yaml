@@ -1,0 +1,28 @@
+http:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - '"version":"([0-9.]+)"'
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_any(body, "<title>Gotify", "content=\"Gotify")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: gotify-panel
+info:
+  author: righettod
+  description: Gotify login panel was detected.
+  metadata:
+    shodan-query: http.title:"Gotify"
+    verified: true
+  name: Gotify Login Panel - Detect
+  reference:
+  - https://github.com/gotify/server
+  severity: info
+  tags: panel,gotify,login,detect

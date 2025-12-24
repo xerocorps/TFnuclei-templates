@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-grid
+  - dsl:
+    - compare_versions(version, '<= 2.2.89')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-grid/readme.txt'
+  redirects: true
+id: post_grid-c619e758-c71d-41cf-bff9-119ad9e3d9c4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-grid/
+    google-query: inurl:"/wp-content/plugins/post-grid/"
+    shodan-query: http.html:"wp-content/plugins/post-grid/"
+  name: 'Post Grid and Gutenberg Blocks <= 2.2.89 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c619e758-c71d-41cf-bff9-119ad9e3d9c4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,post-grid,low,candidate

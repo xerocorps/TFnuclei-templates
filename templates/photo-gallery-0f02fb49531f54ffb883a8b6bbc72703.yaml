@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - photo-gallery
+  - dsl:
+    - compare_versions(version, '< 1.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/photo-gallery/readme.txt'
+  redirects: true
+id: photo-gallery-0f02fb49531f54ffb883a8b6bbc72703
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/photo-gallery/
+    google-query: inurl:"/wp-content/plugins/photo-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Photo Gallery by 10Web <= 1.2.7 - Unauthenticated Blind SQL Injection via
+    order_by Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/55a0b4ad-de5e-4203-a702-d498bf566165?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,photo-gallery,critical

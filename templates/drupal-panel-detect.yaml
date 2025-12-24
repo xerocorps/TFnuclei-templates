@@ -1,0 +1,15 @@
+id: drupal-panel-detect
+info:
+  author: glatisant
+  name: Drupal Panel Detect
+  severity: info
+requests:
+- matchers:
+  - type: word
+    words:
+    - user-login-form
+  method: GET
+  path:
+  - '{{BaseURL}}/user/login?destination=/'
+  - '{{BaseURL}}/drupal/user/login?destination=/'
+  - '{{BaseURL}}/blog/user/login?destination=/'

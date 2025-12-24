@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-easycart
+  - dsl:
+    - compare_versions(version, '<= 5.4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-easycart/readme.txt'
+  redirects: true
+id: wp_easycart-bcca7ade-8b35-4ba1-a8b4-b1e815b025e3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-easycart/
+    google-query: inurl:"/wp-content/plugins/wp-easycart/"
+    shodan-query: http.html:"wp-content/plugins/wp-easycart/"
+  name: 'WP EasyCart <= 5.4.8 - Cross-Site Request Forgery via process_delete_product
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bcca7ade-8b35-4ba1-a8b4-b1e815b025e3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-easycart,medium,candidate

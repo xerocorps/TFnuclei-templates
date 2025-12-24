@@ -1,0 +1,22 @@
+id: vmware-cloud-availability
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-dork: title:"VMware Cloud Director Availability"
+    verified: true
+  name: VMware Cloud Director Availability
+  severity: info
+  tags: panel,vmware
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>VMware Cloud Director Availability</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ui/login'

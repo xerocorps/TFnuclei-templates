@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - subscribe-to-comments
+  - dsl:
+    - compare_versions(version, '<= 2.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/subscribe-to-comments/readme.txt'
+  redirects: true
+id: subscribe_to_comments-81b76824-8099-433d-88e3-c05df9434fd6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/subscribe-to-comments/
+    google-query: inurl:"/wp-content/plugins/subscribe-to-comments/"
+    shodan-query: http.html:"wp-content/plugins/subscribe-to-comments/"
+  name: 'Subscribe to Comments <= 2.0.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/81b76824-8099-433d-88e3-c05df9434fd6?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,subscribe-to-comments,medium,candidate

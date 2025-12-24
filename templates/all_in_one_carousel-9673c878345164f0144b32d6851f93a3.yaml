@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all_in_one_carousel
+  - dsl:
+    - compare_versions(version, '<= 1.2.20')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all_in_one_carousel/readme.txt'
+  redirects: true
+id: all_in_one_carousel-9673c878345164f0144b32d6851f93a3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all_in_one_carousel/
+    google-query: inurl:"/wp-content/plugins/all_in_one_carousel/"
+    shodan-query: 'vuln:'
+  name: 'All In One Slider <= 1.2.20 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bdb7e239-75c4-480e-a283-dc2354fe3375?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,all_in_one_carousel,medium

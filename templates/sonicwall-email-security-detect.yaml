@@ -1,0 +1,17 @@
+id: sonicwall-email-security-detect
+info:
+  author: gy741
+  name: SonicWall Email Security Detection
+  reference:
+  - https://www.fireeye.com/blog/threat-research/2021/04/zero-day-exploits-in-sonicwall-email-security-lead-to-compromise.html
+  - https://www.sonicwall.com/support/product-notification/security-notice-sonicwall-email-security-zero-day-vulnerabilities/210416112932360/
+  severity: info
+  tags: tech,panel,sonicwall
+requests:
+- matchers:
+  - dsl:
+    - status_code==200 && ("2063459123" == mmh3(base64_py(body)))
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/favicon.ico'

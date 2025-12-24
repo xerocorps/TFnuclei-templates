@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - top-10
+  - dsl:
+    - compare_versions(version, '<= 3.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/top-10/readme.txt'
+  redirects: true
+id: top-10-d8d749d71051dacfbcf41c4923e6febd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/top-10/
+    google-query: inurl:"/wp-content/plugins/top-10/"
+    shodan-query: 'vuln:'
+  name: "Top 10 \u2013 Popular posts plugin for WordPress <= 3.2.4 - Missing Authorization\
+    \ on tptn_chart_data\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cbff7ec1-535d-43bf-be61-83a1e7625c77?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,top-10,high

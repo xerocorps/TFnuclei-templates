@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - login-with-ajax
+  - dsl:
+    - compare_versions(version, '<= 3.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/login-with-ajax/readme.txt'
+  redirects: true
+id: login-with-ajax-b808d5ed9f854902d5f9f36f77de50b6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 5.4
+  description: The Login With Ajax plugin for WordPress is vulnerable to Cross-Site
+    Scripting in versions up to, and including, 3.1.6 due to insufficient input sanitization
+    and output escaping. This makes it possible for attackers to inject arbitrary
+    web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/plugins/login-with-ajax/
+    google-query: inurl:"/wp-content/plugins/login-with-ajax/"
+    shodan-query: 'vuln:'
+  name: Login With Ajax <= 3.1.6 - Cross-Site Scripting
+  reference:
+  - https://wordpress.org/plugins/login-with-ajax/#developers
+  - https://wpscan.com/vulnerability/5c7acb7c-1459-41f2-900a-c68d1c57d5e3
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-login-with-ajax-cross-site-scripting-3-1-6/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,login-with-ajax,medium

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - relocate-upload
+  - dsl:
+    - compare_versions(version, '<= 0.24.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/relocate-upload/readme.txt'
+  redirects: true
+id: relocate_upload-9075a705-e72f-4331-ab8f-bb06e1a58225
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/relocate-upload/
+    google-query: inurl:"/wp-content/plugins/relocate-upload/"
+    shodan-query: http.html:"wp-content/plugins/relocate-upload/"
+  name: 'Relocate Upload <= 0.24.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9075a705-e72f-4331-ab8f-bb06e1a58225?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,relocate-upload,medium,candidate

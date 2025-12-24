@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - watu
+  - dsl:
+    - compare_versions(version, '<= 3.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/watu/readme.txt'
+  redirects: true
+id: watu-168e7eac-21ad-43ca-93d1-73c38e12bc29
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/watu/
+    google-query: inurl:"/wp-content/plugins/watu/"
+    shodan-query: http.html:"wp-content/plugins/watu/"
+  name: 'Watu Quiz <= 3.4.4 - Unauthenticated Stored Cross-Site Scripting via HTTP
+    Referer
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/168e7eac-21ad-43ca-93d1-73c38e12bc29?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,watu,high,candidate

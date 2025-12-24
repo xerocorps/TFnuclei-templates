@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sl-user-create
+  - dsl:
+    - compare_versions(version, '< 0.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sl-user-create/readme.txt'
+  redirects: true
+id: sl-user-create-6156aa0c305980057885391ecbb8a697
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sl-user-create/
+    google-query: inurl:"/wp-content/plugins/sl-user-create/"
+    shodan-query: 'vuln:'
+  name: 'SL User Create < 0.2.5 - Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d0f5b9b7-2482-4f25-b50e-e2d9b3ef4902?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sl-user-create,low

@@ -1,0 +1,17 @@
+id: api-lokalise
+info:
+  author: zzeitlin
+  name: Lokalise API Test
+  reference: https://app.lokalise.com/api2docs/curl/#resource-projects
+  severity: info
+  tags: token-spray,lokalise
+requests:
+- headers:
+    X-Api-Token: '{{token}}'
+  matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - https://api.lokalise.com/api2/projects/

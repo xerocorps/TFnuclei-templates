@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bulletin-announcements
+  - dsl:
+    - compare_versions(version, '<= 3.11.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bulletin-announcements/readme.txt'
+  redirects: true
+id: bulletin_announcements-08033270-5547-437b-95e6-e004b78df5e4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bulletin-announcements/
+    google-query: inurl:"/wp-content/plugins/bulletin-announcements/"
+    shodan-query: http.html:"wp-content/plugins/bulletin-announcements/"
+  name: 'Bulletin Announcements <= 3.11.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/08033270-5547-437b-95e6-e004b78df5e4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,bulletin-announcements,medium,candidate

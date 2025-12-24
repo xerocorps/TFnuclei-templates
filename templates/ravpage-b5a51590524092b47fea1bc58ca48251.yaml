@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ravpage
+  - dsl:
+    - compare_versions(version, '<= 2.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ravpage/readme.txt'
+  redirects: true
+id: ravpage-b5a51590524092b47fea1bc58ca48251
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ravpage/
+    google-query: inurl:"/wp-content/plugins/ravpage/"
+    shodan-query: 'vuln:'
+  name: 'Ravpage <= 2.16 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a2fe6b69-7a89-4cd4-8a8c-f7e1e587fbbe?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ravpage,medium

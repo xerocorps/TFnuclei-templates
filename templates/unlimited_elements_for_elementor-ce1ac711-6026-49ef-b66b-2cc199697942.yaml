@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - unlimited-elements-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.5.66')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/unlimited-elements-for-elementor/readme.txt'
+  redirects: true
+id: unlimited_elements_for_elementor-ce1ac711-6026-49ef-b66b-2cc199697942
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/unlimited-elements-for-elementor/
+    google-query: inurl:"/wp-content/plugins/unlimited-elements-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/unlimited-elements-for-elementor/"
+  name: 'Unlimited Elements For Elementor (Free Widgets, Addons, Templates) <= 1.5.66
+    - Authenticated (Contributor+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ce1ac711-6026-49ef-b66b-2cc199697942?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,unlimited-elements-for-elementor,low,candidate

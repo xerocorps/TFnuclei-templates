@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stackable-ultimate-gutenberg-blocks
+  - dsl:
+    - compare_versions(version, '<= 3.18.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stackable-ultimate-gutenberg-blocks/readme.txt'
+  redirects: true
+id: stackable_ultimate_gutenberg_blocks-47bc6797-bb18-4555-9561-846d8efaa842
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stackable-ultimate-gutenberg-blocks/
+    google-query: inurl:"/wp-content/plugins/stackable-ultimate-gutenberg-blocks/"
+    shodan-query: http.html:"wp-content/plugins/stackable-ultimate-gutenberg-blocks/"
+  name: 'Stackable <= 3.18.1 - Authenticated (Contributor+) Sensitive Information
+    Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/47bc6797-bb18-4555-9561-846d8efaa842?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stackable-ultimate-gutenberg-blocks,low,candidate

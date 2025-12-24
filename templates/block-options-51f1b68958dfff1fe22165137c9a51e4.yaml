@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - block-options
+  - dsl:
+    - compare_versions(version, '<= 1.31.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/block-options/readme.txt'
+  redirects: true
+id: block-options-51f1b68958dfff1fe22165137c9a51e4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/block-options/
+    google-query: inurl:"/wp-content/plugins/block-options/"
+    shodan-query: 'vuln:'
+  name: 'EditorsKit <= 1.31.5 - Authenticated (Contributor+) Code Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0725c0ac-91a7-4359-b911-a450635b09bb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,block-options,low

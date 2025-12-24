@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-sms
+  - dsl:
+    - compare_versions(version, '<= 5.4.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-sms/readme.txt'
+  redirects: true
+id: wp-sms-c5df63900847315e2ff6749b01f5b975
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-sms/
+    google-query: inurl:"/wp-content/plugins/wp-sms/"
+    shodan-query: 'vuln:'
+  name: "WP SMS \u2013 Messaging & SMS Notification for WordPress, WooCommerce, GravityForms,\
+    \ etc <= 5.4.9 - Reflected Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b597e8a5-043e-440e-aaa2-38fb3eeb0731?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-sms,medium

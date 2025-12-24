@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-meta-manager
+  - dsl:
+    - compare_versions(version, '< 3.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-meta-manager/readme.txt'
+  redirects: true
+id: user-meta-manager-59f35c620f0aba213a5c5e663a95f589
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-meta-manager/
+    google-query: inurl:"/wp-content/plugins/user-meta-manager/"
+    shodan-query: 'vuln:'
+  name: 'User Meta Manager Plugin < 3.4.7 - Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/616c65e7-8d0c-4be8-bd6f-f98187ff1539?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,user-meta-manager,low

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-ready
+  - dsl:
+    - compare_versions(version, '<= 2.0.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-ready/readme.txt'
+  redirects: true
+id: contact_form_ready-09506d1c-986e-45c8-b43c-7f2578eb2dbd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-ready/
+    google-query: inurl:"/wp-content/plugins/contact-form-ready/"
+    shodan-query: http.html:"wp-content/plugins/contact-form-ready/"
+  name: 'Contact Form <= 2.0.12 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/09506d1c-986e-45c8-b43c-7f2578eb2dbd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-form-ready,low,candidate

@@ -1,0 +1,16 @@
+id: ghost-takeover
+info:
+  author: pdcommunity
+  name: ghost takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - The thing you were looking for is no longer here
+    - The thing you were looking for is no longer here, or never was
+  method: GET
+  path:
+  - '{{BaseURL}}'

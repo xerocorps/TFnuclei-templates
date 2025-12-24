@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - careplus
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/careplus/style.css'
+  redirects: true
+id: careplus-6b7384f6a3120dd6d5c443d90f21bc66
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: "The CarePlus - Health & Medical Responsive WordPress Theme for WordPress\
+    \ is vulnerable to Reflected Cross-Site Scripting via the \u2018s\u2019 parameter\
+    \ in versions up to, and including, 1.2 due to insufficient input sanitization\
+    \ and output escaping. This makes it possible for unauthenticated attackers to\
+    \ inject arbitrary web scripts in pages that execute if they can successfully\
+    \ trick a user into performing an action such as clicking on a link."
+  metadata:
+    fofa-query: wp-content/themes/careplus/
+    google-query: inurl:"/wp-content/themes/careplus/"
+    shodan-query: 'vuln:'
+  name: CarePlus - Health & Medical Responsive WordPress Theme <= 1.2 - Cross-Site
+    Scripting
+  reference:
+  - https://themeforest.net/item/careplus-responsive-medical-wordpress-theme/20602278
+  - https://github.com/vladvector/vladvector.github.io/blob/master/exploit/2020-07-01-careplus-health-medical-responsive-wordpress-theme-v1-2.txt
+  severity: medium
+  tags: cve,wordpress,wp-theme,careplus,medium

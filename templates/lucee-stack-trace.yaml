@@ -1,0 +1,22 @@
+id: lucee-stack-trace
+info:
+  author: dhiyaneshDK
+  name: Lucee Stack Trace Error
+  reference:
+  - https://www.shodan.io/search?query=http.title%3A%22Lucee%22
+  severity: low
+  tags: lucee,exposure
+requests:
+- matchers:
+  - type: word
+    words:
+    - lucee.runtime
+  - condition: or
+    status:
+    - 500
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

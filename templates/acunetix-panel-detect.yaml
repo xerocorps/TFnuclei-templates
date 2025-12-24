@@ -1,0 +1,23 @@
+id: acunetix-panel-detect
+info:
+  author: joanbono
+  name: Acunetix Panel detector
+  severity: info
+  tags: panel
+requests:
+- headers:
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
+      (KHTML, like Gecko)
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Acunetix</title>
+    - <acx-root></acx-root>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/#/login'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - formidable
+  - dsl:
+    - compare_versions(version, '<= 6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/formidable/readme.txt'
+  redirects: true
+id: formidable-117ed5008290bf1efcf5989ec769aeb5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/formidable/
+    google-query: inurl:"/wp-content/plugins/formidable/"
+    shodan-query: 'vuln:'
+  name: 'Formidable Forms <= 6.7 - HTML Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ff294b0f-97fe-4d27-bf93-f5bbb57ac1f6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,formidable,low

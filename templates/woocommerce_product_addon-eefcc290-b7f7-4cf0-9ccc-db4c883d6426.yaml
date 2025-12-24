@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-product-addon
+  - dsl:
+    - compare_versions(version, '<= 33.0.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-product-addon/readme.txt'
+  redirects: true
+id: woocommerce_product_addon-eefcc290-b7f7-4cf0-9ccc-db4c883d6426
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-product-addon/
+    google-query: inurl:"/wp-content/plugins/woocommerce-product-addon/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-product-addon/"
+  name: "PPOM \u2013 Product Addons & Custom Fields for WooCommerce <= 33.0.15 - Unauthenticated\
+    \ SQL Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eefcc290-b7f7-4cf0-9ccc-db4c883d6426?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,woocommerce-product-addon,critical,candidate

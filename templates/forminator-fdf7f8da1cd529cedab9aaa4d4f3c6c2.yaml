@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - forminator
+  - dsl:
+    - compare_versions(version, '<= 1.24.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/forminator/readme.txt'
+  redirects: true
+id: forminator-fdf7f8da1cd529cedab9aaa4d4f3c6c2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/forminator/
+    google-query: inurl:"/wp-content/plugins/forminator/"
+    shodan-query: 'vuln:'
+  name: 'Forminator <= 1.24.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/00272fe2-52aa-4183-8b57-6b51ad57c657?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,forminator,medium

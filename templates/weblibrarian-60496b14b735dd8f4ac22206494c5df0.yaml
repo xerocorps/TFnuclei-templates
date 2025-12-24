@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - weblibrarian
+  - dsl:
+    - compare_versions(version, '< 3.4.8.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/weblibrarian/readme.txt'
+  redirects: true
+id: weblibrarian-60496b14b735dd8f4ac22206494c5df0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/weblibrarian/
+    google-query: inurl:"/wp-content/plugins/weblibrarian/"
+    shodan-query: 'vuln:'
+  name: 'WebLibrarian < 3.4.8.6 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d918cfa5-8bae-45a0-a888-06f4cdb2ef33?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,weblibrarian,high

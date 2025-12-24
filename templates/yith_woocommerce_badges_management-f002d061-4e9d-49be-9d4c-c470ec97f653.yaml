@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yith-woocommerce-badges-management
+  - dsl:
+    - compare_versions(version, '<= 2.10.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yith-woocommerce-badges-management/readme.txt'
+  redirects: true
+id: yith_woocommerce_badges_management-f002d061-4e9d-49be-9d4c-c470ec97f653
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yith-woocommerce-badges-management/
+    google-query: inurl:"/wp-content/plugins/yith-woocommerce-badges-management/"
+    shodan-query: http.html:"wp-content/plugins/yith-woocommerce-badges-management/"
+  name: 'YITH plugins by YITHEMES <= (Various Versions) - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f002d061-4e9d-49be-9d4c-c470ec97f653?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,yith-woocommerce-badges-management,medium,candidate

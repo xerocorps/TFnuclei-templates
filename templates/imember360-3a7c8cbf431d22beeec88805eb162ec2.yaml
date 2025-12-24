@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - imember360
+  - dsl:
+    - compare_versions(version, '>= 3.8.012', '< 3.9.001')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/imember360/readme.txt'
+  redirects: true
+id: imember360-3a7c8cbf431d22beeec88805eb162ec2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/imember360/
+    google-query: inurl:"/wp-content/plugins/imember360/"
+    shodan-query: 'vuln:'
+  name: 'iMember360 3.8.0.12 - 3.9.001 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c1621cd2-78d3-4429-862a-b425f5436f38?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,imember360,medium

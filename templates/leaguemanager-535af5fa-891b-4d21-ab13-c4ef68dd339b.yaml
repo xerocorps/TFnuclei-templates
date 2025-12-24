@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leaguemanager
+  - dsl:
+    - compare_versions(version, '<= 3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leaguemanager/readme.txt'
+  redirects: true
+id: leaguemanager-535af5fa-891b-4d21-ab13-c4ef68dd339b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/leaguemanager/
+    google-query: inurl:"/wp-content/plugins/leaguemanager/"
+    shodan-query: http.html:"wp-content/plugins/leaguemanager/"
+  name: 'LeagueManager <= 3.7 - Multiple Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/535af5fa-891b-4d21-ab13-c4ef68dd339b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,leaguemanager,high,candidate

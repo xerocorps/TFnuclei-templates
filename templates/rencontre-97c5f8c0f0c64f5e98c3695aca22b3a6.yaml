@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rencontre
+  - dsl:
+    - compare_versions(version, '<= 3.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rencontre/readme.txt'
+  redirects: true
+id: rencontre-97c5f8c0f0c64f5e98c3695aca22b3a6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 7.2
+  description: "The Rencontre \u2013 Dating Site plugin for WordPress is vulnerable\
+    \ to SQL Injection via the 'activ' parameter in versions up to, and including,\
+    \ 3.2.1 due to insufficient escaping on the user supplied parameter and lack of\
+    \ sufficient preparation on the existing SQL query.  This makes it possible for\
+    \ authenticated attackers with administrative capabilities to append additional\
+    \ SQL queries into already existing queries that can be used to extract sensitive\
+    \ information from the database."
+  metadata:
+    fofa-query: wp-content/plugins/rencontre/
+    google-query: inurl:"/wp-content/plugins/rencontre/"
+    shodan-query: 'vuln:'
+  name: "Rencontre \u2013 Dating Site <= 3.2.1 - Authenticated (Admin+) SQL Injection"
+  reference:
+  - https://plugins.trac.wordpress.org/changeset/2186013
+  severity: high
+  tags: cve,wordpress,wp-plugin,rencontre,high

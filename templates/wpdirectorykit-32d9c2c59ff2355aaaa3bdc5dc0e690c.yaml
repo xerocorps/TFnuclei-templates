@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdirectorykit
+  - dsl:
+    - compare_versions(version, '<= 1.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdirectorykit/readme.txt'
+  redirects: true
+id: wpdirectorykit-32d9c2c59ff2355aaaa3bdc5dc0e690c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpdirectorykit/
+    google-query: inurl:"/wp-content/plugins/wpdirectorykit/"
+    shodan-query: 'vuln:'
+  name: 'WP Directory Kit <= 1.2.2 - Missing Authorization to Plugin Installation,
+    Settings Change/Delete, Demo Import, Directory Kit Deletion via wdk_public_action
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/abb1a758-5c16-4841-b1c7-0705ab16b328?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wpdirectorykit,high

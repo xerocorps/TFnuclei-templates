@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - custom-user-css
+  - dsl:
+    - compare_versions(version, '<= 0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/custom-user-css/readme.txt'
+  redirects: true
+id: custom-user-css-e609b5d534a19a81f187e16d5e6b3638
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/custom-user-css/
+    google-query: inurl:"/wp-content/plugins/custom-user-css/"
+    shodan-query: 'vuln:'
+  name: 'Custom User CSS <= 0.2 - Cross-Site Request Forgery to Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6b53ed24-2821-440f-9aba-69d75b7459a3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,custom-user-css,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpcf7-redirect
+  - dsl:
+    - compare_versions(version, '<= 2.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpcf7-redirect/readme.txt'
+  redirects: true
+id: wpcf7-redirect-abd6bd305348b8021e7310c8ca2e06d0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpcf7-redirect/
+    google-query: inurl:"/wp-content/plugins/wpcf7-redirect/"
+    shodan-query: 'vuln:'
+  name: 'Redirection for Contact Form 7 <= 2.4.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5ec1ce79-bc10-4b04-8e49-15e16e6730a8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpcf7-redirect,medium

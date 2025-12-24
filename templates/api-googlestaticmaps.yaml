@@ -1,0 +1,15 @@
+id: api-googlestaticmaps
+info:
+  author: zzeitlin
+  name: Google Static Maps API Test
+  severity: info
+  tags: token-spray,google,maps
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - https://maps.googleapis.com/maps/api/staticmap?center=45%2C10&zoom=7&size=400x400&key={{token}}
+self-contained: true

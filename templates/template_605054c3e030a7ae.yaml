@@ -1,0 +1,16 @@
+detail:
+  author: pa55w0rd(www.pa55w0rd.online/)
+  links:
+  - http://airflow.apache.org/
+expression: r0()
+manual: true
+name: poc-yaml-airflow-unauth
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"<title>Airflow
+      - DAGs</title>") && response.body.bcontains(b"<h2>DAGs</h2>")
+    request:
+      cache: true
+      method: GET
+      path: /admin/
+transport: http

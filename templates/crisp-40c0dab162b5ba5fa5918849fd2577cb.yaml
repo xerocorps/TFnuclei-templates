@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - crisp
+  - dsl:
+    - compare_versions(version, '<= 0.44')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/crisp/readme.txt'
+  redirects: true
+id: crisp-40c0dab162b5ba5fa5918849fd2577cb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/crisp/
+    google-query: inurl:"/wp-content/plugins/crisp/"
+    shodan-query: 'vuln:'
+  name: 'Crisp <= 0.44 - Authenticated (Subscriber+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7e97d9dd-7d4a-4862-abba-6e8816bbbe9b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,crisp,low

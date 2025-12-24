@@ -1,0 +1,23 @@
+id: ocs-inventory-login
+info:
+  author: pikpikcu
+  metadata:
+    fofa-query: title="OCS Inventory"
+  name: OCS Inventory Login Panel
+  severity: info
+  tags: ocs-inventory,panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>OCS Inventory</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

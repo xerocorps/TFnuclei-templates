@@ -1,0 +1,29 @@
+id: putty-user-keyfile
+info:
+  author: geeknik
+  name: Detects PuTTY User Key File
+  severity: high
+  tags: putty,ssh,auth
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - PuTTY-User-Key-File
+    - Encryption
+    - Comment
+    - Private-MAC
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/my.ppk'
+  - '{{BaseURL}}/putty.ppk'
+  - '{{BaseURL}}/{{Hostname}}.ppk'
+  - '{{BaseURL}}/.ssh/putty.ppk'
+  - '{{BaseURL}}/.ssh/{{Hostname}}.ppk'
+  - '{{BaseURL}}/.putty/my.ppk'
+  - '{{BaseURL}}/.putty/putty.ppk'
+  - '{{BaseURL}}/.putty/{{Hostname}}.ppk'

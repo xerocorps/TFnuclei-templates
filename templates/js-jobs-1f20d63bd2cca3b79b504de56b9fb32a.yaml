@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - js-jobs
+  - dsl:
+    - compare_versions(version, '<= 2.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/js-jobs/readme.txt'
+  redirects: true
+id: js-jobs-1f20d63bd2cca3b79b504de56b9fb32a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/js-jobs/
+    google-query: inurl:"/wp-content/plugins/js-jobs/"
+    shodan-query: 'vuln:'
+  name: 'JS Job Manager <= 2.0.0 - Cross-Site Request Forgery via multiple functions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0131921b-6f60-4da1-b5d9-d44a33d35cae?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,js-jobs,medium

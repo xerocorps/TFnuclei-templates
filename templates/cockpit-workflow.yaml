@@ -1,0 +1,13 @@
+id: cockpit-workflow
+info:
+  author: dwisiswant0
+  description: A simple workflow that runs all Agentejo Cockpit related nuclei templates
+    on a given target.
+  name: Agentejo Cockpit Security Checks
+  tags: workflow
+workflows:
+- subtemplates:
+  - template: cves/2020/CVE-2020-35846.yaml
+  - template: cves/2020/CVE-2020-35847.yaml
+  - template: cves/2020/CVE-2020-35848.yaml
+  template: technologies/cockpit-detect.yaml

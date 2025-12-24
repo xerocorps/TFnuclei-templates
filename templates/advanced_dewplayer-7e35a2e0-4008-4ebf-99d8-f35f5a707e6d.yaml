@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-dewplayer
+  - dsl:
+    - compare_versions(version, '<= 1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-dewplayer/readme.txt'
+  redirects: true
+id: advanced_dewplayer-7e35a2e0-4008-4ebf-99d8-f35f5a707e6d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-dewplayer/
+    google-query: inurl:"/wp-content/plugins/advanced-dewplayer/"
+    shodan-query: http.html:"wp-content/plugins/advanced-dewplayer/"
+  name: 'Advanced Dewplayer <= 1.6 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7e35a2e0-4008-4ebf-99d8-f35f5a707e6d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,advanced-dewplayer,high,candidate

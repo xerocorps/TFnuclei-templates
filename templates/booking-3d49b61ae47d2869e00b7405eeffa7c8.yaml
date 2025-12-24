@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - booking
+  - dsl:
+    - compare_versions(version, '< 4.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/booking/readme.txt'
+  redirects: true
+id: booking-3d49b61ae47d2869e00b7405eeffa7c8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/booking/
+    google-query: inurl:"/wp-content/plugins/booking/"
+    shodan-query: 'vuln:'
+  name: 'Booking Calendar < 4.1.6 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f0b25726-0b8e-4fce-a986-5f1e176da75a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,booking,medium

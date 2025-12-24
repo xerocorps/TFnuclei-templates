@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - views-for-wpforms-lite
+  - dsl:
+    - compare_versions(version, '<= 3.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/views-for-wpforms-lite/readme.txt'
+  redirects: true
+id: views_for_wpforms_lite-34c0c676-37f9-49f2-ad50-2d70831fda53
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/views-for-wpforms-lite/
+    google-query: inurl:"/wp-content/plugins/views-for-wpforms-lite/"
+    shodan-query: http.html:"wp-content/plugins/views-for-wpforms-lite/"
+  name: 'Views for WPForms <= 3.2.2 - Cross-Site Request Forgery via create_view
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/34c0c676-37f9-49f2-ad50-2d70831fda53?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,views-for-wpforms-lite,medium,candidate

@@ -1,0 +1,27 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - graphql
+    - playground
+    - security
+  description: Template to detect if the GraphQL Playground is exposed and accessible.
+  id: graphql-playground-exposure
+  matcher-condition: or
+  matchers:
+  - description: The GraphQL Playground UI is displayed in the response body
+    pattern: GraphQL Playground
+    type: body
+  name: GraphQL Playground Exposure
+  requests:
+    condition: and
+    description: Attempt to access the GraphQL Playground endpoint
+    method: GET
+    path:
+    - /graphql
+    - /playground
+  response:
+  - status:
+    - 200
+  severity: Info

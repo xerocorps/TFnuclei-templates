@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-social-share-buttons-for-wordpress
+  - dsl:
+    - compare_versions(version, '< 3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-social-share-buttons-for-wordpress/readme.txt'
+  redirects: true
+id: easy-social-share-buttons-for-wordpress-fd0cede11983f93924ea839ef50741be
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The Easy Social Share Buttons for WordPress plugin for WordPress is
+    vulnerable to Cross-Site Scripting via several parameters in versions before 3.5
+    due to insufficient input sanitization and output escaping. This makes it possible
+    for attackers to inject arbitrary web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/plugins/easy-social-share-buttons-for-wordpress/
+    google-query: inurl:"/wp-content/plugins/easy-social-share-buttons-for-wordpress/"
+    shodan-query: 'vuln:'
+  name: Easy Social Share Buttons for WordPress <= 3.4.1 - Cross-Site Scripting
+  reference:
+  - https://0x62626262.wordpress.com/2016/04/21/easy-social-share-buttons-for-wordpress-xss-vulnerability/
+  - https://codecanyon.net/item/easy-social-share-buttons-for-wordpress/6394476
+  - https://socialsharingplugin.com/version-changes/
+  - https://socialsharingplugin.com/version-changes-4-x-3-x/
+  - https://packetstormsecurity.com/files/136787/WordPress-Easy-Social-Share-Buttons-3.2.5-XSS.html
+  - https://seclists.org/bugtraq/2016/Apr/132
+  severity: medium
+  tags: cve,wordpress,wp-plugin,easy-social-share-buttons-for-wordpress,medium

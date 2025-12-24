@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gravityforms
+  - dsl:
+    - compare_versions(version, '<= 2.0.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gravityforms/readme.txt'
+  redirects: true
+id: gravityforms-96686d93c791f5466f3af4b33e6d42fc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 5.4
+  description: WordPress Plugin Gravity Forms is prone to a cross-site scripting vulnerability
+    because it fails to properly sanitize user-supplied input. An attacker may leverage
+    this issue to execute arbitrary script code in the browser of an unsuspecting
+    user in the context of the affected site. This can allow the attacker to steal
+    cookie-based authentication credentials and launch other attacks. WordPress Plugin
+    Gravity Forms version 2.0.6.5 is vulnerable; prior versions may also be affected.
+  metadata:
+    fofa-query: wp-content/plugins/gravityforms/
+    google-query: inurl:"/wp-content/plugins/gravityforms/"
+    shodan-query: 'vuln:'
+  name: Gravity Forms <= 2.0.6.5 - Cross-Site Scripting
+  reference:
+  - https://www.gravityforms.com/gravity-forms-v2-0-7-released/
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-gravity-forms-cross-site-scripting-2-0-6-5/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,gravityforms,medium

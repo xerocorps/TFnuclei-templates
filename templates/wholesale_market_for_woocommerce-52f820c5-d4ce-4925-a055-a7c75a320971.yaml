@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wholesale-market-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 1.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wholesale-market-for-woocommerce/readme.txt'
+  redirects: true
+id: wholesale_market_for_woocommerce-52f820c5-d4ce-4925-a055-a7c75a320971
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wholesale-market-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/wholesale-market-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/wholesale-market-for-woocommerce/"
+  name: 'Wholesale Market for WooCommerce <= 1.0.7 - Authenticated (Administrator+)
+    Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/52f820c5-d4ce-4925-a055-a7c75a320971?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wholesale-market-for-woocommerce,low,candidate

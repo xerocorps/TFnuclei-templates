@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bulk-editor
+  - dsl:
+    - compare_versions(version, '<= 1.0.8.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bulk-editor/readme.txt'
+  redirects: true
+id: bulk_editor-a821d61c-e3c8-4a1b-8a52-a63adcb6c127
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bulk-editor/
+    google-query: inurl:"/wp-content/plugins/bulk-editor/"
+    shodan-query: http.html:"wp-content/plugins/bulk-editor/"
+  name: "WOLF \u2013 WordPress Posts Bulk Editor and Manager Professional <= 1.0.8.5\
+    \ - Authenticated (Editor+) Path Traversal\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a821d61c-e3c8-4a1b-8a52-a63adcb6c127?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bulk-editor,low,candidate

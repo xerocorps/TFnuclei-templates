@@ -1,0 +1,22 @@
+id: api-rijksmuseum
+info:
+  author: daffainfo
+  name: Rijksmuseum API Test
+  reference:
+  - https://data.rijksmuseum.nl/user-generated-content/api/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Art-Design/Rijksmuseum.md
+  severity: info
+  tags: token-spray,rijksmuseum
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"count":'
+    - '"userSets":'
+    - '"user":'
+  method: GET
+  path:
+  - https://www.rijksmuseum.nl/api/nl/usersets?key={{token}}&format=json&page=2
+self-contained: true

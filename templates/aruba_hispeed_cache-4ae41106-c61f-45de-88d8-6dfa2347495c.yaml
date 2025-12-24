@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - aruba-hispeed-cache
+  - dsl:
+    - compare_versions(version, '<= 2.0.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/aruba-hispeed-cache/readme.txt'
+  redirects: true
+id: aruba_hispeed_cache-4ae41106-c61f-45de-88d8-6dfa2347495c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/aruba-hispeed-cache/
+    google-query: inurl:"/wp-content/plugins/aruba-hispeed-cache/"
+    shodan-query: http.html:"wp-content/plugins/aruba-hispeed-cache/"
+  name: 'Aruba HiSpeed Cache <= 2.0.12 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4ae41106-c61f-45de-88d8-6dfa2347495c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,aruba-hispeed-cache,high,candidate

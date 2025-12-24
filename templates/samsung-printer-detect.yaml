@@ -1,0 +1,20 @@
+id: samsung-printer-detect
+info:
+  author: pussycat0x
+  metadata:
+    fofa-query: app="SAMSUNG-Printer"
+  name: SAMSUNG Printer Detection
+  severity: info
+  tags: iot,panel,samsung,printer
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title> SyncThru Web Service </title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sws/index.html'

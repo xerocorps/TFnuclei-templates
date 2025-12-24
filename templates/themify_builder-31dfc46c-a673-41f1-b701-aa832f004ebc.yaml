@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - themify-builder
+  - dsl:
+    - compare_versions(version, '<= 7.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/themify-builder/readme.txt'
+  redirects: true
+id: themify_builder-31dfc46c-a673-41f1-b701-aa832f004ebc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/themify-builder/
+    google-query: inurl:"/wp-content/plugins/themify-builder/"
+    shodan-query: http.html:"wp-content/plugins/themify-builder/"
+  name: 'Themify Builder <= 7.6.1 - Missing Authorization to Authenticated (Contributor+)
+    Post Duplication
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/31dfc46c-a673-41f1-b701-aa832f004ebc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,themify-builder,low,candidate

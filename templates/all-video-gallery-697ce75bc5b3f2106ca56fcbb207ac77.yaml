@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-video-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-video-gallery/readme.txt'
+  redirects: true
+id: all-video-gallery-697ce75bc5b3f2106ca56fcbb207ac77
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-video-gallery/
+    google-query: inurl:"/wp-content/plugins/all-video-gallery/"
+    shodan-query: 'vuln:'
+  name: 'All Video Gallery Plugin for WordPress <= 1.2 - Authenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/142bcbdd-7495-49be-a5b3-8ba1674cd64d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,all-video-gallery,low

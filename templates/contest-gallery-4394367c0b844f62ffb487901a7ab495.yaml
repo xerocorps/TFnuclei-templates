@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contest-gallery
+  - dsl:
+    - compare_versions(version, '<= 19.1.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contest-gallery/readme.txt'
+  redirects: true
+id: contest-gallery-4394367c0b844f62ffb487901a7ab495
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contest-gallery/
+    google-query: inurl:"/wp-content/plugins/contest-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Contest Gallery <= 19.1.4.1 - Authenticated (Author+) SQL Injection via cg_order
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6f946251-c7be-4ef6-885f-8b378c0c234c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contest-gallery,low

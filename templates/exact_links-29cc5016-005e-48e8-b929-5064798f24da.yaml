@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - exact-links
+  - dsl:
+    - compare_versions(version, '<= 3.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/exact-links/readme.txt'
+  redirects: true
+id: exact_links-29cc5016-005e-48e8-b929-5064798f24da
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/exact-links/
+    google-query: inurl:"/wp-content/plugins/exact-links/"
+    shodan-query: http.html:"wp-content/plugins/exact-links/"
+  name: 'URL Shortener Plugin For WordPress <= 3.0.7 - Missing Authorization to Authenticated
+    (Subscriber+) Link Manipulation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/29cc5016-005e-48e8-b929-5064798f24da?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,exact-links,low,candidate

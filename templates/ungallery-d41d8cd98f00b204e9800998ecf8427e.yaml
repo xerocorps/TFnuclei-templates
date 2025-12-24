@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ungallery
+  - dsl:
+    - compare_versions(version, '<= 2.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ungallery/readme.txt'
+  redirects: true
+id: ungallery-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The UnGallery plugin for WordPress is vulnerable to Command Injection
+    in versions before 2.1.6 via the 'search' parameter. This makes it possible for
+    unauthenticated attackers to execute arbitrary commands on the server.
+  metadata:
+    fofa-query: wp-content/plugins/ungallery/
+    google-query: inurl:"/wp-content/plugins/ungallery/"
+    shodan-query: 'vuln:'
+  name: UnGallery < 2.1.6 - Command Injection
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,ungallery,low

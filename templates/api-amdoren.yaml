@@ -1,0 +1,21 @@
+id: api-amdoren
+info:
+  author: daffainfo
+  name: Amdoren API Test
+  reference:
+  - https://www.amdoren.com/currency-api/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Currency%20Exchange/Amdoren.md
+  severity: info
+  tags: token-spray,amdoren
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"error" : 0'
+    - '"error_message" : "-"'
+  method: GET
+  path:
+  - https://www.amdoren.com/api/currency.php?api_key={{token}}&from=USD&to=EUR
+self-contained: true

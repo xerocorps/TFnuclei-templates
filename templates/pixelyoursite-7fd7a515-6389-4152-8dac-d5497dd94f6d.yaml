@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pixelyoursite
+  - dsl:
+    - compare_versions(version, '<= 9.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pixelyoursite/readme.txt'
+  redirects: true
+id: pixelyoursite-7fd7a515-6389-4152-8dac-d5497dd94f6d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pixelyoursite/
+    google-query: inurl:"/wp-content/plugins/pixelyoursite/"
+    shodan-query: http.html:"wp-content/plugins/pixelyoursite/"
+  name: "PixelYourSite \u2013 Your smart PIXEL (TAG) & API Manager <= 9.7.1 and PixelYourSite\
+    \ PRO <= 10.4.2 - Unauthenticated Information Exposure and Log Deletion\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7fd7a515-6389-4152-8dac-d5497dd94f6d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,pixelyoursite,low,candidate

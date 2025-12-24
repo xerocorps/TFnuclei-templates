@@ -1,0 +1,22 @@
+id: ictprotege-login-panel
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: title:"ICT Protege WX&reg;"
+    verified: true
+  name: ICT Protege WX Login Panel
+  severity: info
+  tags: panel,ictprotege
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>ICT Protege WX&reg;</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.htm'

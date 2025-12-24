@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - brilliance
+  - dsl:
+    - compare_versions(version, '<= 1.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/brilliance/style.css'
+  redirects: true
+id: brilliance-a9e4e989-8e55-4ea7-8f42-9f67cfab1168
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/brilliance/
+    google-query: inurl:"/wp-content/themes/brilliance/"
+    shodan-query: http.html:"wp-content/themes/brilliance/"
+  name: 'Epsilon Framework Themes (Various Versions) - Unauthenticated Plugin Activation/Deactivation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a9e4e989-8e55-4ea7-8f42-9f67cfab1168?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,brilliance,low,candidate

@@ -1,0 +1,20 @@
+id: manageengine-analytics
+info:
+  author: dhiyaneshDK
+  name: ZOHO ManageEngine Analytics Plus
+  reference:
+  - https://fofa.so/result?qbase64=YXBwPSJaT0hPLea1gemHj%2BeuoeeQhiI%3D
+  severity: info
+  tags: panel,zoho,manageengine
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>ManageEngine Analytics Plus</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/iam/login'

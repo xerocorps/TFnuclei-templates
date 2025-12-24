@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - image-slider-widget
+  - dsl:
+    - compare_versions(version, '<= 1.1.121')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/image-slider-widget/readme.txt'
+  redirects: true
+id: image-slider-widget-65c41d264b359fe732bde94acfe0437f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/image-slider-widget/
+    google-query: inurl:"/wp-content/plugins/image-slider-widget/"
+    shodan-query: 'vuln:'
+  name: 'Image Slider <= 1.1.121 - Cross-Site Request Forgery to Post Duplication
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6356e226-a449-4cd0-be60-2a1c9c70aa59?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,image-slider-widget,medium

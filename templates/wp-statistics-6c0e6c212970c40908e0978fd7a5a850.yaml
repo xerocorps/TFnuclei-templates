@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-statistics
+  - dsl:
+    - compare_versions(version, '<= 13.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-statistics/readme.txt'
+  redirects: true
+id: wp-statistics-6c0e6c212970c40908e0978fd7a5a850
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-statistics/
+    google-query: inurl:"/wp-content/plugins/wp-statistics/"
+    shodan-query: 'vuln:'
+  name: 'WP Statistics <= 13.2.5 - Authenticated (Subscriber+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/42f54887-ce98-4360-8d07-37b1a48fc3fd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-statistics,low

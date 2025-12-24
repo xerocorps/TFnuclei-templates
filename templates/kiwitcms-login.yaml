@@ -1,0 +1,23 @@
+id: kiwitcms-login
+info:
+  author: pdteam
+  metadata:
+    shodan-query: title:"Kiwi TCMS - Login",http.favicon.hash:-1909533337
+  name: Kiwi TCMS Login
+  reference:
+  - https://kiwitcms.org
+  severity: info
+  tags: kiwitcms,panel
+requests:
+- extractors:
+  - group: 1
+    regex:
+    - Version ([0-9.]+)
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - Kiwi TCMS
+  method: GET
+  path:
+  - '{{BaseURL}}/accounts/login/'

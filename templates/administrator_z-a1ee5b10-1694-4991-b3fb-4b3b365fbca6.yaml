@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - administrator-z
+  - dsl:
+    - compare_versions(version, '<= 2025.03.28')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/administrator-z/readme.txt'
+  redirects: true
+id: administrator_z-a1ee5b10-1694-4991-b3fb-4b3b365fbca6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/administrator-z/
+    google-query: inurl:"/wp-content/plugins/administrator-z/"
+    shodan-query: http.html:"wp-content/plugins/administrator-z/"
+  name: 'Administrator Z <= 2025.03.28 - Authenticated (Admin+) Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a1ee5b10-1694-4991-b3fb-4b3b365fbca6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,administrator-z,low,candidate

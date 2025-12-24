@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - spiffy-calendar
+  - dsl:
+    - compare_versions(version, '<= 4.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/spiffy-calendar/readme.txt'
+  redirects: true
+id: spiffy-calendar-6ba5b8ddc94a4f5a374cfc685d814f91
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/spiffy-calendar/
+    google-query: inurl:"/wp-content/plugins/spiffy-calendar/"
+    shodan-query: 'vuln:'
+  name: 'Spiffy Calendar <= 4.9.0 - Edit/Delete event via IDOR
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/85af2186-0807-4926-9285-f8ac93f76b93?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,spiffy-calendar,low

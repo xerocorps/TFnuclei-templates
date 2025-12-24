@@ -1,0 +1,24 @@
+detail:
+  author: B1anda0(https://github.com/B1anda0)
+  links:
+  - https://swarm.ptsecurity.com/unauth-rce-vmware/
+expression: r0() && r1()
+manual: true
+name: poc-yaml-vmware-vcenter-unauthorized-rce-cve-2021-21972
+rules:
+  r0:
+    expression: response.status == 405 && response.body.bcontains(b"Method Not Allowed")
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /ui/vropspluginui/rest/services/uploadova
+  r1:
+    expression: response.status == 200 && response.body.bcontains(b"States") && response.body.bcontains(b"Install
+      Progress")
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /ui/vropspluginui/rest/services/getstatus
+transport: http

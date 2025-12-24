@@ -1,0 +1,26 @@
+id: api-web3storage
+info:
+  author: daffainfo
+  name: Web3 Storage API Test
+  reference:
+  - https://docs.web3.storage/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Cloud%20Storage%20-%20File%20Sharing/Web3%20Storage.md
+  severity: info
+  tags: token-spray,web3storage
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"created"'
+    - '"cid"'
+  raw:
+  - 'GET https://api.web3.storage/user/uploads HTTP/1.1
+
+    Host: api.web3.storage
+
+    Authorization: Bearer {{token}}
+
+    '
+self-contained: true

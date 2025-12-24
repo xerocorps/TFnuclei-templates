@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-7-paypal-add-on
+  - dsl:
+    - compare_versions(version, '<= 2.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-7-paypal-add-on/readme.txt'
+  redirects: true
+id: contact_form_7_paypal_add_on-e53878e4-659a-4530-8bb7-a9c7a2e3bc1e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-7-paypal-add-on/
+    google-query: inurl:"/wp-content/plugins/contact-form-7-paypal-add-on/"
+    shodan-query: http.html:"wp-content/plugins/contact-form-7-paypal-add-on/"
+  name: "Contact Form 7 \u2013 PayPal & Stripe Add-on <= 2.3.4 - Authenticated (Administrator+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e53878e4-659a-4530-8bb7-a9c7a2e3bc1e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-form-7-paypal-add-on,low,candidate

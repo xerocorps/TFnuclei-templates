@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - album-and-image-gallery-plus-lightbox
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/album-and-image-gallery-plus-lightbox/readme.txt'
+  redirects: true
+id: album-and-image-gallery-plus-lightbox-d624de33fb4c7f48c9bd224a2ea4b8f8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/album-and-image-gallery-plus-lightbox/
+    google-query: inurl:"/wp-content/plugins/album-and-image-gallery-plus-lightbox/"
+    shodan-query: 'vuln:'
+  name: 'Album and Image Gallery plus Lightbox <= 2.0 - Unauthenticated Arbitrary
+    Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4822f1c7-3f83-416c-8957-17e4b53d7e69?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,album-and-image-gallery-plus-lightbox,low

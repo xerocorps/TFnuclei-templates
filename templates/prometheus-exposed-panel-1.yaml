@@ -1,0 +1,17 @@
+id: prometheus-exposed-panel-1
+info:
+  author: organiccrap
+  name: Prometheus.io exposed panel
+  severity: low
+requests:
+- headers:
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
+      Firefox/55
+  matchers:
+  - type: word
+    words:
+    - <title>Prometheus Time Series Collection and Processing Server</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/graph'
+  - '{{BaseURL}}:9090/graph'

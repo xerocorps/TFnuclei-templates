@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - foogallery
+  - dsl:
+    - compare_versions(version, '<= 2.4.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/foogallery/readme.txt'
+  redirects: true
+id: foogallery-0537c46619fd92aec12b8f55c2de3584
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/foogallery/
+    google-query: inurl:"/wp-content/plugins/foogallery/"
+    shodan-query: 'vuln:'
+  name: 'FooGallery <= 2.4.15 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Gallery Custom URL
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a69e9802-9087-4cd9-86eb-b64a82bc7c0b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,foogallery,low

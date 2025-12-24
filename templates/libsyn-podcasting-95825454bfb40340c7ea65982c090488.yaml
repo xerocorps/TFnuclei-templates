@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - libsyn-podcasting
+  - dsl:
+    - compare_versions(version, '<= 1.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/libsyn-podcasting/readme.txt'
+  redirects: true
+id: libsyn-podcasting-95825454bfb40340c7ea65982c090488
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/libsyn-podcasting/
+    google-query: inurl:"/wp-content/plugins/libsyn-podcasting/"
+    shodan-query: 'vuln:'
+  name: 'Libsyn Publisher Hub <= 1.4.4 - Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8bccefbe-2d20-40a7-b24f-d867d80250e3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,libsyn-podcasting,low

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-conditional-discount-rules-for-checkout
+  - dsl:
+    - compare_versions(version, '<= 2.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-conditional-discount-rules-for-checkout/readme.txt'
+  redirects: true
+id: woo_conditional_discount_rules_for_checkout-d624f234-c57a-4a66-900d-362194a79d34
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-conditional-discount-rules-for-checkout/
+    google-query: inurl:"/wp-content/plugins/woo-conditional-discount-rules-for-checkout/"
+    shodan-query: http.html:"wp-content/plugins/woo-conditional-discount-rules-for-checkout/"
+  name: 'WooCommerce Dynamic Pricing and Discount Rules <= 2.4.0 - Cross-Site Request
+    Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d624f234-c57a-4a66-900d-362194a79d34?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-conditional-discount-rules-for-checkout,medium,candidate

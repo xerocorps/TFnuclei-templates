@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ulisting
+  - dsl:
+    - compare_versions(version, '<= 2.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ulisting/readme.txt'
+  redirects: true
+id: ulisting-c7fe06c1-fe51-42b5-9c56-cb9e6513f4af
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ulisting/
+    google-query: inurl:"/wp-content/plugins/ulisting/"
+    shodan-query: http.html:"wp-content/plugins/ulisting/"
+  name: 'uListing <= 2.0.5 - Cross-Site Request Forgery leading to Settings Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c7fe06c1-fe51-42b5-9c56-cb9e6513f4af?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ulisting,medium,candidate

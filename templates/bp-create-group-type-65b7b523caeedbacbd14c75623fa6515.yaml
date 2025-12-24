@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bp-create-group-type
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bp-create-group-type/readme.txt'
+  redirects: true
+id: bp-create-group-type-65b7b523caeedbacbd14c75623fa6515
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bp-create-group-type/
+    google-query: inurl:"/wp-content/plugins/bp-create-group-type/"
+    shodan-query: 'vuln:'
+  name: 'Wbcom Designs Plugins (Various Versions) - Arbitrary Plugin Installation,
+    Activation and Deactivation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/74d222b9-22e9-485d-8111-d3bee505b200?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bp-create-group-type,low

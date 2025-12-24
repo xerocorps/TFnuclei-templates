@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - intelly-related-posts
+  - dsl:
+    - compare_versions(version, '<= 3.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/intelly-related-posts/readme.txt'
+  redirects: true
+id: intelly-related-posts-159e2fd8e1d67b3095ab5d5f1e2ac198
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/intelly-related-posts/
+    google-query: inurl:"/wp-content/plugins/intelly-related-posts/"
+    shodan-query: 'vuln:'
+  name: 'Inline Related Posts <= 3.5.0 - Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d9318d57-499b-4804-8f83-1e4a68c5790f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,intelly-related-posts,low

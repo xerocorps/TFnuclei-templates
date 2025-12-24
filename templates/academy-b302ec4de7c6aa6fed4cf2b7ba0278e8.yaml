@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - academy
+  - dsl:
+    - compare_versions(version, '<= 1.9.25')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/academy/readme.txt'
+  redirects: true
+id: academy-b302ec4de7c6aa6fed4cf2b7ba0278e8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/academy/
+    google-query: inurl:"/wp-content/plugins/academy/"
+    shodan-query: 'vuln:'
+  name: 'Academy LMS <= 1.9.25 - Unauthenticated Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/94f3b21d-1910-46e9-af89-4602099f207c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,academy,low

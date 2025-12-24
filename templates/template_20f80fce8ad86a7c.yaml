@@ -1,0 +1,27 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - apache
+    - httpd.conf
+    - config file
+    - exposure
+  description: Template to detect Apache httpd.conf configuration file exposure
+  id: apache-httpd-conf-disclosure
+  matchers:
+  - pattern: ServerAdmin\s+(.+)
+    type: body
+  - pattern: DocumentRoot\s+(.+)
+    type: body
+  name: Apache httpd.conf Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /etc/httpd/conf/httpd.conf
+    - /etc/apache2/httpd.conf
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

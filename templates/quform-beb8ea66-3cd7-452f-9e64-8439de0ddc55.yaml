@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quform
+  - dsl:
+    - compare_versions(version, '<= 2.20.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quform/readme.txt'
+  redirects: true
+id: quform-beb8ea66-3cd7-452f-9e64-8439de0ddc55
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quform/
+    google-query: inurl:"/wp-content/plugins/quform/"
+    shodan-query: http.html:"wp-content/plugins/quform/"
+  name: 'Quform - WordPress Form Builder <= 2.20.0 - Unauthenticated Sensitive Information
+    Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/beb8ea66-3cd7-452f-9e64-8439de0ddc55?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,quform,low,candidate

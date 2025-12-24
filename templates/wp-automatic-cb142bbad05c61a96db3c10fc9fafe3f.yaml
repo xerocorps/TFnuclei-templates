@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-automatic
+  - dsl:
+    - compare_versions(version, '< 3.53.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-automatic/readme.txt'
+  redirects: true
+id: wp-automatic-cb142bbad05c61a96db3c10fc9fafe3f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-automatic/
+    google-query: inurl:"/wp-content/plugins/wp-automatic/"
+    shodan-query: 'vuln:'
+  name: 'WordPress Automatic Plugin <= 3.53.2 - Unauthenticated Arbitrary Options
+    Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d0567dc8-7a4c-42f4-bf45-f31a8efaa354?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-automatic,low

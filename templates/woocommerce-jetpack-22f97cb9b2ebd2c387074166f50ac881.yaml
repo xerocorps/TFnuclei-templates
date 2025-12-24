@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-jetpack
+  - dsl:
+    - compare_versions(version, '<= 5.6.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-jetpack/readme.txt'
+  redirects: true
+id: woocommerce-jetpack-22f97cb9b2ebd2c387074166f50ac881
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-jetpack/
+    google-query: inurl:"/wp-content/plugins/woocommerce-jetpack/"
+    shodan-query: 'vuln:'
+  name: 'Booster for WooCommerce <= 5.6.8 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fa7ca972-ddb0-416b-8c5a-b4e9648ca957?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-jetpack,medium

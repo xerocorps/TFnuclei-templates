@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - front-end-only-users
+  - dsl:
+    - compare_versions(version, '<= 3.2.27')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/front-end-only-users/readme.txt'
+  redirects: true
+id: front-end-only-users-be56f44b1886aa91b452736929be6d20
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/front-end-only-users/
+    google-query: inurl:"/wp-content/plugins/front-end-only-users/"
+    shodan-query: 'vuln:'
+  name: 'Front End Users <= 3.2.27 - Unauthenticated Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e076e054-6a0b-4c08-b0cc-bd3a5b0751e5?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,front-end-only-users,high

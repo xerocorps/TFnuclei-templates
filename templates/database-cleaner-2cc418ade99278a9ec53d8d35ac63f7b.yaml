@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - database-cleaner
+  - dsl:
+    - compare_versions(version, '<= 1.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/database-cleaner/readme.txt'
+  redirects: true
+id: database-cleaner-2cc418ade99278a9ec53d8d35ac63f7b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/database-cleaner/
+    google-query: inurl:"/wp-content/plugins/database-cleaner/"
+    shodan-query: 'vuln:'
+  name: 'Database Cleaner <= 1.0.5 - Authenticated (Admin+) Arbitrary File Read
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9676c768-496a-4131-93ff-481db158cceb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,database-cleaner,low

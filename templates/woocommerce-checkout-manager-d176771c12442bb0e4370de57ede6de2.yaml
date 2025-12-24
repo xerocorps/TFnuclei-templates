@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-checkout-manager
+  - dsl:
+    - compare_versions(version, '<= 5.5.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-checkout-manager/readme.txt'
+  redirects: true
+id: woocommerce-checkout-manager-d176771c12442bb0e4370de57ede6de2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-checkout-manager/
+    google-query: inurl:"/wp-content/plugins/woocommerce-checkout-manager/"
+    shodan-query: 'vuln:'
+  name: 'Checkout Fields Manager for WooCommerce <= 5.5.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/11aec50c-2531-4d30-92da-8513fdca741e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-checkout-manager,medium

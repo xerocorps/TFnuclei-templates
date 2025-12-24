@@ -1,0 +1,16 @@
+id: versa-sdwan
+info:
+  author: pdteam
+  name: Versa Networks SD-WAN Application
+  severity: info
+  tags: panel,versa,sdwan
+requests:
+- matchers:
+  - type: word
+    words:
+    - Versa Networks
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/versa/login.html'
+  redirects: true

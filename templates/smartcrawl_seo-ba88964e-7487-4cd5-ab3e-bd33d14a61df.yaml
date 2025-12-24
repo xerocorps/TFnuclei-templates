@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - smartcrawl-seo
+  - dsl:
+    - compare_versions(version, '< 3.8.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/smartcrawl-seo/readme.txt'
+  redirects: true
+id: smartcrawl_seo-ba88964e-7487-4cd5-ab3e-bd33d14a61df
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/smartcrawl-seo/
+    google-query: inurl:"/wp-content/plugins/smartcrawl-seo/"
+    shodan-query: http.html:"wp-content/plugins/smartcrawl-seo/"
+  name: 'Simple Social Media Share Buttons <= 3.8.2 - Unauthenticated Password Protected
+    Post Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ba88964e-7487-4cd5-ab3e-bd33d14a61df?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,smartcrawl-seo,low,candidate

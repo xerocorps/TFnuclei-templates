@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - job-postings
+  - dsl:
+    - compare_versions(version, '<= 2.7.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/job-postings/readme.txt'
+  redirects: true
+id: job-postings-b6c555119d5acb463319cb7dc53107c0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/job-postings/
+    google-query: inurl:"/wp-content/plugins/job-postings/"
+    shodan-query: 'vuln:'
+  name: 'Jobs for WordPress <= 2.7.3 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/37c18340-d7aa-4410-be17-c61c286838ce?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,job-postings,low

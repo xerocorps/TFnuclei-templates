@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - spiffy-calendar
+  - dsl:
+    - compare_versions(version, '<= 4.9.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/spiffy-calendar/readme.txt'
+  redirects: true
+id: spiffy_calendar-88b8a93b-f34f-4188-8153-ce36b03b6a4c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/spiffy-calendar/
+    google-query: inurl:"/wp-content/plugins/spiffy-calendar/"
+    shodan-query: http.html:"wp-content/plugins/spiffy-calendar/"
+  name: 'Spiffy Calendar <= 4.9.11 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/88b8a93b-f34f-4188-8153-ce36b03b6a4c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,spiffy-calendar,low,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-backup-plus
+  - dsl:
+    - compare_versions(version, '<= 2018-11-22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-backup-plus/readme.txt'
+  redirects: true
+id: wp-backup-plus-f909b367981f6265c7b02f6a24652367
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-backup-plus/
+    google-query: inurl:"/wp-content/plugins/wp-backup-plus/"
+    shodan-query: 'vuln:'
+  name: 'WP Backup+ <= 2018-11-22 - Sensitive Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fbcb33c1-d8f4-4ff9-8148-7bce494b2f0f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-backup-plus,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - listingpro-plugin
+  - dsl:
+    - compare_versions(version, '<= 2.9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/listingpro-plugin/readme.txt'
+  redirects: true
+id: listingpro-plugin-82a7ba9914eea6cd66fee914def737f1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/listingpro-plugin/
+    google-query: inurl:"/wp-content/plugins/listingpro-plugin/"
+    shodan-query: 'vuln:'
+  name: 'ListingPro Plugin <= 2.9.3 - Authenticated (Subscriber+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8b104666-a038-442f-8db8-78ccb64879a7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,listingpro-plugin,low

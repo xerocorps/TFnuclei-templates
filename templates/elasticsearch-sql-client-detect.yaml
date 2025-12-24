@@ -1,0 +1,20 @@
+id: elasticsearch-sql-client-detect
+info:
+  author: pussycat0x
+  name: Elasticsearch SQL Client Detect
+  reference: https://www.shodan.io/search?query=http.title%3A%22Elasticsearch-sql+client%22
+  severity: low
+  tags: elasticsearch,tech,sql
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Elasticsearch-sql client</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

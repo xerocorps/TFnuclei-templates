@@ -1,0 +1,29 @@
+id: spidercontrol-scada-server-info
+info:
+  author: geeknik
+  description: Numerous, market-leading OEM manufacturers - from a wide variety of
+    industries - rely on SpiderControl.
+  name: SpiderControl SCADA Web Server Info Exposure
+  reference: https://spidercontrol.net/spidercontrol-inside/
+  severity: high
+  tags: spidercontrol,scada,exposure
+requests:
+- extractors:
+  - kval:
+    - Server
+    part: header
+    type: kval
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - powered by SpiderControl
+    - LSWEBSERVER
+    - SCWEBSERVICES
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/GetSrvInfo.exe'

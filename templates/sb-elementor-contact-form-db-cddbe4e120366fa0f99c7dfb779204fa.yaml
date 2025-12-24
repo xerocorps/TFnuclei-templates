@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sb-elementor-contact-form-db
+  - dsl:
+    - compare_versions(version, '<= 1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sb-elementor-contact-form-db/readme.txt'
+  redirects: true
+id: sb-elementor-contact-form-db-cddbe4e120366fa0f99c7dfb779204fa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sb-elementor-contact-form-db/
+    google-query: inurl:"/wp-content/plugins/sb-elementor-contact-form-db/"
+    shodan-query: 'vuln:'
+  name: 'Contact Form DB - Elementor <= 1.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/43a1e5b7-9361-406e-97b7-776b831acc33?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,sb-elementor-contact-form-db,medium

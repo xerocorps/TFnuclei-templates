@@ -1,0 +1,23 @@
+id: nextcloud-detect
+info:
+  author: skeltavik
+  description: Detects Nextcloud
+  name: Nextcloud Detect
+  reference:
+  - https://nextcloud.com
+  severity: info
+  tags: tech,nextcloud,storage
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - var nc_lastLogin
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/login'
+  - '{{BaseURL}}/nextcloud/index.php/login'
+  redirects: true
+  stop-at-first-match: true

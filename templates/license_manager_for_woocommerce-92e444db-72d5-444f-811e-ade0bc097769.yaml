@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - license-manager-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 3.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/license-manager-for-woocommerce/readme.txt'
+  redirects: true
+id: license_manager_for_woocommerce-92e444db-72d5-444f-811e-ade0bc097769
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/license-manager-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/license-manager-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/license-manager-for-woocommerce/"
+  name: 'License Manager for WooCommerce <= 3.0.6 - Improper Authorization to Authenticated(Contributor+)
+    Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/92e444db-72d5-444f-811e-ade0bc097769?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,license-manager-for-woocommerce,low,candidate

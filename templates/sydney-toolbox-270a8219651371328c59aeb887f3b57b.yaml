@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sydney-toolbox
+  - dsl:
+    - compare_versions(version, '<= 1.26')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sydney-toolbox/readme.txt'
+  redirects: true
+id: sydney-toolbox-270a8219651371328c59aeb887f3b57b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sydney-toolbox/
+    google-query: inurl:"/wp-content/plugins/sydney-toolbox/"
+    shodan-query: 'vuln:'
+  name: 'Sydney Toolbox <= 1.26 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via _id
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0b20d638-82cb-48ce-96fa-fd42d06f649f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sydney-toolbox,low

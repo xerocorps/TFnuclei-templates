@@ -1,0 +1,32 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - phpmyadmin
+    - default-page
+    - database
+  description: Template to detect the default page of phpMyAdmin.
+  id: phpmyadmin-default-page
+  matcher-condition: or
+  matchers:
+  - description: phpMyAdmin default page found in the response body
+    pattern: <title>phpMyAdmin</title>
+    type: body
+  - description: phpMyAdmin error page found in the response body
+    pattern: phpMyAdmin - Error
+    type: body
+  name: phpMyAdmin Default Page
+  requests:
+    condition: and
+    description: Attempt to access the default page of phpMyAdmin
+    method: GET
+    path:
+    - /
+    - /index.php
+    - /phpmyadmin/
+    - /phpmyadmin/index.php
+  response:
+  - status:
+    - 200
+  severity: Low

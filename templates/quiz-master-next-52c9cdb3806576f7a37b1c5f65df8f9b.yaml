@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quiz-master-next
+  - dsl:
+    - compare_versions(version, '<= 6.4.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quiz-master-next/readme.txt'
+  redirects: true
+id: quiz-master-next-52c9cdb3806576f7a37b1c5f65df8f9b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 6.4
+  description: 'The Quiz and Survery Master plugin for WordPress is vulnerable to
+    Stored Cross-Site Scripting via the text editor and correct answer parameters
+    in versions up to, and including, 6.4.12 due to insufficient input sanitization
+    and output escaping. This makes it possible for authenticated attackers to inject
+    arbitrary web scripts in pages that will execute whenever a user accesses an injected
+    page.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/quiz-master-next/
+    google-query: inurl:"/wp-content/plugins/quiz-master-next/"
+    shodan-query: 'vuln:'
+  name: 'Quiz and Survey Master <= 6.4.12 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3f378797-a7a7-4691-8d37-1caef454bb4f?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,quiz-master-next,low

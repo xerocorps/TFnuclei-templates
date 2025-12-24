@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - accordions
+  - dsl:
+    - compare_versions(version, '< 2.2.30')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/accordions/readme.txt'
+  redirects: true
+id: accordions-8d50ea22cf9b76523724786a92b74fa5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/accordions/
+    google-query: inurl:"/wp-content/plugins/accordions/"
+    shodan-query: 'vuln:'
+  name: 'Accordion <= 2.2.29 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/57051491-a56b-4a3a-9383-ba63585550be?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,accordions,medium

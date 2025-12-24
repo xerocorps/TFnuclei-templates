@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - order-delivery-date-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 3.20.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/order-delivery-date-for-woocommerce/readme.txt'
+  redirects: true
+id: order-delivery-date-for-woocommerce-0a1e73557358a5b2fa4a31e0b34b7e12
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/order-delivery-date-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/order-delivery-date-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Order Delivery Date for WooCommerce <= 3.20.0 - Reflected Cross-Site Scripting
+    via ''orddd_lite_custom_startdate'' and ''orddd_lite_custom_enddate''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9719d083-cc7c-4655-a4c4-f5370cfe76e0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,order-delivery-date-for-woocommerce,medium

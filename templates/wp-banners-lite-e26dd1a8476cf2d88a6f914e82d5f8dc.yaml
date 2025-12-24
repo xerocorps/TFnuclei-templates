@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-banners-lite
+  - dsl:
+    - compare_versions(version, '1.40')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-banners-lite/readme.txt'
+  redirects: true
+id: wp-banners-lite-e26dd1a8476cf2d88a6f914e82d5f8dc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-banners-lite/
+    google-query: inurl:"/wp-content/plugins/wp-banners-lite/"
+    shodan-query: 'vuln:'
+  name: 'WP-Banners-Lite 1.29, 1.31, 1.40 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/49f572ab-befe-44a3-b4bd-01b39d4209ca?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-banners-lite,high

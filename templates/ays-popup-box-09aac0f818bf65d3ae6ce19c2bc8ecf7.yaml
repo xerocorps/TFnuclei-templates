@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ays-popup-box
+  - dsl:
+    - compare_versions(version, '<= 3.7.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ays-popup-box/readme.txt'
+  redirects: true
+id: ays-popup-box-09aac0f818bf65d3ae6ce19c2bc8ecf7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ays-popup-box/
+    google-query: inurl:"/wp-content/plugins/ays-popup-box/"
+    shodan-query: 'vuln:'
+  name: "Popup Box \u2013 Best WordPress Popup Plugin <= 3.7.8 - Authenticated (Admin+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b947bd68-2dfa-4637-8f10-39c283fdac70?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ays-popup-box,low

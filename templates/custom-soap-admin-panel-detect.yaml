@@ -1,0 +1,14 @@
+id: custom-soap-admin-panel-detect
+info:
+  author: 0xUnknown
+  name: custom-soap-admin-panel-detect
+  severity: low
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Apache SOAP Admin Tool</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/shprod/RTS_HTML_Pages/SoapAdapter/admin/index.html'

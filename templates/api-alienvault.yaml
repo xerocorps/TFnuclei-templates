@@ -1,0 +1,26 @@
+id: api-alienvault
+info:
+  author: daffainfo
+  name: AlienVault Open Threat Exchange (OTX) API Test
+  reference:
+  - https://otx.alienvault.com/api
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Anti-Malware/AlienVault%20Open%20Threat%20Exchange.md
+  severity: info
+  tags: token-spray,alienvault,exchange
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"$schema":'
+    - '"properties":'
+  raw:
+  - 'GET https://otx.alienvault.com/api/v1/pulses/subscribed?page=1 HTTP/1.1
+
+    Host: otx.alienvault.com
+
+    X-OTX-API-KEY: {{token}}
+
+    '
+self-contained: true

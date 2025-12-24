@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - newsletter
+  - dsl:
+    - compare_versions(version, '<= 8.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/newsletter/readme.txt'
+  redirects: true
+id: newsletter-5c24ee66-7b57-4e4c-bbb5-0451fc24ce4b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:N
+    cvss-score: 4.7
+  description: "The Newsletter \u2013 Send awesome emails from WordPress plugin for\
+    \ WordPress is vulnerable to Cross-Site Request Forgery in all versions up to,\
+    \ and including, 8.0.6. This is due to missing or incorrect nonce validation in\
+    \ the main/welcome.php file. This makes it possible for unauthenticated attackers\
+    \ to modify the plugin's settings and send test emails via a forged request granted\
+    \ they can trick a site administrator into performing an action such as clicking\
+    \ on a link.\n"
+  metadata:
+    fofa-query: wp-content/plugins/newsletter/
+    google-query: inurl:"/wp-content/plugins/newsletter/"
+    shodan-query: http.html:"wp-content/plugins/newsletter/"
+  name: 'Newsletter <= 8.0.6 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5c24ee66-7b57-4e4c-bbb5-0451fc24ce4b?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,newsletter,medium,production

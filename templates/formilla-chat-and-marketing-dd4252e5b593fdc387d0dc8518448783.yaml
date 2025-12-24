@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - formilla-chat-and-marketing
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/formilla-chat-and-marketing/readme.txt'
+  redirects: true
+id: formilla-chat-and-marketing-dd4252e5b593fdc387d0dc8518448783
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/formilla-chat-and-marketing/
+    google-query: inurl:"/wp-content/plugins/formilla-chat-and-marketing/"
+    shodan-query: 'vuln:'
+  name: 'Formilla Chat and Marketing Automation <= 1.0 - Authenticated (Administrator+)
+    Cross-Site Scripting via ''FormillaToolsID''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a5436d14-cbb5-420f-9f3a-698ce59c1e1e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,formilla-chat-and-marketing,low

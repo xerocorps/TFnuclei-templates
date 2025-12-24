@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - spider-elements
+  - dsl:
+    - compare_versions(version, '<= 1.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/spider-elements/readme.txt'
+  redirects: true
+id: spider_elements-feac5bd3-dfa3-4ad0-b811-7a917970600c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/spider-elements/
+    google-query: inurl:"/wp-content/plugins/spider-elements/"
+    shodan-query: http.html:"wp-content/plugins/spider-elements/"
+  name: "Spider Elements \u2013 Addons for Elementor <= 1.6.5 - Authenticated (Contributor+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/feac5bd3-dfa3-4ad0-b811-7a917970600c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,spider-elements,low,candidate

@@ -1,0 +1,34 @@
+id: squid-analysis-report-generator
+info:
+  author: geeknik
+  description: SARG is an open source tool that allows you to analyse the squid log
+    files and generates beautiful reports in HTML format with informations about users,
+    IP addresses, top accessed sites, total bandwidth usage, elapsed time, downloads,
+    access denied websites, daily reports, weekly reports and monthly reports.
+  name: Squid Analysis Report Generator
+  reference: https://sourceforge.net/projects/sarg/
+  severity: high
+  tags: sarg,exposure,logs
+requests:
+- extractors:
+  - part: body
+    regex:
+    - sarg-[0-99].[0-99].[0-99]
+    type: regex
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - Squid User Access Report
+    - Squid User's Access Report
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <td>Daily reports
+    - FILE/PERIOD
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

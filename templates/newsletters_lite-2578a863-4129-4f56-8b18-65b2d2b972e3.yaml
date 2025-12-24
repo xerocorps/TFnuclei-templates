@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - newsletters-lite
+  - dsl:
+    - compare_versions(version, '<= 4.9.9.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/newsletters-lite/readme.txt'
+  redirects: true
+id: newsletters_lite-2578a863-4129-4f56-8b18-65b2d2b972e3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/newsletters-lite/
+    google-query: inurl:"/wp-content/plugins/newsletters-lite/"
+    shodan-query: http.html:"wp-content/plugins/newsletters-lite/"
+  name: 'Newsletters <= 4.9.9.7 - Reflected Cross-Site Scripting via To Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2578a863-4129-4f56-8b18-65b2d2b972e3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,newsletters-lite,medium,candidate

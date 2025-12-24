@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - restaurant-cafe-addon-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/restaurant-cafe-addon-for-elementor/readme.txt'
+  redirects: true
+id: restaurant-cafe-addon-for-elementor-d39f207ae0c43e572ffa666b061bc378
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/restaurant-cafe-addon-for-elementor/
+    google-query: inurl:"/wp-content/plugins/restaurant-cafe-addon-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Restaurant & Cafe Addon for Elementor <= 1.5.3 - Missing Authorization via
+    multiple AJAX functions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ad003d57-a573-473e-80a9-5bf60d42a707?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,restaurant-cafe-addon-for-elementor,high

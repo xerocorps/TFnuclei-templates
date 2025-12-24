@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-members
+  - dsl:
+    - compare_versions(version, '<= 3.4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-members/readme.txt'
+  redirects: true
+id: wp_members-46c61f38-553e-43b2-a666-b160db40e66d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-members/
+    google-query: inurl:"/wp-content/plugins/wp-members/"
+    shodan-query: http.html:"wp-content/plugins/wp-members/"
+  name: 'WP-Members Membership Plugin <= 3.4.8 - Missing Authorization to Sensitive
+    Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/46c61f38-553e-43b2-a666-b160db40e66d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-members,high,candidate

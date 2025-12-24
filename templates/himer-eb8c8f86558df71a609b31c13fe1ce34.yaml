@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - himer
+  - dsl:
+    - compare_versions(version, '<= 2.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/himer/style.css'
+  redirects: true
+id: himer-eb8c8f86558df71a609b31c13fe1ce34
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/himer/
+    google-query: inurl:"/wp-content/themes/himer/"
+    shodan-query: 'vuln:'
+  name: 'Himer - Social Questions and Answers <= 2.1.0 - Authenticated (Subscriber+)
+    Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/30d127b1-3d8d-4e77-90a8-a24e7b93fe16?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,himer,low

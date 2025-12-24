@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leadsnap
+  - dsl:
+    - compare_versions(version, '<= 1.23')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leadsnap/readme.txt'
+  redirects: true
+id: leadsnap-ec8352a2da1285f6df171977715a9a19
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/leadsnap/
+    google-query: inurl:"/wp-content/plugins/leadsnap/"
+    shodan-query: 'vuln:'
+  name: 'LeadSnap <= 1.23 - Unauthenticated PHP Object Injection via AJAX
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aefbebce-9433-455d-b27c-93088b0c8494?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,leadsnap,critical

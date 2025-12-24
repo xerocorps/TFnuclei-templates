@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - carousel-slider
+  - dsl:
+    - compare_versions(version, '<= 2.2.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/carousel-slider/readme.txt'
+  redirects: true
+id: carousel-slider-dd564aa389005739b56732e0a38ffccf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/carousel-slider/
+    google-query: inurl:"/wp-content/plugins/carousel-slider/"
+    shodan-query: 'vuln:'
+  name: 'Carousel Slider <= 2.2.10 - Authenticated (Editor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/160dd5b9-ed70-4617-9bff-59e33f9ea2d8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,carousel-slider,low

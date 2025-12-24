@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-tags
+  - dsl:
+    - compare_versions(version, '<= 3.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-tags/readme.txt'
+  redirects: true
+id: simple-tags-aac7200333edb22530f08fcc68fceb09
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The TaxoPress plugin for WordPress is vulnerable to reflected Cross-Site
+    Scripting in versions up to, and including 3.4.4 due to missing input and output
+    sanitization of some user generated URLs.
+  metadata:
+    fofa-query: wp-content/plugins/simple-tags/
+    google-query: inurl:"/wp-content/plugins/simple-tags/"
+    shodan-query: 'vuln:'
+  name: TaxoPress <= 3.4.4 - Reflected Cross-Site Scripting
+  reference:
+  - https://patchstack.com/database/vulnerability/simple-tags-/wordpress-taxopress-plugin-3-4-4-reflected-cross-site-scripting-xss-vulnerability
+  - https://wpscan.com/vulnerability/b5509e79-1f17-48be-afcb-26329112dd9f
+  - https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=2674563%40simple-tags&new=2674563%40simple-tags&sfp_email=&sfph_mail=
+  - https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=2653207%40simple-tags&new=2653207%40simple-tags&sfp_email=&sfph_mail=
+  severity: medium
+  tags: cve,wordpress,wp-plugin,simple-tags,medium

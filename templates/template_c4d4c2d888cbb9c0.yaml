@@ -1,0 +1,21 @@
+detail:
+  author: Loneyer
+  links:
+  - https://mp.weixin.qq.com/s/Ttpe63H9lQe87Uk0VOyMFw
+expression: r0() && r1()
+manual: true
+name: poc-yaml-kong-cve-2020-11710-unauth
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"kong_env")
+    request:
+      cache: true
+      method: GET
+      path: /
+  r1:
+    expression: response.status == 200 && response.body.bcontains(b"kong_db_cache_miss")
+    request:
+      cache: true
+      method: GET
+      path: /status
+transport: http

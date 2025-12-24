@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp_roknewspager
+  - dsl:
+    - compare_versions(version, '<= 1.17')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp_roknewspager/readme.txt'
+  redirects: true
+id: wp_roknewspager-299c3d88186a4ac12eb9bd34f311c88a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp_roknewspager/
+    google-query: inurl:"/wp-content/plugins/wp_roknewspager/"
+    shodan-query: 'vuln:'
+  name: 'RokNewsPager <= 1.17 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/57a81776-643d-4057-9d81-b79ad396cced?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp_roknewspager,critical

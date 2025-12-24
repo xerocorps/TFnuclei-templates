@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - theatre
+  - dsl:
+    - compare_versions(version, '<= 0.18.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/theatre/readme.txt'
+  redirects: true
+id: theatre-cf86341e5543f5bacaa0d3d971b9344a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/theatre/
+    google-query: inurl:"/wp-content/plugins/theatre/"
+    shodan-query: 'vuln:'
+  name: 'Theater for WordPress <= 0.18.3 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting via settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b0fdad22-5aee-468f-885c-f65c068cf413?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,theatre,low

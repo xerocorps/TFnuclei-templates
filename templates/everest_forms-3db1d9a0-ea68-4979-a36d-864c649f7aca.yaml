@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - everest-forms
+  - dsl:
+    - compare_versions(version, '<= 3.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/everest-forms/readme.txt'
+  redirects: true
+id: everest_forms-3db1d9a0-ea68-4979-a36d-864c649f7aca
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/everest-forms/
+    google-query: inurl:"/wp-content/plugins/everest-forms/"
+    shodan-query: http.html:"wp-content/plugins/everest-forms/"
+  name: 'Everest Forms <= 3.1.1 - Authenticated (Subscriber+) Arbitrary Shortcode
+    Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3db1d9a0-ea68-4979-a36d-864c649f7aca?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,everest-forms,low,candidate

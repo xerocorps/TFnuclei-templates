@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-buttons-creator
+  - dsl:
+    - compare_versions(version, '<= 1.04')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-buttons-creator/readme.txt'
+  redirects: true
+id: simple_buttons_creator-448ec796-e92f-410e-aa40-aaf296c1afeb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-buttons-creator/
+    google-query: inurl:"/wp-content/plugins/simple-buttons-creator/"
+    shodan-query: http.html:"wp-content/plugins/simple-buttons-creator/"
+  name: 'Simple Buttons Creator <=1.04 - Cross-Site Request Forgery to Arbitrary Button
+    Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/448ec796-e92f-410e-aa40-aaf296c1afeb?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,simple-buttons-creator,medium,candidate

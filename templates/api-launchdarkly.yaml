@@ -1,0 +1,28 @@
+id: api-launchdarkly
+info:
+  author: Luqmaan Hadia
+  name: LaunchDarkly REST API
+  reference:
+  - https://apidocs.launchdarkly.com/
+  severity: info
+  tags: token-spray,launchdarkly
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - '"totalCount":'
+    - '"items":'
+  matchers-condition: and
+  raw:
+  - 'GET https://app.launchdarkly.com/api/v2/members HTTP/1.1
+
+    Host: app.launchdarkly.com
+
+    Authorization: {{token}}
+
+    '
+self-contained: true

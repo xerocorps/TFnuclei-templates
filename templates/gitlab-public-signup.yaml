@@ -1,0 +1,26 @@
+id: gitlab-public-signup
+info:
+  author: pdteam
+  name: GitLab public signup
+  severity: info
+  tags: gitlab
+requests:
+- matchers:
+  - type: word
+    words:
+    - <a data-qa-selector="register_link" href="/users/sign_up">Register now</a>
+    - data-qa-selector="new_user_register_button"
+  - type: word
+    words:
+    - https://about.gitlab.com
+  - status:
+    - 200
+    type: status
+  - negative: true
+    type: word
+    words:
+    - <meta content="GitLab.com" property="og:description">
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/users/sign_in'

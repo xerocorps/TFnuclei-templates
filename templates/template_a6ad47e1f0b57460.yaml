@@ -1,0 +1,35 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - wordpress
+    - security
+    - xml-rpc
+    - authentication
+    - brute force
+    - high
+  description: Template to detect WordPress installations vulnerable to XML-RPC authentication
+    brute force attacks
+  id: wordpress-xmlrpc-bruteforce
+  matcher-condition: and
+  matchers:
+  - description: Response body containing XML-RPC fault code
+    pattern: faultCode
+    type: body
+  - description: Response body containing XML-RPC fault string
+    pattern: faultString
+    type: body
+  name: WordPress XML-RPC Authentication Brute Force - Detect
+  reference:
+  - https://wpscan.com/vulnerability/10698
+  requests:
+    condition: and
+    description: Attempt to brute force WordPress XML-RPC authentication
+    method: POST
+    path:
+    - /xmlrpc.php
+  response:
+  - status:
+    - 200
+  severity: High

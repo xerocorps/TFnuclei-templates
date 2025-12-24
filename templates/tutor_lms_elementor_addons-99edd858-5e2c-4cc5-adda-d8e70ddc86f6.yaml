@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tutor-lms-elementor-addons
+  - dsl:
+    - compare_versions(version, '<= 2.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tutor-lms-elementor-addons/readme.txt'
+  redirects: true
+id: tutor_lms_elementor_addons-99edd858-5e2c-4cc5-adda-d8e70ddc86f6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tutor-lms-elementor-addons/
+    google-query: inurl:"/wp-content/plugins/tutor-lms-elementor-addons/"
+    shodan-query: http.html:"wp-content/plugins/tutor-lms-elementor-addons/"
+  name: 'Tutor LMS Elementor Addons <= 2.1.5 - Missing Authorization to Authenticated
+    (Subscriber+) Limited Plugin Installation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/99edd858-5e2c-4cc5-adda-d8e70ddc86f6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tutor-lms-elementor-addons,low,candidate

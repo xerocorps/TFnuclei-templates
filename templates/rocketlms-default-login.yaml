@@ -1,0 +1,73 @@
+http:
+- attack: pitchfork
+  extractors:
+  - group: 1
+    internal: true
+    name: token
+    part: body
+    regex:
+    - name="_token"\s+value="([^"]+)"
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - /panel
+  - status:
+    - 302
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  payloads:
+    password:
+    - admin
+    - student
+    - instructor
+    username:
+    - admin@demo.com
+    - student@demo.com
+    - instructor@demo.com
+  raw:
+  - 'GET /login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Origin: {{RootURL}}
+
+    Referer: {{RootURL}}/login
+
+    '
+  - 'POST /login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Origin: {{RootURL}}
+
+    Referer: {{RootURL}}/login
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    _token={{token}}&type=email&email={{username}}&country_code=&mobile=&password={{password}}
+
+    '
+  stop-at-first-match: true
+id: rocketlms-default-login
+info:
+  author: hamad501
+  description: 'Rocket LMS default credentials were discovered.
+
+    '
+  metadata:
+    max-request: 4
+    product: rocket-lms
+    shodan-query: html:"Rocket LMS"
+    vendor: rocketsoft
+    verified: true
+  name: Rocket LMS - Default Login
+  reference:
+  - https://codecanyon.net/item/rocket-lms-learning-management-academy-script/33120735
+  - https://github.com/Yucaerin/RocketLms
+  - https://medium.com/@naxtarrr/rocket-lms-shell-upload-vulnerability-c400665702f3
+  severity: high
+  tags: default-login,lms,rocketlms,vuln

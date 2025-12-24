@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quran-text-multilanguage
+  - dsl:
+    - compare_versions(version, '<= 2.3.23')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quran-text-multilanguage/readme.txt'
+  redirects: true
+id: quran_text_multilanguage-45fe9092-ebf4-43ed-ab49-4b492b2a0a73
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quran-text-multilanguage/
+    google-query: inurl:"/wp-content/plugins/quran-text-multilanguage/"
+    shodan-query: http.html:"wp-content/plugins/quran-text-multilanguage/"
+  name: 'Quran multilanguage Text & Audio <= 2.3.23 - Authenticated (Administrator+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/45fe9092-ebf4-43ed-ab49-4b492b2a0a73?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,quran-text-multilanguage,low,candidate

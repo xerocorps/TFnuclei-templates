@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-lightbox-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.9.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-lightbox-gallery/readme.txt'
+  redirects: true
+id: simple_lightbox_gallery-540b2888-16fe-4791-8d08-f7772f71d511
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-lightbox-gallery/
+    google-query: inurl:"/wp-content/plugins/simple-lightbox-gallery/"
+    shodan-query: http.html:"wp-content/plugins/simple-lightbox-gallery/"
+  name: "Lightbox slider \u2013 Responsive Lightbox Gallery <= 1.9.9 - Authenticated\
+    \ (Contributor+) PHP Object Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/540b2888-16fe-4791-8d08-f7772f71d511?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-lightbox-gallery,low,candidate

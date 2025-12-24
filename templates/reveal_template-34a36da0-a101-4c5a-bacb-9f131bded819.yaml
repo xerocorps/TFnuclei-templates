@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - reveal-template
+  - dsl:
+    - compare_versions(version, '<= 3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/reveal-template/readme.txt'
+  redirects: true
+id: reveal_template-34a36da0-a101-4c5a-bacb-9f131bded819
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/reveal-template/
+    google-query: inurl:"/wp-content/plugins/reveal-template/"
+    shodan-query: http.html:"wp-content/plugins/reveal-template/"
+  name: 'Reveal Template <= 3.7 - Unauthenticated Full Path Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/34a36da0-a101-4c5a-bacb-9f131bded819?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,reveal-template,low,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - robokassa
+  - dsl:
+    - compare_versions(version, '<= 1.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/robokassa/readme.txt'
+  redirects: true
+id: robokassa-4186a609-84f1-4852-8ed9-e8ba6263b635
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/robokassa/
+    google-query: inurl:"/wp-content/plugins/robokassa/"
+    shodan-query: http.html:"wp-content/plugins/robokassa/"
+  name: 'Robokassa payment gateway for Woocommerce <= 1.6.1 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4186a609-84f1-4852-8ed9-e8ba6263b635?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,robokassa,medium,candidate

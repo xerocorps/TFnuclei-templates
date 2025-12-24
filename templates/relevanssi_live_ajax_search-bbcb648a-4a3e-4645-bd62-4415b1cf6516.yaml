@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - relevanssi-live-ajax-search
+  - dsl:
+    - compare_versions(version, '<= 2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/relevanssi-live-ajax-search/readme.txt'
+  redirects: true
+id: relevanssi_live_ajax_search-bbcb648a-4a3e-4645-bd62-4415b1cf6516
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/relevanssi-live-ajax-search/
+    google-query: inurl:"/wp-content/plugins/relevanssi-live-ajax-search/"
+    shodan-query: http.html:"wp-content/plugins/relevanssi-live-ajax-search/"
+  name: 'Relevanssi Live Ajax Search <= 2.4 - Unauthenticated WP_Query Argument Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bbcb648a-4a3e-4645-bd62-4415b1cf6516?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,relevanssi-live-ajax-search,low,candidate

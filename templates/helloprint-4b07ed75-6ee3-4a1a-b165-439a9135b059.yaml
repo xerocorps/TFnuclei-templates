@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - helloprint
+  - dsl:
+    - compare_versions(version, '<= 2.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/helloprint/readme.txt'
+  redirects: true
+id: helloprint-4b07ed75-6ee3-4a1a-b165-439a9135b059
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/helloprint/
+    google-query: inurl:"/wp-content/plugins/helloprint/"
+    shodan-query: http.html:"wp-content/plugins/helloprint/"
+  name: 'Helloprint <= 2.1.2 - Missing Authorization to Unauthenticated Arbitrary
+    Order Status Modification
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4b07ed75-6ee3-4a1a-b165-439a9135b059?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,helloprint,high,candidate

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yet-another-stars-rating
+  - dsl:
+    - compare_versions(version, '<= 2.9.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yet-another-stars-rating/readme.txt'
+  redirects: true
+id: yet_another_stars_rating-cabe5d20-710c-47d7-a5a3-562287ab5706
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yet-another-stars-rating/
+    google-query: inurl:"/wp-content/plugins/yet-another-stars-rating/"
+    shodan-query: http.html:"wp-content/plugins/yet-another-stars-rating/"
+  name: "Yasr \u2013 Yet Another Stars Rating  <= 2.9.9 - Cross-Site Scripting via\
+    \ source\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cabe5d20-710c-47d7-a5a3-562287ab5706?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,yet-another-stars-rating,high,candidate

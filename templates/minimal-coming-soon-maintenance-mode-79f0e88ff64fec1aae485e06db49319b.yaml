@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - minimal-coming-soon-maintenance-mode
+  - dsl:
+    - compare_versions(version, '<= 2.37')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/minimal-coming-soon-maintenance-mode/readme.txt'
+  redirects: true
+id: minimal-coming-soon-maintenance-mode-79f0e88ff64fec1aae485e06db49319b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/minimal-coming-soon-maintenance-mode/
+    google-query: inurl:"/wp-content/plugins/minimal-coming-soon-maintenance-mode/"
+    shodan-query: 'vuln:'
+  name: "Minimal Coming Soon \u2013 Coming Soon Page <= 2.37 - Unauthenticated Maintenance\
+    \ Mode Bypass\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/78203b98-15bc-4d8e-9278-c472b518be07?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,minimal-coming-soon-maintenance-mode,low

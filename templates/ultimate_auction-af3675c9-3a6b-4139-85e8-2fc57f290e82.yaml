@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-auction
+  - dsl:
+    - compare_versions(version, '<= 4.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-auction/readme.txt'
+  redirects: true
+id: ultimate_auction-af3675c9-3a6b-4139-85e8-2fc57f290e82
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-auction/
+    google-query: inurl:"/wp-content/plugins/ultimate-auction/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-auction/"
+  name: 'Ultimate WordPress Auction Plugin <= 4.2.9 - Missing Authorization to Arbitrary
+    Post Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/af3675c9-3a6b-4139-85e8-2fc57f290e82?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ultimate-auction,high,candidate

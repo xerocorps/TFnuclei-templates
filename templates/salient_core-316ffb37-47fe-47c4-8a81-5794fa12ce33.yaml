@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - salient-core
+  - dsl:
+    - compare_versions(version, '<= 2.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/salient-core/readme.txt'
+  redirects: true
+id: salient_core-316ffb37-47fe-47c4-8a81-5794fa12ce33
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/salient-core/
+    google-query: inurl:"/wp-content/plugins/salient-core/"
+    shodan-query: http.html:"wp-content/plugins/salient-core/"
+  name: 'Salient Core <= 2.0.2 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/316ffb37-47fe-47c4-8a81-5794fa12ce33?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,salient-core,low,candidate

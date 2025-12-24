@@ -1,0 +1,15 @@
+id: newrelic-admin-api-key
+info:
+  author: Ice3man
+  name: Admin API Key Disclosure
+  severity: info
+  tags: exposure,token
+requests:
+- extractors:
+  - part: body
+    regex:
+    - (?i)NRAA-[a-f0-9]{27}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

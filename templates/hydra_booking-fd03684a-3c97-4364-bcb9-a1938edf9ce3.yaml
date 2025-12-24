@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hydra-booking
+  - dsl:
+    - compare_versions(version, '<= 1.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hydra-booking/readme.txt'
+  redirects: true
+id: hydra_booking-fd03684a-3c97-4364-bcb9-a1938edf9ce3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hydra-booking/
+    google-query: inurl:"/wp-content/plugins/hydra-booking/"
+    shodan-query: http.html:"wp-content/plugins/hydra-booking/"
+  name: 'Hydra Booking <= 1.1.9 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fd03684a-3c97-4364-bcb9-a1938edf9ce3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,hydra-booking,high,candidate

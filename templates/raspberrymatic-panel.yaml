@@ -1,0 +1,23 @@
+id: raspberrymatic-panel
+info:
+  author: princechaddha
+  metadata:
+    shodan-query: http.favicon.hash:-578216669
+  name: RaspberryMatic Panel Detect
+  severity: info
+  tags: panel,raspberrymatic,iot
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>RaspberryMatic WebUI</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/login.htm'
+  redirects: true

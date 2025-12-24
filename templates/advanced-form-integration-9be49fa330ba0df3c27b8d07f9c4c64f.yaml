@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-form-integration
+  - dsl:
+    - compare_versions(version, '<= 1.62.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-form-integration/readme.txt'
+  redirects: true
+id: advanced-form-integration-9be49fa330ba0df3c27b8d07f9c4c64f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-form-integration/
+    google-query: inurl:"/wp-content/plugins/advanced-form-integration/"
+    shodan-query: 'vuln:'
+  name: "Connect Contact Form 7, WooCommerce To Google Sheets & Other Platforms \u2013\
+    \ Advanced Form Integration <= 1.62.0 - Authenticated (Admin+) Cross Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1e9458e4-570e-4871-84ac-380107037b1c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-form-integration,low

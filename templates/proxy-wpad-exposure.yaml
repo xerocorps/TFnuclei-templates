@@ -1,0 +1,24 @@
+id: proxy-wpad-exposure
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: html:"wpad.dat"
+    verified: true
+  name: Proxy WPAD Configuration Exposure
+  severity: low
+  tags: config,exposure,proxy
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - FindProxyForURL
+    - url
+    - host
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wpad.dat'

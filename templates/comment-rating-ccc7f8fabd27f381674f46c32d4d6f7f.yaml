@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - comment-rating
+  - dsl:
+    - compare_versions(version, '<= 2.9.32')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/comment-rating/readme.txt'
+  redirects: true
+id: comment-rating-ccc7f8fabd27f381674f46c32d4d6f7f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/comment-rating/
+    google-query: inurl:"/wp-content/plugins/comment-rating/"
+    shodan-query: 'vuln:'
+  name: 'Comment Rating <= 2.9.32 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/05ea5a3c-084a-458f-b0b1-8a9b82e4656a?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,comment-rating,critical

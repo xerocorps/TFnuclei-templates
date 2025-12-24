@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - media-library-plus
+  - dsl:
+    - compare_versions(version, '<= 8.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/media-library-plus/readme.txt'
+  redirects: true
+id: media-library-plus-798cf28296e1bc5f2617b863aa4a2416
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/media-library-plus/
+    google-query: inurl:"/wp-content/plugins/media-library-plus/"
+    shodan-query: 'vuln:'
+  name: 'Media Library Folders <= 8.1.7 - Authenticated (Author+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/198ad1bf-7ce1-4367-bef7-1f58113c0719?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,media-library-plus,low

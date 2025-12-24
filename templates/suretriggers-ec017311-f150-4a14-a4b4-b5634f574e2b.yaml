@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - suretriggers
+  - dsl:
+    - compare_versions(version, '<= 1.0.78')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/suretriggers/readme.txt'
+  redirects: true
+id: suretriggers-ec017311-f150-4a14-a4b4-b5634f574e2b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/suretriggers/
+    google-query: inurl:"/wp-content/plugins/suretriggers/"
+    shodan-query: http.html:"wp-content/plugins/suretriggers/"
+  name: 'SureTriggers <= 1.0.78 - Authorization Bypass due to Missing Empty Value
+    Check to Unauthenticated Administrative User Creation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ec017311-f150-4a14-a4b4-b5634f574e2b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,suretriggers,high,candidate

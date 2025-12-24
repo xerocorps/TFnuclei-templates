@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pvn-auth-popup
+  - dsl:
+    - compare_versions(version, '<= 1.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pvn-auth-popup/readme.txt'
+  redirects: true
+id: pvn-auth-popup-07f350252e6820d89f1593e944a45ac9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pvn-auth-popup/
+    google-query: inurl:"/wp-content/plugins/pvn-auth-popup/"
+    shodan-query: 'vuln:'
+  name: 'PVN Auth Popup <= 1.0.0 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4278b8f6-ce3e-4b6d-ae69-dee24a2177e7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,pvn-auth-popup,low

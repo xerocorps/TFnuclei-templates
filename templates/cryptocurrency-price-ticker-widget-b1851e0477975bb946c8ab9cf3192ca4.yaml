@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cryptocurrency-price-ticker-widget
+  - dsl:
+    - compare_versions(version, '<= 2.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cryptocurrency-price-ticker-widget/readme.txt'
+  redirects: true
+id: cryptocurrency-price-ticker-widget-b1851e0477975bb946c8ab9cf3192ca4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cryptocurrency-price-ticker-widget/
+    google-query: inurl:"/wp-content/plugins/cryptocurrency-price-ticker-widget/"
+    shodan-query: 'vuln:'
+  name: "Cryptocurrency Widgets \u2013 Price Ticker & Coins List <= 2.6.2 - Missing\
+    \ Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dec2855c-71a8-46b2-819a-d85cd11a1a24?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,cryptocurrency-price-ticker-widget,high

@@ -1,0 +1,25 @@
+id: pypicloud-panel
+info:
+  author: Supras
+  metadata:
+    google-query: intext:pypicloud
+  name: Pypicloud panel detection
+  reference:
+  - https://pypicloud.readthedocs.io/en/latest/
+  severity: info
+  tags: panel,pypicloud
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Pypicloud</title>
+    - <html ng-app="pypicloud">
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

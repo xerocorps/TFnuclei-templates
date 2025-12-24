@@ -1,0 +1,22 @@
+id: api-alchemy
+info:
+  author: daffainfo
+  name: Alchemy API Test
+  reference:
+  - https://docs.alchemy.com/alchemy/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Cryptocurrency/Alchemy.md
+  severity: info
+  tags: token-spray,alchemy
+requests:
+- body: '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":0}'
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id":'
+    - '"result":'
+  method: POST
+  path:
+  - https://eth-mainnet.alchemyapi.io/v2/{{token}}
+self-contained: true

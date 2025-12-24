@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - graylog
+    - config file
+    - exposure
+  description: Template to detect Graylog configuration YAML file exposure
+  id: graylog-config-exposure
+  matchers:
+  - pattern: http_bind_address:\s+\w+
+    type: body
+  - pattern: http_publish_uri:\s+\w+
+    type: body
+  name: Graylog Config YAML Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /etc/graylog/server/server.conf
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

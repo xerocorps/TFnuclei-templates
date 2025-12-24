@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - w3-total-cache
+  - dsl:
+    - compare_versions(version, '<= 0.9.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/w3-total-cache/readme.txt'
+  redirects: true
+id: w3-total-cache-11901e3cd1d1d20151a2e2366e67aa1c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The W3 Total Cache plugin plugin for WordPress is vulnerable to Cross-Site
+    Scripting via the 'request_id' parameter in versions up to, and including, 0.9.4.1
+    due to insufficient input sanitization and output escaping. This makes it possible
+    for attackers to inject arbitrary web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/plugins/w3-total-cache/
+    google-query: inurl:"/wp-content/plugins/w3-total-cache/"
+    shodan-query: 'vuln:'
+  name: W3 Total Cache <= 0.9.4.1 - Cross-Site Scripting via request_id
+  reference:
+  - https://blog.zerial.org/seguridad/vulnerabilidad-cross-site-scripting-en-wordpress-w3-total-cache/
+  - https://seclists.org/fulldisclosure/2016/Sep/52
+  - https://sumofpwn.nl/advisory/2016/reflected_cross_site_scripting_vulnerability_in_w3_total_cache_plugin.html
+  - https://seclists.org/fulldisclosure/2016/Nov/63
+  - https://wordpress.org/plugins/w3-total-cache/#developers
+  severity: medium
+  tags: cve,wordpress,wp-plugin,w3-total-cache,medium

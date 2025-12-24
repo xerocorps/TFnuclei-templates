@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - squirrly-seo
+  - dsl:
+    - compare_versions(version, '<= 12.3.19')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/squirrly-seo/readme.txt'
+  redirects: true
+id: squirrly-seo-713844f86fc00018b16eeefe5ed8f8d0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/squirrly-seo/
+    google-query: inurl:"/wp-content/plugins/squirrly-seo/"
+    shodan-query: 'vuln:'
+  name: 'SEO Plugin by Squirrly SEO <= 12.3.19 - Authenticated (Contributor+) SQL
+    Injection via url Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb3aa613-8f34-4d96-8ddf-41fcdcf65c59?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,squirrly-seo,low

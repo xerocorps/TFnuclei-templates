@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - w3-total-cache
+  - dsl:
+    - compare_versions(version, '<= 0.9.7.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/w3-total-cache/readme.txt'
+  redirects: true
+id: w3-total-cache-ab17526b068eebca7079befe025859a0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The W3 Total Cache plugin for WordPress is vulnerable to Reflected
+    Cross-Site Scripting due to insufficient input validation on the $command variable,
+    which makes it possible for attackers to inject arbitrary web sites in victims
+    browsers in versions up to, and including, 0.9.7.3.
+  metadata:
+    fofa-query: wp-content/plugins/w3-total-cache/
+    google-query: inurl:"/wp-content/plugins/w3-total-cache/"
+    shodan-query: 'vuln:'
+  name: W3 Total Cache plugin <= 0.9.7.3 - Reflected Cross-Site Scripting
+  reference:
+  - https://patchstack.com/database/vulnerability/w3-total-cache/wordpress-w3-total-cache-plugin-0-9-7-3-cross-site-scripting-xss-vulnerability
+  - https://vulners.com/wpexploit/WPEX-ID%3A6DBB1A21-9805-401B-8CD4-F7C387C99199
+  - https://www.tenable.com/plugins/was/98609
+  - https://plugins.trac.wordpress.org/changeset/2081515/w3-total-cache/trunk/pub/opcache.php
+  severity: medium
+  tags: cve,wordpress,wp-plugin,w3-total-cache,medium

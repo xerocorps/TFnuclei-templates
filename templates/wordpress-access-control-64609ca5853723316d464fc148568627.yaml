@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordpress-access-control
+  - dsl:
+    - compare_versions(version, '<= 4.0.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordpress-access-control/readme.txt'
+  redirects: true
+id: wordpress-access-control-64609ca5853723316d464fc148568627
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wordpress-access-control/
+    google-query: inurl:"/wp-content/plugins/wordpress-access-control/"
+    shodan-query: 'vuln:'
+  name: 'WordPress Access Control <= 4.0.13 - Improper Access Control to Sensitive
+    Information Exposure via REST API
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/31f13524-2bd7-4157-b378-455ac4f822a1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wordpress-access-control,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - adrotate
+  - dsl:
+    - compare_versions(version, '<= 5.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/adrotate/readme.txt'
+  redirects: true
+id: adrotate-0a21829905e77a73bd6034517cea7aad
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/adrotate/
+    google-query: inurl:"/wp-content/plugins/adrotate/"
+    shodan-query: 'vuln:'
+  name: 'AdRotate Banner Manager <= 5.9 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f068abb4-cbe6-4698-b547-78503b2a455e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,adrotate,medium

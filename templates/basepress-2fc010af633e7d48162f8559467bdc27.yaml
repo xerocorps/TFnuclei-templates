@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - basepress
+  - dsl:
+    - compare_versions(version, '<= 2.16.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/basepress/readme.txt'
+  redirects: true
+id: basepress-2fc010af633e7d48162f8559467bdc27
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/basepress/
+    google-query: inurl:"/wp-content/plugins/basepress/"
+    shodan-query: 'vuln:'
+  name: "Knowledge Base documentation & wiki plugin \u2013 BasePress <= 2.16.1 - Authenticated\
+    \ (Subscriber+) Server-Side Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/47f05812-b873-4092-9014-20ca1d0e484a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,basepress,low

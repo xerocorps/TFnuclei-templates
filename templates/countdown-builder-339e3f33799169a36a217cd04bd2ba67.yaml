@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - countdown-builder
+  - dsl:
+    - compare_versions(version, '<= 2.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/countdown-builder/readme.txt'
+  redirects: true
+id: countdown-builder-339e3f33799169a36a217cd04bd2ba67
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/countdown-builder/
+    google-query: inurl:"/wp-content/plugins/countdown-builder/"
+    shodan-query: 'vuln:'
+  name: "Countdown, Coming Soon, Maintenance \u2013 Countdown & Clock <= 2.3.2 - Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2fa62862-5b98-4864-9bf1-4e05deedeb9d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,countdown-builder,high

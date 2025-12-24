@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - scratch-win-giveaways-for-website-facebook
+  - dsl:
+    - compare_versions(version, '<= 2.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/scratch-win-giveaways-for-website-facebook/readme.txt'
+  redirects: true
+id: scratch_win_giveaways_for_website_facebook-5b7f3f0f-5f02-41d7-ac37-ecdde74fc532
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/scratch-win-giveaways-for-website-facebook/
+    google-query: inurl:"/wp-content/plugins/scratch-win-giveaways-for-website-facebook/"
+    shodan-query: http.html:"wp-content/plugins/scratch-win-giveaways-for-website-facebook/"
+  name: "Scratch & Win \u2013 Giveaways and Contests <= 2.6.9 - Authenticated (Contributor+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5b7f3f0f-5f02-41d7-ac37-ecdde74fc532?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,scratch-win-giveaways-for-website-facebook,low,candidate

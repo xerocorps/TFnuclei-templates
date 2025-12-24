@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - thrive-ab-page-testing
+  - dsl:
+    - compare_versions(version, '< 1.4.13.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/thrive-ab-page-testing/readme.txt'
+  redirects: true
+id: thrive_ab_page_testing-c2be56d2-d473-455e-8d6e-d2df6abb19ca
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/thrive-ab-page-testing/
+    google-query: inurl:"/wp-content/plugins/thrive-ab-page-testing/"
+    shodan-query: http.html:"wp-content/plugins/thrive-ab-page-testing/"
+  name: 'Multiple Thrive Themes and Plugins (Various Versions) - Arbitrary Options
+    Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c2be56d2-d473-455e-8d6e-d2df6abb19ca?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,thrive-ab-page-testing,low,candidate

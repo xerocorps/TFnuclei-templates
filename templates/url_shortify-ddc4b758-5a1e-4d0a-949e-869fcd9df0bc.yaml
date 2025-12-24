@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - url-shortify
+  - dsl:
+    - compare_versions(version, '<= 1.7.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/url-shortify/readme.txt'
+  redirects: true
+id: url_shortify-ddc4b758-5a1e-4d0a-949e-869fcd9df0bc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/url-shortify/
+    google-query: inurl:"/wp-content/plugins/url-shortify/"
+    shodan-query: http.html:"wp-content/plugins/url-shortify/"
+  name: 'URL Shortify <= 1.7.9 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ddc4b758-5a1e-4d0a-949e-869fcd9df0bc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,url-shortify,low,candidate

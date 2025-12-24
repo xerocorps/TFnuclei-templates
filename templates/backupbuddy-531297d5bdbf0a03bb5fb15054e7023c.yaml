@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - backupbuddy
+  - dsl:
+    - compare_versions(version, '>= 8.5.8.0', '<= 8.7.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/backupbuddy/readme.txt'
+  redirects: true
+id: backupbuddy-531297d5bdbf0a03bb5fb15054e7023c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/backupbuddy/
+    google-query: inurl:"/wp-content/plugins/backupbuddy/"
+    shodan-query: 'vuln:'
+  name: 'BackupBuddy 8.5.8.0 - 8.7.4.1 - Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/91221712-8f66-4c6f-94fb-75c34a7f1fa8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,backupbuddy,low

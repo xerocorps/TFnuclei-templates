@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cgc-maintenance-mode
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cgc-maintenance-mode/readme.txt'
+  redirects: true
+id: cgc-maintenance-mode-d395c79f773ee5d70312487be14f72dc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cgc-maintenance-mode/
+    google-query: inurl:"/wp-content/plugins/cgc-maintenance-mode/"
+    shodan-query: 'vuln:'
+  name: 'CGC Maintenance Mode <= 1.2 - Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1cd5fa89-ed3b-4ac1-9200-9f5eb26cb534?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cgc-maintenance-mode,low

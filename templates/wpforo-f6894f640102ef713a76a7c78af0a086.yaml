@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpforo
+  - dsl:
+    - compare_versions(version, '<= 2.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpforo/readme.txt'
+  redirects: true
+id: wpforo-f6894f640102ef713a76a7c78af0a086
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpforo/
+    google-query: inurl:"/wp-content/plugins/wpforo/"
+    shodan-query: 'vuln:'
+  name: 'wpForo Forum <= 2.2.5 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/71078aaf-9803-4b46-bc94-dbcb43745629?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wpforo,high

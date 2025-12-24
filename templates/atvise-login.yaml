@@ -1,0 +1,28 @@
+id: atvise-login
+info:
+  author: idealphase
+  classification:
+    cwe-id: CWE-200
+  description: An Atvise login panel was discovered. Atvise is a leading visualization
+    and control center solutions based on pure web technology.
+  metadata:
+    google-dork: intitle:"atvise - next generation"
+  name: Atvise Login Panel
+  reference:
+  - https://www.exploit-db.com/ghdb/7837
+  - https://www.atvise.com/en
+  severity: info
+  tags: panel,atvise
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>atvise - next generation</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

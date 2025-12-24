@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sitepress-multilingual-cms
+  - dsl:
+    - compare_versions(version, '<= 4.5.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sitepress-multilingual-cms/readme.txt'
+  redirects: true
+id: sitepress-multilingual-cms-8b12098b233c869fb2ce395cf4040b82
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sitepress-multilingual-cms/
+    google-query: inurl:"/wp-content/plugins/sitepress-multilingual-cms/"
+    shodan-query: 'vuln:'
+  name: 'WPML <= 4.5.10 - Missing Authorization to Settings Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/de62020b-5803-4ea7-89a1-24e5a512f2f3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,sitepress-multilingual-cms,high

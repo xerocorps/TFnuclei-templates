@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - download-monitor
+  - dsl:
+    - compare_versions(version, '<= 4.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/download-monitor/readme.txt'
+  redirects: true
+id: download-monitor-fdfe4c71b0a6cb9430de9f16dd7fcdbf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/download-monitor/
+    google-query: inurl:"/wp-content/plugins/download-monitor/"
+    shodan-query: 'vuln:'
+  name: 'Download Monitor <= 4.4.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/306facf0-b1e4-4ba7-9462-f94af01d628d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,download-monitor,medium

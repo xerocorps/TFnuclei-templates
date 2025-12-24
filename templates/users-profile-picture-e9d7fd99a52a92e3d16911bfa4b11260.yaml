@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - users-profile-picture
+  - dsl:
+    - compare_versions(version, '< 2.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/users-profile-picture/readme.txt'
+  redirects: true
+id: users-profile-picture-e9d7fd99a52a92e3d16911bfa4b11260
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/users-profile-picture/
+    google-query: inurl:"/wp-content/plugins/users-profile-picture/"
+    shodan-query: 'vuln:'
+  name: 'User Profile Picture < 2.6.0 - Authenticated Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0f963cd2-0069-4e58-a5e5-8a9bfea65168?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,users-profile-picture,low

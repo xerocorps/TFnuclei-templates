@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - flash-album-gallery
+  - dsl:
+    - compare_versions(version, '< 2.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/flash-album-gallery/readme.txt'
+  redirects: true
+id: flash-album-gallery-6e3dee39dafe56c2825b222612b295cc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 7.2
+  description: "The Album and Image Gallery with Lightbox \u2013 Flagallery Photo\
+    \ Portfolio plugin for WordPress is vulnerable to SQL Injection via the \u2018\
+    form\u2019 parameter in the admin/ajax.php file in versions up to, and including,\
+    \ 2.00 due to insufficient escaping on the user supplied parameter and lack of\
+    \ sufficient preparation on the existing SQL query. This makes it possible for\
+    \ authenticated attackers, with administrator-level permissions and above, to\
+    \ append additional SQL queries into already existing queries that can be used\
+    \ to extract sensitive information from the database."
+  metadata:
+    fofa-query: wp-content/plugins/flash-album-gallery/
+    google-query: inurl:"/wp-content/plugins/flash-album-gallery/"
+    shodan-query: 'vuln:'
+  name: "Album and Image Gallery with Lightbox \u2013 Flagallery Photo Portfolio <=\
+    \ 2.00 - SQL Injection"
+  reference:
+  - https://packetstormsecurity.com/files/117665/
+  - http://www.waraxe.us/advisory-94.html
+  - https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=618611%40flash-album-gallery&new=618611%40flash-album-gallery&sfp_email=&sfph_mail=
+  severity: high
+  tags: cve,wordpress,wp-plugin,flash-album-gallery,high

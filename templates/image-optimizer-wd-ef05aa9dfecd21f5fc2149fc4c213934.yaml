@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - image-optimizer-wd
+  - dsl:
+    - compare_versions(version, '< 1.0.26')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/image-optimizer-wd/readme.txt'
+  redirects: true
+id: image-optimizer-wd-ef05aa9dfecd21f5fc2149fc4c213934
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/image-optimizer-wd/
+    google-query: inurl:"/wp-content/plugins/image-optimizer-wd/"
+    shodan-query: 'vuln:'
+  name: 'Image Optimizer by 10web <= 1.0.25 - Directory Traversal to Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0b4a0dff-1054-4f50-8ff5-e3cc2b45d77b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,image-optimizer-wd,low

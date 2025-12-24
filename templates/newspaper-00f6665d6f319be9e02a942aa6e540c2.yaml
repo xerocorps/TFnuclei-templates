@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - newspaper
+  - dsl:
+    - compare_versions(version, '< 9.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/newspaper/style.css'
+  redirects: true
+id: newspaper-00f6665d6f319be9e02a942aa6e540c2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The Newspaper theme for WordPress is vulnerable to Cross-Site Scripting
+    in versions up to, and including, 9.2.1 due to insufficient input sanitization
+    and output escaping. This makes it possible for attackers to inject arbitrary
+    web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/themes/newspaper/
+    google-query: inurl:"/wp-content/themes/newspaper/"
+    shodan-query: 'vuln:'
+  name: Newspaper < 9.2.2 - Cross-Site Scripting
+  reference:
+  - https://themeforest.net/item/newspaper/5489609
+  - https://tagdiv.com/newspaper/
+  severity: medium
+  tags: cve,wordpress,wp-theme,newspaper,medium

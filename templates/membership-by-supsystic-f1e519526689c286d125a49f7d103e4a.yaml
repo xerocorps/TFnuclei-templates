@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - membership-by-supsystic
+  - dsl:
+    - compare_versions(version, '<= 1.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/membership-by-supsystic/readme.txt'
+  redirects: true
+id: membership-by-supsystic-f1e519526689c286d125a49f7d103e4a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/membership-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/membership-by-supsystic/"
+    shodan-query: 'vuln:'
+  name: 'Membership by Supsystic <= 1.5.0 - Authenticated (Admin+) Time-Based Blind
+    SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f56a632d-4c5f-4d89-9cd9-8fc3697ff3ca?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,membership-by-supsystic,low

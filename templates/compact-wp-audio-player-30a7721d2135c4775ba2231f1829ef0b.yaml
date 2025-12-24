@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - compact-wp-audio-player
+  - dsl:
+    - compare_versions(version, '<= 1.9.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/compact-wp-audio-player/readme.txt'
+  redirects: true
+id: compact-wp-audio-player-30a7721d2135c4775ba2231f1829ef0b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/compact-wp-audio-player/
+    google-query: inurl:"/wp-content/plugins/compact-wp-audio-player/"
+    shodan-query: 'vuln:'
+  name: 'Compact WP Audio Player <= 1.9.9 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via fileurl
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f4505b5a-de80-41e2-852f-d2290c1e42e4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,compact-wp-audio-player,low

@@ -1,0 +1,27 @@
+id: checkmk-login
+info:
+  author: princechaddha
+  name: Check MK Login Detect
+  severity: info
+  tags: login,tech,synology,rackstation
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <div id="version">([0-9.a-z]+)<\/div>
+    - '<div id="foot">Version: ([0-9.a-z]+)'
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Check_MK Multisite Login</title>
+  - part: body
+    regex:
+    - <title>Checkmk ([A-Za-z_0-9 ]+)<\/title>
+    type: regex
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/check_mk/login.py'

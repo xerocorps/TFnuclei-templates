@@ -1,0 +1,22 @@
+id: matomo-login-portal
+info:
+  author: Arr0way
+  description: Matomo provides website analytics
+  name: Matomo Login Portal
+  severity: info
+  tags: panel,matomo
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Sign in
+    - Matomo
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/matomo'
+  redirects: true
+  stop-at-first-match: true

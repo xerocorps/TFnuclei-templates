@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - high-compress
+  - dsl:
+    - compare_versions(version, '<= 5.0.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/high-compress/readme.txt'
+  redirects: true
+id: high-compress-7c3ae67bca0b69ec6fba3d3e89c6d6e9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/high-compress/
+    google-query: inurl:"/wp-content/plugins/high-compress/"
+    shodan-query: 'vuln:'
+  name: 'Highcompress Image Compressor <= 5.0.0 - Missing Authorization via multiple
+    AJAX actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a0f2e2f4-6575-4f00-9417-3b5a19c3de40?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,high-compress,high

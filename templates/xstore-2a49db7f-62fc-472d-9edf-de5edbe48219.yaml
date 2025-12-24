@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - xstore
+  - dsl:
+    - compare_versions(version, '<= 9.5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/xstore/style.css'
+  redirects: true
+id: xstore-2a49db7f-62fc-472d-9edf-de5edbe48219
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/xstore/
+    google-query: inurl:"/wp-content/themes/xstore/"
+    shodan-query: http.html:"wp-content/themes/xstore/"
+  name: 'XStore | Multipurpose WooCommerce Theme <= 9.5.4 - Authenticated (Subscriber+)
+    Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2a49db7f-62fc-472d-9edf-de5edbe48219?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,xstore,low,candidate

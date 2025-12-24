@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - propertyhive
+  - dsl:
+    - compare_versions(version, '<= 2.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/propertyhive/readme.txt'
+  redirects: true
+id: propertyhive-2960a525cbf962ede729aef65425d76d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/propertyhive/
+    google-query: inurl:"/wp-content/plugins/propertyhive/"
+    shodan-query: 'vuln:'
+  name: 'PropertyHive <= 2.0.5 - Unauthenticated PHP Object Injection via propertyhive_currency
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d8ee82cf-916c-41e9-82d2-f25cc7a632ae?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,propertyhive,critical

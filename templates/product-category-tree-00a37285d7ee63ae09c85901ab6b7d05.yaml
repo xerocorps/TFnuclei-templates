@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - product-category-tree
+  - dsl:
+    - compare_versions(version, '<= 2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/product-category-tree/readme.txt'
+  redirects: true
+id: product-category-tree-00a37285d7ee63ae09c85901ab6b7d05
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/product-category-tree/
+    google-query: inurl:"/wp-content/plugins/product-category-tree/"
+    shodan-query: 'vuln:'
+  name: 'Product Category Tree <= 2.5 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3e03ecc0-5ca1-4d64-a6d7-257325bcc5cb?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,product-category-tree,medium

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - e2pdf
+  - dsl:
+    - compare_versions(version, '<= 1.25.05')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/e2pdf/readme.txt'
+  redirects: true
+id: e2pdf-f94a1671-11f8-4a05-b950-a068edf29f43
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/e2pdf/
+    google-query: inurl:"/wp-content/plugins/e2pdf/"
+    shodan-query: http.html:"wp-content/plugins/e2pdf/"
+  name: 'e2pdf <= 1.25.05 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f94a1671-11f8-4a05-b950-a068edf29f43?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,e2pdf,low,candidate

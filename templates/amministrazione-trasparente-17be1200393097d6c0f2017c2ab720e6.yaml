@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - amministrazione-trasparente
+  - dsl:
+    - compare_versions(version, '<= 8.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/amministrazione-trasparente/readme.txt'
+  redirects: true
+id: amministrazione-trasparente-17be1200393097d6c0f2017c2ab720e6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/amministrazione-trasparente/
+    google-query: inurl:"/wp-content/plugins/amministrazione-trasparente/"
+    shodan-query: 'vuln:'
+  name: 'Amministrazione Trasparente <= 8.0.2 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1ef02ecc-6a7b-4782-a891-a1d66d770c81?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,amministrazione-trasparente,low

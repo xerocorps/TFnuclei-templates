@@ -1,0 +1,16 @@
+id: default-fastcgi-page
+info:
+  author: dhiyaneshDk
+  name: Fastcgi Default Test Page
+  reference: https://www.shodan.io/search?query=http.title%3A%22FastCGI%22
+  severity: info
+  tags: tech,fastcgi
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>TurnKey NGINX PHP FastCGI Server</title>
+  method: GET
+  path:
+  - '{{BaseURL}}'

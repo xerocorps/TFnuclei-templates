@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lws-affiliation
+  - dsl:
+    - compare_versions(version, '<= 2.3.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lws-affiliation/readme.txt'
+  redirects: true
+id: lws_affiliation-f36b0c89-3bce-40c3-b28d-8bd3d132bc5d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lws-affiliation/
+    google-query: inurl:"/wp-content/plugins/lws-affiliation/"
+    shodan-query: http.html:"wp-content/plugins/lws-affiliation/"
+  name: 'LWS Affiliation <= 2.3.6 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f36b0c89-3bce-40c3-b28d-8bd3d132bc5d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,lws-affiliation,medium,candidate

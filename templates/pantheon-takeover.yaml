@@ -1,0 +1,15 @@
+id: pantheon-takeover
+info:
+  author: pdcommunity
+  name: pantheon takeover detection
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - The gods are wise, but do not know of the site which you seek.
+  method: GET
+  path:
+  - '{{BaseURL}}'

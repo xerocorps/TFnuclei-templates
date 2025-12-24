@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gpt3-ai-content-generator
+  - dsl:
+    - compare_versions(version, '<= 1.8.96')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gpt3-ai-content-generator/readme.txt'
+  redirects: true
+id: gpt3_ai_content_generator-5cf6cbba-0e0c-4d2c-90d0-d7e0a5222df2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gpt3-ai-content-generator/
+    google-query: inurl:"/wp-content/plugins/gpt3-ai-content-generator/"
+    shodan-query: http.html:"wp-content/plugins/gpt3-ai-content-generator/"
+  name: 'AI Power: Complete AI Pack <= 1.8.96 - Authenticated (Subscriber+) Server-Side
+    Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5cf6cbba-0e0c-4d2c-90d0-d7e0a5222df2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gpt3-ai-content-generator,low,candidate

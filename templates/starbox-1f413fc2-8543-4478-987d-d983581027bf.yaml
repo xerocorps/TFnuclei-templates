@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - starbox
+  - dsl:
+    - compare_versions(version, '<= 3.4.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/starbox/readme.txt'
+  redirects: true
+id: starbox-1f413fc2-8543-4478-987d-d983581027bf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/starbox/
+    google-query: inurl:"/wp-content/plugins/starbox/"
+    shodan-query: http.html:"wp-content/plugins/starbox/"
+  name: 'Starbox <= 3.4.8 - Authenticated (Subscriber+) Stored Cross-Site Scripting
+    via Job Settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1f413fc2-8543-4478-987d-d983581027bf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,starbox,low,candidate

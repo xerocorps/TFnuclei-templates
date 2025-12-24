@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - olevmedia-shortcodes
+  - dsl:
+    - compare_versions(version, '<= 1.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/olevmedia-shortcodes/readme.txt'
+  redirects: true
+id: olevmedia-shortcodes-1750ca2873a9f094a7e3e2b082a30075
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/olevmedia-shortcodes/
+    google-query: inurl:"/wp-content/plugins/olevmedia-shortcodes/"
+    shodan-query: 'vuln:'
+  name: 'Olevmedia Shortcodes <= 1.1.9 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66607be6-cca1-4cbb-b1c0-708d640b1151?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,olevmedia-shortcodes,low

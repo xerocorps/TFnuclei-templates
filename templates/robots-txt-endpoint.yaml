@@ -1,0 +1,22 @@
+id: robots-txt-endpoint
+info:
+  author: CasperGN,pdteam
+  name: robots.txt endpoint prober
+  severity: info
+requests:
+- extractors:
+  - group: 1
+    internal: true
+    name: endpoint
+    regex:
+    - (?m:\s(/[[:alpha:]]+[[:graph:]]+))
+    type: regex
+  iterate-all: true
+  matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{RootURL}}/robots.txt'
+  - '{{RootURL}}{{endpoint}}'

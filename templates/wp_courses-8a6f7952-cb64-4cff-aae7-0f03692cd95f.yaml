@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-courses
+  - dsl:
+    - compare_versions(version, '<= 3.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-courses/readme.txt'
+  redirects: true
+id: wp_courses-8a6f7952-cb64-4cff-aae7-0f03692cd95f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: "The WP Courses LMS \u2013 Online Courses Builder, eLearning Courses,\
+    \ Courses Solution, Education Courses plugin for WordPress is vulnerable to unauthorized\
+    \ modification of data due to missing capability check on the wpc_save_fe_option()\
+    \ function hooked via AJAX in all versions up to, and including, 3.2.3. This makes\
+    \ it possible for authenticated attackers, with subscriber-level access and above,\
+    \ to update arbitrary options which can be used to achieve privilege escalation\
+    \ on most instances.\n"
+  metadata:
+    fofa-query: wp-content/plugins/wp-courses/
+    google-query: inurl:"/wp-content/plugins/wp-courses/"
+    shodan-query: http.html:"wp-content/plugins/wp-courses/"
+  name: 'WP Courses LMS <= 3.2.3 - Missing Authorization to Authenticated (Subscriber+)
+    Arbitrary Options Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8a6f7952-cb64-4cff-aae7-0f03692cd95f?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-courses,low,production

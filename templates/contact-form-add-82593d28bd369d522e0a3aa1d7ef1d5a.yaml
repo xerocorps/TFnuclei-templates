@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-add
+  - dsl:
+    - compare_versions(version, '<= 1.9.8.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-add/readme.txt'
+  redirects: true
+id: contact-form-add-82593d28bd369d522e0a3aa1d7ef1d5a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-add/
+    google-query: inurl:"/wp-content/plugins/contact-form-add/"
+    shodan-query: 'vuln:'
+  name: 'Form Builder | Create Responsive Contact Forms <= 1.9.8.4 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3ca760ea-e062-413e-ac92-520922129937?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,contact-form-add,high

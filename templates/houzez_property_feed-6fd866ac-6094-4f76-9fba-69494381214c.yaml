@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - houzez-property-feed
+  - dsl:
+    - compare_versions(version, '<= 2.4.21')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/houzez-property-feed/readme.txt'
+  redirects: true
+id: houzez_property_feed-6fd866ac-6094-4f76-9fba-69494381214c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/houzez-property-feed/
+    google-query: inurl:"/wp-content/plugins/houzez-property-feed/"
+    shodan-query: http.html:"wp-content/plugins/houzez-property-feed/"
+  name: 'Houzez Property Feed <= 2.4.21 - Cross-Site Request Forgery to Property Feed
+    Export Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6fd866ac-6094-4f76-9fba-69494381214c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,houzez-property-feed,medium,candidate

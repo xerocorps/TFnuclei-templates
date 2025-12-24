@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-client-reports
+  - dsl:
+    - compare_versions(version, '<= 1.0.22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-client-reports/readme.txt'
+  redirects: true
+id: wp-client-reports-32712e35620ccac529fb0c7b05ae289c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-client-reports/
+    google-query: inurl:"/wp-content/plugins/wp-client-reports/"
+    shodan-query: 'vuln:'
+  name: 'WP Client Reports <= 1.0.22 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cd95f517-baf6-4feb-a9a5-f73008634dd4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-client-reports,medium

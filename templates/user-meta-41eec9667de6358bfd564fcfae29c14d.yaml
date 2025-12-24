@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-meta
+  - dsl:
+    - compare_versions(version, '< 2.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-meta/readme.txt'
+  redirects: true
+id: user-meta-41eec9667de6358bfd564fcfae29c14d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-meta/
+    google-query: inurl:"/wp-content/plugins/user-meta/"
+    shodan-query: 'vuln:'
+  name: "User Meta \u2013 User Profile Builder and User management plugin <= 2.4.3\
+    \ - Path Traversal\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ba20a30c-7dd2-4cb7-b055-9a105461f7d1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,user-meta,low

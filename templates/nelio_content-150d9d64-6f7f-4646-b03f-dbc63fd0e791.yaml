@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nelio-content
+  - dsl:
+    - compare_versions(version, '<= 3.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nelio-content/readme.txt'
+  redirects: true
+id: nelio_content-150d9d64-6f7f-4646-b03f-dbc63fd0e791
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nelio-content/
+    google-query: inurl:"/wp-content/plugins/nelio-content/"
+    shodan-query: http.html:"wp-content/plugins/nelio-content/"
+  name: 'Nelio Content <= 3.2.0 - Authenticated (Contributor+) Server-Side Request
+    Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/150d9d64-6f7f-4646-b03f-dbc63fd0e791?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,nelio-content,low,candidate

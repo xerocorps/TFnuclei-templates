@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ali2woo-lite
+  - dsl:
+    - compare_versions(version, '<= 3.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ali2woo-lite/readme.txt'
+  redirects: true
+id: ali2woo_lite-80fce3ef-ab77-40e1-a98f-bb0c3f9924d6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ali2woo-lite/
+    google-query: inurl:"/wp-content/plugins/ali2woo-lite/"
+    shodan-query: http.html:"wp-content/plugins/ali2woo-lite/"
+  name: 'Ali2Woo Lite <= 3.4.6 - Cross-Site Request Forgery to Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/80fce3ef-ab77-40e1-a98f-bb0c3f9924d6?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ali2woo-lite,medium,candidate

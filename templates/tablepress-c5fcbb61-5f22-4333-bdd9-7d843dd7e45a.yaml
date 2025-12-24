@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tablepress
+  - dsl:
+    - compare_versions(version, '<= 1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tablepress/readme.txt'
+  redirects: true
+id: tablepress-c5fcbb61-5f22-4333-bdd9-7d843dd7e45a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tablepress/
+    google-query: inurl:"/wp-content/plugins/tablepress/"
+    shodan-query: http.html:"wp-content/plugins/tablepress/"
+  name: 'TablePress <= 1.8 - XML External Entity Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c5fcbb61-5f22-4333-bdd9-7d843dd7e45a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tablepress,low,candidate

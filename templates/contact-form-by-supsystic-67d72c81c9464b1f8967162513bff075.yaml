@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-by-supsystic
+  - dsl:
+    - compare_versions(version, '<= 1.7.24')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-by-supsystic/readme.txt'
+  redirects: true
+id: contact-form-by-supsystic-67d72c81c9464b1f8967162513bff075
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/contact-form-by-supsystic/"
+    shodan-query: 'vuln:'
+  name: 'Contact Form by Supsystic <= 1.7.24 - Cross-Site Request Forgery via AJAX
+    action
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1c387b07-baf6-4c62-943e-4bd121160ceb?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,contact-form-by-supsystic,medium

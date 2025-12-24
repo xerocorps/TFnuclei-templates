@@ -1,0 +1,21 @@
+http:
+- matchers:
+  - case-insensitive: true
+    part: header
+    type: word
+    words:
+    - 'Server: Mikrotik HttpProxy'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: mikrotik-httpproxy
+info:
+  author: its0x08,DhiyaneshDk
+  metadata:
+    max-request: 1
+    shodan-query: 'Server: mikrotik httpproxy'
+    verified: true
+  name: MikroTik httpproxy
+  severity: info
+  tags: tech,mikrotik

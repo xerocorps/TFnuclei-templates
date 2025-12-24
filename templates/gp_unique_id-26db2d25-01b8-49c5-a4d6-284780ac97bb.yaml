@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gp-unique-id
+  - dsl:
+    - compare_versions(version, '<= 1.5.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gp-unique-id/readme.txt'
+  redirects: true
+id: gp_unique_id-26db2d25-01b8-49c5-a4d6-284780ac97bb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gp-unique-id/
+    google-query: inurl:"/wp-content/plugins/gp-unique-id/"
+    shodan-query: http.html:"wp-content/plugins/gp-unique-id/"
+  name: 'GP Unique ID <= 1.5.5 - Unauthenticated Form Submission Unique ID Modification
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/26db2d25-01b8-49c5-a4d6-284780ac97bb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gp-unique-id,low,candidate

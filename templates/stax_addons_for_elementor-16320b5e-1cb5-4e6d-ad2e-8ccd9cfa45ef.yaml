@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stax-addons-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.4.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stax-addons-for-elementor/readme.txt'
+  redirects: true
+id: stax_addons_for_elementor-16320b5e-1cb5-4e6d-ad2e-8ccd9cfa45ef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stax-addons-for-elementor/
+    google-query: inurl:"/wp-content/plugins/stax-addons-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/stax-addons-for-elementor/"
+  name: "Elementor Addons, Widgets and Enhancements \u2013 Stax <= 1.4.4.1 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/16320b5e-1cb5-4e6d-ad2e-8ccd9cfa45ef?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stax-addons-for-elementor,low,candidate

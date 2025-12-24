@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - story-chief
+  - dsl:
+    - compare_versions(version, '<= 1.0.30')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/story-chief/readme.txt'
+  redirects: true
+id: story-chief-ad6567faff29050350c55fed69433681
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The plugin in versions up to 1.0.30 does not sanitise or escape its
+    tab parameter in the Settings page before outputting it back in an attribute,
+    leading to a Reflected Cross-Site Scripting issue.
+  metadata:
+    fofa-query: wp-content/plugins/story-chief/
+    google-query: inurl:"/wp-content/plugins/story-chief/"
+    shodan-query: 'vuln:'
+  name: StoryChief <= 1.0.30 - Reflected Cross-Site Scripting
+  reference:
+  - https://wpscan.com/vulnerability/ef05f944-20ba-4b62-aaa4-8272f7555757
+  severity: medium
+  tags: cve,wordpress,wp-plugin,story-chief,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - radykal-fancy-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/radykal-fancy-gallery/readme.txt'
+  redirects: true
+id: radykal-fancy-gallery-45e420ead424144a445b4de1d53ba71a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/radykal-fancy-gallery/
+    google-query: inurl:"/wp-content/plugins/radykal-fancy-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Radykal Fancy Gallery <= 1.2.4 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/25627b5c-958c-45ad-8450-8dfccdfdac31?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,radykal-fancy-gallery,critical

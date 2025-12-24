@@ -1,0 +1,14 @@
+id: cockpit-detect
+info:
+  author: dwisiswant0
+  name: Detect Agentejo Cockpit
+  severity: info
+  tags: tech,cockpit
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Authenticate Please!</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/login'

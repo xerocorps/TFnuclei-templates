@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - booking-manager
+  - dsl:
+    - compare_versions(version, '<= 2.0.28')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/booking-manager/readme.txt'
+  redirects: true
+id: booking-manager-a41a35dcf76bfc2c1341041a8c83a52c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/booking-manager/
+    google-query: inurl:"/wp-content/plugins/booking-manager/"
+    shodan-query: 'vuln:'
+  name: 'Booking Manager <= 2.0.28 - Authenticated (Subscriber+) Server-Side Request
+    Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a9ee709d-6590-4c07-9788-6150733c1691?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,booking-manager,low

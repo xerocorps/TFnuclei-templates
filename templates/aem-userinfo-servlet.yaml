@@ -1,0 +1,23 @@
+id: aem-userinfo-servlet
+info:
+  author: DhiyaneshDk
+  description: UserInfoServlet is exposed, it allows to bruteforce credentials. You
+    can get valid usernames from jcr:createdBy, jcr:lastModifiedBy, cq:LastModifiedBy
+    attributes of any JCR node.
+  name: AEM  UserInfo Servlet
+  severity: info
+  tags: aem
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - userName
+    - userID
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/libs/cq/security/userinfo.json'

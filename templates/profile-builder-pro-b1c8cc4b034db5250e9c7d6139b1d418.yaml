@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profile-builder-pro
+  - dsl:
+    - compare_versions(version, '< 3.1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profile-builder-pro/readme.txt'
+  redirects: true
+id: profile-builder-pro-b1c8cc4b034db5250e9c7d6139b1d418
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profile-builder-pro/
+    google-query: inurl:"/wp-content/plugins/profile-builder-pro/"
+    shodan-query: 'vuln:'
+  name: 'Profile Builder <= 3.1.0 - Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8fcf7283-eb6c-4fee-b606-79026e2227fc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,profile-builder-pro,low

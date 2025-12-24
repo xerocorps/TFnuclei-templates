@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-cerber
+  - dsl:
+    - compare_versions(version, '< 8.9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-cerber/readme.txt'
+  redirects: true
+id: wp-cerber-d6937fda3060ab2bb7240dc26707b3d8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-cerber/
+    google-query: inurl:"/wp-content/plugins/wp-cerber/"
+    shodan-query: 'vuln:'
+  name: 'WP Cerber Security < 8.9.3 - Multifactor Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/855d3e2a-8ab1-4e7b-b435-f3c31171deeb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-cerber,low

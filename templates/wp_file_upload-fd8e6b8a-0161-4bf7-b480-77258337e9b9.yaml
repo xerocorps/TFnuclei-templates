@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-file-upload
+  - dsl:
+    - compare_versions(version, '< 3.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-file-upload/readme.txt'
+  redirects: true
+id: wp_file_upload-fd8e6b8a-0161-4bf7-b480-77258337e9b9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-file-upload/
+    google-query: inurl:"/wp-content/plugins/wp-file-upload/"
+    shodan-query: http.html:"wp-content/plugins/wp-file-upload/"
+  name: 'WordPress File Upload <= 3.4.0 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fd8e6b8a-0161-4bf7-b480-77258337e9b9?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-file-upload,critical,candidate

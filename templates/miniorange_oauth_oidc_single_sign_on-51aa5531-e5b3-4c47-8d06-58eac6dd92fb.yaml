@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - miniorange-oauth-oidc-single-sign-on
+  - dsl:
+    - compare_versions(version, '<= 18.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/miniorange-oauth-oidc-single-sign-on/readme.txt'
+  redirects: true
+id: miniorange_oauth_oidc_single_sign_on-51aa5531-e5b3-4c47-8d06-58eac6dd92fb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/miniorange-oauth-oidc-single-sign-on/
+    google-query: inurl:"/wp-content/plugins/miniorange-oauth-oidc-single-sign-on/"
+    shodan-query: http.html:"wp-content/plugins/miniorange-oauth-oidc-single-sign-on/"
+  name: 'WordPress Single Sign-On (SSO) - Multiple Versions - Incorrect Authorization
+    to Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/51aa5531-e5b3-4c47-8d06-58eac6dd92fb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,miniorange-oauth-oidc-single-sign-on,low,candidate

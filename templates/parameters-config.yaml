@@ -1,0 +1,29 @@
+id: parameters-config
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: html:"parameters.yml"
+    verified: true
+  name: Parameters.yml - File Disclosure
+  reference: https://www.exploit-db.com/ghdb/5986
+  severity: high
+  tags: exposure,cloud,devops
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - 'parameters:'
+    - database_user
+    - database_password
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/parameters.yml'
+  - '{{BaseURL}}/app/config/parameters.yml'
+  - '{{BaseURL}}/parameters.yml.dist'
+  - '{{BaseURL}}/app/config/parameters.yml.dist'
+  stop-at-first-match: true

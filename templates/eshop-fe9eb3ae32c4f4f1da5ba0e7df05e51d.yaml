@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - eshop
+  - dsl:
+    - compare_versions(version, '< 6.3.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/eshop/readme.txt'
+  redirects: true
+id: eshop-fe9eb3ae32c4f4f1da5ba0e7df05e51d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/eshop/
+    google-query: inurl:"/wp-content/plugins/eshop/"
+    shodan-query: 'vuln:'
+  name: 'eShop <= 6.3.11 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/093dc35d-3d7d-4fa4-af57-835b96df8984?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,eshop,high

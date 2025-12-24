@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - the-events-calendar
+  - dsl:
+    - compare_versions(version, '<= 6.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/the-events-calendar/readme.txt'
+  redirects: true
+id: the-events-calendar-a4aab627ae16b33b6fd49cd582e22bf9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/the-events-calendar/
+    google-query: inurl:"/wp-content/plugins/the-events-calendar/"
+    shodan-query: 'vuln:'
+  name: 'The Events Calendar <= 6.3.0 - Cross-Site Request Forgery to Notice Dismissal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/30e0289c-b893-41bd-aad9-d7ec62bf2b23?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,the-events-calendar,medium

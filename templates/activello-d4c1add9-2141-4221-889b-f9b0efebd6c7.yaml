@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - activello
+  - dsl:
+    - compare_versions(version, '<= 1.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/activello/style.css'
+  redirects: true
+id: activello-d4c1add9-2141-4221-889b-f9b0efebd6c7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/activello/
+    google-query: inurl:"/wp-content/themes/activello/"
+    shodan-query: http.html:"wp-content/themes/activello/"
+  name: 'Activello <= 1.4.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d4c1add9-2141-4221-889b-f9b0efebd6c7?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,activello,medium,candidate

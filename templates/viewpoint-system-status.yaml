@@ -1,0 +1,20 @@
+id: viewpoint-system-status
+info:
+  author: dhiyaneshDK
+  name: ViewPoint System Status
+  reference:
+  - https://www.shodan.io/search?query=http.title%3A%22ViewPoint+System+Status%22
+  severity: low
+  tags: status,exposures,viewpoint
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>ViewPoint System Status</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

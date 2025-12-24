@@ -1,0 +1,17 @@
+id: totemomail-smtp-detect
+info:
+  author: princechaddha
+  name: Totemomail SMTP Server Detect
+  severity: info
+  tags: mail,smtp,network,totemomail
+network:
+- host:
+  - '{{Hostname}}'
+  - '{{Host}}:25'
+  inputs:
+  - data: "\r\n"
+  matchers:
+  - type: word
+    words:
+    - totemomail
+  read-size: 2048

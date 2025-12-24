@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - polylang
+  - dsl:
+    - compare_versions(version, '< 1.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/polylang/readme.txt'
+  redirects: true
+id: polylang-fc2619b58ae7e2ebf71b311344338509
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/polylang/
+    google-query: inurl:"/wp-content/plugins/polylang/"
+    shodan-query: 'vuln:'
+  name: 'Polylang <= 1.5.1 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c38b6cce-ea8b-48f3-a995-173047d1caf8?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,polylang,high

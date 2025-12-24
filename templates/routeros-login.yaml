@@ -1,0 +1,25 @@
+id: routeros-login
+info:
+  author: dhiyaneshDK,idealphase
+  metadata:
+    shodan-query: http.title:"RouterOS router configuration page"
+  name: RouterOS Router Login Detect
+  severity: info
+  tags: panel,router,routeros
+requests:
+- extractors:
+  - group: 1
+    regex:
+    - <h1>RouterOS v(.+)<\/h1>
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - <title>RouterOS router configuration page</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

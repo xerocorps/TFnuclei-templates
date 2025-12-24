@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"user-info">anonymous</span>'
+    - My View
+    - Roadmap
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/my_view_page.php'
+id: mantisbt-anonymous-login
+info:
+  author: pussycat0x
+  classification:
+    cpe: cpe:2.3:a:mantisbt:mantisbt:*:*:*:*:*:*:*:*
+  description: 'mantisbt Anonymous login were discovered.
+
+    '
+  metadata:
+    max-request: 1
+    product: mantisbt
+    shodan-query: http.favicon.hash:662709064
+    vendor: mantisbt
+    verified: true
+  name: mantisbt - Anonymous Login
+  severity: medium
+  tags: default-logins,anonymous,mantisbt,default-login

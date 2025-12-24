@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - newsletters-lite
+  - dsl:
+    - compare_versions(version, '<= 4.9.9.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/newsletters-lite/readme.txt'
+  redirects: true
+id: newsletters_lite-500ce6fe-0528-4b15-89a7-0e1f92e97364
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/newsletters-lite/
+    google-query: inurl:"/wp-content/plugins/newsletters-lite/"
+    shodan-query: http.html:"wp-content/plugins/newsletters-lite/"
+  name: 'Newsletters <= 4.9.9.7 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/500ce6fe-0528-4b15-89a7-0e1f92e97364?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,newsletters-lite,low,candidate

@@ -1,0 +1,25 @@
+id: netflix-conductor-ui
+info:
+  author: c-sh0
+  metadata:
+    shodan-query: http.title:"Conductor UI", http.title:"Workflow UI"
+  name: Netflix Conductor UI Detection
+  severity: info
+  tags: webserver,netflix,conductor,panel
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Conductor UI</title>
+    - <title>Workflow UI</title>
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

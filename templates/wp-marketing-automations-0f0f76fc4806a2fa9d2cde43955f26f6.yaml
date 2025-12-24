@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-marketing-automations
+  - dsl:
+    - compare_versions(version, '<= 2.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-marketing-automations/readme.txt'
+  redirects: true
+id: wp-marketing-automations-0f0f76fc4806a2fa9d2cde43955f26f6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-marketing-automations/
+    google-query: inurl:"/wp-content/plugins/wp-marketing-automations/"
+    shodan-query: 'vuln:'
+  name: 'Automation By Autonami <= 2.8.2 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7ec1d883-147f-4a15-89ab-bd9c41893589?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-marketing-automations,low

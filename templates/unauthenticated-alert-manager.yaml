@@ -1,0 +1,20 @@
+id: unauthenticated-alert-manager
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"Alertmanager"
+  name: Unauthenticated Alert Manager
+  severity: high
+  tags: unauth,alertmanager
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Alertmanager</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/#/alerts'

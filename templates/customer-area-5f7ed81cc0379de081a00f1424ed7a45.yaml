@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - customer-area
+  - dsl:
+    - compare_versions(version, '<= 8.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/customer-area/readme.txt'
+  redirects: true
+id: customer-area-5f7ed81cc0379de081a00f1424ed7a45
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/customer-area/
+    google-query: inurl:"/wp-content/plugins/customer-area/"
+    shodan-query: 'vuln:'
+  name: 'WP Customer Area <= 8.2.2 -  Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/567d62ec-e868-45e2-b07a-8cc661d7c5e1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,customer-area,medium

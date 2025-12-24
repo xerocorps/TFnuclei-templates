@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - oxygenbuilder
+  - dsl:
+    - compare_versions(version, '<= 4.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/oxygenbuilder/readme.txt'
+  redirects: true
+id: oxygenbuilder-3da817e0d5efde73d6f63267e0f7f828
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/oxygenbuilder/
+    google-query: inurl:"/wp-content/plugins/oxygenbuilder/"
+    shodan-query: 'vuln:'
+  name: 'Oxygen Builder <= 4.8.2 - Authenticated (Contributor+) Remote Code Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8706c3f6-64e0-440e-a802-5c80d9cc3643?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,oxygenbuilder,low

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cc-child-pages
+  - dsl:
+    - compare_versions(version, '<= 1.42')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cc-child-pages/readme.txt'
+  redirects: true
+id: cc-child-pages-28e46c862da8567afb0aa192f792ecde
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cc-child-pages/
+    google-query: inurl:"/wp-content/plugins/cc-child-pages/"
+    shodan-query: 'vuln:'
+  name: 'CC Child Pages <= 1.42 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/40a94a1e-da9e-4173-a21d-106d859c7f8c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cc-child-pages,low

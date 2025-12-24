@@ -1,0 +1,19 @@
+id: jspxcms-detect
+info:
+  author: princechaddha
+  name: Jspxcms Detect
+  severity: info
+  tags: tech,jspxcms
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Jspxcms
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

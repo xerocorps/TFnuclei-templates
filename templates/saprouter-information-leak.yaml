@@ -1,0 +1,20 @@
+id: saprouter-information-leak
+info:
+  author: randomstr1ng
+  name: SAPRouter - routing information leak
+  severity: critical
+  tags: network,sap
+network:
+- host:
+  - '{{Hostname}}'
+  - '{{Hostname}}:3299'
+  inputs:
+  - data: 00000022524f555445525f41444d002802000000000000000000000000000000000000000000
+    type: hex
+  matchers:
+  - type: word
+    words:
+    - Routtab
+    - Working directory
+    - SAProuter Connection Table
+  read-size: 2048

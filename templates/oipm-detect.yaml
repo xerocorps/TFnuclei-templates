@@ -1,0 +1,14 @@
+id: oipm-detect
+info:
+  author: nodauf
+  name: One Identity Password Manager detection
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - One Identity Password Manager
+  method: GET
+  path:
+  - '{{BaseURL}}/PMUser/'

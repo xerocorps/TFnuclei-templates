@@ -1,0 +1,10 @@
+id: phpmyadmin-workflow
+info:
+  author: philippedelteil
+  description: A workflow that runs all PhpMyAdmin related nuclei templates on a given
+    target
+  name: phpmyadmin-workflow
+workflows:
+- subtemplates:
+  - tags: phpmyadmin
+  template: exposed-panels/phpmyadmin-panel.yaml

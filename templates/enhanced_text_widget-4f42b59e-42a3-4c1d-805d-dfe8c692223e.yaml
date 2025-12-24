@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - enhanced-text-widget
+  - dsl:
+    - compare_versions(version, '<= 1.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/enhanced-text-widget/readme.txt'
+  redirects: true
+id: enhanced_text_widget-4f42b59e-42a3-4c1d-805d-dfe8c692223e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/enhanced-text-widget/
+    google-query: inurl:"/wp-content/plugins/enhanced-text-widget/"
+    shodan-query: http.html:"wp-content/plugins/enhanced-text-widget/"
+  name: 'Enhanced Text Widget <= 1.6.5 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4f42b59e-42a3-4c1d-805d-dfe8c692223e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,enhanced-text-widget,low,candidate

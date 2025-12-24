@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - formgent
+  - dsl:
+    - compare_versions(version, '<= 1.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/formgent/readme.txt'
+  redirects: true
+id: formgent-0838daec-6e83-4e19-93e1-a7645daf1294
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/formgent/
+    google-query: inurl:"/wp-content/plugins/formgent/"
+    shodan-query: http.html:"wp-content/plugins/formgent/"
+  name: "FormGent \u2013 Next-Gen AI Form Builder for WordPress with Multi-Step, Quizzes,\
+    \ Payments & More < 1.0.4 - Unauthenticated Arbitrary File Deletion\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0838daec-6e83-4e19-93e1-a7645daf1294?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,formgent,low,candidate

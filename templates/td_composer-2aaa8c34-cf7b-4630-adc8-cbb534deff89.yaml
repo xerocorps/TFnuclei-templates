@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - td-composer
+  - dsl:
+    - compare_versions(version, '<= 5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/td-composer/readme.txt'
+  redirects: true
+id: td_composer-2aaa8c34-cf7b-4630-adc8-cbb534deff89
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/td-composer/
+    google-query: inurl:"/wp-content/plugins/td-composer/"
+    shodan-query: http.html:"wp-content/plugins/td-composer/"
+  name: 'tagDiv Composer <= 5.3 - Cross-Site Request Forgery to Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2aaa8c34-cf7b-4630-adc8-cbb534deff89?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,td-composer,medium,candidate

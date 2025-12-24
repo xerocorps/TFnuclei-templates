@@ -1,0 +1,16 @@
+id: default-iis7-page
+info:
+  author: yavolo
+  name: IIS Error page on css all languages
+  reference: https://github.com/yavolo/nuclei-templates/
+  severity: info
+  tags: tech,iis
+requests:
+- matchers:
+  - part: body
+    regex:
+    - '#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/does-not-exist-iis-404'

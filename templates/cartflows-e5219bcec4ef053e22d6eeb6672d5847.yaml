@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cartflows
+  - dsl:
+    - compare_versions(version, '<= 2.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cartflows/readme.txt'
+  redirects: true
+id: cartflows-e5219bcec4ef053e22d6eeb6672d5847
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cartflows/
+    google-query: inurl:"/wp-content/plugins/cartflows/"
+    shodan-query: 'vuln:'
+  name: 'Funnel Builder by CartFlows <= 2.0.1 - Authenticated (Editor+) Stored Cross-Site
+    Scripting via settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5f75e37d-a94e-4103-b706-5fead24f1f73?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cartflows,low

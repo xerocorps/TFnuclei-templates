@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-popup-builder
+  - dsl:
+    - compare_versions(version, '<= 1.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-popup-builder/readme.txt'
+  redirects: true
+id: wp-popup-builder-a5f68b9d82c37b214641a19757438e98
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-popup-builder/
+    google-query: inurl:"/wp-content/plugins/wp-popup-builder/"
+    shodan-query: 'vuln:'
+  name: 'WP Popup Builder <= 1.2.8 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fbc14a5f-fa6b-47fa-8e8b-502409b18ed6?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-popup-builder,medium

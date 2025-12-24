@@ -1,0 +1,21 @@
+id: kerio-connect-client
+info:
+  author: dhiyaneshDk
+  metadata:
+    shodan-query: http.title:"Kerio Connect Client"
+  name: Kerio Connect Client
+  severity: info
+  tags: panel,kerio
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Kerio Connect Client</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/webmail/login/'

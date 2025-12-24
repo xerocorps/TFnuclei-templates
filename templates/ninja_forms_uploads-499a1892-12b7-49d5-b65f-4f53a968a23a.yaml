@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ninja-forms-uploads
+  - dsl:
+    - compare_versions(version, '<= 3.3.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ninja-forms-uploads/readme.txt'
+  redirects: true
+id: ninja_forms_uploads-499a1892-12b7-49d5-b65f-4f53a968a23a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ninja-forms-uploads/
+    google-query: inurl:"/wp-content/plugins/ninja-forms-uploads/"
+    shodan-query: http.html:"wp-content/plugins/ninja-forms-uploads/"
+  name: 'Ninja Forms File Uploads <= 3.3.16 - Unauthenticated Stored Cross-Site Scripting
+    via File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/499a1892-12b7-49d5-b65f-4f53a968a23a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ninja-forms-uploads,high,candidate

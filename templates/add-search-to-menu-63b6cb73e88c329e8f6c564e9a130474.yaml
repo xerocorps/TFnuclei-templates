@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - add-search-to-menu
+  - dsl:
+    - compare_versions(version, '<= 5.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/add-search-to-menu/readme.txt'
+  redirects: true
+id: add-search-to-menu-63b6cb73e88c329e8f6c564e9a130474
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/add-search-to-menu/
+    google-query: inurl:"/wp-content/plugins/add-search-to-menu/"
+    shodan-query: 'vuln:'
+  name: 'Ivory Search <= 5.4.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a1513296-f7f6-468c-ac96-5f55812d943e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,add-search-to-menu,medium

@@ -1,0 +1,23 @@
+id: pghero-dashboard-exposure
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: title:"PgHero"
+    verified: true
+  name: PgHero Dashboard Exposure
+  reference:
+  - https://github.com/ankane/pghero
+  severity: low
+  tags: exposure,panel,pghero
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>PgHero / Connections</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/connections'

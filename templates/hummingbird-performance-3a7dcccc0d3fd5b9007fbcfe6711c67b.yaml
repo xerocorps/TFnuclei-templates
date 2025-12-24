@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hummingbird-performance
+  - dsl:
+    - compare_versions(version, '<= 3.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hummingbird-performance/readme.txt'
+  redirects: true
+id: hummingbird-performance-3a7dcccc0d3fd5b9007fbcfe6711c67b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hummingbird-performance/
+    google-query: inurl:"/wp-content/plugins/hummingbird-performance/"
+    shodan-query: 'vuln:'
+  name: 'Hummingbird <= 3.4.1 - Unauthenticated Path Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d9b8e6dc-a9ac-4afb-ad47-4f51032bb1f4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,hummingbird-performance,low

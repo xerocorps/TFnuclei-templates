@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - envira-gallery-lite
+  - dsl:
+    - compare_versions(version, '< 1.7.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/envira-gallery-lite/readme.txt'
+  redirects: true
+id: envira-gallery-lite-be6858d18e3b44c07ee6d02d08a75f44
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/envira-gallery-lite/
+    google-query: inurl:"/wp-content/plugins/envira-gallery-lite/"
+    shodan-query: 'vuln:'
+  name: 'Envira Photo Gallery <= 1.7.6 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f05b82c3-bb29-494e-a020-427cb1a816a0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,envira-gallery-lite,low

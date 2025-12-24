@@ -1,0 +1,16 @@
+id: jkstatus-manager
+info:
+  author: pdteam
+  name: JK Status Manager
+  severity: low
+  tags: config
+requests:
+- headers:
+    X-Forwarded-For: 127.0.0.1
+  matchers:
+  - type: word
+    words:
+    - <title>JK Status Manager</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/jkstatus/'

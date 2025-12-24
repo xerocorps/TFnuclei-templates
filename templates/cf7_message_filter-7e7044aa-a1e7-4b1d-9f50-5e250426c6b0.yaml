@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cf7-message-filter
+  - dsl:
+    - compare_versions(version, '<= 1.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cf7-message-filter/readme.txt'
+  redirects: true
+id: cf7_message_filter-7e7044aa-a1e7-4b1d-9f50-5e250426c6b0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cf7-message-filter/
+    google-query: inurl:"/wp-content/plugins/cf7-message-filter/"
+    shodan-query: http.html:"wp-content/plugins/cf7-message-filter/"
+  name: 'Message Filter for Contact Form 7 <= 1.6.3 - Missing Authorization to Authenticated
+    (Subscriber+) New Filter Creation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7e7044aa-a1e7-4b1d-9f50-5e250426c6b0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cf7-message-filter,low,candidate

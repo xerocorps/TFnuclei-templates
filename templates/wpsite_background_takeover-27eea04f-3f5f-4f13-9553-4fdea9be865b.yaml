@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpsite-background-takeover
+  - dsl:
+    - compare_versions(version, '<= 4.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpsite-background-takeover/readme.txt'
+  redirects: true
+id: wpsite_background_takeover-27eea04f-3f5f-4f13-9553-4fdea9be865b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpsite-background-takeover/
+    google-query: inurl:"/wp-content/plugins/wpsite-background-takeover/"
+    shodan-query: http.html:"wp-content/plugins/wpsite-background-takeover/"
+  name: 'WP Background Takeover < 4.1.5 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/27eea04f-3f5f-4f13-9553-4fdea9be865b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpsite-background-takeover,low,candidate

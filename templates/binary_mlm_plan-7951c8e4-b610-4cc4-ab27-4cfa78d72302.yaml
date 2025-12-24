@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - binary-mlm-plan
+  - dsl:
+    - compare_versions(version, '<= 3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/binary-mlm-plan/readme.txt'
+  redirects: true
+id: binary_mlm_plan-7951c8e4-b610-4cc4-ab27-4cfa78d72302
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/binary-mlm-plan/
+    google-query: inurl:"/wp-content/plugins/binary-mlm-plan/"
+    shodan-query: http.html:"wp-content/plugins/binary-mlm-plan/"
+  name: 'Binary MLM Plan <= 3.0 - Unauthenticated Limited Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7951c8e4-b610-4cc4-ab27-4cfa78d72302?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,binary-mlm-plan,low,candidate

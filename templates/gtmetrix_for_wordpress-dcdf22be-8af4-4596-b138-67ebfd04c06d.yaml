@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gtmetrix-for-wordpress
+  - dsl:
+    - compare_versions(version, '<= 0.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gtmetrix-for-wordpress/readme.txt'
+  redirects: true
+id: gtmetrix_for_wordpress-dcdf22be-8af4-4596-b138-67ebfd04c06d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gtmetrix-for-wordpress/
+    google-query: inurl:"/wp-content/plugins/gtmetrix-for-wordpress/"
+    shodan-query: http.html:"wp-content/plugins/gtmetrix-for-wordpress/"
+  name: 'GTmetrix for WordPress <= 0.4.5 - Reflected Cross-Site Scripting via ''url''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dcdf22be-8af4-4596-b138-67ebfd04c06d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,gtmetrix-for-wordpress,medium,candidate

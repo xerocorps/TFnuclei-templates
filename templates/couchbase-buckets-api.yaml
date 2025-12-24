@@ -1,0 +1,28 @@
+id: couchbase-buckets-api
+info:
+  author: geeknik
+  name: Couchbase Buckets REST API - Unauthenticated
+  reference:
+  - https://docs.couchbase.com/server/current/rest-api/rest-bucket-intro.html
+  - https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-couchbase-bucket.html
+  severity: info
+  tags: exposure,couchbase
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - '"couchbase":'
+    - '"bucket":'
+    - '"data":'
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/pools/default/buckets'

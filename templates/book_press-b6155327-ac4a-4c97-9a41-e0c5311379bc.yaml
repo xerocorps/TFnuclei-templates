@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - book-press
+  - dsl:
+    - compare_versions(version, '<= 1.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/book-press/readme.txt'
+  redirects: true
+id: book_press-b6155327-ac4a-4c97-9a41-e0c5311379bc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/book-press/
+    google-query: inurl:"/wp-content/plugins/book-press/"
+    shodan-query: http.html:"wp-content/plugins/book-press/"
+  name: "BookPress \u2013 For Book Authors <= 1.2.7 - Cross-Site Request Forgery to\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b6155327-ac4a-4c97-9a41-e0c5311379bc?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,book-press,medium,candidate

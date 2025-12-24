@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)learndash_quiz_front.min.css\?ver=([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sfwd-lms
+  - dsl:
+    - compare_versions(version, '<= 4.10.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+  redirects: true
+id: sfwd_lms-61ca5ab6-5fe9-4313-9b0d-8736663d0e89
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sfwd-lms/
+    google-query: inurl:"/wp-content/plugins/sfwd-lms/"
+    shodan-query: http.html:"wp-content/plugins/sfwd-lms/"
+  name: 'LearnDash LMS <= 4.10.1 - Sensitive Information Exposure via API
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/61ca5ab6-5fe9-4313-9b0d-8736663d0e89?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sfwd-lms,low,candidate

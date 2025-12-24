@@ -1,0 +1,25 @@
+id: api-ipinfo
+info:
+  author: 0xlittleboy
+  metadata:
+    verified: true
+  name: IPinfo API Test
+  reference:
+  - https://ipinfo.io/developers
+  severity: info
+  tags: token-spray,ipinfo
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"ip"'
+    - '"city"'
+    - '"org"'
+    - '"postal"'
+    - '"timezone"'
+  method: GET
+  path:
+  - https://ipinfo.io/?token={{token}}
+self-contained: true

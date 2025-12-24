@@ -1,0 +1,25 @@
+id: sophos-mobile-panel
+info:
+  author: Adam Crosser,idealphase
+  metadata:
+    shodan-query: http.title:"Sophos Mobile"
+  name: Sophos Mobile Panel Detect
+  reference:
+  - https://www.sophos.com/en-us/products/mobile-control
+  - https://www.sophos.com/en-us/support/downloads/sophos-mobile
+  severity: info
+  tags: panel,sophos
+requests:
+- extractors:
+  - group: 1
+    regex:
+    - src="\/javax\.faces\.resource\/texteditor\/texteditor\.js\.xhtml\?ln=primefaces&amp;v=(.+)"><\/script>
+    - src="\/javax\.faces\.resource\/components\.js\.xhtml\?ln=primefaces&amp;v=(.+)"><\/script>
+    type: regex
+  matchers:
+  - type: word
+    words:
+    - <title>Sophos Mobile</title>
+  method: GET
+  path:
+  - '{{BaseURL}}/login.xhtml?faces-redirect=true'

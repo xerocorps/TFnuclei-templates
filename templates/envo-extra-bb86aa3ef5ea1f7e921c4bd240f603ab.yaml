@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - envo-extra
+  - dsl:
+    - compare_versions(version, '<= 1.8.23')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/envo-extra/readme.txt'
+  redirects: true
+id: envo-extra-bb86aa3ef5ea1f7e921c4bd240f603ab
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/envo-extra/
+    google-query: inurl:"/wp-content/plugins/envo-extra/"
+    shodan-query: 'vuln:'
+  name: 'Envo Extra <= 1.8.23 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Button Widget
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dbe53b09-84c6-4fb6-9a79-1e4987678129?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,envo-extra,low

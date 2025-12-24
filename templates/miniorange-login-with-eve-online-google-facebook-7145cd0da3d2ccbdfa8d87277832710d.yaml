@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - miniorange-login-with-eve-online-google-facebook
+  - dsl:
+    - compare_versions(version, '<= 6.20.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/miniorange-login-with-eve-online-google-facebook/readme.txt'
+  redirects: true
+id: miniorange-login-with-eve-online-google-facebook-7145cd0da3d2ccbdfa8d87277832710d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/miniorange-login-with-eve-online-google-facebook/
+    google-query: inurl:"/wp-content/plugins/miniorange-login-with-eve-online-google-facebook/"
+    shodan-query: 'vuln:'
+  name: 'Multiple miniOrange Plugins (Various Version) - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/44cbaa25-7e91-4b2e-81c4-ba1d7ba02350?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,miniorange-login-with-eve-online-google-facebook,medium

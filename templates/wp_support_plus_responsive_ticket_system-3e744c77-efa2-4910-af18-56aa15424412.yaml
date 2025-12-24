@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-support-plus-responsive-ticket-system
+  - dsl:
+    - compare_versions(version, '<= 4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-support-plus-responsive-ticket-system/readme.txt'
+  redirects: true
+id: wp_support_plus_responsive_ticket_system-3e744c77-efa2-4910-af18-56aa15424412
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-support-plus-responsive-ticket-system/
+    google-query: inurl:"/wp-content/plugins/wp-support-plus-responsive-ticket-system/"
+    shodan-query: http.html:"wp-content/plugins/wp-support-plus-responsive-ticket-system/"
+  name: 'WP Support Plus Responsive Ticket System <= 4.1 - Improper Authentication
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3e744c77-efa2-4910-af18-56aa15424412?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-support-plus-responsive-ticket-system,low,candidate

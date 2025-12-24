@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - radio-player
+  - dsl:
+    - compare_versions(version, '<= 2.0.73')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/radio-player/readme.txt'
+  redirects: true
+id: radio-player-3c3ddd9169086b14afb7b25ab34e74d4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/radio-player/
+    google-query: inurl:"/wp-content/plugins/radio-player/"
+    shodan-query: 'vuln:'
+  name: "Radio Player \u2013 Live Shoutcast, Icecast and Any Audio Stream Player for\
+    \ WordPress <= 2.0.73 - Missing Authorization to Authenticated (Subscriber+) Information\
+    \ Disclosure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8fe0cb36-7b61-412f-ad2a-d31b18417ce8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,radio-player,low

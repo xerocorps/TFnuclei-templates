@@ -1,0 +1,18 @@
+id: hp-laserjet-p4515-webserver
+info:
+  author: alexrydzak
+  name: HP LaserJet P4515 Web Server
+  severity: info
+  tags: hp,web,panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <h1>HP LaserJet P4515 Printers</h1>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/hp/device/'

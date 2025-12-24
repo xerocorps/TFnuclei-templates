@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - email-before-download
+  - dsl:
+    - compare_versions(version, '<= 6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/email-before-download/readme.txt'
+  redirects: true
+id: email-before-download-37a21801a5709eb3f5bc0bac1d0e488d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/email-before-download/
+    google-query: inurl:"/wp-content/plugins/email-before-download/"
+    shodan-query: 'vuln:'
+  name: 'Email Before Download <= 6.7 - Admin+ SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f08ad322-6458-4608-b53a-6aaed38a9ef2?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,email-before-download,critical

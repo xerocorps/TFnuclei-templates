@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quick-restaurant-menu
+  - dsl:
+    - compare_versions(version, '<= 2.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quick-restaurant-menu/readme.txt'
+  redirects: true
+id: quick-restaurant-menu-538d4cfda4bc7e8e3af3aeb8487429ac
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quick-restaurant-menu/
+    google-query: inurl:"/wp-content/plugins/quick-restaurant-menu/"
+    shodan-query: 'vuln:'
+  name: 'Quick Restaurant Menu <= 2.0.2 - Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/faa4fba5-cd19-4b96-aa09-07ed6d52a107?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,quick-restaurant-menu,low

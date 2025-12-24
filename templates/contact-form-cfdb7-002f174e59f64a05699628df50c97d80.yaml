@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-cfdb7
+  - dsl:
+    - compare_versions(version, '<= 1.2.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-cfdb7/readme.txt'
+  redirects: true
+id: contact-form-cfdb7-002f174e59f64a05699628df50c97d80
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-cfdb7/
+    google-query: inurl:"/wp-content/plugins/contact-form-cfdb7/"
+    shodan-query: 'vuln:'
+  name: 'Contact Form 7 Database Addon <= 1.2.6.3 - CSV Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/15679ce4-984a-4933-86c5-c8349b03abf9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,contact-form-cfdb7,low

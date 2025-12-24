@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-smtp
+  - dsl:
+    - compare_versions(version, '<= 3.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-smtp/readme.txt'
+  redirects: true
+id: post_smtp-491f44fc-712c-4f67-b5c2-a7396941afc1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-smtp/
+    google-query: inurl:"/wp-content/plugins/post-smtp/"
+    shodan-query: http.html:"wp-content/plugins/post-smtp/"
+  name: "Post SMTP \u2013 Complete SMTP Solution with Logs, Alerts, Backup SMTP &\
+    \ Mobile App <= 3.6.0 - Missing Authorization to Account Takeover via Unauthenticated\
+    \ Email Log Disclosure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/491f44fc-712c-4f67-b5c2-a7396941afc1?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,post-smtp,high,candidate

@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - async-javascript
+  - dsl:
+    - compare_versions(version, '<= 2.20.12.09')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/async-javascript/readme.txt'
+  redirects: true
+id: async-javascript-be71215601cde242829737864bf42683
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 5.5
+  description: 'The Async Javascript plugin for WordPress is vulnerable to Stored
+    Cross-Site Scripting via the ''&aj_gtmetrix_username='' and ''&aj_gtmetrix_api_key=''
+    parameters in versions up to, and including, 2.20.12.09 due to insufficient input
+    sanitization and output escaping. This makes it possible for authenticated (admin+)
+    attackers to inject arbitrary web scripts in pages that will execute whenever
+    a user accesses an injected page.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/async-javascript/
+    google-query: inurl:"/wp-content/plugins/async-javascript/"
+    shodan-query: 'vuln:'
+  name: 'Async Javascript <= 2.20.12.09 - Authenticated (Admin+) Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d0586453-76ec-4ec9-9965-780af7cb31ec?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,async-javascript,low

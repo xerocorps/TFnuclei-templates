@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bulk-edit-user-profiles-in-spreadsheet
+  - dsl:
+    - compare_versions(version, '< 1.5.14')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bulk-edit-user-profiles-in-spreadsheet/readme.txt'
+  redirects: true
+id: bulk-edit-user-profiles-in-spreadsheet-b706a1bed597daeb177a58cc7b567e54
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bulk-edit-user-profiles-in-spreadsheet/
+    google-query: inurl:"/wp-content/plugins/bulk-edit-user-profiles-in-spreadsheet/"
+    shodan-query: 'vuln:'
+  name: "Bulk Edit and Create User Profiles \u2013 WP Sheet Editor <= 1.5.13 - Cross-Site\
+    \ Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dc783305-1cd0-4ec1-b4e2-57afeeec8034?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,bulk-edit-user-profiles-in-spreadsheet,high

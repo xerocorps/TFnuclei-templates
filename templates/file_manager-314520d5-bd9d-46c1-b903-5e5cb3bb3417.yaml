@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - file-manager
+  - dsl:
+    - compare_versions(version, '<= 6.5.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/file-manager/readme.txt'
+  redirects: true
+id: file_manager-314520d5-bd9d-46c1-b903-5e5cb3bb3417
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/file-manager/
+    google-query: inurl:"/wp-content/plugins/file-manager/"
+    shodan-query: http.html:"wp-content/plugins/file-manager/"
+  name: "Bit File Manager \u2013 100% Free & Open Source File Manager and Code Editor\
+    \ for WordPress <= 6.5.7 - Authenticated (Subscriber+) Limited JavaScript File\
+    \ Upload\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/314520d5-bd9d-46c1-b903-5e5cb3bb3417?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,file-manager,low,candidate

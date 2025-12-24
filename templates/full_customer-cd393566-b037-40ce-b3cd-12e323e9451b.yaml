@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - full-customer
+  - dsl:
+    - compare_versions(version, '<= 3.1.25')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/full-customer/readme.txt'
+  redirects: true
+id: full_customer-cd393566-b037-40ce-b3cd-12e323e9451b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/full-customer/
+    google-query: inurl:"/wp-content/plugins/full-customer/"
+    shodan-query: http.html:"wp-content/plugins/full-customer/"
+  name: 'FULL Customer <= 3.1.25 - Authenticated (Contributor+) Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cd393566-b037-40ce-b3cd-12e323e9451b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,full-customer,low,candidate

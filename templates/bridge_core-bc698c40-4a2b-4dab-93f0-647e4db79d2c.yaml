@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bridge-core
+  - dsl:
+    - compare_versions(version, '<= 3.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bridge-core/readme.txt'
+  redirects: true
+id: bridge_core-bc698c40-4a2b-4dab-93f0-647e4db79d2c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bridge-core/
+    google-query: inurl:"/wp-content/plugins/bridge-core/"
+    shodan-query: http.html:"wp-content/plugins/bridge-core/"
+  name: 'Bridge Core <= 3.0.9 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bc698c40-4a2b-4dab-93f0-647e4db79d2c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,bridge-core,medium,candidate

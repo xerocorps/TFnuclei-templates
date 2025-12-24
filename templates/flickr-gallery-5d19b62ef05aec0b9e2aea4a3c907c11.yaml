@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - flickr-gallery
+  - dsl:
+    - compare_versions(version, '< 1.5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/flickr-gallery/readme.txt'
+  redirects: true
+id: flickr-gallery-5d19b62ef05aec0b9e2aea4a3c907c11
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/flickr-gallery/
+    google-query: inurl:"/wp-content/plugins/flickr-gallery/"
+    shodan-query: 'vuln:'
+  name: 'Flickr Gallery <= 1.5.2 - Unauthenticated PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b52ae51d-7b9a-4047-82bf-723ea87d2375?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,flickr-gallery,critical

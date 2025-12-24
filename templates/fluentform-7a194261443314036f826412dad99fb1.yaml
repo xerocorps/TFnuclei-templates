@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fluentform
+  - dsl:
+    - compare_versions(version, '<= 4.3.24')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fluentform/readme.txt'
+  redirects: true
+id: fluentform-7a194261443314036f826412dad99fb1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fluentform/
+    google-query: inurl:"/wp-content/plugins/fluentform/"
+    shodan-query: 'vuln:'
+  name: 'FluentForms <= 4.3.24 - Authenticated(Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0b79a851-1212-4a9c-89fe-b5f2d50ec18c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fluentform,low

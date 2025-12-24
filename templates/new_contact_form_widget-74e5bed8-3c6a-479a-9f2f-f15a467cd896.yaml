@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - new-contact-form-widget
+  - dsl:
+    - compare_versions(version, '<= 1.3.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/new-contact-form-widget/readme.txt'
+  redirects: true
+id: new_contact_form_widget-74e5bed8-3c6a-479a-9f2f-f15a467cd896
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/new-contact-form-widget/
+    google-query: inurl:"/wp-content/plugins/new-contact-form-widget/"
+    shodan-query: http.html:"wp-content/plugins/new-contact-form-widget/"
+  name: "Contact Form Widget \u2013 Contact Query, Contact Page, Form Maker, Query\
+    \ Table <= 1.3.8 - Authenticated (Admin+) SQL Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/74e5bed8-3c6a-479a-9f2f-f15a467cd896?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,new-contact-form-widget,low,candidate

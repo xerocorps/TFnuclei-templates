@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - global-flash-galleries
+  - dsl:
+    - compare_versions(version, '<= 0.15.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/global-flash-galleries/readme.txt'
+  redirects: true
+id: global_flash_galleries-4624d197-db90-41ee-a3d5-a83a0dbf6b7c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: 'The Global Flash Gallery Plugin for WordPress is vulnerable to arbitrary
+    file uploads due to missing file type validation in the /global-flash-galleries/swfupload.php
+    file in versions up to, and including, 0.15.1. This makes it possible for unauthenticated
+    attackers to upload arbitrary files on the affected sites server which may make
+    remote code execution possible.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/global-flash-galleries/
+    google-query: inurl:"/wp-content/plugins/global-flash-galleries/"
+    shodan-query: http.html:"wp-content/plugins/global-flash-galleries/"
+  name: 'Global Flash Gallery  <= 0.15.1 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4624d197-db90-41ee-a3d5-a83a0dbf6b7c?source=api-prod
+  severity: critical
+  tags: cve,wordpress,wp-plugin,global-flash-galleries,critical,production

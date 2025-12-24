@@ -1,0 +1,26 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - grafana
+    - login page
+    - web application
+  description: Template to detect the Grafana login page
+  id: grafana-login
+  matchers:
+  - status:
+    - 200
+  - pattern: <title>Grafana<\/title>
+    type: body
+  name: Grafana Login Page - Detect
+  requests:
+    method: GET
+    path:
+    - /login
+    - /login/*
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Low

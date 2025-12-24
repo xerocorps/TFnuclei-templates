@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - LayerSlider
+  - dsl:
+    - compare_versions(version, '<= 4.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/LayerSlider/readme.txt'
+  redirects: true
+id: layerslider-190552bc9a126a3e9082579e0d7da7e3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: 'The LayerSlider plugin for WordPress is vulnerable to Cross-Site Request
+    Forgery in versions up to, and including, 4.6.1. This is due to missing or incorrect
+    nonce validation on the style editing functions in the settings page. This makes
+    it possible for unauthenticated attackers to gain unauthorized admin privileges,
+    actions, and/or access via forged request granted they can trick a site administrator
+    into performing an action such as clicking on a link.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/LayerSlider/
+    google-query: inurl:"/wp-content/plugins/LayerSlider/"
+    shodan-query: 'vuln:'
+  name: 'LayerSlider <= 4.6.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4be5c7d7-47dd-42ee-9cde-9e9ad6276e41?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,LayerSlider,medium

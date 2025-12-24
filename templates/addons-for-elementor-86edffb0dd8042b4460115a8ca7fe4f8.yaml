@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - addons-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 8.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/addons-for-elementor/readme.txt'
+  redirects: true
+id: addons-for-elementor-86edffb0dd8042b4460115a8ca7fe4f8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/addons-for-elementor/
+    google-query: inurl:"/wp-content/plugins/addons-for-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Elementor Addons by Livemesh <= 8.3.2 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/70bda4b7-e442-4956-b3cb-8df96043bcde?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,addons-for-elementor,low

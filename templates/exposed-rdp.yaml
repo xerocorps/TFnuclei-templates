@@ -1,0 +1,19 @@
+id: exposed-rdp
+info:
+  author: CyberCavalcante
+  description: Identifies exposed RDP services which can be used for remote desktop
+    access.
+  name: Exposed RDP Detection
+  reference: https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/welcome-to-rds
+  severity: medium
+match:
+- part: banner
+  type: word
+  words:
+  - RDP
+  - Remote Desktop Protocol
+network:
+- host:
+  - '{{Hostname}}'
+  ports:
+  - 3389

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - exam-matrix
+  - dsl:
+    - compare_versions(version, '<= 1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/exam-matrix/readme.txt'
+  redirects: true
+id: exam_matrix-ed038d39-9389-49d3-bfdd-b97fadb8e29b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/exam-matrix/
+    google-query: inurl:"/wp-content/plugins/exam-matrix/"
+    shodan-query: http.html:"wp-content/plugins/exam-matrix/"
+  name: 'Exam Matrix <= 1.5 - Unauthenticated Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ed038d39-9389-49d3-bfdd-b97fadb8e29b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,exam-matrix,low,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-currency-switcher
+  - dsl:
+    - compare_versions(version, '<= 1.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-currency-switcher/readme.txt'
+  redirects: true
+id: advanced-currency-switcher-2a9c6bcba880bdd9fd2752408cfb6f93
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-currency-switcher/
+    google-query: inurl:"/wp-content/plugins/advanced-currency-switcher/"
+    shodan-query: 'vuln:'
+  name: 'Currency Switcher for WordPress <= 1.0.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f5867f37-ae58-4f75-828e-bb99b3e5252e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,advanced-currency-switcher,medium

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sliced-invoices
+  - dsl:
+    - compare_versions(version, '<= 3.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sliced-invoices/readme.txt'
+  redirects: true
+id: sliced_invoices-c17d7fba-7b98-4a7a-a35e-78f16be81aca
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sliced-invoices/
+    google-query: inurl:"/wp-content/plugins/sliced-invoices/"
+    shodan-query: http.html:"wp-content/plugins/sliced-invoices/"
+  name: 'Sliced Invoices <= 3.9.2 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c17d7fba-7b98-4a7a-a35e-78f16be81aca?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,sliced-invoices,high,candidate

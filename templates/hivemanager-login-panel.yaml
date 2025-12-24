@@ -1,0 +1,18 @@
+id: hivemanager-login-panel
+info:
+  author: binaryfigments
+  name: HiveManager Login panel
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - HiveManager Login
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/hm/login.action'

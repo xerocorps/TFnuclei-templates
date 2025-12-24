@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bsk-gravityforms-blacklist
+  - dsl:
+    - compare_versions(version, '<= 3.6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bsk-gravityforms-blacklist/readme.txt'
+  redirects: true
+id: bsk-gravityforms-blacklist-ff30a93e41795b0968f9cfac0f33fe74
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bsk-gravityforms-blacklist/
+    google-query: inurl:"/wp-content/plugins/bsk-gravityforms-blacklist/"
+    shodan-query: 'vuln:'
+  name: 'BSK Forms Blacklist <= 3.6.2 - Authenticated (Administrator+) SQL Injection
+    via ''order'' and ''orderby''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4550681f-d115-4451-9839-7862b84714fe?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bsk-gravityforms-blacklist,low

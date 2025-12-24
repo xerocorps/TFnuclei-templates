@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - chaty
+  - dsl:
+    - compare_versions(version, '<= 3.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/chaty/readme.txt'
+  redirects: true
+id: chaty-fa9ab0e3df8eb3c608259c3cfb0ea1a1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/chaty/
+    google-query: inurl:"/wp-content/plugins/chaty/"
+    shodan-query: 'vuln:'
+  name: 'Chaty <= 3.1.2 - Authenticated (Administrator+) Stored Cross-Site Scripting
+    via settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/361deac0-f675-432c-b7d2-b99f168d476d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,chaty,low

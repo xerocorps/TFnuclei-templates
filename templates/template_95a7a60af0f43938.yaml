@@ -1,0 +1,24 @@
+archives:
+- format: zip
+  replacements:
+    darwin: macOS
+before:
+  hooks:
+  - go mod tidy
+builds:
+- binary: vscan
+  env:
+  - CGO_ENABLED=1
+  goarch:
+  - amd64
+  goos:
+  - darwin
+  id: vscan-darwin
+  ldflags:
+  - -s -w
+  main: main.go
+checksum:
+  name_template: '{{ .ProjectName }}-mac-checksums.txt'
+env:
+- GO111MODULE=on
+project_name: vscan

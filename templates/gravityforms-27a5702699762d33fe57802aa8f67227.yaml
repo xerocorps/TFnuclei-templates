@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gravityforms
+  - dsl:
+    - compare_versions(version, '<= 2.0.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gravityforms/readme.txt'
+  redirects: true
+id: gravityforms-27a5702699762d33fe57802aa8f67227
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gravityforms/
+    google-query: inurl:"/wp-content/plugins/gravityforms/"
+    shodan-query: 'vuln:'
+  name: 'Gravity Forms <= 2.0.6.5 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c89d56e2-68aa-4caf-bc1b-9aa32ec11ba3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,gravityforms,high

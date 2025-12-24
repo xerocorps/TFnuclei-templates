@@ -1,0 +1,22 @@
+id: terramaster-login
+info:
+  author: gy741
+  name: TerraMaster Login Panel
+  severity: info
+  tags: panel,terramaster,login
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>TOS Loading</title>
+  - condition: or
+    part: header
+    type: word
+    words:
+    - 'Server: TOS'
+    - 'X-Powered-By: TerraMaster'
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - stylish-cost-calculator
+  - dsl:
+    - compare_versions(version, '<= 8.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/stylish-cost-calculator/readme.txt'
+  redirects: true
+id: stylish_cost_calculator-c628dc0b-0648-4b7b-88cf-368771ebee45
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/stylish-cost-calculator/
+    google-query: inurl:"/wp-content/plugins/stylish-cost-calculator/"
+    shodan-query: http.html:"wp-content/plugins/stylish-cost-calculator/"
+  name: 'Stylish Cost Calculator <= 8.1.5 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c628dc0b-0648-4b7b-88cf-368771ebee45?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,stylish-cost-calculator,low,candidate

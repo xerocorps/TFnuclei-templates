@@ -1,0 +1,31 @@
+id: graphql-java-detect
+info:
+  author: princechaddha
+  name: Graphql Java Detect
+  reference: https://github.com/dolevf/graphw00f/blob/main/graphw00f/lib.py
+  severity: info
+  tags: tech,graphql,java
+requests:
+- body: queryy { __typename }
+  headers:
+    Content-Type: application/json
+  method: POST
+  path:
+  - '{{BaseURL}}/'
+  redirects: true
+- body: query @aaa@aaa { __typename }
+  headers:
+    Content-Type: application/json
+  matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - 'Invalid Syntax : offending token ''queryy'''
+    - 'Validation error of type DuplicateDirectiveName: Directives must be uniquely
+      named within a location.'
+    - 'Invalid Syntax : offending token ''<EOF>'''
+  method: POST
+  path:
+  - '{{BaseURL}}/'
+  redirects: true

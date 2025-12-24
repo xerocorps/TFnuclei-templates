@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-auto-poster
+  - dsl:
+    - compare_versions(version, '<= 5.3.14')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-auto-poster/readme.txt'
+  redirects: true
+id: social-auto-poster-d66eee482982c610ffdd46ce664519c8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/social-auto-poster/
+    google-query: inurl:"/wp-content/plugins/social-auto-poster/"
+    shodan-query: 'vuln:'
+  name: 'Social Auto Poster <= 5.3.14 - Missing Authorization to Authenticated (Subscriber+)
+    Arbitrary Post Meta Update via wpw_auto_poster_update_tweet_template
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/72934d2f-fd52-46d1-8cf9-9a20968899f7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,social-auto-poster,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woostify
+  - dsl:
+    - compare_versions(version, '<= 1.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/woostify/style.css'
+  redirects: true
+id: woostify-8404d78724c4720535869bbe7f4f4ed2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/woostify/
+    google-query: inurl:"/wp-content/themes/woostify/"
+    shodan-query: 'vuln:'
+  name: 'Woostify <= 1.9.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/09768e37-7ba8-43b6-93df-3d201fe780ba?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,woostify,medium

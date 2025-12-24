@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - realhomes
+  - dsl:
+    - compare_versions(version, '<= 4.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/realhomes/style.css'
+  redirects: true
+id: realhomes-ff616d2d2d9acc27c2a21fbbdf1509a3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/realhomes/
+    google-query: inurl:"/wp-content/themes/realhomes/"
+    shodan-query: 'vuln:'
+  name: 'RealHomes <= 4.0.2 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d918b6ae-a72c-48dc-885b-19be49d578dc?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,realhomes,high

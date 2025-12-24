@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nex-forms-express-wp-form-builder
+  - dsl:
+    - compare_versions(version, '<= 8.5.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nex-forms-express-wp-form-builder/readme.txt'
+  redirects: true
+id: nex-forms-express-wp-form-builder-1ece146e403f315c07ec790e962f9792
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nex-forms-express-wp-form-builder/
+    google-query: inurl:"/wp-content/plugins/nex-forms-express-wp-form-builder/"
+    shodan-query: 'vuln:'
+  name: "NEX-Forms \u2013 Ultimate Form Builder \u2013 Contact forms and much more\
+    \ <= 8.5.6 - Missing Authorization via set_starred()\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/53db0f72-3353-42bb-ad75-4c5aa32d7939?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,nex-forms-express-wp-form-builder,high

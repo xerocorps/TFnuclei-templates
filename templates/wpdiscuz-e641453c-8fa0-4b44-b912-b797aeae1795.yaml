@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpdiscuz
+  - dsl:
+    - compare_versions(version, '< 7.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpdiscuz/readme.txt'
+  redirects: true
+id: wpdiscuz-e641453c-8fa0-4b44-b912-b797aeae1795
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpdiscuz/
+    google-query: inurl:"/wp-content/plugins/wpdiscuz/"
+    shodan-query: http.html:"wp-content/plugins/wpdiscuz/"
+  name: 'Comments - wpDiscuz <= 7.3.3 - Arbitrary Comment Addition/Edition/Deletion
+    by Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e641453c-8fa0-4b44-b912-b797aeae1795?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpdiscuz,medium,candidate

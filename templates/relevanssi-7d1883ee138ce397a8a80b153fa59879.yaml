@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - relevanssi
+  - dsl:
+    - compare_versions(version, '< 4.14.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/relevanssi/readme.txt'
+  redirects: true
+id: relevanssi-7d1883ee138ce397a8a80b153fa59879
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 7.2
+  description: "The Relevanssi - A Better Search Free & Premium plugin for WordPress\
+    \ is vulnerable to Stored Cross-Site Scripting via the \u2018$query_link \u2019\
+    \ parameter in versions up to, and including, 2.16.3 & 4.14.3 due to insufficient\
+    \ input sanitization and output escaping. This makes it possible for unauthenticated\
+    \ attackers to inject arbitrary web scripts in pages that will execute whenever\
+    \ a user accesses an injected page."
+  metadata:
+    fofa-query: wp-content/plugins/relevanssi/
+    google-query: inurl:"/wp-content/plugins/relevanssi/"
+    shodan-query: 'vuln:'
+  name: Relevanssi - A Better Search Free & Premium <= 2.16.3 & 4.14.3 - Stored Cross-Site
+    Scripting
+  reference:
+  - https://www.relevanssi.com/release-notes/premium-2-16-free-4-14/
+  - https://wpscan.com/vulnerability/ad08bd11-e4b0-4bb1-9481-3c9651f50466
+  - https://plugins.trac.wordpress.org/changeset/2616189/relevanssi
+  severity: high
+  tags: cve,wordpress,wp-plugin,relevanssi,high

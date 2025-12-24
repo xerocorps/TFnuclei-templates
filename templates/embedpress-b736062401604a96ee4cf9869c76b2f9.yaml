@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - embedpress
+  - dsl:
+    - compare_versions(version, '< 3.9.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/embedpress/readme.txt'
+  redirects: true
+id: embedpress-b736062401604a96ee4cf9869c76b2f9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/embedpress/
+    google-query: inurl:"/wp-content/plugins/embedpress/"
+    shodan-query: 'vuln:'
+  name: 'EmbedPress <= 3.9.4 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a7cf1c70-9778-4b50-b494-d0b1d0277b35?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,embedpress,high

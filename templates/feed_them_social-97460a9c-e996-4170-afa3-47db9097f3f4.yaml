@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - feed-them-social
+  - dsl:
+    - compare_versions(version, '<= 2.9.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/feed-them-social/readme.txt'
+  redirects: true
+id: feed_them_social-97460a9c-e996-4170-afa3-47db9097f3f4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/feed-them-social/
+    google-query: inurl:"/wp-content/plugins/feed-them-social/"
+    shodan-query: http.html:"wp-content/plugins/feed-them-social/"
+  name: "Feed Them Social \u2013 for Twitter feed, Youtube and more <= 2.9.9 - Cross-Site\
+    \ Request Forgery to Settings update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/97460a9c-e996-4170-afa3-47db9097f3f4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,feed-them-social,medium,candidate

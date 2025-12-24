@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kali-forms
+  - dsl:
+    - compare_versions(version, '< 2.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/kali-forms/readme.txt'
+  redirects: true
+id: kali-forms-a53754d5dc6851c3280ac2a0470e52a9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/kali-forms/
+    google-query: inurl:"/wp-content/plugins/kali-forms/"
+    shodan-query: 'vuln:'
+  name: 'Kali Forms <= 2.1.1 - Missing Authorization to Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9ed8e24d-6bd0-4638-9031-997ce2228fad?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,kali-forms,high

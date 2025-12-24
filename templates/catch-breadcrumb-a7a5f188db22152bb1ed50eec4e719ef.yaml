@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - catch-breadcrumb
+  - dsl:
+    - compare_versions(version, '< 1.5.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/catch-breadcrumb/readme.txt'
+  redirects: true
+id: catch-breadcrumb-a7a5f188db22152bb1ed50eec4e719ef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/catch-breadcrumb/
+    google-query: inurl:"/wp-content/plugins/catch-breadcrumb/"
+    shodan-query: 'vuln:'
+  name: 'Catch Breadcrumb <= 1.5.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b4983c2f-f9f6-4bd9-9c38-0ad3756f92b6?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,catch-breadcrumb,medium

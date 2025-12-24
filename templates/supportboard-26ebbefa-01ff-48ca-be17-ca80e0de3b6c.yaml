@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - supportboard
+  - dsl:
+    - compare_versions(version, '< 3.8.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/supportboard/readme.txt'
+  redirects: true
+id: supportboard-26ebbefa-01ff-48ca-be17-ca80e0de3b6c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/supportboard/
+    google-query: inurl:"/wp-content/plugins/supportboard/"
+    shodan-query: http.html:"wp-content/plugins/supportboard/"
+  name: 'Support Board < 3.8.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/26ebbefa-01ff-48ca-be17-ca80e0de3b6c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,supportboard,medium,candidate

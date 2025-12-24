@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - carspot
+  - dsl:
+    - compare_versions(version, '<= 2.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/carspot/style.css'
+  redirects: true
+id: carspot-f09f4604739b6a996f5b1f6663f2f059
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/carspot/
+    google-query: inurl:"/wp-content/themes/carspot/"
+    shodan-query: 'vuln:'
+  name: "CarSpot \u2013 Dealership Wordpress Classified Theme <= 2.2.3 - Insecure\
+    \ Direct Object Reference\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4eea120e-839e-4b01-a5a8-af21f5ab99f5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,carspot,low

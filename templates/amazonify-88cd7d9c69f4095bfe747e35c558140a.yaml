@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - amazonify
+  - dsl:
+    - compare_versions(version, '<= 0.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/amazonify/readme.txt'
+  redirects: true
+id: amazonify-88cd7d9c69f4095bfe747e35c558140a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/amazonify/
+    google-query: inurl:"/wp-content/plugins/amazonify/"
+    shodan-query: 'vuln:'
+  name: 'Amazonify <= 0.8.1 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/41adfb58-d79f-40a3-8a7e-f3f08f64659f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,amazonify,low

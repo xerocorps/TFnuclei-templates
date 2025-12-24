@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bulk-featured-image
+  - dsl:
+    - compare_versions(version, '<= 1.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bulk-featured-image/readme.txt'
+  redirects: true
+id: bulk_featured_image-f18daec4-0b1f-48d8-b6f2-788c8caad17f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bulk-featured-image/
+    google-query: inurl:"/wp-content/plugins/bulk-featured-image/"
+    shodan-query: http.html:"wp-content/plugins/bulk-featured-image/"
+  name: 'Bulk Featured Image <= 1.2.2 - Authenticated (Admin+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f18daec4-0b1f-48d8-b6f2-788c8caad17f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bulk-featured-image,low,candidate

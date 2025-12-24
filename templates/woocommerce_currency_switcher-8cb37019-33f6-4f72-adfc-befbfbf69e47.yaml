@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-currency-switcher
+  - dsl:
+    - compare_versions(version, '<= 1.4.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-currency-switcher/readme.txt'
+  redirects: true
+id: woocommerce_currency_switcher-8cb37019-33f6-4f72-adfc-befbfbf69e47
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-currency-switcher/
+    google-query: inurl:"/wp-content/plugins/woocommerce-currency-switcher/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-currency-switcher/"
+  name: "FOX \u2013 Currency Switcher Professional for WooCommerce <= 1.4.1.6 - Missing\
+    \ Authorization to Authenticated (Subscriber+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8cb37019-33f6-4f72-adfc-befbfbf69e47?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-currency-switcher,low,candidate

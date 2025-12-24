@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bulletin-announcements
+  - dsl:
+    - compare_versions(version, '<= 3.8.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bulletin-announcements/readme.txt'
+  redirects: true
+id: bulletin-announcements-68367f5daf8a9cf337504a88315dc069
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bulletin-announcements/
+    google-query: inurl:"/wp-content/plugins/bulletin-announcements/"
+    shodan-query: 'vuln:'
+  name: "WordPress Announcement & Notification Banner Plugin \u2013 Bulletin <= 3.8.5\
+    \ - Authenticated (Administrator+) SQL Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66cd0ed5-070a-4408-9faa-b3d840279f77?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bulletin-announcements,low

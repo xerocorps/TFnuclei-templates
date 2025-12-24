@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kaswara
+  - dsl:
+    - compare_versions(version, '<= 3.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/kaswara/readme.txt'
+  redirects: true
+id: kaswara-3bf76527-9a11-4755-992c-02fbc1a79bae
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/kaswara/
+    google-query: inurl:"/wp-content/plugins/kaswara/"
+    shodan-query: http.html:"wp-content/plugins/kaswara/"
+  name: 'Kaswara Modern VC Addons <= 3.0.1 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3bf76527-9a11-4755-992c-02fbc1a79bae?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,kaswara,high,candidate

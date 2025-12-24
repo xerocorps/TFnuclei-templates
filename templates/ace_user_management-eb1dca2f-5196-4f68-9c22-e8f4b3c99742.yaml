@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ace-user-management
+  - dsl:
+    - compare_versions(version, '<= 2.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ace-user-management/readme.txt'
+  redirects: true
+id: ace_user_management-eb1dca2f-5196-4f68-9c22-e8f4b3c99742
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ace-user-management/
+    google-query: inurl:"/wp-content/plugins/ace-user-management/"
+    shodan-query: http.html:"wp-content/plugins/ace-user-management/"
+  name: 'Ace User Management <= 2.0.3 - Unauthenticated Privilege Escalation via Password
+    Reset
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eb1dca2f-5196-4f68-9c22-e8f4b3c99742?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ace-user-management,low,candidate

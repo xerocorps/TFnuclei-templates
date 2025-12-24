@@ -1,0 +1,19 @@
+id: internet-service
+info:
+  author: dhiyaneshDK
+  name: Internet Services
+  reference: https://www.exploit-db.com/ghdb/5948
+  severity: low
+  tags: iot
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Internet Services</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/default.htm'

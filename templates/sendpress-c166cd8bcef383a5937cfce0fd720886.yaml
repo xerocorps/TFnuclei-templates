@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sendpress
+  - dsl:
+    - compare_versions(version, '<= 1.1.7.21')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sendpress/readme.txt'
+  redirects: true
+id: sendpress-c166cd8bcef383a5937cfce0fd720886
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sendpress/
+    google-query: inurl:"/wp-content/plugins/sendpress/"
+    shodan-query: 'vuln:'
+  name: 'SendPress Newsletters < 1.2 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5570b8ef-6fb9-4f9e-be39-d8c615d1abab?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,sendpress,high

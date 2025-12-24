@@ -1,0 +1,165 @@
+name: post-release
+true:
+  push:
+    tags:
+    - v*
+env:
+  BIN_NAME: observer_ward
+jobs:
+  build-release:
+    name: build-release
+    needs: create-release
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - name: Cache
+      uses: Swatinem/rust-cache@v1
+    - if: matrix.os == 'ubuntu-latest'
+      name: Install packages (Ubuntu)
+      run: 'sudo apt-get update
+
+        sudo apt-get install -y --no-install-recommends xz-utils liblz4-tool libssl-dev
+        musl-tools pkg-config
+
+        sed -i -e "s/^version = .*/version = \"`date +''%-Y.%-m.%-d''`\"/" Cargo.toml
+
+        '
+    - if: matrix.os == 'windows-latest'
+      name: Install packages (Windows)
+      run: 'choco install llvm openssl
+
+        export CARGO_PKG_VERSION=`date +''%-Y.%-m.%-d''`
+
+        sed -i -e "s/^version = .*/version = \"`date +''%-Y.%-m.%-d''`\"/" Cargo.toml
+
+        echo "CARGO_PKG_VERSION=`date +''%Y.%m.%d''`" >>$GITHUB_ENV
+
+        echo "OPENSSL_DIR=C:\Program Files\OpenSSL-Win64" >>$GITHUB_ENV
+
+        echo "RUSTFLAGS=-C target-feature=+crt-static" >>$GITHUB_ENV
+
+        '
+      shell: bash
+    - if: matrix.os == 'macos-latest'
+      name: Install packages (Macos)
+      run: 'sed -i -e "s/^version = .*/version = \"`date +''%-Y.%-m.%-d''`\"/" Cargo.toml
+
+        '
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        override: true
+        profile: minimal
+        target: ${{ matrix.target }}
+        toolchain: ${{ matrix.rust }}
+    - name: Build release binary
+      run: cargo build --target ${{ matrix.target }} --verbose --release
+    - name: Build archive
+      run: "staging=\"${{ env.BIN_NAME }}_${{ needs.create-release.outputs.release_version\
+        \ }}_${{ matrix.target }}\"\nmkdir -p \"$staging\"\ncp {README.md,LICENSE}\
+        \ \"$staging/\"\nif [ \"${{ matrix.os }}\" = \"windows-latest\" ]; then\n\
+        \  bin_file=\"target/${{ matrix.target }}/release/${{ env.BIN_NAME }}.exe\"\
+        \n  cp \"$bin_file\" \"$staging/\"\n  cd \"$staging\"\n  7z a \"../$staging.zip\"\
+        \ .\n  echo \"ASSET=$staging.zip\" >> $GITHUB_ENV\n  echo \"BIN_FILE=$bin_file\"\
+        \ >> $GITHUB_ENV\nelse\n  bin_file=\"target/${{ matrix.target }}/release/${{\
+        \ env.BIN_NAME }}\"\n  strip \"$bin_file\"\n  cp \"$bin_file\" \"$staging/\"\
+        \n  tar czf \"$staging.tar.gz\" -C \"$staging\" ${{ env.BIN_NAME }} README.md\
+        \ LICENSE\n  echo \"ASSET=$staging.tar.gz\" >> $GITHUB_ENV\n  echo \"BIN_FILE=$bin_file\"\
+        \ >> $GITHUB_ENV\nfi\n"
+      shell: bash
+    - env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      name: Upload release archive
+      uses: actions/upload-release-asset@v1.0.1
+      with:
+        asset_content_type: application/octet-stream
+        asset_name: ${{ env.ASSET }}
+        asset_path: ${{ env.ASSET }}
+        upload_url: ${{ needs.create-release.outputs.upload_url }}
+    - name: Upload binary to release
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        asset_name: ${{ matrix.file }}
+        file: ${{ env.BIN_FILE }}
+        overwrite: true
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: default
+    strategy:
+      fail-fast: false
+      matrix:
+        build:
+        - linux
+        - macos
+        - macos_m1
+        - win-msvc
+        include:
+        - build: linux
+          file: observer_ward_amd64
+          os: ubuntu-latest
+          rust: nightly
+          target: x86_64-unknown-linux-musl
+        - build: macos
+          file: observer_ward_darwin
+          os: macos-latest
+          rust: nightly
+          target: x86_64-apple-darwin
+        - build: macos_m1
+          file: observer_ward_aarch64_darwin
+          os: macos-latest
+          rust: nightly
+          target: aarch64-apple-darwin
+        - build: win-msvc
+          file: observer_ward.exe
+          os: windows-latest
+          rust: nightly
+          target: i686-pc-windows-msvc
+  create-release:
+    name: observer_ward
+    outputs:
+      release_version: ${{ env.RELEASE_VERSION }}
+      upload_url: ${{ steps.release.outputs.upload_url }}
+    runs-on: ubuntu-latest
+    steps:
+    - if: env.RELEASE_VERSION == ''
+      name: Get the release version from the tag
+      run: '# See: https://github.community/t5/GitHub-Actions/How-to-get-just-the-tag-name/m-p/32167/highlight/true#M1027
+
+        echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+        echo "version is: ${{ env.RELEASE_VERSION }}"
+
+        '
+      shell: bash
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - name: Generate Release Notes
+      run: 'python3 .github/workflows/release-notes.py --tag ${{ env.RELEASE_VERSION
+        }} --output notes-${{ env.RELEASE_VERSION }}.md
+
+        cat notes-${{ env.RELEASE_VERSION }}.md
+
+        '
+    - env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      id: release
+      name: Create GitHub release
+      uses: actions/create-release@v1
+      with:
+        body_path: notes-${{ env.RELEASE_VERSION }}.md
+        release_name: ${{ env.RELEASE_VERSION }}
+        tag_name: ${{ env.RELEASE_VERSION }}
+  homebrew:
+    needs:
+    - build-release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Bump Homebrew formula
+      uses: dawidd6/action-homebrew-bump-formula@v3
+      with:
+        formula: observer_ward
+        token: ${{secrets.BUMP_API_TOKEN}}

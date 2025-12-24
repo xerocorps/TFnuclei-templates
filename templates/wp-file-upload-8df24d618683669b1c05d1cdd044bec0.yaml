@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-file-upload
+  - dsl:
+    - compare_versions(version, '< 4.16.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-file-upload/readme.txt'
+  redirects: true
+id: wp-file-upload-8df24d618683669b1c05d1cdd044bec0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-file-upload/
+    google-query: inurl:"/wp-content/plugins/wp-file-upload/"
+    shodan-query: 'vuln:'
+  name: 'WordPress File Upload <= 4.16.2 - Authenticated Stored Cross-Site Scripting
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/499483a0-957b-459e-b2f5-fc39c4f86c9e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-file-upload,low

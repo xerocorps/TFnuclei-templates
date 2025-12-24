@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - meta-box
+  - dsl:
+    - compare_versions(version, '<= 4.16.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/meta-box/readme.txt'
+  redirects: true
+id: meta-box-22b19d139dc97739ec7146143020804a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/meta-box/
+    google-query: inurl:"/wp-content/plugins/meta-box/"
+    shodan-query: 'vuln:'
+  name: 'Meta Box <= 4.16.1 - Mishandling of File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7b5ef9de-ba5e-463e-a528-098d724b1657?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,meta-box,low

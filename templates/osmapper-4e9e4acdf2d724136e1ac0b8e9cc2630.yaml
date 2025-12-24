@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - osmapper
+  - dsl:
+    - compare_versions(version, '<= 2.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/osmapper/readme.txt'
+  redirects: true
+id: osmapper-4e9e4acdf2d724136e1ac0b8e9cc2630
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/osmapper/
+    google-query: inurl:"/wp-content/plugins/osmapper/"
+    shodan-query: 'vuln:'
+  name: 'OSMapper <= 2.1.5 - Unauthenticated Arbitrary Post Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ba027271-b7f9-4bdb-a62b-801fd07f28fd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,osmapper,low

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - custom-registration-form-builder-with-submission-manager
+  - dsl:
+    - compare_versions(version, '<= 4.6.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/custom-registration-form-builder-with-submission-manager/readme.txt'
+  redirects: true
+id: custom-registration-form-builder-with-submission-manager-0855ff39e8b96e8b8b7d541334a95f11
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/custom-registration-form-builder-with-submission-manager/
+    google-query: inurl:"/wp-content/plugins/custom-registration-form-builder-with-submission-manager/"
+    shodan-query: 'vuln:'
+  name: "RegistrationMagic \u2013 Custom Registration Forms and User Login <= 4.6.0.3\
+    \ - Authenticated Settings Import to Privilege Escalation\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e7939401-822c-4d27-9d8c-c5680165e6a7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,custom-registration-form-builder-with-submission-manager,low

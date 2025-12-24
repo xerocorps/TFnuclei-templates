@@ -1,0 +1,26 @@
+id: ez-publish-panel
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: http.html:"eZ Publish"
+    verified: true
+  name: eZ Publish Panel Detect
+  severity: info
+  tags: panel,ez
+requests:
+- matchers:
+  - case-insensitive: true
+    part: body
+    type: word
+    words:
+    - content="eZ Publish
+  - part: header
+    type: word
+    words:
+    - eZ Publish
+  matchers-condition: or
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

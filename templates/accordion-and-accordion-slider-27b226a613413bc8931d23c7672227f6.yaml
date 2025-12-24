@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - accordion-and-accordion-slider
+  - dsl:
+    - compare_versions(version, '<= 1.2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/accordion-and-accordion-slider/readme.txt'
+  redirects: true
+id: accordion-and-accordion-slider-27b226a613413bc8931d23c7672227f6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/accordion-and-accordion-slider/
+    google-query: inurl:"/wp-content/plugins/accordion-and-accordion-slider/"
+    shodan-query: 'vuln:'
+  name: 'Accordion and Accordion Slider <= 1.2.4 - Missing Authorization via ''wp_aas_get_attachment_edit_form''
+    and ''wp_aas_save_attachment_data''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4c956651-4f5e-4e2d-a0f2-b02d4f25bd68?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,accordion-and-accordion-slider,high

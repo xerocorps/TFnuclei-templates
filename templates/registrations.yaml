@@ -1,0 +1,70 @@
+id: registrations
+info:
+  author: tedm.infosec
+  description: Basic check for registration pages
+  name: Check for registration pages
+  severity: info
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - name="username"
+    - name="email"
+    - name="password"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET /register HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /registration HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /signup HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /user/register HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /user/signup HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /oidc/register HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /account/register HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /account/signup HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /welcome/signup HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /welcome/register HTTP 2.0
+
+    Host: {{Hostname}}
+
+    '

@@ -1,0 +1,32 @@
+id: zyxel-firewall-panel
+info:
+  author: 0x240x23elu
+  metadata:
+    shodan-query: http.favicon.hash:-440644339
+    verified: true
+  name: Zyxel Firewall Panel
+  severity: info
+  tags: panel,xyxel,firewall
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <title>(.*)</title>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - /lib/mode_ana
+  - condition: or
+    part: body
+    type: word
+    words:
+    - VPN
+    - USG
+    - ATP
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,30 @@
+id: wallix-accessmanager-panel
+info:
+  author: righettod
+  metadata:
+    shodan-query: http.title:"Wallix Access Manager"
+  name: Wallix Access Manager Panel
+  reference:
+  - https://www.wallix.com/privileged-access-management/access-manager/
+  severity: info
+  tags: panel,wallix
+requests:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code==200
+    - contains(tolower(body), '<title>wallix access manager</title>')
+    type: dsl
+  - condition: and
+    dsl:
+    - status_code==200
+    - ('1745235488' == mmh3(base64_py(body)))
+    type: dsl
+  matchers-condition: or
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wabam'
+  - '{{BaseURL}}/wabam/favicon.ico'
+  redirects: true
+  stop-at-first-match: true

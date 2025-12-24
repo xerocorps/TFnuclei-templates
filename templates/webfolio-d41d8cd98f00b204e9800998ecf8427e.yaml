@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - webfolio
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/webfolio/style.css'
+  redirects: true
+id: webfolio-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: Various Site5 themes for WordPress are vulnerable to Email Spoofing.
+    This makes it possible for unauthenticated attackers to modify email addresses
+    to potentially perform future attacks on other users.
+  metadata:
+    fofa-query: wp-content/unknown/webfolio/
+    google-query: inurl:"/wp-content/unknown/webfolio/"
+    shodan-query: 'vuln:'
+  name: Site5 Various Affected Themes (Various Versions) - Email Spoofing
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-theme,webfolio,low

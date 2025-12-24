@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - add-any-extension-to-pages
+  - dsl:
+    - compare_versions(version, '<= 1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/add-any-extension-to-pages/readme.txt'
+  redirects: true
+id: add-any-extension-to-pages-24c3b8ff52a4408a7829198c42689e11
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/add-any-extension-to-pages/
+    google-query: inurl:"/wp-content/plugins/add-any-extension-to-pages/"
+    shodan-query: 'vuln:'
+  name: 'Add Any Extension to Pages <= 1.4 - Cross-Site Request Forgery via aaetp_options_page
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9f49e727-cac4-4a46-b649-5ca48d5e2402?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,add-any-extension-to-pages,medium

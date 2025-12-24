@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - eventer
+  - dsl:
+    - compare_versions(version, '<= 3.9.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/eventer/readme.txt'
+  redirects: true
+id: eventer-aea5f970-243f-4642-83e1-34db11c4ca63
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/eventer/
+    google-query: inurl:"/wp-content/plugins/eventer/"
+    shodan-query: http.html:"wp-content/plugins/eventer/"
+  name: 'Eventer <= 3.9.7 - Authenticated (Subscriber+) Arbitrary File Read
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aea5f970-243f-4642-83e1-34db11c4ca63?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,eventer,low,candidate

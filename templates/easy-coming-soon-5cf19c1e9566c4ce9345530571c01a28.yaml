@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-coming-soon
+  - dsl:
+    - compare_versions(version, '< 1.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-coming-soon/readme.txt'
+  redirects: true
+id: easy-coming-soon-5cf19c1e9566c4ce9345530571c01a28
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easy-coming-soon/
+    google-query: inurl:"/wp-content/plugins/easy-coming-soon/"
+    shodan-query: 'vuln:'
+  name: 'Easy Coming Soon < 1.8.2 - Cross-Site Request Forgery to Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c12538bc-6e7d-4d47-8e5b-65574ed26ec4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,easy-coming-soon,medium

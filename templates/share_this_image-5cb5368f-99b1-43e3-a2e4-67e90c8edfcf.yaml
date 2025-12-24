@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - share-this-image
+  - dsl:
+    - compare_versions(version, '<= 2.01')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/share-this-image/readme.txt'
+  redirects: true
+id: share_this_image-5cb5368f-99b1-43e3-a2e4-67e90c8edfcf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/share-this-image/
+    google-query: inurl:"/wp-content/plugins/share-this-image/"
+    shodan-query: http.html:"wp-content/plugins/share-this-image/"
+  name: 'Share This Image <= 2.01 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via alignment Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5cb5368f-99b1-43e3-a2e4-67e90c8edfcf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,share-this-image,low,candidate

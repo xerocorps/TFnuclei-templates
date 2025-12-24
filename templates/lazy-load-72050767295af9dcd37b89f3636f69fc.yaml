@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lazy-load
+  - dsl:
+    - compare_versions(version, '< 0.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lazy-load/readme.txt'
+  redirects: true
+id: lazy-load-72050767295af9dcd37b89f3636f69fc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lazy-load/
+    google-query: inurl:"/wp-content/plugins/lazy-load/"
+    shodan-query: 'vuln:'
+  name: 'Lazy Load < 0.6.1 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/06187bf0-7e3b-49c0-9f34-3d717e8d8ece?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,lazy-load,low

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-lister-for-amazon
+  - dsl:
+    - compare_versions(version, '<= 2.6.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-lister-for-amazon/readme.txt'
+  redirects: true
+id: wp_lister_for_amazon-36f37875-69fe-41cb-a68d-ad73d53d1a83
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-lister-for-amazon/
+    google-query: inurl:"/wp-content/plugins/wp-lister-for-amazon/"
+    shodan-query: http.html:"wp-content/plugins/wp-lister-for-amazon/"
+  name: 'WP-Lister Lite for Amazon <= 2.6.11 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/36f37875-69fe-41cb-a68d-ad73d53d1a83?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-lister-for-amazon,low,candidate

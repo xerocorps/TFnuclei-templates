@@ -1,0 +1,33 @@
+id: pfsense-login
+info:
+  author: idealphase
+  description: free network firewall distribution, based on the FreeBSD operating
+    system with a custom kernel and including third party free software packages for
+    additional functionality.
+  metadata:
+    google-query: intitle:"pfSense - Login"
+    shodan-query: http.title:"pfSense - Login"
+  name: pfSense Login
+  reference:
+  - https://www.pfsense.org/download/
+  - https://www.pfsense.org/getting-started/
+  severity: info
+  tags: panel,pfsense
+requests:
+- extractors:
+  - group: 1
+    regex:
+    - <script src="\/js\/pfSense\.js\?(.+)"><\/script>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>pfSense - Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

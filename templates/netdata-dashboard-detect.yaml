@@ -1,0 +1,21 @@
+id: netdata-dashboard-detect
+info:
+  author: pussycat0x
+  metadata:
+    shodan-dork: 'Server: NetData Embedded HTTP Server'
+  name: NetData Dashboard Detect
+  severity: info
+  tags: netdata,panel,tech
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>netdata dashboard</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

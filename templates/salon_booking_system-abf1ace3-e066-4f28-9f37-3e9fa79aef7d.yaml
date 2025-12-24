@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - salon-booking-system
+  - dsl:
+    - compare_versions(version, '<= 9.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/salon-booking-system/readme.txt'
+  redirects: true
+id: salon_booking_system-abf1ace3-e066-4f28-9f37-3e9fa79aef7d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/salon-booking-system/
+    google-query: inurl:"/wp-content/plugins/salon-booking-system/"
+    shodan-query: http.html:"wp-content/plugins/salon-booking-system/"
+  name: 'Salon booking system <= 9.6.5 - Cross-Site Request Forgery to Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/abf1ace3-e066-4f28-9f37-3e9fa79aef7d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,salon-booking-system,medium,candidate

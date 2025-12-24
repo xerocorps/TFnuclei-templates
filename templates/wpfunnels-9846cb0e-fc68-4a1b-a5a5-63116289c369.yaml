@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpfunnels
+  - dsl:
+    - compare_versions(version, '<= 3.5.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpfunnels/readme.txt'
+  redirects: true
+id: wpfunnels-9846cb0e-fc68-4a1b-a5a5-63116289c369
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpfunnels/
+    google-query: inurl:"/wp-content/plugins/wpfunnels/"
+    shodan-query: http.html:"wp-content/plugins/wpfunnels/"
+  name: 'Easiest Funnel Builder For WordPress & WooCommerce by WPFunnels <= 3.5.5
+    - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9846cb0e-fc68-4a1b-a5a5-63116289c369?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpfunnels,medium,candidate

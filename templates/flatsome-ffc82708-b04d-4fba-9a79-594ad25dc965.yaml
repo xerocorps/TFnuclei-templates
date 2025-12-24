@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - flatsome
+  - dsl:
+    - compare_versions(version, '<= 3.20.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/flatsome/readme.txt'
+  redirects: true
+id: flatsome-ffc82708-b04d-4fba-9a79-594ad25dc965
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/flatsome/
+    google-query: inurl:"/wp-content/plugins/flatsome/"
+    shodan-query: http.html:"wp-content/plugins/flatsome/"
+  name: 'Flatsome <= 3.20.0 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ffc82708-b04d-4fba-9a79-594ad25dc965?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,flatsome,low,candidate

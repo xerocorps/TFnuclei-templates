@@ -1,0 +1,20 @@
+author: qaisar afridi
+id: browser-cache-deception
+info:
+  description: Detects potential cache deception vulnerabilities in the target
+  name: Browser Cache Deception
+  severity: medium
+requests:
+- matchers:
+  - part: body
+    regex:
+    - 'Cache-Control: public'
+    - Expires:.*
+    type: regex
+  method: GET
+  path:
+  - /resource
+  - /deceive-cache
+tags:
+- web
+- cache-deception

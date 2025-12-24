@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - noo-wemusic
+  - dsl:
+    - compare_versions(version, '<= 1.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/noo-wemusic/style.css'
+  redirects: true
+id: noo_wemusic-9b0d1174-b94f-4b44-8b88-bc4355f0d165
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/noo-wemusic/
+    google-query: inurl:"/wp-content/themes/noo-wemusic/"
+    shodan-query: http.html:"wp-content/themes/noo-wemusic/"
+  name: 'WeMusic <= 1.9.1 - Authenticated (Subscriber+) PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9b0d1174-b94f-4b44-8b88-bc4355f0d165?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,noo-wemusic,low,candidate

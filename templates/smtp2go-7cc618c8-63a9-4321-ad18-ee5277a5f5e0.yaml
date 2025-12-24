@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - smtp2go
+  - dsl:
+    - compare_versions(version, '<= 1.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/smtp2go/readme.txt'
+  redirects: true
+id: smtp2go-7cc618c8-63a9-4321-ad18-ee5277a5f5e0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/smtp2go/
+    google-query: inurl:"/wp-content/plugins/smtp2go/"
+    shodan-query: http.html:"wp-content/plugins/smtp2go/"
+  name: 'SMTP2GO <= 1.4.2 - Authenticated (Administrator+) Stored Cross-Site Scripting
+    via admin settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7cc618c8-63a9-4321-ad18-ee5277a5f5e0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,smtp2go,low,candidate

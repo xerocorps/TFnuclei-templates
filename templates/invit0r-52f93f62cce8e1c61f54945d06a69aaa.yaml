@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - invit0r
+  - dsl:
+    - compare_versions(version, '<= 0.22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/invit0r/readme.txt'
+  redirects: true
+id: invit0r-52f93f62cce8e1c61f54945d06a69aaa
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/invit0r/
+    google-query: inurl:"/wp-content/plugins/invit0r/"
+    shodan-query: 'vuln:'
+  name: 'Invit0r <= 0.22 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66a6569b-88ec-42d8-8396-6e62f1c51b24?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,invit0r,critical

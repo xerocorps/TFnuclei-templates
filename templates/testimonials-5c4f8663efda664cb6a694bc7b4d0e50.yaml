@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - testimonials
+  - dsl:
+    - compare_versions(version, '<= 3.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/testimonials/readme.txt'
+  redirects: true
+id: testimonials-5c4f8663efda664cb6a694bc7b4d0e50
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/testimonials/
+    google-query: inurl:"/wp-content/plugins/testimonials/"
+    shodan-query: 'vuln:'
+  name: 'Testimonials <= 3.0.1 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5d9689ed-2be0-4573-a794-2c5bfadafdf5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,testimonials,low

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - thrive-theme
+  - dsl:
+    - compare_versions(version, '< 3.24.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/thrive-theme/style.css'
+  redirects: true
+id: thrive-theme-a46e1194b9ce63abeecf3a288e4a29cb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/thrive-theme/
+    google-query: inurl:"/wp-content/themes/thrive-theme/"
+    shodan-query: 'vuln:'
+  name: 'Thrive Theme Builder < 3.24.0 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4fd6fa4f-8f4d-4d2f-ac67-98124cfa9592?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,thrive-theme,high

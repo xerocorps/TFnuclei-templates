@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-for-japan
+  - dsl:
+    - compare_versions(version, '<= 2.5.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-for-japan/readme.txt'
+  redirects: true
+id: woocommerce_for_japan-bb606a30-2f7c-41e9-9ebc-9f1b0b84fff8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-for-japan/
+    google-query: inurl:"/wp-content/plugins/woocommerce-for-japan/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-for-japan/"
+  name: 'Japanized For WooCommerce <= 2.5.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb606a30-2f7c-41e9-9ebc-9f1b0b84fff8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-for-japan,medium,candidate

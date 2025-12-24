@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kali-forms
+  - dsl:
+    - compare_versions(version, '<= 2.3.27')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/kali-forms/readme.txt'
+  redirects: true
+id: kali_forms-bfb473a6-08ba-4b23-877d-4aa661c0053f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/kali-forms/
+    google-query: inurl:"/wp-content/plugins/kali-forms/"
+    shodan-query: http.html:"wp-content/plugins/kali-forms/"
+  name: 'Contact Form builder with drag & drop - Kali Forms <= 2.3.27 - Missing Authorization
+    via Contact Form
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bfb473a6-08ba-4b23-877d-4aa661c0053f?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,kali-forms,high,candidate

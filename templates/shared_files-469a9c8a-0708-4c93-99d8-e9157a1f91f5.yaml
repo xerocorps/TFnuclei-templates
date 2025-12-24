@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shared-files
+  - dsl:
+    - compare_versions(version, '<= 1.7.48')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shared-files/readme.txt'
+  redirects: true
+id: shared_files-469a9c8a-0708-4c93-99d8-e9157a1f91f5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shared-files/
+    google-query: inurl:"/wp-content/plugins/shared-files/"
+    shodan-query: http.html:"wp-content/plugins/shared-files/"
+  name: 'Shared Files <= 1.7.48 - Unauthenticated Stored Cross-Site Scripting via
+    sanitize_file Function
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/469a9c8a-0708-4c93-99d8-e9157a1f91f5?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,shared-files,high,candidate

@@ -1,0 +1,25 @@
+id: api-linkedin
+info:
+  author: dwisiswant0
+  name: LinkedIn API Test
+  reference:
+  - https://docs.microsoft.com/en-us/linkedin/compliance/
+  severity: info
+  tags: token-spray,linkedin
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"id":'
+    - '"firstName":'
+    - '"localized":'
+  matchers-condition: and
+  method: GET
+  path:
+  - https://api.linkedin.com/v2/me?oauth2_access_token={{token}}
+self-contained: true

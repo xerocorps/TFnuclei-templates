@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - product-blocks
+  - dsl:
+    - compare_versions(version, '<= 3.1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/product-blocks/readme.txt'
+  redirects: true
+id: product-blocks-c1073d81ed3c664e0c5c4461a852753e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/product-blocks/
+    google-query: inurl:"/wp-content/plugins/product-blocks/"
+    shodan-query: 'vuln:'
+  name: "ProductX \u2013 WooCommerce Builder & Gutenberg WooCommerce Blocks <= 3.1.4\
+    \ - PHP Object Injection via wopb_wishlist and wopb_compare\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/470285d6-b309-409c-b2c3-8766a0cf9e98?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,product-blocks,low

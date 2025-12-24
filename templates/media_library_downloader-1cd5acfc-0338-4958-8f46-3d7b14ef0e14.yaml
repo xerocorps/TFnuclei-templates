@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - media-library-downloader
+  - dsl:
+    - compare_versions(version, '<= 1.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/media-library-downloader/readme.txt'
+  redirects: true
+id: media_library_downloader-1cd5acfc-0338-4958-8f46-3d7b14ef0e14
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/media-library-downloader/
+    google-query: inurl:"/wp-content/plugins/media-library-downloader/"
+    shodan-query: http.html:"wp-content/plugins/media-library-downloader/"
+  name: 'Media Library Downloader <= 1.4.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1cd5acfc-0338-4958-8f46-3d7b14ef0e14?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,media-library-downloader,medium,candidate

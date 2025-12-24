@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easyappointments
+  - dsl:
+    - compare_versions(version, '<= 1.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easyappointments/readme.txt'
+  redirects: true
+id: easyappointments-35fc9a16-3775-48c0-82af-692974f54c33
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easyappointments/
+    google-query: inurl:"/wp-content/plugins/easyappointments/"
+    shodan-query: http.html:"wp-content/plugins/easyappointments/"
+  name: 'Easy!Appointments <= 1.4.0 - Authenticated(Subscriber+) Arbitrary File Deletion
+    via ''disconnect''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/35fc9a16-3775-48c0-82af-692974f54c33?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,easyappointments,low,candidate

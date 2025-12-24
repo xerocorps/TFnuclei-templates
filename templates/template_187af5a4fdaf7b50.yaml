@@ -1,0 +1,32 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - vmware
+    - security
+    - password policy
+    - vcenter
+  description: Template to detect weak password policy in VMware vCenter Server
+  id: null
+  matcher-condition: or
+  matchers:
+  - description: Password policy configuration found in response body
+    pattern: Password Policy
+    type: body
+  name: Weak Password Policy in vCenter Server
+  reference:
+  - https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-CBD145C5-8A1A-4F64-9D48-7C2ABF5B5C5A.html
+  requests:
+    condition: or
+    description: Check if password policy is configured
+    method: GET
+    path:
+    - /ui/password.html
+    - /ui/settings.html
+    - /ui/app/#/settings/password
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

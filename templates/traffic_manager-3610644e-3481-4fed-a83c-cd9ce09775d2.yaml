@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - traffic-manager
+  - dsl:
+    - compare_versions(version, '<= 1.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/traffic-manager/readme.txt'
+  redirects: true
+id: traffic_manager-3610644e-3481-4fed-a83c-cd9ce09775d2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/traffic-manager/
+    google-query: inurl:"/wp-content/plugins/traffic-manager/"
+    shodan-query: http.html:"wp-content/plugins/traffic-manager/"
+  name: 'Traffic Manager <= 1.4.5 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3610644e-3481-4fed-a83c-cd9ce09775d2?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,traffic-manager,high,candidate

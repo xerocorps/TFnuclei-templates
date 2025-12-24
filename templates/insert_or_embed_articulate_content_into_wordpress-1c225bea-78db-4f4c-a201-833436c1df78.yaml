@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - insert-or-embed-articulate-content-into-wordpress
+  - dsl:
+    - compare_versions(version, '< 4.29991')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/insert-or-embed-articulate-content-into-wordpress/readme.txt'
+  redirects: true
+id: insert_or_embed_articulate_content_into_wordpress-1c225bea-78db-4f4c-a201-833436c1df78
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/insert-or-embed-articulate-content-into-wordpress/
+    google-query: inurl:"/wp-content/plugins/insert-or-embed-articulate-content-into-wordpress/"
+    shodan-query: http.html:"wp-content/plugins/insert-or-embed-articulate-content-into-wordpress/"
+  name: 'Insert or Embed Articulate Content into WordPress < 4.29991 - Directory Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1c225bea-78db-4f4c-a201-833436c1df78?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,insert-or-embed-articulate-content-into-wordpress,low,candidate

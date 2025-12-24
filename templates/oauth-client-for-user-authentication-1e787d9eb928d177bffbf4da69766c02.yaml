@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - oauth-client-for-user-authentication
+  - dsl:
+    - compare_versions(version, '<= 3.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/oauth-client-for-user-authentication/readme.txt'
+  redirects: true
+id: oauth-client-for-user-authentication-1e787d9eb928d177bffbf4da69766c02
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/oauth-client-for-user-authentication/
+    google-query: inurl:"/wp-content/plugins/oauth-client-for-user-authentication/"
+    shodan-query: 'vuln:'
+  name: 'OAuth client Single Sign On for WordPress ( OAuth 2.0 SSO ) <= 3.0.1 - Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/517653e5-fdad-4360-82a5-32b16a6cd631?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,oauth-client-for-user-authentication,high

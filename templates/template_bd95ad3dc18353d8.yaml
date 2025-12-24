@@ -1,0 +1,77 @@
+name: issue opened and edited
+true:
+  issues:
+    types:
+    - opened
+    - edited
+jobs:
+  check-issues:
+    env:
+      PAYLOAD: ${{toJSON(github.event)}}
+    if: contains(github.event.issue.title,'[') && contains(github.event.issue.title,']')
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@master
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Install ObserverWard
+      run: 'curl -L https://github.com/0x727/ObserverWard_0x727/releases/download/default/observer_ward_amd64
+        --output ~/.config/observer_ward/observer_ward_amd64 --create-dirs -s
+
+        chmod +x ~/.config/observer_ward/observer_ward_amd64
+
+        '
+    - id: issue_helper
+      name: Check Issue
+      run: 'python .github/scripts/issue_helper.py > /tmp/verify.log
+
+        '
+    - id: verify_log
+      name: Read Verify.log
+      uses: juliangruber/read-file-action@v1
+      with:
+        path: /tmp/verify.log
+    - id: create_comment
+      name: Create Verify Comment
+      uses: actions-cool/issues-helper@v3
+      with:
+        actions: create-comment
+        body: "## \u9A8C\u8BC1\u8FC7\u7A0B:\n<details><summary>\u70B9\u51FB\u5C55\u5F00\
+          \u67E5\u770B</summary>\n<p>\n\n```bash\n${{ steps.verify_log.outputs.content\
+          \ }}\n```\n\n</p>\n</details>\n\n## \u9A8C\u8BC1\u7ED3\u679C\uFF1A\n- \u662F\
+          \u5426\u8BC6\u522B\u6210\u529F\uFF1A ${{ contains(steps.verify_log.outputs.content,'WebFingerPrintMatch')\
+          \ }}\n"
+        issue-number: ${{ github.event.issue.number }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - if: contains(steps.verify_log.outputs.content,'WebFingerPrintMatch')
+      name: Create Verified Label
+      uses: actions-cool/issues-helper@v3
+      with:
+        actions: add-labels
+        issue-number: ${{ github.event.issue.number }}
+        labels: Verified
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - if: contains(steps.verify_log.outputs.content,'WebFingerPrintMatch') == 'false'
+      name: Create Not Verified Comment
+      uses: actions-cool/issues-helper@v3
+      with:
+        actions: create-comment
+        body: "## \u9A8C\u8BC1\u5931\u8D25:\n- \u8BF7\u5728\u672C\u5730\u6D4B\u8BD5\
+          \u8BC6\u522B\u6210\u529F\u540E\u91CD\u65B0\u4FEE\u6539\u5F53\u524DIssue\u7684\
+          Yaml\u5185\u5BB9\u3002\n```bash\n\u279C  ~ ./observer_ward_amd64 --verify\
+          \ 0x727/FingerprintHub/fingerprint/swagger.yaml -t http://httpbin.org\n\
+          ```\n"
+        issue-number: ${{ github.event.issue.number }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - if: contains(steps.verify_log.outputs.content,'WebFingerPrintMatch') == 'true'
+      name: Create Pending Review Comment
+      uses: actions-cool/issues-helper@v3
+      with:
+        actions: create-comment
+        body: "## \u7B49\u5F85\u7BA1\u7406\u5458\u5BA1\u6838:\n- \u6307\u7EB9\u8BC6\
+          \u522B\u6210\u529F\uFF0C\u8BF7\u7B49\u5F85\u7BA1\u7406\u5458\u5BA1\u6838\
+          \uFF0C\u611F\u8C22\u63D0\u4EA4\u3002"
+        issue-number: ${{ github.event.issue.number }}
+        token: ${{ secrets.GITHUB_TOKEN }}

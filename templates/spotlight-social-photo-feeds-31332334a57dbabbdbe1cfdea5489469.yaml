@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - spotlight-social-photo-feeds
+  - dsl:
+    - compare_versions(version, '<= 1.6.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/spotlight-social-photo-feeds/readme.txt'
+  redirects: true
+id: spotlight-social-photo-feeds-31332334a57dbabbdbe1cfdea5489469
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/spotlight-social-photo-feeds/
+    google-query: inurl:"/wp-content/plugins/spotlight-social-photo-feeds/"
+    shodan-query: 'vuln:'
+  name: 'Spotlight Social Media Feeds <= 1.6.10 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/21e49adb-01a7-41d9-bb51-bac60d49e293?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,spotlight-social-photo-feeds,medium

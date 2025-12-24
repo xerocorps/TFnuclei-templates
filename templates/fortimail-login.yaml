@@ -1,0 +1,22 @@
+id: fortimail-login
+info:
+  author: johnk3r
+  metadata:
+    fofa-query: Fortimail && port=443
+    shodan-query: title:"Fortimail"
+  name: Fortinet FortiMail Login Panel
+  severity: info
+  tags: panel,fortinet,fortimail,login
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>FortiMail</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/m/'

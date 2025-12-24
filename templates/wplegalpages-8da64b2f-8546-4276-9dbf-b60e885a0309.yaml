@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wplegalpages
+  - dsl:
+    - compare_versions(version, '<= 3.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wplegalpages/readme.txt'
+  redirects: true
+id: wplegalpages-8da64b2f-8546-4276-9dbf-b60e885a0309
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wplegalpages/
+    google-query: inurl:"/wp-content/plugins/wplegalpages/"
+    shodan-query: http.html:"wp-content/plugins/wplegalpages/"
+  name: 'Privacy Policy Generator, Terms & Conditions Generator WordPress Plugin :
+    WP Legal Pages <= 3.2.7 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8da64b2f-8546-4276-9dbf-b60e885a0309?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wplegalpages,medium,candidate

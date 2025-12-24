@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - catfolders
+  - dsl:
+    - compare_versions(version, '<= 2.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/catfolders/readme.txt'
+  redirects: true
+id: catfolders-e585998a-d78f-4923-865c-c3a9820b583f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/catfolders/
+    google-query: inurl:"/wp-content/plugins/catfolders/"
+    shodan-query: http.html:"wp-content/plugins/catfolders/"
+  name: "CatFolders \u2013 Tame Your WordPress Media Library by Category <= 2.5.2\
+    \ - Authenticated (Author+) SQL Injection via CSV Import\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e585998a-d78f-4923-865c-c3a9820b583f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,catfolders,low,candidate

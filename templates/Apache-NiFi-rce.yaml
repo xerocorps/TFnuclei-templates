@@ -1,0 +1,23 @@
+id: Apache-NiFi-rce
+info:
+  author: Str1am
+  name: "Apache NiFi\u7CFB\u7EDFAPI\u547D\u4EE4\u6267\u884C"
+  reference: https://github.com/imjdl/Apache-NiFi-Api-RCE/blob/master/exp.py
+  severity: high
+  tags: NiFi,rce
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - supportsLogin
+    - config
+    - 'true'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/nifi-api/access/config'

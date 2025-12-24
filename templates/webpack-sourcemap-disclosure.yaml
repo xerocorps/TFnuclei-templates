@@ -1,0 +1,29 @@
+id: webpack-sourcemap-disclosure
+info:
+  author: dhiyaneshDk
+  name: Webpack Sourcemap Disclosure
+  severity: info
+  tags: exposure,files
+requests:
+- extractors:
+  - group: 1
+    internal: true
+    name: map
+    regex:
+    - sourceMappingURL=([a-z-~0-9.]+).js.map
+    type: regex
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - '"version":'
+    - '"file":'
+    - '"sources":'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{RootURL}}/{{Path}}/{{map}}.js.map'

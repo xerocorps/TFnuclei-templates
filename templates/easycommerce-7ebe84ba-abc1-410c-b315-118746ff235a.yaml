@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easycommerce
+  - dsl:
+    - compare_versions(version, '<= 1.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easycommerce/readme.txt'
+  redirects: true
+id: easycommerce-7ebe84ba-abc1-410c-b315-118746ff235a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easycommerce/
+    google-query: inurl:"/wp-content/plugins/easycommerce/"
+    shodan-query: http.html:"wp-content/plugins/easycommerce/"
+  name: "EasyCommerce \u2013 AI-Powered, Blazing-Fast & Beautiful WordPress Ecommerce\
+    \ Plugin 0.9.0-beta2 - 1.8.2 - Unauthenticated Privilege Escalation\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7ebe84ba-abc1-410c-b315-118746ff235a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,easycommerce,low,candidate

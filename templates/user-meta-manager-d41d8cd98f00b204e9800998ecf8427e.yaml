@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-meta-manager
+  - dsl:
+    - compare_versions(version, '<= 3.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-meta-manager/readme.txt'
+  redirects: true
+id: user-meta-manager-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The User Meta Manager plugin for WordPress is vulnerable to authorization
+    bypass due to a missing capability check on the umm_update_user_meta() function
+    in versions up to, and including, 3.4.6. This makes it possible for authenticated
+    attackers, with subscriber-level permissions and above, to escalate their account
+    to an administrator-level account by updating their user meta.
+  metadata:
+    fofa-query: wp-content/plugins/user-meta-manager/
+    google-query: inurl:"/wp-content/plugins/user-meta-manager/"
+    shodan-query: 'vuln:'
+  name: User Meta Manager Plugin < 3.4.7 - Privilege Escalation
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,user-meta-manager,low

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - funnelforms-free
+  - dsl:
+    - compare_versions(version, '<= 3.7.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/funnelforms-free/readme.txt'
+  redirects: true
+id: funnelforms_free-cbd42fc4-ab4a-4053-b765-18272eacd2bc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/funnelforms-free/
+    google-query: inurl:"/wp-content/plugins/funnelforms-free/"
+    shodan-query: http.html:"wp-content/plugins/funnelforms-free/"
+  name: 'Funnelforms Free <= 3.7.3.2 - Authenticated (Administrator+) Arbitrary File
+    Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cbd42fc4-ab4a-4053-b765-18272eacd2bc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,funnelforms-free,low,candidate

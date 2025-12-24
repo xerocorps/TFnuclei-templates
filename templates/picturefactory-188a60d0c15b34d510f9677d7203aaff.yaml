@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - picturefactory
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/picturefactory/style.css'
+  redirects: true
+id: picturefactory-188a60d0c15b34d510f9677d7203aaff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/picturefactory/
+    google-query: inurl:"/wp-content/themes/picturefactory/"
+    shodan-query: 'vuln:'
+  name: 'Picture Factory (Unspecified Versions) - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/02ac8b9e-bc59-4c46-9f9c-23e3b6ae615c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,picturefactory,high

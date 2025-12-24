@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - clearpay-gateway-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 3.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/clearpay-gateway-for-woocommerce/readme.txt'
+  redirects: true
+id: clearpay-gateway-for-woocommerce-450f3fa1fdfaa0d436f04229a0397315
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/clearpay-gateway-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/clearpay-gateway-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Clearpay Gateway for WooCommerce <= 3.5.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f29a843d-a8c5-4477-b7cc-620b19b5f585?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,clearpay-gateway-for-woocommerce,medium

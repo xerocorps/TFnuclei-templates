@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - so-called-air-quotes
+  - dsl:
+    - compare_versions(version, '<= 0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/so-called-air-quotes/readme.txt'
+  redirects: true
+id: so_called_air_quotes-83f2ceee-4422-4ed5-adc7-91bc022ae42d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/so-called-air-quotes/
+    google-query: inurl:"/wp-content/plugins/so-called-air-quotes/"
+    shodan-query: http.html:"wp-content/plugins/so-called-air-quotes/"
+  name: 'So-Called Air Quotes <= 0.1 - Unauthenticated Arbitrary Shortcode Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/83f2ceee-4422-4ed5-adc7-91bc022ae42d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,so-called-air-quotes,low,candidate

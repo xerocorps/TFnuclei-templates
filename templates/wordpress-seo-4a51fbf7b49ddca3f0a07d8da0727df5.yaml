@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordpress-seo
+  - dsl:
+    - compare_versions(version, '< 17.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordpress-seo/readme.txt'
+  redirects: true
+id: wordpress-seo-4a51fbf7b49ddca3f0a07d8da0727df5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wordpress-seo/
+    google-query: inurl:"/wp-content/plugins/wordpress-seo/"
+    shodan-query: 'vuln:'
+  name: 'Yoast SEO <= 17.2 - Full Path Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f162e046-a7d3-4f2c-899d-6c46cb92c8ee?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wordpress-seo,low

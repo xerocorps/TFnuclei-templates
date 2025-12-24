@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-post
+  - dsl:
+    - compare_versions(version, '< 2.4.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-post/readme.txt'
+  redirects: true
+id: ultimate-post-d204f4da845a59b91b4796f11741e7e1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-post/
+    google-query: inurl:"/wp-content/plugins/ultimate-post/"
+    shodan-query: 'vuln:'
+  name: 'PostX - Gutenberg Blocks for Post Grid <= 2.4.9 - Unauthorized Access Controls
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b323d910-23f6-41e2-9d64-d60398994996?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-post,low

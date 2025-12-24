@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mailchimp-forms-by-mailmunch
+  - dsl:
+    - compare_versions(version, '<= 3.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mailchimp-forms-by-mailmunch/readme.txt'
+  redirects: true
+id: mailchimp_forms_by_mailmunch-a1a1c5e7-75a4-4ca5-9707-4076b92e0c33
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mailchimp-forms-by-mailmunch/
+    google-query: inurl:"/wp-content/plugins/mailchimp-forms-by-mailmunch/"
+    shodan-query: http.html:"wp-content/plugins/mailchimp-forms-by-mailmunch/"
+  name: 'MailChimp Forms by MailMunch <= 3.2.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a1a1c5e7-75a4-4ca5-9707-4076b92e0c33?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,mailchimp-forms-by-mailmunch,medium,candidate

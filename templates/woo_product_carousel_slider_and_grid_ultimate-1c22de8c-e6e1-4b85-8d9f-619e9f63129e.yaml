@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-product-carousel-slider-and-grid-ultimate
+  - dsl:
+    - compare_versions(version, '<= 1.9.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-product-carousel-slider-and-grid-ultimate/readme.txt'
+  redirects: true
+id: woo_product_carousel_slider_and_grid_ultimate-1c22de8c-e6e1-4b85-8d9f-619e9f63129e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-product-carousel-slider-and-grid-ultimate/
+    google-query: inurl:"/wp-content/plugins/woo-product-carousel-slider-and-grid-ultimate/"
+    shodan-query: http.html:"wp-content/plugins/woo-product-carousel-slider-and-grid-ultimate/"
+  name: 'Product Carousel Slider & Grid Ultimate for WooCommerce <= 1.9.10 - Authenticated
+    (Contributor+) Local File Inclusion via ''theme''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1c22de8c-e6e1-4b85-8d9f-619e9f63129e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-product-carousel-slider-and-grid-ultimate,low,candidate

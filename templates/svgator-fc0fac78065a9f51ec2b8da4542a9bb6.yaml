@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - svgator
+  - dsl:
+    - compare_versions(version, '<= 1.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/svgator/readme.txt'
+  redirects: true
+id: svgator-fc0fac78065a9f51ec2b8da4542a9bb6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/svgator/
+    google-query: inurl:"/wp-content/plugins/svgator/"
+    shodan-query: 'vuln:'
+  name: "SVGator \u2013 Add Animated SVG Easily <= 1.2.6 - Authenticated (Author+)\
+    \ Stored Cross-Site Scripting via SVG\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a82fd49e-6e95-4743-900a-fa53b870ec0b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,svgator,low

@@ -1,0 +1,57 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jobcareer
+  - dsl:
+    - compare_versions(version, '<= 3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jobcareer/readme.txt'
+  redirects: true
+id: jobcareer-d7bd56269d40051ebd57cba7a23297f1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 6.4
+  description: 'The JobCareer | Job Board Responsive plugin for WordPress is vulnerable
+    to both authenticated Stored and unauthenticated Reflected Cross-Site Scripting
+    in versions up to, and including, 3.4 due to insufficient input sanitization and
+    output escaping. The Reflected XSS is vulnerable to the following parameters:
+    ''job_title'', ''specialisms'', and ''location'' while the Stored XSS is vulnerable
+    to the (Complete Address) text field. This makes it possible for attackers to
+    inject arbitrary web scripts that execute in a victim''s browser.'
+  metadata:
+    fofa-query: wp-content/plugins/jobcareer/
+    google-query: inurl:"/wp-content/plugins/jobcareer/"
+    shodan-query: 'vuln:'
+  name: JobCareer <= 3.4 - Multiple Cross-Site Scripting
+  reference:
+  - https://github.com/vladvector/vladvector.github.io/commit/4446a00317a1a08f46114704c444354f3024639e#diff-3680d85af6125b4c5ac9dcc16736aef80ed77f8b00c66e5767aa41ece05e05c9
+  - https://wpscan.com/vulnerability/8a8d2fd6-9e95-420f-9e9d-f82d78f47cd7
+  - https://themeforest.net/item/jobcareer-job-board-responsive-wordpress-theme/14221636
+  severity: medium
+  tags: cve,wordpress,wp-plugin,jobcareer,medium

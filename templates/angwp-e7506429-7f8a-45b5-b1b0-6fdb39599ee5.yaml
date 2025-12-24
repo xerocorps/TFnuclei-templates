@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - angwp
+  - dsl:
+    - compare_versions(version, '<= 1.5.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/angwp/readme.txt'
+  redirects: true
+id: angwp-e7506429-7f8a-45b5-b1b0-6fdb39599ee5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/angwp/
+    google-query: inurl:"/wp-content/plugins/angwp/"
+    shodan-query: http.html:"wp-content/plugins/angwp/"
+  name: 'Adning Advertising <= 1.5.5 - Unauthenticated Arbitrary File Deletion via
+    Path Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e7506429-7f8a-45b5-b1b0-6fdb39599ee5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,angwp,low,candidate

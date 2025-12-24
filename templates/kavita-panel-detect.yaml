@@ -1,0 +1,29 @@
+id: kavita-panel-detect
+info:
+  author: ritikchaddha
+  description: 'Kavita is a fast, feature rich, cross platform reading server. Built
+    with a focus for manga, and the goal of being a full solution for all your reading
+    needs.
+
+    '
+  metadata:
+    shodan-query: http.title:"kavita"
+    verified: true
+  name: Kavita Panel Detect
+  reference:
+  - https://github.com/kareadita/kavita
+  severity: info
+  tags: panel,kavita
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Kavita
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login'

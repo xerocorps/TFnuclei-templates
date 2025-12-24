@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - salem
+  - dsl:
+    - compare_versions(version, '<= 1.5.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/salem/style.css'
+  redirects: true
+id: salem-28ccd65649bbd5625cb36532497fee66
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The Salem Theme plugin for WordPress is vulnerable to DOM-based Cross-Site
+    Scripting in versions up to, and including, 1.5.5 due to insufficient input sanitization
+    and output escaping. This makes it possible for unauthenticated attackers to inject
+    arbitrary web scripts that execute in a victim's browser.
+  metadata:
+    fofa-query: wp-content/themes/salem/
+    google-query: inurl:"/wp-content/themes/salem/"
+    shodan-query: 'vuln:'
+  name: Salem Theme <= 1.5.5 - DOM-based Cross-Site Scripting
+  reference:
+  - http://web.archive.org/web/20210817191831/https%3A//themeforest.net/item/salem-clean-and-bold-one-page-wordpress-theme/10329778
+  - https://wpscan.com/vulnerability/82dea85b-78d9-4e4c-8a5f-bf5bbdbe4e80
+  severity: medium
+  tags: cve,wordpress,wp-theme,salem,medium

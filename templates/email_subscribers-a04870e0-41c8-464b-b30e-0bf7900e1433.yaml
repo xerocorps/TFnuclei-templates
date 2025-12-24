@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - email-subscribers
+  - dsl:
+    - compare_versions(version, '<= 4.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/email-subscribers/readme.txt'
+  redirects: true
+id: email_subscribers-a04870e0-41c8-464b-b30e-0bf7900e1433
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/email-subscribers/
+    google-query: inurl:"/wp-content/plugins/email-subscribers/"
+    shodan-query: http.html:"wp-content/plugins/email-subscribers/"
+  name: 'Email Subscribers & Newsletters <= 4.2.2 - Missing Authorization to Test
+    Email
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a04870e0-41c8-464b-b30e-0bf7900e1433?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,email-subscribers,high,candidate

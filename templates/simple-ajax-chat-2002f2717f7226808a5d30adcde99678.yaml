@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-ajax-chat
+  - dsl:
+    - compare_versions(version, '<= 20220115')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-ajax-chat/readme.txt'
+  redirects: true
+id: simple-ajax-chat-2002f2717f7226808a5d30adcde99678
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-ajax-chat/
+    google-query: inurl:"/wp-content/plugins/simple-ajax-chat/"
+    shodan-query: 'vuln:'
+  name: 'Simple Ajax Chat <= 20220115 - Unauthenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f6e2ab69-2714-4bf9-a9ad-035fc15450f2?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,simple-ajax-chat,high

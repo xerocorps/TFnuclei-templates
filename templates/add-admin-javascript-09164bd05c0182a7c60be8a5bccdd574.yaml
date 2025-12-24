@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - add-admin-javascript
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/add-admin-javascript/readme.txt'
+  redirects: true
+id: add-admin-javascript-09164bd05c0182a7c60be8a5bccdd574
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/add-admin-javascript/
+    google-query: inurl:"/wp-content/plugins/add-admin-javascript/"
+    shodan-query: 'vuln:'
+  name: 'Add Admin JavaScript <= 2.0 - Unauthenticated Full Path Dislcosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1069c845-30b9-4aca-8a60-8b66c48365af?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,add-admin-javascript,low

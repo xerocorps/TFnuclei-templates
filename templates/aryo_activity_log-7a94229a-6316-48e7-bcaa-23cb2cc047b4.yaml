@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - aryo-activity-log
+  - dsl:
+    - compare_versions(version, '>= 2.3.5', '<= 2.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/aryo-activity-log/readme.txt'
+  redirects: true
+id: aryo_activity_log-7a94229a-6316-48e7-bcaa-23cb2cc047b4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: "The Activity Log plugin for WordPress is vulnerable to SQL Injection\
+    \ via the \u2018orderby\u2019 parameter in versions 2.3.5 - 2.6.1 due to insufficient\
+    \ escaping on the user supplied parameter and lack of sufficient preparation on\
+    \ the existing SQL query.  This makes it possible for authenticated attackers\
+    \ to append additional SQL queries into already existing queries that can be used\
+    \ to extract sensitive information from the database.\n"
+  metadata:
+    fofa-query: wp-content/plugins/aryo-activity-log/
+    google-query: inurl:"/wp-content/plugins/aryo-activity-log/"
+    shodan-query: http.html:"wp-content/plugins/aryo-activity-log/"
+  name: 'Activity Log 2.3.5 - 2.6.1 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7a94229a-6316-48e7-bcaa-23cb2cc047b4?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,aryo-activity-log,low,production

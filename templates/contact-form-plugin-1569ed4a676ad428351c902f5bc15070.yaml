@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-plugin
+  - dsl:
+    - compare_versions(version, '< 3.96')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-plugin/readme.txt'
+  redirects: true
+id: contact-form-plugin-1569ed4a676ad428351c902f5bc15070
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-plugin/
+    google-query: inurl:"/wp-content/plugins/contact-form-plugin/"
+    shodan-query: 'vuln:'
+  name: 'Contact Form by BestWebSoft <= 3.95 - ReflectedCross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9e283a5a-98b7-464e-9426-cb414f3e3abf?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,contact-form-plugin,high

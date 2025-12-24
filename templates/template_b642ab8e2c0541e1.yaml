@@ -1,0 +1,30 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - nginx
+    - security
+    - configuration data exposure
+    - medium
+  description: Template to detect NGINX configuration data exposure
+  id: nginx-config-exposure
+  matcher-condition: and
+  matchers:
+  - description: NGINX configuration file containing server_name directive
+    pattern: server_name
+    type: body
+  name: NGINX Configuration Data Exposure - Detect
+  reference:
+  - https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+  requests:
+    condition: and
+    description: Attempt to retrieve NGINX configuration files
+    method: GET
+    path:
+    - /etc/nginx/*
+    - /usr/local/nginx/conf/*
+  response:
+  - status:
+    - 200
+  severity: Medium

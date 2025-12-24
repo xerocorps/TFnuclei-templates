@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - underconstruction
+  - dsl:
+    - compare_versions(version, '< 1.20')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/underconstruction/readme.txt'
+  redirects: true
+id: underconstruction-260ef8a7e4c528807ac210f452665df6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/underconstruction/
+    google-query: inurl:"/wp-content/plugins/underconstruction/"
+    shodan-query: 'vuln:'
+  name: 'underConstruction <= 1.19 - Cross-Site Request Forgery to Construction Mode
+    Disabled
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/da9b1132-fb02-443d-8d56-9e89658aad89?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,underconstruction,medium

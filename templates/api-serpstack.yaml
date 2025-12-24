@@ -1,0 +1,22 @@
+id: api-serpstack
+info:
+  author: daffainfo
+  name: serpstack API Test
+  reference:
+  - https://serpstack.com/documentation
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Development/serpstack.md
+  severity: info
+  tags: token-spray,serpstack
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"total_time_taken"'
+    - '"processed_timestamp"'
+    - '"search_url"'
+  method: GET
+  path:
+  - http://api.serpstack.com/search?access_key={{token}}&query=mcdonalds
+self-contained: true

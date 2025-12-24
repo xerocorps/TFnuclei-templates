@@ -1,0 +1,36 @@
+id: springboot-jolokia
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: title:"Eureka"
+    verified: true
+  name: Detects Springboot Jolokia Actuator
+  reference:
+  - https://raw.githubusercontent.com/maurosoria/dirsearch/master/db/dicc.txt
+  severity: low
+  tags: misconfig,springboot,exposure
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"config":{'
+    - '"agentId":"'
+  - condition: or
+    part: header
+    type: word
+    words:
+    - application/json
+    - application/vnd.spring-boot.actuator
+    - application/vnd.spring-boot.actuator.v1+json
+    - text/plain
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/jolokia'
+  - '{{BaseURL}}/actuator/jolokia'
+  stop-at-first-match: true

@@ -1,0 +1,24 @@
+id: apiman-panel
+info:
+  author: righettod
+  classification:
+    cwe-id: CWE-200
+  description: An Apiman instance was detected via the login redirection.
+  name: Apiman Login Panel
+  reference:
+  - https://www.apiman.io/latest/
+  severity: info
+  tags: panel,apiman
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - /auth/realms/apiman
+  - status:
+    - 302
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/apimanui/api-manager'

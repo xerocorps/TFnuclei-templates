@@ -1,0 +1,25 @@
+id: xxljob-panel
+info:
+  author: pdteam,daffainfo
+  name: XXLJOB Admin Login Panel
+  severity: info
+  tags: panel,xxljob,login
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - '"admin_version":"(.*?)"'
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <a><b>XXL</b>JOB</a>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/xxl-job-admin/toLogin'

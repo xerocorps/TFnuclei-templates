@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - Ultimate_VC_Addons
+  - dsl:
+    - compare_versions(version, '<= 3.16.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/Ultimate_VC_Addons/readme.txt'
+  redirects: true
+id: ultimate_vc_addons-32f8386a591f24fec318453988aa5479
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/Ultimate_VC_Addons/
+    google-query: inurl:"/wp-content/plugins/Ultimate_VC_Addons/"
+    shodan-query: 'vuln:'
+  name: 'Ultimate Addons for WPBakery <= 3.16.11 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/910d98a3-bfdb-4bb9-bd24-c57fa1a1a107?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,Ultimate_VC_Addons,high

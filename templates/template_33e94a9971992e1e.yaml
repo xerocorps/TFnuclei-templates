@@ -1,0 +1,32 @@
+info:
+  author: drfabiocastro
+  classification:
+    country: any
+    tags:
+    - ruby on rails
+    - configuration file
+    - exposure
+  description: Template to detect exposure of Ruby on Rails configuration files
+  id: config-rb
+  matcher-condition: and
+  matchers:
+  - pattern: log_level
+  - pattern: ssh_user
+  - pattern: application
+  - description: Passwords found in response body
+    pattern: repo_url
+    type: body
+  name: Ruby on Rails Configuration File Exposure - Detect
+  requests:
+    description: Example requests to trigger detection
+    method: GET
+    path:
+    - /config.rb
+    - /config/config.rb
+    - /deploy/config.rb
+  response:
+  - status:
+    - 200
+    - 401
+    - 403
+  severity: High

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - captcha-code-authentication
+  - dsl:
+    - compare_versions(version, '<= 2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/captcha-code-authentication/readme.txt'
+  redirects: true
+id: captcha-code-authentication-c7faba710d318637d4639fc04a02d42a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/captcha-code-authentication/
+    google-query: inurl:"/wp-content/plugins/captcha-code-authentication/"
+    shodan-query: 'vuln:'
+  name: 'Captcha Code <= 2.9 - Captcha Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b1dd3845-a88d-41aa-acf4-66fd1a6819ff?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,captcha-code-authentication,low

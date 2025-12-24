@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - moveto
+  - dsl:
+    - compare_versions(version, '<= 6.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/moveto/readme.txt'
+  redirects: true
+id: moveto-ec4c14ec-d085-42c8-9e98-4155f7fa8c10
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/moveto/
+    google-query: inurl:"/wp-content/plugins/moveto/"
+    shodan-query: http.html:"wp-content/plugins/moveto/"
+  name: 'MoveTo <= 6.2 - Unauthenticated Directory Traversal to Arbitrary File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ec4c14ec-d085-42c8-9e98-4155f7fa8c10?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,moveto,low,candidate

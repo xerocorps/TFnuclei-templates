@@ -1,0 +1,21 @@
+id: api-pagecdn
+info:
+  author: daffainfo
+  name: PageCDN API Test
+  reference:
+  - https://pagecdn.com/docs/public-api
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Development/PageCDN.md
+  severity: info
+  tags: token-spray,pagecdn
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"username"'
+    - '"email"'
+  method: GET
+  path:
+  - https://pagecdn.com/api/v2/private/account/info?apikey={{token}}
+self-contained: true

@@ -1,0 +1,13 @@
+id: sql-server-reporting
+info:
+  author: puzzlepeaches
+  name: Detect Microsoft SQL Server Reporting
+  severity: info
+requests:
+- matchers:
+  - type: word
+    words:
+    - Report Manager
+  method: GET
+  path:
+  - '{{BaseURL}}/Reports/Pages/Folder.aspx'

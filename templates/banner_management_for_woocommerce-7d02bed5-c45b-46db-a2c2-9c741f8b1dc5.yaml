@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - banner-management-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 1.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/banner-management-for-woocommerce/readme.txt'
+  redirects: true
+id: banner_management_for_woocommerce-7d02bed5-c45b-46db-a2c2-9c741f8b1dc5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/banner-management-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/banner-management-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/banner-management-for-woocommerce/"
+  name: 'Woocommerce Category Banner Management <= 1.1.0 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7d02bed5-c45b-46db-a2c2-9c741f8b1dc5?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,banner-management-for-woocommerce,high,candidate

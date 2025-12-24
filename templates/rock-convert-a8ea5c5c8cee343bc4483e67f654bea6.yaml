@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rock-convert
+  - dsl:
+    - compare_versions(version, '<= 2.11.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rock-convert/readme.txt'
+  redirects: true
+id: rock-convert-a8ea5c5c8cee343bc4483e67f654bea6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rock-convert/
+    google-query: inurl:"/wp-content/plugins/rock-convert/"
+    shodan-query: 'vuln:'
+  name: 'Rock Convert <= 2.11.0 - Authenticated (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c29cb99f-72e9-4178-b961-7ab50a5b6c7d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,rock-convert,low

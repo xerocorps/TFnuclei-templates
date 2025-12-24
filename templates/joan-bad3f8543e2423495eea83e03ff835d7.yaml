@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - joan
+  - dsl:
+    - compare_versions(version, '<= 5.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/joan/readme.txt'
+  redirects: true
+id: joan-bad3f8543e2423495eea83e03ff835d7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/joan/
+    google-query: inurl:"/wp-content/plugins/joan/"
+    shodan-query: 'vuln:'
+  name: 'Jock on air now <= 5.6.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a401db3e-2cf2-4283-bfbe-d4a9587966e1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,joan,medium

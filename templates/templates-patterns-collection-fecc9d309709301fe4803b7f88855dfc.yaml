@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - templates-patterns-collection
+  - dsl:
+    - compare_versions(version, '<= 1.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/templates-patterns-collection/readme.txt'
+  redirects: true
+id: templates-patterns-collection-fecc9d309709301fe4803b7f88855dfc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/templates-patterns-collection/
+    google-query: inurl:"/wp-content/plugins/templates-patterns-collection/"
+    shodan-query: 'vuln:'
+  name: 'Cloud Templates & Patterns collection <= 1.2.2 - Sensitive Information Exposure
+    via Log File
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c59baad8-b888-4475-8371-645811a6b569?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,templates-patterns-collection,low

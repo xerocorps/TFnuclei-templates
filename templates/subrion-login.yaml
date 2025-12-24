@@ -1,0 +1,27 @@
+id: subrion-login
+info:
+  author: princechaddha
+  name: Subrion Admin Login Panel
+  severity: info
+  tags: panel,subrion
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - Subrion CMS ([a-z0-9.]+)</a><br>
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <h1>Welcome to<br>Subrion Admin Panel</h1>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/panel'
+  redirects: true

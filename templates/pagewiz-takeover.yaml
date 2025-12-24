@@ -1,0 +1,19 @@
+id: pagewiz-takeover
+info:
+  author: brabbit10
+  name: Pagewiz subdomain takeover
+  reference:
+  - https://help.pagewiz.com/hc/en-us/articles/115005391465-Page-URL
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - 404 - Page Not Found
+    - Start Your New Landing Page Now!
+    - pagewiz
+  method: GET
+  path:
+  - '{{BaseURL}}'

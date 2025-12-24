@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mainwp-child-reports
+  - dsl:
+    - compare_versions(version, '<= 2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mainwp-child-reports/readme.txt'
+  redirects: true
+id: mainwp-child-reports-898b552483b72dc88be89942ca488be8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mainwp-child-reports/
+    google-query: inurl:"/wp-content/plugins/mainwp-child-reports/"
+    shodan-query: 'vuln:'
+  name: 'MainWP Child Reports <= 2.2 - Cross-Site Request Forgery to Arbitrary Options
+    Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cdd7971c-6f1c-437a-832c-e2b2817a197e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,mainwp-child-reports,medium

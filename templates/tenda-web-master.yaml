@@ -1,0 +1,22 @@
+id: tenda-web-master
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-dork: title:"Tenda Web Master"
+    verified: true
+  name: Tenda Web Master
+  severity: info
+  tags: panel,tenda,router
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Tenda Web Master</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'

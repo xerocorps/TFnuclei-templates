@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - interactive-3d-flipbook-powered-physics-engine
+  - dsl:
+    - compare_versions(version, '<= 1.13.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/interactive-3d-flipbook-powered-physics-engine/readme.txt'
+  redirects: true
+id: interactive_3d_flipbook_powered_physics_engine-d4d11477-8a9a-42a0-aafd-5ef10ca5a349
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/interactive-3d-flipbook-powered-physics-engine/
+    google-query: inurl:"/wp-content/plugins/interactive-3d-flipbook-powered-physics-engine/"
+    shodan-query: http.html:"wp-content/plugins/interactive-3d-flipbook-powered-physics-engine/"
+  name: '3D FlipBook <= 1.13.2 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d4d11477-8a9a-42a0-aafd-5ef10ca5a349?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,interactive-3d-flipbook-powered-physics-engine,low,candidate

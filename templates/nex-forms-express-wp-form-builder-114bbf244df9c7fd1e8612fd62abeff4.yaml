@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nex-forms-express-wp-form-builder
+  - dsl:
+    - compare_versions(version, '<= 8.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nex-forms-express-wp-form-builder/readme.txt'
+  redirects: true
+id: nex-forms-express-wp-form-builder-114bbf244df9c7fd1e8612fd62abeff4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nex-forms-express-wp-form-builder/
+    google-query: inurl:"/wp-content/plugins/nex-forms-express-wp-form-builder/"
+    shodan-query: 'vuln:'
+  name: 'NEX-Forms - Ultimate Form Builder <= 8.3.2 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fd817fe9-b7be-4252-877a-e9843d62a0a9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,nex-forms-express-wp-form-builder,low

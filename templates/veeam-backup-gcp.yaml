@@ -1,0 +1,21 @@
+id: veeam-backup-gcp
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: title:"Veeam Backup for GCP"
+    verified: true
+  name: Veeam Backup for GCP
+  severity: info
+  tags: panel,google,cloud
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Veeam Backup for GCP</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-addons-for-gutenberg
+  - dsl:
+    - compare_versions(version, '<= 2.10.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-addons-for-gutenberg/readme.txt'
+  redirects: true
+id: ultimate_addons_for_gutenberg-d4933a30-974f-487d-9444-b0ea1283a09c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-addons-for-gutenberg/
+    google-query: inurl:"/wp-content/plugins/ultimate-addons-for-gutenberg/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-addons-for-gutenberg/"
+  name: "Spectra \u2013 WordPress Gutenberg Blocks <= 2.10.3 - Authenticated(Contributor+)\
+    \ Cross-Site Scripting via Custom CSS\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d4933a30-974f-487d-9444-b0ea1283a09c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-addons-for-gutenberg,low,candidate

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-and-page-builder
+  - dsl:
+    - compare_versions(version, '<= 1.27.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-and-page-builder/readme.txt'
+  redirects: true
+id: post_and_page_builder-c1c89ce7-82d8-42e9-9608-cc77cb9c41d6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-and-page-builder/
+    google-query: inurl:"/wp-content/plugins/post-and-page-builder/"
+    shodan-query: http.html:"wp-content/plugins/post-and-page-builder/"
+  name: "Post and Page Builder by BoldGrid \u2013 Visual Drag and Drop Editor <= 1.27.5\
+    \ - Authenticated (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c1c89ce7-82d8-42e9-9608-cc77cb9c41d6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,post-and-page-builder,low,candidate

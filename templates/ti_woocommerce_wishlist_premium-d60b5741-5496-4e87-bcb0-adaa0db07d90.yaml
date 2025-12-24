@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ti-woocommerce-wishlist-premium
+  - dsl:
+    - compare_versions(version, '<= 1.21.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ti-woocommerce-wishlist-premium/readme.txt'
+  redirects: true
+id: ti_woocommerce_wishlist_premium-d60b5741-5496-4e87-bcb0-adaa0db07d90
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ti-woocommerce-wishlist-premium/
+    google-query: inurl:"/wp-content/plugins/ti-woocommerce-wishlist-premium/"
+    shodan-query: http.html:"wp-content/plugins/ti-woocommerce-wishlist-premium/"
+  name: 'TI WooCommerce Wishlist <= 1.21.11 and TI WooCommerce Wishlist Pro <= 1.21.4
+    - Arbitrary Options Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d60b5741-5496-4e87-bcb0-adaa0db07d90?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ti-woocommerce-wishlist-premium,low,candidate

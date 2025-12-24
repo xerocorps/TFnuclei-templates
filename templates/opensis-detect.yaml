@@ -1,0 +1,23 @@
+id: opensis-detect
+info:
+  author: pikpikcu
+  metadata:
+    shodan-query: http.title:"openSIS"
+  name: OpenSIS Login Panel
+  severity: info
+  tags: panel,opensis,login
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>openSIS Student Information System</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/opensis/index.php'
+  stop-at-first-match: true

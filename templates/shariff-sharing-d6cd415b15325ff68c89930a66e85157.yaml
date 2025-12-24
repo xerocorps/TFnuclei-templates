@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - shariff-sharing
+  - dsl:
+    - compare_versions(version, '< 1.0.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/shariff-sharing/readme.txt'
+  redirects: true
+id: shariff-sharing-d6cd415b15325ff68c89930a66e85157
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/shariff-sharing/
+    google-query: inurl:"/wp-content/plugins/shariff-sharing/"
+    shodan-query: 'vuln:'
+  name: 'Shariff Sharing < 1.0.8 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/11f883d2-c183-4cc9-a330-6c50610a5c39?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,shariff-sharing,high

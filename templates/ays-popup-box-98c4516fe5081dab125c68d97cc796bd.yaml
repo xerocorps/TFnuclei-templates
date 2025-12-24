@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ays-popup-box
+  - dsl:
+    - compare_versions(version, '<= 4.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ays-popup-box/readme.txt'
+  redirects: true
+id: ays-popup-box-98c4516fe5081dab125c68d97cc796bd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ays-popup-box/
+    google-query: inurl:"/wp-content/plugins/ays-popup-box/"
+    shodan-query: 'vuln:'
+  name: 'Popup box <= 4.1.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ffae2808-454e-4380-af83-b181cf2e8fbd?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ays-popup-box,medium

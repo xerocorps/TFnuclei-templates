@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - motopress-hotel-booking-lite
+  - dsl:
+    - compare_versions(version, '<= 5.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/motopress-hotel-booking-lite/readme.txt'
+  redirects: true
+id: motopress_hotel_booking_lite-baa16b34-760f-4033-a9ee-e14b35e79542
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/motopress-hotel-booking-lite/
+    google-query: inurl:"/wp-content/plugins/motopress-hotel-booking-lite/"
+    shodan-query: http.html:"wp-content/plugins/motopress-hotel-booking-lite/"
+  name: 'Hotel Booking Lite <= 5.2.3 - Authenticated (Hotel Worker+) Remote Code Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/baa16b34-760f-4033-a9ee-e14b35e79542?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,motopress-hotel-booking-lite,low,candidate

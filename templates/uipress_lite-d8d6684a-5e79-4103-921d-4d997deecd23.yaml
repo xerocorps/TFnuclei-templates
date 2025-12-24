@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uipress-lite
+  - dsl:
+    - compare_versions(version, '<= 3.4.06')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/uipress-lite/readme.txt'
+  redirects: true
+id: uipress_lite-d8d6684a-5e79-4103-921d-4d997deecd23
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/uipress-lite/
+    google-query: inurl:"/wp-content/plugins/uipress-lite/"
+    shodan-query: http.html:"wp-content/plugins/uipress-lite/"
+  name: 'UiPress lite <= 3.4.06 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d8d6684a-5e79-4103-921d-4d997deecd23?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,uipress-lite,low,candidate

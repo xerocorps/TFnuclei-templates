@@ -1,0 +1,25 @@
+id: oracle-cgi-printenv
+info:
+  author: DhiyaneshDk
+  name: Oracle CGI printenv Information Disclosure
+  reference:
+  - https://github.com/ilmila/J2EEScan/blob/master/src/main/java/burp/j2ee/issues/impl/OracleCGIPrintEnv.java
+  severity: medium
+  tags: exposure,oracle,config
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - DOCUMENT_ROOT="
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/printenv'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - z-downloads
+  - dsl:
+    - compare_versions(version, '<= 1.11.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/z-downloads/readme.txt'
+  redirects: true
+id: z_downloads-aae94aa1-a7a9-43df-b958-4fcf0392335b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/z-downloads/
+    google-query: inurl:"/wp-content/plugins/z-downloads/"
+    shodan-query: http.html:"wp-content/plugins/z-downloads/"
+  name: 'Z-Downloads <= 1.11.7 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aae94aa1-a7a9-43df-b958-4fcf0392335b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,z-downloads,low,candidate

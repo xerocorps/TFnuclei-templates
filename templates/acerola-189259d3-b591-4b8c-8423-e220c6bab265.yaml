@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - acerola
+  - dsl:
+    - compare_versions(version, '<= 1.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/acerola/style.css'
+  redirects: true
+id: acerola-189259d3-b591-4b8c-8423-e220c6bab265
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/acerola/
+    google-query: inurl:"/wp-content/themes/acerola/"
+    shodan-query: http.html:"wp-content/themes/acerola/"
+  name: 'Acerola <= 1.6.5 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/189259d3-b591-4b8c-8423-e220c6bab265?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,acerola,high,candidate

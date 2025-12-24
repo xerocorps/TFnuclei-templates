@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - modal-window
+  - dsl:
+    - compare_versions(version, '<= 5.3.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/modal-window/readme.txt'
+  redirects: true
+id: modal_window-48e2129f-6a2c-45e4-a0cf-7d8d5f563a7f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/modal-window/
+    google-query: inurl:"/wp-content/plugins/modal-window/"
+    shodan-query: http.html:"wp-content/plugins/modal-window/"
+  name: 'Modal Window <= 5.3.5 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/48e2129f-6a2c-45e4-a0cf-7d8d5f563a7f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,modal-window,low,candidate

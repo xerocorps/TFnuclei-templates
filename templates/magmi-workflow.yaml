@@ -1,0 +1,10 @@
+id: magmi-workflow
+info:
+  author: dwisiswant0,daffainfo
+  description: A simple workflow that runs all MAGMI related nuclei templates on a
+    given target.
+  name: MAGMI Security Checks
+workflows:
+- subtemplates:
+  - tags: magmi
+  template: technologies/magmi-detect.yaml

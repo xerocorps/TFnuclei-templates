@@ -1,0 +1,49 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-addons-for-gutenberg
+  - dsl:
+    - compare_versions(version, '<= 2.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-addons-for-gutenberg/readme.txt'
+  redirects: true
+id: ultimate_addons_for_gutenberg-242e99d1-db27-45fa-a90d-5a26c2d1901b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L
+    cvss-score: 6.3
+  description: "The Spectra \u2013 WordPress Gutenberg Blocks plugin for WordPress\
+    \ is vulnerable to authorization bypass due to a missing capability check on the\
+    \ import_wpforms, import_block, and activate_plugin functions called via AJAX\
+    \ actions in versions up to, and including, 2.3.1. This makes it possible for\
+    \ authenticated attackers, such as subscribers, to activate arbitrary plugins\
+    \ and import blocks and forms from WPForms.\n"
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-addons-for-gutenberg/
+    google-query: inurl:"/wp-content/plugins/ultimate-addons-for-gutenberg/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-addons-for-gutenberg/"
+  name: "Spectra \u2013 WordPress Gutenberg Blocks <= 2.3.1 - Missing Authorization\
+    \ Checks\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/242e99d1-db27-45fa-a90d-5a26c2d1901b?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-addons-for-gutenberg,low,production

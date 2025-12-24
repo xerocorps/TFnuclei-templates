@@ -1,0 +1,26 @@
+id: watershed-panel
+info:
+  author: tess
+  metadata:
+    shodan-query: http.title:"Watershed LRS"
+    verified: 'true'
+  name: Watershed Panel Detect
+  severity: info
+  tags: panel,watershed
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Watershed LRS
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/app/outside.html#/signin'

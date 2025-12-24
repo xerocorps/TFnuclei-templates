@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - directorypress
+  - dsl:
+    - compare_versions(version, '<= 3.6.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/directorypress/readme.txt'
+  redirects: true
+id: directorypress-44152fba491bf6c7611fac9376904840
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/directorypress/
+    google-query: inurl:"/wp-content/plugins/directorypress/"
+    shodan-query: 'vuln:'
+  name: 'DirectoryPress <= 3.6.10 - Authenticated (Contributor+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/63d0cb9b-e6ac-474e-ac6b-c0cbd14a19bd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,directorypress,low

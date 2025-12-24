@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-ultimate-csv-importer
+  - dsl:
+    - compare_versions(version, '<= 3.7.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-ultimate-csv-importer/readme.txt'
+  redirects: true
+id: wp_ultimate_csv_importer-ad09e91d-8ef8-49b2-84e8-fdbf28d65a8a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-ultimate-csv-importer/
+    google-query: inurl:"/wp-content/plugins/wp-ultimate-csv-importer/"
+    shodan-query: http.html:"wp-content/plugins/wp-ultimate-csv-importer/"
+  name: 'Import CSV or XML Datafeed With Ease <= 3.7.2 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ad09e91d-8ef8-49b2-84e8-fdbf28d65a8a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-ultimate-csv-importer,medium,candidate

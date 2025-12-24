@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - finale-woocommerce-sales-countdown-timer-discount
+  - dsl:
+    - compare_versions(version, '<= 2.20.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/finale-woocommerce-sales-countdown-timer-discount/readme.txt'
+  redirects: true
+id: finale_woocommerce_sales_countdown_timer_discount-e2579e45-0cdc-42d8-b6c1-f43b97a0781f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/finale-woocommerce-sales-countdown-timer-discount/
+    google-query: inurl:"/wp-content/plugins/finale-woocommerce-sales-countdown-timer-discount/"
+    shodan-query: http.html:"wp-content/plugins/finale-woocommerce-sales-countdown-timer-discount/"
+  name: 'Finale Lite <= 2.20.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e2579e45-0cdc-42d8-b6c1-f43b97a0781f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,finale-woocommerce-sales-countdown-timer-discount,medium,candidate

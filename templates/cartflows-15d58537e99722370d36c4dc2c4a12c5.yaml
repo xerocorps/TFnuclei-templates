@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cartflows
+  - dsl:
+    - compare_versions(version, '< 1.11.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cartflows/readme.txt'
+  redirects: true
+id: cartflows-15d58537e99722370d36c4dc2c4a12c5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cartflows/
+    google-query: inurl:"/wp-content/plugins/cartflows/"
+    shodan-query: 'vuln:'
+  name: 'CartFlows <= 1.11.11 - Insecure Direct Object Reference to Arbitrary Post
+    Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b9002f6e-4345-4908-9cb8-9841a2458eb7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cartflows,low

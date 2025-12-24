@@ -1,0 +1,15 @@
+id: api-instagramgraph
+info:
+  author: zzeitlin
+  name: Instagram Graph API Test
+  reference: https://developers.facebook.com/docs/instagram-api/getting-started
+  severity: info
+  tags: token-spray,instagram,graph
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - https://graph.facebook.com/v8.0/me/accounts?access_token={{token}}

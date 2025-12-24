@@ -1,0 +1,27 @@
+id: dedecms-detect
+info:
+  author: ritikchaddha
+  metadata:
+    shodan-query: title:"dedecms" || http.html:"power by dedecms"
+    verified: true
+  name: DedeCMS Detect
+  severity: info
+  tags: dedecms,tech
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - Power by DedeCms
+    - "DedeCMS\u6F14\u793A\u7AD9"
+    - DedeCMS
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

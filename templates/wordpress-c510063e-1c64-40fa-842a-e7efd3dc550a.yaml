@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_generator
+    regex:
+    - (?m)https:\/\/wordpress.org\/\?v=([0-9.]+)
+    type: regex
+  - group: 1
+    name: version_by_js
+    regex:
+    - wp-emoji-release\.min\.js\?ver=((\d+\.?)+)\b
+    type: regex
+  - group: 1
+    name: version_by_css
+    regex:
+    - install\.min\.css\?ver=((\d+\.?)+)\b
+    type: regex
+  matchers:
+  - dsl:
+    - compare_versions(version_by_generator, '>= 5.2', '<= 5.2.2')
+    - compare_versions(version_by_js, '>= 5.2', '<= 5.2.2')
+    - compare_versions(version_by_css, '>= 5.2', '<= 5.2.2')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/wp-admin/install.php'
+  - '{{BaseURL}}/feed/'
+  - '{{BaseURL}}/?feed=rss2'
+  redirects: true
+  stop-at-first-match: true
+id: wordpress-c510063e-1c64-40fa-842a-e7efd3dc550a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    shodan-query: 'vuln:'
+  name: 'WordPress Core < 5.2.3 - Reflected Cross-Site Scripting via Shortcode Previews
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c510063e-1c64-40fa-842a-e7efd3dc550a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-core,medium,candidate

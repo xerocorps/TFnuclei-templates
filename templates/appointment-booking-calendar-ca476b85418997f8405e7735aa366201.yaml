@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - appointment-booking-calendar
+  - dsl:
+    - compare_versions(version, '<= 1.2.24')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/appointment-booking-calendar/readme.txt'
+  redirects: true
+id: appointment-booking-calendar-ca476b85418997f8405e7735aa366201
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/appointment-booking-calendar/
+    google-query: inurl:"/wp-content/plugins/appointment-booking-calendar/"
+    shodan-query: 'vuln:'
+  name: 'Appointment Booking Calendar <= 1.2.24 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/13c9a71f-ec0a-4d4a-be08-787aa22a0fae?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,appointment-booking-calendar,high

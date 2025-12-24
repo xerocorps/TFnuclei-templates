@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tweet-wheel
+  - dsl:
+    - compare_versions(version, '< 1.0.3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tweet-wheel/readme.txt'
+  redirects: true
+id: tweet-wheel-d658c606ef99ad2ab9880548fdaba92c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tweet-wheel/
+    google-query: inurl:"/wp-content/plugins/tweet-wheel/"
+    shodan-query: 'vuln:'
+  name: 'Tweet Wheel < 1.0.3.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f8db6a27-111b-4e6d-966e-0af0833307b1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,tweet-wheel,medium

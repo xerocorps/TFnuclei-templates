@@ -1,0 +1,16 @@
+id: wishpond-takeover
+info:
+  author: pdteam
+  name: wishpond takeover detection
+  reference:
+  - https://github.com/EdOverflow/can-i-take-over-xyz
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - type: word
+    words:
+    - https://www.wishpond.com/404?campaign=true
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - learnpress
+  - dsl:
+    - compare_versions(version, '<= 3.2.6.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/learnpress/readme.txt'
+  redirects: true
+id: learnpress-2451f15c950920559cb1217cc2480e15
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/learnpress/
+    google-query: inurl:"/wp-content/plugins/learnpress/"
+    shodan-query: 'vuln:'
+  name: 'LearnPress <= 3.2.6.8 - Privilege Escalation via accept-to-be-teacher action
+    parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/91f13d74-0ad9-4790-a534-e8ff1655f06f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,learnpress,low

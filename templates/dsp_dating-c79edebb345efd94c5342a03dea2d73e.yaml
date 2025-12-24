@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dsp_dating
+  - dsl:
+    - compare_versions(version, '<= 7.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/dsp_dating/readme.txt'
+  redirects: true
+id: dsp_dating-c79edebb345efd94c5342a03dea2d73e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/dsp_dating/
+    google-query: inurl:"/wp-content/plugins/dsp_dating/"
+    shodan-query: 'vuln:'
+  name: 'WPDating <= 7.4.0 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/74ee6bf0-7091-40b8-a3e7-9ba1411b7ea4?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,dsp_dating,critical

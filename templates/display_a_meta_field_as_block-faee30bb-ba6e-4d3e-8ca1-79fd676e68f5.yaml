@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - display-a-meta-field-as-block
+  - dsl:
+    - compare_versions(version, '<= 1.2.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/display-a-meta-field-as-block/readme.txt'
+  redirects: true
+id: display_a_meta_field_as_block-faee30bb-ba6e-4d3e-8ca1-79fd676e68f5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/display-a-meta-field-as-block/
+    google-query: inurl:"/wp-content/plugins/display-a-meta-field-as-block/"
+    shodan-query: http.html:"wp-content/plugins/display-a-meta-field-as-block/"
+  name: 'Meta Field Block <= 1.2.13 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/faee30bb-ba6e-4d3e-8ca1-79fd676e68f5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,display-a-meta-field-as-block,low,candidate

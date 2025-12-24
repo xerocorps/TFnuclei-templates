@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - categorify
+  - dsl:
+    - compare_versions(version, '<= 1.0.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/categorify/readme.txt'
+  redirects: true
+id: categorify-d5ae79135ee2cddd44b95770336ca55e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/categorify/
+    google-query: inurl:"/wp-content/plugins/categorify/"
+    shodan-query: 'vuln:'
+  name: 'Categorify <= 1.0.7.4 - Missing Authorization in categorifyAjaxAddCategory
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1c7c74cf-a109-4f77-a740-5a43ccd4e96a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,categorify,high

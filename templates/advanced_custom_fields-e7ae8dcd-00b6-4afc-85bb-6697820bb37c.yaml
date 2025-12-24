@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-custom-fields
+  - dsl:
+    - compare_versions(version, '>= 6.0.0', '<= 6.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-custom-fields/readme.txt'
+  redirects: true
+id: advanced_custom_fields-e7ae8dcd-00b6-4afc-85bb-6697820bb37c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-custom-fields/
+    google-query: inurl:"/wp-content/plugins/advanced-custom-fields/"
+    shodan-query: http.html:"wp-content/plugins/advanced-custom-fields/"
+  name: 'Advanced Custom Fields (Free and Pro) 5.8.10 to 5.12.5  & 6.0.0 to 6.1.5
+    - Reflected Cross-Site Scripting via ''post_status''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e7ae8dcd-00b6-4afc-85bb-6697820bb37c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,advanced-custom-fields,medium,candidate

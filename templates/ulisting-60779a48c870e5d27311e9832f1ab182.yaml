@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ulisting
+  - dsl:
+    - compare_versions(version, '<= 2.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ulisting/readme.txt'
+  redirects: true
+id: ulisting-60779a48c870e5d27311e9832f1ab182
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ulisting/
+    google-query: inurl:"/wp-content/plugins/ulisting/"
+    shodan-query: 'vuln:'
+  name: "Listing, Classified Ads & Business Directory \u2013 uListing <= 2.0.5 - Privilege\
+    \ Escalation\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/613f22f2-2f84-4d01-a1ea-c14a25843700?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ulisting,low

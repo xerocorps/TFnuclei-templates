@@ -1,0 +1,10 @@
+directive_name: NoMachine
+directive_str: NXSH-5.6.7\n
+matches:
+- pattern: ^NXD-([\d.]+)\n
+  service: nomachine-nx
+  version_info: ' p/NoMachine NX Server remote desktop/ v/$1/ cpe:/a:nomachine:nx_server:$1/'
+ports:
+- 4000
+protocol: TCP
+rarity: 9

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fontsampler
+  - dsl:
+    - compare_versions(version, '<= 0.4.14')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fontsampler/readme.txt'
+  redirects: true
+id: fontsampler-d9853616-e1b3-48b0-afec-c43e91c48bc0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fontsampler/
+    google-query: inurl:"/wp-content/plugins/fontsampler/"
+    shodan-query: http.html:"wp-content/plugins/fontsampler/"
+  name: 'Fontsampler <= 0.4.14 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d9853616-e1b3-48b0-afec-c43e91c48bc0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,fontsampler,medium,candidate

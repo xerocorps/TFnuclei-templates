@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gallery-plugin
+  - dsl:
+    - compare_versions(version, '<= 4.6.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gallery-plugin/readme.txt'
+  redirects: true
+id: gallery-plugin-203e436f74c544e486475571fcac5001
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gallery-plugin/
+    google-query: inurl:"/wp-content/plugins/gallery-plugin/"
+    shodan-query: 'vuln:'
+  name: 'Gallery by BestWebSoft <= 4.6.9 - Authenticated (Author+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/94868d48-2d36-49f1-9da1-7965ecaeae3c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gallery-plugin,low

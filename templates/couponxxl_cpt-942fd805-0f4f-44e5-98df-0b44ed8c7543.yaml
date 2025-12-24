@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - couponxxl-cpt
+  - dsl:
+    - compare_versions(version, '<= 3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/couponxxl-cpt/readme.txt'
+  redirects: true
+id: couponxxl_cpt-942fd805-0f4f-44e5-98df-0b44ed8c7543
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/couponxxl-cpt/
+    google-query: inurl:"/wp-content/plugins/couponxxl-cpt/"
+    shodan-query: http.html:"wp-content/plugins/couponxxl-cpt/"
+  name: 'CouponXxL Custom Post Types <= 3.0 - Unauthenticated Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/942fd805-0f4f-44e5-98df-0b44ed8c7543?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,couponxxl-cpt,low,candidate

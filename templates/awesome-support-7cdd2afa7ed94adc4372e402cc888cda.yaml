@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - awesome-support
+  - dsl:
+    - compare_versions(version, '<= 6.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/awesome-support/readme.txt'
+  redirects: true
+id: awesome-support-7cdd2afa7ed94adc4372e402cc888cda
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/awesome-support/
+    google-query: inurl:"/wp-content/plugins/awesome-support/"
+    shodan-query: 'vuln:'
+  name: 'Awesome Support  <= 6.1.6 - Insufficient Authorization via wpas_can_delete_attachments()
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ffb8a285-43c6-4956-ad37-484269463b2d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,awesome-support,low

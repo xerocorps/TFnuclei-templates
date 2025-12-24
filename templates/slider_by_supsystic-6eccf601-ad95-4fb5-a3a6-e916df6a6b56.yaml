@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - slider-by-supsystic
+  - dsl:
+    - compare_versions(version, '<= 1.8.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/slider-by-supsystic/readme.txt'
+  redirects: true
+id: slider_by_supsystic-6eccf601-ad95-4fb5-a3a6-e916df6a6b56
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/slider-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/slider-by-supsystic/"
+    shodan-query: http.html:"wp-content/plugins/slider-by-supsystic/"
+  name: 'Slider by Supsystic <= 1.8.6 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6eccf601-ad95-4fb5-a3a6-e916df6a6b56?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,slider-by-supsystic,medium,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ip-blacklist-cloud
+  - dsl:
+    - compare_versions(version, '<= 5.00')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ip-blacklist-cloud/readme.txt'
+  redirects: true
+id: ip-blacklist-cloud-811cb681c4479fc767e4c524f2829cf9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ip-blacklist-cloud/
+    google-query: inurl:"/wp-content/plugins/ip-blacklist-cloud/"
+    shodan-query: 'vuln:'
+  name: 'IP Blacklist Cloud <= 5.00 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dd108f90-7afc-43e1-86d4-939c1c25fb2d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ip-blacklist-cloud,medium

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mainwp-article-uploader-extension
+  - dsl:
+    - compare_versions(version, '<= 4.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mainwp-article-uploader-extension/readme.txt'
+  redirects: true
+id: mainwp-article-uploader-extension-84611d0913ccf612dfea8c24e4124570
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mainwp-article-uploader-extension/
+    google-query: inurl:"/wp-content/plugins/mainwp-article-uploader-extension/"
+    shodan-query: 'vuln:'
+  name: 'MainWP (Various Extensions) - Authenticated (Subscriber+) Arbitrary File
+    Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/306a9960-7139-4142-a249-4de2b3c4b985?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mainwp-article-uploader-extension,low

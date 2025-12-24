@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-video-gallery
+  - dsl:
+    - compare_versions(version, '<= 3.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-video-gallery/readme.txt'
+  redirects: true
+id: all_in_one_video_gallery-f6e6fda8-e998-4087-8a21-9edb2a0249c8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-video-gallery/
+    google-query: inurl:"/wp-content/plugins/all-in-one-video-gallery/"
+    shodan-query: http.html:"wp-content/plugins/all-in-one-video-gallery/"
+  name: 'All-in-One Video Gallery <= 3.7.1 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Video Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f6e6fda8-e998-4087-8a21-9edb2a0249c8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,all-in-one-video-gallery,low,candidate

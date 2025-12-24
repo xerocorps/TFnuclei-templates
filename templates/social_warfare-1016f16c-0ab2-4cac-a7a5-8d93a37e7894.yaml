@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-warfare
+  - dsl:
+    - compare_versions(version, '<= 4.4.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-warfare/readme.txt'
+  redirects: true
+id: social_warfare-1016f16c-0ab2-4cac-a7a5-8d93a37e7894
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/social-warfare/
+    google-query: inurl:"/wp-content/plugins/social-warfare/"
+    shodan-query: http.html:"wp-content/plugins/social-warfare/"
+  name: "Social Sharing Plugin \u2013 Social Warfare <= 4.4.6.1 - Authenticated(Contributor+)\
+    \ Stored Cross-Site Scripting via Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1016f16c-0ab2-4cac-a7a5-8d93a37e7894?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,social-warfare,low,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-gutenberg-products-block
+  - dsl:
+    - compare_versions(version, '5.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-gutenberg-products-block/readme.txt'
+  redirects: true
+id: woo-gutenberg-products-block-aaf5a40fc30377a009d5ebefc2212807
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-gutenberg-products-block/
+    google-query: inurl:"/wp-content/plugins/woo-gutenberg-products-block/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Blocks < 5.5 - Authenticated Blind SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a6d9d093-1e31-4d36-ac55-79cf82b231bb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-gutenberg-products-block,low

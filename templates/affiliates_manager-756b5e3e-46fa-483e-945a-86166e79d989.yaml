@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - affiliates-manager
+  - dsl:
+    - compare_versions(version, '<= 2.9.31')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/affiliates-manager/readme.txt'
+  redirects: true
+id: affiliates_manager-756b5e3e-46fa-483e-945a-86166e79d989
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/affiliates-manager/
+    google-query: inurl:"/wp-content/plugins/affiliates-manager/"
+    shodan-query: http.html:"wp-content/plugins/affiliates-manager/"
+  name: 'Affiliates Manager <= 2.9.31 - Cross-Site Request Forgery via multiple AJAX
+    actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/756b5e3e-46fa-483e-945a-86166e79d989?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,affiliates-manager,medium,candidate

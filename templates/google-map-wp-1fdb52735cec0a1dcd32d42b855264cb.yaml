@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - google-map-wp
+  - dsl:
+    - compare_versions(version, '< 2.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/google-map-wp/readme.txt'
+  redirects: true
+id: google-map-wp-1fdb52735cec0a1dcd32d42b855264cb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/google-map-wp/
+    google-query: inurl:"/wp-content/plugins/google-map-wp/"
+    shodan-query: 'vuln:'
+  name: 'Google Map <= 2.2.5 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/46b3f3fb-5bd5-4af4-a281-647ad0b8e992?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,google-map-wp,critical

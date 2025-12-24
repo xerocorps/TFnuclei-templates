@@ -1,0 +1,34 @@
+http:
+- matchers:
+  - case-insensitive: true
+    part: body
+    type: word
+    words:
+    - <title>n8n.io
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/signin'
+id: n8n-panel
+info:
+  author: userdehghani
+  classification:
+    cpe: cpe:2.3:a:n8n:n8n:*:*:*:*:node.js:*:*:*
+  description: 'The worlds most popular workflow automation platform for technical
+    teams
+
+    '
+  metadata:
+    max-request: 1
+    product: n8n
+    shodan-query: http.favicon.hash:-831756631
+    vendor: n8n
+    verified: true
+  name: n8n Panel - Detect
+  reference:
+  - https://n8n.io/
+  severity: info
+  tags: panel,n8n,login,detect

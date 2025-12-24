@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ays-popup-box
+  - dsl:
+    - compare_versions(version, '<= 4.9.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ays-popup-box/readme.txt'
+  redirects: true
+id: ays_popup_box-c3717e03-9a18-48a1-97d3-1d41c7f93261
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ays-popup-box/
+    google-query: inurl:"/wp-content/plugins/ays-popup-box/"
+    shodan-query: http.html:"wp-content/plugins/ays-popup-box/"
+  name: "Popup Box \u2013 Create Countdown, Coupon, Video, Contact Form Popups <=\
+    \ 4.9.7 - Missing Authorization to Unauthenticated Limited Options Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c3717e03-9a18-48a1-97d3-1d41c7f93261?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ays-popup-box,high,candidate

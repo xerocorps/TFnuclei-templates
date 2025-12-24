@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - post-carousel-slider-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/post-carousel-slider-for-elementor/readme.txt'
+  redirects: true
+id: post_carousel_slider_for_elementor-0b92afdf-51e0-4cf5-9f2b-997b9ff98b23
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/post-carousel-slider-for-elementor/
+    google-query: inurl:"/wp-content/plugins/post-carousel-slider-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/post-carousel-slider-for-elementor/"
+  name: 'Post Carousel Slider for Elementor <= 1.6.0 - Authenticated (Subscriber+)
+    Missing Authorization via process_wbelps_promo_form Function
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0b92afdf-51e0-4cf5-9f2b-997b9ff98b23?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,post-carousel-slider-for-elementor,low,candidate

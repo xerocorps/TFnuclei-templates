@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - event-easy-calendar
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/event-easy-calendar/readme.txt'
+  redirects: true
+id: event-easy-calendar-a32ce6fec8222bd6b686688485f8993a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/event-easy-calendar/
+    google-query: inurl:"/wp-content/plugins/event-easy-calendar/"
+    shodan-query: 'vuln:'
+  name: 'Event Easy Calendar <= 1.0.0 - Multiple Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a620810d-1b2a-4f2e-943c-aacc493f0c5b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,event-easy-calendar,medium

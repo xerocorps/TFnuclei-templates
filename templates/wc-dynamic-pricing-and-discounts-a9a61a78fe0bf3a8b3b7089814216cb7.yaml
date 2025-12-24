@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-dynamic-pricing-and-discounts
+  - dsl:
+    - compare_versions(version, '< 2.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-dynamic-pricing-and-discounts/readme.txt'
+  redirects: true
+id: wc-dynamic-pricing-and-discounts-a9a61a78fe0bf3a8b3b7089814216cb7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N
+    cvss-score: 6.5
+  description: The WooCommerce Dynamic Pricing and Discounts plugin for WordPress
+    is vulnerable to Stored Cross-Site Scripting in versions up to, and including,
+    2.4.1. This is due to missing sanitization on the settings imported via the import()
+    function. This makes it possible for unauthenticated attackers to import a settings
+    file containing malicious JavaScript that would execute when an administrator
+    accesses the settings area of the site.
+  metadata:
+    fofa-query: wp-content/plugins/wc-dynamic-pricing-and-discounts/
+    google-query: inurl:"/wp-content/plugins/wc-dynamic-pricing-and-discounts/"
+    shodan-query: 'vuln:'
+  name: WooCommerce Dynamic Pricing and Discounts <= 2.4.1 - Stored Cross-Site Scripting
+  reference:
+  - https://blog.nintechnet.com/woocommerce-dynamic-pricing-and-discounts-plugin-fixed-multiple-vulnerabilities/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wc-dynamic-pricing-and-discounts,medium

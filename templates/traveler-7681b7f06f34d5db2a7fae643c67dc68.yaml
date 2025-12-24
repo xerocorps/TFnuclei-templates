@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - traveler
+  - dsl:
+    - compare_versions(version, '< 2.7.8.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/traveler/style.css'
+  redirects: true
+id: traveler-7681b7f06f34d5db2a7fae643c67dc68
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/traveler/
+    google-query: inurl:"/wp-content/themes/traveler/"
+    shodan-query: 'vuln:'
+  name: "Traveler \u2013 Travel Booking WordPress Theme < 2.7.8.6 - Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c824823c-68d0-4f41-ac22-c517763357eb?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,traveler,high

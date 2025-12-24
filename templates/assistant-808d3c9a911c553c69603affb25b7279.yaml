@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - assistant
+  - dsl:
+    - compare_versions(version, '<= 1.4.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/assistant/readme.txt'
+  redirects: true
+id: assistant-808d3c9a911c553c69603affb25b7279
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/assistant/
+    google-query: inurl:"/wp-content/plugins/assistant/"
+    shodan-query: 'vuln:'
+  name: "Assistant \u2013 Every Day Productivity Apps <= 1.4.9.1 - Unauthenticated\
+    \ Sensitive Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4b5a3655-067f-4ef1-baf5-2bbc9719a8cd?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,assistant,low

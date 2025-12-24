@@ -1,0 +1,20 @@
+id: plastic-scm-login
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"Plastic SCM"
+  name: Plastic SCM Login
+  severity: info
+  tags: panel,plastic
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Log in - Plastic SCM</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/account'

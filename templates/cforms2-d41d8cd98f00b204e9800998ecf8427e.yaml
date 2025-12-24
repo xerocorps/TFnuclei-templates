@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cforms2
+  - dsl:
+    - compare_versions(version, '<=  14.10.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cforms2/readme.txt'
+  redirects: true
+id: cforms2-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The CformsII plugin for WordPress is vulnerable to CAPTCHA Bypass in
+    versions up to, and including, 14.10.1. This is due to the codes not being one-time
+    use and improper verification of user-supplied data. This makes it possible for
+    unauthenticated attackers to bypass the Captcha Verification.
+  metadata:
+    fofa-query: wp-content/plugins/cforms2/
+    google-query: inurl:"/wp-content/plugins/cforms2/"
+    shodan-query: 'vuln:'
+  name: CformsII <= 14.10.1 - CAPTCHA Bypass
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,cforms2,low

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - colormag
+  - dsl:
+    - compare_versions(version, '<= 3.1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/colormag/style.css'
+  redirects: true
+id: colormag-a4b44d89-6f1e-4a23-91ea-e79fc3221183
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/colormag/
+    google-query: inurl:"/wp-content/themes/colormag/"
+    shodan-query: http.html:"wp-content/themes/colormag/"
+  name: 'ColorMag <= 3.1.6 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Display Name
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a4b44d89-6f1e-4a23-91ea-e79fc3221183?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,colormag,low,candidate

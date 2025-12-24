@@ -1,0 +1,28 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - svn
+    - security
+    - metadata exposure
+  description: Template to detect Subversion (SVN) working copy metadata exposure
+  id: svn-wc-db-exposure
+  matcher-condition: and
+  matchers:
+  - description: Subversion (SVN) working copy metadata file found in response body
+    pattern: SQLite format 3
+    type: body
+  name: Subversion (SVN) Working Copy Metadata Exposure - Detect
+  reference:
+  - https://subversion.apache.org/security/
+  requests:
+    description: Attempt to access Subversion (SVN) working copy metadata file
+    method: GET
+    path:
+    - /.svn/wc.db
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

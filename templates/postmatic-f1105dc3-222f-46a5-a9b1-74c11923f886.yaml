@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - postmatic
+  - dsl:
+    - compare_versions(version, '<= 2.2.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/postmatic/readme.txt'
+  redirects: true
+id: postmatic-f1105dc3-222f-46a5-a9b1-74c11923f886
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/postmatic/
+    google-query: inurl:"/wp-content/plugins/postmatic/"
+    shodan-query: http.html:"wp-content/plugins/postmatic/"
+  name: "Replyable \u2013 Subscribe to Comments and Reply by Email <= 2.2.9 - Authenticated\
+    \ (Subscriber+) PHP Object Injection via prompt_dismiss_notice\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f1105dc3-222f-46a5-a9b1-74c11923f886?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,postmatic,low,candidate

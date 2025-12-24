@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ip2location-country-blocker
+  - dsl:
+    - compare_versions(version, '<= 2.33.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ip2location-country-blocker/readme.txt'
+  redirects: true
+id: ip2location_country_blocker-0e4aee28-d0cc-4705-9be6-fe5299f2e0fc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ip2location-country-blocker/
+    google-query: inurl:"/wp-content/plugins/ip2location-country-blocker/"
+    shodan-query: http.html:"wp-content/plugins/ip2location-country-blocker/"
+  name: 'IP2Location Country Blocker <= 2.33.3 - Unauthenticated Sensitive Information
+    Exposure via Debug Log File
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0e4aee28-d0cc-4705-9be6-fe5299f2e0fc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ip2location-country-blocker,low,candidate

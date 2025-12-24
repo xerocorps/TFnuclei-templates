@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cardinity-free-payment-gateway-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 3.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cardinity-free-payment-gateway-for-woocommerce/readme.txt'
+  redirects: true
+id: cardinity-free-payment-gateway-for-woocommerce-e7cf19cf9010a20a833fa288c7206630
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cardinity-free-payment-gateway-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/cardinity-free-payment-gateway-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Cardinity Payment Gateway for WooCommerce <= 3.0.6 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/48b4214f-b722-405e-9bb7-a1faa68f0429?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,cardinity-free-payment-gateway-for-woocommerce,medium

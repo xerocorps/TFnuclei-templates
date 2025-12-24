@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - couponxxl
+  - dsl:
+    - compare_versions(version, '<= 4.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/couponxxl/style.css'
+  redirects: true
+id: couponxxl-6cc52af3-8304-4536-af2c-8bc91b9fb9c9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/couponxxl/
+    google-query: inurl:"/wp-content/themes/couponxxl/"
+    shodan-query: http.html:"wp-content/themes/couponxxl/"
+  name: 'CouponXxL <= 4.5.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6cc52af3-8304-4536-af2c-8bc91b9fb9c9?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,couponxxl,medium,candidate

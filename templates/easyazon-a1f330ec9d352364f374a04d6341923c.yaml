@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easyazon
+  - dsl:
+    - compare_versions(version, '<= 5.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easyazon/readme.txt'
+  redirects: true
+id: easyazon-a1f330ec9d352364f374a04d6341923c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easyazon/
+    google-query: inurl:"/wp-content/plugins/easyazon/"
+    shodan-query: 'vuln:'
+  name: "EasyAzon \u2013 Amazon Associates Affiliate Plugin <= 5.1.0 - Reflected Cross-Site\
+    \ Scripting via easyazon-cloaking-locale\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3d13454c-0c46-4b16-8e0e-bbfcf2338230?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,easyazon,medium

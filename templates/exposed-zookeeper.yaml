@@ -1,0 +1,18 @@
+id: exposed-zookeeper
+info:
+  author: pdteam
+  name: ZooKeeper Unauth Server
+  reference: https://zookeeper.apache.org/security.html
+  severity: high
+  tags: network,zookeeper
+network:
+- host:
+  - '{{Hostname}}'
+  - '{{Hostname}}:2181'
+  inputs:
+  - data: "envi\r\nquit\r\n"
+  matchers:
+  - type: word
+    words:
+    - zookeeper.version
+  read-size: 2048

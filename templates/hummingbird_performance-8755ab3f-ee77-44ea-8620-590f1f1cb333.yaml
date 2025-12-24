@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hummingbird-performance
+  - dsl:
+    - compare_versions(version, '<= 3.18.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hummingbird-performance/readme.txt'
+  redirects: true
+id: hummingbird_performance-8755ab3f-ee77-44ea-8620-590f1f1cb333
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hummingbird-performance/
+    google-query: inurl:"/wp-content/plugins/hummingbird-performance/"
+    shodan-query: http.html:"wp-content/plugins/hummingbird-performance/"
+  name: 'Hummingbird <= 3.18.0 - Unauthenticated Sensitive Information Exposure via
+    Log File
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8755ab3f-ee77-44ea-8620-590f1f1cb333?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,hummingbird-performance,low,candidate

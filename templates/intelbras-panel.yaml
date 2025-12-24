@@ -1,0 +1,27 @@
+id: intelbras-panel
+info:
+  author: pikpikcu
+  metadata:
+    fofa-query: app="Intelbras"
+    shodan-query: http.title:"Intelbras"
+    verified: true
+  name: Intelbras Panel
+  severity: info
+  tags: panel,intelbras
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - id="product">([A-Za-z 0-9]+)<\/p>
+    type: regex
+  matchers:
+  - case-insensitive: true
+    type: word
+    words:
+    - <title>Intelbras
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

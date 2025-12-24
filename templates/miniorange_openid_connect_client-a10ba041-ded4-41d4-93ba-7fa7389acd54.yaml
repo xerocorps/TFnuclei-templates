@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - miniorange-openid-connect-client
+  - dsl:
+    - compare_versions(version, '<= 2.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/miniorange-openid-connect-client/readme.txt'
+  redirects: true
+id: miniorange_openid_connect_client-a10ba041-ded4-41d4-93ba-7fa7389acd54
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: 'The WordPress OpenID Connect Client plugin for WordPress is vulnerable
+    to authentication bypass in versions up to, and including 2.1.7. This is due to
+    the plugin accepting a user supplied email address that is passed to wp_set_auth_cookie()
+    with no further identity validation to verify that the email supplied belongs
+    to the user trying to log in with that email address. This makes it possible for
+    unauthenticated attackers to log in as a site administrator granted they have
+    access to a site admin''s email address.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/miniorange-openid-connect-client/
+    google-query: inurl:"/wp-content/plugins/miniorange-openid-connect-client/"
+    shodan-query: http.html:"wp-content/plugins/miniorange-openid-connect-client/"
+  name: 'WordPress OpenID Connect Client <= 2.1.7 - Authentication Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a10ba041-ded4-41d4-93ba-7fa7389acd54?source=api-prod
+  severity: critical
+  tags: cve,wordpress,wp-plugin,miniorange-openid-connect-client,critical,production

@@ -1,0 +1,18 @@
+id: strikingly-takeover
+info:
+  author: pdteam
+  name: strikingly takeover detection
+  reference:
+  - https://medium.com/@sherif0x00/takeover-subdomains-pointing-to-strikingly-5e67df80cdfd
+  severity: high
+  tags: takeover
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - But if you're looking to build your own website
+    - you've come to the right place.
+  method: GET
+  path:
+  - '{{BaseURL}}'

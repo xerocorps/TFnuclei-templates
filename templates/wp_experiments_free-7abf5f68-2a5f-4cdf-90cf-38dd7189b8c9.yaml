@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-experiments-free
+  - dsl:
+    - compare_versions(version, '<= 9.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-experiments-free/readme.txt'
+  redirects: true
+id: wp_experiments_free-7abf5f68-2a5f-4cdf-90cf-38dd7189b8c9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-experiments-free/
+    google-query: inurl:"/wp-content/plugins/wp-experiments-free/"
+    shodan-query: http.html:"wp-content/plugins/wp-experiments-free/"
+  name: 'Title Experiments Free <= 9.0.4 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7abf5f68-2a5f-4cdf-90cf-38dd7189b8c9?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-experiments-free,medium,candidate

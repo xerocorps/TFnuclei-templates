@@ -1,0 +1,22 @@
+id: api-proxycrawl
+info:
+  author: daffainfo
+  name: ProxyCrawl API Test
+  reference:
+  - https://proxycrawl.com/docs/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Development/ProxyCrawl.md
+  severity: info
+  tags: token-spray,proxycrawl
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"remaining_requests"'
+    - '"domain"'
+    - '"leads"'
+  method: GET
+  path:
+  - https://api.proxycrawl.com/leads?token={{token}}&domain=www.amazon.com
+self-contained: true

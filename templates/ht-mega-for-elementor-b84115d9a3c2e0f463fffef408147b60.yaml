@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ht-mega-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 2.5.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ht-mega-for-elementor/readme.txt'
+  redirects: true
+id: ht-mega-for-elementor-b84115d9a3c2e0f463fffef408147b60
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ht-mega-for-elementor/
+    google-query: inurl:"/wp-content/plugins/ht-mega-for-elementor/"
+    shodan-query: 'vuln:'
+  name: "HT Mega \u2013 Absolute Addons For Elementor <= 2.5.0 - Authenticated (Contributor+)\
+    \ Stored Cross-Site Scripting via Gallery Justify\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/03fba6bb-ff30-42bb-936b-93c009a7e3f7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ht-mega-for-elementor,low

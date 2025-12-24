@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - kbucket
+  - dsl:
+    - compare_versions(version, '<= 4.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/kbucket/readme.txt'
+  redirects: true
+id: kbucket-c19b0da5-db46-4a27-86a6-445dd9a3350d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/kbucket/
+    google-query: inurl:"/wp-content/plugins/kbucket/"
+    shodan-query: http.html:"wp-content/plugins/kbucket/"
+  name: 'KBucket <= 4.2.2 - Authenticated (Subscriber+) Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c19b0da5-db46-4a27-86a6-445dd9a3350d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,kbucket,low,candidate

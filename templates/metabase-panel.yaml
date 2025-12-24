@@ -1,0 +1,32 @@
+id: metabase-panel
+info:
+  author: revblock,daffainfo
+  description: If a Metabase instance is deployed on the target URL it will return
+    a login page with the version number in the page source
+  metadata:
+    shodan-query: http.title:"Metabase"
+  name: Metabase Login Panel
+  severity: info
+  tags: panel,metabase,login
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - '"(v\d+.\d+.\d+)"'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Metabase</title>
+    - window.MetabaseBootstrap
+    - window.MetabaseRoot
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/login'

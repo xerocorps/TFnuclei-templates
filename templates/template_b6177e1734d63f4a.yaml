@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - apache
+    - security
+    - log exposure
+  description: Template to detect Apache instances with access log exposure
+  id: apache-access-log-exposure
+  matcher-condition: or
+  matchers:
+  - description: Apache access log found in response body
+    pattern: Apache Access Log
+    type: body
+  name: Apache Access Log Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /access.log
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

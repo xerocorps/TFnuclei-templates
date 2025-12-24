@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gdreseller
+  - dsl:
+    - compare_versions(version, '<= 1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gdreseller/readme.txt'
+  redirects: true
+id: gdreseller-1f22cb85-2abc-43ab-9f83-c304d618c7d9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gdreseller/
+    google-query: inurl:"/wp-content/plugins/gdreseller/"
+    shodan-query: http.html:"wp-content/plugins/gdreseller/"
+  name: 'GDReseller <= 1.6 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1f22cb85-2abc-43ab-9f83-c304d618c7d9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,gdreseller,low,candidate

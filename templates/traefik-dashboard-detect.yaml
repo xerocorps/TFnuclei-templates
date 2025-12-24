@@ -1,0 +1,15 @@
+id: traefik-dashboard-detect
+info:
+  author: schniggie,StreetOfHackerR007
+  name: Traefik Dashboard
+  severity: info
+  tags: panel,traefik
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <meta name=description content="Traefik UI">
+  method: GET
+  path:
+  - '{{BaseURL}}/dashboard/'

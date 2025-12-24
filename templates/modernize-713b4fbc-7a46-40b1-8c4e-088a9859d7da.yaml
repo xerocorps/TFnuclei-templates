@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - modernize
+  - dsl:
+    - compare_versions(version, '<= 3.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/modernize/style.css'
+  redirects: true
+id: modernize-713b4fbc-7a46-40b1-8c4e-088a9859d7da
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/modernize/
+    google-query: inurl:"/wp-content/themes/modernize/"
+    shodan-query: http.html:"wp-content/themes/modernize/"
+  name: 'Modernize <= 3.4.0 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/713b4fbc-7a46-40b1-8c4e-088a9859d7da?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,modernize,low,candidate

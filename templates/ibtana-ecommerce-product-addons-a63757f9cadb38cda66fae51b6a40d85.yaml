@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ibtana-ecommerce-product-addons
+  - dsl:
+    - compare_versions(version, '<= 0.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ibtana-ecommerce-product-addons/readme.txt'
+  redirects: true
+id: ibtana-ecommerce-product-addons-a63757f9cadb38cda66fae51b6a40d85
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ibtana-ecommerce-product-addons/
+    google-query: inurl:"/wp-content/plugins/ibtana-ecommerce-product-addons/"
+    shodan-query: 'vuln:'
+  name: 'Ibtana - Ecommerce Product Addons <= 0.2.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6a906f90-fac2-43cf-8f67-99f8862dc636?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ibtana-ecommerce-product-addons,medium

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - awesome-support
+  - dsl:
+    - compare_versions(version, '<= 6.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/awesome-support/readme.txt'
+  redirects: true
+id: awesome-support-099a191ee9525a2a5854ca3b87f774bd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/awesome-support/
+    google-query: inurl:"/wp-content/plugins/awesome-support/"
+    shodan-query: 'vuln:'
+  name: "Awesome Support \u2013 WordPress HelpDesk & Support Plugin <= 6.1.7 - Missing\
+    \ Authorization via wpas_get_users()\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bfb77432-e58d-466e-a366-8b8d7f1b6982?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,awesome-support,high

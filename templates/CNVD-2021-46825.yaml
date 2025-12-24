@@ -1,0 +1,20 @@
+expression: r0()
+id: CNVD-2021-46825
+info:
+  author: wulalalaaa(https://github.com/wulalalaaa)
+  description: "Apache storm\u5B58\u5728\u672A\u7ECF\u6388\u6743\u7684\u8BBF\u95EE\
+    \u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u53EF\u5229\u7528\u8BE5\u6F0F\u6D1E\u672A\
+    \u6388\u6743\u8BBF\u95EE\uFF0C\u4ECE\u800C\u83B7\u53D6\u654F\u611F\u4FE1\u606F\
+    \u53CA\u8FDB\u884C\u672A\u6388\u6743\u64CD\u4F5C\u7B49\u3002"
+  name: "Apache storm\u672A\u7ECF\u6388\u6743\u7684\u8BBF\u95EECNVD-2021-46825"
+  reference:
+  - https://storm.apache.org/releases/current/STORM-UI-REST-API.html
+  severity: critical
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"{\"totalMem\":")
+      && response.body.bcontains(b"\"stormVersion\":")
+    request:
+      follow_redirects: true
+      method: GET
+      path: /api/v1/cluster/summary

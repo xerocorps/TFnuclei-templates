@@ -1,0 +1,20 @@
+id: ibm-service-assistant
+info:
+  author: dhiyaneshDK
+  metadata:
+    shodan-query: http.title:"Welcome to Service Assistant"
+  name: IBM Service Assistant
+  severity: info
+  tags: panel,ibm,service
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Welcome to Service Assistant</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/service/'

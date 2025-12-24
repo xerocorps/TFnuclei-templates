@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - booking-system
+  - dsl:
+    - compare_versions(version, '<= 2.9.9.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/booking-system/readme.txt'
+  redirects: true
+id: booking_system-f673e463-5ef0-4704-91a1-76e375df9d1c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/booking-system/
+    google-query: inurl:"/wp-content/plugins/booking-system/"
+    shodan-query: http.html:"wp-content/plugins/booking-system/"
+  name: 'Pinpoint Booking System <= 2.9.9.5.1 - Authenticated (Subscriber+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f673e463-5ef0-4704-91a1-76e375df9d1c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,booking-system,low,candidate

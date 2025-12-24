@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-mail-smtp
+  - dsl:
+    - compare_versions(version, '<= 4.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-mail-smtp/readme.txt'
+  redirects: true
+id: wp_mail_smtp-2d4e9daf-d414-4ace-9efd-4c3e16deeb8f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-mail-smtp/
+    google-query: inurl:"/wp-content/plugins/wp-mail-smtp/"
+    shodan-query: http.html:"wp-content/plugins/wp-mail-smtp/"
+  name: 'WP Mail SMTP <= 4.0.1 - Authenticated (Admin+) SMTP Password Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2d4e9daf-d414-4ace-9efd-4c3e16deeb8f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-mail-smtp,low,candidate

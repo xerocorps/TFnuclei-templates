@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sky-elementor-addons
+  - dsl:
+    - compare_versions(version, '<= 2.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sky-elementor-addons/readme.txt'
+  redirects: true
+id: sky-elementor-addons-a77d646b0ca65be83cef4a1196433a63
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sky-elementor-addons/
+    google-query: inurl:"/wp-content/plugins/sky-elementor-addons/"
+    shodan-query: 'vuln:'
+  name: 'Sky Addons for Elementor <= 2.4.0 - Authenticated(Contributor+) Stored Cross-site
+    scripting via Wrapper Link URL
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d5d0ccbd-a091-4897-a100-eac75ffa0e3b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sky-elementor-addons,low

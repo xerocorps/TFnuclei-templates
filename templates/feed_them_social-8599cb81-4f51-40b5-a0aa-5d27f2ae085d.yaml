@@ -1,0 +1,49 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - feed-them-social
+  - dsl:
+    - compare_versions(version, '<= 2.9.8.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/feed-them-social/readme.txt'
+  redirects: true
+id: feed_them_social-8599cb81-4f51-40b5-a0aa-5d27f2ae085d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: 'The Feed Them Social plugin for WordPress is vulnerable to Cross-Site
+    Request Forgery in versions up to, and including, 2.9.8.5. This is due to missing
+    or incorrect nonce validation on the fts_refresh_token_ajax function. This makes
+    it possible for unauthenticated attackers to update plugin settings.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/feed-them-social/
+    google-query: inurl:"/wp-content/plugins/feed-them-social/"
+    shodan-query: http.html:"wp-content/plugins/feed-them-social/"
+  name: "Feed Them Social \u2013 for Twitter feed, Youtube and more <= 2.9.8.5 - Cross-Site\
+    \ Request Forgery to Plugin Settings Update\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8599cb81-4f51-40b5-a0aa-5d27f2ae085d?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,feed-them-social,medium,production

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - digits
+  - dsl:
+    - compare_versions(version, '8.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/digits/readme.txt'
+  redirects: true
+id: digits-9b6730e2c3d90bc9ed956d88efa939c8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/digits/
+    google-query: inurl:"/wp-content/plugins/digits/"
+    shodan-query: 'vuln:'
+  name: 'Digits <= 8.4.1 - Cross-Site Request Forgery to Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/84f2afb4-f1c6-4313-8958-38f1b5140a67?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,digits,medium

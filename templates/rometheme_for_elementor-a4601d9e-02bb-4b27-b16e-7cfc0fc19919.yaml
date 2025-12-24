@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rometheme-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rometheme-for-elementor/readme.txt'
+  redirects: true
+id: rometheme_for_elementor-a4601d9e-02bb-4b27-b16e-7cfc0fc19919
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rometheme-for-elementor/
+    google-query: inurl:"/wp-content/plugins/rometheme-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/rometheme-for-elementor/"
+  name: 'RTMKit Addons <= 1.6.5 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Accordion Repeater Block Attribute
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a4601d9e-02bb-4b27-b16e-7cfc0fc19919?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,rometheme-for-elementor,low,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ads-by-datafeedrcom
+  - dsl:
+    - compare_versions(version, '<= 1.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ads-by-datafeedrcom/readme.txt'
+  redirects: true
+id: ads_by_datafeedrcom-61c71bbf-ddae-4f35-ac8d-9753fb3fb67f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ads-by-datafeedrcom/
+    google-query: inurl:"/wp-content/plugins/ads-by-datafeedrcom/"
+    shodan-query: http.html:"wp-content/plugins/ads-by-datafeedrcom/"
+  name: 'Ads by datafeedr.com <= 1.2.0 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/61c71bbf-ddae-4f35-ac8d-9753fb3fb67f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ads-by-datafeedrcom,low,candidate

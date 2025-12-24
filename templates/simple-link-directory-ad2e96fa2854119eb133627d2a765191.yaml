@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-link-directory
+  - dsl:
+    - compare_versions(version, '<= 5.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-link-directory/readme.txt'
+  redirects: true
+id: simple-link-directory-ad2e96fa2854119eb133627d2a765191
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-link-directory/
+    google-query: inurl:"/wp-content/plugins/simple-link-directory/"
+    shodan-query: 'vuln:'
+  name: 'Simple Link Directory <= 5.6.0 - PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bd302d8e-bba1-4fa1-bcbc-591d894ca1d6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-link-directory,low

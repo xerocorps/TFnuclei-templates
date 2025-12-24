@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tumult-hype-animations
+  - dsl:
+    - compare_versions(version, '<= 1.9.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tumult-hype-animations/readme.txt'
+  redirects: true
+id: tumult-hype-animations-953f77120b81ab9c1451615ecdc1684e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tumult-hype-animations/
+    google-query: inurl:"/wp-content/plugins/tumult-hype-animations/"
+    shodan-query: 'vuln:'
+  name: 'Tumult Hype Animations <= 1.9.12 - Authenticated (Author+) Arbitrary File
+    Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb267bbd-cd62-49f7-9abc-c6734b23be22?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tumult-hype-animations,low

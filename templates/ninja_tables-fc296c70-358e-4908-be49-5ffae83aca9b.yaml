@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ninja-tables
+  - dsl:
+    - compare_versions(version, '<= 4.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ninja-tables/readme.txt'
+  redirects: true
+id: ninja_tables-fc296c70-358e-4908-be49-5ffae83aca9b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ninja-tables/
+    google-query: inurl:"/wp-content/plugins/ninja-tables/"
+    shodan-query: http.html:"wp-content/plugins/ninja-tables/"
+  name: 'Ninja Tables <= 4.3.4 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting via plugin settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fc296c70-358e-4908-be49-5ffae83aca9b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ninja-tables,low,candidate

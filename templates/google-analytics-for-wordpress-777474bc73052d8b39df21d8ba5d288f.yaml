@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - google-analytics-for-wordpress
+  - dsl:
+    - compare_versions(version, '<= 8.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/google-analytics-for-wordpress/readme.txt'
+  redirects: true
+id: google-analytics-for-wordpress-777474bc73052d8b39df21d8ba5d288f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/google-analytics-for-wordpress/
+    google-query: inurl:"/wp-content/plugins/google-analytics-for-wordpress/"
+    shodan-query: 'vuln:'
+  name: 'MonsterInsights <= 8.9.0 - Unauthenticated Stored Cross-Site Scripting via
+    Google Analytics
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0388853e-4bf8-4627-876a-b842e7016de3?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,google-analytics-for-wordpress,high

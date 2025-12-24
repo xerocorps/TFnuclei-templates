@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-wholesale-prices
+  - dsl:
+    - compare_versions(version, '<= 2.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-wholesale-prices/readme.txt'
+  redirects: true
+id: woocommerce-wholesale-prices-5325ee7221e0f9031a71dab9d5cc3d46
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-wholesale-prices/
+    google-query: inurl:"/wp-content/plugins/woocommerce-wholesale-prices/"
+    shodan-query: 'vuln:'
+  name: 'Wholesale Suite <= 2.1.5 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a7372314-fff1-42c4-99b6-10d7541d1a29?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woocommerce-wholesale-prices,medium

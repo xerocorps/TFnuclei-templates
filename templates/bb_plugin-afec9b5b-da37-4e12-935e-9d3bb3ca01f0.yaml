@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bb-plugin
+  - dsl:
+    - compare_versions(version, '<= 2.9.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bb-plugin/readme.txt'
+  redirects: true
+id: bb_plugin-afec9b5b-da37-4e12-935e-9d3bb3ca01f0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bb-plugin/
+    google-query: inurl:"/wp-content/plugins/bb-plugin/"
+    shodan-query: http.html:"wp-content/plugins/bb-plugin/"
+  name: 'Beaver Builder Plugin (Starter Version) <= 2.9.2.1 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting via ''auto_play''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/afec9b5b-da37-4e12-935e-9d3bb3ca01f0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bb-plugin,low,candidate

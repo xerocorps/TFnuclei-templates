@@ -1,0 +1,11 @@
+id: grafana-workflow
+info:
+  author: pdteam
+  description: A simple workflow that runs all Grafana related nuclei templates on
+    a given target.
+  name: Grafana Security Checks
+  tags: workflow
+workflows:
+- subtemplates:
+  - template: default-logins/grafana/grafana-default-credential.yaml
+  template: exposed-panels/grafana-detect.yaml

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ubermenu
+  - dsl:
+    - compare_versions(version, '<= 3.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ubermenu/readme.txt'
+  redirects: true
+id: ubermenu-f5905ac46fc848b6b7db6aec714caee2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ubermenu/
+    google-query: inurl:"/wp-content/plugins/ubermenu/"
+    shodan-query: 'vuln:'
+  name: 'Uber Menu <= 3.8.2 - Authenticated (Contributor+) Stored Cross-Site Scripting
+    via Multiple Shortcodes
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/96161594-9513-49f7-91ab-9ad05b900a81?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ubermenu,low

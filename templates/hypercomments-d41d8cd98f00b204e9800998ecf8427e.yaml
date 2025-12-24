@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hypercomments
+  - dsl:
+    - compare_versions(version, '<=  1.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hypercomments/readme.txt'
+  redirects: true
+id: hypercomments-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The HyperComments plugin for WordPress is vulnerable to Arbitrary File
+    Deletion via the 'xml' GET parameter in versions up to, and including, 1.2.2.
+    This makes it possible for unauthenticated attackers to delete files on the vulnerable
+    filesystem.
+  metadata:
+    fofa-query: wp-content/plugins/hypercomments/
+    google-query: inurl:"/wp-content/plugins/hypercomments/"
+    shodan-query: 'vuln:'
+  name: HyperComments <= 1.2.2 - Arbitrary File Deletion
+  reference: null
+  severity: low
+  tags: cve,wordpress,wp-plugin,hypercomments,low

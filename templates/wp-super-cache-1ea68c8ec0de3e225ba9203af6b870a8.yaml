@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-super-cache
+  - dsl:
+    - compare_versions(version, '< 1.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-super-cache/readme.txt'
+  redirects: true
+id: wp-super-cache-1ea68c8ec0de3e225ba9203af6b870a8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-super-cache/
+    google-query: inurl:"/wp-content/plugins/wp-super-cache/"
+    shodan-query: 'vuln:'
+  name: 'WP Super Cache <= 1.4.4 - Authenticated File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/51b6c73d-fd4f-4469-9859-fbae61b5924c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-super-cache,low

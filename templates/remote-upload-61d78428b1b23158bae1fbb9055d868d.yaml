@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - remote-upload
+  - dsl:
+    - compare_versions(version, '<= 1.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/remote-upload/readme.txt'
+  redirects: true
+id: remote-upload-61d78428b1b23158bae1fbb9055d868d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/remote-upload/
+    google-query: inurl:"/wp-content/plugins/remote-upload/"
+    shodan-query: 'vuln:'
+  name: 'WP Remote Upload <= 1.2.1 - Cross-Site Request Forgery to Arbitrary File
+    Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ddfbde0f-8e41-45c9-b808-bee82c2ff172?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,remote-upload,medium

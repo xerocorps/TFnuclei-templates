@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - work-the-flow-file-upload
+  - dsl:
+    - compare_versions(version, '<= 2.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/work-the-flow-file-upload/readme.txt'
+  redirects: true
+id: work-the-flow-file-upload-5064d96465ff52815e9015d96ef7c7a5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/work-the-flow-file-upload/
+    google-query: inurl:"/wp-content/plugins/work-the-flow-file-upload/"
+    shodan-query: 'vuln:'
+  name: 'Work The Flow File Upload <= 2.5.2 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/eb271cc8-01ec-45eb-9d6f-efc55c7c3923?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,work-the-flow-file-upload,critical

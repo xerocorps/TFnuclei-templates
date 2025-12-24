@@ -1,0 +1,23 @@
+id: circleci-ssh-config
+info:
+  author: geeknik
+  name: circleci ssh-config exposure
+  severity: low
+  tags: config,exposure
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Host
+    - HostName
+    - IdentityFile
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/.circleci/ssh-config'
+  redirects: true

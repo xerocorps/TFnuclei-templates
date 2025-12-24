@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-piwik
+  - dsl:
+    - compare_versions(version, '<= 1.0.27')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-piwik/readme.txt'
+  redirects: true
+id: wp-piwik-41d17607368c16db8f01ecf3a60b1f0c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-piwik/
+    google-query: inurl:"/wp-content/plugins/wp-piwik/"
+    shodan-query: 'vuln:'
+  name: 'WP-Piwik <= 1.0.27 - Authenticated (Administrator+) Stored Cross-Site Scripting
+    via Plugin Display Name
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/68a520bb-261a-43f0-993d-de208035afe5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-piwik,low

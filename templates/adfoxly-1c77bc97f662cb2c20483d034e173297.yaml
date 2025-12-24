@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - adfoxly
+  - dsl:
+    - compare_versions(version, '<= 1.8.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/adfoxly/readme.txt'
+  redirects: true
+id: adfoxly-1c77bc97f662cb2c20483d034e173297
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/adfoxly/
+    google-query: inurl:"/wp-content/plugins/adfoxly/"
+    shodan-query: 'vuln:'
+  name: "AdFoxly \u2013 Ad Manager, AdSense Ads & Ads.txt <= 1.8.5 - Missing Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0f64cbff-96a2-45e6-b37a-a7d4702fdf09?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,adfoxly,high

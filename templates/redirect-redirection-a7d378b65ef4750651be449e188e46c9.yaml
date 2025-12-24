@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - redirect-redirection
+  - dsl:
+    - compare_versions(version, '<= 1.1.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/redirect-redirection/readme.txt'
+  redirects: true
+id: redirect-redirection-a7d378b65ef4750651be449e188e46c9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/redirect-redirection/
+    google-query: inurl:"/wp-content/plugins/redirect-redirection/"
+    shodan-query: 'vuln:'
+  name: 'Redirect Redirection <= 1.1.3 - Missing Authorization in ''LoadTab'' function
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8250434a-2fad-4f44-9813-90e734d32d2e?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,redirect-redirection,high

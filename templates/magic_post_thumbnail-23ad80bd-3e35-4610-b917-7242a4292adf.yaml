@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - magic-post-thumbnail
+  - dsl:
+    - compare_versions(version, '<= 5.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/magic-post-thumbnail/readme.txt'
+  redirects: true
+id: magic_post_thumbnail-23ad80bd-3e35-4610-b917-7242a4292adf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/magic-post-thumbnail/
+    google-query: inurl:"/wp-content/plugins/magic-post-thumbnail/"
+    shodan-query: http.html:"wp-content/plugins/magic-post-thumbnail/"
+  name: "Generate Images \u2013 Magic Post Thumbnail <= 5.2.7 - Authenticated (Admin+)\
+    \ Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/23ad80bd-3e35-4610-b917-7242a4292adf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,magic-post-thumbnail,low,candidate

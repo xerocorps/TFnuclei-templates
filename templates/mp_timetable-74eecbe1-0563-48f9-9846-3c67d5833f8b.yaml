@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mp-timetable
+  - dsl:
+    - compare_versions(version, '<= 2.4.15')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mp-timetable/readme.txt'
+  redirects: true
+id: mp_timetable-74eecbe1-0563-48f9-9846-3c67d5833f8b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mp-timetable/
+    google-query: inurl:"/wp-content/plugins/mp-timetable/"
+    shodan-query: http.html:"wp-content/plugins/mp-timetable/"
+  name: 'Timetable and Event Schedule by MotoPress <= 2.4.15 - Insecure Direct Object
+    Reference to Authenticated (Contributor+) Event Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/74eecbe1-0563-48f9-9846-3c67d5833f8b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mp-timetable,low,candidate

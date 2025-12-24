@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - learnpress
+  - dsl:
+    - compare_versions(version, '<= 4.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/learnpress/readme.txt'
+  redirects: true
+id: learnpress-3cdc956d1f5dbb792fe982b901a13ae7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/learnpress/
+    google-query: inurl:"/wp-content/plugins/learnpress/"
+    shodan-query: 'vuln:'
+  name: 'LearnPress <= 4.2.3 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e91e864a-20f6-48a2-ab9f-d20836207383?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,learnpress,high

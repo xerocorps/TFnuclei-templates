@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - unite-gallery-lite
+  - dsl:
+    - compare_versions(version, '<= 1.7.59')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/unite-gallery-lite/readme.txt'
+  redirects: true
+id: unite_gallery_lite-0c2925c1-f5c6-45b9-bc61-96f325c0372f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/unite-gallery-lite/
+    google-query: inurl:"/wp-content/plugins/unite-gallery-lite/"
+    shodan-query: http.html:"wp-content/plugins/unite-gallery-lite/"
+  name: 'Unite Gallery Lite <= 1.7.59 - Authenticated(Administrator+) Local File Inclusion
+    via ''view'' parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0c2925c1-f5c6-45b9-bc61-96f325c0372f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,unite-gallery-lite,low,candidate

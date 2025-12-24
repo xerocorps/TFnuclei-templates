@@ -1,0 +1,26 @@
+id: sftp-config
+info:
+  author: geeknik
+  name: sftp password exposure
+  reference: https://blog.sucuri.net/2012/11/psa-sftpftp-password-exposure-via-sftp-config-json.html
+  severity: high
+  tags: sftp,config,auth
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - application/json
+  - condition: and
+    type: word
+    words:
+    - 'host":'
+    - 'user":'
+    - sftp
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/sftp-config.json'

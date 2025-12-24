@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - yith-woocommerce-product-vendors
+  - dsl:
+    - compare_versions(version, '< 3.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/yith-woocommerce-product-vendors/readme.txt'
+  redirects: true
+id: yith-woocommerce-product-vendors-cbcf448a9a20aa48e7b55d3a7cca1d3b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/yith-woocommerce-product-vendors/
+    google-query: inurl:"/wp-content/plugins/yith-woocommerce-product-vendors/"
+    shodan-query: 'vuln:'
+  name: 'YITH WooCommerce Multi Vendor <= 3.8.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b924261f-1e1a-4565-a22e-ba592912d270?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,yith-woocommerce-product-vendors,medium

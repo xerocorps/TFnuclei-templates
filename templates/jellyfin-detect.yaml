@@ -1,0 +1,24 @@
+id: jellyfin-detect
+info:
+  author: dwisiswant0
+  name: Jellyfin detected
+  severity: info
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - name="application-name" content="Jellyfin"
+    - class="page homePage libraryPage allLibraryPage backdropPage pageWithAbsoluteTabs
+      withTabs"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/home.html'
+  - '{{BaseURL}}/web/home.html'
+  - '{{BaseURL}}/index.html'
+  - '{{BaseURL}}/web/index.html'

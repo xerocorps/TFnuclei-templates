@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - last-viewed-posts
+  - dsl:
+    - compare_versions(version, '<= 1.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/last-viewed-posts/readme.txt'
+  redirects: true
+id: last_viewed_posts-db838a3f-6afa-4686-8e6a-01edab2dcc96
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/last-viewed-posts/
+    google-query: inurl:"/wp-content/plugins/last-viewed-posts/"
+    shodan-query: http.html:"wp-content/plugins/last-viewed-posts/"
+  name: 'Last Viewed Posts by WPBeginner <= 1.0.1 - Unauthenticated Sensitive Information
+    Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/db838a3f-6afa-4686-8e6a-01edab2dcc96?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,last-viewed-posts,low,candidate

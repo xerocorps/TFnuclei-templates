@@ -1,0 +1,45 @@
+id: prometheus-targets-endpoint
+info:
+  author: geeknik
+  description: "The targets endpoint exposes services belonging to the infrastructure,\
+    \ including their roles and labels. In addition to showing the target machine\
+    \ addresses, the endpoint also exposes metadata labels that are added by the target\
+    \ provider. These labels are intended to contain non-sensitive values, like the\
+    \ name of the server or its description, but various cloud platforms may automatically\
+    \ expose sensitive data in these labels, oftentimes without the developer\u2019\
+    s knowledge."
+  name: Prometheus targets API endpoint
+  reference: https://jfrog.com/blog/dont-let-prometheus-steal-your-fire/
+  severity: info
+  tags: prometheus,exposure
+requests:
+- attack: sniper
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - '{"status":"success","data":'
+    - Labels
+  - part: header
+    type: word
+    words:
+    - application/json
+  matchers-condition: and
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /api/v1/targets HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

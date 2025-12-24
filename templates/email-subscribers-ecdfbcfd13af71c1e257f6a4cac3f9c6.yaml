@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - email-subscribers
+  - dsl:
+    - compare_versions(version, '< 4.5.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/email-subscribers/readme.txt'
+  redirects: true
+id: email-subscribers-ecdfbcfd13af71c1e257f6a4cac3f9c6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/email-subscribers/
+    google-query: inurl:"/wp-content/plugins/email-subscribers/"
+    shodan-query: 'vuln:'
+  name: 'Email Subscribers & Newsletters <= 4.5.5 - Unauthenticated Email Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/715dc265-253e-4409-b57d-474d3740adbe?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,email-subscribers,low

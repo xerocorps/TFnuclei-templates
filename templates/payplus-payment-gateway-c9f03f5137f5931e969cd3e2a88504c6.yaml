@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - payplus-payment-gateway
+  - dsl:
+    - compare_versions(version, '<= 7.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/payplus-payment-gateway/readme.txt'
+  redirects: true
+id: payplus-payment-gateway-c9f03f5137f5931e969cd3e2a88504c6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/payplus-payment-gateway/
+    google-query: inurl:"/wp-content/plugins/payplus-payment-gateway/"
+    shodan-query: 'vuln:'
+  name: 'PayPlus Payment Gateway <= 7.0.7 - Authenticated (Subscriber+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e6e96578-d54b-4c45-91cd-f143311445ea?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,payplus-payment-gateway,low

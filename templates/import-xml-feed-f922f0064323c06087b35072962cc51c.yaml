@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - import-xml-feed
+  - dsl:
+    - compare_versions(version, '<= 2.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/import-xml-feed/readme.txt'
+  redirects: true
+id: import-xml-feed-f922f0064323c06087b35072962cc51c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/import-xml-feed/
+    google-query: inurl:"/wp-content/plugins/import-xml-feed/"
+    shodan-query: 'vuln:'
+  name: 'Import XML and RSS Feeds <= 2.1.5 - Authenticated (Administrator+) Arbitrary
+    File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cecf1bcc-ed3e-430c-80d4-d940416eed9a?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,import-xml-feed,low

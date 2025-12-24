@@ -1,0 +1,13 @@
+directive_name: piholeVersion
+directive_str: '>version\n'
+matches:
+- pattern: ^version v(\d[\w._-]+)
+  service: pi-hole-stats
+  version_info: ' p/pi-hole Telnet API/ v/$1/ cpe:/a:pi-hole:pi-hole:$1/'
+- pattern: '^unknown command: .*---EOM---\n\n$'
+  service: pi-hole-stats
+  version_info: s p/pi-hole Telnet API/ cpe:/a:pi-hole:pi-hole/
+ports:
+- 4711
+protocol: TCP
+rarity: 9

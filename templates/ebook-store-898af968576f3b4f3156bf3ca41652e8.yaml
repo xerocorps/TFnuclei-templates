@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ebook-store
+  - dsl:
+    - compare_versions(version, '<= 5.788')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ebook-store/readme.txt'
+  redirects: true
+id: ebook-store-898af968576f3b4f3156bf3ca41652e8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ebook-store/
+    google-query: inurl:"/wp-content/plugins/ebook-store/"
+    shodan-query: 'vuln:'
+  name: 'Ebook Store <= 5.788 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e36eed5b-f76d-451e-a0f8-fd4b91bcf9f1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ebook-store,medium

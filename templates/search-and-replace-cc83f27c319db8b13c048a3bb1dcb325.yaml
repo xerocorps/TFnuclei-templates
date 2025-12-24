@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - search-and-replace
+  - dsl:
+    - compare_versions(version, '<= 3.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/search-and-replace/readme.txt'
+  redirects: true
+id: search-and-replace-cc83f27c319db8b13c048a3bb1dcb325
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/search-and-replace/
+    google-query: inurl:"/wp-content/plugins/search-and-replace/"
+    shodan-query: 'vuln:'
+  name: 'Search & Replace <= 3.2.1 - Authenticated (Administrator+) SQL injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/799087f0-d9da-4061-a29f-5bd634147b2e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,search-and-replace,low

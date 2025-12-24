@@ -1,0 +1,20 @@
+http:
+- extractors:
+  - part: header
+    regex:
+    - 'Server: MiniUPnPd/([0-9.]+)'
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: MiniUPnPd-detect
+info:
+  author: rix4uni
+  metadata:
+    fofa-query:
+    - 'Server: MiniUPnPd'
+    shodan-query:
+    - 'Server: MiniUPnPd'
+  name: MiniUPnPd Detect
+  severity: info
+  tags: tech,MiniUPnPd

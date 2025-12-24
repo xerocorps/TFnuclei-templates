@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - intelligence
+  - dsl:
+    - compare_versions(version, '<= 1.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/intelligence/readme.txt'
+  redirects: true
+id: intelligence-b5aa0222-1e70-4c06-860f-77643da4356c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/intelligence/
+    google-query: inurl:"/wp-content/plugins/intelligence/"
+    shodan-query: http.html:"wp-content/plugins/intelligence/"
+  name: 'Intelligence <= 1.4.0 - Unauthenticated Full Path Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b5aa0222-1e70-4c06-860f-77643da4356c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,intelligence,low,candidate

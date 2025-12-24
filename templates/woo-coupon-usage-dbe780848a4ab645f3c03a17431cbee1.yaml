@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-coupon-usage
+  - dsl:
+    - compare_versions(version, '< 4.11.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-coupon-usage/readme.txt'
+  redirects: true
+id: woo-coupon-usage-dbe780848a4ab645f3c03a17431cbee1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-coupon-usage/
+    google-query: inurl:"/wp-content/plugins/woo-coupon-usage/"
+    shodan-query: 'vuln:'
+  name: "WooCommerce Affiliate Plugin \u2013 Coupon Affiliates < 4.11.3.4 - Cross-Site\
+    \ Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2657aa8a-b2de-4cb4-b9f8-e7fb0c887a7a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-coupon-usage,medium

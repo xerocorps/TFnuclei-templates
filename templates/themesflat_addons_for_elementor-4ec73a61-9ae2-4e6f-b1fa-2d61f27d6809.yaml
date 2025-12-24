@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - themesflat-addons-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 2.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/themesflat-addons-for-elementor/readme.txt'
+  redirects: true
+id: themesflat_addons_for_elementor-4ec73a61-9ae2-4e6f-b1fa-2d61f27d6809
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/themesflat-addons-for-elementor/
+    google-query: inurl:"/wp-content/plugins/themesflat-addons-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/themesflat-addons-for-elementor/"
+  name: 'Themesflat Addons For Elementor <= 2.2.5 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4ec73a61-9ae2-4e6f-b1fa-2d61f27d6809?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,themesflat-addons-for-elementor,low,candidate

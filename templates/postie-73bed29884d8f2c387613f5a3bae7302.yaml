@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - postie
+  - dsl:
+    - compare_versions(version, '< 1.9.41')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/postie/readme.txt'
+  redirects: true
+id: postie-73bed29884d8f2c387613f5a3bae7302
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/postie/
+    google-query: inurl:"/wp-content/plugins/postie/"
+    shodan-query: 'vuln:'
+  name: 'Postie <= 1.9.40 - Post Submission Spoofing & Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/57a5b6d9-92dc-488a-a3f2-b3c09361aefe?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,postie,high

@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-all-import-pro
+  - dsl:
+    - compare_versions(version, '< 4.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-all-import-pro/readme.txt'
+  redirects: true
+id: wp-all-import-pro-a633ffae574b1f7ec09f0d7e84b9faeb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: The All Import Pro Plugin for WordPress is vulnerable to blind SQL
+    Injection via the unknown parameter in versions up to, and including, 4.1.1 due
+    to insufficient escaping on the user supplied parameter and lack of sufficient
+    preparation on the existing SQL query.  This makes it possible for authenticated
+    attackers (contributor or higher user role) to append additional SQL queries into
+    already existing queries that can be used to extract sensitive information from
+    the database.
+  metadata:
+    fofa-query: wp-content/plugins/wp-all-import-pro/
+    google-query: inurl:"/wp-content/plugins/wp-all-import-pro/"
+    shodan-query: 'vuln:'
+  name: All Import Pro Plugin < 4.1.2 - SQL injection
+  reference:
+  - http://www.wpallimport.com/2015/03/wp-import-4-1-2-security-update/
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-all-import-pro,high

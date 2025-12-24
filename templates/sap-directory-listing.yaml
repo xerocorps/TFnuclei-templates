@@ -1,0 +1,24 @@
+id: sap-directory-listing
+info:
+  author: dhiyaneshDK
+  name: SAP Directory Listing
+  severity: medium
+  tags: sap,listing,misconfig
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - title="~system"
+    - NetWeaver
+  - status:
+    - 200
+    type: status
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/irj/go/km/navigation/'

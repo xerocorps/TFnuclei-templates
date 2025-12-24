@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-addons-for-contact-form-7
+  - dsl:
+    - compare_versions(version, '< 3.1.29')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-addons-for-contact-form-7/readme.txt'
+  redirects: true
+id: ultimate_addons_for_contact_form_7-6d1517d4-79d0-4d4b-b54d-86e00dabd874
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-addons-for-contact-form-7/
+    google-query: inurl:"/wp-content/plugins/ultimate-addons-for-contact-form-7/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-addons-for-contact-form-7/"
+  name: 'Ultimate Addons for Contact Form 7 <= 3.1.28 - Authenticated (Admin+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6d1517d4-79d0-4d4b-b54d-86e00dabd874?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-addons-for-contact-form-7,low,candidate

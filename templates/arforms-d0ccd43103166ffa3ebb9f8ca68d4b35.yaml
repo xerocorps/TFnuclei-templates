@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - arforms
+  - dsl:
+    - compare_versions(version, '< 3.5.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/arforms/readme.txt'
+  redirects: true
+id: arforms-d0ccd43103166ffa3ebb9f8ca68d4b35
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/arforms/
+    google-query: inurl:"/wp-content/plugins/arforms/"
+    shodan-query: 'vuln:'
+  name: 'Repute ARForms <= 3.5.1 - Unauthenticated Arbitrary File Deletion via Path
+    Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e8f73f1e-8f0a-4c4c-aca2-c9ae9bc4f63d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,arforms,low

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - madara-core
+  - dsl:
+    - compare_versions(version, '<= 2.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/madara-core/readme.txt'
+  redirects: true
+id: madara_core-f9de8e90-5bda-4ab1-aa78-2748cd717376
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/madara-core/
+    google-query: inurl:"/wp-content/plugins/madara-core/"
+    shodan-query: http.html:"wp-content/plugins/madara-core/"
+  name: 'Madara - Core <= 2.2.3 - Unauthenticated Arbitrary File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f9de8e90-5bda-4ab1-aa78-2748cd717376?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,madara-core,low,candidate

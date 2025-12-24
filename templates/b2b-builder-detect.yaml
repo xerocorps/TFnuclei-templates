@@ -1,0 +1,25 @@
+id: b2b-builder-detect
+info:
+  author: ffffffff0x
+  metadata:
+    fofa-query: app="B2BBuilder"
+  name: B2BBuilder Detect
+  severity: info
+  tags: b2bbuilder,tech
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - content="B2Bbuilder"
+    - translateButtonId = "B2Bbuilder"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

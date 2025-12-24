@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - microsoft-clarity
+  - dsl:
+    - compare_versions(version, '<= 0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/microsoft-clarity/readme.txt'
+  redirects: true
+id: microsoft-clarity-41c496ebd2e9a083cc2ef61f2bb928b9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/microsoft-clarity/
+    google-query: inurl:"/wp-content/plugins/microsoft-clarity/"
+    shodan-query: 'vuln:'
+  name: 'Microsoft Clarity <= 0.3 - Authenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/da3070aa-fae8-465a-95e5-ae92dcd89f66?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,microsoft-clarity,low

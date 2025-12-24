@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ez-portfolio
+  - dsl:
+    - compare_versions(version, '< 1.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ez-portfolio/readme.txt'
+  redirects: true
+id: ez-portfolio-f0f8678bc39bc508a3afb7cc74ef7704
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ez-portfolio/
+    google-query: inurl:"/wp-content/plugins/ez-portfolio/"
+    shodan-query: 'vuln:'
+  name: 'EZ Portfolio (Unmaintained) < 1.0.2 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7dc9973a-4b5f-4efb-8df5-df1cbf9fe3b0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ez-portfolio,high

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-social-media-icons
+  - dsl:
+    - compare_versions(version, '<= 2.9.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-social-media-icons/readme.txt'
+  redirects: true
+id: ultimate_social_media_icons-0092f02d-ec3a-4a11-bad9-67714d3d976e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-social-media-icons/
+    google-query: inurl:"/wp-content/plugins/ultimate-social-media-icons/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-social-media-icons/"
+  name: 'Social Media Share Buttons & Social Sharing Icons <= 2.9.0 - Authenticated
+    (Admin+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0092f02d-ec3a-4a11-bad9-67714d3d976e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-social-media-icons,low,candidate

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - under-construction-maintenance-mode
+  - dsl:
+    - compare_versions(version, '< 1.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/under-construction-maintenance-mode/readme.txt'
+  redirects: true
+id: under-construction-maintenance-mode-2d916e82c50c7e41dce721ce3ef80cfc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/under-construction-maintenance-mode/
+    google-query: inurl:"/wp-content/plugins/under-construction-maintenance-mode/"
+    shodan-query: 'vuln:'
+  name: 'Under Construction, Coming Soon & Maintenance Mode <= 1.1.1 - Server Side
+    Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/86c1b729-e8fe-46e8-8d57-c6312087c6b2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,under-construction-maintenance-mode,low

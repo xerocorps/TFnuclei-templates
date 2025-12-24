@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpify-woo
+  - dsl:
+    - compare_versions(version, '<= 3.5.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpify-woo/readme.txt'
+  redirects: true
+id: wpify-woo-a5e8c852d2e1fecd27d5652ea98a82bd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpify-woo/
+    google-query: inurl:"/wp-content/plugins/wpify-woo/"
+    shodan-query: 'vuln:'
+  name: 'WPify Woo Czech <= 3.5.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a10da173-9b88-4599-928d-71fc42b35c50?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wpify-woo,medium

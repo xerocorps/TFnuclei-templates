@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - peepso-core
+  - dsl:
+    - compare_versions(version, '<= 6.0.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/peepso-core/readme.txt'
+  redirects: true
+id: peepso-core-a6c5d9f5ae6235e3cb6733928ebe1440
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/peepso-core/
+    google-query: inurl:"/wp-content/plugins/peepso-core/"
+    shodan-query: 'vuln:'
+  name: 'Community by PeepSo <= 6.0.2.0 - Cross-Site Request Forgery leading to Plugin/Subscription
+    Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dcf59d89-43e9-4bb2-be4f-9308698d1bb3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,peepso-core,medium

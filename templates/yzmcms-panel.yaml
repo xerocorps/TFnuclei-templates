@@ -1,0 +1,23 @@
+id: yzmcms-panel
+info:
+  author: pikpikcu,daffainfo
+  metadata:
+    shodan-query: http.title:"YzmCMS"
+  name: YzmCMS Login Panel
+  severity: info
+  tags: panel,yzmcms,login
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - Powered By <a href="http://www.yzmcms.com"
+    - Powered By YzmCMS
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/index/login.html'

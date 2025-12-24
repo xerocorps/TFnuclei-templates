@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tainacan
+  - dsl:
+    - compare_versions(version, '<= 0.21.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tainacan/readme.txt'
+  redirects: true
+id: tainacan-29a7aa52-ebbf-4185-a9ed-c24cb7d1f03b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tainacan/
+    google-query: inurl:"/wp-content/plugins/tainacan/"
+    shodan-query: http.html:"wp-content/plugins/tainacan/"
+  name: 'Tainacan <= 0.21.3 - Unauthenticated Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/29a7aa52-ebbf-4185-a9ed-c24cb7d1f03b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,tainacan,high,candidate

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - all-in-one-wp-security-and-firewall
+  - dsl:
+    - compare_versions(version, '<= 5.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/all-in-one-wp-security-and-firewall/readme.txt'
+  redirects: true
+id: all_in_one_wp_security_and_firewall-fae1b795-8939-4229-8f89-fedf6f320ec1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: 'The All In One WP Security & Firewall plugin for WordPress is vulnerable
+    to Cross-Site Request Forgery in versions up to, and including, 5.1.0. This is
+    due to missing or incorrect nonce validation on the process_bulk_action function.
+    This makes it possible for unauthenticated attackers to modify the plugin''s block
+    list table, via forged request granted they can trick a site administrator into
+    performing an action such as clicking on a link.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/all-in-one-wp-security-and-firewall/
+    google-query: inurl:"/wp-content/plugins/all-in-one-wp-security-and-firewall/"
+    shodan-query: http.html:"wp-content/plugins/all-in-one-wp-security-and-firewall/"
+  name: 'All In One WP Security & Firewall <= 5.1.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fae1b795-8939-4229-8f89-fedf6f320ec1?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-plugin,all-in-one-wp-security-and-firewall,medium,production

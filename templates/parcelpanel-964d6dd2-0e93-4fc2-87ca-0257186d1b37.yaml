@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - parcelpanel
+  - dsl:
+    - compare_versions(version, '<= 3.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/parcelpanel/readme.txt'
+  redirects: true
+id: parcelpanel-964d6dd2-0e93-4fc2-87ca-0257186d1b37
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/parcelpanel/
+    google-query: inurl:"/wp-content/plugins/parcelpanel/"
+    shodan-query: http.html:"wp-content/plugins/parcelpanel/"
+  name: "Shipment Tracking, Tracking, and Order Tracking for WooCommerce \u2013 ParcelPanel\
+    \ (Free to install) <= 3.8.2 - Authenticated (Subscriber+) SQL Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/964d6dd2-0e93-4fc2-87ca-0257186d1b37?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,parcelpanel,low,candidate

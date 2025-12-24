@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-access-manager
+  - dsl:
+    - compare_versions(version, '<= 6.9.20')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-access-manager/readme.txt'
+  redirects: true
+id: advanced_access_manager-e96e94f8-f61c-4458-9ede-53bab30502b6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-access-manager/
+    google-query: inurl:"/wp-content/plugins/advanced-access-manager/"
+    shodan-query: http.html:"wp-content/plugins/advanced-access-manager/"
+  name: 'Advanced Access Manager <= 6.9.20 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e96e94f8-f61c-4458-9ede-53bab30502b6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-access-manager,low,candidate

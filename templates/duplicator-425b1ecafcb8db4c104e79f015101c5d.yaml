@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - duplicator
+  - dsl:
+    - compare_versions(version, '<= 1.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/duplicator/readme.txt'
+  redirects: true
+id: duplicator-425b1ecafcb8db4c104e79f015101c5d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/duplicator/
+    google-query: inurl:"/wp-content/plugins/duplicator/"
+    shodan-query: 'vuln:'
+  name: "Duplicator \u2013 WordPress Migration Plugin <= 1.4.7 - Unauthenticated Backup\
+    \ Download\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b5136409-d843-4774-afe7-211a23f65da9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,duplicator,low

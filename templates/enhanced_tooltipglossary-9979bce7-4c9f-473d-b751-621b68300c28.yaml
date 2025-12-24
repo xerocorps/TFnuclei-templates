@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - enhanced-tooltipglossary
+  - dsl:
+    - compare_versions(version, '<= 4.3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/enhanced-tooltipglossary/readme.txt'
+  redirects: true
+id: enhanced_tooltipglossary-9979bce7-4c9f-473d-b751-621b68300c28
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/enhanced-tooltipglossary/
+    google-query: inurl:"/wp-content/plugins/enhanced-tooltipglossary/"
+    shodan-query: http.html:"wp-content/plugins/enhanced-tooltipglossary/"
+  name: 'CM Tooltip Glossary <= 4.3.7 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9979bce7-4c9f-473d-b751-621b68300c28?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,enhanced-tooltipglossary,low,candidate

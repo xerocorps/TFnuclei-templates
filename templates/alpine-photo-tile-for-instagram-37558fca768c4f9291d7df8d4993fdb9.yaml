@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - alpine-photo-tile-for-instagram
+  - dsl:
+    - compare_versions(version, '< 1.2.7.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/alpine-photo-tile-for-instagram/readme.txt'
+  redirects: true
+id: alpine-photo-tile-for-instagram-37558fca768c4f9291d7df8d4993fdb9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/alpine-photo-tile-for-instagram/
+    google-query: inurl:"/wp-content/plugins/alpine-photo-tile-for-instagram/"
+    shodan-query: 'vuln:'
+  name: 'Alpine PhotoTile for Instagram < 1.2.7.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/95265186-ff13-464b-adb9-3cf1753487d5?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,alpine-photo-tile-for-instagram,medium

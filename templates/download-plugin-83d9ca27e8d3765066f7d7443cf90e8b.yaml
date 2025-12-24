@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - download-plugin
+  - dsl:
+    - compare_versions(version, '< 1.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/download-plugin/readme.txt'
+  redirects: true
+id: download-plugin-83d9ca27e8d3765066f7d7443cf90e8b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/download-plugin/
+    google-query: inurl:"/wp-content/plugins/download-plugin/"
+    shodan-query: 'vuln:'
+  name: 'Download Plugin < 1.6.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/585a7332-b063-463c-8077-68a860e14df2?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,download-plugin,medium

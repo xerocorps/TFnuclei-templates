@@ -1,0 +1,75 @@
+flow: http(1)
+http:
+- extractors:
+  - part: body
+    regex:
+    - (?i)(?P<parameter>[a-zA-Z0-9_\[\]]+)=x(?:&|,).*?(?P<value>Polluted[^&\s]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    - 302
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}?{{parameters}}=x&{{parameters}}=Polluted_1'
+  - '{{BaseURL}}?{{parameters}}[]=x&{{parameters}}=Polluted_2'
+  - '{{BaseURL}}?{{parameters}}=x&{{parameters}}[]=Polluted_2'
+  - '{{BaseURL}}?{{parameters}}[]=x&{{parameters}}[]=Polluted_2'
+  - '{{BaseURL}}?{{parameters}}=x, Polluted_1&{{parameters}}=Polluted_2'
+  - '{{BaseURL}}?{{parameters}}=x%26{{parameters}}=Polluted_2'
+  - '{{BaseURL}}?{{parameters}}[1]=x&{{parameters}}[1]=Polluted_2'
+  payloads:
+    parameters: assets/5.1.1Parameters.txt
+- extractors:
+  - part: body
+    regex:
+    - (?i)(?P<parameter>[a-zA-Z0-9_\[\]]+)=x(?:&|,).*?(?P<value>Polluted[^&\s]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    - 302
+    type: status
+  payloads:
+    body_variant:
+    - '{{parameters}}=x&{{parameters}}=Polluted_1'
+    - '{{parameters}}[]=x&{{parameters}}=Polluted_2'
+    - '{{parameters}}=x&{{parameters}}[]=Polluted_2'
+    - '{{parameters}}[]=x&{{parameters}}[]=Polluted_2'
+    - '{{parameters}}[]=[x,Polluted_1]&{{parameters}}[]=Polluted_2'
+    - '{{parameters}}=x,Polluted_1&{{parameters}}=Polluted_2'
+    - '{{parameters}}=x%26{{parameters}}=Polluted_2'
+    - '{ "{{parameters}}" :"x" , "{{parameters}}": "Polluted_1" }''
+
+      '
+    parameters: assets/5.1.1Parameters.txt
+  raw:
+  - 'POST HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    {{body_variant}}
+
+    '
+id: ASVS-4-0-3-V5-1-1
+info:
+  author: Masoud Abdaal
+  classification:
+    cwe-id: CWE-235
+  description: 'Verify that the application has defenses against HTTP parameter pollution
+    attacks, particularly if the application framework makes no distinction about
+    the source of request parameters (GET, POST, cookies, headers, or environment
+    variables).
+
+    '
+  name: ASVS 5.1.1 Check
+  reference:
+  - https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v51-input-validation
+  - https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/04-Testing_for_HTTP_Parameter_Pollution
+  - https://swisskyrepo.github.io/PayloadsAllTheThings/HTTP%20Parameter%20Pollution/#parameter-pollution-table
+  severity: medium
+  tags: asvs,5.1.1

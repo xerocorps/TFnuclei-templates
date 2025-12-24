@@ -1,0 +1,24 @@
+http:
+- matchers:
+  - case-insensitive: true
+    type: word
+    words:
+    - sap business server pages team
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+id: sap_web_application_server
+info:
+  author: cn-kali-team
+  metadata:
+    fofa-query:
+    - body="sap business server pages team"
+    product: sap_web_application_server
+    shodan-query:
+    - html:"sap business server pages team"
+    - http.html:"sap business server pages team"
+    vendor: sap
+    verified: true
+  name: sap_web_application_server
+  severity: info
+  tags: detect,tech,sap_web_application_server

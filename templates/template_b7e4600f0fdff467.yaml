@@ -1,0 +1,50 @@
+fingerprint:
+- favicon_hash: []
+  headers: {}
+  keyword:
+  - ://www.adminer.org/' target="_blank" rel="noreferrer
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers:
+    Content-Security-Policy: script-src 'self' 'unsafe-inline' 'nonce-
+  keyword: []
+  path: /
+  request_data: ''
+  request_headers: {}
+  request_method: get
+  status_code: 0
+- favicon_hash: []
+  headers:
+    Content-Security-Policy: script-src 'self' 'unsafe-inline' 'nonce-
+  keyword: []
+  path: /adminer/index.php
+  request_data: ''
+  request_headers: {}
+  request_method: head
+  status_code: 200
+- favicon_hash: []
+  headers:
+    Content-Security-Policy: script-src 'self' 'unsafe-inline' 'nonce-
+  keyword: []
+  path: /adminer.php
+  request_data: ''
+  request_headers: {}
+  request_method: head
+  status_code: 200
+- favicon_hash: []
+  headers:
+    Content-Security-Policy: script-src 'self' 'unsafe-inline' 'nonce-
+  keyword: []
+  path: /tools/adminer.php
+  request_data: ''
+  request_headers: {}
+  request_method: head
+  status_code: 200
+name: adminer
+nuclei_tags:
+- - adminer
+priority: 1

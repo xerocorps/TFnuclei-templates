@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-product-catalogue
+  - dsl:
+    - compare_versions(version, '< 4.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-product-catalogue/readme.txt'
+  redirects: true
+id: ultimate-product-catalogue-caf4038bf3fa037c72b22500f42a495c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-product-catalogue/
+    google-query: inurl:"/wp-content/plugins/ultimate-product-catalogue/"
+    shodan-query: 'vuln:'
+  name: 'Ultimate Product Catalog < 4.2.3 - Authenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cb4e3b3c-20f4-4591-af0a-539b405d675e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ultimate-product-catalogue,low

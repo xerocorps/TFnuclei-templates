@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - getwid
+  - dsl:
+    - compare_versions(version, '<= 2.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/getwid/readme.txt'
+  redirects: true
+id: getwid-1f999553dabfe65a5c6fb25faafb592c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/getwid/
+    google-query: inurl:"/wp-content/plugins/getwid/"
+    shodan-query: 'vuln:'
+  name: "Getwid \u2013 Gutenberg Blocks <= 2.0.7 - Authenticated (Contributor+) DOM-Based\
+    \ Stored Cross-Site Scripting via 'Countdown'\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c4770184-1b96-490c-b506-f648ab3ed764?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,getwid,low

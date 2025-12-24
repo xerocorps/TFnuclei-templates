@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - suretriggers
+  - dsl:
+    - compare_versions(version, '<= 1.0.47')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/suretriggers/readme.txt'
+  redirects: true
+id: suretriggers-ddd6b25e999ea4a00d04505007fb4ab0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/suretriggers/
+    google-query: inurl:"/wp-content/plugins/suretriggers/"
+    shodan-query: 'vuln:'
+  name: "SureTriggers \u2013 Connect All Your Plugins, Apps, Tools & Automate Everything!\
+    \ <= 1.0.46 - Authenticated (Contributor+) Stored Cross-Site Scripting via Trigger\
+    \ Link Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ab19f7b1-2b1e-43bc-9843-ddee0fc74f50?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,suretriggers,low

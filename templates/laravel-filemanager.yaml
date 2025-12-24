@@ -1,0 +1,21 @@
+id: laravel-filemanager
+info:
+  author: princechaddha
+  name: Laravel FileManager Panel Detect
+  reference:
+  - https://github.com/UniSharp/laravel-filemanager
+  severity: info
+  tags: laravel,filemanager,fileupload
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - Laravel FileManager
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/laravel-filemanager?type=Files'

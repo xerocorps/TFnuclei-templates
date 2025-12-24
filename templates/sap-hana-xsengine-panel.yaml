@@ -1,0 +1,16 @@
+id: sap-hana-xsengine-panel
+info:
+  author: PR3R00T
+  name: SAP HANA XSEngine Admin Panel
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - /sap/hana/xs/formLogin/images/sap.png
+  method: GET
+  path:
+  - '{{BaseURL}}/sap/hana/xs/formLogin/login.html'
+  redirects: true

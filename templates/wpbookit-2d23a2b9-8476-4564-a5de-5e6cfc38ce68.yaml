@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpbookit
+  - dsl:
+    - compare_versions(version, '<= 1.6.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpbookit/readme.txt'
+  redirects: true
+id: wpbookit-2d23a2b9-8476-4564-a5de-5e6cfc38ce68
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpbookit/
+    google-query: inurl:"/wp-content/plugins/wpbookit/"
+    shodan-query: http.html:"wp-content/plugins/wpbookit/"
+  name: 'WPBookit <= 1.6.4 - Unauthenticated Arbitrary User Password Change
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2d23a2b9-8476-4564-a5de-5e6cfc38ce68?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpbookit,low,candidate

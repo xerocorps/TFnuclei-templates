@@ -1,0 +1,10 @@
+id: tapestry-workflow
+info:
+  author: daffainfo
+  description: A simple workflow that runs all Apache Tapestry related nuclei templates
+    on a given target.
+  name: Apache Tapestry Security Checks
+workflows:
+- subtemplates:
+  - tags: tapestry
+  template: technologies/apache/apache-tapestry-detect.yaml

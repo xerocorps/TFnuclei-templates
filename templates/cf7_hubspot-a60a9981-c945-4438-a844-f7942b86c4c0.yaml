@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cf7-hubspot
+  - dsl:
+    - compare_versions(version, '<= 1.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cf7-hubspot/readme.txt'
+  redirects: true
+id: cf7_hubspot-a60a9981-c945-4438-a844-f7942b86c4c0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cf7-hubspot/
+    google-query: inurl:"/wp-content/plugins/cf7-hubspot/"
+    shodan-query: http.html:"wp-content/plugins/cf7-hubspot/"
+  name: 'Integration for Contact Form 7 HubSpot <= 1.2.8 - Open Redirect via state
+    parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a60a9981-c945-4438-a844-f7942b86c4c0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,cf7-hubspot,low,candidate

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-download-monitor
+  - dsl:
+    - compare_versions(version, '< 3.9.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-download-monitor/readme.txt'
+  redirects: true
+id: simple_download_monitor-43f38a87-ac2c-4b5a-9559-d529c4b2799c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-download-monitor/
+    google-query: inurl:"/wp-content/plugins/simple-download-monitor/"
+    shodan-query: http.html:"wp-content/plugins/simple-download-monitor/"
+  name: 'Simple Download Monitor <= 3.9.5 - Sensitive Data Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/43f38a87-ac2c-4b5a-9559-d529c4b2799c?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-download-monitor,low,candidate

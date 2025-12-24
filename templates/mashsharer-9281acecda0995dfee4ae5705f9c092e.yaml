@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mashsharer
+  - dsl:
+    - compare_versions(version, '< 2.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mashsharer/readme.txt'
+  redirects: true
+id: mashsharer-9281acecda0995dfee4ae5705f9c092e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+    cvss-score: 5.3
+  description: The Social Media Share Buttons | MashShare plugin for WordPress is
+    vulnerable to Information Disclosure in versions before 2.3.1 via the mashsb_process_actions
+    function. This can allow unauthenticated attackers to extract sensitive data including
+    configuration information.
+  metadata:
+    fofa-query: wp-content/plugins/mashsharer/
+    google-query: inurl:"/wp-content/plugins/mashsharer/"
+    shodan-query: 'vuln:'
+  name: Social Media Share Buttons | MashShare < 2.3.1 - Information Disclosure
+  reference:
+  - https://g0blin.co.uk/g0blin-00045/
+  - https://github.com/espreto/wpsploit/blob/master/modules/auxiliary/scanner/http/wp_mashshare_info_disclosure.rb
+  - https://plugins.trac.wordpress.org/changeset/1137414/
+  - https://plugins.trac.wordpress.org/changeset/1137416
+  severity: medium
+  tags: cve,wordpress,wp-plugin,mashsharer,medium

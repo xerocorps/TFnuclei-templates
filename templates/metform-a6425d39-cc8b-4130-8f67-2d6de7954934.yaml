@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - metform
+  - dsl:
+    - compare_versions(version, '<= 3.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/metform/readme.txt'
+  redirects: true
+id: metform-a6425d39-cc8b-4130-8f67-2d6de7954934
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/metform/
+    google-query: inurl:"/wp-content/plugins/metform/"
+    shodan-query: http.html:"wp-content/plugins/metform/"
+  name: 'Metform Elementor Contact Form Builder <= 3.4.0 - Missing Authorization via
+    submit
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a6425d39-cc8b-4130-8f67-2d6de7954934?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,metform,high,candidate

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-shipping-dpd-baltic
+  - dsl:
+    - compare_versions(version, '<= 1.2.83')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-shipping-dpd-baltic/readme.txt'
+  redirects: true
+id: woo_shipping_dpd_baltic-6251d0f6-b536-4122-8fdf-bb77665a4f41
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-shipping-dpd-baltic/
+    google-query: inurl:"/wp-content/plugins/woo-shipping-dpd-baltic/"
+    shodan-query: http.html:"wp-content/plugins/woo-shipping-dpd-baltic/"
+  name: 'DPD Baltic Shipping <= 1.2.83 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6251d0f6-b536-4122-8fdf-bb77665a4f41?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-shipping-dpd-baltic,medium,candidate

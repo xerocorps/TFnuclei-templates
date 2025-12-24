@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sina-extension-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 3.5.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sina-extension-for-elementor/readme.txt'
+  redirects: true
+id: sina_extension_for_elementor-ab8659e1-5880-4738-99ed-e671449c6878
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sina-extension-for-elementor/
+    google-query: inurl:"/wp-content/plugins/sina-extension-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/sina-extension-for-elementor/"
+  name: 'Sina Extension for Elementor <= 3.5.7 - Authenticated (Contributor+) Sensitive
+    Information Exposure via Sina Modal Box Widget Elementor Template
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ab8659e1-5880-4738-99ed-e671449c6878?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sina-extension-for-elementor,low,candidate

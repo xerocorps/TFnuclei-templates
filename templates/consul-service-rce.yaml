@@ -1,0 +1,15 @@
+expression: r0()
+id: consul-service-rce
+info:
+  author: imlonghao(https://imlonghao.com/)
+  name: Consul Service RCE
+  severity: high
+  verified: false
+rules:
+  r0:
+    expression: 'response.status == 200 && response.content_type.contains("json")
+      && response.body.bcontains(b"\"EnableScriptChecks\": true") || response.body.bcontains(b"\"EnableRemoteScriptChecks\":
+      true")'
+    request:
+      method: GET
+      path: /v1/agent/self

@@ -1,0 +1,28 @@
+info:
+  author: twitter/noexceptcpp
+  classification:
+    tags:
+    - jenkins
+    - token
+    - crumb
+    - exposure
+  description: List of commons Jenkins Token or Crumb.
+  id: jenkins-crumb-token
+  matcher-condition: and
+  matchers:
+  - description: Commons Jenkins Token or Crumb.
+    pattern: "(?i)jenkins.{0,10}(?:crumb)?.{0,10}\b([0-9a-f]{32,36})\b"
+    type: body
+  name: Jenkins exposed servers
+  references:
+  - https://www.jenkins.io/doc/book/security/csrf-protection/
+  requests:
+    condition: and
+    description: Attempt to access the main page
+    method: GET
+    path:
+    - /
+  response:
+  - status:
+    - 200
+  severity: Low

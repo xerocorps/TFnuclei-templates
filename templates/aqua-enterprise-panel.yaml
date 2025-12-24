@@ -1,0 +1,33 @@
+id: aqua-enterprise-panel
+info:
+  author: idealphase
+  description: 'Aqua scans container images based on a constantly updated stream of
+    aggregate sources of vulnerability data (CVEs, vendor advisories, and proprietary
+    research)
+
+    '
+  metadata:
+    google-query: intitle:"Aqua Cloud Native Security Platform"
+    shodan-query: http.title:"Aqua Enterprise" || http.title:"Aqua Cloud Native Security
+      Platform"
+    verified: true
+  name: Aqua Enterprise Panel
+  reference:
+  - https://www.aquasec.com/
+  severity: info
+  tags: panel,aqua,aquasec
+requests:
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - <title>Aqua Enterprise</title>
+    - <title>Aqua Cloud Native Security Platform</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

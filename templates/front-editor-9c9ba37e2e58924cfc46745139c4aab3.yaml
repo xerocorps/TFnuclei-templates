@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - front-editor
+  - dsl:
+    - compare_versions(version, '< 3.8.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/front-editor/readme.txt'
+  redirects: true
+id: front-editor-9c9ba37e2e58924cfc46745139c4aab3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/front-editor/
+    google-query: inurl:"/wp-content/plugins/front-editor/"
+    shodan-query: 'vuln:'
+  name: 'Front User Submit | Front Editor <= 3.7.0 - Authenticated (Subscriber+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f34722fb-e852-4194-b839-7d885d212fc9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,front-editor,low

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-wholesale-pricing
+  - dsl:
+    - compare_versions(version, '<= 2.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-wholesale-pricing/readme.txt'
+  redirects: true
+id: woocommerce_wholesale_pricing-7f734db8-216e-43f3-8082-ebdcc28d3606
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-wholesale-pricing/
+    google-query: inurl:"/wp-content/plugins/woocommerce-wholesale-pricing/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-wholesale-pricing/"
+  name: 'Wholesale For WooCommerce <= 2.3.0 - Unauthenticated Arbitrary Post Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7f734db8-216e-43f3-8082-ebdcc28d3606?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-wholesale-pricing,low,candidate

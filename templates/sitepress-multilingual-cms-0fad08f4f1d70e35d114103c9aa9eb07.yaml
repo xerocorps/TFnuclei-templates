@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sitepress-multilingual-cms
+  - dsl:
+    - compare_versions(version, '<= 3.1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sitepress-multilingual-cms/readme.txt'
+  redirects: true
+id: sitepress-multilingual-cms-0fad08f4f1d70e35d114103c9aa9eb07
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sitepress-multilingual-cms/
+    google-query: inurl:"/wp-content/plugins/sitepress-multilingual-cms/"
+    shodan-query: 'vuln:'
+  name: 'WPML <= 3.1.9 - Arbitrary Deletion of Content
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/da0c91e5-d9dc-413a-95f6-9e2fc6746ec0?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sitepress-multilingual-cms,low

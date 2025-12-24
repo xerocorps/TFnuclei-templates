@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - superior-faq
+  - dsl:
+    - compare_versions(version, '<= 1.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/superior-faq/readme.txt'
+  redirects: true
+id: superior-faq-c077c61ef0095ee4c90d2dcc50db5d69
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/superior-faq/
+    google-query: inurl:"/wp-content/plugins/superior-faq/"
+    shodan-query: 'vuln:'
+  name: 'Superior FAQ <= 1.0.2 - Cross Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f98bb2a2-6525-4e0b-8bbd-968cf5b122dc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,superior-faq,low

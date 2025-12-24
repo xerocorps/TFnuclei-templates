@@ -1,0 +1,24 @@
+id: wordpress-upload-data
+info:
+  author: pussycat0x
+  description: Searches for Passwords  in the wordpress uploads directory.
+  name: wordpress-upload-data
+  reference: https://www.exploit-db.com/ghdb/7040
+  severity: medium
+  tags: wordpress,listing
+requests:
+- matchers:
+  - type: word
+    words:
+    - 'admin:'
+  - part: header
+    type: word
+    words:
+    - text/plain
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/uploads/data.txt'

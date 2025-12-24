@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-local-avatars
+  - dsl:
+    - compare_versions(version, '<= 2.7.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-local-avatars/readme.txt'
+  redirects: true
+id: simple_local_avatars-e2619d50-e295-4e13-91d4-f998b8aa5be4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-local-avatars/
+    google-query: inurl:"/wp-content/plugins/simple-local-avatars/"
+    shodan-query: http.html:"wp-content/plugins/simple-local-avatars/"
+  name: 'Simple Local Avatars <= 2.7.11 - Missing Authorization to Authenticated (Subscriber+)
+    User Cache Clearing
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e2619d50-e295-4e13-91d4-f998b8aa5be4?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-local-avatars,low,candidate

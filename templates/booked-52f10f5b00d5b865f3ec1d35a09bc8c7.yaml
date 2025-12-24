@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - booked
+  - dsl:
+    - compare_versions(version, '< 2.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/booked/readme.txt'
+  redirects: true
+id: booked-52f10f5b00d5b865f3ec1d35a09bc8c7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/booked/
+    google-query: inurl:"/wp-content/plugins/booked/"
+    shodan-query: 'vuln:'
+  name: 'Booked <= 2.2.5 - Missing Authorization on AJAX Actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9cd2ca03-e644-4bcd-b4b1-a547494fed7d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,booked,high

@@ -1,0 +1,22 @@
+id: api-covalent
+info:
+  author: daffainfo
+  name: Covalent API Test
+  reference:
+  - https://www.covalenthq.com/docs/api/
+  - https://github.com/daffainfo/all-about-apikey/blob/main/Blockchain/Covalent.md
+  severity: info
+  tags: token-spray,covalent
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '"address":'
+    - '"updated_at":'
+    - '"next_update_at":'
+  method: GET
+  path:
+  - https://api.covalenthq.com/v1/3/address/balances_v2/?&key={{token}}
+self-contained: true

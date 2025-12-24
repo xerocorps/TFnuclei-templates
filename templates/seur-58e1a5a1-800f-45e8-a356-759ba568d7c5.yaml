@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - seur
+  - dsl:
+    - compare_versions(version, '< 1.7.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/seur/readme.txt'
+  redirects: true
+id: seur-58e1a5a1-800f-45e8-a356-759ba568d7c5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/seur/
+    google-query: inurl:"/wp-content/plugins/seur/"
+    shodan-query: http.html:"wp-content/plugins/seur/"
+  name: 'SEUR Oficial < 1.7.2 - Authenticated Arbitrary File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/58e1a5a1-800f-45e8-a356-759ba568d7c5?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,seur,low,candidate

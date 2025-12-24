@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - seamless-donations
+  - dsl:
+    - compare_versions(version, '<= 5.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/seamless-donations/readme.txt'
+  redirects: true
+id: seamless-donations-1c19a09a0db2341131db2ef5655ee08b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/seamless-donations/
+    google-query: inurl:"/wp-content/plugins/seamless-donations/"
+    shodan-query: 'vuln:'
+  name: 'Seamless Donations: A Platform for Global Fundraising and Rebuilding using
+    Stripe and PayPal <= 5.1.7 - Cross-Site Request Forgery to Settings Chage
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ed4e1a56-708d-4a12-8153-9568d11fe4d0?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,seamless-donations,medium

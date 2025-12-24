@@ -1,0 +1,28 @@
+id: adminset-panel
+info:
+  author: ffffffff0x
+  classification:
+    cwe-id: CWE-200
+  description: An Adminset login panel was detected.
+  metadata:
+    fofa-query: app="AdminSet"
+    reference:
+    - https://github.com/guhongze/adminset/
+  name: Adminset Login Panel
+  severity: info
+  tags: adminset,panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>AdminSet Login</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

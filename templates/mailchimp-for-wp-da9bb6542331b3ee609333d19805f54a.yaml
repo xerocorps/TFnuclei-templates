@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mailchimp-for-wp
+  - dsl:
+    - compare_versions(version, '< 4.8.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mailchimp-for-wp/readme.txt'
+  redirects: true
+id: mailchimp-for-wp-da9bb6542331b3ee609333d19805f54a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 5.5
+  description: 'The MC4WP: Mailchimp for WordPress for WordPress is vulnerable to
+    Stored Cross-Site Scripting via the textarea form field in versions up to, and
+    including, 4.8.6 due to insufficient input sanitization and output escaping. This
+    makes it possible for authenticated attackers, with administrator-level permissions
+    and above, to inject arbitrary web scripts in pages that will execute whenever
+    a user accesses an injected page.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/mailchimp-for-wp/
+    google-query: inurl:"/wp-content/plugins/mailchimp-for-wp/"
+    shodan-query: 'vuln:'
+  name: 'MC4WP: Mailchimp for WordPress < 4.8.7 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bd57edf5-a75e-4677-a51e-9dd262eeba4a?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,mailchimp-for-wp,low

@@ -1,0 +1,24 @@
+id: wp-mstore-plugin-listing
+info:
+  author: pussycat0x
+  description: Searches for sensitive directories present in the wordpress-plugins
+    plugin.
+  metadata:
+    google-dork: inurl:/wp-content/plugins/mstore-api/
+  name: Wordpress Plugin MStore API
+  severity: low
+  tags: wordpress,listing,wp-plugin
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - Index of
+    - /wp-content/plugins/mstore-api
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mstore-api/'

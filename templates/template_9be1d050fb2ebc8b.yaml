@@ -1,0 +1,27 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - kafka
+    - ui
+    - web
+  description: Template to detect the UI for Apache Kafka
+  id: kafka-ui
+  matcher-condition: and
+  matchers:
+  - description: Apache Kafka header found in response
+    pattern: Apache Kafka
+    type: body
+  name: Apache Kafka UI - Detect
+  requests:
+    condition: and
+    description: Attempt to retrieve Apache Kafka UI
+    method: GET
+    path:
+    - /ui
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Low

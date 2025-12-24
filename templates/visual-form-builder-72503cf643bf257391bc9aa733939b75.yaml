@@ -1,0 +1,56 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - visual-form-builder
+  - dsl:
+    - compare_versions(version, '< 2.8.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/visual-form-builder/readme.txt'
+  redirects: true
+id: visual-form-builder-72503cf643bf257391bc9aa733939b75
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 7.2
+  description: The Visual Form Builder plugin for WordPress is vulnerable to generic
+    SQL Injection in versions up to, and including, 2.8.2 due to insufficient escaping
+    on the user supplied parameter and lack of sufficient preparation on the existing
+    SQL query.  This makes it possible for administrator-level attackers to append
+    additional SQL queries into already existing queries that can be used to extract
+    sensitive information from the database.
+  metadata:
+    fofa-query: wp-content/plugins/visual-form-builder/
+    google-query: inurl:"/wp-content/plugins/visual-form-builder/"
+    shodan-query: 'vuln:'
+  name: Visual Form Builder <= 2.8.2 - Authenticated SQL Injection
+  reference:
+  - https://github.com/espreto/wpsploit/blob/master/modules/auxiliary/scanner/http/wp_visual_form_builder_xss_scanner.rb
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-visual-form-builder-multiple-vulnerabilities-2-8-2/
+  - https://security-consulting.icu/blog/2015/05/sql-injection-reflected-xss-vulnerability-visual-form-builder/
+  severity: high
+  tags: cve,wordpress,wp-plugin,visual-form-builder,high

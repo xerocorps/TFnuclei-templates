@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - s3bubble-amazon-s3-html-5-video-with-adverts
+  - dsl:
+    - compare_versions(version, '<= 0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/s3bubble-amazon-s3-html-5-video-with-adverts/readme.txt'
+  redirects: true
+id: s3bubble_amazon_s3_html_5_video_with_adverts-a102478c-c704-47d4-8b2b-492f75ec38b9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/s3bubble-amazon-s3-html-5-video-with-adverts/
+    google-query: inurl:"/wp-content/plugins/s3bubble-amazon-s3-html-5-video-with-adverts/"
+    shodan-query: http.html:"wp-content/plugins/s3bubble-amazon-s3-html-5-video-with-adverts/"
+  name: 'S3 Bubble Amazon S3 HTML5 Video with Adverts <= 0.7 - Directory Traversal
+    to Arbitrary File Access
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a102478c-c704-47d4-8b2b-492f75ec38b9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,s3bubble-amazon-s3-html-5-video-with-adverts,low,candidate

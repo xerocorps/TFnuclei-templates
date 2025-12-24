@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-import-export-lite
+  - dsl:
+    - compare_versions(version, '<= 3.9.27')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-import-export-lite/readme.txt'
+  redirects: true
+id: wp_import_export_lite-a8ca1ead-1bc5-4ccc-9034-559db27f5e82
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-import-export-lite/
+    google-query: inurl:"/wp-content/plugins/wp-import-export-lite/"
+    shodan-query: http.html:"wp-content/plugins/wp-import-export-lite/"
+  name: 'WP Import Export Lite <= 3.9.27 - Authenticated (Contributor+) DOM-Based
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a8ca1ead-1bc5-4ccc-9034-559db27f5e82?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-import-export-lite,low,candidate

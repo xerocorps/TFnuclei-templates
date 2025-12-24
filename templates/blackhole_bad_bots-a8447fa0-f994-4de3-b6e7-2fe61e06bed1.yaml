@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - blackhole-bad-bots
+  - dsl:
+    - compare_versions(version, '< 3.3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/blackhole-bad-bots/readme.txt'
+  redirects: true
+id: blackhole_bad_bots-a8447fa0-f994-4de3-b6e7-2fe61e06bed1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/blackhole-bad-bots/
+    google-query: inurl:"/wp-content/plugins/blackhole-bad-bots/"
+    shodan-query: http.html:"wp-content/plugins/blackhole-bad-bots/"
+  name: 'Blackhole for Bad Bots <= 3.3.1 - Arbitrary IP Address Blocking via IP Spoofing
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a8447fa0-f994-4de3-b6e7-2fe61e06bed1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,blackhole-bad-bots,low,candidate

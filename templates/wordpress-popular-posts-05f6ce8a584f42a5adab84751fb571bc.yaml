@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordpress-popular-posts
+  - dsl:
+    - compare_versions(version, '< 6.3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordpress-popular-posts/readme.txt'
+  redirects: true
+id: wordpress-popular-posts-05f6ce8a584f42a5adab84751fb571bc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wordpress-popular-posts/
+    google-query: inurl:"/wp-content/plugins/wordpress-popular-posts/"
+    shodan-query: 'vuln:'
+  name: 'WordPress Popular Posts <= 6.3.2 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a91e8713-a760-4acd-9987-2a6b11dbdd56?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wordpress-popular-posts,low

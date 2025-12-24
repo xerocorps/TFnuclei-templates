@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - uncanny-learndash-toolkit
+  - dsl:
+    - compare_versions(version, '< 3.6.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/uncanny-learndash-toolkit/readme.txt'
+  redirects: true
+id: uncanny_learndash_toolkit-66e5a569-1dd5-40e9-8356-d7c82c8e30ed
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/uncanny-learndash-toolkit/
+    google-query: inurl:"/wp-content/plugins/uncanny-learndash-toolkit/"
+    shodan-query: http.html:"wp-content/plugins/uncanny-learndash-toolkit/"
+  name: 'Uncanny Toolkit for LearnDash <= 3.6.4.3 - Open Redirect
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/66e5a569-1dd5-40e9-8356-d7c82c8e30ed?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,uncanny-learndash-toolkit,low,candidate

@@ -1,0 +1,18 @@
+id: sendgrid-env
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: html:"sendgrid.env"
+    verified: true
+  name: SendGrid Env File Exposure
+  severity: medium
+  tags: exposure,sendgrid,key,api,files
+requests:
+- extractors:
+  - part: body
+    regex:
+    - SG\.[a-zA-Z0-9-_]{22}\.[a-zA-Z0-9_-]{43}
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}/sendgrid.env'

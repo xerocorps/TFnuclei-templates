@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ad-blocking-detector
+  - dsl:
+    - compare_versions(version, '<= 1.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ad-blocking-detector/readme.txt'
+  redirects: true
+id: ad-blocking-detector-29a2fe62a95c9b7d06f91cd4f479a678
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ad-blocking-detector/
+    google-query: inurl:"/wp-content/plugins/ad-blocking-detector/"
+    shodan-query: 'vuln:'
+  name: 'Ad Blocking Detector  <= 1.2.1 -  Full Path Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/054bb123-132c-4c32-9fd1-a9f289cfdc35?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ad-blocking-detector,low

@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - blocksy-companion
+  - dsl:
+    - compare_versions(version, '<= 2.0.31')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/blocksy-companion/readme.txt'
+  redirects: true
+id: blocksy-companion-43a280ae3c6982e243a1b101b0f994e5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/blocksy-companion/
+    google-query: inurl:"/wp-content/plugins/blocksy-companion/"
+    shodan-query: 'vuln:'
+  name: 'Blocksy Companion <= 2.0.31 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b937cbfb-d43c-4cda-b247-921661cbc0ad?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,blocksy-companion,low

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ns-woocommerce-watermark
+  - dsl:
+    - compare_versions(version, '<= 2.11.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ns-woocommerce-watermark/readme.txt'
+  redirects: true
+id: ns_woocommerce_watermark-9d17f26b-e8b7-480d-bf03-2cfdb261fa28
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ns-woocommerce-watermark/
+    google-query: inurl:"/wp-content/plugins/ns-woocommerce-watermark/"
+    shodan-query: http.html:"wp-content/plugins/ns-woocommerce-watermark/"
+  name: 'NS WooCommerce Watermark <= 2.11.3 - Abuse of Functionality
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d17f26b-e8b7-480d-bf03-2cfdb261fa28?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ns-woocommerce-watermark,low,candidate

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - custom-registration-form-builder-with-submission-manager
+  - dsl:
+    - compare_versions(version, '<= 5.0.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/custom-registration-form-builder-with-submission-manager/readme.txt'
+  redirects: true
+id: custom_registration_form_builder_with_submission_manager-d8ba4a74-6649-4566-b9d5-19662539158b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/custom-registration-form-builder-with-submission-manager/
+    google-query: inurl:"/wp-content/plugins/custom-registration-form-builder-with-submission-manager/"
+    shodan-query: http.html:"wp-content/plugins/custom-registration-form-builder-with-submission-manager/"
+  name: 'RegistrationMagic <= 5.0.1.5 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d8ba4a74-6649-4566-b9d5-19662539158b?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,custom-registration-form-builder-with-submission-manager,critical,candidate

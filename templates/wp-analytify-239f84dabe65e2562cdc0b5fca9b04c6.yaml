@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-analytify
+  - dsl:
+    - compare_versions(version, '<= 4.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-analytify/readme.txt'
+  redirects: true
+id: wp-analytify-239f84dabe65e2562cdc0b5fca9b04c6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N
+    cvss-score: 6.5
+  description: The Analytify plugin for WordPress is vulnerable to authorization bypass
+    due to a missing capability and nonce checks on the analytify_delete_cache function
+    in versions up to, and including, 4.2.2 . This makes it possible for authenticated
+    attackers, with subscriber-level permissions and above, to delete the cache of
+    the plugin and also allows unauthenticated attackers to delete the plugin cache
+    via forged request, granted they can trick a subscriber or higher into clicking
+    on a link. Version 4.2.3 adds a nonce check to the function, which addressed the
+    Cross-Site Request Forgery Vulnerability and makes exploitation impractical for
+    lower-level accounts.
+  metadata:
+    fofa-query: wp-content/plugins/wp-analytify/
+    google-query: inurl:"/wp-content/plugins/wp-analytify/"
+    shodan-query: 'vuln:'
+  name: "Analytify \u2013 Google Analytics Dashboard For WordPress <= 4.2.2 - Authorization\
+    \ Bypass"
+  reference:
+  - https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=2773316%40wp-analytify%2Ftrunk&old=2752478%40wp-analytify%2Ftrunk&sfp_email=&sfph_mail=
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wp-analytify,medium

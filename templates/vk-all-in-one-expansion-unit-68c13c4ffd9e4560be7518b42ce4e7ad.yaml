@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vk-all-in-one-expansion-unit
+  - dsl:
+    - compare_versions(version, '<= 9.85.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vk-all-in-one-expansion-unit/readme.txt'
+  redirects: true
+id: vk-all-in-one-expansion-unit-68c13c4ffd9e4560be7518b42ce4e7ad
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vk-all-in-one-expansion-unit/
+    google-query: inurl:"/wp-content/plugins/vk-all-in-one-expansion-unit/"
+    shodan-query: 'vuln:'
+  name: 'VK All in One Expansion Unit <= 9.85.0.1 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c1f10e67-d301-46ba-b92e-432819cb9606?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,vk-all-in-one-expansion-unit,low

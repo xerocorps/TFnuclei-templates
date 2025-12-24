@@ -1,0 +1,21 @@
+id: strapi-admin-exposure
+info:
+  author: pdteam
+  name: Strapi Admin Dasboard Exposure
+  severity: info
+  tags: panel
+requests:
+- attack: sniper
+  matchers:
+  - type: word
+    words:
+    - <title>Strapi Admin</title>
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /admin/auth/login HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    '
+  threads: 100

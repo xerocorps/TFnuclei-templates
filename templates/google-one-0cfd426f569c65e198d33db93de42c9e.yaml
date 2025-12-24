@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - google-one
+  - dsl:
+    - compare_versions(version, '< 1.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/google-one/readme.txt'
+  redirects: true
+id: google-one-0cfd426f569c65e198d33db93de42c9e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/google-one/
+    google-query: inurl:"/wp-content/plugins/google-one/"
+    shodan-query: 'vuln:'
+  name: 'Google +1 by BestWebSoft < 1.3.4 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/44af8ced-5ea4-4bdb-a664-c5b58d683d23?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,google-one,medium

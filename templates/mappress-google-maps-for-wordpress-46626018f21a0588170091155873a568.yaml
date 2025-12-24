@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mappress-google-maps-for-wordpress
+  - dsl:
+    - compare_versions(version, '<= 2.88.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mappress-google-maps-for-wordpress/readme.txt'
+  redirects: true
+id: mappress-google-maps-for-wordpress-46626018f21a0588170091155873a568
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mappress-google-maps-for-wordpress/
+    google-query: inurl:"/wp-content/plugins/mappress-google-maps-for-wordpress/"
+    shodan-query: 'vuln:'
+  name: 'MapPress Maps for WordPress <= 2.88.13 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/28a8f025-c2ab-4a5f-a99e-a2d19b14a190?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mappress-google-maps-for-wordpress,low

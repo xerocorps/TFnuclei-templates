@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - rabbitmq
+    - config file
+    - exposure
+  description: Template to detect RabbitMQ configuration file exposure
+  id: rabbitmq-config-exposure
+  matchers:
+  - pattern: loopback_users\s+=\s+\w+
+    type: body
+  - pattern: default_user\s+=\s+\w+
+    type: body
+  name: RabbitMQ Configuration Exposure - Detect
+  requests:
+  - method: GET
+    path:
+    - /etc/rabbitmq/rabbitmq.conf
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

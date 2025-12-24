@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - breakdance
+  - dsl:
+    - compare_versions(version, '<= 1.7.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/breakdance/readme.txt'
+  redirects: true
+id: breakdance-a1abec466b5c8c5df842b6646a372c4c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/breakdance/
+    google-query: inurl:"/wp-content/plugins/breakdance/"
+    shodan-query: 'vuln:'
+  name: 'Breakdance <= 1.7.2 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9dbd26f5-b75e-41a3-aefb-d6c8cc2cec7b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,breakdance,low

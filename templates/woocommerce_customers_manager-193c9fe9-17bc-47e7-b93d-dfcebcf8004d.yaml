@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-customers-manager
+  - dsl:
+    - compare_versions(version, '<= 31.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-customers-manager/readme.txt'
+  redirects: true
+id: woocommerce_customers_manager-193c9fe9-17bc-47e7-b93d-dfcebcf8004d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-customers-manager/
+    google-query: inurl:"/wp-content/plugins/woocommerce-customers-manager/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-customers-manager/"
+  name: 'WooCommerce Customers Manager <= 31.3 - Missing Authorization to Authenticated
+    (Subscriber+) Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/193c9fe9-17bc-47e7-b93d-dfcebcf8004d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-customers-manager,low,candidate

@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-social-media-icons
+  - dsl:
+    - compare_versions(version, '<= 1.1.1.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-social-media-icons/readme.txt'
+  redirects: true
+id: ultimate-social-media-icons-f18fc3a7c1a1d5f1404305872fbe1bee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 6.4
+  description: The Social Media Share Buttons & Social Sharing Icons plugin for WordPress
+    is vulnerable to Stored Cross-Site Scripting via several parameters in versions
+    before 1.1.1.12 due to insufficient input sanitization and output escaping. This
+    makes it possible for authenticated attackers of low-privilege to inject arbitrary
+    web scripts in pages that will execute whenever a user accesses an injected page.
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-social-media-icons/
+    google-query: inurl:"/wp-content/plugins/ultimate-social-media-icons/"
+    shodan-query: 'vuln:'
+  name: Social Media Share Buttons & Social Sharing Icons < 1.1.1.12 - Authenticated
+    Stored Cross-Site Scripting
+  reference:
+  - https://g0blin.co.uk/g0blin-00052/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,ultimate-social-media-icons,medium

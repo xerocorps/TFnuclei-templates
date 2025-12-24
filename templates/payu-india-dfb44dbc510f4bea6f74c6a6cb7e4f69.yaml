@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - payu-india
+  - dsl:
+    - compare_versions(version, '<= 3.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/payu-india/readme.txt'
+  redirects: true
+id: payu-india-dfb44dbc510f4bea6f74c6a6cb7e4f69
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/payu-india/
+    google-query: inurl:"/wp-content/plugins/payu-india/"
+    shodan-query: 'vuln:'
+  name: 'PayU India <= 3.8.2 - Reflected Cross-Site Scripting via type
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e4a5dc4f-3eb6-410e-af3d-e3b0639319f3?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,payu-india,medium

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - propertyhive
+  - dsl:
+    - compare_versions(version, '<= 2.0.19')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/propertyhive/readme.txt'
+  redirects: true
+id: propertyhive-17c06c83-6707-4233-a1c3-ef4cdcf93982
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/propertyhive/
+    google-query: inurl:"/wp-content/plugins/propertyhive/"
+    shodan-query: http.html:"wp-content/plugins/propertyhive/"
+  name: 'PropertyHive <= 2.0.19 - Cross-Site Request Forgery via save_account_details
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/17c06c83-6707-4233-a1c3-ef4cdcf93982?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,propertyhive,medium,candidate

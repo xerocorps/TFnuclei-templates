@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpcasa
+  - dsl:
+    - compare_versions(version, '<= 1.2.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpcasa/readme.txt'
+  redirects: true
+id: wpcasa-5d1e5030-fb78-47da-b571-048b97c9ff9e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpcasa/
+    google-query: inurl:"/wp-content/plugins/wpcasa/"
+    shodan-query: http.html:"wp-content/plugins/wpcasa/"
+  name: 'WPCasa <= 1.2.13 - Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5d1e5030-fb78-47da-b571-048b97c9ff9e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpcasa,low,candidate

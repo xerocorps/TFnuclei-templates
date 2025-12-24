@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-multi-currency
+  - dsl:
+    - compare_versions(version, '<= 2.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-multi-currency/readme.txt'
+  redirects: true
+id: woo_multi_currency-a7ffc02d-190b-4494-a43f-1825914145ff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-multi-currency/
+    google-query: inurl:"/wp-content/plugins/woo-multi-currency/"
+    shodan-query: http.html:"wp-content/plugins/woo-multi-currency/"
+  name: 'CURCY <= 2.2.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a7ffc02d-190b-4494-a43f-1825914145ff?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-multi-currency,medium,candidate

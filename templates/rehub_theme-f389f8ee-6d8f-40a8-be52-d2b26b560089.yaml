@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rehub-theme
+  - dsl:
+    - compare_versions(version, '< 19.9.9.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/rehub-theme/style.css'
+  redirects: true
+id: rehub_theme-f389f8ee-6d8f-40a8-be52-d2b26b560089
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/rehub-theme/
+    google-query: inurl:"/wp-content/themes/rehub-theme/"
+    shodan-query: http.html:"wp-content/themes/rehub-theme/"
+  name: 'Rehub < 19.9.9.1 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f389f8ee-6d8f-40a8-be52-d2b26b560089?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,rehub-theme,low,candidate

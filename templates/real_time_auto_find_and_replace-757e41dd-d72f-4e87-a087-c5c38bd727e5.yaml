@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - real-time-auto-find-and-replace
+  - dsl:
+    - compare_versions(version, '<= 1.7.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/real-time-auto-find-and-replace/readme.txt'
+  redirects: true
+id: real_time_auto_find_and_replace-757e41dd-d72f-4e87-a087-c5c38bd727e5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/real-time-auto-find-and-replace/
+    google-query: inurl:"/wp-content/plugins/real-time-auto-find-and-replace/"
+    shodan-query: http.html:"wp-content/plugins/real-time-auto-find-and-replace/"
+  name: 'Better Find and Replace <= 1.7.7 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/757e41dd-d72f-4e87-a087-c5c38bd727e5?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,real-time-auto-find-and-replace,high,candidate

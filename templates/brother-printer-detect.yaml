@@ -1,0 +1,19 @@
+id: brother-printer-detect
+info:
+  author: pussycat0x
+  name: Brother Printer
+  reference: https://www.exploit-db.com/ghdb/6889
+  severity: low
+  tags: iot,printer,tech
+requests:
+- matchers:
+  - type: word
+    words:
+    - Brother Industries
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/general/status.html'

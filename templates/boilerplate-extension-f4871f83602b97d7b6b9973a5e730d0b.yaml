@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - boilerplate-extension
+  - dsl:
+    - compare_versions(version, '<= 4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/boilerplate-extension/readme.txt'
+  redirects: true
+id: boilerplate-extension-f4871f83602b97d7b6b9973a5e730d0b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H
+    cvss-score: 8.1
+  description: 'Several MainWP extensions for WordPress are vulnerable to authorization
+    bypass due to a missing capability check. This makes it possible for authenticated
+    attackers, with subscriber-level permissions and above, to delete arbitrary posts
+    and pages.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/boilerplate-extension/
+    google-query: inurl:"/wp-content/plugins/boilerplate-extension/"
+    shodan-query: 'vuln:'
+  name: 'MainWP (Various extensions) - Missing Authorization to Arbitrary Page/Post
+    Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d589bada-3568-45ed-9f7c-fb14363a617a?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,boilerplate-extension,low

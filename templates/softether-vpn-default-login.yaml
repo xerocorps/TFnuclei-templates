@@ -1,0 +1,45 @@
+http:
+- attack: pitchfork
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Create new Virtual Hub
+    - Toggle navigation
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - null
+    username:
+    - administrator
+  raw:
+  - 'GET /admin/default/ HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Authorization: Basic {{base64(username + '':'' + password)}}
+
+    '
+id: softether-vpn-default-login
+info:
+  author: bhutch
+  classification:
+    cpe: cpe:2.3:a:softether:vpn:*:*:*:*:*:*:*:*
+  description: 'The administrative password for the SoftEther VPN Server is blank.
+
+    '
+  metadata:
+    max-request: 1
+    product: vpn
+    shodan-query: title:"SoftEther VPN Server"
+    vendor: softether
+    verified: true
+  name: SoftEther VPN Admin Console - Default Login
+  reference:
+  - https://www.softether.org/4-docs/1-manual/3._SoftEther_VPN_Server_Manual/3.3_VPN_Server_Administration#Administration_Authority_for_the_Entire_SoftEther_VPN_Server
+  severity: high
+  tags: misconfig,vpn,softether,default-login,vuln

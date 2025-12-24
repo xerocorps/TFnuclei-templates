@@ -1,0 +1,55 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - repagent
+  - dsl:
+    - compare_versions(version, '>0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/repagent/style.css'
+  redirects: true
+id: repagent-665d4da0e676b96f7d59e4a2fdcf4967
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+  description: The Repagent theme for WordPress is vulnerable to Cross-Site Scripting
+    due to insufficient input sanitization and output escaping. This makes it possible
+    for unauthenticated attackers to inject arbitrary web scripts that execute in
+    a victim's browser.
+  metadata:
+    fofa-query: wp-content/themes/repagent/
+    google-query: inurl:"/wp-content/themes/repagent/"
+    shodan-query: 'vuln:'
+  name: Repagent (Unknown Versions) - Cross-Site Scripting
+  reference:
+  - https://packetstormsecurity.com/files/124582/
+  - https://seclists.org/fulldisclosure/2013/Dec/192
+  - https://plugins.b2evolution.net/dewplayer
+  - https://vulners.com/patchstack/PATCHSTACK%3AFDD31DB9484F31A3B964AD74FD6CE03A
+  severity: medium
+  tags: cve,wordpress,wp-theme,repagent,medium

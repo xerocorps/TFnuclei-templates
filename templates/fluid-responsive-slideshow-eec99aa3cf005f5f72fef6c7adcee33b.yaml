@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fluid-responsive-slideshow
+  - dsl:
+    - compare_versions(version, '< 2.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fluid-responsive-slideshow/readme.txt'
+  redirects: true
+id: fluid-responsive-slideshow-eec99aa3cf005f5f72fef6c7adcee33b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fluid-responsive-slideshow/
+    google-query: inurl:"/wp-content/plugins/fluid-responsive-slideshow/"
+    shodan-query: 'vuln:'
+  name: 'Fluid Responsive Slideshow < 2.2.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d8009f10-85d0-4798-8b6b-c1e4452139af?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,fluid-responsive-slideshow,medium

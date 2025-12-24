@@ -1,0 +1,26 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - grafana
+    - api key
+    - security
+    - sensitive information
+  description: Template to detect Grafana API key exposure
+  id: grafana-api-key-exposure
+  matchers:
+  - pattern: \{\"id\":\d+,"name":"[a-zA-Z0-9]+","role":"[a-zA-Z]+","key":"[a-zA-Z0-9_-]+","createdAt":"[0-9TZ:-]+","updatedAt":"[0-9TZ:-]+\}
+    type: body
+  name: Grafana API Key Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /api/auth/keys
+    - /api/auth/keys/
+    - /api/auth/keys/*
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: High

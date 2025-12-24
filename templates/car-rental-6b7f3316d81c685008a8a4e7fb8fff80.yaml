@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - car-rental
+  - dsl:
+    - compare_versions(version, '< 1.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/car-rental/readme.txt'
+  redirects: true
+id: car-rental-6b7f3316d81c685008a8a4e7fb8fff80
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/car-rental/
+    google-query: inurl:"/wp-content/plugins/car-rental/"
+    shodan-query: 'vuln:'
+  name: 'Car Rental by BestWebSoft < 1.0.5 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0229b20f-65d7-4f55-a773-fd8da479723c?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,car-rental,medium

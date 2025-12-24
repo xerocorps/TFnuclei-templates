@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bubble-menu
+  - dsl:
+    - compare_versions(version, '<= 3.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/bubble-menu/readme.txt'
+  redirects: true
+id: bubble-menu-954097b83211a929d7262429b922e34b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/bubble-menu/
+    google-query: inurl:"/wp-content/plugins/bubble-menu/"
+    shodan-query: 'vuln:'
+  name: "Bubble Menu \u2013 circle floating menu <= 3.0.1 - Cross Site Request Forgery\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/02409698-5421-4760-afcd-e53939082bfc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,bubble-menu,low

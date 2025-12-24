@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - magical-posts-display
+  - dsl:
+    - compare_versions(version, '<= 1.2.54')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/magical-posts-display/readme.txt'
+  redirects: true
+id: magical_posts_display-8352400f-fea1-486d-872a-66340300cee9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/magical-posts-display/
+    google-query: inurl:"/wp-content/plugins/magical-posts-display/"
+    shodan-query: http.html:"wp-content/plugins/magical-posts-display/"
+  name: 'Magical Posts Display <= 1.2.54 - Authenticated (Author+) Stored Cross-Site
+    Scripting via Magical Posts Accordion Widget
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8352400f-fea1-486d-872a-66340300cee9?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,magical-posts-display,low,candidate

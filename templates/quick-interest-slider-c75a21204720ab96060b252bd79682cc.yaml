@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quick-interest-slider
+  - dsl:
+    - compare_versions(version, '<= 2.9.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quick-interest-slider/readme.txt'
+  redirects: true
+id: quick-interest-slider-c75a21204720ab96060b252bd79682cc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quick-interest-slider/
+    google-query: inurl:"/wp-content/plugins/quick-interest-slider/"
+    shodan-query: 'vuln:'
+  name: 'Loan Repayment Calculator and Application Form <= 2.9.4 - Cross-Site Request
+    Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/08b8f1ad-f616-4ceb-9c53-9d53aac370c9?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,quick-interest-slider,medium

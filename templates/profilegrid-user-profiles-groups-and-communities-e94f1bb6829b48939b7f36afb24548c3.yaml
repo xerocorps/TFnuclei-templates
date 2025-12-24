@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profilegrid-user-profiles-groups-and-communities
+  - dsl:
+    - compare_versions(version, '<= 5.8.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profilegrid-user-profiles-groups-and-communities/readme.txt'
+  redirects: true
+id: profilegrid-user-profiles-groups-and-communities-e94f1bb6829b48939b7f36afb24548c3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profilegrid-user-profiles-groups-and-communities/
+    google-query: inurl:"/wp-content/plugins/profilegrid-user-profiles-groups-and-communities/"
+    shodan-query: 'vuln:'
+  name: 'ProfileGrid  <= 5.8.2 - Bypass Group Members Limit
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0e1fce43-03c0-4863-bf0c-60a3c510a01d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,profilegrid-user-profiles-groups-and-communities,low

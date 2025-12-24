@@ -1,0 +1,37 @@
+id: flip-cms-panel
+info:
+  author: idealphase
+  description: 'We are a web agency in the province of Ancona (Falconara Marittima)
+    and we deal with the creation of websites and digital projects. In our studio
+    we create websites , we take care of the creation of e-commerce.
+
+    '
+  metadata:
+    verified: true
+  name: Flip CMS Login Panel
+  reference:
+  - https://www.fliplab.it/
+  severity: info
+  tags: panel,flip,cms
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - "<span class=\"copy\">Copyright \xA9 2022 \u2022 v\\.(.+) \u2022 <a href=\"\
+      https:\\/\\/www.fliplab.it\" target=\"_blank\">"
+    type: regex
+  matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Flip CMS</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

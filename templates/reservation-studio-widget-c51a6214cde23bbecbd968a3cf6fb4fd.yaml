@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - reservation-studio-widget
+  - dsl:
+    - compare_versions(version, '<= 1.0.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/reservation-studio-widget/readme.txt'
+  redirects: true
+id: reservation-studio-widget-c51a6214cde23bbecbd968a3cf6fb4fd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/reservation-studio-widget/
+    google-query: inurl:"/wp-content/plugins/reservation-studio-widget/"
+    shodan-query: 'vuln:'
+  name: 'Reservation.Studio widget <= 1.0.11 - Authenticated (Administrator+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7caa4c73-cf57-4f99-8bc6-6fd02308a58f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,reservation-studio-widget,low

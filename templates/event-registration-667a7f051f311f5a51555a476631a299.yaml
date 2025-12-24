@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - event-registration
+  - dsl:
+    - compare_versions(version, '<= 6.02.02')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/event-registration/readme.txt'
+  redirects: true
+id: event-registration-667a7f051f311f5a51555a476631a299
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/event-registration/
+    google-query: inurl:"/wp-content/plugins/event-registration/"
+    shodan-query: 'vuln:'
+  name: 'Event Registration <= 6.02.02 - PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2c5bb593-59b5-4760-8d54-14d7665c7e7f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,event-registration,low

@@ -1,0 +1,22 @@
+id: github-page-config
+info:
+  author: hahwul
+  description: Find github pages config file.
+  name: Github pages config file
+  severity: info
+  tags: github,exposure,config
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    type: word
+    words:
+    - jekyll
+    - title
+    - baseurl
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/_config.yml'

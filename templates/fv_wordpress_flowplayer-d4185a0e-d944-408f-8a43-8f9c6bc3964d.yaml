@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fv-wordpress-flowplayer
+  - dsl:
+    - compare_versions(version, '<= 7.5.46.7212')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fv-wordpress-flowplayer/readme.txt'
+  redirects: true
+id: fv_wordpress_flowplayer-d4185a0e-d944-408f-8a43-8f9c6bc3964d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fv-wordpress-flowplayer/
+    google-query: inurl:"/wp-content/plugins/fv-wordpress-flowplayer/"
+    shodan-query: http.html:"wp-content/plugins/fv-wordpress-flowplayer/"
+  name: 'FV Player <= 7.5.46.7212 - Authenticated (Subscriber+) SQL Injection via
+    exclude Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d4185a0e-d944-408f-8a43-8f9c6bc3964d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fv-wordpress-flowplayer,low,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - resmushit-image-optimizer
+  - dsl:
+    - compare_versions(version, '<= 0.4.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/resmushit-image-optimizer/readme.txt'
+  redirects: true
+id: resmushit_image_optimizer-9b8042b0-83d3-417f-a5e0-43ff4f7648fb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/resmushit-image-optimizer/
+    google-query: inurl:"/wp-content/plugins/resmushit-image-optimizer/"
+    shodan-query: http.html:"wp-content/plugins/resmushit-image-optimizer/"
+  name: 'reSmush.it Image Optimizer <= 0.4.5 - Authenticated (Administrator+) Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9b8042b0-83d3-417f-a5e0-43ff4f7648fb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,resmushit-image-optimizer,low,candidate

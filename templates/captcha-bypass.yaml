@@ -1,0 +1,29 @@
+id: captcha-bypass
+info:
+  author: qaisar
+  description: 'Detects potential CAPTCHA bypass issues during the authentication
+    process.
+
+    '
+  name: CAPTCHA Bypass Test
+  severity: medium
+requests:
+- data:
+  - key: username
+    payloads:
+    - admin
+    type: dynamic
+  - key: password
+    payloads:
+    - password123
+    type: dynamic
+  headers:
+    content-type:
+    - application/x-www-form-urlencoded
+  method: POST
+  path:
+  - /login
+  - /signin
+  - /auth
+tags:
+- web

@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-recall
+  - dsl:
+    - compare_versions(version, '<= 16.26.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-recall/readme.txt'
+  redirects: true
+id: wp-recall-c2afe8b8d56887f594b6e34dfc1a56fc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-recall/
+    google-query: inurl:"/wp-content/plugins/wp-recall/"
+    shodan-query: 'vuln:'
+  name: "WP-Recall \u2013 Registration, Profile, Commerce & More  <= 16.26.5 - Insecure\
+    \ Direct Object Reference\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/99a21d91-e17a-400e-9013-c074e76bbf6e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-recall,low

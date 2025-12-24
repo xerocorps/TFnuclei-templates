@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_generator
+    regex:
+    - (?m)https:\/\/wordpress.org\/\?v=([0-9.]+)
+    type: regex
+  - group: 1
+    name: version_by_js
+    regex:
+    - wp-emoji-release\.min\.js\?ver=((\d+\.?)+)\b
+    type: regex
+  - group: 1
+    name: version_by_css
+    regex:
+    - install\.min\.css\?ver=((\d+\.?)+)\b
+    type: regex
+  matchers:
+  - dsl:
+    - compare_versions(version_by_generator, '>= 5.9', '<= 5.9.1')
+    - compare_versions(version_by_js, '>= 5.9', '<= 5.9.1')
+    - compare_versions(version_by_css, '>= 5.9', '<= 5.9.1')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/wp-admin/install.php'
+  - '{{BaseURL}}/feed/'
+  - '{{BaseURL}}/?feed=rss2'
+  redirects: true
+  stop-at-first-match: true
+id: wordpress-954b8064-f317-4af4-a55f-9a61ee945006
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 5.4
+  description: 'WordPress Core in various versions < 5.9.2 and Gutenberg versions
+    less than 12.7.2 are vulnerable to prototype pollution via the block editor which
+    could make injecting malicious web scripts possible in some cases.
+
+    '
+  metadata:
+    shodan-query: 'vuln:'
+  name: 'WordPress Core < 5.9.2 & Gutenberg < 12.7.2 - Prototype Pollution via Block
+    Editor
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/954b8064-f317-4af4-a55f-9a61ee945006?source=api-prod
+  severity: medium
+  tags: cve,wordpress,wp-core,medium,production

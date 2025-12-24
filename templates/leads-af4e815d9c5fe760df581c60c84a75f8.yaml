@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - leads
+  - dsl:
+    - compare_versions(version, '< 1.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/leads/readme.txt'
+  redirects: true
+id: leads-af4e815d9c5fe760df581c60c84a75f8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N
+    cvss-score: 5.3
+  description: The WordPress Leads plugin for WordPress is vulnerable to authorization
+    bypass due to a missing capability check on multiple functions in versions up
+    to, and including, 1.6.2. This makes it possible for unathenticated attackers
+    to include malicious content in Leads, which may be executed upon viewing in the
+    dashboard at the current logged-in user's level of permissions.
+  metadata:
+    fofa-query: wp-content/plugins/leads/
+    google-query: inurl:"/wp-content/plugins/leads/"
+    shodan-query: 'vuln:'
+  name: WordPress Leads < 1.6.3 - Authorization Bypass
+  reference:
+  - https://g0blin.co.uk/g0blin-00042/
+  severity: medium
+  tags: cve,wordpress,wp-plugin,leads,medium

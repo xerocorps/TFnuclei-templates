@@ -1,0 +1,23 @@
+http:
+- extractors:
+  - part: body
+    regex:
+    - (npm_[A-Za-z0-9]{36})
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: npm-access-token
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 1
+    verified: true
+  name: NPM Access Token (fine-grained)
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/npm.yml
+  - https://docs.npmjs.com/about-access-tokens
+  - https://github.com/github/roadmap/issues/557
+  - https://github.blog/changelog/2022-12-06-limit-scope-of-npm-tokens-with-the-new-granular-access-tokens/
+  severity: info
+  tags: npm,token,exposure

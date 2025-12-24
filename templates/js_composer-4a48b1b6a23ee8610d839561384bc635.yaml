@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - js_composer
+  - dsl:
+    - compare_versions(version, '< 4.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/js_composer/readme.txt'
+  redirects: true
+id: js_composer-4a48b1b6a23ee8610d839561384bc635
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/js_composer/
+    google-query: inurl:"/wp-content/plugins/js_composer/"
+    shodan-query: 'vuln:'
+  name: 'WPBakery Page Builder for WordPress (formerly Visual Composer) <= 4.7.3 -
+    Multiple Cross-Site Scripting Issues
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b94facce-975f-4080-ad67-95d282b28d0d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,js_composer,high

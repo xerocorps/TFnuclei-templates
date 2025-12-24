@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - foobox-image-lightbox
+  - dsl:
+    - compare_versions(version, '<= 2.7.28')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/foobox-image-lightbox/readme.txt'
+  redirects: true
+id: foobox-image-lightbox-4c8a430a9b1592028eb058df342ad652
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/foobox-image-lightbox/
+    google-query: inurl:"/wp-content/plugins/foobox-image-lightbox/"
+    shodan-query: 'vuln:'
+  name: "Lightbox & Modal Popup WordPress Plugin \u2013 FooBox <= 2.7.28 - Authenticated\
+    \ (Contributor+) Stored DOM-Based Cross-Site Scripting via HTML Data Attributes\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/923f9e66-2e26-4ec2-a4b3-439881a6ca10?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,foobox-image-lightbox,low

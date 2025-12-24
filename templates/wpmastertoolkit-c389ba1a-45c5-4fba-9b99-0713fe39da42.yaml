@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpmastertoolkit
+  - dsl:
+    - compare_versions(version, '<= 1.15.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpmastertoolkit/readme.txt'
+  redirects: true
+id: wpmastertoolkit-c389ba1a-45c5-4fba-9b99-0713fe39da42
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpmastertoolkit/
+    google-query: inurl:"/wp-content/plugins/wpmastertoolkit/"
+    shodan-query: http.html:"wp-content/plugins/wpmastertoolkit/"
+  name: "WPMasterToolKit (WPMTK) \u2013 All in one plugin <= 2.5.2 - Authenticated\
+    \ (Administrator+) to Arbitrary File Read and Write\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c389ba1a-45c5-4fba-9b99-0713fe39da42?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpmastertoolkit,low,candidate

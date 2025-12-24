@@ -1,0 +1,15 @@
+request:
+  paths: false
+  payloads:
+  - '%0D%0ASet-Cookie:mycookie=myvalue'
+response:
+  exclude:
+  - '%0D%0A'
+  header:
+  - Set-Cookie:mycookie=myvalue
+  statusCode: 200
+template:
+  author: zoidsec
+  description: CRLF Discovery
+  name: crlf-discovery
+  severity: info

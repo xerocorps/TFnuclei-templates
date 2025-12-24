@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wordpress-seo
+  - dsl:
+    - compare_versions(version, '<= 3.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wordpress-seo/readme.txt'
+  redirects: true
+id: wordpress-seo-c0c0adb0db0dc690a92c817c7fa23c22
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wordpress-seo/
+    google-query: inurl:"/wp-content/plugins/wordpress-seo/"
+    shodan-query: 'vuln:'
+  name: 'Yoast SEO <= 3.2.5 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/48d0e0e0-81db-46ef-ba64-daa2a4079b79?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wordpress-seo,high

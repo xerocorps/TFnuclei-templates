@@ -1,0 +1,25 @@
+id: nzbget-panel
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: html:"NZBGet"
+    verified: true
+  name: NZBGet Login Panel
+  severity: info
+  tags: panel,nzbget
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>NZBGet</title>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

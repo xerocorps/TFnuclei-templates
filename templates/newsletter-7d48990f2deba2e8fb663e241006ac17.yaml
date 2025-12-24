@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - newsletter
+  - dsl:
+    - compare_versions(version, '<= 3.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/newsletter/readme.txt'
+  redirects: true
+id: newsletter-7d48990f2deba2e8fb663e241006ac17
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/newsletter/
+    google-query: inurl:"/wp-content/plugins/newsletter/"
+    shodan-query: 'vuln:'
+  name: 'Newsletter <= 3.2.6 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b4c6930a-b413-4acc-a0a4-9940bb8474cc?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,newsletter,medium

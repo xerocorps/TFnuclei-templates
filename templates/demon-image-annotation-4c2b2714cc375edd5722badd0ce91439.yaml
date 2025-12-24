@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - demon-image-annotation
+  - dsl:
+    - compare_versions(version, '<= 5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/demon-image-annotation/readme.txt'
+  redirects: true
+id: demon-image-annotation-4c2b2714cc375edd5722badd0ce91439
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/demon-image-annotation/
+    google-query: inurl:"/wp-content/plugins/demon-image-annotation/"
+    shodan-query: 'vuln:'
+  name: 'Demon image annotation <= 5.3 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f093dfc8-8a2f-4614-b7c1-4fbf1afa9589?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,demon-image-annotation,low

@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - jenkins
+    - credentials
+    - disclosure
+  description: Template to detect sensitive credentials in Jenkins configuration
+  id: jenkins-credentials-disclosure
+  matchers:
+  - pattern: <passphrase>.+<\/passphrase>
+    type: body
+  - pattern: <secret>.+<\/secret>
+    type: body
+  name: Jenkins Credentials Disclosure - Detect
+  requests:
+    method: GET
+    path:
+    - /var/lib/jenkins/credentials.xml
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: High

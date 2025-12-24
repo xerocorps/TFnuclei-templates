@@ -1,0 +1,19 @@
+id: weblocal-craft-login
+info:
+  author: dhiyaneshDK
+  name: Web local craft Terminal Login
+  reference: https://www.exploit-db.com/ghdb/6800
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - WEB Local Craft Terminal
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/home.html'

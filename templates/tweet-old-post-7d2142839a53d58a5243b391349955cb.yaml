@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tweet-old-post
+  - dsl:
+    - compare_versions(version, '<= 9.0.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tweet-old-post/readme.txt'
+  redirects: true
+id: tweet-old-post-7d2142839a53d58a5243b391349955cb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tweet-old-post/
+    google-query: inurl:"/wp-content/plugins/tweet-old-post/"
+    shodan-query: 'vuln:'
+  name: 'Revive Old Posts <= 9.0.10 - Authenticated (Admin+) PHP Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6322e9be-ad71-4a91-ab9f-760107d920be?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tweet-old-post,low

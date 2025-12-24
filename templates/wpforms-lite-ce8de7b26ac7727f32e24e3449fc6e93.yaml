@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpforms-lite
+  - dsl:
+    - compare_versions(version, '< 1.6.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpforms-lite/readme.txt'
+  redirects: true
+id: wpforms-lite-ce8de7b26ac7727f32e24e3449fc6e93
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpforms-lite/
+    google-query: inurl:"/wp-content/plugins/wpforms-lite/"
+    shodan-query: 'vuln:'
+  name: 'Contact Form by WPForms <= 1.6.0.1 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/06bc7a24-eafc-4b06-852e-9b596f107805?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wpforms-lite,high

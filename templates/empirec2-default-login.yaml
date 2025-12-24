@@ -1,0 +1,42 @@
+id: empirec2-default-login
+info:
+  author: clem9669
+  metadata:
+    verified: true
+  name: Empire-C2 Default Login
+  reference:
+  - https://github.com/BC-SECURITY/Empire
+  - https://bc-security.gitbook.io/empire-wiki/quickstart/configuration/server
+  severity: high
+  tags: default-login,empire
+requests:
+- attack: pitchfork
+  matchers:
+  - part: body
+    regex:
+    - '{"token":".*"}'
+    type: regex
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    pass:
+    - password123
+    user:
+    - empireadmin
+  raw:
+  - 'POST /api/admin/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+
+    {"username":"{{user}}","password":"{{pass}}"}
+
+    '

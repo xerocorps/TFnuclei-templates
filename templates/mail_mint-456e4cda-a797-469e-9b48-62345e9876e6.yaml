@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mail-mint
+  - dsl:
+    - compare_versions(version, '<= 1.18.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mail-mint/readme.txt'
+  redirects: true
+id: mail_mint-456e4cda-a797-469e-9b48-62345e9876e6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mail-mint/
+    google-query: inurl:"/wp-content/plugins/mail-mint/"
+    shodan-query: http.html:"wp-content/plugins/mail-mint/"
+  name: 'Mail Mint <= 1.18.6 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/456e4cda-a797-469e-9b48-62345e9876e6?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,mail-mint,low,candidate

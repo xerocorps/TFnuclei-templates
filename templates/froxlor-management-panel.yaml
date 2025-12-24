@@ -1,0 +1,25 @@
+id: froxlor-management-panel
+info:
+  author: DhiyaneshDK
+  metadata:
+    shodan-query: title:"Froxlor Server Management Panel"
+    verified: true
+  name: Froxlor Server Management Panel
+  severity: info
+  tags: panel,froxlor
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Froxlor Server Management Panel</title>
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

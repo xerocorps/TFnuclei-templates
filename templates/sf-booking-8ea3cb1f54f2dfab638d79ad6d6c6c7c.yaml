@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sf-booking
+  - dsl:
+    - compare_versions(version, '< 3.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/sf-booking/style.css'
+  redirects: true
+id: sf-booking-8ea3cb1f54f2dfab638d79ad6d6c6c7c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/sf-booking/
+    google-query: inurl:"/wp-content/themes/sf-booking/"
+    shodan-query: 'vuln:'
+  name: 'Service Finder - Provider and Business Listing Theme < 3.2 - Path Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cdac6080-5e23-488d-8b3c-de0c6c92e344?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,sf-booking,low

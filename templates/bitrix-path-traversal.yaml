@@ -1,0 +1,28 @@
+http:
+- body: 'AUTH_FORM=Y&TYPE=AUTH&backurl=/&USER_LOGIN[]=Test&USER_PASSWORD=Test&USER_REMEMBER=Test
+
+    '
+  extractors:
+  - group: 1
+    part: body
+    regex:
+    - '\n(\/.*\.php):'
+    type: regex
+  headers:
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    Content-Type: application/x-www-form-urlencoded
+    Referer: '{{BaseURL}}'
+  matchers:
+  - part: body
+    type: word
+    words:
+    - MysqliSqlHelper
+  method: POST
+  path:
+  - '{{BaseURL}}/?login=yes'
+id: bitrix-path-traversal
+info:
+  author: trainzment
+  name: bitrix-path-traversal
+  severity: low
+  tags: bitrix

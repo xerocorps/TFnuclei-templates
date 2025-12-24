@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - houzez
+  - dsl:
+    - compare_versions(version, '<= 1.8.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/houzez/style.css'
+  redirects: true
+id: houzez-66c0eb115d7d264e6ac2497bc4d292fe
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/houzez/
+    google-query: inurl:"/wp-content/themes/houzez/"
+    shodan-query: 'vuln:'
+  name: 'Houzez <= 1.8.3 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6e54a627-7882-47de-ba36-1c34754bd64a?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,houzez,medium

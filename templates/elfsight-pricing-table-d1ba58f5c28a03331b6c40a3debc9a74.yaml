@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - elfsight-pricing-table
+  - dsl:
+    - compare_versions(version, '<= 2.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/elfsight-pricing-table/readme.txt'
+  redirects: true
+id: elfsight-pricing-table-d1ba58f5c28a03331b6c40a3debc9a74
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/elfsight-pricing-table/
+    google-query: inurl:"/wp-content/plugins/elfsight-pricing-table/"
+    shodan-query: 'vuln:'
+  name: 'Pricing Table <= 2.0.1 - Cross-Site Request Forgery via ajax()
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4cb3d2d4-256c-4128-9397-8b9c7be1b9c8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,elfsight-pricing-table,medium

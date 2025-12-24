@@ -1,0 +1,59 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-fastest-cache
+  - dsl:
+    - compare_versions(version, '<= 0.8.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-fastest-cache/readme.txt'
+  redirects: true
+id: wp-fastest-cache-3ec83eb40b5015da6d232be5b7d694f2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 7.4
+  description: "The WP Fastest Cache plugin for WordPress is vulnerable to blind SQL\
+    \ Injection via the \u2018$comment_id\u2019 parameter in versions up to, and including,\
+    \ 0.8.7.4 due to insufficient escaping on the user supplied parameter and lack\
+    \ of sufficient preparation on the existing SQL query.  This makes it possible\
+    \ for subscriber-level attackers to append additional SQL queries into already\
+    \ existing queries that can be used to extract sensitive information from the\
+    \ database."
+  metadata:
+    fofa-query: wp-content/plugins/wp-fastest-cache/
+    google-query: inurl:"/wp-content/plugins/wp-fastest-cache/"
+    shodan-query: 'vuln:'
+  name: WP Fastest Cache <= 0.8.7.4 - SQL Injection
+  reference:
+  - https://plugins.trac.wordpress.org/changeset/1771828/wp-fastest-cache
+  - https://www.ripstech.com/php-security-calendar-2018/#Day21
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-wp-fastest-cache-sql-injection-0-8-7-4/
+  - https://wpscan.com/vulnerability/8beb9013-b36d-4d2d-9042-f1053e2ccf21
+  - https://web.archive.org/web/20200817023818/https%3A//www.ripstech.com/php-security-calendar-2018/
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-fastest-cache,high

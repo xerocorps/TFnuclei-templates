@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - loginizer
+  - dsl:
+    - compare_versions(version, '<= 1.7.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/loginizer/readme.txt'
+  redirects: true
+id: loginizer-0f3c958b2bafbf0c247ff8eff776cf57
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/loginizer/
+    google-query: inurl:"/wp-content/plugins/loginizer/"
+    shodan-query: 'vuln:'
+  name: 'Loginizer <= 1.7.8 - Reflected Cross-Site Scripting via ''limit_session[count]''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4e6ef932-975c-423b-b780-b38449eec577?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,loginizer,medium

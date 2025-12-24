@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-pdf-invoices-packing-slips
+  - dsl:
+    - compare_versions(version, '<= 3.7.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/readme.txt'
+  redirects: true
+id: woocommerce_pdf_invoices_packing_slips-a92e307d-b3c0-441a-abac-580a60dd44cf
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-pdf-invoices-packing-slips/
+    google-query: inurl:"/wp-content/plugins/woocommerce-pdf-invoices-packing-slips/"
+    shodan-query: http.html:"wp-content/plugins/woocommerce-pdf-invoices-packing-slips/"
+  name: 'PDF Invoices & Packing Slips for WooCommerce <= 3.7.6 - Authenticated (Shop
+    Manager+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a92e307d-b3c0-441a-abac-580a60dd44cf?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woocommerce-pdf-invoices-packing-slips,low,candidate

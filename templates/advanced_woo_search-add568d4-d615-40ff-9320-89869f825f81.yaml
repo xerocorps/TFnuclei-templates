@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-woo-search
+  - dsl:
+    - compare_versions(version, '<= 1.99')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-woo-search/readme.txt'
+  redirects: true
+id: advanced_woo_search-add568d4-d615-40ff-9320-89869f825f81
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-woo-search/
+    google-query: inurl:"/wp-content/plugins/advanced-woo-search/"
+    shodan-query: http.html:"wp-content/plugins/advanced-woo-search/"
+  name: 'Advanced Woo Search <= 2.00 - Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/add568d4-d615-40ff-9320-89869f825f81?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-woo-search,low,candidate

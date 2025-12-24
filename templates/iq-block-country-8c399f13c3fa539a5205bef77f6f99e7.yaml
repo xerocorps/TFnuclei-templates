@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - iq-block-country
+  - dsl:
+    - compare_versions(version, '< 1.1.20')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/iq-block-country/readme.txt'
+  redirects: true
+id: iq-block-country-8c399f13c3fa539a5205bef77f6f99e7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/iq-block-country/
+    google-query: inurl:"/wp-content/plugins/iq-block-country/"
+    shodan-query: 'vuln:'
+  name: 'iQ Block Country  < 1.1.20 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dcdb5d23-b9fe-495b-8431-f82f22813531?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,iq-block-country,medium

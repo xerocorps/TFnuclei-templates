@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - learnpress
+  - dsl:
+    - compare_versions(version, '<= 4.2.9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/learnpress/readme.txt'
+  redirects: true
+id: learnpress-d2365e92-d70d-47fa-9abe-7cbdd6336f39
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/learnpress/
+    google-query: inurl:"/wp-content/plugins/learnpress/"
+    shodan-query: http.html:"wp-content/plugins/learnpress/"
+  name: "LearnPress \u2013 WordPress LMS Plugin <= 4.2.9.3 - Missing Authorization\
+    \ to Unauthenticated Database Table Manipulation\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d2365e92-d70d-47fa-9abe-7cbdd6336f39?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,learnpress,high,candidate

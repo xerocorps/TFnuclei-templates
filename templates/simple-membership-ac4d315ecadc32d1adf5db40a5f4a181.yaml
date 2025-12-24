@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-membership
+  - dsl:
+    - compare_versions(version, '< 4.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-membership/readme.txt'
+  redirects: true
+id: simple-membership-ac4d315ecadc32d1adf5db40a5f4a181
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-membership/
+    google-query: inurl:"/wp-content/plugins/simple-membership/"
+    shodan-query: 'vuln:'
+  name: 'Simple Membership <= 4.0.8 - Cross-Site Request Forgery to Arbitrary Member
+    Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/70fa060f-11eb-4b51-b985-59421f44414e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,simple-membership,medium

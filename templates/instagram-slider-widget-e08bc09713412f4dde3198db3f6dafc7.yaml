@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - instagram-slider-widget
+  - dsl:
+    - compare_versions(version, '<= 2.0.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/instagram-slider-widget/readme.txt'
+  redirects: true
+id: instagram-slider-widget-e08bc09713412f4dde3198db3f6dafc7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/instagram-slider-widget/
+    google-query: inurl:"/wp-content/plugins/instagram-slider-widget/"
+    shodan-query: 'vuln:'
+  name: 'Social Slider Feed <= 2.0.4 - Missing Authorization to Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1c63eaea-0a0f-412b-9f1a-3091de3a653a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,instagram-slider-widget,high

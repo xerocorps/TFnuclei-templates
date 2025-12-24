@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - LayerSlider
+  - dsl:
+    - compare_versions(version, '< 6.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/LayerSlider/readme.txt'
+  redirects: true
+id: layerslider-8dc59593de10e4e27a8948d5f0ddb604
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/LayerSlider/
+    google-query: inurl:"/wp-content/plugins/LayerSlider/"
+    shodan-query: 'vuln:'
+  name: 'LayerSlider <= 6.2.0 - Cross-Site Request Forgery to Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/11aaec16-930d-44f6-abe5-4f7fdc32f252?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,LayerSlider,medium

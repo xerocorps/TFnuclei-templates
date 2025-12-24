@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-easy-gallery
+  - dsl:
+    - compare_versions(version, '<= 2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-easy-gallery/readme.txt'
+  redirects: true
+id: wp-easy-gallery-c043d40caaa5d03e1b7e17f43e4c6ed4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-easy-gallery/
+    google-query: inurl:"/wp-content/plugins/wp-easy-gallery/"
+    shodan-query: 'vuln:'
+  name: 'WP Easy Gallery <= 2.7 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/73e4b097-a33b-47c4-8899-f14e2858a1d0?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-easy-gallery,critical

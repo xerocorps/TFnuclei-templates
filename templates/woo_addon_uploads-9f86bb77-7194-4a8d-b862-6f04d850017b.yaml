@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-addon-uploads
+  - dsl:
+    - compare_versions(version, '<= 1.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-addon-uploads/readme.txt'
+  redirects: true
+id: woo_addon_uploads-9f86bb77-7194-4a8d-b862-6f04d850017b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-addon-uploads/
+    google-query: inurl:"/wp-content/plugins/woo-addon-uploads/"
+    shodan-query: http.html:"wp-content/plugins/woo-addon-uploads/"
+  name: 'File Uploads Addon for WooCommerce <= 1.7.1 - Unauthenticated Sensitive Information
+    Exposure Through Unprotected Directory
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9f86bb77-7194-4a8d-b862-6f04d850017b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,woo-addon-uploads,low,candidate

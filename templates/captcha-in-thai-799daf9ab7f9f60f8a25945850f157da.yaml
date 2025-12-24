@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - captcha-in-thai
+  - dsl:
+    - compare_versions(version, '<= 1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/captcha-in-thai/readme.txt'
+  redirects: true
+id: captcha-in-thai-799daf9ab7f9f60f8a25945850f157da
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/captcha-in-thai/
+    google-query: inurl:"/wp-content/plugins/captcha-in-thai/"
+    shodan-query: 'vuln:'
+  name: 'CAPTCHA in Thai <= 1.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/81f4f8e8-cac3-4865-a686-212f6c7f7b65?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,captcha-in-thai,medium

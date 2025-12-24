@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-post-thumbnails
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-post-thumbnails/readme.txt'
+  redirects: true
+id: simple-post-thumbnails-c3ec7120a4b92459e512233c50f2a028
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-post-thumbnails/
+    google-query: inurl:"/wp-content/plugins/simple-post-thumbnails/"
+    shodan-query: 'vuln:'
+  name: 'TimThumb <= 1.33 - Remote File Download
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e062c794-1ab7-4d44-95da-40cd401f3a37?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-post-thumbnails,low

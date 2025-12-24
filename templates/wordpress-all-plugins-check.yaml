@@ -1,0 +1,33 @@
+id: wordpress-all-plugins-check
+info:
+  author: ricardomaia
+  description: 'Try to detect all WordPress plugins installed on the target based
+    on the presence of the `wp-content/plugins` directory in the response body.
+
+    Example: `nuclei -id wordpress-all-plugins -u http://example.com`.
+
+    '
+  name: Wordpress All Plugins
+  reference:
+  - https://plugins.svn.wordpress.org/
+  severity: info
+  tags: tech,wordpress,wp-plugin
+requests:
+- extractors:
+  - group: 1
+    name: plugins
+    part: body
+    regex:
+    - (?i).*wp-content/plugins/(.*?)/
+    type: regex
+  matchers:
+  - condition: or
+    type: word
+    words:
+    - wp-content/plugins
+  - type: regex
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true

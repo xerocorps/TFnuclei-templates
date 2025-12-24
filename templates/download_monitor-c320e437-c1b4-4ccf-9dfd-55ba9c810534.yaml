@@ -1,0 +1,50 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - download-monitor
+  - dsl:
+    - compare_versions(version, '<= 1.9.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/download-monitor/readme.txt'
+  redirects: true
+id: download_monitor-c320e437-c1b4-4ccf-9dfd-55ba9c810534
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L
+    cvss-score: 6.5
+  description: 'The Download Monitor plugin for WordPress is vulnerable to authorization
+    bypass due to missing capability checks on the delete_logs() and export_logs()
+    functions in versions up to, and including, 1.9.6. This makes it possible for
+    unauthenticated attackers to delete and export several log types.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/download-monitor/
+    google-query: inurl:"/wp-content/plugins/download-monitor/"
+    shodan-query: http.html:"wp-content/plugins/download-monitor/"
+  name: 'Download Monitor <= 1.9.6 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c320e437-c1b4-4ccf-9dfd-55ba9c810534?source=api-prod
+  severity: high
+  tags: cve,wordpress,wp-plugin,download-monitor,high,production

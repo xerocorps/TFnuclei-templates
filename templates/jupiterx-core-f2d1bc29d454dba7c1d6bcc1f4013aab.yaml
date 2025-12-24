@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jupiterx-core
+  - dsl:
+    - compare_versions(version, '>= 3.0.0', '<= 3.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jupiterx-core/readme.txt'
+  redirects: true
+id: jupiterx-core-f2d1bc29d454dba7c1d6bcc1f4013aab
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jupiterx-core/
+    google-query: inurl:"/wp-content/plugins/jupiterx-core/"
+    shodan-query: 'vuln:'
+  name: 'JupiterX Core  3.0.0 - 3.3.0 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1dccb69e-b3d8-44b5-8f5e-931e5afe2bd1?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,jupiterx-core,high

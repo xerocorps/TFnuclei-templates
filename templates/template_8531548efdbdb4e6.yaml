@@ -1,0 +1,25 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - zimbra
+    - config file
+    - exposure
+  description: Template to detect Zimbra configuration file exposure
+  id: zimbra-config-exposure
+  matchers:
+  - pattern: <key>zimbraImapBindPort<\/key>\s+<value>\d+<\/value>
+    type: body
+  - pattern: <key>zimbraImapSSLBindPort<\/key>\s+<value>\d+<\/value>
+    type: body
+  name: Zimbra Configuration Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /opt/zimbra/conf/localconfig.xml
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

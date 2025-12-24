@@ -1,0 +1,24 @@
+id: codeception-config
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: html:"codeception.yml"
+    verified: true
+  name: Codeception YAML Configuration File Exposure
+  severity: low
+  tags: exposure,devops,codeception,config,cicd
+requests:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'paths:'
+    - 'settings:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/codeception.yml'

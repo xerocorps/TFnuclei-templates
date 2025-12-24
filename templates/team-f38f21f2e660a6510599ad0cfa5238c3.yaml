@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - team
+  - dsl:
+    - compare_versions(version, '< 1.22.16')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/team/readme.txt'
+  redirects: true
+id: team-f38f21f2e660a6510599ad0cfa5238c3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/team/
+    google-query: inurl:"/wp-content/plugins/team/"
+    shodan-query: 'vuln:'
+  name: 'Team Showcase <= 1.22.15 - Object Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1da8894c-fd19-4ea1-9c05-e519c0131061?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,team,low

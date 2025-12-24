@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-database-cleaner
+  - dsl:
+    - compare_versions(version, '<= 3.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-database-cleaner/readme.txt'
+  redirects: true
+id: advanced_database_cleaner-62c46925-8e97-4989-8c2c-56223d6911a2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-database-cleaner/
+    google-query: inurl:"/wp-content/plugins/advanced-database-cleaner/"
+    shodan-query: http.html:"wp-content/plugins/advanced-database-cleaner/"
+  name: 'Advanced Database Cleaner <= 3.1.2 - Authenticated (Administrator+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/62c46925-8e97-4989-8c2c-56223d6911a2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-database-cleaner,low,candidate

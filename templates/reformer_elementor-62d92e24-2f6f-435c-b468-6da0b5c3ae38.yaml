@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - reformer-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.0.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/reformer-elementor/readme.txt'
+  redirects: true
+id: reformer_elementor-62d92e24-2f6f-435c-b468-6da0b5c3ae38
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/reformer-elementor/
+    google-query: inurl:"/wp-content/plugins/reformer-elementor/"
+    shodan-query: http.html:"wp-content/plugins/reformer-elementor/"
+  name: 'Reformer for Elementor <= 1.0.6 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/62d92e24-2f6f-435c-b468-6da0b5c3ae38?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,reformer-elementor,high,candidate

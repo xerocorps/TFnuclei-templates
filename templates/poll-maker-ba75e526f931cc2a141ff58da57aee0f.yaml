@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - poll-maker
+  - dsl:
+    - compare_versions(version, '<= 4.7.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/poll-maker/readme.txt'
+  redirects: true
+id: poll-maker-ba75e526f931cc2a141ff58da57aee0f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/poll-maker/
+    google-query: inurl:"/wp-content/plugins/poll-maker/"
+    shodan-query: 'vuln:'
+  name: 'Poll Maker <= 4.7.1 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6a27fcc6-b1ac-4649-892b-7e0dee3f0d08?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,poll-maker,high

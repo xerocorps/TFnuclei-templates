@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - better-click-to-tweet
+  - dsl:
+    - compare_versions(version, '<= 5.10.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/better-click-to-tweet/readme.txt'
+  redirects: true
+id: better-click-to-tweet-30f8169c0ee1d126c1c64fe36001f3b6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/better-click-to-tweet/
+    google-query: inurl:"/wp-content/plugins/better-click-to-tweet/"
+    shodan-query: 'vuln:'
+  name: 'Better Click To Tweet <= 5.10.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a4c21c56-c424-4667-a281-fa9e7241d8ad?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,better-click-to-tweet,medium

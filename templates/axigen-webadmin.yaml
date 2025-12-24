@@ -1,0 +1,25 @@
+id: axigen-webadmin
+info:
+  author: dhiyaneshDk
+  classification:
+    cwe-id: CWE-200
+  description: An Axigen Web Admin panel was discovered.
+  metadata:
+    shodan-query: "http.title:\"Axigen\xC2\_WebAdmin\""
+  name: Axigen Web Admin Detection
+  reference:
+  - https://www.axigen.com/
+  severity: info
+  tags: axigen,panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - "<title>Axigen\xC2\_WebAdmin</title>"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

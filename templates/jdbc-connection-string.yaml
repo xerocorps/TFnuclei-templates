@@ -1,0 +1,15 @@
+id: jdbc-connection-string
+info:
+  author: Ice3man
+  name: JDBC Connection String Disclosure
+  severity: info
+  tags: exposure,token
+requests:
+- extractors:
+  - part: body
+    regex:
+    - jdbc:[a-z:]+://[A-Za-z0-9\.\-_:;=/@?,&]+
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

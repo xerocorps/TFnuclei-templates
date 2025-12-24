@@ -1,0 +1,20 @@
+id: database-error
+info:
+  author: dhiyaneshDK
+  name: Database Error
+  reference:
+  - https://www.shodan.io/search?query=http.title%3A%22Database+Error%22
+  severity: info
+  tags: misconfig,database
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>Database Error</title>
+  - status:
+    - 500
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

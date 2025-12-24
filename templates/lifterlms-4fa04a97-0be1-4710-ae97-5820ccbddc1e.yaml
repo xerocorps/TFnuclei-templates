@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lifterlms
+  - dsl:
+    - compare_versions(version, '< 3.35.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/lifterlms/readme.txt'
+  redirects: true
+id: lifterlms-4fa04a97-0be1-4710-ae97-5820ccbddc1e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/lifterlms/
+    google-query: inurl:"/wp-content/plugins/lifterlms/"
+    shodan-query: http.html:"wp-content/plugins/lifterlms/"
+  name: 'LMS by LifterLMS <= 3.35.0 - Stored Cross-Site Scripting via Import
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4fa04a97-0be1-4710-ae97-5820ccbddc1e?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,lifterlms,high,candidate

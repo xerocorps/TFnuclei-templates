@@ -1,0 +1,10 @@
+directive_name: riak-pbc
+directive_str: \0\0\0\x01\x07
+matches:
+- pattern: ^....\x08..(riak@[\w._-]+)..([\w._-]+)$
+  service: riak-pbc
+  version_info: s p/Basho Riak/ v/$2/ h/$1/
+ports:
+- 8087
+protocol: TCP
+rarity: 8

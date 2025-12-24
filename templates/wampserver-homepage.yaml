@@ -1,0 +1,22 @@
+id: wampserver-homepage
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: title:"WAMPSERVER Homepage"
+    verified: true
+  name: WAMPSERVER Homepage
+  severity: info
+  tags: panel,wampserver
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>WAMPSERVER Homepage</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

@@ -1,0 +1,19 @@
+id: cgi-test-page
+info:
+  author: YASH ANAND @yashanand155
+  name: CGI Test page
+  severity: info
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - HTTP_ACCEPT
+    - HTTP_ACCEPT_ENCODING
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/test/test.cgi'

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - business-directory-plugin
+  - dsl:
+    - compare_versions(version, '<= 6.4.19')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/business-directory-plugin/readme.txt'
+  redirects: true
+id: business_directory_plugin-3bdc076c-bc6d-442b-a1bb-9f3201153eb2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/business-directory-plugin/
+    google-query: inurl:"/wp-content/plugins/business-directory-plugin/"
+    shodan-query: http.html:"wp-content/plugins/business-directory-plugin/"
+  name: 'Business Directory <= 6.4.19 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3bdc076c-bc6d-442b-a1bb-9f3201153eb2?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,business-directory-plugin,high,candidate

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - widget-logic
+  - dsl:
+    - compare_versions(version, '<= 6.0.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/widget-logic/readme.txt'
+  redirects: true
+id: widget_logic-d2e762b6-b3f2-4610-b7db-98c62e014d40
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/widget-logic/
+    google-query: inurl:"/wp-content/plugins/widget-logic/"
+    shodan-query: http.html:"wp-content/plugins/widget-logic/"
+  name: 'Widget Logic <= 6.0.5 - Authenticated (Contributor+) Remote Code Execution
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d2e762b6-b3f2-4610-b7db-98c62e014d40?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,widget-logic,low,candidate

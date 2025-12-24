@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-woo-search
+  - dsl:
+    - compare_versions(version, '<= 1.68')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-woo-search/readme.txt'
+  redirects: true
+id: advanced-woo-search-7743b40bc1164f159e44d6da0dd23eff
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-woo-search/
+    google-query: inurl:"/wp-content/plugins/advanced-woo-search/"
+    shodan-query: 'vuln:'
+  name: 'Advanced Woo Search <= 1.68 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f4c3f9c5-5086-416b-a601-2890f52547c0?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,advanced-woo-search,high

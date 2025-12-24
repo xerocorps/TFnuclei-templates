@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - easy-post-types
+  - dsl:
+    - compare_versions(version, '<= 1.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/easy-post-types/readme.txt'
+  redirects: true
+id: easy_post_types-d12c4b1c-23d0-430f-a6ea-0a3ab487ed10
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/easy-post-types/
+    google-query: inurl:"/wp-content/plugins/easy-post-types/"
+    shodan-query: http.html:"wp-content/plugins/easy-post-types/"
+  name: 'WP Easy Post Types <= 1.4.4 - Authenticated (Subscriber+) Missing Authorization
+    via Multiple Functions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d12c4b1c-23d0-430f-a6ea-0a3ab487ed10?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,easy-post-types,low,candidate

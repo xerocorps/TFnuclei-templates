@@ -1,0 +1,12 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - sk_live_[0-9a-z]{32}
+    type: regex
+id: pictatic-api-key
+info:
+  author: gaurang
+  name: Pictatic API Key
+  severity: high

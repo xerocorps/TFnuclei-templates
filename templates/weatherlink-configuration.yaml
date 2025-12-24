@@ -1,0 +1,19 @@
+id: weatherlink-configuration
+info:
+  author: dhiyaneshDK
+  name: WeatherLinkIP Configuration
+  reference: https://www.exploit-db.com/ghdb/6007
+  severity: info
+  tags: panel
+requests:
+- matchers:
+  - type: word
+    words:
+    - <title>WeatherLinkIP Configuration</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'

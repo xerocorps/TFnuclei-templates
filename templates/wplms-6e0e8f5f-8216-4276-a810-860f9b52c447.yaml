@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wplms
+  - dsl:
+    - compare_versions(version, '<= 1.8.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/wplms/style.css'
+  redirects: true
+id: wplms-6e0e8f5f-8216-4276-a810-860f9b52c447
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/wplms/
+    google-query: inurl:"/wp-content/themes/wplms/"
+    shodan-query: http.html:"wp-content/themes/wplms/"
+  name: 'WPLMS Learning Management System for WordPress, WordPress LMS <= 1.8.4.1
+    - Privilege Escalation
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6e0e8f5f-8216-4276-a810-860f9b52c447?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,wplms,low,candidate

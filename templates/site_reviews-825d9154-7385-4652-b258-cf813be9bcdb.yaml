@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - site-reviews
+  - dsl:
+    - compare_versions(version, '< 2.15.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/site-reviews/readme.txt'
+  redirects: true
+id: site_reviews-825d9154-7385-4652-b258-cf813be9bcdb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/site-reviews/
+    google-query: inurl:"/wp-content/plugins/site-reviews/"
+    shodan-query: http.html:"wp-content/plugins/site-reviews/"
+  name: 'Site Reviews <= 2.15.2 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/825d9154-7385-4652-b258-cf813be9bcdb?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,site-reviews,high,candidate

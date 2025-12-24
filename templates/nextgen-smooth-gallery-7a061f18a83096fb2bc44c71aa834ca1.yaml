@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - nextgen-smooth-gallery
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/nextgen-smooth-gallery/readme.txt'
+  redirects: true
+id: nextgen-smooth-gallery-7a061f18a83096fb2bc44c71aa834ca1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/nextgen-smooth-gallery/
+    google-query: inurl:"/wp-content/plugins/nextgen-smooth-gallery/"
+    shodan-query: 'vuln:'
+  name: 'NextGEN Smooth Gallery <= 1.2 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/09870d90-80b1-4650-9b00-0dc005702aee?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,nextgen-smooth-gallery,high

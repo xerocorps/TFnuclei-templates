@@ -1,0 +1,31 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - apache
+    - security
+    - password exposure
+    - configuration files
+    - high
+  description: Template to detect plain text password exposure in Apache configuration
+    files
+  id: apache-config-plain-password
+  matcher-condition: or
+  matchers:
+  - description: Apache configuration file containing plain text password
+    pattern: 'AuthUserFile.*:'
+    type: body
+  name: Apache Plain Text Password Exposure - Detect
+  reference:
+  - https://httpd.apache.org/docs/2.4/misc/security_tips.html#protectserverfiles
+  requests:
+    condition: and
+    description: Attempt to retrieve Apache configuration files
+    method: GET
+    path:
+    - /etc/apache2/*
+  response:
+  - status:
+    - 200
+  severity: High

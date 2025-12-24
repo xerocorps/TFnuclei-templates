@@ -1,0 +1,49 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gallery-bank
+  - dsl:
+    - compare_versions(version, '< 3.0.330')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gallery-bank/readme.txt'
+  redirects: true
+id: gallery_bank-48c6efc9-6c53-4ac9-8f99-62fbab0599ce
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 8.8
+  description: "The Gallery Bank \u2013 WordPress Photo Gallery plugin for WordPress\
+    \ is vulnerable to blind SQL Injection via the \u2018delete_array\u2019 parameter\
+    \ in versions up to, and including, 3.0.229 due to insufficient escaping on the\
+    \ user supplied parameter and lack of sufficient preparation on the existing SQL\
+    \ query.  This makes it possible for authenticated attackers to append additional\
+    \ SQL queries into already existing queries that can be used to extract sensitive\
+    \ information from the database.\n"
+  metadata:
+    fofa-query: wp-content/plugins/gallery-bank/
+    google-query: inurl:"/wp-content/plugins/gallery-bank/"
+    shodan-query: http.html:"wp-content/plugins/gallery-bank/"
+  name: "Gallery Bank \u2013 WordPress Photo Gallery Plugin <= 3.0.229 - SQL Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/48c6efc9-6c53-4ac9-8f99-62fbab0599ce?source=api-prod
+  severity: low
+  tags: cve,wordpress,wp-plugin,gallery-bank,low,production

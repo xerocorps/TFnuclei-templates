@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - print-invoices-packing-slip-labels-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 4.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/print-invoices-packing-slip-labels-for-woocommerce/readme.txt'
+  redirects: true
+id: print-invoices-packing-slip-labels-for-woocommerce-51718570fd68397de39d9a80a9340024
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/print-invoices-packing-slip-labels-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/print-invoices-packing-slip-labels-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce PDF Invoices <= 4.2.1 - Authenticated(Shop Manager+) Arbitrary
+    Options Update via JSON Import
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7927edf2-b092-4b56-83aa-038f99ea658e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,print-invoices-packing-slip-labels-for-woocommerce,low

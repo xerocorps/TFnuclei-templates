@@ -1,0 +1,23 @@
+id: self-signed-ssl
+info:
+  author: righettod,pdteam
+  name: Self Signed SSL Certificate
+  severity: low
+  tags: ssl
+ssl:
+- address: '{{Host}}:{{Port}}'
+  extractors:
+  - internal: true
+    json:
+    - .common_name[]
+    name: common_name
+    type: json
+  - internal: true
+    json:
+    - .issuer_common_name[]
+    name: issuer_common_name
+    type: json
+  matchers:
+  - dsl:
+    - common_name == issuer_common_name
+    type: dsl

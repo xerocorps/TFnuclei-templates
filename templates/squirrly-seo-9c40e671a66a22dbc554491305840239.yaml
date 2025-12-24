@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - squirrly-seo
+  - dsl:
+    - compare_versions(version, '< 6.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/squirrly-seo/readme.txt'
+  redirects: true
+id: squirrly-seo-9c40e671a66a22dbc554491305840239
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/squirrly-seo/
+    google-query: inurl:"/wp-content/plugins/squirrly-seo/"
+    shodan-query: 'vuln:'
+  name: 'SEO Plugin by Squirrly SEO < 6.1.5 - Missing Authorization Checks
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0747b104-5be6-44eb-b62c-0026f810573c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,squirrly-seo,high

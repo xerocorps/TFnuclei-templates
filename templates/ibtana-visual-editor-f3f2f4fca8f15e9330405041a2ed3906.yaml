@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ibtana-visual-editor
+  - dsl:
+    - compare_versions(version, '<= 1.1.8.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ibtana-visual-editor/readme.txt'
+  redirects: true
+id: ibtana-visual-editor-f3f2f4fca8f15e9330405041a2ed3906
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ibtana-visual-editor/
+    google-query: inurl:"/wp-content/plugins/ibtana-visual-editor/"
+    shodan-query: 'vuln:'
+  name: "Ibtana \u2013 WordPress Website Builder <= 1.1.8.7 - Authenticated (Contributor+)\
+    \ Stored Cross-Site Scripting via Shortcode\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/79d96a6c-6191-44d8-aab8-f01bb2692767?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ibtana-visual-editor,low

@@ -1,0 +1,26 @@
+info:
+  author: OpenAI
+  classification:
+    country: any
+    tags:
+    - ssh
+    - sshd_config
+    - config file
+    - exposure
+  description: Template to detect SSH sshd_config file exposure
+  id: sshd-config-disclosure
+  matchers:
+  - pattern: PasswordAuthentication\s+(yes|no)
+    type: body
+  - pattern: PermitRootLogin\s+(yes|no)
+    type: body
+  name: SSH sshd_config Exposure - Detect
+  requests:
+    method: GET
+    path:
+    - /etc/ssh/sshd_config
+  response:
+  - description: Successful response status
+    status:
+    - 200
+  severity: Medium

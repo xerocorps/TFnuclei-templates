@@ -1,0 +1,33 @@
+id: ampps-panel
+info:
+  author: deFr0ggy
+  classification:
+    cwe-id: CWE-200
+  description: An AMPPS login panel was detected.
+  name: AMPPS Login Panel
+  severity: info
+  tags: panel,ampps,login
+requests:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - mpps\.com">Powered By FREE ([A-Z 0-9.]+)<\/a>
+    type: regex
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <a href="http://www.ampps.com">
+    - <title>Login</title>
+    - themes/default/images/ampps/favicon.ico
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}/ampps/index.php?act=login'
+  redirects: true

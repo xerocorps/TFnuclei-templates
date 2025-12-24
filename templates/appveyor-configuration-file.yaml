@@ -1,0 +1,25 @@
+id: appveyor-configuration-file
+info:
+  author: DhiyaneshDk
+  metadata:
+    shodan-query: html:"appveyor.yml"
+    verified: true
+  name: AppVeyor Configuration Exposure
+  severity: medium
+  tags: config,exposure,devops
+requests:
+- matchers:
+  - condition: and
+    type: word
+    words:
+    - 'install:'
+    - 'test_script:'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/.appveyor.yml'
+  - '{{BaseURL}}/appveyor.yml'
+  stop-at-first-match: true

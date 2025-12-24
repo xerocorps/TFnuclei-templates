@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - regina-lite
+  - dsl:
+    - compare_versions(version, '<= 2.0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/regina-lite/style.css'
+  redirects: true
+id: regina-lite-d76a65577c17d6a011e8277997d9744f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/regina-lite/
+    google-query: inurl:"/wp-content/themes/regina-lite/"
+    shodan-query: 'vuln:'
+  name: 'Regina Lite <= 2.0.7 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7dcd3452-a340-44e5-b292-347dc69ab863?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,regina-lite,medium

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-product-vendors
+  - dsl:
+    - compare_versions(version, '<= 2.2.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-product-vendors/readme.txt'
+  redirects: true
+id: woocommerce-product-vendors-dcc7445cd9ec5ec7ee3a955c14c72c37
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-product-vendors/
+    google-query: inurl:"/wp-content/plugins/woocommerce-product-vendors/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Product Vendors <= 2.2.1 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fcce0a92-520d-45ac-845e-a1635f763eed?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocommerce-product-vendors,high

@@ -1,0 +1,19 @@
+id: secnet-ac-panel
+info:
+  author: ritikchaddha
+  name: Secnet ac Panel Detect
+  severity: info
+  tags: secnet-ac,panel
+requests:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - "<title>\u5B89\u7F51\u79D1\u6280-\u667A\u80FD\u8DEF\u7531\u7CFB\u7EDF</title>"
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/login.html'

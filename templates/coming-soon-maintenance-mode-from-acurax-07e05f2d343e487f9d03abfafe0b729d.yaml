@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - coming-soon-maintenance-mode-from-acurax
+  - dsl:
+    - compare_versions(version, '<= 2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/coming-soon-maintenance-mode-from-acurax/readme.txt'
+  redirects: true
+id: coming-soon-maintenance-mode-from-acurax-07e05f2d343e487f9d03abfafe0b729d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/coming-soon-maintenance-mode-from-acurax/
+    google-query: inurl:"/wp-content/plugins/coming-soon-maintenance-mode-from-acurax/"
+    shodan-query: 'vuln:'
+  name: 'Under Construction / Maintenance Mode from Acurax <= 2.6 - Authenticated
+    (Subscriber+) Sensitive Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2a75f4eb-698b-4c92-9829-de6c55e21ecb?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,coming-soon-maintenance-mode-from-acurax,low

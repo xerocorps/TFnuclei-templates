@@ -1,0 +1,54 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - booster-elite-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 1.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/booster-elite-for-woocommerce/readme.txt'
+  redirects: true
+id: booster-elite-for-woocommerce-a1b76d955111d3f4260374154ea3599c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/booster-elite-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/booster-elite-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Booster (<= 5.6.6), Booster Plus (<= 5.6.5), and Booster Elite (<= 1.1.7)
+    for WooCommerce - Cross-Site Request Forgery leading to Arbitrary Custom Role
+    Creation/Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/21cc3f71-7591-4111-a58a-d863df74587f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,booster-elite-for-woocommerce,medium

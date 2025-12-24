@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - addons-for-visual-composer
+  - dsl:
+    - compare_versions(version, '<= 3.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/addons-for-visual-composer/readme.txt'
+  redirects: true
+id: addons-for-visual-composer-59dac536747afece3c1a3ea9fc3f34f4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/addons-for-visual-composer/
+    google-query: inurl:"/wp-content/plugins/addons-for-visual-composer/"
+    shodan-query: 'vuln:'
+  name: 'WPBakery Page Builder Addons by Livemesh <= 3.8.1 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting via Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2c07b5c8-7fae-499d-9f6c-9392166f74b8?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,addons-for-visual-composer,low

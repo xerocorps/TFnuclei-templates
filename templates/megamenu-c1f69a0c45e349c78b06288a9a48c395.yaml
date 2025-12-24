@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - megamenu
+  - dsl:
+    - compare_versions(version, '<= 2.3.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/megamenu/readme.txt'
+  redirects: true
+id: megamenu-c1f69a0c45e349c78b06288a9a48c395
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/megamenu/
+    google-query: inurl:"/wp-content/plugins/megamenu/"
+    shodan-query: 'vuln:'
+  name: 'Max Mega Menu <= 2.3.8 - Authenticated Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5646eb5b-caf0-413c-a1a8-f0c6a5fa5114?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,megamenu,low
