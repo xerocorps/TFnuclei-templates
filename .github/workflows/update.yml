@@ -3,21 +3,50 @@ name: Update Nuclei Templates
 on:
   workflow_dispatch:
   schedule:
+    # Run daily at 4 AM UTC
     - cron: "0 4 * * *"
 
 permissions:
   contents: write
 
+env:
+  CHUNK_SIZE: 50 # Sources per parallel job
+
 jobs:
+  # Generate dynamic matrix based on source count
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      total_sources: ${{ steps.set-matrix.outputs.total_sources }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Calculate chunks
+        id: set-matrix
+        run: |
+          TOTAL=$(python3 -c "import json; print(len(json.load(open('sources.json'))))")
+          echo "total_sources=$TOTAL" >> $GITHUB_OUTPUT
+
+          # Calculate number of chunks needed
+          CHUNKS=$(( (TOTAL + $CHUNK_SIZE - 1) / $CHUNK_SIZE ))
+
+          # Generate matrix JSON
+          MATRIX=$(python3 -c "import json; print(json.dumps({'chunk': list(range($CHUNKS))}))")
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+
+          echo "Total sources: $TOTAL"
+          echo "Chunk size: $CHUNK_SIZE"
+          echo "Number of chunks: $CHUNKS"
+
+  # Fetch templates in parallel chunks
   fetch:
+    needs: setup
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        chunk: [0,1,2,3]
-
-    env:
-      CHUNK_SIZE: 1
+      max-parallel: 4 # Limit parallel jobs to avoid rate limiting
+      matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
 
     steps:
       - uses: actions/checkout@v4
@@ -25,62 +54,102 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
-      - run: |
-          pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-      - run: |
-          mkdir -p artifacts
-          python scripts/fetch_chunk.py \
-            --chunk ${{ matrix.chunk }} \
-            --size $CHUNK_SIZE \
+      - name: Fetch templates for chunk ${{ matrix.chunk }}
+        run: |
+          START=$(( ${{ matrix.chunk }} * $CHUNK_SIZE ))
+          END=$(( START + $CHUNK_SIZE ))
+
+          echo "Processing sources $START to $END"
+
+          python scripts/fetch_sources.py \
+            --start $START \
+            --end $END \
             --out artifacts/chunk-${{ matrix.chunk }}
+        continue-on-error: true # Don't fail the entire workflow if one chunk has issues
 
-      - run: |
-          tar -czf artifacts/chunk-${{ matrix.chunk }}.tar.gz \
-            -C artifacts chunk-${{ matrix.chunk }}
+      - name: Package chunk artifacts
+        run: |
+          if [ -d "artifacts/chunk-${{ matrix.chunk }}" ]; then
+            tar -czf chunk-${{ matrix.chunk }}.tar.gz -C artifacts chunk-${{ matrix.chunk }}
+            echo "Packaged chunk-${{ matrix.chunk }}"
+          else
+            # Create empty tarball if no templates were fetched
+            mkdir -p artifacts/chunk-${{ matrix.chunk }}
+            echo '{"status": "empty"}' > artifacts/chunk-${{ matrix.chunk }}/fetch_report.json
+            tar -czf chunk-${{ matrix.chunk }}.tar.gz -C artifacts chunk-${{ matrix.chunk }}
+            echo "Created empty chunk-${{ matrix.chunk }}"
+          fi
 
-      - run: |
-          test -f artifacts/chunk-${{ matrix.chunk }}.tar.gz
-
-      - uses: actions/upload-artifact@v4
+      - name: Upload chunk artifact
+        uses: actions/upload-artifact@v4
         with:
           name: chunk-${{ matrix.chunk }}
-          path: artifacts/chunk-${{ matrix.chunk }}.tar.gz
+          path: chunk-${{ matrix.chunk }}.tar.gz
+          retention-days: 1
 
+  # Aggregate all chunks and commit
   aggregate:
-    needs: fetch
+    needs: [setup, fetch]
     runs-on: ubuntu-latest
+    if: always() # Run even if some fetch jobs failed
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history for proper commits
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
-      - run: |
-          pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-      - uses: actions/download-artifact@v4
+      - name: Download all chunk artifacts
+        uses: actions/download-artifact@v4
         with:
-          path: artifacts
+          path: downloaded-artifacts
 
-      - run: |
-          for f in artifacts/*.tar.gz; do
-            tar -xzf "$f" -C artifacts
+      - name: Extract all chunks
+        run: |
+          mkdir -p artifacts
+          for tarball in downloaded-artifacts/*/chunk-*.tar.gz; do
+            if [ -f "$tarball" ]; then
+              echo "Extracting $tarball"
+              tar -xzf "$tarball" -C artifacts
+            fi
           done
 
-      - run: |
-          python scripts/aggregate.py
+          echo "Contents of artifacts:"
+          ls -la artifacts/
 
-      - run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add templates templates_index.json
+      - name: Merge and deduplicate templates
+        run: python scripts/merge_templates.py artifacts
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Add all template files and metadata
+          git add templates/ templates_index.json stats.json
+
+          # Check if there are changes
           if git diff --cached --quiet; then
-            echo "No changes"
+            echo "No changes to commit"
           else
-            git commit -m "auto: update nuclei templates"
+            # Get stats for commit message
+            TEMPLATE_COUNT=$(python3 -c "import json; print(json.load(open('templates_index.json'))['count'])")
+            
+            git commit -m "🔄 Update nuclei templates: ${TEMPLATE_COUNT} templates" \
+              -m "Automated update from ${{ needs.setup.outputs.total_sources }} sources"
+            
             git push
+            echo "✓ Changes committed and pushed"
           fi
