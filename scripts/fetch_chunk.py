@@ -1,21 +1,16 @@
 #!/usr/bin/env python3
 import argparse, json, tempfile, shutil, io, re, hashlib
 from pathlib import Path
-from datetime import datetime
-import zipfile, requests, yaml
+import requests, zipfile, yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES_FILE = ROOT / "sources.json"
+SOURCES = json.loads((ROOT / "sources.json").read_text())
 
 HEADERS = {"User-Agent": "TFnuclei-templates/1.0"}
-
-MAX_FILES = 5000   # hard safety limit
-
-def log(*a):
-    print(datetime.utcnow().isoformat(), *a, flush=True)
+MAX_FILES = 3000
 
 def sanitize(s):
-    return re.sub(r"[^\w\-.]+", "_", s).strip("_")[:200]
+    return re.sub(r"[^\w\-.]+", "_", s)[:120]
 
 def download(url):
     r = requests.get(url, headers=HEADERS, timeout=60)
@@ -23,85 +18,67 @@ def download(url):
     return r.content
 
 def extract_zip(data, dest):
-    try:
-        with zipfile.ZipFile(io.BytesIO(data)) as z:
-            z.extractall(dest)
-        return True
-    except zipfile.BadZipFile:
-        return False
+    with zipfile.ZipFile(io.BytesIO(data)) as z:
+        z.extractall(dest)
 
-def find_yaml_files(d):
+def find_yaml(d):
     for p in d.rglob("*"):
-        if p.is_file() and p.suffix.lower() in (".yaml", ".yml"):
+        if p.suffix.lower() in (".yml", ".yaml"):
             yield p
 
-def canonicalize(text):
+def canonical(text):
     try:
         obj = yaml.safe_load(text)
-        dumped = yaml.safe_dump(obj, sort_keys=True)
-        dumped = "\n".join(l.rstrip() for l in dumped.splitlines()) + "\n"
-        return dumped, obj
+        return yaml.safe_dump(obj, sort_keys=True)
     except Exception:
-        norm = "\n".join(l.rstrip() for l in text.splitlines()) + "\n"
-        return norm, None
+        return text
 
-def sha256(s):
+def sha(s):
     return hashlib.sha256(s.encode()).hexdigest()
 
-def fetch_source(src, tmp):
-    if src["type"] == "github_repo":
-        owner, repo = src["repo"].split("/", 1)
-        for br in ("main", "master"):
-            url = f"https://github.com/{owner}/{repo}/archive/refs/heads/{br}.zip"
-            try:
-                data = download(url)
-                if extract_zip(data, tmp):
-                    return
-            except Exception:
-                pass
-    elif src["type"] == "zip":
-        extract_zip(download(src["url"]), tmp)
-    elif src["type"] in ("raw", "gist_raw"):
-        (tmp / "single.yaml").write_bytes(download(src["url"]))
+def fetch_repo(repo, tmp):
+    owner, name = repo.split("/")
+    for br in ("main", "master"):
+        try:
+            data = download(f"https://github.com/{owner}/{name}/archive/refs/heads/{br}.zip")
+            extract_zip(data, tmp)
+            return
+        except Exception:
+            pass
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--chunk-index", type=int, required=True)
-    ap.add_argument("--chunk-size", type=int, required=True)
+    ap.add_argument("--chunk", type=int, required=True)
+    ap.add_argument("--size", type=int, required=True)
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    files_dir = out / "files"
-    files_dir.mkdir(exist_ok=True)
 
-    sources = json.loads(SOURCES_FILE.read_text())
-    start = args.chunk_index * args.chunk_size
-    end = start + args.chunk_size
-    chunk = sources[start:end]
+    start = args.chunk * args.size
+    end = start + args.size
+    chunk = SOURCES[start:end]
 
     written = 0
 
     for src in chunk:
-        sid = sanitize(src.get("repo") or src.get("url") or "unknown")
-        log("Fetching", sid)
         tmp = Path(tempfile.mkdtemp())
         try:
-            fetch_source(src, tmp)
-            for p in find_yaml_files(tmp):
-                text = p.read_text(errors="replace")
-                canon, _ = canonicalize(text)
-                h = sha256(canon)
-                fname = files_dir / f"{sid}__{h[:12]}.yaml"
-                fname.write_text(canon)
+            fetch_repo(src["repo"], tmp)
+            sid = sanitize(src["repo"])
+            for f in find_yaml(tmp):
+                text = f.read_text(errors="replace")
+                c = canonical(text)
+                h = sha(c)
+                (out / f"{sid}__{h[:12]}.yaml").write_text(c)
                 written += 1
-                if written > MAX_FILES:
-                    raise RuntimeError("Chunk too large; reduce CHUNK_SIZE")
+                if written >= MAX_FILES:
+                    raise RuntimeError("Chunk too large")
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
 
-    log(f"Wrote {written} templates to {out}")
+    print(f"Wrote {written} files")
 
 if __name__ == "__main__":
     main()
