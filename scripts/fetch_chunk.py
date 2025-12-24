@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = json.loads((ROOT / "sources.json").read_text())
 
 HEADERS = {"User-Agent": "TFnuclei-templates/1.0"}
-MAX_FILES = 3000
+MAX_FILES = 30000
 
 def sanitize(s):
     return re.sub(r"[^\w\-.]+", "_", s)[:120]
