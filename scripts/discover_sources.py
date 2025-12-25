@@ -2,11 +2,8 @@
 """
 Discover new nuclei template sources from GitHub.
 
-Searches GitHub repositories for nuclei templates,
+Searches GitHub repositories and gists for nuclei templates,
 validates them, and outputs new sources to add.
-
-IMPORTANT: Uses GitHub Contents API (not Code Search) to avoid
-the strict 10 req/min rate limit on Code Search API.
 
 Usage:
     python discover_sources.py --days 7 --out new_sources.json
@@ -30,13 +27,13 @@ import yaml
 GITHUB_API_BASE = "https://api.github.com"
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com"
 
-# Rate limits - be conservative
-SEARCH_DELAY = 3  # Seconds between search API calls
-CONTENTS_DELAY = 0.5  # Seconds between contents API calls (more generous limit)
+# Rate limits
+SEARCH_DELAY = 2  # Seconds between search API calls
+API_DELAY = 0.5  # Seconds between other API calls
 
-DISCOVERY_MIN_STARS = 2
+DISCOVERY_MIN_STARS = 1  # Lowered to catch more repos
 DISCOVERY_MAX_AGE_DAYS = 365
-DISCOVERY_SAMPLE_FILES = 3  # Number of files to sample for validation
+DISCOVERY_SAMPLE_FILES = 3
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES_FILE = ROOT / "sources.json"
@@ -61,7 +58,7 @@ def setup_auth() -> None:
             "Accept": "application/vnd.github.v3+json",
             "User-Agent": "TFnuclei-templates-discovery/1.0",
         })
-        log("Using authenticated GitHub API (5000 req/hr limit)")
+        log("Using authenticated GitHub API")
     else:
         session.headers.update({
             "Accept": "application/vnd.github.v3+json",
@@ -70,115 +67,79 @@ def setup_auth() -> None:
         log("Warning: No GITHUB_TOKEN - rate limit is 60 req/hr", "WARN")
 
 
-def check_rate_limit() -> int:
-    """Check current rate limit status and return remaining requests."""
-    try:
-        response = session.get(f"{GITHUB_API_BASE}/rate_limit", timeout=10)
-        if response.status_code == 200:
-            data = response.json()
-            core = data.get("resources", {}).get("core", {})
-            remaining = core.get("remaining", 0)
-            reset_time = core.get("reset", 0)
-            
-            if remaining < 100:
-                wait_time = max(0, reset_time - time.time()) + 5
-                log(f"Rate limit low ({remaining}), waiting {wait_time:.0f}s", "WARN")
-                time.sleep(min(wait_time, 120))
-            
-            return remaining
-    except Exception as e:
-        log(f"Could not check rate limit: {e}", "WARN")
-    return 1000  # Assume OK
-
-
-def api_request(url: str, params: Optional[Dict] = None, delay: float = CONTENTS_DELAY) -> Optional[Dict]:
-    """Make GitHub API request with retry logic."""
+def api_get(url: str, params: Optional[Dict] = None, delay: float = API_DELAY) -> Optional[Any]:
+    """Make GitHub API GET request."""
     time.sleep(delay)
     
-    try:
-        response = session.get(url, params=params, timeout=30)
-        
-        if response.status_code == 200:
-            return response.json()
-        elif response.status_code == 403:
-            # Rate limited
-            reset_time = int(response.headers.get("X-RateLimit-Reset", 0))
-            wait_time = max(0, reset_time - time.time()) + 5
-            log(f"Rate limited, waiting {wait_time:.0f}s", "WARN")
-            time.sleep(min(wait_time, 120))
-            # Retry once
+    for attempt in range(3):
+        try:
             response = session.get(url, params=params, timeout=30)
+            
+            # Check rate limit headers
+            remaining = int(response.headers.get("X-RateLimit-Remaining", 100))
+            if remaining < 50:
+                reset_ts = int(response.headers.get("X-RateLimit-Reset", 0))
+                wait = max(0, reset_ts - time.time()) + 5
+                log(f"Rate limit low ({remaining}), waiting {min(wait, 60):.0f}s", "WARN")
+                time.sleep(min(wait, 60))
+            
             if response.status_code == 200:
                 return response.json()
-        elif response.status_code == 404:
-            return None  # Not found is expected sometimes
-            
-    except Exception as e:
-        log(f"Request failed: {e}", "ERROR")
+            elif response.status_code == 403:
+                log(f"Rate limited, waiting 60s...", "WARN")
+                time.sleep(60)
+                continue
+            elif response.status_code == 404:
+                return None
+            else:
+                log(f"API error {response.status_code}: {url}", "WARN")
+                return None
+                
+        except Exception as e:
+            log(f"Request error: {e}", "WARN")
+            time.sleep(5)
     
     return None
 
 
 def is_valid_nuclei_template(content: str) -> bool:
-    """
-    Check if YAML content is a valid nuclei template.
-    
-    Requirements:
-    - Must be valid YAML dict
-    - Must have 'id' field
-    - Must have 'info' section with 'severity'
-    - Must have at least one protocol (http, network, dns, file, etc.)
-    """
+    """Check if content is a valid nuclei template."""
     try:
         data = yaml.safe_load(content)
         if not isinstance(data, dict):
             return False
         
-        # Required: id field
+        # Must have id
         if "id" not in data:
             return False
         
-        # Required: info section
+        # Must have info with severity
         info = data.get("info", {})
-        if not isinstance(info, dict):
+        if not isinstance(info, dict) or "severity" not in info:
             return False
         
-        # Required: severity in info
-        if "severity" not in info:
-            return False
-        
-        # Valid severity values
-        valid_severities = {"critical", "high", "medium", "low", "info", "unknown"}
-        severity = str(info.get("severity", "")).lower()
-        if severity not in valid_severities:
-            return False
-        
-        # Must have at least one protocol
-        protocols = ["http", "network", "dns", "file", "headless", "ssl", "websocket", "whois", "code", "javascript"]
+        # Must have a protocol
+        protocols = ["http", "network", "dns", "file", "headless", "ssl", "websocket", "whois", "code", "javascript", "tcp", "udp"]
         if not any(p in data for p in protocols):
             return False
         
         return True
         
-    except yaml.YAMLError:
-        return False
-    except Exception:
+    except:
         return False
 
 
 def load_existing_sources() -> Set[str]:
-    """Load existing source repos from sources.json."""
+    """Load existing source repos/URLs."""
     existing = set()
     try:
         if SOURCES_FILE.exists():
             sources = json.loads(SOURCES_FILE.read_text())
-            for source in sources:
-                if source.get("type") == "github_repo":
-                    repo = source.get("repo", "").lower()
-                    existing.add(repo)
-                elif source.get("type") == "raw":
-                    url = source.get("url", "").lower()
-                    existing.add(url)
+            for s in sources:
+                if s.get("type") == "github_repo":
+                    existing.add(s.get("repo", "").lower())
+                elif s.get("type") in ("raw", "zip"):
+                    existing.add(s.get("url", "").lower())
     except Exception as e:
         log(f"Error loading sources: {e}", "WARN")
     return existing
@@ -186,16 +147,14 @@ def load_existing_sources() -> Set[str]:
 
 def load_blacklist() -> Dict[str, Any]:
     """Load blacklist configuration."""
-    default_blacklist = {
+    blacklist = {
         "repos": [],
         "patterns": [
             "^test[-_]", "[-_]test$",
             "^backup[-_]", "[-_]backup$",
             "^fork[-_]", "[-_]fork$",
-            "^example[-_]", "[-_]example$",
-            "^sample[-_]", "[-_]sample$",
-            "^stars$", "[-_]stars$", "^my[-_]stars$",
-            "trending", "awesome-",
+            "^stars$", "[-_]stars$",
+            "^awesome[-_]",
         ],
         "users": [],
     }
@@ -203,31 +162,27 @@ def load_blacklist() -> Dict[str, Any]:
     try:
         if BLACKLIST_FILE.exists():
             loaded = json.loads(BLACKLIST_FILE.read_text())
-            # Merge patterns
-            default_blacklist["repos"] = loaded.get("repos", [])
-            default_blacklist["patterns"].extend(loaded.get("patterns", []))
-            default_blacklist["users"] = loaded.get("users", [])
-    except Exception as e:
-        log(f"Error loading blacklist: {e}", "WARN")
+            blacklist["repos"] = loaded.get("repos", [])
+            blacklist["patterns"] = loaded.get("patterns", [])
+            blacklist["users"] = loaded.get("users", [])
+    except:
+        pass
     
-    return default_blacklist
+    return blacklist
 
 
-def is_blacklisted(repo: str, blacklist: Dict[str, Any]) -> bool:
-    """Check if repo matches blacklist."""
+def is_blacklisted(repo: str, blacklist: Dict) -> bool:
+    """Check if repo is blacklisted."""
     repo_lower = repo.lower()
     
-    # Check exact repo matches
     if repo_lower in [r.lower() for r in blacklist.get("repos", [])]:
         return True
     
-    # Check user matches
     user = repo.split("/")[0].lower() if "/" in repo else ""
     if user in [u.lower() for u in blacklist.get("users", [])]:
         return True
     
-    # Check patterns
-    repo_name = repo.split("/")[1] if "/" in repo else repo
+    repo_name = repo.split("/")[1].lower() if "/" in repo else repo.lower()
     for pattern in blacklist.get("patterns", []):
         if re.search(pattern, repo_name, re.IGNORECASE):
             return True
@@ -235,221 +190,250 @@ def is_blacklisted(repo: str, blacklist: Dict[str, Any]) -> bool:
     return False
 
 
-def find_yaml_files_in_repo(owner: str, repo: str, path: str = "", depth: int = 0) -> List[str]:
-    """
-    Find YAML files in a repo using Contents API (NOT Code Search).
-    Returns list of raw file URLs.
-    
-    This avoids the 10 req/min Code Search rate limit.
-    """
-    if depth > 2:  # Don't go too deep
+def get_default_branch(owner: str, repo: str) -> str:
+    """Get default branch for a repo."""
+    url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}"
+    data = api_get(url)
+    if data:
+        return data.get("default_branch", "main")
+    return "main"
+
+
+def find_yaml_files(owner: str, repo: str, branch: str, path: str = "", depth: int = 0) -> List[str]:
+    """Find YAML files in repo using Contents API."""
+    if depth > 2:
         return []
     
     yaml_files = []
     url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}/contents/{path}"
+    params = {"ref": branch}
     
-    result = api_request(url)
-    if not result:
-        return []
-    
-    if not isinstance(result, list):
+    result = api_get(url, params)
+    if not result or not isinstance(result, list):
         return []
     
     for item in result:
-        if len(yaml_files) >= DISCOVERY_SAMPLE_FILES * 2:  # Get a few extra
+        if len(yaml_files) >= 10:
             break
             
         name = item.get("name", "")
         item_type = item.get("type", "")
         item_path = item.get("path", "")
         
-        if item_type == "file" and (name.endswith(".yaml") or name.endswith(".yml")):
-            # Construct raw URL directly (no API call needed)
-            raw_url = f"{GITHUB_RAW_BASE}/{owner}/{repo}/HEAD/{item_path}"
+        if item_type == "file" and name.endswith((".yaml", ".yml")):
+            raw_url = f"{GITHUB_RAW_BASE}/{owner}/{repo}/{branch}/{item_path}"
             yaml_files.append(raw_url)
             
         elif item_type == "dir" and depth < 2:
-            # Check subdirectory, but limit depth
-            subdir_name = name.lower()
-            # Only recurse into likely template directories
-            if any(kw in subdir_name for kw in ["template", "nuclei", "cve", "poc", "vuln", "scan"]):
-                yaml_files.extend(find_yaml_files_in_repo(owner, repo, item_path, depth + 1))
+            # Check promising directories
+            if any(k in name.lower() for k in ["template", "nuclei", "cve", "poc", "vuln"]):
+                yaml_files.extend(find_yaml_files(owner, repo, branch, item_path, depth + 1))
     
     return yaml_files
 
 
 def validate_repo(repo: str) -> bool:
-    """
-    Validate that a repo contains actual nuclei templates.
-    Uses Contents API instead of Code Search to avoid rate limits.
-    """
+    """Validate repo contains nuclei templates."""
     log(f"  Validating: {repo}")
     
-    owner, repo_name = repo.split("/", 1)
+    parts = repo.split("/")
+    if len(parts) != 2:
+        return False
+    owner, repo_name = parts
     
-    # Find YAML files using Contents API
-    yaml_files = find_yaml_files_in_repo(owner, repo_name)
+    # Get default branch
+    branch = get_default_branch(owner, repo_name)
+    
+    # Find YAML files
+    yaml_files = find_yaml_files(owner, repo_name, branch)
     
     if not yaml_files:
         log(f"    No YAML files found")
         return False
     
-    log(f"    Found {len(yaml_files)} YAML files, sampling...")
+    log(f"    Found {len(yaml_files)} YAML files")
     
-    # Sample and validate files (using raw URLs, no API call needed)
+    # Sample and validate
     valid_count = 0
-    for raw_url in yaml_files[:DISCOVERY_SAMPLE_FILES]:
+    for url in yaml_files[:DISCOVERY_SAMPLE_FILES]:
         try:
-            time.sleep(0.2)  # Brief delay for raw fetches
-            response = session.get(raw_url, timeout=10)
-            if response.status_code == 200:
-                if is_valid_nuclei_template(response.text):
-                    valid_count += 1
-        except Exception:
-            continue
+            time.sleep(0.2)
+            resp = session.get(url, timeout=10)
+            if resp.status_code == 200 and is_valid_nuclei_template(resp.text):
+                valid_count += 1
+        except:
+            pass
     
-    is_valid = valid_count > 0
-    log(f"    Result: {valid_count}/{min(len(yaml_files), DISCOVERY_SAMPLE_FILES)} valid templates")
-    return is_valid
+    log(f"    Valid: {valid_count}/{min(len(yaml_files), DISCOVERY_SAMPLE_FILES)}")
+    return valid_count > 0
 
 
-def search_repositories(days: int, existing: Set[str], blacklist: Dict) -> List[Dict[str, Any]]:
-    """Search GitHub for nuclei template repositories."""
+def search_repositories(days: int, existing: Set[str], blacklist: Dict) -> List[Dict]:
+    """Search for nuclei template repositories."""
     discovered = []
-    since_date = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
+    since = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
+    seen = set()
     
-    # Search queries - ordered by most likely to find good results
+    # Multiple search strategies
     queries = [
-        f"topic:nuclei-templates pushed:>{since_date}",
-        f"nuclei-templates in:name pushed:>{since_date}",
-        f"nuclei-template in:name pushed:>{since_date}",
-        f"topic:nuclei-template pushed:>{since_date}",
+        f"nuclei-templates in:name",
+        f"nuclei-template in:name", 
+        f"nuclei template in:name fork:false",
+        f"topic:nuclei-templates",
+        f"topic:nuclei-template",
+        f"nuclei poc in:name language:YAML",
+        f"nuclei cve in:name language:YAML",
     ]
     
-    seen_repos = set()
-    
-    # Check rate limit before starting
-    check_rate_limit()
-    
     for query in queries:
-        log(f"Searching: {query}")
+        if len(discovered) >= 15:  # Limit per run
+            break
+            
+        log(f"Search: {query}")
         time.sleep(SEARCH_DELAY)
         
         url = f"{GITHUB_API_BASE}/search/repositories"
-        params = {
-            "q": query,
-            "sort": "updated",
-            "order": "desc",
-            "per_page": 30,  # Reduced to save API calls
-        }
+        params = {"q": query, "sort": "updated", "order": "desc", "per_page": 50}
         
-        result = api_request(url, params, delay=SEARCH_DELAY)
+        result = api_get(url, params, delay=SEARCH_DELAY)
         if not result:
             continue
         
-        items = result.get("items", [])
-        log(f"  Found {len(items)} repos")
+        log(f"  Found {result.get('total_count', 0)} results")
         
-        for repo_data in items:
+        for repo_data in result.get("items", []):
             full_name = repo_data.get("full_name", "")
-            
             if not full_name:
                 continue
             
             repo_lower = full_name.lower()
             
-            # Skip if already seen
-            if repo_lower in seen_repos:
+            if repo_lower in seen:
                 continue
-            seen_repos.add(repo_lower)
+            seen.add(repo_lower)
             
-            # Skip existing sources
             if repo_lower in existing:
                 log(f"  Skip (exists): {full_name}")
                 continue
             
-            # Skip blacklisted
             if is_blacklisted(full_name, blacklist):
                 log(f"  Skip (blacklist): {full_name}")
                 continue
             
-            # Check minimum stars
             stars = repo_data.get("stargazers_count", 0)
             if stars < DISCOVERY_MIN_STARS:
                 log(f"  Skip (stars={stars}): {full_name}")
                 continue
             
-            # Check not archived
-            if repo_data.get("archived", False):
+            if repo_data.get("archived"):
                 log(f"  Skip (archived): {full_name}")
                 continue
             
-            # Check recent activity
-            pushed_at = repo_data.get("pushed_at", "")
-            if pushed_at:
-                try:
-                    pushed_date = datetime.fromisoformat(pushed_at.replace("Z", "+00:00"))
-                    age_days = (datetime.now(timezone.utc) - pushed_date).days
-                    if age_days > DISCOVERY_MAX_AGE_DAYS:
-                        log(f"  Skip (inactive {age_days}d): {full_name}")
-                        continue
-                except:
-                    pass
-            
-            # Validate contains actual templates
+            # Validate
             if not validate_repo(full_name):
-                log(f"  Skip (invalid): {full_name}")
+                log(f"  Skip (no templates): {full_name}")
                 continue
             
-            log(f"  ✓ Discovered: {full_name} (⭐ {stars})")
+            log(f"  ✓ DISCOVERED: {full_name} (⭐ {stars})")
             discovered.append({
                 "type": "github_repo",
                 "repo": full_name,
                 "discovered_at": datetime.now(timezone.utc).isoformat(),
                 "stars": stars,
             })
+    
+    return discovered
+
+
+def search_gists(days: int, existing: Set[str]) -> List[Dict]:
+    """Search for nuclei template gists."""
+    discovered = []
+    log("Searching gists...")
+    
+    # Search for gists with nuclei-related names
+    queries = ["nuclei template", "nuclei yaml", "nuclei poc"]
+    
+    for query in queries:
+        if len(discovered) >= 5:
+            break
             
-            # Limit discoveries per run to avoid too many API calls
-            if len(discovered) >= 10:
-                log("Reached discovery limit (10), stopping")
-                return discovered
+        time.sleep(SEARCH_DELAY)
+        
+        # Search code for gists
+        url = f"{GITHUB_API_BASE}/search/code"
+        params = {"q": f"{query} extension:yaml", "per_page": 20}
+        
+        result = api_get(url, params, delay=SEARCH_DELAY)
+        if not result:
+            continue
+        
+        for item in result.get("items", []):
+            html_url = item.get("html_url", "")
+            
+            if "gist.github.com" not in html_url:
+                continue
+            
+            # Extract gist info
+            try:
+                parts = html_url.split("/")
+                user = parts[3]
+                gist_id = parts[4].split("#")[0]
+                filename = item.get("name", "")
+                
+                raw_url = f"https://gist.githubusercontent.com/{user}/{gist_id}/raw/{filename}"
+                
+                if raw_url.lower() in existing:
+                    continue
+                
+                # Validate
+                time.sleep(0.3)
+                resp = session.get(raw_url, timeout=10)
+                if resp.status_code == 200 and is_valid_nuclei_template(resp.text):
+                    log(f"  ✓ GIST: {gist_id}/{filename}")
+                    discovered.append({
+                        "type": "raw",
+                        "url": raw_url,
+                        "discovered_at": datetime.now(timezone.utc).isoformat(),
+                    })
+            except:
+                continue
     
     return discovered
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Discover new nuclei template sources")
-    parser.add_argument("--days", type=int, default=7, help="Search repos pushed within N days")
+    parser = argparse.ArgumentParser(description="Discover nuclei template sources")
+    parser.add_argument("--days", type=int, default=7, help="Search within N days")
     parser.add_argument("--out", type=str, default="new_sources.json", help="Output file")
-    parser.add_argument("--dry-run", action="store_true", help="Print results without saving")
+    parser.add_argument("--dry-run", action="store_true", help="Don't save")
     args = parser.parse_args()
     
     setup_auth()
+    log(f"Discovering sources (last {args.days} days)")
     
-    log(f"Discovering sources from last {args.days} days")
-    
-    # Load existing sources and blacklist
     existing = load_existing_sources()
     blacklist = load_blacklist()
-    
     log(f"Loaded {len(existing)} existing sources")
     
-    # Search repositories
-    discovered = search_repositories(args.days, existing, blacklist)
+    # Search
+    repos = search_repositories(args.days, existing, blacklist)
+    gists = search_gists(args.days, existing)
+    
+    all_sources = repos + gists
     
     log(f"\n{'='*50}")
     log(f"Discovery complete!")
-    log(f"  New sources found: {len(discovered)}")
+    log(f"  Repos: {len(repos)}")
+    log(f"  Gists: {len(gists)}")
+    log(f"  Total: {len(all_sources)}")
     
     if args.dry_run:
-        log("\nDry run - not saving. Results:")
-        for source in discovered:
-            print(json.dumps(source, indent=2))
+        log("Dry run - not saving")
+        for s in all_sources:
+            print(json.dumps(s))
     else:
-        # Save results
-        output_path = Path(args.out)
-        output_path.write_text(json.dumps(discovered, indent=2))
-        log(f"Saved to {output_path}")
+        Path(args.out).write_text(json.dumps(all_sources, indent=2))
+        log(f"Saved to {args.out}")
 
 
 if __name__ == "__main__":
