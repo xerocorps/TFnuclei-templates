@@ -1,0 +1,81 @@
+name: Discover New Sources
+
+on:
+  schedule:
+    # Run at 2 AM UTC daily (before update workflow at 4 AM)
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Number of days to search back"
+        required: false
+        default: "7"
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Discover new sources
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DAYS="${{ inputs.days || '7' }}"
+          echo "Searching for sources from last $DAYS days"
+          python scripts/discover_sources.py --days "$DAYS" --out new_sources.json
+
+      - name: Show discovered sources
+        run: |
+          if [ -f "new_sources.json" ]; then
+            echo "Discovered sources:"
+            cat new_sources.json | python -m json.tool
+          else
+            echo "No new sources file created"
+          fi
+
+      - name: Merge new sources
+        run: |
+          if [ -f "new_sources.json" ]; then
+            python scripts/merge_sources.py sources.json new_sources.json
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add sources.json
+
+          if git diff --cached --quiet; then
+            echo "No new sources discovered"
+          else
+            # Count new sources
+            NEW_COUNT=$(cat new_sources.json 2>/dev/null | python -c "import json,sys; print(len(json.load(sys.stdin)))" || echo "0")
+            
+            git commit -m "🔍 Auto-discovered ${NEW_COUNT} new source(s)" \
+              -m "Automated discovery from GitHub search"
+            
+            git push
+            echo "✓ Committed and pushed ${NEW_COUNT} new sources"
+          fi
+
+      - name: Cleanup
+        run: rm -f new_sources.json
