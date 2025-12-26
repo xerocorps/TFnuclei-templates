@@ -1,12 +1,11 @@
 http:
 - matchers:
-  - case-insensitive: true
-    type: word
-    words:
-    - <title>Adobe Experience Manager forms</title>
   - status:
     - 200
     type: status
+  - type: word
+    words:
+    - <title>Adobe Experience Manager forms</title>
   matchers-condition: and
   method: GET
   path:
@@ -14,14 +13,12 @@ http:
 id: aem-forms-panel
 info:
   author: darses
-  description: 'Adobe Experience Manager Forms was discovered.
+  description: 'Adobe Experience Manager Forms was detected.
 
     '
   metadata:
-    max-request: 1
     product: experience_manager_forms
     vendor: adobe
-    verified: true
   name: Adobe Experience Manager Forms - Panel
   severity: info
-  tags: panel,login,adobe,detect,discovery
+  tags: detect,panel,adobe

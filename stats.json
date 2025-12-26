@@ -1,27 +1,54 @@
 {
-  "last_updated": "2025-12-25T05:09:17.338910+00:00",
-  "total_templates": 48792,
-  "duplicates_removed": 501250,
+  "last_updated": "2025-12-26T05:06:10.558158+00:00",
+  "total_templates": 49118,
+  "duplicates_removed": 501381,
   "deduplication_breakdown": {
-    "exact_content": 340803,
-    "semantic_fingerprint": 105202,
-    "normalized_id": 55245
+    "exact_content": 340825,
+    "semantic_fingerprint": 105259,
+    "normalized_id": 55297
   },
   "sources": {
-    "total": 416,
-    "successful": 388,
-    "failed": 8,
+    "total": 428,
+    "successful": 397,
+    "failed": 11,
     "skipped": 20
   },
   "severity_breakdown": {
-    "critical": 5117,
-    "high": 10535,
-    "medium": 14284,
-    "low": 12269,
-    "info": 6222,
+    "critical": 5231,
+    "high": 10653,
+    "medium": 14318,
+    "low": 12276,
+    "info": 6275,
     "unknown": 365
   },
   "failed_sources": [
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "akshayrajs/100K-nuclei-templates",
+        "discovered_at": "2025-12-25T06:43:58.376441+00:00",
+        "stars": 2
+      },
+      "error": "Could not download akshayrajs/100K-nuclei-templates from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "rix4uni/nucleihub-templates",
+        "discovered_at": "2025-12-25T06:44:10.277079+00:00",
+        "stars": 32
+      },
+      "error": "Could not download rix4uni/nucleihub-templates from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "MarkBMoss/UpdateNucleiTemplates",
+        "discovered_at": "2025-12-25T06:44:15.432824+00:00",
+        "stars": 2
+      },
+      "error": "Could not download MarkBMoss/UpdateNucleiTemplates from any branch"
+    },
     {
       "source": {
         "type": "github_repo",

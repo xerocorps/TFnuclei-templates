@@ -1,0 +1,35 @@
+http:
+- fuzzing:
+  - fuzz:
+    - '{{reflection}}'
+    mode: single
+    part: cookie
+    type: postfix
+  matchers:
+  - part: body
+    type: word
+    words:
+    - '{{reflection}}'
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  payloads:
+    reflection:
+    - '''"><{{first}}>'
+    - '''><{{first}}>'
+    - '"><{{first}}>'
+  pre-condition:
+  - dsl:
+    - method == "GET"
+    type: dsl
+  stop-at-first-match: true
+id: reflected-xss-cookie
+info:
+  author: pdteam,0xKayala,AmirHossein Raeisi
+  name: Reflected Cross-Site Scripting
+  severity: medium
+  tags: fuzzing-req-cookie,fuzzing-req,fuzzing-req-reflected,fuzzing-req-xss,dast
+variables:
+  first: '{{rand_int(10000, 99999)}}'

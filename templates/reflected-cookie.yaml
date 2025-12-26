@@ -1,0 +1,26 @@
+http:
+- fuzzing:
+  - fuzz:
+    - '{{reflection}}'
+    mode: single
+    part: cookie
+    type: postfix
+  matchers:
+  - part: body
+    type: word
+    words:
+    - reewardius
+  payloads:
+    reflection:
+    - reewardius
+  pre-condition:
+  - dsl:
+    - method == "GET"
+    type: dsl
+  stop-at-first-match: true
+id: reflected-cookie
+info:
+  author: reewardius
+  name: Reflected Cross Site Scripting
+  severity: medium
+  tags: fuzzing-req,fuzzing-req-cookie,fuzzing-req-reflected,dast

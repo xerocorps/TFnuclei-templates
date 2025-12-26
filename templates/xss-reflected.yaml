@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <script>alert('XSS')</script>
+    - <img src=x onerror=alert(1)>
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/search?q=<script>alert(''XSS'')</script>'
+  - '{{BaseURL}}/error?msg=<img src=x onerror=alert(1)>'
+id: xss-reflected
+info:
+  author: security-team
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+    cvss-score: 6.1
+    cwe-id: CWE-79
+  description: Detects reflected cross-site scripting vulnerabilities
+  name: Reflected XSS Detection
+  severity: medium
+  tags: xss,injection,javascript

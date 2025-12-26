@@ -1,13 +1,20 @@
 flow: http(1) && http(2) && http(3)
 http:
 - matchers:
-  - condition: and
-    dsl:
-    - contains_any(server, "SDC Server", "WebServer/1.0.0")
-    - contains(body, "cmcc-login")
-    - status_code == 200
-    internal: true
-    type: dsl
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: header
+    type: word
+    words:
+    - 'Server: SDC Server'
+    - 'Server: WebServer/1.0.0'
+  - part: body
+    type: word
+    words:
+    - cmcc-login
+  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}'
@@ -15,12 +22,16 @@ http:
 
     '
   matchers:
-  - condition: and
-    dsl:
-    - contains(body, "LOGIN_NORMAL")
-    - status_code == 200
-    internal: true
-    type: dsl
+  - internal: true
+    status:
+    - 200
+    type: status
+  - internal: true
+    part: body
+    type: word
+    words:
+    - LOGIN_NORMAL
+  matchers-condition: and
   method: POST
   path:
   - '{{BaseURL}}/cgi-bin/main.cgi'
@@ -28,20 +39,22 @@ http:
 
     '
   extractors:
-  - group: 1
-    regex:
-    - '"model"\s*:\s*"([^"]+)"'
-    type: regex
-  - group: 1
-    regex:
-    - '"version"\s*:\s*"([^"]+)"'
-    type: regex
+  - json:
+    - .brandInfoObject.version
+    name: version
+    type: json
+  - json:
+    - .brandInfoObject.model
+    name: model
+    type: json
   matchers:
-  - condition: and
-    dsl:
-    - contains_all(body, 'brand', 'HoloSens SDC')
-    - status_code == 200
-    type: dsl
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - '"brand": "HoloSens SDC"'
   matchers-condition: and
   method: POST
   path:
@@ -49,21 +62,20 @@ http:
 id: huawei-holosense-panel
 info:
   author: darses
-  description: 'Huawei HoloSens SDC Panel was discovered.
+  description: 'Huawei HoloSens SDC login panel was detected.
 
     '
   metadata:
     fofa-query:
     - '"Server: SDC Server" && protocol="https"'
     - '"Server: WebServer/1.0.0" && port="1443"'
-    max-requests: 1
+    max-requests: 3
     product: holosense_sdc
     shodan-query:
     - 'Server: SDC Server'
     - http.html_hash:-968212412
     vendor: huawei
+    verified: true
   name: Huawei HoloSens SDC - Panel
-  reference:
-  - https://www.huawei.com/en/products/intelligent-devices/holosens-sdc
   severity: info
-  tags: panel,detect,huawei,holosens,iot,discovery
+  tags: detect,huawei,holosens,panel

@@ -1,9 +1,14 @@
-http:
-- headers:
-    Accept: application/json
-  matchers:
+id: api-endpoints
+info:
+  author: the_shadow_0
+  name: API Endpoints
+  severity: low
+requests:
+- matchers:
   - status:
     - 200
+    - 405
+    - 403
     type: status
   - part: header
     type: word
@@ -62,11 +67,3 @@ http:
   - '{{BaseURL}}/rest/api/orders'
   - '{{BaseURL}}/rest/api/webhooks'
   - '{{BaseURL}}/docs'
-id: api-endpoints
-info:
-  author: panch0r3d
-  name: Common API Endpoints
-  reference:
-  - https://github.com/1in9e/my-nuclei-templates/blob/main/api_endpoints.yaml
-  severity: info
-  tags: info,api,apis,misc

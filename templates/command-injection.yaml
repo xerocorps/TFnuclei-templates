@@ -1,19 +1,23 @@
-author: qaisar
-id: command-injection
-info:
-  description: Detects potential command injection vulnerabilities in the target
-  name: Command Injection
-  severity: high
-requests:
+http:
 - matchers:
   - part: body
     regex:
-    - Command executed successfully
+    - uid=[0-9]+.*gid=[0-9]+
+    - 'root:.*:0:0:'
     type: regex
-  method: POST
+  method: GET
   path:
-  - /execute
-  - /run-command
-tags:
-- web
-- command-injection
+  - '{{BaseURL}}/ping?host=127.0.0.1;cat /etc/passwd'
+  - '{{BaseURL}}/exec?cmd=whoami'
+  - '{{BaseURL}}/system?command=id'
+id: command-injection
+info:
+  author: security-team
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+    cwe-id: CWE-78
+  description: Detects OS command injection vulnerabilities
+  name: Command Injection Detection
+  severity: critical
+  tags: injection,rce,command

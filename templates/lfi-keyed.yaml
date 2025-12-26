@@ -2,37 +2,6 @@ http:
 - fuzzing:
   - fuzz:
     - '{{pathtraversal}}'
-    keys:
-    - cat
-    - dir
-    - action
-    - board
-    - date
-    - detail
-    - file
-    - filename
-    - download
-    - path
-    - folder
-    - prefix
-    - include
-    - page
-    - inc
-    - locate
-    - show
-    - doc
-    - site
-    - type
-    - view
-    - content
-    - document
-    - layout
-    - mod
-    - conf
-    - url
-    - img
-    - image
-    - images
     mode: single
     part: query
   - fuzz:
@@ -94,13 +63,11 @@ http:
 id: lfi-keyed
 info:
   author: pwnhxl
-  metadata:
-    max-request: 25
   name: LFI Detection - Keyed
   reference:
   - https://owasp.org/www-community/attacks/Unicode_Encoding
   severity: high
-  tags: dast,pathtraversal,lfi,vuln
+  tags: fuzzing-req-query,lfi,dast
 variables:
   fuzz: ../../../../../../../../../../../../../../../
   fuzz_bypass_replace: '.../.../.../.../.../.../.../.../.../.../.../.../.../.../.../'
