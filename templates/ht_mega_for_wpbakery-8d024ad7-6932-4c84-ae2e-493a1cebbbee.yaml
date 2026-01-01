@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ht-mega-for-wpbakery
+  - dsl:
+    - compare_versions(version, '<= 1.0.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ht-mega-for-wpbakery/readme.txt'
+  redirects: true
+id: ht_mega_for_wpbakery-8d024ad7-6932-4c84-ae2e-493a1cebbbee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ht-mega-for-wpbakery/
+    google-query: inurl:"/wp-content/plugins/ht-mega-for-wpbakery/"
+    shodan-query: http.html:"wp-content/plugins/ht-mega-for-wpbakery/"
+  name: "HT Mega \u2013 Absolute Addons for WPBakery Page Builder <= 1.0.9 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8d024ad7-6932-4c84-ae2e-493a1cebbbee?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,ht-mega-for-wpbakery,low,candidate

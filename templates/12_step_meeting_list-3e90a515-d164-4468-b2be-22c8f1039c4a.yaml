@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - 12-step-meeting-list
+  - dsl:
+    - compare_versions(version, '<= 3.16.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/12-step-meeting-list/readme.txt'
+  redirects: true
+id: 12_step_meeting_list-3e90a515-d164-4468-b2be-22c8f1039c4a
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/12-step-meeting-list/
+    google-query: inurl:"/wp-content/plugins/12-step-meeting-list/"
+    shodan-query: http.html:"wp-content/plugins/12-step-meeting-list/"
+  name: '12 Step Meeting List <= 3.16.5 - Missing Authorization to Unauthenticated
+    Settings Update
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3e90a515-d164-4468-b2be-22c8f1039c4a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,12-step-meeting-list,high,candidate
