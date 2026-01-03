@@ -1,27 +1,34 @@
 {
-  "last_updated": "2026-01-02T05:12:15.380615+00:00",
-  "total_templates": 49141,
-  "duplicates_removed": 501416,
+  "last_updated": "2026-01-03T05:04:09.848713+00:00",
+  "total_templates": 49145,
+  "duplicates_removed": 501415,
   "deduplication_breakdown": {
     "exact_content": 340819,
-    "semantic_fingerprint": 105275,
+    "semantic_fingerprint": 105274,
     "normalized_id": 55322
   },
   "sources": {
     "total": 428,
-    "successful": 397,
-    "failed": 11,
+    "successful": 396,
+    "failed": 12,
     "skipped": 20
   },
   "severity_breakdown": {
     "critical": 5219,
-    "high": 10658,
+    "high": 10660,
     "medium": 14330,
-    "low": 12290,
-    "info": 6279,
+    "low": 12291,
+    "info": 6280,
     "unknown": 365
   },
   "failed_sources": [
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "rxerium/CISA-KEV"
+      },
+      "error": "Could not download rxerium/CISA-KEV from any branch"
+    },
     {
       "source": {
         "type": "github_repo",
