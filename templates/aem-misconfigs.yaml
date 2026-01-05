@@ -1,10 +1,4 @@
-id: aem-misconfigs
-info:
-  author: panch0r3d
-  name: Misconfigs and Auth bypasses for older unpatched AEM versions not an exhaustive
-    list but ones Ive had luck with
-  severity: high
-requests:
+http:
 - headers:
     User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0
   matchers:
@@ -16,7 +10,6 @@ requests:
     - (CRX).(Package).(Manager)
     - (Adobe)
     type: regex
-  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/apps/system/config/.tidy.-1.json?.css'
@@ -30,3 +23,10 @@ requests:
   - '{{BaseURL}}/etc/reports/diskusage.html?.html'
   - '{{BaseURL}}///crx///de///index.jsp?.css'
   - '{{BaseURL}}///bin///querybuilder.json?fulltext=web&p.limit=300&p.start=1?.html'
+id: aem-misconfigs
+info:
+  author: panch0r3d
+  name: Misconfigs and Auth bypasses for older unpatched AEM versions not an exhaustive
+    list but ones Ive had luck with
+  severity: high
+  tags: aem,generic

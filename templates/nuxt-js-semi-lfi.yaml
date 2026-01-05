@@ -19,10 +19,9 @@ http:
 id: nuxt-js-semi-lfi
 info:
   author: DhiyaneshDK
-  description: Arbitrary File Read in Dev Mode in Nuxt.js
   metadata:
     fofa-query: body="buildAssetsDir" && body="__nuxt"
-    max-request: 2
+    max-request: 1
     shodan-query: html:"buildAssetsDir" "nuxt"
     verified: 'true'
   name: Semi Arbitrary File Read in Dev Mode - Nuxt.js
@@ -30,5 +29,5 @@ info:
   - https://huntr.dev/bounties/7840cd32-af15-40cb-a148-7ef3dff4a0c2/
   - https://bryces.io/blog/nuxt3
   - https://twitter.com/fofabot/status/1669339995780558849
-  severity: medium
-  tags: huntr,lfi,nuxtjs
+  severity: high
+  tags: lfi,lfr

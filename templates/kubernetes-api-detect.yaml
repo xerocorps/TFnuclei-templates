@@ -1,9 +1,4 @@
-id: kubernetes-api-detect
-info:
-  author: notnotnotveg
-  name: Kubernetes API Detection
-  severity: info
-requests:
+http:
 - matchers:
   - part: body
     type: word
@@ -11,6 +6,15 @@ requests:
     - PodList
   method: GET
   path:
-  - '{{BaseURL}}/pods/'
-  - '{{BaseURL}}:10250/pods/'
-  - '{{BaseURL}}:10255/pods/'
+  - '{{BaseURL}}/pods'
+  - '{{Host}}:10250/pods'
+  - '{{Host}}:10255/pods'
+  - '{{BaseURL}}/api/v1/pods'
+  - '{{Host}}:10250/api/v1/pods'
+  - '{{Host}}:10255/api/v1/pods'
+id: kubernetes-api-detect
+info:
+  author: notnotnotveg
+  name: Kubernetes API Detection
+  severity: critical
+  tags: kubernetes,k8s,generic

@@ -12,7 +12,7 @@ info:
   author: e_schultze_
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: WAMP Xdebug was detected.
   metadata:
@@ -20,5 +20,5 @@ info:
   name: WAMP Xdebug - Detect
   reference:
   - https://github.com/random-robbie/My-Shodan-Scripts/blob/1b01bceecc9be0b74b202f445874920eee48bba5/wamp-xdebug/wamp-xdebug.py
-  severity: info
-  tags: debug,config,wamp,misconfig
+  severity: medium
+  tags: debug,php

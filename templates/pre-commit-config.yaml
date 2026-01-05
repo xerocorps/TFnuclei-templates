@@ -1,12 +1,4 @@
-id: pre-commit-config
-info:
-  author: DhiyaneshDk
-  metadata:
-    verified: true
-  name: Pre Commit Configuration File Exposure
-  severity: low
-  tags: exposure,devops,config,cicd
-requests:
+http:
 - matchers:
   - condition: and
     part: body
@@ -23,4 +15,14 @@ requests:
   path:
   - '{{BaseURL}}/.pre-commit-config.yaml'
   - '{{BaseURL}}/pre-commit-config.yaml'
+  - '{{BaseURL}}/.pre-commit-config.yml'
+  - '{{BaseURL}}/pre-commit-config.yml'
   stop-at-first-match: true
+id: pre-commit-config
+info:
+  author: DhiyaneshDk
+  metadata:
+    max-request: 4
+  name: Pre Commit Configuration File Exposure
+  severity: low
+  tags: generic,config

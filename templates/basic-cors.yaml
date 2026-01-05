@@ -1,0 +1,43 @@
+http:
+- extractors:
+  - name: acao_header
+    part: header
+    regex:
+    - 'Access-Control-Allow-Origin: (.*)'
+    type: regex
+  - name: acac_header
+    part: header
+    regex:
+    - 'Access-Control-Allow-Credentials: (.*)'
+    type: regex
+  - name: acam_header
+    part: header
+    regex:
+    - 'Access-Control-Allow-Methods: (.*)'
+    type: regex
+  - name: acah_header
+    part: header
+    regex:
+    - 'Access-Control-Allow-Headers: (.*)'
+    type: regex
+  headers:
+    Origin: https://evil.com
+  matchers:
+  - part: header
+    type: word
+    words:
+    - 'Access-Control-Allow-Origin: https://evil.com'
+  method: GET
+  path:
+  - '{{BaseURL}}'
+id: basic-cors
+info:
+  author: nadino
+  name: Basic CORS misconfiguration
+  reference:
+  - https://portswigger.net/web-security/cors
+  - https://www.corben.io/advanced-cors-techniques/
+  - https://www.geekboy.ninja/blog/exploiting-misconfigured-cors-cross-origin-resource-sharing/
+  - https://twitter.com/Jayesh25_/status/1730131194702958603
+  severity: low
+  tags: cors,generic

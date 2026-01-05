@@ -17,7 +17,6 @@ http:
 id: firebase-debug-log
 info:
   author: Hardik-Solanki
-  description: Firebase debug log file was exposed.
   metadata:
     github-query: filename:firebase-debug.log
     max-request: 1
@@ -25,5 +24,6 @@ info:
   name: Firebase Debug Log File Exposure
   reference:
   - https://github.com/maurosoria/dirsearch/blob/master/db/dicc.txt
-  severity: low
-  tags: exposure,firebase,logs,debug
+  - https://bhashit.in/?p=71
+  severity: medium
+  tags: debug

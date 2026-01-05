@@ -1,9 +1,7 @@
 http:
 - attack: clusterbomb
   matchers:
-  - condition: and
-    dsl:
-    - contains(body_1, "{{randstr}}")
+  - dsl:
     - contains(body_2, "{{randstr}}")
     type: dsl
   payloads:
@@ -27,15 +25,14 @@ http:
     Firefox/105.0
 
     '
+  req-condition: true
   stop-at-first-match: true
 id: cache-poisoning-fuzz
 info:
   author: dwisiswant0,ColbyJack1134
-  metadata:
-    max-request: 5834
   name: Cache Poison Fuzzing
   reference:
   - https://youst.in/posts/cache-poisoning-at-scale/
   - https://portswigger.net/web-security/web-cache-poisoning
-  severity: info
-  tags: fuzz,cache
+  severity: medium
+  tags: cache

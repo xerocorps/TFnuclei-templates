@@ -1,33 +1,41 @@
 http:
 - matchers:
-  - status:
-    - 200
-    type: status
-  - negative: true
+  - part: body
     type: word
     words:
-    - <!DOCTYPE html>
-  matchers-condition: and
-  payloads:
-    foundthis: juice.txt
-  raw:
-  - 'GET /{{foundthis}} HTTP/1.1
-
-    Host: {{BaseURL}}
-
-    '
-  threads: 50
+    - Trace Information
+  - part: body
+    type: word
+    words:
+    - 'HTTP request received:'
+  - part: body
+    type: word
+    words:
+    - Debug Panel
+  - part: body
+    type: word
+    words:
+    - Admin Panel
+  - part: body
+    type: word
+    words:
+    - SQL Debugging
+  - part: body
+    type: word
+    words:
+    - Dashboard
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/trace'
+  - '{{BaseURL}}/logs'
+  - '{{BaseURL}}/dashboard'
+  - '{{BaseURL}}/debug'
+  - '{{BaseURL}}/admin'
+  - '{{BaseURL}}/debug/sql'
 id: juicy-endpoints
 info:
-  author: BagheeraAltered
-  description: 'This nuclei template checks if a list of endpoints return a 200 response
-    code.
-
-    It takes a list of endpoints as input and sends HTTP requests to each endpoint.
-
-    If the response code is 200 and not a webpage, it reports a finding.
-
-    '
+  author: reewardius
   name: Juicy Endpoints
-  severity: info
-  tags: discovery,endpoints,fuzz
+  severity: low
+  tags: generic

@@ -1,15 +1,10 @@
-id: cookie-injection
-info:
-  author: pdteam
-  name: Parameter based cookie injection
-  severity: medium
-  tags: reflected,dast,cookie,injection
-requests:
+http:
 - fuzzing:
   - fuzz:
     - '{{reflection}}'
+    mode: single
     part: query
-    type: postfix
+    type: replace
   matchers:
   - part: header
     regex:
@@ -21,5 +16,15 @@ requests:
   payloads:
     reflection:
     - '{{first}}'
+id: cookie-injection
+info:
+  author: reewardius
+  name: Parameter based cookie injection
+  reference:
+  - https://book.hacktricks.xyz/pentesting-web/crlf-0d-0a
+  - https://github.com/r0075h3ll/Oralyzer/blob/master/core/crlf.py
+  - https://infosecwriteups.com/6000-with-microsoft-hall-of-fame-microsoft-firewall-bypass-crlf-to-xss-microsoft-bug-bounty-8f6615c47922
+  severity: medium
+  tags: fuzzing-crlf,fuzzing-req,dast
 variables:
   first: cookie_injection

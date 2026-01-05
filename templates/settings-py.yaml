@@ -1,13 +1,6 @@
-id: settings-py
-info:
-  author: SirBugs
-  description: This Template checks disclosing secret information via /settings.py
-  name: settings.py Disclosure
-  severity: High
-  tags: config, secrets, leaks, cheatset, tokens, sql, tokens
-requests:
+http:
 - matchers:
-  - condition: or
+  - condition: and
     part: body
     type: word
     words:
@@ -16,3 +9,12 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}/settings.py'
+  - '{{BaseURL}}/settings.py.local'
+  - '{{BaseURL}}/settings.py.env'
+id: settings-py
+info:
+  author: SirBugs
+  description: This Template checks disclosing secret information via /settings.py
+  name: settings.py Disclosure
+  severity: high
+  tags: config,generic

@@ -1,10 +1,4 @@
-id: google-analytics-id
-info:
-  author: dhn
-  name: Google Analytics ID Discovery
-  severity: info
-  tags: tech
-requests:
+http:
 - extractors:
   - name: ua-id
     part: body
@@ -26,3 +20,9 @@ requests:
   - '{{BaseURL}}'
   redirects: true
   stop-at-first-match: true
+id: google-analytics-id
+info:
+  author: dhn
+  name: Google Analytics ID Discovery
+  severity: info
+  tags: google,cloud

@@ -3,27 +3,42 @@ http:
   - type: word
     words:
     - '[core]'
-  - condition: and
-    dsl:
-    - '!contains(tolower(body), ''<html'')'
-    - '!contains(tolower(body), ''<body'')'
-    type: dsl
   - status:
     - 200
     type: status
   matchers-condition: and
   method: GET
   path:
+  - '{{BaseURL}}/wp-admin/.git/config'
+  - '{{BaseURL}}/wp-install/.git/config'
+  - '{{BaseURL}}/wp-content/.git/config'
+  - '{{BaseURL}}/wp-content/cache/.git/config'
+  - '{{BaseURL}}/wp-content/logs/.git/config'
   - '{{BaseURL}}/wp-content/plugins/.git/config'
   - '{{BaseURL}}/wp-content/themes/.git/config'
+  - '{{BaseURL}}/wp-content/uploads/.git/config'
+  - '{{BaseURL}}/wp-includes/.git/config'
+  - '{{BaseURL}}/admin/wp-admin/.git/config'
+  - '{{BaseURL}}/admin/wp-install/.git/config'
+  - '{{BaseURL}}/admin/wp-content/.git/config'
+  - '{{BaseURL}}/admin/wp-content/cache/.git/config'
+  - '{{BaseURL}}/admin/wp-content/logs/.git/config'
+  - '{{BaseURL}}/admin/wp-content/plugins/.git/config'
+  - '{{BaseURL}}/admin/wp-content/themes/.git/config'
+  - '{{BaseURL}}/admin/wp-content/uploads/.git/config'
+  - '{{BaseURL}}/admin/wp-includes/.git/config'
+  - '{{BaseURL}}/blog/wp-admin/.git/config'
+  - '{{BaseURL}}/blog/wp-install/.git/config'
+  - '{{BaseURL}}/blog/wp-content/.git/config'
+  - '{{BaseURL}}/blog/wp-content/cache/.git/config'
+  - '{{BaseURL}}/blog/wp-content/logs/.git/config'
+  - '{{BaseURL}}/blog/wp-content/plugins/.git/config'
+  - '{{BaseURL}}/blog/wp-content/themes/.git/config'
+  - '{{BaseURL}}/blog/wp-content/uploads/.git/config'
+  - '{{BaseURL}}/blog/wp-includes/.git/config'
 id: wordpress-git-config
 info:
-  author: nerrorsec
-  description: Searches for the pattern /.git/config inside themes and plugins folder.
-  metadata:
-    max-request: 2
+  author: reewardius
   name: Wordpress Git Config
-  reference:
-  - https://hackerone.com/reports/248693
-  severity: info
-  tags: hackerone,config,git,exposure,wordpress,wp-plugin,wp-theme
+  severity: high
+  tags: wordpress,php,generic,git,wp,wordpress-misc

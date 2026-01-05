@@ -1,21 +1,13 @@
-id: redmine-db-config
-info:
-  author: geeknik
-  description: Redmine is a flexible project management web application written using
-    Ruby on Rails framework - https://redmine.org/projects/redmine
-  name: Detect Redmine Database Configuration
-  severity: medium
-  tags: config,exposure
-requests:
+http:
 - matchers:
-  - condition: and
+  - case-insensitive: true
+    condition: and
     part: body
     type: word
     words:
-    - 'adapter:'
-    - 'database:'
-    - 'host:'
-    - 'production:'
+    - adapter
+    - database
+    - host
   - status:
     - 200
     type: status
@@ -23,3 +15,16 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}/config/database.yml'
+  - '{{BaseURL}}/config/database.yaml'
+  - '{{BaseURL}}/database.yml'
+  - '{{BaseURL}}/database.yaml'
+  - '{{BaseURL}}/config/database.yml.old'
+  - '{{BaseURL}}/config/database.yaml.old'
+id: redmine-db-config
+info:
+  author: geeknik
+  description: Redmine is a flexible project management web application written using
+    Ruby on Rails framework - https://redmine.org/projects/redmine
+  name: Detect Redmine Database Configuration
+  severity: medium
+  tags: generic,config

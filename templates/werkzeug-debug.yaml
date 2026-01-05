@@ -1,14 +1,20 @@
-id: werkzeug-debug
-info:
-  author: notnotnotveg
-  name: werkzeug-debug
-  severity: info
-requests:
+http:
 - matchers:
   - part: body
     type: word
     words:
     - Werkzeug
+    - Interactive Console
   method: GET
   path:
   - '{{BaseURL}}/console'
+  - '{{BaseURL}}/flask/console'
+  stop-at-first-match: true
+id: werkzeug-debug
+info:
+  author: notnotnotveg
+  metadata:
+    max-request: 2
+  name: werkzeug-debug
+  severity: medium
+  tags: debug

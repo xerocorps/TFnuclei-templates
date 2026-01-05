@@ -1,11 +1,4 @@
-id: exposed-darcs
-info:
-  author: daffainfo
-  name: Exposed Darcs Config
-  reference: http://darcs.net/Using/Configuration#sources
-  severity: low
-  tags: config,exposure
-requests:
+http:
 - matchers:
   - type: word
     words:
@@ -17,3 +10,10 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}/_darcs/prefs/binaries'
+id: exposed-darcs
+info:
+  author: daffainfo
+  name: Exposed Darcs Config
+  reference: http://darcs.net/Using/Configuration#sources
+  severity: low
+  tags: config,exposed,bounty,generic

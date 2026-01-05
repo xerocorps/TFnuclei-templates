@@ -1,10 +1,13 @@
 http:
 - matchers:
-  - condition: or
+  - part: body
     type: word
     words:
     - seeing this error because you have <code>DEBUG = True</code>
     - SuspiciousOperation
+    - 'Invalid HTTP_HOST header:'
+    - 'Django Version:'
+    - <title>DisallowedHost at /</title>
     - DisallowedHost
     - DisallowedModelAdminLookup
     - DisallowedModelAdminToField
@@ -22,27 +25,25 @@ http:
     - text/html
   - status:
     - 400
+    - 404
+    - 200
     type: status
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}'
+  - '{{BaseURL}}/widgets/platformx/-/svg-badge.svg'
+  stop-at-first-match: true
 id: django-variables-exposed
 info:
   author: nobody
-  classification:
-    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
-    cwe-id: CWE-200
-  description: Django configuration information was detected, which could reveal web
-    application framework exceptions that could indicate exploitation attempts.
   metadata:
-    max-request: 1
+    max-request: 2
     verified: true
-  name: Django Config - Detect
+  name: Django Degub Config Detect
   reference:
-  - https://docs.djangoproject.com/en/1.11/ref/exceptions/
-  - https://docs.djangoproject.com/en/1.11/topics/logging/#django-security
-  - https://github.com/projectdiscovery/nuclei-templates/blob/master/file/logs/django-framework-
-  severity: info
-  tags: exposure,config,django
+  - https://twitter.com/Alra3ees/status/1397660633928286208
+  - https://blog.scrt.ch/2018/08/24/remote-code-execution-on-a-facebook-server/
+  - https://hacklido.com/blog/704-exploiting-django-debug-mode-for-unrestricted-access-to-the-internal-dashboard
+  severity: low
+  tags: debug,django,generic,exposed

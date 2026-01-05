@@ -1,3 +1,43 @@
+http:
+- matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'Server Version:'
+    - 'Server Built:'
+  - part: body
+    type: word
+    words:
+    - Apache Server Status for
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/server-info'
+  - '{{BaseURL}}/server-info/'
+  - '{{BaseURL}}/server-status/common.htm'
+  - '{{BaseURL}}/server-status'
+  - '{{BaseURL}}/server-status/'
+  - '{{BaseURL}}/server-status?full'
+  - '{{BaseURL}}/status'
+  - '{{BaseURL}}/..;/status'
+  - '{{BaseURL}}/;/status'
+  - '{{BaseURL}}/%2e/status'
+  - '{{BaseURL}}/balancer-manager'
+  - '{{BaseURL}}/..;/server-info'
+  - '{{BaseURL}}/..;/server-status'
+  - '{{BaseURL}}/..;/server-status?full'
+  - '{{BaseURL}}/..;/balancer-manager'
+  - '{{BaseURL}}/;/server-info'
+  - '{{BaseURL}}/;/server-status'
+  - '{{BaseURL}}/foo/..;/server-status'
+  - '{{BaseURL}}/;/server-status?full'
+  - '{{BaseURL}}/;/balancer-manager'
+  - '{{BaseURL}}/%2e/server-info'
+  - '{{BaseURL}}/%2e/server-status'
+  - '{{BaseURL}}/%2e/server-status?full'
+  - '{{BaseURL}}/%2e/balancer-manager'
+  stop-at-first-match: true
 id: apache-server-info
 info:
   author: DoubleTake (https://twitter.com/LeDoubleTake)
@@ -5,20 +45,4 @@ info:
     like "Server Version".
   name: Check Apache Server Info
   severity: low
-  tags:
-  - server-info
-  - server-status
-  - balancer-manager
-  - apache
-  - information
-requests:
-- matchers:
-  - part: response
-    type: word
-    words:
-    - 'Server Version:'
-  method: GET
-  path:
-  - '{{BaseURL}}/server-info'
-  - '{{BaseURL}}/server-status'
-  - '{{BaseURL}}/balancer-manager'
+  tags: apache,generic,config

@@ -9,6 +9,9 @@ http:
   - '{{BaseURL}}/dashboard/#!/namespace?namespace=default'
 id: kube-dashboard
 info:
-  author: h0tak88r
+  author: notnotnotveg
+  metadata:
+    max-request: 1
   name: Kubernetes Dashboard Detection
-  severity: info
+  severity: low
+  tags: kubernetes,k8s,cloud,generic

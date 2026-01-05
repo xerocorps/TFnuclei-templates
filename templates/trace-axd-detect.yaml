@@ -13,11 +13,10 @@ http:
 id: trace-axd-detect
 info:
   author: dhiyaneshDK
-  description: ASP.NET Trace.AXD Information was exposed.
   metadata:
     max-request: 1
   name: ASP.NET Trace.AXD Information Leak
   reference:
   - https://www.rapid7.com/db/vulnerabilities/spider-asp-dot-net-trace-axd/
-  severity: low
-  tags: logs,asp,exposure
+  severity: high
+  tags: iis,asp,debug,microsoft,windows

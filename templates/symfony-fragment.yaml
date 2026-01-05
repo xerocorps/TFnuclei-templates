@@ -7,7 +7,6 @@ http:
     - ("8b2f83102bc96e5068d36df80301a64d" == md5(body)) || ("4df206fbc337c398c3b669172934c8cb"
       == md5(body))
     type: dsl
-  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/_fragment'
@@ -29,8 +28,12 @@ info:
 
     - https://al1z4deh.medium.com/how-i-hacked-28-sites-at-once-rce-5458211048d5
 
+    - https://medium.com/@bxrowski0x/3-symfony-rce-a-peek-behind-the-curtain-83da5433e149
+
     - https://github.com/ambionics/symfony-exploits
 
+    - https://github.com/Synacktiv/eos
+
     '
-  severity: unknown
-  tags: config,exposure,symfony,misconfig
+  severity: high
+  tags: symfony,php,rce

@@ -1,13 +1,4 @@
-id: wgetrc-config
-info:
-  author: DhiyaneshDK
-  metadata:
-    shodan-query: html:".wgetrc"
-    verified: true
-  name: Wgetrc Configuration File Exposure
-  severity: medium
-  tags: devops,exposure
-requests:
+http:
 - matchers:
   - type: word
     words:
@@ -25,4 +16,14 @@ requests:
   path:
   - '{{BaseURL}}/wgetrc'
   - '{{BaseURL}}/.wgetrc'
+  - '{{BaseURL}}/wgetrc.old'
+  - '{{BaseURL}}/.wgetrc.old'
   stop-at-first-match: true
+id: wgetrc-config
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 4
+  name: Wgetrc Configuration File Exposure
+  severity: medium
+  tags: config

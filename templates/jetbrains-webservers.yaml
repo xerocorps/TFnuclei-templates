@@ -28,7 +28,7 @@ info:
   author: geeknik
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'JetBrains webservers file was detected. The file contains webserver
     credentials with encoded passwords.
@@ -41,5 +41,5 @@ info:
   name: JetBrains WebServers File - Detect
   reference:
   - https://www.exploit-db.com/ghdb/6648
-  severity: info
-  tags: jetbrains,config,edb,files,exposure
+  severity: high
+  tags: config-files,config

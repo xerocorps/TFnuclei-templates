@@ -1,3 +1,19 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - condition: and
+    part: body
+    type: word
+    words:
+    - 'parameters:'
+    - 'database_host:'
+    - 'database_password:'
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/app_dev.php/_profiler/open?file=app/config/parameters.yml'
 id: symfony-fuck-you
 info:
   author: Trevigroup Cyber
@@ -10,17 +26,4 @@ info:
   name: Symfony Fuck Your configuration file - Detect
   reference: https://symfony.com/legacy/doc/reference/1_3/en/07-Databases
   severity: critical
-  tags: config,exposure,symfony
-requests:
-- matchers:
-  - status:
-    - 200
-    type: status
-  - part: body
-    type: word
-    words:
-    - 'parameters:'
-  matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/app_dev.php/_profiler/open?file=app/config/parameters.yml'
+  tags: config,exposure,symfony,php,bounty,generic

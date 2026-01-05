@@ -11,14 +11,15 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
+  - '{{BaseURL}}/anything'
+  stop-at-first-match: true
 id: flask-werkzeug-debug
 info:
   author: DhiyaneshDk
-  description: Flask Werkzeug Debugger is exposed.
   metadata:
     max-request: 1
     shodan-query: html:"Werkzeug powered traceback interpreter"
     verified: true
   name: Flask Werkzeug Debugger Exposure
-  severity: low
-  tags: werkzeug,exposure,debug,misconfig
+  severity: medium
+  tags: debug

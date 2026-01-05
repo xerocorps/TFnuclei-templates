@@ -21,20 +21,16 @@ http:
     X-Real-Ip: spoofed.{{interactsh-url}}
     X-Wap-Profile: http://{{interactsh-url}}/wap.xml
   matchers:
-  - name: http
+  - condition: or
     part: interactsh_protocol
     type: word
     words:
     - http
-  - name: dns
-    part: interactsh_protocol
-    type: word
-    words:
     - dns
-  matchers-condition: or
   method: GET
   path:
   - '{{BaseURL}}'
+  stop-at-first-match: true
 id: oob-header-based-interaction
 info:
   author: pdteam
@@ -44,5 +40,5 @@ info:
   name: Header Based Generic OOB Interaction
   reference:
   - https://github.com/PortSwigger/collaborator-everywhere
-  severity: info
-  tags: oast,ssrf,generic
+  severity: low
+  tags: ssrf,generic
