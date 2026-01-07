@@ -15,7 +15,7 @@ http:
     words:
     - xv-random-quotes
   - dsl:
-    - compare_versions(version, '<= 1.40')
+    - compare_versions(version, '<= 2.0.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/xv-random-quotes/
     google-query: inurl:"/wp-content/plugins/xv-random-quotes/"
     shodan-query: http.html:"wp-content/plugins/xv-random-quotes/"
-  name: 'XV Random Quotes <= 1.40 - Unauthenticated SQL Injection
+  name: 'XV Random Quotes <= 2.0.0 - Unauthenticated SQL Injection
 
     '
   reference:

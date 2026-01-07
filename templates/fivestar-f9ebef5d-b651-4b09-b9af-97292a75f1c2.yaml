@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fivestar
+  - dsl:
+    - compare_versions(version, '<= 1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/fivestar/style.css'
+  redirects: true
+id: fivestar-f9ebef5d-b651-4b09-b9af-97292a75f1c2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/fivestar/
+    google-query: inurl:"/wp-content/themes/fivestar/"
+    shodan-query: http.html:"wp-content/themes/fivestar/"
+  name: 'FiveStar <= 1.7 - Authenticated (Subscriber+) Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f9ebef5d-b651-4b09-b9af-97292a75f1c2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,fivestar,low,candidate

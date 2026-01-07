@@ -15,7 +15,7 @@ http:
     words:
     - webd-woocommerce-advanced-reporting-statistics
   - dsl:
-    - compare_versions(version, '<= 4.0.2')
+    - compare_versions(version, '<= 4.1.1')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/webd-woocommerce-advanced-reporting-statistics/
     google-query: inurl:"/wp-content/plugins/webd-woocommerce-advanced-reporting-statistics/"
     shodan-query: http.html:"wp-content/plugins/webd-woocommerce-advanced-reporting-statistics/"
-  name: 'Advanced WooCommerce Product Sales Reporting <= 4.0.2 - Unauthenticated SQL
+  name: 'Advanced WooCommerce Product Sales Reporting <= 4.1.1 - Unauthenticated SQL
     Injection
 
     '

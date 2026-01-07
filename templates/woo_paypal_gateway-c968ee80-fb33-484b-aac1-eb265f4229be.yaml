@@ -15,7 +15,7 @@ http:
     words:
     - woo-paypal-gateway
   - dsl:
-    - compare_versions(version, '<= 9.0.52')
+    - compare_versions(version, '<= 9.0.53')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/woo-paypal-gateway/
     google-query: inurl:"/wp-content/plugins/woo-paypal-gateway/"
     shodan-query: http.html:"wp-content/plugins/woo-paypal-gateway/"
-  name: 'Payment Gateway for PayPal on WooCommerce <= 9.0.52 - Missing Authorization
+  name: 'Payment Gateway for PayPal on WooCommerce <= 9.0.53 - Missing Authorization
 
     '
   reference:

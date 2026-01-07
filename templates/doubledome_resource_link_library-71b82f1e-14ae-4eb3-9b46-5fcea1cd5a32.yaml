@@ -15,7 +15,7 @@ http:
     words:
     - doubledome-resource-link-library
   - dsl:
-    - compare_versions(version, '<= 1.4')
+    - compare_versions(version, '<= 1.5')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/doubledome-resource-link-library/
     google-query: inurl:"/wp-content/plugins/doubledome-resource-link-library/"
     shodan-query: http.html:"wp-content/plugins/doubledome-resource-link-library/"
-  name: 'Resource Library for Logged In Users <= 1.4 - Cross-Site Request Forgery
+  name: 'Resource Library for Logged In Users <= 1.5 - Cross-Site Request Forgery
     to Multiple Administrative Actions
 
     '

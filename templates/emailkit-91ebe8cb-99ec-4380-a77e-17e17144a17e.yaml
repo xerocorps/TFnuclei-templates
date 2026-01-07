@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - emailkit
+  - dsl:
+    - compare_versions(version, '<= 1.6.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/emailkit/readme.txt'
+  redirects: true
+id: emailkit-91ebe8cb-99ec-4380-a77e-17e17144a17e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/emailkit/
+    google-query: inurl:"/wp-content/plugins/emailkit/"
+    shodan-query: http.html:"wp-content/plugins/emailkit/"
+  name: 'EmailKit <= 1.6.1 - Authenticated (Author+) Arbitrary File Read via Path
+    Traversal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/91ebe8cb-99ec-4380-a77e-17e17144a17e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,emailkit,low,candidate

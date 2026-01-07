@@ -15,7 +15,7 @@ http:
     words:
     - subscriptions-renewal-reminders
   - dsl:
-    - compare_versions(version, '<= 1.3.7')
+    - compare_versions(version, '<= 1.4.1')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/subscriptions-renewal-reminders/
     google-query: inurl:"/wp-content/plugins/subscriptions-renewal-reminders/"
     shodan-query: http.html:"wp-content/plugins/subscriptions-renewal-reminders/"
-  name: 'Subscription Renewal Reminders for WooCommerce <= 1.3.7 - Cross-Site Request
+  name: 'Subscription Renewal Reminders for WooCommerce <= 1.4.1 - Cross-Site Request
     Forgery to Notice Dismissal
 
     '
