@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-client-testimonial
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-client-testimonial/readme.txt'
+  redirects: true
+id: wp_client_testimonial-5bf12608-4e02-4b3a-9363-991dca5ee11b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-client-testimonial/
+    google-query: inurl:"/wp-content/plugins/wp-client-testimonial/"
+    shodan-query: http.html:"wp-content/plugins/wp-client-testimonial/"
+  name: 'Client Testimonial Slider <= 2.0 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting via ''aft_testimonial_meta_name'' Metabox Field
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5bf12608-4e02-4b3a-9363-991dca5ee11b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wp-client-testimonial,low,candidate

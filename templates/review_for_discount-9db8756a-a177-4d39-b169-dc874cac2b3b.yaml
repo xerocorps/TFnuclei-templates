@@ -15,7 +15,7 @@ http:
     words:
     - review-for-discount
   - dsl:
-    - compare_versions(version, '<= 1.0.6')
+    - compare_versions(version, '<= 1.0.7')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/review-for-discount/
     google-query: inurl:"/wp-content/plugins/review-for-discount/"
     shodan-query: http.html:"wp-content/plugins/review-for-discount/"
-  name: 'Reviewify <= 1.0.6 - Missing Authorization to Authenticated (Contributor+)
+  name: 'Reviewify <= 1.0.7 - Missing Authorization to Authenticated (Contributor+)
     Arbitrary WooCommerce Coupon Creation
 
     '
