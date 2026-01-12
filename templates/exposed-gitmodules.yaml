@@ -3,7 +3,7 @@ http:
   - condition: and
     dsl:
     - status_code == 200
-    - contain_all(body, '[submodule', 'path =', 'url =')
+    - contains_all(body, '[submodule', 'path =', 'url =')
     type: dsl
   method: GET
   path:
