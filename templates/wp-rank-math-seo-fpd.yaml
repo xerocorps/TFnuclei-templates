@@ -2,18 +2,19 @@ http:
 - matchers:
   - condition: and
     dsl:
-    - status_code == 200
-    - contains_all(body, "Fatal error", "seo-by-rank-math", "Uncaught Error:")
+    - contains_all(body, "Fatal error", "Uncaught Error") || contains_all(body, "Warning:",
+      "failed to open stream")
+    - status_code == 200 || status_code == 500
+    - contains(body, "seo-by-rank-math")
     type: dsl
   method: GET
   path:
-  - '{{BaseURL}}/wp-content/plugins/seo-by-rank-math/includes/class-helper.php'
-  - '{{BaseURL}}/wp-content/plugins/seo-by-rank-math/includes/admin/class-admin.php'
   - '{{BaseURL}}/wp-content/plugins/seo-by-rank-math/vendor/developer/developer.php'
+  - '{{BaseURL}}/wp-content/plugins/seo-by-rank-math/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AdminView.php'
   stop-at-first-match: true
 id: wp-rank-math-seo-fpd
 info:
-  author: ritikchaddha
+  author: ritikchaddha,DhiyaneshDK
   description: 'WordPress Rank Math SEO plugin is vulnerable to full path disclosure
     via direct access to plugin files.
 
