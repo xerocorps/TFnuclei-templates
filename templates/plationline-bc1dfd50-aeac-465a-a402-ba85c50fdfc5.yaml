@@ -15,7 +15,7 @@ http:
     words:
     - plationline
   - dsl:
-    - compare_versions(version, '<= 6.3.2')
+    - compare_versions(version, '<= 7.0.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/plationline/
     google-query: inurl:"/wp-content/plugins/plationline/"
     shodan-query: http.html:"wp-content/plugins/plationline/"
-  name: 'PlatiOnline Payments <= 6.3.2 - Missing Authorization
+  name: 'PlatiOnline Payments <= 7.0.0 - Missing Authorization
 
     '
   reference:

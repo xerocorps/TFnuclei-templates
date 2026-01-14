@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - electric-studio-download-counter
+  - dsl:
+    - compare_versions(version, '<= 2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/electric-studio-download-counter/readme.txt'
+  redirects: true
+id: electric_studio_download_counter-a22bba3e-423a-4231-833b-c0be57a3bf7b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/electric-studio-download-counter/
+    google-query: inurl:"/wp-content/plugins/electric-studio-download-counter/"
+    shodan-query: http.html:"wp-content/plugins/electric-studio-download-counter/"
+  name: 'Electric Studio Download Counter <= 2.4 - Authenticated (Administrator+)
+    Stored Cross-Site Scripting via Settings Parameters
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a22bba3e-423a-4231-833b-c0be57a3bf7b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,electric-studio-download-counter,low,candidate

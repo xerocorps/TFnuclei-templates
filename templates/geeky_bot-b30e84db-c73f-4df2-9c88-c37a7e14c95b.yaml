@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - geeky-bot
+  - dsl:
+    - compare_versions(version, '<= 1.1.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/geeky-bot/readme.txt'
+  redirects: true
+id: geeky_bot-b30e84db-c73f-4df2-9c88-c37a7e14c95b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/geeky-bot/
+    google-query: inurl:"/wp-content/plugins/geeky-bot/"
+    shodan-query: http.html:"wp-content/plugins/geeky-bot/"
+  name: "GeekyBot \u2014 Generate AI Content Without Prompt, Chatbot and Lead Generation\
+    \ <= 1.1.7 - Unauthenticated Stored Cross-Site Scripting\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b30e84db-c73f-4df2-9c88-c37a7e14c95b?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,geeky-bot,high,candidate

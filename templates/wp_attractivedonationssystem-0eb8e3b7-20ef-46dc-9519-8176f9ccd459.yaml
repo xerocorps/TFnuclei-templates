@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - WP_AttractiveDonationsSystem
+  - dsl:
+    - compare_versions(version, '<= 1.25')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/WP_AttractiveDonationsSystem/readme.txt'
+  redirects: true
+id: wp_attractivedonationssystem-0eb8e3b7-20ef-46dc-9519-8176f9ccd459
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/WP_AttractiveDonationsSystem/
+    google-query: inurl:"/wp-content/plugins/WP_AttractiveDonationsSystem/"
+    shodan-query: http.html:"wp-content/plugins/WP_AttractiveDonationsSystem/"
+  name: 'Attractive Donations System - Easy Stripe & Paypal donations <= 1.25 - Missing
+    Authorization to Unauthenticated Arbitrary Content Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0eb8e3b7-20ef-46dc-9519-8176f9ccd459?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,WP_AttractiveDonationsSystem,high,candidate
