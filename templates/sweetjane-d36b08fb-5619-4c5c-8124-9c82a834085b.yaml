@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sweetjane
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/sweetjane/style.css'
+  redirects: true
+id: sweetjane-d36b08fb-5619-4c5c-8124-9c82a834085b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/sweetjane/
+    google-query: inurl:"/wp-content/themes/sweetjane/"
+    shodan-query: http.html:"wp-content/themes/sweetjane/"
+  name: 'Sweet Jane <= 1.2 - Authenticated (Subscriber+) Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d36b08fb-5619-4c5c-8124-9c82a834085b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,sweetjane,low,candidate

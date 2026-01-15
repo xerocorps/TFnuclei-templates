@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hotel-listing
+  - dsl:
+    - compare_versions(version, '<= 1.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hotel-listing/readme.txt'
+  redirects: true
+id: hotel_listing-1f0a4f00-d437-4138-92a2-c21e5c94eb1d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hotel-listing/
+    google-query: inurl:"/wp-content/plugins/hotel-listing/"
+    shodan-query: http.html:"wp-content/plugins/hotel-listing/"
+  name: 'Hotel Listing <= 1.4.0 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1f0a4f00-d437-4138-92a2-c21e5c94eb1d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,hotel-listing,medium,candidate

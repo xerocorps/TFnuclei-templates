@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - verdure
+  - dsl:
+    - compare_versions(version, '<= 1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/verdure/style.css'
+  redirects: true
+id: verdure-d4dc4c7f-b5cd-4090-a303-4386af935712
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/verdure/
+    google-query: inurl:"/wp-content/themes/verdure/"
+    shodan-query: http.html:"wp-content/themes/verdure/"
+  name: 'Verdure <= 1.6 - Authenticated (Subscriber+) Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d4dc4c7f-b5cd-4090-a303-4386af935712?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,verdure,low,candidate

@@ -4,10 +4,12 @@ headless:
     type: word
     words:
     - mozila-content-spoof.pdf
-  - part: body
+  - condition: and
+    part: body
     type: word
     words:
-    - pdf.js
+    - viewerContainer
+    - pdfViewer
   - condition: or
     negative: true
     part: body
@@ -32,7 +34,7 @@ headless:
   stop-at-first-match: true
 id: pdfjs-content-spoofing
 info:
-  author: 0x_Akoko
+  author: 0x_Akoko,s4e-io
   classification:
     cwe-id: CWE-451
   description: 'Detected PDF.js viewer loads and renders external PDF files without

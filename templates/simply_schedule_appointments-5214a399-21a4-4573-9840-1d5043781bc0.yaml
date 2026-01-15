@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simply-schedule-appointments
+  - dsl:
+    - compare_versions(version, '<= 1.6.9.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simply-schedule-appointments/readme.txt'
+  redirects: true
+id: simply_schedule_appointments-5214a399-21a4-4573-9840-1d5043781bc0
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simply-schedule-appointments/
+    google-query: inurl:"/wp-content/plugins/simply-schedule-appointments/"
+    shodan-query: http.html:"wp-content/plugins/simply-schedule-appointments/"
+  name: 'Simply Schedule Appointments <= 1.6.9.9 - Unauthenticated SQL Injection via
+    `order` and `append_where_sql` Parameters
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5214a399-21a4-4573-9840-1d5043781bc0?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,simply-schedule-appointments,critical,candidate
