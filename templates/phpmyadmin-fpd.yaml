@@ -1,4 +1,31 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - dsl:
+    - contains_any(tolower(body), "alt=\"phpMyAdmin", "name=\"pma_username", "/pmahomme/")
+    internal: true
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}{{paths}}'
+  payloads:
+    paths:
+    - ''
+    - /phpmyadmin/
+    - /admin/phpmyadmin/
+    - /_phpmyadmin/
+    - /administrator/components/com_joommyadmin/phpmyadmin/
+    - /apache-default/phpmyadmin/
+    - /blog/phpmyadmin/
+    - /forum/phpmyadmin/
+    - /php/phpmyadmin/
+    - /typo3/phpmyadmin/
+    - /web/phpmyadmin/
+    - /xampp/phpmyadmin/
+    - /phpMyAdmin/
+    - /phpma/
+    - /phpMyAdmin/index.php
+  stop-at-first-match: true
 - matchers:
   - condition: and
     dsl:
@@ -24,6 +51,6 @@ info:
     max-request: 1
     shodan-query: html:"phpmyadmin"
     verified: true
-  name: phpMyAdmin Full Path Disclosure
+  name: phpMyAdmin - Full Path Disclosure
   severity: low
   tags: exposure,fpd,phpmyadmin,php

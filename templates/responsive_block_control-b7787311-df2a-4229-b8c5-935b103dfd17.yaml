@@ -15,7 +15,7 @@ http:
     words:
     - responsive-block-control
   - dsl:
-    - compare_versions(version, '<= 1.2.9')
+    - compare_versions(version, '<= 1.3.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/responsive-block-control/
     google-query: inurl:"/wp-content/plugins/responsive-block-control/"
     shodan-query: http.html:"wp-content/plugins/responsive-block-control/"
-  name: 'Responsive Block Control <= 1.2.9 - Authenticated (Contributor+) Stored Cross-Site
+  name: 'Responsive Block Control <= 1.3.0 - Authenticated (Contributor+) Stored Cross-Site
     Scripting
 
     '

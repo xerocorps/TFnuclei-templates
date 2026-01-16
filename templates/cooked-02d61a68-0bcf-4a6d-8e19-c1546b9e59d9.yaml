@@ -15,7 +15,7 @@ http:
     words:
     - cooked
   - dsl:
-    - compare_versions(version, '<= 1.11.2')
+    - compare_versions(version, '<= 1.11.3')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/cooked/
     google-query: inurl:"/wp-content/plugins/cooked/"
     shodan-query: http.html:"wp-content/plugins/cooked/"
-  name: 'Cooked <= 1.11.2 - Missing Authorization
+  name: 'Cooked <= 1.11.3 - Missing Authorization
 
     '
   reference:
