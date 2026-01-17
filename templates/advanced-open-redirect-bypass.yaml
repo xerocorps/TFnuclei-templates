@@ -1,0 +1,37 @@
+http:
+- matchers:
+  - condition: or
+    part: header
+    type: word
+    words:
+    - 'Location: //google.com'
+    - 'Location: https://google.com'
+  - status:
+    - 301
+    - 302
+    - 307
+    - 308
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/?url={{payload}}'
+  - '{{BaseURL}}/?redirect={{payload}}'
+  - '{{BaseURL}}/?next={{payload}}'
+  - '{{BaseURL}}/?return={{payload}}'
+  payloads:
+    payload:
+    - //google.com/%2f..
+    - \\google.com
+    - /%09/google.com
+    - /https://google.com
+    - https://target.com@google.com
+  stop-at-first-match: true
+id: advanced-open-redirect-bypass
+info:
+  author: thenawabx
+  description: Targeted at bypassing URL filters using encoded slashes and alternative
+    protocols to redirect users.
+  name: Advanced Open Redirect with WAF Evasion
+  severity: medium
+  tags: redirect, advanced, waf-bypass
