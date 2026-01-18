@@ -1,0 +1,33 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - type: word
+    words:
+    - vulnerable string
+  - regex:
+    - vulnerable-pattern
+    type: regex
+  matchers-condition: and
+  raw:
+  - 'GET /vulnerable-endpoint HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Nuclei-Template
+
+    '
+id: example-template
+info:
+  author: ProjectDiscoveryAI
+  description: 'This template is an example for demonstrating how to create a Nuclei
+    template.
+
+    '
+  name: Example Vulnerability Template
+  remediation: 'Ensure input validation and sanitize user inputs to prevent exploitation
+    of the vulnerability.
+
+    '
+  severity: medium
