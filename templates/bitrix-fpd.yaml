@@ -1,10 +1,22 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - condition: or
+    internal: true
+    part: response
+    type: word
+    words:
+    - Bitrix Site Manager
+    - /bitrix/
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true
 - matchers:
   - condition: and
     dsl:
     - status_code == 200 || status_code == 500
-    - contains(body, "bitrix")
-    - contains_any(body, "Fatal error", "require_once", "Error")
+    - contains_all(body, "bitrix", "Fatal error")
     type: dsl
   method: GET
   path:
