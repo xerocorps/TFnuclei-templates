@@ -15,7 +15,7 @@ http:
     words:
     - user-verification
   - dsl:
-    - compare_versions(version, '<= 2.0.39')
+    - compare_versions(version, '<= 2.0.44')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -36,7 +36,7 @@ info:
     google-query: inurl:"/wp-content/plugins/user-verification/"
     shodan-query: http.html:"wp-content/plugins/user-verification/"
   name: "Email Verification, Email OTP, Block Spam Email, Passwordless login, Hide\
-    \ Login, Magic Login \u2013 User Verification <= 2.0.39 - Authentication Bypass\
+    \ Login, Magic Login \u2013 User Verification <= 2.0.44 - Authentication Bypass\
     \ to Account Takeover\n"
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve

