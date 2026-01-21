@@ -15,7 +15,7 @@ http:
     words:
     - all-in-one-accessibility
   - dsl:
-    - compare_versions(version, '<= 1.14')
+    - compare_versions(version, '<= 1.15')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/all-in-one-accessibility/
     google-query: inurl:"/wp-content/plugins/all-in-one-accessibility/"
     shodan-query: http.html:"wp-content/plugins/all-in-one-accessibility/"
-  name: 'All in One Accessibility <= 1.14 - Missing Authorization
+  name: 'All in One Accessibility <= 1.15 - Missing Authorization
 
     '
   reference:
