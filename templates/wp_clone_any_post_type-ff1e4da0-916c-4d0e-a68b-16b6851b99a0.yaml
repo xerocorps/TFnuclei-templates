@@ -15,7 +15,7 @@ http:
     words:
     - wp-clone-any-post-type
   - dsl:
-    - compare_versions(version, '<= 3.5')
+    - compare_versions(version, '<= 3.6')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/wp-clone-any-post-type/
     google-query: inurl:"/wp-content/plugins/wp-clone-any-post-type/"
     shodan-query: http.html:"wp-content/plugins/wp-clone-any-post-type/"
-  name: 'WP Clone any post type <= 3.5 - Missing Authorization
+  name: 'WP Clone any post type <= 3.6 - Missing Authorization
 
     '
   reference:
