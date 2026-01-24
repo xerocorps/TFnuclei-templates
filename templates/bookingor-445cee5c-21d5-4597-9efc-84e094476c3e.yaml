@@ -15,7 +15,7 @@ http:
     words:
     - bookingor
   - dsl:
-    - compare_versions(version, '<= 1.0.8')
+    - compare_versions(version, '<= 2.0.1')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/bookingor/
     google-query: inurl:"/wp-content/plugins/bookingor/"
     shodan-query: http.html:"wp-content/plugins/bookingor/"
-  name: 'Bookingor <= 1.0.8 - Missing Authorization
+  name: 'Bookingor <= 2.0.1 - Missing Authorization
 
     '
   reference:

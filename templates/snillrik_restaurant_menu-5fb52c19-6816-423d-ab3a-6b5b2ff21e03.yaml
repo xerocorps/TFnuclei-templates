@@ -15,7 +15,7 @@ http:
     words:
     - snillrik-restaurant-menu
   - dsl:
-    - compare_versions(version, '<= 2.2.1')
+    - compare_versions(version, '<= 2.3.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/snillrik-restaurant-menu/
     google-query: inurl:"/wp-content/plugins/snillrik-restaurant-menu/"
     shodan-query: http.html:"wp-content/plugins/snillrik-restaurant-menu/"
-  name: 'Snillrik Restaurant <= 2.2.1 - Authenticated (Contributor+) Stored Cross-Site
+  name: 'Snillrik Restaurant <= 2.3.0 - Authenticated (Contributor+) Stored Cross-Site
     Scripting via ''menu_style'' Shortcode Attribute
 
     '

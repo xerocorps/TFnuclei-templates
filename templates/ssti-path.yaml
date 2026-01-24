@@ -58,8 +58,10 @@ http:
     - '}}{{= 9123*12}}'
     - '}}{{= 9123*12}}{{'
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method == "GET"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: ssti-path

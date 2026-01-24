@@ -21,8 +21,10 @@ http:
     - "\\rfi.nessus.org\rfi.txt"
     - https://cirt.net/rfiinc.txt
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method == "GET"
+    - '!contains(path, ".js")'
     type: dsl
   redirects: true
   stop-at-first-match: true

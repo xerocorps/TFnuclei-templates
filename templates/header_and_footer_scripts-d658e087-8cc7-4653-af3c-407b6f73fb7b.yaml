@@ -15,7 +15,7 @@ http:
     words:
     - header-and-footer-scripts
   - dsl:
-    - compare_versions(version, '<= 2.2.2')
+    - compare_versions(version, '<= 2.3.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/header-and-footer-scripts/
     google-query: inurl:"/wp-content/plugins/header-and-footer-scripts/"
     shodan-query: http.html:"wp-content/plugins/header-and-footer-scripts/"
-  name: 'Header and Footer Scripts <= 2.2.2 - Authenticated (Contributor+) Stored
+  name: 'Header and Footer Scripts <= 2.3.0 - Authenticated (Contributor+) Stored
     Cross-Site Scripting
 
     '

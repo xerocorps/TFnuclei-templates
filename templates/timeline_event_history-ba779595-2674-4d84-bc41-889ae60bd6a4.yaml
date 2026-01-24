@@ -23,7 +23,7 @@ http:
   path:
   - '{{BaseURL}}/wp-content/plugins/timeline-event-history/readme.txt'
   redirects: true
-id: timeline_event_history-12fb237d-348c-4b3d-bc8e-21ab85ec49b4
+id: timeline_event_history-ba779595-2674-4d84-bc41-889ae60bd6a4
 info:
   author: topscoder
   classification:
@@ -35,12 +35,11 @@ info:
     fofa-query: wp-content/plugins/timeline-event-history/
     google-query: inurl:"/wp-content/plugins/timeline-event-history/"
     shodan-query: http.html:"wp-content/plugins/timeline-event-history/"
-  name: 'Timeline Event History <= 3.2 - Authenticated (Contributor+) Stored Cross-Site
-    Scripting
+  name: 'Timeline Event History <= 3.2 - Reflected Cross-Site Scripting
 
     '
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
-  - https://www.wordfence.com/threat-intel/vulnerabilities/id/12fb237d-348c-4b3d-bc8e-21ab85ec49b4?source=api-scan
-  severity: low
-  tags: cve,wordpress,wp-plugin,timeline-event-history,low,candidate
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ba779595-2674-4d84-bc41-889ae60bd6a4?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,timeline-event-history,medium,candidate

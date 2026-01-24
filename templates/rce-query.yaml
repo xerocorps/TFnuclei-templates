@@ -132,8 +132,10 @@ http:
     - fHxgaWRgfHw=
     - JiZpZCYm
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method == "GET"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: rce-query

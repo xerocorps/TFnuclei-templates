@@ -392,8 +392,10 @@ http:
     - '{{fuzz}}windows/win.ini%00.jpg'
     - '{{fuzz}}windows/win.ini'
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method == "GET"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: lfi-query

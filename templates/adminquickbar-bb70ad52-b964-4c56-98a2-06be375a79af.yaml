@@ -15,7 +15,7 @@ http:
     words:
     - adminquickbar
   - dsl:
-    - compare_versions(version, '<= 1.9.1')
+    - compare_versions(version, '<= 1.9.3')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -23,7 +23,7 @@ http:
   path:
   - '{{BaseURL}}/wp-content/plugins/adminquickbar/readme.txt'
   redirects: true
-id: adminquickbar-113d3dfe-02f7-455e-a4e1-2bea2dec93f3
+id: adminquickbar-bb70ad52-b964-4c56-98a2-06be375a79af
 info:
   author: topscoder
   classification:
@@ -35,11 +35,11 @@ info:
     fofa-query: wp-content/plugins/adminquickbar/
     google-query: inurl:"/wp-content/plugins/adminquickbar/"
     shodan-query: http.html:"wp-content/plugins/adminquickbar/"
-  name: 'AdminQuickbar <= 1.9.1 - Reflected Cross-Site Scripting
+  name: 'AdminQuickbar <= 1.9.3 - Cross-Site Request Forgery to Settings Update
 
     '
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
-  - https://www.wordfence.com/threat-intel/vulnerabilities/id/113d3dfe-02f7-455e-a4e1-2bea2dec93f3?source=api-scan
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/bb70ad52-b964-4c56-98a2-06be375a79af?source=api-scan
   severity: medium
   tags: cve,wordpress,wp-plugin,adminquickbar,medium,candidate

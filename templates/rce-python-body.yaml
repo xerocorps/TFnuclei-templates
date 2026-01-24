@@ -6,8 +6,7 @@ http:
     part: body
     type: replace
   matchers:
-  - condition: or
-    part: interactsh_protocol
+  - part: interactsh_protocol
     type: word
     words:
     - dns

@@ -15,7 +15,7 @@ http:
     words:
     - zionbuilder
   - dsl:
-    - compare_versions(version, '<= 3.6.14')
+    - compare_versions(version, '<= 3.6.16')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/zionbuilder/
     google-query: inurl:"/wp-content/plugins/zionbuilder/"
     shodan-query: http.html:"wp-content/plugins/zionbuilder/"
-  name: "WordPress Page Builder \u2013 Zion Builder <= 3.6.14 - Authenticated (Contributor+)\
+  name: "WordPress Page Builder \u2013 Zion Builder <= 3.6.16 - Authenticated (Contributor+)\
     \ Stored Cross-Site Scripting\n"
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve

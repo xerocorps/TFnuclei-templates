@@ -15,7 +15,7 @@ http:
     words:
     - html5-chat
   - dsl:
-    - compare_versions(version, '<= 1.04')
+    - compare_versions(version, '<= 1.07')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/html5-chat/
     google-query: inurl:"/wp-content/plugins/html5-chat/"
     shodan-query: http.html:"wp-content/plugins/html5-chat/"
-  name: 'HTML5 chat <= 1.04 - Authenticated (Contributor+) Stored Cross-Site Scripting
+  name: 'HTML5 chat <= 1.07 - Authenticated (Contributor+) Stored Cross-Site Scripting
 
     '
   reference:

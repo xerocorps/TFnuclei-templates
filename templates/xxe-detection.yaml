@@ -29,8 +29,10 @@ http:
     - <!DOCTYPE {{rletter}} [ <!ENTITY {{rletter}} SYSTEM "http://{{interactsh-url}}">
       ]><x>&{{rletter}};</x>
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method != "OPTIONS"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: xxe-detection

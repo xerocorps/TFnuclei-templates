@@ -60,8 +60,10 @@ http:
     - '" where 0 in (select sleep([SLEEPTIME]) ) and ""="'
     - '"; waitfor delay ''0:0:[SLEEPTIME]'' --'
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method == "GET"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: time-based-sqli-path

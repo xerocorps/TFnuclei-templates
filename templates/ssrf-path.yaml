@@ -207,8 +207,10 @@ http:
     - https://{{Host}}@7f000001.a9fea9fe.rbndr.us
     - https://{{Host}}@a9fea9fe.a9fea9fe.rbndr.us
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method == "GET"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: ssrf-path

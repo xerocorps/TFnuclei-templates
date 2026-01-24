@@ -15,7 +15,7 @@ http:
     words:
     - woo-payment-gateway-paysera
   - dsl:
-    - compare_versions(version, '<= 3.9.0')
+    - compare_versions(version, '<= 3.10.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/woo-payment-gateway-paysera/
     google-query: inurl:"/wp-content/plugins/woo-payment-gateway-paysera/"
     shodan-query: http.html:"wp-content/plugins/woo-payment-gateway-paysera/"
-  name: "WooCommerce Payment Gateway \u2013 Paysera <= 3.9.0 - Missing Authorization\n"
+  name: "WooCommerce Payment Gateway \u2013 Paysera <= 3.10.0 - Missing Authorization\n"
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
   - https://www.wordfence.com/threat-intel/vulnerabilities/id/1c8e615a-a1fc-428d-93bc-27c5d6d758eb?source=api-scan

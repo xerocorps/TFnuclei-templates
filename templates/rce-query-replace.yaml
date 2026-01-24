@@ -162,8 +162,10 @@ http:
     - '||/usr/bin/id||'
     - johnsmith@{{Host}}'.system('id').'
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method == "GET"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: rce-query-replace
