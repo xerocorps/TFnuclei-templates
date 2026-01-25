@@ -1,15 +1,22 @@
 http:
 - fuzzing:
   - fuzz:
-    - '{{escape}}Set-Cookie:crlfinjection=crlfinjection'
+    - '{{escape}}X-CRLF-Injected:true{{escape}}Set-Cookie:crlf={{randstr}}'
     mode: single
     part: path
     type: postfix
   matchers:
   - part: header
     regex:
-    - (?m)^(?:Set-Cookie\s*?:(?:\s*?|.*?;\s*?))(crlfinjection=crlfinjection)(?:\s*?)(?:$|;)
+    - (?im)^X-CRLF-Injected\s*:\s*true
+    - (?im)^Set-Cookie\s*:.*crlf=
     type: regex
+  - dsl:
+    - status_code >= 200 && status_code < 400
+    - status_code != 301 && status_code != 302
+    - '!contains(to_lower(header), "location:")'
+    type: dsl
+  matchers-condition: and
   payloads:
     escape:
     - '%00'
@@ -62,15 +69,15 @@ http:
     dsl:
     - method == "GET"
     - '!contains(path, ".js")'
+    - '!contains(path, ".css")'
+    - '!contains(path, ".png")'
+    - '!contains(path, ".jpg")'
+    - '!contains(path, ".gif")'
     type: dsl
   stop-at-first-match: true
 id: crlf-path
 info:
   author: reewardius
-  name: CRLF Injection
-  reference:
-  - https://book.hacktricks.xyz/pentesting-web/crlf-0d-0a
-  - https://github.com/r0075h3ll/Oralyzer/blob/master/core/crlf.py
-  - https://infosecwriteups.com/6000-with-microsoft-hall-of-fame-microsoft-firewall-bypass-crlf-to-xss-microsoft-bug-bounty-8f6615c47922
+  name: CRLF Injection - Path Based (Strict)
   severity: medium
   tags: fuzzing-req,fuzzing-req-crlf,fuzzing-req-path,dast
