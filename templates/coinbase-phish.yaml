@@ -2,15 +2,28 @@ http:
 - host-redirects: true
   matchers:
   - condition: or
+    part: body
     type: word
     words:
-    - Coinbase
     - Coinbase - Buy and Sell Bitcoin, Ethereum, and more with trust
+    - <title>Coinbase</title>
+    - Sign in to Coinbase
+    - Log in to Coinbase
+  - condition: or
+    part: body
+    type: word
+    words:
+    - password
+    - signin
+    - sign-in
+    - login
+    - log-in
   - status:
     - 200
     type: status
   - dsl:
     - '!contains(host,"coinbase.com")'
+    - '!contains(host,"coinbase.co")'
     type: dsl
   matchers-condition: and
   max-redirects: 2

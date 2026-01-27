@@ -1,0 +1,53 @@
+id: clawdbot-gw-exposure
+info:
+  author: rxerium
+  classification:
+    cwe-id: CWE-200
+  description: 'Clawdbot Gateway service was detected exposing configuration information
+    via mDNS including DNS settings, gateway details, and service configuration.
+
+    '
+  metadata:
+    fofa-query: body="ClawdBot"
+    max-request: 1
+    shodan-query: clawdbot-gw
+    verified: true
+  name: Clawdbot Gateway - Detect
+  severity: info
+  tags: network,clawdbot,gateway,exposure,udp,mdns,js,discovery
+javascript:
+- args:
+    Host: '{{Host}}'
+    Port: 5353
+  code: 'let c = require("nuclei/net");
+
+    let conn = c.Open(''udp'', `${Host}:${Port}`);
+
+    // mDNS query for _clawdbot-gw._tcp.local PTR record
+
+    let packet = "0000000000010000000000000c5f636c617764626f742d6777045f746370056c6f63616c00000c0001"
+
+    conn.SendHex(packet);
+
+    let resp = conn.RecvString();
+
+    resp;
+
+    '
+  extractors:
+  - group: 1
+    name: server
+    part: response
+    regex:
+    - displayName=([a-zA-Z0-9._-]+)
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - success == true
+    - contains(response, 'clawdbot')
+    - contains(response, 'role=gateway')
+    type: dsl
+  pre-condition: 'isUDPPortOpen(Host,Port);
+
+    '
