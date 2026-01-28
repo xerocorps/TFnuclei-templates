@@ -13,12 +13,9 @@ http:
     - contains(body, '<title>HPE OfficeConnect Switch')
     type: dsl
   max-redirects: 2
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
+  method: GET
+  path:
+  - '{{BaseURL}}/'
 id: hpe-officeconnect-panel
 info:
   author: pussycat0x

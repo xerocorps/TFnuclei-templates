@@ -15,7 +15,7 @@ http:
     words:
     - sweet-energy-efficiency
   - dsl:
-    - compare_versions(version, '<= 1.0.6')
+    - compare_versions(version, '<= 1.0.8')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/sweet-energy-efficiency/
     google-query: inurl:"/wp-content/plugins/sweet-energy-efficiency/"
     shodan-query: http.html:"wp-content/plugins/sweet-energy-efficiency/"
-  name: 'Sweet Energy Efficiency <= 1.0.6 - Cross-Site Request Forgery
+  name: 'Sweet Energy Efficiency <= 1.0.8 - Cross-Site Request Forgery
 
     '
   reference:

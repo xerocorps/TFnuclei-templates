@@ -1,19 +1,16 @@
 http:
-- matchers:
+- headers:
+    Accept: text/html
+  matchers:
   - condition: and
     dsl:
     - status_code == 200
     - contains_any(body, "<title>Apollo Server", "<title>Apollo Router")
     - contains_any(body, "Apollo Sandbox", "apollo.dev")
     type: dsl
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Hostname}}
-
-    Accept: text/html
-
-    '
+  method: GET
+  path:
+  - '{{BaseURL}}/'
 id: apollo-sandbox-ui-exposed
 info:
   author: Hamza Sahin

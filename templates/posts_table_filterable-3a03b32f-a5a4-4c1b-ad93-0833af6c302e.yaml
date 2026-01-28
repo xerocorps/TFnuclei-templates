@@ -15,7 +15,7 @@ http:
     words:
     - posts-table-filterable
   - dsl:
-    - compare_versions(version, '<= 1.0.4')
+    - compare_versions(version, '<= 1.0.4.3')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/posts-table-filterable/
     google-query: inurl:"/wp-content/plugins/posts-table-filterable/"
     shodan-query: http.html:"wp-content/plugins/posts-table-filterable/"
-  name: "TableOn \u2013 WordPress Posts Table Filterable <= 1.0.4 - Unauthenticated\
+  name: "TableOn \u2013 WordPress Posts Table Filterable <= 1.0.4.3 - Unauthenticated\
     \ PHP Object Injection\n"
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve

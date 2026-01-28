@@ -11,12 +11,9 @@ http:
     - status_code == 200
     - contains_any(tolower(header), "intel", "active management technology")
     type: dsl
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
+  method: GET
+  path:
+  - '{{BaseURL}}/'
 id: intel-amt-detect
 info:
   author: Shivam Kamboj
