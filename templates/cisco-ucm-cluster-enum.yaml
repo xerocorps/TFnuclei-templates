@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - name: cluster_nodes
+    type: xpath
+    xpath:
+    - /servers/server
+  headers:
+    Accept: application/xml
+  matchers:
+  - status:
+    - 200
+    type: status
+  - condition: or
+    part: header
+    type: word
+    words:
+    - text/xml
+    - application/xml
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <servers uri
+    - <server>
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/cucm-uds/servers'
+id: cisco-ucm-cluster-enum
+info:
+  author: Morgan Robertson
+  description: 'Enumerated Cisco UCM cluster nodes (servers) using the unauthenticated
+    UDS API (XML), allowing identification of backend servers without authentication.
+
+    '
+  metadata:
+    fofa-query: title="Unified Communications Self Care Portal"
+    product: unified_communications_manager
+    shodan-query: http.title:"Unified Communications Self Care Portal"
+    vendor: cisco
+    verified: true
+  name: Cisco Unified Communications Manager - Cluster Enumeration
+  reference:
+  - https://developer.cisco.com/site/user-data-services/develop-and-test/api-reference/#servers
+  severity: low
+  tags: cisco,ucm,misconfig
