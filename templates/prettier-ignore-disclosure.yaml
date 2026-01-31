@@ -38,6 +38,7 @@ info:
     fofa-query: body=".prettierignore" || body="prettier"
     max-request: 2
     product: prettier
+    runzero-match: service["http.body"] matches "(?i)\\.prettierignore"
     shodan-query: http.html:".prettierignore"
     vendor: prettier
     verified: true

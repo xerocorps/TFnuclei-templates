@@ -21,10 +21,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Kemp Login Screen"
     shodan-query: html:"Kemp Login Screen"
     verified: true
   name: Progress Kemp LoadMaster Panel - Detect
   reference:
   - https://kemptechnologies.com/
   severity: info
-  tags: login,progress,kemp,loadmaster,panel,detect
+  tags: login,progress,kemp,loadmaster,panel,detect,discovery

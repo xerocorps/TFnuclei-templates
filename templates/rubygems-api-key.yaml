@@ -1,6 +1,6 @@
 flow: http(1) && http(2)
 http:
-- extractors:
+- matchers:
   - internal: true
     name: token
     part: body
@@ -10,7 +10,12 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-- matchers:
+- disable-path-automerge: true
+  extractors:
+  - dsl:
+    - token
+    type: dsl
+  matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -27,7 +32,6 @@ http:
     Authorization: {{token}}
 
     '
-  self-contained: true
 id: rubygems-api-key
 info:
   author: DhiyaneshDK
@@ -40,4 +44,4 @@ info:
   - https://guides.rubygems.org/rubygems-org-api/
   - https://guides.rubygems.org/api-key-scopes/
   severity: high
-  tags: rubygems,token,exposure,ruby
+  tags: rubygems,token,exposure,ruby,vuln

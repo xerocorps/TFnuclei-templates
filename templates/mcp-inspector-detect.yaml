@@ -43,6 +43,7 @@ info:
     '
   metadata:
     fofa-query: title="MCP Inspector"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MCP Inspector"})
     verified: true
   name: MCP Inspector Detect
   reference:

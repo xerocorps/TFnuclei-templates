@@ -22,10 +22,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)OneDev"})
     shodan-query: title:"OneDev"
     verified: true
   name: OneDev Panel - Detect
   reference:
   - https://github.com/theonedev/onedev
   severity: info
-  tags: tech,detect,onedev
+  tags: tech,detect,onedev,discovery

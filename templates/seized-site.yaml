@@ -1,10 +1,12 @@
 http:
 - matchers:
   - case-insensitive: true
+    condition: or
     part: body
     type: word
     words:
     - THIS WEBSITE HAS BEEN SEIZED
+    - This domain has been seized by the Federal Bureau of Investigation
   - status:
     - 200
     type: status
@@ -15,11 +17,13 @@ http:
 id: seized-site
 info:
   author: rxerium
-  description: This website has been seized by law enforcement
+  description: 'This website has been seized by law enforcement
+
+    '
   metadata:
     max-request: 1
     shodan-query: title:"THIS WEBSITE HAS BEEN SEIZED"
     verified: true
   name: Seized Site
   severity: info
-  tags: seized,miscellaneous
+  tags: seized,miscellaneous,misc,vuln

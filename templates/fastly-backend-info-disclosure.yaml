@@ -28,6 +28,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.head.xBackendServer"] != ""
     shodan-query: X-backend-server
     verified: true
   name: Fastly Backend Server Information Disclosure

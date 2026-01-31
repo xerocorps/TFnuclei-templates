@@ -28,12 +28,12 @@ http:
     username:
     - admin
   raw:
-  - 'GET /login.php HTTP/2
+  - 'GET /login.php HTTP/1.1
 
     Host: {{Hostname}}
 
     '
-  - 'POST /loginvalidate.php HTTP/2
+  - 'POST /loginvalidate.php HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -43,7 +43,7 @@ http:
     uuid={{url_encode(token)}}&login={{username}}&password={{password}}&Submit=Submit
 
     '
-  - 'GET /index.php?what=welcome HTTP/2
+  - 'GET /index.php?what=welcome HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -51,13 +51,11 @@ http:
 id: ampjuke-default-login
 info:
   author: ritikchaddha
-  description: 'AmpJuke contains a default login vulnerability. Default admin login
-    password ''pass'' was found.
-
-    '
+  description: AmpJuke default login credentials were discovered.
   metadata:
     max-request: 3
+    runzero-match: service["favicon.ico.image.mmh3"] == "-121681558"
     shodan-query: http.favicon.hash:-121681558
-  name: AmpJuke - Default Login
+  name: AmpJuke Default Credentials
   severity: high
-  tags: default-login,ampjuke
+  tags: default-login,ampjuke,vuln

@@ -19,6 +19,7 @@ info:
   metadata:
     fofa-query: title="Tabby"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Tabby"})
     verified: true
   name: Tabby Panel - Detect
   reference:

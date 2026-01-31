@@ -38,6 +38,7 @@ info:
     fofa-query: title="OpenMetadata"
     max-request: 1
     product: openmetadata
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)OpenMetadata"})
     shodan-query: title:"OpenMetadata"
     vendor: open-metadata
     verified: true

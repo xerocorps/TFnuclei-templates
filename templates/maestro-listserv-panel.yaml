@@ -23,6 +23,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)LISTSERV Maestro"})
     shodan-query: http.title:"LISTSERV Maestro"
     verified: true
   name: Maestro LISTSERV - Detect

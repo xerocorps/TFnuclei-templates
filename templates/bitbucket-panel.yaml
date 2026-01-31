@@ -29,6 +29,7 @@ info:
     google-query: intitle:"Bitbucket" inurl:"/login"
     max-request: 2
     product: bitbucket
+    runzero-match: service["product"] contains "Atlassian:Bitbucket"
     shodan-query:
     - http.title:"Bitbucket"
     - http.component:"Atlassian Bitbucket"

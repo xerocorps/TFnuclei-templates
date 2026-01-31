@@ -38,11 +38,12 @@ http:
 id: sato-default-login
 info:
   author: y0no
-  description: 'Sato using default credentials was discovered.
+  description: 'Sato default login credentials were discovered.
 
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "Sato"})
     shodan-query: title:"Sato"
     verified: true
   name: Sato - Default Login

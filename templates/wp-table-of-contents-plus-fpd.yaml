@@ -29,6 +29,7 @@ info:
     framework: wordpress
     max-request: 3
     product: table-of-contents-plus
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/table-of-contents-plus/"
     vendor: developer
     verified: true
   name: WordPress Table of Contents Plus - Full Path Disclosure

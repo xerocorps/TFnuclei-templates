@@ -18,6 +18,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/plugins/megamenu"
     shodan-query: html:"/plugins/megamenu"
     verified: true
   name: WordPress Plugin Max Mega Menu (megamenu) - Full Path Disclosure

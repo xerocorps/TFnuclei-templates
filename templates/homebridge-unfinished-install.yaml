@@ -42,6 +42,7 @@ info:
   metadata:
     fofa-query: title="Homebridge"
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Homebridge"})
     shodan-query: title:"Homebridge"
     verified: true
   name: Homebridge - Unfinished Installation

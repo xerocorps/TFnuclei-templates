@@ -26,6 +26,7 @@ info:
   metadata:
     max-request: 1
     product: nios
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Infoblox"})
     shodan-query: http.title:"Infoblox"
     vendor: infoblox
   name: Infoblox NIOS Login Panel - Detect

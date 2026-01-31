@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/plugins/worker/"
     shodan-query: html:"/plugins/worker/"
     verified: true
   name: WordPress ManageWP Worker - Full Path Disclosure

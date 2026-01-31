@@ -44,6 +44,7 @@ info:
   metadata:
     fofa-query: body="/needUsbkey.php?username=" && "NSFOCUS"
     max-request: 2
+    runzero-match: service["http.body"] matches "(?i)/needUsbkey\\.php\\?username="
     verified: true
   name: Nsfocus - Arbitrary User Login
   reference:

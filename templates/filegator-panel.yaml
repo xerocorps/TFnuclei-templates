@@ -18,6 +18,7 @@ info:
   author: ritikchaddha
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)FileGator"})
     shodan-query: title:"FileGator"
     verified: true
   name: FileGator Panel - Detect

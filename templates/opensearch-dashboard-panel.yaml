@@ -20,6 +20,7 @@ info:
   metadata:
     fofa-query: title="OpenSearch"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)OpenSearch"})
     shodan-query: title:"OpenSearch"
     verified: true
   name: OpenSearch Dashboard Panel - Detect

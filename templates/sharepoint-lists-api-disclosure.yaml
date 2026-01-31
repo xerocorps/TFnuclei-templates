@@ -19,6 +19,7 @@ info:
     fofa-query: title="SharePoint"
     max-request: 1
     product: sharepoint
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)SharePoint"})
     shodan-query: http.title:"SharePoint"
     vendor: microsoft
     verified: true

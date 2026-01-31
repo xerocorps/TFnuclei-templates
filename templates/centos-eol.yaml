@@ -19,6 +19,8 @@ info:
   metadata:
     fofa-query: 'header="Server: Apache/" && "centos"'
     max-request: 1
+    runzero-match: service["http.head.server"] contains "Apache/" && service["http.head.server"]
+      matches "(?i)centos"
     shodan-query: '"Server: Apache/" "centos"'
   name: CentOS EOL - Detect
   reference:

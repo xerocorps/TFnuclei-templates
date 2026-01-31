@@ -26,6 +26,7 @@ info:
   metadata:
     fofa-query: body="/wp-content/plugins/updraftplus"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/updraftplus"
     verified: true
   name: WordPress UpdraftPlus - Full Path Disclosure
   reference:

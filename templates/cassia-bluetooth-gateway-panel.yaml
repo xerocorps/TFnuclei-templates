@@ -19,10 +19,12 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Cassia Bluetooth Gateway Management
+      Platform"
     shodan-query: html:"Cassia Bluetooth Gateway Management Platform"
     verified: true
   name: Cassia Bluetooth Gateway Panel - Detect
   reference:
   - https://www.cassianetworks.com/products/x1000-outdoor-bluetooth-router/
   severity: info
-  tags: cassia,gateway,login,panel
+  tags: cassia,gateway,login,panel,discovery

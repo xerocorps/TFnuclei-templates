@@ -21,6 +21,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)TIBCO Managed"
     shodan-query: html:"TIBCO Managed"
     verified: true
   name: TIBCO Managed File Transfer - Panel

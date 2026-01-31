@@ -18,6 +18,7 @@ info:
   metadata:
     fofa-query: title="Sanity Studio"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Sanity Studio"})
     shodan-query: http.title:"Sanity Studio"
     verified: true
   name: Sanity Studio Panel - Detect

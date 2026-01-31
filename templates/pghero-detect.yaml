@@ -1,5 +1,6 @@
 http:
-- matchers:
+- host-redirects: true
+  matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -7,7 +8,7 @@ http:
     type: dsl
   method: GET
   path:
-  - '{{BaseURL}}/'
+  - '{{BaseURL}}'
 id: pghero-detect
 info:
   author: righettod
@@ -22,4 +23,4 @@ info:
   reference:
   - https://github.com/ankane/pghero
   severity: info
-  tags: tech,pghero,detect
+  tags: tech,pghero,detect,discovery

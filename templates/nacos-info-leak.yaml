@@ -18,8 +18,7 @@ info:
     '
   metadata:
     max-request: 1
-    product: nacos
-    shodan-query: title:"Nacos"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Nacos"})
     vendor: alibaba
     verified: true
   name: Nacos - Information Disclosure

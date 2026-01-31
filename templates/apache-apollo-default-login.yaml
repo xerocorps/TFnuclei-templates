@@ -36,13 +36,15 @@ info:
   author: ritikchaddha
   classification:
     cpe: cpe:2.3:a:apache:activemq_apollo:*:*:*:*:*:*:*:*
+  description: Apache Apollo default login credentials were discovered.
   metadata:
     max-request: 1
     product: activemq_apollo
+    runzero-match: any(each(service["html.titles"]), {# matches "Apache Apollo"})
     shodan-query: title:"Apache Apollo"
     vendor: apache
     verified: true
-  name: Apache Apollo - Default Login
+  name: Apache Apollo Default Credentials
   severity: high
   tags: apache,apollo,default-login,misconfig,vuln
 variables:

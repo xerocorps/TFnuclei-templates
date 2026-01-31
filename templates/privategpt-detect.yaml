@@ -23,10 +23,10 @@ info:
   metadata:
     max-request: 1
     product: private-gpt
-    shodan-query: html:"private gpt"
+    runzero-match: service["http.body"] matches "(?i)private gpt"
     verified: true
   name: PrivateGPT - Detect
   reference:
   - https://github.com/zylon-ai/private-gpt
   severity: info
-  tags: panel,privategpt,detect
+  tags: panel,privategpt,detect,discovery,ai

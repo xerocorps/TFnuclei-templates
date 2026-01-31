@@ -56,14 +56,14 @@ http:
 id: ispconfig-admin-default-login
 info:
   author: pussycat0x
-  description: 'ISPConfig Admin Default Password Vulnerability exposes systems to
-    unauthorized access, compromising data integrity and security.
+  description: 'ISPConfig Admin Panel default login credentials were discovered.
 
     '
   metadata:
     max-request: 9
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ispconfig"})
     shodan-query: http.title:"ispconfig"
     verified: true
-  name: ISPConfig Admin - Default Password
+  name: ISPConfig Admin Panel - Default Login
   severity: high
-  tags: default-login,ispconfig
+  tags: default-login,ispconfig,vuln

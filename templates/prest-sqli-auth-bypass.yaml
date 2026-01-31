@@ -26,12 +26,13 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)authorization token is empty"
     shodan-query: html:"authorization token is empty"
     verified: true
   name: pREST < 1.5.4 - SQL Injection Via Authentication Bypass
   reference:
   - https://github.com/advisories/GHSA-wm25-j4gw-6vr3
   severity: critical
-  tags: sqli,prest,auth-bypass,sqli
+  tags: sqli,prest,auth-bypass,sqli,vuln
 variables:
   database: '{{database}}'

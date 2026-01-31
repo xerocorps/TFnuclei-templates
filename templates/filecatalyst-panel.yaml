@@ -20,8 +20,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)FileCatalyst file transfer solution"
     shodan-query: html:"FileCatalyst file transfer solution"
     verified: true
   name: FileCatalyst File Transfer Solution - Detect
   severity: info
-  tags: panel,login,filecatalyst,detect
+  tags: panel,login,filecatalyst,detect,discovery

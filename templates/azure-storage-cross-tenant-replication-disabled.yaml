@@ -21,8 +21,7 @@ code:
   matchers:
   - type: word
     words:
-    - 'false'
-  matchers-condition: and
+    - 'true'
   source: 'az storage account show --name "$name" --query ''allowCrossTenantReplication''
 
     '

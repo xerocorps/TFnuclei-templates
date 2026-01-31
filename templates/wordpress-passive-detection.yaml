@@ -33,6 +33,7 @@ info:
   metadata:
     max-request: 3
     product: wordpress
+    runzero-match: service["product"] contains "WordPress:WordPress"
     shodan-query:
     - http.component:"wordpress"
     vendor: wordpress

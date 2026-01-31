@@ -24,6 +24,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)a-blog cms"
     shodan-query: html:"a-blog cms"
     verified: true
   name: a-blog cms - Detect

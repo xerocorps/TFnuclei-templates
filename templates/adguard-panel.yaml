@@ -25,6 +25,7 @@ info:
     fofa-query: title="AdGuard Home"
     max-request: 1
     product: adguard
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)AdGuard Home"})
     vendor: adguard
     verified: true
   name: AdGuard Panel - Detect

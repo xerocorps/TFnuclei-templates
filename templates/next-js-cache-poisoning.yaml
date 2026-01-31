@@ -31,12 +31,16 @@ info:
 
     '
   metadata:
-    fofa-query: body="/_next/static"
+    fofa-query:
+    - body="/_next/static"
+    - x-middleware-rewrite
     framework: node.js
     product: next.js
+    runzero-match: service["http.body"] matches "(?i)/_next/static"
     shodan-query:
     - http.html:"/_next/static"
     - cpe:"cpe:2.3:a:zeit:next.js"
+    - x-middleware-rewrite
     vendor: vercel
     zoomeye-query: app="Next.js"
   name: Next.js Cache Poisoning

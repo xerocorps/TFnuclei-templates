@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Dependency-Track"
     shodan-query: html:"Dependency-Track"
     verified: true
   name: Dependency-Track Login - Panel

@@ -15,7 +15,7 @@ http:
     words:
     - cleverreach-wp
   - dsl:
-    - compare_versions(version, '<= 1.5.22')
+    - compare_versions(version, '<= 1.5.20')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -23,7 +23,7 @@ http:
   path:
   - '{{BaseURL}}/wp-content/plugins/cleverreach-wp/readme.txt'
   redirects: true
-id: cleverreach_wp-17ee6e87-2534-4397-833e-e0a1cd5d947c
+id: cleverreach_wp-764041ca-65cd-498c-97e5-a33d7b54a2b9
 info:
   author: topscoder
   classification:
@@ -35,9 +35,11 @@ info:
     fofa-query: wp-content/plugins/cleverreach-wp/
     google-query: inurl:"/wp-content/plugins/cleverreach-wp/"
     shodan-query: http.html:"wp-content/plugins/cleverreach-wp/"
-  name: "CleverReach\xAE WP <= 1.5.22 - Unauthenticated SQL Injection\n"
+  name: 'CleverReach WP <= 1.5.20 - Unauthenticated SQL Injection via title Parameter
+
+    '
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
-  - https://www.wordfence.com/threat-intel/vulnerabilities/id/17ee6e87-2534-4397-833e-e0a1cd5d947c?source=api-scan
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/764041ca-65cd-498c-97e5-a33d7b54a2b9?source=api-scan
   severity: critical
   tags: cve,wordpress,wp-plugin,cleverreach-wp,critical,candidate

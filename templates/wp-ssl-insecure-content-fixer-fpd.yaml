@@ -23,6 +23,7 @@ info:
   metadata:
     fofa-query: body="/ssl-insecure-content-fixer/"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/ssl-insecure-content-fixer/"
     verified: false
   name: WordPress Plugin SSL Insecure Content Fixer - Full Path Disclosure
   reference:

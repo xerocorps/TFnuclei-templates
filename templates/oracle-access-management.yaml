@@ -29,14 +29,14 @@ info:
   description: Oracle Access Management login panel was detected.
   metadata:
     fofa-query:
-    - title="Oracle Access Management"
     - title="oracle access management"
     - body="/oam/pages/css/login_page.css"
     google-query: intitle:"oracle access management"
     max-request: 2
     product: access_manager
+    runzero-match: service["http.body"] matches "(?i)/oam/pages/css/login_page\\.css"
+      || any(each(service["html.titles"]), {# matches "(?i)oracle access management"})
     shodan-query:
-    - http.title:"Oracle Access Management"
     - http.title:"oracle access management"
     - http.html:"/oam/pages/css/login_page.css"
     vendor: oracle
@@ -45,4 +45,4 @@ info:
   reference:
   - https://www.oracle.com/security/identity-management/access-management/
   severity: info
-  tags: panel,oracle,login,detect
+  tags: panel,oracle,login,detect,discovery

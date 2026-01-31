@@ -20,6 +20,7 @@ info:
   metadata:
     fofa-query: body="globalThis.BESZEL"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)globalThis\\.BESZEL"
     shodan-query: html:"globalThis.BESZEL"
     verified: true
   name: Beszel Unfinished Installation

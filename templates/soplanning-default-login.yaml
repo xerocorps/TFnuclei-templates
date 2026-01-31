@@ -32,18 +32,15 @@ http:
 id: soplanning-default-login
 info:
   author: s4e-io
-  description: 'SOPlanning contains default credentials. An attacker can obtain access
-    to user accounts and access sensitive information, modify data, and/or execute
-    unauthorized operations.
+  description: 'SOPlanning default login credentials were discovered.
 
     '
   metadata:
     fofa-query: body="soplanning"
     max-request: 1
     product: soplanning
-    shodan-query:
-    - html:"soplanning"
-    - http.html:"soplanning"
+    runzero-match: service["http.body"] matches "(?i)soplanning"
+    shodan-query: http.html:"soplanning"
     vendor: soplanning
     verified: true
   name: SOPlanning - Default Login

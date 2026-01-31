@@ -17,6 +17,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)reposilite"})
     shodan-query: http.title:"reposilite"
     verified: true
   name: Reposilite Login Panel - Detect

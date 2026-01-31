@@ -29,6 +29,7 @@ info:
 
     '
   metadata:
+    runzero-match: service["http.body"] matches "(?i)www\\.teccom-eu\\.net/wsdl"
     shodan-query: html:"www.teccom-eu.net/wsdl"
     verified: true
   name: TecConnect OpenMessaging Webservice Detection

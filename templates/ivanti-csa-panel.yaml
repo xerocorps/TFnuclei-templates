@@ -19,6 +19,8 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Cloud Services
+      Appliance"})
     shodan-query: title:"Cloud Services Appliance"
     verified: true
   name: Ivanti(R) Cloud Services Appliance - Panel

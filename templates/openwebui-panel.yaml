@@ -20,10 +20,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-286484075"
     shodan-query: http.favicon.hash:-286484075
     verified: true
   name: Openweb UI Panel - Detect
   reference:
   - https://openwebui.com/
   severity: info
-  tags: panel,openwebui,login
+  tags: panel,openwebui,login,discovery

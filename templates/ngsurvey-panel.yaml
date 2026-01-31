@@ -17,6 +17,8 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ngSurvey enterprise
+      survey software"})
     shodan-query: http.title:"ngSurvey enterprise survey software"
     verified: true
   name: ngSurvey Login Panel - Detect

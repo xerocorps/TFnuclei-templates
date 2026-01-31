@@ -25,6 +25,8 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "1780061475" || any(each(service["html.titles"]),
+      {# matches "(?i)Scan2Net"})
     shodan-query:
     - http.favicon.hash:1780061475
     - http.title:"Scan2Net"

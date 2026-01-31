@@ -34,11 +34,12 @@ info:
   author: DhiyaneshDK
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-17/excluding tag intrusive
     shodan-query: html:"content="Navidrome""
     verified: true
   name: Navidrome Admin User Creation
   severity: critical
-  tags: navidrome,installer,misconfig,intrusive
+  tags: navidrome,installer,misconfig,intrusive,vuln
 variables:
   password: '{{to_lower(rand_text_alpha(8))}}'
   username: admin

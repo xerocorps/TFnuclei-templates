@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Veritas NetBackup OpsCenter Analytics"
     shodan-query: html:"Veritas NetBackup OpsCenter Analytics"
     verified: true
   name: Veritas NetBackup OpsCenter Analytics Login - Detect

@@ -20,6 +20,7 @@ info:
   metadata:
     max-request: 1
     product: browser-rum
+    runzero-match: service["http.body"] matches "(?i)DD_RUM\\.init"
     shodan-query: html:"DD_RUM.init"
     vendor: datadog
     verified: true

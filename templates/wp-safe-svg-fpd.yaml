@@ -29,6 +29,7 @@ info:
     framework: wordpress
     max-request: 3
     product: safe-svg
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/safe-svg/"
     vendor: developer
     verified: true
   name: WordPress Plugin Safe SVG - Full Path Disclosure

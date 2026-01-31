@@ -19,10 +19,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MeTube"})
     shodan-query: http.title:MeTube
     verified: true
   name: MeTube Instance Detected
   reference:
   - https://github.com/alexta69/metube
   severity: info
-  tags: metube,detect,panel,login
+  tags: metube,detect,panel,login,discovery

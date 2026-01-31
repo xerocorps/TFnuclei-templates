@@ -19,6 +19,7 @@ info:
   metadata:
     fofa-query: title="Dell Remote web"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Dell Remote web"})
     verified: true
   name: Dell Remote Web Access Panel - Detect
   severity: info

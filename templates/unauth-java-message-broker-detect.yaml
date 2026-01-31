@@ -13,7 +13,7 @@ info:
   name: Unauthenticated Java Message Broker - Detect
   severity: low
   tags: network,tcp,jms,openmq,unauth
-tcp:
+network:
 - extractors:
   - regex:
     - imqbroker ([0-9.]+)

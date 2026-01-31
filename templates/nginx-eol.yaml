@@ -25,6 +25,7 @@ info:
   metadata:
     max-request: 1
     product: nginx
+    runzero-match: service["http.head.server"] matches "nginx/"
     shodan-query: 'Server: nginx/'
     vendor: nginx
     verified: true

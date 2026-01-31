@@ -15,7 +15,7 @@ http:
     words:
     - pdf-for-gravity-forms
   - dsl:
-    - compare_versions(version, '<= 6.3.0')
+    - compare_versions(version, '<= 6.5.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/pdf-for-gravity-forms/
     google-query: inurl:"/wp-content/plugins/pdf-for-gravity-forms/"
     shodan-query: http.html:"wp-content/plugins/pdf-for-gravity-forms/"
-  name: 'PDF for Gravity Forms + Drag And Drop Template Builder <= 6.3.0 - Authenticated
+  name: 'PDF for Gravity Forms + Drag And Drop Template Builder <= 6.5.0 - Authenticated
     (Subscriber+) PHP Object Injection
 
     '

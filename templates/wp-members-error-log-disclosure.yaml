@@ -25,6 +25,7 @@ info:
     framework: wordpress
     max-request: 3
     product: members
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/members/"
     vendor: developer
     verified: true
   name: WordPress Members / Membership & User Role Editor Plugin - Error Log Disclosure

@@ -30,13 +30,14 @@ http:
 id: zebra-default-login
 info:
   author: y0no
-  description: 'Zebra default login credentials was discovered.
+  description: 'Zebra printer default login credentials were discovered.
 
     '
   metadata:
     max-request: 4
+    runzero-match: any(each(service["html.titles"]), {# matches "Zebra"})
     shodan-query: title:"Zebra"
     verified: true
-  name: Zebra - Default Login
+  name: Zebra Printer - Default Login
   severity: high
-  tags: zebra,default-login,misconfig,printer
+  tags: zebra,default-login,misconfig,printer,vuln

@@ -21,6 +21,7 @@ info:
   description: Trend Micro Apex One login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)officescan"})
     shodan-query: http.title:"officescan"
     verified: true
   name: Trend Micro Apex One Login Panel - Detect

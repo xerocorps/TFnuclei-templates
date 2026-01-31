@@ -20,6 +20,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)posthog\\.init"
     shodan-query: html:"posthog.init"
     verified: true
   name: PostHog Browser RUM - Detect

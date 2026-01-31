@@ -26,6 +26,7 @@ info:
   metadata:
     max-request: 1
     product: craftercms
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)craftercms"})
     shodan-query: http.title:"craftercms"
     vendor: craftercms
     verified: true
@@ -33,4 +34,4 @@ info:
   reference:
   - https://craftercms.org/
   severity: info
-  tags: panel,craftercms,login,detect
+  tags: panel,craftercms,login,detect,discovery

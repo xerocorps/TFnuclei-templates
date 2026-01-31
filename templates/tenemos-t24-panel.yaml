@@ -16,6 +16,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)T24 Sign in"})
     shodan-query: http.title:"T24 Sign in"
     verified: true
   name: Tenemos T24 Login Panel - Detect

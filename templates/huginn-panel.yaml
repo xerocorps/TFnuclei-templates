@@ -16,10 +16,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1951475503"
     shodan-query: http.favicon.hash:-1951475503
     verified: true
   name: Huginn Login Panel - Detect
   reference:
   - https://github.com/huginn/huginn
   severity: info
-  tags: panel,huginn,login
+  tags: panel,huginn,login,discovery

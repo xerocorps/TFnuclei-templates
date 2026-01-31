@@ -21,6 +21,7 @@ info:
   metadata:
     fofa-query: title="Munin"
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Munin"})
     shodan-query: http.title:"Munin"
     verified: true
   name: Munin Monitoring Dashboard - Exposure
