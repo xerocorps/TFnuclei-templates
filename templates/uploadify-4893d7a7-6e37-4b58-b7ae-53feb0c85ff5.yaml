@@ -28,15 +28,9 @@ info:
   author: topscoder
   classification:
     cve-id: null
-    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
-    cvss-score: 9.8
-  description: 'The Uploadify plugin for WordPress is vulnerable to arbitrary file
-    uploads due to missing file type validation in the ''process_upload.php'' file
-    in versions up to, and including, 1.0. This makes it possible for unauthenticated
-    attackers to upload arbitrary files on the affected site''s server which may make
-    remote code execution possible.
-
-    '
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
   metadata:
     fofa-query: wp-content/plugins/uploadify/
     google-query: inurl:"/wp-content/plugins/uploadify/"
@@ -46,6 +40,6 @@ info:
     '
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
-  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4893d7a7-6e37-4b58-b7ae-53feb0c85ff5?source=api-prod
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4893d7a7-6e37-4b58-b7ae-53feb0c85ff5?source=api-scan
   severity: critical
-  tags: cve,wordpress,wp-plugin,uploadify,critical,production
+  tags: cve,wordpress,wp-plugin,uploadify,critical,candidate
