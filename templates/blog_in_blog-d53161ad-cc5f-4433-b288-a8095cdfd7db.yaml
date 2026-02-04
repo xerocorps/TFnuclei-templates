@@ -15,7 +15,7 @@ http:
     words:
     - blog-in-blog
   - dsl:
-    - compare_versions(version, '<= 1.1.1')
+    - compare_versions(version, '<= 2.0.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/blog-in-blog/
     google-query: inurl:"/wp-content/plugins/blog-in-blog/"
     shodan-query: http.html:"wp-content/plugins/blog-in-blog/"
-  name: 'Blog-in-Blog <= 1.1.1 - Authenticated (Editor+) Local File Inclusion via
+  name: 'Blog-in-Blog <= 2.0.0 - Authenticated (Editor+) Local File Inclusion via
     Shortcode
 
     '
