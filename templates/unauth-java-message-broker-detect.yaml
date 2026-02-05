@@ -13,13 +13,13 @@ info:
   name: Unauthenticated Java Message Broker - Detect
   severity: low
   tags: network,tcp,jms,openmq,unauth
-network:
+tcp:
 - extractors:
   - regex:
     - imqbroker ([0-9.]+)
     type: regex
   host:
-  - '{{Host}}:7676'
+  - '{{Hostname}}'
   inputs:
   - data: '
 
@@ -30,3 +30,4 @@ network:
     words:
     - 101 imqbroker
     - cluster_discovery
+  port: 7676

@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)semantic\\.min\\.css"
     shodan-query: html:"semantic.min.css"
     verified: true
   name: Semantic UI Framework - Detect
