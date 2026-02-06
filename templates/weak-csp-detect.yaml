@@ -1,41 +1,41 @@
 http:
 - extractors:
   - group: 1
-    name: script-src-directive
+    name: csp-header
     part: header
     regex:
-    - (?i)(script-src[^;]+)
+    - (?i)content-security-policy:\s*([^\r\n]+)
     type: regex
-  - group: 1
-    name: default-src-directive
-    part: header
-    regex:
-    - (?i)(default-src[^;]+)
-    type: regex
-  - dsl:
-    - '!regex(''(?i)\bscript-src\b'', header)'
+  matchers:
+  - condition: and
+    dsl:
+    - contains(to_lower(header), 'content-security-policy:')
+    - '!contains(to_lower(header), ''script-src'')'
+    - '!contains(to_lower(header), ''default-src'')'
     name: missing-script-src
     type: dsl
-  - dsl:
-    - '!regex(''(?i)\bobject-src\b'', header)'
+  - condition: and
+    dsl:
+    - contains(to_lower(header), 'content-security-policy:')
+    - '!contains(to_lower(header), ''object-src'')'
+    - '!contains(to_lower(header), ''default-src'')'
     name: missing-object-src
     type: dsl
-  matchers:
-  - case-insensitive: true
-    part: header
-    type: word
-    words:
-    - Content-Security-Policy
-  - condition: or
+  - condition: and
     dsl:
-    - '!regex(''(?i)\bscript-src\b'', header)'
-    - '!regex(''(?i)\bobject-src\b'', header)'
-    - regex('(?i)script-src[^;]*(?:\x27unsafe-inline\x27|\x27unsafe-eval\x27|\x27unsafe-hashes\x27|\*|data:|blob:)[^;]*(?:;|$)',
+    - contains(to_lower(header), 'content-security-policy:')
+    - regex('(?i)script-src[^;]*(unsafe-inline|unsafe-eval|unsafe-hashes|\\*|data:|blob:)',
       header)
-    - regex('(?i)default-src[^;]*(?:\x27unsafe-inline\x27|\x27unsafe-eval\x27|\x27unsafe-hashes\x27|\*|data:|blob:)[^;]*(?:;|$)',
-      header)
+    name: unsafe-script-src
     type: dsl
-  matchers-condition: and
+  - condition: and
+    dsl:
+    - contains(to_lower(header), 'content-security-policy:')
+    - regex('(?i)default-src[^;]*(unsafe-inline|unsafe-eval|unsafe-hashes|\\*|data:|blob:)',
+      header)
+    name: unsafe-default-src
+    type: dsl
+  matchers-condition: or
   method: GET
   path:
   - '{{BaseURL}}'

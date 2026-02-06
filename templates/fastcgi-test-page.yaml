@@ -22,8 +22,6 @@ info:
   metadata:
     google-query: intitle:"FastCGI test page"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "^FastCGI test page"
-      })
     verified: true
   name: FastCGI Test Page
   severity: info
