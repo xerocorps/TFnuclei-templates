@@ -15,7 +15,7 @@ http:
     words:
     - seo-links-interlinking
   - dsl:
-    - compare_versions(version, '<= 1.7.5')
+    - compare_versions(version, '<= 1.7.9.9.1')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,8 +35,8 @@ info:
     fofa-query: wp-content/plugins/seo-links-interlinking/
     google-query: inurl:"/wp-content/plugins/seo-links-interlinking/"
     shodan-query: http.html:"wp-content/plugins/seo-links-interlinking/"
-  name: 'SEO Links Interlinking <= 1.7.5 - Reflected Cross-Site Scripting via ''google_error''
-    Parameter
+  name: 'SEO Links Interlinking <= 1.7.9.9.1 - Reflected Cross-Site Scripting via
+    ''google_error'' Parameter
 
     '
   reference:

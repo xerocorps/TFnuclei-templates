@@ -15,7 +15,7 @@ http:
     words:
     - magic-import-document-extractor
   - dsl:
-    - compare_versions(version, '<= 1.0.4')
+    - compare_versions(version, '<= 1.0.5')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/magic-import-document-extractor/
     google-query: inurl:"/wp-content/plugins/magic-import-document-extractor/"
     shodan-query: http.html:"wp-content/plugins/magic-import-document-extractor/"
-  name: 'Magic Import Document Extractor <= 1.0.4 - Missing Authorization to Unauthenticated
+  name: 'Magic Import Document Extractor <= 1.0.5 - Missing Authorization to Unauthenticated
     Plugin License Status Modification
 
     '
