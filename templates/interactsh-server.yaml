@@ -1,28 +1,40 @@
 http:
 - extractors:
+  - kval:
+    - x_interactsh_version
+    - server
+    part: header
+    type: kval
   - group: 1
     regex:
     - <b>(.*)<\/b> server
-    - from <b>(.*)<\/b>
+    - from <b>\*\.(.*)<\/b>
     type: regex
   matchers:
-  - type: word
-    words:
-    - Interactsh Server
-  - status:
-    - 200
-    type: status
-  matchers-condition: and
+  - condition: or
+    dsl:
+    - status_code == 200 && contains(header, "X-Interactsh-Version:")
+    - status_code == 200 && contains(body, "<h1> Interactsh Server </h1>")
+    type: dsl
   method: GET
   path:
   - '{{BaseURL}}'
 id: interactsh-server
 info:
   author: pdteam
+  classification:
+    cpe: cpe:2.3:a:projectdiscovery:interactsh:*:*:*:*:*:*:*:*
+  description: 'Detect Interactsh HTTP service. Interactsh is used for Out-of-band
+    Application Security Testing (OAST).
+
+    '
   metadata:
     max-request: 1
+    product: interactsh
     shodan-query: http.html:"Interactsh Server"
+    vendor: projectdiscovery
     verified: true
-  name: Interactsh Server
-  severity: info
-  tags: tech,interactsh
+  name: Interactsh HTTP Server - Detect
+  reference: https://github.com/projectdiscovery/interactsh
+  severity: low
+  tags: tech,interactsh,discovery
