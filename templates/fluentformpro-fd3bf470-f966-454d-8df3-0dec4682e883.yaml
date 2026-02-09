@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fluentformpro
+  - dsl:
+    - compare_versions(version, '<= 6.1.12')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fluentformpro/readme.txt'
+  redirects: true
+id: fluentformpro-fd3bf470-f966-454d-8df3-0dec4682e883
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/fluentformpro/
+    google-query: inurl:"/wp-content/plugins/fluentformpro/"
+    shodan-query: http.html:"wp-content/plugins/fluentformpro/"
+  name: 'Fluent Forms Pro Add On Pack <= 6.1.12 - Authenticated (Subscriber+) Server-Side
+    Request Forgery via ''saveDataSource''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/fd3bf470-f966-454d-8df3-0dec4682e883?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,fluentformpro,low,candidate
