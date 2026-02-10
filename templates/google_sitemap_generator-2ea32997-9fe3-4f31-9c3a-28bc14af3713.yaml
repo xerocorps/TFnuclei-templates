@@ -15,7 +15,7 @@ http:
     words:
     - google-sitemap-generator
   - dsl:
-    - compare_versions(version, '<= 4.1.21')
+    - compare_versions(version, '<= 4.1.22')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/google-sitemap-generator/
     google-query: inurl:"/wp-content/plugins/google-sitemap-generator/"
     shodan-query: http.html:"wp-content/plugins/google-sitemap-generator/"
-  name: 'Google XML Sitemaps <= 4.1.21 - Missing Authorization
+  name: 'Google XML Sitemaps <= 4.1.22 - Missing Authorization
 
     '
   reference:
