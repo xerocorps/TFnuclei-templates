@@ -10,9 +10,12 @@ http:
     - 200
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/'
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 id: mongod-exposure
 info:
   author: DhiyaneshDk
@@ -26,4 +29,4 @@ info:
     verified: true
   name: MongoD Server - Exposure
   severity: low
-  tags: mongod,exposure,info-leak,vuln
+  tags: mongod,exposure,info-leak

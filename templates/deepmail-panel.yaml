@@ -18,8 +18,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Advanced eMail
-      Solution DEEPMail"})
     shodan-query: http.title:"Advanced eMail Solution DEEPMail"
     verified: true
   name: Advanced eMail Solution DEEPMail - Panel

@@ -15,11 +15,14 @@ id: apache-apisix-panel
 info:
   author: pikpikcu
   classification:
+    cpe: cpe:2.3:a:apache:apisix:*:*:*:*:*:*:*:*
     cwe-id: CWE-200
   description: An Apache APISIX login panel was detected.
   metadata:
     fofa-query: title="Apache APISIX Dashboard"
     max-request: 1
+    product: apisix
+    vendor: apache
   name: Apache APISIX Login Panel
   severity: info
   tags: apache,apisix,panel

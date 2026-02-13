@@ -27,8 +27,6 @@ info:
     - icon_hash="-1275955539"
     - 'Set-Cookie: __Host-grv_csrf'
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "544208100" || service["favicon.ico.image.mmh3"]
-      == "1854879765" || service["favicon.ico.image.mmh3"] == "-1275955539"
     shodan-query:
     - http.favicon.hash:544208100
     - http.favicon.hash:1854879765

@@ -2,19 +2,11 @@ id: pagespeed-global-admin
 info:
   author: geeknik
   name: Pagespeed Global Admin
-  reference:
-  - https://www.modpagespeed.com/
+  reference: https://www.modpagespeed.com/
   severity: low
   tags: pagespeed
 requests:
-- headers:
-    X-Client-IP: 127.0.0.1
-    X-Forwarded-For: 127.0.0.1
-    X-Forwarded-Host: 127.0.0.1
-    X-Host: 127.0.0.1
-    X-Originating-IP: 127.0.0.1
-    X-Remote-Addr: 127.0.0.1
-    X-Remote-IP: 127.0.0.1
+- attack: sniper
   matchers:
   - part: header
     type: word
@@ -24,6 +16,30 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/pagespeed-global-admin/'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /pagespeed-global-admin/ HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    X-Client-IP: 127.0.0.1
+
+    X-Remote-IP: 127.0.0.1
+
+    X-Remote-Addr: 127.0.0.1
+
+    X-Forwarded-For: 127.0.0.1
+
+    X-Originating-IP: 127.0.0.1
+
+    X-Host: 127.0.0.1
+
+    X-Forwarded-Host: 127.0.0.1
+
+    '
+  threads: 100

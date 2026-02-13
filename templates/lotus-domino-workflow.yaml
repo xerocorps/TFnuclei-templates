@@ -9,6 +9,6 @@ workflows:
   - name: lotus-domino
     subtemplates:
     - subtemplates:
-      - template: cves/2005/CVE-2005-2428.yaml
-      template: technologies/lotus-domino-version.yaml
-  template: technologies/tech-detect.yaml
+      - template: http/cves/2005/CVE-2005-2428.yaml
+      template: http/technologies/lotus-domino-version.yaml
+  template: http/technologies/tech-detect.yaml

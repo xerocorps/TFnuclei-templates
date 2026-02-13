@@ -27,8 +27,12 @@ http:
 id: pulse-secure-version
 info:
   author: dadevel
+  classification:
+    cpe: cpe:2.3:a:pulsesecure:pulse_connect_secure:*:*:*:*:*:*:*:*
   metadata:
     max-request: 2
+    product: pulse_connect_secure
+    vendor: pulsesecure
   name: Pulse Secure Version
   severity: info
-  tags: pulse,panel
+  tags: pulse,panel,pulsesecure

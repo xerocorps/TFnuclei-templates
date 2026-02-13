@@ -24,9 +24,6 @@ info:
     - server=="OPNsense"
     max-request: 1
     product: opnsense
-    runzero-match: service["favicon.ico.image.mmh3"] == "-1148190371" || service["favicon.ico.image.mmh3"]
-      == "-1068289244" || any(each(service["html.titles"]), {# matches "(?i)\\| OPNsense"})
-      || service["http.head.server"] matches "OPNsense"
     shodan-query:
     - http.favicon.hash:-1148190371
     - http.favicon.hash:-1068289244

@@ -1,5 +1,6 @@
 http:
 - attack: clusterbomb
+  cookie-reuse: true
   host-redirects: true
   matchers:
   - case-insensitive: true
@@ -56,7 +57,7 @@ info:
   metadata:
     max-request: 5
     shodan-query: http.title:adminer
-    verified: true
+    verified: 'true'
   name: Adminer Default Login - Detect
   reference:
   - https://www.adminer.org

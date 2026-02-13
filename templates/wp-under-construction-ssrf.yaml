@@ -1,4 +1,16 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - internal: true
+    type: word
+    words:
+    - = Under Construction
+  raw:
+  - 'GET /wp-content/plugins/under-construction-maintenance-mode/readme.txt HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 - matchers:
   - part: interactsh_protocol
     type: word

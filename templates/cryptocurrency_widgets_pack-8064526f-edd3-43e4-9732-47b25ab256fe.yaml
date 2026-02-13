@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - cryptocurrency-widgets-pack
+  - dsl:
+    - compare_versions(version, '<= 1.8.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/cryptocurrency-widgets-pack/readme.txt'
+  redirects: true
+id: cryptocurrency_widgets_pack-8064526f-edd3-43e4-9732-47b25ab256fe
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/cryptocurrency-widgets-pack/
+    google-query: inurl:"/wp-content/plugins/cryptocurrency-widgets-pack/"
+    shodan-query: http.html:"wp-content/plugins/cryptocurrency-widgets-pack/"
+  name: 'Cryptocurrency Widgets Pack <= 1.8.1 - Unauthenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8064526f-edd3-43e4-9732-47b25ab256fe?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,cryptocurrency-widgets-pack,critical,candidate

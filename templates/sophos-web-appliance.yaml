@@ -14,9 +14,13 @@ http:
 id: sophos-web-appliance
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:sophos:web_appliance:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: web_appliance
     shodan-query: http.favicon.hash:-893681401
+    vendor: sophos
     verified: true
   name: Sophos Web Appliance
   reference:

@@ -1,39 +1,22 @@
-dns:
-- class: inet
-  matchers:
-  - type: word
-    words:
-    - 69.164.223.206
-  name: '{{FQDN}}'
-  recursion: true
-  retries: 3
-  type: A
 http:
 - matchers:
   - dsl:
     - Host != ip
     type: dsl
-  - condition: and
-    type: word
-    words:
-    - Company Not Found
-    - worksites.net
-  - status:
-    - 404
-    type: status
+  - regex:
+    - (?:Company Not Found|you&rsquo;re looking for doesn&rsquo;t exist)
+    type: regex
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}'
 id: worksites-takeover
 info:
-  author: melbadry9,dogasantos
-  description: Worksites takeover was detected.
+  author: melbadry9
   metadata:
-    max-request: 2
-    verified: true
-  name: Worksites Takeover Detection
+    max-request: 1
+  name: worksites takeover detection
   reference:
-  - https://melbadry9.gitbook.io/blog/dangling-dns/xyz-services/ddns-worksites
+  - https://blog.melbadry9.xyz/dangling-dns/xyz-services/ddns-worksites
   severity: high
   tags: takeover

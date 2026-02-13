@@ -10,12 +10,17 @@ requests:
     part: body
     type: word
     words:
-    - <title>D-Link DWR-921</title>
-    - <frame src="loginpage.htm" name="main"
-  - status:
-    - 200
-    type: status
-  matchers-condition: and
+    - 'Product Page : DIR-850L'
+    - 'Firmware Version :'
+    - 'Hardware Version :'
+  - condition: and
+    part: body
+    type: word
+    words:
+    - '<td><script>I18N("h", "Model Name");</script> : DIR-850L</td>'
+    - '"Hardware Version"'
+    - '"Firmware  Version"'
+  matchers-condition: or
   method: GET
   path:
   - '{{BaseURL}}'

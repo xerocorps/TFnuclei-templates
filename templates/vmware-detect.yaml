@@ -1,15 +1,4 @@
-id: vmware-detect
-info:
-  author: elouhi
-  description: Sends a POST request containing a SOAP payload to a vCenter server
-    to obtain version information
-  name: VMware Detection
-  reference:
-  - https://www.pwndefend.com/2021/09/23/exposed-vmware-vcenter-servers-around-the-world-cve-2021-22005/
-  - https://svn.nmap.org/nmap/scripts/vmware-version.nse
-  severity: info
-  tags: tech,vcenter,vmware
-requests:
+http:
 - extractors:
   - group: 1
     part: body
@@ -44,3 +33,16 @@ requests:
     \   <soap:Body>\n      <RetrieveServiceContent xmlns=\"urn:internalvim25\">\n\
     \         <_this xsi:type=\"ManagedObjectReference\" type=\"ServiceInstance\"\
     >ServiceInstance</_this>\n      </RetrieveServiceContent>\n   </soap:Body>\n</soap:Envelope>\n"
+id: vmware-detect
+info:
+  author: elouhi
+  description: Sends a POST request containing a SOAP payload to a vCenter server
+    to obtain version information
+  metadata:
+    max-request: 1
+  name: VMware Detection
+  reference:
+  - https://www.pwndefend.com/2021/09/23/exposed-vmware-vcenter-servers-around-the-world-cve-2021-22005/
+  - https://svn.nmap.org/nmap/scripts/vmware-version.nse
+  severity: info
+  tags: tech,vcenter,vmware

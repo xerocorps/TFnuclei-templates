@@ -4,15 +4,14 @@ http:
     - Server
     part: header
     type: kval
+  host-redirects: true
   matchers:
   - part: header
     type: word
     words:
     - IIS
-  - status:
-    - 200
-    type: status
   matchers-condition: and
+  max-redirects: 4
   method: GET
   path:
   - '{{BaseURL}}'

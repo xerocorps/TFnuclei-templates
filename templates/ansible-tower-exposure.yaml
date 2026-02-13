@@ -5,12 +5,19 @@ info:
   severity: low
   tags: panel
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - condition: and
     type: word
     words:
     - <title>Ansible Tower</title>
     - ansible-main-menu
-  method: GET
-  path:
-  - '{{BaseURL}}'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    '
+  threads: 100

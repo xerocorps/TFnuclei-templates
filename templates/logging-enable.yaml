@@ -13,12 +13,16 @@ file:
 id: logging-enable
 info:
   author: pussycat0x
-  description: 'Enabling the Cisco IOS ''logging enable'' command enforces the monitoring
-    of technology risks for the organizations'' network devices.
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'Cisco logging ''logging enable'' enable command enforces the monitoring
+    of technology risks for organizations'' network devices.
 
     '
-  name: Logging enable
+  name: Cisco Logging Enable - Detect
   reference:
   - https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/config-mgmt/configuration/xe-16-6/config-mgmt-xe-16-6-book/cm-config-logger.pdf
   severity: info
-  tags: cisco,config-audit,cisco-switch
+  tags: audit,file,cisco,config-audit,cisco-switch

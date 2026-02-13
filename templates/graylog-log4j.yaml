@@ -14,10 +14,6 @@ http:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
   matchers:
-  - part: header
-    type: word
-    words:
-    - 'X-Graylog-Node-Id:'
   - part: interactsh_protocol
     type: word
     words:
@@ -26,6 +22,10 @@ http:
     regex:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
+  - part: header
+    type: word
+    words:
+    - 'X-Graylog-Node-Id:'
   matchers-condition: and
   raw:
   - 'POST /api/system/sessions HTTP/1.1
@@ -67,14 +67,14 @@ info:
   metadata:
     max-request: 1
     shodan-query: title:"Graylog Web Interface"
-    verified: true
+    verified: 'true'
   name: Graylog (Log4j) - Remote Code Execution
   reference:
   - https://www.graylog.org/post/graylog-update-for-log4j
   - https://logging.apache.org/log4j/2.x/security.html
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,graylog,kev,oast
+  tags: blind,fuzzing
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

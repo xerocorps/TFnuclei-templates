@@ -23,7 +23,6 @@ info:
     google-query: intitle:"datagerry"
     max-request: 1
     product: datagerry
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)datagerry"})
     shodan-query: http.title:"datagerry"
     vendor: becon
     verified: true

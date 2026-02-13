@@ -23,10 +23,9 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)HYPERPLANNING"})
     shodan-query: http.title:"HYPERPLANNING"
   name: HYPERPLANNING Login Panel - Detect
   reference:
   - https://www.index-education.com/fr/presentation-hyperplanning.php
   severity: info
-  tags: panel,hyperplanning,login,detect,discovery
+  tags: panel,hyperplanning,login,detect

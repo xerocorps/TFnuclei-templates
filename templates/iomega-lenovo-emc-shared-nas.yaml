@@ -5,8 +5,7 @@ info:
   severity: info
   tags: panel
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - status:
     - 200
     type: status
@@ -21,15 +20,6 @@ requests:
     words:
     - iomega
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /cp/Shares?user=&protocol=webaccess&v=2.3 HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
-    Firefox/55
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/cp/Shares?user=&protocol=webaccess&v=2.3'

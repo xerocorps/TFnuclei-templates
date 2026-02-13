@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - astra-pro-sites
+  - dsl:
+    - compare_versions(version, '<= 3.2.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/astra-pro-sites/readme.txt'
+  redirects: true
+id: astra_pro_sites-ebd78e52-f20d-42be-8f68-3d09d5abf837
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/astra-pro-sites/
+    google-query: inurl:"/wp-content/plugins/astra-pro-sites/"
+    shodan-query: http.html:"wp-content/plugins/astra-pro-sites/"
+  name: 'Starter Templates <= 3.2.5 - Incorrect Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ebd78e52-f20d-42be-8f68-3d09d5abf837?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,astra-pro-sites,low,candidate

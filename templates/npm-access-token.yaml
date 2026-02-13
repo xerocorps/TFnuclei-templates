@@ -1,6 +1,6 @@
 flow: http(1) && http(2)
 http:
-- matchers:
+- extractors:
   - internal: true
     name: token
     part: body
@@ -10,12 +10,7 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-- disable-path-automerge: true
-  extractors:
-  - dsl:
-    - token
-    type: dsl
-  matchers:
+- matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -32,6 +27,7 @@ http:
     Authorization: Bearer {{token}}
 
     '
+  self-contained: true
 id: npm-access-token
 info:
   author: DhiyaneshDK
@@ -45,4 +41,4 @@ info:
   - https://github.com/github/roadmap/issues/557
   - https://github.blog/changelog/2022-12-06-limit-scope-of-npm-tokens-with-the-new-granular-access-tokens/
   severity: high
-  tags: npm,token,exposure,vuln
+  tags: npm,token,exposure

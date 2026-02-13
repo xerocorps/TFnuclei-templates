@@ -19,7 +19,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Kong Manager"})
     shodan-query: title:"Kong Manager"
     verified: true
   name: Kong Manager OSS/Admin - Exposure

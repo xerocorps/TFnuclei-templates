@@ -5,9 +5,10 @@ dns:
     - "IN\tPTR\t(.+)"
     type: regex
   matchers:
-  - type: word
-    words:
-    - "IN\tPTR"
+  - part: answer
+    regex:
+    - "IN\tPTR\\t(.+)$"
+    type: regex
   name: '{{FQDN}}'
   type: PTR
 id: ptr-fingerprint
@@ -16,6 +17,8 @@ info:
   classification:
     cwe-id: CWE-200
   description: A PTR record was detected. A PTR record refers to the domain name.
+  metadata:
+    max-request: 1
   name: PTR Detected
   severity: info
   tags: dns,ptr

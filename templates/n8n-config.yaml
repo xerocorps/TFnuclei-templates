@@ -37,8 +37,6 @@ info:
   metadata:
     max-request: 1
     product: n8n
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)n8n.io*workflow
-      automation"})
     shodan-query: http.html:"N8n"
     vendor: n8n
   name: N8n - Config

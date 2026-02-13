@@ -36,9 +36,10 @@ info:
     cwe-id: CWE-200
   description: Oracle PeopleSoft login panel was detected.
   metadata:
+    fofa-query: title="Oracle PeopleSoft Sign-in"
     max-request: 12
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Oracle PeopleSoft
-      Sign-in"})
+    product: peoplesoft_enterprise_peopletools
+    shodan-query: http.title:"Oracle PeopleSoft Sign-in"
     vendor: oracle
     verified: true
   name: Oracle PeopleSoft Login Panel - Detect

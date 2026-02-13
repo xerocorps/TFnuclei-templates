@@ -1,10 +1,4 @@
-id: newrelic-rest-api-key
-info:
-  author: Ice3man
-  name: REST API Key Disclosure
-  severity: info
-  tags: exposure,token
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -13,3 +7,11 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: newrelic-rest-api-key
+info:
+  author: Ice3man
+  metadata:
+    max-request: 1
+  name: REST API Key Disclosure
+  severity: info
+  tags: exposure,token

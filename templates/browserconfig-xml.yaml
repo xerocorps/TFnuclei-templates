@@ -27,7 +27,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)browserconfig\\.xml"
     shodan-query: html:"browserconfig.xml"
     verified: true
   name: Browser Configuration "browserconfig.xml" Exposure

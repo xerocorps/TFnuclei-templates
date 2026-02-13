@@ -6,5 +6,5 @@ info:
   name: Azkaban Security Checks
 workflows:
 - subtemplates:
-  - template: default-logins/azkaban/
-  template: exposed-panels/azkaban-web-client.yaml
+  - template: http/default-logins/azkaban/
+  template: http/exposed-panels/azkaban-web-client.yaml

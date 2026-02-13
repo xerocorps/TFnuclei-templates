@@ -1,22 +1,23 @@
 id: adminer-panel-fuzz
 info:
-  author: random-robbie & meme-lord
+  author: random_robbie,meme-lord
   name: Adminer Login Panel Fuzz
   reference: https://blog.sorcery.ie/posts/adminer/
   severity: info
-  tags: fuzz,adminer
+  tags: fuzz,adminer,login
 requests:
-- attack: sniper
-  extractors:
+- extractors:
   - group: 1
     part: body
     regex:
     - <span class="version">([0-9.]+)
     type: regex
   matchers:
-  - type: word
+  - condition: and
+    type: word
     words:
-    - Login - Adminer
+    - '- Adminer</title>'
+    - partial(verifyVersion
   - status:
     - 200
     type: status
@@ -30,9 +31,8 @@ requests:
 
     Accept: application/json, text/plain, */*
 
-    Accept-Language: en-US,en;q=0.5
-
     Referer: {{BaseURL}}
 
     '
+  stop-at-first-match: true
   threads: 50

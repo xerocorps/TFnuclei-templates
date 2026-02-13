@@ -25,10 +25,9 @@ info:
   metadata:
     fofa-query: title="Fumeng Cloud"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Fumeng Cloud"})
     verified: true
   name: Fumasoft Cloud - SQL Injection
   severity: critical
-  tags: fumasoft,sqli,vuln
+  tags: fumasoft,sqli
 variables:
   num: '999999999'

@@ -1,10 +1,4 @@
-id: discord-webhook
-info:
-  author: Ice3man
-  name: Discord Webhook Disclosure
-  severity: info
-  tags: exposure,token,discord
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -13,3 +7,11 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: discord-webhook
+info:
+  author: Ice3man
+  metadata:
+    max-request: 1
+  name: Discord Webhook Disclosure
+  severity: info
+  tags: exposure,token,discord

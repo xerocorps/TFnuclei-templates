@@ -21,7 +21,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)GitHub Enterprise"})
     shodan-query: title:"GitHub Enterprise"
     verified: true
   name: GitHub Enterprise - Encrypted SAML

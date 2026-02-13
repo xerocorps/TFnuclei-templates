@@ -9,9 +9,12 @@ http:
     - 404
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/'
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 id: sap-logon-error-message
 info:
   author: DhiyaneshDK
@@ -25,4 +28,4 @@ info:
     verified: true
   name: SAP Logon Error Message
   severity: info
-  tags: sap,logon,error,log,vuln
+  tags: sap,logon,error,log

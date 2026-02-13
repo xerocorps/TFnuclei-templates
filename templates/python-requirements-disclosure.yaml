@@ -31,7 +31,6 @@ info:
   metadata:
     google-query: intitle:"index of" "requirements.txt"
     max-request: 4
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)index of"})
     verified: true
   name: Python Requirements File Disclosure
   reference:

@@ -26,8 +26,10 @@ info:
   author: Morgan Robertson
   classification:
     cpe: cpe:2.3:h:fujixerox:apeosport-v_c3375:*:*:*:*:*:*:*:*
-  description: 'Fuji Xerox ApeosPort series printer default login credentials were
-    discovered.
+  description: 'This template checks for the default credentials (username: 11111,
+    password: x-admin) on Fuji Xerox ApeosPort series printers. If the credentials
+    are valid, the response will have a 200 HTTP status code. Tested on a Fuji Xerox
+    ApeosPort-V C2275 T2.
 
     '
   metadata:

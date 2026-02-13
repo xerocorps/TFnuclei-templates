@@ -2,7 +2,8 @@ http:
 - matchers:
   - condition: and
     dsl:
-    - contains_any(body, "<title>Quivr - Get a Second Brain", "data-sentry-component=\"QuivrLogo\"")
+    - contains_any(body, "<title>Quivr - Get a Second Brain with Generative AI</title>",
+      "data-sentry-component=\"QuivrLogo\"")
     - status_code == 200
     type: dsl
   method: GET
@@ -22,4 +23,4 @@ info:
   reference:
   - https://github.com/QuivrHQ/quivr
   severity: info
-  tags: panel,login,quivr,detect,discovery
+  tags: panel,login,quivr,detect

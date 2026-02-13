@@ -14,14 +14,14 @@ http:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
   matchers:
-  - part: location
-    type: word
-    words:
-    - '{{BaseURL}}/user/error'
   - part: interactsh_protocol
     type: word
     words:
     - dns
+  - part: location
+    type: word
+    words:
+    - '{{BaseURL}}/user/error'
   - part: interactsh_request
     regex:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+

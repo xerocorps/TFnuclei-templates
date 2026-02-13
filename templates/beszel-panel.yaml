@@ -16,7 +16,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)beszel"})
     shodan-query: http.title:"beszel"
     verified: true
   name: Beszel Login Panel - Detect

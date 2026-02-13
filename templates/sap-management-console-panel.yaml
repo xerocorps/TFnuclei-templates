@@ -20,8 +20,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)SAP Management
-      Console"})
     shodan-query: title:"SAP Management Console"
     verified: true
   name: SAP Management Console - Panel

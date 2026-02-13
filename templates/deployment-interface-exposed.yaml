@@ -8,9 +8,12 @@ http:
     - 200
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/'
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 id: deployment-interface-exposed
 info:
   author: DhiyaneshDK
@@ -23,4 +26,4 @@ info:
     verified: true
   name: Deployment Management Interface - Exposed
   severity: medium
-  tags: deployment,management,misconfig,vuln
+  tags: deployment,management,misconfig

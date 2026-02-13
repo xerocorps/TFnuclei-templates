@@ -34,16 +34,16 @@ info:
   author: ritikchaddha
   classification:
     cpe: cpe:2.3:a:ispconfig:ispconfig:*:*:*:*:*:*:*:*
-  description: 'ISPConfig Hosting Control Panel default login credentials were discovered.
+  description: 'ISPConfig Hosting Control Panel Default Password Vulnerability exposes
+    systems to unauthorized access, compromising data integrity and security.
 
     '
   metadata:
     max-request: 1
     product: ispconfig
-    runzero-match: any(each(service["html.titles"]), {# matches "ISPConfig"})
     shodan-query: title:"ISPConfig" http.favicon.hash:483383992
     vendor: ispconfig
     verified: true
   name: ISPConfig Hosting Control Panel - Default Login
   severity: high
-  tags: ispconfig,hsp,default-login,vuln
+  tags: ispconfig,hsp,default-login

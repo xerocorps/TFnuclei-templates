@@ -17,6 +17,8 @@ http:
 id: reportico-admin-panel
 info:
   author: geeknik
+  classification:
+    cpe: cpe:2.3:a:reportico:reportico:*:*:*:*:*:*:*:*
   description: 'Create a simple report using the designer front end in seconds from
     a single SQL statement. Add expressions, user criteria, charts, groups, aggregations,
     page headers, page footers, hyperlinks and even custom plugin code.
@@ -24,7 +26,9 @@ info:
     '
   metadata:
     max-request: 2
+    product: reportico
     shodan-query: title:"Reportico Administration Page"
+    vendor: reportico
     verified: true
   name: Reportico Administration Page - Detect
   reference:

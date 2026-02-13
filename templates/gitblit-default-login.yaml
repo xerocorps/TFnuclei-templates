@@ -41,7 +41,6 @@ info:
   metadata:
     max-request: 1
     product: gitblit
-    runzero-match: any(each(service["html.titles"]), {# matches "Gitblit"})
     shodan-query: title:"Gitblit"
     vendor: gitblit
     verified: true

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - crypto-converter-widget
+  - dsl:
+    - compare_versions(version, '<= 1.8.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/crypto-converter-widget/readme.txt'
+  redirects: true
+id: crypto_converter_widget-d621869c-31f7-4243-9815-f6d1bbe469e2
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/crypto-converter-widget/
+    google-query: inurl:"/wp-content/plugins/crypto-converter-widget/"
+    shodan-query: http.html:"wp-content/plugins/crypto-converter-widget/"
+  name: 'Crypto Converter Widget <= 1.8.3 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d621869c-31f7-4243-9815-f6d1bbe469e2?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,crypto-converter-widget,low,candidate

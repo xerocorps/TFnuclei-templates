@@ -6,7 +6,7 @@ info:
   name: Cisco ASA Security Checks
 workflows:
 - subtemplates:
-  - template: cves/2020/CVE-2020-3187.yaml
-  - template: cves/2020/CVE-2020-3452.yaml
-  - template: cves/2018/CVE-2018-0296.yaml
-  template: exposed-panels/cisco/cisco-asa-panel.yaml
+  - template: http/cves/2020/CVE-2020-3187.yaml
+  - template: http/cves/2020/CVE-2020-3452.yaml
+  - template: http/cves/2018/CVE-2018-0296.yaml
+  template: http/exposed-panels/cisco/cisco-asa-panel.yaml

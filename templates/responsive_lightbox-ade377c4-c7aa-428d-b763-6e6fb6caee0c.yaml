@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - responsive-lightbox
+  - dsl:
+    - compare_versions(version, '<= 2.4.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/responsive-lightbox/readme.txt'
+  redirects: true
+id: responsive_lightbox-ade377c4-c7aa-428d-b763-6e6fb6caee0c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/responsive-lightbox/
+    google-query: inurl:"/wp-content/plugins/responsive-lightbox/"
+    shodan-query: http.html:"wp-content/plugins/responsive-lightbox/"
+  name: 'Responsive Lightbox <= 2.4.6 - Missing Authorization via Information Disclosure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ade377c4-c7aa-428d-b763-6e6fb6caee0c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,responsive-lightbox,high,candidate

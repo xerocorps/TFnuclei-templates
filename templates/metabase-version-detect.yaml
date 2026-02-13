@@ -5,9 +5,9 @@ info:
     a login page with the version number in the page source
   name: Detect Metabase Version
   severity: info
+  tags: tech,metabase
 requests:
-- attack: sniper
-  extractors:
+- extractors:
   - group: 1
     part: body
     regex:
@@ -25,18 +25,6 @@ requests:
     - window.MetabaseBootstrap
     - window.MetabaseRoot
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /auth/login HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/auth/login'

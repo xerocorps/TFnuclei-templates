@@ -58,7 +58,6 @@ info:
     framework: wordpress
     max-request: 3
     product: wordpress
-    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     shodan-query:
     - cpe:"cpe:2.3:a:wordpress:wordpress"
     - http.component:"wordpress"
@@ -68,4 +67,4 @@ info:
   - https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-core/wordpress-core-56-631-reflected-cross-site-scripting-via-application-password-requests?asset_slug=wordpress
   - https://wpscan.com/vulnerability/da1419cc-d821-42d6-b648-bdb3c70d91f2/
   severity: medium
-  tags: wpscan,wp,wordpress,authenticated,xss,vuln
+  tags: wpscan,wp,wordpress,authenticated,xss

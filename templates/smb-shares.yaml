@@ -27,7 +27,7 @@ javascript:
 
     var response = c.ListShares(Host, Port, User, Pass);
 
-    to_json(response);
+    Export(response);
 
     '
   extractors:

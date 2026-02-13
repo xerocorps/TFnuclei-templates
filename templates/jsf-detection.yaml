@@ -1,18 +1,30 @@
 id: jsf-detection
 info:
-  author: Moritz Nentwig
+  author: brenocss,Moritz Nentwig
   description: Searches for JavaServer Faces content on a URL.
   name: JavaServer Faces Detection
   severity: info
-  tags: jsf,tech
+  tags: jsf,tech,primefaces,richfaces
 requests:
 - matchers:
-  - condition: or
-    type: word
-    words:
-    - javax.faces.resource
-    - javax.faces.ViewState
-  max-redirects: 2
+  - dsl:
+    - (contains(body, 'javax.faces.resource') || contains(body, 'javax.faces.ViewState'))
+    name: javafaces
+    type: dsl
+  - condition: and
+    dsl:
+    - contains(body, 'primefaces')
+    - contains(body, 'javax.faces.resource') || contains(body, 'javax.faces.ViewState')
+    name: primefaces
+    type: dsl
+  - condition: and
+    dsl:
+    - contains(body, 'richfaces')
+    - contains(body, 'javax.faces.resource') || contains(body, 'javax.faces.ViewState')
+    name: richfaces
+    type: dsl
+  matchers-condition: or
+  max-redirects: 3
   method: GET
   path:
   - '{{BaseURL}}'

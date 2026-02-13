@@ -1,4 +1,16 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - internal: true
+    type: word
+    words:
+    - = NextGEN Gallery
+  raw:
+  - 'GET /wp-content/plugins/nextgen-gallery/readme.txt HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 - matchers:
   - part: body
     type: word
