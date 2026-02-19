@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - frontend-user-notes
+  - dsl:
+    - compare_versions(version, '<= 2.1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/frontend-user-notes/readme.txt'
+  redirects: true
+id: frontend_user_notes-30f2dd33-228d-4942-88d9-78c7ed0b79a1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/frontend-user-notes/
+    google-query: inurl:"/wp-content/plugins/frontend-user-notes/"
+    shodan-query: http.html:"wp-content/plugins/frontend-user-notes/"
+  name: 'Frontend User Notes <= 2.1.0 - Insecure Direct Object Reference to Authenticated
+    (Subscriber+) Arbitrary Note Modification
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/30f2dd33-228d-4942-88d9-78c7ed0b79a1?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,frontend-user-notes,low,candidate
