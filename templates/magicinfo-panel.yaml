@@ -20,6 +20,7 @@ info:
     fofa-query: title:"MagicINFO"
     max-request: 2
     product: magicinfo
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MagicINFO"})
     shodan-query: title:"MagicINFO"
     vendor: samsung
     verified: true

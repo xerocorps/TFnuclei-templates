@@ -1,17 +1,4 @@
-id: gitlab-pipeline-token
-info:
-  author: DhiyaneshDK
-  metadata:
-    verified: 'true'
-  name: GitLab Pipeline Trigger Token
-  reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/gitlab.yml
-  - https://docs.gitlab.com/ee/ci/triggers/
-  - https://gitlab.com/gitlab-org/gitlab/-/issues/371396
-  - https://gitlab.com/gitlab-org/gitlab/-/issues/388379
-  severity: info
-  tags: gitlab,token,exposure
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -20,3 +7,17 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: gitlab-pipeline-token
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 1
+    verified: true
+  name: GitLab Pipeline Trigger Token
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/gitlab.yml
+  - https://docs.gitlab.com/ee/ci/triggers/
+  - https://gitlab.com/gitlab-org/gitlab/-/issues/371396
+  - https://gitlab.com/gitlab-org/gitlab/-/issues/388379
+  severity: info
+  tags: gitlab,token,exposure

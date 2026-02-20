@@ -7,83 +7,18 @@ http:
     part: body
     type: word
     words:
-    - PodList
-    - items
-  matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/pods'
-- matchers:
-  - status:
-    - 200
-    type: status
-  - condition: and
-    part: body
-    type: word
-    words:
-    - node
-    - nodeName
-  matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/stats/summary'
-- matchers:
-  - status:
-    - 200
-    type: status
-  - part: header
-    regex:
-    - 'content-type: text/plain'
-    type: regex
-  matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/metrics'
-- matchers:
-  - status:
-    - 200
-    type: status
-  - condition: and
-    part: body
-    type: word
-    words:
-    - PodList
-    - items
+    - '"PodList":'
+    - '"items":'
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/runningpods/'
-- matchers:
-  - status:
-    - 200
-    type: status
-  - part: header
-    regex:
-    - 'content-type: text/html'
-    type: regex
-  matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/logs/'
-- matchers:
-  - status:
-    - 200
-    type: status
-  - part: header
-    regex:
-    - 'content-type: text/plain'
-    type: regex
-  - part: header
-    type: word
-    words:
-    - ok
-  matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/healthz'
 id: kubelet-scan
 info:
-  author: sharath,topscoder
-  description: Scans all open urls of kubelet
-  name: Kubelet Scan
+  author: sharath
+  description: Scans for kubelet running pods
+  metadata:
+    max-request: 1
+  name: Kubelet Running Pods
   severity: info
+  tags: tech,k8s,kubernetes,devops,kubelet

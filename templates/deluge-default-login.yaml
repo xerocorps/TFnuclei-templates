@@ -34,11 +34,12 @@ http:
 id: deluge-default-login
 info:
   author: ritikchaddha
-  description: 'Deluge Default login credentials were discovered.
+  description: 'Deluge default login credentials were discovered.
 
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "Deluge"})
     shodan-query: title:"Deluge"
     verified: true
   name: Deluge - Default Login

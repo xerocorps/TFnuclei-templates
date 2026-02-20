@@ -1,4 +1,12 @@
-http:
+id: herokuapp-detect
+info:
+  author: alifathi-h1
+  description: Detected endpoints might be vulnerable to subdomain takeover or disclose
+    sensitive info
+  name: Detect websites using Herokuapp endpoints
+  severity: info
+  tags: heroku,tech
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,13 +15,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: herokuapp-detect
-info:
-  author: alifathi-h1
-  description: Detected endpoints might be vulnerable to subdomain takeover or disclose
-    sensitive info
-  metadata:
-    max-request: 1
-  name: Detect websites using Herokuapp endpoints
-  severity: info
-  tags: heroku,tech

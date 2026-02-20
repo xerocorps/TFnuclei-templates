@@ -29,7 +29,7 @@ javascript:
 
     var response = c.ListSMBv2Metadata(Host, Port);
 
-    Export(response);
+    to_json(response);
 
     '
   extractors:

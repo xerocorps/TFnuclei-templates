@@ -1,7 +1,11 @@
 dns:
-- name: '{{FQDN}}'
+- class: inet
+  name: '{{FQDN}}'
+  recursion: true
+  retries: 5
   type: CNAME
-- matchers:
+- class: inet
+  matchers:
   - name: sanfor-shield
     type: word
     words:
@@ -128,13 +132,12 @@ dns:
     words:
     - .iidns.com
   name: '{{FQDN}}'
+  recursion: true
+  retries: 5
   type: NS
 id: dns-waf-detect
 info:
   author: lu4nx
-  classification:
-    cwe-id: CWE-200
-  description: A DNS WAF was detected.
   name: DNS WAF Detection
   severity: info
   tags: tech,waf,dns

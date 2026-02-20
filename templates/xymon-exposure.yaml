@@ -27,6 +27,7 @@ info:
 
     '
   metadata:
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Xymon"})
     shodan-query: http.title:"Xymon"
   name: Xymon - Exposure
   reference:

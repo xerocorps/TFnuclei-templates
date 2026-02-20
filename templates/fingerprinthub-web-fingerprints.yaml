@@ -676,7 +676,7 @@ http:
     part: header
     type: word
     words:
-    - 'Www-Authenticate: Basic realm="dubbo"'
+    - 'WWW-Authenticate: Basic realm="dubbo"'
   - name: apache-struts
     type: word
     words:
@@ -9312,8 +9312,7 @@ http:
     type: word
     words:
     - http://www.softbizscripts.com/classified-ads-plus-script-features.php
-  - case-insensitive: true
-    name: softether-vpn
+  - name: softether-vpn
     type: word
     words:
     - <li>manage this vpn server or vpn bridge<ul>

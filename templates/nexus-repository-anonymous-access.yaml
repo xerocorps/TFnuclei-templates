@@ -30,6 +30,8 @@ info:
   metadata:
     fofa-query: title="Nexus Repository Manager"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Nexus Repository
+      Manager"})
     shodan-query: title:"Nexus Repository Manager"
     verified: true
   name: Nexus Repository Manager - Anonymous Access Enabled

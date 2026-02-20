@@ -9,14 +9,15 @@ info:
 
     '
   metadata:
+    max-request: 1
     shodan-query: ssl:"MetasploitSelfSignedCA"
     verified: 'true'
-  name: Detect SSL Certificate Issuer
+  name: Metasploit C2 - Detect
   reference: 'https://www.socinvestigation.com/shodan-filters-to-hunt-adversaries-infrastructure-and-c2/
 
     '
   severity: info
-  tags: c2,ir,osint,metasploit
+  tags: c2,ir,osint,malware,ssl,metasploit
 ssl:
 - address: '{{Host}}:{{Port}}'
   extractors:

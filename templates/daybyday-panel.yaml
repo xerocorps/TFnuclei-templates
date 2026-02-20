@@ -15,15 +15,13 @@ id: daybyday-panel
 info:
   author: pikpikcu,daffainfo
   classification:
-    cpe: cpe:2.3:a:daybydaycrm:daybyday:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
     cwe-id: CWE-200
   description: DaybydayCRM login panel was detected.
   metadata:
     max-request: 1
-    product: daybyday
     shodan-query: http.title:"Daybyday"
-    vendor: daybydaycrm
   name: DaybydayCRM Login Panel - Detect
   severity: info
-  tags: panel,daybyday,daybydaycrm
+  tags: panel,daybyday

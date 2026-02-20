@@ -27,7 +27,7 @@ javascript:
 
     let response = c.ConnectSSHInfoMode(Host, Port);
 
-    Export(response);
+    to_json(response);
 
     '
   matchers:

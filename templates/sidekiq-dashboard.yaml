@@ -19,19 +19,16 @@ id: sidekiq-dashboard
 info:
   author: dhiyaneshDK,AmirMSafari
   classification:
-    cpe: cpe:2.3:a:contribsys:sidekiq:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
     cwe-id: CWE-200
   description: Sidekiq Dashboard panel was detected.
   metadata:
     max-request: 1
-    product: sidekiq
-    vendor: contribsys
   name: Sidekiq Dashboard Panel - Detect
   reference:
   - https://sidekiq.org
   - https://github.com/mperham/sidekiq
   - https://github.com/mperham/sidekiq/wiki/Monitoring
   severity: medium
-  tags: unauth,panel,sidekiq,contribsys
+  tags: unauth,panel,sidekiq

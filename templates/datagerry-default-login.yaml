@@ -29,14 +29,15 @@ http:
 id: datagerry-default-login
 info:
   author: gy741
-  description: 'Datagerry was using default username and password was discovered.
-
-    '
+  description: Datagerry default login credentials were discovered.
   metadata:
     max-request: 1
+    product: datagerry
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)datagerry"})
     shodan-query: http.title:"datagerry"
+    vendor: becon
     verified: true
-  name: Datagerry - Default Login
+  name: Datagerry Default Credentials
   severity: high
   tags: datagerry,default-login,vuln
 variables:

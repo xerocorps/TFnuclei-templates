@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - safe-svg
+  - dsl:
+    - compare_versions(version, '<= 2.0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/safe-svg/readme.txt'
+  redirects: true
+id: safe_svg-ca73de6d-2d47-4d7c-a917-0f99fed8c27d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/safe-svg/
+    google-query: inurl:"/wp-content/plugins/safe-svg/"
+    shodan-query: http.html:"wp-content/plugins/safe-svg/"
+  name: 'SVG Sanitizer library <= 0.15.4 - Cross-Site Scripting Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ca73de6d-2d47-4d7c-a917-0f99fed8c27d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,safe-svg,high,candidate

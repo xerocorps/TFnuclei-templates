@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wc-venipak-shipping
+  - dsl:
+    - compare_versions(version, '<= 1.19.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wc-venipak-shipping/readme.txt'
+  redirects: true
+id: wc_venipak_shipping-58e8befa-bc8d-4731-be2c-ccf613b39fdd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wc-venipak-shipping/
+    google-query: inurl:"/wp-content/plugins/wc-venipak-shipping/"
+    shodan-query: http.html:"wp-content/plugins/wc-venipak-shipping/"
+  name: 'Shipping with Venipak for WooCommerce <= 1.19.5 - Reflected Cross-Site Scripting
+    via ''venipak_labels_link''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/58e8befa-bc8d-4731-be2c-ccf613b39fdd?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wc-venipak-shipping,medium,candidate

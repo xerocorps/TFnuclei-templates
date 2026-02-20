@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - indeed-learning-pro
+  - dsl:
+    - compare_versions(version, '<= 3.9.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/indeed-learning-pro/readme.txt'
+  redirects: true
+id: indeed_learning_pro-e5b6a5ee-33ad-4062-a234-4ce19124d3b7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/indeed-learning-pro/
+    google-query: inurl:"/wp-content/plugins/indeed-learning-pro/"
+    shodan-query: http.html:"wp-content/plugins/indeed-learning-pro/"
+  name: 'Ultimate Learning Pro <= 3.9.3 - Authenticated (Instructor+) Arbitrary Content
+    Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e5b6a5ee-33ad-4062-a234-4ce19124d3b7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,indeed-learning-pro,low,candidate

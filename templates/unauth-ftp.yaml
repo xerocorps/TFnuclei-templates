@@ -1,14 +1,14 @@
 id: unauth-ftp
 info:
-  author: C3l3si4n
+  author: Celesian ( @C3l3si4n )
   name: FTP Anonymous Login
   reference: https://tools.ietf.org/html/rfc2577
   severity: medium
   tags: network,ftp
 network:
 - host:
-  - '{{Host}}:21'
   - '{{Hostname}}'
+  - '{{Hostname}}:21'
   inputs:
   - data: "USER anonymous\r\nPASS nuclei\r\n"
   matchers:

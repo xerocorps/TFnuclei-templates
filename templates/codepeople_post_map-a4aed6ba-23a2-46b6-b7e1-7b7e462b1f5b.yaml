@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - codepeople-post-map
+  - dsl:
+    - compare_versions(version, '<= 1.0.43')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/codepeople-post-map/readme.txt'
+  redirects: true
+id: codepeople_post_map-a4aed6ba-23a2-46b6-b7e1-7b7e462b1f5b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/codepeople-post-map/
+    google-query: inurl:"/wp-content/plugins/codepeople-post-map/"
+    shodan-query: http.html:"wp-content/plugins/codepeople-post-map/"
+  name: 'Google Maps CP <= 1.0.43 - Cross-Site Request Forgery via feedback_action
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a4aed6ba-23a2-46b6-b7e1-7b7e462b1f5b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,codepeople-post-map,medium,candidate

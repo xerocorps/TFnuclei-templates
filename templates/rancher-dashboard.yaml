@@ -7,7 +7,6 @@ http:
     words:
     - content="Rancher Dashboard
     - 'rancherEnv:'
-    - <title>Rancher
   - status:
     - 200
     type: status
@@ -20,17 +19,14 @@ http:
   stop-at-first-match: true
 id: rancher-dashboard
 info:
-  author: ritikchaddha,righettod
+  author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:rancher:rancher:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Rancher Dashboard was detected.
   metadata:
     max-request: 2
-    product: rancher
     shodan-query: http.favicon.hash:-1324930554
-    vendor: rancher
     verified: 'true'
   name: Rancher Dashboard Panel - Detect
   reference:

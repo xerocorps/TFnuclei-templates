@@ -16,6 +16,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Login \\| Zoraxy"})
     shodan-query: http.title:"Login | Zoraxy"
     verified: true
   name: Zoraxy Login Panel - Detect

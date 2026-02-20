@@ -16,6 +16,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)VictoriaMetrics"
     shodan-query: http.html:"VictoriaMetrics"
     verified: true
   name: VictoriaMetrics Panel - Detect

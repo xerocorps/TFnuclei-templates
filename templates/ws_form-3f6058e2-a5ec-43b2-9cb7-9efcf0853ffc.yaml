@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ws-form
+  - dsl:
+    - compare_versions(version, '<= 1.10.35')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ws-form/readme.txt'
+  redirects: true
+id: ws_form-3f6058e2-a5ec-43b2-9cb7-9efcf0853ffc
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ws-form/
+    google-query: inurl:"/wp-content/plugins/ws-form/"
+    shodan-query: http.html:"wp-content/plugins/ws-form/"
+  name: "WS Form LITE \u2013 Drag & Drop Contact Form Builder for WordPress <= 1.10.35\
+    \ - Missing Authorization to Unauthenticated Sensitive Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3f6058e2-a5ec-43b2-9cb7-9efcf0853ffc?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,ws-form,high,candidate

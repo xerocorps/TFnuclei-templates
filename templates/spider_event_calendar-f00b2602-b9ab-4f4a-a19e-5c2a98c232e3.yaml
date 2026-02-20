@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - spider-event-calendar
+  - dsl:
+    - compare_versions(version, '< 1.4.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/spider-event-calendar/readme.txt'
+  redirects: true
+id: spider_event_calendar-f00b2602-b9ab-4f4a-a19e-5c2a98c232e3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/spider-event-calendar/
+    google-query: inurl:"/wp-content/plugins/spider-event-calendar/"
+    shodan-query: http.html:"wp-content/plugins/spider-event-calendar/"
+  name: 'SpiderCalendar <= 1.4.9 - Unauthenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f00b2602-b9ab-4f4a-a19e-5c2a98c232e3?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,spider-event-calendar,critical,candidate

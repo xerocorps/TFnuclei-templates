@@ -14,15 +14,13 @@ id: manageengine-apex-helpdesk
 info:
   author: dhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:zohocorp:manageengine_analytics_plus:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
     cwe-id: CWE-200
   description: ZOHO MangageEngine APEX panel was detected.
   metadata:
     max-request: 1
-    product: manageengine_analytics_plus
     shodan-query: http.title:"APEX IT Help Desk"
-    vendor: zohocorp
   name: ZOHO ManageEngine APEX IT Help-Desk Panel - Detect
   severity: info
-  tags: panel,zoho,manageengine,zohocorp
+  tags: panel,zoho,manageengine

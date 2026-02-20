@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - formzu-wp
+  - dsl:
+    - compare_versions(version, '<= 1.6.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/formzu-wp/readme.txt'
+  redirects: true
+id: formzu_wp-497e0784-8953-4726-929a-7d5ef129e98e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/formzu-wp/
+    google-query: inurl:"/wp-content/plugins/formzu-wp/"
+    shodan-query: http.html:"wp-content/plugins/formzu-wp/"
+  name: 'Formzu WP <= 1.6.7 - Authenticated (Contributor+) Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/497e0784-8953-4726-929a-7d5ef129e98e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,formzu-wp,low,candidate

@@ -1,23 +1,20 @@
 http:
-- extractors:
-  - json:
-    - .version
-    name: version
-    part: body_1
-    type: json
-  matchers:
+- matchers:
   - condition: and
     type: word
     words:
     - <title>Vault</title>
     - vault/
+  - part: header
+    type: word
+    words:
+    - text/html
   - status:
     - 200
     type: status
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/v1/sys/health'
   - '{{BaseURL}}/ui/vault/auth?with=oidc%2F'
 id: vault-panel
 info:
@@ -28,11 +25,9 @@ info:
     cwe-id: CWE-200
   description: Vault login panel was detected.
   metadata:
-    max-request: 2
-    product: vault
+    max-request: 1
     shodan-query: http.favicon.hash:-919788577
-    vendor: hashicorp
     verified: true
   name: Vault Login Panel - Detect
   severity: info
-  tags: panel,vault,detect
+  tags: panel,vault

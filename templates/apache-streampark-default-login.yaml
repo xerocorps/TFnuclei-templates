@@ -38,6 +38,7 @@ info:
   metadata:
     max-request: 4
     product: streampark
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Apache StreamPark"})
     shodan-query: title:"Apache StreamPark"
     vendor: apache
   name: Apache Streampark - Default Login

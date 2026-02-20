@@ -19,6 +19,8 @@ info:
   metadata:
     fofa-query: title="Ambassador Diagnostic Overview"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Ambassador Diagnostic
+      Overview"})
     shodan-query: http.title:"Ambassador Diagnostic Overview"
     verified: true
   name: Ambassador API Gateway Diagnostics - Exposure

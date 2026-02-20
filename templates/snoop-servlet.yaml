@@ -11,12 +11,16 @@ http:
 id: snoop-servlet
 info:
   author: omranisecurity
-  description: The Snoop Servlet returns information about the HTTP request itself
+  description: 'The Snoop Servlet returns information about the HTTP request itself
     and sometimes. It could help an attacker to prepare more advanced attacks.
+
+    '
   metadata:
-    fofa-query: title=="Snoop Servlet"
-    shodan-query: http.title:"Snoop Servlet"
-  name: Snoop Servlet information disclosure
-  reference: https://www.acunetix.com/vulnerabilities/web/snoop-servlet-information-disclosure/
+    fofa-query: title="Snoop Servlet"
+    max-request: 1
+    shodan-query: title:"Snoop Servlet"
+  name: Snoop Servlet - Information Disclosure
+  reference:
+  - https://www.acunetix.com/vulnerabilities/\web/snoop-servlet-information-disclosure/
   severity: low
-  tags: config,exposure,snoop,snoop-servlet
+  tags: config,exposure,snoop,snoop-servlet,vuln

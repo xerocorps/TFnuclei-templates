@@ -1,4 +1,10 @@
-http:
+id: artifactory-api-token
+info:
+  author: Ice3man
+  name: Artifactory API Token Disclosure
+  severity: info
+  tags: exposure,token,artifactory
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,11 +13,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: artifactory-api-token
-info:
-  author: Ice3man
-  metadata:
-    max-request: 1
-  name: Artifactory API Token Disclosure
-  severity: info
-  tags: exposure,token,artifactory

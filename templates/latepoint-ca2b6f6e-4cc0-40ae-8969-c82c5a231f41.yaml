@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - latepoint
+  - dsl:
+    - compare_versions(version, '<= 5.1.93')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/latepoint/readme.txt'
+  redirects: true
+id: latepoint-ca2b6f6e-4cc0-40ae-8969-c82c5a231f41
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/latepoint/
+    google-query: inurl:"/wp-content/plugins/latepoint/"
+    shodan-query: http.html:"wp-content/plugins/latepoint/"
+  name: 'LatePoint <= 5.1.93 - Unauthenticated Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ca2b6f6e-4cc0-40ae-8969-c82c5a231f41?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,latepoint,critical,candidate

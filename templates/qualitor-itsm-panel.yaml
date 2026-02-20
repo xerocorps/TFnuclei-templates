@@ -22,7 +22,10 @@ info:
   description: Qualitor ITSM login panel was detected.
   metadata:
     max-request: 1
+    product: qualitor
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1217039701"
     shodan-query: http.favicon.hash:"-1217039701"
+    vendor: qualitor
   name: Qualitor ITSM - Detect
   reference:
   - https://github.com/projectdiscovery/nuclei-templates/blob/7ade904e3e23bde3e1f5bf721c3a0f4e3f128ae4/http/cves/2024/CVE-2024-44849.yaml

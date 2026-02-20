@@ -15,17 +15,15 @@ id: qnap-photostation-panel
 info:
   author: idealphase
   classification:
-    cpe: cpe:2.3:a:qnap:photo_station:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
     cwe-id: CWE-200
   description: 'QNAP Photo Station panel was detected.
 
     '
   metadata:
     max-request: 1
-    product: photo_station
     shodan-query: http.title:"Photo Station"
-    vendor: qnap
     verified: true
   name: QNAP Photo Station Panel - Detect
   reference:

@@ -21,7 +21,7 @@ info:
     '
   metadata:
     max-request: 1
-    shodan-query: html:"/css/osasiasp.css"
+    runzero-match: service["http.body"] matches "(?i)/css/osasiasp\\.css"
     verified: true
   name: OSASI Login - Panel
   severity: info

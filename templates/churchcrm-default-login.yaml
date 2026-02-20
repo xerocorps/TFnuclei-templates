@@ -32,6 +32,7 @@ info:
   metadata:
     fofa-query: app="churchcrm"
     product: churchcrm
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)churchcrm"})
     shodan-query: http.title:"churchcrm"
     vendor: churchcrm
   name: ChurchCRM - Default Login

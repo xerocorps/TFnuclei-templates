@@ -14,15 +14,13 @@ id: workspace-one-uem
 info:
   author: gevakun,hanlaomo
   classification:
-    cpe: cpe:2.3:a:vmware:workspace_one_uem:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
     cwe-id: CWE-200
   description: VMware Workspace ONE UEM Airwatch login panel was detected.
   metadata:
     max-request: 1
-    product: workspace_one_uem
     shodan-query: http.html:"Airwatch"
-    vendor: vmware
     verified: true
   name: VMware Workspace ONE UEM Airwatch Login Panel - Detect
   reference:

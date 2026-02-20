@@ -11,11 +11,11 @@ requests:
     type: word
     words:
     - There is no helpdesk here!
-    - May be this is still fresh!
-    - freshdesk.com/signup
-  - dsl:
-    - '!contains(host,"freshpo.com")'
-    type: dsl
+    - Maybe this is still fresh!
+  - negative: true
+    type: word
+    words:
+    - freshservice.com
   matchers-condition: and
   method: GET
   path:

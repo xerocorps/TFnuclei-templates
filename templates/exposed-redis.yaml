@@ -2,13 +2,14 @@ id: exposed-redis
 info:
   author: pdteam
   name: Redis Unauth Server
-  reference: https://redis.io/topics/security
+  reference:
+  - https://redis.io/topics/security
   severity: high
-  tags: network,redis
+  tags: network,redis,unauth
 network:
 - host:
   - '{{Hostname}}'
-  - '{{Hostname}}:6379'
+  - '{{Host}}:6379'
   inputs:
   - data: "info\r\nquit\r\n"
   matchers:

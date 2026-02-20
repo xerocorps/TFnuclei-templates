@@ -21,6 +21,7 @@ info:
   metadata:
     fofa-query: body="/wp-content/w3tc/dbcache/"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/wp-content/w3tc/dbcache/"
     verified: true
   name: WordPress W3 Total Cache - Cache Files Exposure
   reference:

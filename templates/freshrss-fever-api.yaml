@@ -23,6 +23,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)FreshRSS"
     shodan-query: http.html:"FreshRSS"
     verified: true
   name: FreshRSS Fever API - Exposure

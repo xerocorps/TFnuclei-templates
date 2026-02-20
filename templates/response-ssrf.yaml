@@ -83,6 +83,9 @@ http:
     - id[\s\S]+interfaces\/
     type: regex
   matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}'
   payloads:
     ssrf:
     - http://{{interactsh-url}}
@@ -97,10 +100,6 @@ http:
     - http://127.0.0.1:22
     - http://127.0.0.1:3306
     - dict://127.0.0.1:6379/info
-  pre-condition:
-  - dsl:
-    - method == "GET"
-    type: dsl
   stop-at-first-match: true
 id: response-ssrf
 info:

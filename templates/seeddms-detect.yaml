@@ -5,7 +5,8 @@ info:
   severity: info
   tags: tech
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - type: word
     words:
     - '<title>SeedDMS: Sign in</title>'
@@ -13,8 +14,18 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  max-redirects: 2
-  method: GET
-  path:
-  - '{{BaseURL}}/out/out.Login.php?referuri=%2Fout%2Fout.ViewFolder.php'
-  redirects: true
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /out/out.Login.php?referuri=%2Fout%2Fout.ViewFolder.php HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

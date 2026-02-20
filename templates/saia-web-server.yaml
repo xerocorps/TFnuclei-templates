@@ -2,12 +2,12 @@ id: saia-web-server
 info:
   author: DhiyaneshDk
   name: Saia PCD Web-Server
-  reference: https://www.exploit-db.com/ghdb/6865
+  reference:
+  - https://www.exploit-db.com/ghdb/6865
   severity: low
   tags: config,exposure
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - part: body
     type: word
     words:
@@ -16,15 +16,6 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /loadtextfile.htm#programinfo HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
-    Firefox/55
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/loadtextfile.htm#programinfo'

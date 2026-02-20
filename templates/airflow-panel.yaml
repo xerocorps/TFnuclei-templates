@@ -5,8 +5,7 @@ info:
   severity: info
   tags: panel,apache,airflow
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - part: body
     type: word
     words:
@@ -15,12 +14,6 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /admin/airflow/login HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/airflow/login'

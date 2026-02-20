@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - knews
+  - dsl:
+    - compare_versions(version, '<= 1.7.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/knews/readme.txt'
+  redirects: true
+id: knews-d4994d7d-82f7-4cb0-869f-e27abe04b621
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: 'The Knews Multilingual Newsletters plugin for WordPress is vulnerable
+    to generic SQL Injection via an unknown parameter in versions up to, and including,
+    1.7.0 due to insufficient escaping on the user supplied parameter and lack of
+    sufficient preparation on the existing SQL query.  This makes it possible for
+    unauthenticated attackers to append additional SQL queries into already existing
+    queries that can be used to extract sensitive information from the database.
+
+    '
+  metadata:
+    fofa-query: wp-content/plugins/knews/
+    google-query: inurl:"/wp-content/plugins/knews/"
+    shodan-query: http.html:"wp-content/plugins/knews/"
+  name: 'Knews Multilingual Newsletters Plugin <= 1.7.0 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/d4994d7d-82f7-4cb0-869f-e27abe04b621?source=api-prod
+  severity: critical
+  tags: cve,wordpress,wp-plugin,knews,critical,production

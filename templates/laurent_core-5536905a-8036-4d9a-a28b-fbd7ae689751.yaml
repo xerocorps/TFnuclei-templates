@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - laurent-core
+  - dsl:
+    - compare_versions(version, '<= 2.4.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/laurent-core/readme.txt'
+  redirects: true
+id: laurent_core-5536905a-8036-4d9a-a28b-fbd7ae689751
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/laurent-core/
+    google-query: inurl:"/wp-content/plugins/laurent-core/"
+    shodan-query: http.html:"wp-content/plugins/laurent-core/"
+  name: 'Laurent Core <= 2.4.1 - Authenticated (Contributor+) Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5536905a-8036-4d9a-a28b-fbd7ae689751?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,laurent-core,low,candidate

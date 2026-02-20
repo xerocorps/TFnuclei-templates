@@ -29,8 +29,7 @@ info:
   description: An Argo CD login panel was discovered.
   metadata:
     max-request: 2
-    product: argo_cd
-    shodan-query: http.title:"Argo CD"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Argo CD"})
     vendor: argoproj
   name: Argo CD Login Panel
   reference:

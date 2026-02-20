@@ -33,12 +33,13 @@ info:
   author: DhiyaneshDK
   classification:
     cpe: cpe:2.3:a:zohocorp:manageengine_netflow_analyzer:*:*:*:*:*:*:*:*
-  description: 'Netflow Analyzer default login was discovered.
+  description: 'Netflow Analyzer default login credentials were discovered.
 
     '
   metadata:
     max-request: 1
     product: manageengine_netflow_analyzer
+    runzero-match: service["http.body"] matches "Login - Netflow Analyzer"
     shodan-query: html:"Login - Netflow Analyzer"
     vendor: zohocorp
     verified: true

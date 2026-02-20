@@ -23,6 +23,7 @@ info:
     framework: wordpress
     max-request: 3
     product: the-events-calendar
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/the-events-calendar/"
     vendor: developer
     verified: true
   name: WordPress The Events Calendar - Full Path Disclosure

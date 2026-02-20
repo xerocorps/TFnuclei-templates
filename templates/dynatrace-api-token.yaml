@@ -1,14 +1,4 @@
-id: dynatrace-api-token
-info:
-  author: DhiyaneshDK
-  metadata:
-    verified: 'true'
-  name: Dynatrace API Token
-  reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/dynatrace.yml
-  severity: info
-  tags: dynatrace,token,exposure
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -17,3 +7,14 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: dynatrace-api-token
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 1
+    verified: true
+  name: Dynatrace API Token
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/dynatrace.yml
+  severity: info
+  tags: dynatrace,token,exposure

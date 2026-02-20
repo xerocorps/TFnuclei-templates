@@ -28,7 +28,6 @@ id: piwigo-panel
 info:
   author: daffainfo
   classification:
-    cpe: cpe:2.3:a:piwigo:piwigo:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Piwigo login panel was detected.
@@ -36,9 +35,7 @@ info:
     fofa-query: title="piwigo"
     google-query: Powered by Piwigo
     max-request: 2
-    product: piwigo
     shodan-query: http.favicon.hash:540706145
-    vendor: piwigo
     verified: true
   name: Piwigo Login Panel - Detect
   severity: info

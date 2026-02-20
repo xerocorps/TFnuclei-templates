@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - share-print-pdf-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 3.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/share-print-pdf-woocommerce/readme.txt'
+  redirects: true
+id: share_print_pdf_woocommerce-03aed95b-26a1-4903-b5aa-35abc889295d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/share-print-pdf-woocommerce/
+    google-query: inurl:"/wp-content/plugins/share-print-pdf-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/share-print-pdf-woocommerce/"
+  name: 'Share, Print and PDF Products for WooCommerce <= 3.1.2 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/03aed95b-26a1-4903-b5aa-35abc889295d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,share-print-pdf-woocommerce,high,candidate

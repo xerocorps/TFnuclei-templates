@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - dolcino
+  - dsl:
+    - compare_versions(version, '<= 1.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/dolcino/style.css'
+  redirects: true
+id: dolcino-9d821dd2-ce97-4240-b5d6-f6e974a681a3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/dolcino/
+    google-query: inurl:"/wp-content/themes/dolcino/"
+    shodan-query: http.html:"wp-content/themes/dolcino/"
+  name: 'Dolcino <= 1.6 - Authenticated (subscriber+) Insecure Direct Object Reference
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/9d821dd2-ce97-4240-b5d6-f6e974a681a3?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,dolcino,low,candidate

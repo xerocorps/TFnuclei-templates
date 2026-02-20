@@ -24,6 +24,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Easyvista"})
     shodan-query: http.title:"Easyvista"
     verified: true
   name: EasyVista Login Panel - Detect

@@ -1,12 +1,4 @@
-id: loqate-api-key
-info:
-  author: realexp3rt
-  name: Loqate API Key
-  reference:
-  - https://www.loqate.com/en-gb/home/
-  severity: low
-  tags: exposure,token,loqate
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -15,3 +7,14 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: loqate-api-key
+info:
+  author: realexp3rt
+  description: Loqate API Key is leaked.
+  metadata:
+    max-request: 1
+  name: Loqate API Key
+  reference:
+  - https://www.loqate.com/en-gb/home/
+  severity: low
+  tags: exposure,token,loqate

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - asset-manager
+  - dsl:
+    - compare_versions(version, '<= 0.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/asset-manager/readme.txt'
+  redirects: true
+id: asset_manager-f203f30c-998b-4719-9268-0a78e1dc84be
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/asset-manager/
+    google-query: inurl:"/wp-content/plugins/asset-manager/"
+    shodan-query: http.html:"wp-content/plugins/asset-manager/"
+  name: 'Asset Manager <= 0.3 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f203f30c-998b-4719-9268-0a78e1dc84be?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,asset-manager,critical,candidate

@@ -16,6 +16,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)icinga\" html:\"Statistics"
     shodan-query: html:"icinga" html:"Statistics"
     verified: true
   name: Icinga Exposed Dashboard

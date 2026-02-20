@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pz-linkcard
+  - dsl:
+    - compare_versions(version, '<= 2.4.5.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pz-linkcard/readme.txt'
+  redirects: true
+id: pz_linkcard-7b41a6bd-8b0c-4d00-8cc3-9589fca5e406
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pz-linkcard/
+    google-query: inurl:"/wp-content/plugins/pz-linkcard/"
+    shodan-query: http.html:"wp-content/plugins/pz-linkcard/"
+  name: 'Pz-LinkCard <= 2.4.5.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7b41a6bd-8b0c-4d00-8cc3-9589fca5e406?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,pz-linkcard,medium,candidate

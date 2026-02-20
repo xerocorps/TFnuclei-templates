@@ -24,6 +24,7 @@ info:
   metadata:
     max-request: 1
     product: dokploy
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)dokploy"})
     shodan-query: title:dokploy
     vendor: dokploy
   name: Dokploy Login Panel - Detect

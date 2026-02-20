@@ -21,7 +21,7 @@ info:
     '
   metadata:
     max-request: 1
-    shodan-query: html:"MagnusBilling"
+    runzero-match: service["http.body"] matches "(?i)MagnusBilling"
     verified: true
   name: MagnusBilling - Login Panel
   severity: info

@@ -36,12 +36,13 @@ info:
   description: Checks for a valid login on self hosted Jira instance.
   metadata:
     fofa-query: product="JIRA"
+    max-request: 1
     shodan-query: http.component:"Atlassian Jira"
   name: Jira Login Check
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: login-check,jira,creds-stuffing,self-hosted
+  tags: creds-stuffing,login-check,self-hosted,jira
 variables:
   password: '{{password}}'
   username: '{{username}}'

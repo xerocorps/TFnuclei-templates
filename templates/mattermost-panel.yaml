@@ -27,7 +27,7 @@ info:
     '
   metadata:
     fofa-query: content="Mattermost"
-    max-requests: 1
+    runzero-match: service["http.body"] matches "(?i)'content=\"Mattermost\"'"
     shodan-query: html:'content="Mattermost"'
     vendor: mattermost
     verified: true

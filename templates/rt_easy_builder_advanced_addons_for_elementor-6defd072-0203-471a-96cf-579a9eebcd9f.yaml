@@ -1,0 +1,43 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rt-easy-builder-advanced-addons-for-elementor
+  - dsl:
+    - compare_versions(version, '<= 2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rt-easy-builder-advanced-addons-for-elementor/readme.txt'
+  redirects: true
+id: rt_easy_builder_advanced_addons_for_elementor-6defd072-0203-471a-96cf-579a9eebcd9f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rt-easy-builder-advanced-addons-for-elementor/
+    google-query: inurl:"/wp-content/plugins/rt-easy-builder-advanced-addons-for-elementor/"
+    shodan-query: http.html:"wp-content/plugins/rt-easy-builder-advanced-addons-for-elementor/"
+  name: "RT Easy Builder \u2013 Advanced addons for Elementor <= 2.0 - Missing Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/6defd072-0203-471a-96cf-579a9eebcd9f?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,rt-easy-builder-advanced-addons-for-elementor,high,candidate

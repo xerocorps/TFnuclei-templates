@@ -22,9 +22,11 @@ javascript:
     Port: '1521'
   code: 'var m = require("nuclei/oracle");
 
-    var response = m.IsOracle(Host, Port);
+    var c = m.OracleClient();
 
-    Export(response);
+    var response = c.IsOracle(Host, Port);
+
+    to_json(response);
 
     '
   extractors:

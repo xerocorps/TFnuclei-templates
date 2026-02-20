@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - profile-extra-fields
+  - dsl:
+    - compare_versions(version, '<= 1.2.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/profile-extra-fields/readme.txt'
+  redirects: true
+id: profile_extra_fields-916c73e8-a150-4b35-8773-ea0ec29f7fd1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/profile-extra-fields/
+    google-query: inurl:"/wp-content/plugins/profile-extra-fields/"
+    shodan-query: http.html:"wp-content/plugins/profile-extra-fields/"
+  name: 'Profile Extra Fields by BestWebSoft <= 1.2.7 - Missing Authorization to Sensitive
+    Information Exposure
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/916c73e8-a150-4b35-8773-ea0ec29f7fd1?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,profile-extra-fields,high,candidate

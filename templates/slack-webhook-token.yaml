@@ -1,4 +1,10 @@
-http:
+id: slack-webhook-token
+info:
+  author: Ice3man
+  name: Slack Webhook Disclosure
+  severity: info
+  tags: exposure,token,slack
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,11 +13,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: slack-webhook-token
-info:
-  author: Ice3man
-  metadata:
-    max-request: 1
-  name: Slack Webhook Disclosure
-  severity: info
-  tags: exposure,token,slack

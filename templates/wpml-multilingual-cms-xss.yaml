@@ -26,6 +26,7 @@ info:
   metadata:
     fofa-query: body="/wp-content/plugins/sitepress-multilingual-cms"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/sitepress-multilingual-cms/"
     shodan-query: html:"/wp-content/plugins/sitepress-multilingual-cms"
     verified: true
   name: WordPress WPML Multilingual CMS < 4.6.1 - Cross-Site Scripting

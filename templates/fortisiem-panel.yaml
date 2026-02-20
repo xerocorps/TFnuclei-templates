@@ -1,34 +1,48 @@
-flow: http(1) && http(2)
 http:
-- matchers:
+- extractors:
+  - kval:
+    - last_modified
+    part: header
+    type: kval
+  matchers:
+  - status:
+    - 200
+    type: status
   - condition: and
-    dsl:
-    - status_code == 200
-    - ("426d365a42bbc67c092b9c2e49b336420f0559d1" == sha1(body))
-    type: dsl
+    part: header
+    type: word
+    words:
+    - 'Content-Security-Policy: default-src ''self'' https://*.duosecurity.com'
+    - 'Referrer-Policy: no-referrer-when-downgrade'
+  - condition: and
+    part: body
+    type: word
+    words:
+    - <title>Login</title>
+    - loginUserNameInput
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/phoenix/login.html'
-- matchers:
-  - type: word
-    words:
-    - fortiSIEM_current_login_salt
-  method: GET
-  path:
-  - '{{BaseURL}}/phoenix/js/login.min.js'
 id: fortisiem-panel
 info:
-  author: pussycat0x
+  author: pussycat0x,darses
   classification:
     cpe: cpe:2.3:a:fortinet:fortisiem:*:*:*:*:*:*:*:*
-  description: FortiSIEM login panel was detected.
+  description: 'FortiSIEM login panel was detected.
+
+    '
   metadata:
-    max-request: 2
+    fofa-query:
+    - icon_hash="-1341442175"
+    - body="var hst = location.hostname"
+    max-request: 1
     product: fortisiem
-    shodan-query: http.favicon.hash:-1341442175
+    shodan-query:
+    - http.favicon.hash:-1341442175
+    - http.html:"var hst = location.hostname"
     vendor: fortinet
     verified: true
-  name: FortiSIEM Login Panel - Detect
+  name: Fortinet FortiSIEM - Panel
   severity: info
-  tags: panel,fortisiem
+  tags: panel,fortinet

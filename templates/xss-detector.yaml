@@ -1,6 +1,6 @@
 id: xss-detector
 info:
-  author: thanhnx1
+  author: Reksy
   name: Cross-Site Scripting (XSS) Detection
   severity: medium
 requests:
@@ -13,8 +13,11 @@ requests:
     - <body onload=alert('XSS')>
   - status:
     - 200
+    - 302
+    - 403
+    - 500
     type: status
-  matchers-condition: and
+  matchers-condition: or
   method: GET
   path:
   - '{{BaseURL}}/search.php?query=<script>alert(''XSS'')</script>'

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - ultimate-store-kit
+  - dsl:
+    - compare_versions(version, '<= 2.4.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/ultimate-store-kit/readme.txt'
+  redirects: true
+id: ultimate_store_kit-aa262ff5-2b6c-421b-b155-a75d01005534
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/ultimate-store-kit/
+    google-query: inurl:"/wp-content/plugins/ultimate-store-kit/"
+    shodan-query: http.html:"wp-content/plugins/ultimate-store-kit/"
+  name: 'Ultimate Store Kit Elementor Addons <= 2.4.0 - Unauthenticated PHP Object
+    Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aa262ff5-2b6c-421b-b155-a75d01005534?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,ultimate-store-kit,critical,candidate

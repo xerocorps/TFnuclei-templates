@@ -7,6 +7,10 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
+    - compare_versions(version, '8.x-1.11')
+    - compare_versions(version, '8.x-1.10')
+    - compare_versions(version, '8.x-1.9')
+    - compare_versions(version, '8.x-1.8')
     - compare_versions(version, '8.x-1.7')
     - compare_versions(version, '8.x-1.6')
     - compare_versions(version, '8.x-1.5')
@@ -37,20 +41,19 @@ http:
 id: drupal_module-gutenberg-access-bypass
 info:
   author: Bishopfox
-  description: This module provides a new UI experience for node editing - Gutenberg
-    editor. The routes used by the Gutenberg editor lack proper permissions allowing
-    untrusted users to view and modify some content they should not be able to view
-    or modify.
+  description: This module provides a new UI experience for node editing using the
+    Gutenberg Editor library. The module did not correctly validate access rules in
+    certain situations allowing anonymous users to delete blocks.
   metadata:
     created_at: '0001-01-01T00:00:00Z'
     fofa-query: /sites/all/modules/gutenberg/
     google-query: inurl:'/sites/all/modules/gutenberg/
     impact: medium
-    security-risk: "Critical 16\u221525 AC:Basic/A:None/CI:Some/II:Some/E:Theoretical/TD:All"
+    security-risk: "Critical 18\u221525 AC:None/A:None/CI:Some/II:Some/E:Theoretical/TD:All"
     type: indicator
     vulnerability: access-bypass
   name: drupal_module-gutenberg-access-bypass
   reference:
-  - https://www.drupal.org/sa-contrib-2019-069
+  - https://www.drupal.org/sa-contrib-2021-007
   severity: medium
   tags: drupal

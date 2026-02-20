@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - client-portal
+  - dsl:
+    - compare_versions(version, '<=  1.1.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/client-portal/readme.txt'
+  redirects: true
+id: client-portal-d41d8cd98f00b204e9800998ecf8427e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: The Client Portal plugin for WordPress is vulnerable to Cross-Site
+    Request Forgery in versions up to, and including, 1.1.8. This is due to missing
+    nonce validation on the cp_create_private_pages_for_all_users function. This makes
+    it possible for unauthenticated attackers to generate private pages for all users,
+    via a forged request granted they can trick a site administrator into performing
+    an action such as clicking on a link.
+  metadata:
+    fofa-query: wp-content/plugins/client-portal/
+    google-query: inurl:"/wp-content/plugins/client-portal/"
+    shodan-query: 'vuln:'
+  name: Client Portal <= 1.1.8 - Cross-Site Request Forgery via cp_create_private_pages_for_all_users
+  reference: null
+  severity: medium
+  tags: cve,wordpress,wp-plugin,client-portal,medium

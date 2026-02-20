@@ -22,10 +22,7 @@ http:
 id: magnusbilling-default-login
 info:
   author: DhiyaneshDk
-  description: 'MagnusBilling installs with a default administrative account using
-    the credentials root / magnus. If unchanged, these credentials grant full access
-    to the system, allowing attackers to manage billing data, modify configurations,
-    and potentially execute arbitrary code or commands via exposed interfaces.
+  description: 'MagnusBilling default admin credentials were discovered.
 
     '
   impact: 'An unauthenticated attacker can gain full administrative control over the
@@ -35,6 +32,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "MagnusBilling"
     shodan-query: html:"MagnusBilling"
     verified: true
   name: MagnusBilling - Default Login

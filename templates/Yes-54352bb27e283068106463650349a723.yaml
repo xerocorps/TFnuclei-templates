@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    name: version_by_generator
+    regex:
+    - (?m)https:\/\/wordpress.org\/\?v=([0-9.]+)
+    type: regex
+  - group: 1
+    name: version_by_js
+    regex:
+    - wp-emoji-release\.min\.js\?ver=((\d+\.?)+)\b
+    type: regex
+  - group: 1
+    name: version_by_css
+    regex:
+    - install\.min\.css\?ver=((\d+\.?)+)\b
+    type: regex
+  matchers:
+  - dsl:
+    - compare_versions(version_by_generator, '>= 2.1.1', '<= 2.1.1')
+    - compare_versions(version_by_js, '>= 2.1.1', '<= 2.1.1')
+    - compare_versions(version_by_css, '>= 2.1.1', '<= 2.1.1')
+    type: dsl
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/wp-admin/install.php'
+  - '{{BaseURL}}/feed/'
+  - '{{BaseURL}}/?feed=rss2'
+  redirects: true
+  stop-at-first-match: true
+id: Yes-54352bb27e283068106463650349a723
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: Version 2.1.1 of WordPress was injected with malicious code that supplied
+    attackers with backdoor access to WordPress sites.
+  metadata:
+    shodan-query: 'vuln:'
+  name: WordPress Core 2.1.1 - Supply Chain Compromise
+  reference:
+  - https://wordpress.org/news/2007/03/upgrade-212/
+  severity: critical
+  tags: cve,wordpress,wp-core,critical

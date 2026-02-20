@@ -19,16 +19,14 @@ id: ibm-websphere-admin-panel
 info:
   author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:ibm:websphere_application_server:*:*:*:*:z\/os:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
     cwe-id: CWE-200
   description: IBM WebSphere Application Server Community Edition admin login panel
     was detected.
   metadata:
     max-request: 1
-    product: websphere_application_server
     shodan-query: http.favicon.hash:1337147129
-    vendor: ibm
     verified: true
   name: IBM WebSphere Application Server Community Edition Admin Login Panel - Detect
   reference:

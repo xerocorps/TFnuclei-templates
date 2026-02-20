@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - advanced-woo-labels
+  - dsl:
+    - compare_versions(version, '<= 2.01')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/advanced-woo-labels/readme.txt'
+  redirects: true
+id: advanced_woo_labels-4bfde95b-70bf-4445-a8b0-53dbdc5d2334
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/advanced-woo-labels/
+    google-query: inurl:"/wp-content/plugins/advanced-woo-labels/"
+    shodan-query: http.html:"wp-content/plugins/advanced-woo-labels/"
+  name: 'Advanced Woo Labels <= 2.01 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4bfde95b-70bf-4445-a8b0-53dbdc5d2334?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,advanced-woo-labels,low,candidate

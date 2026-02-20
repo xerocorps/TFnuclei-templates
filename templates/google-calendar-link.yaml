@@ -1,4 +1,10 @@
-http:
+id: google-calendar-link
+info:
+  author: Ice3man
+  name: Google Calendar URI Disclosure
+  severity: info
+  tags: exposure,token,google
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,11 +13,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: google-calendar-link
-info:
-  author: Ice3man
-  metadata:
-    max-request: 1
-  name: Google Calendar URI Disclosure
-  severity: info
-  tags: exposure,token,google

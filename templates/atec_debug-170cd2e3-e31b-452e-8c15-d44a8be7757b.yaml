@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - atec-debug
+  - dsl:
+    - compare_versions(version, '<= 1.2.22')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/atec-debug/readme.txt'
+  redirects: true
+id: atec_debug-170cd2e3-e31b-452e-8c15-d44a8be7757b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/atec-debug/
+    google-query: inurl:"/wp-content/plugins/atec-debug/"
+    shodan-query: http.html:"wp-content/plugins/atec-debug/"
+  name: 'atec Debug <= 1.2.22 - Authenticated (Administrator+) Arbitrary File Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/170cd2e3-e31b-452e-8c15-d44a8be7757b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,atec-debug,low,candidate

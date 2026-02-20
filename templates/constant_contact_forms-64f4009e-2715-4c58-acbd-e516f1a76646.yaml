@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - constant-contact-forms
+  - dsl:
+    - compare_versions(version, '< 1.8.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/constant-contact-forms/readme.txt'
+  redirects: true
+id: constant_contact_forms-64f4009e-2715-4c58-acbd-e516f1a76646
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/constant-contact-forms/
+    google-query: inurl:"/wp-content/plugins/constant-contact-forms/"
+    shodan-query: http.html:"wp-content/plugins/constant-contact-forms/"
+  name: 'Constant Contact Forms <= 1.8.7 Editor+ Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/64f4009e-2715-4c58-acbd-e516f1a76646?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,constant-contact-forms,high,candidate

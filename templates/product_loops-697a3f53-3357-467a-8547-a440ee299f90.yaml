@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - product-loops
+  - dsl:
+    - compare_versions(version, '<= 2.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/product-loops/readme.txt'
+  redirects: true
+id: product_loops-697a3f53-3357-467a-8547-a440ee299f90
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/product-loops/
+    google-query: inurl:"/wp-content/plugins/product-loops/"
+    shodan-query: http.html:"wp-content/plugins/product-loops/"
+  name: 'Product Loops for WooCommerce <= 2.1.2 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/697a3f53-3357-467a-8547-a440ee299f90?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,product-loops,high,candidate
