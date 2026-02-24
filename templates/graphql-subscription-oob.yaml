@@ -22,7 +22,7 @@ http:
   - '{{BaseURL}}/v1/graphql'
   - '{{BaseURL}}/query'
 - body: "{\n  \"query\": \"mutation RegisterWebhook($url: String!) { registerWebhook(callbackUrl:\
-    \ $url) { id status } }\",\n  \"variables\": {\n    \"url\": \"{{callback_url}}\"\
+    \ $url) { id status } }\",\n  \"variables\": {\n    \"url\": \"{{callback_url}}/register-{{subscription_id}}\"\
     \n  }\n}\n"
   headers:
     Accept: application/json
@@ -35,7 +35,7 @@ http:
   - '{{BaseURL}}/query'
 - body: "{\n  \"query\": \"mutation CreateSubscription($callback: String!) { createSubscription(webhookUrl:\
     \ $callback) { subscriptionId } }\",\n  \"variables\": {\n    \"callback\": \"\
-    {{callback_url}}\"\n  }\n}\n"
+    {{callback_url}}/subscription-{{subscription_id}}\"\n  }\n}\n"
   headers:
     Accept: application/json
     Content-Type: application/json
@@ -46,7 +46,7 @@ http:
   - '{{BaseURL}}/v1/graphql'
   - '{{BaseURL}}/query'
 - body: "{\n  \"query\": \"mutation ImportSchema($url: String!) { importSchema(schemaUrl:\
-    \ $url) { success errors } }\",\n  \"variables\": {\n    \"url\": \"{{callback_url}}/schema.graphql\"\
+    \ $url) { success errors } }\",\n  \"variables\": {\n    \"url\": \"{{callback_url}}/schema-{{subscription_id}}.graphql\"\
     \n  }\n}\n"
   headers:
     Accept: application/json
@@ -58,6 +58,11 @@ http:
     words:
     - http
     - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - '{{subscription_id}}'
+  matchers-condition: and
   method: POST
   path:
   - '{{BaseURL}}/graphql'
@@ -85,3 +90,4 @@ info:
   tags: graphql,oob,ssrf,subscription,callback
 variables:
   callback_url: '{{interactsh-url}}'
+  subscription_id: '{{randstr}}'

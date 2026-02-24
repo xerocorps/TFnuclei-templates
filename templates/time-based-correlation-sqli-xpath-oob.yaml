@@ -100,8 +100,7 @@ http:
     - interactsh_request
     part: interactsh_request
     type: kval
-  - group: 1,2,3,4
-    part: interactsh_request
+  - part: interactsh_request
     regex:
     - /(mysql|postgresql|mssql|oracle|sqlite|xpath|xml)-(time|heavy|bool|extract|count|xxe)-([a-z0-9A-Z]*)-([a-z0-9]+)
     type: regex

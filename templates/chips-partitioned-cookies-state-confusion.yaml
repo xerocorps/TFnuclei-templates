@@ -91,6 +91,11 @@ http:
     words:
     - http
     - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - chips-test-{{partition_id}}
+  matchers-condition: and
   method: POST
   path:
   - '{{BaseURL}}/api/partition/test'
@@ -121,7 +126,7 @@ http:
     - 200
     - 302
     type: status
-  matchers-condition: or
+  matchers-condition: and
   method: PUT
   path:
   - '{{BaseURL}}/session/migrate'

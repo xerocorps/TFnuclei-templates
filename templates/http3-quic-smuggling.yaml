@@ -41,10 +41,10 @@ http:
     '
   unsafe: true
 - matchers:
-  - part: interactsh_protocol
-    type: word
-    words:
-    - http
+  - dsl:
+    - (interactsh_protocol == "http" || interactsh_protocol == "dns") && contains(interactsh_request,
+      "http3-stream-{{smuggle_id}}")
+    type: dsl
   - dsl:
     - status_code_2 != status_code_1 && status_code_2 == 200
     type: dsl
@@ -90,6 +90,11 @@ http:
     words:
     - http
     - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - qpack-{{smuggle_id}}
+  matchers-condition: and
   raw:
   - 'GET / HTTP/3
 
@@ -116,6 +121,11 @@ http:
     words:
     - http
     - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - '{{smuggle_id}}.'
+  matchers-condition: and
   raw:
   - 'GET / HTTP/3
 
@@ -123,7 +133,7 @@ http:
 
     :method: CONNECT
 
-    :authority: {{callback}}:443
+    :authority: {{smuggle_id}}.{{callback}}:443
 
     :scheme: https
 
@@ -136,24 +146,25 @@ id: http3-quic-smuggling
 info:
   author: geeknik
   classification:
-    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:L
-    cvss-score: 9.0
+    cvss-metrics: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N
+    cvss-score: 5.4
     cwe-id: CWE-444
-  description: 'Detects ACTUAL HTTP/3 request smuggling vulnerabilities by exploiting
+  description: 'Detects request smuggling vulnerabilities arising from HTTP protocol
+    confusion
 
-    differences in HTTP/3 to HTTP/2 translation at reverse proxies. Tests
+    at reverse proxies: HTTP/2 upgrade via h2c, Alt-Svc header injection, and
 
-    for stream confusion, header injection, and protocol downgrade attacks
+    pseudo-header injection that may be mishandled by intermediaries. Note: these
 
-    that lead to request smuggling.
+    tests run over HTTP/1.1; true QUIC/HTTP3 testing requires native UDP support.
 
     '
-  name: HTTP/3 QUIC Request Smuggling Detection
+  name: HTTP/2 Upgrade and Protocol Confusion Smuggling Detection
   reference:
   - https://portswigger.net/research/http3-connection-contamination
   - https://www.blackhat.com/us-23/briefings/schedule/#http3-quic-attacks
-  severity: critical
-  tags: http3,quic,smuggling,critical
+  severity: medium
+  tags: http2,protocol-confusion,smuggling,alt-svc
 variables:
   callback: '{{interactsh-url}}'
   smuggle_id: '{{randstr}}'

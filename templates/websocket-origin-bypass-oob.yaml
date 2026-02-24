@@ -20,17 +20,11 @@ info:
   - https://christian-schneider.net/CrossSiteWebSocketHijacking.html
   severity: high
   tags: websocket,oob,csrf,origin-bypass,cross-origin
-matchers:
-- condition: or
-  part: interactsh_protocol
-  type: word
-  words:
-  - http
-  - dns
 variables:
   callback_url: '{{interactsh-url}}'
+  ws_base: '{{replace(replace(BaseURL, ''https://'', ''wss://''), ''http://'', ''ws://'')}}'
 websocket:
-- address: '{{BaseURL}}'
+- address: '{{ws_base}}{{ws_path}}'
   headers:
     Origin: '{{callback_url}}'
     Referer: '{{callback_url}}/ws-client'
@@ -40,12 +34,27 @@ websocket:
   - data: "{\n  \"action\": \"cross_origin_check\",\n  \"origin\": \"{{callback_url}}\"\
       ,\n  \"allowed_origins\": [\"{{callback_url}}\"],\n  \"callback_url\": \"{{callback_url}}/validated\"\
       \n}\n"
-  path:
-  - /ws
-  - /websocket
-  - /socket.io/
-  - /api/ws
-- address: '{{BaseURL}}'
+  matchers:
+  - condition: or
+    part: interactsh_protocol
+    type: word
+    words:
+    - http
+    - dns
+  - condition: or
+    part: interactsh_request
+    type: word
+    words:
+    - origin-bypass
+    - validated
+  matchers-condition: and
+  payloads:
+    ws_path:
+    - /ws
+    - /websocket
+    - /socket.io/
+    - /api/ws
+- address: '{{ws_base}}{{ws_path}}'
   headers:
     Origin: 'null'
     X-Forwarded-Host: '{{callback_url}}'
@@ -53,12 +62,25 @@ websocket:
   inputs:
   - data: "{\n  \"type\": \"null_origin_bypass\",\n  \"forwarded_host\": \"{{callback_url}}\"\
       ,\n  \"callback_url\": \"{{callback_url}}/null-origin\"\n}\n"
-  path:
-  - /ws
-  - /websocket
-  - /socket.io/
-  - /api/ws
-- address: '{{BaseURL}}'
+  matchers:
+  - condition: or
+    part: interactsh_protocol
+    type: word
+    words:
+    - http
+    - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - null-origin
+  matchers-condition: and
+  payloads:
+    ws_path:
+    - /ws
+    - /websocket
+    - /socket.io/
+    - /api/ws
+- address: '{{ws_base}}{{ws_path}}'
   headers:
     Host: '{{callback_url}}'
     Origin: '{{Hostname}}.{{callback_url}}'
@@ -68,8 +90,23 @@ websocket:
   - data: "{\n  \"action\": \"cors_bypass\",\n  \"bypass_origin\": \"{{callback_url}}\"\
       ,\n  \"trusted_domain\": \"{{callback_url}}\",\n  \"redirect_callback\": \"\
       {{callback_url}}/cors-success\"\n}\n"
-  path:
-  - /ws
-  - /websocket
-  - /socket.io/
-  - /api/ws
+  matchers:
+  - condition: or
+    part: interactsh_protocol
+    type: word
+    words:
+    - http
+    - dns
+  - condition: or
+    part: interactsh_request
+    type: word
+    words:
+    - subdomain-bypass
+    - cors-success
+  matchers-condition: and
+  payloads:
+    ws_path:
+    - /ws
+    - /websocket
+    - /socket.io/
+    - /api/ws

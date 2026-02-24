@@ -18,18 +18,17 @@ info:
   tags: docker,container,escape,privilege-escalation,critical
 requests:
 - matchers:
-  - part: body
-    type: word
-    words:
-    - docker
-    - kubepods
-    - containerd
-  - part: body
+  - condition: or
+    part: body
     regex:
     - /docker/[a-f0-9]{64}
     - /kubepods/[a-f0-9-]+
+    - containerd://[a-f0-9]{64}
     type: regex
-  matchers-condition: or
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/var/run/docker.sock'

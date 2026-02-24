@@ -39,6 +39,11 @@ http:
     words:
     - http
     - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - bypass-{{bypass_id}}
+  matchers-condition: and
   method: POST
   path:
   - '{{BaseURL}}/api/content'
@@ -53,20 +58,17 @@ http:
   headers:
     Content-Type: application/json
   matchers:
-  - case-insensitive: true
-    condition: or
-    part: body
-    type: word
-    words:
-    - policy created
-    - trusted types configured
-    - bypass successful
-  - condition: and
+  - condition: or
     part: interactsh_protocol
     type: word
     words:
     - http
-  matchers-condition: or
+    - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - policy-{{bypass_id}}
+  matchers-condition: and
   method: PUT
   path:
   - '{{BaseURL}}/api/policy'
@@ -79,11 +81,17 @@ http:
   headers:
     Content-Type: application/json
   matchers:
-  - condition: and
+  - condition: or
     part: interactsh_protocol
     type: word
     words:
     - http
+    - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - clobbered-{{bypass_id}}
+  matchers-condition: and
   method: PATCH
   path:
   - '{{BaseURL}}/api/csp/update'
@@ -100,6 +108,13 @@ http:
     words:
     - http
     - dns
+  - condition: or
+    part: interactsh_request
+    type: word
+    words:
+    - tt-bypass-{{bypass_id}}
+    - error-{{bypass_id}}
+  matchers-condition: and
   method: POST
   path:
   - '{{BaseURL}}/api/dom/test'
@@ -123,11 +138,17 @@ http:
   headers:
     Content-Type: application/json
   matchers:
-  - condition: and
+  - condition: or
     part: interactsh_protocol
     type: word
     words:
     - http
+    - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - object-{{bypass_id}}
+  matchers-condition: and
   method: POST
   path:
   - '{{BaseURL}}/api/template/render'

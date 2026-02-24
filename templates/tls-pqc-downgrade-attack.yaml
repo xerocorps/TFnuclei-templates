@@ -71,11 +71,12 @@ ssl:
     words:
     - TLS_RSA
     - TLS_ECDHE
-  - part: version
+  - condition: or
+    part: version
     type: word
     words:
     - tls10
     - tls11
-  matchers-condition: or
+  matchers-condition: and
   max_version: tls13
   min_version: tls10

@@ -6,25 +6,21 @@ http:
     - X-HTTP2-Stream-Weight:\s*(\d+)
     type: regex
   matchers:
-  - condition: or
-    part: body
-    type: word
-    words:
-    - HTTP/2
-    - stream error
-    - protocol error
-    - SETTINGS_ENABLE_PUSH
-  - part: header
-    regex:
-    - 'X-HTTP2-Stream-\w+:'
-    - X-Forwarded-Proto:\s*h2
-    type: regex
   - condition: and
     dsl:
     - contains(tolower(all_headers), 'http/2')
     - status_code == 400 || status_code == 421 || status_code == 505
     type: dsl
-  matchers-condition: or
+  - condition: or
+    part: body
+    type: word
+    words:
+    - stream error
+    - protocol error
+    - request smuggling
+    - invalid pseudo-header
+    - http2
+  matchers-condition: and
   raw:
   - 'PRI * HTTP/2.0
 

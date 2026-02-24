@@ -21,7 +21,7 @@ requests:
   - name: oauth_flow
     part: header
     regex:
-    - Location:\s*([^s]+)
+    - Location:\s*([^\s]+)
     type: regex
   - part: header
     regex:
@@ -29,23 +29,17 @@ requests:
     - '[?&]code=([^&]+)'
     type: regex
   matchers:
-  - condition: and
-    dsl:
-    - '!contains(toLower(location), ''state='')'
-    - status_code == 302
-    type: dsl
-  - condition: and
-    part: header
+  - part: header
     regex:
     - Location:.*[?&]code=
     type: regex
-  - condition: or
-    part: header
-    type: word
-    words:
-    - state=predictable123
-    - state=
-  matchers-condition: or
+  - condition: and
+    dsl:
+    - status_code == 302
+    - '!contains(tolower(location), ''state='') || contains(tolower(location), ''state=predictable123'')
+      || contains(location, ''state=&'') || ends_with(location, ''state='')'
+    type: dsl
+  matchers-condition: and
   max-redirects: 3
   method: GET
   path:

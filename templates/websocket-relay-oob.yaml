@@ -19,17 +19,11 @@ info:
   - https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/10-Testing_WebSockets
   severity: high
   tags: websocket,oob,ssrf,relay,proxy,bridge
-matchers:
-- condition: or
-  part: interactsh_protocol
-  type: word
-  words:
-  - http
-  - dns
 variables:
   callback_url: '{{interactsh-url}}'
+  ws_base: '{{replace(replace(BaseURL, ''https://'', ''wss://''), ''http://'', ''ws://'')}}'
 websocket:
-- address: '{{BaseURL}}'
+- address: '{{ws_base}}{{ws_path}}'
   inputs:
   - data: "{\n  \"type\": \"relay\",\n  \"target\": \"{{callback_url}}\",\n  \"relay_to\"\
       : \"{{callback_url}}/endpoint\",\n  \"forward_url\": \"{{callback_url}}/webhook\"\
@@ -40,14 +34,29 @@ websocket:
   - data: "{\n  \"command\": \"bridge_setup\",\n  \"bridge_config\": {\n    \"upstream\"\
       : \"{{callback_url}}\",\n    \"downstream\": \"ws://{{callback_url}}/ws\",\n\
       \    \"proxy_headers\": true\n  }\n}\n"
-  path:
-  - /ws
-  - /websocket
-  - /socket.io/
-  - /api/ws
-  - /bridge
-  - /tunnel
-- address: '{{BaseURL}}'
+  matchers:
+  - condition: or
+    part: interactsh_protocol
+    type: word
+    words:
+    - http
+    - dns
+  - condition: or
+    part: interactsh_request
+    type: word
+    words:
+    - endpoint
+    - webhook
+  matchers-condition: and
+  payloads:
+    ws_path:
+    - /ws
+    - /websocket
+    - /socket.io/
+    - /api/ws
+    - /bridge
+    - /tunnel
+- address: '{{ws_base}}{{ws_path}}'
   inputs:
   - data: "{\n  \"type\": \"proxy_config\",\n  \"proxy_target\": \"{{callback_url}}\"\
       ,\n  \"webhook_url\": \"{{callback_url}}/callback\",\n  \"forward_all\": true,\n\
@@ -57,7 +66,24 @@ websocket:
       \n}\n"
   - data: "{\n  \"command\": \"tunnel_create\",\n  \"tunnel_target\": \"{{callback_url}}\"\
       ,\n  \"callback_url\": \"{{callback_url}}/tunnel-ready\"\n}\n"
-  path:
-  - /ws/proxy
-  - /websocket/forward
-  - /api/ws/tunnel
+  matchers:
+  - condition: or
+    part: interactsh_protocol
+    type: word
+    words:
+    - http
+    - dns
+  - condition: or
+    part: interactsh_request
+    type: word
+    words:
+    - callback
+    - relay
+    - connected
+    - tunnel-ready
+  matchers-condition: and
+  payloads:
+    ws_path:
+    - /ws/proxy
+    - /websocket/forward
+    - /api/ws/tunnel

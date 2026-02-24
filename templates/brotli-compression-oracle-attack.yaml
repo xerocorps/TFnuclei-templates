@@ -115,6 +115,11 @@ http:
     words:
     - http
     - dns
+  - part: interactsh_request
+    type: word
+    words:
+    - ratio-{{oracle_id}}
+  matchers-condition: and
   method: POST
   path:
   - '{{BaseURL}}/api/compare'

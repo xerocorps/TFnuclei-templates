@@ -104,8 +104,7 @@ http:
     - interactsh_request
     part: interactsh_request
     type: kval
-  - group: 1,2
-    part: interactsh_request
+  - part: interactsh_request
     regex:
     - /(email-header|subject-header|message-header|invite|webhook|config|template|bulk)-([a-z0-9]+)
     type: regex

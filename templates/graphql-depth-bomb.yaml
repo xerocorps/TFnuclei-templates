@@ -61,7 +61,8 @@ requests:
   headers:
     Content-Type: application/json
   matchers:
-  - part: body
+  - condition: or
+    part: body
     type: word
     words:
     - Query depth limit exceeded
@@ -72,13 +73,17 @@ requests:
     - Maximum query depth
   - condition: and
     dsl:
-    - duration >= 5
+    - duration >= 8
     - status_code == 200
+    - contains(tolower(body), 'errors') || contains(tolower(body), 'query') || contains(tolower(body),
+      'graphql')
     type: dsl
-  - status:
-    - 503
-    - 429
-    type: status
+  - condition: and
+    dsl:
+    - status_code == 429 || status_code == 503
+    - contains(tolower(body), 'graphql') || contains(tolower(body), 'query') || contains(tolower(body),
+      'depth') || contains(tolower(body), 'complex')
+    type: dsl
   matchers-condition: or
   method: POST
   path:

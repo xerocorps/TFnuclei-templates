@@ -47,9 +47,14 @@ http:
     ,\n    \"authenticatorData\": \"SZYN5YgOjGh0NBcPZHZgW4_krrmihjLHmVzzuoMdl2MFAAAAAA==\"\
     ,\n    \"signature\": \"\",\n    \"userHandle\": \"YWRtaW4=\"\n  }\n}\n"
 - matchers:
+  - status:
+    - 200
+    type: status
   - dsl:
-    - contains(body, "admin") || status_code == 200
+    - contains(body, "credentialId") || contains(body, "allowCredentials") || contains(body,
+      "challenge")
     type: dsl
+  matchers-condition: and
   raw:
   - 'POST {{BaseURL}}/api/webauthn/assertion/options HTTP/1.1
 
@@ -66,9 +71,26 @@ http:
 
     '
 - matchers:
-  - dsl:
-    - '!contains(body, "origin") || contains(body, "success")'
-    type: dsl
+  - status:
+    - 200
+    type: status
+  - condition: or
+    type: word
+    words:
+    - success
+    - authenticated
+    - token
+    - session
+  - condition: or
+    negative: true
+    type: word
+    words:
+    - invalidOrigin
+    - origin mismatch
+    - invalid origin
+    - OriginNotAllowed
+    - forbidden
+  matchers-condition: and
   raw:
   - "POST {{BaseURL}}/webauthn/authenticate HTTP/1.1\nHost: {{Hostname}}\nOrigin:\
     \ https://evil.com\nContent-Type: application/json\nConnection: close\n\n{\n \
