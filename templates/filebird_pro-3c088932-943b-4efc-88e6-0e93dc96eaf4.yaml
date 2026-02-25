@@ -15,7 +15,7 @@ http:
     words:
     - filebird-pro
   - dsl:
-    - compare_versions(version, '<= 6.4.9')
+    - compare_versions(version, '<= 6.5.1')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/filebird-pro/
     google-query: inurl:"/wp-content/plugins/filebird-pro/"
     shodan-query: http.html:"wp-content/plugins/filebird-pro/"
-  name: 'FileBird Pro <= 6.4.9 - Missing Authorization
+  name: 'FileBird Pro <= 6.5.1 - Missing Authorization
 
     '
   reference:
