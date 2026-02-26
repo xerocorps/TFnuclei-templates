@@ -1,8 +1,9 @@
 id: detect-rsyncd
 info:
-  author: geeknik
+  author: vsh00t,geeknik
   name: Detect rsyncd
-  reference: https://linux.die.net/man/1/rsync
+  reference:
+  - https://linux.die.net/man/1/rsync
   severity: info
   tags: network,rsyncd
 network:
@@ -12,7 +13,7 @@ network:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Hostname}}:873'
+  - '{{Host}}:873'
   inputs:
   - data: "?\r\n"
   matchers:

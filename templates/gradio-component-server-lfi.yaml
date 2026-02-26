@@ -76,7 +76,8 @@ info:
     '
   metadata:
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
+    product: gradio
+    shodan-query: html:"__gradio_mode__"
     vendor: gradio_project
     verified: true
   name: Gradio 3.47/3.50.2 - Local File Inclusion

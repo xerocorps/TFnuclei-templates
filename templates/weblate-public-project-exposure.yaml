@@ -31,7 +31,6 @@ info:
   metadata:
     fofa-query: title="Weblate"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Weblate"})
     shodan-query: http.title:"Weblate"
     verified: true
   name: Weblate Public Project - Exposure

@@ -31,8 +31,6 @@ info:
     google-query: intitle:"Celonis" "welcome"
     max-request: 1
     product: celonis
-    runzero-match: service["http.body"] matches "(?i)Amazing insights\\. Better results\\."
-      || any(each(service["html.titles"]), {# matches "(?i)Celonis"})
     shodan-query:
     - http.title:"Celonis"
     - html:"Amazing insights. Better results."

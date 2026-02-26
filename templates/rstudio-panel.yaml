@@ -21,9 +21,7 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)RStudio Sign
-      In"})
     shodan-query: title:"RStudio Sign In"
   name: RStudio Sign In Panel - Detect
   severity: info
-  tags: rstudio,login,panel,discovery
+  tags: rstudio,login,panel

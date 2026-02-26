@@ -15,7 +15,7 @@ info:
   reference:
   - https://www.tenable.com/plugins/nessus/153953
   severity: low
-  tags: js,ssh,misconfig,network
+  tags: js,enum,ssh,misconfig,network
 javascript:
 - args:
     Host: '{{Host}}'
@@ -26,7 +26,7 @@ javascript:
 
     let response = c.ConnectSSHInfoMode(Host, Port);
 
-    to_json(response);
+    Export(response);
 
     '
   matchers:

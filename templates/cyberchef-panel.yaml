@@ -26,7 +26,6 @@ info:
   metadata:
     max-request: 1
     product: cyberchef
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)CyberChef"})
     shodan-query: title:"CyberChef"
     vendor: gchq
     verified: true
@@ -34,4 +33,4 @@ info:
   reference:
   - https://cyberchef.org
   severity: info
-  tags: panel,cyberchef,login,detect,discovery
+  tags: panel,cyberchef,login,detect

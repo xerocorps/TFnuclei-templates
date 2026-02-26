@@ -19,7 +19,6 @@ info:
   metadata:
     max-request: 1
     product: tiny_tiny_rss
-    runzero-match: service["favicon.ico.image.mmh3"] == "-418614327"
     shodan-query: http.favicon.hash:-418614327
     vendor: tt-rss
     verified: true
@@ -27,4 +26,4 @@ info:
   reference:
   - https://tt-rss.org/
   severity: info
-  tags: panel,tiny-rss,login,detect,discovery
+  tags: panel,tiny-rss,login,detect

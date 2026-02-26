@@ -9,6 +9,7 @@ http:
     - alt="Keycloak
     - kc-form-buttons
     - /keycloak/img/favicon.ico
+    - /admin/keycloak/
   - status:
     - 200
     type: status
@@ -30,7 +31,9 @@ info:
   description: Keycloak admin login panel was detected.
   metadata:
     max-request: 3
+    product: keycloak
     shodan-query: http.favicon.hash:-1105083093
+    vendor: redhat
     verified: true
   name: Keycloak Admin Login Panel - Detect
   severity: info

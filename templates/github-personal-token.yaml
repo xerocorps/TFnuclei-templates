@@ -4,10 +4,11 @@ file:
   extractors:
   - regex:
     - ghp_.{36}
+    - github_pat_.{82}
     type: regex
 id: github-personal-token
 info:
   author: geeknik
   name: Github Personal Token
   severity: high
-  tags: token,file
+  tags: file,keys,token,github

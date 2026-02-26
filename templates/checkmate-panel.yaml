@@ -22,7 +22,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "^Checkmate$" })
   name: Checkmate Login Panel - Detect
   severity: info
   tags: checkmate,panel,discovery,login

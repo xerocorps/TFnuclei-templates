@@ -15,7 +15,7 @@ http:
     words:
     - bw-petito
   - dsl:
-    - compare_versions(version, '<= 1.6.2')
+    - compare_versions(version, '<= 1.6.4')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/bw-petito/
     google-query: inurl:"/wp-content/themes/bw-petito/"
     shodan-query: http.html:"wp-content/themes/bw-petito/"
-  name: 'Petito <= 1.6.2 - Unauthenticated Local File Inclusion
+  name: 'Petito <= 1.6.4 - Unauthenticated Local File Inclusion
 
     '
   reference:

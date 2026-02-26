@@ -15,7 +15,7 @@ http:
     words:
     - dsk
   - dsl:
-    - compare_versions(version, '<= 2.2')
+    - compare_versions(version, '< 2.4')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/dsk/
     google-query: inurl:"/wp-content/themes/dsk/"
     shodan-query: http.html:"wp-content/themes/dsk/"
-  name: 'DSK <= 2.2 - Unauthenticated Local File Inclusion
+  name: 'DSK < 2.4 - Unauthenticated Local File Inclusion
 
     '
   reference:

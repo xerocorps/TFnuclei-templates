@@ -23,7 +23,7 @@ javascript:
 
     var response = c.ConnectSMBInfoMode(Host, Port);
 
-    to_json(response);
+    Export(response);
 
     '
   extractors:

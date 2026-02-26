@@ -31,14 +31,16 @@ info:
   author: DhiyaneshDK
   classification:
     cpe: cpe:2.3:a:apache:cloudstack:*:*:*:*:*:*:*:*
-  description: Apache CloudStack default login credentials were discovered.
+  description: 'CloudStack instance discovered using weak default credentials, allows
+    the attacker to gain admin privilege.
+
+    '
   metadata:
     max-request: 1
     product: cloudstack
-    runzero-match: any(each(service["html.titles"]), {# matches "Apache CloudStack"})
     shodan-query: http.title:"Apache CloudStack"
     vendor: apache
     verified: true
-  name: Apache CloudStack Default Credentials
+  name: Apache CloudStack - Default Login
   severity: high
   tags: default-login,apache,cloudstack,vuln

@@ -31,7 +31,9 @@ info:
   description: HashiCorp Consul Web UI login panel was detected,
   metadata:
     max-request: 1
+    product: consul
     shodan-query: http.title:"Consul by HashiCorp"
+    vendor: hashicorp
   name: HashiCorp Consul Web UI Login Panel - Detect
   severity: info
   tags: consul,webserver,panel

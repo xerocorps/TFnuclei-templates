@@ -40,7 +40,6 @@ info:
     '
   metadata:
     max-request: 5
-    runzero-match: any(each(service["html.titles"]), {# matches "Voyager"})
     shodan-query: title:"Voyager"
     verified: true
   name: DevDojo Voyager - Default login

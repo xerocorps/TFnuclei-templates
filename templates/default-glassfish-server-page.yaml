@@ -1,15 +1,24 @@
 http:
-- matchers:
-  - part: body
-    type: word
-    words:
-    - <title>GlassFish Server - Server Running</title>
+- extractors:
+  - group: 1
+    part: header
+    regex:
+    - GlassFish\s+Server\s+([A-Za-z0-9\s.]+)(\n|\r)
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_any(to_lower(body), "glassfish server - server running", "glassfish
+      server with premier support", "<b>glassfish server</b>", "glassfish server installation
+      directory")
+    type: dsl
   method: GET
   path:
   - '{{BaseURL}}'
 id: default-glassfish-server-page
 info:
-  author: dhiyaneshDk
+  author: dhiyaneshDk,righettod
   metadata:
     max-request: 1
     shodan-query: http.title:"GlassFish Server - Server Running"

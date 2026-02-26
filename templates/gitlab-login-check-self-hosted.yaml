@@ -56,7 +56,7 @@ info:
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: login-check,gitlab,creds-stuffing,self-hosted
+  tags: creds-stuffing,login-check,self-hosted,gitlab
 variables:
   password: '{{password}}'
   username: '{{username}}'

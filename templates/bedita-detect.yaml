@@ -5,8 +5,7 @@ info:
   severity: info
   tags: tech,bedita
 requests:
-- attack: sniper
-  extractors:
+- extractors:
   - group: 1
     part: body
     regex:
@@ -17,18 +16,6 @@ requests:
     regex:
     - BEdita(.*)</a><br>
     type: regex
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}'

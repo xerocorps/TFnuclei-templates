@@ -20,7 +20,6 @@ info:
     fofa-query: title="Zammad Helpdesk"
     max-request: 1
     product: zammad
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Zammad Helpdesk"})
     shodan-query: http.title:"Zammad Helpdesk"
     vendor: zammad
     verified: true

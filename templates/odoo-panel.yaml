@@ -1,10 +1,16 @@
 http:
-- matchers:
-  - condition: and
+- host-redirects: true
+  matchers:
+  - condition: or
     part: body
     type: word
     words:
     - <title>Odoo</title>
+    - odoo.session_info
+    - web.layout.odooscript
+  - part: body
+    type: word
+    words:
     - Log in
   - part: header
     type: word
@@ -14,15 +20,20 @@ http:
     - 200
     type: status
   matchers-condition: and
+  max-redirects: 2
   method: GET
   path:
   - '{{BaseURL}}/web/login'
+  - '{{BaseURL}}'
+  stop-at-first-match: true
 id: odoo-panel
 info:
-  author: DhiyaneshDK
+  author: DhiyaneshDK,righettod
   metadata:
-    max-request: 1
+    max-request: 2
+    product: odoo
     shodan-query: title:"Odoo"
+    vendor: odoo
     verified: true
   name: Odoo - Panel Detect
   severity: info

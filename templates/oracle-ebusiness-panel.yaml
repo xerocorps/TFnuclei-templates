@@ -27,7 +27,6 @@ info:
   metadata:
     max-request: 1
     product: e-business_suite
-    runzero-match: service["http.body"] matches "(?i)Oracle UIX"
     shodan-query: http.html:"Oracle UIX"
     vendor: oracle
     verified: true
@@ -35,4 +34,4 @@ info:
   reference:
   - https://www.oracle.com/applications/ebusiness/
   severity: info
-  tags: panel,oracle,login,detect,discovery
+  tags: panel,oracle,login,detect

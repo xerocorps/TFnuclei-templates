@@ -22,9 +22,8 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "-516760689"
     shodan-query: http.favicon.hash:-516760689
     verified: true
   name: Rapid7 Nexpose VM Security Console - Detect
   severity: info
-  tags: nexpose,panel,login,detect,discovery
+  tags: nexpose,panel,login,detect

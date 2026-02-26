@@ -8,7 +8,7 @@ info:
   reference:
   - https://nmap.org/nsedoc/scripts/sshv1.html
   severity: info
-  tags: js,ssh,network
+  tags: enum,js,ssh,network
 javascript:
 - args:
     Host: '{{Host}}'
@@ -19,7 +19,7 @@ javascript:
 
     var response = c.ConnectSSHInfoMode(Host, Port);
 
-    to_json(response);
+    Export(response);
 
     '
   extractors:

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-fastest-cache
+  - dsl:
+    - compare_versions(version, '<= 0.8.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-fastest-cache/readme.txt'
+  redirects: true
+id: wp-fastest-cache-53b2da3d7702d31a37b1e9a88f0559b8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-fastest-cache/
+    google-query: inurl:"/wp-content/plugins/wp-fastest-cache/"
+    shodan-query: 'vuln:'
+  name: 'WP Fastest Cache <= 0.8.7.4 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/65b3baaf-86e4-4dd2-b3eb-84c21eabdd6d?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-fastest-cache,critical

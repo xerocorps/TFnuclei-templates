@@ -16,15 +16,19 @@ http:
 id: rdweb-panel
 info:
   author: rxerium,sorrowx3
+  classification:
+    cpe: cpe:2.3:a:microsoft:remote_desktop:*:*:*:*:android:*:*:*
   description: 'RD web access panel was discovered.
 
     '
   metadata:
     max-request: 1
+    product: remote_desktop
     shodan-query: html:"RD Web Access"
+    vendor: microsoft
     verified: true
   name: RD Web Access - Panel Detect
   reference:
   - https://rdweb.wvd.microsoft.com/webclient
   severity: info
-  tags: panel,login,rdp,web-access
+  tags: panel,login,rdp,web-access,microsoft

@@ -1,4 +1,18 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - condition: and
+    internal: true
+    type: word
+    words:
+    - Slideshow
+    - 'Stable tag:'
+  raw:
+  - 'GET /wp-content/plugins/slideshow-jquery-image-gallery/readme.txt HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 - matchers:
   - part: body
     type: word

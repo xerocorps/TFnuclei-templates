@@ -6,6 +6,7 @@ http:
     words:
     - '"stok"'
     - '"error_code":0'
+  matchers-condition: and
   raw:
   - 'POST / HTTP/1.1
 
@@ -14,6 +15,8 @@ http:
     Content-Type: application/json; charset=UTF-8
 
     X-Requested-With: XMLHttpRequest
+
+    Connection: close
 
 
     {"method":"do","login":{"username":"admin","password":"0KcgeXhc9TefbwK"}}
@@ -25,6 +28,6 @@ info:
   description: "TP-LINK TL-R470GP-AC \u9ED8\u8BA4\u53E3\u4EE4123456\n"
   metadata:
     fofa-query: title="TL-R470GP-AC"
-  name: TP-LINK TL-R470GP-AC - Default Login
+  name: TP-LINK TL-R470GP-AC Default weak password
   severity: high
-  tags: tp-link,default-login,router
+  tags: tp-link,default-login,ac

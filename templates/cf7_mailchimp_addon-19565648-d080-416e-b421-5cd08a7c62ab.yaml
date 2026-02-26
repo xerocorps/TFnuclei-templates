@@ -15,7 +15,7 @@ http:
     words:
     - CF7-mailchimp-addon
   - dsl:
-    - compare_versions(version, '<= 2.2')
+    - compare_versions(version, '< 2.4')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/CF7-mailchimp-addon/
     google-query: inurl:"/wp-content/plugins/CF7-mailchimp-addon/"
     shodan-query: http.html:"wp-content/plugins/CF7-mailchimp-addon/"
-  name: 'CF7 7 Mailchimp Add-on <= 2.2 - Missing Authorization
+  name: 'CF7 7 Mailchimp Add-on < 2.4 - Missing Authorization
 
     '
   reference:

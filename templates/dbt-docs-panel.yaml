@@ -17,7 +17,6 @@ info:
   description: dbt Docs panel was detected.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)dbt Docs"})
     shodan-query: http.title:"dbt Docs"
   name: dbt Docs Panel - Detect
   severity: info

@@ -23,8 +23,6 @@ info:
     - icon_hash="-1922044295"
     max-request: 1
     product: micollab
-    runzero-match: service["http.body"] matches "(?i)mitel networks" || service["favicon.ico.image.mmh3"]
-      == "-1922044295" || service["http.body"] matches "(?i)micollab end user portal"
     shodan-query:
     - http.html:"mitel networks"
     - http.favicon.hash:"-1922044295"

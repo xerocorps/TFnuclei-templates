@@ -20,8 +20,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)IBM Security
-      Verify Access"})
     shodan-query: http.title:"IBM Security Verify Access"
     vendor: ibm
   name: IBM Security Verify Access Login - Panel

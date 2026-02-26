@@ -1,17 +1,18 @@
 dns:
+- name: '{{FQDN}}'
+  type: CNAME
 - extractors:
-  - dsl:
-    - cname
-    type: dsl
+  - group: 1
+    regex:
+    - IN\t(?:A|CNAME)\t([A-Za-z0-9-_.]*([a-zA-Z]+[0-9]+|[0-9.]+[a-zA-Z]+))
+    type: regex
   matchers:
   - name: ms-office
-    part: answer
     type: word
     words:
     - outlook.com
     - office.com
   - name: azure
-    part: answer
     type: word
     words:
     - azure-api.net
@@ -34,25 +35,21 @@ dns:
     - servicebus.windows.net
     - visualstudio.com
     - -msedge.net
-    - msappproxy.net
     - trafficmanager.net
   - name: zendesk
-    part: answer
     type: word
     words:
     - zendesk.com
   - name: announcekit
-    part: answer
     type: word
     words:
     - cname.announcekit.app
   - name: wix
-    part: answer
     type: word
     words:
     - wixdns.net
-  - name: akamai-cdn
-    part: answer
+  - condition: or
+    name: akamai-cdn
     type: word
     words:
     - akadns.net
@@ -76,7 +73,6 @@ dns:
     - edgekey.net
     - edgesuite.net
   - name: cloudflare-cdn
-    part: answer
     type: word
     words:
     - cloudflare.net
@@ -97,54 +93,45 @@ dns:
     - cloudflarestatus.com
     - sn-cloudflare.com
   - name: amazon-cloudfront
-    part: answer
     type: word
     words:
     - cloudfront.net
   - name: salesforce
-    part: answer
     type: word
     words:
     - salesforce.com
     - siteforce.com
     - force.com
   - name: amazon-aws
-    part: answer
     type: word
     words:
     - amazonaws.com
     - elasticbeanstalk.com
     - awsglobalaccelerator.com
   - name: fastly-cdn
-    part: answer
     type: word
     words:
     - fastly.net
   - name: netlify
-    part: answer
     type: word
     words:
     - netlify.app
     - netlify.com
     - netlifyglobalcdn.com
   - name: vercel
-    part: answer
     type: word
     words:
     - vercel.app
   - name: sendgrid
-    part: answer
     type: word
     words:
     - sendgrid.net
     - sendgrid.com
   - name: qualtrics
-    part: answer
     type: word
     words:
     - qualtrics.com
   - name: heroku
-    part: answer
     type: word
     words:
     - herokuapp.com
@@ -153,45 +140,37 @@ dns:
     - herokussl.com
     - herokuspace.com
   - name: gitlab
-    part: answer
     type: word
     words:
     - gitlab.com
     - gitlab.io
   - name: perforce-akana
-    part: answer
     type: word
     words:
     - akana.com
     - apiportal.akana.com
   - name: skilljar
-    part: answer
     type: word
     words:
     - skilljarapp.com
   - name: datagrail
-    part: answer
     type: word
     words:
     - datagrail.io
   - name: platform.sh
-    part: answer
     type: word
     words:
     - platform.sh
   - name: folloze
-    part: answer
     type: word
     words:
     - folloze.com
   - name: pendo-receptive
-    part: answer
     type: word
     words:
     - receptive.io
     - pendo.io
   - name: discourse
-    part: answer
     type: word
     words:
     - bydiscourse.com
@@ -200,7 +179,6 @@ dns:
     - discourse.org
     - hosted-by-discourse.com
   - name: adobe-marketo
-    part: answer
     type: word
     words:
     - marketo.com
@@ -209,37 +187,30 @@ dns:
     - mktossl.com
     - mktoweb.com
   - name: adobe-marketo - 'mkto-.{5,8}\.com'
-    part: answer
-    type: word
+    type: regex
   - name: adobe-marketo
-    part: answer
     type: word
     words:
     - marketo.com
   - name: rock-content
-    part: answer
     type: word
     words:
     - postclickmarketing.com
     - rockcontent.com
     - rockstage.io
   - name: rocketlane
-    part: answer
     type: word
     words:
     - rocketlane.com
   - name: webflow
-    part: answer
     type: word
     words:
     - proxy-ssl.webflow.com
   - name: stacker-hq
-    part: answer
     type: word
     words:
     - stacker.app
   - name: hubspot
-    part: answer
     type: word
     words:
     - hs-analytics.net
@@ -264,13 +235,11 @@ dns:
     - sidekickopen90.com
     - usemessages.com
   - name: gitbook
-    part: answer
     type: word
     words:
     - gitbook.com
     - gitbook.io
   - name: google-firebase
-    part: answer
     type: word
     words:
     - fcm.googleapis.com
@@ -290,7 +259,6 @@ dns:
     - firebaseperusertopics-pa.googleapis.com
     - firebaseremoteconfig.googleapis.com
   - name: zendesk
-    part: answer
     type: word
     words:
     - zdassets.com
@@ -298,13 +266,11 @@ dns:
     - zendesk.com
     - zopim.com
   - name: imperva
-    part: answer
     type: word
     words:
     - incapdns.net
     - incapsula.com
   - name: proofpoint
-    part: answer
     type: word
     words:
     - infoprtct.com
@@ -313,14 +279,12 @@ dns:
     - pphosted.com
     - proofpoint.com
   - name: q4-investor-relations
-    part: answer
     type: word
     words:
     - q4inc.com
     - q4ir.com
     - q4web.com
   - name: google-hosted
-    part: answer
     type: word
     words:
     - appspot.com
@@ -333,51 +297,43 @@ dns:
     - googlehosted.l.googleusercontent.com
     - run.app
   - name: wp-engine
-    part: answer
     type: word
     words:
     - wpengine.com
   - name: github
-    part: answer
     type: word
     words:
     - github.com
     - github.io
     - githubusercontent.com
   - name: ghost
-    part: answer
     type: word
     words:
     - ghost.io
   - name: digital-ocean
-    part: answer
     type: word
     words:
     - ondigitalocean.app
   - name: typedream
-    part: answer
     type: word
     words:
     - ontypedream.com
   - name: oracle-eloqua-marketing
-    part: answer
     type: word
     words:
     - hs.eloqua.com
-  - part: answer
-    regex:
-    - "IN\tCNAME\\t(.+)$"
-    - IN\s*CNAME\t(.+)$
-    type: regex
+  - type: word
+    words:
+    - "IN\tCNAME"
   matchers-condition: or
   name: '{{FQDN}}'
-  type: CNAME
+  type: A
 id: dns-saas-service-detection
 info:
   author: noah @thesubtlety,pdteam
   description: A CNAME DNS record was discovered
   metadata:
-    max-request: 1
+    max-request: 2
   name: DNS SaaS Service Detection
   reference:
   - https://ns1.com/resources/cname

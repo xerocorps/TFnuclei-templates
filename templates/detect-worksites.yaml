@@ -1,12 +1,9 @@
 dns:
-- class: inet
-  matchers:
+- matchers:
   - type: word
     words:
     - 69.164.223.206
   name: '{{FQDN}}'
-  recursion: true
-  retries: 2
   type: A
 id: detect-worksites
 info:

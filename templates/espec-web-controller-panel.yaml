@@ -28,8 +28,6 @@ info:
     - icon_hash="1190353375"
     max-request: 2
     product: web_controller
-    runzero-match: service["favicon.ico.image.mmh3"] == "529766441" || any(each(service["html.titles"]),
-      {# matches "(?i)Espec Web Controller"})
     shodan-query:
     - title:"Espec Web Controller"
     - http.favicon.hash:529766441

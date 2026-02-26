@@ -35,7 +35,6 @@ info:
 
     '
   metadata:
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)XAMPP"})
     shodan-query: http.title:"XAMPP"
     verified: true
   name: XAMPP PHP info Page - Detect

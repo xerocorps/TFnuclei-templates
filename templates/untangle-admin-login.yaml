@@ -19,6 +19,7 @@ id: untangle-admin-login
 info:
   author: irshad ahamed
   classification:
+    cpe: cpe:2.3:a:untangle:ng_firewall:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: 'Untangle Administrator is a centralized web-based management console
@@ -29,7 +30,9 @@ info:
     '
   metadata:
     max-request: 2
+    product: ng_firewall
     shodan-query: title:"Untangle Administrator Login"
+    vendor: untangle
     verified: true
   name: Untangle Administrator Login Panel - Detect
   reference:

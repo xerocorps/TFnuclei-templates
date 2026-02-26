@@ -22,10 +22,9 @@ info:
   metadata:
     max-request: 1
     product: manageengine_netflow_analyzer
-    runzero-match: service["http.body"] matches "(?i)Login - Netflow Analyzer"
     shodan-query: html:"Login - Netflow Analyzer"
     vendor: zohocorp
     verified: true
   name: Netflow Analyzer Login - Panel
   severity: info
-  tags: netflow,analyzer,panel,login,discovery
+  tags: netflow,analyzer,panel,login

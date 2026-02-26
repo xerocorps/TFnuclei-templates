@@ -12,14 +12,16 @@ id: 3cx-phone-webclient-management-panel
 info:
   author: idealphase
   classification:
+    cpe: cpe:2.3:a:3cx:3cx:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: 3CX Phone System Web Client Management Console panel was detected.
   metadata:
     google-query: intitle:"3CX Webclient"
     max-request: 1
+    product: 3cx
     shodan-query: http.title:"3CX Webclient"
+    vendor: 3cx
   name: 3CX Phone System Web Client Management Console - Panel Detect
   reference:
   - https://www.3cx.com/phone-system/

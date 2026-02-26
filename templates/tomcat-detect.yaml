@@ -25,6 +25,8 @@ http:
 id: tomcat-detect
 info:
   author: philippedelteil,dhiyaneshDk,AdamCrosser
+  classification:
+    cpe: cpe:2.3:a:apache:tomcat:*:*:*:*:*:*:*:*
   description: If an Tomcat instance is deployed on the target URL, when we send a
     request for a non existent resource we receive a Tomcat error page with version.
   metadata:

@@ -14,7 +14,7 @@ info:
   reference:
   - https://access.redhat.com/solutions/4278651
   severity: low
-  tags: js,ssh,misconfig,network
+  tags: js,enum,ssh,misconfig,network
 javascript:
 - args:
     Host: '{{Host}}'
@@ -25,7 +25,7 @@ javascript:
 
     let response = c.ConnectSSHInfoMode(Host, Port);
 
-    to_json(response);
+    Export(response);
 
     '
   matchers:

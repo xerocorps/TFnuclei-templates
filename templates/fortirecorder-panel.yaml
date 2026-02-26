@@ -21,7 +21,6 @@ info:
   metadata:
     fofa-query: title="FortiRecorder"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)FortiRecorder"})
     shodan-query: title:FortiRecorder
     verified: true
   name: FortiRecorder Panel - Detect

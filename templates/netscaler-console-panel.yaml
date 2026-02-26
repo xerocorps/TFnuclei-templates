@@ -19,7 +19,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)NetScaler Console"})
     shodan-query: title:"NetScaler Console"
     verified: true
   name: NetScaler Console - Panel

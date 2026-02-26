@@ -24,13 +24,15 @@ id: archibus-webcentral-panel
 info:
   author: righettod,PJBorah,Hardik-Rathod
   classification:
+    cpe: cpe:2.3:a:archibus:web_central:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: Archibus Web Central login panel was detected.
   metadata:
     max-request: 3
+    product: web_central
     shodan-query: http.favicon.hash:889652940
+    vendor: archibus
     verified: true
   name: Archibus Web Central Login - Panel Detect
   reference:

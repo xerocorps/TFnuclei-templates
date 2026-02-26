@@ -1,13 +1,18 @@
 id: sap-router
 info:
   author: randomstr1ng
+  description: 'SAProuter is a software application that provides a remote connection
+    between our customer''s network and SAP.
+
+    '
+  metadata:
+    max-request: 1
   name: SAPRouter Detection
   severity: info
-  tags: network,sap
-network:
+  tags: network,sap,detect,saprouter
+tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:3299'
   inputs:
   - data: 57484f415245594f553f0a
     type: hex
@@ -15,4 +20,5 @@ network:
   - type: word
     words:
     - SAProuter
+  port: 3299
   read-size: 1024

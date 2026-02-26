@@ -15,7 +15,7 @@ http:
     words:
     - wp-popups-lite
   - dsl:
-    - compare_versions(version, '<= 2.2.0.3')
+    - compare_versions(version, '<= 2.2.0.5')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/wp-popups-lite/
     google-query: inurl:"/wp-content/plugins/wp-popups-lite/"
     shodan-query: http.html:"wp-content/plugins/wp-popups-lite/"
-  name: 'WP Popups <= 2.2.0.3 - Missing Authorization
+  name: 'WP Popups <= 2.2.0.5 - Missing Authorization
 
     '
   reference:

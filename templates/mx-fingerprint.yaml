@@ -5,9 +5,10 @@ dns:
     - "IN\tMX\t(.+)"
     type: regex
   matchers:
-  - type: word
-    words:
-    - "IN\tMX"
+  - part: answer
+    regex:
+    - "IN\tMX\\t(.+)$"
+    type: regex
   name: '{{FQDN}}'
   type: MX
 id: mx-fingerprint
@@ -17,6 +18,8 @@ info:
     cwe-id: CWE-200
   description: An MX record was detected. MX records direct emails to a mail exchange
     server.
+  metadata:
+    max-request: 1
   name: MX Record Detection
   reference:
   - https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/

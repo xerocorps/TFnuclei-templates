@@ -16,12 +16,14 @@ id: watchguard-panel
 info:
   author: ahmetpergamum
   classification:
+    cpe: cpe:2.3:h:watchguard:firebox_t15:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: Watchguard login panel was detected.
   metadata:
     max-request: 1
+    product: firebox_t15
+    vendor: watchguard
   name: Watchguard Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7008

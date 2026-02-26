@@ -40,15 +40,15 @@ http:
 id: app-manager-default-login
 info:
   author: 0midC13
-  description: 'ManageEngine Applications Manager default login credentials were discovered.
+  description: 'Default credentials grants administrative access to ManageEngine Applications
+    Manager, which can be later escalated into a RCE via DB queries.
 
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "Applications Manager
-      Login Screen"})
+    shodan-query: title:"Applications Manager Login Screen"
     verified: true
-  name: ManageEngine Applications Manager - Default Login
+  name: ManageEngine Applications Manager - Default Credentials
   reference:
   - https://www.manageengine.com/products/applications_manager/
   severity: high

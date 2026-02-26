@@ -24,7 +24,6 @@ info:
     fofa-query: title="NETGEAR WNR614"
     max-request: 1
     product: WNR614
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)WNR614"})
     shodan-query: http.title:"WNR614"
     vendor: Netgear
     verified: true

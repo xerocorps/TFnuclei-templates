@@ -52,8 +52,6 @@ info:
     fofa-query: body="/wp-content/plugins/ninja-tables/"
     max-request: 2
     product: ninja-tables
-    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/ninja-tables/"
-    shodan-query: http.html:"/wp-content/plugins/ninja-tables/"
     vendor: wpxpo
     verified: true
   name: Ninja Tables <4.1.9 - Unauthenticated Arbitrary File Read

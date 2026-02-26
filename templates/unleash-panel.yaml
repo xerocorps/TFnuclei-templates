@@ -27,11 +27,10 @@ info:
     '
   metadata:
     max-request: 3
-    runzero-match: service["favicon.ico.image.mmh3"] == "-608690655"
     shodan-query: http.favicon.hash:-608690655
     verified: true
   name: Unleash Panel - Detect
   reference:
   - https://www.getunleash.io/
   severity: info
-  tags: panel,unleash,login,detect,discovery
+  tags: panel,unleash,login,detect

@@ -1,4 +1,13 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - internal: true
+    type: word
+    words:
+    - /wp-content/themes/ambience/
+  method: GET
+  path:
+  - '{{BaseURL}}'
 - matchers:
   - part: body
     type: word

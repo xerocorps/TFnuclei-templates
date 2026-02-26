@@ -1,4 +1,15 @@
-http:
+id: nuget-api-key
+info:
+  author: DhiyaneshDK
+  metadata:
+    verified: 'true'
+  name: NuGet API Key
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/nuget.yml
+  - https://docs.microsoft.com/en-us/nuget/nuget-org/publish-a-package#create-api-keys
+  severity: info
+  tags: nuget,token,exposure
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,15 +18,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: nuget-api-key
-info:
-  author: DhiyaneshDK
-  metadata:
-    max-request: 1
-    verified: true
-  name: NuGet API Key
-  reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/nuget.yml
-  - https://docs.microsoft.com/en-us/nuget/nuget-org/publish-a-package#create-api-keys
-  severity: info
-  tags: nuget,token,exposure

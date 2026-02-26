@@ -22,9 +22,13 @@ http:
 id: qdpm-login-panel
 info:
   author: theamanrawat
+  classification:
+    cpe: cpe:2.3:a:qdpm:qdpm:*:*:*:*:*:*:*:*
   metadata:
     max-request: 2
+    product: qdpm
     shodan-query: http.favicon.hash:762074255
+    vendor: qdpm
     verified: 'true'
   name: qdPM Login Panel
   severity: info

@@ -26,12 +26,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Oracle Containers
-      for J2EE"})
     shodan-query: http.title:"Oracle Containers for J2EE"
     verified: true
   name: Oracle Application Server Panel - Detect
   reference:
   - https://www.oracle.com/middleware/technologies/internet-application-server.html
   severity: info
-  tags: panel,oracle,containers,login,detect,discovery
+  tags: panel,oracle,containers,login,detect

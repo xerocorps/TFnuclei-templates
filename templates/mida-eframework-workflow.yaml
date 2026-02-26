@@ -8,5 +8,5 @@ workflows:
 - matchers:
   - name: mida-eframework
     subtemplates:
-    - template: vulnerabilities/other/mida-eframework-xss.yaml
-  template: technologies/tech-detect.yaml
+    - template: http/vulnerabilities/other/mida-eframework-xss.yaml
+  template: http/technologies/tech-detect.yaml

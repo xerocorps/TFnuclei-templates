@@ -7,15 +7,14 @@ info:
     is not recommended.
 
     '
-  metadata:
-    max-request: 1
   name: FTP Anonymous Login
   reference:
   - https://tools.ietf.org/html/rfc2577
   severity: medium
   tags: network,ftp,default-login
-tcp:
+network:
 - host:
+  - '{{Host}}:21'
   - '{{Hostname}}'
   inputs:
   - data: "USER anonymous\r\n"
@@ -29,14 +28,10 @@ tcp:
     words:
     - Anonymous access allowed,
     - Logged in anonymously
-    - '230 '
-  - condition: or
-    negative: true
+    - '230'
+  - negative: true
     part: raw
     type: word
     words:
     - HTTP/1.1
-    - '230.'
-    - '.230'
   matchers-condition: and
-  port: 21

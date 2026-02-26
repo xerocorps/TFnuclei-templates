@@ -33,9 +33,6 @@ info:
     - icon_hash="1574423538"
     max-request: 1
     product: freepbx
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)FreePBX"}) ||
-      service["favicon.ico.image.mmh3"] == "-1908328911" || service["favicon.ico.image.mmh3"]
-      == "1574423538"
     shodan-query:
     - http.title:"FreePBX"
     - http.favicon.hash:-1908328911

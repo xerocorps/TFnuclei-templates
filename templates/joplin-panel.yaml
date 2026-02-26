@@ -19,7 +19,7 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Joplin Server"})
+    shodan-query: title:"Joplin Server"
     verified: true
   name: Joplin Server Login - Panel
   severity: info

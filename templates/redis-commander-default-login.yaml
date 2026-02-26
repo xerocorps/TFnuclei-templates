@@ -30,7 +30,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Redis Commander"})
     shodan-query: title:"Redis Commander"
     verified: true
   name: Redis Commander - Default Login

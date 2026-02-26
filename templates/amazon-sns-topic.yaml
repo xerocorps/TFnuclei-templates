@@ -1,10 +1,4 @@
-id: amazon-sns-topic
-info:
-  author: Ice3man
-  name: Amazon SNS Topic Disclosure
-  severity: info
-  tags: exposure,token,amazon
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -13,3 +7,11 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: amazon-sns-topic
+info:
+  author: Ice3man
+  metadata:
+    max-request: 1
+  name: Amazon SNS Topic Disclosure
+  severity: info
+  tags: exposure,token,amazon
