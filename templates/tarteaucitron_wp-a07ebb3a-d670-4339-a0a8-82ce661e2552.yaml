@@ -15,7 +15,7 @@ http:
     words:
     - tarteaucitron-wp
   - dsl:
-    - compare_versions(version, '<= 0.2.5')
+    - compare_versions(version, '< 0.3.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/tarteaucitron-wp/
     google-query: inurl:"/wp-content/plugins/tarteaucitron-wp/"
     shodan-query: http.html:"wp-content/plugins/tarteaucitron-wp/"
-  name: 'tarteaucitron.js for WordPress <= 0.2.5 - Cross-Site Request Forgery to Stored
+  name: 'tarteaucitron.js for WordPress < 0.3.0 - Cross-Site Request Forgery to Stored
     Cross-Site Scripting
 
     '

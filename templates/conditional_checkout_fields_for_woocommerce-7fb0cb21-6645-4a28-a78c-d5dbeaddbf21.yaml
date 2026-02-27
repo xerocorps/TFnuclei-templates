@@ -15,7 +15,7 @@ http:
     words:
     - conditional-checkout-fields-for-woocommerce
   - dsl:
-    - compare_versions(version, '<= 1.2.1')
+    - compare_versions(version, '<= 1.2.3')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/conditional-checkout-fields-for-woocommerce/
     google-query: inurl:"/wp-content/plugins/conditional-checkout-fields-for-woocommerce/"
     shodan-query: http.html:"wp-content/plugins/conditional-checkout-fields-for-woocommerce/"
-  name: 'Conditional Checkout Fields & Edit Checkout Fields for WooCommerce <= 1.2.1
+  name: 'Conditional Checkout Fields & Edit Checkout Fields for WooCommerce <= 1.2.3
     - Missing Authorization
 
     '

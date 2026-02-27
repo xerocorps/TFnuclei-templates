@@ -15,7 +15,7 @@ http:
     words:
     - leadcapture
   - dsl:
-    - compare_versions(version, '<= 2.3')
+    - compare_versions(version, '< 2.6')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/leadcapture/
     google-query: inurl:"/wp-content/plugins/leadcapture/"
     shodan-query: http.html:"wp-content/plugins/leadcapture/"
-  name: 'WP Lead Capturing Pages <= 2.3 - Unauthenticated SQL Injection
+  name: 'WP Lead Capturing Pages < 2.6 - Unauthenticated SQL Injection
 
     '
   reference:
