@@ -15,7 +15,7 @@ http:
     words:
     - magone
   - dsl:
-    - compare_versions(version, '<= 8.5')
+    - compare_versions(version, '<= 8.8')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/magone/
     google-query: inurl:"/wp-content/themes/magone/"
     shodan-query: http.html:"wp-content/themes/magone/"
-  name: 'MagOne <= 8.5 - Reflected Cross-Site Scripting
+  name: 'MagOne <= 8.8 - Reflected Cross-Site Scripting
 
     '
   reference:

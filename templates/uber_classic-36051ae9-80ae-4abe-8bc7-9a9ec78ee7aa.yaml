@@ -15,7 +15,7 @@ http:
     words:
     - uber-classic
   - dsl:
-    - compare_versions(version, '<= 2.3')
+    - compare_versions(version, '< 2.6')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/uber-classic/
     google-query: inurl:"/wp-content/plugins/uber-classic/"
     shodan-query: http.html:"wp-content/plugins/uber-classic/"
-  name: 'UberSlider <= 2.3 - Authenticated (Contributor+) SQL Injection
+  name: 'UberSlider < 2.6 - Authenticated (Contributor+) SQL Injection
 
     '
   reference:

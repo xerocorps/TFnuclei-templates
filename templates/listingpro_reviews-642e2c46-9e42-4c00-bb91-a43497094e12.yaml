@@ -15,7 +15,7 @@ http:
     words:
     - listingpro-reviews
   - dsl:
-    - compare_versions(version, '<= 1.6')
+    - compare_versions(version, '< 2.9.11')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/listingpro-reviews/
     google-query: inurl:"/wp-content/plugins/listingpro-reviews/"
     shodan-query: http.html:"wp-content/plugins/listingpro-reviews/"
-  name: 'ListingPro Reviews <= 1.6 - Missing Authorization
+  name: 'ListingPro Reviews < 2.9.11 - Missing Authorization
 
     '
   reference:

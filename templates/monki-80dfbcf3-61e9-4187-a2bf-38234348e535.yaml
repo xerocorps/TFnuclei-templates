@@ -15,7 +15,7 @@ http:
     words:
     - monki
   - dsl:
-    - compare_versions(version, '<= 2.0.4')
+    - compare_versions(version, '<= 2.0.5')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/monki/
     google-query: inurl:"/wp-content/themes/monki/"
     shodan-query: http.html:"wp-content/themes/monki/"
-  name: 'Monki <= 2.0.4 - Unauthenticated Local File Inclusion
+  name: 'Monki <= 2.0.5 - Unauthenticated Local File Inclusion
 
     '
   reference:

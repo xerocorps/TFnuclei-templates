@@ -15,7 +15,7 @@ http:
     words:
     - healsoul
   - dsl:
-    - compare_versions(version, '<= 2.0.2')
+    - compare_versions(version, '<= 2.2.3')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/healsoul/
     google-query: inurl:"/wp-content/themes/healsoul/"
     shodan-query: http.html:"wp-content/themes/healsoul/"
-  name: 'Healsoul <= 2.0.2 - Unauthenticated Local File Inclusion
+  name: 'Healsoul <= 2.2.3 - Unauthenticated Local File Inclusion
 
     '
   reference:

@@ -15,7 +15,7 @@ http:
     words:
     - yogi
   - dsl:
-    - compare_versions(version, '<= 2.9.0')
+    - compare_versions(version, '< 2.9.3')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/yogi/
     google-query: inurl:"/wp-content/themes/yogi/"
     shodan-query: http.html:"wp-content/themes/yogi/"
-  name: 'Yogi <= 2.9.0 - Authenticated (Subscriber+) PHP Object Injection
+  name: 'Yogi < 2.9.3 - Authenticated (Subscriber+) PHP Object Injection
 
     '
   reference:

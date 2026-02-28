@@ -15,7 +15,7 @@ http:
     words:
     - bravis-user
   - dsl:
-    - compare_versions(version, '<= 1.0.0')
+    - compare_versions(version, '< 1.0.2')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/bravis-user/
     google-query: inurl:"/wp-content/plugins/bravis-user/"
     shodan-query: http.html:"wp-content/plugins/bravis-user/"
-  name: 'Bravis User <= 1.0.0 - Authentication Bypass to Account Takeover
+  name: 'Bravis User <= 1.0.1 - Authentication Bypass to Account Takeover
 
     '
   reference:

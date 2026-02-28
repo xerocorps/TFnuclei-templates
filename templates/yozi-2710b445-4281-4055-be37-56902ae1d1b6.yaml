@@ -15,7 +15,7 @@ http:
     words:
     - yozi
   - dsl:
-    - compare_versions(version, '<= 2.0.52')
+    - compare_versions(version, '<= 2.0.63')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/yozi/
     google-query: inurl:"/wp-content/themes/yozi/"
     shodan-query: http.html:"wp-content/themes/yozi/"
-  name: 'Yozi <= 2.0.52 - Unauthenticated Local File Inclusion
+  name: 'Yozi <= 2.0.63 - Unauthenticated Local File Inclusion
 
     '
   reference:

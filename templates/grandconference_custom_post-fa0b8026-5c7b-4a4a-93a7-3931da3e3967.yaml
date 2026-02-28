@@ -15,7 +15,7 @@ http:
     words:
     - grandconference-custom-post
   - dsl:
-    - compare_versions(version, '<= 2.6.3')
+    - compare_versions(version, '< 2.6.4')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/grandconference-custom-post/
     google-query: inurl:"/wp-content/plugins/grandconference-custom-post/"
     shodan-query: http.html:"wp-content/plugins/grandconference-custom-post/"
-  name: 'Grand Conference Theme Custom Post Type <= 2.6.3 - Missing Authorization
+  name: 'Grand Conference Theme Custom Post Type < 2.6.4 - Missing Authorization
 
     '
   reference:

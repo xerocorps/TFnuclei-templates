@@ -15,7 +15,7 @@ http:
     words:
     - lms
   - dsl:
-    - compare_versions(version, '<= 9.1')
+    - compare_versions(version, '<= 9.2')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/lms/
     google-query: inurl:"/wp-content/themes/lms/"
     shodan-query: http.html:"wp-content/themes/lms/"
-  name: 'LMS <= 9.1 - Unauthenticated SQL Injection
+  name: 'LMS <= 9.2 - Unauthenticated SQL Injection
 
     '
   reference:

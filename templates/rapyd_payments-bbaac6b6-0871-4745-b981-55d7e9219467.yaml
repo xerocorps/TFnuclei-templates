@@ -15,7 +15,7 @@ http:
     words:
     - rapyd-payments
   - dsl:
-    - compare_versions(version, '<= 1.1.9')
+    - compare_versions(version, '<= 1.2.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/rapyd-payments/
     google-query: inurl:"/wp-content/themes/rapyd-payments/"
     shodan-query: http.html:"wp-content/themes/rapyd-payments/"
-  name: 'Rapyd Payment Extension for WooCommerce <= 1.1.9 - Unauthenticated PHP Object
+  name: 'Rapyd Payment Extension for WooCommerce <= 1.2.0 - Unauthenticated PHP Object
     Injection
 
     '

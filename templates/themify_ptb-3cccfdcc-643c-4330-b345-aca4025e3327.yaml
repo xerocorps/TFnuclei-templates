@@ -15,7 +15,7 @@ http:
     words:
     - themify-ptb
   - dsl:
-    - compare_versions(version, '<= 2.0.8')
+    - compare_versions(version, '< 2.1.4')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/themify-ptb/
     google-query: inurl:"/wp-content/plugins/themify-ptb/"
     shodan-query: http.html:"wp-content/plugins/themify-ptb/"
-  name: 'Post Type Builder <= 2.0.8 - Missing Authorization to Arbitrary Post/Page
+  name: 'Post Type Builder < 2.1.4 - Missing Authorization to Arbitrary Post/Page
     Creation
 
     '

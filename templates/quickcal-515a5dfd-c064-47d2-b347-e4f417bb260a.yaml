@@ -15,7 +15,7 @@ http:
     words:
     - quickcal
   - dsl:
-    - compare_versions(version, '<= 1.0.13')
+    - compare_versions(version, '<= 1.0.15')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/quickcal/
     google-query: inurl:"/wp-content/plugins/quickcal/"
     shodan-query: http.html:"wp-content/plugins/quickcal/"
-  name: 'QuickCal <= 1.0.13 - Cross-Site Request Forgery to Privilege Escalation
+  name: 'QuickCal <= 1.0.15 - Cross-Site Request Forgery to Privilege Escalation
 
     '
   reference:

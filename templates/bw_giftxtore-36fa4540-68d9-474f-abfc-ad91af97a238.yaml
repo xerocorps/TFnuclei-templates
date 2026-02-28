@@ -15,7 +15,7 @@ http:
     words:
     - bw-giftxtore
   - dsl:
-    - compare_versions(version, '<= 1.7.4')
+    - compare_versions(version, '<= 1.7.5')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/bw-giftxtore/
     google-query: inurl:"/wp-content/themes/bw-giftxtore/"
     shodan-query: http.html:"wp-content/themes/bw-giftxtore/"
-  name: 'GiftXtore <= 1.7.4 - Unauthenticated Local File Inclusion
+  name: 'GiftXtore <= 1.7.5 - Unauthenticated Local File Inclusion
 
     '
   reference:

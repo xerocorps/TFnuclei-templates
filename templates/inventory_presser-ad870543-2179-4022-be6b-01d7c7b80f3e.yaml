@@ -15,7 +15,7 @@ http:
     words:
     - inventory-presser
   - dsl:
-    - compare_versions(version, '<= 15.0.0')
+    - compare_versions(version, '<= 15.2.6')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/inventory-presser/
     google-query: inurl:"/wp-content/plugins/inventory-presser/"
     shodan-query: http.html:"wp-content/plugins/inventory-presser/"
-  name: 'Inventory Presser <= 15.0.0 - Authenticated (Administrator+) Stored Cross-Site
+  name: 'Inventory Presser <= 15.2.6 - Authenticated (Administrator+) Stored Cross-Site
     Scripting
 
     '

@@ -15,7 +15,7 @@ http:
     words:
     - squirrly-seo-pack
   - dsl:
-    - compare_versions(version, '<= 2.3.8')
+    - compare_versions(version, '< 2.4.02')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/squirrly-seo-pack/
     google-query: inurl:"/wp-content/plugins/squirrly-seo-pack/"
     shodan-query: http.html:"wp-content/plugins/squirrly-seo-pack/"
-  name: 'Squirrly SEO - Advanced Pack <= 2.3.8 - Authenticated(Administrator+) SQL
+  name: 'Squirrly SEO - Advanced Pack < 2.4.02 - Authenticated(Administrator+) SQL
     Injection
 
     '

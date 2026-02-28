@@ -15,7 +15,7 @@ http:
     words:
     - redart
   - dsl:
-    - compare_versions(version, '<= 3.7')
+    - compare_versions(version, '<= 3.8')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/redart/
     google-query: inurl:"/wp-content/themes/redart/"
     shodan-query: http.html:"wp-content/themes/redart/"
-  name: 'Red Art <= 3.7 - Authenticated (Subscriber+) PHP Object Injection
+  name: 'Red Art <= 3.8 - Authenticated (Subscriber+) PHP Object Injection
 
     '
   reference:
