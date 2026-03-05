@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-03-04T05:09:04.647323+00:00",
-  "total_templates": 50899,
-  "duplicates_removed": 518358,
+  "last_updated": "2026-03-05T05:10:50.701228+00:00",
+  "total_templates": 50904,
+  "duplicates_removed": 518383,
   "deduplication_breakdown": {
-    "exact_content": 348591,
-    "semantic_fingerprint": 112851,
-    "normalized_id": 56916
+    "exact_content": 347914,
+    "semantic_fingerprint": 113541,
+    "normalized_id": 56928
   },
   "sources": {
     "total": 435,
-    "successful": 399,
-    "failed": 16,
+    "successful": 398,
+    "failed": 17,
     "skipped": 20
   },
   "severity_breakdown": {
     "critical": 5507,
     "high": 11121,
-    "medium": 14618,
-    "low": 12594,
-    "info": 6696,
+    "medium": 14619,
+    "low": 12595,
+    "info": 6699,
     "unknown": 363
   },
   "failed_sources": [
@@ -35,6 +35,13 @@
         "repo": "rutgerhrm/valid8"
       },
       "error": "Could not download rutgerhrm/valid8 from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "redteambrasil/nuclei-templates"
+      },
+      "error": "Could not download redteambrasil/nuclei-templates from any branch"
     },
     {
       "source": {
