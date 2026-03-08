@@ -15,7 +15,7 @@ http:
     words:
     - krowd
   - dsl:
-    - compare_versions(version, '<= 1.4.1')
+    - compare_versions(version, '< 1.5.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/krowd/
     google-query: inurl:"/wp-content/themes/krowd/"
     shodan-query: http.html:"wp-content/themes/krowd/"
-  name: 'Krowd <= 1.4.1 - Unauthenticated Local File Inclusion
+  name: 'Krowd  < 1.5.0 - Unauthenticated Local File Inclusion
 
     '
   reference:

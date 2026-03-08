@@ -15,7 +15,7 @@ http:
     words:
     - vizeon
   - dsl:
-    - compare_versions(version, '<= 1.1.7')
+    - compare_versions(version, '< 1.2.1')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/vizeon/
     google-query: inurl:"/wp-content/themes/vizeon/"
     shodan-query: http.html:"wp-content/themes/vizeon/"
-  name: 'Vizeon - Business Consulting <= 1.1.7 - Unauthenticated Local File Inclusion
+  name: 'Vizeon - Business Consulting < 1.2.1 - Unauthenticated Local File Inclusion
 
     '
   reference:

@@ -15,7 +15,7 @@ http:
     words:
     - zilom
   - dsl:
-    - compare_versions(version, '<= 1.2.1')
+    - compare_versions(version, '< 1.4.5')
     type: dsl
   matchers-condition: and
   max-redirects: 3
