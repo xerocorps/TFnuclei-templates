@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-03-11T05:09:10.963788+00:00",
-  "total_templates": 51047,
-  "duplicates_removed": 518755,
+  "last_updated": "2026-03-12T05:11:26.839299+00:00",
+  "total_templates": 51051,
+  "duplicates_removed": 517066,
   "deduplication_breakdown": {
-    "exact_content": 348583,
-    "semantic_fingerprint": 113183,
-    "normalized_id": 56989
+    "exact_content": 346623,
+    "semantic_fingerprint": 113450,
+    "normalized_id": 56993
   },
   "sources": {
     "total": 438,
-    "successful": 401,
-    "failed": 17,
+    "successful": 398,
+    "failed": 20,
     "skipped": 20
   },
   "severity_breakdown": {
     "critical": 5624,
-    "high": 11129,
+    "high": 11130,
     "medium": 14637,
     "low": 12591,
-    "info": 6703,
+    "info": 6706,
     "unknown": 363
   },
   "failed_sources": [
@@ -28,6 +28,27 @@
         "repo": "rxerium/CISA-KEV"
       },
       "error": "Could not download rxerium/CISA-KEV from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "Esonhugh/public-nuclei-template"
+      },
+      "error": "Could not download Esonhugh/public-nuclei-template from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "lsr00ter/templates"
+      },
+      "error": "Could not download lsr00ter/templates from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "fostane/my-nuclei-templates-1"
+      },
+      "error": "Could not download fostane/my-nuclei-templates-1 from any branch"
     },
     {
       "source": {

