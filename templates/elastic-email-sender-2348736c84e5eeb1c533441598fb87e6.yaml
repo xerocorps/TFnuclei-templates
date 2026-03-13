@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - elastic-email-sender
+  - dsl:
+    - compare_versions(version, '<= 1.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/elastic-email-sender/readme.txt'
+  redirects: true
+id: elastic-email-sender-2348736c84e5eeb1c533441598fb87e6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/elastic-email-sender/
+    google-query: inurl:"/wp-content/plugins/elastic-email-sender/"
+    shodan-query: 'vuln:'
+  name: 'Elastic Email Sender <= 1.2.6 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/106a604f-0bff-444e-9d76-f6508bcc0cea?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,elastic-email-sender,low

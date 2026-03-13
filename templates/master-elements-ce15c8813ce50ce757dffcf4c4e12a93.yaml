@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - master-elements
+  - dsl:
+    - compare_versions(version, '<= 8.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/master-elements/readme.txt'
+  redirects: true
+id: master-elements-ce15c8813ce50ce757dffcf4c4e12a93
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/master-elements/
+    google-query: inurl:"/wp-content/plugins/master-elements/"
+    shodan-query: 'vuln:'
+  name: 'Master Elements <= 8.0 - Unauthenticated SQL injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/36a7b681-6059-46a4-82a8-addfb8f452cc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,master-elements,low

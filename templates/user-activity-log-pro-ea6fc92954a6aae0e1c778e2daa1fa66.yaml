@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-activity-log-pro
+  - dsl:
+    - compare_versions(version, '<= 2.3.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-activity-log-pro/readme.txt'
+  redirects: true
+id: user-activity-log-pro-ea6fc92954a6aae0e1c778e2daa1fa66
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-activity-log-pro/
+    google-query: inurl:"/wp-content/plugins/user-activity-log-pro/"
+    shodan-query: 'vuln:'
+  name: 'User Activity Log Pro <= 2.3.4 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/be8ec147-1469-449b-b51b-f1c328b1922f?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,user-activity-log-pro,high

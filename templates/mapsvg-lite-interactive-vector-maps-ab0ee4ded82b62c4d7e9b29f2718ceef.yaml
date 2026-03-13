@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mapsvg-lite-interactive-vector-maps
+  - dsl:
+    - compare_versions(version, '< 3.3.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mapsvg-lite-interactive-vector-maps/readme.txt'
+  redirects: true
+id: mapsvg-lite-interactive-vector-maps-ab0ee4ded82b62c4d7e9b29f2718ceef
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mapsvg-lite-interactive-vector-maps/
+    google-query: inurl:"/wp-content/plugins/mapsvg-lite-interactive-vector-maps/"
+    shodan-query: 'vuln:'
+  name: 'MapSVG Lite < 3.3.0 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8073cc59-e5cc-4940-bce0-e501f0d959cc?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,mapsvg-lite-interactive-vector-maps,medium

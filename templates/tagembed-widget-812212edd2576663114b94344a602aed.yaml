@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tagembed-widget
+  - dsl:
+    - compare_versions(version, '<= 5.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tagembed-widget/readme.txt'
+  redirects: true
+id: tagembed-widget-812212edd2576663114b94344a602aed
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tagembed-widget/
+    google-query: inurl:"/wp-content/plugins/tagembed-widget/"
+    shodan-query: 'vuln:'
+  name: 'Tagembed <= 5.5 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aa18de7f-e645-4d1b-90d5-d47ee7e1d52d?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,tagembed-widget,high

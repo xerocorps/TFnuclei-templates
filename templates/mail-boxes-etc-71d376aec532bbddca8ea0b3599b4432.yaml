@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - mail-boxes-etc
+  - dsl:
+    - compare_versions(version, '<= 2.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/mail-boxes-etc/readme.txt'
+  redirects: true
+id: mail-boxes-etc-71d376aec532bbddca8ea0b3599b4432
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/mail-boxes-etc/
+    google-query: inurl:"/wp-content/plugins/mail-boxes-etc/"
+    shodan-query: 'vuln:'
+  name: 'MBE eShip <= 2.1.2 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b0e340d7-72ad-4a48-8c7c-e5ca61108007?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,mail-boxes-etc,medium

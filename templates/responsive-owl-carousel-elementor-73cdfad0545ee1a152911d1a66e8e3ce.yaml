@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - responsive-owl-carousel-elementor
+  - dsl:
+    - compare_versions(version, '<= 1.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/responsive-owl-carousel-elementor/readme.txt'
+  redirects: true
+id: responsive-owl-carousel-elementor-73cdfad0545ee1a152911d1a66e8e3ce
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/responsive-owl-carousel-elementor/
+    google-query: inurl:"/wp-content/plugins/responsive-owl-carousel-elementor/"
+    shodan-query: 'vuln:'
+  name: 'Responsive Owl Carousel for Elementor <= 1.2.0 - Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0638c8f3-070a-4b42-ba58-396f3f259b9d?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,responsive-owl-carousel-elementor,critical

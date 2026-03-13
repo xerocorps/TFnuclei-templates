@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - live-news-lite
+  - dsl:
+    - compare_versions(version, '<= 1.06')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/live-news-lite/readme.txt'
+  redirects: true
+id: live-news-lite-1d29a94e575c4e79b47c25574b8eacfb
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/live-news-lite/
+    google-query: inurl:"/wp-content/plugins/live-news-lite/"
+    shodan-query: 'vuln:'
+  name: 'Live News <= 1.06 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3ee59570-85c3-4394-bebb-c3f49c08be67?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,live-news-lite,medium

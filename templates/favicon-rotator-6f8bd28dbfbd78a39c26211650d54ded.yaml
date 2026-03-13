@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - favicon-rotator
+  - dsl:
+    - compare_versions(version, '<= 1.2.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/favicon-rotator/readme.txt'
+  redirects: true
+id: favicon-rotator-6f8bd28dbfbd78a39c26211650d54ded
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/favicon-rotator/
+    google-query: inurl:"/wp-content/plugins/favicon-rotator/"
+    shodan-query: 'vuln:'
+  name: 'Favicon Rotator <= 1.2.10 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4197dd30-bfd8-4d6c-80f5-b13e3844adf8?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,favicon-rotator,medium

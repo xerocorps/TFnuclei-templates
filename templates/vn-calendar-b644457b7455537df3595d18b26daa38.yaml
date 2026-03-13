@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - vn-calendar
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/vn-calendar/readme.txt'
+  redirects: true
+id: vn-calendar-b644457b7455537df3595d18b26daa38
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/vn-calendar/
+    google-query: inurl:"/wp-content/plugins/vn-calendar/"
+    shodan-query: 'vuln:'
+  name: 'VN Calendar <= 1.0 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5224233f-6cb4-4fd9-b25b-e32db612cb7f?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,vn-calendar,high

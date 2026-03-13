@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-donate
+  - dsl:
+    - compare_versions(version, '<= 1.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-donate/readme.txt'
+  redirects: true
+id: wp-donate-adc3999f24b5a1dcaca0efbb25eb2bf5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-donate/
+    google-query: inurl:"/wp-content/plugins/wp-donate/"
+    shodan-query: 'vuln:'
+  name: 'WP Donate <= 1.4 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5ef36265-bf71-4b6a-ae76-9318d6896aac?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,wp-donate,critical

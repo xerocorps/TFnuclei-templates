@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - bard
+  - dsl:
+    - compare_versions(version, '<= 2.210')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/bard/style.css'
+  redirects: true
+id: bard-5cdf6dece53188f6cdb29a0f7eb2c71b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/bard/
+    google-query: inurl:"/wp-content/themes/bard/"
+    shodan-query: 'vuln:'
+  name: 'Bard <= 2.210 - Cross-Site Request Forgery to Notice Dismissal
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/cec0ba0e-28a5-46c0-97c2-bbf73bd2dbad?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-theme,bard,medium

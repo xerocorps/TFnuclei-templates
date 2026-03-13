@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - presto-player
+  - dsl:
+    - compare_versions(version, '<= 2.2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/presto-player/readme.txt'
+  redirects: true
+id: presto-player-0d642af2f5f31ad3054a8d749c0007db
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/presto-player/
+    google-query: inurl:"/wp-content/plugins/presto-player/"
+    shodan-query: 'vuln:'
+  name: 'The Ultimate Video Player For WordPress <= 2.2.2 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c4250395-3709-47cd-86d4-e6a1fec10298?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,presto-player,low
