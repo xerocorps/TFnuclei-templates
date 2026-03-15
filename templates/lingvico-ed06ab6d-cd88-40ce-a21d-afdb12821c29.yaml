@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - lingvico
+  - dsl:
+    - compare_versions(version, '<= 1.0.14')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/lingvico/style.css'
+  redirects: true
+id: lingvico-ed06ab6d-cd88-40ce-a21d-afdb12821c29
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/lingvico/
+    google-query: inurl:"/wp-content/themes/lingvico/"
+    shodan-query: http.html:"wp-content/themes/lingvico/"
+  name: 'Lingvico <= 1.0.14 - Unauthenticated Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ed06ab6d-cd88-40ce-a21d-afdb12821c29?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-theme,lingvico,critical,candidate

@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - subscription
+  - dsl:
+    - compare_versions(version, '<= 1.8.10')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/subscription/readme.txt'
+  redirects: true
+id: subscription-8d4bbbf9-db8e-4e8a-999b-9fa279d3daea
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/subscription/
+    google-query: inurl:"/wp-content/plugins/subscription/"
+    shodan-query: http.html:"wp-content/plugins/subscription/"
+  name: "Subscription for WooCommerce \u2013 WordPress Recurring Payments Plugin <=\
+    \ 1.8.10 - Authenticated (Customer+) Insecure Direct Object Reference\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8d4bbbf9-db8e-4e8a-999b-9fa279d3daea?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,subscription,low,candidate

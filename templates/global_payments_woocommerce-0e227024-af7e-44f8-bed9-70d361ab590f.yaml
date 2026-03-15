@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - global-payments-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 1.13.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/global-payments-woocommerce/readme.txt'
+  redirects: true
+id: global_payments_woocommerce-0e227024-af7e-44f8-bed9-70d361ab590f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/global-payments-woocommerce/
+    google-query: inurl:"/wp-content/plugins/global-payments-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/global-payments-woocommerce/"
+  name: 'GlobalPayments WooCommerce <= 1.13.2 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0e227024-af7e-44f8-bed9-70d361ab590f?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,global-payments-woocommerce,medium,candidate

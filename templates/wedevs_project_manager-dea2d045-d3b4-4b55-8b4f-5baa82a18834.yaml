@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wedevs-project-manager
+  - dsl:
+    - compare_versions(version, '<= 2.6.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wedevs-project-manager/readme.txt'
+  redirects: true
+id: wedevs_project_manager-dea2d045-d3b4-4b55-8b4f-5baa82a18834
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wedevs-project-manager/
+    google-query: inurl:"/wp-content/plugins/wedevs-project-manager/"
+    shodan-query: http.html:"wp-content/plugins/wedevs-project-manager/"
+  name: "WP Project Manager \u2013 Task, team, and project management plugin featuring\
+    \ kanban board and gantt charts <= 2.6.13 - Insecure Direct Object Reference to\
+    \ Unauthenticated Authorization Bypass\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/dea2d045-d3b4-4b55-8b4f-5baa82a18834?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wedevs-project-manager,high,candidate

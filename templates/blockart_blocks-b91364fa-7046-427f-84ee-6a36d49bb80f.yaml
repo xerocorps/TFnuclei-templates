@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - blockart-blocks
+  - dsl:
+    - compare_versions(version, '<= 2.2.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/blockart-blocks/readme.txt'
+  redirects: true
+id: blockart_blocks-b91364fa-7046-427f-84ee-6a36d49bb80f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/blockart-blocks/
+    google-query: inurl:"/wp-content/plugins/blockart-blocks/"
+    shodan-query: http.html:"wp-content/plugins/blockart-blocks/"
+  name: "BlockArt Blocks \u2013 Gutenberg Blocks, Page Builder Blocks ,WordPress Block\
+    \ Plugin, Sections & Template Library <= 2.2.13 - Authenticated (Contributor+)\
+    \ Stored Cross-Site Scripting via `timestamp` Attribute\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b91364fa-7046-427f-84ee-6a36d49bb80f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,blockart-blocks,low,candidate

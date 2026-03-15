@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-product-bundle
+  - dsl:
+    - compare_versions(version, '<= 7.3.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-product-bundle/readme.txt'
+  redirects: true
+id: woo_product_bundle-5188dc72-a00d-4a07-b178-3f3ef26d7fc1
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-product-bundle/
+    google-query: inurl:"/wp-content/plugins/woo-product-bundle/"
+    shodan-query: http.html:"wp-content/plugins/woo-product-bundle/"
+  name: 'WPC Product Bundles for WooCommerce <= 7.3.1 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5188dc72-a00d-4a07-b178-3f3ef26d7fc1?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,woo-product-bundle,medium,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - smsa-shipping-official
+  - dsl:
+    - compare_versions(version, '<= 2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/smsa-shipping-official/readme.txt'
+  redirects: true
+id: smsa_shipping_official-29d72347-ba49-45c6-a964-2c75064ac866
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/smsa-shipping-official/
+    google-query: inurl:"/wp-content/plugins/smsa-shipping-official/"
+    shodan-query: http.html:"wp-content/plugins/smsa-shipping-official/"
+  name: 'SMSA Shipping(official) <= 2.3 - Authenticated (Subscriber+) Arbitrary File
+    Deletion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/29d72347-ba49-45c6-a964-2c75064ac866?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,smsa-shipping-official,low,candidate

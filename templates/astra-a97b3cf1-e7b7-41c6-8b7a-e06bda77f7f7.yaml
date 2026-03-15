@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - astra
+  - dsl:
+    - compare_versions(version, '<= 4.6.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/astra/style.css'
+  redirects: true
+id: astra-a97b3cf1-e7b7-41c6-8b7a-e06bda77f7f7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/astra/
+    google-query: inurl:"/wp-content/themes/astra/"
+    shodan-query: http.html:"wp-content/themes/astra/"
+  name: 'Astra <= 4.6.4 - Authenticated (Editor+) Stored Cross-Site Scripting via
+    Theme Header/Footer
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/a97b3cf1-e7b7-41c6-8b7a-e06bda77f7f7?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-theme,astra,low,candidate

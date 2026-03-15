@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - legrand
+  - dsl:
+    - compare_versions(version, '<= 2.17')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/legrand/style.css'
+  redirects: true
+id: legrand-571937a3-46f8-4cbf-a750-4c2fbb1f944b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/legrand/
+    google-query: inurl:"/wp-content/themes/legrand/"
+    shodan-query: http.html:"wp-content/themes/legrand/"
+  name: 'Legrand <= 2.17 - Unauthenticated Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/571937a3-46f8-4cbf-a750-4c2fbb1f944b?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-theme,legrand,critical,candidate

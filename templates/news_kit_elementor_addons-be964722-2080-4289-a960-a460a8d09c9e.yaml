@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - news-kit-elementor-addons
+  - dsl:
+    - compare_versions(version, '<= 1.4.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/news-kit-elementor-addons/readme.txt'
+  redirects: true
+id: news_kit_elementor_addons-be964722-2080-4289-a960-a460a8d09c9e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/news-kit-elementor-addons/
+    google-query: inurl:"/wp-content/plugins/news-kit-elementor-addons/"
+    shodan-query: http.html:"wp-content/plugins/news-kit-elementor-addons/"
+  name: 'News Kit Addons For Elementor <= 1.4.2 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/be964722-2080-4289-a960-a460a8d09c9e?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,news-kit-elementor-addons,high,candidate

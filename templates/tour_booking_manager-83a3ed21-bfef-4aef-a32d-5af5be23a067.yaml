@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tour-booking-manager
+  - dsl:
+    - compare_versions(version, '<= 1.7.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tour-booking-manager/readme.txt'
+  redirects: true
+id: tour_booking_manager-83a3ed21-bfef-4aef-a32d-5af5be23a067
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tour-booking-manager/
+    google-query: inurl:"/wp-content/plugins/tour-booking-manager/"
+    shodan-query: http.html:"wp-content/plugins/tour-booking-manager/"
+  name: 'WpTravelly <= 1.7.7 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/83a3ed21-bfef-4aef-a32d-5af5be23a067?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,tour-booking-manager,high,candidate
