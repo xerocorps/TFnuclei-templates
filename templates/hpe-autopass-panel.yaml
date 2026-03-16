@@ -1,0 +1,29 @@
+http:
+- matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    regex:
+    - (?i)autopass
+    type: regex
+  matchers-condition: and
+  max-redirects: 2
+  method: GET
+  path:
+  - https://{{Hostname}}:5814/autopass
+  - https://{{Hostname}}:5814/autopass/
+  redirects: true
+  stop-at-first-match: true
+id: hpe-autopass-panel
+info:
+  author: kylianghd
+  description: Detects an exposed HPE AutoPass License Server web interface on the
+    default HTTPS port (5814) by probing the /autopass endpoint.
+  metadata:
+    max-request: 2
+    product: autopass-license-server
+    vendor: hpe
+  name: HPE AutoPass License Server - Panel Detection
+  severity: info
+  tags: panel,exposure,misconfig,hpe,autopass
