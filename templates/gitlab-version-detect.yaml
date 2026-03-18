@@ -1,6 +1,6 @@
 id: gitlab-version-detect
 info:
-  author: milo2012
+  author: metascan
   description: Obtain GitLab Enterprise Edition Version Information
   metadata:
     shodan-query: "http.title:\"Sign in \xB7 GitLab\""
@@ -8,7 +8,7 @@ info:
   name: GitLab Enterprise Edition Version Detection
   reference:
   - https://censys.io/cve-2021-22205-it-was-a-gitlab-smash/
-  severity: info
+  severity: low
   tags: tech,gitlab
 requests:
 - matchers:
@@ -119,6 +119,10 @@ requests:
   - dsl:
     - contains(body,'/assets/application-c19a43b56f2b869d14e8b8865f2673e99e95a3f9912c95776e2aa44d0de56416.css')
     name: version 15.9.X
+    type: dsl
+  - dsl:
+    - contains(body,'/assets/application-cf4aa50cbc2dc9eb0c198d2424a0669f5788a487e0b84edbbd5535eb9d362c7d.css')
+    name: version 18.X.X
     type: dsl
   matchers-condition: or
   method: GET

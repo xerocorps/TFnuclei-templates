@@ -37,7 +37,7 @@ info:
     verified: true
   name: Flowise Installation Wizard - Exposure
   severity: high
-  tags: misconfig,exposure,install,flowise,intrusive,vuln
+  tags: misconfig,exposure,install,flowise,intrusive,vuln,ai
 variables:
   email: '{{randstr}}@{{rand_base(5)}}.com'
   name: '{{to_lower(rand_text_alpha(5))}}'
