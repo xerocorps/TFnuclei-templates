@@ -15,7 +15,7 @@ http:
     words:
     - aihub
   - dsl:
-    - compare_versions(version, '<= 1.3.3')
+    - compare_versions(version, '<= 1.3.7')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/aihub/
     google-query: inurl:"/wp-content/themes/aihub/"
     shodan-query: http.html:"wp-content/themes/aihub/"
-  name: 'AI Hub - Startup & Technology WordPress Theme <= 1.3.3 - Unauthenticated
+  name: 'AI Hub - Startup & Technology WordPress Theme <= 1.3.7 - Unauthenticated
     Arbitrary File Upload
 
     '

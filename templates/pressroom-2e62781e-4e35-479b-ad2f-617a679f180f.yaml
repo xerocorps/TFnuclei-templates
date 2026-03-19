@@ -15,7 +15,7 @@ http:
     words:
     - pressroom
   - dsl:
-    - compare_versions(version, '<= 6.9')
+    - compare_versions(version, '<= 7.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/pressroom/
     google-query: inurl:"/wp-content/themes/pressroom/"
     shodan-query: http.html:"wp-content/themes/pressroom/"
-  name: 'Pressroom - News Magazine WordPress Theme <= 6.9 - Reflected Cross-Site Scripting
+  name: 'Pressroom - News Magazine WordPress Theme <= 7.0 - Reflected Cross-Site Scripting
 
     '
   reference:

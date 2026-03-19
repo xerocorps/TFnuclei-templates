@@ -15,7 +15,7 @@ http:
     words:
     - appmysite
   - dsl:
-    - compare_versions(version, '<= 3.14.0')
+    - compare_versions(version, '<= 3.15.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/appmysite/
     google-query: inurl:"/wp-content/plugins/appmysite/"
     shodan-query: http.html:"wp-content/plugins/appmysite/"
-  name: 'AppMySite <= 3.14.0 - Missing Authorization
+  name: 'AppMySite <= 3.15.0 - Missing Authorization
 
     '
   reference:

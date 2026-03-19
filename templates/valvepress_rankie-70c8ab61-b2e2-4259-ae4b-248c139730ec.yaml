@@ -15,7 +15,7 @@ http:
     words:
     - valvepress-rankie
   - dsl:
-    - compare_versions(version, '<= 1.8.0')
+    - compare_versions(version, '< 1.8.2')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/valvepress-rankie/
     google-query: inurl:"/wp-content/plugins/valvepress-rankie/"
     shodan-query: http.html:"wp-content/plugins/valvepress-rankie/"
-  name: 'Rankie <= 1.8.0 - Missing Authorization
+  name: 'Rankie < 1.8.2 - Missing Authorization
 
     '
   reference:

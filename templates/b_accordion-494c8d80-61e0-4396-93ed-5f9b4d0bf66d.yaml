@@ -15,7 +15,7 @@ http:
     words:
     - b-accordion
   - dsl:
-    - compare_versions(version, '<= 2.0.0')
+    - compare_versions(version, '<= 2.0.2')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/b-accordion/
     google-query: inurl:"/wp-content/plugins/b-accordion/"
     shodan-query: http.html:"wp-content/plugins/b-accordion/"
-  name: 'B Accordion <= 2.0.0 - Authenticated (Contributor+) Information Exposure
+  name: 'B Accordion <= 2.0.2 - Authenticated (Contributor+) Information Exposure
 
     '
   reference:

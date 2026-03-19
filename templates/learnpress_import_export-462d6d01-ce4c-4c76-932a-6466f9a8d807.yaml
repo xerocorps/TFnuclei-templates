@@ -15,7 +15,7 @@ http:
     words:
     - learnpress-import-export
   - dsl:
-    - compare_versions(version, '<= 4.0.9')
+    - compare_versions(version, '<= 4.1.2')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/learnpress-import-export/
     google-query: inurl:"/wp-content/plugins/learnpress-import-export/"
     shodan-query: http.html:"wp-content/plugins/learnpress-import-export/"
-  name: 'LearnPress Export Import <= 4.0.9 - Unauthenticated Local File Inclusion
+  name: 'LearnPress Export Import <= 4.1.2 - Unauthenticated Local File Inclusion
 
     '
   reference:

@@ -15,7 +15,7 @@ http:
     words:
     - real3d-flipbook-lite
   - dsl:
-    - compare_versions(version, '<= 4.16.4')
+    - compare_versions(version, '<= 4.19.1')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/real3d-flipbook-lite/
     google-query: inurl:"/wp-content/plugins/real3d-flipbook-lite/"
     shodan-query: http.html:"wp-content/plugins/real3d-flipbook-lite/"
-  name: 'Real 3D FlipBook <= 4.16.4 - Missing Authorization
+  name: 'Real 3D FlipBook <= 4.19.1 - Missing Authorization
 
     '
   reference:
