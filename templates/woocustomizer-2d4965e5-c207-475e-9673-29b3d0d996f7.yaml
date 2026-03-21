@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocustomizer
+  - dsl:
+    - compare_versions(version, '<= 2.6.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocustomizer/readme.txt'
+  redirects: true
+id: woocustomizer-2d4965e5-c207-475e-9673-29b3d0d996f7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocustomizer/
+    google-query: inurl:"/wp-content/plugins/woocustomizer/"
+    shodan-query: http.html:"wp-content/plugins/woocustomizer/"
+  name: "StoreCustomizer \u2013 A plugin to Customize all WooCommerce Pages <= 2.6.3\
+    \ - Missing Authorization\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2d4965e5-c207-475e-9673-29b3d0d996f7?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocustomizer,high,candidate
