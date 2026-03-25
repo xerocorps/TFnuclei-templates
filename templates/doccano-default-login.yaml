@@ -1,0 +1,81 @@
+flow: http(1) && http(2) && http(3)
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_all(body, "doccano", "/_nuxt/")
+    type: dsl
+  raw:
+  - 'GET /auth HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: text/html
+
+    '
+- extractors:
+  - internal: true
+    json:
+    - .token
+    name: token
+    part: body
+    type: json
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/json")
+    - contains(body, "token")
+    type: dsl
+  raw:
+  - 'POST /v1/auth-token HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+    Accept: application/json
+
+
+    {"username":"admin","password":"password"}
+
+    '
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/json")
+    - contains_all(body, "\"username\"", "\"is_superuser\"", "admin")
+    type: dsl
+  raw:
+  - 'GET /v1/me HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Authorization: Token {{token}}
+
+    Accept: application/json
+
+    '
+id: doccano-default-login
+info:
+  author: 0x_Akoko
+  description: 'Detected the Doccano data labeling platform was using default administrator
+    credentials (admin:password). An attacker could have gained full administrative
+    access.
+
+    '
+  metadata:
+    fofa-query: title="doccano"
+    max-request: 3
+    product: doccano
+    shodan-query: http.title:"doccano"
+    vendor: doccano
+    verified: true
+  name: Doccano - Default Login
+  reference:
+  - https://github.com/doccano/doccano
+  - https://doccano.github.io/doccano/
+  severity: high
+  tags: doccano,default-login,vuln
