@@ -1,6 +1,6 @@
 flow: http(1) && http(2)
 http:
-- extractors:
+- matchers:
   - internal: true
     name: token
     part: body
@@ -10,7 +10,12 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-- matchers:
+- disable-path-automerge: true
+  extractors:
+  - dsl:
+    - token
+    type: dsl
+  matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -27,16 +32,14 @@ http:
     Authorization: Basic {{base64(token + '':'')}}
 
     '
-  self-contained: true
 id: sonarqube-cloud-token
 info:
   author: DhiyaneshDk
   metadata:
-    max-request: 1
     verified: true
   name: SonarQube Cloud Token Disclosure
   reference:
   - https://sonarcloud.io/web_api/api/authentication
   - https://docs.sonarsource.com/sonarqube/latest/user-guide/user-account/generating-and-using-tokens/#types-of-tokens
   severity: high
-  tags: exposure,token,sonarqube
+  tags: exposure,token,sonarqube,vuln

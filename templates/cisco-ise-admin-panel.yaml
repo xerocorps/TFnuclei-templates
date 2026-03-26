@@ -32,6 +32,7 @@ info:
     - icon_hash="-945076912"
     - icon_hash="-12304266"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Identity Services Engine"
     shodan-query:
     - html:"Identity Services Engine"
     - '"Set-Cookie: APPSESSIONID=" "Path=/admin"'

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tinychat-roomspy
+  - dsl:
+    - compare_versions(version, '<= 1.2.8')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tinychat-roomspy/readme.txt'
+  redirects: true
+id: tinychat-roomspy-a3617350e4ad4214577f8d36445014b9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tinychat-roomspy/
+    google-query: inurl:"/wp-content/plugins/tinychat-roomspy/"
+    shodan-query: 'vuln:'
+  name: 'TinyChat Room Spy <= 1.2.8 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/64cf73fa-cdb9-4703-869e-343ee6f8178e?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,tinychat-roomspy,medium

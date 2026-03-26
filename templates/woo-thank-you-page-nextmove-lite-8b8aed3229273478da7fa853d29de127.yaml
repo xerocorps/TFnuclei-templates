@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-thank-you-page-nextmove-lite
+  - dsl:
+    - compare_versions(version, '<= 2.18.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-thank-you-page-nextmove-lite/readme.txt'
+  redirects: true
+id: woo-thank-you-page-nextmove-lite-8b8aed3229273478da7fa853d29de127
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-thank-you-page-nextmove-lite/
+    google-query: inurl:"/wp-content/plugins/woo-thank-you-page-nextmove-lite/"
+    shodan-query: 'vuln:'
+  name: "NextMove Lite \u2013 Thank You Page for WooCommerce & Finale Lite \u2013\
+    \ Sales Countdown Timer & Discount for WooCommerce <= 2.17.0 - Missing Authorization\
+    \ to Unauthenticated System Information Disclosure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3d9332be-2cf0-46cd-81e4-6436aeec0f83?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woo-thank-you-page-nextmove-lite,high

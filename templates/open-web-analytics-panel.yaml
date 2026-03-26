@@ -20,6 +20,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)OWA CONFIG SETTINGS"
     shodan-query: html:"OWA CONFIG SETTINGS"
     verified: true
   name: Open Web Analytics Login - Detect

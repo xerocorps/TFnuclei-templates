@@ -29,6 +29,7 @@ info:
   metadata:
     max-request: 2
     product: kiali
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Kiali"})
     shodan-query: title:"Kiali"
     vendor: kiali
     verified: true
@@ -36,4 +37,4 @@ info:
   reference:
   - https://kiali.io/
   severity: info
-  tags: panel,kiali,detect,login
+  tags: panel,kiali,detect,login,discovery

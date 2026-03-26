@@ -19,10 +19,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Login \\(Virtual Traffic Manager"
     shodan-query: http.html:"Login (Virtual Traffic Manager"
     verified: true
   name: Ivanti Traffic Manager Panel - Detect
   reference:
   - https://www.ivanti.com/resources/v/doc/ivi/2528/2ef03e8ed03d
   severity: info
-  tags: detect,traffic-manager,panel,login
+  tags: detect,traffic-manager,panel,login,discovery

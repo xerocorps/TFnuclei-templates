@@ -28,6 +28,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Monsta FTP"})
     shodan-query: http.title:"Monsta FTP"
     verified: true
   name: Monsta FTP - Detect

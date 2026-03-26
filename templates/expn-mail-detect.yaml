@@ -7,13 +7,14 @@ info:
     information.
 
     '
+  metadata:
+    max-request: 1
   name: EXPN Mail Server Detect
   severity: info
-  tags: mail,expn,network
-network:
+  tags: mail,expn,network,detect,smtp
+tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:25'
   inputs:
   - data: 65686c6f20636865636b746c730a
     type: hex
@@ -21,4 +22,5 @@ network:
   - type: word
     words:
     - 250-EXPN
+  port: 25
   read-size: 2048

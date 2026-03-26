@@ -19,6 +19,7 @@ info:
     fofa-query: title="NextcloudPi"
     max-request: 1
     product: nextcloudpi
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)NextcloudPi"})
     shodan-query: title:"NextcloudPi"
     vendor: nextcloud
     verified: true

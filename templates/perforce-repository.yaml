@@ -29,6 +29,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Perforce"
     shodan-query: html:"Perforce"
     verified: true
   name: Perforce Repository Disclosure

@@ -3,21 +3,18 @@ http:
   - status:
     - 200
     type: status
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
-    - '"results":'
-    - '"items":'
-    - '"more":'
+    - Filters
+    - Realiabiility
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/api/components/suggestions?recentlyBrowsed='
+  - '{{BaseURL}}/projects?sort=-analysis_date'
 id: sonarqube-public-projects
 info:
-  author: sickwell
-  description: Sonarqube public projects detected.
+  author: Charles D.
   metadata:
     max-request: 1
   name: Sonarqube with public projects

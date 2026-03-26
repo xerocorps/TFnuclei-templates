@@ -18,7 +18,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Advanced Setup
+      - Security - Admin User Name &amp; Password"})
     shodan-query: http.title:"Advanced Setup - Security - Admin User Name &amp; Password"
   name: Quest Modem Configuration Login - Panel
   severity: info
-  tags: panel,quest,login,detect
+  tags: panel,quest,login,detect,discovery

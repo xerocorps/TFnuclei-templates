@@ -5,6 +5,8 @@ info:
     a given target.
   name: SiteCore Security Checks
 workflows:
+- template: technologies/sitecore-default-page.yaml
 - subtemplates:
-  - tags: sitecore
-  template: http/technologies/default-sitecore-page.yaml
+  - tags: vulnerabilities/sitecore-pre-auth-rce.yaml
+  - template: misconfiguration/sitecore-debug-page.yaml
+  template: exposed-panels/sitecore-login.yaml

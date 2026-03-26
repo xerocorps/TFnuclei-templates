@@ -29,6 +29,7 @@ info:
     framework: wordpress
     max-request: 3
     product: cmb2
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/cmb2/"
     vendor: developer
     verified: true
   name: WordPress CMB2 - Full Path Disclosure

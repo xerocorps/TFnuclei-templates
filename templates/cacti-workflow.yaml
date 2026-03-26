@@ -6,5 +6,5 @@ info:
   name: Cacti Checks
 workflows:
 - subtemplates:
-  - template: vulnerabilities/other/cacti-weathermap-file-write.yaml
-  template: technologies/cacti-detect.yaml
+  - tags: cacti
+  template: http/exposed-panels/cacti-panel.yaml

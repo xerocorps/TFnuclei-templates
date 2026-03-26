@@ -1,6 +1,6 @@
 flow: http(1) && http(2)
 http:
-- extractors:
+- matchers:
   - internal: true
     name: token
     part: body
@@ -10,7 +10,12 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-- matchers:
+- disable-path-automerge: true
+  extractors:
+  - dsl:
+    - token
+    type: dsl
+  matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -24,7 +29,6 @@ http:
     Host: api.telegram.org
 
     '
-  self-contained: true
 id: telegram-bot-token
 info:
   author: DhiyaneshDK
@@ -37,4 +41,4 @@ info:
   - https://core.telegram.org/bots/api
   - https://core.telegram.org/bots/features#botfather
   severity: high
-  tags: telegram,token,exposure
+  tags: telegram,token,exposure,vuln

@@ -404,8 +404,8 @@ requests:
     type: regex
   matchers-condition: and
   payloads:
-    header: /root/templates/my-nuclei-templates/helpers/payloads/request-headers.txt
-    sqli: /root/templates/my-nuclei-templates/helpers/payloads/sqli.txt
+    header: helpers/payloads/request-headers.txt
+    sqli: helpers/payloads/sqli.txt
   raw:
   - "GET / HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64;\
     \ rv:78.0) Gecko/20100101 Firefox/78.0\n\xA7header\xA7: \xA7sqli\xA7\n"

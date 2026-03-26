@@ -1,21 +1,20 @@
 id: vmware-horizon
 info:
-  author: dhiyaneshDK
-  name: VMware Horizon Login
-  reference: https://www.exploit-db.com/ghdb/6496
+  author: pdteam
+  name: VMware Horizon
   severity: info
-  tags: panel
+  tags: vmware,horizon
 requests:
 - matchers:
-  - part: body
-    type: word
+  - status:
+    - 200
+    type: status
+  - type: word
     words:
-    - <title>VMware Horizon</title>
-  - part: body
-    regex:
-    - (?m)^Missing route token in request$
-    type: regex
-  matchers-condition: or
+    - VMware Horizon
+  matchers-condition: and
+  max-redirects: 2
   method: GET
   path:
-  - '{{BaseURL}}/portal/webclient/index.html'
+  - '{{BaseURL}}'
+  redirects: true

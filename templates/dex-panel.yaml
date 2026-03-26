@@ -19,6 +19,7 @@ info:
     cwe-id: CWE-200
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Log in to dex"
     shodan-query: html:"Log in to dex"
     verified: true
   name: Dex Authentication - Panel

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - html5-lyrics-karaoke-player
+  - dsl:
+    - compare_versions(version, '<= 2.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/html5-lyrics-karaoke-player/readme.txt'
+  redirects: true
+id: html5-lyrics-karaoke-player-325b1cc71a25d2815c05a9704e6f388f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/html5-lyrics-karaoke-player/
+    google-query: inurl:"/wp-content/plugins/html5-lyrics-karaoke-player/"
+    shodan-query: 'vuln:'
+  name: 'HTML5 Lyrics Karaoke Player <= 2.4 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5102d03b-368f-410e-9c0f-a90caa7d28ec?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,html5-lyrics-karaoke-player,high

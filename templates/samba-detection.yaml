@@ -1,7 +1,15 @@
 id: samba-detection
 info:
   author: pussycat0x
-  name: samba detection
+  classification:
+    cwe-id: CWE-200
+  description: Samba is a free and open-source software that allows files to be shared
+    across Windows and Linux systems simply and easily.
+  name: Samba Detection
+  reference:
+  - https://www.samba.org/samba/what_is_samba.html
+  - https://www.samba.org/samba/history/security.html
+  remediation: Always apply the latest security patch.
   severity: info
   tags: network,smb,samba
 network:

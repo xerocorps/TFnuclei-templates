@@ -25,6 +25,7 @@ info:
   metadata:
     fofa-query: body="webui-centerpanel"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)webui-centerpanel"
     shodan-query: html:"webui-centerpanel"
     verified: true
   name: Cisco Web UI Login - Detect

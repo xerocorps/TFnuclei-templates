@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-testimonials-showcase
+  - dsl:
+    - compare_versions(version, '<= 1.1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-testimonials-showcase/readme.txt'
+  redirects: true
+id: simple-testimonials-showcase-3eb49d0b511671e7f1342b83ddbb1562
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-testimonials-showcase/
+    google-query: inurl:"/wp-content/plugins/simple-testimonials-showcase/"
+    shodan-query: 'vuln:'
+  name: 'Simple Testimonials Showcase <= 1.1.5 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b6008237-e4a8-4757-ae14-ac20c6f1b0af?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,simple-testimonials-showcase,medium

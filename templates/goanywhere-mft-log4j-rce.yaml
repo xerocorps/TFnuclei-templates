@@ -1,5 +1,13 @@
 http:
-- extractors:
+- cookie-reuse: true
+  extractors:
+  - group: 1
+    internal: true
+    name: view
+    part: body
+    regex:
+    - javax\.faces\.ViewState:1" value="(.*)" autocomplete
+    type: regex
   - kval:
     - interactsh_ip
     type: kval
@@ -12,13 +20,6 @@ http:
     part: interactsh_request
     regex:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
-    type: regex
-  - group: 1
-    internal: true
-    name: view
-    part: body
-    regex:
-    - javax\.faces\.ViewState:1" value="(.*)" autocomplete
     type: regex
   matchers:
   - part: interactsh_protocol

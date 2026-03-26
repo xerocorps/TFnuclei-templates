@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wens-responsive-column-layout-shortcodes
+  - dsl:
+    - compare_versions(version, '<= 2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wens-responsive-column-layout-shortcodes/readme.txt'
+  redirects: true
+id: wens-responsive-column-layout-shortcodes-1963751f4c19386996d2bbeb413c4c38
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wens-responsive-column-layout-shortcodes/
+    google-query: inurl:"/wp-content/plugins/wens-responsive-column-layout-shortcodes/"
+    shodan-query: 'vuln:'
+  name: 'eVision Responsive Column Layout Shortcodes <= 2.3 - Authenticated (Contributor+)
+    Stored Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c47e9220-d7d7-4a66-b555-8fa837d45d59?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wens-responsive-column-layout-shortcodes,low

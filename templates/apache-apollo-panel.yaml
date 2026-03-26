@@ -19,9 +19,10 @@ info:
   metadata:
     max-request: 1
     product: activemq_apollo
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Apache Apollo"})
     shodan-query: title:"Apache Apollo"
     vendor: apache
     verified: true
   name: Apache Apollo Panel - Detect
   severity: info
-  tags: panel,apache,apollo,login,detect
+  tags: panel,apache,apollo,login,detect,discovery

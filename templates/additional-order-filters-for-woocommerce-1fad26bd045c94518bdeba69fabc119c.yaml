@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - additional-order-filters-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 1.11')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/additional-order-filters-for-woocommerce/readme.txt'
+  redirects: true
+id: additional-order-filters-for-woocommerce-1fad26bd045c94518bdeba69fabc119c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/additional-order-filters-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/additional-order-filters-for-woocommerce/"
+    shodan-query: 'vuln:'
+  name: 'Additional Order Filters for WooCommerce <= 1.11 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/baa8b5ce-7ef8-4ca8-9957-2c3469f55dda?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,additional-order-filters-for-woocommerce,medium

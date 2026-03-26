@@ -1,0 +1,67 @@
+flow: http(1) && http(2)
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: csrf_token
+    part: header
+    regex:
+    - YII_CSRF_TOKEN=([^;]+)
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_all(body, "LimeSurvey", "loginform")
+    internal: true
+    type: dsl
+  raw:
+  - 'GET /index.php/admin/authentication/sa/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 302
+    - contains_any(to_lower(header), "adminsidepanel", "dashboard", "admin/index")
+    type: dsl
+  raw:
+  - 'POST /index.php/admin/authentication/sa/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+    Cookie: YII_CSRF_TOKEN={{csrf_token}}
+
+
+    user={{username}}&password={{password}}&YII_CSRF_TOKEN={{csrf_token}}&login_submit=login
+
+    '
+id: limesurvey-default-login
+info:
+  author: 0x_Akoko
+  description: 'Detected the LimeSurvey survey management platform was found to be
+    using default administrator credentials (admin:password). An attacker was able
+    to gain full administrative access to manage surveys, responses, and user accounts.
+
+    '
+  metadata:
+    fofa-query: title="LimeSurvey"
+    max-request: 2
+    product: limesurvey
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)LimeSurvey"})
+    shodan-query: http.title:"LimeSurvey"
+    vendor: limesurvey
+    verified: true
+  name: LimeSurvey - Default Admin Credentials
+  reference:
+  - https://github.com/LimeSurvey/LimeSurvey/blob/master/application/config/config-defaults.php
+  - https://www.limesurvey.org/manual/Optional_settings
+  severity: high
+  tags: limesurvey,default-login,auth
+variables:
+  password: password
+  username: admin

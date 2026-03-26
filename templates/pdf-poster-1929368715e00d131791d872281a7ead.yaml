@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - pdf-poster
+  - dsl:
+    - compare_versions(version, '<= 2.1.17')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/pdf-poster/readme.txt'
+  redirects: true
+id: pdf-poster-1929368715e00d131791d872281a7ead
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/pdf-poster/
+    google-query: inurl:"/wp-content/plugins/pdf-poster/"
+    shodan-query: 'vuln:'
+  name: 'PDF Poster - PDF Embedder Plugin for WordPress <= 2.1.17 - Reflected Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/341516d3-b785-4daf-98de-76f4f94b8c96?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,pdf-poster,medium

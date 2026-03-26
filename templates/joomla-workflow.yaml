@@ -1,7 +1,7 @@
 id: joomla-workflow
 info:
   author: daffainfo
-  description: A simple workflow that runs all Joomla! related nuclei templates on
+  description: A simple workflow that runs all Joomla related nuclei templates on
     a given target.
   name: Joomla! Security Checks
 workflows:
@@ -9,4 +9,4 @@ workflows:
   - name: joomla
     subtemplates:
     - tags: joomla
-  template: http/technologies/tech-detect.yaml
+  template: technologies/tech-detect.yaml

@@ -21,6 +21,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/themes/astra/"
     shodan-query: html:"/themes/astra/"
     verified: true
   name: WordPress Astra - Full Path Disclosure

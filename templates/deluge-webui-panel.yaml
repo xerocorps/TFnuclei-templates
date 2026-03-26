@@ -21,8 +21,8 @@ id: deluge-webui-panel
 info:
   author: tess
   classification:
+    cpe: cpe:2.3:a:deluge-torrent:deluge:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: Deluge WebUI login panel was detected.
   metadata:
@@ -33,4 +33,4 @@ info:
     verified: true
   name: Deluge WebUI Login Panel - Detect
   severity: info
-  tags: panel,deluge
+  tags: panel,deluge,deluge-torrent

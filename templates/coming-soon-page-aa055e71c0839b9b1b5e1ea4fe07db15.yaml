@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - coming-soon-page
+  - dsl:
+    - compare_versions(version, '<= 3.6.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/coming-soon-page/readme.txt'
+  redirects: true
+id: coming-soon-page-aa055e71c0839b9b1b5e1ea4fe07db15
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/coming-soon-page/
+    google-query: inurl:"/wp-content/plugins/coming-soon-page/"
+    shodan-query: 'vuln:'
+  name: 'Coming soon and Maintenance mode  <= 3.6.6 - Missing Authorization to Arbitrary
+    Email Send
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e07649c0-b2eb-421b-95ae-a9530524470a?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,coming-soon-page,high

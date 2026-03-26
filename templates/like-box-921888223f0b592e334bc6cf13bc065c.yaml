@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - like-box
+  - dsl:
+    - compare_versions(version, '<= 0.8.39')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/like-box/readme.txt'
+  redirects: true
+id: like-box-921888223f0b592e334bc6cf13bc065c
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/like-box/
+    google-query: inurl:"/wp-content/plugins/like-box/"
+    shodan-query: 'vuln:'
+  name: 'Social Like Box and Page by WpDevArt <= 0.8.39 - Authenticated (Admin+) Stored
+    Cross Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aec57fbd-83c5-4080-9372-66500c299afc?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,like-box,low

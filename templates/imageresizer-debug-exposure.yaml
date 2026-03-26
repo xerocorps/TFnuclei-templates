@@ -25,6 +25,7 @@ info:
   metadata:
     fofa-query: title="ImageResizer"
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ImageResizer"})
     verified: true
   name: ImageResizer Debug - Information Exposure
   reference:

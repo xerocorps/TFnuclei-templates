@@ -23,13 +23,12 @@ http:
 id: osasi-default-login
 info:
   author: biero-el-corridor
-  description: 'Detected OSASI PLC web interface accessible with default credentials,
-    potentially allowing unauthorized administrative access to industrial control
-    systems.
+  description: 'OSASI PLC web interface default login credentials were discovered.
 
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-268676052"
     shodan-query: http.favicon.hash:-268676052
     verified: true
   name: OSASI PLC - Default Login

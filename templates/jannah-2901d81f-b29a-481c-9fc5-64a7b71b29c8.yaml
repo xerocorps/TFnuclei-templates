@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Version:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jannah
+  - dsl:
+    - compare_versions(version, '<= 7.6.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/jannah/style.css'
+  redirects: true
+id: jannah-2901d81f-b29a-481c-9fc5-64a7b71b29c8
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/jannah/
+    google-query: inurl:"/wp-content/themes/jannah/"
+    shodan-query: http.html:"wp-content/themes/jannah/"
+  name: 'Jannah <= 7.6.0 - Unauthenticated Local File Inclusion
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2901d81f-b29a-481c-9fc5-64a7b71b29c8?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-theme,jannah,critical,candidate

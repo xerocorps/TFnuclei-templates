@@ -3,13 +3,13 @@ dns:
   matchers:
   - type: word
     words:
-    - "IN\tCNAME"
+    - 1.1.1.1
   name: '{{FQDN}}'
   recursion: true
   retries: 3
-  type: CNAME
+  type: A
 id: basic-dns-example
 info:
   author: pdteam
-  name: Basic DNS Request
+  name: Test DNS Template
   severity: info

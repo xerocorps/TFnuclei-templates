@@ -17,8 +17,9 @@ info:
   author: DhiyaneshDk
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)macOS Server"})
     shodan-query: title:"macOS Server"
     verified: true
   name: macOS Server Panel - Detect
   severity: info
-  tags: panel,login,macos-server,detect
+  tags: panel,login,macos-server,detect,discovery

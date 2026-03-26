@@ -26,10 +26,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Micro\u00a0Focus\u00a0Application\u00a0Lifecycle\u00a0Management"
     shodan-query: "http.html:\"Micro\_Focus\_Application\_Lifecycle\_Management\""
     verified: true
   name: Micro Focus Application Lifecycle Management - Panel
   reference:
   - https://www.opentext.com/products/alm-quality-center
   severity: info
-  tags: panel,microfocus,login,detect
+  tags: panel,microfocus,login,detect,discovery

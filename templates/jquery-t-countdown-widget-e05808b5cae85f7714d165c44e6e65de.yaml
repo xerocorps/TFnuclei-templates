@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - jquery-t-countdown-widget
+  - dsl:
+    - compare_versions(version, '<= 2.3.23')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/jquery-t-countdown-widget/readme.txt'
+  redirects: true
+id: jquery-t-countdown-widget-e05808b5cae85f7714d165c44e6e65de
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/jquery-t-countdown-widget/
+    google-query: inurl:"/wp-content/plugins/jquery-t-countdown-widget/"
+    shodan-query: 'vuln:'
+  name: 'jQuery T(-) Countdown Widget <= 2.3.23 - Authenticated (Contributor+) Stored
+    Cross-Site Scripting via Shortocde
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0b493316-511d-479f-b65c-c04ecd17171f?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,jquery-t-countdown-widget,low

@@ -16,8 +16,8 @@ info:
 
     '
   metadata:
-    fofa-query: app="Traccar"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Traccar"
     shodan-query: html:"Traccar"
     verified: true
   name: Traccar Panel - Detect

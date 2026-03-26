@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/plugins/duracelltomi-google-tag-manager/"
     shodan-query: html:"/plugins/duracelltomi-google-tag-manager/"
     verified: true
   name: WordPress Plugin Google Tag Manager - Full Path Disclosure

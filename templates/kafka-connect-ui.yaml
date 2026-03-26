@@ -3,12 +3,22 @@ info:
   author: pdteam
   name: Apache Kafka Connect UI Exposure
   severity: low
-  tags: panel,kafka,apache
+  tags: panel,kafka
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - type: word
     words:
     - <title>Kafka Connect UI</title>
-  method: GET
-  path:
-  - '{{BaseURL}}'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
+    Firefox/55
+
+    '
+  threads: 100

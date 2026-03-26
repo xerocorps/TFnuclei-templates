@@ -44,7 +44,7 @@ info:
     verified: true
   name: DragonFly Public - Signup Enabled
   severity: high
-  tags: dragonfly,misconfig,register,signup
+  tags: dragonfly,misconfig,register,signup,vuln
 variables:
   email: '{{randstr}}@{{rand_base(5)}}.com'
   password: '{{rand_base(8)}}'

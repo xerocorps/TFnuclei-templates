@@ -1,4 +1,16 @@
-http:
+id: pypi-upload-token
+info:
+  author: DhiyaneshDK
+  metadata:
+    verified: 'true'
+  name: PyPI Upload Token
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/pypi.yml
+  - https://github.com/pypa/warehouse/issues/6051
+  - https://pypi.org/project/pypitoken/
+  severity: info
+  tags: pypi,token,exposure
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,16 +19,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: pypi-upload-token
-info:
-  author: DhiyaneshDK
-  metadata:
-    max-request: 1
-    verified: true
-  name: PyPI Upload Token
-  reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/pypi.yml
-  - https://github.com/pypa/warehouse/issues/6051
-  - https://pypi.org/project/pypitoken/
-  severity: info
-  tags: pypi,token,exposure

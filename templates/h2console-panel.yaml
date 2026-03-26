@@ -12,8 +12,8 @@ id: h2console-panel
 info:
   author: righettod
   classification:
+    cpe: cpe:2.3:a:h2database:h2:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: H2 Console Web login panel was detected.
   metadata:
@@ -26,4 +26,4 @@ info:
   - https://mp.weixin.qq.com/s/Yn5U8WHGJZbTJsxwUU3UiQ
   - https://jfrog.com/blog/the-jndi-strikes-back-unauthenticated-rce-in-h2-database-console
   severity: info
-  tags: panel,h2,console
+  tags: panel,h2,console,h2database

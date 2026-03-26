@@ -11,7 +11,6 @@ info:
 
     '
   metadata:
-    max-request: 1
     shodan-query: port:3310 product:"ClamAV" version:"0.99.2"
     verified: true
   name: ClamAV Server - Unauthenticated Access
@@ -19,10 +18,11 @@ info:
   - https://seclists.org/nmap-dev/2016/q2/201
   - https://bugzilla.clamav.net/show_bug.cgi?id=11585
   severity: high
-  tags: network,clamav,unauth,seclists,misconfig
-tcp:
+  tags: network,clamav,unauth,seclists
+network:
 - host:
   - '{{Hostname}}'
+  - '{{Host}}:3310'
   inputs:
   - data: "SCAN /nonexistent/{{to_lower(rand_text_alpha(10))}}\r\n"
   matchers:
@@ -31,5 +31,4 @@ tcp:
     words:
     - No such
     - lstat() failed
-  port: 3310
   read-size: 48

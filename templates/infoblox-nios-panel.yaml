@@ -26,10 +26,11 @@ info:
   metadata:
     max-request: 1
     product: nios
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Infoblox"})
     shodan-query: http.title:"Infoblox"
     vendor: infoblox
   name: Infoblox NIOS Login Panel - Detect
   reference:
   - https://www.infoblox.com/glossary/network-identity-operating-system-nios/
   severity: info
-  tags: panel,infoblox,nios,login,detect
+  tags: panel,infoblox,nios,login,detect,discovery

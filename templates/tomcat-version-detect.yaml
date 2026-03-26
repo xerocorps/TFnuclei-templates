@@ -6,8 +6,7 @@ info:
   name: Detect Tomcat Version
   severity: info
 requests:
-- attack: sniper
-  extractors:
+- extractors:
   - group: 2
     name: version
     part: body
@@ -22,18 +21,6 @@ requests:
     - 404
     type: status
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /something_not_existing_ HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/something_not_existing_'

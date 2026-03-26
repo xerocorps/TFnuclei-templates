@@ -1,10 +1,4 @@
-id: amazon-mws-auth-token
-info:
-  author: puzzlepeaches
-  name: Amazon MWS Auth Token
-  severity: info
-  tags: exposure,token,aws
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -13,3 +7,11 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: amazon-mws-auth-token
+info:
+  author: puzzlepeaches
+  metadata:
+    max-request: 1
+  name: Amazon MWS Auth Token
+  severity: info
+  tags: exposure,token,aws,amazon,auth

@@ -1,4 +1,10 @@
-http:
+id: microsoft-teams-webhook
+info:
+  author: Ice3man
+  name: Microsoft Teams Webhook Disclosure
+  severity: info
+  tags: exposure,token,microsoft
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,11 +13,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: microsoft-teams-webhook
-info:
-  author: Ice3man
-  metadata:
-    max-request: 1
-  name: Microsoft Teams Webhook Disclosure
-  severity: info
-  tags: exposure,token,microsoft

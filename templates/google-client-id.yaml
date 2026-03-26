@@ -1,14 +1,4 @@
-id: google-client-id
-info:
-  author: DhiyaneshDK
-  metadata:
-    verified: 'true'
-  name: Google Client ID
-  reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/google.yml
-  severity: info
-  tags: google,token,exposure
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -17,3 +7,14 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: google-client-id
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 1
+    verified: true
+  name: Google Client ID
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/google.yml
+  severity: info
+  tags: google,token,exposure

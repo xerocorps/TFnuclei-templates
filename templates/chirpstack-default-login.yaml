@@ -26,16 +26,14 @@ info:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-1392
-  description: 'Fresh ChirpStack installations use the default credentials (admin/admin),
-    allowing attackers to easily access the admin console.
-
-    '
+  description: ChirpStack default login credentials were discovered.
   metadata:
     fofa-query: title="ChirpStack LoRaWAN"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "ChirpStack LoRaWAN"})
     shodan-query: http.title:"ChirpStack LoRaWAN"
     verified: true
-  name: ChirpStack - Default Login
+  name: ChirpStack Default Credentials
   reference:
   - https://www.chirpstack.io/docs/chirpstack/use/login.html
   severity: high

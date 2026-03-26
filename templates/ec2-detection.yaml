@@ -9,11 +9,7 @@ dns:
 id: ec2-detection
 info:
   author: melbadry9
-  classification:
-    cwe-id: CWE-200
-  description: Amazon Elastic Compute Cloud (EC2) detected.
-  name: AWS EC2 Detection
-  reference:
-  - https://blog.melbadry9.xyz/dangling-dns/aws/ddns-ec2-current-state
+  name: AWS EC2 detection
+  reference: https://blog.melbadry9.xyz/dangling-dns/aws/ddns-ec2-current-state
   severity: info
   tags: dns,ec2,aws

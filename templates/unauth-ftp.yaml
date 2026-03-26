@@ -7,8 +7,8 @@ info:
   tags: network,ftp
 network:
 - host:
-  - '{{Host}}:21'
   - '{{Hostname}}'
+  - '{{Hostname}}:21'
   inputs:
   - data: "USER anonymous\r\nPASS nuclei\r\n"
   matchers:
