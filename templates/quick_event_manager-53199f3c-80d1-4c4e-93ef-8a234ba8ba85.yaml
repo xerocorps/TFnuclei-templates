@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - quick-event-manager
+  - dsl:
+    - compare_versions(version, '<= 9.7.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/quick-event-manager/readme.txt'
+  redirects: true
+id: quick_event_manager-53199f3c-80d1-4c4e-93ef-8a234ba8ba85
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/quick-event-manager/
+    google-query: inurl:"/wp-content/plugins/quick-event-manager/"
+    shodan-query: http.html:"wp-content/plugins/quick-event-manager/"
+  name: 'Quick Event Manager <= 9.7.4 - Missing Authorization Checks
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/53199f3c-80d1-4c4e-93ef-8a234ba8ba85?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,quick-event-manager,high,candidate

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - accredible-certificates
+  - dsl:
+    - compare_versions(version, '<= 1.4.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/accredible-certificates/readme.txt'
+  redirects: true
+id: accredible_certificates-f96d3773-29a1-44bd-904a-905aff2b345e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/accredible-certificates/
+    google-query: inurl:"/wp-content/plugins/accredible-certificates/"
+    shodan-query: http.html:"wp-content/plugins/accredible-certificates/"
+  name: 'Accredible Certificates & Open Badges <= 1.4.9 - Authenticated (Administrator+)
+    SQL Injection via orderby Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f96d3773-29a1-44bd-904a-905aff2b345e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,accredible-certificates,low,candidate

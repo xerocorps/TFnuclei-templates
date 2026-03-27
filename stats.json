@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-03-26T05:23:29.991611+00:00",
-  "total_templates": 51327,
-  "duplicates_removed": 517843,
+  "last_updated": "2026-03-27T05:23:32.376689+00:00",
+  "total_templates": 51331,
+  "duplicates_removed": 517875,
   "deduplication_breakdown": {
-    "exact_content": 346742,
-    "semantic_fingerprint": 113915,
-    "normalized_id": 57186
+    "exact_content": 346552,
+    "semantic_fingerprint": 114120,
+    "normalized_id": 57203
   },
   "sources": {
     "total": 440,
@@ -14,11 +14,11 @@
     "skipped": 20
   },
   "severity_breakdown": {
-    "critical": 5749,
-    "high": 11178,
-    "medium": 14676,
-    "low": 12642,
-    "info": 6719,
+    "critical": 5750,
+    "high": 11181,
+    "medium": 14672,
+    "low": 12645,
+    "info": 6720,
     "unknown": 363
   },
   "failed_sources": [
@@ -28,6 +28,27 @@
         "repo": "rxerium/CISA-KEV"
       },
       "error": "Could not download rxerium/CISA-KEV from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "lsr00ter/templates"
+      },
+      "error": "Could not download lsr00ter/templates from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "rutgerhrm/valid8"
+      },
+      "error": "Could not download rutgerhrm/valid8 from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "redteambrasil/nuclei-templates"
+      },
+      "error": "Could not download redteambrasil/nuclei-templates from any branch"
     },
     {
       "source": {
@@ -95,13 +116,6 @@
     {
       "source": {
         "type": "github_repo",
-        "repo": "lsr00ter/templates"
-      },
-      "error": "Could not download lsr00ter/templates from any branch"
-    },
-    {
-      "source": {
-        "type": "github_repo",
         "repo": "akshayrajs/100K-nuclei-templates",
         "discovered_at": "2025-12-25T06:43:58.376441+00:00",
         "stars": 2
@@ -143,20 +157,6 @@
         "stars": 1
       },
       "error": "Could not download thenawabx/Thenawabx_Nuclei_Templates from any branch"
-    },
-    {
-      "source": {
-        "type": "github_repo",
-        "repo": "redteambrasil/nuclei-templates"
-      },
-      "error": "Could not download redteambrasil/nuclei-templates from any branch"
-    },
-    {
-      "source": {
-        "type": "github_repo",
-        "repo": "rutgerhrm/valid8"
-      },
-      "error": "Could not download rutgerhrm/valid8 from any branch"
     }
   ]
 }

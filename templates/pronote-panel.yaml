@@ -23,7 +23,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)PRONOTE"})
     shodan-query: http.title:"PRONOTE"
   name: PRONOTE Login Panel - Detect
   reference:

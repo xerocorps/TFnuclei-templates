@@ -14,8 +14,8 @@ id: cortex-xsoar-login
 info:
   author: dhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:paloaltonetworks:cortex_xsoar:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: Cortex XSOAR login panel was detected.
   metadata:
@@ -25,4 +25,4 @@ info:
     vendor: paloaltonetworks
   name: Cortex XSOAR Login Panel - Detect
   severity: info
-  tags: panel,soar,login
+  tags: panel,soar,login,paloaltonetworks

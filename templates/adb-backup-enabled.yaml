@@ -9,13 +9,12 @@ id: adb-backup-enabled
 info:
   author: gaurang
   classification:
-    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: ADB Backup is enabled, which allows the backup and restore of an app's
     private data.
   name: ADB Backup Enabled
-  reference: -https://adb-backup.com/
+  reference:
+  - https://adb-backup.com/
   remediation: Ensure proper access or disable completely.
   severity: low
   tags: android,file

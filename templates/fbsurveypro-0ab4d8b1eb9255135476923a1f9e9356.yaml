@@ -1,0 +1,58 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - fbsurveypro
+  - dsl:
+    - compare_versions(version, '<= 1.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/fbsurveypro/readme.txt'
+  redirects: true
+id: fbsurveypro-0ab4d8b1eb9255135476923a1f9e9356
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+  description: "The Facebook Survey Pro plugin for WordPress is vulnerable to generic\
+    \ SQL Injection via the \u2018id\u2019 parameter in versions up to, and including,\
+    \ 1.0 due to insufficient escaping on the user supplied parameter and lack of\
+    \ sufficient preparation on the existing SQL query.  This makes it possible for\
+    \ unauthenticated attackers to append additional SQL queries into already existing\
+    \ queries that can be used to extract sensitive information from the database."
+  metadata:
+    fofa-query: wp-content/plugins/fbsurveypro/
+    google-query: inurl:"/wp-content/plugins/fbsurveypro/"
+    shodan-query: 'vuln:'
+  name: Facebook Survey Pro <= 1.0 - SQL Injection
+  reference:
+  - https://en.0day.today/exploits/20623
+  - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-fb-survey-pro-id-parameter-sql-injection-1-0/
+  - https://web.archive.org/web/20210123122350/http%3A//www.securityfocus.com/bid/56595/exploit
+  - https://packetstormsecurity.com/files/118238/WordPress-Facebook-Survey-SQL-Injection.html
+  - https://www.exploit-db.com/exploits/22853
+  severity: critical
+  tags: cve,wordpress,wp-plugin,fbsurveypro,critical

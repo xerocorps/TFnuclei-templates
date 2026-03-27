@@ -1,23 +1,26 @@
 id: self-signed-ssl
 info:
   author: righettod,pdteam
+  description: 'self-signed certificates are public key certificates that are not
+    issued by a certificate authority. These self-signed
+
+    certificates are easy to make and do not cost money. However, they do not provide
+    any trust value.
+
+    '
+  metadata:
+    max-request: 1
   name: Self Signed SSL Certificate
+  reference:
+  - https://www.rapid7.com/db/vulnerabilities/ssl-self-signed-certificate/
+  remediation: 'Purchase or generate a proper SSL certificate for this service.
+
+    '
   severity: low
-  tags: ssl
+  tags: ssl,tls,self-signed
 ssl:
 - address: '{{Host}}:{{Port}}'
-  extractors:
-  - internal: true
-    json:
-    - .common_name[]
-    name: common_name
-    type: json
-  - internal: true
-    json:
-    - .issuer_common_name[]
-    name: issuer_common_name
-    type: json
   matchers:
   - dsl:
-    - common_name == issuer_common_name
+    - self_signed == true
     type: dsl

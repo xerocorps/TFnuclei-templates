@@ -13,9 +13,10 @@ http:
     Content-Type: application/x-www-form-urlencoded
     Referer: '{{BaseURL}}'
   matchers:
-  - status:
-    - 500
-    type: status
+  - part: body
+    type: word
+    words:
+    - MysqliSqlHelper
   method: POST
   path:
   - '{{BaseURL}}/?login=yes'

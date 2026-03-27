@@ -17,14 +17,14 @@ headless:
       value: 'default-src * ''unsafe-inline'' ''unsafe-eval'' data: blob:;'
   - action: script
     args:
-      code: "() => {\n  window.alerts = [];\n\n  logger = found => window.alerts.push(found);\n\
-        \n  function getStackTrace() {\n    var stack;\n    try {\n      throw new\
-        \ Error('');\n    } catch (error) {\n      stack = error.stack || '';\n  \
-        \  }\n\n    stack = stack.split('\\n').map(line => line.trim());\n    return\
-        \ stack.splice(stack[0] == 'Error' ? 2 : 1);\n  }\n\n  var oldSender = window.postMessage;\n\
-        \n  window.postMessage = (data, origin) => {\n    if (origin == '*') {\n \
-        \     logger({stack: getStackTrace(), args: {data, origin}});\n      return\
-        \ oldSender.apply(this, arguments);\n    }\n  };\n}\n"
+      code: "(function() {window.alerts = [];\n\nfunction logger(found) {\n\twindow.alerts.push(found);\n\
+        }\n\nfunction getStackTrace () {\n  var stack;\n  try {\n    throw new Error('');\n\
+        \  }\n  catch (error) {\n    stack = error.stack || '';\n  }\n  stack = stack.split('\\\
+        n').map(function (line) { return line.trim(); });\n  return stack.splice(stack[0]\
+        \ == 'Error' ? 2 : 1);\n}\n\nvar oldSender = window.postMessage;\n\nwindow.postMessage\
+        \ = function(data, origin) {\nif(origin == '*'){\n    logger({stack: getStackTrace(),\
+        \ args: {data, origin}});\n    return oldSender.apply(this, arguments);\n\
+        \    }\n  };\n})();\n"
       hook: true
   - action: navigate
     args:
@@ -38,7 +38,6 @@ id: postmessage-outgoing-tracker
 info:
   author: LogicalHunter
   name: Postmessage Outgoing Tracker
-  reference:
-  - https://appcheck-ng.com/html5-cross-document-messaging-vulnerabilities/
+  reference: https://appcheck-ng.com/html5-cross-document-messaging-vulnerabilities/
   severity: info
   tags: headless,postmessage

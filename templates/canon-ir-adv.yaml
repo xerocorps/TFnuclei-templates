@@ -27,7 +27,6 @@ info:
   author: ritikchaddha,matejsmycka
   metadata:
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Canon iR-ADV"})
     shodan-query: title:"Canon iR-ADV"
     verified: true
   name: Canon iR-ADV Panel - Detect

@@ -1,11 +1,5 @@
 http:
-- extractors:
-  - group: 1
-    name: version
-    regex:
-    - login.bundle.js\?v=([\d\.]+)
-    type: regex
-  matchers:
+- matchers:
   - part: body
     type: word
     words:
@@ -27,18 +21,9 @@ info:
 
     '
   metadata:
-    fofa-query:
-    - title="veeam backup enterprise manager"
-    - icon_hash="169658321"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)veeam backup
-      enterprise manager"}) || service["favicon.ico.image.mmh3"] == "169658321" ||
-      service["http.body"] matches "(?i)Veeam"
-    shodan-query:
-    - title:"veeam backup enterprise manager"
-    - http.favicon.hash:169658321
-    - '"Set-Cookie: .ASPXANONYMOUS" http.html:"Veeam"'
+    shodan-query: title:"veeam backup enterprise manager"
     verified: true
   name: Veeam Backup Enterprise Manager Login - Detect
   severity: info
-  tags: veeam,panel,enterprise-manager,login,detect,discovery
+  tags: veeam,panel,enterprise-manager,login,detect

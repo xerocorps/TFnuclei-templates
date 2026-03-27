@@ -27,7 +27,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)setup\\.py"
     shodan-query: html:"setup.py"
     verified: true
   name: Python Setup Configuration - Exposure

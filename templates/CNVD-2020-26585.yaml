@@ -15,11 +15,14 @@ http:
     - (\d{4}-\d{2}-\d{2})\\/([a-f0-9]+\.txt)
     type: regex
   matchers:
-  - condition: and
-    dsl:
-    - status_code_2 == 200
-    - body_2 == str1
-    type: dsl
+  - part: body
+    type: word
+    words:
+    - test{{randstr}}
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   raw:
   - 'POST /index.php?s=/home/page/uploadImg HTTP/1.1
 
@@ -35,7 +38,7 @@ http:
     Content-Type: text/plain
 
 
-    {{str1}}
+    test{{randstr}}
 
     ----------------------------835846770881083140190633--
 
@@ -67,6 +70,4 @@ info:
   - https://blog.csdn.net/qq_48985780/article/details/122211136
   - https://github.com/star7th/showdoc/pull/1059
   severity: critical
-  tags: cnvd,cnvd2020,showdoc,fileupload,intrusive
-variables:
-  str1: '{{randstr}}'
+  tags: cnvd,cnvd2020,showdoc,fileupload

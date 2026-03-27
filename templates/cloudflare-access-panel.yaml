@@ -19,8 +19,6 @@ info:
   description: 'Detected exposed Cloudflare Access login pages.
 
     '
-  metadata:
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Cloudflare Access"})
   name: Cloudflare Access - Login Panel Detection
   reference:
   - https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/

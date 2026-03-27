@@ -49,14 +49,15 @@ info:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
-  description: CouchDB default login credentials were discovered.
+  description: 'CouchDB weak admin credentials were discovered.
+
+    '
   metadata:
     fofa-query: app="APACHE-CouchDB"
     max-request: 16
     product: couchdb
-    runzero-match: service["http.head.server"] matches `^CouchDB/`
     vendor: apache
     verified: true
-  name: CouchDB Default Credentials
+  name: CouchDB - Default Login
   severity: high
-  tags: default-login,couchdb,misconfig,vuln
+  tags: default-login,couchdb,misconfig

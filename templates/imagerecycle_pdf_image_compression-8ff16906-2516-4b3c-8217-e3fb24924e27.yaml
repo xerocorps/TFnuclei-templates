@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - imagerecycle-pdf-image-compression
+  - dsl:
+    - compare_versions(version, '<= 3.1.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/imagerecycle-pdf-image-compression/readme.txt'
+  redirects: true
+id: imagerecycle_pdf_image_compression-8ff16906-2516-4b3c-8217-e3fb24924e27
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/imagerecycle-pdf-image-compression/
+    google-query: inurl:"/wp-content/plugins/imagerecycle-pdf-image-compression/"
+    shodan-query: http.html:"wp-content/plugins/imagerecycle-pdf-image-compression/"
+  name: 'ImageRecycle pdf & image compression <= 3.1.13 - Missing Authorization to
+    Settings Update in optimizeAllOn
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/8ff16906-2516-4b3c-8217-e3fb24924e27?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,imagerecycle-pdf-image-compression,high,candidate

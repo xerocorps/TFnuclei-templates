@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woo-gift-cards-lite
+  - dsl:
+    - compare_versions(version, '<= 2.6.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woo-gift-cards-lite/readme.txt'
+  redirects: true
+id: woo_gift_cards_lite-2b0d0c44-0ee8-400b-a4ea-e5520c2a6710
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woo-gift-cards-lite/
+    google-query: inurl:"/wp-content/plugins/woo-gift-cards-lite/"
+    shodan-query: http.html:"wp-content/plugins/woo-gift-cards-lite/"
+  name: "Ultimate Gift Cards for WooCommerce \u2013 Create, Redeem & Manage Digital\
+    \ Gift Certificates with Personalized Templates <= 2.6.6 - Missing Authorization\
+    \ to Unauthenticated Information Exposure\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2b0d0c44-0ee8-400b-a4ea-e5520c2a6710?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woo-gift-cards-lite,high,candidate

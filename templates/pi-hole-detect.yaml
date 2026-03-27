@@ -3,29 +3,17 @@ http:
   - status:
     - 200
     type: status
-  - condition: or
+  - condition: and
     part: body
     type: word
     words:
     - Pi-hole
     - Web Interface
     - FTL
-  - condition: or
-    part: body
-    type: word
-    words:
-    - '<title>Pi-hole - '
-    - 'Pi-hole: Your black hole for Internet advertisements'
-    - 'Pi-hole: A black hole for Internet advertisements'
-    - https://pi-hole.net
-    - <pre>sudo pihole -a -p</pre>
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/admin/index.php'
-  - '{{BaseURL}}/admin/login.php'
-  - '{{BaseURL}}/admin/index.php?login'
-  - '{{BaseURL}}/index.php?login'
 id: pi-hole-detect
 info:
   author: geeknik

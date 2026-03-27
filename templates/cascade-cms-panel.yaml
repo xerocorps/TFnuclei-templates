@@ -21,7 +21,6 @@ info:
     \ managing stand-out websites.\n"
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Cascade CMS"})
     shodan-query: http.title:"Cascade CMS"
     verified: true
   name: Cascade CMS Panel - Detect

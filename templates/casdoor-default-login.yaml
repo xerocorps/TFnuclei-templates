@@ -1,0 +1,55 @@
+flow: http(1) && http(2)
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_any(to_lower(body), "casdoor", "casbin", "app-built-in")
+    internal: true
+    type: dsl
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/json")
+    - contains_all(body, "\"status\":\"ok\"", "\"data\":\"built-in/")
+    type: dsl
+  raw:
+  - 'POST /api/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+
+    {"application":"app-built-in","organization":"built-in","username":"{{username}}","password":"{{password}}","autoSignin":true,"signinMethod":"Password","type":"login"}
+
+    '
+id: casdoor-default-login
+info:
+  author: 0x_Akoko
+  description: 'Detected Casdoor platform was found to have been using the default
+    administrator credentials (admin:123). An attacker could have gained full administrative
+    access to manage organizations, users, applications, and OAuth providers.
+
+    '
+  metadata:
+    fofa-query: title="Casdoor" || body="casdoor"
+    max-request: 2
+    product: casdoor
+    shodan-query: http.title:"Casdoor"
+    vendor: casdoor
+    verified: true
+  name: Casdoor - Default Admin Credentials
+  reference:
+  - https://casdoor.org/docs/basic/core-concepts/
+  - https://github.com/casdoor/casdoor
+  severity: high
+  tags: casdoor,default-login,auth,vuln
+variables:
+  password: '123'
+  username: admin

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - author-avatars
+  - dsl:
+    - compare_versions(version, '<= 2.1.21')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/author-avatars/readme.txt'
+  redirects: true
+id: author_avatars-7b9aaafb-cb39-4a3b-85db-d0a8e9498d60
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/author-avatars/
+    google-query: inurl:"/wp-content/plugins/author-avatars/"
+    shodan-query: http.html:"wp-content/plugins/author-avatars/"
+  name: 'Author Avatars List/Block <= 2.1.21 - Authenticated (Subscriber+) Stored
+    Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7b9aaafb-cb39-4a3b-85db-d0a8e9498d60?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,author-avatars,low,candidate

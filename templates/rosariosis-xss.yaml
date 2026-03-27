@@ -22,9 +22,13 @@ id: rosariosis-xss
 info:
   author: 0xr2r,jarvis-survives
   classification:
+    cpe: cpe:2.3:a:rosariosis:rosariosis:6.7.2:*:*:*:*:*:*:*
+    cve-id: CVE-2020-15718
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 6.1
     cwe-id: CWE-79
+    epss-percentile: 0.8091
+    epss-score: 0.0149
   description: 'RosarioSIS version 6.7.2 and earlier contains a reflected cross-site
     scripting (XSS) vulnerability in the Preferences module. The ''tab'' parameter
     in Modules.php is not properly sanitized, allowing an attacker to inject arbitrary
@@ -39,6 +43,7 @@ info:
   metadata:
     max-request: 1
     product: rosariosis
+    runzero-match: service["http.body"] matches "(?i)RosarioSIS"
     shodan-query: http.html:"RosarioSIS"
     vendor: rosariosis
     verified: true

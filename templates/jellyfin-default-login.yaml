@@ -49,11 +49,12 @@ info:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
-  description: Jellyfin Console default login information was discovered.
+  description: Weak Jellyfin credentials were discovered.
   metadata:
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Jellyfin"})
+    fofa-query: title="Jellyfin"
+    product: jellyfin
     vendor: jellyfin
     verified: true
   name: Jellyfin Console - Default Login
   severity: high
-  tags: default-login,jellyfin,misconfig,vuln
+  tags: default-login,jellyfin,misconfig

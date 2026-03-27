@@ -1,21 +1,16 @@
 flow: http(1) && http(2)
 http:
-- matchers:
+- extractors:
   - internal: true
     name: token
     part: body
     regex:
-    - sk\.eyJ1Ijoi\w+\.[\w-]*
+    - pk\.[a-z0-9]{60}\.[a-z0-9]{22}
     type: regex
   method: GET
   path:
   - '{{BaseURL}}'
-- disable-path-automerge: true
-  extractors:
-  - dsl:
-    - token
-    type: dsl
-  matchers:
+- matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -29,6 +24,7 @@ http:
     Host: api.mapbox.com
 
     '
+  self-contained: true
 id: mapbox-token-disclosure
 info:
   author: Devang-Solanki
@@ -40,7 +36,5 @@ info:
   reference:
   - https://docs.gitguardian.com/secrets-detection/detectors/specifics/mapbox_token
   - https://github.com/zricethezav/gitleaks/blob/master/cmd/generate/config/rules/mapbox.go
-  - https://docs.mapbox.com/api/accounts/tokens/#token-format
-  - https://docs.mapbox.com/help/getting-started/access-tokens/
   severity: medium
-  tags: token,exposure,mapbox,vuln
+  tags: token,exposure,mapbox,disclosure

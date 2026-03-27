@@ -18,6 +18,8 @@ http:
 id: wd-mycloud-panel
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:western_digital:mycloud_nas:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
     product: mycloud_nas
@@ -28,4 +30,4 @@ info:
   reference:
   - https://www.zerodayinitiative.com/blog/2023/4/19/cve-2022-29844-a-classic-buffer-overflow-on-the-western-digital-my-cloud-pro-series-pr4100
   severity: info
-  tags: panel,login,mycloud,wd,detect
+  tags: panel,login,mycloud,wd,detect,western_digital

@@ -31,15 +31,15 @@ info:
   description: Thruk Monitoring panel was detected.
   metadata:
     fofa-query:
+    - title=="Thruk Monitoring Webinterface"
     - title=="thruk monitoring webinterface"
     - body="thruk"
     max-request: 6
     product: thruk
-    runzero-match: service["http.body"] matches "(?i)thruk"
     shodan-query: http.html:"thruk" || http.title:"thruk monitoring webinterface"
     vendor: thruk
   name: Thruk Login Panel - Detect
   reference:
   - https://thruk.org/
   severity: info
-  tags: thruk,panel,login,discovery
+  tags: thruk,panel,login

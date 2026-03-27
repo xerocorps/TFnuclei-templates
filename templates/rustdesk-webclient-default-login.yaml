@@ -32,8 +32,6 @@ info:
   metadata:
     fofa-query: title="RustDesk API Admin"
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)RustDesk API
-      Admin"})
     shodan-query: title:"RustDesk API Admin"
     verified: true
   name: RustDesk Web Client - Default login

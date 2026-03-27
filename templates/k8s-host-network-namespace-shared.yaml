@@ -21,6 +21,8 @@ info:
     bypass network policies and gain unrestricted network access on the host.
 
     '
+  metadata:
+    max-request: 2
   name: Host Network Namespace Sharing
   reference:
   - https://kubernetes.io/docs/concepts/policy/pod-security-policy/#host-namespaces

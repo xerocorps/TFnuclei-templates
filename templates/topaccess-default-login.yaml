@@ -45,15 +45,11 @@ http:
 id: topaccess-default-login
 info:
   author: ritikchaddha
-  description: 'Toshiba TopAccess default login credentials were discovered.
-
-    '
   metadata:
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)topaccess"})
     shodan-query: title:"topaccess"
     verified: true
-  name: Toshiba TopAccess - Default Login
+  name: Toshiba TopAccess - Default-Login
   reference:
   - https://business.toshiba.com/downloads/KB/f1Ulds/11646/KH-1020_TAG_EN_0002.pdf
   severity: high

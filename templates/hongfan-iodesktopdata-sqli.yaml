@@ -3,7 +3,7 @@ http:
   - condition: and
     dsl:
     - status_code == 500
-    - contains(body, "c8c605999f3d8352d7bb792cf3fdb25b")
+    - contains(body, "c8c605999f3d8352d7bb792cf3fdb25")
     type: dsl
   raw:
   - 'POST /iOffice/prg/set/wss/ioDesktopData.asmx HTTP/1.1

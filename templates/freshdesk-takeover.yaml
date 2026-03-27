@@ -1,6 +1,6 @@
 id: freshdesk-takeover
 info:
-  author: Gal Nagli @naglinagli
+  author: naglinagli
   name: freshdesk takeover detection
   reference: https://twitter.com/ja1sharma/status/1377239265348743175
   severity: high
@@ -11,11 +11,11 @@ requests:
     type: word
     words:
     - There is no helpdesk here!
-    - Maybe this is still fresh!
-  - negative: true
-    type: word
-    words:
-    - freshservice.com
+    - May be this is still fresh!
+    - freshdesk.com/signup
+  - dsl:
+    - '!contains(host,"freshpo.com")'
+    type: dsl
   matchers-condition: and
   method: GET
   path:

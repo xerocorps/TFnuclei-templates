@@ -27,7 +27,8 @@ info:
   description: Apache Druid is vulnerable to RCE due to Log4j.
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    product: druid
+    shodan-query: title:"Apache Druid"
     vendor: apache
     verified: true
   name: Apache Druid - Remote Code Execution (Apache Log4j)

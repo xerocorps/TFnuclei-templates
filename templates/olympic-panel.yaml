@@ -22,8 +22,6 @@ info:
   description: OLYMPIC Banking System was detected.
   metadata:
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)olympic banking
-      system"})
     shodan-query: http.title:"olympic banking system"
   name: OLYMPIC Banking System Login Panel - Detect
   reference:

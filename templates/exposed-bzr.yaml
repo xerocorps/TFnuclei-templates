@@ -6,7 +6,8 @@ info:
   severity: low
   tags: config,exposure
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - condition: or
     type: word
     words:
@@ -20,6 +21,15 @@ requests:
     words:
     - text/plain
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/.bzr/branch/branch.conf'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /.bzr/branch/branch.conf HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
+    Firefox/55
+
+    '
+  threads: 100

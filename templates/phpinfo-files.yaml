@@ -18,31 +18,38 @@ http:
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/php.php'
-  - '{{BaseURL}}/phpinfo.php'
-  - '{{BaseURL}}/info.php'
-  - '{{BaseURL}}/infophp.php'
-  - '{{BaseURL}}/php_info.php'
-  - '{{BaseURL}}/test.php'
-  - '{{BaseURL}}/i.php'
-  - '{{BaseURL}}/asdf.php'
-  - '{{BaseURL}}/pinfo.php'
-  - '{{BaseURL}}/phpversion.php'
-  - '{{BaseURL}}/time.php'
-  - '{{BaseURL}}/index.php'
-  - '{{BaseURL}}/temp.php'
-  - '{{BaseURL}}/old_phpinfo.php'
-  - '{{BaseURL}}/infos.php'
-  - '{{BaseURL}}/linusadmin-phpinfo.php'
-  - '{{BaseURL}}/php-info.php'
-  - '{{BaseURL}}/dashboard/phpinfo.php'
-  - '{{BaseURL}}/_profiler/phpinfo.php'
-  - '{{BaseURL}}/_profiler/phpinfo'
-  - '{{BaseURL}}/?phpinfo=1'
+  - '{{BaseURL}}{{paths}}'
+  payloads:
+    paths:
+    - /php.php
+    - /php2.php
+    - /phpinfo.php
+    - /info.php
+    - /infophp.php
+    - /php_info.php
+    - /test.php
+    - /i.php
+    - /p.php
+    - /pi.php
+    - /asdf.php
+    - /pinfo.php
+    - /phpversion.php
+    - /time.php
+    - /index.php
+    - /temp.php
+    - /old_phpinfo.php
+    - /infos.php
+    - /linusadmin-phpinfo.php
+    - /php-info.php
+    - /dashboard/phpinfo.php
+    - /_profiler/phpinfo.php
+    - /_profiler/phpinfo
+    - /?phpinfo=1
+    - /l.php?act=phpinfo
   stop-at-first-match: true
 id: phpinfo-files
 info:
-  author: pdteam,daffainfo,meme-lord,dhiyaneshDK,wabafet
+  author: pdteam,daffainfo,meme-lord,dhiyaneshDK,wabafet,mastercho
   classification:
     cwe-id: CWE-200
   description: 'PHPinfo page was detected. The output of the phpinfo() command can
@@ -50,7 +57,7 @@ info:
 
     '
   metadata:
-    max-request: 21
+    max-request: 25
   name: PHPinfo Page - Detect
   remediation: Remove PHP Info pages from publicly accessible sites, or restrict access
     to authorized users only.

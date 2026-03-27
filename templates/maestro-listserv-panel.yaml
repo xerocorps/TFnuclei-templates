@@ -23,7 +23,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)LISTSERV Maestro"})
     shodan-query: http.title:"LISTSERV Maestro"
     verified: true
   name: Maestro LISTSERV - Detect
@@ -31,4 +30,4 @@ info:
   - https://www.lsoft.com/
   - https://www.lsoft.com/products/maestro_11.1.asp
   severity: info
-  tags: panel,maestro,detect,login,discovery
+  tags: panel,maestro,detect,login

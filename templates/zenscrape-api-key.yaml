@@ -1,6 +1,6 @@
 flow: http(1) && http(2)
 http:
-- matchers:
+- extractors:
   - internal: true
     name: token
     part: body
@@ -10,12 +10,7 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-- disable-path-automerge: true
-  extractors:
-  - dsl:
-    - token
-    type: dsl
-  matchers:
+- matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -32,13 +27,15 @@ http:
     Apikey: {{token}}
 
     '
+  self-contained: true
 id: zenscrape-api-key
 info:
   author: ritikchaddha
   metadata:
+    max-request: 2
     verified: true
   name: Zenscrape API Key
   reference:
   - https://github.com/trufflesecurity/trufflehog/blob/main/pkg/detectors/zenscrape/zenscrape.go
   severity: high
-  tags: exposure,token,zenscrape,apikey,vuln
+  tags: exposure,token,zenscrape,apikey

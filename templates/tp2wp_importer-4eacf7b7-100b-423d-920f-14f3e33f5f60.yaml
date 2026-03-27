@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - tp2wp-importer
+  - dsl:
+    - compare_versions(version, '<= 1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/tp2wp-importer/readme.txt'
+  redirects: true
+id: tp2wp_importer-4eacf7b7-100b-423d-920f-14f3e33f5f60
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/tp2wp-importer/
+    google-query: inurl:"/wp-content/plugins/tp2wp-importer/"
+    shodan-query: http.html:"wp-content/plugins/tp2wp-importer/"
+  name: 'TP2WP Importer <= 1.1 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting via ''Watched domains'' Textarea
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4eacf7b7-100b-423d-920f-14f3e33f5f60?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,tp2wp-importer,low,candidate

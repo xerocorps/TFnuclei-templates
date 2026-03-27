@@ -1,15 +1,4 @@
-id: codeclimate-token
-info:
-  author: DhiyaneshDK
-  metadata:
-    verified: 'true'
-  name: CodeClimate Token
-  reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/codeclimate.yml
-  - https://github.com/codeclimate/ruby-test-reporter/issues/34
-  severity: info
-  tags: codeclimate,token,exposure
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -18,3 +7,15 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: codeclimate-token
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 1
+    verified: true
+  name: CodeClimate Token
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/codeclimate.yml
+  - https://github.com/codeclimate/ruby-test-reporter/issues/34
+  severity: info
+  tags: codeclimate,token,exposure

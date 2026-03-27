@@ -19,11 +19,9 @@ info:
   metadata:
     max-request: 1
     product: powermedia_xms
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Dialogic XMS
-      Admin Console"})
     shodan-query: title:"Dialogic XMS Admin Console"
     vendor: dialogic
     verified: true
   name: Dialogic XMS Admin Console - Detect
   severity: info
-  tags: panel,dialogic,admin,login,detect,discovery
+  tags: panel,dialogic,admin,login,detect

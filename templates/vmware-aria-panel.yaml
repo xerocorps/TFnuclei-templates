@@ -19,7 +19,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)VMware Aria Operations"})
     shodan-query: title:"VMware Aria Operations"
     verified: true
   name: VMware Aria Operations Login - Detect

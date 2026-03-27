@@ -27,8 +27,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"(?i)\u04207-\u041E\
-      \u0444\u0438\u0441\"})"
     shodan-query: "title:\"\u04207-\u041E\u0444\u0438\u0441\""
     verified: true
   name: "\u04207-Office 12.5 - Cross-Site Scripting"

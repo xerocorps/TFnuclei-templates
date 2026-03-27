@@ -19,7 +19,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Ice Hrm Login"})
     shodan-query: http.title:"Ice Hrm Login"
     verified: true
   name: ICE HRM Login - Detect

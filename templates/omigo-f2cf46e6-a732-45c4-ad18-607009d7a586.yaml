@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - omigo
+  - dsl:
+    - compare_versions(version, '<= 3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/omigo/readme.txt'
+  redirects: true
+id: omigo-f2cf46e6-a732-45c4-ad18-607009d7a586
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/omigo/
+    google-query: inurl:"/wp-content/plugins/omigo/"
+    shodan-query: http.html:"wp-content/plugins/omigo/"
+  name: 'OMIGO <= 3.3 - Authenticated (Contributor+) Stored Cross-Site Scripting via
+    Shortcode
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f2cf46e6-a732-45c4-ad18-607009d7a586?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,omigo,low,candidate

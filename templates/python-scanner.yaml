@@ -7,35 +7,25 @@ file:
     - exec
     - eval
     - __import__
-    - execfile
     type: regex
   - name: command-injection
     regex:
     - subprocess.call\(.*shell=True.*\)
     - os.system
-    - os.popen\d?
-    - subprocess.run
-    - commands.getoutput
+    - os.popen
     type: regex
   - name: untrusted-source
     regex:
-    - pickle\.loads
-    - c?Pickle\.loads?
-    - marshal\.loads
-    - pickle\.Unpickler
+    - pickle.loads
+    - cPickle.loads
     type: regex
   - name: dangerous-yaml
     regex:
-    - yaml\.load
-    - yaml\.safe_load
+    - yaml.load
     type: regex
   - name: sqli
     regex:
-    - cursor\.execute
-    - sqlite3\.execute
-    - MySQLdb\.execute
-    - psycopg2\.execute
-    - cx_Oracle\.execute
+    - cursor.execute
     type: regex
 id: python-scanner
 info:
