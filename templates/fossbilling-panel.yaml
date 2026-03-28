@@ -24,9 +24,10 @@ info:
   metadata:
     max-request: 1
     product: fossbilling
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)FOSSBilling"})
     shodan-query: title:"FOSSBilling"
     vendor: fossbilling
     verified: true
   name: FOSSBilling Panel - Detect
   severity: info
-  tags: fossbilling,panel,detect
+  tags: fossbilling,panel,detect,discovery

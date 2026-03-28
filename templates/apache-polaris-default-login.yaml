@@ -41,6 +41,7 @@ info:
     fofa-query: title="Apache Polaris"
     max-request: 1
     product: polaris
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Apache Polaris"})
     shodan-query: http.title:"Apache Polaris"
     vendor: apache
   name: Apache Polaris - Default Login

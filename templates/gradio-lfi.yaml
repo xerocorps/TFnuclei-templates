@@ -48,6 +48,8 @@ info:
     google-query: intitle:"gradio"
     max-request: 1
     product: gradio
+    runzero-match: service["http.body"] matches "(?i)__gradio_mode__" || any(each(service["html.titles"]),
+      {# matches "(?i)gradio"})
     shodan-query:
     - http.html:"__gradio_mode__"
     - http.title:"gradio"

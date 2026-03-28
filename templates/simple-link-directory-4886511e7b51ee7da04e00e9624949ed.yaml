@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-link-directory
+  - dsl:
+    - compare_versions(version, '< 7.7.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-link-directory/readme.txt'
+  redirects: true
+id: simple-link-directory-4886511e7b51ee7da04e00e9624949ed
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-link-directory/
+    google-query: inurl:"/wp-content/plugins/simple-link-directory/"
+    shodan-query: 'vuln:'
+  name: 'Simple Link Directory <= 7.7.1 - Unauthenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/16bce38a-07fa-43b7-aacb-6c932c3d0987?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,simple-link-directory,critical

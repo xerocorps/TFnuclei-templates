@@ -29,16 +29,12 @@ info:
   classification:
     cpe: cpe:2.3:a:vaxilu:x-ui:*:*:*:*:*:*:*:*
     cwe-id: CWE-798
-  description: 'X-UI contains default credentials. An attacker can obtain access to
-    user accounts and access sensitive information, modify data, and/or execute unauthorized
-    operations.
+  description: 'X-UI default login credentials were discovered.
 
     '
   metadata:
-    fofa-query: title="X-UI Login"
     max-request: 2
-    product: x-ui
-    shodan-query: title:"X-UI Login"
+    runzero-match: any(each(service["html.titles"]), {# matches "X-UI Login"})
     vendor: vaxilu
     verified: true
   name: X-UI - Default Login

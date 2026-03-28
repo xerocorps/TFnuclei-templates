@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - one-click-ssl
+  - dsl:
+    - compare_versions(version, '< 1.4.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/one-click-ssl/readme.txt'
+  redirects: true
+id: one-click-ssl-1302332bd88b458021c40b103b39cfe9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/one-click-ssl/
+    google-query: inurl:"/wp-content/plugins/one-click-ssl/"
+    shodan-query: 'vuln:'
+  name: 'One Click SSL <= 1.4.6 - Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2a296dd3-fbcb-4443-a905-9cbaa87faf7d?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,one-click-ssl,medium

@@ -21,6 +21,8 @@ info:
     fofa-query: "title=\"\u795E\u884C\u8005\u8DEF\u7531\""
     max-request: 1
     product: xspeeder_router
+    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"(?i)\u795E\u884C\
+      \u8005\u8DEF\u7531\"})"
     shodan-query: "http.title:\"\u795E\u884C\u8005\u8DEF\u7531\""
     vendor: Changsha Tongxun Computer Technology Co., Ltd
     verified: true

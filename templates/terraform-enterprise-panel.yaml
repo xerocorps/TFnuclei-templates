@@ -17,8 +17,8 @@ id: terraform-enterprise-panel
 info:
   author: Adam Crosser,idealphase
   classification:
+    cpe: cpe:2.3:a:hashicorp:terraform:*:*:*:*:-:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: Terraform Enterprise panel was detected.
   metadata:
@@ -31,4 +31,4 @@ info:
   reference:
   - https://www.terraform.io/enterprise/releases
   severity: info
-  tags: panel,terraform
+  tags: panel,terraform,hashicorp

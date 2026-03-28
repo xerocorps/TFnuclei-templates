@@ -1,7 +1,12 @@
 id: video-synchro-pdf-lfi
 info:
   author: Hassan Khan Yusufzai - Splint3r7
-  name: Videos sync PDF 1.7.4 - Unauthenticated Local File Inclusion
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-22
+  description: WordPress Videos sync PDF 1.7.4 is vulnerable to local file inclusion.
+  name: WordPress Videos sync PDF 1.7.4 - Local File Inclusion
   reference:
   - https://www.exploit-db.com/exploits/50844
   - https://wordpress.org/plugins/video-synchro-pdf/

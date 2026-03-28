@@ -1,4 +1,11 @@
-http:
+id: firebase-database-extractor
+info:
+  author: rafaelwdornelas
+  description: Extract Firebase Database
+  name: Firebase Database Extract Check
+  severity: info
+  tags: firebase,misc
+requests:
 - extractors:
   - part: body
     regex:
@@ -8,12 +15,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: firebase-database-extractor
-info:
-  author: rafaelwdornelas
-  description: Extract Firebase Database
-  metadata:
-    max-request: 1
-  name: Firebase Database Extract Check
-  severity: info
-  tags: miscellaneous,firebase,misc

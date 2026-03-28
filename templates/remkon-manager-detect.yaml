@@ -5,7 +5,8 @@ info:
   severity: info
   tags: remkon,tech,panel
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - status:
     - 200
     type: status
@@ -14,6 +15,18 @@ requests:
     words:
     - <title>Remkon Device Manager</title>
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/login.php'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /login.php HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

@@ -20,6 +20,8 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)LiteLLM API -
+      Swagger UI"})
     shodan-query: http.title:"LiteLLM API - Swagger UI"
     verified: true
   name: LiteLLM API - Swagger UI Detection

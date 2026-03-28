@@ -1,4 +1,10 @@
-http:
+id: newrelic-insights-key
+info:
+  author: Ice3man
+  name: Insights Keys Disclosure
+  severity: info
+  tags: exposure,token
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,11 +13,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: newrelic-insights-key
-info:
-  author: Ice3man
-  metadata:
-    max-request: 1
-  name: Insights Keys Disclosure
-  severity: info
-  tags: exposure,token

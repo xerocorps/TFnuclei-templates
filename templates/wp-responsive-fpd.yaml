@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/responsive-coming-soon"
     shodan-query: /responsive-coming-soon/
     verified: true
   name: WordPress Coming Soon Page - Full Path Disclosure

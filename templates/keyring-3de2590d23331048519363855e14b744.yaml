@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - keyring
+  - dsl:
+    - compare_versions(version, '<= 1.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/keyring/readme.txt'
+  redirects: true
+id: keyring-3de2590d23331048519363855e14b744
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/keyring/
+    google-query: inurl:"/wp-content/plugins/keyring/"
+    shodan-query: 'vuln:'
+  name: 'Keyring < 1.5.1 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e60de5d9-34f8-4068-b656-11b2b6cb36d4?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,keyring,high

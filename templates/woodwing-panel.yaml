@@ -1,11 +1,5 @@
 http:
-- extractors:
-  - group: 1
-    part: body
-    regex:
-    - <!---->v([0-9.]+\s+Build\s+[0-9]+)
-    type: regex
-  matchers:
+- matchers:
   - dsl:
     - contains(tolower(body), 'woodwing studio server')
     type: dsl
@@ -18,13 +12,12 @@ http:
   stop-at-first-match: true
 id: woodwing-panel
 info:
-  author: pdteam,righettod
+  author: pdteam
   metadata:
     fofa-query: title=="WoodWing Studio Server"
     max-request: 2
     shodan-query: http.title:"WoodWing Studio Server"
-    verified: true
-  name: Woodwing Studio Server Panel - Detect
+  name: Woodwing Studio Server - Panel
   reference:
   - https://twitter.com/ynsmroztas/status/1680961398011047936
   severity: info

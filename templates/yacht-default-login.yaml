@@ -28,15 +28,14 @@ http:
 id: yacht-default-login
 info:
   author: Fur1na
-  description: 'Yacht is a web interface for managing Docker containers. This template
-    detects instances with default admin credentials (admin@yacht.local:pass), which
-    could allow unauthorized access to the Docker environment, potentially leading
-    to container manipulation, data exposure, or even host system compromise.
+  description: 'Yacht default login credentials were discovered.
 
     '
   metadata:
     fofa-query: app="Yacht"
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-503392394"
+    shodan-query: http.favicon.hash:-503392394
     verified: true
     zoomeye-query: app="Yacht"
   name: Yacht - Default Login

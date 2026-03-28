@@ -1,7 +1,6 @@
 http:
 - matchers:
-  - condition: or
-    part: body
+  - part: body
     regex:
     - rest_post_invalid_id
     - '"(guid|title|content|excerpt)":{"rendered":'
@@ -10,8 +9,7 @@ http:
     type: word
     words:
     - application/json
-  - condition: or
-    status:
+  - status:
     - 200
     - 404
     type: status
@@ -29,4 +27,4 @@ info:
   - https://www.exploit-db.com/exploits/48910
   - https://www.redtimmy.com/critical-information-disclosure-on-wp-courses-plugin-exposes-private-course-videos-and-materials/
   severity: high
-  tags: wordpress,plugin
+  tags: wordpress-misc,wordpress,plugin

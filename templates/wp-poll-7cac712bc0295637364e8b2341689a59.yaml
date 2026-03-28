@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wp-poll
+  - dsl:
+    - compare_versions(version, '<= 3.3.68')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wp-poll/readme.txt'
+  redirects: true
+id: wp-poll-7cac712bc0295637364e8b2341689a59
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wp-poll/
+    google-query: inurl:"/wp-content/plugins/wp-poll/"
+    shodan-query: 'vuln:'
+  name: "LiquidPoll \u2013 Advanced Polls for Creators and Brands <= 3.3.68 - Missing\
+    \ Authorization via activate_addon\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/aa154536-9f9f-48c3-96c7-4091991e4f6c?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,wp-poll,high

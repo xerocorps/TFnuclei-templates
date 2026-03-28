@@ -23,6 +23,7 @@ info:
     '
   metadata:
     product: polaris
+    runzero-match: service["http.body"] matches "(?i)org\\.apache\\.polaris"
     shodan-query: http.html:"org.apache.polaris"
     vendor: apache
   name: Apache Polaris - Information Disclosure

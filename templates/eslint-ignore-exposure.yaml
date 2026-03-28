@@ -23,6 +23,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)eslintignore"
     shodan-query: html:"eslintignore"
   name: Eslint Ignore File Exposure
   reference:

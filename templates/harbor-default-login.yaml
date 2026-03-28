@@ -46,6 +46,7 @@ info:
     fofa-query: title="Harbor"
     max-request: 2
     product: harbor
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Harbor"})
     shodan-query: http.title:"Harbor"
     vendor: goharbor
     verified: true

@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - orange-confort-plus
+  - dsl:
+    - compare_versions(version, '<= 0.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/orange-confort-plus/readme.txt'
+  redirects: true
+id: orange_confort_plus-89cb81c3-25d7-4a4e-beed-558ea8ce721d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/orange-confort-plus/
+    google-query: inurl:"/wp-content/plugins/orange-confort-plus/"
+    shodan-query: http.html:"wp-content/plugins/orange-confort-plus/"
+  name: 'Orange Confort+ accessibility toolbar for WordPress <= 0.7 - Authenticated
+    (Contributor+) Stored Cross-Site Scripting via Shortcode Attributes
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/89cb81c3-25d7-4a4e-beed-558ea8ce721d?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,orange-confort-plus,low,candidate

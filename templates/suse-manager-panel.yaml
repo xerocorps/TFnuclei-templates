@@ -5,15 +5,15 @@ http:
     - webVersion:\s+'([\d\.\s\w]+)',
     type: regex
   matchers:
+  - status:
+    - 200
+    type: status
   - condition: or
     type: word
     words:
     - <title>SUSE Manager - Sign In</title>
     - <title>SUSE Multi-Linux Manager - Sign In</title>
     - <title>Uyuni - Sign In</title>
-  - status:
-    - 200
-    type: status
   matchers-condition: and
   max-redirects: 1
   method: GET
@@ -23,7 +23,8 @@ http:
 id: suse-manager-panel
 info:
   author: darses
-  description: 'SUSE Manager login panel detected.
+  description: 'SUSE Manager, SUSE Multi-Linux Manager or Uyuni Server login panel
+    was detected.
 
     '
   metadata:
@@ -32,12 +33,15 @@ info:
     - title="SUSE Multi-Linux Manager - Sign In"
     - title="Uyuni - Sign In"
     - icon_hash="1158194469"
+    max-requests: 2
+    product: manager
     shodan-query:
     - title:"SUSE Manager - Sign In"
     - title:"SUSE Multi-Linux Manager - Sign In"
     - title:"Uyuni - Sign In"
     - http.favicon.hash:1158194469
-    verify: true
+    vendor: suse
+    verified: true
   name: SUSE Manager Server - Panel
   severity: info
-  tags: panel,detect,suse,login,discovery
+  tags: panel,detect,suse

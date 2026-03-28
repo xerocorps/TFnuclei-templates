@@ -1,4 +1,14 @@
-http:
+id: google-oauth-prefixed
+info:
+  author: DhiyaneshDK
+  metadata:
+    verified: 'true'
+  name: Google OAuth Client Secret (prefixed)
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/google.yml
+  severity: info
+  tags: google,token,exposure
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,14 +17,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: google-oauth-prefixed
-info:
-  author: DhiyaneshDK
-  metadata:
-    max-request: 1
-    verified: true
-  name: Google OAuth Client Secret (prefixed)
-  reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/google.yml
-  severity: info
-  tags: google,token,exposure

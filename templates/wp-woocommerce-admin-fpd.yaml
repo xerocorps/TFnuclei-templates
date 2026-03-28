@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/plugins/woocommerce-admin"
     shodan-query: html:"/plugins/woocommerce-admin"
     verified: false
   name: WordPress Plugin WooCommerce Admin (woocommerce-admin) Full Path Disclosure

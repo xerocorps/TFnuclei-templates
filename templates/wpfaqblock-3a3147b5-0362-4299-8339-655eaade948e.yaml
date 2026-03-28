@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wpfaqblock
+  - dsl:
+    - compare_versions(version, '<= 1.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wpfaqblock/readme.txt'
+  redirects: true
+id: wpfaqblock-3a3147b5-0362-4299-8339-655eaade948e
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wpfaqblock/
+    google-query: inurl:"/wp-content/plugins/wpfaqblock/"
+    shodan-query: http.html:"wp-content/plugins/wpfaqblock/"
+  name: "WPFAQBlock\u2013 FAQ & Accordion Plugin For Gutenberg <= 1.1 - Authenticated\
+    \ (Contributor+) Stored Cross-Site Scripting via 'class' Shortcode Attribute\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3a3147b5-0362-4299-8339-655eaade948e?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,wpfaqblock,low,candidate

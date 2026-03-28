@@ -24,6 +24,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["product"] contains "Squid Cache:Squid"
     shodan-query: 'Server: squid/'
     verified: true
   name: Squid End-of-Life - Detect

@@ -25,6 +25,8 @@ info:
     fofa-query: body="ssp loginscreen"
     max-request: 1
     product: workspace_one_uem
+    runzero-match: service["favicon.ico.image.mmh3"] == "321909464" || service["http.body"]
+      matches "(?i)Self-Service Portal"
     shodan-query:
     - http.favicon.hash:"321909464"
     - http.html:"Self-Service Portal"
@@ -34,4 +36,4 @@ info:
   reference:
   - https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2209/UEM_ConsoleBasics/GUID-AWT-SELFSERVICEPORTALOVERVIEW.html
   severity: info
-  tags: panel,workspaceone,vmware,airwatch,ssp,login,detect
+  tags: panel,workspaceone,vmware,airwatch,ssp,login,detect,discovery

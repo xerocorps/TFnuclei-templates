@@ -20,6 +20,8 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Adapt authoring
+      tool"})
     shodan-query: http.title:"Adapt authoring tool"
     verified: true
   name: Adapt Authoring Tool - Panel

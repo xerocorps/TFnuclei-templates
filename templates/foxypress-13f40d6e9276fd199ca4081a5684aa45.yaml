@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - foxypress
+  - dsl:
+    - compare_versions(version, '<= 0.4.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/foxypress/readme.txt'
+  redirects: true
+id: foxypress-13f40d6e9276fd199ca4081a5684aa45
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/foxypress/
+    google-query: inurl:"/wp-content/plugins/foxypress/"
+    shodan-query: 'vuln:'
+  name: 'FoxyPress <= 0.4.9 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4301666c-98a5-4028-978f-f50e5b8f4a6a?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,foxypress,critical

@@ -5,14 +5,13 @@ info:
     between our customer''s network and SAP.
 
     '
-  metadata:
-    max-request: 1
   name: SAPRouter Detection
   severity: info
-  tags: network,sap,detect,saprouter
-tcp:
+  tags: network,sap
+network:
 - host:
   - '{{Hostname}}'
+  - '{{Host}}:3299'
   inputs:
   - data: 57484f415245594f553f0a
     type: hex
@@ -20,5 +19,4 @@ tcp:
   - type: word
     words:
     - SAProuter
-  port: 3299
   read-size: 1024

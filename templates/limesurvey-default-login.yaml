@@ -52,6 +52,7 @@ info:
     fofa-query: title="LimeSurvey"
     max-request: 2
     product: limesurvey
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)LimeSurvey"})
     shodan-query: http.title:"LimeSurvey"
     vendor: limesurvey
     verified: true

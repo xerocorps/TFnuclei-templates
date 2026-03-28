@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-export-with-their-meta-data
+  - dsl:
+    - compare_versions(version, '< 0.6.5')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-export-with-their-meta-data/readme.txt'
+  redirects: true
+id: user-export-with-their-meta-data-1a553f3e99f83a7424237ac7c69f93ec
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-export-with-their-meta-data/
+    google-query: inurl:"/wp-content/plugins/user-export-with-their-meta-data/"
+    shodan-query: 'vuln:'
+  name: 'Export Users With Meta < 0.6.5 - Authenticated (Admin+) SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/69618c44-5298-4b03-a63a-76f195206c8b?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,user-export-with-their-meta-data,low

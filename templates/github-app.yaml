@@ -1,18 +1,8 @@
-http:
-- extractors:
-  - part: body
-    regex:
-    - \b((?:ghu|ghs)_[a-zA-Z0-9]{36})\b
-    type: regex
-  method: GET
-  path:
-  - '{{BaseURL}}'
 id: github-app
 info:
   author: DhiyaneshDK
   metadata:
-    max-request: 1
-    verified: true
+    verified: 'true'
   name: GitHub App Token
   reference:
   - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/github.yml
@@ -21,3 +11,12 @@ info:
   - https://github.blog/2021-04-05-behind-githubs-new-authentication-token-formats/
   severity: info
   tags: github,app,token,exposure
+requests:
+- extractors:
+  - part: body
+    regex:
+    - \b((?:ghu|ghs)_[a-zA-Z0-9]{36})\b
+    type: regex
+  method: GET
+  path:
+  - '{{BaseURL}}'

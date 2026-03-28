@@ -23,6 +23,7 @@ info:
     '
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Umbraco"})
     shodan-query: http.html:"umbraco"
     verified: true
   name: Umbraco CMS - Directory Listing Exposure

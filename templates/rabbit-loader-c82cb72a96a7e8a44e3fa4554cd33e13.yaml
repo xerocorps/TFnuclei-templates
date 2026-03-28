@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - rabbit-loader
+  - dsl:
+    - compare_versions(version, '<= 2.19.13')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/rabbit-loader/readme.txt'
+  redirects: true
+id: rabbit-loader-c82cb72a96a7e8a44e3fa4554cd33e13
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/rabbit-loader/
+    google-query: inurl:"/wp-content/plugins/rabbit-loader/"
+    shodan-query: 'vuln:'
+  name: 'RabbitLoader <= 2.19.13 - Missing Authorization via multiple AJAX actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/958118ec-437e-45c8-a0f0-6aaf54e60d04?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,rabbit-loader,high

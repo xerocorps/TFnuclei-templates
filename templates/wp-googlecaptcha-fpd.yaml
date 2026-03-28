@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/plugins/google-captcha"
     shodan-query: html:"/plugins/google-captcha"
     verified: true
   name: WordPress Plugin reCaptcha by BestWebSoft (google-captcha) - Full Path Disclosure

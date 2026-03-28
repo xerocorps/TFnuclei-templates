@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - my-shortcodes
+  - dsl:
+    - compare_versions(version, '<= 2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/my-shortcodes/readme.txt'
+  redirects: true
+id: my-shortcodes-9040480eeb1320dfb2018c0cf71234a5
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/my-shortcodes/
+    google-query: inurl:"/wp-content/plugins/my-shortcodes/"
+    shodan-query: 'vuln:'
+  name: 'My Shortcodes <= 2.3 - Missing Authorization via Multiple AJAX Actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7a931496-f130-4910-9116-6c2c4df760f5?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,my-shortcodes,high

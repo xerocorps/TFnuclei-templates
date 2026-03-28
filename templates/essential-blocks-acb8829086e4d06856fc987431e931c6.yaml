@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - essential-blocks
+  - dsl:
+    - compare_versions(version, '<= 4.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/essential-blocks/readme.txt'
+  redirects: true
+id: essential-blocks-acb8829086e4d06856fc987431e931c6
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/essential-blocks/
+    google-query: inurl:"/wp-content/plugins/essential-blocks/"
+    shodan-query: 'vuln:'
+  name: 'Essential Blocks <= 4.2.0 - Unauthenticated PHP Object Injection via queries
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/af468f83-d6ad-474c-bf7f-c4eeb6df1b54?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,essential-blocks,critical

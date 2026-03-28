@@ -46,6 +46,7 @@ info:
   metadata:
     fofa-query: title="JHipster"
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)JHipster"})
     shodan-query: title:"JHipster"
     verified: true
   name: JHipster Platform - Default Login

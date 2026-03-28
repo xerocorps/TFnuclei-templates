@@ -21,6 +21,7 @@ info:
   description: Blue Yonder login panel was discovered
   metadata:
     max-request: 2
+    runzero-match: service["http.body"] matches "(?i)title=\\\\"
     shodan-query: html:"title=\"blue yonder\""
     verified: true
   name: Blue Yonder Panel - Detect

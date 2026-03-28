@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - contact-form-7-newsletter
+  - dsl:
+    - compare_versions(version, '<= 2.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/contact-form-7-newsletter/readme.txt'
+  redirects: true
+id: contact-form-7-newsletter-1b50c69279c32358d8e91a9e569928c3
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/contact-form-7-newsletter/
+    google-query: inurl:"/wp-content/plugins/contact-form-7-newsletter/"
+    shodan-query: 'vuln:'
+  name: 'Contact Form 7 Newsletter <= 2.2 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1ecf2247-5861-4206-9329-f0389a35076b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,contact-form-7-newsletter,medium

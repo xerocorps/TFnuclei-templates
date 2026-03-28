@@ -27,6 +27,7 @@ info:
     fofa-query: app="ChurchCRM"
     max-request: 1
     product: churchcrm
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ChurchCRM"})
     shodan-query: title:"ChurchCRM"
     vendor: churchcrm
     verified: true

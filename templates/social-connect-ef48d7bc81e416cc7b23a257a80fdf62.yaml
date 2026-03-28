@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-connect
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-connect/readme.txt'
+  redirects: true
+id: social-connect-ef48d7bc81e416cc7b23a257a80fdf62
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/social-connect/
+    google-query: inurl:"/wp-content/plugins/social-connect/"
+    shodan-query: 'vuln:'
+  name: 'Social Connect <= 1.2 - Authentication Bypass
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/2882d9dd-0c73-4c9a-99cb-d10900503103?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,social-connect,critical

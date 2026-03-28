@@ -4,7 +4,7 @@ info:
   name: VSFTPD v2.3.4 Backdoor Command Execution
   reference: https://www.rapid7.com/db/modules/exploit/unix/ftp/vsftpd_234_backdoor/
   severity: critical
-  tags: network,vsftpd,ftp
+  tags: network,vsftpd,ftp,backdoor
 network:
 - host:
   - '{{Host}}:21'

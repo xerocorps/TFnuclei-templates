@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - travelers-map
+  - dsl:
+    - compare_versions(version, '<= 2.2.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/travelers-map/readme.txt'
+  redirects: true
+id: travelers-map-cfc6c2aecab4d513652f79d675ae3eee
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/travelers-map/
+    google-query: inurl:"/wp-content/plugins/travelers-map/"
+    shodan-query: 'vuln:'
+  name: 'Travelers'' Map <= 2.2.0 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/23af50ec-e293-4c06-be64-474057e25845?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,travelers-map,low

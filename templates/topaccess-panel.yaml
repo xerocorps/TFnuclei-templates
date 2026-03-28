@@ -22,10 +22,11 @@ info:
   author: ritikchaddha
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)topaccess"})
     shodan-query: title:"topaccess"
     verified: true
   name: Toshiba TopAccess Panel - Detect
   reference:
   - https://business.toshiba.com/downloads/KB/f1Ulds/11646/KH-1020_TAG_EN_0002.pdf
   severity: info
-  tags: topaccess,panel,login,detect
+  tags: topaccess,panel,login,detect,discovery

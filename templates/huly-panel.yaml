@@ -16,6 +16,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Huly"
     shodan-query: http.html:"Huly"
     verified: true
   name: Huly Login Panel - Detect

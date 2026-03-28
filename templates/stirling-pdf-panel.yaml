@@ -20,6 +20,7 @@ info:
   metadata:
     fofa-query: title="StirlingPDF"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)StirlingPDF"})
     verified: true
   name: Stirling PDF Panel - Detect
   reference:

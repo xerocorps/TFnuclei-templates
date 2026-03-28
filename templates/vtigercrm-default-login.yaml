@@ -32,6 +32,7 @@ info:
     '
   metadata:
     max-request: 2
+    runzero-match: service["http.body"] matches "(?i)Powered by vtiger CRM"
     shodan-query: html:"Powered by vtiger CRM"
     verified: true
   name: Vtiger CRM - Default Login

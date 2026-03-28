@@ -36,6 +36,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Cisco\\s+(?:Cloud\\s+)?Gateway"})
     shodan-query: product:"IronPort AsyncOS http config"
     verified: true
   name: Cisco Email Security Appliance - Panel

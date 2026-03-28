@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - simple-tweet
+  - dsl:
+    - compare_versions(version, '<= 1.4.0.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/simple-tweet/readme.txt'
+  redirects: true
+id: simple-tweet-28a113e899bf15922d101f3fb13b11db
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/simple-tweet/
+    google-query: inurl:"/wp-content/plugins/simple-tweet/"
+    shodan-query: 'vuln:'
+  name: 'Simple Tweet <= 1.4.0.2 - Authenticated (Administrator+) Stored Cross-Site
+    Scripting via plugin settings
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/de568a71-f51d-4948-839c-48e51d165a64?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,simple-tweet,low

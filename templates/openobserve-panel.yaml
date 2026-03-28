@@ -16,6 +16,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)OpenObserve"})
     shodan-query: http.title:"OpenObserve"
     verified: true
   name: OpenObserve Login Panel - Detect

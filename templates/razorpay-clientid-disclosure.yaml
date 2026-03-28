@@ -1,13 +1,4 @@
-id: razorpay-clientid-disclosure
-info:
-  author: Devang-Solanki
-  name: Razorpay Client ID Disclosure
-  reference:
-  - https://github.com/streaak/keyhacks#Razorpay-keys
-  - https://docs.gitguardian.com/secrets-detection/detectors/specifics/razorpay_apikey
-  severity: high
-  tags: exposure,token,razorpay
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -16,3 +7,15 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: razorpay-clientid-disclosure
+info:
+  author: Devang-Solanki
+  description: Razorpay Client ID is exposed to external users.
+  metadata:
+    max-request: 1
+  name: Razorpay Client ID Disclosure
+  reference:
+  - https://github.com/streaak/keyhacks#Razorpay-keys
+  - https://docs.gitguardian.com/secrets-detection/detectors/specifics/razorpay_apikey
+  severity: high
+  tags: exposure,token,razorpay

@@ -1,0 +1,62 @@
+flow: http(1) && http(2)
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200 || status_code == 302
+    - contains_any(body, "Alfresco", "alfresco") || contains_any(to_lower(header),
+      "alfresco", "/share")
+    internal: true
+    type: dsl
+  raw:
+  - 'GET /alfresco/ HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: text/html
+
+    '
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/json")
+    - contains_all(body, "ticket", "TICKET_")
+    type: dsl
+  raw:
+  - 'POST /alfresco/service/api/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+    Accept: application/json
+
+
+    {"username":"{{username}}","password":"{{password}}"}
+
+    '
+id: alfresco-default-login
+info:
+  author: 0x_Akoko
+  description: 'Detected Alfresco Content Services was found to have been using the
+    default administrator credentials (admin:admin). An attacker could have gained
+    full administrative access to manage content, users, and repository configuration.
+
+    '
+  metadata:
+    fofa-query: title="Alfresco" || body="/share/res/js/alfresco"
+    max-request: 2
+    product: alfresco-content-services
+    shodan-query: http.title:"Alfresco" http.html:"alfresco"
+    vendor: alfresco
+    verified: true
+  name: Alfresco - Default Admin Credentials
+  reference:
+  - https://docs.alfresco.com/content-services/community/admin/admin-console/
+  - https://docs.alfresco.com/community5.0/references/RESTful-RepositoryLoginPost.html
+  severity: high
+  tags: alfresco,default-login,auth,vuln
+variables:
+  password: admin
+  username: admin

@@ -32,14 +32,15 @@ http:
 id: dialogic-xms-default-login
 info:
   author: ritikchaddha
-  description: 'Dialogic XMS Admin Console was using default credentials and it was
-    discovered.
+  description: 'Dialogic XMS Admin Console default login information were discovered.
 
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "Dialogic XMS Admin
+      Console"})
     shodan-query: title:"Dialogic XMS Admin Console"
     verified: true
   name: Dialogic XMS Admin Console - Default Login
   severity: high
-  tags: dialogic,admin,default-login
+  tags: dialogic,admin,default-login,vuln

@@ -22,6 +22,7 @@ info:
   metadata:
     fofa-query: body="veraCoreScreenHeight"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)veraCoreScreenHeight"
     shodan-query: html:"veraCoreScreenHeight"
     verified: true
   name: Veracore Login - Detect

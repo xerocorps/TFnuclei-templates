@@ -7,9 +7,9 @@ dns:
     - iodef "(.*)"
     type: regex
   matchers:
-  - type: word
-    words:
-    - "IN\tCAA"
+  - regex:
+    - IN\s+CAA\s+(.+)
+    type: regex
   name: '{{FQDN}}'
   type: CAA
 id: caa-fingerprint
@@ -19,6 +19,8 @@ info:
     cwe-id: CWE-200
   description: A CAA record was discovered. A CAA record is used to specify which
     certificate authorities (CAs) are allowed to issue certificates for a domain.
+  metadata:
+    max-request: 1
   name: CAA Record
   reference:
   - https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record

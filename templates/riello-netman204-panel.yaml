@@ -18,13 +18,20 @@ info:
     '
   metadata:
     censys-query: services.http.response.body:"netman204"
-    fofa-query: title="netman 204"
+    fofa-query:
+    - title="netman 204"
+    - body="ups network management card 4"
+    - title="netman"
     google-query: intitle:"netman 204"
     product: netman_204_firmware
-    shodan-query: title:"netman 204"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)netman 204"})
+    shodan-query:
+    - http.title:"netman 204"
+    - http.html:"ups network management card 4"
+    - http.title:"netman"
     vendor: riello-ups
   name: Riello UPS NetMan 204 Panel - Detect
   reference:
   - https://www.riello-ups.com
   severity: info
-  tags: netman,panel,detect,login
+  tags: netman,panel,detect,login,discovery

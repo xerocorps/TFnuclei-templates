@@ -1,17 +1,20 @@
 id: detect-jabber-xmpp
 info:
   author: geeknik
-  description: Jabber is the original name of the Extensible Messaging and Presence
-    Protocol (XMPP), the open technology for instant messaging and presence.
-  name: Detects Jabber XMPP Instance
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: Jabber XMPP protocol was detected.
+  metadata:
+    max-request: 1
+  name: Jabber XMPP Protocol - Detect
   reference:
   - https://datatracker.ietf.org/doc/html/rfc6120
   severity: info
-  tags: network,jabber,xmpp,messaging
-network:
+  tags: network,jabber,xmpp,messaging,detect
+tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:5222'
   inputs:
   - data: 'a
 
@@ -22,3 +25,4 @@ network:
     words:
     - stream:stream xmlns:stream
     - stream:error xmlns:stream
+  port: 5222

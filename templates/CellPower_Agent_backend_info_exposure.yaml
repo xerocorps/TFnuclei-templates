@@ -5,13 +5,14 @@ info:
   severity: high
 requests:
 - matchers:
-  - part: body
+  - condition: and
     type: word
     words:
     - array
-    - Server Error
-    - Undefined variable
-    - Undefined index
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/user/ajax'

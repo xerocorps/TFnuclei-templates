@@ -4,25 +4,13 @@ info:
   name: Shoppable Service Auth Token
   reference: https://ask.shoppable.com/knowledge/quick-start-api-guide
   severity: info
+  tags: exposure,shoppable,token,auth,service
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - part: body
     type: word
     words:
     - data-shoppable-auth-token
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}'

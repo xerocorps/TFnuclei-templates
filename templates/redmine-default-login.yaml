@@ -1,0 +1,73 @@
+flow: http(1) && http(2)
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: csrf_token
+    part: body
+    regex:
+    - name="authenticity_token"[^>]+value="([^"]+)"
+    type: regex
+  - group: 1
+    internal: true
+    name: session
+    part: header
+    regex:
+    - 'Set-Cookie: (_redmine_session=[^;]+)'
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_all(body, "Redmine", "authenticity_token")
+    internal: true
+    type: dsl
+  raw:
+  - 'GET /login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 302
+    - '!contains(to_lower(header), "/login")'
+    - contains_any(to_lower(header), "/my/page", "/my/account", "redmine")
+    - contains(header, "_redmine_session")
+    type: dsl
+  raw:
+  - 'POST /login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Cookie: {{session}}
+
+
+    authenticity_token={{url_encode(csrf_token)}}&username={{username}}&password={{password}}&login=Login
+
+    '
+id: redmine-default-login
+info:
+  author: 0x_Akoko
+  description: 'Detected Redmine project management application was found to have
+    been using the default administrator credentials (admin:admin). An attacker could
+    have gained full administrative access to manage projects, users, and system settings.
+
+    '
+  metadata:
+    fofa-query: title="Redmine"
+    max-request: 2
+    product: redmine
+    shodan-query: http.title:"Redmine"
+    vendor: redmine
+    verified: true
+  name: Redmine - Default Admin Credentials
+  reference:
+  - https://www.redmine.org/projects/redmine/wiki/RedmineInstall
+  - https://www.simplified.guide/redmine/default-password
+  severity: high
+  tags: redmine,default-login,aut,vuln
+variables:
+  password: admin
+  username: admin

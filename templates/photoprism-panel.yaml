@@ -18,6 +18,7 @@ info:
   metadata:
     fofa-query: title="PhotoPrism"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)PhotoPrism"})
     shodan-query: title:"PhotoPrism"
     verified: true
   name: PhotoPrism Panel - Detect

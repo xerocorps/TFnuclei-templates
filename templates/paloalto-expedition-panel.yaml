@@ -22,9 +22,10 @@ info:
   metadata:
     max-request: 1
     product: expedition
+    runzero-match: service["favicon.ico.image.mmh3"] == "1499876150"
     shodan-query: http.favicon.hash:1499876150
     vendor: paloaltonetworks
     verified: true
   name: Palo Alto Expedition Project Login - Detect
   severity: info
-  tags: panel,expedition,palo-alto,login,detect
+  tags: panel,expedition,palo-alto,login,detect,discovery

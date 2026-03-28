@@ -20,12 +20,8 @@ info:
 
     '
   metadata:
-    fofa-query:
-    - icon_hash="-694003434"
-    max-requests: 1
     product: remote_support
-    shodan-query:
-    - http.favicon.hash:-694003434
+    runzero-match: service["favicon.ico.image.mmh3"] == "-694003434"
     vendor: beyondtrust
     verified: true
   name: BeyondTrust Remote Support Panel - Detect
