@@ -35,11 +35,11 @@ info:
     fofa-query: wp-content/plugins/orion-login-with-sms/
     google-query: inurl:"/wp-content/plugins/orion-login-with-sms/"
     shodan-query: http.html:"wp-content/plugins/orion-login-with-sms/"
-  name: 'Orion Login with SMS <= 1.0.5 - Authenticated Bypass via Weak OTP
+  name: 'Orion Login with SMS <= 1.0.5 - Authentication Bypass via Weak OTP
 
     '
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
   - https://www.wordfence.com/threat-intel/vulnerabilities/id/31a47cbd-c19b-4ac3-87ed-2d4c5c0e9cb7?source=api-scan
-  severity: low
-  tags: cve,wordpress,wp-plugin,orion-login-with-sms,low,candidate
+  severity: critical
+  tags: cve,wordpress,wp-plugin,orion-login-with-sms,critical,candidate
