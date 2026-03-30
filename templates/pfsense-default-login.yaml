@@ -1,0 +1,77 @@
+flow: http(1) && http(2)
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: csrf
+    part: body
+    regex:
+    - var csrfMagicToken = "([^"]+)"
+    type: regex
+  - group: 1
+    internal: true
+    name: phpsessid
+    part: header
+    regex:
+    - 'Set-Cookie: (PHPSESSID=[^;]+)'
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_all(body, "pfSense", "__csrf_magic")
+    internal: true
+    type: dsl
+  raw:
+  - 'GET /index.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: text/html
+
+    '
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 302
+    - 'contains(to_lower(header), "location: /")'
+    - '!contains(to_lower(header), "index.php")'
+    type: dsl
+  raw:
+  - 'POST /index.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+    Accept: text/html
+
+    Cookie: {{phpsessid}}
+
+
+    __csrf_magic={{csrf}}&usernamefld={{username}}&passwordfld={{password}}&login=Sign+In
+
+    '
+id: pfsense-default-login
+info:
+  author: 0x_Akoko
+  description: 'Detected pfSense firewall was found using default administrator credentials
+    (admin:pfsense). An attacker could have gained full administrative access to manage
+    firewall rules, routing, and network configuration.
+
+    '
+  metadata:
+    fofa-query: title="pfSense"
+    max-request: 2
+    product: pfsense
+    shodan-query: http.title:"pfSense"
+    vendor: netgate
+    verified: true
+  name: pfSense - Default Admin Credentials
+  reference:
+  - https://docs.netgate.com/pfsense/en/latest/
+  severity: high
+  tags: default-login,pfsense,firewall,network
+variables:
+  password: pfsense
+  username: admin
