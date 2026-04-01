@@ -1,0 +1,69 @@
+flow: http(1) && http(2)
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/json")
+    - contains_all(body, "\"cluster_id\"", "\"node_id\"", "\"version\"")
+    internal: true
+    type: dsl
+  raw:
+  - 'GET /api/ HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: application/json
+
+    '
+- extractors:
+  - name: session_id
+    part: body
+    regex:
+    - '"session_id"\s*:\s*"([^"]+)"'
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/json")
+    - contains_all(body, "\"session_id\"", "\"valid_until\"")
+    type: dsl
+  raw:
+  - 'POST /api/system/sessions HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+    Accept: application/json
+
+    X-Requested-By: nuclei
+
+
+    {"username":"{{username}}","password":"{{password}}","host":""}
+
+    '
+id: graylog-default-login
+info:
+  author: 0x_Akoko
+  description: 'Detected that Graylog was using the default credentials admin:admin.
+    The VM/OVA appliance shipped with admin:admin out of the box.
+
+    '
+  metadata:
+    fofa-query: app="Graylog" || title="Graylog Web Interface"
+    max-request: 2
+    product: graylog
+    shodan-query: title:"Graylog Web Interface"
+    vendor: graylog
+    verified: true
+  name: Graylog - Default Admin Credentials
+  reference:
+  - https://go2docs.graylog.org/current/setting_up_graylog/rest_api.html
+  - https://archivedocs.graylog.org/en/2.5/pages/installation/virtual_machine_appliances.html
+  severity: high
+  tags: default-login,graylog,auth
+variables:
+  password: admin
+  username: admin
