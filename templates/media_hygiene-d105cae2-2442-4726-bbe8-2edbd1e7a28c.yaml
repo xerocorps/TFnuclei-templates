@@ -15,7 +15,7 @@ http:
     words:
     - media-hygiene
   - dsl:
-    - compare_versions(version, '<= 4.0.1')
+    - compare_versions(version, '<= 4.0.2')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/media-hygiene/
     google-query: inurl:"/wp-content/plugins/media-hygiene/"
     shodan-query: http.html:"wp-content/plugins/media-hygiene/"
-  name: 'Media Hygiene <= 4.0.1 - Missing Authorization
+  name: 'Media Hygiene <= 4.0.2 - Missing Authorization
 
     '
   reference:
