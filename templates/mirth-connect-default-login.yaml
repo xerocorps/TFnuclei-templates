@@ -1,0 +1,67 @@
+flow: http(1) && http(2)
+http:
+- cookie-reuse: true
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/xml")
+    - contains_all(to_lower(body), "loginstatus", "success")
+    internal: true
+    type: dsl
+  raw:
+  - 'POST /api/users/_login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+    X-Requested-With: XMLHttpRequest
+
+
+    username={{username}}&password={{password}}
+
+    '
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/xml")
+    - contains_all(to_lower(body), "<username>", "admin")
+    type: dsl
+  raw:
+  - 'GET /api/users/current HTTP/1.1
+
+    Host: {{Hostname}}
+
+    X-Requested-With: XMLHttpRequest
+
+    '
+id: mirth-connect-default-login
+info:
+  author: 0x_Akoko
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+    cwe-id: CWE-798
+  description: 'Detected Mirth Connect was using default credentials admin:admin.
+    Mirth Connect is a widely used healthcare integration engine for HL7, FHIR, and
+    other medical data standards.
+
+    '
+  metadata:
+    fofa-query: title="Mirth Connect"
+    max-request: 2
+    product: mirth-connect
+    shodan-query: http.title:"Mirth Connect"
+    vendor: nextgen
+    verified: true
+  name: Mirth Connect - Default Admin Credentials
+  reference:
+  - https://www.nextgen.com/products-and-services/integration-engine
+  - https://docs.nextgen.com/bundle/Mirth_Connect_v4.4.1/page/connect/connect/topics/c_Getting_Started_mirth_connect_ug.html
+  severity: high
+  tags: mirth,default-login,misconfig,healthcare
+variables:
+  password: admin
+  username: admin
