@@ -1,0 +1,67 @@
+flow: http(1) && http(2)
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: session
+    part: header
+    regex:
+    - 'Set-Cookie: (PHPSESSID=[^;]+)'
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(body, "FreePBX")
+    internal: true
+    type: dsl
+  raw:
+  - 'GET /admin/config.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(body, "FreePBX Administration")
+    - '!contains(body, "loginform")'
+    type: dsl
+  raw:
+  - 'POST /admin/config.php HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+    Cookie: {{session}}
+
+
+    username={{username}}&password={{password}}
+
+    '
+id: freepbx-default-login
+info:
+  author: 0x_Akoko
+  description: 'Detected FreePBX administration panel was using default admin credentials
+    (admin:admin). An attacker could gain full administrative access to the PBX system,
+    manage extensions, trunks, and call routing.
+
+    '
+  metadata:
+    fofa-query: title="FreePBX"
+    max-request: 2
+    product: freepbx
+    shodan-query: http.title:"FreePBX"
+    vendor: sangoma
+    verified: true
+  name: FreePBX - Default Admin Credentials
+  reference:
+  - https://www.freepbx.org/
+  - https://community.freepbx.org/t/freepbx-default-admin-passwords/9221
+  severity: high
+  tags: freepbx,default-login,auth,misconfig
+variables:
+  password: admin
+  username: admin
