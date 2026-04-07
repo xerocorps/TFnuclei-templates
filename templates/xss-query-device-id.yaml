@@ -1,9 +1,12 @@
 http:
 - matchers:
+  - status:
+    - 200
+    type: status
   - part: body
     type: word
     words:
-    - wrkektxa
+    - <wrkektxa>
   - part: header
     type: word
     words:

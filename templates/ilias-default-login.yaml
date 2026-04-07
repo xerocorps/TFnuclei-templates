@@ -53,7 +53,6 @@ info:
     fofa-query: title="Login to ILIAS"
     max-request: 2
     product: ilias
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Login to ILIAS"})
     shodan-query: http.title:"Login to ILIAS"
     vendor: ilias
     verified: true

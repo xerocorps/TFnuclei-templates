@@ -3,13 +3,18 @@ http:
   - status:
     - 200
     type: status
-  - part: body
+  - condition: and
+    part: body
     type: word
     words:
     - APP_KEY=
     - DB_CONNECTION=
-    - KEY
-    - database
+    - DB_PASSWORD=
+  - negative: true
+    part: header
+    type: word
+    words:
+    - text/html
   matchers-condition: and
   method: GET
   path:

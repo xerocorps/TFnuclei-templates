@@ -1,0 +1,63 @@
+flow: http(1) && http(2)
+http:
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "text/html")
+    - contains_any(body, "alt=\"Superset\"", "<title>Superset</title>", "SUPERSET",
+      "superset")
+    internal: true
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/login/'
+- attack: pitchfork
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/json")
+    - contains_all(body, "access_toke", "refresh_token")
+    type: dsl
+  payloads:
+    password:
+    - admin
+    username:
+    - admin
+  raw:
+  - 'POST /api/v1/security/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+
+    {"username":"{{username}}","password":"{{password}}","provider":"db","refresh":true}
+
+    '
+id: superset-default-login
+info:
+  author: theamanrawat
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+  description: 'Apache Superset instance discovered using weak default credentials,
+    allows the attacker to gain admin privilege.
+
+    '
+  metadata:
+    fofa-query:
+    - app="Apache-Superset" || title="Superset"
+    max-request: 2
+    product: superset
+    shodan-query:
+    - http.title:"Superset"
+    - product:"Apache Superset"
+    vendor: apache
+    verified: true
+  name: Apache Superset - Default Login
+  reference:
+  - https://superset.apache.org/
+  severity: high
+  tags: default-login,apache,superset,vuln

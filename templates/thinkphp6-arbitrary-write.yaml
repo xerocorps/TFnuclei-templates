@@ -38,6 +38,7 @@ info:
   metadata:
     max-request: 2
     product: thinkphp
+    runzero-review: REJECT/2026-04-06/creates a file on the remote system
     shodan-query: title:"ThinkPHP"
     vendor: thinkphp
     verified: true
@@ -48,6 +49,6 @@ info:
   - https://github.com/Loneyers/ThinkPHP6_Anyfile_operation_write
   - https://github.com/zan8in/afrog/blob/main/pocs/afrog-pocs/vulnerability/thinkphp-v6-file-write.yaml
   severity: critical
-  tags: thinkphp,file-upload,rce,vuln
+  tags: file-upload,rce,thinkphp,vuln
 variables:
   random_filename: '{{to_lower(rand_base(11))}}'
