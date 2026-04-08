@@ -1,0 +1,68 @@
+http:
+- matchers:
+  - part: header
+    type: word
+    words:
+    - 'Set-Cookie: sling.formauth'
+  - status:
+    - 302
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /j_security_check HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryBCQeiTztQvBDyNxA
+
+
+    ------WebKitFormBoundaryBCQeiTztQvBDyNxA
+
+    Content-Disposition: form-data; name="_charset_"
+
+
+    UTF-8
+
+    ------WebKitFormBoundaryBCQeiTztQvBDyNxA
+
+    Content-Disposition: form-data; name="resource"
+
+
+    /
+
+    ------WebKitFormBoundaryBCQeiTztQvBDyNxA
+
+    Content-Disposition: form-data; name="j_username"
+
+
+    {{username}}
+
+    ------WebKitFormBoundaryBCQeiTztQvBDyNxA
+
+    Content-Disposition: form-data; name="j_password"
+
+
+    {{password}}
+
+    ------WebKitFormBoundaryBCQeiTztQvBDyNxA--
+
+    '
+id: apache-sling-default-login
+info:
+  author: icarot
+  description: 'Apache Sling default login was discovered.
+
+    '
+  metadata:
+    max-request: 1
+    product: sling
+    shodan-query: title:"Apache Sling"
+    vendor: apache
+  name: Apache Sling - Default Login
+  reference:
+  - https://github.com/apache/sling
+  severity: high
+  tags: apache,sling,default-login
+variables:
+  password: admin
+  username: admin
