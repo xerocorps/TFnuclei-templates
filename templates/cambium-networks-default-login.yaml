@@ -31,12 +31,15 @@ http:
 id: cambium-networks-default-login
 info:
   author: defektive
-  description: Canopy 5.7GHz Access Point default login credentials were discovered.
+  description: 'Cambium Networks / Motorola Canopy 5750AP ADVANTAGE Access Point 5.7GHz
+    login credentials were discovered.
+
+    '
   metadata:
     fofa-query: title="Welcome to Canopy"
     max-request: 2
     runzero-match: any(each(service["html.titles"]), {# matches "(?i)Welcome to Canopy"})
     verified: true
-  name: Canopy 5.7GHz Access Point Default Credentials
+  name: Canopy 5.7GHz Access Point - Default Login
   severity: high
-  tags: default-login,cambium,canopy,vuln
+  tags: cambium,canopy,default-login,vuln

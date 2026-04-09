@@ -38,6 +38,9 @@ info:
     - title="PaperCut Login"
     - body='content="papercut'
     - body="content=\"papercut\""
+    google-query:
+    - html:'content="PaperCut'
+    - html:'content="papercut'
     max-request: 1
     product: papercut_ng
     shodan-query:
@@ -52,4 +55,4 @@ info:
     zoomeye-query: app:"PaperCut"
   name: PaperCut NG Panel - Detect
   severity: info
-  tags: panel,papercut,detect,papercut-ng,discovery
+  tags: detect,discovery,panel,papercut,papercut-ng

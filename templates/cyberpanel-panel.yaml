@@ -21,11 +21,13 @@ info:
 
     '
   metadata:
+    fofa-query: app="Cyberpanel"
     max-request: 1
     product: cyberpanel
     runzero-match: service["http.body"] matches "(?i)cyberpanel"
+    shodan-query: html:"cyberpanel"
   name: Cyberpanel Login Panel - Detect
   reference:
   - https://cyberpanel.net/KnowledgeBase/
   severity: info
-  tags: cyberpanel,panel,login,detect,discovery
+  tags: cyberpanel,detect,discovery,login,panel

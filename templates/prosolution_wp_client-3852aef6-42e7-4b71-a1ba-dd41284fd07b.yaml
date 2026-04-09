@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - prosolution-wp-client
+  - dsl:
+    - compare_versions(version, '<= 1.9.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/prosolution-wp-client/readme.txt'
+  redirects: true
+id: prosolution_wp_client-3852aef6-42e7-4b71-a1ba-dd41284fd07b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/prosolution-wp-client/
+    google-query: inurl:"/wp-content/plugins/prosolution-wp-client/"
+    shodan-query: http.html:"wp-content/plugins/prosolution-wp-client/"
+  name: 'ProSolution WP Client <= 1.9.9 - Unauthenticated Arbitrary File Upload via
+    proSol_fileUploadProcess
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3852aef6-42e7-4b71-a1ba-dd41284fd07b?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,prosolution-wp-client,critical,candidate

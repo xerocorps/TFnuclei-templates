@@ -15,7 +15,7 @@ http:
     words:
     - am-lottieplayer
   - dsl:
-    - compare_versions(version, '<= 3.5.3')
+    - compare_versions(version, '<= 3.6.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -23,7 +23,7 @@ http:
   path:
   - '{{BaseURL}}/wp-content/plugins/am-lottieplayer/readme.txt'
   redirects: true
-id: am_lottieplayer-0f44fcc8-c5e0-44f5-92c3-6603b19a06fe
+id: am_lottieplayer-ef2f1ad1-1e2e-4b56-b16c-d87956b142ad
 info:
   author: topscoder
   classification:
@@ -35,12 +35,12 @@ info:
     fofa-query: wp-content/plugins/am-lottieplayer/
     google-query: inurl:"/wp-content/plugins/am-lottieplayer/"
     shodan-query: http.html:"wp-content/plugins/am-lottieplayer/"
-  name: 'AM LottiePlayer <= 3.5.3 - Authenticated (Author+) Stored Cross-Site Scripting
-    via Uploaded Lottie File
+  name: 'AM LottiePlayer <= 3.6.0 - Authenticated (Author+) Stored Cross-Site Scripting
+    via SVG
 
     '
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
-  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0f44fcc8-c5e0-44f5-92c3-6603b19a06fe?source=api-scan
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ef2f1ad1-1e2e-4b56-b16c-d87956b142ad?source=api-scan
   severity: low
   tags: cve,wordpress,wp-plugin,am-lottieplayer,low,candidate

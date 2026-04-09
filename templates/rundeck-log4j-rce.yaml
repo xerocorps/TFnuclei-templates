@@ -59,7 +59,9 @@ info:
     credentials.
   metadata:
     max-request: 1
+    product: rundeck
     runzero-review: REJECT/2025-11-07/uses interactsh
+    shodan-query: title:"Rundeck"
     vendor: pagerduty
     verified: true
   name: Rundeck - Remote Code Execution (Apache Log4j)
@@ -68,7 +70,7 @@ info:
   - https://logging.apache.org/log4j/2.x/security.html
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,rundeck,kev,oast,vuln
+  tags: cve,cve2021,jndi,kev,log4j,oast,rce,rundeck,vuln
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

@@ -36,10 +36,11 @@ id: sonarqube-cloud-token
 info:
   author: DhiyaneshDk
   metadata:
+    max-request: 1
     verified: true
   name: SonarQube Cloud Token Disclosure
   reference:
   - https://sonarcloud.io/web_api/api/authentication
   - https://docs.sonarsource.com/sonarqube/latest/user-guide/user-account/generating-and-using-tokens/#types-of-tokens
   severity: high
-  tags: exposure,token,sonarqube,vuln
+  tags: exposure,sonarqube,token,vuln

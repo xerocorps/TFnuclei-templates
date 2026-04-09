@@ -36,9 +36,10 @@ id: zenscrape-api-key
 info:
   author: ritikchaddha
   metadata:
+    max-request: 2
     verified: true
   name: Zenscrape API Key
   reference:
   - https://github.com/trufflesecurity/trufflehog/blob/main/pkg/detectors/zenscrape/zenscrape.go
   severity: high
-  tags: exposure,token,zenscrape,apikey,vuln
+  tags: apikey,exposure,token,vuln,zenscrape

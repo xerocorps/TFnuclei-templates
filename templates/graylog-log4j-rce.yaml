@@ -67,7 +67,9 @@ info:
     when message lookup substitution is enabled.
   metadata:
     max-request: 1
+    product: graylog
     runzero-review: REJECT/2025-11-07/uses interactsh
+    shodan-query: title:"Graylog Web Interface"
     vendor: graylog
     verified: true
   name: Graylog (Log4j) - Remote Code Execution
@@ -76,7 +78,7 @@ info:
   - https://logging.apache.org/log4j/2.x/security.html
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,graylog,kev,oast,vuln
+  tags: cve,cve2021,graylog,jndi,kev,log4j,oast,rce,vuln
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

@@ -23,7 +23,9 @@ http:
 id: osasi-default-login
 info:
   author: biero-el-corridor
-  description: 'OSASI PLC web interface default login credentials were discovered.
+  description: 'Detected OSASI PLC web interface accessible with default credentials,
+    potentially allowing unauthorized administrative access to industrial control
+    systems.
 
     '
   metadata:
@@ -33,4 +35,4 @@ info:
     verified: true
   name: OSASI PLC - Default Login
   severity: high
-  tags: osasi,plc,default-login,vuln
+  tags: default-login,osasi,plc,vuln

@@ -30,7 +30,7 @@ id: apache-streampark-default-login
 info:
   author: icarot
   classification:
-    cpe: cpe:2.3:a:apache:streampark:*:*:*:*:*:*:*
+    cpe: cpe:2.3:a:apache:streampark:*:*:*:*:*:*:*,cpe:2.3:a:apache:streampark:*:*:*:*:*:*:*:*
   description: 'Apache Streampark server enables default admin credentials. An attacker
     can execute unauthorized operations.
 
@@ -45,4 +45,4 @@ info:
   reference:
   - https://github.com/apache/streampark
   severity: high
-  tags: apache,streampark,default-login,vuln
+  tags: apache,default-login,streampark,vuln

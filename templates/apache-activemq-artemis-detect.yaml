@@ -7,11 +7,12 @@ http:
     - '"productInfo":.*"value":\s*"(.*)"'
     type: regex
   matchers:
-  - condition: and
+  - condition: or
     type: word
     words:
     - img/activemq.png
     - ActiveMQ Artemis
+    - Apache Artemis
   matchers-condition: and
   method: GET
   path:
@@ -32,4 +33,4 @@ info:
   reference:
   - https://github.com/apache/activemq-artemis/
   severity: info
-  tags: tech,activemq,artemis,apache,detect,discovery
+  tags: activemq,apache,artemis,detect,discovery,tech

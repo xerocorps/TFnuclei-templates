@@ -72,7 +72,7 @@ http:
     - tool.list
 id: exposed-mcp-server
 info:
-  author: ivan_wallarm,n3integration
+  author: ivan_wallarm
   description: 'Detects exposed Machine Control Protocol (MCP) servers through JSON-RPC
     2.0 API endpoints.
 
@@ -97,4 +97,4 @@ info:
   - https://github.com/anthropics/anthropic-tools/tree/main/mcp
   - https://lab.wallarm.com/wallarm-research-nuclei-template-counter-threats-targeting-llm-apps/
   severity: unknown
-  tags: mcp,jsonrpc,devtools,exposure,api,ai,llm,discovery
+  tags: ai,api,devtools,discovery,exposure,jsonrpc,llm,mcp

@@ -35,7 +35,7 @@ info:
     product: matomo
     runzero-match: service["favicon.ico.image.mmh3"] == "-2023266783"
     shodan-query:
-    - http.favicon.hash:"-2023266783"
+    - http.favicon.hash:-2023266783
     - cpe:"cpe:2.3:a:matomo:matomo"
     vendor: matomo
     verified: true
@@ -44,4 +44,4 @@ info:
   - https://matomo.org/
   - https://matomo.org/faq/on-premise/installing-matomo/#getting-started
   severity: info
-  tags: panel,matomo,login,detect,discovery
+  tags: detect,discovery,login,matomo,panel

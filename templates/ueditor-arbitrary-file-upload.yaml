@@ -65,6 +65,7 @@ info:
 
     '
   metadata:
+    fofa-query: body="ueditor"
     max-request: 2
     product: ueditor
     runzero-review: REJECT/2025-11-07/excluding tag intrusive
@@ -73,6 +74,6 @@ info:
   reference:
   - https://www.rescuetime.com/focus/url/https%3A%2F%2Fwww.cnblogs.com%2Fzhibing%2Fp%2F16893839.html%23_4
   severity: medium
-  tags: ueditor,file-upload,rce,intrusive,vuln
+  tags: file-upload,intrusive,rce,ueditor,vuln
 variables:
   filename: '{{rand_base(5)}}'

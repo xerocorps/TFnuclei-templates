@@ -33,13 +33,15 @@ http:
 id: camaleon-default-login
 info:
   author: DhiyaneshDK
-  description: Camaleon CMS default login credentials were discovered.
+  description: 'Camaleon CMS default login credentials was discovered.
+
+    '
   metadata:
     product: camaleon_cms
     runzero-match: service["http.body"] matches "(?i)camaleon_cms"
     shodan-query: html:"camaleon_cms"
     vendor: tuzitio
-  name: Camaleon CMS Default Credentials
+  name: Camaleon CMS - Default Login
   severity: high
   tags: camaleon,default-login,vuln
 variables:

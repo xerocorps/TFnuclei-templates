@@ -56,7 +56,9 @@ info:
     is enabled.
   metadata:
     max-request: 1
+    product: mobileiron
     runzero-review: REJECT/2025-11-07/uses interactsh
+    shodan-query: http.html:"MobileIron"
     vendor: ivanti
     verified: true
   name: Ivanti MobileIron (Log4j) - Remote Code Execution
@@ -71,7 +73,7 @@ info:
     been completely removed. Note that this vulnerability is specific to log4j-core
     and does not affect log4net, log4cxx, or other Apache Logging Services projects.
   severity: critical
-  tags: jndi,log4j,rce,cve,cve2021,ivanti,oast,mobileiron,kev,vuln
+  tags: cve,cve2021,ivanti,jndi,kev,log4j,mobileiron,oast,rce,vuln
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

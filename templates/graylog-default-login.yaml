@@ -55,6 +55,7 @@ info:
     fofa-query: app="Graylog" || title="Graylog Web Interface"
     max-request: 2
     product: graylog
+    runzero-match: service["product"] contains "Graylog:Graylog"
     shodan-query: title:"Graylog Web Interface"
     vendor: graylog
     verified: true
@@ -63,7 +64,7 @@ info:
   - https://go2docs.graylog.org/current/setting_up_graylog/rest_api.html
   - https://archivedocs.graylog.org/en/2.5/pages/installation/virtual_machine_appliances.html
   severity: high
-  tags: default-login,graylog,auth
+  tags: auth,default-login,graylog
 variables:
   password: admin
   username: admin

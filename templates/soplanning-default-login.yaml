@@ -32,7 +32,9 @@ http:
 id: soplanning-default-login
 info:
   author: s4e-io
-  description: 'SOPlanning default login credentials were discovered.
+  description: 'SOPlanning contains default credentials. An attacker can obtain access
+    to user accounts and access sensitive information, modify data, and/or execute
+    unauthorized operations.
 
     '
   metadata:
@@ -40,11 +42,13 @@ info:
     max-request: 1
     product: soplanning
     runzero-match: service["http.body"] matches "(?i)soplanning"
-    shodan-query: http.html:"soplanning"
+    shodan-query:
+    - html:"soplanning"
+    - http.html:"soplanning"
     vendor: soplanning
     verified: true
   name: SOPlanning - Default Login
   reference:
   - https://www.soplanning.org/en/
   severity: high
-  tags: soplanning,default-login,vuln
+  tags: default-login,soplanning,vuln

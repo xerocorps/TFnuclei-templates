@@ -24,7 +24,11 @@ http:
 id: siemens-simatic-default-login
 info:
   author: biero-el-corridor
-  description: 'Siemens SIMATIC HMI Miniweb default login credentials were discovered.
+  description: 'Identified Siemens SIMATIC HMI MiniWeb interfaces that were accessible
+    using default credentials.These interfaces are used to remotely monitor and control
+    Human-Machine Interface (HMI) panels deployed in industrial environments. Leaving
+    the default login in place posed a significant risk to operational technology
+    (OT) systems.
 
     '
   metadata:
@@ -34,4 +38,4 @@ info:
     verified: true
   name: Siemens SIMATIC HMI Miniweb - Default Login
   severity: high
-  tags: ics,siemens,default-login,vuln
+  tags: default-login,ics,siemens,vuln

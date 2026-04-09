@@ -58,7 +58,7 @@ info:
     max-request: 1
     runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
-  name: Infinitt PACS System - Arbitrary File Upload
+  name: Infinitt PACS System - Arbitary File Upload
   reference:
   - https://github.com/wy876/POC/blob/a9e4000fc76d0157b53ade916323b7b8256b17c3/%E8%8B%B1%E9%A3%9E%E8%BE%BE%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E5%AD%98%E6%A1%A3%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F/%E8%8B%B1%E9%A3%9E%E8%BE%BE%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E5%AD%98%E6%A1%A3%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9FWebJobUpload%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E.md
   remediation: 'Ensure that file uploads are properly validated and sanitized. Implement
@@ -67,6 +67,6 @@ info:
 
     '
   severity: critical
-  tags: infinitt,file-upload,intrusive,rce,vuln
+  tags: file-upload,infinitt,intrusive,rce,vuln
 variables:
   filename: '{{to_lower(rand_text_alpha(5))}}'

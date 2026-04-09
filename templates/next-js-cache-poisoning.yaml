@@ -31,16 +31,13 @@ info:
 
     '
   metadata:
-    fofa-query:
-    - body="/_next/static"
-    - x-middleware-rewrite
+    fofa-query: body="/_next/static"
     framework: node.js
     product: next.js
     runzero-match: service["http.body"] matches "(?i)/_next/static"
     shodan-query:
     - http.html:"/_next/static"
     - cpe:"cpe:2.3:a:zeit:next.js"
-    - x-middleware-rewrite
     vendor: vercel
     zoomeye-query: app="Next.js"
   name: Next.js Cache Poisoning
@@ -49,6 +46,6 @@ info:
   - https://github.com/valentin-panov/nextjs-no-cache-issue
   - https://zhero-web-sec.github.io/research-and-things/nextjs-and-cache-poisoning-a-quest-for-the-black-hole
   severity: high
-  tags: cve,cve2023,next-js,cache,vuln
+  tags: cache,cve,cve2023,next-js,vuln
 variables:
   rand: '{{rand_text_numeric(5)}}'

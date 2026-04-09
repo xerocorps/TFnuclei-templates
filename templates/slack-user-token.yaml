@@ -55,6 +55,7 @@ id: slack-user-token
 info:
   author: Ice3man,DhiyaneshDK
   metadata:
+    max-request: 1
     verified: true
   name: Slack User token disclosure
   reference:
@@ -64,4 +65,4 @@ info:
   - https://github.com/semgrep/semgrep-rules/blob/develop/generic/secrets/gitleaks/slack-user-token.yaml
   - https://github.com/semgrep/semgrep-rules/blob/develop/generic/secrets/gitleaks/slack-user-token.txt
   severity: high
-  tags: exposure,token,slack,vuln
+  tags: exposure,slack,token,vuln

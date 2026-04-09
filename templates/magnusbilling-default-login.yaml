@@ -22,7 +22,10 @@ http:
 id: magnusbilling-default-login
 info:
   author: DhiyaneshDk
-  description: 'MagnusBilling default admin credentials were discovered.
+  description: 'MagnusBilling installs with a default administrative account using
+    the credentials root / magnus. If unchanged, these credentials grant full access
+    to the system, allowing attackers to manage billing data, modify configurations,
+    and potentially execute arbitrary code or commands via exposed interfaces.
 
     '
   impact: 'An unauthenticated attacker can gain full administrative control over the
@@ -37,7 +40,7 @@ info:
     verified: true
   name: MagnusBilling - Default Login
   severity: high
-  tags: mbilling,default-login,vuln
+  tags: default-login,mbilling,vuln
 variables:
   password: 9F4CA770B638615AC5C3E0D2DA16B77C80C2F2C6
   username: root

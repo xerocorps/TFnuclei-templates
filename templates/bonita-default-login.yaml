@@ -27,13 +27,16 @@ http:
 id: bonita-default-login
 info:
   author: DhiyaneshDk
-  description: Bonita default login credentials were discovered.
+  description: 'Bonita login was using default credentials which can led to gain super
+    administrator access.
+
+    '
   metadata:
     max-request: 1
     runzero-match: service["favicon.ico.image.mmh3"] == "-1197926023"
     shodan-query: http.favicon.hash:-1197926023
     verified: true
-  name: Bonita Default Credentials
+  name: Bonita - Default Login
   severity: high
   tags: bonita,default-login,misconfig,vuln
 variables:

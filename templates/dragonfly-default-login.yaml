@@ -28,7 +28,7 @@ http:
 id: dragonfly-default-login
 info:
   author: DhiyaneshDK
-  description: 'Dragonfly default login credentials were discovered.
+  description: 'Dragonfly was using the default username, and the password was discovered.
 
     '
   metadata:
@@ -38,7 +38,7 @@ info:
     verified: true
   name: Dragonfly - Default Login
   severity: high
-  tags: dragonfly,default-login,vuln
+  tags: default-login,dragonfly,vuln
 variables:
   password: dragonfly
   username: root

@@ -1,17 +1,10 @@
 http:
 - extractors:
   - group: 1
-    internal: true
     name: version
     part: body
     regex:
-    - '(?mi)Stable tag: ([0-9.]+)'
-    type: regex
-  - group: 1
-    name: version
-    part: body
-    regex:
-    - '(?mi)Stable tag: ([0-9.]+)'
+    - (?mi)Stable tag:\s*([0-9.]+)
     type: regex
   matchers:
   - status:
@@ -22,7 +15,7 @@ http:
     words:
     - pz-frontend-manager
   - dsl:
-    - compare_versions(version, '<= 1.0.5')
+    - compare_versions(version, '<= 1.0.6')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -30,7 +23,7 @@ http:
   path:
   - '{{BaseURL}}/wp-content/plugins/pz-frontend-manager/readme.txt'
   redirects: true
-id: pz-frontend-manager-9f4ba453d6178eeac0e34276a8965756
+id: pz_frontend_manager-90d8e345-b549-493b-a84b-abe56ab42a04
 info:
   author: topscoder
   classification:
@@ -41,13 +34,13 @@ info:
   metadata:
     fofa-query: wp-content/plugins/pz-frontend-manager/
     google-query: inurl:"/wp-content/plugins/pz-frontend-manager/"
-    shodan-query: 'vuln:'
-  name: 'PZ Frontend Manager <= 1.0.5 - Cross-Site Request Forgery to Profile Picture
-    Update
+    shodan-query: http.html:"wp-content/plugins/pz-frontend-manager/"
+  name: 'PZ Frontend Manager <= 1.0.6 - Missing Authorization to Arbitrary User Deletion
+    via ''dataType'' Parameter
 
     '
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
-  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4cb5d487-0f22-4a34-8558-fe06c19a375b?source=api-scan
-  severity: medium
-  tags: cve,wordpress,wp-plugin,pz-frontend-manager,medium
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/90d8e345-b549-493b-a84b-abe56ab42a04?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,pz-frontend-manager,high,candidate

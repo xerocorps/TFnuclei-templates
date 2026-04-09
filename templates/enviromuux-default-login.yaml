@@ -24,7 +24,11 @@ http:
 id: enviromuux-default-login
 info:
   author: M.Sarmad Shafiq
-  description: 'Network Technologies ENVIROMUX default login credentials were discovered.
+  description: 'The ENVIROMUX environment monitoring system from Network Technologies
+    Inc was found to be using its default login credentials. This default configuration
+    could have allowed unauthorized users to gain access to the web management interface
+    without authentication, potentially leading to information disclosure or unauthorized
+    control over environmental monitoring systems.
 
     '
   metadata:
@@ -38,7 +42,7 @@ info:
   - http://www.networktechinc.com/download/d-environment-monitor-16.html
   - http://www.networktechinc.com/pdf/man154.pdf
   severity: high
-  tags: default-login,networktechnologies,enviromux,vuln
+  tags: default-login,enviromux,networktechnologies,vuln
 variables:
   password: nti
   username: root
