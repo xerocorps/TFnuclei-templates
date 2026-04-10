@@ -5,14 +5,21 @@ dns:
     - "IN\tNS\t(.+)"
     type: regex
   matchers:
-  - type: word
-    words:
-    - "IN\tNS"
+  - part: answer
+    regex:
+    - "IN\tNS\\t(.+)$"
+    type: regex
   name: '{{FQDN}}'
   type: NS
 id: nameserver-fingerprint
 info:
   author: pdteam
-  name: NS Fingerprint
+  classification:
+    cwe-id: CWE-200
+  description: An NS record was detected. An NS record delegates a subdomain to a
+    set of name servers.
+  metadata:
+    max-request: 1
+  name: NS Record Detection
   severity: info
   tags: dns,ns

@@ -33,7 +33,6 @@ info:
     fofa-query: icon_hash=-2023266783
     max-request: 3
     product: matomo
-    runzero-match: service["favicon.ico.image.mmh3"] == "-2023266783"
     shodan-query:
     - http.favicon.hash:-2023266783
     - cpe:"cpe:2.3:a:matomo:matomo"
@@ -44,4 +43,4 @@ info:
   - https://matomo.org/
   - https://matomo.org/faq/on-premise/installing-matomo/#getting-started
   severity: info
-  tags: detect,discovery,login,matomo,panel
+  tags: panel,matomo,login,detect,discovery

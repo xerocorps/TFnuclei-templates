@@ -20,11 +20,10 @@ info:
   metadata:
     fofa-query: title="TurnKey LAMP"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)TurnKey LAMP"})
     shodan-query: title:"TurnKey LAMP"
     verified: true
   name: TurnKey LAMP Panel - Detect
   reference:
   - https://www.turnkeylinux.org/lamp
   severity: info
-  tags: panel,login,turnkey,lamp,detect,discovery
+  tags: panel,login,turnkey,lamp,detect

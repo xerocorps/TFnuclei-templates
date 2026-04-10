@@ -22,8 +22,6 @@ info:
     '
   metadata:
     max-request: 2
-    runzero-match: any(each(service["http.head.wwwAuthentications"]), {# contains
-      'realm="Brickcom'})
     shodan-query: realm="Brickcom"
     verified: true
   name: Brickcom Camera - Unauthenticated Snapshot Access

@@ -37,9 +37,8 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)WAGO Ethernet Web-based Management"
     shodan-query: html:"WAGO Ethernet Web-based Management"
     verified: true
   name: WAGO Web based Management - Default Login
   severity: high
-  tags: default-login,vuln,wago
+  tags: wago,default-login,vuln

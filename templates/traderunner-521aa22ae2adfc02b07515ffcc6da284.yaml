@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - traderunner
+  - dsl:
+    - compare_versions(version, '<= 3.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/traderunner/readme.txt'
+  redirects: true
+id: traderunner-521aa22ae2adfc02b07515ffcc6da284
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/traderunner/
+    google-query: inurl:"/wp-content/plugins/traderunner/"
+    shodan-query: 'vuln:'
+  name: 'Trade Runner <= 3.9 - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/5d0d44bb-a6b9-44cc-ba38-0e28ad318594?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,traderunner,high

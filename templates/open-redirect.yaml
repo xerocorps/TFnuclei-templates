@@ -136,6 +136,8 @@ http:
     - target_url
     - to_url
     - validate_url
+    - DirectTo
+    - relay
     mode: single
     part: query
   - fuzz:
@@ -155,12 +157,13 @@ http:
     - 307
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}'
   payloads:
     redirect:
     - evil.com
+  pre-condition:
+  - dsl:
+    - method == "GET"
+    type: dsl
   stop-at-first-match: true
 id: open-redirect
 info:

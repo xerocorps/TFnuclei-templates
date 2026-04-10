@@ -4,7 +4,7 @@ http:
     part: body
     type: word
     words:
-    - alert(document.domain);
+    - alert('document.domain');
     - <?xml version
     - <script type="text/javascript">
   - negative: true
@@ -38,4 +38,4 @@ info:
   reference:
   - https://docs.retool.com/releases/edge/3.88#:~:text=Fixed%20an%20SVG%20XSS%20vulnerability%20by%20adding%20a%20CSP.%20(%2349381)
   severity: high
-  tags: retool,xss,vuln
+  tags: retool,xss

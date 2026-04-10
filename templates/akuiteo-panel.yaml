@@ -27,11 +27,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Akuiteo"})
     shodan-query: title:"Akuiteo"
     verified: true
   name: Akuiteo Login Panel - Detect
   reference:
   - https://www.akuiteo.com/en/
   severity: info
-  tags: panel,akuiteo,login,detect,discovery
+  tags: panel,akuiteo,login,detect

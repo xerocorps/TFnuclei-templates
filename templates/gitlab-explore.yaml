@@ -27,9 +27,8 @@ info:
   metadata:
     fofa-query: title="GitLab"
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)GitLab"})
     shodan-query: title:"GitLab"
     verified: true
   name: GitLab Instance Explore - Detect
   severity: info
-  tags: gitlab,explore,panel,detect,discovery
+  tags: gitlab,explore,panel,detect

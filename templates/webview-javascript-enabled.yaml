@@ -8,6 +8,11 @@ file:
 id: webview-javascript-enabled
 info:
   author: gaurang
-  name: Webview JavaScript enabled
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: WebView Javascript enabling was detected.
+  name: WebView JavaScript - Detect
   severity: info
-  tags: android,file,javascript
+  tags: android,file,js,webview

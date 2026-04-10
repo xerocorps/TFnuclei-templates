@@ -1,6 +1,5 @@
 dns:
-- class: inet
-  matchers:
+- matchers:
   - condition: or
     name: 000domains
     type: word
@@ -30,10 +29,17 @@ dns:
     - ns1.digitalocean.com
     - ns2.digitalocean.com
     - ns2.digitalocean.com
-  - name: dnsmadeeasy
+  - condition: or
+    name: dnsmadeeasy
     type: word
     words:
-    - .dnsmadeeasy.com
+    - ns1.dnsmadeeasy.com
+    - ns2.dnsmadeeasy.com
+    - ns3.dnsmadeeasy.com
+    - ns4.dnsmadeeasy.com
+    - ns5.dnsmadeeasy.com
+    - ns6.dnsmadeeasy.com
+    - ns7.dnsmadeeasy.com
   - condition: or
     name: dnsimple
     type: word
@@ -109,8 +115,6 @@ dns:
     - yns2.yahoo.com
   matchers-condition: or
   name: '{{FQDN}}'
-  recursion: true
-  retries: 3
   type: NS
 id: can-i-take-over-dns-fingerprint
 info:

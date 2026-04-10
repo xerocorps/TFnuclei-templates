@@ -64,8 +64,6 @@ info:
   metadata:
     fofa-query: "title=\"\u5B5A\u76DF\u4E91 \""
     max-request: 1
-    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"(?i)\u5B5A\u76DF\
-      \u4E91 \"})"
     shodan-query: "title:\"\u5B5A\u76DF\u4E91 \""
   name: Fumeng - SQL Injection
   reference:
@@ -75,4 +73,4 @@ info:
 
     '
   severity: critical
-  tags: time-based-sqli,fumasoft,sqli,vuln
+  tags: time-based-sqli,fumasoft,sqli

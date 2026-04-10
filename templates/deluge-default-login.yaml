@@ -39,11 +39,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "Deluge"})
     shodan-query: title:"Deluge"
     verified: true
   name: Deluge - Default Login
   reference:
   - https://docs.linuxserver.io/images/docker-deluge/#:~:text=The%20admin%20interface%20is%20available,%2D%3EInterface%2D%3EPassword.
   severity: high
-  tags: default-login,deluge,vuln
+  tags: deluge,default-login,vuln

@@ -1,5 +1,7 @@
 http:
 - attack: pitchfork
+  headers:
+    Authorization: Basic {{base64(username + ':' + password)}}
   matchers:
   - condition: and
     part: body
@@ -12,19 +14,14 @@ http:
     - 200
     type: status
   matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/'
   payloads:
     password:
     - admin
     username:
     - admin
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Hostname}}
-
-    Authorization: Basic {{base64(username + '':'' + password)}}
-
-    '
 id: asus-wl520GU-default-login
 info:
   author: ritikchaddha
@@ -38,4 +35,4 @@ info:
     verified: true
   name: ASUS WL-520GU - Default Login
   severity: high
-  tags: default-login,asus,wl-520gu
+  tags: default-login,asus,wl-520gu,vuln

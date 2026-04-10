@@ -3,12 +3,13 @@ info:
   author: cyllective
   description: Detects wazuh
   name: wazuh detect
-  references:
+  reference:
   - https://github.com/wazuh/wazuh
   severity: info
   tags: tech,wazuh
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - condition: or
     part: body
     type: word
@@ -17,6 +18,18 @@ requests:
     - '&quot;title&quot;:&quot;Wazuh&quot;'
     - '&quot;icon&quot;:&quot;plugins/wazuh/img/icon_blue.png&quot;'
     - '&quot;url&quot;:&quot;/app/wazuh&quot;'
-  method: GET
-  path:
-  - '{{BaseURL}}/app/login'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /app/login HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

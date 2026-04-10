@@ -36,8 +36,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] contains "MOLGENIS" || service["last.http.body"]
-      contains "MOLGENIS"
     shodan-query: html:"MOLGENIS"
     verified: true
   name: Molgenis - Default Login

@@ -1,14 +1,8 @@
-flow: http(1) && http(2)
 http:
 - matchers:
-  - internal: true
-    type: word
-    words:
-    - content="Catfish CMS
-  method: GET
-  path:
-  - '{{BaseURL}}'
-- matchers:
+  - status:
+    - 200
+    type: status
   - condition: and
     type: word
     words:
@@ -16,9 +10,6 @@ http:
     - PATH
     - SHELL
     - USER
-  - status:
-    - 200
-    type: status
   matchers-condition: and
   method: GET
   path:
@@ -30,13 +21,11 @@ info:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
     cwe-id: CWE-77
-  description: 'CatfishCMS 4.8.54 contains a remote command execution vulnerability
+  description: CatfishCMS 4.8.54 contains a remote command execution vulnerability
     in the "method" parameter.
-
-    '
   metadata:
     max-request: 1
-  name: CatfishCMS - Remote Command Execution
+  name: CatfishCMS RCE
   reference:
   - https://its401.com/article/yun2diao/91344725
   - https://github.com/xwlrbh/Catfish/issues/4

@@ -45,13 +45,17 @@ http:
 id: crushftp-default-login
 info:
   author: pussycat0x
+  classification:
+    cpe: cpe:2.3:a:crushftp:crushftp:*:*:*:*:*:*:*:*
   description: 'CrushFTP default login credentials were discovered.
 
     '
   metadata:
     max-request: 2
+    product: crushftp
     shodan-query: html:"CrushFTP"
+    vendor: crushftp
     verified: true
   name: CrushFTP - Default Login
   severity: high
-  tags: default-login,crushftp
+  tags: default-login,crushftp,vuln

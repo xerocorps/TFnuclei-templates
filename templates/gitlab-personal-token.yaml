@@ -1,6 +1,6 @@
 flow: http(1) && http(2)
 http:
-- matchers:
+- extractors:
   - internal: true
     name: token
     part: body
@@ -10,12 +10,7 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-- disable-path-automerge: true
-  extractors:
-  - dsl:
-    - token
-    type: dsl
-  matchers:
+- matchers:
   - condition: and
     part: body
     type: word
@@ -32,6 +27,7 @@ http:
     PRIVATE-TOKEN: {{token}}
 
     '
+  self-contained: true
 id: gitlab-personal-token
 info:
   author: DhiyaneshDK
@@ -43,4 +39,4 @@ info:
   - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/gitlab.yml
   - https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
   severity: high
-  tags: gitlab,token,exposure,vuln
+  tags: gitlab,token,exposure

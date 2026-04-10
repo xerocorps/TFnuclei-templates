@@ -53,7 +53,6 @@ info:
     fofa-query: title="Mirth Connect"
     max-request: 2
     product: mirth-connect
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Mirth Connect"})
     shodan-query: http.title:"Mirth Connect"
     vendor: nextgen
     verified: true
@@ -62,7 +61,7 @@ info:
   - https://www.nextgen.com/products-and-services/integration-engine
   - https://docs.nextgen.com/bundle/Mirth_Connect_v4.4.1/page/connect/connect/topics/c_Getting_Started_mirth_connect_ug.html
   severity: high
-  tags: default-login,healthcare,mirth,misconfig
+  tags: mirth,default-login,misconfig,healthcare
 variables:
   password: admin
   username: admin

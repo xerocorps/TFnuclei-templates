@@ -52,7 +52,6 @@ info:
     fofa-query: body="/wp-content/plugins/ninja-tables/"
     max-request: 2
     product: ninja-tables
-    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/ninja-tables/"
     vendor: wpxpo
     verified: true
   name: Ninja Tables <4.1.9 - Unauthenticated Arbitrary File Read
@@ -63,4 +62,4 @@ info:
 
     '
   severity: high
-  tags: file-download,lfi,ninja-tables,unauth,vuln,wordpress,wp-plugin
+  tags: ninja-tables,file-download,wordpress,unauth,lfi,wp-plugin,vuln

@@ -65,6 +65,8 @@ info:
     cwe-id: CWE-200
   description: An email service was detected. Check the email service or spam filter
     that is used for a domain.
+  metadata:
+    max-request: 1
   name: Email Service Detector
   severity: info
   tags: dns,service

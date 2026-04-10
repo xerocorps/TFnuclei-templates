@@ -53,8 +53,6 @@ info:
     fofa-query: title="NetBox" || body="netbox-community"
     max-request: 2
     product: netbox
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)NetBox"}) &&
-      service["http.body"] contains "netbox-community"
     shodan-query: http.title:"NetBox"
     vendor: netbox-community
     verified: true
@@ -63,7 +61,7 @@ info:
   - https://github.com/netbox-community/netbox-docker
   - https://docs.netbox.dev/en/stable/integrations/rest-api/#authenticating-to-the-api
   severity: high
-  tags: auth,default-login,netbox
+  tags: default-login,netbox,auth
 variables:
   password: admin
   username: admin

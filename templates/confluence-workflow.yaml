@@ -1,12 +1,9 @@
 id: confluence-workflow
 info:
-  author: foulenzer
+  author: philippedelteil
+  description: Workflow that runs all Confluence related nuclei templates
   name: Atlassian Confluence workflow
-logic: 'cve_2018_5230()
-
-  cve_2019_3396()
-
-  '
-variables:
-  cve_2018_5230: cves/CVE-2018-5230.yaml
-  cve_2019_3396: cves/CVE-2019-3396.yaml
+workflows:
+- subtemplates:
+  - tags: confluence
+  template: http/technologies/confluence-detect.yaml

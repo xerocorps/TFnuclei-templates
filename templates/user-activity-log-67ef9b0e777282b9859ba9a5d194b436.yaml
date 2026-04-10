@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-activity-log
+  - dsl:
+    - compare_versions(version, '<= 1.6.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-activity-log/readme.txt'
+  redirects: true
+id: user-activity-log-67ef9b0e777282b9859ba9a5d194b436
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-activity-log/
+    google-query: inurl:"/wp-content/plugins/user-activity-log/"
+    shodan-query: 'vuln:'
+  name: 'User Activity Log <= 1.6.4 - Unauthenticated SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b4ca985e-cae1-4e26-ad2d-413724cfd45d?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,user-activity-log,critical

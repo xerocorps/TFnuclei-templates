@@ -3,10 +3,8 @@ info:
   author: e_schultze_
   name: Polycom Admin Panel
   severity: low
-  tags: panel
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - status:
     - 200
     type: status
@@ -19,15 +17,6 @@ requests:
     words:
     - 'Server: lighttpd'
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /systemstatus.xml HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
-    (KHTML, like Gecko)
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/systemstatus.xml'

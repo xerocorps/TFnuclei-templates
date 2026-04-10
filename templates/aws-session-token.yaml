@@ -1,14 +1,4 @@
-id: aws-session-token
-info:
-  author: DhiyaneshDK
-  metadata:
-    verified: 'true'
-  name: AWS Session Token
-  reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/aws.yml
-  severity: info
-  tags: aws,amazon,token,exposure,session
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -17,3 +7,14 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: aws-session-token
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 1
+    verified: true
+  name: AWS Session Token
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/aws.yml
+  severity: info
+  tags: aws,amazon,token,exposure,session

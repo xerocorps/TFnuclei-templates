@@ -32,8 +32,6 @@ info:
     - icon_hash="230963457"
     max-request: 1
     product: manageengine_exchange_reporter_plus
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ManageEngine
-      - Exchange Reporter Plus"}) || service["favicon.ico.image.mmh3"] == "230963457"
     shodan-query:
     - title:"ManageEngine - Exchange Reporter Plus"
     - http.favicon.hash:230963457
@@ -43,4 +41,4 @@ info:
   reference:
   - https://www.manageengine.com/products/exchange-reports/
   severity: info
-  tags: discovery,login,manageengine,panel,zoho,zohocorp
+  tags: panel,zoho,manageengine,zohocorp,login,discovery

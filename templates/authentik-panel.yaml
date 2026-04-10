@@ -27,11 +27,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "-178113786"
     shodan-query: http.favicon.hash:-178113786
     verified: true
   name: Authentik Panel - Detect
   reference:
-  - https://github.com/goauthentik/authentik
+  - https://github.com/searxng/searxng
   severity: info
-  tags: authentik,sso,mfa,panel,detect,discovery
+  tags: authentik,sso,mfa,panel,detect

@@ -19,8 +19,8 @@ id: cyberoam-ssl-vpn-panel
 info:
   author: idealphase
   classification:
+    cpe: cpe:2.3:h:sophos:cyberoam:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: Cyberoam SSL VPN panel was detected.
   metadata:
@@ -33,4 +33,4 @@ info:
   reference:
   - https://docs.sophos.com/nsg/Cyberoam/Version%2010.x/10.6.3/Guides/Cyberoam%20SSL%20VPN%20User%20Guide.pdf
   severity: info
-  tags: panel,cyberoam,vpn
+  tags: panel,cyberoam,vpn,sophos

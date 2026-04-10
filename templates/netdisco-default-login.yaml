@@ -31,7 +31,6 @@ info:
   metadata:
     fofa-query: title="Netdisco"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "Netdisco"})
     shodan-query: title:"Netdisco"
     verified: true
   name: Netdisco Admin - Default Login
@@ -40,7 +39,7 @@ info:
 
     '
   severity: critical
-  tags: default-login,netdisco,vuln
+  tags: netdisco,default-login
 variables:
   password: netdisco
   username: netdisco

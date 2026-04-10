@@ -1,24 +1,13 @@
 id: exposed-pagespeed-global-admin
 info:
-  author: pdteam
+  author: pd-team
   name: Apache PageSpeed Global Admin Dashboard Exposure
   severity: medium
-  tags: panel
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - type: word
     words:
     - <b>Pagespeed Admin</b>
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /pagespeed_admin/ HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
-    Firefox/55
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/pagespeed_admin/'

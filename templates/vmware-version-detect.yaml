@@ -37,12 +37,12 @@ requests:
   matchers-condition: and
   raw:
   - "POST /sdk/ HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT\
-    \ 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82\
-    \ Safari/537.36\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\n\
-    Accept-Encoding: gzip, deflate\nAccept-Language: en-US,en;q=0.9\nConnection: close\n\
-    \n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"\
-    \ xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
-    >\n   <soap:Header>\n      <operationID>00000001-00000001</operationID>\n   </soap:Header>\n\
-    \   <soap:Body>\n      <RetrieveServiceContent xmlns=\"urn:internalvim25\">\n\
-    \         <_this xsi:type=\"ManagedObjectReference\" type=\"ServiceInstance\"\
-    >ServiceInstance</_this>\n      </RetrieveServiceContent>\n   </soap:Body>\n</soap:Envelope>\n"
+    \ 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept-Encoding: gzip, deflate\n\
+    Accept: */*\nConnection: close\nContent-Type: application/xml\nContent-Length:\
+    \ 538\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:soap=\"\
+    http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\
+    \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n   <soap:Header>\n\
+    \      <operationID>00000001-00000001</operationID>\n   </soap:Header>\n   <soap:Body>\n\
+    \      <RetrieveServiceContent xmlns=\"urn:internalvim25\">\n         <_this xsi:type=\"\
+    ManagedObjectReference\" type=\"ServiceInstance\">ServiceInstance</_this>\n  \
+    \    </RetrieveServiceContent>\n   </soap:Body>\n</soap:Envelope>        \n"

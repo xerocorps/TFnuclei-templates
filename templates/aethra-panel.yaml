@@ -20,10 +20,8 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Aethra Telecommunications
-      Operating System"})
     shodan-query: http.title:"Aethra Telecommunications Operating System"
     verified: true
   name: Aethra Telecommunications Login - Panel
   severity: info
-  tags: panel,aethra,login,detect,discovery
+  tags: panel,aethra,login,detect

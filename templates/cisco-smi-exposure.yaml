@@ -7,6 +7,8 @@ info:
     cwe-id: CWE-200
   description: Cisco Smart Install endpoints were discovered. Exposure of SMI to untrusted
     networks could allow complete compromise of the switch.
+  metadata:
+    max-request: 1
   name: Cisco Smart Install Endpoints Exposure
   reference:
   - https://blog.talosintelligence.com/2017/02/cisco-coverage-for-smart-install-client.html
@@ -16,10 +18,9 @@ info:
   - https://github.com/Sab0tag3d/SIET
   severity: medium
   tags: network,cisco,smi,exposure
-network:
+tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:4786'
   inputs:
   - data: 000000010000000100000004000000080000000100000000
     type: hex
@@ -28,3 +29,4 @@ network:
     type: word
     words:
     - 000000040000000000000003000000080000000100000000
+  port: 4786

@@ -13,13 +13,7 @@ requests:
     part: header
     type: word
     words:
-    - PHPSESSID=
-  - condition: and
-    negative: true
-    part: body
-    type: word
-    words:
-    - RELOGIN
+    - 'Set-Cookie: PHPSESSID='
   matchers-condition: and
   method: GET
   path:

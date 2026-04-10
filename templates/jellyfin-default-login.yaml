@@ -53,9 +53,8 @@ info:
   metadata:
     fofa-query: title="Jellyfin"
     product: jellyfin
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Jellyfin"})
     vendor: jellyfin
     verified: true
   name: Jellyfin Console - Default Login
   severity: high
-  tags: default-login,jellyfin,misconfig,vuln
+  tags: default-login,jellyfin,misconfig

@@ -30,11 +30,10 @@ info:
   metadata:
     max-request: 2
     product: argo_cd
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Argo CD"})
     shodan-query: http.title:"Argo CD"
     vendor: argoproj
   name: Argo CD Login Panel
   reference:
   - https://argoproj.github.io/cd/
   severity: info
-  tags: argocd,discovery,kubernetes,login,panel
+  tags: panel,argocd,login,kubernetes,discovery

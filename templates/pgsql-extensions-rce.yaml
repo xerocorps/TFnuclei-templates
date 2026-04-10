@@ -8,6 +8,7 @@ info:
 
     '
   metadata:
+    max-request: 1
     shodan-query: product:"PostgreSQL"
     verified: true
   name: PostgreSQL 8.1  Extensions - Remote Code Execution
@@ -44,3 +45,6 @@ javascript:
     - postgres
     usernames:
     - postgres
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

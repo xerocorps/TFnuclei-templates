@@ -18,9 +18,6 @@ http:
     - version+'-'+build
     type: dsl
   matchers:
-  - status:
-    - 200
-    type: status
   - condition: and
     part: body
     type: word
@@ -33,13 +30,16 @@ http:
     words:
     - Cisco Firepower Management Center
     - Secure Firewall Management Center
+  - status:
+    - 200
+    type: status
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/ui/login'
 id: cisco-firepower-panel
 info:
-  author: Charles D.,darses
+  author: Charles D,darses
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
@@ -62,4 +62,4 @@ info:
     verified: true
   name: Cisco Secure Firewall Management Center - Panel
   severity: info
-  tags: login,cisco,panel,console
+  tags: login,cisco,panel,console,discovery

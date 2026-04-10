@@ -9,7 +9,7 @@ http:
   raw:
   - '@timeout 20s
 
-    POST /fetch_products.php HTTP/1.1
+    POST /fetch_products.php HTTP/2
 
     Host: {{Hostname}}
 
@@ -21,7 +21,7 @@ http:
     '
 id: azon-dominator-sqli
 info:
-  author: s4e-io
+  author: securityforeveryone
   description: 'Azon Dominator software is vulnerable to a sql attack at /fetch_products.php.
 
     '
@@ -34,4 +34,4 @@ info:
   - https://www.exploit-db.com/exploits/52059
   - https://www.codester.com/items/12775/azon-dominator-affiliate-marketing-script
   severity: high
-  tags: time-based-sqli,azon,dominator,sqli,vuln
+  tags: time-based-sqli,azon,dominator,sqli

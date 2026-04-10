@@ -25,12 +25,10 @@ info:
     fofa-query: title="Busybox Repository Browser"
     max-request: 1
     product: busybox
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Busybox Repository
-      Browser"})
     vendor: busybox
     verified: true
   name: Busybox Repository Browser - Detect
   reference:
   - https://github.com/mirror/busybox
   severity: info
-  tags: detect,busybox,oss,panel,discovery
+  tags: detect,busybox,oss,panel

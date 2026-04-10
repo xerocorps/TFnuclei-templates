@@ -6,8 +6,7 @@ info:
   severity: info
   tags: panel,zoho
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - type: word
     words:
     - <title>ManageEngine Desktop Central 10</title>
@@ -15,15 +14,12 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
   raw:
   - 'GET /configurations HTTP/1.1
 
-    Host: {{Subdomains}}
+    Host: {{Hostname}}
 
     User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
     (KHTML, like Gecko)
 
     '
-  threads: 100

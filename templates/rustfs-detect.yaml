@@ -24,7 +24,6 @@ info:
     '
   metadata:
     product: rustfs
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)RustFS"})
     shodan-query: title:"RustFS"
     vendor: rustfs
   name: Rustfs - Detect

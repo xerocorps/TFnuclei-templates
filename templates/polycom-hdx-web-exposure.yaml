@@ -22,7 +22,6 @@ info:
   metadata:
     fofa-query: title="Polycom" && body="HDX"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Polycom HDX"})
     shodan-query: http.title:"Polycom HDX"
     verified: true
   name: Polycom HDX - Web Interface Exposure

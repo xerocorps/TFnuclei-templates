@@ -41,10 +41,9 @@ info:
   metadata:
     max-request: 1
     product: ispconfig
-    runzero-match: any(each(service["html.titles"]), {# matches "ISPConfig"})
     shodan-query: title:"ISPConfig" http.favicon.hash:483383992
     vendor: ispconfig
     verified: true
   name: ISPConfig Hosting Control Panel - Default Login
   severity: high
-  tags: default-login,hsp,ispconfig,vuln
+  tags: ispconfig,hsp,default-login,vuln

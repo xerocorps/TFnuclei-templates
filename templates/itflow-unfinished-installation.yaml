@@ -19,7 +19,6 @@ info:
   metadata:
     fofa-query: title="ITFlow"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ITFlow"})
     shodan-query: http.title:"ITFlow"
     verified: true
   name: ITFlow Unfinished Installation

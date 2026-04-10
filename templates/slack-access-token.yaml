@@ -16,7 +16,6 @@ requests:
     - xoxp-[0-9A-Za-z\-]{72}
     - xoxb-[0-9A-Za-z\-]{51}
     type: regex
-  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}'

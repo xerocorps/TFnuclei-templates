@@ -1,13 +1,18 @@
 id: epson-access-detect
 info:
   author: pussycat0x
-  name: Epson Printer Unauthorized Access Detect
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N
+    cvss-score: 5.8
+    cwe-id: CWE-522
+  description: A publicly available Epson device panel (printer, scanner, etc.) was
+    detected.
+  name: Epson Device Unauthorized Access Detect
   reference: https://www.exploit-db.com/ghdb/6922
   severity: medium
-  tags: iot,printer,panel,unauth
+  tags: iot,printer,panel,unauth,epson
 requests:
-- attack: sniper
-  extractors:
+- extractors:
   - group: 1
     part: body
     regex:
@@ -23,18 +28,6 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /PRESENTATION/EPSONCONNECT HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/PRESENTATION/EPSONCONNECT'

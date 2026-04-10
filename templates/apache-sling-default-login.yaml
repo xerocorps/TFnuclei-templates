@@ -56,14 +56,13 @@ info:
   metadata:
     max-request: 1
     product: sling
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Apache Sling"})
     shodan-query: title:"Apache Sling"
     vendor: apache
   name: Apache Sling - Default Login
   reference:
   - https://github.com/apache/sling
   severity: high
-  tags: apache,default-login,sling
+  tags: apache,sling,default-login
 variables:
   password: admin
   username: admin

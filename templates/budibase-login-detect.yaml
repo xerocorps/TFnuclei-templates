@@ -20,11 +20,10 @@ info:
   metadata:
     max-request: 1
     product: budibase
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)budibase"})
     shodan-query: http.title:"budibase"
     vendor: budibase
   name: Budibase Login Panel - Detect
   reference:
   - https://github.com/Budibase/budibase
   severity: info
-  tags: budibase,discovery,login,panel
+  tags: budibase,panel,login,discovery

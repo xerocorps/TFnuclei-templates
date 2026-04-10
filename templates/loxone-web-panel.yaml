@@ -17,7 +17,6 @@ info:
   author: DhiyaneshDk
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)<title>Webinterface</title>"
     shodan-query: html:"<title>Webinterface</title>"
     verified: true
   name: Loxone WebInterface Panel - Detect

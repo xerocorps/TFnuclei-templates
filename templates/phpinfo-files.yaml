@@ -19,12 +19,15 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/php.php'
+  - '{{BaseURL}}/php2.php'
   - '{{BaseURL}}/phpinfo.php'
   - '{{BaseURL}}/info.php'
   - '{{BaseURL}}/infophp.php'
   - '{{BaseURL}}/php_info.php'
   - '{{BaseURL}}/test.php'
   - '{{BaseURL}}/i.php'
+  - '{{BaseURL}}/p.php'
+  - '{{BaseURL}}/pi.php'
   - '{{BaseURL}}/asdf.php'
   - '{{BaseURL}}/pinfo.php'
   - '{{BaseURL}}/phpversion.php'
@@ -39,10 +42,11 @@ http:
   - '{{BaseURL}}/_profiler/phpinfo.php'
   - '{{BaseURL}}/_profiler/phpinfo'
   - '{{BaseURL}}/?phpinfo=1'
+  - '{{BaseURL}}/l.php?act=phpinfo'
   stop-at-first-match: true
 id: phpinfo-files
 info:
-  author: pdteam,daffainfo,meme-lord,dhiyaneshDK,wabafet
+  author: pdteam,daffainfo,meme-lord,dhiyaneshDK,wabafet,mastercho
   classification:
     cwe-id: CWE-200
   description: 'PHPinfo page was detected. The output of the phpinfo() command can
@@ -50,7 +54,7 @@ info:
 
     '
   metadata:
-    max-request: 21
+    max-request: 25
   name: PHPinfo Page - Detect
   remediation: Remove PHP Info pages from publicly accessible sites, or restrict access
     to authorized users only.

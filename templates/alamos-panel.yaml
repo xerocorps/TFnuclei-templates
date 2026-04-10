@@ -18,9 +18,7 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Alamos GmbH \\|
-      FE2"})
     shodan-query: http.title:"Alamos GmbH | FE2"
   name: Alamos GmbH Panel - Detect
   severity: info
-  tags: panel,alamos,login,detect,discovery
+  tags: panel,alamos,login,detect

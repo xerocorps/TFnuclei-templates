@@ -38,8 +38,7 @@ info:
   metadata:
     fofa-query: title="Welcome to Canopy"
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Welcome to Canopy"})
     verified: true
   name: Canopy 5.7GHz Access Point - Default Login
   severity: high
-  tags: cambium,canopy,default-login,vuln
+  tags: default-login,cambium,canopy,vuln

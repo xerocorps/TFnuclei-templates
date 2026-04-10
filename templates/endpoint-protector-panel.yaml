@@ -22,7 +22,6 @@ info:
   metadata:
     max-request: 1
     product: endpoint_protector
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Endpoint Protector"})
     shodan-query: http.title:"Endpoint Protector"
     vendor: cososys
     verified: true

@@ -27,11 +27,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "988422585"
     shodan-query: http.favicon.hash:988422585
     verified: true
   name: Caprover - Default Login
   severity: high
-  tags: caprover,default-login,misconfig,vuln
+  tags: caprover,default-login,misconfig
 variables:
   password: captain42

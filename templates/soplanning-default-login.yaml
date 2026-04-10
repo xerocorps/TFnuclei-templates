@@ -31,7 +31,7 @@ http:
     '
 id: soplanning-default-login
 info:
-  author: s4e-io
+  author: Kazgangap
   description: 'SOPlanning contains default credentials. An attacker can obtain access
     to user accounts and access sensitive information, modify data, and/or execute
     unauthorized operations.
@@ -41,7 +41,6 @@ info:
     fofa-query: body="soplanning"
     max-request: 1
     product: soplanning
-    runzero-match: service["http.body"] matches "(?i)soplanning"
     shodan-query:
     - html:"soplanning"
     - http.html:"soplanning"
@@ -51,4 +50,4 @@ info:
   reference:
   - https://www.soplanning.org/en/
   severity: high
-  tags: default-login,soplanning,vuln
+  tags: soplanning,default-login

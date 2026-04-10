@@ -17,10 +17,8 @@ info:
   author: DhiyaneshDk
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)JC-e converter
-      webinterface"})
     shodan-query: title:"JC-e converter webinterface"
     verified: true
   name: M-Bus Converter Web Interface - Detect
   severity: info
-  tags: panel,login,m-bus,detect,discovery
+  tags: panel,login,m-bus,detect

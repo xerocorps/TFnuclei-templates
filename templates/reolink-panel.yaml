@@ -19,9 +19,8 @@ info:
   metadata:
     fofa-query: Reolink
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Reolink"})
     shodan-query: title:"Reolink"
     verified: true
   name: Reolink Panel - Detect
   severity: info
-  tags: detect,discovery,login,panel,reolink
+  tags: panel,login,reolink,detect

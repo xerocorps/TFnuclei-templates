@@ -17,7 +17,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)File Exchange"})
     shodan-query: http.title:"File Exchange"
     verified: true
   name: BMC Control-M MFT Login Panel - Detect

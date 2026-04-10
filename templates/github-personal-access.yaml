@@ -10,12 +10,7 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-- disable-path-automerge: true
-  extractors:
-  - dsl:
-    - token
-    type: dsl
-  matchers:
+- matchers:
   - condition: and
     part: body
     type: word
@@ -32,6 +27,7 @@ http:
     Authorization: Basic {{base64(''user:'' + token)}}
 
     '
+  self-contained: true
 id: github-personal-access
 info:
   author: DhiyaneshDK
@@ -45,4 +41,4 @@ info:
   - https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
   - https://github.blog/2021-04-05-behind-githubs-new-authentication-token-formats/
   severity: high
-  tags: github,token,exposure,vuln
+  tags: github,token,exposure

@@ -22,11 +22,10 @@ info:
   author: ritikchaddha
   metadata:
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)pCOWeb"})
     shodan-query: title:"pCOWeb"
     verified: true
   name: pCOWeb Panel - Detect
   reference:
   - https://docs.librenms.org/Support/Device-Notes/Carel-pCOweb-Devices/#:~:text=Accessing%20the%20pCOWeb%20card,-Log%20on%20to&text=The%20default%20username%20and%20password%20is%20admin%2Ffadmin%20.
   severity: info
-  tags: pcoweb,panel,login,detect,discovery
+  tags: pcoweb,panel,login,detect

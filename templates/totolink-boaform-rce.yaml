@@ -46,7 +46,6 @@ info:
     fofa-query: title="TOTOLINK"
     max-request: 2
     product: TOTOLINK
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)TOTOLINK"})
   name: TOTOLink Router - Remote Command Execution
   reference:
   - https://github.com/fizz-is-on-the-way/Iot_vuls/blob/main/N150RT/RCE_formWsc/README.md

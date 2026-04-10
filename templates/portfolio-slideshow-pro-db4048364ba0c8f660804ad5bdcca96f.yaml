@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - portfolio-slideshow-pro
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/portfolio-slideshow-pro/readme.txt'
+  redirects: true
+id: portfolio-slideshow-pro-db4048364ba0c8f660804ad5bdcca96f
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/portfolio-slideshow-pro/
+    google-query: inurl:"/wp-content/plugins/portfolio-slideshow-pro/"
+    shodan-query: 'vuln:'
+  name: 'Portfolio Slideshow Pro <= 3.0 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b6cab377-0a8a-45d2-a966-4c7f100b9409?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,portfolio-slideshow-pro,critical

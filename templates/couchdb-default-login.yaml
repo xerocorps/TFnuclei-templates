@@ -56,9 +56,8 @@ info:
     fofa-query: app="APACHE-CouchDB"
     max-request: 16
     product: couchdb
-    runzero-match: service["http.head.server"] matches `^CouchDB/`
     vendor: apache
     verified: true
   name: CouchDB - Default Login
   severity: high
-  tags: couchdb,default-login,misconfig,vuln
+  tags: default-login,couchdb,misconfig

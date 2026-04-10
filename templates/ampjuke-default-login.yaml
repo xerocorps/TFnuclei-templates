@@ -57,8 +57,7 @@ info:
     '
   metadata:
     max-request: 3
-    runzero-match: service["favicon.ico.image.mmh3"] == "-121681558"
     shodan-query: http.favicon.hash:-121681558
   name: AmpJuke - Default Login
   severity: high
-  tags: ampjuke,default-login,vuln
+  tags: default-login,ampjuke,vuln

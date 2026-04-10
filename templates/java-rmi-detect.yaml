@@ -1,10 +1,21 @@
 id: java-rmi-detect
 info:
   author: F1tz
-  name: Detect Java RMI Protocol
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'Java Remote Method Invocation protocol is susceptible to information
+    disclosure. It allows for unauthenticated network attacks, which can result in
+    unauthorized operating system takeover including arbitrary code execution.
+
+    '
+  metadata:
+    max-request: 1
+  name: Java Remote Method Invocation Protocol - Detect
   severity: info
-  tags: network,rmi
-network:
+  tags: network,rmi,java,detect
+tcp:
 - host:
   - '{{Hostname}}'
   inputs:

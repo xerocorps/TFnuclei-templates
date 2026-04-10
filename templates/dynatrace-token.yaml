@@ -8,6 +8,11 @@ file:
 id: dynatrace-token
 info:
   author: gaurang
-  name: Dynatrace Token
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 7.5
+    cwe-id: CWE-200
+  description: Dynatrace token was detected.
+  name: Dynatrace Token - Detect
   severity: high
-  tags: token,file
+  tags: file,keys,token

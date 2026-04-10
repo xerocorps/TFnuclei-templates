@@ -132,7 +132,6 @@ info:
     '
   metadata:
     max-request: 5
-    runzero-review: 'REJECT/2026-04-08/auto: forbidden tag: intrusive'
     shodan-query: html:"Magento_PageCache"
     verified: true
   name: "Magento PolyShell \u2013 Unauthenticated File Upload to RCE"
@@ -141,7 +140,7 @@ info:
   - https://slcyber.io/research-center/magento-polyshell-unauthenticated-file-upload-to-rce-in-magento-apsb25-94/#about-assetnote
   - https://helpx.adobe.com/security/products/magento/apsb25-94.html
   severity: critical
-  tags: file-upload,intrusive,magento,rce
+  tags: magento,file-upload,rce,intrusive
 variables:
   php_filename: '{{rand_base(10)}}.php'
   polyglot_b64: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAL3RFWHRDb21tZW50ACc8P3BocCBlY2hvICJSRVNVTFQ6IiAuICgyICogMTMzNyk7ID8+J0bMDMoAAAAPSURBVHgBAQQA+/8Ad/rpBEYCW5i/poUAAAAASUVORK5CYII=

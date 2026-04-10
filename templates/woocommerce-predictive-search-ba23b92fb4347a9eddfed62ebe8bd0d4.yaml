@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - woocommerce-predictive-search
+  - dsl:
+    - compare_versions(version, '<= 5.8.0')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/woocommerce-predictive-search/readme.txt'
+  redirects: true
+id: woocommerce-predictive-search-ba23b92fb4347a9eddfed62ebe8bd0d4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/woocommerce-predictive-search/
+    google-query: inurl:"/wp-content/plugins/woocommerce-predictive-search/"
+    shodan-query: 'vuln:'
+  name: 'WooCommerce Predictive Search <= 5.8.0 - Missing Authorization via multiple
+    AJAX actions
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7ea2726a-a601-45ac-9f20-c34b82edf441?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,woocommerce-predictive-search,high

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - social-share-buttons-by-supsystic
+  - dsl:
+    - compare_versions(version, '<= 2.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/social-share-buttons-by-supsystic/readme.txt'
+  redirects: true
+id: social-share-buttons-by-supsystic-ee5419a96a958a708d4a0270120459e4
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/social-share-buttons-by-supsystic/
+    google-query: inurl:"/wp-content/plugins/social-share-buttons-by-supsystic/"
+    shodan-query: 'vuln:'
+  name: 'Social Share Buttons by Supsystic <= 2.2.6 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e9c81117-a9da-41bb-afc6-94196167af04?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,social-share-buttons-by-supsystic,critical

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sixtees
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/sixtees/style.css'
+  redirects: true
+id: sixtees-1ed45b9f8f433a13e958ca70a5209996
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/sixtees/
+    google-query: inurl:"/wp-content/themes/sixtees/"
+    shodan-query: 'vuln:'
+  name: 'Sixtees (All Versions) - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3a325371-e531-4cd9-bc39-d1b8f40a728f?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-theme,sixtees,critical

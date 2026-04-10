@@ -39,10 +39,9 @@ info:
   metadata:
     max-request: 1
     product: manageengine_netflow_analyzer
-    runzero-match: service["http.body"] matches "Login - Netflow Analyzer"
     shodan-query: html:"Login - Netflow Analyzer"
     vendor: zohocorp
     verified: true
   name: Netflow Analyzer - Default Login
   severity: high
-  tags: default-login,misconfig,netflow,vuln
+  tags: default-login,netflow,misconfig

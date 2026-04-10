@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - paytium
+  - dsl:
+    - compare_versions(version, '<= 4.3.7')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/paytium/readme.txt'
+  redirects: true
+id: paytium-e45c9c96e1c42985ca50d73acf49a712
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/paytium/
+    google-query: inurl:"/wp-content/plugins/paytium/"
+    shodan-query: 'vuln:'
+  name: 'Paytium: Mollie payment forms & donations <= 4.3.7 - Missing Authorization
+    in ''check_mollie_account_details''
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f065648a-436a-459c-8ab1-c948c78b43c9?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,paytium,high

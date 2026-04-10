@@ -8,8 +8,13 @@ file:
 id: branch-key
 info:
   author: 0xh7ml
-  name: Branch.io Live Key
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: Branch.io live key token was detected.
+  name: Branch.io Live Key - Detect
   reference:
   - https://github.com/BranchMetrics/android-branch-deep-linking-attribution/issues/74
   severity: info
-  tags: token,file
+  tags: file,keys,token

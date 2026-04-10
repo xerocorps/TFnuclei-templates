@@ -5,6 +5,7 @@ info:
 
     '
   metadata:
+    max-request: 1
     shodan-query: port:69
     verified: true
   name: TFTP Service - Detection
@@ -34,6 +35,10 @@ javascript:
 
     '
   matchers:
-  - type: word
+  - case-insensitive: true
+    type: word
     words:
     - Unknown transfer ID
+  pre-condition: 'isUDPPortOpen(Host,Port);
+
+    '

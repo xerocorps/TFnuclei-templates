@@ -20,6 +20,8 @@ info:
     in service, potentially degrading application performance and availability.
 
     '
+  metadata:
+    max-request: 2
   name: Liveness Probe Not Configured in Deployments
   reference:
   - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - deep-blue
+  - dsl:
+    - compare_versions(version, '<= 1.9.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/deep-blue/style.css'
+  redirects: true
+id: deep-blue-0d6c75eb4cb21682235e690ad8d026b9
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/deep-blue/
+    google-query: inurl:"/wp-content/themes/deep-blue/"
+    shodan-query: 'vuln:'
+  name: 'Deep Blue <= 1.9.2 - Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/e7b78960-51ff-440f-8831-d50c11961d9d?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-theme,deep-blue,critical

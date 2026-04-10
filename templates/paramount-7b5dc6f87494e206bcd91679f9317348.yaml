@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Version: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - paramount
+  - dsl:
+    - compare_versions(version, '<= *')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/themes/paramount/style.css'
+  redirects: true
+id: paramount-7b5dc6f87494e206bcd91679f9317348
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/themes/paramount/
+    google-query: inurl:"/wp-content/themes/paramount/"
+    shodan-query: 'vuln:'
+  name: 'Paramount (All Versions) - Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/346cc9af-6a1b-444c-9483-94f940cd18ad?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-theme,paramount,high

@@ -53,8 +53,6 @@ info:
     fofa-query: title="FreePBX"
     max-request: 2
     product: freepbx
-    runzero-match: service["favicon.ico.image.mmh3"] == "1574423538" || any(each(service["html.titles"]),
-      {# matches "(?i)FreePBX"}) || service["favicon.ico.image.mmh3"] == "-1908328911"
     shodan-query: http.title:"FreePBX"
     vendor: sangoma
     verified: true
@@ -63,7 +61,7 @@ info:
   - https://www.freepbx.org/
   - https://community.freepbx.org/t/freepbx-default-admin-passwords/9221
   severity: high
-  tags: auth,default-login,freepbx,misconfig
+  tags: freepbx,default-login,auth,misconfig
 variables:
   password: admin
   username: admin

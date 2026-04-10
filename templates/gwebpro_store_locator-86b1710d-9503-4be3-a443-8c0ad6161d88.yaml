@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - gwebpro-store-locator
+  - dsl:
+    - compare_versions(version, '<= 2.0.1')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/gwebpro-store-locator/readme.txt'
+  redirects: true
+id: gwebpro_store_locator-86b1710d-9503-4be3-a443-8c0ad6161d88
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/gwebpro-store-locator/
+    google-query: inurl:"/wp-content/plugins/gwebpro-store-locator/"
+    shodan-query: http.html:"wp-content/plugins/gwebpro-store-locator/"
+  name: 'G Web Pro Store Locator  <= 2.0.1 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/86b1710d-9503-4be3-a443-8c0ad6161d88?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,gwebpro-store-locator,medium,candidate

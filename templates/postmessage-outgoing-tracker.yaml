@@ -32,7 +32,9 @@ headless:
   - action: waitload
   - action: script
     args:
-      code: window.alerts
+      code: '() => { window.alerts }
+
+        '
     name: alerts
 id: postmessage-outgoing-tracker
 info:

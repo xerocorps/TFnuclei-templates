@@ -40,7 +40,6 @@ info:
   metadata:
     fofa-query: app="Owncast"
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Owncast"})
     shodan-query: http.title:"Owncast"
     verified: true
   name: Owncast - Default Credentials
@@ -48,7 +47,7 @@ info:
   - https://owncast.online/docs/configuration/
   - https://owncast.online/quickstart/configure/
   severity: high
-  tags: admin,default-login,owncast,streaming,vuln
+  tags: default-login,owncast,streaming,admin,vuln
 variables:
   password: abc123
   username: admin

@@ -1,0 +1,45 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - wolverine-framework
+  - dsl:
+    - compare_versions(version, '<= 1.9')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/wolverine-framework/readme.txt'
+  redirects: true
+id: wolverine_framework-0b1718bd-dce8-4c18-ac3f-a2974af0a671
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/wolverine-framework/
+    google-query: inurl:"/wp-content/plugins/wolverine-framework/"
+    shodan-query: http.html:"wp-content/plugins/wolverine-framework/"
+  name: 'Wolverine Framework <= 1.9 - Reflected Cross-Site Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/0b1718bd-dce8-4c18-ac3f-a2974af0a671?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,wolverine-framework,medium,candidate

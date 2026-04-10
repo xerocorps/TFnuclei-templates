@@ -93,7 +93,6 @@ info:
     '
   metadata:
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Check_MK"})
     shodan-query: http.title:"Check_MK"
     verified: true
   name: Checkmk - Default Login
@@ -105,4 +104,4 @@ info:
 
     '
   severity: high
-  tags: checkmk,default-login,monitoring
+  tags: default-login,checkmk,monitoring

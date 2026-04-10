@@ -35,8 +35,8 @@ id: webeditors-check-detect
 info:
   author: princechaddha,bernardofsr,gy741
   classification:
+    cpe: cpe:2.3:a:ckeditor:ckeditor:*:*:*:*:drupal:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: Multiple web editor checks were detected.
   metadata:
@@ -45,4 +45,4 @@ info:
     vendor: ckeditor
   name: Web Editor Check - Detect
   severity: info
-  tags: panel,webeditors
+  tags: panel,webeditors,ckeditor

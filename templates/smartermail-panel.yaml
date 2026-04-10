@@ -31,7 +31,6 @@ info:
   metadata:
     max-request: 1
     product: smartermail
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)SmarterMail"})
     shodan-query: http.title:"SmarterMail"
     vendor: smartertools
   name: SmarterMail Login Panel - Detect

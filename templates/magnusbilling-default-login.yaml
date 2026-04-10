@@ -35,12 +35,11 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "MagnusBilling"
     shodan-query: html:"MagnusBilling"
     verified: true
   name: MagnusBilling - Default Login
   severity: high
-  tags: default-login,mbilling,vuln
+  tags: mbilling,default-login,vuln
 variables:
   password: 9F4CA770B638615AC5C3E0D2DA16B77C80C2F2C6
   username: root

@@ -25,8 +25,8 @@ id: keycloak-admin-panel
 info:
   author: incogbyte,righettod,daffainfo
   classification:
+    cpe: cpe:2.3:a:redhat:keycloak:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
     cwe-id: CWE-200
   description: Keycloak admin login panel was detected.
   metadata:
@@ -37,4 +37,4 @@ info:
     verified: true
   name: Keycloak Admin Login Panel - Detect
   severity: info
-  tags: panel,keycloak
+  tags: panel,keycloak,redhat

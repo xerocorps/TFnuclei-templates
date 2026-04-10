@@ -1,17 +1,24 @@
 id: airflow-panel
 info:
-  author: pdteam
+  author: rix4uni
+  description: Apache Airflow login panel was detected.
   metadata:
-    shodan-query: title:"Sign In - Airflow"
-  name: Airflow Admin login
+    google-query:
+    - intitle:"Airflow: Sign In"
+    shodan-query:
+    - http.title:"Sign In - Airflow"
+    - http.favicon.hash:-1625254865
+  name: Apache Airflow Panel - Detect
+  reference:
+  - https://twitter.com/MohamedVeten1/status/1516102910819680260
   severity: info
-  tags: panel,apache,airflow
+  tags: panel,apache,airlfow,login
 requests:
 - matchers:
   - condition: or
+    part: body
     type: word
     words:
-    - Airflow - Login
     - Sign In - Airflow
   - status:
     - 200
@@ -20,5 +27,3 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}/login/'
-  - '{{BaseURL}}/admin/airflow/login'
-  stop-at-first-match: true

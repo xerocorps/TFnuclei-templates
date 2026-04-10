@@ -1,0 +1,53 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - hdw-tube
+  - dsl:
+    - compare_versions(version, '<= 1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/hdw-tube/readme.txt'
+  redirects: true
+id: hdw-tube-1763468338bba67a48fe802a959ca52b
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/hdw-tube/
+    google-query: inurl:"/wp-content/plugins/hdw-tube/"
+    shodan-query: 'vuln:'
+  name: 'HDW WordPress Video Gallery <= 1.2 - Reflected Cross-Site Scripting via channel
+    parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/1c5d214e-65e2-4158-a88f-58bef7c9952b?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,hdw-tube,medium

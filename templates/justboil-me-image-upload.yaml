@@ -1,32 +1,39 @@
 http:
-- extractors:
-  - part: body
-    regex:
-    - <title>(.*?)</title>
-    type: regex
-  matchers:
-  - status:
-    - 200
-    type: status
-  - type: word
+- matchers:
+  - condition: and
+    part: body
+    type: word
     words:
     - JustBoil.me Images Plugin
     - TinyMCE
+    - upload_infobar
   - part: header
     type: word
     words:
-    - 'Content-Type: text/html'
+    - text/html
+  - status:
+    - 200
+    type: status
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/plugins/generic/tinymce/plugins/justboil.me/dialog-v4.htm'
 id: justboil-me-image-upload
 info:
-  author: ProjectDiscoveryAI
-  description: 'This template checks for the Justboil.ME image upload vulnerability
-    by verifying the presence of the vulnerable dialog file.
+  author: 0xr2r
+  description: 'JustBoil.me Images Plugin for TinyMCE contains an exposed dialog interface
+    that could lead to potential security vulnerabilities. The plugin''s dialog-v4.htm
+    file is accessible without proper access controls, which may allow unauthorized
+    access to image upload functionality.
 
     '
-  name: Justboil.ME Plugins Image Upload Vulnerability
+  metadata:
+    fofa-query: body="/plugins/generic/tinymce/plugins/justboil.me/"
+    max-request: 1
+    shodan-query: inurl:"/plugins/generic/tinymce/plugins/justboil.me/"
+    verified: true
+  name: JustBoil.me Images Plugin - Exposed Image Upload
+  reference:
+  - https://cxsecurity.com/issue/WLB-2019050108
   severity: medium
-  tags: justboil, image-upload, vulnerability
+  tags: justboil,tinymce,plugin,exposure,misconfig,vuln

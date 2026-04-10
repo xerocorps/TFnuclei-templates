@@ -13,11 +13,13 @@ http:
   path:
   - '{{BaseURL}}/prometheus'
   - '{{BaseURL}}/actuator/prometheus'
+  - '{{BaseURL}}/actuator/prometheus;%2f..%2f..%2f'
 id: prometheus-log
 info:
-  author: dhiyaneshDK
+  author: dhiyaneshDK,thevillagehacker
+  description: Prometheus instance is exposed.
   metadata:
-    max-request: 2
+    max-request: 3
   name: Exposed Prometheus
   severity: low
-  tags: prometheus
+  tags: prometheus,misconfig

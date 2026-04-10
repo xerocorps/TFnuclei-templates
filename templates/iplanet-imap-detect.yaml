@@ -1,12 +1,19 @@
 id: iplanet-imap-detect
 info:
   author: pussycat0x
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cwe-id: CWE-200
+  description: 'iPlanet Messaging Server IMAP protocol was detected.
+
+    '
   metadata:
     fofa-query: app="iPlanet-Messaging-Server-5.2" && protocol="imap"
-  name: iplanet messaging imap protocol
+    max-request: 1
+  name: iPlanet Messaging Server IMAP Protocol - Detection
   severity: info
-  tags: network,imap
-network:
+  tags: network,imap,detect,iplanet
+tcp:
 - extractors:
   - part: body
     regex:
@@ -14,7 +21,6 @@ network:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:110'
   inputs:
   - data: '
 
@@ -23,3 +29,4 @@ network:
   - type: word
     words:
     - iPlanet Messaging Server
+  port: 110

@@ -1,18 +1,4 @@
-flow: http(1) && http(2)
 http:
-- matchers:
-  - condition: and
-    internal: true
-    type: word
-    words:
-    - custom tables
-    - 'Tags:'
-  raw:
-  - 'GET /wp-content/plugins/custom-tables/readme.txt HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 - matchers:
   - part: body
     type: word

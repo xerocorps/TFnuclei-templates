@@ -26,7 +26,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)authorization token is empty"
     shodan-query: html:"authorization token is empty"
     verified: true
   name: pREST < 1.5.4 - SQL Injection Via Authentication Bypass

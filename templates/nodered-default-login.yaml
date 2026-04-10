@@ -35,20 +35,16 @@ http:
 id: nodered-default-login
 info:
   author: savik
-  classification:
-    cpe: cpe:2.3:a:nodered:node-red:*:*:*:*:*:*:*:*
   description: 'Allows attacker to log in and execute RCE on the Node-Red panel using
     the default credentials.
 
     '
   metadata:
     max-request: 1
-    product: node-red
     shodan-query: http.favicon.hash:321591353
-    vendor: nodered
     verified: true
   name: Node-Red - Default Login
   reference:
   - https://quentinkaiser.be/pentesting/2018/09/07/node-red-rce/
   severity: critical
-  tags: default-login,node-red,dashboard,vuln
+  tags: default-login,node-red,dashboard

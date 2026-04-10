@@ -43,9 +43,8 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "Sato"})
     shodan-query: title:"Sato"
     verified: true
   name: Sato - Default Login
   severity: high
-  tags: default-login,printer,sato,vuln
+  tags: sato,default-login,printer

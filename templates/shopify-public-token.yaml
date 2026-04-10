@@ -1,16 +1,4 @@
-id: shopify-public-token
-info:
-  author: DhiyaneshDK
-  metadata:
-    verified: 'true'
-  name: Shopify Access Token (Public App)
-  reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/shopify.yml
-  - https://shopify.dev/apps/auth
-  - https://shopify.dev/changelog/app-secret-key-length-has-increased
-  severity: info
-  tags: shopify,token,exposure
-requests:
+http:
 - extractors:
   - part: body
     regex:
@@ -19,3 +7,16 @@ requests:
   method: GET
   path:
   - '{{BaseURL}}'
+id: shopify-public-token
+info:
+  author: DhiyaneshDK
+  metadata:
+    max-request: 1
+    verified: true
+  name: Shopify Access Token (Public App)
+  reference:
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/shopify.yml
+  - https://shopify.dev/apps/auth
+  - https://shopify.dev/changelog/app-secret-key-length-has-increased
+  severity: info
+  tags: shopify,token,exposure

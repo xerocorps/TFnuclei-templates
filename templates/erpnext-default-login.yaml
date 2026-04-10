@@ -1,11 +1,17 @@
 http:
-- matchers:
+- attack: pitchfork
+  matchers:
   - condition: and
     dsl:
     - status_code == 200
     - contains_all(body, "Logged In", "home_page", "Administrator")
     - contains_all(set_cookie, "sid=", "system_user=yes")
     type: dsl
+  payloads:
+    password:
+    - admin
+    username:
+    - Administrator
   raw:
   - 'POST / HTTP/1.1
 
@@ -14,13 +20,15 @@ http:
     Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
 
-    cmd=login&usr=Administrator&pwd=admin&device=desktop
+    cmd=login&usr={{username}}&pwd={{password}}&device=desktop
 
     '
 id: erpnext-default-login
 info:
   author: 0x_Akoko
-  description: 'Checks for default Administrator credentials in ERPNext installations.
+  description: 'Detects ERPNext installations that use the default Administrator/admin
+    login credentials. This misconfiguration grants attackers full administrative
+    access to the system.
 
     '
   metadata:
@@ -29,9 +37,9 @@ info:
     shodan-query: html:"Login to Frappe"
     vendor: frappe
     verified: true
-  name: ERPNext - Default Administrator Credentials
+  name: ERPNext - Default Login
   reference:
   - https://github.com/frappe/erpnext
   - https://github.com/frappe/erpnext/blob/develop/README.md
   severity: high
-  tags: erpnext,erp,default-login,frappe,misconfig,default
+  tags: erpnext,erp,default-login,vuln

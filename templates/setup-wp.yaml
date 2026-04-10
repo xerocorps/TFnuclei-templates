@@ -1,8 +1,8 @@
 id: setup-wp
 info:
-  author: 0xr2r
+  author: ELSFA7110
   name: wp setup
-  reference: https://twitter.com/x0xr2r
+  reference: https://twitter.com/sec715/status/1397924997457317897
   severity: critical
   tags: rce,exposure
 requests:
@@ -17,14 +17,4 @@ requests:
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/wordpress/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/wp/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/old/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/web/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/new/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/test/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/blog/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/cms/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/backup/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/site/wp-admin/setup-config.php?step=1'
-  - '{{BaseURL}}/wp-admin/setup-config.php?step=1'
+  - '{{BaseURL}}//wp-admin/setup-config.php?step=1'

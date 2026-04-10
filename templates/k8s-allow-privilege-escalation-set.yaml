@@ -21,6 +21,8 @@ info:
     host resources. This poses significant security risks.
 
     '
+  metadata:
+    max-request: 2
   name: Containers run with allowPrivilegeEscalation enabled
   reference:
   - https://kubernetes.io/docs/tasks/configure-pod-container/security-context/

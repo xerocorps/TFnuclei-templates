@@ -1,27 +1,27 @@
 id: swagger-ui
 info:
-  author: vidocsecurity,Arqsz
+  author: vidocsecurity
   description: Swagger UI exposes information about endpoints and sometimes it is
     vulnerable tu XSS
   name: Swagger UI
   severity: low
-  tags: swagger-ui,services,exposure
+  tags: swagger-ui,exposure
 requests:
 - matchers:
-  - condition: or
+  - condition: and
     part: body
     type: word
     words:
     - Swagger UI
-    - openapi
-    - swagger
-  - status:
+  - condition: and
+    status:
     - 200
     type: status
   matchers-condition: and
   max-redirects: 3
   method: GET
   path:
+  - '{{BaseURL}}/'
   - '{{BaseURL}}/index.html'
   - '{{BaseURL}}/swagger-ui'
   - '{{BaseURL}}/api/'
@@ -63,11 +63,4 @@ requests:
   - '{{BaseURL}}/swagger-resources/restservices/v2/api-docs'
   - '{{BaseURL}}/classicapi/doc/'
   - '{{BaseURL}}/api/v1/openapi'
-  - '{{BaseURL}}/openapi.json'
-  - '{{BaseURL}}/openapi.yml'
-  - '{{BaseURL}}/swagger.json'
-  - '{{BaseURL}}/swagger/openapi.json'
-  - '{{BaseURL}}/swagger/openapi.yml'
-  - '{{BaseURL}}/swagger/swagger.json'
   redirects: true
-  stop-at-first-match: true

@@ -61,8 +61,6 @@ info:
     fofa-query: title="grocy" || body="grocy-version"
     max-request: 3
     product: grocy
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)grocy"}) && service["http.body"]
-      contains "grocy-version"
     shodan-query: http.title:"grocy"
     vendor: grocy
     verified: true
@@ -71,7 +69,7 @@ info:
   - https://github.com/grocy/grocy
   - https://docs.linuxserver.io/images/docker-grocy/
   severity: high
-  tags: auth,default-login,grocy
+  tags: default-login,grocy,auth
 variables:
   password: admin
   username: admin

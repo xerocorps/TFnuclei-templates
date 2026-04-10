@@ -6,14 +6,15 @@ info:
 
     '
   metadata:
+    max-request: 1
     shodan-query: product:"Niagara Fox"
     verified: true
   name: Niagara Fox Protocol Information Enumeration
   reference:
   - https://nmap.org/nsedoc/scripts/fox-info.html
   severity: info
-  tags: network,fox,niagara
-network:
+  tags: network,fox,niagara,enum
+tcp:
 - extractors:
   - regex:
     - fox.version=s:([0-9.]+)
@@ -28,7 +29,6 @@ network:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:1911'
   inputs:
   - data: 'fox a 1 -1 fox hello
 
@@ -45,3 +45,4 @@ network:
   - type: word
     words:
     - fox.version
+  port: 1911

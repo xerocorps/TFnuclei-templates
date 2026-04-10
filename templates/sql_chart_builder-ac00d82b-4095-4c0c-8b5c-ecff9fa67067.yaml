@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sql-chart-builder
+  - dsl:
+    - compare_versions(version, '<= 2.3.7.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sql-chart-builder/readme.txt'
+  redirects: true
+id: sql_chart_builder-ac00d82b-4095-4c0c-8b5c-ecff9fa67067
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sql-chart-builder/
+    google-query: inurl:"/wp-content/plugins/sql-chart-builder/"
+    shodan-query: http.html:"wp-content/plugins/sql-chart-builder/"
+  name: 'SQL Chart Builder <= 2.3.7.2 - Authenticated (Contributor+) Stored Cross-Site
+    Scripting
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ac00d82b-4095-4c0c-8b5c-ecff9fa67067?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,sql-chart-builder,low,candidate

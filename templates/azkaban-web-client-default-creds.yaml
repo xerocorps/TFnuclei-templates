@@ -6,8 +6,7 @@ info:
   severity: high
   tags: default-login,azkaban
 requests:
-- attack: sniper
-  extractors:
+- extractors:
   - kval:
     - azkaban.browser.session.id
     type: kval
@@ -27,12 +26,10 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
   raw:
   - 'POST / HTTP/1.1
 
-    Host: {{Subdomains}}
+    Host: {{Hostname}}
 
     User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
 
@@ -44,4 +41,3 @@ requests:
     action=login&username=admin&password=admin
 
     '
-  threads: 100

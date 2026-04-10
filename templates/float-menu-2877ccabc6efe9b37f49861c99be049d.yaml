@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - float-menu
+  - dsl:
+    - compare_versions(version, '<= 4.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/float-menu/readme.txt'
+  redirects: true
+id: float-menu-2877ccabc6efe9b37f49861c99be049d
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/float-menu/
+    google-query: inurl:"/wp-content/plugins/float-menu/"
+    shodan-query: 'vuln:'
+  name: 'Float Menu <= 4.3 - Arbitrary Menu Deletion via Cross-Site Request Forgery
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/b15a2ddb-ed74-4ac3-8cfb-e8553dad90d6?source=api-scan
+  severity: medium
+  tags: cve,wordpress,wp-plugin,float-menu,medium

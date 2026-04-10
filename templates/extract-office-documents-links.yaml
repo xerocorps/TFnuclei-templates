@@ -1,20 +1,19 @@
 id: extract-office-documents-links
 info:
-  author: cipher387
+  author: pdteam
   description: Extract Office Documents links from web page body
   name: Office Documents links extractor
   severity: info
-  tags: osint,juicy-info
 requests:
 - extractors:
   - part: body
     regex:
-    - (?:https?|ftp)://\S+\.(docx?|xlsx?|pptx?|msg|accdb|mdb|pub|rtf|csv|odt|ods|odp)
+    - (?:https?|ftp)://\S+\.(xlsx?|csv|pptx?|msg|rtf|pub|rtf|mdb|odp|ods|odt|doc|xls)
     type: regex
   matchers:
   - part: body
     regex:
-    - (?:https?|ftp)://\S+\.(docx?|xlsx?|pptx?|msg|accdb|mdb|pub|rtf|csv|odt|ods|odp)
+    - (?:https?|ftp)://\S+\.(xlsx?|csv|pptx?|msg|rtf|pub|rtf|mdb|odp|ods|odt|doc|xls)
     type: regex
   method: GET
   path:

@@ -43,17 +43,14 @@ id: gitlab-weak-login
 info:
   author: Suman_Kar,dwisiswant0
   classification:
-    cpe: cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
     cwe-id: CWE-798
   description: Gitlab default login credentials were discovered.
   metadata:
     max-request: 6
-    product: gitlab
     shodan-query: http.title:"GitLab"
-    vendor: gitlab
   name: Gitlab Default Login
   reference:
   - https://twitter.com/0xmahmoudJo0/status/1467394090685943809
   - https://git-scm.com/book/en/v2/Git-on-the-Server-GitLab
   severity: high
-  tags: gitlab,default-login,vuln
+  tags: gitlab,default-login

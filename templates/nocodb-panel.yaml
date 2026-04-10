@@ -25,7 +25,6 @@ info:
   metadata:
     max-request: 2
     product: nocodb
-    runzero-match: service["favicon.ico.image.mmh3"] == "206985584"
     shodan-query: http.favicon.hash:206985584
     vendor: xgenecloud
     verified: true
@@ -34,4 +33,4 @@ info:
   - https://www.nocodb.com/
   - https://docs.nocodb.com/
   severity: info
-  tags: panel,nocodb,login,detect,discovery
+  tags: panel,nocodb,login,detect

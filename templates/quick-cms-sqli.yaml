@@ -26,7 +26,9 @@ http:
     '
 id: quick-cms-sqli
 info:
-  author: Kazgangap
+  author: s4e-io
+  classification:
+    cpe: cpe:2.3:a:opensolution:quick.cms:*:*:*:*:*:*:*:*
   description: 'Quick.CMS version 6.7 suffers from a remote SQL injection vulnerability
     that allows for authentication bypass.
 
@@ -34,10 +36,12 @@ info:
   metadata:
     fofa-query: body="Quick.Cms v6.7"
     max-request: 1
+    product: quick.cms
+    vendor: opensolution
     verified: true
   name: Quick.CMS v6.7 - SQL Injection
   reference:
   - https://packetstormsecurity.com/files/177657/Quick.CMS-6.7-SQL-Injection.html
   - https://www.exploit-db.com/exploits/51910
   severity: high
-  tags: packetstorm,quickcms,sqli,cms
+  tags: packetstorm,quickcms,sqli,cms,vuln

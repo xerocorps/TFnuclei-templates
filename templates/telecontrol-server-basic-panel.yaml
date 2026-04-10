@@ -22,8 +22,6 @@ info:
     fofa-query: title=="Logon - Telecontrol Server Basic"
     max-request: 1
     product: telecontrol_server_basic
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Logon - Telecontrol
-      Server Basic"})
     vendor: siemens
     verified: true
   name: Telecontrol Server Basic Panel - Detect

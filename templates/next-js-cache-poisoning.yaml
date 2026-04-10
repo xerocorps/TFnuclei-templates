@@ -2,10 +2,8 @@ http:
 - matchers:
   - condition: and
     dsl:
-    - status_code_1 == 888 && contains(body_1, '/_error') && !contains(cache_control_1,
-      'no-cache') && !contains(pragma_1, 'no-cache')
-    - status_code_2 == 888 && contains(body_2, '/_error') && !contains(cache_control_2,
-      'no-cache') && !contains(pragma_2, 'no-cache')
+    - status_code_1 == 888 && contains(body_1, '/_error')
+    - status_code_2 == 888 && contains(body_2, '/_error')
     type: dsl
   raw:
   - 'GET /?cb={{rand}} HTTP/1.1
@@ -34,18 +32,16 @@ info:
     fofa-query: body="/_next/static"
     framework: node.js
     product: next.js
-    runzero-match: service["http.body"] matches "(?i)/_next/static"
     shodan-query:
     - http.html:"/_next/static"
     - cpe:"cpe:2.3:a:zeit:next.js"
     vendor: vercel
-    zoomeye-query: app="Next.js"
   name: Next.js Cache Poisoning
   reference:
   - https://github.com/vercel/next.js/compare/v13.4.20-canary.12...v13.4.20-canary.13
   - https://github.com/valentin-panov/nextjs-no-cache-issue
   - https://zhero-web-sec.github.io/research-and-things/nextjs-and-cache-poisoning-a-quest-for-the-black-hole
   severity: high
-  tags: cache,cve,cve2023,next-js,vuln
+  tags: cve,cve2023,next-js,cache
 variables:
   rand: '{{rand_text_numeric(5)}}'

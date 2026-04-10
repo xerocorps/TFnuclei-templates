@@ -1,6 +1,6 @@
 flow: http(1) && http(2)
 http:
-- matchers:
+- extractors:
   - internal: true
     name: token
     part: body
@@ -10,12 +10,7 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-- disable-path-automerge: true
-  extractors:
-  - dsl:
-    - token
-    type: dsl
-  matchers:
+- matchers:
   - condition: and
     part: body
     type: word
@@ -37,6 +32,7 @@ http:
     Content-Type: application/json
 
     '
+  self-contained: true
 id: square-access
 info:
   author: DhiyaneshDK
@@ -45,8 +41,7 @@ info:
     verified: true
   name: Square Access Token
   reference:
-  - https://developer.squareup.com/docs/build-basics/access-tokens
   - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/square.yml
-  - https://github.com/semgrep/semgrep-rules/blob/develop/generic/secrets/gitleaks/square-access-token.yaml
+  - https://developer.squareup.com/docs/build-basics/access-tokens
   severity: high
-  tags: square,token,exposure,vuln
+  tags: square,token,exposure

@@ -34,8 +34,6 @@ info:
     google-query: intitle:"apache tomcat"
     max-request: 1
     product: tomcat
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)apache tomcat"})
-      || service["http.body"] matches "(?i)apache tomcat"
     shodan-query:
     - title:"Apache Tomcat"
     - http.title:"apache tomcat"
@@ -45,4 +43,4 @@ info:
     verified: true
   name: Tomcat Exposed - Detect
   severity: info
-  tags: apache,detect,discovery,panel,tomcat
+  tags: tomcat,panel,apache,detect

@@ -31,12 +31,9 @@ info:
     fofa-query: "body=\"text ml10 mr20\" && (title=\"\u7F51\u5173\u7BA1\u7406\u8F6F\
       \u4EF6\" || title=\"Gateway Management\")"
     max-request: 1
-    runzero-match: "service[\"http.body\"] matches \"(?i)text ml10 mr20\" && any(each(service[\"\
-      html.titles\"]), {# matches \"(?i)(Gateway Management|\u7F51\u5173\u7BA1\u7406\
-      \u8F6F\u4EF6)\"})"
     verified: true
   name: Synway SMG Gateway 9-2radius.php - Remote Command Execution
   reference:
   - https://mp.weixin.qq.com/s/PyepoFSuQ63E3RnpQa9nsA
   severity: critical
-  tags: gateway,rce,synway,unauth
+  tags: rce,synway,gateway,unauth

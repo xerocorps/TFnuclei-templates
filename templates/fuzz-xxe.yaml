@@ -2,14 +2,9 @@ http:
 - fuzzing:
   - fuzz:
     - '{{xxe}}'
-    keys-regex:
-    - (.*?)xml(.*?)
+    mode: single
     part: query
-  - fuzz:
-    - '{{xxe}}'
-    part: query
-    values:
-    - (<!DOCTYPE|<?xml|%3C!DOCTYPE|%3C%3Fxml)(.*?)>
+    type: replace
   matchers:
   - name: linux
     part: body
@@ -33,11 +28,11 @@ http:
   stop-at-first-match: true
 id: fuzz-xxe
 info:
-  author: pwnhxl
+  author: pwnhxl,otterly
   name: XXE Fuzzing
   reference:
   - https://github.com/andresriancho/w3af/blob/master/w3af/plugins/audit/xxe.py
   severity: medium
   tags: dast,xxe
 variables:
-  rletter: '{{rand_base(6,''abc'')}}'
+  rletter: '{{rand_base(6,''oterly'')}}'

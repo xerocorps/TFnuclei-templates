@@ -23,9 +23,8 @@ info:
     '
   metadata:
     product: camaleon_cms
-    runzero-match: service["http.body"] matches "(?i)camaleon_cms"
     shodan-query: html:"camaleon_cms"
     vendor: tuzitio
   name: Camaleon CMS Login - Panel
   severity: info
-  tags: camaleon,panel,login,discovery
+  tags: camaleon,panel,login

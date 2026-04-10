@@ -32,7 +32,7 @@ javascript:
 
     let cleanedData = result.replace(/\+OK Dovecot ready\.\r\n\+OK|\r\n|\s/g, " ");
 
-    console.log(Export(cleanedData))
+    Export(cleanedData)
 
     '
   extractors:
@@ -44,8 +44,3 @@ javascript:
   - dsl:
     - success == true
     type: dsl
-  - negative: true
-    type: word
-    words:
-    - HTTP/1.1
-  matchers-condition: and

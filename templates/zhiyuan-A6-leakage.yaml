@@ -15,9 +15,11 @@ requests:
     type: word
     words:
     - root
+    - "\u81F4\u8FDCA6"
     - localhost
   matchers-condition: and
   method: GET
   path:
+  - '{{BaseURL}}/yyoa/index.jsp'
   - '{{BaseURL}}/yyoa/createMysql.jsp'
   - '{{BaseURL}}/yyoa/ext/createMysql.jsp'

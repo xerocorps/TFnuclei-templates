@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - alex-reservations
+  - dsl:
+    - compare_versions(version, '<= 2.2.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/alex-reservations/readme.txt'
+  redirects: true
+id: alex_reservations-f2d97646-27a8-4302-be70-7b4fb1a12300
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/alex-reservations/
+    google-query: inurl:"/wp-content/plugins/alex-reservations/"
+    shodan-query: http.html:"wp-content/plugins/alex-reservations/"
+  name: 'Alex Reservations: Smart Restaurant Booking <= 2.2.3 - Authenticated (Admin+)
+    Arbitrary File Upload
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/f2d97646-27a8-4302-be70-7b4fb1a12300?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,alex-reservations,low,candidate

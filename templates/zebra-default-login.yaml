@@ -35,9 +35,8 @@ info:
     '
   metadata:
     max-request: 4
-    runzero-match: any(each(service["html.titles"]), {# matches "Zebra"})
     shodan-query: title:"Zebra"
     verified: true
   name: Zebra - Default Login
   severity: high
-  tags: default-login,misconfig,printer,vuln,zebra
+  tags: zebra,default-login,misconfig,printer,vuln
