@@ -1,0 +1,27 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Devtron</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/dashboard/login'
+id: devtron-panel
+info:
+  author: johnk3r
+  description: 'Devtron Panel login panel was detected.
+
+    '
+  metadata:
+    max-request: 1
+    shodan-query: http.title:"Devtron"
+  name: Devtron Panel Login Panel - Detect
+  reference:
+  - https://devtron.ai/
+  severity: info
+  tags: panel,devtron,discovery
