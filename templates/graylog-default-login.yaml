@@ -1,34 +1,15 @@
-flow: http(1) && http(2)
 http:
 - matchers:
   - condition: and
-    dsl:
-    - status_code == 200
-    - contains(content_type, "application/json")
-    - contains_all(body, "\"cluster_id\"", "\"node_id\"", "\"version\"")
-    internal: true
-    type: dsl
-  raw:
-  - 'GET /api/ HTTP/1.1
-
-    Host: {{Hostname}}
-
-    Accept: application/json
-
-    '
-- extractors:
-  - name: session_id
     part: body
-    regex:
-    - '"session_id"\s*:\s*"([^"]+)"'
-    type: regex
-  matchers:
-  - condition: and
-    dsl:
-    - status_code == 200
-    - contains(content_type, "application/json")
-    - contains_all(body, "\"session_id\"", "\"valid_until\"")
-    type: dsl
+    type: word
+    words:
+    - '"session_id"'
+    - '"valid_until"'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   raw:
   - 'POST /api/system/sessions HTTP/1.1
 
@@ -41,29 +22,39 @@ http:
     X-Requested-By: nuclei
 
 
-    {"username":"{{username}}","password":"{{password}}","host":""}
+    {"username":"admin","password":"admin","host":"{{Hostname}}"}
 
     '
 id: graylog-default-login
 info:
-  author: 0x_Akoko
-  description: 'Detected that Graylog was using the default credentials admin:admin.
-    The VM/OVA appliance shipped with admin:admin out of the box.
+  author: 0xBassia
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N
+    cvss-score: 9.1
+    cwe-id: CWE-798
+  description: 'Graylog instance is accessible with default admin credentials (admin/admin).
+    This provides full administrative access to the log management platform, including
+    the ability to read all ingested logs, create inputs, configure pipelines, and
+    manage users.
+
+    '
+  impact: 'An attacker with admin access to Graylog can read all collected log data
+    which may contain credentials, API keys, internal IPs, and sensitive business
+    information. They can also create new inputs to intercept future log data or modify
+    pipelines to redirect/suppress logs.
 
     '
   metadata:
-    fofa-query: app="Graylog" || title="Graylog Web Interface"
     max-request: 2
-    product: graylog
-    shodan-query: title:"Graylog Web Interface"
-    vendor: graylog
+    shodan-query: title:"Graylog"
     verified: true
-  name: Graylog - Default Admin Credentials
+  name: Graylog - Default Login
   reference:
-  - https://go2docs.graylog.org/current/setting_up_graylog/rest_api.html
-  - https://archivedocs.graylog.org/en/2.5/pages/installation/virtual_machine_appliances.html
+  - https://docs.graylog.org/docs/server-conf
+  - https://docs.graylog.org/docs/authentication
+  remediation: 'Change the default root_password_sha2 in the Graylog server.conf configuration
+    file. Use a strong, unique password for the admin account.
+
+    '
   severity: high
-  tags: default-login,graylog,auth
-variables:
-  password: admin
-  username: admin
+  tags: default-login,graylog,logging
