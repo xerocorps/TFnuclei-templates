@@ -21,6 +21,8 @@ http:
 id: cloudlog-system-sqli
 info:
   author: s4e-io
+  classification:
+    cwe-id: CWE-89
   description: 'Unauthorised SQL injection vulnerability in the Cloudlog system interface
     request_form. In addition to being able to exploit the SQL injection vulnerability
     to obtain information from the database, unauthenticated remote attackers can

@@ -11,6 +11,8 @@ http:
 id: acme-challenge-path-xss
 info:
   author: pussycat0x
+  classification:
+    cwe-id: CWE-80
   description: 'Detects XSS vulnerabilities in ACME http-01 challenge implementations
     where hosting providers reflect the challenge key from the URL without proper
     sanitization

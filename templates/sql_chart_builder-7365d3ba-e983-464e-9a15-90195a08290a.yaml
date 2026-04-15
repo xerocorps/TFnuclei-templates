@@ -15,7 +15,7 @@ http:
     words:
     - sql-chart-builder
   - dsl:
-    - compare_versions(version, '<= 2.3.7.2')
+    - compare_versions(version, '< 2.3.8')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -23,7 +23,7 @@ http:
   path:
   - '{{BaseURL}}/wp-content/plugins/sql-chart-builder/readme.txt'
   redirects: true
-id: sql_chart_builder-ac00d82b-4095-4c0c-8b5c-ecff9fa67067
+id: sql_chart_builder-7365d3ba-e983-464e-9a15-90195a08290a
 info:
   author: topscoder
   classification:
@@ -35,12 +35,11 @@ info:
     fofa-query: wp-content/plugins/sql-chart-builder/
     google-query: inurl:"/wp-content/plugins/sql-chart-builder/"
     shodan-query: http.html:"wp-content/plugins/sql-chart-builder/"
-  name: 'SQL Chart Builder <= 2.3.7.2 - Authenticated (Contributor+) Stored Cross-Site
-    Scripting
+  name: 'SQL Chart Builder < 2.3.8 - Unauthenticated SQL Injection
 
     '
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
-  - https://www.wordfence.com/threat-intel/vulnerabilities/id/ac00d82b-4095-4c0c-8b5c-ecff9fa67067?source=api-scan
-  severity: low
-  tags: cve,wordpress,wp-plugin,sql-chart-builder,low,candidate
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7365d3ba-e983-464e-9a15-90195a08290a?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,sql-chart-builder,critical,candidate

@@ -27,6 +27,8 @@ http:
 id: postman-collection-exposure
 info:
   author: Hamza Sahin
+  classification:
+    cwe-id: CWE-538
   description: 'Detected exposed Postman collection JSON files that contained API
     endpoints and environment details. These files were publicly accessible and disclosed
     authentication headers and other sensitive information.

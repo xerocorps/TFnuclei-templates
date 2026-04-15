@@ -54,6 +54,8 @@ http:
 id: leantime-stored-xss
 info:
   author: iamnoooob,rootxharsh,pdresearch
+  classification:
+    cwe-id: CWE-79,CWE-83
   description: 'Any low privileged user like manager, or editor, can create an API
     key with XSS payload. When admin will visit the Company page, the XSS will automatically
     get triggerred leading to the unauthorized action performed from the ADMIN account.

@@ -24,6 +24,8 @@ http:
 id: portal-api-ssrf
 info:
   author: ishowtess
+  classification:
+    cwe-id: CWE-918
   description: 'A Server-Side Request Forgery (SSRF) vulnerability in the Portal API
     endpoint by injecting a crafted X-Portal-Context-Origin header.
 

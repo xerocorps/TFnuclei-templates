@@ -4,7 +4,7 @@ http:
     part: body
     type: word
     words:
-    - '22344'
+    - '22596288'
     - bagisto
   - part: content_type
     type: word
@@ -13,12 +13,13 @@ http:
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/bagisto-common/search?query={{228*''98''}}'
+  - '{{BaseURL}}/bagisto-common/search?query={{2288*''9876''}}'
 id: bagisto-csti
 info:
-  author: securityforeveryone
+  author: s4e-io
   classification:
     cpe: cpe:2.3:a:webkul:bagisto:*:*:*:*:*:*:*:*
+    cwe-id: CWE-94
   description: 'Bagisto is vulnerable to Client-Side Template Injection (CSTI), which
     allows an attacker to execute arbitrary code on the server.
 
@@ -33,4 +34,4 @@ info:
   - https://packetstormsecurity.com/files/179153/Bagisto-2.1.2-Client-Side-Template-Injection.html
   - https://demo.bagisto.com/
   severity: medium
-  tags: bagisto,csti,packetstorm,ssti
+  tags: bagisto,csti,packetstorm,ssti,vuln

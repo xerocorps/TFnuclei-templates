@@ -33,7 +33,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-20
+    cwe-id: CWE-22,CWE-73
   description: 'Gradio''s Dropdown component is vulnerable to Local File Inclusion
     (LFI) when the value is a dictionary controlled by an attacker. In the postprocess
     of components, if the value type is a dict, it flows to the async_move_files_to_cache

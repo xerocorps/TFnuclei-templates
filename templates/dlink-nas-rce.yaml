@@ -21,6 +21,8 @@ http:
 id: dlink-nas-rce
 info:
   author: adeljck
+  classification:
+    cwe-id: CWE-78
   description: 'The D-Link NAS interface sc_mgr.cgi contains a command execution vulnerability
     that allows attackers to execute arbitrary commands on the device, potentially
     leading to unauthorized access or control over the system.

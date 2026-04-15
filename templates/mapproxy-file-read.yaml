@@ -28,7 +28,7 @@ id: mapproxy-file-read
 info:
   author: xbow,DhiyaneshDk
   classification:
-    cwe-id: CWE-22
+    cwe-id: CWE-22,CWE-73
   description: 'MapProxy improperly validates and processes X-Forwarded headers, allowing
     attackers to construct file:// URLs that bypass access controls and read local
     files through local file inclusion vulnerability.

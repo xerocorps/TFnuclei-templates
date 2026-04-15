@@ -32,6 +32,8 @@ http:
 id: ektron-blog-xmlrpc-xxe
 info:
   author: pussycat0x
+  classification:
+    cwe-id: CWE-611,CWE-918
   description: 'Detects XML External Entity (XXE) vulnerability in Ektron CMS Blogs
     component (/WorkArea/Blogs/xmlrpc.aspx). Allows unauthenticated attackers to read
     local files or perform SSRF.

@@ -20,6 +20,8 @@ http:
 id: yonyou-nc-lfi
 info:
   author: vva
+  classification:
+    cwe-id: CWE-22,CWE-73
   description: 'UFIDA NC is vulnerable to an arbitrary file read vulnerability in
     the nc.uap.lfw.file.action.DocServlet component. An unauthenticated remote attacker
     can exploit this flaw to read sensitive files on the server by sending crafted

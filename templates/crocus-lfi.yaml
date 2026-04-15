@@ -22,6 +22,8 @@ http:
 id: crocus-lfi
 info:
   author: pussycat0x
+  classification:
+    cwe-id: CWE-22,CWE-73
   description: 'There is an arbitrary file reading vulnerability in the Service.do
     interface of Ruiming Technology''s Crocus system. An unauthenticated remote attacker
     can use this vulnerability to read important system files (such as database configuration

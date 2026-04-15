@@ -12,6 +12,8 @@ http:
 id: fronsetiav-xss
 info:
   author: s4e-io
+  classification:
+    cwe-id: CWE-79,CWE-83
   description: 'The fronsetiav1.1 application is vulnerable to a Reflected XSS attack
     through the show_operations.jsp endpoint. An attacker can inject malicious scripts
     via the WSDL Location input, which is executed in the victim''s browser due to

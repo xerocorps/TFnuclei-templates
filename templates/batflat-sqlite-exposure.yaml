@@ -14,6 +14,8 @@ http:
 id: batflat-sqlite-exposure
 info:
   author: DhiyaneshDk
+  classification:
+    cwe-id: CWE-219,CWE-552
   description: 'Detected exposed Batflat CMS SQLite database files that may contain
     sensitive information including admin credentials, user data, site configuration,
     and content. Batflat stores its database in the /inc/data/ directory by default.

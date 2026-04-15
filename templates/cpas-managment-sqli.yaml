@@ -34,6 +34,8 @@ http:
 id: cpas-managment-sqli
 info:
   author: s4e-io
+  classification:
+    cwe-id: CWE-89
   description: 'The CPAS Audit Management System V4 has been identified with an SQL
     injection vulnerability in the getCurserIfAllowLogin endpoint. This flaw allows
     unauthenticated remote attackers to exploit the system by injecting malicious
