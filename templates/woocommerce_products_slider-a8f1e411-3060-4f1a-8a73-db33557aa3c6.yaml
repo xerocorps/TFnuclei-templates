@@ -15,7 +15,7 @@ http:
     words:
     - woocommerce-products-slider
   - dsl:
-    - compare_versions(version, '<= 1.13.60')
+    - compare_versions(version, '<= 1.13.61')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/woocommerce-products-slider/
     google-query: inurl:"/wp-content/plugins/woocommerce-products-slider/"
     shodan-query: http.html:"wp-content/plugins/woocommerce-products-slider/"
-  name: 'Product Slider, Product Grid, Product Masonry <= 1.13.60 - Missing Authorization
+  name: 'Product Slider, Product Grid, Product Masonry <= 1.13.61 - Missing Authorization
 
     '
   reference:

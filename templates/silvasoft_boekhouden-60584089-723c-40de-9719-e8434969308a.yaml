@@ -15,7 +15,7 @@ http:
     words:
     - silvasoft-boekhouden
   - dsl:
-    - compare_versions(version, '<= 3.0.5')
+    - compare_versions(version, '<= 3.0.6')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/silvasoft-boekhouden/
     google-query: inurl:"/wp-content/plugins/silvasoft-boekhouden/"
     shodan-query: http.html:"wp-content/plugins/silvasoft-boekhouden/"
-  name: 'Silvasoft boekhouden <= 3.0.5 - Reflected Cross-Site Scripting
+  name: 'Silvasoft boekhouden <= 3.0.6 - Reflected Cross-Site Scripting
 
     '
   reference:

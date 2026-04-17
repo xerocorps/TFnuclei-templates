@@ -15,7 +15,7 @@ http:
     words:
     - innovio
   - dsl:
-    - compare_versions(version, '<= 1.7')
+    - compare_versions(version, '<= 1.9')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/themes/innovio/
     google-query: inurl:"/wp-content/themes/innovio/"
     shodan-query: http.html:"wp-content/themes/innovio/"
-  name: 'Innovio - Multipurpose Landing Page WordPress Theme <= 1.7 - Unauthenticated
+  name: 'Innovio - Multipurpose Landing Page WordPress Theme <= 1.9 - Unauthenticated
     Local File Inclusion
 
     '

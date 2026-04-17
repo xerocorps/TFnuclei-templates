@@ -15,7 +15,7 @@ http:
     words:
     - gutentor
   - dsl:
-    - compare_versions(version, '<= 3.5.1')
+    - compare_versions(version, '<= 3.5.5')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/gutentor/
     google-query: inurl:"/wp-content/plugins/gutentor/"
     shodan-query: http.html:"wp-content/plugins/gutentor/"
-  name: 'Gutentor <= 3.5.1 - Missing Authorization
+  name: 'Gutentor <= 3.5.5 - Missing Authorization
 
     '
   reference:

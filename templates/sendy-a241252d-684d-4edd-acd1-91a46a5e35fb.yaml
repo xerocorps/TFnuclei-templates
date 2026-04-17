@@ -15,7 +15,7 @@ http:
     words:
     - sendy
   - dsl:
-    - compare_versions(version, '<= 3.4.1')
+    - compare_versions(version, '<= 3.4.2')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/sendy/
     google-query: inurl:"/wp-content/plugins/sendy/"
     shodan-query: http.html:"wp-content/plugins/sendy/"
-  name: 'Sendy <= 3.4.1 - Missing Authorization
+  name: 'Sendy <= 3.4.2 - Missing Authorization
 
     '
   reference:

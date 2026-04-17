@@ -15,7 +15,7 @@ http:
     words:
     - themehunk-megamenu-plus
   - dsl:
-    - compare_versions(version, '<= 1.1.1')
+    - compare_versions(version, '<= 1.2.0')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/themehunk-megamenu-plus/
     google-query: inurl:"/wp-content/plugins/themehunk-megamenu-plus/"
     shodan-query: http.html:"wp-content/plugins/themehunk-megamenu-plus/"
-  name: 'ThemeHunk <= 1.1.1 - Missing Authorization
+  name: 'ThemeHunk <= 1.2.0 - Missing Authorization
 
     '
   reference:
