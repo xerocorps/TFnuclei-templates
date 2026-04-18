@@ -1,0 +1,51 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: js-bundle
+    part: body
+    regex:
+    - '["'']/?(libs/custom-component-collections[^"'']+\.js)["'']'
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_all(body, "Custom Component", "custom-component-collections")
+    internal: true
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/custom-component-collections.html'
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_all(body, "customComponentCode", "data:text/javascript", "addEventListener(\"message\"")
+    type: dsl
+  method: GET
+  path:
+  - '{{BaseURL}}/{{js-bundle}}'
+id: retool-postmessage-xss
+info:
+  author: DhiyaneshDk
+  description: 'Retool Self-Hosted versions 3.284.0 through 3.284.11 contain a cross-site
+    scripting (XSS) vulnerability in the custom component collections iframe handler.
+    The postMessage event listener in custom-component-collections.html accepts messages
+    from any origin without validation and dynamically imports the received code via
+    data:text/javascript URLs, allowing arbitrary JavaScript execution in the Retool
+    instance origin context.
+
+    '
+  metadata:
+    fofa-query: title="Retool"
+    max-request: 2
+    product: retool
+    shodan-query: title:"Retool"
+    vendor: retool
+  name: Retool Self-Hosted - postMessage XSS via Custom Component Collections
+  reference:
+  - https://docs.retool.com/releases
+  - https://docs.retool.com/changelog/disclosures/custom-component-xss
+  severity: high
+  tags: retool,xss,postmessage,vuln
