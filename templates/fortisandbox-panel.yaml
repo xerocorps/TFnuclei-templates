@@ -1,0 +1,31 @@
+http:
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>FortiSandbox
+    - <span>FortiSandbox
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/ng/login?returnUrl=%2F'
+id: fortisandbox-panel
+info:
+  author: rxerium
+  description: 'Detected exposed FortiSandbox login and management interfaces.
+
+    '
+  metadata:
+    max-request: 1
+    product: fortisandbox
+    shodan-query: http.title:"FortiSandbox"
+    vendor: fortinet
+    verified: true
+  name: FortiSandbox Panel - Detect
+  reference:
+  - https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/FortiSandbox.pdf
+  severity: info
+  tags: fortinet,fortisandbox,panel,login,discovery
