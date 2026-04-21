@@ -1,0 +1,60 @@
+flow: http(1) && http(2)
+http:
+- extractors:
+  - internal: true
+    kval:
+    - j100nonce
+    name: nonce
+    type: kval
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/J100WebServer.cgi?Operation=0'
+- matchers:
+  - condition: or
+    part: body
+    type: word
+    words:
+    - /cgi-bin/J100WebServer.cgi?Operation=211
+    - id="redirectToDefault
+  - negative: true
+    part: body
+    type: word
+    words:
+    - Invalid username or password
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  raw:
+  - 'POST /cgi-bin/J100WebServer.cgi?Operation=1 HTTP/1.1
+
+    Host: {{Host}}
+
+    Content-Type: application/x-www-form-urlencoded
+
+
+    uname={{username}}&psw={{sha256(concat(password,nonce))}}
+
+    '
+id: avaya-phone-default-login
+info:
+  author: tpierru
+  classification:
+    cwe-id: CWE-1392
+  description: 'Avaya phone web interface contains a default login vulnerability.
+    An attacker can obtain access to sensitive information, modify data, and/or execute
+    unauthorized operations.
+
+    '
+  metadata:
+    max-requests: 1
+    shodan-query: html:"Avaya J179 Phone"
+    verified: true
+  name: Avaya Phone Web Interface - Default Login
+  reference:
+  - https://documentation.avaya.com/bundle/InstallandadminJ100seriesIPPhone_r4.1.x/page/Logging_into_web_UI.html
+  severity: high
+  tags: default-login,avaya,misconfig
+variables:
+  password: '27238'
+  username: admin
