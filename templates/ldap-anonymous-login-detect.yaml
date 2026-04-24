@@ -2,8 +2,8 @@ id: ldap-anonymous-login-detect
 info:
   author: pussycat0x,s0obi
   description: 'Detects whether an LDAP server allows anonymous bind (login without
-    credentials).Anonymous access can expose sensitive directory information and should
-    be restricted
+    credentials). Anonymous access can expose sensitive directory information and
+    should be restricted
 
     unless explicitly intended.
 
@@ -20,23 +20,15 @@ info:
   tags: js,network,ldap,enum,vuln
 javascript:
 - args:
-    Host: ldap://{{Host}}
-    Port: 389
-  code: 'let ldap = require(''nuclei/ldap'');
-
-    let cfg = ldap.Config();
-
-    cfg.Upgrade = true;
-
-    let client = ldap.Client(Host, Port, cfg);
-
-    let result = client.Authenticate('''', '''');
-
-    let metadata = client.CollectMetadata();
-
-    Export(metadata);
-
-    '
+    Host: '{{Host}}'
+    Realm: anonymous
+    TargetPort: '{{Port}}'
+  code: "try {\n  let ldap = require('nuclei/ldap');\n\n  let port = TargetPort ?\
+    \ TargetPort : \"389\";\n  let host = \"ldap://\" + Host + \":\" + port;\n\n \
+    \ let cfg = ldap.Config();\n  cfg.Upgrade = true;\n\n  let client = ldap.Client(host,\
+    \ Realm, cfg);\n  let result = client.Authenticate('', '');\n  let metadata =\
+    \ client.CollectMetadata();\n\n  Export(metadata);\n\n} catch (e) {\n  // ignore\
+    \ errors\n}\n"
   matchers:
   - dsl:
     - success == true
