@@ -1,12 +1,11 @@
 http:
 - matchers:
   - condition: and
-    part: body
-    type: word
-    words:
-    - AdmissionReview
-    - response
-    - test-{{string}}
+    dsl:
+    - status_code == 200
+    - contains(content_type, "application/json")
+    - contains_all(body, "AdmissionReview", "test-{{string}}")
+    type: dsl
   raw:
   - "POST /validate HTTP/1.1\nHost: {{Hostname}}\nContent-Type: application/json\n\
     \n{\n  \"kind\": \"AdmissionReview\",\n  \"apiVersion\": \"admission.k8s.io/v1\"\
