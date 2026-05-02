@@ -1,0 +1,44 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - feed-kuantokusta-for-woocommerce
+  - dsl:
+    - compare_versions(version, '<= 5.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/feed-kuantokusta-for-woocommerce/readme.txt'
+  redirects: true
+id: feed_kuantokusta_for_woocommerce-3c835763-a53f-4447-ac9d-39488535b5fd
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/feed-kuantokusta-for-woocommerce/
+    google-query: inurl:"/wp-content/plugins/feed-kuantokusta-for-woocommerce/"
+    shodan-query: http.html:"wp-content/plugins/feed-kuantokusta-for-woocommerce/"
+  name: "Feed KuantoKusta for WooCommerce \u2013 Free <= 5.3 - Unauthenticated SQL\
+    \ Injection\n"
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3c835763-a53f-4447-ac9d-39488535b5fd?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,feed-kuantokusta-for-woocommerce,critical,candidate
