@@ -1,0 +1,46 @@
+http:
+- attack: pitchfork
+  matchers:
+  - condition: and
+    type: word
+    words:
+    - '"token":'
+    - '"user":'
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  payloads:
+    password:
+    - password123
+    - password456
+    username:
+    - alice
+    - bob
+  raw:
+  - 'POST /login HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Content-Type: application/json
+
+
+    {"username":"{{username}}","password":"{{password}}"}
+
+    '
+  stop-at-first-match: true
+id: apache-casbin-mcp-gateway-default-login
+info:
+  author: icarot
+  description: 'Apache Casbin MCP Gateway server default login credentials were discovered.
+
+    '
+  metadata:
+    max-request: 2
+    product: casbin-mcp-gateway
+    vendor: apache
+  name: Apache Casbin MCP Gateway - Default Login
+  reference:
+  - https://github.com/apache/casbin-mcp-gateway
+  severity: high
+  tags: apache,casbin-mcp-gateway,default-login

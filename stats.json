@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-05-04T05:44:16.475306+00:00",
-  "total_templates": 51724,
-  "duplicates_removed": 520315,
+  "last_updated": "2026-05-05T05:44:07.538539+00:00",
+  "total_templates": 51731,
+  "duplicates_removed": 520278,
   "deduplication_breakdown": {
-    "exact_content": 345983,
+    "exact_content": 345940,
     "semantic_fingerprint": 116314,
-    "normalized_id": 58018
+    "normalized_id": 58024
   },
   "sources": {
     "total": 441,
-    "successful": 404,
-    "failed": 17,
+    "successful": 403,
+    "failed": 18,
     "skipped": 20
   },
   "severity_breakdown": {
     "critical": 5874,
-    "high": 11342,
+    "high": 11344,
     "medium": 14683,
     "low": 12711,
-    "info": 6750,
+    "info": 6755,
     "unknown": 364
   },
   "failed_sources": [
@@ -91,6 +91,13 @@
         "repo": "cyb3r-w0lf/nuclei-template-collection"
       },
       "error": "Could not download cyb3r-w0lf/nuclei-template-collection from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "Xplo8E/mobile-nuclei-templates"
+      },
+      "error": "Could not download Xplo8E/mobile-nuclei-templates from any branch"
     },
     {
       "source": {
