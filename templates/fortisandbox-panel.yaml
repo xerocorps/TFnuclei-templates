@@ -1,31 +1,43 @@
 http:
-- matchers:
-  - part: body
+- host-redirects: true
+  matchers:
+  - case-insensitive: true
+    condition: or
+    part: body
     type: word
     words:
-    - <title>FortiSandbox
-    - <span>FortiSandbox
-  - status:
-    - 200
-    type: status
-  matchers-condition: and
+    - <title>FortiSandbox</title>
+    - fsa_login_logo
+    - /images/fsa_logo
+    - FortiSandbox
+  - part: header
+    regex:
+    - 'Set-Cookie: FSA_SESSION_ID='
+    type: regex
+  matchers-condition: or
+  max-redirects: 2
   method: GET
   path:
-  - '{{BaseURL}}/ng/login?returnUrl=%2F'
+  - '{{BaseURL}}'
+  - '{{BaseURL}}/fsa/login'
+  stop-at-first-match: true
 id: fortisandbox-panel
 info:
-  author: rxerium
-  description: 'Detected exposed FortiSandbox login and management interfaces.
+  author: "Umut \xD6ZEN"
+  classification:
+    cpe: cpe:2.3:a:fortinet:fortisandbox:*:*:*:*:*:*:*:*
+  description: 'Fortinet FortiSandbox login panel was discovered.
 
     '
   metadata:
     max-request: 1
     product: fortisandbox
-    shodan-query: http.title:"FortiSandbox"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)FortiSandbox"})
+    shodan-query: title:"FortiSandbox"
     vendor: fortinet
     verified: true
-  name: FortiSandbox Panel - Detect
+  name: Fortinet FortiSandbox Panel - Detect
   reference:
-  - https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/FortiSandbox.pdf
+  - https://www.fortinet.com/products/sandbox/fortisandbox
   severity: info
-  tags: fortinet,fortisandbox,panel,login,discovery
+  tags: fortinet,fortisandbox,panel,tech

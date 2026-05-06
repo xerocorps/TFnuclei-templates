@@ -13,15 +13,23 @@ http:
     Accept: application/json
 
     '
+  - 'GET /api/v1/collections HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: application/json
+
+    '
+  stop-at-first-match: true
 id: chroma-api-exposure
 info:
-  author: pussycat0x
+  author: pussycat0x,DevamShah
   description: 'ChromaDB runs without authentication by default, exposing the API
     edpoint to anyone and allowing unauthorized access to read.
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
     product: chromadb
     shodan-query: '"ChromaDB"'
     vendor: chroma-core
