@@ -1,0 +1,46 @@
+http:
+- extractors:
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - (?mi)Stable tag:\s*([0-9.]+)
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - eight-day-week-print-workflow
+  - dsl:
+    - compare_versions(version, '<= 1.2.6')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/eight-day-week-print-workflow/readme.txt'
+  redirects: true
+id: eight_day_week_print_workflow-c9bb4fae-5a5a-4c1b-a1dd-1aecc0f4b114
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/eight-day-week-print-workflow/
+    google-query: inurl:"/wp-content/plugins/eight-day-week-print-workflow/"
+    shodan-query: http.html:"wp-content/plugins/eight-day-week-print-workflow/"
+  name: 'Eight Day Week Print Workflow <= 1.2.6 - Authenticated (Subscriber+) SQL
+    Injection via ''title'' Parameter
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/c9bb4fae-5a5a-4c1b-a1dd-1aecc0f4b114?source=api-scan
+  severity: low
+  tags: cve,wordpress,wp-plugin,eight-day-week-print-workflow,low,candidate

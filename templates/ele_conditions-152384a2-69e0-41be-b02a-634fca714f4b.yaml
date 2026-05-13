@@ -15,7 +15,7 @@ http:
     words:
     - ele-conditions
   - dsl:
-    - compare_versions(version, '<= 1.0.5')
+    - compare_versions(version, '<= 1.0.6')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/ele-conditions/
     google-query: inurl:"/wp-content/plugins/ele-conditions/"
     shodan-query: http.html:"wp-content/plugins/ele-conditions/"
-  name: 'Elementor Element Condition <= 1.0.5 - Authenticated (Editor+) Stored Cross-Site
+  name: 'Elementor Element Condition <= 1.0.6 - Authenticated (Editor+) Stored Cross-Site
     Scripting
 
     '
