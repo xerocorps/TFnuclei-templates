@@ -15,7 +15,7 @@ http:
     words:
     - ulimate-client-dash
   - dsl:
-    - compare_versions(version, '<= 4.6')
+    - compare_versions(version, '<= 4.7')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/ulimate-client-dash/
     google-query: inurl:"/wp-content/plugins/ulimate-client-dash/"
     shodan-query: http.html:"wp-content/plugins/ulimate-client-dash/"
-  name: 'Ultimate Client Dash <= 4.6 - Authenticated (Administrator+) Stored Cross-Site
+  name: 'Ultimate Client Dash <= 4.7 - Authenticated (Administrator+) Stored Cross-Site
     Scripting
 
     '
