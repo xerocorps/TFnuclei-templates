@@ -1,0 +1,75 @@
+flow: http(1) && http(2)
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: realm
+    part: header
+    regex:
+    - realm="([^"]+)"
+    type: regex
+  - group: 1
+    internal: true
+    name: nonce
+    part: header
+    regex:
+    - nonce="([^"]+)"
+    type: regex
+  matchers:
+  - condition: and
+    dsl:
+    - status_code_1 == 401
+    - contains(tolower(header_1), "digest realm=")
+    internal: true
+    type: dsl
+  raw:
+  - 'GET /rest/v2/cache-managers/default HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: application/json
+
+    '
+- matchers:
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains_all(body, "\"name\"", "\"cache_manager_status\"")
+    type: dsl
+  raw:
+  - 'GET /rest/v2/cache-managers/default HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Accept: application/json
+
+    Authorization: Digest username="{{username}}", realm="{{realm}}", nonce="{{nonce}}",
+    uri="/rest/v2/cache-managers/default", qop=auth, nc=00000001, cnonce="0a4f113b",
+    response="{{md5(concat(md5(concat(username,":",realm,":",password)),":",nonce,":00000001:0a4f113b:auth:",md5("GET:/rest/v2/cache-managers/default")))}}",
+    algorithm=MD5
+
+    '
+id: infinispan-default-login
+info:
+  author: DhiyanesDk
+  description: 'The Infinispan REST API was found exposed with the default administrator
+    credentials `admin:password`. An unauthenticated network attacker can authenticate
+    via HTTP Digest and gain full read/write access to all cache managers, caches,
+    and server administration endpoints.
+
+    '
+  metadata:
+    max-request: 2
+    product: infinispan
+    shodan-query: http.favicon.hash:647951307
+    vendor: redhat
+    verified: true
+  name: Infinispan - Default Admin Login
+  reference:
+  - https://infinispan.org/docs/stable/titles/security/security.html
+  - https://infinispan.org/
+  severity: high
+  tags: default-login,infinispan,redhat,config
+variables:
+  password: password
+  username: admin
