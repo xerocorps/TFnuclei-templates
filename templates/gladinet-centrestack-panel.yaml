@@ -22,6 +22,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)CentreStack"})
     shodan-query: title:"CentreStack"
     verified: true
   name: CentreStack Login Panel - Detect

@@ -20,12 +20,18 @@ info:
     cwe-id: CWE-200
   description: Cisco UCS Manager KVM login panel was detected.
   metadata:
+    fofa-query: title="cisco ucs kvm direct"
+    google-query: intitle:"cisco ucs kvm direct"
     max-request: 1
     product: unified_computing_system
-    shodan-query: http.title:"Cisco UCS KVM Direct"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)cisco ucs kvm
+      direct"})
+    shodan-query:
+    - http.title:"Cisco UCS KVM Direct"
+    - http.title:"cisco ucs kvm direct"
     vendor: cisco
   name: Cisco UCS Manager KVM Login Panel - Detect
   reference:
   - https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/ucs-manager/GUI-User-Guides/Admin-Management/3-1/b_Cisco_UCS_Admin_Mgmt_Guide_3_1/b_Cisco_UCSM_GUI_Admin_Mgmt_Guide_3_1_chapter_01111.html
   severity: info
-  tags: panel,cisco,ucs,kvm
+  tags: cisco,discovery,kvm,panel,ucs

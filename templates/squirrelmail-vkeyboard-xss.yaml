@@ -21,7 +21,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 5.4
-    cwe-id: CWE-80
+    cwe-id: CWE-80,CWE-83
   description: SquirrelMail Virtual Keyboard plugin 0.9.1 and prior contains a cross-site
     scripting vulnerability via the vkeyboard.php parameter. It fails to properly
     sanitize user-supplied input, which allows an attacker to execute arbitrary script
@@ -34,6 +34,6 @@ info:
   reference:
   - https://www.exploit-db.com/exploits/34814
   severity: medium
-  tags: xss,squirrelmail,plugin,edb
+  tags: edb,plugin,squirrelmail,vuln,xss
 variables:
   payload: '"><script>alert({{rand_int()}});</script><script>/*'

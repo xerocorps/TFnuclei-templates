@@ -25,11 +25,14 @@ info:
   metadata:
     max-request: 1
     product: magento
-    shodan-query: http.component:"Magento"
+    shodan-query:
+    - http.component:"Magento"
+    - cpe:"cpe:2.3:a:magento:magento"
+    - http.component:"magento"
     vendor: magento
     verified: true
   name: Magento Admin Login Panel - Detect
   reference:
   - https://docs.magento.com/user-guide/stores/store-urls-custom-admin.html
   severity: info
-  tags: magento,panel
+  tags: magento,panel,discovery

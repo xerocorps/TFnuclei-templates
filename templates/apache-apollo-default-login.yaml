@@ -39,12 +39,13 @@ info:
   metadata:
     max-request: 1
     product: activemq_apollo
+    runzero-match: any(each(service["html.titles"]), {# matches "Apache Apollo"})
     shodan-query: title:"Apache Apollo"
     vendor: apache
     verified: true
   name: Apache Apollo - Default Login
   severity: high
-  tags: apache,apollo,default-login,misconfig
+  tags: apache,apollo,default-login,misconfig,vuln
 variables:
   password: admin
   username: admin

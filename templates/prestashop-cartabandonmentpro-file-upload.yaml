@@ -65,11 +65,13 @@ id: prestashop-cartabandonmentpro-file-upload
 info:
   author: MaStErChO
   classification:
-    cwe-id: CWE-434
+    cwe-id:
+    - CWE-434
   metadata:
     framework: prestashop
     max-request: 2
     product: ap_pagebuilder
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     shodan-query: http.component:"prestashop"
     vendor: apollotheme
     verified: true
@@ -78,7 +80,7 @@ info:
   - https://www.openservis.cz/prestashop-blog/nejcastejsi-utoky-v-roce-2023-seznam-deravych-modulu-nemate-nejaky-z-nich-na-e-shopu-i-vy/
   - https://dh42.com/blog/prestashop-security/
   severity: critical
-  tags: intrusive,file-upload,cartabandonmentpro,prestashop,vuln
+  tags: cartabandonmentpro,file-upload,intrusive,prestashop,vuln
 variables:
   filename: '{{rand_base(7, "abc")}}'
   string: '{{rand_base(7, "abc")}}'

@@ -9,11 +9,12 @@ info:
     '
   metadata:
     max-request: 1
+    verified: true
   name: FTP Anonymous Login
   reference:
   - https://tools.ietf.org/html/rfc2577
   severity: medium
-  tags: network,ftp,default-login
+  tags: network,ftp,default-login,tcp,vuln
 tcp:
 - host:
   - '{{Hostname}}'
@@ -29,7 +30,9 @@ tcp:
     words:
     - Anonymous access allowed,
     - Logged in anonymously
-    - '230 '
+    - Anonymous user logged
+    - Login successful
+    - Guest login ok
   - condition: or
     negative: true
     part: raw
@@ -38,5 +41,7 @@ tcp:
     - HTTP/1.1
     - '230.'
     - '.230'
+    - User cannot log
+    - ESMTP
   matchers-condition: and
   port: 21

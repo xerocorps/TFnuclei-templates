@@ -26,6 +26,7 @@ info:
     '
   metadata:
     max-request: 2
+    runzero-match: service["favicon.ico.image.mmh3"] == "1693580324"
     shodan-query: http.favicon.hash:1693580324
     verified: true
   name: Eagle For Apache Kakfa Login - Detect
@@ -33,4 +34,4 @@ info:
   - https://github.com/smartloli/efak
   - https://www.kafka-eagle.org/
   severity: info
-  tags: panel,efak,login,detect
+  tags: panel,efak,login,detect,discovery

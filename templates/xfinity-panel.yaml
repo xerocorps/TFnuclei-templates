@@ -22,8 +22,9 @@ info:
   description: Xfinity panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)xfinity"})
     shodan-query: title:"xfinity"
     verified: true
   name: Xfinity Panel - Detect
   severity: info
-  tags: panel,xfinity
+  tags: panel,xfinity,discovery

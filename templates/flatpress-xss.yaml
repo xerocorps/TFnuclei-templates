@@ -55,6 +55,7 @@ id: flatpress-xss
 info:
   author: arafatansari
   classification:
+    cpe: cpe:2.3:a:flatpress:flatpress:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 6.1
     cwe-id: CWE-79
@@ -67,7 +68,9 @@ info:
     '
   metadata:
     max-request: 2
+    product: flatpress
     shodan-query: http.html:"Flatpress"
+    vendor: flatpress
     verified: true
   name: FlatPress 1.2.1 - Stored Cross-Site Scripting
   reference:

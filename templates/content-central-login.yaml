@@ -21,8 +21,10 @@ info:
   description: Content Central login panel was detected.
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Content Central
+      Login"})
     shodan-query: http.title:"Content Central Login"
     verified: true
   name: Content Central Login Panel - Detect
   severity: info
-  tags: panel,content-central
+  tags: panel,content-central,discovery

@@ -21,16 +21,21 @@ http:
 id: opentsdb-status
 info:
   author: pussycat0x
-  description: OpenTSDB stats exposed which is commonly used in monitoring and observability
+  classification:
+    cpe: cpe:2.3:a:opentsdb:opentsdb:*:*:*:*:*:*:*:*
+  description: 'OpenTSDB stats exposed which is commonly used in monitoring and observability
     scenarios where tracking and analyzing the performance of systems, applications,
     and infrastructure over time is essential.
-  metadata:
-    max-request: 1
-    shodan-query: http.favicon.hash:407286339
-    verified: true
-  name: OpenTSDB - Detect
-  reference: 'http://opentsdb.net/
 
     '
+  metadata:
+    max-request: 1
+    product: opentsdb
+    shodan-query: http.favicon.hash:407286339
+    vendor: opentsdb
+    verified: true
+  name: OpenTSDB - Detect
+  reference:
+  - http://opentsdb.net/
   severity: low
-  tags: opentsdb,exposure,logs
+  tags: opentsdb,exposure,logs,vuln

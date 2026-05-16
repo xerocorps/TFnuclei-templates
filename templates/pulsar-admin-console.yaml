@@ -20,11 +20,23 @@ info:
     cwe-id: CWE-200
   description: Pulsar admin console panel was detected.
   metadata:
+    fofa-query:
+    - title="pulsar admin ui"
+    - title="pulsar admin console"
+    google-query:
+    - intitle:"pulsar admin ui"
+    - intitle:"pulsar admin console"
     max-request: 1
     product: pulsar
-    shodan-query: title:"Pulsar Admin Console"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)pulsar admin
+      console"}) || any(each(service["html.titles"]), {# matches "(?i)pulsar admin
+      ui"})
+    shodan-query:
+    - title:"Pulsar Admin Console"
+    - http.title:"pulsar admin ui"
+    - http.title:"pulsar admin console"
     vendor: apache
     verified: true
   name: Pulsar Admin Console Panel - Detect
   severity: info
-  tags: panel,pulsar,console,admin,apache
+  tags: admin,apache,console,discovery,panel,pulsar

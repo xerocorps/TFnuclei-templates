@@ -37,7 +37,8 @@ info:
   description: Dolibarr login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Dolibarr"})
     shodan-query: http.title:"Dolibarr"
   name: Dolibarr Login Panel - Detect
   severity: info
-  tags: panel,dolibarr
+  tags: panel,dolibarr,discovery

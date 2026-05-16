@@ -19,10 +19,11 @@ info:
   metadata:
     fofa-query: title="Blinko"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Blinko"})
     shodan-query: title:"Blinko"
     verified: true
   name: Blinko - Login Panel Detection
   reference:
   - https://github.com/blinko-space/blinko
   severity: info
-  tags: panel,blinko,login,detect
+  tags: blinko,detect,login,panel

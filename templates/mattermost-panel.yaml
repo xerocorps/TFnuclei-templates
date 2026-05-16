@@ -28,9 +28,10 @@ info:
   metadata:
     fofa-query: content="Mattermost"
     max-requests: 1
+    runzero-match: service["http.body"] matches "(?i)'content=\"Mattermost\"'"
     shodan-query: html:'content="Mattermost"'
     vendor: mattermost
     verified: true
   name: Mattermost Login - Panel
   severity: info
-  tags: login,mattermost,panel,discovery
+  tags: discovery,login,mattermost,panel

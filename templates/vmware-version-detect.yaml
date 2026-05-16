@@ -10,7 +10,8 @@ info:
   severity: info
   tags: tech,vcenter,vmware
 requests:
-- extractors:
+- attack: sniper
+  extractors:
   - group: 1
     part: body
     regex:
@@ -35,8 +36,10 @@ requests:
     words:
     - text/xml
   matchers-condition: and
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
   raw:
-  - "POST /sdk/ HTTP/1.1\nHost: {{Hostname}}\nUser-Agent: Mozilla/5.0 (Windows NT\
+  - "POST /sdk/ HTTP/1.1\nHost: {{Subdomains}}\nUser-Agent: Mozilla/5.0 (Windows NT\
     \ 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept-Encoding: gzip, deflate\n\
     Accept: */*\nConnection: close\nContent-Type: application/xml\nContent-Length:\
     \ 538\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:soap=\"\
@@ -46,3 +49,4 @@ requests:
     \      <RetrieveServiceContent xmlns=\"urn:internalvim25\">\n         <_this xsi:type=\"\
     ManagedObjectReference\" type=\"ServiceInstance\">ServiceInstance</_this>\n  \
     \    </RetrieveServiceContent>\n   </soap:Body>\n</soap:Envelope>        \n"
+  threads: 100

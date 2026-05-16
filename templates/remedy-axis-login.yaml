@@ -20,12 +20,16 @@ id: remedy-axis-login
 info:
   author: tess
   classification:
+    cpe: cpe:2.3:a:bmc:remedy_action_request_system:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   metadata:
     max-request: 3
+    product: remedy_action_request_system
+    runzero-match: service["http.body"] matches "(?i)BMC Remedy"
     shodan-query: http.html:"BMC Remedy"
+    vendor: bmc
     verified: true
   name: Remedy Axis Login Panel - Detect
   severity: info
-  tags: panel,remedy,bmc
+  tags: bmc,discovery,panel,remedy

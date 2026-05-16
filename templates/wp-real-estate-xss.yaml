@@ -14,6 +14,7 @@ id: wp-real-estate-xss
 info:
   author: Harsh
   classification:
+    cpe: cpe:2.3:a:contempothemes:real_estate_7:*:*:*:*:wordpress:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 6.1
     cwe-id: CWE-79
@@ -27,7 +28,9 @@ info:
     '
   metadata:
     max-request: 1
+    product: real_estate_7
     publicwww-query: /wp-content/themes/realestate-7/
+    vendor: contempothemes
     verified: true
   name: WordPress Real Estate 7 Theme <= 3.3.4 - Cross-Site Scripting
   reference:
@@ -35,4 +38,4 @@ info:
   - https://packetstormsecurity.com/files/171186/WordPress-Real-Estate-7-Theme-3.3.4-Cross-Site-Scripting.html
   - https://themeforest.net/item/wp-pro-real-estate-7-responsive-real-estate-wordpress-theme/12473778
   severity: medium
-  tags: packetstorm,wordpress,wp-theme,wp,xss,realestate
+  tags: packetstorm,realestate,vuln,wordpress,wp,wp-theme,xss

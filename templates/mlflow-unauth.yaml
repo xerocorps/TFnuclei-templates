@@ -21,10 +21,16 @@ info:
 
     '
   metadata:
+    fofa-query:
+    - app="mlflow"
+    - title="mlflow"
+    google-query: intitle:"mlflow"
     max-request: 1
+    product: mlflow
     shodan-query: http.title:"mlflow"
+    vendor: lfprojects
     verified: true
   name: Mlflow - Unauthenticated Access
   remediation: Add User Authentication
   severity: high
-  tags: unauth,mlflow,oss,misconfig
+  tags: unauth,mlflow,oss,misconfig,vuln

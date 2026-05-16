@@ -24,15 +24,16 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
-    cwe-id: CWE-77
+    cwe-id: CWE-502,CWE-77
   description: Fastjson 1.2.24 is susceptible to a deserialization remote code execution
     vulnerability.
   metadata:
     max-request: 2
+    runzero-review: REJECT/2025-11-07/uses interactsh
   name: Fastjson 1.2.24 - Remote Code Execution
   reference:
   - https://github.com/vulhub/vulhub/tree/master/fastjson/1.2.24-rce
   - https://www.freebuf.com/vuls/208339.html
   - https://github.com/wyzxxz/fastjson_rce_tool
   severity: critical
-  tags: fastjson,rce,deserialization,oast,vulhub
+  tags: deserialization,fastjson,oast,rce,vulhub,vuln

@@ -22,13 +22,17 @@ info:
     cwe-id: CWE-200
   description: MantisBT login panel was detected.
   metadata:
+    fofa-query: icon_hash=662709064
     max-request: 1
     product: mantisbt
-    shodan-query: http.favicon.hash:662709064
+    runzero-match: service["favicon.ico.image.mmh3"] == "662709064"
+    shodan-query:
+    - http.favicon.hash:662709064
+    - cpe:"cpe:2.3:a:mantisbt:mantisbt"
     vendor: mantisbt
     verified: true
   name: MantisBT Login Panel - Detect
   reference:
   - https://www.mantisbt.org/
   severity: info
-  tags: panel,mantisbt
+  tags: discovery,mantisbt,panel

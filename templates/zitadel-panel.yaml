@@ -21,6 +21,7 @@ info:
     fofa-query: title="ZITADEL"
     max-request: 1
     product: zitadel
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ZITADEL"})
     shodan-query: '"X-Zitadel"'
     vendor: zitadel
     verified: true
@@ -29,4 +30,4 @@ info:
   - https://github.com/zitadel/zitadel
   - https://zitadel.com/docs
   severity: info
-  tags: panel,zitadel,iam,oidc,detect
+  tags: detect,iam,oidc,panel,zitadel

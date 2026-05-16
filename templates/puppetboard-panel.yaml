@@ -30,9 +30,11 @@ info:
   description: Puppetboard panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Puppetboard"})
     shodan-query: http.title:"Puppetboard"
     verified: true
   name: Puppetboard Panel - Detect
-  reference: https://github.com/voxpupuli/puppetboard
+  reference:
+  - https://github.com/voxpupuli/puppetboard
   severity: info
-  tags: panel,puppet,exposure
+  tags: panel,puppet,exposure,discovery

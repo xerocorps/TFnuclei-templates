@@ -56,10 +56,11 @@ info:
     '
   metadata:
     max-request: 2
+    runzero-match: service["http.body"] matches "Camunda Welcome"
     shodan-query: http.html:"Camunda Welcome"
     verified: true
   name: Camunda - Default Login
   reference:
   - https://github.com/camunda/camunda-docs-manual/blob/master/content/webapps/admin/user-management.md
   severity: high
-  tags: default-login,camunda
+  tags: camunda,default-login,vuln

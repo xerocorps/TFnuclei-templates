@@ -25,6 +25,10 @@ http:
 id: 74cms-weixin-sqli
 info:
   author: SleepingBag945
+  classification:
+    cpe: cpe:2.3:a:74cms:74cms:*:*:*:*:*:*:*:*
+    cwe-id:
+    - CWE-89
   description: 'There is a libxml_disable_entity_loader function to prevent XML eXternal
     Entity Injection, but this function needs to be customized by the user. If the
     user does not customize it, there will be no filtering, which leads to SQL injection
@@ -34,11 +38,13 @@ info:
   metadata:
     fofa-query: "app=\"\u9A91\u58EB-74CMS\""
     max-request: 1
+    product: 74cms
+    vendor: 74cms
     verified: true
   name: 74CMS weixin.php - SQL Injection
   reference:
   - https://cn-sec.com/archives/25900.html
   severity: high
-  tags: 74cms,weixin,sqli
+  tags: 74cms,sqli,vuln,weixin
 variables:
   num: '999999999'

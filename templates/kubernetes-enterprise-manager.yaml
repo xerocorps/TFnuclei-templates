@@ -20,10 +20,17 @@ info:
     cwe-id: CWE-200
   description: Kubernetes Enterprise Manager panel was detected.
   metadata:
-    fofa-query: app="Kubernetes-Enterprise-Manager"
+    fofa-query:
+    - app="Kubernetes-Enterprise-Manager"
+    - title="kubernetes web view"
+    - app="kubernetes-enterprise-manager"
+    google-query: intitle:"kubernetes web view"
     max-request: 1
     product: kubernetes
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)kubernetes web
+      view"})
+    shodan-query: http.title:"kubernetes web view"
     vendor: kubernetes
   name: Kubernetes Enterprise Manager Panel - Detect
   severity: info
-  tags: tech,kubernetes,panel
+  tags: discovery,kubernetes,panel,tech

@@ -23,10 +23,14 @@ http:
 id: jellyfin-detect
 info:
   author: dwisiswant0
+  classification:
+    cpe: cpe:2.3:a:jellyfin:jellyfin:*:*:*:*:*:*:*:*
   metadata:
     max-request: 5
+    product: jellyfin
     shodan-query: http.html:"Jellyfin"
+    vendor: jellyfin
     verified: true
   name: Jellyfin detected
   severity: info
-  tags: tech,jellyfin
+  tags: tech,jellyfin,discovery

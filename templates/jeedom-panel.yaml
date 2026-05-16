@@ -22,10 +22,15 @@ info:
     cwe-id: CWE-200
   description: Jeedom login panel was detected.
   metadata:
+    fofa-query: title="jeedom"
+    google-query: intitle:"jeedom"
     max-request: 1
     product: jeedom
-    shodan-query: http.title:"Jeedom"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)jeedom"})
+    shodan-query:
+    - http.title:"Jeedom"
+    - http.title:"jeedom"
     vendor: jeedom
   name: Jeedom Login Panel - Detect
   severity: info
-  tags: panel,jeedom,login
+  tags: discovery,jeedom,login,panel

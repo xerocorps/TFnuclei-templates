@@ -15,10 +15,14 @@ http:
 id: ispyconnect-detect
 info:
   author: arafatansari
+  classification:
+    cpe: cpe:2.3:a:ispyconnect:ispy:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: ispy
     shodan-query: http.html:"iSpy"
+    vendor: ispyconnect
     verified: true
   name: iSpyConnect - Detect
   severity: info
-  tags: tech,ispy
+  tags: tech,ispy,discovery

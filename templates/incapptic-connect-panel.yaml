@@ -27,8 +27,14 @@ info:
     cwe-id: CWE-200
   description: Ivanti Incapptic Connect panel was detected.
   metadata:
+    fofa-query:
+    - icon_hash=-1067582922
+    - title="incapptic"
+    google-query: intitle:"incapptic"
     max-request: 2
     product: incapptic_connect
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)incapptic"})
+      || service["favicon.ico.image.mmh3"] == "-1067582922"
     shodan-query:
     - http.title:"incapptic"
     - http.favicon.hash:-1067582922
@@ -37,4 +43,4 @@ info:
   reference:
   - https://www.ivanti.com/products/incapptic-connect
   severity: info
-  tags: panel,ivanti,incapptic-connect
+  tags: discovery,incapptic-connect,ivanti,panel

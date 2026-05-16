@@ -28,11 +28,17 @@ info:
 
     '
   metadata:
+    fofa-query: title="mailing lists"
+    google-query: intitle:"mailing lists"
     max-request: 2
     product: mailman
-    shodan-query: title:"Mailing Lists"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)mailing lists"})
+    shodan-query:
+    - title:"Mailing Lists"
+    - http.title:"mailing lists"
+    - cpe:"cpe:2.3:a:gnu:mailman"
     vendor: gnu
     verified: true
   name: GNU Mailman Panel - Detect
   severity: info
-  tags: exposure,mailman,panel,gnu
+  tags: discovery,exposure,gnu,mailman,panel

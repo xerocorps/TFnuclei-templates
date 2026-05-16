@@ -16,10 +16,14 @@ http:
 id: dedecms-detect
 info:
   author: ritikchaddha,pphuahua
+  classification:
+    cpe: cpe:2.3:a:dedecms:dedecms:*:*:*:*:*:*:*:*
   metadata:
     max-request: 2
+    product: dedecms
     shodan-query: title:"dedecms" || http.html:"power by dedecms"
+    vendor: dedecms
     verified: true
   name: DedeCMS Detect
   severity: info
-  tags: dedecms,tech
+  tags: dedecms,tech,discovery

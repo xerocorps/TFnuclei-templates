@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -29,4 +33,4 @@ info:
   - https://exploit.linuxsec.org/uptimerobot-com-custom-domain-subdomain-takeover/
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/45
   severity: low
-  tags: takeover
+  tags: takeover,vuln

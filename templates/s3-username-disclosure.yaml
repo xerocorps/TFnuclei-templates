@@ -29,6 +29,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.head.xAmzMetaS3cmdAttrs"] != ""
     shodan-query: x-amz-meta-s3cmd-attrs
   name: x-amz-meta-s3cmd-attrs Header Username Disclosure
   reference:

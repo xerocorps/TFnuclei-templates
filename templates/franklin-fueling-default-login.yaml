@@ -31,6 +31,8 @@ http:
 id: franklin-fueling-default-login
 info:
   author: r3Y3r53
+  classification:
+    cpe: cpe:2.3:o:franklinfueling:ts-550_evo_firmware:*:*:*:*:*:*:*:*
   description: 'A default password vulnerability refers to a security flaw that arises
     when a system or device is shipped or set up with a pre-configured, default password
     that is commonly known or easily guessable.
@@ -39,9 +41,11 @@ info:
   metadata:
     google-query: inurl:"relay_status.html"
     max-request: 1
+    product: ts-550_evo_firmware
+    vendor: franklinfueling
     verified: true
   name: Franklin Fueling System - Default Login
   reference:
   - https://www.exploitalert.com/view-details.html?id=39466
   severity: high
-  tags: default-login,franklin
+  tags: default-login,franklin,vuln

@@ -12,6 +12,11 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/.circleci/config.yml'
+  - '{{BaseURL}}/;/.circleci/config.yml'
+  - '{{BaseURL}}/%2e/.circleci/config.yml'
+  - '{{BaseURL}}/..%3B/.circleci/config.yml'
+  - '{{BaseURL}}/%2e%2e%2f/.circleci/config.yml'
+  stop-at-first-match: true
 id: circleci-config
 info:
   author: geeknik
@@ -21,9 +26,9 @@ info:
     cwe-id: CWE-200
   description: CircleCI config.yml file was detected.
   metadata:
-    max-request: 1
+    max-request: 5
   name: CircleCI Configuration File - Detect
   reference:
   - https://circleci.com/docs/2.0/sample-config/
   severity: medium
-  tags: config,exposure,circleci
+  tags: generic

@@ -28,11 +28,16 @@ info:
 
     '
   metadata:
+    fofa-query: title="repetier-server"
+    google-query: intitle:"repetier-server"
     max-request: 1
     product: repetier-server
-    shodan-query: title:"Repetier-Server"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)repetier-server"})
+    shodan-query:
+    - title:"Repetier-Server"
+    - http.title:"repetier-server"
     vendor: repetier-server
     verified: true
   name: Repetier Server Panel - Detect
   severity: info
-  tags: panel,repetier,detect,repetier-server
+  tags: detect,discovery,panel,repetier,repetier-server

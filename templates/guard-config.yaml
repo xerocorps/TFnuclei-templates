@@ -1,6 +1,7 @@
 http:
 - matchers:
-  - condition: and
+  - case-insensitive: true
+    condition: and
     part: body
     type: word
     words:
@@ -16,18 +17,12 @@ http:
 id: guard-config
 info:
   author: DhiyaneshDK
-  classification:
-    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
-    cwe-id: CWE-200
   description: Guardfile configuration information was detected.
   metadata:
     max-request: 1
-    shodan-query: html:"Guardfile"
-    verified: true
   name: Guardfile Config - Detect
   reference:
   - https://github.com/guard/guard
   - https://github.com/maurosoria/dirsearch/blob/master/db/dicc.txt
   severity: info
-  tags: exposure,file,guard,config
+  tags: config-files,config

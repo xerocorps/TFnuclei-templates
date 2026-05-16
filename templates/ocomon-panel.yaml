@@ -28,13 +28,17 @@ info:
     cwe-id: CWE-200
   description: a tiny helpdesk system written in php
   metadata:
+    fofa-query: body="ocomon"
     max-request: 1
     product: ocomon
-    shodan-query: http.html:"OcoMon"
+    runzero-match: service["http.body"] matches "(?i)ocomon"
+    shodan-query:
+    - http.html:"OcoMon"
+    - http.html:"ocomon"
     vendor: ocomon_project
     verified: true
   name: OcoMon Login Panel - Detect
   reference:
   - https://sourceforge.net/projects/ocomonphp/
   severity: info
-  tags: panel,ocomon,oss,ocomon_project
+  tags: discovery,ocomon,ocomon_project,oss,panel

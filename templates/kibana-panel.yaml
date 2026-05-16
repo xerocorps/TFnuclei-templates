@@ -29,10 +29,15 @@ info:
     cwe-id: CWE-200
   description: Kibana login panel was detected.
   metadata:
+    fofa-query: title="kibana"
+    google-query: intitle:"kibana"
     max-request: 3
     product: kibana
-    shodan-query: http.title:"Kibana"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)kibana"})
+    shodan-query:
+    - http.title:"Kibana"
+    - http.title:"kibana"
     vendor: elastic
   name: Kibana Login Panel - Detect
   severity: info
-  tags: panel,kibana,elastic
+  tags: discovery,elastic,kibana,panel

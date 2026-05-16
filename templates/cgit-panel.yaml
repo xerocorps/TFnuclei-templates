@@ -27,6 +27,8 @@ info:
     google-query: intitle:"git repository browser"
     max-request: 1
     product: cgit
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)git repository
+      browser"})
     shodan-query:
     - http.title:"Git repository browser"
     - http.title:"git repository browser"
@@ -36,4 +38,4 @@ info:
   reference:
   - https://git.zx2c4.com/cgit/about/
   severity: info
-  tags: panel,git,cgit_project
+  tags: cgit_project,discovery,git,panel

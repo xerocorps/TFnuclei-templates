@@ -28,11 +28,25 @@ info:
     cwe-id: CWE-284
   description: osTicket installer panel was detected.
   metadata:
+    fofa-query:
+    - body="powered by osticket"
+    - title="osticket"
+    - title="osticket installer"
+    google-query:
+    - intitle:"osticket"
+    - intitle:"osticket installer"
     max-request: 2
     product: osticket
-    shodan-query: http.title:"osTicket Installer"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)osticket installer"})
+      || any(each(service["html.titles"]), {# matches "(?i)osticket"}) || service["http.body"]
+      matches "(?i)powered by osticket"
+    shodan-query:
+    - http.title:"osTicket Installer"
+    - http.title:"osticket"
+    - http.html:"powered by osticket"
+    - http.title:"osticket installer"
     vendor: osticket
     verified: true
   name: osTicket Installer Panel - Detect
   severity: critical
-  tags: panel,osticket,install
+  tags: discovery,install,osticket,panel

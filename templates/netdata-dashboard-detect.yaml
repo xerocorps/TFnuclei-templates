@@ -20,10 +20,16 @@ info:
     cwe-id: CWE-200
   description: Netdata Dashboard panel was detected.
   metadata:
+    fofa-query: title="netdata dashboard"
+    google-query: intitle:"netdata dashboard"
     max-request: 1
     product: netdata
-    shodan-query: 'Server: NetData Embedded HTTP Server'
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)netdata dashboard"})
+    shodan-query:
+    - 'Server: NetData Embedded HTTP Server'
+    - http.title:"netdata dashboard"
+    - 'server: netdata embedded http server'
     vendor: netdata
-  name: Netdata Dashboard Panel -  Detect
+  name: Netdata Dashboard Panel - Detect
   severity: info
-  tags: netdata,panel,tech
+  tags: discovery,netdata,panel,tech

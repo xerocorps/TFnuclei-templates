@@ -20,8 +20,10 @@ info:
   description: VMware Carbon Black EDR panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)VMware Carbon
+      Black EDR"})
     shodan-query: title:"VMware Carbon Black EDR"
     verified: true
   name: VMware Carbon Black EDR Panel - Detect
   severity: info
-  tags: panel,vmware
+  tags: panel,vmware,discovery

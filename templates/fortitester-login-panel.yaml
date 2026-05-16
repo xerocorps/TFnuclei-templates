@@ -25,13 +25,18 @@ info:
     cwe-id: CWE-200
   description: Fortinet FortiTester login panel was detected.
   metadata:
+    fofa-query: title="fortitester"
+    google-query: intitle:"fortitester"
     max-request: 2
     product: fortitester
-    shodan-query: title:"FortiTester"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)fortitester"})
+    shodan-query:
+    - title:"FortiTester"
+    - http.title:"fortitester"
     vendor: fortinet
     verified: true
   name: Fortinet FortiTester Login Panel - Detect
   reference:
   - https://www.fortinet.com/products/fortitester
   severity: info
-  tags: panel,fortinet
+  tags: discovery,fortinet,panel

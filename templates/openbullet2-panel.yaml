@@ -1,9 +1,11 @@
 http:
 - host-redirects: true
   matchers:
-  - type: word
+  - condition: or
+    type: word
     words:
     - <title>OpenBullet2</title>
+    - <title>Openbullet2WebClient</title>
   - status:
     - 200
     type: status
@@ -22,8 +24,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1264095219"
     shodan-query: http.favicon.hash:-1264095219
     verified: 'true'
   name: OpenBullet 2 - Panel
   severity: info
-  tags: openbullet,panel,login
+  tags: openbullet,panel,login,discovery

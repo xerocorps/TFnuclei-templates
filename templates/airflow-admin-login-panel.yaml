@@ -23,12 +23,25 @@ info:
     cwe-id: CWE-668
   description: An Apache Airflow admin login panel was discovered.
   metadata:
+    fofa-query:
+    - apache airflow
+    - title="airflow - dags" || http.html:"apache airflow"
+    - title="sign in - airflow"
+    google-query:
+    - intitle:"airflow - dags" || http.html:"apache airflow"
+    - intitle:"sign in - airflow"
     max-request: 2
     product: airflow
-    shodan-query: title:"Sign In - Airflow"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)sign in - airflow"})
+      || any(each(service["html.titles"]), {# matches "(?i)airflow - dags"})
+    shodan-query:
+    - title:"Sign In - Airflow"
+    - http.title:"airflow - dags" || http.html:"apache airflow"
+    - http.title:"sign in - airflow"
+    - product:"redis"
     vendor: apache
   name: Apache Airflow Admin Login Panel
   reference:
   - https://airflow.apache.org/docs/apache-airflow/stable/security/webserver.html
   severity: info
-  tags: panel,apache,airflow,admin
+  tags: admin,airflow,apache,discovery,panel

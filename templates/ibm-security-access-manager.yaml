@@ -1,9 +1,11 @@
 http:
 - matchers:
-  - part: body
+  - condition: or
+    part: body
     type: word
     words:
     - <title>IBM Security Access Manager</title>
+    - IBM Security <em>Access Manager</em>
   - part: header
     type: word
     words:
@@ -20,7 +22,7 @@ http:
   - '{{BaseURL}}'
 id: ibm-security-access-manager
 info:
-  author: geeknik
+  author: geeknik,righettod
   classification:
     cpe: cpe:2.3:a:ibm:security_access_manager:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
@@ -29,9 +31,12 @@ info:
   metadata:
     max-request: 1
     product: security_access_manager
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)IBM Security
+      Access Manager"})
+    shodan-query: http.title:"IBM Security Access Manager"
     vendor: ibm
   name: IBM Security Access Manager Login Panel - Detect
   reference:
   - https://www.ibm.com/docs/en/sva/9.0.7?topic=overview-introduction-security-access-manager
   severity: info
-  tags: panel,ibm
+  tags: detect,discovery,ibm,login,panel

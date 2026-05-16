@@ -1,6 +1,7 @@
 http:
 - matchers:
-  - condition: and
+  - case-insensitive: true
+    condition: and
     type: word
     words:
     - 'system:'
@@ -15,10 +16,6 @@ http:
 id: pipeline-configuration
 info:
   author: DhiyaneshDK
-  metadata:
-    max-request: 1
-    shodan-query: html:"pipeline.yaml"
-    verified: true
   name: Pipeline Configuration Exposure
   severity: info
-  tags: devops,exposure,cicd,files
+  tags: config-files,config

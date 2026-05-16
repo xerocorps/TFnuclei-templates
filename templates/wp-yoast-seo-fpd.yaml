@@ -29,6 +29,7 @@ info:
     framework: wordpress
     max-request: 3
     product: wordpress-seo
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/wordpress-seo/"
     vendor: yoast
     verified: true
   name: WordPress Yoast SEO - Full Path Disclosure

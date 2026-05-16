@@ -20,8 +20,10 @@ info:
     cwe-id: CWE-200
   description: Seafile panel was detected.
   metadata:
+    fofa-query: icon_hash=1552322396
     max-request: 1
     product: seafile
+    runzero-match: service["favicon.ico.image.mmh3"] == "1552322396"
     shodan-query: http.favicon.hash:1552322396
     vendor: seafile
     verified: true
@@ -30,4 +32,4 @@ info:
   - https://www.seafile.com/en/home/
   - https://github.com/haiwen/seafile
   severity: info
-  tags: sefile,panel,login,seafile
+  tags: sefile,panel,login,seafile,discovery

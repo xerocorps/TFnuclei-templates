@@ -22,7 +22,10 @@ info:
     fofa-query: icon_hash="-1889244460"
     max-request: 1
     product: udp
-    shodan-query: http.favicon.hash:-1889244460
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1889244460"
+    shodan-query:
+    - http.favicon.hash:-1889244460
+    - http.favicon.hash:"-1889244460"
     vendor: arcserve
     verified: true
   name: ArcServe Panel - Detect
@@ -30,4 +33,4 @@ info:
   - https://twitter.com/HunterMapping/status/1674267368359444480
   - https://github.com/mdsecactivebreach/CVE-2023-26258-ArcServe
   severity: info
-  tags: panel,login,arcserve,detect
+  tags: arcserve,detect,discovery,login,panel

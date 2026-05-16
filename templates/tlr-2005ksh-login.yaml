@@ -20,11 +20,15 @@ info:
     cwe-id: CWE-200
   description: Telesquare TLR-2005KSH login panel was detected.
   metadata:
+    fofa-query: body="tlr-2005ksh"
     max-request: 1
     product: tlr-2005ksh_firmware
-    shodan-query: http.html:"TLR-2005KSH"
+    runzero-match: service["http.body"] matches "(?i)tlr-2005ksh"
+    shodan-query:
+    - http.html:"TLR-2005KSH"
+    - http.html:"tlr-2005ksh"
     vendor: telesquare
     verified: true
   name: Telesquare TLR-2005KSH Login Panel - Detect
   severity: info
-  tags: panel,router,telesquare
+  tags: discovery,panel,router,telesquare

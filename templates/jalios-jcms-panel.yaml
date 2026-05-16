@@ -25,13 +25,17 @@ info:
     cwe-id: CWE-200
   description: Jalios JCMS login panel was detected.
   metadata:
+    fofa-query: body="jalios jcms"
     max-request: 2
     product: jcms
-    shodan-query: html:"Jalios JCMS"
+    runzero-match: service["http.body"] matches "(?i)jalios jcms"
+    shodan-query:
+    - html:"Jalios JCMS"
+    - http.html:"jalios jcms"
     vendor: jalios
     verified: true
   name: Jalios JCMS Login Panel - Detect
   reference:
   - https://www.jalios.com/
   severity: info
-  tags: panel,jalios,jcms
+  tags: discovery,jalios,jcms,panel

@@ -21,10 +21,10 @@ code:
   matchers:
   - type: word
     words:
-    - '"Allow"'
+    - Enabled
     - ''
-  source: 'az keyvault show --name $vaultName --query ''properties.networkAcls.defaultAction''
-    --output json
+  source: 'az keyvault show --name $vaultName --query ''properties.publicNetworkAccess''
+    --output tsv
 
     '
 flow: "code(1);\nfor (let VaultData of iterate(template.vaultNames)) {\n  set(\"vaultName\"\

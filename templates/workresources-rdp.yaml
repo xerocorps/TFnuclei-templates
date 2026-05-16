@@ -19,7 +19,8 @@ info:
   description: RDWeb RemoteApp and Desktop Connections does not display.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)RD Web Access"})
     shodan-query: http.title:"RD Web Access"
   name: RDWeb RemoteApp and Desktop Connections - Web Access
   severity: info
-  tags: panel,workresources
+  tags: panel,workresources,discovery

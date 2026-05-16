@@ -1,31 +1,31 @@
 http:
 - matchers:
   - condition: and
+    dsl:
+    - contains_any(tolower(content_type), 'application/json', 'application/vnd.spring-boot')
+    - contains_all(body, "\"java\"", "\"version\"")
+    - status_code == 200
+    type: dsl
+  - condition: or
     part: body
     type: word
     words:
+    - '"os"'
+    - '"runtime"'
+    - '"jvm"'
     - '"build"'
-    - '"artifact"'
-  - condition: or
-    part: header
-    type: word
-    words:
-    - application/json
-    - application/vnd.spring-boot.actuator
-    - application/vnd.spring-boot.actuator.v2+json
-    - application/vnd.spring-boot.actuator.v1+json
-  - status:
-    - 200
-    type: status
+    - '"vendor"'
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/info'
   - '{{BaseURL}}/actuator/info'
+  - '{{BaseURL}}/management'
+  - '{{BaseURL}}/management/info'
   stop-at-first-match: true
 id: springboot-info
 info:
-  author: philippedelteil
+  author: philippedelteil,tess,TheZakMan
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cvss-score: 0
@@ -33,7 +33,8 @@ info:
   description: Spring Boot information panel displaying app name, version information,
     and other values was detected.
   metadata:
-    max-request: 2
+    max-request: 4
+    verified: true
   name: Spring Boot Information Panel - Detect
   severity: info
-  tags: springboot,misconfig
+  tags: springboot,misconfig,vuln

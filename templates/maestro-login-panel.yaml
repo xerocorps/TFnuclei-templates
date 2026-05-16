@@ -24,8 +24,9 @@ info:
   description: Maestro LuCI login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Maestro - LuCI"})
     shodan-query: http.title:"Maestro - LuCI"
     verified: true
   name: Maestro LuCI Login Panel - Detect
   severity: info
-  tags: panel,maestro,luci
+  tags: panel,maestro,luci,discovery

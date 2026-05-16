@@ -23,14 +23,15 @@ info:
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
-    cwe-id: CWE-77,CWE-502
+    cwe-id: CWE-502,CWE-77
   description: Apache Druid is vulnerable to RCE due to Log4j.
   metadata:
     max-request: 1
     product: druid
+    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"Apache Druid"
     vendor: apache
     verified: true
   name: Apache Druid - Remote Code Execution (Apache Log4j)
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,apache,druid,oast,kev,vuln
+  tags: apache,cve,cve2021,druid,jndi,kev,log4j,oast,rce,vuln

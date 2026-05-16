@@ -22,11 +22,15 @@ http:
 id: apache-axis-detect
 info:
   author: dogasantos
+  classification:
+    cpe: cpe:2.3:a:apache:axis:*:*:*:*:*:*:*:*
   description: Axis and Axis2 detection
   metadata:
     max-request: 3
+    product: axis
     shodan-query: http.html:"Apache Axis"
+    vendor: apache
     verified: true
   name: apache-axis-detect
   severity: info
-  tags: tech,axis2,middleware,apache
+  tags: tech,axis2,middleware,apache,discovery

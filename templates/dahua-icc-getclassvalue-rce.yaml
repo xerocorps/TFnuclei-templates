@@ -17,7 +17,10 @@ id: dahua-icc-getclassvalue-rce
 info:
   author: ProjectDiscoveryAI
   classification:
-    cwe-id: CWE-78,CWE-94,CWE-470
+    cwe-id:
+    - CWE-470
+    - CWE-78
+    - CWE-94
   description: 'Remote Code Execution Vulnerability in Dahua Intelligent IoT Integrated
     Management Platform via GetClassValue.jsp.
 
@@ -30,4 +33,4 @@ info:
   reference:
   - https://github.com/zan8in/afrog/blob/main/pocs/afrog-pocs/vulnerability/dahua-icc-getclassvalue-rce.yaml
   severity: critical
-  tags: rce,java,dahua,iot,unauth,vuln
+  tags: dahua,iot,java,rce,unauth,vuln

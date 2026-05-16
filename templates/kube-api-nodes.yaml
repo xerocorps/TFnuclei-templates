@@ -6,12 +6,10 @@ http:
     words:
     - '"NodeList":'
     - '"items":'
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - '"containerRuntimeVersion"'
-    - '"kubeletVersion": "v'
   matchers-condition: or
   method: GET
   path:
@@ -24,4 +22,4 @@ info:
     max-request: 1
   name: Kube API Nodes
   severity: info
-  tags: tech,k8s,kubernetes,devops,kube
+  tags: kubernetes,k8s,cloud,generic

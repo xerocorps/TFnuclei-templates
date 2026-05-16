@@ -20,8 +20,10 @@ info:
   description: CompleteView panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)CompleteView
+      Web Client"})
     shodan-query: http.title:"CompleteView Web Client"
     verified: true
   name: CompleteView Panel - Detect
   severity: info
-  tags: panel,completeview
+  tags: panel,completeview,discovery

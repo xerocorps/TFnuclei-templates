@@ -30,14 +30,21 @@ info:
 
     '
   metadata:
-    google-query: inurl:"/prweb/PRAuth/app/default"
+    fofa-query: title="pega platform"
+    google-query:
+    - inurl:"/prweb/PRAuth/app/default"
+    - intitle:"pega platform"
+    - inurl:"/prweb/prauth/app/default"
     max-request: 2
     product: platform
-    shodan-query: title:"Pega Platform"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)pega platform"})
+    shodan-query:
+    - title:"Pega Platform"
+    - http.title:"pega platform"
     vendor: pega
     verified: true
   name: Pega Infinity Login Panel - Detect
   reference:
   - https://www.pega.com/infinity
   severity: info
-  tags: panel,pega
+  tags: discovery,panel,pega

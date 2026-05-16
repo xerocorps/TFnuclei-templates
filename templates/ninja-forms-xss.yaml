@@ -60,7 +60,7 @@ info:
     cpe: cpe:2.3:a:ninjaforms:ninja_forms:*:*:*:*:*:wordpress:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 6.1
-    cwe-id: CWE-80
+    cwe-id: CWE-79,CWE-80
   description: 'The Ninja Forms WordPress plugin before 3.5.5 does not escape an URL
     before outputting it back in an attribute, leading to a Reflected Cross-Site Scripting
     which could be used against high privilege users such as admin
@@ -76,6 +76,7 @@ info:
     max-request: 5
     product: ninja_forms
     publicwww-query: /wp-content/plugins/ninja-forms/
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     shodan-query: http.html:"/wp-content/plugins/ninja-forms/"
     vendor: ninjaforms
   name: Ninja Forms < 3.5.5 - Cross-Site Scripting
@@ -85,4 +86,4 @@ info:
 
     '
   severity: medium
-  tags: cve2021,wp,wordpress,wp-plugin,ninja-forms,xss,authenticated,vuln
+  tags: authenticated,cve2021,ninja-forms,vuln,wordpress,wp,wp-plugin,xss

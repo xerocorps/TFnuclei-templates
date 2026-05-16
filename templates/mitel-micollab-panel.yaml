@@ -30,6 +30,8 @@ info:
     - icon_hash="-1922044295"
     max-request: 2
     product: micollab
+    runzero-match: service["http.body"] matches "(?i)MiCollab End User Portal" ||
+      service["favicon.ico.image.mmh3"] == "-1922044295"
     shodan-query:
     - http.html:"MiCollab End User Portal"
     - http.favicon.hash:-1922044295
@@ -39,4 +41,4 @@ info:
   reference:
   - https://www.mitel.com/products/micollab-miteam-meetings-collaboration-software
   severity: info
-  tags: panel,mitel,login,detect,discovery
+  tags: detect,discovery,login,mitel,panel

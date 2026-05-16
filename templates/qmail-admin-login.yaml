@@ -26,11 +26,16 @@ info:
     cwe-id: CWE-200
   description: QmailAdmin login panel was detected.
   metadata:
+    fofa-query: title="qmailadmin"
+    google-query: intitle:"qmailadmin"
     max-request: 5
     product: qmail
-    shodan-query: title:"QmailAdmin"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)qmailadmin"})
+    shodan-query:
+    - title:"QmailAdmin"
+    - http.title:"qmailadmin"
     vendor: qmail_project
     verified: true
   name: QmailAdmin Login Panel - Detect
   severity: info
-  tags: qmail,panel,qmail_project
+  tags: discovery,panel,qmail,qmail_project

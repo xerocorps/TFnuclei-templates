@@ -21,8 +21,9 @@ info:
   metadata:
     fofa-query: app="neobox-Web-Server"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)NeoboxUI"
     shodan-query: http.html:"NeoboxUI"
     verified: true
   name: Neobox Web Server Login Panel - Detect
   severity: info
-  tags: panel,neobox,webserver
+  tags: panel,neobox,webserver,discovery

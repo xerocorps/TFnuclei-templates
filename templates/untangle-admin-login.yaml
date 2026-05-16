@@ -29,13 +29,19 @@ info:
 
     '
   metadata:
+    fofa-query: title="untangle administrator login"
+    google-query: intitle:"untangle administrator login"
     max-request: 2
     product: ng_firewall
-    shodan-query: title:"Untangle Administrator Login"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)untangle administrator
+      login"})
+    shodan-query:
+    - title:"Untangle Administrator Login"
+    - http.title:"untangle administrator login"
     vendor: untangle
     verified: true
   name: Untangle Administrator Login Panel - Detect
   reference:
   - https://edge.arista.com/ng-firewall/
   severity: info
-  tags: panel,untangle,admin,login
+  tags: admin,discovery,login,panel,untangle

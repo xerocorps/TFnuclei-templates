@@ -35,6 +35,10 @@ http:
 id: weaver-ecology-bshservlet-rce
 info:
   author: SleepingBag945
+  classification:
+    cpe: cpe:2.3:a:weaver:e-cology:*:*:*:*:*:*:*:*
+    cwe-id:
+    - CWE-95
   description: 'Weaver BeanShell contains a remote command execution vulnerability
     in the bsh.servlet.BshServlet program.
 
@@ -42,8 +46,10 @@ info:
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
     max-request: 2
+    product: e-cology
     shodan-query: ecology_JSessionid
+    vendor: weaver
     verified: true
   name: Weaver E-Cology BeanShell - Remote Command Execution
   severity: critical
-  tags: beanshell,rce,weaver
+  tags: beanshell,rce,vuln,weaver

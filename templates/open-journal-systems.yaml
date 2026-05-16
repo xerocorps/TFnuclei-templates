@@ -22,15 +22,19 @@ http:
 id: open-journal-systems
 info:
   author: ricardomaia
+  classification:
+    cpe: cpe:2.3:a:openjournalsystems:open_journal_systems:*:*:*:*:*:*:*:*
   description: Open Journal Systems, also known as OJS, is a free software for the
     management of peer-reviewed academic journals, created by the Public Knowledge
     Project.
   metadata:
     max-request: 1
+    product: open_journal_systems
     shodan-query: html:"Open Journal Systems"
+    vendor: openjournalsystems
     verified: true
   name: Open Journal Systems Detect
   reference:
   - https://pkp.sfu.ca/ojs/
   severity: info
-  tags: tech,ojs
+  tags: tech,ojs,discovery

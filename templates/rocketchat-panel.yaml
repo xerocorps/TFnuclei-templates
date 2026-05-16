@@ -13,13 +13,18 @@ http:
 id: rocketchat-panel
 info:
   author: righettod
+  classification:
+    cpe: cpe:2.3:a:rocket.chat:rocket.chat:*:*:*:*:*:*:*:*
   description: RocketChat login panel was detected.
   metadata:
     max-request: 1
+    product: rocket.chat
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Rocket\\.Chat"})
     shodan-query: http.title:"Rocket.Chat"
+    vendor: rocket.chat
     verified: true
   name: RocketChat Login Panel - Detect
   reference:
   - https://www.rocket.chat/
   severity: info
-  tags: panel,rocketchat,login,detect
+  tags: panel,rocketchat,login,detect,discovery

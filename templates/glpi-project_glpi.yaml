@@ -33,9 +33,18 @@ info:
     cwe-id: CWE-200
   description: GLPI panel was detected.
   metadata:
+    fofa-query:
+    - title="glpi"
+    - icon_hash="-1474875778"
+    google-query: intitle:"glpi"
     max-request: 3
     product: glpi
-    shodan-query: http.title:"GLPI"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)glpi"}) || service["favicon.ico.image.mmh3"]
+      == "-1474875778"
+    shodan-query:
+    - http.title:"GLPI"
+    - http.title:"glpi"
+    - http.favicon.hash:"-1474875778"
     vendor: glpi-project
     verified: true
   name: GLPI Panel - Detect
@@ -43,4 +52,4 @@ info:
   - https://glpi-project.org/
   - https://www.exploit-db.com/ghdb/7002
   severity: info
-  tags: glpi,edb,panel,glpi-project
+  tags: discovery,edb,glpi,glpi-project,panel

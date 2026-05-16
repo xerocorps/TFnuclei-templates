@@ -16,8 +16,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Mystic Stealer"})
     shodan-query: http.title:"Mystic Stealer"
     verified: 'true'
   name: Mystic Stealer Panel - Detect
   severity: info
-  tags: tech,rat,mystic-stealer,c2,panel
+  tags: tech,rat,mystic-stealer,c2,panel,vuln

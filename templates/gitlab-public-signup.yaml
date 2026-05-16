@@ -23,9 +23,13 @@ http:
 id: gitlab-public-signup
 info:
   author: pdteam,axrk
+  classification:
+    cpe: cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
   metadata:
     max-request: 2
+    product: gitlab
     shodan-query: http.title:"GitLab"
+    vendor: gitlab
   name: GitLab public signup
   severity: info
-  tags: gitlab,misconfig
+  tags: gitlab,misconfig,vuln

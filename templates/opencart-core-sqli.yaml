@@ -31,7 +31,8 @@ info:
   author: s4e-io
   classification:
     cpe: cpe:2.3:a:opencart:opencart:*:*:*:*:*:*:*:*
-    cwe-id: CWE-89
+    cwe-id:
+    - CWE-89
   description: 'Opencart allows SQL Injection via parameter ''search'' in /index.php?route=product/search&search=.
     Exploiting this issue could allow an attacker to compromise the application, access
     or modify data, or exploit latent vulnerabilities in the underlying database.
@@ -41,6 +42,7 @@ info:
     fofa-query: icon_hash="-1443008128"
     max-request: 2
     product: opencart
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)OpenCart"})
     shodan-query: title:"OpenCart"
     vendor: opencart
   name: OpenCart Core 4.0.2.3 'search' - SQL Injection
@@ -48,4 +50,4 @@ info:
   - https://www.exploit-db.com/exploits/51940
   - https://cxsecurity.com/issue/WLB-2024040004
   severity: high
-  tags: time-based-sqli,opencart,sqli,vuln
+  tags: opencart,sqli,time-based-sqli,vuln

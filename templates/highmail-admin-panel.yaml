@@ -22,12 +22,18 @@ info:
     cwe-id: CWE-200
   description: HighMail admin login panel was detected.
   metadata:
-    fofa-query: title="HighMail"
+    fofa-query:
+    - title="HighMail"
+    - title="highmail"
+    google-query: intitle:"highmail"
     max-request: 2
     product: high_cms
-    shodan-query: title:"HighMail"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)highmail"})
+    shodan-query:
+    - title:"HighMail"
+    - http.title:"highmail"
     vendor: aryanic
     verified: true
   name: HighMail Admin Login Panel - Detect
   severity: info
-  tags: highmail,panel,aryanic
+  tags: aryanic,discovery,highmail,panel

@@ -1,11 +1,12 @@
 http:
 - matchers:
-  - part: body
-    type: word
+  - type: word
     words:
-    - <title>Users - MISP</title>
-  - status:
+    - https://github.com/MISP/MISP
+  - condition: or
+    status:
     - 200
+    - 500
     type: status
   matchers-condition: and
   method: GET
@@ -13,15 +14,25 @@ http:
   - '{{BaseURL}}/users/login'
 id: misp-panel
 info:
-  author: johnk3r
+  author: johnk3r,darses
   classification:
     cpe: cpe:2.3:a:misp:misp:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query:
+    - title="users - misp"
+    - title="errors - misp"
+    - icon_hash="-137577333"
+    google-query: intitle:"users - misp"
     max-request: 1
     product: misp
-    shodan-query: http.title:"Users - MISP"
+    shodan-query:
+    - http.title:"Users - MISP"
+    - http.title:"users - misp"
+    - http.title:"Errors - MISP"
+    - http.title:"errors - misp"
+    - http.favicon.hash:-137577333
     vendor: misp
-    verified: 'true'
+    verified: true
   name: MISP Threat Intelligence Sharing Platform Panel - Detect
   severity: info
-  tags: panel,misp
+  tags: detect,panel,misp

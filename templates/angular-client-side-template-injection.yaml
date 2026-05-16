@@ -36,7 +36,7 @@ info:
 
     '
   severity: high
-  tags: angular,csti,dast,headless,xss
+  tags: angular,csti,dast,headless,xss,vuln
 variables:
   first: '{{rand_int(1000, 9999)}}'
   result: '{{to_number(first)*to_number(second)}}'

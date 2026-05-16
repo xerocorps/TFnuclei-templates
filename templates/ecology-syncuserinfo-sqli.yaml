@@ -17,6 +17,7 @@ id: ecology-syncuserinfo-sqli
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:weaver:e-cology:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
     cwe-id: CWE-89
@@ -27,9 +28,11 @@ info:
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
     max-request: 1
+    product: e-cology
+    vendor: weaver
   name: Ecology Syncuserinfo - SQL Injection
   reference:
   - https://www.weaver.com.cn/
   - https://github.com/chaitin/xray/blob/master/pocs/ecology-syncuserinfo-sqli.yml
   severity: critical
-  tags: ecology,sqli
+  tags: ecology,sqli,vuln

@@ -34,6 +34,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)cockpit/static/login\\.css"
     shodan-query: http.html:"cockpit/static/login.css"
     verified: true
   name: Cockpit Project Login Panel - Detect

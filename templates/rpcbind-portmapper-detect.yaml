@@ -10,9 +10,10 @@ info:
     shodan-query: port:"111"
     verified: true
   name: Rpcbind Portmapper - Detect
-  reference: https://book.hacktricks.xyz/pentesting/pentesting-rpcbind
+  reference:
+  - https://book.hacktricks.xyz/pentesting/pentesting-rpcbind
   severity: info
-  tags: network,rpcbind,portmap,detect
+  tags: network,rpcbind,portmap,detect,detection,tcp
 tcp:
 - host:
   - '{{Hostname}}'

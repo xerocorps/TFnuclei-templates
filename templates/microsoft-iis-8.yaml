@@ -13,9 +13,13 @@ http:
 id: microsoft-iis-8
 info:
   author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:microsoft:iis:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: iis
     shodan-query: http.title:"Microsoft Internet Information Services 8"
+    vendor: microsoft
   name: Microsoft Internet Information Services 8
   severity: info
-  tags: tech,iis,microsoft
+  tags: tech,iis,microsoft,discovery

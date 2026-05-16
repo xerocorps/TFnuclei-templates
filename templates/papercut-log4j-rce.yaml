@@ -42,6 +42,7 @@ id: papercut-log4j-rce
 info:
   author: shaikhyaser
   classification:
+    cpe: cpe:2.3:a:papercut:papercut_mf:*:*:*:*:*:*:*:*
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
@@ -52,12 +53,15 @@ info:
     '
   metadata:
     max-request: 1
+    product: papercut_mf
+    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"Papercut"
+    vendor: papercut
   name: Papercut - Remote Code Execution (Apache Log4j)
   reference:
   - https://www.papercut.com/kb/Main/Log4Shell-CVE-2021-44228#product-status
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,papercut,oast,kev
+  tags: cve,cve2021,jndi,kev,log4j,oast,papercut,rce,vuln
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

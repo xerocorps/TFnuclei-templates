@@ -26,6 +26,7 @@ requests:
     - regex("AUTHORIZATION[\\-|_|A-Z0-9]*(\'|\")?(:|=)(\'|\")?[\\-|_|A-Z0-9]{10}",replace(toupper(body),"",""))
     - regex("PASSWORD[\\-|_|A-Z0-9]*(\'|\")?(:|=)(\'|\")?[\\-|_|A-Z0-9]{10}",replace(toupper(body),"",""))
     type: dsl
+  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}'

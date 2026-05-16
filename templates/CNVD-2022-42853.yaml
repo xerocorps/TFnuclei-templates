@@ -21,6 +21,7 @@ id: CNVD-2022-42853
 info:
   author: ling
   classification:
+    cpe: cpe:2.3:a:easycorp:zentao:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
     cwe-id: CWE-89
@@ -32,13 +33,15 @@ info:
   metadata:
     fofa-query: Zentao
     max-request: 1
+    product: zentao
     shodan-query: http.title:"zentao"
+    vendor: easycorp
     verified: true
   name: ZenTao CMS - SQL Injection
   reference:
   - https://github.com/z92g/ZentaoSqli/blob/master/CNVD-2022-42853.go
   - https://www.cnvd.org.cn/flaw/show/CNVD-2022-42853
   severity: critical
-  tags: cnvd,cnvd2022,zentao,sqli
+  tags: cnvd,cnvd2022,zentao,sqli,vuln
 variables:
   num: '999999999'

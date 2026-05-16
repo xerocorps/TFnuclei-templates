@@ -21,12 +21,16 @@ http:
 id: prestashop-installer
 info:
   author: tess
+  classification:
+    cpe: cpe:2.3:a:prestashop:prestashop:*:*:*:*:*:*:*:*
   description: Prestashop is susceptible to the Installation page exposure due to
     misconfiguration.
   metadata:
     max-request: 1
+    product: prestashop
     shodan-query: title:"PrestaShop Installation Assistant"
+    vendor: prestashop
     verified: true
   name: Prestashop Installer Exposure
   severity: high
-  tags: misconfig,prestashop,exposure,install
+  tags: misconfig,prestashop,exposure,install,vuln

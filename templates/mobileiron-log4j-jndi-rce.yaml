@@ -14,14 +14,14 @@ http:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
   matchers:
-  - part: location
-    type: word
-    words:
-    - /mifs/user/login.jsp?error=1
   - part: interactsh_protocol
     type: word
     words:
     - dns
+  - part: location
+    type: word
+    words:
+    - /mifs/user/login.jsp?error=1
   - part: interactsh_request
     regex:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
@@ -69,7 +69,7 @@ info:
     been completely removed. Note that this vulnerability is specific to log4j-core
     and does not affect log4net, log4cxx, or other Apache Logging Services projects.
   severity: critical
-  tags: jndi,log4j,rce,cve,cve2021,ivanti,oast,mobileiron,kev
+  tags: log4j,rce
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

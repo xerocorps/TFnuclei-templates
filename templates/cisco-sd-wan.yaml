@@ -22,9 +22,10 @@ info:
   metadata:
     max-request: 1
     product: sd-wan
+    shodan-query: cpe:"cpe:2.3:a:cisco:sd-wan"
     vendor: cisco
   name: Cisco SD-WAN Login Panel - Detect
   reference:
   - https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-bufovulns-B5NrSHbj
   severity: info
-  tags: panel,cisco
+  tags: panel,cisco,discovery

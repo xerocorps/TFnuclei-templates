@@ -27,10 +27,16 @@ info:
     cwe-id: CWE-200
   description: Intelllian Aptus Web login panel was detected.
   metadata:
+    fofa-query: title="intellian aptus web"
+    google-query: intitle:"intellian aptus web"
     max-request: 1
     product: aptus_web
-    shodan-query: http.title:"Intellian Aptus Web"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)intellian aptus
+      web"})
+    shodan-query:
+    - http.title:"Intellian Aptus Web"
+    - http.title:"intellian aptus web"
     vendor: intelliantech
   name: Intellian Aptus Web Login Panel - Detect
   severity: info
-  tags: panel,intellian,aptus,intelliantech
+  tags: aptus,discovery,intellian,intelliantech,panel

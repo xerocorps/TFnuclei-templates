@@ -40,7 +40,10 @@ info:
   metadata:
     max-request: 1
     product: magento
-    shodan-query: http.component:"Magento"
+    shodan-query:
+    - http.component:"Magento"
+    - cpe:"cpe:2.3:a:magento:magento"
+    - http.component:"magento"
     vendor: magento
     verified: true
   name: Magento Connect Manager Installer - Detect
@@ -48,4 +51,4 @@ info:
   - https://magentary.com/kb/restrict-access-to-magento-downloader/
   - https://www.mageplaza.com/kb/how-to-stop-brute-force-attacks-magento.html#solution-3
   severity: info
-  tags: magento,exposure,panel
+  tags: magento,exposure,panel,discovery

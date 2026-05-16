@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/plugins/sg-cachepress/"
     shodan-query: html:"/plugins/sg-cachepress/"
     verified: true
   name: WordPress Plugin SG Optimizer - Full Path Disclosure

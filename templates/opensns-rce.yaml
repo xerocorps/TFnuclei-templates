@@ -3,7 +3,7 @@ http:
   - condition: or
     part: body
     regex:
-    - ((u|g)id=)
+    - uid=([0-9(a-z)]+)
     - Microsoft Windows
     type: regex
   - type: word
@@ -32,4 +32,4 @@ info:
     max-request: 2
   name: OpenSNS - Remote Code Execution
   severity: critical
-  tags: opensns,rce
+  tags: opensns,rce,vuln

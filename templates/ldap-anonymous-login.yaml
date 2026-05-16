@@ -14,7 +14,7 @@ info:
   - https://www.mowasay.com/2016/01/windows-how-do-i-disable-or-enable-anonymous-ldap-binds-to-windows-server-2008-r2-active-directory-ad/
   remediation: Configure the service to disallow NULL BINDs.
   severity: medium
-  tags: network,ldap,default-login,tenable
+  tags: network,ldap,default-login,tenable,tcp
 tcp:
 - host:
   - '{{Hostname}}'

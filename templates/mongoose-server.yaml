@@ -14,15 +14,19 @@ http:
 id: mongoose-server
 info:
   author: lu4nx
+  classification:
+    cpe: cpe:2.3:a:cesanta:mongoose:*:*:*:*:*:*:*:*
   description: 'Mongoose is a embedded web server
 
     '
   metadata:
     max-request: 1
+    product: mongoose
     shodan-query: 'Server: Mongoose'
+    vendor: cesanta
     verified: true
   name: Mongoose Server
   reference:
   - https://github.com/cesanta/mongoose
   severity: info
-  tags: tech,mongoose
+  tags: tech,mongoose,discovery

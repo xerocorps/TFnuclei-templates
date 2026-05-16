@@ -26,8 +26,9 @@ info:
   description: IPdiva Mediation login panel was detected.
   metadata:
     max-request: 3
+    runzero-match: service["http.body"] matches "(?i)IPdiva"
     shodan-query: http.html:"IPdiva"
     verified: true
   name: IPdiva Mediation Login Panel - Detect
   severity: info
-  tags: panel,ipdiva,mediation
+  tags: panel,ipdiva,mediation,discovery

@@ -33,8 +33,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "Miniweb Start Page"})
     shodan-query: title:"Miniweb Start Page"
     verified: true
   name: Siemens SIMATIC HMI Miniweb - Default Login
   severity: high
-  tags: ics,siemens,default-login,vuln
+  tags: default-login,ics,siemens,vuln

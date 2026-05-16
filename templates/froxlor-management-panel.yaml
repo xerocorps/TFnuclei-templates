@@ -23,11 +23,17 @@ info:
     cwe-id: CWE-200
   description: Froxlor Server Management login panel was detected.
   metadata:
+    fofa-query: title="froxlor server management panel"
+    google-query: intitle:"froxlor server management panel"
     max-request: 1
     product: froxlor
-    shodan-query: title:"Froxlor Server Management Panel"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)froxlor server
+      management panel"})
+    shodan-query:
+    - title:"Froxlor Server Management Panel"
+    - http.title:"froxlor server management panel"
     vendor: froxlor
     verified: true
   name: Froxlor Server Management Login Panel - Detect
   severity: info
-  tags: panel,froxlor
+  tags: discovery,froxlor,panel

@@ -14,9 +14,16 @@ info:
   classification:
     cpe: cpe:2.3:a:joomla:joomla\!:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: body="joomla! - open source content management"
     max-request: 1
     product: joomla\!
+    runzero-match: service["http.body"] matches "(?i)joomla! - open source content
+      management"
+    shodan-query:
+    - http.html:"joomla! - open source content management"
+    - http.component:"joomla"
+    - cpe:"cpe:2.3:a:joomla:joomla\!"
     vendor: joomla
   name: Joomla! Panel
   severity: info
-  tags: panel,joomla
+  tags: panel,joomla,discovery

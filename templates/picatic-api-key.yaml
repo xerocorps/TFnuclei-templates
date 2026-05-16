@@ -1,4 +1,10 @@
-http:
+id: picatic-api-key
+info:
+  author: Ice3man
+  name: Picatic API Key Disclosure
+  severity: info
+  tags: exposure,token
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,11 +13,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: picatic-api-key
-info:
-  author: Ice3man
-  metadata:
-    max-request: 1
-  name: Picatic API Key Disclosure
-  severity: info
-  tags: exposure,token

@@ -26,13 +26,14 @@ info:
   author: ritikchaddha
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "pCOWeb"})
     shodan-query: title:"pCOWeb"
     verified: true
   name: pCOWeb - Default-Login
   reference:
   - https://docs.librenms.org/Support/Device-Notes/Carel-pCOweb-Devices/#:~:text=Accessing%20the%20pCOWeb%20card,-Log%20on%20to&text=The%20default%20username%20and%20password%20is%20admin%2Ffadmin%20.
   severity: high
-  tags: pcoweb,default-login,misconfig,vuln
+  tags: default-login,misconfig,pcoweb,vuln
 variables:
   password: fadmin
   username: admin

@@ -28,13 +28,17 @@ http:
 id: yii-debugger
 info:
   author: geeknik,rumble773
+  classification:
+    cpe: cpe:2.3:a:yii_software:yii:*:*:*:*:*:*:*:*
   description: Detects potential exposure to Yii Debugger information.
   metadata:
     max-request: 6
+    product: yii
     shodan-query: title:"Yii Debugger"
+    vendor: yii_software
     verified: true
   name: View Yii Debugger Information
   reference:
   - https://yii2-framework.readthedocs.io/en/stable/guide/tool-debugger/
   severity: low
-  tags: yii,debug,exposure
+  tags: yii,debug,exposure,vuln

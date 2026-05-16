@@ -26,7 +26,9 @@ info:
     cwe-id: CWE-200
   description: Fiori Launchpad login panel was detected.
   metadata:
-    google-query: sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html -site:sap.com
+    google-query:
+    - sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html -site:sap.com
+    - sap/bc/ui5_ui5/ui2/ushell/shells/abap/fiorilaunchpad.html -site:sap.com
     max-request: 1
     product: fiori_launchpad
     vendor: sap
@@ -35,4 +37,4 @@ info:
   reference:
   - https://www.exploit-db.com/ghdb/7941
   severity: info
-  tags: sap,fiori,edb,panel
+  tags: sap,fiori,edb,panel,discovery

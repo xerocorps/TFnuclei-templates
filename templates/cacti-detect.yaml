@@ -4,11 +4,10 @@ info:
   description: Cacti is a complete network graphing solution -- https://www.cacti.net/
   name: Detect Cacti
   severity: info
-  tags: tech,cacti
 requests:
 - extractors:
   - kval:
-    - Set_Cookie
+    - Set-Cookie
     part: header
     type: kval
   matchers:

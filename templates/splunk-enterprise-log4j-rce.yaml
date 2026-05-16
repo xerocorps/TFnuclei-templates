@@ -46,6 +46,7 @@ id: splunk-enterprise-log4j-rce
 info:
   author: shaikhyaser
   classification:
+    cpe: cpe:2.3:a:splunk:splunk:*:*:*:*:*:*:*:*
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
@@ -57,12 +58,15 @@ info:
     '
   metadata:
     max-request: 1
+    product: splunk
+    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: http.title:"Login - Splunk"
+    vendor: splunk
   name: Splunk Enterprise - Remote Code Execution (Apache Log4j)
   reference:
   - https://www.splunk.com/en_us/blog/bulletins/splunk-security-advisory-for-apache-log4j-cve-2021-44228.html
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,splunk,oast,kev
+  tags: cve,cve2021,jndi,kev,log4j,oast,rce,splunk,vuln
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

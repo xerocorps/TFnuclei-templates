@@ -21,6 +21,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Login to Frappe"
     shodan-query: html:"Login to Frappe"
     verified: true
   name: Frappe Panel - Detect

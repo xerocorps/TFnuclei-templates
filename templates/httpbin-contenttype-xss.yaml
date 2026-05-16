@@ -23,7 +23,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-80
+    cwe-id: CWE-79,CWE-80
   description: 'HTTPBin contains a cross-site scripting vulnerability which can allow
     an attacker to execute arbitrary script. This can allow the attacker to steal
     cookie-based authentication credentials and launch other attacks.
@@ -36,4 +36,4 @@ info:
   reference:
   - https://github.com/mccutchen/go-httpbin/security/advisories/GHSA-528q-4pgm-wvg2
   severity: medium
-  tags: xss,httpbin,oss,vuln
+  tags: httpbin,oss,vuln,xss

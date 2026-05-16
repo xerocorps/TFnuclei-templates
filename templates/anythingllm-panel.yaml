@@ -22,6 +22,8 @@ info:
   metadata:
     max-request: 1
     product: anything-llm
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)AnythingLLM \\|
+      Your personal LLM trained on anything"})
     shodan-query: http.title:"AnythingLLM | Your personal LLM trained on anything"
     vendor: mintplex-labs
     verified: true
@@ -30,4 +32,4 @@ info:
   - https://github.com/Mintplex-Labs/anything-llm
   - https://anythingllm.com/
   severity: info
-  tags: panel,anythingllm,detect,discovery,ai,llm
+  tags: ai,anythingllm,detect,discovery,llm,panel

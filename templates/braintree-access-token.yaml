@@ -1,4 +1,10 @@
-http:
+id: braintree-access-token
+info:
+  author: Ice3man
+  name: PayPal Braintree Access Token Disclosure
+  severity: info
+  tags: exposure,token
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,11 +13,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: braintree-access-token
-info:
-  author: Ice3man
-  metadata:
-    max-request: 1
-  name: PayPal Braintree Access Token Disclosure
-  severity: info
-  tags: exposure,token,paypal

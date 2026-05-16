@@ -29,6 +29,9 @@ http:
 id: realor-gwt-system-sqli
 info:
   author: SleepingBag945
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'Realor GWT System system improperly handles the security of data passed
     by users, resulting in a SQL injection vulnerability. Remote and unauthorized
     attackers can use this vulnerability to obtain sensitive information in the database,
@@ -45,4 +48,4 @@ info:
   reference:
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/realor-gwt-system-sql-injection.yaml
   severity: high
-  tags: realor,sqli
+  tags: realor,sqli,vuln

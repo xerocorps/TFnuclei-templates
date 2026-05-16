@@ -20,9 +20,13 @@ http:
 id: appcms-detect
 info:
   author: princechaddha
+  classification:
+    cpe: cpe:2.3:a:appcms:appcms:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: appcms
     shodan-query: http.html:"Powerd by AppCMS"
+    vendor: appcms
   name: AppCms Detect
   severity: info
-  tags: tech,appcms
+  tags: tech,appcms,discovery

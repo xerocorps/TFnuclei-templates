@@ -22,8 +22,9 @@ info:
   metadata:
     fofa-query: body="AKHQ_PREFIX_UI"
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "855432563"
     shodan-query: http.favicon.hash:855432563
     verified: true
   name: AKHQ Panel - Detect
   severity: info
-  tags: akhq,panel,login,detect
+  tags: akhq,panel,login,detect,discovery

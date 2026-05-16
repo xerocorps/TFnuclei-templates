@@ -10,11 +10,12 @@ info:
   metadata:
     fofa-query: body="ClawdBot"
     max-request: 1
+    runzero-review: 'REJECT/2026-04-09/auto: noise protocol: javascript'
     shodan-query: product:openclaw
     verified: true
   name: Openclaw (formerly Clawdbot / Moltbot) - Detect
   severity: info
-  tags: network,openclaw,gateway,exposure,udp,mdns,js,discovery
+  tags: discovery,exposure,gateway,js,mdns,network,openclaw,udp
 javascript:
 - args:
     Host: '{{Host}}'

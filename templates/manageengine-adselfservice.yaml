@@ -29,11 +29,22 @@ info:
     cwe-id: CWE-200
   description: ZOHO ManageEngine ADSelfService panel was detected.
   metadata:
+    fofa-query:
+    - title="adselfservice plus"
+    - title="manageengine"
+    google-query:
+    - intitle:"adselfservice plus"
+    - intitle:"manageengine"
     max-request: 2
     product: manageengine_adselfservice_plus
-    shodan-query: http.title:"ADSelfService Plus"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)adselfservice
+      plus"}) || any(each(service["html.titles"]), {# matches "(?i)manageengine"})
+    shodan-query:
+    - http.title:"ADSelfService Plus"
+    - http.title:"adselfservice plus"
+    - http.title:"manageengine"
     vendor: zohocorp
     verified: true
   name: ZOHO ManageEngine ADSelfService Plus - Detect
   severity: info
-  tags: panel,zoho,manageengine,zohocorp
+  tags: discovery,manageengine,panel,zoho,zohocorp

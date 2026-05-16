@@ -40,12 +40,13 @@ info:
   metadata:
     max-request: 2
     product: jeedom
+    runzero-match: any(each(service["html.titles"]), {# matches "Jeedom"})
     shodan-query: title:"Jeedom"
     vendor: jeedom
     verified: true
   name: Jeedom - Default Login
   severity: high
-  tags: jeedom,default-login,misconfig
+  tags: default-login,jeedom,misconfig,vuln
 variables:
   password: admin
   username: admin

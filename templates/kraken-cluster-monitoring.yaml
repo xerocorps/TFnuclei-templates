@@ -21,8 +21,9 @@ info:
   description: Kraken Cluster Monitoring Dashboard was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Kraken dashboard"})
     shodan-query: http.title:"Kraken dashboard"
     verified: true
   name: Kraken Cluster Monitoring Dashboard - Detect
   severity: info
-  tags: panel,kraken,cluster
+  tags: panel,kraken,cluster,discovery

@@ -23,11 +23,14 @@ id: monstracms-detect
 info:
   author: ritikchaddha
   metadata:
+    fofa-query: icon_hash=419828698
     max-request: 1
+    product: monstra_cms
     shodan-query: http.favicon.hash:419828698
+    vendor: monstra
     verified: true
   name: MonstraCMS Detection
   reference:
   - https://github.com/monstra-cms/monstra/
   severity: info
-  tags: tech,monstra,monstracms
+  tags: tech,monstra,monstracms,discovery

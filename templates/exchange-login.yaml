@@ -6,8 +6,7 @@ info:
   severity: info
   tags: panel
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - type: word
     words:
     - <title>Exchange Log In</title>
@@ -16,15 +15,6 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /owa/auth/logon.aspx HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
-    (KHTML, like Gecko)
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/owa/auth/logon.aspx'

@@ -1,0 +1,37 @@
+id: common-error-00
+info:
+  name: Common case to trigger the error
+  risk: Info
+payloads:
+- '{{.prefix}}'
+requests:
+- detections:
+  - StatusCode() < 300 && StatusCode() >= 500 && StatusCode() != OriginStatusCode()
+    && !StringSearch("response", "Not found") && !StringSearch("response", "Request
+    Rejected") && !StringSearch("response", "Not found") && Math.abs(ContentLength()
+    - OriginContentLength()) > {{.length}} && CommonError()
+  generators:
+  - Path("[[.original]]{{.payload}}", "*")
+type: fuzz
+variables:
+- prefix: '%ff
+
+    %23
+
+    %40
+
+    ..;/
+
+    ..%3B/
+
+    %0A
+
+    %0D
+
+    %00
+
+    ../
+
+    /////////////////////////////
+
+    '

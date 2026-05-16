@@ -23,8 +23,9 @@ info:
   description: DPLUS Dashboard panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)DPLUS Dashboard"})
     shodan-query: title:"DPLUS Dashboard"
     verified: true
   name: DPLUS Dashboard Panel - Detect
   severity: info
-  tags: panel,dplus,exposure
+  tags: panel,dplus,exposure,discovery

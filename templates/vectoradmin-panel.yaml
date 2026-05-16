@@ -19,6 +19,8 @@ info:
   metadata:
     fofa-query: title=="VectorAdmin - Vector database management made easy."
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)VectorAdmin -
+      Vector database management made easy\\."})
     verified: true
   name: VectorAdmin Panel - Detect
   reference:

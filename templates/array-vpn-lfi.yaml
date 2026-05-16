@@ -26,6 +26,10 @@ http:
 id: array-vpn-lfi
 info:
   author: pussycat0x
+  classification:
+    cwe-id:
+    - CWE-23
+    - CWE-73
   description: 'Array VPN Arbitrary File Reading Vulnerability
 
     '
@@ -37,4 +41,4 @@ info:
   reference:
   - https://github.com/wy876/POC/blob/main/Array%20VPN%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E.md
   severity: high
-  tags: lfi,vpn,arrayvpn
+  tags: arrayvpn,lfi,vpn,vuln

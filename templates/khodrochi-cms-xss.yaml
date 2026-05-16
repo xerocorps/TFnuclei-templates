@@ -12,6 +12,10 @@ http:
 id: khodrochi-cms-xss
 info:
   author: r3Y3r53
+  classification:
+    cwe-id:
+    - CWE-79
+    - CWE-83
   description: 'A cross site scripting vulnerability was found in the Khodrochi.ir
     CMS an Iranian Car Services Platform.
 
@@ -24,4 +28,4 @@ info:
   - https://www.exploitalert.com/view-details.html?id=38723
   - https://cxsecurity.com/ascii/WLB-2022050087
   severity: medium
-  tags: khodrochi,cms,xss
+  tags: cms,khodrochi,vuln,xss

@@ -21,9 +21,10 @@ info:
   description: Drone CI login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "1354079303"
     shodan-query: http.favicon.hash:1354079303
   name: Drone CI Login Panel - Detect
   reference:
   - https://www.drone.io
   severity: info
-  tags: panel,droneci,cicd
+  tags: panel,droneci,cicd,discovery

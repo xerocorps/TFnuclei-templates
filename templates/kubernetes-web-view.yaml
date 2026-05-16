@@ -28,11 +28,19 @@ info:
     cwe-id: CWE-200
   description: Kubernetes local cluster web view panel discovered.
   metadata:
+    fofa-query:
+    - title="kubernetes web view"
+    - app="kubernetes-enterprise-manager"
+    google-query: intitle:"kubernetes web view"
     max-request: 2
     product: kubernetes
-    shodan-query: title:"Kubernetes Web View"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)kubernetes web
+      view"})
+    shodan-query:
+    - title:"Kubernetes Web View"
+    - http.title:"kubernetes web view"
     vendor: kubernetes
     verified: true
   name: Kubernetes Local Cluster Web View Panel- Detect
   severity: medium
-  tags: panel,misconfig,kubernetes,k8s
+  tags: discovery,k8s,kubernetes,misconfig,panel

@@ -2,9 +2,10 @@ id: cisco-network-config
 info:
   author: DhiyaneshDk
   name: Cisco System Network Configuration Exposure
-  reference: https://www.exploit-db.com/ghdb/5430
+  reference:
+  - https://www.exploit-db.com/ghdb/5430
   severity: low
-  tags: config,exposure,cisco,network
+  tags: config,exposure,cisco
 requests:
 - matchers:
   - part: body

@@ -33,11 +33,17 @@ info:
     cwe-id: CWE-200
   description: TeamCity login panel was detected.
   metadata:
+    fofa-query: title=teamcity
+    google-query: intitle:teamcity
     max-request: 1
     product: teamcity
-    shodan-query: http.component:"TeamCity"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)teamcity"})
+    shodan-query:
+    - http.component:"TeamCity"
+    - http.title:teamcity
+    - http.component:"teamcity"
     vendor: jetbrains
     verified: true
   name: TeamCity Login Panel - Detect
   severity: info
-  tags: panel,teamcity,jetbrains,detect
+  tags: detect,discovery,jetbrains,panel,teamcity

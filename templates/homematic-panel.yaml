@@ -24,10 +24,14 @@ info:
     cwe-id: CWE-200
   description: Homematic panel was deetcted.
   metadata:
+    fofa-query: body="homematic"
     max-request: 1
     product: homematic_ccu3_firmware
-    shodan-query: http.html:"Homematic"
+    runzero-match: service["http.body"] matches "(?i)homematic"
+    shodan-query:
+    - http.html:"Homematic"
+    - http.html:"homematic"
     vendor: eq-3
   name: Homematic Panel - Detect
   severity: info
-  tags: panel,homematic,iot,eq-3
+  tags: discovery,eq-3,homematic,iot,panel

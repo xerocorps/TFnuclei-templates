@@ -1,10 +1,10 @@
 http:
 - matchers:
-  - condition: and
+  - condition: or
     type: word
     words:
+    - versa-login-logo
     - VERSA DIRECTOR
-    - Login
   - status:
     - 200
     type: status
@@ -14,17 +14,26 @@ http:
   - '{{BaseURL}}/versa/login'
 id: versa-director-login
 info:
-  author: c-sh0
+  author: c-sh0,darses
   classification:
+    cpe: cpe:2.3:a:versa-networks:versa_director:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Versa Director login panel was detected.
   metadata:
+    fofa-query:
+    - title="Versa Director"
+    - 'Set-Cookie: VD-CSRF-TOKEN'
     max-request: 1
-    shodan-query: http.title:"VERSA DIRECTOR Login"
+    product: versa_director
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Versa Director"})
+    shodan-query:
+    - http.title:"Versa Director"
+    - 'Set-Cookie: VD-CSRF-TOKEN'
+    vendor: versa-networks
     verified: true
   name: Versa Director Login Panel - Detect
   reference:
   - https://versa-networks.com/products/components/
   severity: info
-  tags: panel,versa,director
+  tags: director,discovery,panel,versa

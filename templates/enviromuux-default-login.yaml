@@ -34,6 +34,7 @@ info:
   metadata:
     fofa-query: body="ENVIROMUX"
     max-request: 1
+    runzero-match: service["http.body"] matches "ENVIROMUX"
     shodan-query: html:"ENVIROMUX"
     verified: true
   name: Network Technologies Inc ENVIROMUX - Default Login
@@ -41,7 +42,7 @@ info:
   - http://www.networktechinc.com/download/d-environment-monitor-16.html
   - http://www.networktechinc.com/pdf/man154.pdf
   severity: high
-  tags: default-login,networktechnologies,enviromux,vuln
+  tags: default-login,enviromux,networktechnologies,vuln
 variables:
   password: nti
   username: root

@@ -32,6 +32,7 @@ info:
     fofa-query: title="Windmill"
     max-request: 2
     product: windmill
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Windmill"})
     shodan-query: http.title:"Windmill"
     vendor: windmill_labs
     verified: true
@@ -40,4 +41,4 @@ info:
   - https://github.com/windmill-labs/windmill
   - https://windmill.dev/
   severity: info
-  tags: panel,windmill,workflow,automation,detect,discovery,login
+  tags: automation,detect,discovery,login,panel,windmill,workflow

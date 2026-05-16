@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -9,6 +13,24 @@ http:
     - Domain not found
     - does not exist in our system
   matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
+- extractors:
+  - kval:
+    - x_hs_reason
+    name: hubspot-reason
+    type: kval
+  host-redirects: true
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 404
+    - contains(to_lower(header), "x-hubspot-notfound")
+    - contains_all(to_lower(header), "x-hs-cfworker-meta", "{\"resolver\":\"notfoundresolver\"}")
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
   method: GET
   path:
   - '{{BaseURL}}'
@@ -23,4 +45,4 @@ info:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/59
   - https://hackerone.com/reports/335330
   severity: high
-  tags: takeover,hubspot,hackerone
+  tags: hackerone,hubspot,takeover,vuln

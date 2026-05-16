@@ -21,6 +21,7 @@ id: projectsend-detect
 info:
   author: idealphase
   classification:
+    cpe: cpe:2.3:a:projectsend:projectsend:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cvss-score: 0
     cwe-id: CWE-200
@@ -28,9 +29,11 @@ info:
   metadata:
     google-query: intext:Provided by ProjectSend
     max-request: 1
+    product: projectsend
+    vendor: projectsend
   name: ProjectSend Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7380
   - https://github.com/projectsend/projectsend
   severity: info
-  tags: tech,projectsend,edb
+  tags: discovery,edb,projectsend,tech

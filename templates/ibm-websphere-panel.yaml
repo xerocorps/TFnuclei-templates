@@ -28,10 +28,15 @@ info:
     cwe-id: CWE-200
   description: IBM WebSphere Portal login panel was detected.
   metadata:
+    fofa-query: body="ibm websphere portal"
     max-request: 1
     product: websphere_portal
-    shodan-query: http.html:"IBM WebSphere Portal"
+    runzero-match: service["http.body"] matches "(?i)ibm websphere portal"
+    shodan-query:
+    - http.html:"IBM WebSphere Portal"
+    - http.html:"ibm websphere portal"
+    - cpe:"cpe:2.3:a:ibm:websphere_portal"
     vendor: ibm
   name: IBM WebSphere Portal Login Panel - Detect
   severity: info
-  tags: ibm,websphere,panel
+  tags: discovery,ibm,panel,websphere

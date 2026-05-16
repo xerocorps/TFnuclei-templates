@@ -9,7 +9,11 @@ dns:
   retries: 3
   type: A
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -36,4 +40,4 @@ info:
   reference:
   - https://melbadry9.gitbook.io/blog/dangling-dns/xyz-services/ddns-worksites
   severity: high
-  tags: takeover
+  tags: takeover,dns,vuln

@@ -5,18 +5,19 @@ info:
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
     shodan-query: smtp
     verified: true
   name: SMTP User Enumeration
   reference:
   - https://nmap.org/nsedoc/scripts/smtp-enum-users.html
   severity: medium
-  tags: network,enum,smtp,mail
+  tags: network,smtp
 tcp:
 - attack: batteringram
   host:
   - '{{Hostname}}'
+  - '{{Host}}:25'
   inputs:
   - data: 'VRFY {{useraccounts}}
 
@@ -37,4 +38,3 @@ tcp:
     - msfadmin
     - admin
     - root
-  port: 25

@@ -27,7 +27,9 @@ info:
   description: Extreme NetConfig UI panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Extreme NetConfig
+      UI"})
     shodan-query: http.title:"Extreme NetConfig UI"
   name: Extreme NetConfig UI Panel - Detect
   severity: info
-  tags: panel,tech,hiveos,extreme
+  tags: panel,tech,hiveos,extreme,discovery

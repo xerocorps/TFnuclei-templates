@@ -25,13 +25,18 @@ info:
   classification:
     cpe: cpe:2.3:o:openwrt:openwrt:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: title="openwrt - luci"
+    google-query: intitle:"openwrt - luci"
     max-request: 2
     product: openwrt
-    shodan-query: http.title:"OpenWrt - LuCI"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)openwrt - luci"})
+    shodan-query:
+    - http.title:"OpenWrt - LuCI"
+    - http.title:"openwrt - luci"
     vendor: openwrt
   name: Opentwrt Login / Configuration Interface
   reference:
   - https://openwrt.org
   - https://github.com/openwrt/luci
   severity: info
-  tags: openwrt,router,panel
+  tags: discovery,openwrt,panel,router

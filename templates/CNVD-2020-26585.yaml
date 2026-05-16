@@ -60,6 +60,7 @@ info:
   metadata:
     fofa-query: app="ShowDoc"
     max-request: 2
+    runzero-review: REJECT/2025-11-17/excluding tag intrusive
     verified: true
   name: Showdoc <2.8.6 - File Uploads
   reference:
@@ -67,6 +68,6 @@ info:
   - https://blog.csdn.net/qq_48985780/article/details/122211136
   - https://github.com/star7th/showdoc/pull/1059
   severity: critical
-  tags: cnvd,cnvd2020,showdoc,fileupload,intrusive
+  tags: cnvd,cnvd2020,showdoc,fileupload,intrusive,vuln
 variables:
   str1: '{{randstr}}'

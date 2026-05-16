@@ -11,11 +11,16 @@ http:
 id: odbc-connection-string
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
   name: ODBC Connection String
   reference:
   - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/odbc.yml
+  - https://docs.aws.amazon.com/redshift/latest/mgmt/configure-odbc-connection.html
+  - https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/kusto
   severity: info
-  tags: odbc,exposure,tokens
+  tags: exposure,odbc,tokens,vuln

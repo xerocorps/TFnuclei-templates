@@ -28,6 +28,8 @@ info:
     fofa-query: title="Linkwarden"
     max-request: 1
     product: linkwarden
+    runzero-match: service["favicon.ico.image.mmh3"] == "1726765983" || any(each(service["html.titles"]),
+      {# matches "(?i)Linkwarden"})
     shodan-query: http.title:"Linkwarden"
     vendor: linkwarden
     verified: true
@@ -36,4 +38,4 @@ info:
   - https://github.com/linkwarden/linkwarden
   - https://linkwarden.app/
   severity: info
-  tags: panel,linkwarden,bookmarks,selfhosted,detect,discovery
+  tags: bookmarks,detect,discovery,linkwarden,panel,selfhosted

@@ -21,6 +21,9 @@ http:
 id: phuket-cms-sqli
 info:
   author: r3Y3r53
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'Phuket Solutions CMS is vulnerable to sql injection in which an attacker
     is able to manipulate an SQL query through user input, causing the application
     to execute unintended SQL code.
@@ -34,4 +37,4 @@ info:
   reference:
   - https://www.exploitalert.com/view-details.html?id=36234
   severity: high
-  tags: phuket,sqli,phuket-cms
+  tags: phuket,phuket-cms,sqli,vuln

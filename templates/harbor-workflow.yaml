@@ -4,7 +4,8 @@ info:
   description: A simple workflow that runs all Harbor related nuclei templates on
     a given target.
   name: Harbor Security Checks
+  tags: workflow
 workflows:
 - subtemplates:
-  - template: http/cves/2019/CVE-2019-16097.yaml
-  template: http/technologies/harbor-detect.yaml
+  - template: cves/2019/CVE-2019-16097.yaml
+  template: technologies/harbor-detect.yaml

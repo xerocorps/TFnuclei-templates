@@ -27,9 +27,13 @@ info:
     cwe-id: CWE-200
   description: Beego Admin Dashboard panel was detected.
   metadata:
+    fofa-query: body="beego admin dashboard"
     max-request: 1
     product: beego
-    shodan-query: html:"Beego Admin Dashboard"
+    runzero-match: service["http.body"] matches "(?i)beego admin dashboard"
+    shodan-query:
+    - html:"Beego Admin Dashboard"
+    - http.html:"beego admin dashboard"
     vendor: beego
     verified: true
   name: Beego Admin Dashboard Panel- Detect
@@ -37,4 +41,4 @@ info:
   - https://github.com/beego
   - https://twitter.com/shaybt12/status/1584112903577567234/photo/1
   severity: medium
-  tags: panel,beego,unauth
+  tags: beego,discovery,panel,unauth

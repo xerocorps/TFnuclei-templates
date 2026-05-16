@@ -19,10 +19,15 @@ info:
     cwe-id: CWE-200
   description: ESXi System login panel was detected.
   metadata:
+    fofa-query: body="esxuiapp"
     max-request: 1
     product: esxi
-    shodan-query: html:"esxUiApp"
+    runzero-match: service["http.body"] matches "(?i)esxuiapp"
+    shodan-query:
+    - html:"esxUiApp"
+    - http.html:"esxuiapp"
+    - cpe:"cpe:2.3:o:vmware:esxi"
     vendor: vmware
   name: ESXi System Login Panel - Detect
   severity: info
-  tags: panel,esxi,vmware
+  tags: discovery,esxi,panel,vmware

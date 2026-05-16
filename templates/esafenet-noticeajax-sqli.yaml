@@ -25,7 +25,8 @@ id: esafenet-noticeajax-sqli
 info:
   author: adeljck
   classification:
-    cwe-id: CWE-89
+    cwe-id:
+    - CWE-89
   description: 'CDGServer3 NoticeAjax Interface Sql Injection.
 
     '
@@ -36,6 +37,8 @@ info:
       \u7EDF\",web.body=\"CDGServer3/\""
     max-request: 1
     product: electronic_document_security_management_system
+    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"(?i)\u7535\u5B50\
+      \u6587\u6863\u5B89\u5168\u7BA1\u7406\u7CFB\u7EDF\"})"
     vendor: esafenet
     verified: true
   name: Esafenet CDG NoticeAjax - Sql Injection

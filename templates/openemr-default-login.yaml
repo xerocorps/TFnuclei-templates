@@ -31,6 +31,7 @@ id: openemr-default-login
 info:
   author: Geekby
   classification:
+    cpe: cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -38,9 +39,12 @@ info:
   metadata:
     fofa-query: app="OpenEMR"
     max-request: 1
+    product: openemr
+    runzero-match: service["http.body"] matches "OpenEMR"
     shodan-query: http.html:"OpenEMR"
+    vendor: open-emr
   name: OpenEMR - Default Admin Discovery
   reference:
   - https://github.com/openemr/openemr-devops/tree/master/docker/openemr/6.1.0/#openemr-official-docker-image
   severity: high
-  tags: openemr,default-login
+  tags: default-login,openemr,vuln

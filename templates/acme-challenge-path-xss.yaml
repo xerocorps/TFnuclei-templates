@@ -12,17 +12,19 @@ id: acme-challenge-path-xss
 info:
   author: pussycat0x
   classification:
-    cwe-id: CWE-80
+    cwe-id:
+    - CWE-80
   description: 'Detects XSS vulnerabilities in ACME http-01 challenge implementations
     where hosting providers reflect the challenge key from the URL without proper
     sanitization
 
     '
   metadata:
+    runzero-match: service["http.body"] matches "(?i)acme-challenge"
     shodan-query: html:"acme-challenge"
   name: ACME Challenge Path - Reflected Cross-Site Scripting
   reference:
   - https://labs.detectify.com/security-guidance/xss-using-quirky-implementations-of-acme-http-01/
   - https://www.acunetix.com/vulnerabilities/web/cross-site-scripting-in-http-01-acme-challenge-implementation/
   severity: low
-  tags: xss,acme,misconfig,vuln
+  tags: acme,misconfig,vuln,xss

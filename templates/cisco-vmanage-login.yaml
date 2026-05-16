@@ -20,8 +20,9 @@ info:
   description: Cisco vManage login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Cisco vManage"})
     shodan-query: title:"Cisco vManage"
     verified: true
   name: Cisco vManage Login Panel - Detect
   severity: info
-  tags: panel,cisco
+  tags: panel,cisco,discovery

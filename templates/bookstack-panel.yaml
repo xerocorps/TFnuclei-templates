@@ -32,12 +32,17 @@ info:
     cwe-id: CWE-200
   description: Bookstack login panel was detected.
   metadata:
+    fofa-query: title="bookstack"
+    google-query: intitle:"bookstack"
     max-request: 1
     product: bookstack
-    shodan-query: http.title:"BookStack"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)bookstack"})
+    shodan-query:
+    - http.title:"BookStack"
+    - http.title:"bookstack"
     vendor: bookstackapp
   name: BookStack Login Panel - Detect
   reference:
   - https://github.com/BookStackApp/BookStack
   severity: info
-  tags: panel,bookstack,bookstackapp
+  tags: bookstack,bookstackapp,discovery,panel

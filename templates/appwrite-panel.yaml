@@ -17,11 +17,19 @@ info:
     cwe-id: CWE-200
   description: Appwrite login panel was detected.
   metadata:
+    fofa-query:
+    - icon_hash=-633108100
+    - title="sign in - appwrite"
+    google-query: intitle:"sign in - appwrite"
     max-request: 2
     product: appwrite
-    shodan-query: http.favicon.hash:-633108100
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)sign in - appwrite"})
+      || service["favicon.ico.image.mmh3"] == "-633108100"
+    shodan-query:
+    - http.favicon.hash:-633108100
+    - http.title:"sign in - appwrite"
     vendor: appwrite
     verified: true
   name: Appwrite Login Panel - Detect
   severity: info
-  tags: panel,appwrite,detect
+  tags: appwrite,detect,discovery,panel

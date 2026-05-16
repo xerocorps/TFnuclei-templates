@@ -20,10 +20,15 @@ info:
     cwe-id: CWE-200
   description: Thinfinity VirtualUI panel was detected.
   metadata:
+    fofa-query: title="thinfinity virtualui"
+    google-query: intitle:"thinfinity virtualui"
     max-request: 1
     product: thinfinity_virtualui
-    shodan-query: http.title:"Thinfinity VirtualUI"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)thinfinity virtualui"})
+    shodan-query:
+    - http.title:"Thinfinity VirtualUI"
+    - http.title:"thinfinity virtualui"
     vendor: cybelesoft
   name: Thinfinity VirtualUI Panel - Detect
   severity: info
-  tags: panel,thinfinity,virtualui,cybelesoft
+  tags: cybelesoft,discovery,panel,thinfinity,virtualui

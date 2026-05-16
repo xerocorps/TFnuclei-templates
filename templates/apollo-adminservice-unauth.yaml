@@ -23,6 +23,7 @@ id: apollo-adminservice-unauth
 info:
   author: j4vaovo
   classification:
+    cpe: cpe:2.3:a:ctrip:apollo:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N
     cvss-score: 5.8
     cwe-id: CWE-522
@@ -31,10 +32,12 @@ info:
     '
   metadata:
     max-request: 1
+    product: apollo
     shodan-query: http.html:"apollo-adminservice"
+    vendor: ctrip
     verified: true
   name: Apollo Admin Service - Unauthenticated Access
   reference:
   - https://landgrey.me/blog/20/
   severity: medium
-  tags: misconfig,unauth,apollo,apolloadminservice
+  tags: apollo,apolloadminservice,misconfig,unauth,vuln

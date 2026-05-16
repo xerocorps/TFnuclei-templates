@@ -20,6 +20,7 @@ info:
   metadata:
     fofa-query: title="CaseManager"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)CaseManager"})
   name: CaseManager Login Panel - Detect
   severity: info
-  tags: casemanager,panel
+  tags: casemanager,panel,discovery

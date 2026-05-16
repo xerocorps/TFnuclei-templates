@@ -24,7 +24,7 @@ requests:
     type: status
   matchers-condition: and
   payloads:
-    path: ../../../helpers/wordlists/adminer-paths.txt
+    path: helpers/wordlists/adminer-paths.txt
   raw:
   - 'GET {{path}} HTTP/1.1
 

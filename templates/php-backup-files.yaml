@@ -22,7 +22,6 @@ http:
     - $_SERVER[
     - '''DB_PASSWORD'''
     - '''DBPASS'''
-    - database_type
     - define('DB
   - condition: or
     part: header
@@ -41,7 +40,6 @@ http:
     - .bak
     - .bkp
     - .BAK
-    - .blank
     - .swp
     - .swo
     - .swn
@@ -51,7 +49,6 @@ http:
     - .new
     - .orig
     - .dist
-    - .eski
     - .txt
     - .disabled
     - .original
@@ -93,12 +90,6 @@ http:
     - /e/config/config.php
     - /data/sql_config.php
     - /data/bbscache/config.php
-    - /app/config/parameters.yml
-    - /app/config/parameters.php
-    - /config/settings.inc.php
-    - /config/settings.old.php
-    - /manager/includes/config.inc.php
-    - /app/config/parameters.ini
     - /db.php
     - /conn.php
     - /database.php
@@ -118,13 +109,11 @@ http:
     - /config.php
     - /config
     - /const.DB.php.bak
-    - /const.DB.php
 id: php-backup-files
 info:
   author: StreetOfHackerR007,pwnhxl,mastercho,0xpugazh
-  description: PHP Source File is disclosed to external users.
   metadata:
-    max-request: 1512
+    max-request: 1222
   name: PHP Source - Backup File Information Disclosure
   severity: medium
   tags: exposure,backup,php,disclosure,fuzz

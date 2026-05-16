@@ -15,9 +15,13 @@ http:
 id: prestashop-detect
 info:
   author: pdteam
+  classification:
+    cpe: cpe:2.3:a:prestashop:prestashop:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: prestashop
     shodan-query: http.component:"PrestaShop"
+    vendor: prestashop
   name: PrestaShop Tech Detection
   severity: info
-  tags: tech,cms,prestashop
+  tags: tech,cms,prestashop,discovery

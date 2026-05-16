@@ -24,6 +24,7 @@ info:
   metadata:
     max-request: 1
     product: clearml
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ClearML"})
     shodan-query: http.title:"ClearML"
     vendor: allegro
     verified: true
@@ -32,4 +33,4 @@ info:
   - https://github.com/allegroai/clearml
   - https://clear.ml/
   severity: info
-  tags: panel,clearml,mlops,ai,detect,discovery
+  tags: ai,clearml,detect,discovery,mlops,panel

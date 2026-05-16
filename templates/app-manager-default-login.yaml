@@ -46,13 +46,15 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "Applications Manager
+      Login Screen"})
     shodan-query: title:"Applications Manager Login Screen"
     verified: true
   name: ManageEngine Applications Manager - Default Credentials
   reference:
   - https://www.manageengine.com/products/applications_manager/
   severity: high
-  tags: default-login,manageengine,zoho,vuln
+  tags: default-login,manageengine,vuln,zoho
 variables:
   password: admin
   username: admin

@@ -77,6 +77,7 @@ info:
   metadata:
     max-request: 2
     product: gradio
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     shodan-query: html:"__gradio_mode__"
     vendor: gradio_project
     verified: true
@@ -85,4 +86,4 @@ info:
   - https://github.com/gradio-app/gradio/commit/24a583688046867ca8b8b02959c441818bdb34a2
   - https://www.horizon3.ai/attack-research/disclosures/exploiting-file-read-vulnerabilities-in-gradio-to-steal-secrets-from-hugging-face-spaces/
   severity: high
-  tags: cve,cve2024,intrusive,unauth,gradio,lfi,lfr,vuln
+  tags: cve,cve2024,gradio,intrusive,lfi,lfr,unauth,vuln

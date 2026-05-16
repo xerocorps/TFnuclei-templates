@@ -16,10 +16,14 @@ http:
 id: setup-github-enterprise
 info:
   author: tess
+  classification:
+    cpe: cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: enterprise_server
     shodan-query: http.favicon.hash:-1373456171
+    vendor: github
     verified: true
   name: Setup GitHub Enterprise - Detect
   severity: unknown
-  tags: panel,exposure,setup,github,misconfig
+  tags: misconfig,installer,github,setup,vuln

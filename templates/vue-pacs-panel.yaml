@@ -29,13 +29,18 @@ info:
 
     '
   metadata:
+    fofa-query: title="vue pacs"
+    google-query: intitle:"vue pacs"
     max-request: 1
     product: vue_pacs
-    shodan-query: http.title:"Vue PACS"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)vue pacs"})
+    shodan-query:
+    - http.title:"Vue PACS"
+    - http.title:"vue pacs"
     vendor: philips
     verified: true
   name: Vue PACS - Panel
   reference:
   - https://www.usa.philips.com/healthcare/solutions/diagnostic-informatics/enterprise-imaging-pacs
   severity: info
-  tags: vue,pacs,panel,login,philips
+  tags: discovery,login,pacs,panel,philips,vue

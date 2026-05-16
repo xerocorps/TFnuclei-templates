@@ -1,14 +1,9 @@
 id: ambari-exposure
 info:
   author: pdteam
-  classification:
-    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
-    cvss-score: 5.3
-    cwe-id: CWE-200
-  description: An Apache Ambari panel was discovered.
-  name: Apache Ambari Exposure Admin Login Panel
+  name: Apache Ambari Exposure / Unauthenticated Access
   severity: medium
-  tags: panel,apache,ambari,exposure
+  tags: panel
 requests:
 - matchers:
   - condition: and

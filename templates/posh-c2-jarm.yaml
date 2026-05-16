@@ -8,15 +8,12 @@ info:
   metadata:
     max-request: 1
   name: Posh C2 JARM - Detect
-  reference: '- - https://github.com/cedowens/C2-JARM
-
-    - https://twitter.com/MichalKoczwara/status/1551639708949692416
-
-    - https://poshc2.readthedocs.io/en/latest/
-
-    '
+  reference:
+  - https://github.com/cedowens/C2-JARM
+  - https://twitter.com/MichalKoczwara/status/1551639708949692416
+  - https://poshc2.readthedocs.io/en/latest/
   severity: info
-  tags: jarm,network,c2,ir,osint,cti,posh
+  tags: jarm,network,c2,ir,osint,cti,posh,tcp,vuln
 tcp:
 - host:
   - '{{Hostname}}'

@@ -5,11 +5,11 @@ code:
   extractors:
   - internal: true
     json:
-    - .[].userPrincipalName
-    name: userList
+    - .[]
+    name: noMfaUsers
     type: json
-  source: 'az ad user list --query ''[].{userPrincipalName:userPrincipalName}'' --output
-    json
+  source: 'az rest --method GET --uri ''https://graph.microsoft.com/v1.0/reports/authenticationMethods/userRegistrationDetails''
+    --query "value[?isMfaRegistered==\`false\`].userPrincipalName"
 
     '
 - engine:
@@ -17,7 +17,7 @@ code:
   - bash
   extractors:
   - dsl:
-    - userPrincipalName + " is a privileged user without MFA enabled"
+    - userPrincipalName + " is a privileged user without MFA registered"
     type: dsl
   matchers:
   - type: word
@@ -25,13 +25,15 @@ code:
     - Owner
     - Contributor
     - Administrator
-  matchers-condition: and
+    - Reservations Administrator
+    - Role Based Access Control Administrator
+    - User Access Administrator
   source: 'az role assignment list --include-classic-administrators true --assignee
     "$userPrincipalName" --query ''[].{roleDefinitionName:roleDefinitionName}'' --output
     json
 
     '
-flow: "code(1);\nfor (let User of iterate(template.userList)) {\n  set(\"userPrincipalName\"\
+flow: "code(1);\nfor (let User of iterate(template.noMfaUsers)) {\n  set(\"userPrincipalName\"\
   , User);\n  code(2);\n}\n"
 id: azure-mfa-not-enabled-privileged-users
 info:
@@ -52,10 +54,13 @@ info:
   name: Azure MFA Not Enabled for All Privileged Users
   reference:
   - https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-mfa-howitworks
+  - https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles
+  - https://docs.microsoft.com/en-us/graph/api/resources/authenticationmethods-overview
+  - https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-userstates
   remediation: 'Configure Multi-Factor Authentication for all privileged Azure user
     accounts to enhance security measures and prevent unauthorized access.
 
     '
   severity: high
-  tags: cloud,devops,azure,microsoft,multi-factor-authentication,azure-cloud-config
+  tags: cloud,devops,azure,microsoft,azure-cloud-config,graph-api
 self-contained: true

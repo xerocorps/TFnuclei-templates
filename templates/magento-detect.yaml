@@ -19,13 +19,17 @@ http:
 id: magento-detect
 info:
   author: TechbrunchFR
+  classification:
+    cpe: cpe:2.3:a:magento:magento:*:*:*:*:*:*:*:*
   description: Identify Magento
   metadata:
     max-request: 2
+    product: magento
     shodan-query: http.component:"Magento"
+    vendor: magento
     verified: true
   name: Magento Detect
   reference:
   - https://devdocs.magento.com/guides/v2.4/graphql/
   severity: info
-  tags: magento,tech
+  tags: magento,tech,discovery

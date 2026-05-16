@@ -22,6 +22,8 @@ info:
   metadata:
     max-request: 2
     product: privileged_remote_access
+    runzero-match: service["http.body"] matches "(?i)BeyondTrust Privileged Remote
+      Access Login"
     shodan-query: http.html:"BeyondTrust Privileged Remote Access Login"
     vendor: beyondtrust
     verified: true
@@ -29,4 +31,4 @@ info:
   reference:
   - https://www.beyondtrust.com/products/privileged-remote-access
   severity: info
-  tags: panel,beyondtrust,login,detect
+  tags: panel,beyondtrust,login,detect,discovery

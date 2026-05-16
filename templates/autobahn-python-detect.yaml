@@ -18,9 +18,13 @@ http:
 id: autobahn-python-detect
 info:
   author: pussycat0x
+  classification:
+    cpe: cpe:2.3:a:crossbar:autobahn:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: autobahn
     shodan-query: AutobahnPython
+    vendor: crossbar
   name: Autobahn-Python Webserver Detect
   severity: info
-  tags: tech,webserver
+  tags: tech,webserver,discovery

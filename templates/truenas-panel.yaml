@@ -22,13 +22,17 @@ info:
 
     '
   metadata:
+    fofa-query: body="truenas"
     max-request: 1
     product: truenas
-    shodan-query: html:"TrueNAS"
+    runzero-match: service["http.body"] matches "(?i)truenas"
+    shodan-query:
+    - html:"TrueNAS"
+    - http.html:"truenas"
     vendor: ixsystems
     verified: true
   name: TrueNAS Panel - Detect
   reference:
   - https://www.truenas.com
   severity: info
-  tags: login,panel,truenas,ixsystems
+  tags: discovery,ixsystems,login,panel,truenas

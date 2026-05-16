@@ -33,13 +33,18 @@ info:
     cwe-id: CWE-200
   description: Piwigo login panel was detected.
   metadata:
-    fofa-query: title="piwigo"
-    google-query: Powered by Piwigo
+    fofa-query:
+    - title="piwigo"
+    - icon_hash=540706145
+    google-query:
+    - Powered by Piwigo
+    - powered by piwigo
     max-request: 2
     product: piwigo
+    runzero-match: service["favicon.ico.image.mmh3"] == "540706145"
     shodan-query: http.favicon.hash:540706145
     vendor: piwigo
     verified: true
   name: Piwigo Login Panel - Detect
   severity: info
-  tags: panel,piwigo,detect
+  tags: detect,discovery,panel,piwigo

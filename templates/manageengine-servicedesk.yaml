@@ -21,10 +21,16 @@ info:
     cwe-id: CWE-200
   description: ZOHO ManageEngine ServiceDesk panel was detected.
   metadata:
+    fofa-query: title="manageengine servicedesk plus"
+    google-query: intitle:"manageengine servicedesk plus"
     max-request: 1
     product: manageengine_servicedesk_plus
-    shodan-query: http.title:"ManageEngine ServiceDesk Plus"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)manageengine
+      servicedesk plus"})
+    shodan-query:
+    - http.title:"ManageEngine ServiceDesk Plus"
+    - http.title:"manageengine servicedesk plus"
     vendor: zohocorp
   name: ZOHO ManageEngine ServiceDesk Panel - Detect
   severity: info
-  tags: panel,zoho,manageengine,zohocorp
+  tags: discovery,manageengine,panel,zoho,zohocorp

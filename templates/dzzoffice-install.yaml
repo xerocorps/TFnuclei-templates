@@ -27,12 +27,15 @@ info:
     cwe-id: CWE-200
   description: DzzOffice installation panel was detected.
   metadata:
-    fofa-query: title="dzzoffice"
+    fofa-query:
+    - title="dzzoffice"
+    - icon_hash=-1961736892
     max-request: 1
     product: dzzoffice
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1961736892"
     shodan-query: http.favicon.hash:-1961736892
     vendor: dzzoffice
     verified: true
   name: DzzOffice Installation Panel - Detect
   severity: high
-  tags: panel,dzzoffice,install
+  tags: discovery,dzzoffice,install,panel

@@ -25,6 +25,7 @@ info:
   metadata:
     max-request: 1
     product: orchestrator
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)UiPath Orchestrator"})
     shodan-query: http.title:"UiPath Orchestrator"
     vendor: uipath
     verified: true
@@ -32,4 +33,4 @@ info:
   reference:
   - https://www.uipath.com/
   severity: info
-  tags: panel,uipath,login,detect
+  tags: panel,uipath,login,detect,discovery

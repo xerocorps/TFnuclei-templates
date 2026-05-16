@@ -24,6 +24,8 @@ info:
   metadata:
     max-request: 1
     product: flowise
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Flowise - Build
+      AI Agents, Visually"})
     shodan-query: http.title:"Flowise - Build AI Agents, Visually"
     vendor: FlowiseAI
     verified: true
@@ -32,4 +34,4 @@ info:
   - https://github.com/FlowiseAI/Flowise
   - https://flowiseai.com/
   severity: info
-  tags: panel,flowise,llm,ai,detect,discovery
+  tags: ai,detect,discovery,flowise,llm,panel

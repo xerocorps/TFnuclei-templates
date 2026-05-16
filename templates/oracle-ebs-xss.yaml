@@ -1,4 +1,15 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - internal: true
+    part: response
+    type: word
+    words:
+    - OA_HTML
+  method: GET
+  path:
+  - '{{BaseURL}}'
+  redirects: true
 - matchers:
   - part: body
     type: word
@@ -20,12 +31,18 @@ http:
 id: oracle-ebs-xss
 info:
   author: dhiyaneshDk
+  classification:
+    cwe-id:
+    - CWE-79
+    - CWE-83
   description: Oracle E-Business Suite is vulnerable to Cross Site Scripting.
   metadata:
+    fofa-query: body="OA_HTML"
     max-request: 3
+    shodan-query: html:"OA_HTML"
   name: Oracle E-Business Suite - Cross-Site Scripting
   reference:
   - https://www.blackhat.com/docs/us-16/materials/us-16-Litchfield-Hackproofing-Oracle-eBusiness-Suite.pdf
   - http://www.davidlitchfield.com/AssessingOraclee-BusinessSuite11i.pdf
   severity: medium
-  tags: oracle,xss,ebs,intrusive
+  tags: ebs,oracle,vuln,xss

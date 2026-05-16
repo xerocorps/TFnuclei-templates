@@ -1,5 +1,9 @@
 http:
-- host-redirects: true
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  host-redirects: true
   matchers:
   - dsl:
     - Host != ip
@@ -23,4 +27,4 @@ info:
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/154
   severity: high
-  tags: takeover,gemfury
+  tags: takeover,gemfury,vuln

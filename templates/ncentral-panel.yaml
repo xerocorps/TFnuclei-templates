@@ -1,5 +1,10 @@
 http:
-- matchers:
+- extractors:
+  - group: 1
+    regex:
+    - ncentralVersion:\s+"([\d\.]+)",
+    type: regex
+  matchers:
   - part: body
     type: word
     words:
@@ -13,15 +18,29 @@ http:
   - '{{BaseURL}}/login'
 id: ncentral-panel
 info:
-  author: theabhinavgaur
+  author: theabhinavgaur,darses
   classification:
+    cpe: cpe:2.3:a:n-able:n-central:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
-  description: N-central login panel was detected.
+  description: 'N-central login panel was detected.
+
+    '
   metadata:
+    fofa-query:
+    - title="N-central Login"
+    - icon_hash="1519363246"
+    - icon_hash="1937353549"
+    - 'Set-Cookie: ncentral_version='
     max-request: 1
-    shodan-query: http.title:"N-central Login"
+    product: n-central
+    shodan-query:
+    - http.title:"N-central Login"
+    - http.favicon.hash:1519363246
+    - http.favicon.hash:1937353549
+    - 'Set-Cookie: ncentral_version='
+    vendor: n-able
     verified: true
-  name: N-central Login Panel - Detect
+  name: N-central Login - Panel
   severity: info
   tags: panel,n-central

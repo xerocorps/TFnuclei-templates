@@ -55,18 +55,22 @@ id: leantime-stored-xss
 info:
   author: iamnoooob,rootxharsh,pdresearch
   classification:
-    cwe-id: CWE-79,CWE-83
+    cwe-id:
+    - CWE-79
+    - CWE-83
   description: 'Any low privileged user like manager, or editor, can create an API
     key with XSS payload. When admin will visit the Company page, the XSS will automatically
     get triggerred leading to the unauthorized action performed from the ADMIN account.
     Like, removing any user, or adding someone else as high privilege, and many more.
 
     '
+  metadata:
+    runzero-review: 'REJECT/2026-04-14/auto: forbidden tag: authenticated'
   name: Leantime < 3.3 = Cross-Site Scripting
   reference:
   - https://github.com/advisories/GHSA-c39w-3pjx-qc7m
   severity: high
-  tags: leantime,xss,stored,authenticated,vuln
+  tags: authenticated,leantime,stored,vuln,xss
 variables:
   password: '{{password}}'
   username: '{{username}}'

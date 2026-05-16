@@ -19,11 +19,22 @@ info:
   classification:
     cpe: cpe:2.3:a:tautulli:tautulli:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query:
+    - title="tautulli - home"
+    - title="tautulli"
+    google-query:
+    - intitle:"tautulli"
+    - intitle:"tautulli - home"
     max-request: 1
     product: tautulli
-    shodan-query: title:"Tautulli - Home"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)tautulli - home"})
+      || any(each(service["html.titles"]), {# matches "(?i)tautulli"})
+    shodan-query:
+    - title:"Tautulli - Home"
+    - http.title:"tautulli"
+    - http.title:"tautulli - home"
     vendor: tautulli
     verified: true
   name: Tautulli Panel - Unauthenticated Access
   severity: medium
-  tags: panel,misconfig,tautulli,unauth,exposure
+  tags: discovery,exposure,misconfig,panel,tautulli,unauth

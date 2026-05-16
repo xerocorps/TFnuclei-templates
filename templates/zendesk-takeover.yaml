@@ -1,13 +1,18 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
-  - condition: or
+  - case-insensitive: true
+    condition: or
     type: word
     words:
-    - this help center no longer exists
-    - Help Center Closed
+    - this help centre no longer exists
+    - Help Centre Closed
   matchers-condition: and
   method: GET
   path:
@@ -24,4 +29,4 @@ info:
   - https://hackerone.com/reports/869605
   - https://hackerone.com/reports/759454
   severity: high
-  tags: takeover,zendesk,hackerone
+  tags: takeover,zendesk,hackerone,vuln

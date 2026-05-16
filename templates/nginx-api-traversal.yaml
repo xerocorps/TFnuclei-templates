@@ -90,6 +90,10 @@ http:
 id: nginx-api-traversal
 info:
   author: encodedguy
+  classification:
+    cwe-id:
+    - CWE-23
+    - CWE-73
   description: 'Access to Nginx Plus Rest API was discovered.
 
     '
@@ -100,4 +104,4 @@ info:
   - https://nginx.org/en/docs/http/ngx_http_api_module.html
   - https://x.com/akshaysharma71/status/1825815869953552844
   severity: high
-  tags: nginx,fuzz,misconfig,lfi
+  tags: fuzz,lfi,misconfig,nginx,vuln

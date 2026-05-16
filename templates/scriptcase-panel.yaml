@@ -25,13 +25,18 @@ http:
 id: scriptcase-panel
 info:
   author: Ricardo Maia (Brainfork)
+  classification:
+    cpe: cpe:2.3:a:scriptcase:scriptcase:*:*:*:*:*:*:*:*
   metadata:
     max-request: 2
+    product: scriptcase
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ScriptCase"})
     shodan-query: title:"ScriptCase"
+    vendor: scriptcase
     verified: true
   name: ScriptCase Panel Detect
   reference:
   - https://www.scriptcase.com.br
   - https://www.scriptcase.net
   severity: info
-  tags: panel,scriptcase
+  tags: panel,scriptcase,discovery

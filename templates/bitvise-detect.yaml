@@ -2,7 +2,7 @@ id: bitvise-detect
 info:
   author: abdullahisik
   classification:
-    cpe: cpe:/a:bitvise:winsshd
+    cpe: cpe:/a:bitvise:winsshd,cpe:2.3:a:bitvise:winsshd:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: 'Bitvise SSH service was detected.
@@ -16,7 +16,7 @@ info:
   - https://www.bitvise.com/
   - https://vulners.com/openvas/OPENVAS:1361412562310813387
   severity: info
-  tags: network,ssh,bitvise,detect,detection,tcp
+  tags: bitvise,detect,detection,discovery,network,ssh,tcp
 tcp:
 - extractors:
   - regex:

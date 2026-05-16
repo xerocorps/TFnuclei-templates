@@ -26,14 +26,21 @@ info:
 
     '
   metadata:
-    google-query: intitle:"QNAP Turbo NAS" inurl:/cgi-bin
+    fofa-query: title="qnap turbo nas" inurl:/cgi-bin
+    google-query:
+    - intitle:"QNAP Turbo NAS" inurl:/cgi-bin
+    - intitle:"qnap turbo nas" inurl:/cgi-bin
     max-request: 2
     product: qts
-    shodan-query: product:"QNAP"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)qnap turbo nas"})
+    shodan-query:
+    - product:"QNAP"
+    - product:"qnap"
+    - http.title:"qnap turbo nas" inurl:/cgi-bin
     vendor: qnap
     verified: true
   name: QNAP Turbo NAS Login Panel - Detect
   reference:
   - https://www.qnap.com/qts/
   severity: info
-  tags: panel,qnap,qts
+  tags: discovery,panel,qnap,qts

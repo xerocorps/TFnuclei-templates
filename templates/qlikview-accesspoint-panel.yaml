@@ -21,6 +21,7 @@ info:
   metadata:
     max-request: 1
     product: qlikview
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)QlikView - AccessPoint"})
     shodan-query: title:"QlikView - AccessPoint"
     vendor: qlik
     verified: true

@@ -28,9 +28,10 @@ info:
   metadata:
     max-request: 1
     product: freshrss
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Freshrss"})
     shodan-query: title:"Freshrss"
     vendor: freshrss
     verified: true
   name: Freshrss Panel - Detect
   severity: info
-  tags: freshrss,panel,detect
+  tags: freshrss,panel,detect,discovery

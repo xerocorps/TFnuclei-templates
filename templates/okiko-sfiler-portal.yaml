@@ -26,7 +26,8 @@ info:
   description: OKIOK S-Filer Portal login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)S-Filer"})
     shodan-query: http.title:"S-Filer"
   name: OKIOK S-Filer Portal Login Panel - Detect
   severity: info
-  tags: okiko,panel
+  tags: okiko,panel,discovery

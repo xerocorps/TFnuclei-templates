@@ -31,6 +31,8 @@ http:
 id: etl3100-default-login
 info:
   author: r3Y3r53
+  classification:
+    cpe: cpe:2.3:h:eurotel:etl3100:*:*:*:*:*:*:*:*
   description: 'The TV and FM transmitter uses a weak set of default administrative
     credentials that can be guessed in remote password attacks and gain full control
     of the system.
@@ -39,11 +41,14 @@ info:
   metadata:
     fofa-query: body="ETL3100"
     max-request: 2
+    product: etl3100
+    runzero-match: service["http.body"] matches "ETL3100"
     shodan-query: html:"ETL3100"
+    vendor: eurotel
     verified: true
   name: EuroTel ETL3100 - Default Login
   reference:
   - https://www.zeroscience.mk/en/vulnerabilities/ZSL-2023-5782.php
   - https://www.exploit-db.com/exploits/51684
   severity: high
-  tags: misconfig,default-login,eurotel
+  tags: default-login,eurotel,misconfig,vuln

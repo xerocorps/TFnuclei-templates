@@ -1,16 +1,21 @@
 flow: http(1) && http(2)
 http:
-- extractors:
+- matchers:
   - internal: true
     name: token
     part: body
     regex:
     - xoxp-[0-9A-Za-z\\-]{74}
+    - (xox[pe](?:-[0-9]{10,13}){3}-[a-zA-Z0-9-]{28,34})
     type: regex
   method: GET
   path:
   - '{{BaseURL}}'
-- matchers:
+- extractors:
+  - dsl:
+    - token
+    type: dsl
+  matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -46,10 +51,9 @@ http:
     ------WebKitFormBoundaryDL3VHEC7cFaxeAhK--
 
     '
-  self-contained: true
 id: slack-user-token
 info:
-  author: Ice3man
+  author: Ice3man,DhiyaneshDK
   metadata:
     max-request: 1
     verified: true
@@ -57,5 +61,8 @@ info:
   reference:
   - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/slack.yml
   - https://api.slack.com/methods/users.list/test
+  - https://api.slack.com/authentication
+  - https://github.com/semgrep/semgrep-rules/blob/develop/generic/secrets/gitleaks/slack-user-token.yaml
+  - https://github.com/semgrep/semgrep-rules/blob/develop/generic/secrets/gitleaks/slack-user-token.txt
   severity: high
-  tags: exposure,token,slack
+  tags: exposure,slack,token,vuln

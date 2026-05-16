@@ -30,14 +30,18 @@ http:
 id: magento-2-exposed-api
 info:
   author: TechbrunchFR
+  classification:
+    cpe: cpe:2.3:a:magento:magento:*:*:*:*:*:*:*:*
   description: The API in Magento 2 can be accessed by the world without providing
     credentials. Through the API information like storefront, (hidden) products including
     prices are exposed.
   metadata:
     max-request: 3
+    product: magento
     shodan-query: http.component:"Magento"
+    vendor: magento
   name: Exposed Magento 2 API
   reference:
   - https://support.hypernode.com/en/ecommerce/magento-2/how-to-protect-the-magento-2-api
   severity: info
-  tags: magento
+  tags: magento,vuln

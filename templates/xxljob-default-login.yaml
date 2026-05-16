@@ -53,11 +53,15 @@ info:
     cwe-id: CWE-522
   description: XXL-JOB default admin credentials were discovered.
   metadata:
+    fofa-query: icon_hash=1691956220
     max-request: 2
+    product: xxl-job
+    runzero-match: service["favicon.ico.image.mmh3"] == "1691956220"
     shodan-query: http.favicon.hash:1691956220
+    vendor: xuxueli
     verified: true
   name: XXL-JOB Default Login
   reference:
   - https://github.com/xuxueli/xxl-job
   severity: high
-  tags: default-login,xxljob
+  tags: default-login,vuln,xxljob

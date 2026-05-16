@@ -1,6 +1,6 @@
 id: exim-detect
 info:
-  author: ricardomaia
+  author: ricardomaia,userdehghani
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
@@ -17,7 +17,7 @@ info:
   reference:
   - https://www.exim.org/docs.html
   severity: info
-  tags: network,detect,smtp,mail,exim
+  tags: network,detect,smtp,mail,exim,detection,tcp,discovery
 tcp:
 - extractors:
   - group: 1
@@ -35,4 +35,4 @@ tcp:
   - type: word
     words:
     - ESMTP Exim
-  port: 587
+  port: 465,587

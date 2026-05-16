@@ -16,13 +16,17 @@ http:
 id: shopware-installer
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:shopware:shopware:*:*:*:*:*:*:*:*
   description: Shopware is susceptible to the Installation page exposure due to misconfiguration.
   metadata:
     fofa-query: title="Installation | Shopware 6"
     max-request: 1
+    product: shopware
+    vendor: shopware
     verified: true
   name: Shopware Installer
   reference:
   - https://www.shopware.com/en/
   severity: high
-  tags: misconfig,shopware,install,exposure
+  tags: misconfig,shopware,install,exposure,vuln

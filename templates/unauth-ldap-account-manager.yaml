@@ -21,11 +21,10 @@ http:
 id: unauth-ldap-account-manager
 info:
   author: tess
-  description: LDAP Account Manager is exposed to external users.
   metadata:
     max-request: 1
     shodan-query: http.title:"LDAP Account Manager"
-    verified: true
+    verified: 'true'
   name: Unauthenticated LDAP Account Manager
   severity: medium
-  tags: ldap,misconfig,unauth
+  tags: ldap,cloud

@@ -14,12 +14,17 @@ http:
 id: tigase-xmpp-server
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:tigase:tigase:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: tigase
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Tigase XMPP Server"})
     shodan-query: title:"Tigase XMPP Server"
+    vendor: tigase
     verified: true
   name: Tigase XMPP Server - Exposure
   reference:
   - https://www.facebook.com/photo/?fbid=617926933711163&set=a.467014098802448
   severity: info
-  tags: tigase,xmpp,server,panel,exposure
+  tags: tigase,xmpp,server,panel,exposure,discovery

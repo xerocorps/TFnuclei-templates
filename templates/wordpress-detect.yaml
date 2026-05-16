@@ -20,17 +20,13 @@ http:
     regex:
     - <generator>https?:\/\/wordpress\.org.*</generator>
     - wp-login.php
-    - \/wp-content/themes\/
-    - \/wp-includes\/
     - name="generator" content="wordpress
     - <link[^>]+s\d+\.wp\.com
     - <!-- This site is optimized with the Yoast (?:WordPress )?SEO plugin v([\d.]+)
       -
     - <!--[^>]+WP-Super-Cache
+    - /wp-content/uploads/(.*)
     type: regex
-  - status:
-    - 200
-    type: status
   matchers-condition: and
   max-redirects: 2
   method: GET
@@ -44,13 +40,18 @@ http:
 id: wordpress-detect
 info:
   author: pdteam,daffainfo,ricardomaia,topscoder,AdamCrosser
+  classification:
+    cpe: cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*
   metadata:
     category: cms
     max-request: 4
     product: wordpress
-    shodan-query: http.component:"WordPress"
+    shodan-query:
+    - http.component:"WordPress"
+    - http.component:"wordpress"
+    - cpe:"cpe:2.3:a:wordpress:wordpress"
     vendor: wordpress
     verified: true
   name: WordPress Detect
   severity: info
-  tags: tech,wordpress,cms,wp
+  tags: tech,wordpress,cms,wp,discovery

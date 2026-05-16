@@ -3,10 +3,12 @@ http:
   - type: word
     words:
     - <title>Virtual Office</title>
-  - part: header
+  - condition: or
+    part: header
     type: word
     words:
     - SonicWALL SSLVPN Web Server
+    - SonicWALL SSL-VPN Web Server
   matchers-condition: or
   method: GET
   path:
@@ -20,9 +22,10 @@ info:
     cwe-id: CWE-200
   description: SonicWall Virtual Office SSL VPN login panel was detected.
   metadata:
+    google-query: inurl:"auth.html" intitle:"sonicwall"
     max-request: 1
     product: sonicos
     vendor: sonicwall
   name: SonicWall Virtual Office SSL VPN Login Panel - Detect
   severity: info
-  tags: panel,sonicwall
+  tags: panel,sonicwall,discovery

@@ -18,7 +18,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N
     cvss-score: 8.6
-    cwe-id: CWE-22
+    cwe-id: CWE-22,CWE-73
   description: The N100 compact color IP camera suffers from an authenticated file
     disclosure vulnerability. Input passed via the READ.filePath parameter in fileread
     script is not properly verified before being used to read files. This can be exploited
@@ -31,4 +31,4 @@ info:
   - https://www.exploit-db.com/exploits/46320
   - https://www.zeroscience.mk/en/vulnerabilities/ZSL-2019-5511.php
   severity: high
-  tags: iot,camera,disclosure,edb
+  tags: camera,disclosure,edb,iot,vuln

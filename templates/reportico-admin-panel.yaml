@@ -25,9 +25,15 @@ info:
 
     '
   metadata:
+    fofa-query: title="reportico administration page"
+    google-query: intitle:"reportico administration page"
     max-request: 2
     product: reportico
-    shodan-query: title:"Reportico Administration Page"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)reportico administration
+      page"})
+    shodan-query:
+    - title:"Reportico Administration Page"
+    - http.title:"reportico administration page"
     vendor: reportico
     verified: true
   name: Reportico Administration Page - Detect
@@ -35,4 +41,4 @@ info:
   - https://www.reportico.org/site2/index.php
   - https://github.com/reportico-web/reportico
   severity: info
-  tags: panel,reportico,login,detect
+  tags: detect,discovery,login,panel,reportico

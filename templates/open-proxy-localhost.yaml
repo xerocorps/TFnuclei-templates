@@ -75,6 +75,7 @@ http:
 
 
     '
+  req-condition: true
   stop-at-first-match: true
   unsafe: true
 id: open-proxy-localhost
@@ -86,8 +87,6 @@ info:
     cwe-id: CWE-441
   description: The host is configured as a proxy which allows access to web ports
     on the host's internal interface.
-  metadata:
-    max-request: 6
   name: Open Proxy to Other Web Ports via Proxy's localhost Interface
   reference:
   - https://blog.projectdiscovery.io/abusing-reverse-proxies-internal-access/
@@ -96,4 +95,4 @@ info:
   remediation: Disable the proxy or restrict configuration to only allow access to
     approved hosts/ports.
   severity: high
-  tags: exposure,config,proxy,misconfig,fuzz
+  tags: ssrf,generic

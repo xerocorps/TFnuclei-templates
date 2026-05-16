@@ -10,10 +10,11 @@ info:
   metadata:
     max-request: 1
     product: exim
+    shodan-query: cpe:"cpe:2.3:a:exim:exim"
     vendor: mailoney
   name: Mailoney Honeypot - Detect
   severity: info
-  tags: mailoney,exim,smtp,honeypot,ir,cti,network
+  tags: mailoney,exim,smtp,honeypot,ir,cti,network,tcp,discovery
 tcp:
 - host:
   - '{{Hostname}}'

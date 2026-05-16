@@ -32,7 +32,7 @@ id: cross-site-tracing-xss
 info:
   author: ritikchaddha
   classification:
-    cwe-id: CWE-80
+    cwe-id: CWE-79,CWE-80
   description: 'Cross-site scripting vulnerability was discovered via HTTP TRACE method
     reflection. The TRACE method reflects the request body back in the response, which
     can beexploited for XSS attacks when user input is reflected without proper sanitization.
@@ -45,4 +45,4 @@ info:
   - https://medium.com/@tushar_rs_/cross-site-tracing-attack-xst-5aa519658b7a
   - https://www.owasp.org/index.php/Cross_Site_Tracing
   severity: low
-  tags: xss,trace,generic
+  tags: generic,trace,xss

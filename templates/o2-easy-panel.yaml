@@ -20,8 +20,9 @@ info:
   description: O2 router setup panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)O2 Easy Setup"})
     shodan-query: title:"O2 Easy Setup"
     verified: true
   name: O2 Router Setup Panel - Detect
   severity: info
-  tags: panel,o2,easy,iot,router
+  tags: panel,o2,easy,iot,router,discovery

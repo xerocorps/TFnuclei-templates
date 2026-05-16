@@ -24,11 +24,14 @@ id: argocd-detect
 info:
   author: Adam Crosser,daffainfo,aringo
   classification:
+    cpe: cpe:2.3:a:argoproj:argo_cd:*:*:*:*:*:*:*:*
     cwe-id: CWE-200
   description: An Argo CD login panel was discovered.
   metadata:
     max-request: 2
+    product: argo_cd
     shodan-query: http.title:"Argo CD"
+    vendor: argoproj
   name: Argo CD Login Panel
   reference:
   - https://argoproj.github.io/cd/

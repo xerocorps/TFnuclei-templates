@@ -21,9 +21,10 @@ info:
   description: Cofense Vision login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "739801466"
     shodan-query: http.favicon.hash:739801466
   name: Cofense Vision Login Panel - Detect
   reference:
   - https://cofense.com
   severity: info
-  tags: panel,cofense,vision
+  tags: panel,cofense,vision,discovery

@@ -12,6 +12,10 @@ http:
 id: jinhe-oa-c6-lfi
 info:
   author: SleepingBag945
+  classification:
+    cwe-id:
+    - CWE-22
+    - CWE-73
   description: 'There is an arbitrary file read vulnerability in Jinhe OA C6 download.jsp
     file, through which an attacker can obtain sensitive information in the server
 
@@ -22,4 +26,4 @@ info:
     verified: true
   name: Jinhe OA C6 download.jsp - Arbitary File Read
   severity: high
-  tags: jinhe,lfi,misconfig
+  tags: jinhe,lfi,misconfig,vuln

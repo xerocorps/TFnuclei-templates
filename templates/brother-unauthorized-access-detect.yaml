@@ -6,7 +6,8 @@ info:
   severity: medium
   tags: iot,printer
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - condition: and
     type: word
     words:
@@ -16,10 +17,12 @@ requests:
     - 200
     type: status
   matchers-condition: and
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
   raw:
   - 'GET /net/net/net.html HTTP/1.1
 
-    Host: {{Hostname}}
+    Host: {{Subdomains}}
 
     User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
 
@@ -28,3 +31,4 @@ requests:
     Accept: */*
 
     '
+  threads: 100

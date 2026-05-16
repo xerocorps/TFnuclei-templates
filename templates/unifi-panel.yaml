@@ -17,12 +17,16 @@ id: unifi-panel
 info:
   author: TechbrunchFR
   classification:
+    cpe: cpe:2.3:a:ui:unifi_network_application:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: UniFi Network login panel was detected.
   metadata:
     max-request: 1
+    product: unifi_network_application
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)UniFi Network"})
     shodan-query: http.title:"UniFi Network"
+    vendor: ui
   name: UniFi Network Login Panel - Detect
   severity: info
-  tags: unifi,ubnt,panel
+  tags: discovery,panel,ubnt,unifi

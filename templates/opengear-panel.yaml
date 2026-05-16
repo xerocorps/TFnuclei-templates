@@ -17,6 +17,7 @@ id: opengear-panel
 info:
   author: ffffffff0x,daffainfo
   classification:
+    cpe: cpe:2.3:a:opengear:opengear:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: The Opengear Management Console admin panel has been discovered.
@@ -24,8 +25,11 @@ info:
     fofa-query: app="opengear-Management-Console"
     google-query: intitle:"Opengear Management Console"
     max-request: 1
+    product: opengear
+    vendor: opengear
     verified: true
   name: Opengear Management Console Login Panel - Detect
-  reference: https://opengear.com/
+  reference:
+  - https://opengear.com/
   severity: info
-  tags: panel,opengear
+  tags: panel,opengear,discovery

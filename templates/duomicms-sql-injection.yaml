@@ -22,12 +22,13 @@ info:
     administrative operations in the context of the affected site.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)DuomiCMS"})
     shodan-query: title:"DuomiCMS"
     verified: true
   name: Duomi CMS - SQL Injection
   reference:
   - https://redn3ck.github.io/2016/11/01/duomiCMS/
   severity: critical
-  tags: duomicms,sqli
+  tags: duomicms,sqli,vuln
 variables:
   num: '999999999'

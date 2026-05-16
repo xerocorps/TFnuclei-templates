@@ -24,6 +24,7 @@ info:
   metadata:
     fofa-query: body="/XUX-nwave/"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/XUX-nwave/"
   name: Xerox Fuji/VersaLink Login - Panel
   severity: info
   tags: panel,xerox,discovery,login

@@ -7,9 +7,11 @@ info:
 
     '
   metadata:
+    max-request: 6
     shodan-query: product:"redis"
   name: redis password bruteforce
   severity: high
+  tags: brute,network,redis
 javascript:
 - args:
     Host: '{{Host}}'

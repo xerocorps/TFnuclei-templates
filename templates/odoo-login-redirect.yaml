@@ -17,10 +17,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-review: 'REJECT/2026-04-16/auto: interactsh (OAST callback)'
     shodan-query: http.component:"Odoo" html:"web/login"
     verified: true
   name: Reflected Odoo - Open Redirect
   reference:
   - https://github.com/odoo/odoo/issues/13812
   severity: low
-  tags: redirect,odoo,vuln
+  tags: odoo,redirect,vuln

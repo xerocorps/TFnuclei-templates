@@ -26,10 +26,15 @@ info:
     cwe-id: CWE-200
   description: SeedDMS login panel was detected.
   metadata:
+    fofa-query: title="seeddms"
+    google-query: intitle:"seeddms"
     max-request: 2
     product: seeddms
-    shodan-query: http.title:"SeedDMS"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)seeddms"})
+    shodan-query:
+    - http.title:"SeedDMS"
+    - http.title:"seeddms"
     vendor: seeddms
   name: SeedDMS Login Panel - Detect
   severity: info
-  tags: panel,seeddms,login
+  tags: discovery,login,panel,seeddms

@@ -17,11 +17,11 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22
+    cwe-id: CWE-22,CWE-23
   description: Ecology is vulnerable to local file inclusion.
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
     max-request: 1
   name: Ecology - Local File Inclusion
   severity: high
-  tags: ecology,lfi
+  tags: ecology,lfi,vuln

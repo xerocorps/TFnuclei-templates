@@ -64,6 +64,8 @@ info:
     fofa-query: title="pfSense"
     max-request: 2
     product: pfsense
+    runzero-match: service["product"] contains "pfSense:pfSense" || service["product"]
+      contains "Netgate:pfSense"
     shodan-query: http.title:"pfSense"
     vendor: netgate
     verified: true
@@ -71,7 +73,7 @@ info:
   reference:
   - https://docs.netgate.com/pfsense/en/latest/
   severity: high
-  tags: default-login,pfsense,firewall,network
+  tags: default-login,firewall,network,pfsense
 variables:
   password: pfsense
   username: admin

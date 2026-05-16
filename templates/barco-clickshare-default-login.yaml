@@ -53,8 +53,9 @@ info:
   metadata:
     max-request: 3
     product: clickshare_cs-100_huddle_firmware
+    runzero-match: service["http.head.setCookie"] contains "ClickShareSession"
     shodan-query: ClickShareSession
     vendor: barco
   name: Barco ClickShare - Default Login
   severity: high
-  tags: default-login,barco,clickshare
+  tags: barco,clickshare,default-login,vuln

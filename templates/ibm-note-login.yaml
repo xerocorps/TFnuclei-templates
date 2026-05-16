@@ -1,8 +1,10 @@
 http:
 - matchers:
-  - type: word
+  - condition: or
+    type: word
     words:
     - <title>IBM iNotes Login</title>
+    - Lotus iNotes Login Screen
   - status:
     - 200
     type: status
@@ -11,9 +13,11 @@ http:
   path:
   - '{{BaseURL}}'
   - '{{BaseURL}}/names.nsf'
+  - '{{BaseURL}}/webredir.nsf'
+  stop-at-first-match: true
 id: ibm-note-login
 info:
-  author: dhiyaneshDK
+  author: dhiyaneshDK,righettod
   classification:
     cpe: cpe:2.3:a:ibm:inotes:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
@@ -22,9 +26,11 @@ info:
   metadata:
     max-request: 2
     product: inotes
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)IBM iNotes Login"})
+    shodan-query: http.title:"IBM iNotes Login"
     vendor: ibm
   name: IBM iNotes Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7122
   severity: info
-  tags: ibm,edb,panel
+  tags: detect,discovery,edb,ibm,login,panel

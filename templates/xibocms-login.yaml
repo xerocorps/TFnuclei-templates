@@ -23,13 +23,17 @@ id: xibocms-login
 info:
   author: ritikchaddha,daffainfo
   classification:
+    cpe: cpe:2.3:a:springsignage:xibo:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Xibo CMS login panel was detected.
   metadata:
     max-request: 1
+    product: xibo
+    runzero-match: service["http.body"] matches "(?i)/xibosignage/xibo-cms"
     shodan-query: http.html:"/xibosignage/xibo-cms"
+    vendor: springsignage
     verified: true
   name: Xibo CMS Login Panel - Detect
   severity: info
-  tags: panel,xibocms
+  tags: discovery,panel,xibocms

@@ -23,6 +23,7 @@ info:
     fofa-query: title="Airbyte"
     max-request: 2
     product: airbyte
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Airbyte"})
     shodan-query: http.title:"Airbyte"
     vendor: airbyte
     verified: true
@@ -32,4 +33,4 @@ info:
   - https://airbyte.com/
   - https://docs.airbyte.com/api-documentation
   severity: info
-  tags: panel,airbyte,login,detect
+  tags: airbyte,detect,login,panel

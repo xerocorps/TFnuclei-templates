@@ -45,12 +45,6 @@ http:
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)clear-site-data'', header)'
-    - status_code != 301 && status_code != 302
-    name: clear-site-data
-    type: dsl
-  - condition: and
-    dsl:
     - '!regex(''(?i)cross-origin-embedder-policy'', header)'
     - status_code != 301 && status_code != 302
     name: cross-origin-embedder-policy
@@ -67,6 +61,19 @@ http:
     - status_code != 301 && status_code != 302
     name: cross-origin-resource-policy
     type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)^content-type:'', header)'
+    - status_code == 200
+    name: missing-content-type
+    type: dsl
+  - condition: and
+    dsl:
+    - regex('(?i)^content-type:\s*text/html', header)
+    - '!regex(''(?i)^content-type:.*charset='', header)'
+    - status_code == 200
+    name: content-type-charset-specification
+    type: dsl
   matchers-condition: or
   max-redirects: 3
   method: GET
@@ -74,7 +81,7 @@ http:
   - '{{BaseURL}}'
 id: http-missing-security-headers
 info:
-  author: socketz,geeknik,G4L1T0,convisoappsec,kurohost,dawid-czarnecki,forgedhallpass,jub0bs
+  author: socketz,geeknik,G4L1T0,convisoappsec,kurohost,dawid-czarnecki,forgedhallpass,jub0bs,userdehghani,celbahraoui
   description: 'This template searches for missing HTTP security headers. The impact
     of these missing headers can vary.
 
@@ -83,4 +90,4 @@ info:
     max-request: 1
   name: HTTP Missing Security Headers
   severity: info
-  tags: misconfig,headers,generic
+  tags: generic,headers,misconfig,vuln

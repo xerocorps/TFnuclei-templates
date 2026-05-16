@@ -33,19 +33,18 @@ http:
   - '{{BaseURL}}/temp.sql'
   - '{{BaseURL}}/translate.sql'
   - '{{BaseURL}}/users.sql'
-  - '{{BaseURL}}/www.sql'
   - '{{BaseURL}}/wp-content/uploads/dump.sql'
   - '{{BaseURL}}/wp-content/mysql.sql'
 id: default-sql-dump
 info:
-  author: geeknik,dwisiswant0,ELSFA7110,mastercho
+  author: geeknik,dwisiswant0,ELSFA7110
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
     cwe-id: CWE-200
   description: A MySQL dump file was found
   metadata:
-    max-request: 21
+    max-request: 20
   name: MySQL - Dump Files
   severity: medium
   tags: exposure,backup,mysql

@@ -3,11 +3,11 @@ file:
   - all
   extractors:
   - regex:
-    - "\b((?:ghu|ghs)_[a-zA-Z0-9]{36})\b"
+    - gh[us]_.{36}
     type: regex
 id: github-app-token
 info:
-  author: tanq16,DhiyaneshDK
+  author: tanq16
   name: Github App Token
   severity: medium
-  tags: keys,file,token,github
+  tags: token,file,github

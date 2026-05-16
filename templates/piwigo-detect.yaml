@@ -17,8 +17,14 @@ id: piwigo-detect
 info:
   author: pikpikcu
   metadata:
-    fofa-query: title="piwigo"
+    fofa-query:
+    - title="piwigo"
+    - icon_hash=540706145
+    google-query: powered by piwigo
     max-request: 1
+    product: piwigo
+    shodan-query: http.favicon.hash:540706145
+    vendor: piwigo
   name: Piwigo Detect
   severity: info
-  tags: piwigo,tech
+  tags: piwigo,tech,discovery

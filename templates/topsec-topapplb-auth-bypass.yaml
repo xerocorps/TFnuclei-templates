@@ -32,9 +32,11 @@ info:
   metadata:
     fofa-query: "title=\"TopApp-LB \u8D1F\u8F7D\u5747\u8861\u7CFB\u7EDF\""
     max-request: 2
+    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"(?i)TopApp-LB\
+      \ \u8D1F\u8F7D\u5747\u8861\u7CFB\u7EDF\"})"
     verified: true
   name: Topsec TopAppLB - Authentication Bypass
   reference:
   - https://github.com/cqr-cryeye-forks/goby-pocs/blob/main/Topsec-TopAppLB-Any-account-Login.json
   severity: high
-  tags: topsec,topapplb,auth-bypass
+  tags: topsec,topapplb,auth-bypass,vuln

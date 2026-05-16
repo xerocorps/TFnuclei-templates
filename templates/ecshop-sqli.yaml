@@ -32,6 +32,7 @@ id: ecshop-sqli
 info:
   author: Lark-lab,ImNightmaree,ritikchaddha
   classification:
+    cpe: cpe:2.3:a:shopex:ecshop:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
     cwe-id: CWE-89
@@ -45,6 +46,8 @@ info:
   metadata:
     fofa-query: app="ECShop"
     max-request: 2
+    product: ecshop
+    vendor: shopex
     verified: true
   name: ECShop 2.x/3.x - SQL Injection
   reference:
@@ -53,4 +56,4 @@ info:
   - http://www.wins21.com/mobile/blog/blog_view.html?num=1172
   - https://www.shutingrz.com/post/ad_hack-ec_exploit/
   severity: critical
-  tags: sqli,php,ecshop
+  tags: ecshop,php,sqli,vuln

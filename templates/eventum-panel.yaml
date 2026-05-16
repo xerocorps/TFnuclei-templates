@@ -28,11 +28,13 @@ info:
     cwe-id: CWE-200
   description: Eventum login panel was detected.
   metadata:
+    fofa-query: icon_hash=305412257
     max-request: 1
     product: eventum
+    runzero-match: service["favicon.ico.image.mmh3"] == "305412257"
     shodan-query: http.favicon.hash:305412257
     vendor: mysql
     verified: true
   name: Eventum Login Panel - Detect
   severity: info
-  tags: panel,eventum,mysql
+  tags: discovery,eventum,mysql,panel

@@ -20,10 +20,14 @@ info:
     cwe-id: CWE-200
   description: TRENDnet TEW-827DRU login panel was detected.
   metadata:
+    fofa-query: body="tew-827dru"
     max-request: 1
     product: tew-827dru_firmware
-    shodan-query: http.html:"TEW-827DRU"
+    runzero-match: service["http.body"] matches "(?i)tew-827dru"
+    shodan-query:
+    - http.html:"TEW-827DRU"
+    - http.html:"tew-827dru"
     vendor: trendnet
   name: TRENDnet TEW-827DRU Login Panel - Detect
   severity: info
-  tags: panel,router,trendnet
+  tags: discovery,panel,router,trendnet

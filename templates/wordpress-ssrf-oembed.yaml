@@ -23,14 +23,21 @@ http:
 id: wordpress-ssrf-oembed
 info:
   author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*
+    cwe-id:
+    - CWE-918
   description: The oEmbed feature in WordPress allows embedding content from external
     sources, and if it's not properly secured, it could be exploited for SSRF.
   metadata:
     fofa-query: body="oembed" && body="wp-"
     max-request: 2
+    product: wordpress
+    runzero-review: REJECT/2025-11-07/uses interactsh
+    vendor: wordpress
   name: Wordpress Oembed Proxy - Server-side request forgery
   reference:
-  - https://book.hacktricks.xyz/pentesting/pentesting-web/wordpress
+  - https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html
   - https://github.com/incogbyte/quickpress/blob/master/core/req.go
   severity: medium
-  tags: wordpress,ssrf,oast,oembed
+  tags: oast,oembed,ssrf,vuln,wordpress

@@ -3,15 +3,15 @@ http:
   - condition: and
     dsl:
     - status_code == 200
-    - contains(body, "https://metascan.ru")
+    - contains(body, "https://google.com")
     - contains(body, "mapp_itemlist_item_link")
     type: dsl
   method: GET
   path:
-  - '{{BaseURL}}/bitrix/components/bitrix/mobileapp.list/ajax.php?items[1][TITLE]=TEXT+INJECTION!+PLEASE+CLICK+HERE!&items[1][DETAIL_LINK]=https://metascan.ru'
+  - '{{BaseURL}}/bitrix/components/bitrix/mobileapp.list/ajax.php?items[1][TITLE]=TEXT+INJECTION!+PLEASE+CLICK+HERE!&items[1][DETAIL_LINK]=https://google.com'
 id: bitrix_content_spoofing_ajax
 info:
-  author: crlf,metascan
+  author: JhonnyBonny
   classification:
     cve-id: CVE-2023-001
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N

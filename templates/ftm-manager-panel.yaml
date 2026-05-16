@@ -22,12 +22,22 @@ info:
     cwe-id: CWE-200
   description: Financial Transaction Manager login panel was detected.
   metadata:
-    google-query: intitle:"FTM manager"
+    fofa-query:
+    - title="ftm manager"
+    - body="ftm manager"
+    google-query:
+    - intitle:"FTM manager"
+    - intitle:"ftm manager"
     max-request: 1
     product: financial_transaction_manager
-    shodan-query: http.html:"FTM manager"
+    runzero-match: service["http.body"] matches "(?i)ftm manager" || any(each(service["html.titles"]),
+      {# matches "(?i)ftm manager"})
+    shodan-query:
+    - http.html:"FTM manager"
+    - http.html:"ftm manager"
+    - http.title:"ftm manager"
     vendor: ibm
     verified: true
   name: Financial Transaction Manager Login Panel - Detect
   severity: info
-  tags: panel,ftm,ibm
+  tags: discovery,ftm,ibm,panel

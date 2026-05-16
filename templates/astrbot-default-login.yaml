@@ -58,6 +58,7 @@ info:
     fofa-query: body="<title>AstrBot"
     max-request: 2
     product: astrbot
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)AstrBot"})
     shodan-query: html:"<title>AstrBot"
     vendor: soulter
     verified: true
@@ -65,4 +66,4 @@ info:
   reference:
   - https://github.com/Soulter/AstrBot
   severity: high
-  tags: astrbot, default-login
+  tags: astrbot,default-login

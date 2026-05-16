@@ -1,6 +1,6 @@
 id: mongodb-info-enum
 info:
-  author: pussycat0x
+  author: pussycat0x,h4sh5
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
@@ -15,11 +15,12 @@ info:
   reference:
   - https://nmap.org/nsedoc/scripts/mongodb-info.html
   severity: info
-  tags: network,mongodb,enum
+  tags: network,mongodb,enum,tcp,discovery
 tcp:
 - extractors:
-  - regex:
-    - ([A-Za-z:0-9.]+)
+  - group: 1
+    regex:
+    - version.....([0-9.]+)
     type: regex
   host:
   - '{{Hostname}}'

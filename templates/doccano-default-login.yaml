@@ -70,6 +70,7 @@ info:
     fofa-query: title="doccano"
     max-request: 3
     product: doccano
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)doccano"})
     shodan-query: http.title:"doccano"
     vendor: doccano
     verified: true

@@ -12,7 +12,7 @@ http:
   matchers-condition: and
   method: GET
   path:
-  - https://www.threads.net/@{{user}}
+  - https://www.threads.com/@{{user}}
 id: threads
 info:
   author: olearycrew
@@ -26,5 +26,5 @@ info:
     verified: true
   name: Threads User Name Information - Detect
   severity: info
-  tags: osint,osint-social,threads
+  tags: osint,osint-social,threads,discovery
 self-contained: true

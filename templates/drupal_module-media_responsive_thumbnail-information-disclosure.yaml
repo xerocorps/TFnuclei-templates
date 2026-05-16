@@ -7,21 +7,20 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '8.x-1.4')
-    - compare_versions(version, '8.x-1.3')
-    - compare_versions(version, '8.x-1.2')
-    - compare_versions(version, '8.x-1.1')
-    - compare_versions(version, '8.x-1.0')
+    - compare_versions(version, '<= 1.5.0')
     type: dsl
   matchers:
-  - part: body
+  - condition: and
+    part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - status:
+  - condition: and
+    status:
     - 200
     type: status
-  - part: body
+  - condition: and
+    part: body
     type: word
     words:
     - media_responsive_thumbnail
@@ -33,17 +32,17 @@ http:
   redirects: true
 id: drupal_module-media_responsive_thumbnail-information-disclosure
 info:
-  author: Bishopfox
+  author: me
   description: The Media Responsive Thumbnail module allows media reference fields
     to be rendered as a responsive image. This module does not properly check entity
     access prior to rendering media. This may result in users seeing thumbnails of
     media items they do not have access to. This release was coordinated with SA-CORE-2023-002.
   metadata:
-    created_at: '0001-01-01T00:00:00Z'
+    created_at: '2025-01-09'
     fofa-query: /sites/all/modules/media_responsive_thumbnail/
     google-query: inurl:'/sites/all/modules/media_responsive_thumbnail/
     impact: medium
-    security-risk: "Moderately critical 14\u221525 AC:None/A:None/CI:Some/II:None/E:Theoretical/TD:Default"
+    security-risk: "Moderately critical 14\u2009\u2215\u200925 AC:None/A:None/CI:Some/II:None/E:Theoretical/TD:Default"
     type: indicator
     vulnerability: information-disclosure
   name: drupal_module-media_responsive_thumbnail-information-disclosure

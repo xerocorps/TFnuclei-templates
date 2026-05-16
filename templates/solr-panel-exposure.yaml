@@ -25,11 +25,23 @@ info:
     cwe-id: CWE-200
   description: Apache Solr admin panel was detected.
   metadata:
+    fofa-query:
+    - title="solr admin"
+    - title="apache solr"
+    google-query:
+    - intitle:"apache solr"
+    - intitle:"solr admin"
     max-request: 2
     product: solr
-    shodan-query: http.title:"Solr Admin"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)solr admin"})
+      || any(each(service["html.titles"]), {# matches "(?i)apache solr"})
+    shodan-query:
+    - http.title:"Solr Admin"
+    - http.title:"apache solr"
+    - cpe:"cpe:2.3:a:apache:solr"
+    - http.title:"solr admin"
     vendor: apache
     verified: true
   name: Apache Solr Admin Panel - Detect
   severity: info
-  tags: panel,solr,apache,admin
+  tags: admin,apache,discovery,panel,solr

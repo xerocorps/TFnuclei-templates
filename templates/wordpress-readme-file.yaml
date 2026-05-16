@@ -19,8 +19,12 @@ info:
   author: tess
   metadata:
     max-request: 3
-    shodan-query: http.component:"wordpress"
+    product: wordpress
+    shodan-query:
+    - http.component:"wordpress"
+    - cpe:"cpe:2.3:a:wordpress:wordpress"
+    vendor: wordpress
     verified: true
   name: WordPress Readme File
   severity: info
-  tags: exposure,wordpress,wp,readme,files
+  tags: exposure,wordpress,wp,readme,files,vuln

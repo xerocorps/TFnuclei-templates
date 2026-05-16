@@ -24,11 +24,15 @@ info:
     cwe-id: CWE-200
   description: Mitel login panel was detected.
   metadata:
+    fofa-query: body="mitel networks"
     max-request: 2
     product: cmg_suite
-    shodan-query: http.html:"Mitel Networks"
+    runzero-match: service["http.body"] matches "(?i)mitel networks"
+    shodan-query:
+    - http.html:"Mitel Networks"
+    - http.html:"mitel networks"
     vendor: mitel
     verified: true
   name: Mitel Login Panel - Detect
   severity: info
-  tags: panel,mitel
+  tags: discovery,mitel,panel

@@ -13,6 +13,7 @@ id: phpok-sqli
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:phpok:phpok:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
     cwe-id: CWE-89
@@ -23,11 +24,13 @@ info:
   metadata:
     fofa-query: app="phpok"
     max-request: 1
+    product: phpok
+    vendor: phpok
     verified: true
   name: PHPOK - SQL Injection
   reference:
   - https://cve.report/software/phpok/phpok
   severity: critical
-  tags: phpok,sqli
+  tags: phpok,sqli,vuln
 variables:
   num: '999999999'

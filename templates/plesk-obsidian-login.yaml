@@ -24,11 +24,20 @@ info:
     cwe-id: CWE-200
   description: Plesk Obsidian login panel was detected.
   metadata:
+    fofa-query:
+    - body="plesk obsidian"
+    - title="plesk obsidian"
+    google-query: intitle:"plesk obsidian"
     max-request: 1
     product: obsidian
-    shodan-query: http.html:"Plesk Obsidian"
+    runzero-match: service["http.body"] matches "(?i)plesk obsidian" || any(each(service["html.titles"]),
+      {# matches "(?i)plesk obsidian"})
+    shodan-query:
+    - http.html:"Plesk Obsidian"
+    - http.html:"plesk obsidian"
+    - http.title:"plesk obsidian"
     vendor: plesk
     verified: true
   name: Plesk Obsidian Login Panel - Detect
   severity: info
-  tags: panel,plesk,login,edb
+  tags: discovery,edb,login,panel,plesk

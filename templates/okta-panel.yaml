@@ -21,7 +21,8 @@ info:
   description: Okta login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)okta"})
     shodan-query: http.title:"okta"
   name: Okta Login Panel - Detect
   severity: info
-  tags: panel,okta,login
+  tags: panel,okta,login,discovery

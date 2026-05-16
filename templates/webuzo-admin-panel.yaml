@@ -22,11 +22,17 @@ info:
     cwe-id: CWE-200
   description: Webuzo admin login panel was detected.
   metadata:
+    fofa-query: title="webuzo - admin panel"
+    google-query: intitle:"webuzo - admin panel"
     max-request: 1
     product: webuzo
-    shodan-query: http.title:"Webuzo - Admin Panel"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)webuzo - admin
+      panel"})
+    shodan-query:
+    - http.title:"Webuzo - Admin Panel"
+    - http.title:"webuzo - admin panel"
     vendor: softaculous
     verified: true
   name: Webuzo Admin Login Panel - Detect
   severity: info
-  tags: panel,webuzo,admin,softaculous
+  tags: admin,discovery,panel,softaculous,webuzo

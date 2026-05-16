@@ -20,11 +20,15 @@ info:
     cwe-id: CWE-200
   description: Pandora FMS Mobile Console login panel was detected.
   metadata:
+    fofa-query: title="pandora fms"
+    google-query: intitle:"pandora fms"
     max-request: 1
     product: pandora_fms
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)pandora fms"})
+    shodan-query: http.title:"pandora fms"
     vendor: pandorafms
   name: Pandora FMS Mobile Console Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/6827
   severity: info
-  tags: panel,edb,pandorafms
+  tags: discovery,edb,pandorafms,panel

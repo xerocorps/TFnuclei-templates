@@ -19,7 +19,9 @@ info:
   description: Secure Login Service login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Secure Login
+      Service"})
     shodan-query: http.title:"Secure Login Service"
   name: Secure Login Service Login Panel - Detect
   severity: info
-  tags: panel,sls,login,service
+  tags: panel,sls,login,service,discovery

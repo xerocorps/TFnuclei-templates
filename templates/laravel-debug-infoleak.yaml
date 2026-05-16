@@ -31,6 +31,7 @@ id: laravel-debug-infoleak
 info:
   author: pwnhxl
   classification:
+    cpe: cpe:2.3:a:laravel:framework:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N
     cvss-score: 6.5
     cwe-id: CWE-215
@@ -41,10 +42,12 @@ info:
   metadata:
     fofa-query: app="Laravel-Framework"
     max-request: 1
+    product: framework
     shodan-query: Laravel-Framework
+    vendor: laravel
     verified: true
   name: Laravel Debug Info Leak
   reference:
   - https://github.com/dem0ns/improper/blob/master/laravel/5_debug/1.png
   severity: medium
-  tags: misconfig,laravel,debug,infoleak
+  tags: misconfig,laravel,debug,infoleak,vuln

@@ -18,11 +18,15 @@ http:
 id: mantisbt-installer
 info:
   author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:mantisbt:mantisbt:*:*:*:*:*:*:*:*
   description: MantisBT is susceptible to the Installation page exposure due to misconfiguration.
   metadata:
     max-request: 1
+    product: mantisbt
     shodan-query: html:"Administration - Installation - MantisBT"
+    vendor: mantisbt
     verified: true
   name: MantisBT Installation Exposure
   severity: high
-  tags: misconfig,mantisbt,install,exposure
+  tags: misconfig,mantisbt,install,exposure,vuln

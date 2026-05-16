@@ -37,6 +37,7 @@ info:
     fofa-query: title="MistServer"
     max-request: 1
     product: mistserver
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MistServer"})
     shodan-query: http.title:"MistServer"
     vendor: ddvtech
     verified: true

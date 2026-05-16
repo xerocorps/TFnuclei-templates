@@ -30,8 +30,11 @@ info:
 
     '
   metadata:
+    fofa-query: title="emby"
+    google-query: intitle:"emby"
     max-request: 1
     product: emby
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)emby"})
     shodan-query: http.title:"emby"
     vendor: emby
     verified: true
@@ -40,4 +43,4 @@ info:
   - https://github.com/MediaBrowser/Emby
   - https://emby.media/
   severity: info
-  tags: panel,emby,oss
+  tags: panel,emby,oss,discovery

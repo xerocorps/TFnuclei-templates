@@ -26,13 +26,18 @@ info:
   description: Check for the existence of the "/arcgis/rest/services" path on an ArcGIS
     server.
   metadata:
+    fofa-query: title="arcgis"
+    google-query: intitle:"arcgis"
     max-request: 1
     product: arcgis_server
-    shodan-query: title:"ArcGIS"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)arcgis"})
+    shodan-query:
+    - title:"ArcGIS"
+    - http.title:"arcgis"
     vendor: esri
     verified: true
   name: ArcGIS REST Services Directory - Detect
   reference:
   - https://enterprise.arcgis.com/en/
   severity: info
-  tags: panel,arcgis,rest,api,detect,esri
+  tags: api,arcgis,detect,discovery,esri,panel,rest

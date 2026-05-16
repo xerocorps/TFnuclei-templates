@@ -1,11 +1,10 @@
 http:
 - host-redirects: true
   matchers:
-  - type: word
+  - condition: and
+    type: word
     words:
-    - Discover recipes, home ideas, style inspiration and other ideas to try
-  - type: word
-    words:
+    - Log in to Pinterest
     - Pinterest
   - status:
     - 200
@@ -21,13 +20,13 @@ http:
 id: pinterest-phish
 info:
   author: rxerium
-  description: 'A pinterest phishing website was detected
+  description: 'A Pinterest phishing website was detected
 
     '
   metadata:
     max-request: 1
-  name: pinterest phishing Detection
+  name: Pinterest phishing Detection
   reference:
   - https://pinterest.com
   severity: info
-  tags: phishing,pinterest,osint
+  tags: phishing,pinterest,osint,discovery

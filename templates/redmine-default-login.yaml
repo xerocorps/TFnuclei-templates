@@ -59,6 +59,7 @@ info:
     fofa-query: title="Redmine"
     max-request: 2
     product: redmine
+    runzero-match: service["product"] contains "Redmine:Redmine"
     shodan-query: http.title:"Redmine"
     vendor: redmine
     verified: true
@@ -67,7 +68,7 @@ info:
   - https://www.redmine.org/projects/redmine/wiki/RedmineInstall
   - https://www.simplified.guide/redmine/default-password
   severity: high
-  tags: redmine,default-login,aut,vuln
+  tags: aut,default-login,redmine,vuln
 variables:
   password: admin
   username: admin

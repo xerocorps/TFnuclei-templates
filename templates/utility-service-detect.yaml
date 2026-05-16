@@ -16,10 +16,14 @@ http:
 id: utility-service-detect
 info:
   author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:avaya:aura_utility_services:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: aura_utility_services
     shodan-query: title:"Utility Services Administration"
+    vendor: avaya
     verified: true
   name: Utility Services Administration - Detect
   severity: info
-  tags: tech,avaya,aura
+  tags: tech,avaya,aura,discovery

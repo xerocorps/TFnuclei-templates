@@ -23,6 +23,7 @@ id: black-duck-panel
 info:
   author: idealphase,ritikchaddha
   classification:
+    cpe: cpe:2.3:a:synopsys:black_duck_hub:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: 'Black Duck login panel was detected.
@@ -30,11 +31,14 @@ info:
     '
   metadata:
     max-request: 1
+    product: black_duck_hub
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Black Duck"})
     shodan-query: http.title:"Black Duck"
+    vendor: synopsys
     verified: true
   name: Black Duck Login Panel - Detect
   reference:
   - https://www.blackducksoftware.com/
   - https://www.synopsys.com/software-integrity/security-testing/software-composition-analysis.html
   severity: info
-  tags: panel,blackduck,synopsys
+  tags: blackduck,discovery,panel,synopsys

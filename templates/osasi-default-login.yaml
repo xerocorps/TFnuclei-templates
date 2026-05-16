@@ -30,8 +30,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-268676052"
     shodan-query: http.favicon.hash:-268676052
     verified: true
   name: OSASI PLC - Default Login
   severity: high
-  tags: osasi,plc,default-login,vuln
+  tags: default-login,osasi,plc,vuln

@@ -21,13 +21,18 @@ info:
   classification:
     cpe: cpe:2.3:a:qbittorrent:qbittorrent:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: title="qbittorrent"
+    google-query: intitle:"qbittorrent"
     max-request: 1
     product: qbittorrent
-    shodan-query: title:"qbittorrent"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)qbittorrent"})
+    shodan-query:
+    - title:"qbittorrent"
+    - http.title:"qbittorrent"
     vendor: qbittorrent
     verified: true
   name: qBittorrent Web UI Panel - Detect
   reference:
   - https://www.qbittorrent.org/
   severity: info
-  tags: panel,qbittorrent,detect
+  tags: detect,discovery,panel,qbittorrent

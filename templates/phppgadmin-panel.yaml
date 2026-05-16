@@ -26,13 +26,19 @@ info:
 
     '
   metadata:
+    fofa-query: title=phppgadmin
+    google-query: intitle:phppgadmin
     max-request: 2
     product: phppgadmin
-    shodan-query: http.title:phpPgAdmin
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)phppgadmin"})
+    shodan-query:
+    - http.title:phpPgAdmin
+    - http.title:phppgadmin
+    - cpe:"cpe:2.3:a:phppgadmin_project:phppgadmin"
     vendor: phppgadmin_project
     verified: true
   name: phpPgAdmin Login Panel - Detect
   reference:
   - https://docs.cpanel.net/cpanel/databases/phppgadmin/
   severity: info
-  tags: panel,phppgadmin,phppgadmin_project
+  tags: discovery,panel,phppgadmin,phppgadmin_project

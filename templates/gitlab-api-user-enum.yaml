@@ -27,11 +27,11 @@ http:
     Referer: {{BaseURL}}
 
     '
+  redirects: true
   stop-at-first-match: true
 id: gitlab-api-user-enum
 info:
   author: Suman_Kar
-  description: GitLab - User Information is exposed Via Open API.
   metadata:
     max-request: 100
     shodan-query: http.title:"GitLab"
@@ -39,4 +39,4 @@ info:
   reference:
   - https://gitlab.com/gitlab-org/gitlab-foss/-/issues/40158
   severity: medium
-  tags: gitlab,enum,misconfig,disclosure
+  tags: gitlab,cloud

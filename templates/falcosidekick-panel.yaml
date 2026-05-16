@@ -14,10 +14,11 @@ info:
   description: Falcosidekick UI login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Falcosidekick"})
     shodan-query: http.title:"Falcosidekick"
     verified: true
   name: Falcosidekick UI Login Panel - Detect
   reference:
   - https://github.com/falcosecurity/falcosidekick-ui
   severity: info
-  tags: panel,falco,detect,login
+  tags: panel,falco,detect,login,discovery

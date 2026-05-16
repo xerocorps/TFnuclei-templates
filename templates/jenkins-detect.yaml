@@ -31,9 +31,13 @@ info:
     cpe: cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:*:*:*
   metadata:
     category: devops
+    fofa-query: icon_hash=81586312
     max-request: 2
     product: jenkins
-    shodan-query: http.favicon.hash:81586312
+    shodan-query:
+    - http.favicon.hash:81586312
+    - cpe:"cpe:2.3:a:jenkins:jenkins"
+    - product:"jenkins"
     vendor: jenkins
   name: Jenkins Detection
   reference:
@@ -41,4 +45,4 @@ info:
   - https://github.com/jenkinsci/jenkins/pull/470
   - https://www.jenkins.io/doc/book/security/access-control/permissions/#access-granted-without-overallread
   severity: info
-  tags: tech,jenkins,detect
+  tags: detect,discovery,jenkins,tech

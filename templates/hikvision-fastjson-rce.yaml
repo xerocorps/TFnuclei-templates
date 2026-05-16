@@ -29,6 +29,10 @@ http:
 id: hikvision-fastjson-rce
 info:
   author: SleepingBag945
+  classification:
+    cwe-id:
+    - CWE-502
+    - CWE-94
   description: 'The HIKVISION comprehensive security management platform applyCT has
     a remote command execution vulnerability in a low version of Fastjson, through
     which an attacker can execute arbitrary commands to obtain server privileges
@@ -37,6 +41,7 @@ info:
   metadata:
     fofa-query: app="HIKVISION-iSecure-Center"
     max-request: 1
+    runzero-review: REJECT/2025-11-07/uses interactsh
     verified: true
   name: HIKVISION applyCT Fastjson - Remote Command Execution
   reference:
@@ -44,4 +49,4 @@ info:
   - https://github.com/MrWQ/vulnerability-paper/blob/master/bugs/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86%E7%BB%BC%E5%90%88%E5%AE%89%E9%98%B2%20Fastjson%20%E5%86%85%E5%AD%98%E9%A9%AC%E6%89%93%E6%B3%95.md
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/hikvision-fastjson-rce.yaml
   severity: critical
-  tags: hikvision,fastjson,rce,oast
+  tags: fastjson,hikvision,oast,rce,vuln

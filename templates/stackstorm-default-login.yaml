@@ -30,6 +30,7 @@ id: stackstorm-default-login
 info:
   author: PaperPen
   classification:
+    cpe: cpe:2.3:a:stackstorm:stackstorm:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -37,8 +38,10 @@ info:
   metadata:
     fofa-query: app="stackstorm"
     max-request: 1
+    product: stackstorm
+    vendor: stackstorm
   name: StackStorm Default Login
   reference:
   - https://github.com/StackStorm/st2-docker
   severity: high
-  tags: stackstorm,default-login
+  tags: default-login,stackstorm,vuln

@@ -34,10 +34,10 @@ info:
   metadata:
     fofa-query: title="nginxwebui"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)nginxwebui"})
     shodan-query: title="nginxwebui"
   name: "nginxWebUI \u2264 3.5.0 - Remote Command Execution"
-  reference: '- https://forum.butian.net/article/243
-
-    '
+  reference:
+  - https://forum.butian.net/article/243
   severity: critical
-  tags: nginx,nginxwebui,webui,rce
+  tags: nginx,nginxwebui,webui,rce,vuln

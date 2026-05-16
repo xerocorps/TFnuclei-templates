@@ -21,11 +21,9 @@ info:
   author: DhiyaneshDK
   metadata:
     max-request: 2
-    shodan-query: html:"packages.config"
-    verified: true
   name: NuGet Package.config File Disclosure
   reference:
   - https://learn.microsoft.com/en-us/nuget/reference/packages-config
   - https://github.com/maurosoria/dirsearch/blob/master/db/dicc.txt
   severity: info
-  tags: exposure,sass,devops,cicd,nuget,files
+  tags: dependency,iis,asp,config

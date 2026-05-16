@@ -23,8 +23,12 @@ info:
   metadata:
     max-request: 1
     product: seomatic
-    shodan-query: 'X-Powered-By: Craft CMS'
+    runzero-match: service["product"] contains "CraftCMS:Craft CMS"
+    shodan-query:
+    - 'X-Powered-By: Craft CMS'
+    - 'x-powered-by: craft cms'
+    - 'x-powered-by: craft cms html:"seomatic"'
     vendor: nystudio107
   name: Craft CMS Admin Login Panel - Detect
   severity: info
-  tags: panel,craftcms,nystudio107
+  tags: panel,craftcms,nystudio107,discovery

@@ -7,6 +7,11 @@ http:
     type: word
     words:
     - 'Last-Modified:'
+  - negative: true
+    part: body
+    type: word
+    words:
+    - <html
   matchers-condition: and
   method: GET
   path:

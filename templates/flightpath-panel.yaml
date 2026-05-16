@@ -20,7 +20,8 @@ info:
   description: FlightPath login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)flightpath"})
     shodan-query: http.title:"flightpath"
   name: FlightPath Login Panel - Detect
   severity: info
-  tags: panel,flightpath
+  tags: panel,flightpath,discovery

@@ -20,13 +20,22 @@ info:
     cwe-id: CWE-200
   description: An Amcrest LDAP user login was discovered.
   metadata:
-    google-query: intext:"amcrest" "LDAP User"
+    fofa-query:
+    - body="amcrest" "ldap user"
+    - body="amcrest"
+    google-query:
+    - intext:"amcrest" "LDAP User"
+    - intext:"amcrest" "ldap user"
     max-request: 1
     product: ip2m-853ew
-    shodan-query: html:"amcrest"
+    runzero-match: service["http.body"] matches "(?i)amcrest"
+    shodan-query:
+    - html:"amcrest"
+    - http.html:"amcrest" "ldap user"
+    - http.html:"amcrest"
     vendor: amcrest
   name: Amcrest Login
   reference:
   - https://www.exploit-db.com/ghdb/7273
   severity: info
-  tags: panel,camera,amcrest,edb
+  tags: amcrest,camera,discovery,edb,panel

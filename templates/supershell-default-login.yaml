@@ -33,10 +33,11 @@ info:
   metadata:
     fofa-query: title="supershell"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)supershell"})
     verified: true
   name: Supershell - Default Login
   reference:
   - https://github.com/tdragon6/Supershell
   - https://www.ctfiot.com/129689.html
   severity: high
-  tags: supershell,default-login
+  tags: default-login,supershell,vuln

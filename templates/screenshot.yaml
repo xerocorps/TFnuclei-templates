@@ -4,23 +4,21 @@ headless:
     args:
       key: User-Agent
       part: request
-      value: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:111.0) Gecko/20100101 Firefox/111.0
+      value: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0
   - action: navigate
     args:
       url: '{{BaseURL}}'
   - action: waitload
   - action: screenshot
     args:
-      fullpage: 'true'
-      mkdir: 'true'
-      to: '{{dir}}/{{filename}}'
+      fullpage: true
+      to: '{{file}}'
 id: screenshot
 info:
-  author: V0idC0de,righettod,tarunKoyalwar
+  author: V0idC0de,righettod
   description: Takes a screenshot of the specified URLS.
-  name: Headless Http Screenshot
+  name: Headless Screenshotter
   severity: info
   tags: headless,screenshot
 variables:
-  dir: screenshots
-  filename: '{{replace(BaseURL,"/","_")}}'
+  file: '{{Hostname}}'

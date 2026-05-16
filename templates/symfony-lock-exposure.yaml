@@ -28,6 +28,7 @@ info:
     fofa-query: body="symfony.lock"
     max-request: 1
     product: symfony
+    runzero-match: service["http.body"] matches "(?i)symfony\\.lock"
     shodan-query: http.component:"symfony"
     vendor: symfony
     verified: true

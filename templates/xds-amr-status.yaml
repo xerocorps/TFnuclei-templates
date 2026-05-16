@@ -25,7 +25,8 @@ info:
   description: XDS-AMR Status login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)XDS-AMR - status"})
     shodan-query: http.title:"XDS-AMR - status"
   name: XDS-AMR Status Login Panel - Detect
   severity: info
-  tags: panel,tech,xamr,xds
+  tags: panel,tech,xamr,xds,discovery

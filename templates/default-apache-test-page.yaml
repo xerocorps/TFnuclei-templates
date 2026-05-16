@@ -10,9 +10,13 @@ http:
 id: default-apache-test-page
 info:
   author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: http_server
     shodan-query: http.title:"Apache HTTP Server Test Page powered by CentOS"
+    vendor: apache
   name: Apache HTTP Server Test Page
   severity: info
-  tags: tech,apache
+  tags: tech,apache,discovery

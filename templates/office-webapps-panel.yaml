@@ -27,13 +27,17 @@ info:
     cwe-id: CWE-668
   description: Microsoft Office Web App Login Panel was discovered.
   metadata:
+    fofa-query: body="provide a link that opens word"
     max-request: 2
     product: office_web_apps_server
-    shodan-query: html:"Provide a link that opens Word"
+    runzero-match: service["http.body"] matches "(?i)provide a link that opens word"
+    shodan-query:
+    - html:"Provide a link that opens Word"
+    - http.html:"provide a link that opens word"
     vendor: microsoft
     verified: true
   name: Office Web Apps Server Panel - Detect
   reference:
   - https://www.microsoft.com/en-in/microsoft-365/free-office-online-for-the-web
   severity: info
-  tags: panel,office-webapps,login,microsoft
+  tags: discovery,login,microsoft,office-webapps,panel

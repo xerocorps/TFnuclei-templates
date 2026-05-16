@@ -22,6 +22,7 @@ info:
   metadata:
     fofa-query: body="Install Fork CMS"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Install Fork CMS"
     verified: true
   name: Fork CMS - Installer
   severity: critical

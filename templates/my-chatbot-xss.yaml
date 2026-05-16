@@ -39,14 +39,15 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79
+    cwe-id: CWE-79,CWE-80
   description: WordPress My Chatbot <= 1.1  is susceptible to cross-site scripting.
     The plugin does not sanitize or escape its tab parameter in the Settings page
     before outputting it back in an attribute.
   metadata:
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
   name: WordPress My Chatbot <= 1.1 - Cross-Site Scripting
   reference:
   - https://wpscan.com/vulnerability/c0b6f63b-95d1-4782-9554-975d6d7bbd3d
   severity: high
-  tags: wordpress,wp-plugin,xss,authenticated,wpscan
+  tags: authenticated,vuln,wordpress,wp-plugin,wpscan,xss

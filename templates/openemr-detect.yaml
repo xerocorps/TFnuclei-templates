@@ -20,11 +20,23 @@ info:
     cwe-id: CWE-200
   description: OpenEMR Product Registration panel was detected.
   metadata:
-    fofa-query: app="OpenEMR"
+    fofa-query:
+    - app="OpenEMR"
+    - body="openemr"
+    - title="openemr"
+    - app="openemr"
+    - icon_hash=1971268439
+    google-query: intitle:"openemr"
     max-request: 1
     product: openemr
-    shodan-query: http.html:"OpenEMR"
+    runzero-match: service["http.body"] matches "(?i)openemr" || any(each(service["html.titles"]),
+      {# matches "(?i)openemr"}) || service["favicon.ico.image.mmh3"] == "1971268439"
+    shodan-query:
+    - http.html:"OpenEMR"
+    - http.html:"openemr"
+    - http.title:"openemr"
+    - http.favicon.hash:1971268439
     vendor: open-emr
   name: OpenEMR Product Registration Panel - Detect
   severity: info
-  tags: panel,openemr,open-emr
+  tags: discovery,open-emr,openemr,panel

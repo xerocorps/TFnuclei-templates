@@ -32,9 +32,13 @@ info:
 
     '
   metadata:
+    fofa-query: body="jboss ws"
     max-request: 2
     product: jboss_enterprise_web_platform
-    shodan-query: html:"JBoss WS"
+    runzero-match: service["http.body"] matches "(?i)jboss ws"
+    shodan-query:
+    - html:"JBoss WS"
+    - http.html:"jboss ws"
     vendor: redhat
     verified: true
   name: JBoss WS JUDDI Console Panel - Detect
@@ -42,4 +46,4 @@ info:
   - https://github.com/ilmila/J2EEScan/blob/master/src/main/java/burp/j2ee/issues/impl/JBossJuddi.java
   remediation: Restrict access to the service if not needed.
   severity: info
-  tags: panel,jboss,juddi,redhat
+  tags: discovery,jboss,juddi,panel,redhat

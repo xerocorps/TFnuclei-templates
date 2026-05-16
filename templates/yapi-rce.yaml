@@ -103,6 +103,7 @@ info:
     execute arbitrary code.
   metadata:
     max-request: 7
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
   name: Yapi - Remote Code Execution
   reference:
   - https://www.secpulse.com/archives/162502.html
@@ -110,4 +111,4 @@ info:
   - https://twitter.com/sec715/status/1415484190561161216
   - https://github.com/YMFE/yapi
   severity: critical
-  tags: yapi,rce,intrusive
+  tags: yapi,rce,intrusive,vuln

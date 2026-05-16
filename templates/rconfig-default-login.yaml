@@ -42,6 +42,8 @@ http:
 id: rconfig-default-login
 info:
   author: theamanrawat
+  classification:
+    cpe: cpe:2.3:a:rconfig:rconfig:*:*:*:*:*:*:*:*
   description: 'rConfig contains default credentials. An attacker can obtain access
     to user accounts and access sensitive information, modify data, and/or execute
     unauthorized operations.
@@ -49,10 +51,13 @@ info:
     '
   metadata:
     max-request: 2
+    product: rconfig
+    runzero-match: any(each(service["html.titles"]), {# matches "rConfig"})
     shodan-query: http.title:"rConfig"
+    vendor: rconfig
     verified: true
   name: rConfig - Default Login
   reference:
   - https://github.com/rconfig/rconfig
   severity: high
-  tags: rconfig,default-login
+  tags: default-login,rconfig,vuln

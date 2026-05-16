@@ -10,9 +10,13 @@ http:
 id: default-django-page
 info:
   author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:djangoproject:django:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: django
     shodan-query: http.title:"The install worked successfully! Congratulations!"
+    vendor: djangoproject
   name: Django Default Page
   severity: info
-  tags: tech,django
+  tags: tech,django,discovery

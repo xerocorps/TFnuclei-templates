@@ -1,5 +1,6 @@
 http:
 - attack: pitchfork
+  cookie-reuse: true
   extractors:
   - group: 1
     internal: true
@@ -33,8 +34,11 @@ http:
   payloads:
     pass:
     - glpi
+    - password
+    - admin
     user:
     - glpi
+    - admin
   raw:
   - 'GET / HTTP/1.1
 
@@ -63,8 +67,6 @@ info:
   description: GLPI default login credentials were discovered. GLPI is an ITSM software
     tool that helps you plan and manage IT changes. This template checks if a default
     super admin account (glpi/glpi) is enabled.
-  metadata:
-    max-request: 2
   name: GLPI Default Login
   reference:
   - https://glpi-project.org/

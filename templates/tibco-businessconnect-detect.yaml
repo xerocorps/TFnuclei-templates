@@ -11,15 +11,19 @@ http:
 id: tibco-businessconnect-detect
 info:
   author: righettod
+  classification:
+    cpe: cpe:2.3:a:tibco:businessconnect:*:*:*:*:*:*:*:*
   description: 'TIBCO BusinessConnect technology was detected.
 
     '
   metadata:
     max-request: 1
+    product: businessconnect
     shodan-query: http.html:"TIBCO BusinessConnect"
+    vendor: tibco
     verified: true
   name: TIBCO BusinessConnect - Detect
   reference:
   - https://www.tibco.com/products/tibco-businessconnect
   severity: info
-  tags: tibco,detect,tech
+  tags: tibco,detect,tech,discovery

@@ -27,6 +27,7 @@ info:
     vulnerability.
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-07/uses interactsh
   name: Fastjson 1.2.47 - Remote Code Execution
   reference:
   - https://github.com/vulhub/vulhub/tree/master/fastjson/1.2.47-rce
@@ -34,4 +35,4 @@ info:
   - https://cert.360.cn/warning/detail?id=7240aeab581c6dc2c9c5350756079955
   - https://github.com/wyzxxz/fastjson_rce_tool
   severity: critical
-  tags: rce,deserialization,oast,vulhub,fastjson
+  tags: rce,deserialization,oast,vulhub,fastjson,vuln

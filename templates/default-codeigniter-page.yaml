@@ -13,9 +13,13 @@ http:
 id: default-codeigniter-page
 info:
   author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:codeigniter:codeigniter:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: codeigniter
     shodan-query: http.title:"Welcome to CodeIgniter"
+    vendor: codeigniter
   name: Default CodeIgniter Page
   severity: info
-  tags: tech,codeigniter
+  tags: tech,codeigniter,discovery

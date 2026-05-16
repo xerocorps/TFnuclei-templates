@@ -37,6 +37,7 @@ info:
   metadata:
     fofa-query: app="Yacht"
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-503392394"
     verified: true
     zoomeye-query: app="Yacht"
   name: Yacht - Default Login
@@ -44,7 +45,7 @@ info:
   - https://github.com/SelfhostedPro/Yacht
   - https://dev.yacht.sh/docs/Installation/Getting_Started
   severity: high
-  tags: default-login,yacht,misconfig,vuln
+  tags: default-login,misconfig,vuln,yacht
 variables:
   password: pass
   username: admin@yacht.local

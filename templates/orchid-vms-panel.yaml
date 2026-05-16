@@ -20,10 +20,15 @@ info:
     cwe-id: CWE-200
   description: Orchid Core VMS panel was detected.
   metadata:
+    fofa-query: title="orchid core vms"
+    google-query: intitle:"orchid core vms"
     max-request: 1
     product: orchid_core_vms
-    shodan-query: http.title:"Orchid Core VMS"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)orchid core vms"})
+    shodan-query:
+    - http.title:"Orchid Core VMS"
+    - http.title:"orchid core vms"
     vendor: ipconfigure
   name: Orchid Core VMS Panel - Detect
   severity: info
-  tags: panel,orchid,ipconfigure
+  tags: discovery,ipconfigure,orchid,panel

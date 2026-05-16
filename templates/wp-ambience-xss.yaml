@@ -1,4 +1,13 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - internal: true
+    type: word
+    words:
+    - /wp-content/themes/ambience/
+  method: GET
+  path:
+  - '{{BaseURL}}'
 - matchers:
   - part: body
     type: word
@@ -27,10 +36,10 @@ info:
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
   name: WordPress Ambience Theme <=1.0 - Cross-Site Scripting
   reference:
   - https://www.exploit-db.com/expl oits/38568
   - https://wpscan.com/vulnerability/c465e5c1-fe43-40e9-894a-97b8ac462381
   severity: medium
-  tags: wp-plugin,wp,edb,wpscan,wordpress,xss
+  tags: wp-plugin,wp,edb,wpscan,wordpress,xss,vuln

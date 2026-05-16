@@ -14,13 +14,18 @@ id: veeam-backup-gcp
 info:
   author: DhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:veeam:veeam_backup_for_google_cloud:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Veeam Backup for Google Cloud Platform panel was detected.
   metadata:
     max-request: 1
+    product: veeam_backup_for_google_cloud
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Veeam Backup
+      for GCP"})
     shodan-query: title:"Veeam Backup for GCP"
+    vendor: veeam
     verified: true
   name: Veeam Backup for Google Cloud Platform Panel - Detect
   severity: info
-  tags: panel,google,cloud
+  tags: cloud,discovery,google,panel

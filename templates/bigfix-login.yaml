@@ -17,15 +17,19 @@ id: bigfix-login
 info:
   author: idealphase
   classification:
+    cpe: cpe:2.3:a:hcltech:bigfix_mobile:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: HCL BigFix login panel was detected.
   metadata:
     google-query: intitle:"BigFix"
     max-request: 1
+    product: bigfix_mobile
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)BigFix"})
     shodan-query: http.title:"BigFix"
+    vendor: hcltech
   name: HCL BigFix Login Panel - Detect
   reference:
   - https://www.hcltechsw.com/bigfix
   severity: info
-  tags: panel,bigfix
+  tags: bigfix,discovery,panel

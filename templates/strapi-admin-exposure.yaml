@@ -5,13 +5,17 @@ info:
   severity: info
   tags: panel
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - type: word
     words:
     - <title>Strapi Admin</title>
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
   raw:
   - 'GET /admin/auth/login HTTP/1.1
 
-    Host: {{Hostname}}
+    Host: {{Subdomains}}
 
     '
+  threads: 100

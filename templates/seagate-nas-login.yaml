@@ -20,11 +20,17 @@ info:
 
     '
   metadata:
+    fofa-query: title="seagate nas - seagate"
+    google-query: intitle:"seagate nas - seagate"
     max-request: 1
     product: nas_os
-    shodan-query: title:"Seagate NAS - SEAGATE"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)seagate nas -
+      seagate"})
+    shodan-query:
+    - title:"Seagate NAS - SEAGATE"
+    - http.title:"seagate nas - seagate"
     vendor: seagate
     verified: true
   name: Seagate NAS Login - Detect
   severity: info
-  tags: panel,seagate,login
+  tags: discovery,login,panel,seagate

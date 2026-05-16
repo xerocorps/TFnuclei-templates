@@ -22,13 +22,25 @@ info:
 
     '
   metadata:
+    fofa-query:
+    - title="photo station"
+    - title="qnap"
+    google-query:
+    - intitle:"qnap"
+    - intitle:"photo station"
     max-request: 1
     product: photo_station
-    shodan-query: http.title:"Photo Station"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)photo station"})
+      || any(each(service["html.titles"]), {# matches "(?i)qnap"})
+    shodan-query:
+    - http.title:"Photo Station"
+    - http.title:"photo station"
+    - http.title:"qnap"
+    - 'content-length: 580 "http server 1.0"'
     vendor: qnap
     verified: true
   name: QNAP Photo Station Panel - Detect
   reference:
   - https://www.qnap.com/th-th/software/photo-station
   severity: info
-  tags: panel,photostation,qnap
+  tags: discovery,panel,photostation,qnap

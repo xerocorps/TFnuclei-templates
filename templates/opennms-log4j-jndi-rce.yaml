@@ -59,7 +59,7 @@ info:
   - https://logging.apache.org/log4j/2.x/security.html
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   severity: critical
-  tags: jndi,log4j,rce,opennms,cve,cve2021,kev,oast
+  tags: log4j,rce
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

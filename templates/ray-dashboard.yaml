@@ -1,11 +1,9 @@
 http:
 - matchers:
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - Ray Dashboard
-    - webpackJsonpray-dashboard-client
   - status:
     - 200
     type: status
@@ -16,11 +14,20 @@ http:
 id: ray-dashboard
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:ray_project:ray:*:*:*:*:*:*:*:*
   description: Ray Dashboard is exposed.
   metadata:
+    fofa-query:
+    - icon_hash=463802404
+    - body="ray dashboard"
     max-request: 1
-    shodan-query: title:"Ray Dashboard"
+    product: ray
+    shodan-query:
+    - http.favicon.hash:463802404
+    - http.html:"ray dashboard"
+    vendor: ray_project
     verified: true
   name: Ray Dashboard Exposure
   severity: critical
-  tags: misconfig,exposure,ray
+  tags: misconfig,exposure,ray,discovery

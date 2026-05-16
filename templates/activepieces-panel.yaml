@@ -24,6 +24,7 @@ info:
   metadata:
     max-request: 1
     product: activepieces
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Activepieces"})
     shodan-query: http.title:"Activepieces"
     vendor: Activepieces
     verified: true
@@ -32,4 +33,4 @@ info:
   - https://github.com/activepieces/activepieces
   - https://www.activepieces.com/
   severity: info
-  tags: panel,activepieces,automation,ai,detect,discovery
+  tags: activepieces,ai,automation,detect,discovery,panel

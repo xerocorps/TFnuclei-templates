@@ -12,6 +12,15 @@ http:
     type: word
     words:
     - lvm_
+    - kube
+    - namedprocess
+    - mysqld
+    - collectd_
+    - libvirt_
+    - mongodb
+    - blackbox_
+    - haproxy_
+    - rabbitmq_
   - status:
     - 200
     type: status
@@ -36,4 +45,4 @@ info:
   - https://github.com/prometheus/prometheus
   - https://hackerone.com/reports/1026196
   severity: medium
-  tags: exposure,prometheus,hackerone,config
+  tags: exposure,prometheus,hackerone,config,vuln

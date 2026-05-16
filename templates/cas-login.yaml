@@ -17,11 +17,16 @@ info:
     cwe-id: CWE-200
   description: CAS login panel was detected.
   metadata:
+    fofa-query: title='cas - central authentication service'
     github: https://github.com/apereo/cas
+    google-query: intitle:'cas - central authentication service'
     max-request: 1
     product: central_authentication_service
-    shodan-query: http.title:'CAS - Central Authentication Service'
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)'cas"})
+    shodan-query:
+    - http.title:'CAS - Central Authentication Service'
+    - http.title:'cas - central authentication service'
     vendor: apereo
   name: CAS Login Panel - Detect
   severity: info
-  tags: apereo,cas,panel,login
+  tags: apereo,cas,discovery,login,panel

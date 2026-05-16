@@ -24,10 +24,11 @@ info:
     '
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Skeepers"})
     shodan-query: http.title:"Skeepers"
     verified: true
   name: Skeepers Login Panel - Detect
   reference:
   - https://skeepers.io
   severity: info
-  tags: panel,skeepers,login,detect
+  tags: panel,skeepers,login,detect,discovery

@@ -71,17 +71,21 @@ http:
 id: graylog-api-exposure
 info:
   author: Arqsz
+  classification:
+    cpe: cpe:2.3:a:graylog:graylog:*:*:*:*:*:*:*:*
   description: 'Graylog is a centralized log management solution. According to the
     official documentation, it exposes multiple endpoints (some by default).
 
     '
   metadata:
     max-request: 50
+    product: graylog
     shodan-query: Graylog
+    vendor: graylog
     verified: true
   name: Graylog REST API Endpoints - Exposure
   reference:
   - https://go2docs.graylog.org/5-0/setting_up_graylog/rest_api.html
   - https://gist.github.com/asachs01/f1f317b2924a688deb8ed2520a4520bd
   severity: info
-  tags: tech,graylog,api,swagger,fuzz
+  tags: tech,graylog,api,swagger,fuzz,discovery

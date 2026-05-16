@@ -16,11 +16,15 @@ http:
 id: rabbitmq-exporter-metrics
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:vmware:rabbitmq:*:*:*:*:*:*:*:*
   description: RabbitMQ Exporter is exposed.
   metadata:
     max-request: 1
+    product: rabbitmq
     shodan-query: title:"RabbitMQ Exporter"
+    vendor: vmware
     verified: true
   name: RabbitMQ Exporter
   severity: low
-  tags: rabbitmq,exposure,debug,misconfig
+  tags: rabbitmq,exposure,debug,misconfig,vuln

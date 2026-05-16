@@ -20,11 +20,13 @@ info:
     cwe-id: CWE-200
   description: Virtua Software panel was detected.
   metadata:
+    fofa-query: icon_hash=876876147
     max-request: 1
     product: cobranca
+    runzero-match: service["favicon.ico.image.mmh3"] == "876876147"
     shodan-query: http.favicon.hash:876876147
     vendor: virtuasoftware
     verified: true
   name: Virtua Software Panel - Detect
   severity: info
-  tags: panel,virtua,virtuasoftware
+  tags: discovery,panel,virtua,virtuasoftware

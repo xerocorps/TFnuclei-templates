@@ -1,6 +1,6 @@
 flow: http(1) && http(2)
 http:
-- extractors:
+- matchers:
   - internal: true
     name: token
     part: body
@@ -10,7 +10,12 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-- matchers:
+- disable-path-automerge: true
+  extractors:
+  - dsl:
+    - token
+    type: dsl
+  matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -29,7 +34,6 @@ http:
     Accept: application/json
 
     '
-  self-contained: true
 id: stackhawk-api
 info:
   author: DhiyaneshDK
@@ -40,5 +44,6 @@ info:
   reference:
   - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/stackhawk.yml
   - https://apidocs.stackhawk.com/reference/login
+  - https://docs.stackhawk.com/web-app/
   severity: high
-  tags: stackhawk,token,exposure
+  tags: stackhawk,token,exposure,vuln

@@ -16,11 +16,15 @@ http:
 id: docmosis-tornado-server
 info:
   author: tess
+  classification:
+    cpe: cpe:2.3:a:docmosis:tornado:*:*:*:*:*:*:*:*
   description: Docmosis Tornado Server is exposed.
   metadata:
     max-request: 1
+    product: tornado
     shodan-query: title:"Docmosis Tornado"
+    vendor: docmosis
     verified: true
   name: Docmosis Tornado Server Exposure
   severity: low
-  tags: misconfig,tornado,exposure
+  tags: misconfig,tornado,exposure,vuln

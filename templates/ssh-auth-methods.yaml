@@ -17,7 +17,7 @@ info:
   reference:
   - https://nmap.org/nsedoc/scripts/ssh-auth-methods.html
   severity: info
-  tags: js,detect,ssh,enum,network
+  tags: js,detect,ssh,enum,network,discovery
 javascript:
 - args:
     Host: '{{Host}}'
@@ -35,3 +35,6 @@ javascript:
   - json:
     - .UserAuth
     type: json
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

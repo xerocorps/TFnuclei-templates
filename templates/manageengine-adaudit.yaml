@@ -25,10 +25,14 @@ info:
 
     '
   metadata:
+    fofa-query: title="adaudit plus" || http.title:"manageengine - admanager plus"
+    google-query: intitle:"adaudit plus" || http.title:"manageengine - admanager plus"
     max-request: 2
     product: manageengine_adaudit_plus
-    shodan-query: http.title:"ADAudit Plus" || http.title:"ManageEngine - ADManager
-      Plus"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)adaudit plus"})
+    shodan-query:
+    - http.title:"ADAudit Plus" || http.title:"ManageEngine - ADManager Plus"
+    - http.title:"adaudit plus" || http.title:"manageengine - admanager plus"
     vendor: zohocorp
     verified: true
   name: ZOHO ManageEngine ADAudit/ADManager Panel - Detect
@@ -36,4 +40,4 @@ info:
   - https://www.manageengine.com/products/active-directory-audit/
   - https://www.manageengine.com/products/ad-manager/
   severity: info
-  tags: panel,zoho,manageengine,zohocorp
+  tags: discovery,manageengine,panel,zoho,zohocorp

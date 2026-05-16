@@ -36,8 +36,10 @@ info:
     server could change the default password.
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "Integrated (?:Dell
+      )?Remote Access Controller"})
   name: Dell iDRAC6/7/8 Default Login
   reference:
   - https://securityforeveryone.com/tools/dell-idrac6-7-8-default-login-scanner
   severity: high
-  tags: dell,idrac,default-login
+  tags: default-login,dell,idrac,vuln

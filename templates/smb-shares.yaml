@@ -8,19 +8,22 @@ info:
     '
   metadata:
     max-request: 1
+    product: dionaea
     shodan-query: port:445
+    vendor: dionaea
     verified: true
   name: SMB Shares - Enumeration
   reference:
   - https://nmap.org/nsedoc/scripts/smb-enum-shares.html
   severity: low
-  tags: js,network,smb,enum
+  tags: js,network,smb,enum,auth,vuln
 javascript:
 - args:
     Host: '{{Host}}'
-    Pass: test
+    Pass: '{{passwords}}'
     Port: '445'
-    User: test
+    User: '{{usernames}}'
+  attack: clusterbomb
   code: 'var m = require("nuclei/smb");
 
     var c = m.SMBClient();
@@ -31,6 +34,27 @@ javascript:
 
     '
   extractors:
-  - json:
-    - .[]
-    type: json
+  - dsl:
+    - response
+    type: dsl
+  matchers:
+  - condition: and
+    dsl:
+    - response != "[]"
+    - success == true
+    type: dsl
+  payloads:
+    passwords:
+    - ' '
+    - admin
+    - password
+    - guest
+    usernames:
+    - ' '
+    - admin
+    - administrator
+    - guest
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '
+  stop-at-first-match: true

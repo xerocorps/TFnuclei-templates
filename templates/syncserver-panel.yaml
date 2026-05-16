@@ -25,11 +25,15 @@ info:
   classification:
     cpe: cpe:2.3:o:microchip:syncserver_s650_firmware:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: body="symmetricom syncserver"
     max-request: 1
     product: syncserver_s650_firmware
-    shodan-query: html:"Symmetricom SyncServer"
+    runzero-match: service["http.body"] matches "(?i)symmetricom syncserver"
+    shodan-query:
+    - html:"Symmetricom SyncServer"
+    - http.html:"symmetricom syncserver"
     vendor: microchip
     verified: true
   name: Symmetricom SyncServer Panel - Detect
   severity: info
-  tags: panel,login,syncserver,symmetricom,detect,microchip
+  tags: detect,discovery,login,microchip,panel,symmetricom,syncserver

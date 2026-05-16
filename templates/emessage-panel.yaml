@@ -20,6 +20,7 @@ info:
   metadata:
     fofa-query: title="emessage"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)emessage"})
   name: eMessage Login Panel - Detect
   severity: info
-  tags: panel,emessage
+  tags: panel,emessage,discovery

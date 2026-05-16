@@ -22,8 +22,9 @@ info:
   description: NP Data Cache panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)NP Data Cache"})
     shodan-query: title:"NP Data Cache"
     verified: true
   name: NP Data Cache Panel - Detect
   severity: info
-  tags: np,panel,cache
+  tags: np,panel,cache,discovery

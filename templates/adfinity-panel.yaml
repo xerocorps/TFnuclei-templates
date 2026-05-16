@@ -23,6 +23,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Adfinity"
     shodan-query: http.html:"Adfinity"
     verified: true
   name: Adfinity Login Panel - Detect

@@ -30,6 +30,7 @@ info:
   metadata:
     fofa-query: body="/plugins/generic/tinymce/plugins/justboil.me/"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)/plugins/generic/tinymce/plugins/justboil\\.me/"
     shodan-query: inurl:"/plugins/generic/tinymce/plugins/justboil.me/"
     verified: true
   name: JustBoil.me Images Plugin - Exposed Image Upload

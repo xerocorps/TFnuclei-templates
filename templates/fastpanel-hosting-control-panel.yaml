@@ -20,8 +20,10 @@ info:
   description: FASTPANEL login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)FASTPANEL HOSTING
+      CONTROL"})
     shodan-query: title:"FASTPANEL HOSTING CONTROL"
     verified: true
   name: FASTPANEL Login Panel - Detect
   severity: info
-  tags: panel,fastpanel
+  tags: panel,fastpanel,discovery

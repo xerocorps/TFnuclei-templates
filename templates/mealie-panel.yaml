@@ -39,6 +39,7 @@ info:
     fofa-query: title="Mealie"
     max-request: 2
     product: mealie
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Mealie"})
     shodan-query: http.title:"Mealie"
     vendor: mealie-recipes
     verified: true
@@ -47,4 +48,4 @@ info:
   - https://github.com/mealie-recipes/mealie
   - https://mealie.io/
   severity: info
-  tags: panel,mealie,recipe,selfhosted,detect,discovery
+  tags: detect,discovery,mealie,panel,recipe,selfhosted

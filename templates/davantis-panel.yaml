@@ -19,8 +19,9 @@ info:
   description: Davantis Video Analytics panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Davantis"})
     shodan-query: http.title:"Davantis"
     verified: true
   name: Davantis Video Analytics Panel - Detect
   severity: info
-  tags: panel,davantis
+  tags: panel,davantis,discovery

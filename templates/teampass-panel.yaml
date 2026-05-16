@@ -23,11 +23,13 @@ info:
     cwe-id: CWE-200
   description: TeamPass panel was detected.
   metadata:
+    fofa-query: body="teampass"
     max-request: 2
     product: teampass
+    runzero-match: service["http.body"] matches "(?i)teampass"
     shodan-query: http.html:"teampass"
     vendor: teampass
     verified: true
   name: TeamPass Panel - Detect
   severity: info
-  tags: panel,teampass
+  tags: panel,teampass,discovery

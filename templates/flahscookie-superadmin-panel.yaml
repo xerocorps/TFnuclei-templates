@@ -19,8 +19,9 @@ info:
   description: Flahscookie Superadmin login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Flahscookie Superadmin"})
     shodan-query: title:"Flahscookie Superadmin"
     verified: true
   name: Flahscookie Superadmin Login Panel - Detect
   severity: info
-  tags: panel,flahscookie,superadmin
+  tags: panel,flahscookie,superadmin,discovery

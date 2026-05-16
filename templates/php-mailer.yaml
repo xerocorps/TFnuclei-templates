@@ -15,13 +15,17 @@ id: php-mailer
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:phpmailer_project:phpmailer:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: PHPMailer panel was detected.
   metadata:
     max-request: 1
+    product: phpmailer
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)PHP Mailer"})
     shodan-query: http.title:"PHP Mailer"
+    vendor: phpmailer_project
     verified: true
   name: PHPMailer Panel - Detect
   severity: info
-  tags: panel,php,mailer
+  tags: discovery,mailer,panel,php

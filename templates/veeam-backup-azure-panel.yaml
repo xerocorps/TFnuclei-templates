@@ -19,7 +19,9 @@ info:
   description: Veeam Backup for Microsoft Azure panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Veeam Backup
+      for Microsoft Azure"})
     shodan-query: title:"Veeam Backup for Microsoft Azure"
   name: Veeam Backup for Microsoft Azure Panel - Detect
   severity: info
-  tags: azure,panel,backup,veeam,microsoft
+  tags: azure,panel,backup,veeam,microsoft,discovery

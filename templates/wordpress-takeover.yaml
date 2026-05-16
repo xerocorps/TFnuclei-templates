@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -27,4 +31,4 @@ info:
   - https://github.com/EdOverflow/can-i-take-over-xyz/pull/176
   - https://hackerone.com/reports/274336
   severity: high
-  tags: takeover,wordpress,hackerone
+  tags: takeover,wordpress,hackerone,vuln

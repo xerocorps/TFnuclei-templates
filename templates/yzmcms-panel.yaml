@@ -22,10 +22,15 @@ info:
     cwe-id: CWE-200
   description: YzmCMS login panel was detected.
   metadata:
+    fofa-query: title="yzmcms"
+    google-query: intitle:"yzmcms"
     max-request: 1
     product: yzmcms
-    shodan-query: http.title:"YzmCMS"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)yzmcms"})
+    shodan-query:
+    - http.title:"YzmCMS"
+    - http.title:"yzmcms"
     vendor: yzmcms
   name: YzmCMS Login Panel - Detect
   severity: info
-  tags: panel,yzmcms,login
+  tags: discovery,login,panel,yzmcms

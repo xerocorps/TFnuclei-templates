@@ -22,11 +22,16 @@ http:
 id: unibox-panel
 info:
   author: theamanrawat
+  classification:
+    cpe: cpe:2.3:h:indionetworks:unibox:*:*:*:*:*:*:*:*
   description: Unibox Administrator panel was detected.
   metadata:
     max-request: 1
+    product: unibox
+    runzero-match: service["favicon.ico.image.mmh3"] == "176427349"
     shodan-query: http.favicon.hash:176427349
+    vendor: indionetworks
     verified: true
   name: Unibox Panel - Detect
   severity: info
-  tags: panel,unibox,login
+  tags: panel,unibox,login,discovery

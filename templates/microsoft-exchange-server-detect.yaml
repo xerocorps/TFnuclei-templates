@@ -9,8 +9,7 @@ info:
   reference: https://github.com/GossiTheDog/scanning/blob/main/http-vuln-exchange.nse
   severity: info
 requests:
-- attack: sniper
-  extractors:
+- extractors:
   - kval:
     - X-Owa-Version
     part: header
@@ -24,18 +23,6 @@ requests:
     - (X-Owa-Version:|/owa/auth/15.2.*|/owa/auth/15.1.*|/owa/auth/15.0.*|/owa/auth/14.0.*)
     type: regex
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /owa/auth/logon.aspx HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/owa/auth/logon.aspx'

@@ -14,6 +14,7 @@ requests:
     regex:
     - AIza[0-9A-Za-z\-_]{35}
     type: regex
+  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}'

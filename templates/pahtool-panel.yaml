@@ -22,10 +22,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)PAHTool"})
     shodan-query: http.title:"PAHTool"
     verified: true
   name: PAHTool Login Panel - Detect
   reference:
   - http://www.inovultus.com/index.html
   severity: info
-  tags: panel,pahtool,login,detect
+  tags: panel,pahtool,login,detect,discovery

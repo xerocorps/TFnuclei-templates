@@ -21,10 +21,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)GitHub Enterprise"})
     shodan-query: title:"GitHub Enterprise"
     verified: true
   name: GitHub Enterprise - Encrypted SAML
   reference:
   - https://docs.github.com/en/enterprise-server@3.10/admin/managing-iam/using-saml-for-enterprise-iam/enabling-encrypted-assertions
   severity: info
-  tags: github,ghe,saml
+  tags: github,ghe,saml,discovery

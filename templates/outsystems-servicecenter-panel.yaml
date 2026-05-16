@@ -29,6 +29,7 @@ info:
   metadata:
     max-request: 2
     product: platform_server
+    runzero-match: service["http.body"] matches "(?i)outsystems"
     shodan-query: http.html:"outsystems"
     vendor: outsystems
     verified: true
@@ -36,4 +37,4 @@ info:
   reference:
   - https://www.outsystems.com/
   severity: info
-  tags: panel,outsystems,login,detect
+  tags: panel,outsystems,login,detect,discovery

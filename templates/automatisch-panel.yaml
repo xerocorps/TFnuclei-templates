@@ -20,6 +20,7 @@ info:
     '
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Automatisch"})
     shodan-query: title:"Automatisch"
     verified: true
   name: Automatisch Panel - Detect
@@ -27,4 +28,4 @@ info:
   - https://automatisch.io/
   - https://github.com/automatisch/automatisch
   severity: info
-  tags: panel,automatisch,detect
+  tags: panel,automatisch,detect,discovery

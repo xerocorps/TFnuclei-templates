@@ -12,11 +12,10 @@ info:
     shodan-query: RTSP/1.0
     verified: true
   name: RTSP - Detect
-  reference: 'https://nmap.org/nsedoc/scripts/rtsp-methods.html
-
-    '
+  reference:
+  - https://nmap.org/nsedoc/scripts/rtsp-methods.html
   severity: info
-  tags: network,rtsp,detect
+  tags: network,rtsp,detect,detection,tcp,discovery
 tcp:
 - host:
   - '{{Hostname}}'

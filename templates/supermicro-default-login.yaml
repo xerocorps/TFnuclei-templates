@@ -36,8 +36,9 @@ info:
   description: Supermicro Ipmi default admin login credentials were successful.
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.bodies"]), {# matches "/cgi/login.cgi"})
   name: Supermicro Ipmi - Default Admin Login
   reference:
   - https://www.gearprimer.com/wiki/supermicro-ipmi-default-username-pasword/
   severity: high
-  tags: supermicro,default-login
+  tags: default-login,supermicro,vuln

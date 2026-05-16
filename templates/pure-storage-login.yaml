@@ -19,10 +19,16 @@ info:
     cwe-id: CWE-200
   description: Pure Storage login panel was detected.
   metadata:
+    fofa-query: title="pure storage login"
+    google-query: intitle:"pure storage login"
     max-request: 1
     product: purity
-    shodan-query: http.title:"Pure Storage Login"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)pure storage
+      login"})
+    shodan-query:
+    - http.title:"Pure Storage Login"
+    - http.title:"pure storage login"
     vendor: purestorage
   name: Pure Storage Login Panel - Detect
   severity: info
-  tags: panel,purestorage
+  tags: discovery,panel,purestorage

@@ -24,8 +24,10 @@ info:
   description: MAG Dashboard login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MAG Dashboard
+      Login"})
     shodan-query: http.title:"MAG Dashboard Login"
     verified: true
   name: MAG Dashboard Login Panel - Detect
   severity: info
-  tags: panel,mag
+  tags: panel,mag,discovery

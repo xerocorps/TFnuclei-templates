@@ -20,10 +20,11 @@ info:
   description: Versa FlexVNF panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Flex VNF Web-UI"})
     shodan-query: http.title:"Flex VNF Web-UI"
     verified: true
   name: Versa FlexVNF Panel - Detect
   reference:
   - https://versa-networks.com/products/components/
   severity: info
-  tags: panel,versa,flexvnf
+  tags: panel,versa,flexvnf,discovery

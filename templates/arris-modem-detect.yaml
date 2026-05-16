@@ -20,11 +20,15 @@ info:
     cwe-id: CWE-200
   description: ARRIS Touchstone Telephony Modem status panel was detected.
   metadata:
+    fofa-query: body="phy.htm"
     max-request: 1
     product: dg3450
-    shodan-query: html:"phy.htm"
+    runzero-match: service["http.body"] matches "(?i)phy\\.htm"
+    shodan-query:
+    - html:"phy.htm"
+    - http.html:"phy.htm"
     vendor: commscope
     verified: true
   name: ARRIS Touchstone Telephony Modem - Panel Detect
   severity: info
-  tags: panel,arris,commscope
+  tags: arris,commscope,discovery,panel

@@ -13,9 +13,9 @@ requests:
     part: body
     type: word
     words:
-    - '"total_count":'
-    - '"limit":'
-    - '"offset":'
+    - '"name_local":'
+    - '"location":'
+    - '"date_year":'
   method: GET
   path:
   - https://holidays.abstractapi.com/v1/?api_key={{token}}&country=GB&year=2021&month=1&day=25

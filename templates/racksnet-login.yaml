@@ -21,10 +21,12 @@ info:
   metadata:
     google-query: intitle:"My Datacenter - Login"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)My Datacenter
+      - Login"})
     shodan-query: http.title:"My Datacenter - Login"
   name: Racksnet Login Panel - Detect
   reference:
   - https://racksnet.com/en/
   - https://racksnet.com/en/product-overview/
   severity: info
-  tags: panel,racksnet
+  tags: panel,racksnet,discovery

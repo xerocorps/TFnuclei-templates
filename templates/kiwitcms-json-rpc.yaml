@@ -33,14 +33,19 @@ http:
 id: kiwitcms-json-rpc
 info:
   author: act1on3
+  classification:
+    cpe: cpe:2.3:a:kiwitcms:kiwi_tcms:*:*:*:*:*:*:*:*
   description: Internal info exposed in Kiwi TCMS.
   metadata:
     max-request: 1
-    shodan-query: title:"Kiwi TCMS - Login",http.favicon.hash:-1909533337
+    product: kiwi_tcms
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Kiwi TCMS - Login"})
+    shodan-query: title:"Kiwi TCMS - Login" http.favicon.hash:-1909533337
+    vendor: kiwitcms
   name: Kiwi TCMS Information Disclosure
   reference:
   - https://hackerone.com/reports/968402
   - https://kiwitcms.org/blog/kiwi-tcms-team/2020/08/23/kiwi-tcms-86/
   - https://github.com/act1on3/nuclei-templates/blob/master/vulnerabilities/kiwi-information-disclosure.yaml
   severity: high
-  tags: kiwitcms,exposure,misconfig,hackerone
+  tags: kiwitcms,exposure,misconfig,hackerone,vuln

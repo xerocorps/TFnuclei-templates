@@ -7,30 +7,35 @@ http:
     - '<div id="foot">Version: ([0-9.a-z]+)'
     type: regex
   matchers:
-  - part: body
-    type: word
-    words:
-    - <title>Check_MK Multisite Login</title>
-  - part: body
-    regex:
-    - <title>Checkmk ([A-Za-z_0-9 ]+)<\/title>
-    type: regex
-  matchers-condition: or
+  - condition: and
+    dsl:
+    - status_code == 200 || status_code == 401
+    - contains_any(to_lower(body), "check_mk multisite login", "checkmk", "check_mk
+      mobile")
+    type: dsl
+  max-redirects: 5
   method: GET
   path:
-  - '{{BaseURL}}/check_mk/login.py'
+  - '{{BaseURL}}/'
+  redirects: true
+  stop-at-first-match: true
 id: checkmk-login
 info:
-  author: princechaddha
+  author: princechaddha,righettod
   classification:
-    cpe: cpe:2.3:a:tribe29:checkmk:*:*:*:*:*:*:*:*
+    cpe: cpe:2.3:a:checkmk:checkmk:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Checkmk login panel was detected.
   metadata:
-    max-request: 1
+    max-request: 5
     product: checkmk
-    vendor: tribe29
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Check_MK"})
+    shodan-query: http.title:"Check_MK"
+    vendor: checkmk
+    verified: true
   name: Checkmk Login Panel - Detect
+  reference:
+  - https://checkmk.com/
   severity: info
-  tags: login,tech,synology,rackstation,panel,tribe29
+  tags: panel,checkmk,detect,login,discovery

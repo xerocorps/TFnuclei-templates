@@ -20,8 +20,10 @@ info:
   description: Normhost Backup server manager panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Normhost Backup
+      server manager"})
     shodan-query: http.title:"Normhost Backup server manager"
     verified: true
   name: Normhost Backup Server Manager Panel - Detect
   severity: info
-  tags: panel,normhost
+  tags: panel,normhost,discovery

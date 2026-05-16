@@ -30,8 +30,10 @@ info:
 
     '
   metadata:
+    fofa-query: icon_hash=213144638
     max-request: 1
     product: proxmox
+    runzero-match: service["favicon.ico.image.mmh3"] == "213144638"
     shodan-query: http.favicon.hash:213144638
     vendor: proxmox
     verified: true
@@ -39,4 +41,4 @@ info:
   reference:
   - https://www.proxmox.com/
   severity: info
-  tags: panel,proxmox,login
+  tags: discovery,login,panel,proxmox

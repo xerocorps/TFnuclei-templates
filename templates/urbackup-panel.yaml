@@ -19,9 +19,10 @@ info:
   metadata:
     max-request: 1
     product: urbackup
+    runzero-match: service["http.body"] matches "(?i)UrBackup - Keeps your data safe"
     shodan-query: html:"UrBackup - Keeps your data safe"
     vendor: urbackup
     verified: true
   name: UrBackup Panel - Detect
   severity: info
-  tags: urbackup,panel,login,detect
+  tags: urbackup,panel,login,detect,discovery

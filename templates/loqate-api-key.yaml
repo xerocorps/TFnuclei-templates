@@ -10,6 +10,10 @@ http:
 id: loqate-api-key
 info:
   author: realexp3rt
+  classification:
+    cwe-id:
+    - CWE-522
+    - CWE-540
   description: Loqate API Key is leaked.
   metadata:
     max-request: 1
@@ -17,4 +21,4 @@ info:
   reference:
   - https://www.loqate.com/en-gb/home/
   severity: low
-  tags: exposure,token,loqate
+  tags: exposure,loqate,token,vuln

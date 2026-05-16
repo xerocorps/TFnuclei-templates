@@ -22,9 +22,11 @@ info:
   metadata:
     max-request: 1
     product: openedge
+    runzero-match: service["http.body"] matches "(?i)Welcome to Progress Application
+      Server for OpenEdge"
     shodan-query: html:"Welcome to Progress Application Server for OpenEdge"
     vendor: progress
     verified: true
   name: OpenEdge Login Panel - Detect
   severity: info
-  tags: panel,openedge,login,detect
+  tags: panel,openedge,login,detect,discovery

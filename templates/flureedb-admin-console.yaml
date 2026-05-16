@@ -19,10 +19,12 @@ info:
   description: FlureeDB Admin Console login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)FlureeDB Admin
+      Console"})
     shodan-query: title:"FlureeDB Admin Console"
     verified: true
   name: FlureeDB Admin Console Login Panel - Detect
   reference:
   - https://github.com/fluree/fluree-admin-ui
   severity: info
-  tags: panel,flureedb
+  tags: panel,flureedb,discovery

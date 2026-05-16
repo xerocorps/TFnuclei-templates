@@ -1,20 +1,16 @@
 http:
 - extractors:
   - group: 1
-    internal: true
-    name: endpoint
+    name: endpoints
     regex:
-    - (?m:\s(/[[:alpha:]]+[[:graph:]]+))
+    - (?i:(?:Allow|Disallow):\s*(/[\.a-zA-Z0-9/_-]+/?))
     type: regex
-  iterate-all: true
   matchers:
   - part: body
     type: word
     words:
     - 'User-agent:'
-    - 'Disallow:'
-    - 'Allow:'
-  - part: header
+  - part: content_type
     type: word
     words:
     - text/plain
@@ -24,13 +20,13 @@ http:
   matchers-condition: and
   method: GET
   path:
-  - '{{RootURL}}/robots.txt'
-  - '{{RootURL}}{{endpoint}}'
+  - '{{BaseURL}}/robots.txt'
 id: robots-txt-endpoint
 info:
-  author: CasperGN,pdteam
+  author: CasperGN,pdteam,TheZakMan
   metadata:
-    max-request: 2
+    max-request: 1
+    verified: true
   name: robots.txt endpoint prober
   severity: info
-  tags: miscellaneous,misc,generic
+  tags: miscellaneous,misc,generic,discovery

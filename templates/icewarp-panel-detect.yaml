@@ -26,11 +26,16 @@ info:
     cwe-id: CWE-200
   description: IceWarp login panel was detected.
   metadata:
+    fofa-query: title="icewarp"
+    google-query: intitle:"icewarp"
     max-request: 1
     product: icewarp_server
-    shodan-query: title:"icewarp"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)icewarp"})
+    shodan-query:
+    - title:"icewarp"
+    - http.title:"icewarp"
     vendor: icewarp
     verified: true
   name: IceWarp Login Panel - Detect
   severity: info
-  tags: icewarp,panel
+  tags: discovery,icewarp,panel

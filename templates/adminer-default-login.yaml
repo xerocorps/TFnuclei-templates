@@ -1,5 +1,6 @@
 http:
 - attack: clusterbomb
+  cookie-reuse: true
   host-redirects: true
   matchers:
   - case-insensitive: true
@@ -25,10 +26,14 @@ http:
     - root
     - toor
     - 123
+    - admin
+    - password
     - 123456
     - 123456789
+    - changeme
     username:
     - root
+    - admin
   raw:
   - 'POST /index.php HTTP/1.1
 
@@ -54,11 +59,11 @@ info:
 
     '
   metadata:
-    max-request: 5
+    max-request: 16
     shodan-query: http.title:adminer
-    verified: true
+    verified: 'true'
   name: Adminer Default Login - Detect
   reference:
   - https://www.adminer.org
   severity: high
-  tags: default-login,adminer
+  tags: default-login,adminer,admin

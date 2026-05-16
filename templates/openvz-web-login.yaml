@@ -19,10 +19,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1898583197"
     shodan-query: http.favicon.hash:-1898583197
     verified: true
   name: OpenVZ Web Panel Login Panel - Detect
   reference:
   - https://github.com/sibprogrammer/owp
   severity: info
-  tags: panel,openvz
+  tags: panel,openvz,discovery

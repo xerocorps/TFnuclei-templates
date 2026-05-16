@@ -48,6 +48,7 @@ info:
     fofa-query: body="Line-TCPRS1"
     max-request: 1
     product: line-tcprs1
+    runzero-match: service["http.body"] matches "(?i)Line-TCPRS1"
     shodan-query: http.html:"Line-TCPRS1"
     vendor: circutor
     verified: true

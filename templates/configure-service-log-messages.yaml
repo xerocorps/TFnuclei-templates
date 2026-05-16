@@ -13,15 +13,13 @@ file:
 id: configure-service-log-messages
 info:
   author: pussycat0x
-  classification:
-    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
-    cwe-id: CWE-200
-  description: 'Cisco service timestamp configuration for log messages was not implemented.
+  description: 'To configure the system to time-stamp debugging or logging messages,
+    use one of the service timestamps global configuration commands. Use the no form
+    of this command to disable this service.
 
     '
-  name: Cisco Configure Service Timestamps Log Messages - Detect
+  name: Configure Service Timestamps Log Messages
   reference:
   - https://www.cisco.com/E-Learning/bulk/public/tac/cim/cib/using_cisco_ios_software/cmdrefs/service_timestamps.htm
   severity: info
-  tags: cisco,config-audit,cisco-switch,file,router
+  tags: cisco,config-audit,cisco-switch,router

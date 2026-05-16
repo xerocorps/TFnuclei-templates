@@ -6,8 +6,20 @@ http:
   host-redirects: true
   matchers:
   - dsl:
+    - status_code==200 && ("385597939" == mmh3(base64_py(body)))
+    name: skysea-clientview
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-60395993" == mmh3(base64_py(body)))
+    name: ictbroadcast
+    type: dsl
+  - dsl:
+    - status_code==200 && ("394527072" == mmh3(base64_py(body)))
+    name: brightdata-proxies
+    type: dsl
+  - dsl:
     - status_code==200 && ("213144638" == mmh3(base64_py(body)))
-    name: proxymox
+    name: proxmox
     type: dsl
   - dsl:
     - status_code==200 && ("-503480258" == mmh3(base64_py(body)))
@@ -1674,6 +1686,10 @@ http:
     name: claimtime-ramsell-public-health-safety
     type: dsl
   - dsl:
+    - status_code==200 && ("-805544463" == mmh3(base64_py(body)))
+    name: clawdbot-control-panel
+    type: dsl
+  - dsl:
     - status_code==200 && ("-590892202" == mmh3(base64_py(body)))
     name: surfilter-ssl-vpn-portal
     type: dsl
@@ -1831,6 +1847,10 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("541087742" == mmh3(base64_py(body)))
+    name: liquidfiles
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1906448386" == mmh3(base64_py(body)))
     name: liquidfiles
     type: dsl
   - dsl:
@@ -2961,6 +2981,126 @@ http:
     - status_code==200 && ("-1599943282" == mmh3(base64_py(body)))
     name: FileCatalyst
     type: dsl
+  - dsl:
+    - status_code==200 && ("-1728967963" == mmh3(base64_py(body)))
+    name: Veeam Service Provider Console
+    type: dsl
+  - dsl:
+    - status_code==200 && ("702863115" == mmh3(base64_py(body)))
+    name: mooSocial
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-831756631" == mmh3(base64_py(body)))
+    name: n8n
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-130447705" == mmh3(base64_py(body)))
+    name: umami
+    type: dsl
+  - dsl:
+    - status_code==200 && ("307296554" == mmh3(base64_py(body)))
+    name: snowflake
+    type: dsl
+  - dsl:
+    - status_code==200 && ("697691819" == mmh3(base64_py(body)))
+    name: yardi-voyager
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2019488876" == mmh3(base64_py(body)))
+    name: ic-realtime
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1653394551" == mmh3(base64_py(body)))
+    name: lorex
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1862800928" == mmh3(base64_py(body)))
+    name: ivanti-traffic-manager
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1857752096" == mmh3(base64_py(body)))
+    name: searxng-search
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-601917817" == mmh3(base64_py(body)))
+    name: ip-webcam
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-139383140" == mmh3(base64_py(body)))
+    name: schneider-electric
+    type: dsl
+  - dsl:
+    - status_code==200 && ("953127083" == mmh3(base64_py(body)))
+    name: schneider-electric-xflow
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1323738809" == mmh3(base64_py(body)))
+    name: sonatype-nexus-repository-manager
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1294748862" == mmh3(base64_py(body)))
+    name: fastpanel
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1792417660" == mmh3(base64_py(body)))
+    name: oracle-rest-data-services
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1051205943" == mmh3(base64_py(body)))
+    name: siemens-simatic-s7-1200
+    type: dsl
+  - dsl:
+    - status_code==200 && ("607493189" == mmh3(base64_py(body)))
+    name: teltonika-networks
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1308238121" == mmh3(base64_py(body)))
+    name: reolink
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1519363246" == mmh3(base64_py(body)))
+    name: n-central
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1761642992" == mmh3(base64_py(body)))
+    name: vesta-hosting-control-panel
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1398529462" == mmh3(base64_py(body)))
+    name: grandstream
+    type: dsl
+  - dsl:
+    - status_code==200 && ("96215732" == mmh3(base64_py(body)))
+    name: comxchange
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1818779764" == mmh3(base64_py(body)))
+    name: etic-telecom
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1548649046" == mmh3(base64_py(body)))
+    name: sophos
+    type: dsl
+  - dsl:
+    - status_code==200 && ("236252842" == mmh3(base64_py(body)))
+    name: esl-management-system
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1939892142" == mmh3(base64_py(body)))
+    name: sabnzbd
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1463037400" == mmh3(base64_py(body)))
+    name: enghouse-systems-lifesize
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1506998866" == mmh3(base64_py(body)))
+    name: mitsubishi-air-condition
+    type: dsl
+  - dsl:
+    - status_code==200 && ("487597720" == mmh3(base64_py(body)))
+    name: schneider-electric-ecostruxure
+    type: dsl
   max-redirects: 2
   method: GET
   path:
@@ -2969,7 +3109,7 @@ http:
   stop-at-first-match: true
 id: favicon-detect
 info:
-  author: un-fmunozs,DhiyaneshDk
+  author: un-fmunozs,DhiyaneshDk,idealphase,rxerium
   metadata:
     max-request: 2
   name: favicon-detection
@@ -2980,4 +3120,4 @@ info:
   - https://github.com/devanshbatham/FavFreak
   - https://github.com/sansatart/scrapts/blob/master/shodan-favicon-hashes.csv
   severity: info
-  tags: tech,favicon
+  tags: tech,favicon,discovery

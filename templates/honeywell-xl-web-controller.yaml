@@ -20,10 +20,12 @@ info:
   description: Honeywell Excel Web Control login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Honeywell XL
+      Web Controller"})
     shodan-query: title:"Honeywell XL Web Controller"
     verified: true
   name: Honeywell Excel Web Control Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7130
   severity: info
-  tags: panel,honeywell,edb
+  tags: panel,honeywell,edb,discovery

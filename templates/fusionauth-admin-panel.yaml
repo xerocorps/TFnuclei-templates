@@ -29,11 +29,16 @@ info:
   classification:
     cpe: cpe:2.3:a:fusionauth:fusionauth:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: title="fusionauth"
+    google-query: intitle:"fusionauth"
     max-request: 2
     product: fusionauth
-    shodan-query: title:"FusionAuth"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)fusionauth"})
+    shodan-query:
+    - title:"FusionAuth"
+    - http.title:"fusionauth"
     vendor: fusionauth
     verified: true
   name: FusionAuth Admin Panel - Detect
   severity: info
-  tags: panel,fusionauth,detect,login
+  tags: detect,discovery,fusionauth,login,panel

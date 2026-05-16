@@ -32,7 +32,7 @@ info:
   metadata:
     max-request: 2
   name: Matrix Server Detect
-  reference: https://spec.matrix.org/v1.3/server-server-api/#getwell-knownmatrixserver,
-    https://spec.matrix.org/v1.3/client-server-api/#getwell-knownmatrixclient
+  reference:
+  - https://spec.matrix.org/v1.3/server-server-api/#getwell-knownmatrixserver, https://spec.matrix.org/v1.3/client-server-api/#getwell-knownmatrixclient
   severity: info
-  tags: tech,matrix
+  tags: tech,matrix,discovery

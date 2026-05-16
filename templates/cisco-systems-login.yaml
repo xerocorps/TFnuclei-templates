@@ -26,7 +26,9 @@ info:
   metadata:
     google-query: intitle:"Cisco Systems Login"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Cisco Systems
+      Login"})
     shodan-query: http.title:"Cisco Systems Login"
   name: Cisco Systems Login Panel - Detect
   severity: info
-  tags: panel,cisco
+  tags: panel,cisco,discovery

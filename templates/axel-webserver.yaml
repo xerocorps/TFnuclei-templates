@@ -27,8 +27,9 @@ info:
   metadata:
     fofa-query: app="AxelWebServer"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Axel"})
     shodan-query: http.title:"Axel"
     verified: true
   name: Axel WebServer - Panel Detect
   severity: info
-  tags: panel,axel,webserver
+  tags: panel,axel,webserver,discovery

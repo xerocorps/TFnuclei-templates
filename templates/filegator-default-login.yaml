@@ -46,13 +46,14 @@ info:
   author: ritikchaddha
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "FileGator"})
     shodan-query: title:"FileGator"
     verified: true
   name: Filegator - Default-Login
   reference:
   - https://serverpilot.io/docs/how-to-install-a-file-manager-on-your-server/#:~:text=You%20should%20see%20the%20FileGator,Password%3A%20admin123
   severity: high
-  tags: filegator,default-login,misconfig,vuln
+  tags: default-login,filegator,misconfig,vuln
 variables:
   password: admin123
   username: admin

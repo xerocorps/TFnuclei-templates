@@ -20,8 +20,9 @@ info:
   description: SqWebMail login panel was detected.
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)SqWebMail"})
     shodan-query: title:"SqWebMail"
     verified: true
   name: SqWebMail Login Panel - Detect
   severity: info
-  tags: webmail,sqwebmail,panel
+  tags: webmail,sqwebmail,panel,discovery

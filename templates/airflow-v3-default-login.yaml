@@ -54,10 +54,11 @@ info:
   metadata:
     max-request: 2
     product: airflow
+    runzero-match: any(each(service["html.titles"]), {# matches "Airflow"})
     shodan-query: title:"Airflow"
     vendor: apache
   name: Apache Airflow v3 Default Login
   reference:
   - https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html
   severity: high
-  tags: airflow,default-login,apache,vuln
+  tags: airflow,apache,default-login,vuln

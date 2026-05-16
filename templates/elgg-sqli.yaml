@@ -33,7 +33,8 @@ id: elgg-sqli
 info:
   author: s4e-io
   classification:
-    cwe-id: CWE-89
+    cwe-id:
+    - CWE-89
   description: 'Elgg 5.1.4 version has a SQL Injection vulnerability in the sort_by[direction]
     parameter. This vulnerability allows an unauthenticated attacker to manipulate
     SQL queries by injecting malicious SQL code, potentially leading to unauthorized

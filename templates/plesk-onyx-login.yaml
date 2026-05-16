@@ -32,10 +32,16 @@ info:
     cwe-id: CWE-200
   description: Plesk login panel was detected.
   metadata:
-    google-query: inurl:login_up.php "Plesk Onyx"
+    fofa-query: body="plesk onyx" http.html:"plesk-build"
+    google-query:
+    - inurl:login_up.php "Plesk Onyx"
+    - inurl:login_up.php "plesk onyx"
     max-request: 1
     product: onyx
-    shodan-query: http.html:"Plesk Onyx" http.html:"plesk-build"
+    runzero-match: service["http.body"] matches "(?i)plesk onyx"
+    shodan-query:
+    - http.html:"Plesk Onyx" http.html:"plesk-build"
+    - http.html:"plesk onyx" http.html:"plesk-build"
     vendor: plesk
     verified: true
   name: Plesk Login Panel - Detect
@@ -43,4 +49,4 @@ info:
   - https://www.exploit-db.com/ghdb/6501
   - https://www.plesk.com/
   severity: info
-  tags: panel,plesk,login,edb
+  tags: discovery,edb,login,panel,plesk

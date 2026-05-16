@@ -35,9 +35,13 @@ info:
     cwe-id: CWE-200
   description: Liferay login panel was detected,
   metadata:
+    fofa-query: icon_hash=129457226
     max-request: 3
     product: liferay_portal
-    shodan-query: http.favicon.hash:129457226
+    runzero-match: service["favicon.ico.image.mmh3"] == "129457226"
+    shodan-query:
+    - http.favicon.hash:129457226
+    - cpe:"cpe:2.3:a:liferay:liferay_portal"
     vendor: liferay
     verified: true
   name: Liferay Login Panel - Detect
@@ -45,4 +49,4 @@ info:
   - https://www.liferay.com/
   - https://github.com/mzer0one/CVE-2020-7961-POC
   severity: info
-  tags: panel,liferay,portal
+  tags: discovery,liferay,panel,portal

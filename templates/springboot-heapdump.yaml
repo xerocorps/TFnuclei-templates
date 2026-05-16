@@ -35,6 +35,7 @@ http:
     Host: {{Hostname}}
 
     '
+  stop-at-first-match: true
 id: springboot-heapdump
 info:
   author: that_juan_,dwisiswant0,wdahlenb
@@ -48,6 +49,6 @@ info:
   reference:
   - https://github.com/pyn3rd/Spring-Boot-Vulnerability
   severity: critical
-  tags: springboot,exposure,misconfig
+  tags: springboot,exposure,misconfig,vuln
 variables:
   str: '{{rand_base(6)}}'

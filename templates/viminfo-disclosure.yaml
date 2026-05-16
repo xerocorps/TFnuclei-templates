@@ -20,15 +20,19 @@ http:
 id: viminfo-disclosure
 info:
   author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:vim:vim:*:*:*:*:*:*:*:*
   description: 'Viminfo file was detected.
 
     '
   metadata:
     max-request: 1
+    product: vim
     shodan-query: html:"Viminfo"
+    vendor: vim
     verified: true
   name: Viminfo - File Disclosure
   reference:
   - https://renenyffenegger.ch/notes/development/vim/editing/viminfo/index
   severity: low
-  tags: devops,exposure,viminfo,config
+  tags: devops,exposure,viminfo,config,vuln

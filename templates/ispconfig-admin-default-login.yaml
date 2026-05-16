@@ -62,8 +62,9 @@ info:
     '
   metadata:
     max-request: 9
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ispconfig"})
     shodan-query: http.title:"ispconfig"
     verified: true
   name: ISPConfig Admin - Default Password
   severity: high
-  tags: default-login,ispconfig
+  tags: default-login,ispconfig,vuln

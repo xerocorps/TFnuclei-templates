@@ -19,7 +19,8 @@ id: enjoyrmis-sqli
 info:
   author: s4e-io
   classification:
-    cwe-id: CWE-89
+    cwe-id:
+    - CWE-89
   description: 'EnjoyRMIS GetOAById has a SQL injection vulnerability, through which
     an attacker can obtain sensitive database information and even control the server.
 
@@ -27,6 +28,7 @@ info:
   metadata:
     fofa-query: body="CheckSilverlightInstalled"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)CheckSilverlightInstalled"
     verified: true
   name: EnjoyRMIS - SQL Injection
   reference:

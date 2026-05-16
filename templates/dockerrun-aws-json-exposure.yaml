@@ -26,6 +26,7 @@ info:
   metadata:
     fofa-query: body="AWSEBDockerrunVersion"
     max-request: 2
+    runzero-match: service["http.body"] matches "(?i)AWSEBDockerrunVersion"
     shodan-query: html:"AWSEBDockerrunVersion"
     verified: true
   name: AWS Elastic Beanstalk Dockerrun.aws.json - Exposure

@@ -22,9 +22,12 @@ info:
     cwe-id: CWE-200
   description: ZoneMinder panel was detected.
   metadata:
+    fofa-query: body="zm - login"
     max-request: 1
     product: zoneminder
+    runzero-match: service["http.body"] matches "(?i)zm - login"
+    shodan-query: http.html:"zm - login"
     vendor: zoneminder
   name: ZoneMinder Login Panel - Detect
   severity: info
-  tags: panel,zoneminder
+  tags: panel,zoneminder,discovery

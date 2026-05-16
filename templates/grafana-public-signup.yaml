@@ -1,6 +1,7 @@
 http:
 - matchers:
-  - type: word
+  - part: body
+    type: word
     words:
     - User sign up completed successfully
   - condition: and
@@ -31,10 +32,9 @@ http:
 id: grafana-public-signup
 info:
   author: pdteam
-  description: Public Signup is enabled on Grafana.
   metadata:
     max-request: 1
     shodan-query: title:"Grafana"
   name: Grafana Public Signup
   severity: medium
-  tags: grafana,intrusive,misconfig
+  tags: grafana,cloud

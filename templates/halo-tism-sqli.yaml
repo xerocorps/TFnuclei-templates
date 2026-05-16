@@ -17,7 +17,8 @@ id: halo-tism-sqli
 info:
   author: rootxharsh,iamnoooob,pdresearch
   classification:
-    cwe-id: CWE-89
+    cwe-id:
+    - CWE-89
   description: 'A Time-Based SQL Injection vulnerability in Halo ITSM allows unauthenticated
     attackers to execute malicious SQL queries by leveraging time delays, potentially
     leading to data exfiltration, privilege escalation, or full system compromise.
@@ -25,6 +26,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "489905671"
     shodan-query: http.favicon.hash:489905671
     verified: true
   name: Halo ITSM - Pre-Authentication SQL Injection

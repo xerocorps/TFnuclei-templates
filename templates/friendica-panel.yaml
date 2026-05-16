@@ -29,13 +29,18 @@ info:
 
     '
   metadata:
+    fofa-query: title="friendica"
+    google-query: intitle:"friendica"
     max-request: 1
     product: friendica
-    shodan-query: http.title:"Friendica"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)friendica"})
+    shodan-query:
+    - http.title:"Friendica"
+    - http.title:"friendica"
     vendor: friendica
     verified: true
   name: Friendica Panel - Detect
   reference:
   - https://friendi.ca
   severity: info
-  tags: friendica,panel,login,detect
+  tags: detect,discovery,friendica,login,panel

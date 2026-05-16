@@ -20,12 +20,17 @@ info:
     cwe-id: CWE-200
   description: Kiwi TCMS login panel was detected.
   metadata:
+    fofa-query: title="kiwi tcms - login" http.favicon.hash:-1909533337
+    google-query: intitle:"kiwi tcms - login" http.favicon.hash:-1909533337
     max-request: 1
     product: kiwi_tcms
-    shodan-query: title:"Kiwi TCMS - Login",http.favicon.hash:-1909533337
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)kiwi tcms - login"})
+    shodan-query:
+    - title:"Kiwi TCMS - Login" http.favicon.hash:-1909533337
+    - http.title:"kiwi tcms - login" http.favicon.hash:-1909533337
     vendor: kiwitcms
   name: Kiwi TCMS Login Panel - Detect
   reference:
   - https://kiwitcms.org
   severity: info
-  tags: kiwitcms,panel
+  tags: discovery,kiwitcms,panel

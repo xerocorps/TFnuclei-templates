@@ -21,8 +21,10 @@ info:
   classification:
     cpe: cpe:2.3:a:western_digital:mycloud_nas:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: icon_hash=-1074357885
     max-request: 1
     product: mycloud_nas
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1074357885"
     shodan-query: http.favicon.hash:-1074357885
     vendor: western_digital
     verified: true
@@ -30,4 +32,4 @@ info:
   reference:
   - https://www.zerodayinitiative.com/blog/2023/4/19/cve-2022-29844-a-classic-buffer-overflow-on-the-western-digital-my-cloud-pro-series-pr4100
   severity: info
-  tags: panel,login,mycloud,wd,detect,western_digital
+  tags: detect,discovery,login,mycloud,panel,wd,western_digital

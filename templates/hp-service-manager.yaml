@@ -20,10 +20,15 @@ info:
     cwe-id: CWE-200
   description: HP Service Manager login panel was detected.
   metadata:
+    fofa-query: title="hp service manager"
+    google-query: intitle:"hp service manager"
     max-request: 2
     product: service_manager
-    shodan-query: http.title:"HP Service Manager"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)hp service manager"})
+    shodan-query:
+    - http.title:"HP Service Manager"
+    - http.title:"hp service manager"
     vendor: hp
   name: HP Service Manager Login Panel - Detect
   severity: info
-  tags: panel,hp,service
+  tags: discovery,hp,panel,service

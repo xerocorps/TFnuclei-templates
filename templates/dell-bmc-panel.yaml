@@ -22,8 +22,10 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Dell Remote Management
+      Controller"})
     shodan-query: title:"Dell Remote Management Controller"
     verified: true
   name: Dell BMC Panel - Detect
   severity: info
-  tags: panel,bmc,dell,login
+  tags: panel,bmc,dell,login,discovery

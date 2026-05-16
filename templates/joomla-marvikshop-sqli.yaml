@@ -13,6 +13,9 @@ http:
 id: joomla-marvikshop-sqli
 info:
   author: r3Y3r53
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'Joomla MarvikShop ShoppingCart 3.4 is vulnerable to SQL injection
     which is a code injection technique that might destroy your database. SQL injection
     is one of the most common web hacking techniques. SQL injection is the placement
@@ -28,4 +31,4 @@ info:
   - https://cxsecurity.com/issue/WLB-2022100015
   - https://extensions.joomla.org/
   severity: high
-  tags: joomla,marvikshop,sqli,unauth
+  tags: joomla,marvikshop,sqli,unauth,vuln

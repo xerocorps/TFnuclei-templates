@@ -22,6 +22,7 @@ id: cwp-webpanel
 info:
   author: ffffffff0x
   classification:
+    cpe: cpe:2.3:a:control-webpanel:webpanel:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Control Web Panel login panel was detected.
@@ -29,6 +30,10 @@ info:
     fofa-query: "title==\"CWP |\u7528\u6237\" || title==\"Login | CentOS WebPanel\"\
       \ || body=\"CentOS WebPanel\""
     max-request: 1
+    product: webpanel
+    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"(?i)CWP \\\\\
+      |\u7528\u6237\"})"
+    vendor: control-webpanel
   name: Control Web Panel Login Panel - Detect
   severity: info
-  tags: panel,centos
+  tags: centos,discovery,panel

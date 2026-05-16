@@ -87,7 +87,11 @@ http:
     ssrf:
     - http://{{interactsh-url}}
     - http://{{FQDN}}.{{interactsh-url}}
+    - http://{{FQDN}}@{{interactsh-url}}
+    - http://{{interactsh-url}}#{{FQDN}}
     - http://{{RDN}}.{{interactsh-url}}
+    - http://{{RDN}}@{{interactsh-url}}
+    - http://{{interactsh-url}}#{{RDN}}
     - file:////./etc/./passwd
     - file:///c:/./windows/./win.ini
     - http://metadata.tencentyun.com/latest/meta-data/
@@ -104,7 +108,9 @@ http:
   stop-at-first-match: true
 id: response-ssrf
 info:
-  author: pdteam,pwnhxl,j4vaovo
+  author: pdteam,pwnhxl,j4vaovo,AmirHossein Raeisi
+  metadata:
+    max-request: 12
   name: Full Response SSRF Detection
   reference:
   - https://github.com/bugcrowd/HUNT/blob/master/ZAP/scripts/passive/SSRF.py

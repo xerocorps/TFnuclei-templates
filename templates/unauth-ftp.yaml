@@ -2,7 +2,8 @@ id: unauth-ftp
 info:
   author: C3l3si4n
   name: FTP Anonymous Login
-  reference: https://tools.ietf.org/html/rfc2577
+  reference:
+  - https://tools.ietf.org/html/rfc2577
   severity: medium
   tags: network,ftp
 network:
@@ -12,7 +13,7 @@ network:
   inputs:
   - data: "USER anonymous\r\nPASS nuclei\r\n"
   matchers:
-  - part: all
+  - part: response
     type: word
     words:
     - Anonymous access allowed,

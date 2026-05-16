@@ -2,12 +2,12 @@ dns:
 - extractors:
   - group: 1
     regex:
-    - "IN\tTXT\t(.+)"
+    - "IN\tTXT\t(.+DMARC.+)"
     type: regex
   matchers:
   - part: answer
     regex:
-    - "IN\tTXT\\t(.+)$"
+    - "IN\tTXT\\t(.+DMARC.+)$"
     type: regex
   name: _dmarc.{{FQDN}}
   type: TXT
@@ -28,4 +28,4 @@ info:
   - https://dmarc.org/
   - https://dmarc.org/wiki/FAQ#Why_is_DMARC_important.3F
   severity: info
-  tags: dns,dmarc
+  tags: dns,dmarc,discovery

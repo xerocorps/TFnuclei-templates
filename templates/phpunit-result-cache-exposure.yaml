@@ -13,11 +13,15 @@ http:
 id: phpunit-result-cache-exposure
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:phpunit_project:phpunit:*:*:*:*:-:*:*:*
   description: PHPUnit cache file is exposed.
   metadata:
     max-request: 1
+    product: phpunit
     shodan-query: .phpunit.result.cache
+    vendor: phpunit_project
     verified: true
   name: PHPUnit Result Cache File Exposure
   severity: low
-  tags: config,exposure,devops,files
+  tags: config,exposure,devops,files,vuln

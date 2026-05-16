@@ -19,6 +19,7 @@ info:
     fofa-query: title="Paperless-ngx"
     max-request: 1
     product: paperless-ngx
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Paperless-ngx"})
     shodan-query: http.title:"Paperless-ngx"
     vendor: paperless-ngx
     verified: true
@@ -27,4 +28,4 @@ info:
   - https://github.com/paperless-ngx/paperless-ngx
   - https://docs.paperless-ngx.com/
   severity: info
-  tags: panel,paperless-ngx,paperless,discovery,detect
+  tags: detect,discovery,panel,paperless,paperless-ngx

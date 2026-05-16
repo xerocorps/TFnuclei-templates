@@ -31,11 +31,17 @@ info:
     cwe-id: CWE-200
   description: Ampache login panel was detected.
   metadata:
+    fofa-query: title="for the love of music"
+    google-query: intitle:"for the love of music"
     max-request: 3
     product: ampache
-    shodan-query: http.title:"For the Love of Music"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)for the love
+      of music"})
+    shodan-query:
+    - http.title:"For the Love of Music"
+    - http.title:"for the love of music"
     vendor: ampache
     verified: true
   name: Ampache Login Panel - Detect
   severity: info
-  tags: panel,ampache
+  tags: ampache,discovery,panel

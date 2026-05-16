@@ -20,8 +20,9 @@ info:
   description: Tenda Web Master login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Tenda Web Master"})
     shodan-query: title:"Tenda Web Master"
     verified: true
   name: Tenda Web Master Login Panel - Detect
   severity: info
-  tags: panel,tenda,router
+  tags: panel,tenda,router,discovery

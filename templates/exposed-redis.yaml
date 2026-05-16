@@ -1,22 +1,14 @@
 id: exposed-redis
 info:
   author: pdteam
-  classification:
-    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
-    cvss-score: 7.2
-    cwe-id: CWE-306
-  description: Redis server without any required authentication was discovered.
-  metadata:
-    max-request: 2
-  name: Redis Server - Unauthenticated Access
-  reference:
-  - https://redis.io/topics/security
+  name: Redis Unauth Server
+  reference: https://redis.io/topics/security
   severity: high
-  tags: network,redis,unauth,exposure
-tcp:
+  tags: network,redis
+network:
 - host:
   - '{{Hostname}}'
-  - tls://{{Hostname}}
+  - '{{Hostname}}:6379'
   inputs:
   - data: "info\r\nquit\r\n"
   matchers:
@@ -28,5 +20,4 @@ tcp:
     words:
     - redis_mode:sentinel
   matchers-condition: and
-  port: 6379,6380
   read-size: 2048

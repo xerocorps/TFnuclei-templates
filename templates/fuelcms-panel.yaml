@@ -20,9 +20,13 @@ info:
     cwe-id: CWE-200
   description: Fuel CMS login panel was detected.
   metadata:
+    fofa-query: title="fuel cms"
+    google-query: intitle:"fuel cms"
     max-request: 1
     product: fuel_cms
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)fuel cms"})
+    shodan-query: http.title:"fuel cms"
     vendor: daylightstudio
   name: Fuel CMS Login Panel - Detect
   severity: info
-  tags: panel,fuelcms,oss,daylightstudio
+  tags: panel,fuelcms,oss,daylightstudio,discovery

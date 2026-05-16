@@ -23,11 +23,14 @@ info:
     cwe-id: CWE-200
   description: PostHog login panel was detected.
   metadata:
+    fofa-query: title="posthog"
+    google-query: intitle:"posthog"
     max-request: 1
     product: posthog
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)posthog"})
     shodan-query: http.title:"posthog"
     vendor: posthog
     verified: true
   name: PostHog Login Panel - Detect
   severity: info
-  tags: panel,posthog
+  tags: panel,posthog,discovery

@@ -22,6 +22,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)hyperdx"
     shodan-query: html:"hyperdx"
     verified: true
   name: HyperDX Panel - Detect

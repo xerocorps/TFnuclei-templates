@@ -21,8 +21,9 @@ info:
   description: WebShell4 login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)webshell4"
     shodan-query: http.html:"webshell4"
     verified: true
   name: WebShell4 Login Panel - Detect
   severity: info
-  tags: webshell4,panel
+  tags: webshell4,panel,discovery

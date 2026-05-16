@@ -40,8 +40,12 @@ info:
     category: productivity
     max-request: 5
     product: confluence_server
-    shodan-query: http.component:"Atlassian Confluence"
+    runzero-product: Confluence
+    runzero-vendor: Atlassian
+    shodan-query:
+    - http.component:"Atlassian Confluence"
+    - http.component:"atlassian confluence"
     vendor: atlassian
   name: Confluence Detection
   severity: info
-  tags: tech,confluence,atlassian,detect
+  tags: atlassian,confluence,detect,discovery,tech

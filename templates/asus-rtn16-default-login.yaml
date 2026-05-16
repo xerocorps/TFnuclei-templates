@@ -35,9 +35,11 @@ info:
   metadata:
     max-request: 1
     product: rt-n16
+    runzero-match: any(each(service["http.head.wwwAuthentications"]), {# contains
+      'realm="RT-N16'})
     shodan-query: RT-N16
     vendor: asus
     verified: true
   name: ASUS RT-N16 - Default Login
   severity: high
-  tags: default-login,asus,rt-n16,vuln
+  tags: asus,default-login,rt-n16,vuln

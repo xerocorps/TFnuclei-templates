@@ -17,8 +17,9 @@ info:
   description: NoEscape login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)NoEscape - Login"})
     shodan-query: title:"NoEscape - Login"
     verified: true
   name: NoEscape Login Panel - Detect
   severity: info
-  tags: panel,noescape
+  tags: panel,noescape,discovery

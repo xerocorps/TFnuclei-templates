@@ -15,11 +15,15 @@ http:
 id: sendgrid-env
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:sendgrid:sendgrid:*:*:*:*:wordpress:*:*:*
   description: SendGrid file is exposed containing environment variables.
   metadata:
     max-request: 1
+    product: sendgrid
     shodan-query: html:"sendgrid.env"
+    vendor: sendgrid
     verified: true
   name: SendGrid Env File Exposure
   severity: medium
-  tags: exposure,sendgrid,key,api,files
+  tags: exposure,sendgrid,key,api,files,vuln

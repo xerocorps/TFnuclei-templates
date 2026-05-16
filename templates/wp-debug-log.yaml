@@ -1,10 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - to_string(content_length)+ " bytes"
-    type: dsl
-  host-redirects: true
-  matchers:
+- matchers:
   - condition: or
     part: header
     type: word
@@ -19,24 +14,14 @@ http:
     - 200
     type: status
   matchers-condition: and
-  max-redirects: 3
-  max-size: 5000
   method: GET
   path:
-  - '{{BaseURL}}/{{paths}}/debug.log'
-  payloads:
-    paths:
-    - wp-content
-    - wordpress
-    - wp
-    - blog
-  stop-at-first-match: true
+  - '{{BaseURL}}/wp-content/debug.log'
 id: wp-debug-log
 info:
-  author: geraldino2,dwisiswant0,philippedelteil
-  description: Exposed Wordpress debug log.
+  author: geraldino2,dwisiswant0
   metadata:
-    max-request: 4
-  name: WordPress Debug Log - Exposure
+    max-request: 1
+  name: WordPress debug log
   severity: low
-  tags: wp,wordpress,log,exposure
+  tags: wordpress,log

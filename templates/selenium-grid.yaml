@@ -15,12 +15,16 @@ id: selenium-grid
 info:
   author: pussycat0x
   classification:
+    cpe: cpe:2.3:a:selenium:selenium_grid:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Selenium Grid panel was detected.
   metadata:
     max-request: 1
+    product: selenium_grid
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Selenium Grid"})
     shodan-query: http.title:"Selenium Grid"
+    vendor: selenium
   name: Selenium Grid Panel - Detect
   severity: info
-  tags: panel,unauth,selenium
+  tags: discovery,panel,selenium,unauth

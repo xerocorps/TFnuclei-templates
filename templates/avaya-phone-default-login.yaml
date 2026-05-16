@@ -48,13 +48,14 @@ info:
     '
   metadata:
     max-requests: 1
+    runzero-match: service["http.body"] matches `(?i)Avaya J1\d9 Phone`
     shodan-query: html:"Avaya J179 Phone"
     verified: true
   name: Avaya Phone Web Interface - Default Login
   reference:
   - https://documentation.avaya.com/bundle/InstallandadminJ100seriesIPPhone_r4.1.x/page/Logging_into_web_UI.html
   severity: high
-  tags: default-login,avaya,misconfig
+  tags: avaya,default-login,misconfig
 variables:
   password: '27238'
   username: admin

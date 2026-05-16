@@ -4,7 +4,10 @@ info:
   description: A simple workflow that runs all wordpress related nuclei templates
     on a given target.
   name: Wordpress Security Checks
+  tags: workflow
 workflows:
-- subtemplates:
-  - tags: wordpress
-  template: http/technologies/wordpress-detect.yaml
+- matchers:
+  - name: wordpress
+    subtemplates:
+    - tags: wordpress
+  template: technologies/tech-detect.yaml

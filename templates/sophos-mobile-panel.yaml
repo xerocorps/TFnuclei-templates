@@ -21,13 +21,22 @@ info:
     cwe-id: CWE-200
   description: Sophos Mobile panel was detected.
   metadata:
+    fofa-query:
+    - icon_hash=-1274798165
+    - title="sophos mobile"
+    google-query: intitle:"sophos mobile"
     max-request: 1
     product: mobile
-    shodan-query: http.title:"Sophos Mobile"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)sophos mobile"})
+      || service["favicon.ico.image.mmh3"] == "-1274798165"
+    shodan-query:
+    - http.title:"Sophos Mobile"
+    - http.title:"sophos mobile"
+    - http.favicon.hash:-1274798165
     vendor: sophos
   name: Sophos Mobile Panel - Detect
   reference:
   - https://www.sophos.com/en-us/products/mobile-control
   - https://www.sophos.com/en-us/support/downloads/sophos-mobile
   severity: info
-  tags: panel,sophos
+  tags: discovery,panel,sophos

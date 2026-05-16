@@ -20,7 +20,8 @@ info:
   author: DhiyaneshDk
   classification:
     cpe: cpe:2.3:a:servicenow:servicenow:*:*:*:*:*:*:*:*
-    cwe-id: CWE-79
+    cwe-id:
+    - CWE-79
   metadata:
     fofa-query:
     - icon_hash=1701804003
@@ -37,4 +38,4 @@ info:
   reference:
   - https://www.assetnote.io/resources/research/chaining-three-bugs-to-access-all-your-servicenow-data
   severity: high
-  tags: cve,cve2024,servicenow,injection,vuln
+  tags: cve,cve2024,injection,servicenow,vuln

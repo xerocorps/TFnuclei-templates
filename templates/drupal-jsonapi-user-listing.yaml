@@ -24,10 +24,14 @@ info:
   description: Drupal JSON:API username listing was detected via the /user/user endpoint.
   metadata:
     max-request: 1
-    shodan-query: http.component:"drupal"
+    product: drupal
+    shodan-query:
+    - http.component:"drupal"
+    - cpe:"cpe:2.3:a:drupal:drupal"
+    vendor: drupal
     verified: true
   name: Drupal JSON:API Username Listing - Detect
   reference:
   - https://www.drupal.org/project/drupal/issues/3240913
   severity: medium
-  tags: drupal,exposure
+  tags: drupal,exposure,discovery

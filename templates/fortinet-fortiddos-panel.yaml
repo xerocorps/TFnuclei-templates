@@ -22,13 +22,18 @@ info:
 
     '
   metadata:
+    fofa-query: title="fortiddos"
+    google-query: intitle:"fortiddos"
     max-request: 1
     product: fortiddos
-    shodan-query: http.title:"FortiDDoS"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)fortiddos"})
+    shodan-query:
+    - http.title:"FortiDDoS"
+    - http.title:"fortiddos"
     vendor: fortinet
     verified: true
   name: Fortinet FortiDDoS Panel
   reference:
   - https://www.fortinet.com/products/ddos/fortiddos
   severity: info
-  tags: panel,fortinet,fortiddos,login
+  tags: discovery,fortiddos,fortinet,login,panel

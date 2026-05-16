@@ -28,10 +28,11 @@ info:
   description: BMC Discovery login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)BMC Software"})
     shodan-query: http.title:"BMC Software"
     verified: true
   name: BMC Discovery Login Panel - Detect
   reference:
   - https://docs.bmc.com/docs/discovery/documentation-home-1098837931.html
   severity: info
-  tags: panel,bmc
+  tags: panel,bmc,discovery

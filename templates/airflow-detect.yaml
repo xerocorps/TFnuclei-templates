@@ -3,7 +3,7 @@ http:
   - part: body
     type: word
     words:
-    - Airflow 404 = lots of circles
+    - Airflow 404
   - status:
     - 404
     type: status
@@ -14,10 +14,15 @@ http:
 id: airflow-detect
 info:
   author: pdteam
+  classification:
+    cpe: cpe:2.3:a:apache:airflow:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: airflow
+    runzero-review: REJECT/2025-11-17/excluding tag intrusive
     shodan-query: http.html:"Apache Airflow"
+    vendor: apache
     verified: true
   name: Apache Airflow
   severity: info
-  tags: tech,apache,airflow,intrusive
+  tags: tech,apache,airflow,intrusive,discovery

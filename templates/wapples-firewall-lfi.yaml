@@ -32,16 +32,20 @@ id: wapples-firewall-lfi
 info:
   author: For3stCo1d
   classification:
+    cpe: cpe:2.3:a:pentasecurity:wapples:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
     cwe-id: CWE-22
   description: Wapples Web Application Firewall is vulnerable to local file inclusion.
   metadata:
     max-request: 2
+    product: wapples
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     shodan-query: http.title:"Intelligent WAPPLES"
+    vendor: pentasecurity
     verified: true
   name: Wapples Web Application Firewall - Local File Inclusion
   reference:
   - https://medium.com/@_sadshade/wapples-web-application-firewall-multiple-vulnerabilities-35bdee52c8fb
   severity: high
-  tags: wapples,firewall,lfi,authenticated
+  tags: authenticated,firewall,lfi,vuln,wapples

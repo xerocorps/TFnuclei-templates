@@ -29,13 +29,18 @@ info:
     cwe-id: CWE-200
   description: Buildbot panel was detected.
   metadata:
+    fofa-query: title="buildbot"
+    google-query: intitle:"buildbot"
     max-request: 1
     product: buildbot
-    shodan-query: http.title:"BuildBot"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)buildbot"})
+    shodan-query:
+    - http.title:"BuildBot"
+    - http.title:"buildbot"
     vendor: buildbot
     verified: true
   name: Buildbot Panel - Detect
   reference:
   - https://buildbot.net
   severity: info
-  tags: panel,buildbot,cicd
+  tags: buildbot,cicd,discovery,panel

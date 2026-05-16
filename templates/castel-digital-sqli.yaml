@@ -28,7 +28,10 @@ http:
     '
 id: castel-digital-sqli
 info:
-  author: Kazgangap
+  author: s4e-io
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'SQL Injection vulnerability in Castel Digital login forms.
 
     '
@@ -41,4 +44,4 @@ info:
   - https://www.casteldigital.com.br/
   - https://cxsecurity.com/issue/WLB-2024050032
   severity: high
-  tags: sqli,auth-bypass,castel
+  tags: auth-bypass,castel,sqli,vuln

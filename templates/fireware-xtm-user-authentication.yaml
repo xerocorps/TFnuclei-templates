@@ -19,10 +19,16 @@ info:
     cwe-id: CWE-200
   description: Fireware XTM login panel was detected.
   metadata:
+    fofa-query: title="fireware xtm user authentication"
+    google-query: intitle:"fireware xtm user authentication"
     max-request: 1
     product: fireware_xtm
-    shodan-query: http.title:"Fireware XTM User Authentication"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)fireware xtm
+      user authentication"})
+    shodan-query:
+    - http.title:"Fireware XTM User Authentication"
+    - http.title:"fireware xtm user authentication"
     vendor: watchguard
   name: Fireware XTM Login Panel - Detect
   severity: info
-  tags: panel,watchguard
+  tags: discovery,panel,watchguard

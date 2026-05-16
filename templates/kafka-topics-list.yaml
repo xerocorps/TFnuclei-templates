@@ -12,7 +12,7 @@ info:
     verified: true
   name: Kafka Topics Enumeration
   severity: info
-  tags: network,detect,enum,kafka,apache
+  tags: network,kafka
 tcp:
 - extractors:
   - name: value
@@ -21,7 +21,7 @@ tcp:
     - ([a-z.A-Z_0-9-]+)
     type: regex
   host:
-  - '{{Hostname}}'
+  - '{{Host}}:9092'
   inputs:
   - data: 00000020000300000000000200126b61666b612d707974686f6e2d322e302e3200000000
     read: 1024
@@ -40,4 +40,3 @@ tcp:
     - (?:[0-9]{1,3}\.){3}[0-9]{1,3}
     type: regex
   matchers-condition: or
-  port: 9092

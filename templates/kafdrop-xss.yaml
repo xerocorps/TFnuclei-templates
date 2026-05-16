@@ -19,7 +19,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79
+    cwe-id: CWE-79,CWE-83
   description: KafDrop contains a cross-site scripting vulnerability. It allows remote
     unauthenticated attackers to inject arbitrary HTML and/or JavaScript into the
     response returned by the server.
@@ -30,4 +30,4 @@ info:
   - https://github.com/HomeAdvisor/Kafdrop/issues/12
   - https://www.blackhatethicalhacking.com/news/apache-kafka-cloud-clusters-expose-sensitive-data-for-large-companies
   severity: high
-  tags: kafdrop,xss
+  tags: kafdrop,vuln,xss

@@ -23,6 +23,11 @@ http:
 id: zend-v1-xss
 info:
   author: c3l3si4n
+  classification:
+    cpe: cpe:2.3:a:zend:zend_framework:1.12.2:*:*:*:*:*:*:*
+    cwe-id:
+    - CWE-79
+    - CWE-83
   description: 'ZendFramework of versions <=1.12.2 contain a cross-site scripting
     vulnerability via an arbitrarily supplied parameter.
 
@@ -30,9 +35,11 @@ info:
   metadata:
     google-query: inurl:"/tests/Zend/Http/"
     max-request: 2
+    product: zend_framework
+    vendor: zend
     verified: true
   name: ZendFramework 1.12.2 - Cross-Site Scripting
   reference:
   - https://twitter.com/c3l3si4n/status/1600035722148212737
   severity: medium
-  tags: zend,zendframework,xss
+  tags: vuln,xss,zend,zendframework

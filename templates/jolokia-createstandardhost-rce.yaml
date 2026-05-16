@@ -17,7 +17,9 @@ id: jolokia-createstandardhost-rce
 info:
   author: laluka,pathtaga
   classification:
-    cwe-id: CWE-15,CWE-94
+    cwe-id:
+    - CWE-15
+    - CWE-94
   description: File read and file write to RCE by deploying a vhost with MBeanFactory/createStandardHost
     and DiagnosticCommand/jfrStart
   name: Jolokia file write to RCE jfr

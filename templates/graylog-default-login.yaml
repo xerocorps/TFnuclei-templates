@@ -50,7 +50,8 @@ info:
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N
     cvss-score: 9.1
-    cwe-id: CWE-798
+    cwe-id:
+    - CWE-798
   description: 'Graylog instance is accessible with default admin credentials (admin/admin).
     This provides full administrative access to the log management platform, including
     the ability to read all ingested logs, create inputs, configure pipelines, and
@@ -67,15 +68,16 @@ info:
     fofa-query: app="Graylog" || title="Graylog Web Interface"
     max-request: 2
     product: graylog
+    runzero-match: service["product"] contains "Graylog:Graylog"
     shodan-query: title:"Graylog Web Interface"
     vendor: graylog
     verified: true
   name: Graylog - Default Login
   reference:
   - https://go2docs.graylog.org/current/setting_up_graylog/rest_api.html
-  - https://docs.graylog.org/docs/server-conf
-  - https://docs.graylog.org/docs/authentication
   - https://archivedocs.graylog.org/en/2.5/pages/installation/virtual_machine_appliances.html
+  - https://docs.graylog.org/docs/authentication
+  - https://docs.graylog.org/docs/server-conf
   remediation: 'Change the default root_password_sha2 in the Graylog server.conf configuration
     file. Use a strong, unique password for the admin account.
 

@@ -34,6 +34,7 @@ id: geoserver-default-login
 info:
   author: For3stCo1d,professorabhay,ritikchaddha
   classification:
+    cpe: cpe:2.3:a:geoserver:geoserver:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -41,9 +42,12 @@ info:
   metadata:
     fofa-query: app="GeoServer"
     max-request: 2
+    product: geoserver
+    runzero-match: 'any(each(service["html.titles"]), {# matches "GeoServer: Welcome"})'
+    vendor: geoserver
     verified: true
   name: Geoserver Admin - Default Login
   reference:
   - http://geoserver.org/
   severity: high
-  tags: geoserver,default-login
+  tags: default-login,geoserver,vuln

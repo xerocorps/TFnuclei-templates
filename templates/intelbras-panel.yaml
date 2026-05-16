@@ -24,12 +24,19 @@ info:
     cwe-id: CWE-200
   description: Intelbras router panel was detected.
   metadata:
-    fofa-query: app="Intelbras"
+    fofa-query:
+    - app="Intelbras"
+    - title="intelbras"
+    - app="intelbras"
+    google-query: intitle:"intelbras"
     max-request: 1
     product: cip_92200_firmware
-    shodan-query: http.title:"Intelbras"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)intelbras"})
+    shodan-query:
+    - http.title:"Intelbras"
+    - http.title:"intelbras"
     vendor: intelbras
     verified: true
   name: Intelbras Router Panel - Detect
   severity: info
-  tags: panel,intelbras
+  tags: discovery,intelbras,panel

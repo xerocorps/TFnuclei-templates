@@ -42,6 +42,7 @@ info:
     '
   metadata:
     max-request: 4
+    runzero-match: any(each(service["html.titles"]), {# matches "HertzBeat"})
     shodan-query: title:"HertzBeat"
     verified: true
   name: Apache HertzBeat - Default Credentials

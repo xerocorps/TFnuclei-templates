@@ -30,11 +30,19 @@ info:
     cwe-id: CWE-200
   description: GeoServer login panel was detected.
   metadata:
+    fofa-query:
+    - app="geoserver"
+    - title="geoserver"
+    google-query: intitle:"geoserver"
     max-request: 2
     product: geoserver
-    shodan-query: title:"GeoServer"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)geoserver"})
+      || service["favicon.ico.image.mmh3"] == "97540678"
+    shodan-query:
+    - title:"GeoServer"
+    - http.title:"geoserver"
     vendor: osgeo
     verified: true
   name: GeoServer Login Panel - Detect
   severity: info
-  tags: panel,geoserver,osgeo
+  tags: discovery,geoserver,osgeo,panel

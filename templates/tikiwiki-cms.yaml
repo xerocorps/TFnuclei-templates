@@ -21,9 +21,12 @@ info:
     cwe-id: CWE-200
   description: Tiki Wiki CMS Groupware login panel was detected.
   metadata:
+    fofa-query: body="tiki wiki"
     max-request: 2
     product: tikiwiki_cms\/groupware
+    runzero-match: service["http.body"] matches "(?i)tiki wiki"
+    shodan-query: http.html:"tiki wiki"
     vendor: tiki
   name: Tiki Wiki CMS Groupware Login Panel - Detect
   severity: info
-  tags: panel,tikiwiki,tiki
+  tags: panel,tikiwiki,tiki,discovery

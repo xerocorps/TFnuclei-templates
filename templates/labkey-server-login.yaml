@@ -28,11 +28,17 @@ info:
     cwe-id: CWE-200
   description: LabKey Server login panel was detected.
   metadata:
+    fofa-query: 'title="sign in: /home"'
+    google-query: 'intitle:"sign in: /home"'
     max-request: 2
     product: labkey_server
-    shodan-query: 'title:"Sign In: /home"'
+    runzero-match: 'any(each(service["html.titles"]), {# matches "(?i)sign in: /home"})'
+    shodan-query:
+    - 'title:"Sign In: /home"'
+    - 'http.title:"sign in: /home"'
+    - 'server: labkey'
     vendor: labkey
     verified: true
   name: LabKey Server Login Panel - Detect
   severity: info
-  tags: panel,labkey
+  tags: discovery,labkey,panel

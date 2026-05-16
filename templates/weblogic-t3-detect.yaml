@@ -1,16 +1,11 @@
 id: weblogic-t3-detect
 info:
   author: F1tz,milo2012,wdahlenb
-  description: 'T3 is the protocol used to transport information between WebLogic
-    servers and other types of Java programs.
-
-    '
-  metadata:
-    max-request: 2
-  name: Weblogic T3 Protocol Detection
+  description: Check T3 protocol status.
+  name: Detect Weblogic T3 Protocol
   severity: info
-  tags: network,weblogic,detect,t3,oracle
-tcp:
+  tags: network,weblogic
+network:
 - extractors:
   - group: 1
     part: body

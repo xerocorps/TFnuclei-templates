@@ -21,10 +21,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)Decision Center Enterprise console"
     shodan-query: html:"Decision Center Enterprise console"
     verified: true
   name: IBM Decision Center Enterprise Console - Panel Detection
   reference:
   - https://www.ibm.com/docs/en/odm/8.5.1?topic=console-tutorial-getting-started-decision-center-enterprise
   severity: info
-  tags: panel,ibm,login,detect,decision-center
+  tags: panel,ibm,login,detect,decision-center,discovery

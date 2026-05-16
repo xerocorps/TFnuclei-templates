@@ -21,6 +21,7 @@ info:
   metadata:
     max-request: 1
     product: pritunl
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Pritunl"})
     shodan-query: title:"Pritunl"
     vendor: pritunl
     verified: true
@@ -29,4 +30,4 @@ info:
   - https://github.com/louislam/uptime-kuma
   - https://uptime.kuma.pet/docs/
   severity: info
-  tags: pritunl,panel,login
+  tags: discovery,login,panel,pritunl

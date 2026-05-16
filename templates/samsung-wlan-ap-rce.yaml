@@ -19,7 +19,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
-    cwe-id: CWE-77
+    cwe-id: CWE-77,CWE-78
   description: Samsung WLAN AP WEA453e is vulnerable to a pre-auth root remote command
     execution vulnerability, which means an attacker could run code as root remotely
     without logging in.
@@ -29,4 +29,4 @@ info:
   reference:
   - https://omriinbar.medium.com/samsung-wlan-ap-wea453e-vulnerabilities-7aa4a57d4dba
   severity: critical
-  tags: xss,samsung,rce
+  tags: rce,samsung,vuln,xss

@@ -3,26 +3,21 @@ http:
   - part: body
     type: word
     words:
-    - SonarQube
-  - status:
-    - 200
-    type: status
-  matchers-condition: and
+    - <title>SonarQube</title>
   method: GET
   path:
   - '{{BaseURL}}/sessions/new'
+  - '{{BaseURL}}/api/authentication/login'
 id: sonarqube-login
 info:
   author: dhiyaneshDk
   classification:
-    cpe: cpe:2.3:a:sonarsource:sonarqube:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: SonarQube panel was detected.
   metadata:
-    max-request: 1
-    product: sonarqube
-    vendor: sonarsource
+    max-request: 2
   name: SonarQube Panel - Detect
   severity: info
-  tags: panel,sonarqube,sonarsource
+  tags: panel,sonarqube,cloud

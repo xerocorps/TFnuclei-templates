@@ -19,10 +19,12 @@ info:
     cwe-id: CWE-200
   description: Samsung printer panel was detected.
   metadata:
-    fofa-query: app="SAMSUNG-Printer"
+    fofa-query:
+    - app="SAMSUNG-Printer"
+    - app="samsung-printer"
     max-request: 1
     product: printer_firmware
     vendor: samsung
   name: Samsung Printer Panel - Detect
   severity: info
-  tags: iot,panel,samsung,printer
+  tags: iot,panel,samsung,printer,discovery

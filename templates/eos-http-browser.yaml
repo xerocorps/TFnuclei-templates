@@ -17,10 +17,11 @@ info:
   author: DhiyaneshDk
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)EOS HTTP Browser"})
     shodan-query: title:"EOS HTTP Browser"
     verified: true
   name: EOS HTTP Browser
   reference:
   - https://www.facebook.com/photo/?fbid=634930085344181&set=pcb.634929508677572
   severity: medium
-  tags: exposure,eos,httpbrowser,panel
+  tags: exposure,eos,httpbrowser,panel,discovery

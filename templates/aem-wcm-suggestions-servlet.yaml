@@ -19,9 +19,10 @@ info:
   description: AEM WCM Suggestions Servlet is exposed.
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-17/excluding tag intrusive
     shodan-query: http.component:"Adobe Experience Manager"
   name: AEM WCM Suggestions Servlet
   reference:
   - https://speakerdeck.com/0ang3el/hunting-for-security-bugs-in-aem-webapps?slide=96
   severity: low
-  tags: aem,misconfig,intrusive
+  tags: aem,misconfig,intrusive,vuln

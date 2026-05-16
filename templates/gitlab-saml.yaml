@@ -15,7 +15,7 @@ http:
     type: status
   matchers-condition: and
   raw:
-  - 'GET /users/auth/saml/metadata HTTP/2
+  - 'GET /users/auth/saml/metadata HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -35,6 +35,8 @@ info:
     google-query: intitle:"gitlab"
     max-request: 1
     product: gitlab
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)gitlab"}) ||
+      service["http.body"] matches "(?i)gitlab enterprise edition"
     shodan-query:
     - http.title:"gitlab"
     - cpe:"cpe:2.3:a:gitlab:gitlab"
@@ -43,4 +45,4 @@ info:
     verified: true
   name: Gitlab SAML - Detection
   severity: info
-  tags: panel,saml,gitlab
+  tags: discovery,gitlab,panel,saml

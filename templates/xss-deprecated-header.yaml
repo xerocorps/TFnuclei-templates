@@ -24,6 +24,8 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cvss-score: 0
+    cwe-id:
+    - CWE-79
   description: Setting the XSS-Protection header is deprecated. Setting the header
     to anything other than `0` can actually introduce an XSS vulnerability.
   metadata:
@@ -33,4 +35,4 @@ info:
   - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
   - https://owasp.org/www-project-secure-headers/#x-xss-protection
   severity: info
-  tags: xss,misconfig,generic
+  tags: generic,misconfig,vuln,xss

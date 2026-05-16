@@ -23,11 +23,15 @@ info:
     cwe-id: CWE-200
   description: NZBGet login panel was detected.
   metadata:
+    fofa-query: body="nzbget"
     max-request: 1
     product: nzbget
-    shodan-query: html:"NZBGet"
+    runzero-match: service["http.body"] matches "(?i)nzbget"
+    shodan-query:
+    - html:"NZBGet"
+    - http.html:"nzbget"
     vendor: nzbget
     verified: true
   name: NZBGet Login Panel - Detect
   severity: info
-  tags: panel,nzbget
+  tags: discovery,nzbget,panel

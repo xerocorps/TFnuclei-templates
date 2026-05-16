@@ -22,9 +22,10 @@ info:
   description: Tiny File Manager panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Tiny File Manager"})
     shodan-query: title:"Tiny File Manager"
     verified: true
-    zoomeye-query: app:"Tiny File Manager"
+    zoomeye-query: app="Tiny File Manager"
   name: Tiny File Manager Panel - Detect
   severity: info
-  tags: panel,filemanager,login,detect
+  tags: panel,filemanager,login,detect,discovery

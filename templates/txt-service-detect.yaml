@@ -4,6 +4,10 @@ dns:
     type: word
     words:
     - keybase-site-verification
+  - name: salesloft-drift
+    type: word
+    words:
+    - drift-domain-verification
   - name: proton-mail
     type: word
     words:
@@ -160,6 +164,226 @@ dns:
     type: word
     words:
     - whimsical
+  - name: nintex
+    type: word
+    words:
+    - nintex.
+  - name: openai
+    type: word
+    words:
+    - openai-domain-verification
+  - name: mailerlite
+    type: word
+    words:
+    - mailerlite-domain-verification
+  - name: docker
+    type: word
+    words:
+    - docker-verification
+  - name: shopify
+    type: word
+    words:
+    - shopify-verification-code
+  - name: smartsheet
+    type: word
+    words:
+    - smartsheet-site-validation
+  - name: site24x7
+    type: word
+    words:
+    - site24x7-signals-domain-verification
+  - name: dynatrace
+    type: word
+    words:
+    - dynatrace-site-verification
+  - name: cisco-cloud-intelligence
+    type: word
+    words:
+    - cisco-ci-domain-verification
+  - name: infor-cloudsuite
+    type: word
+    words:
+    - infor-cloudsuite-domain-verification
+  - name: postman
+    type: word
+    words:
+    - postman-domain-verification
+  - name: miro
+    type: word
+    words:
+    - miro-verification
+  - name: microsoft-federation
+    type: word
+    words:
+    - msfpkey
+  - name: dynamics-365-marketing
+    type: word
+    words:
+    - d365mktkey
+  - name: zoom-alternative
+    type: word
+    words:
+    - zoom_verify
+  - name: brevo
+    type: word
+    words:
+    - brevo-code
+  - name: perplexity-ai
+    type: word
+    words:
+    - perplexity-ai-domain-verification
+  - name: pexip
+    type: word
+    words:
+    - pexip-ms-tenant-domain-verification
+  - name: anthropic
+    type: word
+    words:
+    - anthropic-domain-verification
+  - name: airtable
+    type: word
+    words:
+    - airtable-verification
+  - name: wrike
+    type: word
+    words:
+    - wrike-verification
+  - name: salesforce-pardot
+    type: word
+    words:
+    - pardot
+  - name: notion
+    type: word
+    words:
+    - notion-domain-verification
+  - name: jetbrains
+    type: word
+    words:
+    - jetbrains-domain-verification
+  - name: onetrust
+    type: word
+    words:
+    - onetrust-domain-verification
+  - name: nulab
+    type: word
+    words:
+    - nulab-verification-code
+  - name: sap-successfactors
+    type: word
+    words:
+    - successfactors-site-verification
+  - name: synthesia
+    type: word
+    words:
+    - synthesia
+  - name: monday
+    type: word
+    words:
+    - monday-com-verification
+  - name: globalsign
+    type: word
+    words:
+    - globalsign-domain-verification
+  - name: heyhack
+    type: word
+    words:
+    - heyhack-verification
+  - name: foxit
+    type: word
+    words:
+    - foxit-domain-verification
+  - name: facebook-workplace
+    type: word
+    words:
+    - workplace-domain-verification
+  - name: pendo
+    type: word
+    words:
+    - pendo-domain-verification
+  - name: stytch
+    type: word
+    words:
+    - stytch_verification_dns
+  - name: mixpanel
+    type: word
+    words:
+    - mixpanel-domain-verify
+  - name: astro
+    type: word
+    words:
+    - astro-domain-verification
+  - name: box
+    type: word
+    words:
+    - box-domain-verification
+  - name: wiz
+    type: word
+    words:
+    - wiz-domain-verification
+  - name: figma
+    type: word
+    words:
+    - figma-domain-verification
+  - name: solarwinds
+    type: word
+    words:
+    - solarwinds-service0desk-verification
+  - name: hubspot
+    type: word
+    words:
+    - hubspot-domain-verification
+  - name: microsoft-domain
+    type: word
+    words:
+    - ms-domain-verification
+  - name: swisssign
+    type: word
+    words:
+    - swisssign-check
+  - name: infoblox
+    type: word
+    words:
+    - infoblox-domain-mastery
+  - name: ahrefs
+    type: word
+    words:
+    - ahrefs-site-verification
+  - name: logmein
+    type: word
+    words:
+    - logmein-verification-code
+  - name: mailru
+    type: word
+    words:
+    - mailru-verification
+  - name: mandrill
+    type: word
+    words:
+    - mandrill_verify
+  - name: nitro
+    type: word
+    words:
+    - nitro-verification-code
+  - name: parkable
+    type: word
+    words:
+    - parkable-domain-verification
+  - name: seculio
+    type: word
+    words:
+    - seculio-domain-verification-code
+  - name: trustpilot
+    type: word
+    words:
+    - trustpilot-one-time-verification
+  - name: esputnik
+    type: word
+    words:
+    - esputnik-verification
+  - name: atlassian-sending
+    type: word
+    words:
+    - atlassian-sending-domain-verification
   matchers-condition: or
   name: '{{FQDN}}'
   type: TXT
@@ -176,4 +400,4 @@ info:
   reference:
   - https://www.abenezer.ca/blog/services-companies-use-txt-records
   severity: info
-  tags: dns,txt
+  tags: dns,txt,txt-service,discovery

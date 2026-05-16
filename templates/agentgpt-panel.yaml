@@ -24,6 +24,7 @@ info:
   metadata:
     max-request: 1
     product: agentgpt
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)AgentGPT"})
     shodan-query: http.title:"AgentGPT"
     vendor: reworkd
     verified: true
@@ -32,4 +33,4 @@ info:
   - https://github.com/reworkd/AgentGPT
   - https://agentgpt.reworkd.ai/
   severity: info
-  tags: panel,agentgpt,agent,ai,detect,discovery
+  tags: agent,agentgpt,ai,detect,discovery,panel

@@ -65,6 +65,7 @@ info:
     google-query: intitle:"gitea"
     max-request: 2
     product: gitea
+    runzero-review: 'REJECT/2026-04-23/auto: interactsh (OAST callback)'
     shodan-query:
     - title:"Gitea"
     - http.html:"powered by gitea version"
@@ -80,4 +81,4 @@ info:
 
     '
   severity: medium
-  tags: redirect,gitea,bypass
+  tags: bypass,gitea,redirect

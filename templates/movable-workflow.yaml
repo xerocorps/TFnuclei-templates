@@ -6,8 +6,8 @@ info:
   name: Movable Type Security Checks
 workflows:
 - subtemplates:
-  - template: http/cves/2021/CVE-2021-20837.yaml
-  template: http/technologies/default-movable-page.yaml
+  - template: cves/2021/CVE-2021-20837.yaml
+  template: technologies/default-movable-page.yaml
 - subtemplates:
-  - template: http/cves/2021/CVE-2021-20837.yaml
-  template: http/exposed-panels/movable-type-login.yaml
+  - template: cves/2021/CVE-2021-20837.yaml
+  template: exposed-panels/movable-type-login.yaml

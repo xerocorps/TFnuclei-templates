@@ -36,6 +36,7 @@ info:
     framework: aspnetcore
     max-request: 2
     product: remotely
+    runzero-match: any(each(service["html.titles"]), {# matches "Remotely$"})
     shodan-query: title:"Remotely"
     vendor: lucent-sea
     verified: true

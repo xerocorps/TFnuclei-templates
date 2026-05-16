@@ -24,6 +24,8 @@ info:
   metadata:
     max-request: 1
     product: cvat
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Computer Vision
+      Annotation Tool"})
     shodan-query: http.title:"Computer Vision Annotation Tool"
     vendor: cvat-ai
     verified: true
@@ -32,4 +34,4 @@ info:
   - https://github.com/cvat-ai/cvat
   - https://cvat.ai/
   severity: info
-  tags: panel,cvat,annotation,ml,ai,detect,discovery
+  tags: ai,annotation,cvat,detect,discovery,ml,panel

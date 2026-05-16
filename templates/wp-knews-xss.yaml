@@ -1,4 +1,16 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - internal: true
+    type: word
+    words:
+    - Knews Multilingual Newsletters
+  raw:
+  - 'GET /wp-content/plugins/knews/readme.txt HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 - matchers:
   - part: body
     type: word
@@ -27,10 +39,10 @@ info:
     of an unsuspecting user in the context of the affected site. This can allow the
     attacker to steal cookie-based authentication credentials and launch other attacks.
   metadata:
-    max-request: 1
+    max-request: 2
   name: WordPress Knews Multilingual Newsletters 1.1.0 - Cross-Site Scripting
   reference:
   - http://web.archive.org/web/20210213220043/https://www.securityfocus.com/bid/54330/info
   - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-knews-multilingual-newsletters-ff-parameter-cross-site-scripting-1-1-0
   severity: high
-  tags: wordpress,xss,wp-plugin
+  tags: wordpress,xss,wp-plugin,vuln

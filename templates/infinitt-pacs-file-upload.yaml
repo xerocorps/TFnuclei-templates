@@ -56,6 +56,7 @@ info:
   metadata:
     fofa-query: icon_hash="1474455751" || icon_hash="702238928"
     max-request: 1
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
   name: Infinitt PACS System - Arbitary File Upload
   reference:
@@ -66,6 +67,6 @@ info:
 
     '
   severity: critical
-  tags: infinitt,file-upload,intrusive,rce,vuln
+  tags: file-upload,infinitt,intrusive,rce,vuln
 variables:
   filename: '{{to_lower(rand_text_alpha(5))}}'

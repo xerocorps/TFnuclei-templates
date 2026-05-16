@@ -1,4 +1,10 @@
-http:
+id: options-method
+info:
+  author: pdteam
+  name: Allowed Options Method
+  severity: info
+  tags: misc,generic
+requests:
 - extractors:
   - group: 1
     part: header
@@ -8,11 +14,3 @@ http:
   method: OPTIONS
   path:
   - '{{BaseURL}}'
-id: options-method
-info:
-  author: pdteam
-  metadata:
-    max-request: 1
-  name: Allowed Options Method
-  severity: info
-  tags: miscellaneous,misc,generic

@@ -4,24 +4,15 @@ info:
   name: HTML-Injection
   severity: high
 requests:
-- fuzzing:
-  - fuzz:
-    - '{{injection}}'
-    mode: single
-    part: query
-    type: replace
-  matchers:
+- matchers:
   - part: body
     type: word
     words:
-    - <img src=https://bit.ly/3rI7qfr>
     - <A HREF="http://bing.com/">25</A>
-  matchers-condition: or
+  matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}'
+  - '{{BaseURL}}{{payload}}'
   payloads:
-    injection:
-    - '''"><img src=https://bit.ly/3rI7qfr>'
-    - '''"><A HREF="http://bing.com/">25</A>'
-  stop-at-first-match: true
+    payload:
+    - <A%20HREF="http://bing.com/">25</A>

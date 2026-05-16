@@ -19,7 +19,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22
+    cwe-id: CWE-22,CWE-23,CWE-73
   description: Wordpress Aspose Cloud eBook Generator is vulnerable to local file
     inclusion.
   metadata:
@@ -28,4 +28,4 @@ info:
   reference:
   - https://wpscan.com/vulnerability/7866
   severity: high
-  tags: aspose,ebook,wpscan,wordpress,wp-plugin,lfi
+  tags: aspose,ebook,lfi,vuln,wordpress,wp-plugin,wpscan

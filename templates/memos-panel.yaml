@@ -21,9 +21,14 @@ info:
 
     '
   metadata:
+    fofa-query: title="memos"
+    google-query: intitle:"memos"
     max-request: 2
     product: memos
-    shodan-query: title:"Memos"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)memos"})
+    shodan-query:
+    - title:"Memos"
+    - http.title:"memos"
     vendor: usememos
     verified: true
   name: Memos Panel - Detect
@@ -31,4 +36,4 @@ info:
   - https://github.com/usememos/memos
   - https://www.usememos.com/
   severity: info
-  tags: panel,memos,detect,usememos
+  tags: detect,discovery,memos,panel,usememos

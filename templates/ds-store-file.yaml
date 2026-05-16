@@ -2,8 +2,13 @@ http:
 - matchers:
   - condition: or
     dsl:
-    - "contains(body, '\0@\0')"
+    - contains(hex_encode(body), '44534442')
     - contains(hex_encode(body), '0000000142756431')
+    type: dsl
+  - dsl:
+    - "contains(to_lower(body), '\0<\0h\0t\0m\0l')"
+    - "contains(to_lower(body), '\0<\0b\0o\0d\0y')"
+    negative: true
     type: dsl
   - dsl:
     - status_code == 200
@@ -25,8 +30,8 @@ info:
     publicly available.
   metadata:
     max-request: 1
-  name: Exposed DS_Store File
+  name: DS_Store File - Exposed
   reference:
   - https://github.com/lijiejie/ds_store_exp
   severity: info
-  tags: exposure,files,ds_store,config
+  tags: exposure,files,ds_store,config,vuln

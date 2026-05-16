@@ -1,5 +1,11 @@
 http:
-- matchers:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - 'version: ''([0-9.]+)'','
+    type: regex
+  matchers:
   - condition: and
     part: body
     type: word
@@ -26,11 +32,16 @@ info:
     cwe-id: CWE-200
   description: Deluge WebUI login panel was detected.
   metadata:
+    fofa-query: title="deluge webui"
+    google-query: intitle:"deluge webui"
     max-request: 1
     product: deluge
-    shodan-query: title:"Deluge WebUI"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)deluge webui"})
+    shodan-query:
+    - title:"Deluge WebUI"
+    - http.title:"deluge webui"
     vendor: deluge-torrent
     verified: true
   name: Deluge WebUI Login Panel - Detect
   severity: info
-  tags: panel,deluge,deluge-torrent
+  tags: deluge,deluge-torrent,discovery,panel

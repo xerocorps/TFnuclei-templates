@@ -28,9 +28,11 @@ info:
   metadata:
     max-request: 1
     product: connect_box_eurodocsis_firmware
-    shodan-query: NET-DK/1.0
+    shodan-query:
+    - NET-DK/1.0
+    - net-dk/1.0
     vendor: upc
     verified: true
   name: Connect Box Login Panel - Detect
   severity: info
-  tags: panel,connectbox,iot,upc
+  tags: panel,connectbox,iot,upc,discovery

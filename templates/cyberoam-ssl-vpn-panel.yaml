@@ -24,13 +24,20 @@ info:
     cwe-id: CWE-200
   description: Cyberoam SSL VPN panel was detected.
   metadata:
-    google-query: intitle:"Cyberoam SSL VPN Portal"
+    fofa-query: title="cyberoam ssl vpn portal"
+    google-query:
+    - intitle:"Cyberoam SSL VPN Portal"
+    - intitle:"cyberoam ssl vpn portal"
     max-request: 1
     product: cyberoam
-    shodan-query: title:"Cyberoam SSL VPN Portal"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)cyberoam ssl
+      vpn portal"})
+    shodan-query:
+    - title:"Cyberoam SSL VPN Portal"
+    - http.title:"cyberoam ssl vpn portal"
     vendor: sophos
   name: Cyberoam SSL VPN Panel - Detect
   reference:
   - https://docs.sophos.com/nsg/Cyberoam/Version%2010.x/10.6.3/Guides/Cyberoam%20SSL%20VPN%20User%20Guide.pdf
   severity: info
-  tags: panel,cyberoam,vpn,sophos
+  tags: cyberoam,discovery,panel,sophos,vpn

@@ -7,8 +7,17 @@ http:
     - <iframe[^>]*src=['"](http[^s'">][^'">]*)['"]
     - <object[^>]*data=['"](http[^s'">][^'">]*)['"]
     type: regex
-  host-redirects: true
   matchers:
+  - negative: true
+    part: body
+    regex:
+    - (?mi)<!--\[if (lt|lte) IE [0-9]*\]>\s*<script[^>]*\ssrc="http://
+    type: regex
+  - negative: true
+    part: body
+    regex:
+    - <!--\s*<script
+    type: regex
   - part: body
     regex:
     - <script[^>]*src=['"]http://[^'">]+['"]
@@ -19,7 +28,7 @@ http:
     - startswith(tostring(BaseURL), "https://")
     type: dsl
   matchers-condition: and
-  max-redirects: 3
+  max-redirects: 0
   method: GET
   path:
   - '{{BaseURL}}'
@@ -39,4 +48,4 @@ info:
   - https://resources.infosecinstitute.com/topics/vulnerabilities/https-mixed-content-vulnerability/
   - https://docs.gitlab.com/ee/user/application_security/dast/checks/319.1.html
   severity: info
-  tags: misconfig
+  tags: misconfig,vuln

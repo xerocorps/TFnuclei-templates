@@ -42,11 +42,18 @@ info:
 
     '
   metadata:
+    fofa-query:
+    - icon_hash=1469328760
+    - body="pmb group"
     max-request: 1
-    shodan-query: http.favicon.hash:1469328760
+    product: pmb
+    shodan-query:
+    - http.favicon.hash:1469328760
+    - http.html:"pmb group"
+    vendor: sigb
     verified: true
   name: PMB v7.4.1 - Cross Site Scripting
   reference:
   - https://github.com/jenaye/PMB
   severity: medium
-  tags: xss,pmb,cms
+  tags: xss,pmb,cms,vuln

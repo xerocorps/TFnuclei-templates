@@ -21,12 +21,18 @@ info:
     cwe-id: CWE-200
   description: An Aviatrix Cloud Controller login panel was detected.
   metadata:
+    fofa-query: title="aviatrix cloud controller"
+    google-query: intitle:"aviatrix cloud controller"
     max-request: 1
     product: controller
-    shodan-query: http.title:"Aviatrix Cloud Controller"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)aviatrix cloud
+      controller"})
+    shodan-query:
+    - http.title:"Aviatrix Cloud Controller"
+    - http.title:"aviatrix cloud controller"
     vendor: aviatrix
   name: Aviatrix Cloud Controller Panel
   reference:
   - https://docs.aviatrix.com/HowTos/controller_config.html
   severity: info
-  tags: panel,aviatrix
+  tags: aviatrix,discovery,panel

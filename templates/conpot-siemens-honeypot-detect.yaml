@@ -8,14 +8,17 @@ info:
 
     '
   metadata:
+    fofa-query: body="overview - siemens, simatic"
     max-request: 1
     product: siemens
-    shodan-query: html:"Overview - Siemens, SIMATIC"
+    shodan-query:
+    - html:"Overview - Siemens, SIMATIC"
+    - http.html:"overview - siemens, simatic"
     vendor: conpot
     verified: true
   name: Conpot (Siemens) Honeypot - Detect
   severity: info
-  tags: conpot,siemens,honeypot,ir,cti,network
+  tags: conpot,siemens,honeypot,ir,cti,network,tcp,discovery
 tcp:
 - host:
   - '{{Hostname}}'

@@ -34,6 +34,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)datagerry"})
     shodan-query: http.title:"datagerry"
     verified: true
   name: Datagerry - Default Login

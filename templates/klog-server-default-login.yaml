@@ -40,6 +40,7 @@ info:
   metadata:
     max-request: 2
     product: klog_server
+    runzero-match: any(each(service["html.titles"]), {# matches "KLog Server"})
     vendor: klogserver
   name: KLog Server - Default Login
   reference:

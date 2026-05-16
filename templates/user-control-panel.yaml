@@ -19,7 +19,9 @@ info:
   description: User Control Panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)User Control
+      Panel"})
     shodan-query: title:"User Control Panel"
   name: User Control Panel - Detect
   severity: info
-  tags: panel,ucp
+  tags: panel,ucp,discovery

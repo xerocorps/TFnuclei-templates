@@ -10,11 +10,16 @@ http:
 id: sauce-token
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-522
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
   name: Sauce Token
   reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/sauce.yml
+  - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/sauce.yml
+  - https://docs.saucelabs.com/dev/api/
   severity: info
-  tags: sauce,token,exposure
+  tags: exposure,sauce,token,vuln

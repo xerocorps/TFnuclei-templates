@@ -21,9 +21,10 @@ id: froxlor-xss
 info:
   author: tess
   classification:
+    cpe: cpe:2.3:a:froxlor:froxlor:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 5.4
-    cwe-id: CWE-80
+    cwe-id: CWE-79,CWE-80
   description: 'Froxlor Server Management is susceptible to cross-site scripting via
     clicking the forgot password link. An attacker can inject arbitrary script in
     the browser of an unsuspecting user in the context of the affected site. This
@@ -33,8 +34,10 @@ info:
     '
   metadata:
     max-request: 1
+    product: froxlor
     shodan-query: title:"Froxlor Server Management Panel"
+    vendor: froxlor
     verified: true
   name: Froxlor Server Management - Cross-Site Scripting
   severity: medium
-  tags: froxlor,xss
+  tags: froxlor,vuln,xss

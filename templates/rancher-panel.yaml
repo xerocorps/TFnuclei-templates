@@ -28,8 +28,10 @@ info:
     cwe-id: CWE-200
   description: Rancher login panel was detected.
   metadata:
+    fofa-query: icon_hash=464587962
     max-request: 1
     product: rancher
+    runzero-match: service["favicon.ico.image.mmh3"] == "464587962"
     shodan-query: http.favicon.hash:464587962
     vendor: suse
     verified: true
@@ -38,4 +40,4 @@ info:
   - https://github.com/rancher/rancher
   - https://rancher.com/
   severity: info
-  tags: panel,rancher,kubernetes,devops,cloud,login,suse
+  tags: cloud,devops,discovery,kubernetes,login,panel,rancher,suse

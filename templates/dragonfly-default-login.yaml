@@ -34,10 +34,11 @@ info:
   metadata:
     fofa-query: body="logo-dragonfly.png"
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)logo-dragonfly\\.png"
     verified: true
   name: Dragonfly - Default Login
   severity: high
-  tags: dragonfly,default-login
+  tags: default-login,dragonfly,vuln
 variables:
   password: dragonfly
   username: root

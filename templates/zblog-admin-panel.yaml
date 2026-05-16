@@ -20,8 +20,11 @@ info:
     cwe-id: CWE-200
   description: Z-BlogPHP admin login panel was detected.
   metadata:
+    fofa-query: title=zblog
+    google-query: intitle:zblog
     max-request: 1
     product: zblogphp
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)zblog"})
     shodan-query: http.title:zblog
     vendor: zblogcn
     verified: true
@@ -29,4 +32,4 @@ info:
   reference:
   - https://github.com/zblogcn/zblogphp
   severity: info
-  tags: zblog,panel,zblogcn
+  tags: discovery,panel,zblog,zblogcn

@@ -19,6 +19,7 @@ info:
     '
   metadata:
     max-request: 2
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1495233116"
     shodan-query: http.favicon.hash:-1495233116
     verified: true
   name: Ackee Panel - Detect
@@ -26,4 +27,4 @@ info:
   - https://ackee.electerious.com/
   - https://docs.ackee.electerious.com/
   severity: info
-  tags: panel,ackee,login,detect
+  tags: panel,ackee,login,detect,discovery

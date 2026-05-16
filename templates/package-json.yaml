@@ -17,20 +17,6 @@ http:
   path:
   - '{{BaseURL}}/package.json'
   - '{{BaseURL}}/package-lock.json'
-  - '{{BaseURL}}/ui/package.json'
-  - '{{BaseURL}}/.config/yarn/global/package.json'
-  - '{{BaseURL}}/api/javascript/package.json'
-  - '{{BaseURL}}/api/package.json'
-  - '{{BaseURL}}/package.json.localhost.bak'
-  - '{{BaseURL}}/package.json.bak'
-  - '{{BaseURL}}/package.json.swp'
-  - '{{BaseURL}}/core/assets/vendor/jquery.ui/package.json'
-  - '{{BaseURL}}/core/assets/vendor/normalize-css/package.json'
-  - '{{BaseURL}}/core/misc/ui/package.json'
-  - '{{BaseURL}}/core/package.json'
-  - '{{BaseURL}}/library/package.json'
-  - '{{BaseURL}}/js/lazyload/package.json'
-  stop-at-first-match: true
 id: package-json
 info:
   author: geeknik,afaq,noraj
@@ -48,4 +34,4 @@ info:
   - https://classic.yarnpkg.com/lang/en/docs/package-json/
   - https://pnpm.io/package_json
   severity: info
-  tags: config,exposure,node,npm
+  tags: dependency,config

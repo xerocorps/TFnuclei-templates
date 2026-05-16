@@ -20,8 +20,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Meduza Stealer"})
     shodan-query: http.title:"Meduza Stealer"
     verified: 'true'
   name: Meduza Stealer Panel - Detect
   severity: info
-  tags: rat,meduza-stealer,c2,panel
+  tags: rat,meduza-stealer,c2,panel,vuln

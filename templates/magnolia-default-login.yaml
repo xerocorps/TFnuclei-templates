@@ -31,8 +31,12 @@ http:
   payloads:
     password:
     - superuser
+    - admin
+    - password
     username:
     - superuser
+    - admin
+    - admin
   raw:
   - 'GET /.magnolia/admincentral HTTP/1.1
 
@@ -71,9 +75,9 @@ info:
     cwe-id: CWE-200
   description: Magnolia CMS default login credentials were detected.
   metadata:
-    max-request: 3
+    max-request: 9
     shodan-query: html:"Magnolia is a registered trademark"
-    verified: true
+    verified: 'true'
   name: Magnolia CMS Default Login - Detect
   reference:
   - https://www.magnolia-cms.com/

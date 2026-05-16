@@ -19,11 +19,15 @@ info:
   classification:
     cpe: cpe:2.3:o:zyxel:vmg1312-b10d_firmware:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: body="vmg1312-b10d"
     max-request: 1
     product: vmg1312-b10d_firmware
-    shodan-query: http.html:"VMG1312-B10D"
+    runzero-match: service["http.body"] matches "(?i)vmg1312-b10d"
+    shodan-query:
+    - http.html:"VMG1312-B10D"
+    - http.html:"vmg1312-b10d"
     vendor: zyxel
     verified: true
   name: Zyxel VMG1312-B10D - Login Detection
   severity: info
-  tags: tech,zyxel,modem,router,panel
+  tags: discovery,modem,panel,router,tech,zyxel

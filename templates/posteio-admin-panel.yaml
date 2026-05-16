@@ -16,11 +16,17 @@ http:
 id: posteio-admin-panel
 info:
   author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:analogic:poste.io:*:*:*:*:*:*:*:*
   description: Poste.io login panel was detected.
   metadata:
     max-request: 1
+    product: poste.io
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Administration
+      login"})
     shodan-query: title:"Administration login" html:"poste<span"
+    vendor: analogic
     verified: true
   name: Poste.io Admin Panel - Detect
   severity: info
-  tags: panel,poste,login,detect
+  tags: panel,poste,login,detect,discovery

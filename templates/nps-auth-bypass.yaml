@@ -35,10 +35,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)window\\.nps"
     shodan-query: html:"window.nps"
     verified: true
   name: NPS - Authentication Bypass
   reference:
   - https://mari0er.club/post/nps.html/
   severity: high
-  tags: nps,auth-bypass
+  tags: nps,auth-bypass,vuln

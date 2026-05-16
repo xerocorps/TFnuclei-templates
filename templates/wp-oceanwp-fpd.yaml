@@ -23,6 +23,7 @@ info:
     framework: wordpress
     max-request: 3
     product: oceanwp
+    runzero-match: service["http.body"] matches "(?i)/wp-content/themes/oceanwp/"
     vendor: developer
     verified: true
   name: WordPress OceanWP - Full Path Disclosure

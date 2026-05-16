@@ -38,6 +38,9 @@ http:
 id: vbulletin-backdoor
 info:
   author: MaStErCho
+  classification:
+    cwe-id:
+    - CWE-78
   metadata:
     max-request: 21
   name: vBulletin Backdoor - Detect
@@ -45,6 +48,6 @@ info:
   - https://github.com/OWASP/vbscan
   - https://blog.sucuri.net/2017/01/vbulletin-malware-hackers-compete-backdoor-control.html
   severity: high
-  tags: backdoor,php,vbulletin,rce
+  tags: backdoor,php,rce,vbulletin,vuln
 variables:
   num: '999999999'

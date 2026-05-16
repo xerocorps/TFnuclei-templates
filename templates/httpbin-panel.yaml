@@ -19,9 +19,10 @@ info:
   description: HTTPBin login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)httpbin\\.org"})
     shodan-query: http.title:"httpbin.org"
   name: HTTPBin Login Panel - Detect
   reference:
   - https://github.com/postmanlabs/httpbin
   severity: info
-  tags: panel,httpbin,oss
+  tags: panel,httpbin,oss,discovery

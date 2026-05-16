@@ -21,14 +21,9 @@ code:
   matchers:
   - type: word
     words:
-    - '"isVirtualNetworkFilterEnabled": false'
-  - type: word
-    words:
-    - '"ipRules": []'
-    - '"ipRules": null'
-  matchers-condition: and
-  source: 'az cosmosdb show --ids $id --query ''{"ipRules":ipRules,"isVirtualNetworkFilterEnabled":isVirtualNetworkFilterEnabled}''
-    --output json
+    - '"publicNetworkAccess": "Enabled"'
+  source: 'az cosmosdb show --ids $id --query "{publicNetworkAccess: publicNetworkAccess,
+    virtualNetworkRules: virtualNetworkRules}" --output json
 
     '
 flow: "code(1);\nfor (let CosmosDBData of iterate(template.cosmosDBAccounts)) {\n\

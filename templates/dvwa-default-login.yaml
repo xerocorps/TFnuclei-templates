@@ -57,8 +57,10 @@ info:
     The hard coded credentials are part of a security testing scenario.
   metadata:
     max-request: 2
+    runzero-match: 'any(each(service["html.titles"]), {# matches "Login :: Damn Vulnerable
+      Web Application"})'
   name: DVWA Default Login
   reference:
   - https://opensourcelibs.com/lib/dvwa
   severity: critical
-  tags: dvwa,default-login
+  tags: default-login,dvwa,vuln

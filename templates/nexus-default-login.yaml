@@ -39,6 +39,7 @@ info:
   description: Nexus default admin credentials were discovered.
   metadata:
     max-request: 1
+    runzero-match: service["http.head.setCookie"] contains "NXSESSIONID"
   name: Nexus Default Login
   severity: high
-  tags: nexus,default-login
+  tags: default-login,nexus,vuln

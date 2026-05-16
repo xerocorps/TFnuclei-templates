@@ -19,10 +19,21 @@ info:
     cwe-id: CWE-200
   description: Icinga Web 2 login panel was detected.
   metadata:
+    fofa-query:
+    - title="icinga web 2 login"
+    - title="icinga"
+    google-query:
+    - intitle:"icinga web 2 login"
+    - intitle:"icinga"
     max-request: 1
     product: icinga_web_2
-    shodan-query: http.title:"Icinga Web 2 Login"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)icinga web 2
+      login"}) || any(each(service["html.titles"]), {# matches "(?i)icinga"})
+    shodan-query:
+    - http.title:"Icinga Web 2 Login"
+    - http.title:"icinga"
+    - http.title:"icinga web 2 login"
     vendor: icinga
   name: Icinga Web 2 Login Panel - Detect
   severity: info
-  tags: panel,icinga
+  tags: discovery,icinga,panel

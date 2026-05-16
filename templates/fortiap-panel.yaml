@@ -23,13 +23,18 @@ info:
     cwe-id: CWE-200
   description: FortiAP login panel was detected.
   metadata:
+    fofa-query: title="fortiap"
+    google-query: intitle:"fortiap"
     max-request: 1
     product: fortiap
-    shodan-query: title:"FortiAP"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)fortiap"})
+    shodan-query:
+    - title:"FortiAP"
+    - http.title:"fortiap"
     vendor: fortinet
     verified: true
   name: FortiAP Login Panel - Detect
   reference:
   - https://www.fortinet.com/products/wireless-access-points
   severity: info
-  tags: panel,fortinet,fortiap
+  tags: discovery,fortiap,fortinet,panel

@@ -14,14 +14,15 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/api/components/suggestions?recentlyBrowsed='
+  - '{{BaseURL}}/api/components/search_projects?ps=1'
+  - '{{BaseURL}}/sonarqube/api/components/suggestions?recentlyBrowsed='
 id: sonarqube-public-projects
 info:
   author: sickwell
-  description: Sonarqube public projects detected.
   metadata:
-    max-request: 1
+    max-request: 3
   name: Sonarqube with public projects
   reference:
   - https://next.sonarqube.com/sonarqube/web_api/api/components/suggestions?internal=true
   severity: low
-  tags: sonarqube,misconfig
+  tags: sonarqube,cloud

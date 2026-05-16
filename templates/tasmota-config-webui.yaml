@@ -27,13 +27,8 @@ http:
 id: tasmota-config-webui
 info:
   author: ritikchaddha
-  description: Tasmota configuration is exposed.
   metadata:
     max-request: 1
-    shodan-query: title:"Tasmota"
-    verified: true
   name: Tasmota Configuration Exposure
-  reference:
-  - https://github.com/arendst/Tasmota
   severity: medium
-  tags: misconfig,tasmota,exposure,config
+  tags: panel,config

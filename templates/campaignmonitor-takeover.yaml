@@ -1,17 +1,15 @@
 http:
 - matchers:
-  - dsl:
-    - Host != ip
-    type: dsl
   - condition: and
     type: word
     words:
-    - <strong>Trying to access your account?</strong>
-    - or <a href="mailto:help@createsend.com
-  matchers-condition: and
+    - Email Newsletter Software
+    - css.createsend1.com
+  max-redirects: 1
   method: GET
   path:
   - '{{BaseURL}}'
+  redirects: true
 id: campaignmonitor-takeover
 info:
   author: pdteam
@@ -22,4 +20,4 @@ info:
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/275
   severity: high
-  tags: takeover,campaignmonitor
+  tags: takeover,campaignmonitor,vuln

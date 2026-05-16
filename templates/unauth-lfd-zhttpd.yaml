@@ -34,6 +34,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)VMG1312-B10D"
     shodan-query: http.html:"VMG1312-B10D"
     verified: true
   name: zhttpd - Local File Inclusion
@@ -42,4 +43,4 @@ info:
   - https://sec-consult.com/vulnerability-lab/advisory/multiple-critical-vulnerabilities-in-multiple-zyxel-devices/
   - https://github.com/rapid7/metasploit-framework/pull/17388
   severity: high
-  tags: misconfig,unauth,zyxel,lfi,msf
+  tags: misconfig,unauth,zyxel,lfi,msf,vuln

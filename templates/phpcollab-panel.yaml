@@ -26,10 +26,15 @@ info:
     cwe-id: CWE-200
   description: phpCollab login panel was detected.
   metadata:
+    fofa-query: title="phpcollab"
+    google-query: intitle:"phpcollab"
     max-request: 1
     product: phpcollab
-    shodan-query: http.title:"PhpCollab"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)phpcollab"})
+    shodan-query:
+    - http.title:"PhpCollab"
+    - http.title:"phpcollab"
     vendor: phpcollab
   name: phpCollab Login Panel - Detect
   severity: info
-  tags: panel,phpcollab,login
+  tags: discovery,login,panel,phpcollab

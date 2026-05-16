@@ -1,4 +1,16 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - internal: true
+    type: word
+    words:
+    - 'Wordfence Security - '
+  raw:
+  - 'GET /wp-content/plugins/wordfence/readme.txt HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 - matchers:
   - part: body
     type: word
@@ -24,7 +36,7 @@ info:
     cwe-id: CWE-80
   description: WordPress Wordfence 7.4.6 is vulnerable to cross-site scripting.
   metadata:
-    max-request: 1
+    max-request: 2
   name: WordPress Wordfence 7.4.6 - Cross0Site Scripting
   severity: medium
-  tags: wordpress,wp-plugin,xss,wordfence
+  tags: wordpress,wp-plugin,xss,wordfence,vuln

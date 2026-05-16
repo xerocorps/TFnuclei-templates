@@ -2811,10 +2811,10 @@ http:
     words:
     - target="_blank" title="affiliate
   - name: embedthis-appweb
-    part: header
+    part: server
     type: word
     words:
-    - 'Server: embedthis-appweb'
+    - Mbedthis-Appweb
   - name: emby
     type: word
     words:
@@ -3379,6 +3379,7 @@ http:
     type: word
     words:
     - <script src="//cdn.foxycart.com
+    - <script src="https://cdn.foxycart.com
   - name: fpoll
     type: word
     words:
@@ -6187,7 +6188,8 @@ http:
     type: word
     words:
     - id="msowebpartpage_postbacksource
-  - name: microsoft-silverlight
+  - case-insensitive: true
+    name: microsoft-silverlight
     type: word
     words:
     - get microsoft silverlight
@@ -12250,7 +12252,7 @@ http:
     part: header
     type: word
     words:
-    - 'X-Powered-By: zope'
+    - 'X-Powered-By: Zope'
   - condition: and
     name: zotonic
     type: word
@@ -12334,4 +12336,4 @@ info:
   reference:
   - https://github.com/0x727/FingerprintHub
   severity: info
-  tags: tech
+  tags: tech,discovery

@@ -8,8 +8,7 @@ info:
   severity: info
   tags: bigip,tech
 requests:
-- attack: sniper
-  extractors:
+- extractors:
   - group: 1
     part: header
     regex:
@@ -20,19 +19,7 @@ requests:
     type: word
     words:
     - BIGipServer~
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
+  method: GET
+  path:
+  - '{{BaseURL}}'
   redirects: true
-  threads: 100

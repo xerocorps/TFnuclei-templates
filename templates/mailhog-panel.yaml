@@ -24,10 +24,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)mailhog"
     shodan-query: http.html:"mailhog"
     verified: true
   name: MailHog Panel - Detect
   reference:
   - https://github.com/mailhog/MailHog
   severity: info
-  tags: panel,mailhog,mail,smtp
+  tags: panel,mailhog,mail,smtp,discovery

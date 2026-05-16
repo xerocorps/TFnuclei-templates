@@ -23,11 +23,15 @@ info:
     cwe-id: CWE-200
   description: FreeIPA Identity Management login panel was detected.
   metadata:
+    fofa-query: body="freeipa"
     max-request: 2
     product: freeipa
-    shodan-query: html:"FreeIPA"
+    runzero-match: service["http.body"] matches "(?i)freeipa"
+    shodan-query:
+    - html:"FreeIPA"
+    - http.html:"freeipa"
     vendor: freeipa
     verified: true
   name: FreeIPA Identity Management Login Panel - Detect
   severity: info
-  tags: panel,login,freeipa
+  tags: discovery,freeipa,login,panel

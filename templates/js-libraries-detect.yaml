@@ -95,6 +95,51 @@ headless:
     regex:
     - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$
     type: regex
+  - name: handlebars
+    part: fingerprintHandlebars
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
+  - name: underscore
+    part: fingerprintUnderscore
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
+  - name: yui
+    part: fingerprintYUI
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
+  - name: knockout
+    part: fingerprintKnockout
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
+  - name: leaflet
+    part: fingerprintLeaflet
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
+  - name: paperjs
+    part: fingerprintPaperJS
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
+  - name: fabricjs
+    part: fingerprintFabricJS
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
+  - name: p5js
+    part: fingerprintP5JS
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
+  - name: nextjs
+    part: fingerprintNextJS
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
   matchers:
   - dsl:
     - len(fingerprintAxios) > 0
@@ -116,6 +161,15 @@ headless:
     - len(fingerprintChartJs) > 0
     - len(fingerprintSlick) > 0
     - len(fingerprintSelect2) > 0
+    - len(fingerprintHandlebars) > 0
+    - len(fingerprintUnderscore) > 0
+    - len(fingerprintYUI) > 0
+    - len(fingerprintKnockout) > 0
+    - len(fingerprintLeaflet) > 0
+    - len(fingerprintPaperJS) > 0
+    - len(fingerprintFabricJS) > 0
+    - len(fingerprintP5JS) > 0
+    - len(fingerprintNextJS) > 0
     type: dsl
   matchers-condition: or
   steps:
@@ -238,6 +292,51 @@ headless:
         \    return $.fn.select2.version || \"\";\n  } catch (e) {}\n  return \"\"\
         ;\n}\n"
     name: fingerprintSelect2
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return Handlebars.VERSION || \"\";\n  } catch (e)\
+        \ {}\n  return \"\";\n}\n"
+    name: fingerprintHandlebars
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return window._.VERSION || \"\";\n  } catch (e)\
+        \ {}\n  return \"\";\n}\n"
+    name: fingerprintUnderscore
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return YUI.version || \"\";\n  } catch (e) {}\n\
+        \  return \"\";\n}\n"
+    name: fingerprintYUI
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return window.ko?.version || \"\";\n  } catch (e)\
+        \ {\n    return \"\";\n  }\n}\n"
+    name: fingerprintKnockout
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return L.version || \"\";\n  } catch (e) {}\n \
+        \ return \"\";\n}\n"
+    name: fingerprintLeaflet
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return paper.version || \"\";\n  } catch (e) {}\n\
+        \  return \"\";\n}\n"
+    name: fingerprintPaperJS
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return window.fabric?.version || \"\";\n  } catch\
+        \ (e) {\n    return \"\";\n  }\n}\n"
+    name: fingerprintFabricJS
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return p5.VERSION || \"\";\n  } catch (e) {}\n\
+        \  return \"\";\n}\n"
+    name: fingerprintP5JS
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return next.version || \"\";\n  } catch (e) {}\n\
+        \  return \"\";\n}\n"
+    name: fingerprintNextJS
 id: js-libraries-detect
 info:
   author: adamparsons,cbadke,ChetGan,ErikOwen,jacalynli,geeknik
@@ -246,4 +345,4 @@ info:
     max-request: 1
   name: Common JS Libraries - Detection
   severity: info
-  tags: headless,tech,js
+  tags: headless,tech,js,discovery

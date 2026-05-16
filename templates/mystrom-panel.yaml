@@ -20,8 +20,9 @@ info:
   description: Mystrom panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)myStrom"})
     shodan-query: title:"myStrom"
     verified: true
   name: MyStrom Panel - Detect
   severity: info
-  tags: panel,mystrom,iot
+  tags: panel,mystrom,iot,discovery

@@ -18,15 +18,21 @@ http:
 id: passbolt-panel
 info:
   author: righettod
+  classification:
+    cpe: cpe:2.3:a:passbolt:passbolt_api:*:*:*:*:*:*:*:*
   description: 'Passbolt login panel was detected.
 
     '
   metadata:
     max-request: 1
+    product: passbolt_api
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Passbolt \\|
+      Open source password manager for teams"})
     shodan-query: http.title:"Passbolt | Open source password manager for teams"
+    vendor: passbolt
     verified: true
   name: Passbolt Login Panel
   reference:
   - https://www.passbolt.com/
   severity: info
-  tags: panel,passbolt,login
+  tags: panel,passbolt,login,discovery

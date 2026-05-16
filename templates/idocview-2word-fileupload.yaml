@@ -20,6 +20,6 @@ info:
     verified: true
   name: IDoc View /html/2word - Arbitrary File Upload
   severity: high
-  tags: idoc,rce,instrusive,file-upload
+  tags: idoc,rce,instrusive,file-upload,vuln
 variables:
   file: '{{to_lower(rand_text_alpha(5))}}'

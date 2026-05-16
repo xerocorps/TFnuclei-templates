@@ -22,11 +22,16 @@ info:
     cwe-id: CWE-200
   description: Nortek Linear eMerge panel was detected.
   metadata:
+    fofa-query: title="emerge"
+    google-query: intitle:"emerge"
     max-request: 1
     product: linear_emerge_essential_firmware
-    shodan-query: http.title:"eMerge"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)emerge"})
+    shodan-query:
+    - http.title:"eMerge"
+    - http.title:"emerge"
     vendor: nortekcontrol
     verified: true
   name: Nortek Linear eMerge Panel - Detect
   severity: info
-  tags: panel,emerge,nortek,nortekcontrol
+  tags: discovery,emerge,nortek,nortekcontrol,panel

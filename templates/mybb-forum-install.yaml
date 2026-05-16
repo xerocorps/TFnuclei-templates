@@ -28,11 +28,16 @@ info:
     cwe-id: CWE-200
   description: MyBB installation panel was detected.
   metadata:
+    fofa-query: title="mybb"
+    google-query: intitle:"mybb"
     max-request: 1
     product: mybb
-    shodan-query: http.title:"MyBB"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)mybb"})
+    shodan-query:
+    - http.title:"MyBB"
+    - http.title:"mybb"
     vendor: mybb
     verified: true
   name: MyBB Installation Panel - Detect
   severity: high
-  tags: panel,mybb,forum
+  tags: panel,mybb,forum,discovery

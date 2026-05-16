@@ -19,13 +19,17 @@ info:
     cwe-id: CWE-200
   description: VMware Workspace ONE UEM Airwatch login panel was detected.
   metadata:
+    fofa-query: body="airwatch"
     max-request: 1
     product: workspace_one_uem
-    shodan-query: http.html:"Airwatch"
+    runzero-match: service["http.body"] matches "(?i)airwatch"
+    shodan-query:
+    - http.html:"Airwatch"
+    - http.html:"airwatch"
     vendor: vmware
     verified: true
   name: VMware Workspace ONE UEM Airwatch Login Panel - Detect
   reference:
   - https://twitter.com/Jhaddix/status/1295861505963909120
   severity: info
-  tags: panel,workspaceone,vmware
+  tags: discovery,panel,vmware,workspaceone

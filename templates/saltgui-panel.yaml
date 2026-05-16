@@ -13,7 +13,6 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-  unsafe: true
 id: saltgui-panel
 info:
   author: ritikchaddha
@@ -25,4 +24,4 @@ info:
     max-request: 1
   name: SaltGUI Login Panel - Detect
   severity: info
-  tags: panel,saltgui
+  tags: panel,saltgui,discovery

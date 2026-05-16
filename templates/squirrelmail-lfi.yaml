@@ -18,12 +18,14 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22
+    cwe-id: CWE-22,CWE-73
   description: SquirrelMail 1.2.11 is vulnerable to local file inclusion.
   metadata:
     max-request: 2
+    runzero-match: service["favicon.ico.image.mmh3"] == "1511806001" || any([service["http.body"],
+      service["last.http.body"]], {# matches "(?i)squirrelmail"})
   name: SquirrelMail 1.2.11 - Local File Inclusion
   reference:
   - https://www.exploit-db.com/exploits/22793
   severity: high
-  tags: lfi,squirrelmail,edb
+  tags: edb,lfi,squirrelmail,vuln

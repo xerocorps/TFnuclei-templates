@@ -27,6 +27,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Welcome to BlueMind"})
     shodan-query: http.title:"Welcome to BlueMind"
     verified: true
   name: Bluemind Panel - Detect

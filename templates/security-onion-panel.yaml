@@ -26,9 +26,14 @@ info:
 
     '
   metadata:
+    fofa-query: title="security onion"
+    google-query: intitle:"security onion"
     max-request: 2
     product: security_onion
-    shodan-query: title:"Security Onion"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)security onion"})
+    shodan-query:
+    - title:"Security Onion"
+    - http.title:"security onion"
     vendor: securityonionsolutions
     verified: true
   name: Security Onion Panel - Detect
@@ -36,4 +41,4 @@ info:
   - https://securityonionsolutions.com/
   - https://github.com/Security-Onion-Solutions/securityonion
   severity: info
-  tags: panel,security,onion,detect,securityonionsolutions
+  tags: detect,discovery,onion,panel,security,securityonionsolutions

@@ -19,11 +19,15 @@ info:
     cwe-id: CWE-200
   description: An Adobe Connect Central login panel was detected.
   metadata:
+    fofa-query: title="openvpn connect"
+    google-query: intitle:"openvpn connect"
     max-request: 1
     product: connect
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)openvpn connect"})
+    shodan-query: http.title:"openvpn connect"
     vendor: adobe
   name: Adobe Connect Central Login Panel
   reference:
   - https://www.adobe.com/products/adobeconnect.html
   severity: info
-  tags: adobe,panel,connect-central
+  tags: adobe,panel,connect-central,discovery

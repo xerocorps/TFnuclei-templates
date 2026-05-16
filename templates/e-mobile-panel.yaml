@@ -31,8 +31,9 @@ info:
   description: E-mobile panel was detected.
   metadata:
     max-request: 3
+    runzero-match: service["http.body"] matches "(?i)E-Mobile&nbsp"
     shodan-query: http.html:"E-Mobile&nbsp"
     verified: true
   name: E-mobile Panel - Detect
   severity: info
-  tags: panel,e-mobile
+  tags: panel,e-mobile,discovery

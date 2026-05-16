@@ -25,8 +25,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "Nginx Proxy Manager"
     shodan-query: html:"Nginx Proxy Manager"
     verified: true
   name: Nginx Proxy Manager - Default Login
   severity: high
-  tags: nginx,proxy-manager,default-login
+  tags: default-login,nginx,proxy-manager,vuln

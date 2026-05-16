@@ -23,7 +23,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22
+    cwe-id: CWE-22,CWE-23
   description: Bullwark Momentum Series JAWS 1.0 is vulnerable to local file inclusion.
   metadata:
     fofa-query: Bullwark
@@ -35,4 +35,4 @@ info:
   - https://www.exploit-db.com/exploits/47773
   - http://www.bullwark.net/Kategoriler.aspx?KategoriID=24
   severity: high
-  tags: lfi,edb,bullwark
+  tags: bullwark,edb,lfi,vuln

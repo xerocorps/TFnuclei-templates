@@ -17,8 +17,9 @@ info:
   metadata:
     fofa-query: icon_hash="868509217"
     max-request: 2
+    runzero-match: service["favicon.ico.image.mmh3"] == "868509217"
     shodan-query: http.favicon.hash:868509217
     verified: true
   name: Digital Watchdog - Detect
   severity: info
-  tags: digital-watchdog,panel,detect,login,dw,spectrum
+  tags: digital-watchdog,panel,detect,login,dw,spectrum,discovery

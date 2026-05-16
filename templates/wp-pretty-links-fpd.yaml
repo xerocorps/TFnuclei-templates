@@ -29,6 +29,7 @@ info:
     framework: wordpress
     max-request: 3
     product: pretty-link
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/pretty-link/"
     vendor: developer
     verified: true
   name: WordPress Pretty Links - Full Path Disclosure

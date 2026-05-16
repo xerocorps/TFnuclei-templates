@@ -18,7 +18,10 @@ http:
     '
 id: hjsoft-hcm-tb-sqli
 info:
-  author: securityforeveryone
+  author: s4e-io
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'There is a SQL injection vulnerability in the /gz/LoadOtherTreeServlet
     interface of Hongjing HCM. Unauthenticated remote attackers can use the SQL injection
     vulnerability with the database xp_cmdshell to execute arbitrary commands and
@@ -34,4 +37,4 @@ info:
   reference:
   - https://github.com/wy876/POC/blob/main/%E5%AE%8F%E6%99%AFeHR%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3LoadOtherTreeServlet%E5%AD%98%E5%9C%A8SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.md
   severity: high
-  tags: time-based-sqli,sqli,hjsoft,management-system
+  tags: hjsoft,management-system,sqli,time-based-sqli,vuln

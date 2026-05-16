@@ -22,10 +22,12 @@ info:
   metadata:
     fofa-query: title=="WoodWing Studio Server"
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)WoodWing Studio
+      Server"})
     shodan-query: http.title:"WoodWing Studio Server"
     verified: true
   name: Woodwing Studio Server Panel - Detect
   reference:
   - https://twitter.com/ynsmroztas/status/1680961398011047936
   severity: info
-  tags: woodwing,panel
+  tags: woodwing,panel,discovery

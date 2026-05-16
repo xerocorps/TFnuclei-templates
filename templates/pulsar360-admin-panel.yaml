@@ -22,8 +22,9 @@ info:
   description: Pulsar360 admin panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Pulsar Admin"})
     shodan-query: title:"Pulsar Admin"
     verified: true
   name: Pulsar360 Admin Panel - Detect
   severity: info
-  tags: panel,pulsar360,pulsar,admin
+  tags: panel,pulsar360,pulsar,admin,discovery

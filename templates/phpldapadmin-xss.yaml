@@ -29,13 +29,17 @@ http:
 id: phpldapadmin-xss
 info:
   author: GodfatherOrwa,herry
+  classification:
+    cpe: cpe:2.3:a:phpldapadmin_project:phpldapadmin:*:*:*:*:*:*:*:*
   description: PHP LDAP Admin is vulnerable to XSS.
   metadata:
     max-request: 9
+    product: phpldapadmin
     shodan-query: html:"phpLDAPadmin"
+    vendor: phpldapadmin_project
     verified: true
   name: PHP LDAP Admin < 1.2.5 - Cross-Site Scripting
   reference:
   - https://twitter.com/GodfatherOrwa/status/1701392754251563477
   severity: medium
-  tags: php,phpldapadmin,xss
+  tags: php,phpldapadmin,xss,vuln

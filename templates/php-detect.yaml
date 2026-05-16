@@ -20,10 +20,14 @@ http:
 id: php-detect
 info:
   author: y0no
+  classification:
+    cpe: cpe:2.3:a:php:php:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: php
     shodan-query: 'X-Powered-By: PHP'
+    vendor: php
     verified: true
   name: PHP Detect
   severity: info
-  tags: tech,php
+  tags: tech,php,discovery

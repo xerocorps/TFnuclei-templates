@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -8,6 +12,8 @@ http:
     words:
     - There isn't a GitHub Pages site here.
     - For root URLs (like http://example.com/) you must provide an index.html file
+    - The site configured at this address does not contain the requested file.
+    - For root URLs (like <code>http://example.com/</code>)
   - condition: and
     dsl:
     - '!contains(host,"githubapp.com")'
@@ -28,4 +34,4 @@ info:
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz
   severity: high
-  tags: takeover,github
+  tags: takeover,github,vuln

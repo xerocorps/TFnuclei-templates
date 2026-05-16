@@ -22,13 +22,18 @@ info:
 
     '
   metadata:
+    fofa-query: title="sharefile login"
+    google-query: intitle:"sharefile login"
     max-request: 1
     product: sharefile
-    shodan-query: title:"ShareFile Login"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)sharefile login"})
+    shodan-query:
+    - title:"ShareFile Login"
+    - http.title:"sharefile login"
     vendor: citrix
     verified: true
   name: Sharefile Login - Panel
   reference:
   - https://www.sharefile.com/
   severity: info
-  tags: sharefile,login,panel,detect,citrix
+  tags: citrix,detect,discovery,login,panel,sharefile

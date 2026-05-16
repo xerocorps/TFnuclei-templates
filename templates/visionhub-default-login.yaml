@@ -6,10 +6,11 @@ http:
     words:
     - 'Set-Cookie: admin'
   - negative: true
-    part: header
+    part: response
     type: word
     words:
     - 'Set-Cookie: adminer_key'
+    - Log into OpenMage Admin Page
   - status:
     - 200
     type: status
@@ -41,4 +42,4 @@ info:
   reference:
   - https://www.qognify.com/products/visionhub/
   severity: high
-  tags: visionhub,default-login
+  tags: default-login,visionhub,vuln

@@ -10,6 +10,10 @@ http:
 id: doppler-audit-token
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-522
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -19,4 +23,4 @@ info:
   - https://docs.doppler.com/reference/api
   - https://docs.doppler.com/reference/auth-token-formats
   severity: info
-  tags: doppler,exposure,tokens
+  tags: doppler,exposure,tokens,vuln

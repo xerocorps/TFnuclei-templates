@@ -19,13 +19,19 @@ info:
 
     '
   metadata:
+    fofa-query: title="arangodb web interface"
+    google-query: intitle:"arangodb web interface"
     max-request: 1
     product: arangodb
-    shodan-query: http.title:"ArangoDB Web Interface"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)arangodb web
+      interface"})
+    shodan-query:
+    - http.title:"ArangoDB Web Interface"
+    - http.title:"arangodb web interface"
     vendor: arangodb
     verified: 'true'
   name: ArangoDB Web Interface - Detect
   reference:
   - https://www.arangodb.com/docs/stable/
   severity: info
-  tags: panel,arangodb,login
+  tags: arangodb,discovery,login,panel

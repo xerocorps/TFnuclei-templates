@@ -34,13 +34,24 @@ info:
 
     '
   metadata:
+    fofa-query:
+    - title="securetransport" || http.favicon.hash:1330269434
+    - title="st web client"
+    google-query:
+    - intitle:"st web client"
+    - intitle:"securetransport" || http.favicon.hash:1330269434
     max-request: 1
     product: securetransport
-    shodan-query: http.title:"SecureTransport" || http.favicon.hash:1330269434
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)securetransport"})
+      || any(each(service["html.titles"]), {# matches "(?i)st web client"})
+    shodan-query:
+    - http.title:"SecureTransport" || http.favicon.hash:1330269434
+    - http.title:"st web client"
+    - http.title:"securetransport" || http.favicon.hash:1330269434
     vendor: axway
     verified: true
   name: Axway SecureTransport Login Panel - Detect
   reference:
   - https://www.axway.com/en/products/managed-file-transfer/securetransport
   severity: info
-  tags: panel,axway,securetransport
+  tags: axway,discovery,panel,securetransport

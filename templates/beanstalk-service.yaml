@@ -14,7 +14,7 @@ info:
   reference:
   - https://jhadiary.wordpress.com/2016/05/18/beanstalk-helping-commands/
   severity: info
-  tags: network,beanstalk,detect,enum
+  tags: network,beanstalk,detect,enum,tcp,discovery
 tcp:
 - extractors:
   - name: stats
@@ -27,8 +27,10 @@ tcp:
   - data: "stats\r\n"
     read: 8
   matchers:
-  - part: raw
+  - condition: and
+    part: raw
     type: word
     words:
-    - OK
+    - cmd-release
+    - cmd-peek
   port: 11300

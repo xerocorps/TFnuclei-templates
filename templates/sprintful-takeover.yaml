@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -27,4 +31,4 @@ info:
     max-request: 1
   name: Sprintful Takeover
   severity: high
-  tags: takeover,sprintful
+  tags: takeover,sprintful,vuln

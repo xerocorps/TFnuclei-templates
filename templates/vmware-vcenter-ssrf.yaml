@@ -15,13 +15,17 @@ http:
 id: vmware-vcenter-ssrf
 info:
   author: pdteam
+  classification:
+    cwe-id:
+    - CWE-918
   description: VMware vCenter 7.0.2.00100 is susceptible to multiple vulnerabilities
     including server-side request forgery, local file inclusion, and cross-site scripting.
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-07/uses interactsh
   name: VMware vCenter - Server-Side Request Forgery/Local File Inclusion/Cross-Site
     Scripting
   reference:
   - https://github.com/l0ggg/VMware_vCenter
   severity: critical
-  tags: ssrf,lfi,xss,oast,vcenter,vmware
+  tags: lfi,oast,ssrf,vcenter,vmware,vuln,xss

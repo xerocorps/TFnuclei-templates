@@ -19,7 +19,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22
+    cwe-id: CWE-22,CWE-23,CWE-73
   description: WordPress Aspose Words Exporter prior to version 2.0 is vulnerable
     to local file inclusion.
   metadata:
@@ -29,4 +29,4 @@ info:
   - https://wpscan.com/vulnerability/7869
   - https://wordpress.org/plugins/aspose-doc-exporter
   severity: high
-  tags: wordpress,wp-plugin,lfi,aspose,wpscan
+  tags: aspose,lfi,vuln,wordpress,wp-plugin,wpscan

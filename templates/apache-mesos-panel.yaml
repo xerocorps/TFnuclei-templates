@@ -24,12 +24,19 @@ info:
     cwe-id: CWE-200
   description: Apache Mesos panel was detected.
   metadata:
-    fofa-query: app="APACHE-MESOS"
+    fofa-query:
+    - app="APACHE-MESOS"
+    - app="apache-mesos"
+    - title="mesos"
+    google-query: intitle:"mesos"
     max-request: 2
     product: mesos
-    shodan-query: http.title:"Mesos"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)mesos"})
+    shodan-query:
+    - http.title:"Mesos"
+    - http.title:"mesos"
     vendor: apache
     verified: true
   name: Apache Mesos - Panel Detect
   severity: info
-  tags: panel,apache,mesos
+  tags: apache,discovery,mesos,panel

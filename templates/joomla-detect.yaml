@@ -17,8 +17,10 @@ http:
     - <creationDate>
     - </metafile>
   - condition: or
+    part: body
     regex:
-    - (?i)<meta.name="generator".content="(Joomla!).*/>
+    - (?:<div[^>]+id="wrapper_r"|<(?:link|script)[^>]+(?:feed|components)/com_|<table[^>]+class="pill)
+    - (?i)<meta\s+name=["']generator["']\s+content=["']\s*joomla[^"']*
     - (?i)Joomla_([\d.|\d]+)_version_history
     - FILES_JOOMLA_XML_DESCRIPTION
     type: regex
@@ -35,6 +37,8 @@ http:
 id: joomla-detect
 info:
   author: ricardomaia
+  classification:
+    cpe: cpe:2.3:a:joomla:joomla\\!:*:*:*:*:*:*:*:*
   description: 'Joomla! is a free and open-source content management system (CMS)
     for publishing content on websites.
 
@@ -43,6 +47,8 @@ info:
     google-query: Joomla! Administration Login inurl:"/index.php" || intitle:"Joomla
       Web Installer"
     max-request: 5
+    product: joomla\\!
+    vendor: joomla
     verified: true
   name: Joomla! Detect
   reference:
@@ -51,4 +57,4 @@ info:
   - https://www.itoctopus.com/how-to-quickly-know-the-version-of-any-joomla-website
   - https://hackertarget.com/attacking-enumerating-joomla/
   severity: info
-  tags: tech,joomla,cms,oss
+  tags: tech,joomla,cms,oss,discovery

@@ -24,9 +24,10 @@ info:
   metadata:
     max-request: 1
     product: hyperic_hq
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Sign In - Hyperic"})
     shodan-query: http.title:"Sign In - Hyperic"
     vendor: vmware
     verified: true
   name: vRealize Hyperic Login Panel - Detect
   severity: info
-  tags: login,panel,vrealize,hyperic,detect,discovery
+  tags: detect,discovery,hyperic,login,panel,vrealize

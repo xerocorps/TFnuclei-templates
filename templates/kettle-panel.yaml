@@ -16,8 +16,10 @@ info:
   description: Kettle panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["http.head.wwwAuthentications"]), {# contains
+      'realm="Kettle'})
     shodan-query: basic realm="Kettle"
     verified: true
   name: Kettle Panel - Detect
   severity: info
-  tags: panel,kettle
+  tags: panel,kettle,discovery

@@ -20,10 +20,14 @@ http:
 id: qibocms-file-download
 info:
   author: theabhinavgaur
+  classification:
+    cwe-id:
+    - CWE-200
+    - CWE-552
   description: Qibocms is vulnerable to arbitrary file download vulnerability.
   metadata:
     max-request: 1
     verified: true
   name: Qibocms - Arbitrary File Download
   severity: high
-  tags: qibocms,lfr
+  tags: lfr,qibocms,vuln

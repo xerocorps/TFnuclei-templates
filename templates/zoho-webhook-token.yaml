@@ -1,4 +1,10 @@
-http:
+id: zoho-webhook-token
+info:
+  author: Ice3man
+  name: Zoho Webhook Disclosure
+  severity: info
+  tags: exposure,token,zoho
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,11 +13,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: zoho-webhook-token
-info:
-  author: Ice3man
-  metadata:
-    max-request: 1
-  name: Zoho Webhook Disclosure
-  severity: info
-  tags: exposure,token,zoho

@@ -26,11 +26,15 @@ info:
     cwe-id: CWE-200
   description: NagVis login panel was detected.
   metadata:
+    fofa-query: body="nagvis"
     max-request: 2
     product: nagvis
-    shodan-query: http.html:"NagVis"
+    runzero-match: service["http.body"] matches "(?i)nagvis"
+    shodan-query:
+    - http.html:"NagVis"
+    - http.html:"nagvis"
     vendor: nagvis
     verified: true
   name: NagVis Login Panel - Detect
   severity: info
-  tags: panel,nagvis
+  tags: discovery,nagvis,panel

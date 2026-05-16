@@ -32,6 +32,7 @@ info:
     '
   metadata:
     product: leantime
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Leantime"})
     shodan-query: title:"Leantime"
     vendor: leantime
   name: Leantime - Detect

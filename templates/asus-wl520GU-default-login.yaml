@@ -31,8 +31,10 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["http.head.wwwAuthentications"]), {# contains
+      'realm="WL-520GU'})
     shodan-query: WL-520GU
     verified: true
   name: ASUS WL-520GU - Default Login
   severity: high
-  tags: default-login,asus,wl-520gu,vuln
+  tags: asus,default-login,vuln,wl-520gu

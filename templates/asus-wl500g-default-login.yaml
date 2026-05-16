@@ -38,8 +38,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["http.head.wwwAuthentications"]), {# matches '(?i)realm="WL-500G'})
     shodan-query: WL-500G
     verified: true
   name: ASUS WL-500G - Default Login
   severity: high
-  tags: default-login,asus,wl-500
+  tags: asus,default-login,vuln,wl-500

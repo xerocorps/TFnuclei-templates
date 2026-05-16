@@ -45,10 +45,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "Trassir Webview"})
     shodan-query: title:"Trassir Webview"
     verified: true
   name: Trassir WebView Default Login - Detect
   reference:
   - https://confluence.trassir.com/display/TKB/How+to+reset+the+administrator+password+on+the+TRASSIR+NVR
   severity: high
-  tags: default-login,trassir,webview
+  tags: default-login,trassir,vuln,webview

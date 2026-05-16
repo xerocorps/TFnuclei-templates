@@ -19,9 +19,12 @@ info:
     cwe-id: CWE-200
   description: LiveZilla login panel was detected.
   metadata:
+    fofa-query: body=livezilla
     max-request: 1
     product: livezilla
+    runzero-match: service["http.body"] matches "(?i)livezilla"
+    shodan-query: http.html:livezilla
     vendor: livezilla
   name: LiveZilla Login Panel - Detect
   severity: info
-  tags: panel,livezilla,login
+  tags: discovery,livezilla,login,panel

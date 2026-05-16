@@ -20,9 +20,13 @@ http:
 id: chevereto-detect
 info:
   author: pikpikcu
+  classification:
+    cpe: cpe:2.3:a:chevereto:chevereto:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: chevereto
     shodan-query: http.title:"Centreon"
+    vendor: chevereto
   name: Chevereto detect
   severity: info
-  tags: tech,chevereto
+  tags: tech,chevereto,discovery

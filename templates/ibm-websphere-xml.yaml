@@ -16,6 +16,9 @@ http:
 id: ibm-websphere-xml
 info:
   author: r3nz0
+  classification:
+    cwe-id:
+    - CWE-219
   description: 'Disclose application specific files contained within the war file,
     including files under the web-inf and meta-inf directories.
 
@@ -27,4 +30,4 @@ info:
   reference:
   - https://www.acunetix.com/vulnerabilities/web/ibm-websphere-weblogic-application-source-file-exposure/
   severity: medium
-  tags: ibm,websphere,exposure,misconfig
+  tags: exposure,ibm,misconfig,vuln,websphere

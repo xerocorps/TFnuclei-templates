@@ -19,6 +19,7 @@ id: steve-login-panel
 info:
   author: clem9669
   classification:
+    cpe: cpe:2.3:a:steve-community:steve:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: 'SteVe login panel was detected.
@@ -27,10 +28,13 @@ info:
   metadata:
     google-query: intitle:"SteVe - Steckdosenverwaltung"
     max-request: 2
+    product: steve
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)SteVe - Steckdosenverwaltung"})
     shodan-query: http.title:"SteVe - Steckdosenverwaltung"
+    vendor: steve-community
     verified: true
   name: SteVe Login Panel - Detect
   reference:
   - https://github.com/steve-community/steve
   severity: info
-  tags: panel,steve
+  tags: discovery,panel,steve

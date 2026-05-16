@@ -36,7 +36,9 @@ id: npm-access-token
 info:
   author: DhiyaneshDK
   classification:
-    cwe-id: CWE-522,CWE-540
+    cwe-id:
+    - CWE-522
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -47,4 +49,4 @@ info:
   - https://github.com/github/roadmap/issues/557
   - https://github.blog/changelog/2022-12-06-limit-scope-of-npm-tokens-with-the-new-granular-access-tokens/
   severity: high
-  tags: npm,token,exposure,vuln
+  tags: exposure,npm,token,vuln

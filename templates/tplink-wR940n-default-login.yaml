@@ -28,11 +28,12 @@ info:
   author: ritikchaddha
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "/userRpm/"
     shodan-query: html:"/userRpm/"
     verified: true
   name: TP-Link Wireless N Router WR940N - Default-Login
   severity: high
-  tags: tplink,wR940n,default-login,misconfig
+  tags: default-login,misconfig,tplink,vuln,wR940n
 variables:
   cookie: '{{base64(username + '':'' + en_pass)}}'
   en_pass: '{{md5(password)}}'

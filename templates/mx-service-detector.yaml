@@ -1,5 +1,6 @@
 dns:
-- matchers:
+- class: inet
+  matchers:
   - name: Office 365
     type: word
     words:
@@ -57,16 +58,13 @@ dns:
     - mx2-us1.ppe-hosted.com
   matchers-condition: or
   name: '{{FQDN}}'
+  recursion: true
+  retries: 5
   type: MX
 id: mx-service-detector
 info:
   author: binaryfigments
-  classification:
-    cwe-id: CWE-200
-  description: An email service was detected. Check the email service or spam filter
-    that is used for a domain.
-  metadata:
-    max-request: 1
-  name: Email Service Detector
+  description: Check the email service or spamfilter that is used for a domain.
+  name: E-mail service detector
   severity: info
-  tags: dns,service
+  tags: dns

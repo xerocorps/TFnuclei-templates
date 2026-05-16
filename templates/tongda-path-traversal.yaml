@@ -31,7 +31,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
-    cwe-id: CWE-77
+    cwe-id: CWE-23,CWE-77
   description: 'Office Anywhere (OA) is susceptible to path traversal vulnerabilities
     which can be leveraged to perform remote code execution.
 
@@ -42,4 +42,4 @@ info:
   reference:
   - https://github.com/jas502n/OA-tongda-RCE
   severity: critical
-  tags: tongda,lfi
+  tags: lfi,tongda,vuln

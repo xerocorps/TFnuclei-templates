@@ -10,16 +10,19 @@ info:
   metadata:
     max-request: 1
   name: Revoked SSL Certificate - Detect
-  reference: '- https://www.invicti.com/web-vulnerability-scanner/vulnerabilities/revoked-ssl-certificate/
-
-    - https://www.tenable.com/plugins/nnm/5837
-
-    '
+  reference:
+  - https://www.invicti.com/web-vulnerability-scanner/vulnerabilities/revoked-ssl-certificate/
+  - https://www.tenable.com/plugins/nnm/5837
   severity: low
-  tags: ssl,tls,revoked
+  tags: ssl,tls,revoked,vuln
 ssl:
 - address: '{{Host}}:{{Port}}'
   matchers:
   - dsl:
     - revoked == true
     type: dsl
+  - dsl:
+    - expired == true
+    negative: true
+    type: dsl
+  matchers-condition: and

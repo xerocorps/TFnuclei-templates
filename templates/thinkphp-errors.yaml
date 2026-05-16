@@ -7,11 +7,9 @@ http:
     - _DATABASE</td>
     - _USERNAME</td>
     - _PASSWORD</td>
-  - condition: or
-    part: body
+  - part: body
     type: word
     words:
-    - "<title>\u7CFB\u7EDF\u53D1\u751F\u9519\u8BEF</title>"
     - <title>System Error</title>
   - condition: and
     part: body
@@ -19,8 +17,7 @@ http:
     words:
     - Exception
     - REQUEST_TIME
-  - condition: or
-    status:
+  - status:
     - 200
     - 500
     - 404
@@ -32,11 +29,10 @@ http:
 id: thinkphp-errors
 info:
   author: j4vaovo
-  description: ThinkPHP error is leaking sensitive info.
   metadata:
     fofa-query: app="ThinkPHP" && title="System Error"
     max-request: 1
-    verified: true
+    verified: 'true'
   name: ThinkPHP Errors - Sensitive Information Exposure
   severity: medium
-  tags: thinkphp,misconfig,exposure
+  tags: php

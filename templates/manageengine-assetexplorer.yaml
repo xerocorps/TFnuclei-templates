@@ -19,10 +19,16 @@ info:
     cwe-id: CWE-200
   description: ZOHO ManageEngine AssetExplorer panel was detected.
   metadata:
+    fofa-query: title="manageengine assetexplorer"
+    google-query: intitle:"manageengine assetexplorer"
     max-request: 1
     product: manageengine_assetexplorer
-    shodan-query: http.title:"ManageEngine AssetExplorer"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)manageengine
+      assetexplorer"})
+    shodan-query:
+    - http.title:"ManageEngine AssetExplorer"
+    - http.title:"manageengine assetexplorer"
     vendor: zohocorp
   name: ZOHO ManageEngine AssetExplorer Panel - Detect
   severity: info
-  tags: panel,zoho,manageengine,zohocorp
+  tags: discovery,manageengine,panel,zoho,zohocorp

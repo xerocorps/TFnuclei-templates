@@ -26,6 +26,7 @@ info:
   description: Storybook panel was detected.
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)storybook"})
     shodan-query: http.title:"storybook"
     verified: true
   name: Storybook Panel - Detect
@@ -33,4 +34,4 @@ info:
   - https://storybook.js.org/
   - https://github.com/storybookjs/storybook
   severity: info
-  tags: panel,storybook,workshop
+  tags: panel,storybook,workshop,discovery

@@ -24,6 +24,7 @@ info:
   metadata:
     fofa-query: title="Syfadis Xperience"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Syfadis Xperience"})
     verified: true
   name: Syfadis Xperience Login Panel - Detect
   reference:

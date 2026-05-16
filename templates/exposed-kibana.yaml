@@ -1,8 +1,10 @@
 http:
 - matchers:
-  - type: word
+  - part: body
+    type: word
     words:
     - kibanaWelcomeView
+    - cluster_uuid
     - kibanaWelcomeLogo
     - kibanaWelcomeTitle
   - status:
@@ -12,14 +14,14 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-  - '{{BaseURL}}/app/kibana'
   - '{{BaseURL}}/app/kibana/'
+  - '{{BaseURL}}/kibana/'
 id: exposed-kibana
 info:
-  author: Shine
-  description: Kibana is exposed.
+  author: shine
   metadata:
-    max-request: 3
+    max-request: 2
   name: Exposed Kibana
+  reference: https://thinkloveshare.com/hacking/1001_ways_to_pwn_prod/png-30.png
   severity: medium
-  tags: kibana,unauth,misconfig
+  tags: cloud,generic,exposed

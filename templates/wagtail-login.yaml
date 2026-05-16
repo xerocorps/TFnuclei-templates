@@ -22,11 +22,17 @@ info:
     cwe-id: CWE-200
   description: The Wagtail panel has been detected.
   metadata:
+    fofa-query: title="wagtail - sign in"
+    google-query: intitle:"wagtail - sign in"
     max-request: 2
     product: wagtail
-    shodan-query: title:"Wagtail - Sign in"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)wagtail - sign
+      in"})
+    shodan-query:
+    - title:"Wagtail - Sign in"
+    - http.title:"wagtail - sign in"
     vendor: torchbox
     verified: true
   name: Wagtail Login - Detect
   severity: info
-  tags: panel,wagtail,torchbox
+  tags: discovery,panel,torchbox,wagtail

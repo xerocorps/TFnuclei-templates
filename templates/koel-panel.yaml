@@ -17,16 +17,21 @@ http:
 id: koel-panel
 info:
   author: rxerium
+  classification:
+    cpe: cpe:2.3:a:koel:koel:*:*:*:*:*:*:*:*
   description: 'Personal audio streaming service that works.
 
     '
   metadata:
     max-request: 1
+    product: koel
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Koel"})
     shodan-query: title:"Koel"
+    vendor: koel
     verified: true
   name: Koel Panel - Detect
   reference:
   - https://koel.dev/
   - https://github.com/koel/koel
   severity: info
-  tags: panel,koel,login
+  tags: panel,koel,login,discovery

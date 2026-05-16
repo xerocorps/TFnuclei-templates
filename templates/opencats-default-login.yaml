@@ -39,6 +39,7 @@ id: opencats-default-login
 info:
   author: arafatansari
   classification:
+    cpe: cpe:2.3:a:opencats:opencats:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -47,8 +48,11 @@ info:
     and/or execute unauthorized operations.
   metadata:
     max-request: 4
+    product: opencats
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)opencats"})
     shodan-query: title:"opencats"
+    vendor: opencats
     verified: true
   name: OpenCATS - Default Login
   severity: high
-  tags: default-login,opencats
+  tags: default-login,opencats,vuln

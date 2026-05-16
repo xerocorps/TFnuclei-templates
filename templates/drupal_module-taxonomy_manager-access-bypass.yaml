@@ -7,21 +7,20 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '2.0.4')
-    - compare_versions(version, '2.0.3')
-    - compare_versions(version, '2.0.2')
-    - compare_versions(version, '2.0.1')
-    - compare_versions(version, '2.0.0')
+    - compare_versions(version, '<= 2.0.6')
     type: dsl
   matchers:
-  - part: body
+  - condition: and
+    part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - status:
+  - condition: and
+    status:
     - 200
     type: status
-  - part: body
+  - condition: and
+    part: body
     type: word
     words:
     - taxonomy_manager
@@ -33,7 +32,7 @@ http:
   redirects: true
 id: drupal_module-taxonomy_manager-access-bypass
 info:
-  author: Bishopfox
+  author: me
   description: This module provides a powerful interface for managing a taxonomy vocabulary.
     A vocabulary gets displayed in a dynamic tree view, where parent terms can be
     expanded to list their nested child terms or can be collapsed. The module does
@@ -41,11 +40,11 @@ info:
     and move terms. The issue is mitigated by the fact that an attacker must have
     permission to create terms in the targeted vocabulary.
   metadata:
-    created_at: '0001-01-01T00:00:00Z'
+    created_at: '2025-01-09'
     fofa-query: /sites/all/modules/taxonomy_manager/
     google-query: inurl:'/sites/all/modules/taxonomy_manager/
     impact: medium
-    security-risk: "Moderately critical 10\u221525 AC:Basic/A:User/CI:None/II:Some/E:Theoretical/TD:Default"
+    security-risk: "Moderately critical 10\u2009\u2215\u200925 AC:Basic/A:User/CI:None/II:Some/E:Theoretical/TD:Default"
     type: indicator
     vulnerability: access-bypass
   name: drupal_module-taxonomy_manager-access-bypass

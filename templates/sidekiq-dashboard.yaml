@@ -25,8 +25,12 @@ info:
     cwe-id: CWE-200
   description: Sidekiq Dashboard panel was detected.
   metadata:
+    fofa-query: title="sidekiq"
+    google-query: intitle:"sidekiq"
     max-request: 1
     product: sidekiq
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)sidekiq"})
+    shodan-query: http.title:"sidekiq"
     vendor: contribsys
   name: Sidekiq Dashboard Panel - Detect
   reference:
@@ -34,4 +38,4 @@ info:
   - https://github.com/mperham/sidekiq
   - https://github.com/mperham/sidekiq/wiki/Monitoring
   severity: medium
-  tags: unauth,panel,sidekiq,contribsys
+  tags: unauth,panel,sidekiq,contribsys,discovery

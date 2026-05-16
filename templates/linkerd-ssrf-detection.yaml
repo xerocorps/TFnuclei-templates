@@ -15,8 +15,9 @@ info:
   description: Linkerd is vulnerable to SSRF.
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-17/uses interactsh
   name: Linkerd SSRF detection
   reference:
   - https://twitter.com/nirvana_msu/status/1084144955034165248
   severity: high
-  tags: ssrf,linkerd,oast,misconfig
+  tags: ssrf,linkerd,oast,misconfig,vuln

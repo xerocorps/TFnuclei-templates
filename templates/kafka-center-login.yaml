@@ -17,10 +17,21 @@ info:
     cwe-id: CWE-200
   description: Apache Kafka Control Center login panel was detected.
   metadata:
+    fofa-query:
+    - title="kafka center"
+    - title="kafka consumer offset monitor"
+    google-query:
+    - intitle:"kafka center"
+    - intitle:"kafka consumer offset monitor"
     max-request: 1
     product: kafka
-    shodan-query: http.title:"Kafka Center"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)kafka center"})
+      || any(each(service["html.titles"]), {# matches "(?i)kafka consumer offset monitor"})
+    shodan-query:
+    - http.title:"Kafka Center"
+    - http.title:"kafka center"
+    - http.title:"kafka consumer offset monitor"
     vendor: apache
   name: Apache Kafka Control Center Login Panel - Detect
   severity: info
-  tags: panel,kafka,apache
+  tags: apache,discovery,kafka,panel

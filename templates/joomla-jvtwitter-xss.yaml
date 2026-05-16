@@ -14,6 +14,10 @@ http:
 id: joomla-jvtwitter-xss
 info:
   author: r3Y3r53
+  classification:
+    cwe-id:
+    - CWE-79
+    - CWE-83
   description: 'The attacker can send to victim a link containing a malicious URL
     in an email or instant message can perform a wide variety of actions, such as
     stealing the victim''s session token or login credentials.
@@ -29,4 +33,4 @@ info:
   - https://cxsecurity.com/issue/WLB-2020110041
   - https://extensions.joomla.org/
   severity: medium
-  tags: joomla,jvtwitter,xss
+  tags: joomla,jvtwitter,vuln,xss

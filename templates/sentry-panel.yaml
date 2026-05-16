@@ -10,6 +10,7 @@ http:
     dsl:
     - status_code == 200
     - contains(body, "/sentry/") && contains(body, "Login")
+    - regex("(?i)<title>[^<]*sentry[^<]*</title>", body)
     type: dsl
   max-redirects: 3
   method: GET
@@ -25,13 +26,18 @@ info:
 
     '
   metadata:
+    fofa-query: title="login | sentry"
+    google-query: intitle:"login | sentry"
     max-request: 1
     product: sentry
-    shodan-query: http.title:"Login | Sentry"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)login \\| sentry"})
+    shodan-query:
+    - http.title:"Login | Sentry"
+    - http.title:"login | sentry"
     vendor: sentry
     verified: true
   name: Sentry Login Panel
   reference:
   - https://sentry.io/
   severity: info
-  tags: panel,sentry,login
+  tags: discovery,login,panel,sentry

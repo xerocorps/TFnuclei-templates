@@ -63,6 +63,7 @@ id: carrental-xss
 info:
   author: arafatansari
   classification:
+    cpe: cpe:2.3:a:car_rental_management_system_project:car_rental_management_system:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 5.4
     cwe-id: CWE-80
@@ -72,11 +73,14 @@ info:
     '
   metadata:
     max-request: 3
+    product: car_rental_management_system
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     shodan-query: http.html:"Car Rental Management System"
+    vendor: car_rental_management_system_project
     verified: true
   name: Car Rental Management System 1.0 - Cross-Site Scripting
   reference:
   - https://www.exploit-db.com/exploits/49546
   - https://www.sourcecodester.com/
   severity: medium
-  tags: xss,cms,authenticated,edb,intrusive
+  tags: authenticated,cms,edb,intrusive,vuln,xss

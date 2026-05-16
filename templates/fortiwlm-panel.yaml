@@ -25,12 +25,21 @@ info:
 
     '
   metadata:
+    fofa-query:
+    - title="fortiwlm"
+    - body="fortiwlm"
+    google-query: intitle:"fortiwlm"
     max-request: 1
     product: fortiwlm
-    shodan-query: html:"fortiwlm"
+    runzero-match: service["http.body"] matches "(?i)fortiwlm" || any(each(service["html.titles"]),
+      {# matches "(?i)fortiwlm"})
+    shodan-query:
+    - html:"fortiwlm"
+    - http.html:"fortiwlm"
+    - http.title:"fortiwlm"
     vendor: fortinet
   name: Fortinet FortiWLM Login Panel - Detect
   reference:
   - https://docs.fortinet.com/product/fortiwlm/8.6
   severity: info
-  tags: panel,fortinet,fortiwlm,login
+  tags: discovery,fortinet,fortiwlm,login,panel

@@ -15,13 +15,17 @@ id: verizon-router-panel
 info:
   author: theamanrawat
   classification:
+    cpe: cpe:2.3:o:verizon:fios_actiontec_mi424wr-gen31_router_firmware:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Verizon router panel was detected.
   metadata:
     max-request: 1
+    product: fios_actiontec_mi424wr-gen31_router_firmware
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Verizon Router"})
     shodan-query: http.title:"Verizon Router"
+    vendor: verizon
     verified: true
   name: Verizon Router Panel - Detect
   severity: info
-  tags: panel,verizon,router
+  tags: discovery,panel,router,verizon

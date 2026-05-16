@@ -10,10 +10,14 @@ http:
 id: wms-server-detect
 info:
   author: pikpikcu
+  classification:
+    cpe: cpe:2.3:a:wms_project:wms:*:*:*:*:*:*:*:*
   metadata:
     fofa-query: app="WmsServer"
     max-request: 1
+    product: wms
+    vendor: wms_project
     verified: true
   name: Wms-Server detect
   severity: info
-  tags: tech,wms,httpserver
+  tags: tech,wms,httpserver,discovery

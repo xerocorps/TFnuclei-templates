@@ -7,22 +7,20 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '8.x-1.5')
-    - compare_versions(version, '8.x-1.4')
-    - compare_versions(version, '8.x-1.3')
-    - compare_versions(version, '8.x-1.2')
-    - compare_versions(version, '8.x-1.1')
-    - compare_versions(version, '8.x-1.0')
+    - compare_versions(version, '<= 1.6.0')
     type: dsl
   matchers:
-  - part: body
+  - condition: and
+    part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - status:
+  - condition: and
+    status:
     - 200
     type: status
-  - part: body
+  - condition: and
+    part: body
     type: word
     words:
     - tac_lite
@@ -34,7 +32,7 @@ http:
   redirects: true
 id: drupal_module-tac_lite-unsupported
 info:
-  author: Bishopfox
+  author: me
   description: 'Update 2022-03-01. New maintainers have volunteered for the project
     and created a new release which includes fixes for the 3 security issues that
     caused the module to be unsupported. The security team is marking this project
@@ -42,11 +40,11 @@ info:
     fixed by the maintainer. If you would like to maintain this project, please read:
     https://www.drupal.org/node/251466#procedure---own-project---unsupported'
   metadata:
-    created_at: '0001-01-01T00:00:00Z'
+    created_at: '2025-01-09'
     fofa-query: /sites/all/modules/tac_lite/
     google-query: inurl:'/sites/all/modules/tac_lite/
     impact: medium
-    security-risk: "Critical 15\u221525 AC:Basic/A:User/CI:Some/II:Some/E:Proof/TD:All"
+    security-risk: "Critical 15\u2009\u2215\u200925 AC:Basic/A:User/CI:Some/II:Some/E:Proof/TD:All"
     type: indicator
     vulnerability: unsupported
   name: drupal_module-tac_lite-unsupported

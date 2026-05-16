@@ -16,12 +16,13 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/irj/go/km/navigation/'
+  - '{{BaseURL}}/'
+  - '{{Hostname}}/'
 id: sap-directory-listing
 info:
   author: dhiyaneshDK
-  description: SAP Directory Listing is enabled.
   metadata:
-    max-request: 1
+    max-request: 3
   name: SAP Directory Listing
   severity: medium
-  tags: sap,listing,misconfig
+  tags: sap,java,generic,listing

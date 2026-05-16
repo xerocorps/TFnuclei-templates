@@ -20,15 +20,9 @@ code:
     type: dsl
   matchers:
   - part: body
-    type: word
-    words:
-    - '"Effect":"Allow"'
-  - part: body
-    type: word
-    words:
-    - '"Principal":"*"'
-    - '"AWS":"*"'
-  matchers-condition: and
+    regex:
+    - \{[^}]*?(?:(?:"Effect"\s*:\s*"Allow"[^}]*?"Principal"\s*:\s*(?:"\*"|\{\s*"AWS"\s*:\s*"\*"\s*\}))|(?:"Principal"\s*:\s*(?:"\*"|\{\s*"AWS"\s*:\s*"\*"\s*\})[^}]*?"Effect"\s*:\s*"Allow"))[^}]*?\}
+    type: regex
   source: 'aws s3api get-bucket-policy --bucket $bucket --query Policy --output text
 
     '

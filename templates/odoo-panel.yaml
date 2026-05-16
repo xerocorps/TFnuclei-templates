@@ -32,11 +32,17 @@ info:
   classification:
     cpe: cpe:2.3:a:odoo:odoo:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: title="odoo"
+    google-query: intitle:"odoo"
     max-request: 2
     product: odoo
-    shodan-query: title:"Odoo"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)odoo"})
+    shodan-query:
+    - title:"Odoo"
+    - http.title:"odoo"
+    - cpe:"cpe:2.3:a:odoo:odoo"
     vendor: odoo
     verified: true
   name: Odoo - Panel Detect
   severity: info
-  tags: login,panel,odoo
+  tags: discovery,login,odoo,panel

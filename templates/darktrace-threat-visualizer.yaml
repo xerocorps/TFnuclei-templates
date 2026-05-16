@@ -20,11 +20,15 @@ info:
     cwe-id: CWE-200
   description: Darktrace Threat Visualizer login panel was detected.
   metadata:
+    fofa-query: body="darktrace threat visualizer"
     max-request: 1
     product: threat_visualizer
-    shodan-query: html:"Darktrace Threat Visualizer"
+    runzero-match: service["http.body"] matches "(?i)darktrace threat visualizer"
+    shodan-query:
+    - html:"Darktrace Threat Visualizer"
+    - http.html:"darktrace threat visualizer"
     vendor: darktrace
     verified: true
   name: Darktrace Threat Visualizer Login Panel - Detect
   severity: info
-  tags: panel,darktrace
+  tags: darktrace,discovery,panel

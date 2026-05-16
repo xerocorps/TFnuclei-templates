@@ -23,10 +23,12 @@ info:
   description: OLT Web Management Interface login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)OLT Web Management
+      Interface"})
     shodan-query: title:"OLT Web Management Interface"
     verified: true
   name: OLT Web Management Interface Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/8020
   severity: info
-  tags: edb,panel,olt
+  tags: edb,panel,olt,discovery

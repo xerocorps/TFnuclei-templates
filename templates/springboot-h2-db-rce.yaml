@@ -20,7 +20,7 @@ info:
   author: dwisiswant0
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-77
   description: Spring Boot H2 Database is susceptible to remote code execution.
   metadata:
@@ -33,4 +33,4 @@ info:
   - https://www.veracode.com/blog/research/exploiting-spring-boot-actuators
   - https://github.com/spaceraccoon/spring-boot-actuator-h2-rce
   severity: critical
-  tags: springboot,rce,jolokia
+  tags: rce,java,generic

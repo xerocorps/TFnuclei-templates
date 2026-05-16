@@ -16,7 +16,8 @@ id: titiler-ssrf
 info:
   author: xbow,DhiyaneshDK
   classification:
-    cwe-id: CWE-918
+    cwe-id:
+    - CWE-918
   description: 'Blind SSRF vulnerability in TiTiler, a dynamic tile server for Cloud
     Optimized GeoTIFFs (COGs). The flaw lies in how the application handles the url
     parameter in the /cog/info endpoint, allowing attackers to make arbitrary internal
@@ -25,10 +26,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-17/uses interactsh
     shodan-query: html:"TiTiler"
     verified: true
   name: TiTiler - Blind Server Side Request Forgery
   reference:
   - https://xbow.com/blog/xbow-titiler-lfi/
   severity: high
-  tags: titiler,oast,obb,ssrf,vuln
+  tags: oast,obb,ssrf,titiler,vuln

@@ -19,7 +19,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22
+    cwe-id: CWE-22,CWE-23
   description: WordPress Brandfolder allows remote attackers to access arbitrary files
     that reside on the local and remote server and disclose their content.
   metadata:
@@ -29,4 +29,4 @@ info:
   - https://www.exploit-db.com/exploits/39591
   - https://cxsecurity.com/issue/WLB-2016030120
   severity: high
-  tags: lfi,rfi,edb,wordpress,wp-plugin
+  tags: edb,lfi,rfi,vuln,wordpress,wp-plugin

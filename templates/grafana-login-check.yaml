@@ -41,16 +41,21 @@ http:
 id: grafana-login-check
 info:
   author: parthmalhotra,pdresearch
+  classification:
+    cpe: cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*
   description: Checks for a valid login on self hosted Grafana instance.
   metadata:
     fofa-query: title="Grafana"
     max-request: 1
+    product: grafana
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Grafana"})
     shodan-query: title:"Grafana"
+    vendor: grafana
   name: Grafana Login Check
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: self-hosted,creds-stuffing,login-check,grafana
+  tags: creds-stuffing,grafana,login-check,self-hosted,vuln
 variables:
   password: '{{password}}'
   username: '{{username}}'

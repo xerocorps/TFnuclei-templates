@@ -28,12 +28,17 @@ info:
     cwe-id: CWE-200
   description: Splunk Enterprise login panel was detected.
   metadata:
+    fofa-query: title="login - splunk"
+    google-query: intitle:"login - splunk"
     max-request: 1
     product: splunk
-    shodan-query: http.title:"Login - Splunk"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)login - splunk"})
+    shodan-query:
+    - http.title:"Login - Splunk"
+    - http.title:"login - splunk"
     vendor: splunk
   name: Splunk Enterprise Login Panel - Detect
   reference:
   - https://www.splunk.com/en_us/software/splunk-enterprise.html
   severity: info
-  tags: panel,splunk
+  tags: discovery,panel,splunk

@@ -35,9 +35,10 @@ info:
   metadata:
     max-request: 1
     product: bolt
+    shodan-query: cpe:"cpe:2.3:a:bolt:bolt"
     vendor: boltcms
   name: BoltCMS Login Panel - Detect
   reference:
   - https://github.com/bolt/bolt
   severity: info
-  tags: panel,bolt,cms,login,boltcms
+  tags: panel,bolt,cms,login,boltcms,discovery

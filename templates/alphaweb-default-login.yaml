@@ -35,8 +35,9 @@ info:
   description: An AlphaWeb XE default login was discovered.
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] contains ">AlphaWeb XE<"
   name: AlphaWeb XE Default Login
   reference:
   - https://wiki.zenitel.com/wiki/AlphaWeb
   severity: medium
-  tags: default-login,AlphaWeb
+  tags: AlphaWeb,default-login,vuln

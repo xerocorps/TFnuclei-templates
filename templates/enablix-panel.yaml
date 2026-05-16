@@ -20,6 +20,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Enablix"})
     shodan-query: title:"Enablix"
   name: Enablix Panel - Detect
   severity: info

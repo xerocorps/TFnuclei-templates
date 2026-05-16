@@ -45,10 +45,12 @@ info:
   metadata:
     max-request: 2
     product: activemq
+    runzero-match: any(each(service["html.titles"]), {# contains "ActiveMQ Artemis
+      Console"})
     shodan-query: title:"ActiveMQ Artemis Console"
     vendor: apache
   name: Apache ActiveMQ Artemis Console Default Login
   reference:
   - https://activemq.apache.org/components/artemis/documentation/latest/management-console.html
   severity: high
-  tags: apache,activemq,artemis,default-login,vuln
+  tags: activemq,apache,artemis,default-login,vuln

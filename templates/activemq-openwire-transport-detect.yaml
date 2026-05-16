@@ -1,6 +1,6 @@
 id: activemq-openwire-transport-detect
 info:
-  author: pussycat0x
+  author: pussycat0x,ret2src
   description: 'OpenWire is the native protocol that Apache ActiveMQ uses. It is designed
     for performance and size on the wire - sacrificing some ease of implementation
     with higher performance and reduced network bandwidth as a priority.
@@ -12,7 +12,7 @@ info:
     verified: true
   name: ActiveMQ OpenWire Transport Detection
   severity: info
-  tags: network,activemq,detect,openwire
+  tags: network,activemq,detect,openwire,detection,tcp,discovery
 tcp:
 - extractors:
   - regex:
@@ -27,4 +27,4 @@ tcp:
     words:
     - ActiveMQ
   matchers-condition: and
-  port: 61616
+  port: 61616,6835

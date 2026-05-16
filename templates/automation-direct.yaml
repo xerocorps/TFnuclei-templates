@@ -20,6 +20,7 @@ id: automation-direct
 info:
   author: DhiyaneshDK
   classification:
+    cpe: cpe:2.3:h:automationdirect:ea9-t6cl:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cvss-score: 0
     cwe-id: CWE-200
@@ -27,9 +28,11 @@ info:
   metadata:
     google-query: intitle:"C-more -- the best HMI presented by AutomationDirect"
     max-request: 1
+    product: ea9-t6cl
     shodan-query: http.title:"C-more -- the best HMI presented by AutomationDirect"
+    vendor: automationdirect
   name: AutomationDirect Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7295
   severity: info
-  tags: panel,iot,edb
+  tags: panel,iot,edb,discovery

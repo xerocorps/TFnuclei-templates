@@ -14,14 +14,21 @@ http:
 id: webpagetest-ssrf
 info:
   author: pdteam
+  classification:
+    cpe: cpe:2.3:a:webpagetest:webpagetest:*:*:*:*:*:*:*:*
+    cwe-id:
+    - CWE-918
   description: Web Page Test is vulnerable to SSRF.
   metadata:
     max-request: 1
+    product: webpagetest
+    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"WebPageTest"
+    vendor: webpagetest
     verified: true
   name: Web Page Test - Server Side Request Forgery (SSRF)
   reference:
   - https://thinkloveshare.com/hacking/preauth_remote_code_execution_web_page_test/
   - https://github.com/WPO-Foundation/webpagetest
   severity: high
-  tags: ssrf,webpagetest,oast
+  tags: oast,ssrf,vuln,webpagetest

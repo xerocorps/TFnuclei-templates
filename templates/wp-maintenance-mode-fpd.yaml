@@ -29,6 +29,7 @@ info:
     framework: wordpress
     max-request: 3
     product: wp-maintenance-mode
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/wp-maintenance-mode/"
     vendor: developer
     verified: true
   name: WordPress WP Maintenance Mode - Full Path Disclosure

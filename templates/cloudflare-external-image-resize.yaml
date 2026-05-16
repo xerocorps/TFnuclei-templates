@@ -20,8 +20,9 @@ info:
     you can enable this option if you check Resize images from any origin.
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-17/uses interactsh
   name: Cloudflare External Image Resizing Misconfiguration
   reference:
   - https://support.cloudflare.com/hc/en-us/articles/360028146432-Understanding-Cloudflare-Image-Resizing#12345684
   severity: info
-  tags: cloudflare,misconfig,oast
+  tags: cloudflare,misconfig,oast,vuln

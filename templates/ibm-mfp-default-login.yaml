@@ -61,6 +61,8 @@ info:
     fofa-query: title="MobileFirst Operations Console"
     max-request: 4
     product: mobilefirst-foundation
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MobileFirst Operations
+      Console"})
     shodan-query: http.title:"MobileFirst Operations Console"
     vendor: ibm
     verified: true
@@ -69,4 +71,4 @@ info:
   - https://www.ibm.com/docs/en/mfp/8.0?topic=console-mobilefirst-operations
   - https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/server-configuration/
   severity: critical
-  tags: ibm,mobilefirst,default-login
+  tags: default-login,ibm,mobilefirst

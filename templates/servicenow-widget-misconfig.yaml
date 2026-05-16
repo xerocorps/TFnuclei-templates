@@ -75,9 +75,13 @@ http:
 id: servicenow-widget-misconfig
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:servicenow:servicenow:*:*:*:*:*:*:*:*
   metadata:
     max-request: 54
+    product: servicenow
     shodan-query: title:"servicenow"
+    vendor: servicenow
     verified: true
   name: ServiceNow Widget-Simple-List - Misconfiguration
   reference:
@@ -85,4 +89,4 @@ info:
   - https://twitter.com/ConspiracyProof/status/1713270026046685272
   - https://www.enumerated.ie/servicenow-data-exposure
   severity: unknown
-  tags: servicenow,widget,misconfig
+  tags: servicenow,widget,misconfig,vuln

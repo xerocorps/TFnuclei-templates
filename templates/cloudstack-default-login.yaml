@@ -38,9 +38,10 @@ info:
   metadata:
     max-request: 1
     product: cloudstack
+    runzero-match: any(each(service["html.titles"]), {# matches "Apache CloudStack"})
     shodan-query: http.title:"Apache CloudStack"
     vendor: apache
     verified: true
   name: Apache CloudStack - Default Login
   severity: high
-  tags: default-login,apache,cloudstack,vuln
+  tags: apache,cloudstack,default-login,vuln

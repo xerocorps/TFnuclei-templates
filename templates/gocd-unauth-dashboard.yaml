@@ -17,10 +17,14 @@ http:
 id: gocd-unauth-dashboard
 info:
   author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:thoughtworks:gocd:*:*:*:*:*:*:*:*
   description: GoCd Dashboard is exposed.
   metadata:
     max-request: 1
-    shodan-query: http.title:"Create a pipeline - Go",html:"GoCD Version"
+    product: gocd
+    shodan-query: http.title:"Create a pipeline - Go" html:"GoCD Version"
+    vendor: thoughtworks
   name: GoCd Unauth Dashboard
   severity: medium
-  tags: go,gocd,unauth,misconfig
+  tags: go,gocd,unauth,misconfig,vuln,discovery

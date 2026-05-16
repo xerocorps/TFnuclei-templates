@@ -19,9 +19,10 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Devtron"})
     shodan-query: http.title:"Devtron"
   name: Devtron Panel Login Panel - Detect
   reference:
   - https://devtron.ai/
   severity: info
-  tags: panel,devtron,discovery
+  tags: devtron,discovery,panel

@@ -27,11 +27,13 @@ info:
     cwe-id: CWE-200
   description: Proofpoint Protection Server panel was detected.
   metadata:
+    fofa-query: icon_hash=942678640
     max-request: 2
     product: proofpoint protection server
+    runzero-match: service["favicon.ico.image.mmh3"] == "942678640"
     shodan-query: http.favicon.hash:942678640
     vendor: proofpoint
     verified: true
   name: Proofpoint Protection Server Panel - Detect
   severity: info
-  tags: panel,proofpoint,login,detect
+  tags: detect,discovery,login,panel,proofpoint

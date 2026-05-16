@@ -19,10 +19,16 @@ info:
     cwe-id: CWE-200
   description: ZOHO ManageEngine SupportCenter panel was detected.
   metadata:
+    fofa-query: title="manageengine supportcenter plus"
+    google-query: intitle:"manageengine supportcenter plus"
     max-request: 1
     product: manageengine_supportcenter_plus
-    shodan-query: http.title:"ManageEngine SupportCenter Plus"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)manageengine
+      supportcenter plus"})
+    shodan-query:
+    - http.title:"ManageEngine SupportCenter Plus"
+    - http.title:"manageengine supportcenter plus"
     vendor: zohocorp
   name: ZOHO ManageEngine SupportCenter Panel - Detect
   severity: info
-  tags: panel,zoho,manageengine,zohocorp
+  tags: discovery,manageengine,panel,zoho,zohocorp

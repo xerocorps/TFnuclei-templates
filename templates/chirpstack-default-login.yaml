@@ -33,10 +33,11 @@ info:
   metadata:
     fofa-query: title="ChirpStack LoRaWAN"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "ChirpStack LoRaWAN"})
     shodan-query: http.title:"ChirpStack LoRaWAN"
     verified: true
   name: ChirpStack - Default Login
   reference:
   - https://www.chirpstack.io/docs/chirpstack/use/login.html
   severity: high
-  tags: default-login,chirpstack,vuln
+  tags: chirpstack,default-login,vuln

@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -24,4 +28,4 @@ info:
   - https://blog.melbadry9.xyz/dangling-dns/xyz-services/dangling-dns-announcekit
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/228
   severity: high
-  tags: takeover,announcekit
+  tags: takeover,announcekit,vuln

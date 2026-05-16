@@ -24,11 +24,15 @@ info:
     cwe-id: CWE-200
   description: ILIAS login panel was detected.
   metadata:
+    fofa-query: body="ilias"
     max-request: 2
     product: ilias
-    shodan-query: http.html:"ILIAS"
+    runzero-match: service["http.body"] matches "(?i)ilias"
+    shodan-query:
+    - http.html:"ILIAS"
+    - http.html:"ilias"
     vendor: ilias
     verified: true
   name: ILIAS Login Panel - Detect
   severity: info
-  tags: panel,ilias
+  tags: panel,ilias,discovery

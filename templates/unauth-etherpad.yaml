@@ -16,13 +16,17 @@ http:
 id: unauth-etherpad
 info:
   author: philippedelteil
+  classification:
+    cpe: cpe:2.3:a:etherpad:etherpad:*:*:*:*:*:*:*:*
   description: 'Finds Etherpad instances that allow adding new notes without authentication.
 
     '
   metadata:
     max-request: 1
+    product: etherpad
     shodan-query: http.html:"index.createOpenPad"
+    vendor: etherpad
     verified: true
   name: Unauthenticated Etherpad
   severity: low
-  tags: etherpad,misconfig,unauth
+  tags: etherpad,misconfig,unauth,vuln

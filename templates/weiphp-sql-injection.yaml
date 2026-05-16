@@ -1,17 +1,16 @@
 id: weiphp-sql-injection
 info:
   author: pikpikcu
-  metadata:
-    shodan-query: http.html:"WeiPHP5.0"
-    verified: true
   name: WeiPHP 5.0 SQLI
-  reference:
-  - https://github.com/Y4er/Y4er.com/blob/15f49973707f9d526a059470a074cb6e38a0e1ba/content/post/weiphp-exp-sql.md
+  reference: https://github.com/Y4er/Y4er.com/blob/15f49973707f9d526a059470a074cb6e38a0e1ba/content/post/weiphp-exp-sql.md
   severity: high
   tags: weiphp,sql
 requests:
-- matchers:
-  - part: body
+- headers:
+    Content-Type: application/x-www-form-urlencoded
+  matchers:
+  - condition: and
+    part: body
     type: word
     words:
     - 52c69e3a57331081823331c4e69d3f2

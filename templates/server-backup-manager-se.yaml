@@ -20,7 +20,9 @@ info:
   description: Server Backup Manager SE login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Server Backup
+      Manager SE"})
     shodan-query: http.title:"Server Backup Manager SE"
   name: Server Backup Manager SE Panel - Detect
   severity: info
-  tags: panel,server,backup,manager
+  tags: panel,server,backup,manager,discovery

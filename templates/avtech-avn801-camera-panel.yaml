@@ -22,9 +22,10 @@ info:
   description: An Avtech AVN801 Network Camera administration panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches `(?i):::\s+login\s+:::`})
     shodan-query: title:"login" product:"Avtech AVN801 network camera"
   name: Avtech AVN801 Network Camera Admin Panel - Detect
   reference:
   - http://www.avtech.com.tw
   severity: info
-  tags: panel,avtech,iot,camera
+  tags: panel,avtech,iot,camera,discovery

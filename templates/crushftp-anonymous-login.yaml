@@ -44,9 +44,11 @@ info:
   metadata:
     max-request: 2
     product: crushftp
+    runzero-match: service["http.body"] contains "CrushFTP" || service["http.head.server"]
+      contains "CrushFTP" || any(each(service["favicon.ico.image.mmh3"]), {# == "-1022206565"})
     shodan-query: html:"CrushFTP"
     vendor: crushftp
     verified: true
   name: CrushFTP - Anonymous Login
   severity: high
-  tags: default-logins,anonymous,crushftp,default-login,vuln
+  tags: anonymous,crushftp,default-login,default-logins,vuln

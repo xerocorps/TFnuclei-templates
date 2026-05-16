@@ -15,6 +15,7 @@ id: nextjs-redirect
 info:
   author: DhiyaneshDk
   classification:
+    cpe: cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 6.1
     cwe-id: CWE-601
@@ -22,11 +23,14 @@ info:
     \ to improper path parsing."
   metadata:
     max-request: 1
+    product: next.js
+    runzero-review: 'REJECT/2026-04-08/auto: interactsh (OAST callback)'
     shodan-query: html:"/_next/static"
+    vendor: zeit
   name: Next.js <1.2.3 - Open Redirect
   reference:
   - https://github.com/netlify/netlify-ipx/security/advisories/GHSA-9jjv-524m-jm98
   - https://samcurry.net/universal-xss-on-netlifys-next-js-library/
   remediation: Upgrade to Next.js version 1.2.3 or higher.
   severity: medium
-  tags: redirect,nextjs,xss
+  tags: nextjs,redirect,vuln,xss

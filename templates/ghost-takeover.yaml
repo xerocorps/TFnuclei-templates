@@ -1,11 +1,17 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
-  - part: header
+  - condition: or
+    part: header
     type: word
     words:
+    - error.ghost.org
     - offline.ghost.org
   - status:
     - 302
@@ -24,4 +30,4 @@ info:
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/89
   severity: high
-  tags: takeover,ghost
+  tags: takeover,ghost,vuln

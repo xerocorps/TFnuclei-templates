@@ -19,13 +19,17 @@ id: dell-idrac
 info:
   author: kazet
   classification:
+    cpe: cpe:2.3:a:dell:emc_idrac_service_module:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Dell IDRAC panel was detected.
   metadata:
     max-request: 2
+    product: emc_idrac_service_module
+    runzero-match: service["http.body"] matches "(?i)thisIDRACText"
     shodan-query: html:"thisIDRACText"
+    vendor: dell
     verified: true
   name: Dell IDRAC Panel - Detect
   severity: info
-  tags: panel,idrac,dell,detect
+  tags: dell,detect,discovery,idrac,panel

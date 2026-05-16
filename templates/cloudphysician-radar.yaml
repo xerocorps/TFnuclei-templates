@@ -19,9 +19,11 @@ info:
   description: Cloudphysician RADAR login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Cloudphysician
+      RADAR"})
     shodan-query: http.title:"Cloudphysician RADAR"
   name: Cloudphysician RADAR Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7466
   severity: info
-  tags: panel,edb
+  tags: panel,edb,discovery

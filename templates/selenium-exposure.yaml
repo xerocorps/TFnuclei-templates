@@ -2,6 +2,7 @@ http:
 - host-redirects: true
   matchers:
   - condition: or
+    part: body
     type: word
     words:
     - WebDriverRequest
@@ -32,4 +33,4 @@ info:
   - https://nutcrackerssecurity.github.io/selenium.html
   - https://labs.detectify.com/2017/10/06/guest-blog-dont-leave-your-grid-wide-open/
   severity: high
-  tags: misconfig,selenium,misconfiguration,rce,chromium
+  tags: rce,cloud

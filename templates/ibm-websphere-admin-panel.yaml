@@ -25,8 +25,10 @@ info:
   description: IBM WebSphere Application Server Community Edition admin login panel
     was detected.
   metadata:
+    fofa-query: icon_hash=1337147129
     max-request: 1
     product: websphere_application_server
+    runzero-match: service["favicon.ico.image.mmh3"] == "1337147129"
     shodan-query: http.favicon.hash:1337147129
     vendor: ibm
     verified: true
@@ -34,4 +36,4 @@ info:
   reference:
   - https://www.ibm.com/support/pages/what-default-username-and-password-websphere-application-server-community-edition-and-how-add-users-admin-group
   severity: info
-  tags: websphere,panel,ibm
+  tags: discovery,ibm,panel,websphere

@@ -1,16 +1,22 @@
 flow: http(1) && http(2)
 http:
-- extractors:
+- matchers:
   - internal: true
     name: token
     part: body
     regex:
     - xoxb-[0-9A-Za-z\\-]{52}
+    - (xoxb-[0-9]{10,13}\-[0-9]{10,13}[a-zA-Z0-9-]*)
     type: regex
   method: GET
   path:
   - '{{BaseURL}}'
-- matchers:
+- disable-path-automerge: true
+  extractors:
+  - dsl:
+    - token
+    type: dsl
+  matchers:
   - condition: and
     dsl:
     - status_code == 200
@@ -46,7 +52,6 @@ http:
     ------WebKitFormBoundaryDL3VHEC7cFaxeAhK--
 
     '
-  self-contained: true
 id: slack-bot-token
 info:
   author: nadino
@@ -57,4 +62,4 @@ info:
   reference:
   - https://api.slack.com/authentication/token-types
   severity: high
-  tags: exposure,token,slack
+  tags: exposure,slack,token,vuln

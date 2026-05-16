@@ -39,6 +39,7 @@ id: nsicg-default-login
 info:
   author: pikpikcu
   classification:
+    cpe: cpe:2.3:a:netentsec:application_security_gateway:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -50,10 +51,12 @@ info:
   metadata:
     fofa-query: NS-ICG
     max-request: 2
+    product: application_security_gateway
+    runzero-match: service["http.head.server"] matches "(?i)netentsec"
+    vendor: netentsec
     verified: true
   name: Netentsec NS-ICG - Default Login
-  reference: '- https://www.cnvd.org.cn/flaw/show/CNVD-2016-08603
-
-    '
+  reference:
+  - https://www.cnvd.org.cn/flaw/show/CNVD-2016-08603
   severity: high
-  tags: nsicg,default-login
+  tags: default-login,nsicg,vuln

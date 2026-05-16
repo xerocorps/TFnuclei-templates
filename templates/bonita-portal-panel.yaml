@@ -18,8 +18,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1197926023"
     shodan-query: http.favicon.hash:-1197926023
     verified: true
   name: Bonita Portal Login - Detect
   severity: info
-  tags: bonita,login,panel
+  tags: bonita,login,panel,discovery

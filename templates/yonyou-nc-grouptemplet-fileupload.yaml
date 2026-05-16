@@ -34,6 +34,8 @@ http:
 id: yonyou-nc-grouptemplet-fileupload
 info:
   author: SleepingBag945
+  classification:
+    cpe: cpe:2.3:a:yonyou:ufida-nc:*:*:*:*:*:*:*:*
   description: 'The UFIDA NC Grouptemplet Interface permits unauthenticated users
     to upload potentially malicious files.
 
@@ -41,12 +43,15 @@ info:
   metadata:
     fofa-query: "app=\"\u7528\u53CB-UFIDA-NC"
     max-request: 2
+    product: ufida-nc
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
+    vendor: yonyou
     verified: true
   name: UFIDA NC Grouptemplet Interface - Unauthenticated File Upload
   reference:
   - https://www.seebug.org/vuldb/ssvid-99547
   - https://github.com/Augensternyu/POC-bomber/blob/main/pocs/redteam/yongyou_nc_fileupload_2022.py
   severity: critical
-  tags: yonyou,intrusive,ufida,fileupload
+  tags: fileupload,intrusive,ufida,vuln,yonyou
 variables:
   v1: '{{rand_int(1,100)}}'

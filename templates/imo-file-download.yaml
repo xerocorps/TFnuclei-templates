@@ -26,6 +26,10 @@ http:
 id: imo-file-download
 info:
   author: ritikchaddha
+  classification:
+    cwe-id:
+    - CWE-200
+    - CWE-552
   description: 'The imo cloud office can read system sensitive files because the filename
     parameter of the /file/Placard/upload/Imo_DownLoadUI.php page is not strictly
     filtered.
@@ -37,4 +41,4 @@ info:
   reference:
   - https://forum.butian.net/article/214
   severity: high
-  tags: imo,file-download
+  tags: file-download,imo,vuln

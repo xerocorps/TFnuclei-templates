@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - json:
+    - .value.agent
+    type: json
+  matchers:
   - condition: and
     type: word
     words:
@@ -13,11 +17,13 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/jolokia/version'
+  - '{{BaseURL}}/actuator/jolokia/version'
+  stop-at-first-match: true
 id: jolokia-detect
 info:
   author: mavericknerd,dwisiswant0
   metadata:
     max-request: 1
-  name: Jolokia Version Disclosure
+  name: Jolokia Detection
   severity: info
-  tags: tech,jolokia
+  tags: tech,jolokia,discovery

@@ -19,6 +19,8 @@ http:
 id: magento-cacheleak
 info:
   author: TechbrunchFR
+  classification:
+    cpe: cpe:2.3:a:magento:magento:*:*:*:*:*:*:*:*
   description: Magento Cacheleak is an implementation vulnerability, result of bad
     implementation of web-server configuration for Magento platform. Magento was developed
     to work under the Apache web-server which natively works with .htaccess files,
@@ -29,7 +31,9 @@ info:
     from cache files.
   metadata:
     max-request: 1
+    product: magento
     shodan-query: http.component:"Magento"
+    vendor: magento
     verified: true
   name: Magento Cacheleak
   reference:
@@ -37,4 +41,4 @@ info:
   - https://www.acunetix.com/vulnerabilities/web/magento-cacheleak/
   - https://royduineveld.nl/magento-cacheleak-exploit/
   severity: high
-  tags: magento
+  tags: magento,vuln

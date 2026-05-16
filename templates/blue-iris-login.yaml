@@ -24,10 +24,11 @@ info:
   description: Blue Iris login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Blue Iris Login"})
     shodan-query: http.title:"Blue Iris Login"
   name: Blue Iris Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/6814
   - https://blueirissoftware.com/
   severity: info
-  tags: panel,blueiris,edb
+  tags: panel,blueiris,edb,discovery

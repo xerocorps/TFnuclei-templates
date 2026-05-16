@@ -33,8 +33,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Laser Printer"})
     shodan-query: title="Laser Printer"
     verified: true
   name: Dell Laser Printer - Unauthenticated Detect
   severity: high
-  tags: dell,iot,unauth,misconfig,printer,vuln,discovery
+  tags: dell,discovery,iot,misconfig,printer,unauth,vuln

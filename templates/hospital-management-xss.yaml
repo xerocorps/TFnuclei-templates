@@ -1,5 +1,6 @@
 http:
-- matchers:
+- cookie-reuse: true
+  matchers:
   - condition: and
     dsl:
     - contains(header_2, "text/html")
@@ -28,6 +29,7 @@ http:
     searchdata=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&search=
 
     '
+  req-condition: true
 id: hospital-management-xss
 info:
   author: arafatansari

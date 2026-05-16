@@ -24,8 +24,9 @@ info:
   description: SAP Analytics Cloud panel was detected.
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)SAP Analytics Cloud"
     shodan-query: http.html:"SAP Analytics Cloud"
     verified: true
   name: SAP Analytics Cloud Panel - Detect
   severity: info
-  tags: panel,sap,cloudanalytics
+  tags: panel,sap,cloudanalytics,discovery

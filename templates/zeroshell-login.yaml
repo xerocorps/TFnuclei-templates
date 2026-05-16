@@ -19,10 +19,15 @@ info:
     cwe-id: CWE-200
   description: ZeroShell panel was detected.
   metadata:
+    fofa-query: title="zeroshell"
+    google-query: intitle:"zeroshell"
     max-request: 1
     product: zeroshell
-    shodan-query: http.title:"ZeroShell"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)zeroshell"})
+    shodan-query:
+    - http.title:"ZeroShell"
+    - http.title:"zeroshell"
     vendor: zeroshell
   name: ZeroShell Panel - Detect
   severity: info
-  tags: panel,zeroshell
+  tags: discovery,panel,zeroshell

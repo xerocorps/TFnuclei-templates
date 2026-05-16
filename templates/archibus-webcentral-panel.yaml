@@ -29,8 +29,10 @@ info:
     cwe-id: CWE-200
   description: Archibus Web Central login panel was detected.
   metadata:
+    fofa-query: icon_hash=889652940
     max-request: 3
     product: web_central
+    runzero-match: service["favicon.ico.image.mmh3"] == "889652940"
     shodan-query: http.favicon.hash:889652940
     vendor: archibus
     verified: true
@@ -38,4 +40,4 @@ info:
   reference:
   - https://archibus.com/products/
   severity: info
-  tags: panel,archibus
+  tags: archibus,discovery,panel

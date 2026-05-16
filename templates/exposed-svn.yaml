@@ -15,16 +15,22 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/.svn/entries'
+  - '{{BaseURL}}/admin/.svn/entries'
+  - '{{BaseURL}}/api/.svn/entries'
+  - '{{BaseURL}}/api/v1/.svn/entries'
+  - '{{BaseURL}}/api/v2/.svn/entries'
+  - '{{BaseURL}}/api/v3/.svn/entries'
 id: exposed-svn
 info:
-  author: udit_thakkur,dwisiswant0
+  author: udit_thakkur,dwisiswant0,reewardius
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
     cwe-id: CWE-200
   description: SVN configuration was detected.
   metadata:
-    max-request: 1
+    max-request: 6
   name: SVN Configuration - Detect
+  reference: https://github.com/anantshri/svn-extractor
   severity: medium
-  tags: config,exposure,svn
+  tags: generic,config,bounty

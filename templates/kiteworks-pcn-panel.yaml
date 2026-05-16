@@ -27,8 +27,10 @@ info:
 
     '
   metadata:
+    fofa-query: icon_hash=-1215318992
     max-request: 1
     product: kiteworks
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1215318992"
     shodan-query: http.favicon.hash:-1215318992
     vendor: accellion
     verified: true
@@ -36,4 +38,4 @@ info:
   reference:
   - https://www.kiteworks.com/platform/private-content-network/
   severity: info
-  tags: panel,kiteworks,login,detect,accellion
+  tags: accellion,detect,discovery,kiteworks,login,panel

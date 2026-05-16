@@ -19,13 +19,19 @@ info:
     cwe-id: CWE-200
   description: Tableau Services Manager login panel was detected.
   metadata:
+    fofa-query: title="login - tableau services manager"
+    google-query: intitle:"login - tableau services manager"
     max-request: 1
     product: tableau_server
-    shodan-query: title:"Login - Tableau Services Manager"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)login - tableau
+      services manager"})
+    shodan-query:
+    - title:"Login - Tableau Services Manager"
+    - http.title:"login - tableau services manager"
     vendor: tableausoftware
     verified: true
   name: Tableau Services Manager Login Panel - Detect
   reference:
   - https://help.tableau.com/current/server/en-us/sign_in_tsm.htm
   severity: info
-  tags: panel,tableau,tableausoftware
+  tags: discovery,panel,tableau,tableausoftware

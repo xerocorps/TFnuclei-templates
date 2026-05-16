@@ -39,16 +39,20 @@ http:
 id: aem-crx-bypass
 info:
   author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:adobe:experience_manager:*:*:*:*:*:*:*:*
   description: Adobe Experience Manager Package Manager is susceptible to a hard to
     exploit authentication bypass issue. This issue only potentially impacts AEM on-premise
     or AEM as a Managed Service if default security configurations are removed.
   metadata:
     max-request: 2
+    product: experience_manager
     shodan-query: http.component:"Adobe Experience Manager"
+    vendor: adobe
   name: AEM Package Manager - Authentication Bypass
   reference:
   - https://labs.detectify.com/2021/06/28/aem-crx-bypass-0day-control-over-some-enterprise-aem-crx-package-manager/
   remediation: 'Adobe recommends AEM customers review access controls for the CRX
     package manager path: /etc/packages.'
   severity: critical
-  tags: aem,adobe,misconfig
+  tags: aem,adobe,misconfig,vuln

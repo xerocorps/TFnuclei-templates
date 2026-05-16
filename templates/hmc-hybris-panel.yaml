@@ -17,9 +17,13 @@ info:
     cwe-id: CWE-200
   description: Hybris Management Console login panel was detected.
   metadata:
+    fofa-query: title="hybris"
+    google-query: intitle:"hybris"
     max-request: 2
     product: hybris
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)hybris"})
+    shodan-query: http.title:"hybris"
     vendor: sap
   name: Hybris Management Console Login Panel - Detect
   severity: info
-  tags: panel,sap
+  tags: panel,sap,discovery

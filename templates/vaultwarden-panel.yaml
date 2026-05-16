@@ -16,6 +16,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)vaultwarden"
     shodan-query: http.html:"vaultwarden"
     verified: true
   name: Vaultwarden Login Panel - Detect

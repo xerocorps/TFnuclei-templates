@@ -10,12 +10,16 @@ http:
 id: heroku-api-key
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-522
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
   name: Heroku API Key
   reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/heroku.yml
+  - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/heroku.yml
   - https://devcenter.heroku.com/articles/authentication
   severity: info
-  tags: heroku,token,exposure
+  tags: exposure,heroku,token,vuln

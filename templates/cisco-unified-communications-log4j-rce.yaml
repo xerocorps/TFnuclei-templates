@@ -46,7 +46,7 @@ info:
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
-    cwe-id: CWE-77,CWE-502
+    cwe-id: CWE-502,CWE-77
   description: Cisco Unified Communications is susceptible to remote code execution
     via the Apache Log4j framework. An attacker can execute malware, obtain sensitive
     information, modify data, and/or gain full control over a compromised system without
@@ -54,6 +54,7 @@ info:
   metadata:
     max-request: 1
     product: unified_communications_domain_manager
+    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"Cisco Unified"
     vendor: cisco
     verified: true
@@ -63,7 +64,7 @@ info:
   - https://logging.apache.org/log4j/2.x/security.html
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,cisco,kev,oast,vuln
+  tags: cisco,cve,cve2021,jndi,kev,log4j,oast,rce,vuln
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

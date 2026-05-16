@@ -21,8 +21,9 @@ info:
   description: CudaTel login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)CudaTel"})
     shodan-query: title:"CudaTel"
     verified: true
   name: CudaTel Login Panel - Detect
   severity: info
-  tags: panel,cudatel
+  tags: panel,cudatel,discovery

@@ -1,5 +1,7 @@
 http:
 - attack: pitchfork
+  headers:
+    Authorization: Basic {{base64(username + ':' + password)}}
   matchers:
   - part: header
     type: word
@@ -12,19 +14,14 @@ http:
     - 200
     type: status
   matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}/'
   payloads:
     password:
     - '#1Password'
     username:
     - admin
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Hostname}}
-
-    Authorization: Basic {{base64(username + '':'' + password)}}
-
-    '
 id: emcecom-default-login
 info:
   author: Techryptic (@Tech)
@@ -42,4 +39,4 @@ info:
     the "addsys" operation, it is recommended to restart the management server on
     each SP.
   severity: high
-  tags: dell,emc,ecom,default-login
+  tags: dell,emc,ecom,default-login,vuln

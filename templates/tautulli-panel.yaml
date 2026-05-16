@@ -27,9 +27,20 @@ info:
 
     '
   metadata:
+    fofa-query:
+    - title="tautulli - home"
+    - title="tautulli"
+    google-query:
+    - intitle:"tautulli"
+    - intitle:"tautulli - home"
     max-request: 2
     product: tautulli
-    shodan-query: title:"TAUTULLI"
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)tautulli"}) ||
+      any(each(service["html.titles"]), {# matches "(?i)tautulli - home"})
+    shodan-query:
+    - title:"TAUTULLI"
+    - http.title:"tautulli"
+    - http.title:"tautulli - home"
     vendor: tautulli
     verified: true
   name: Tautulli Panel - Detect
@@ -37,4 +48,4 @@ info:
   - https://tautulli.com/
   - https://github.com/Tautulli/Tautulli
   severity: info
-  tags: panel,tautulli,detect
+  tags: detect,discovery,panel,tautulli

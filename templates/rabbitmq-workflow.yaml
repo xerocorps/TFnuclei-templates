@@ -1,10 +1,8 @@
 id: rabbitmq-workflow
 info:
   author: fyoorer
-  description: A simple workflow that runs all rabbitmq related nuclei templates on
-    a given target.
-  name: RabbitMQ Security Checks
-workflows:
-- subtemplates:
-  - template: http/default-logins/rabbitmq/
-  template: http/exposed-panels/rabbitmq-dashboard.yaml
+  name: RabbitMQ Workflow
+logic: "if rabbitmq_dashboard() {\n  rabbitmq_default_admin()\n}\n"
+variables:
+  rabbitmq_dashboard: panels/rabbitmq-dashboard.yaml
+  rabbitmq_default_admin: security-misconfiguration/rabbitmq-default-admin.yaml

@@ -33,8 +33,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Maltrail"})
     shodan-query: title:"Maltrail"
     verified: true
   name: Maltrail Panel - Detect
   severity: info
-  tags: panel,maltrail,detect
+  tags: panel,maltrail,detect,discovery

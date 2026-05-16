@@ -24,9 +24,13 @@ info:
 
     '
   metadata:
-    censys-query: services.http.response.html_title="Solarwinds Access Rights Manager"
+    censys-query:
+    - services.http.response.html_title="Solarwinds Access Rights Manager"
+    - services.http.response.html_title="solarwinds access rights manager"
+    fofa-query: icon_hash=-1416464161
     max-request: 1
     product: access_rights_manager
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1416464161"
     shodan-query: http.favicon.hash:-1416464161
     vendor: solarwinds
     verified: true
@@ -34,4 +38,4 @@ info:
   reference:
   - https://www.solarwinds.com/access-rights-manager
   severity: info
-  tags: panel,solarwinds
+  tags: discovery,panel,solarwinds

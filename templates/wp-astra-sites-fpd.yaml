@@ -29,6 +29,7 @@ info:
     framework: wordpress
     max-request: 3
     product: astra-sites
+    runzero-match: service["http.body"] matches "(?i)/wp-content/plugins/astra-sites/"
     vendor: developer
     verified: true
   name: WordPress Astra Sites - Full Path Disclosure

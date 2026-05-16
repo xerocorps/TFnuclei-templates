@@ -22,6 +22,7 @@ info:
   author: ritikchaddha
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)topaccess"})
     shodan-query: title:"topaccess"
     verified: true
   name: Toshiba TopAccess Panel - Detect

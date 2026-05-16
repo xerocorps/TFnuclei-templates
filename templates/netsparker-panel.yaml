@@ -24,10 +24,12 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Sign in to Netsparker
+      Enterprise"})
     shodan-query: http.title:"Sign in to Netsparker Enterprise"
     verified: true
   name: Netsparker Login Panel - Detect
   reference:
   - https://www.invicti.com/
   severity: info
-  tags: panel,netsparker
+  tags: panel,netsparker,discovery
