@@ -6,15 +6,18 @@ http:
     regex:
     - 'Server: nginx/([0-9.]+)'
     type: regex
+  host-redirects: true
   matchers:
   - condition: and
     dsl:
     - compare_versions(version, '<1.28.0')
     - contains(server, 'nginx')
     type: dsl
+  max-redirects: 3
   method: GET
   path:
   - '{{BaseURL}}'
+  stop-at-first-match: true
 id: nginx-eol
 info:
   author: Shivam Kamboj
@@ -33,4 +36,4 @@ info:
   - https://endoflife.date/nginx
   - https://nginx.org/en/download.html
   severity: info
-  tags: tech,nginx,eol
+  tags: eol,nginx,tech

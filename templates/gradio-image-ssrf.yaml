@@ -2,9 +2,9 @@ http:
 - matchers:
   - condition: and
     dsl:
-    - contains(body, "{\"event_id\":')
+    - contains(body, '{"event_id":')
     - contains(interactsh_protocol, 'http')
-    - contains(content_type, "application/json')
+    - contains(content_type, 'application/json')
     type: dsl
   raw:
   - 'POST /queue/join? HTTP/1.1
@@ -51,4 +51,4 @@ info:
   reference:
   - https://huntr.com/bounties/e9baeed8-868a-4c1b-882c-715ae0f3072f
   severity: high
-  tags: cve,cve2024,gradio,ssrf,oast,vuln
+  tags: cve,cve2024,gradio,oast,ssrf,vuln

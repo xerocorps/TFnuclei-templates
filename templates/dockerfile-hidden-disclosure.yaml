@@ -24,7 +24,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
-    cwe-id: CWE-200
+    cwe-id: CWE-200,CWE-552
   description: Dockerfile was detected.
   metadata:
     max-request: 3
@@ -32,4 +32,4 @@ info:
   reference:
   - https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/dockerfile-hidden-disclosure.json
   severity: medium
-  tags: exposure,config,vuln
+  tags: config,exposure,vuln

@@ -17,7 +17,7 @@ info:
   author: gy741
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-77
   description: 'SAR2HTML could allow a remote attacker to execute arbitrary commands
     on the system via a command injection flaw in the index.php script. By sending
@@ -27,9 +27,8 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
   name: sar2html 3.2.1 - Remote Command Injection
   reference:
   - https://www.exploit-db.com/exploits/49344
   severity: critical
-  tags: sar2html,rce,oast,edb,vuln
+  tags: sar2html,rce,oast,edb

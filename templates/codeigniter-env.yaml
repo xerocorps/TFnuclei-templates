@@ -29,9 +29,12 @@ http:
 id: codeigniter-env
 info:
   author: emenalf
+  classification:
+    cwe-id:
+    - CWE-552
   description: Codeigniter .env file was discovered.
   metadata:
     max-request: 12
   name: Codeigniter - .env File Discovery
   severity: high
-  tags: config,exposure,codeigniter,vuln
+  tags: codeigniter,config,exposure,vuln

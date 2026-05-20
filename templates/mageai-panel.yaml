@@ -28,6 +28,7 @@ info:
     fofa-query: title="Mage"
     max-request: 2
     product: mage-ai
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Mage"})
     shodan-query: http.title:"Mage"
     vendor: mage_ai
     verified: true
@@ -36,4 +37,4 @@ info:
   - https://github.com/mage-ai/mage-ai
   - https://docs.mage.ai/
   severity: info
-  tags: panel,mageai,detect
+  tags: detect,mageai,panel

@@ -33,6 +33,9 @@ http:
 id: missing-sri
 info:
   author: lucky0x0d,PulseSecurity.co.nz,sullo amarsct
+  classification:
+    cwe-id:
+    - CWE-353
   description: 'Checks if external script and stylesheet tags in the HTML response
     are missing the Subresource Integrity (SRI) attribute.
 
@@ -44,4 +47,4 @@ info:
   - https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html#subresource-integrity
   - https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
   severity: info
-  tags: compliance,js,css,sri,misconfig,vuln
+  tags: compliance,css,js,misconfig,sri,vuln

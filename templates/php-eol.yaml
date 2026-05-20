@@ -19,6 +19,9 @@ http:
 id: php-eol
 info:
   author: Shivam Kamboj
+  classification:
+    cwe-id:
+    - CWE-1104
   description: 'Detected PHP versions that have reached End-of-Life (EOL) and no longer
     receive security updates.
 
@@ -32,4 +35,4 @@ info:
   - https://www.php.net/supported-versions.php
   - https://endoflife.date/php
   severity: info
-  tags: tech,php,eol
+  tags: eol,php,tech

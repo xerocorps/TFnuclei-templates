@@ -31,6 +31,9 @@ http:
 id: node-express-dev-env
 info:
   author: FLX
+  classification:
+    cwe-id:
+    - CWE-209
   description: 'The Node.js application runs in development mode, which can expose
     sensitive information, such as source code and secrets, depending on the application.
 
@@ -44,4 +47,4 @@ info:
   - https://www.invicti.com/web-vulnerability-scanner/vulnerabilities/express-development-mode-is-enabled/
   - https://www.synopsys.com/blogs/software-security/nodejs-mean-stack-vulnerabilities.html
   severity: medium
-  tags: nodejs,express,misconfig,devops,cicd,trace,vuln
+  tags: cicd,devops,express,misconfig,nodejs,trace,vuln

@@ -26,6 +26,7 @@ info:
     fofa-query: title="Langfuse"
     max-request: 2
     product: langfuse
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Langfuse"})
     shodan-query: http.title:"Langfuse"
     vendor: langfuse
     verified: true
@@ -34,4 +35,4 @@ info:
   - https://github.com/langfuse/langfuse
   - https://langfuse.com/
   severity: info
-  tags: panel,langfuse,llm,ai,detect,login
+  tags: ai,detect,langfuse,llm,login,panel

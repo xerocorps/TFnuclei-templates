@@ -61,6 +61,7 @@ info:
   metadata:
     max-request: 2
     product: infinispan
+    runzero-match: service["favicon.ico.image.mmh3"] == "647951307"
     shodan-query: http.favicon.hash:647951307
     vendor: redhat
     verified: true
@@ -69,7 +70,7 @@ info:
   - https://infinispan.org/docs/stable/titles/security/security.html
   - https://infinispan.org/
   severity: high
-  tags: default-login,infinispan,redhat,config
+  tags: config,default-login,infinispan,redhat
 variables:
   password: password
   username: admin
