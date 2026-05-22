@@ -40,6 +40,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)tl\\.account\\.ucm\\.js"
     shodan-query: tl.account.ucm.js
     vendor: grandstream
     verified: true

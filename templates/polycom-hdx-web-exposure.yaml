@@ -3,7 +3,7 @@ http:
   - condition: and
     dsl:
     - status_code == 200
-    - contains_all(body, "Polycom", "u_keepalive.htm", "u_status.xml", "contentFrame")
+    - contains_any(body, "Polycom", "u_keepalive.htm", "u_status.xml")
     type: dsl
   method: GET
   path:
@@ -30,4 +30,4 @@ info:
   - https://www.polycom.com/products-services/hd-telepresence-video-conferencing.html
   - https://support.polycom.com/content/support/north-america/usa/en/support/video.html
   severity: low
-  tags: polycom,hdx,iot,exposure,video-conferencing
+  tags: exposure,hdx,iot,polycom,video-conferencing

@@ -63,14 +63,14 @@ http:
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)^content-type:'', header)'
+    - '!regex(''(?i)content-type:'', header)'
     - status_code == 200
     name: missing-content-type
     type: dsl
   - condition: and
     dsl:
-    - regex('(?i)^content-type:\s*text/html', header)
-    - '!regex(''(?i)^content-type:.*charset='', header)'
+    - regex('(?i)content-type:\s*text/html', header)
+    - '!regex(''(?i)content-type:.*charset='', header)'
     - status_code == 200
     name: content-type-charset-specification
     type: dsl
@@ -81,7 +81,7 @@ http:
   - '{{BaseURL}}'
 id: http-missing-security-headers
 info:
-  author: socketz,geeknik,G4L1T0,convisoappsec,kurohost,dawid-czarnecki,forgedhallpass,jub0bs,userdehghani,celbahraoui
+  author: socketz,geeknik,G4L1T0,convisoappsec,kurohost,dawid-czarnecki,forgedhallpass,jub0bs,userdehghani,celbahraoui,safejulian
   classification:
     cwe-id:
     - CWE-693

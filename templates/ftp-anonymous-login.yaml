@@ -14,7 +14,7 @@ info:
   reference:
   - https://tools.ietf.org/html/rfc2577
   severity: medium
-  tags: network,ftp,default-login,tcp,vuln
+  tags: default-login,ftp,network,tcp,vuln
 tcp:
 - host:
   - '{{Hostname}}'
@@ -24,7 +24,8 @@ tcp:
   - data: "PASS anonymous\r\n"
     read: 1024
   matchers:
-  - condition: or
+  - case-insensitive: true
+    condition: or
     part: raw
     type: word
     words:
@@ -33,6 +34,7 @@ tcp:
     - Anonymous user logged
     - Login successful
     - Guest login ok
+    - User anonymous logged in
   - condition: or
     negative: true
     part: raw
