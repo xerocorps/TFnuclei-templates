@@ -15,7 +15,7 @@ http:
     words:
     - wpr-addons-pro
   - dsl:
-    - compare_versions(version, '< 1.7.1041')
+    - compare_versions(version, '< 1.6.01')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,8 +35,7 @@ info:
     fofa-query: wp-content/plugins/wpr-addons-pro/
     google-query: inurl:"/wp-content/plugins/wpr-addons-pro/"
     shodan-query: http.html:"wp-content/plugins/wpr-addons-pro/"
-  name: 'Royal Elementor Addons Pro < 1.7.1041 - Unauthenticated Stored Cross-Site
-    Scripting
+  name: 'Royal Elementor Addons < 1.7.1041 - Unauthenticated Stored Cross-Site Scripting
 
     '
   reference:
