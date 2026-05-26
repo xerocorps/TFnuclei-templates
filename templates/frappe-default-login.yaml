@@ -1,0 +1,42 @@
+http:
+- body: usr=Administrator&pwd=admin
+  extractors:
+  - json:
+    - .full_name
+    name: full_name
+    part: body
+    type: json
+  headers:
+    Accept: application/json
+    Content-Type: application/x-www-form-urlencoded
+  matchers:
+  - condition: and
+    part: body
+    type: word
+    words:
+    - Logged In
+    - full_name
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
+  method: POST
+  path:
+  - '{{BaseURL}}/api/method/login'
+id: frappe-default-login
+info:
+  author: DhiyaneshDk
+  description: 'Frappe Framework (and ERPNext) is accessible using the default credentials
+    Administrator:admin. Successful login exposes full administrative access to the
+    ERP/CRM system and underlying data.
+
+    '
+  metadata:
+    max-request: 1
+    verified: true
+  name: Frappe Framework - Default Login Credentials
+  reference:
+  - https://frappeframework.com
+  - https://docs.erpnext.com
+  severity: high
+  tags: default-login,frappe,erpnext
