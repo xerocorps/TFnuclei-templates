@@ -32,8 +32,6 @@ http:
 id: wp-gallery-file-upload
 info:
   author: r3Y3r53
-  classification:
-    cpe: cpe:2.3:a:bestwebsoft:gallery:*:*:*:*:wordpress:*:*:*
   description: 'The Gallery by BestWebSoft WordPress plugin was affected by an Unauthenticated
     File Upload PHP Code Execution security vulnerability.
 
@@ -41,10 +39,7 @@ info:
   metadata:
     google-query: inurl:/wp-content/plugins/gallery-plugin/
     max-request: 2
-    product: gallery
     publicwww-query: /wp-content/plugins/gallery-plugin/
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
-    vendor: bestwebsoft
     verified: true
   name: WordPress Plugin Gallery 3.06 - Arbitrary File Upload
   reference:
@@ -54,6 +49,6 @@ info:
   - https://wpscan.com/vulnerability/049c8518-1f52-4aa4-b0b3-218289727353
   remediation: Fixed in version 3.1.1
   severity: high
-  tags: wp,wp-plugin,wordpress,wpscan,file-upload,intrusive,vuln
+  tags: wp,wp-plugin,wordpress,wpscan,file-upload,intrusive
 variables:
   filename: '{{to_lower(rand_text_alpha(5))}}'

@@ -47,7 +47,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     shodan-query: title:"ueditor"
     verified: true
   name: ueditor - Cross Site Scripting
@@ -55,6 +54,6 @@ info:
   - https://blog.csdn.net/weixin_50464560/article/details/124803185
   - https://github.com/fex-team/ueditor/releases/tag/v1.4.3.3
   severity: high
-  tags: ueditor,xss,intrusive,vuln
+  tags: ueditor,xss
 variables:
   randstring: '{{to_lower(rand_base(16))}}'

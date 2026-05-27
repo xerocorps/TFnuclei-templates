@@ -16,7 +16,6 @@ id: slurm-hpc-dashboard
 info:
   author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:schedmd:slurm:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
     cwe-id: CWE-200
@@ -25,12 +24,10 @@ info:
     '
   metadata:
     max-request: 1
-    product: slurm
     shodan-query: title:"Slurm HPC Dashboard"
-    vendor: schedmd
     verified: true
   name: Slurm HPC Dashboard - Detect
   reference:
   - https://grafana.com/grafana/dashboards/4323-slurm-dashboard/
   severity: medium
-  tags: dashboard,discovery,misconfig,slurm
+  tags: misconfig,slurm,dashboard

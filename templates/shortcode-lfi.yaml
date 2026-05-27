@@ -17,7 +17,6 @@ id: shortcode-lfi
 info:
   author: dhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:halulu:simple-download-button-shortcode:*:*:*:*:wordpress:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
     cwe-id: CWE-22
@@ -28,10 +27,8 @@ info:
   metadata:
     google-query: inurl:wp/wp-content/force-download.php
     max-request: 1
-    product: simple-download-button-shortcode
-    vendor: halulu
   name: WordPress Download Shortcode 0.2.3 - Local File Inclusion
   reference:
   - https://packetstormsecurity.com/files/128024/WordPress-ShortCode-1.1-Local-File-Inclusion.html
   severity: high
-  tags: lfi,packetstorm,shortcode,vuln,wordpress,wp,wp-plugin
+  tags: lfi,shortcode,wp,packetstorm,wordpress,wp-plugin

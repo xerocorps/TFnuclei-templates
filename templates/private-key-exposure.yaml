@@ -4,7 +4,6 @@ http:
     - 200
     type: status
   - condition: and
-    part: body
     type: word
     words:
     - Index of /node_modules/mqtt/test/helpers
@@ -22,4 +21,4 @@ info:
     max-request: 1
   name: Private key exposure via helper detector
   severity: high
-  tags: generic
+  tags: exposure,node

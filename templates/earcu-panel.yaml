@@ -25,11 +25,10 @@ info:
   description: eArcu was detected.
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)'content=\"eArcu'"
     shodan-query: html:'content="eArcu'
     verified: 'true'
   name: eArcu Panel - Detect
   reference:
   - https://www.earcu.com/products
   severity: info
-  tags: panel,earcu,detect,discovery
+  tags: panel,earcu,detect

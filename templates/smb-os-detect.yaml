@@ -6,14 +6,12 @@ info:
     '
   metadata:
     max-request: 1
-    product: dionaea
     shodan-query: port:445
-    vendor: dionaea
   name: SMB Operating System - Detect
   reference:
   - https://nmap.org/nsedoc/scripts/smb-os-discovery.html
   severity: info
-  tags: js,network,smb,enum,os,discovery
+  tags: js,network,smb,enum,os
 javascript:
 - args:
     Host: '{{Host}}'
@@ -289,6 +287,3 @@ javascript:
   - dsl:
     - response
     type: dsl
-  pre-condition: 'isPortOpen(Host,Port);
-
-    '

@@ -16,11 +16,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)LockSelf"})
     shodan-query: http.title:"LockSelf"
     verified: true
   name: LockSelf Login Panel - Detect
   reference:
   - https://www.lockself.com/en/
   severity: info
-  tags: panel,lockself,login,detect,discovery
+  tags: panel,lockself,login,detect

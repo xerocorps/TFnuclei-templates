@@ -10,9 +10,6 @@ http:
 id: hashicorp-token
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -20,6 +17,5 @@ info:
   reference:
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/hashicorp-tf-api-token.go
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/hashicorp-tf-api-token.yaml
-  - https://developer.hashicorp.com/vault/docs/concepts/tokens
   severity: info
-  tags: exposure,hashicorp,tokens,vuln
+  tags: hashicorp,exposure,tokens

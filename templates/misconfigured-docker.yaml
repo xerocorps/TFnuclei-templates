@@ -1,7 +1,6 @@
 http:
 - matchers:
   - condition: and
-    part: body
     type: word
     words:
     - '"ParentId":'
@@ -29,4 +28,4 @@ info:
   reference:
   - https://madhuakula.com/content/attacking-and-auditing-docker-containers-using-opensource/attacking-docker-containers/misconfiguration.html
   severity: critical
-  tags: docker
+  tags: docker,unauth,devops

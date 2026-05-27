@@ -17,21 +17,14 @@ id: parse-dashboard
 info:
   author: tess
   classification:
-    cpe: cpe:2.3:a:parseplatform:parse-server:*:*:*:*:node.js:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Parse Dashboard login panel was detected.
   metadata:
-    fofa-query: title="parse dashboard"
-    google-query: intitle:"parse dashboard"
     max-request: 1
-    product: parse-server
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)parse dashboard"})
-    shodan-query:
-    - title:"Parse Dashboard"
-    - http.title:"parse dashboard"
-    vendor: parseplatform
+    shodan-query: title:"Parse Dashboard"
     verified: true
   name: Parse Dashboard Login Panel - Detect
   severity: info
-  tags: discovery,exposure,panel,parse,parseplatform
+  tags: panel,parse,exposure

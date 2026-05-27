@@ -20,8 +20,8 @@ info:
     based requests, but no restrictions are set, resulting in remote code execution
     (RCE) vulnerabilities in the application.
   metadata:
-    max-request: 2
+    max-request: 1
   name: Nacos - jraftserver deserialization Remote Code Execution
   reference: https://stack.chaitin.com/techblog/detail?id=106
   severity: critical
-  tags: rce
+  tags: nacos

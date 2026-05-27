@@ -1,7 +1,7 @@
 http:
 - matchers:
-  - condition: and
-    name: Cloudflare
+  - condition: or
+    name: Microsoft-Azure-Application-Gateway-v2
     part: response
     regex:
     - <title>Attention Required! | Cloudflare</title>

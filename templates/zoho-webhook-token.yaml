@@ -3,13 +3,26 @@ info:
   author: Ice3man
   name: Zoho Webhook Disclosure
   severity: info
-  tags: exposure,token,zoho
+  tags: exposure,token
 requests:
-- extractors:
+- attack: sniper
+  extractors:
   - part: body
     regex:
     - https://creator\.zoho\.com/api/[A-Za-z0-9/\-_\.]+\?authtoken=[A-Za-z0-9]+
     type: regex
-  method: GET
-  path:
-  - '{{BaseURL}}'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

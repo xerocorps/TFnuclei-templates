@@ -1,20 +1,11 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
   - regex:
     - ^page not found$
     type: regex
-  - case-insensitive: true
-    part: header
-    type: word
-    words:
-    - 'Server: Caddy'
   - status:
     - 404
     type: status
@@ -25,7 +16,6 @@ http:
 id: uptimerobot-takeover
 info:
   author: pdteam
-  description: uptimerobot takeover was detected.
   metadata:
     max-request: 1
   name: uptimerobot takeover detection
@@ -33,4 +23,4 @@ info:
   - https://exploit.linuxsec.org/uptimerobot-com-custom-domain-subdomain-takeover/
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/45
   severity: low
-  tags: takeover,vuln
+  tags: takeover

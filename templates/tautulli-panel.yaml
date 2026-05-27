@@ -21,31 +21,16 @@ http:
 id: tautulli-panel
 info:
   author: rxerium
-  classification:
-    cpe: cpe:2.3:a:tautulli:tautulli:*:*:*:*:*:*:*:*
   description: 'A Python based monitoring and tracking tool for Plex Media Server.
 
     '
   metadata:
-    fofa-query:
-    - title="tautulli - home"
-    - title="tautulli"
-    google-query:
-    - intitle:"tautulli"
-    - intitle:"tautulli - home"
     max-request: 2
-    product: tautulli
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)tautulli"}) ||
-      any(each(service["html.titles"]), {# matches "(?i)tautulli - home"})
-    shodan-query:
-    - title:"TAUTULLI"
-    - http.title:"tautulli"
-    - http.title:"tautulli - home"
-    vendor: tautulli
+    shodan-query: title:"TAUTULLI"
     verified: true
   name: Tautulli Panel - Detect
   reference:
   - https://tautulli.com/
   - https://github.com/Tautulli/Tautulli
   severity: info
-  tags: detect,discovery,panel,tautulli
+  tags: panel,tautulli,detect

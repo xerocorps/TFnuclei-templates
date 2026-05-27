@@ -12,15 +12,6 @@ http:
     type: word
     words:
     - lvm_
-    - kube
-    - namedprocess
-    - mysqld
-    - collectd_
-    - libvirt_
-    - mongodb
-    - blackbox_
-    - haproxy_
-    - rabbitmq_
   - status:
     - 200
     type: status
@@ -28,8 +19,6 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/metrics'
-  - '{{BaseURL}}/api/metrics'
-  stop-at-first-match: true
 id: prometheus-metrics
 info:
   author: dhiyaneshDK,philippedelteil
@@ -39,10 +28,10 @@ info:
     cwe-id: CWE-200
   description: Prometheus metrics page was detected.
   metadata:
-    max-request: 2
+    max-request: 1
   name: Prometheus Metrics - Detect
   reference:
   - https://github.com/prometheus/prometheus
   - https://hackerone.com/reports/1026196
   severity: medium
-  tags: exposure,prometheus,hackerone,config,vuln
+  tags: exposure,prometheus,hackerone,config

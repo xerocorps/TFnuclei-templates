@@ -34,11 +34,10 @@ http:
 id: xmlrpc-pingback-ssrf
 info:
   author: geeknik
-  description: XMLRPC Pingback leads to SSRF.
   metadata:
     max-request: 1
   name: XMLRPC Pingback SSRF
   reference:
   - https://hackerone.com/reports/406387
   severity: high
-  tags: ssrf,generic
+  tags: xmlrpc,hackerone,ssrf,generic

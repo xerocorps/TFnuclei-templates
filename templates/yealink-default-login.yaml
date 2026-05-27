@@ -2,13 +2,11 @@ http:
 - attack: pitchfork
   host-redirects: true
   matchers:
-  - condition: or
-    part: body
+  - part: body
     type: word
     words:
-    - '{"ret":"ok","data":true}'
     - '{"ret":"ok","data":"ok"}'
-  - part: content_type
+  - part: header
     type: word
     words:
     - text/html
@@ -19,10 +17,8 @@ http:
   payloads:
     password:
     - '0000'
-    - user
     username:
     - admin
-    - user
   raw:
   - 'POST /api/auth/login?p=Login&t=1 HTTP/1.1
 
@@ -38,7 +34,7 @@ http:
     '
 id: yealink-default-login
 info:
-  author: parzival,arbenn@pretera.com
+  author: parzival
   description: 'Yealink CTP18 Default Administrator Credentials Discovered.
 
     '
@@ -50,4 +46,4 @@ info:
   reference:
   - https://support.yealink.com
   severity: high
-  tags: default-login,vuln,yealink
+  tags: default-login,yealink

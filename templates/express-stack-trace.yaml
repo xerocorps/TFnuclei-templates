@@ -20,12 +20,10 @@ http:
 id: express-stack-trace
 info:
   author: DhiyaneshDk
-  description: Express Stack trace is exposed.
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-17/excluding tag intrusive
     shodan-query: html:"Welcome to Express"
     verified: true
   name: Express Stack Trace
   severity: low
-  tags: misconfig,express,intrusive,vuln
+  tags: misconfig,express

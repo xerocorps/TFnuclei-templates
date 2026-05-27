@@ -23,7 +23,6 @@ id: dompdf-config
 info:
   author: kazet
   classification:
-    cpe: cpe:2.3:a:dompdf_project:dompdf:*:*:*:*:*:*:*:*
     cwe-id: CWE-200
   description: 'DOMPDF Configuration page was detected, which contains paths, library
     versions and other potentially sensitive information
@@ -32,9 +31,7 @@ info:
   metadata:
     fofa-query: title="dompdf - The PHP 5 HTML to PDF Converter"
     max-request: 6
-    product: dompdf
-    vendor: dompdf_project
     verified: true
   name: DomPDF - Configuration Page
   severity: low
-  tags: config,dompdf,exposure,vuln
+  tags: config,exposure,dompdf

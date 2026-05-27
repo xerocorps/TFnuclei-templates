@@ -25,8 +25,8 @@ info:
   author: idealphase
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
-    cwe-id: CWE-77,CWE-78
+    cvss-score: 10.0
+    cwe-id: CWE-77
   description: elFinder 2.1.58 is vulnerable to remote code execution. This can allow
     an attacker to execute arbitrary code and commands on the server hosting the elFinder
     PHP connector, even with minimal configuration.
@@ -38,4 +38,4 @@ info:
   remediation: The issues were patched in version 2.1.59. As a workaround, ensure
     the connector is not exposed without authentication.
   severity: critical
-  tags: discovery,elfinder,oss,tech
+  tags: tech,elfinder,oss

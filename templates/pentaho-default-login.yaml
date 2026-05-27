@@ -37,12 +37,9 @@ info:
   description: Pentaho default admin credentials were discovered.
   metadata:
     max-request: 1
-    product: vantara_pentaho
-    runzero-match: any(each(service["html.titles"]), {# matches "^Pentaho User Console"})
     shodan-query: pentaho
-    vendor: hitachi
   name: Pentaho Default Login
   reference:
   - https://www.hitachivantara.com/en-us/pdfd/training/pentaho-lesson-1-user-console-overview.pdf
   severity: high
-  tags: default-login,pentaho,vuln
+  tags: pentaho,default-login

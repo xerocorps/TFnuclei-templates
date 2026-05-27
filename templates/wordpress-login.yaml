@@ -14,17 +14,12 @@ id: wordpress-login
 info:
   author: its0x08
   classification:
-    cpe: cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: WordPress login panel was detected.
   metadata:
     max-request: 1
-    product: wordpress
-    shodan-query:
-    - http.component:"wordpress"
-    - cpe:"cpe:2.3:a:wordpress:wordpress"
-    vendor: wordpress
   name: WordPress Login Panel - Detect
   severity: info
-  tags: panel,wordpress,discovery
+  tags: panel,wordpress

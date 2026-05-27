@@ -5,11 +5,24 @@ info:
   severity: info
   tags: exposure,token
 requests:
-- extractors:
+- attack: sniper
+  extractors:
   - part: body
     regex:
     - access_token\$production\$[0-9a-z]{16}\$[0-9a-f]{32}
     type: regex
-  method: GET
-  path:
-  - '{{BaseURL}}'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

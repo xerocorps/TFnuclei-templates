@@ -39,10 +39,8 @@ info:
     discovered.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.bodies"]), {# contains "window.Pan = window.Pan
-      || {}"})
   name: Palo Alto Networks PAN-OS Default Login
   reference:
   - https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/getting-started/integrate-the-firewall-into-your-management-network/perform-initial-configuration.html#:~:text=By%20default%2C%20the%20firewall%20has,with%20other%20firewall%20configuration%20tasks.
   severity: high
-  tags: default-login,panos,vuln
+  tags: panos,default-login

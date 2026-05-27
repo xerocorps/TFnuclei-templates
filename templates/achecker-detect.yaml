@@ -3,10 +3,8 @@ info:
   author: princechaddha
   name: AChecker Detect
   severity: info
-  tags: tech,achecker
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - condition: and
     part: body
     type: word
@@ -17,18 +15,6 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /checker/login.php HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/checker/login.php'

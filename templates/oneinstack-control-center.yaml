@@ -1,12 +1,15 @@
 http:
 - matchers:
   - condition: and
-    dsl:
-    - status_code == 200
-    - contains(body, "OneinStack")
-    - "contains_any(body, \"Control center\", \"\u63A7\u5236\u4E2D\u5FC3\" , \"id=\\\
-      \"backup_link\")"
-    type: dsl
+    part: body
+    type: word
+    words:
+    - Control center
+    - OneinStack
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}'
@@ -29,4 +32,4 @@ info:
   - https://github.com/oneinstack/oneinstack
   - https://oneinstack.com/
   severity: medium
-  tags: misconfig,exposure,panel,oneinstack,vuln
+  tags: misconfig,exposure,panel,oneinstack

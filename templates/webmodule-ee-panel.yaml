@@ -21,15 +21,15 @@ info:
   author: pussycat0x,daffainfo
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Webmodule login panel was detected.
   metadata:
     google-query: intitle:"Webmodule" inurl:"/webmodule-ee/login.seam" "Version"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Webmodule"})
     shodan-query: title:"Webmodule"
   name: Webmodule Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7001
   severity: info
-  tags: edb,panel,webmodule-ee,login,discovery
+  tags: edb,panel,webmodule-ee,login

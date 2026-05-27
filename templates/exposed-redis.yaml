@@ -1,14 +1,16 @@
 id: exposed-redis
 info:
   author: pdteam
-  name: Redis Unauth Server
-  reference: https://redis.io/topics/security
+  description: Redis server without any required authentication was discovered.
+  name: Redis Server - Unauthenticated Access
+  reference:
+  - https://redis.io/topics/security
   severity: high
-  tags: network,redis
+  tags: network,redis,unauth
 network:
 - host:
   - '{{Hostname}}'
-  - '{{Hostname}}:6379'
+  - '{{Host}}:6379'
   inputs:
   - data: "info\r\nquit\r\n"
   matchers:

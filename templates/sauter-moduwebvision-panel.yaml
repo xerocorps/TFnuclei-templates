@@ -16,21 +16,15 @@ http:
 id: sauter-moduwebvision-panel
 info:
   author: righettod
-  classification:
-    cpe: cpe:2.3:o:sauter:moduweb_vision:*:*:*:*:*:*:*:*
   description: 'Sauter moduWeb Vision was detected.
 
     '
   metadata:
-    fofa-query: icon_hash=-1663319756
     max-request: 1
-    product: moduweb_vision
-    runzero-match: service["favicon.ico.image.mmh3"] == "-1663319756"
     shodan-query: http.favicon.hash:-1663319756
-    vendor: sauter
     verified: true
   name: SAUTER moduWeb Vision Panel - Detect
   reference:
   - https://www.sauter-controls.com
   severity: info
-  tags: discovery,login,moduweb,panel,sauter
+  tags: panel,moduweb,sauter,login

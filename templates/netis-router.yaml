@@ -4,9 +4,10 @@ info:
   name: Netis Router Login
   reference: https://www.tacnetsol.com/blog/cve-2019-8985-rce
   severity: info
-  tags: panel,login,netis,router
+  tags: panel,login,netis
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - part: body
     type: word
     words:
@@ -19,6 +20,15 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/login.htm'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /login.htm HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
+    (KHTML, like Gecko)
+
+    '
+  threads: 100

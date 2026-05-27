@@ -10,17 +10,14 @@ http:
     - compare_versions(version, '<= 6.4.0')
     type: dsl
   matchers:
-  - condition: and
-    part: body
+  - part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - condition: and
-    status:
+  - status:
     - 200
     type: status
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - tacjs
@@ -32,7 +29,7 @@ http:
   redirects: true
 id: drupal_module-tacjs-cross-site-scripting
 info:
-  author: me
+  author: Bishopfox
   description: This module enables sites to comply with the European cookie law using
     tarteaucitron.js. The module doesnt sufficiently filter user-supplied text leading
     to a Cross Site Scripting (XSS) vulnerability. This vulnerability is mitigated
@@ -40,11 +37,11 @@ info:
     be exploited by an attacker with a role with the permission administer tacjs regardless
     of other configurations.
   metadata:
-    created_at: '2025-01-09'
+    created_at: '0001-01-01T00:00:00Z'
     fofa-query: /sites/all/modules/tacjs/
     google-query: inurl:'/sites/all/modules/tacjs/
     impact: medium
-    security-risk: "Moderately critical 13\u2009\u2215\u200925 AC:Basic/A:Admin/CI:Some/II:Some/E:Theoretical/TD:All"
+    security-risk: "Moderately critical 13\u221525 AC:Basic/A:Admin/CI:Some/II:Some/E:Theoretical/TD:All"
     type: indicator
     vulnerability: cross-site-scripting
   name: drupal_module-tacjs-cross-site-scripting

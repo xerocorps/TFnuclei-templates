@@ -24,17 +24,10 @@ http:
 id: jamf-blind-xxe
 info:
   author: pdteam
-  classification:
-    cwe-id:
-    - CWE-611
-    - CWE-918
-  description: Blind XXE / SSRF exists in JAMF which is a company that provides enterprise-level
-    software solutions for managing and securing Apple devices in organizations.
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
   name: JAMF Blind XXE / SSRF
   reference:
   - https://www.synack.com/blog/a-deep-dive-into-xxe-injection/
   severity: medium
-  tags: jamf,ssrf,vuln,xxe
+  tags: xxe,ssrf,jamf

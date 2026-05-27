@@ -1,19 +1,13 @@
 http:
 - matchers:
+  - status:
+    - 200
+    type: status
   - condition: and
     type: word
     words:
     - ManageEngine
-    - Showing Objects Of
-    - Export as
-  - negative: true
-    part: body
-    type: word
-    words:
-    - This search has been disabled
-  - status:
-    - 200
-    type: status
+    - ADManager
   matchers-condition: and
   method: GET
   path:
@@ -21,16 +15,10 @@ http:
 id: manage-engine-ad-search
 info:
   author: PR3R00T
-  classification:
-    cpe: cpe:2.3:a:zohocorp:manageengine_admanager_plus:*:*:*:*:*:*:*:*
   description: Manage Engine AD Manager service can be configured to allow anonymous
     users to browse the AD list remotely.
   metadata:
     max-request: 1
-    product: manageengine_admanager_plus
-    shodan-query: title:"ManageEngine"
-    vendor: zohocorp
-    verified: true
   name: Manage Engine AD Search
   severity: high
-  tags: unauth,misconfig,vuln
+  tags: unauth

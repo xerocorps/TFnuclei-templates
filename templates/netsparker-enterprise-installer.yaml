@@ -20,12 +20,10 @@ http:
 id: netsparker-enterprise-installer
 info:
   author: pussycat0x
-  description: Netsparker Enterprise is susceptible to the Installation page exposure
-    due to misconfiguration.
   metadata:
     max-request: 1
     shodan-query: http.favicon.hash:-1575154882
     verified: true
   name: Netsparker Enterprise Installer
   severity: info
-  tags: misconfig,exposure,install,netsparker,vuln
+  tags: misconfig,exposure,install,netsparker

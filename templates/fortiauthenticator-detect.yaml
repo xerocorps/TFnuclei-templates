@@ -24,18 +24,16 @@ id: fortiauthenticator-detect
 info:
   author: johnk3r
   classification:
-    cpe: cpe:2.3:a:fortinet:fortiauthenticator:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
     cwe-id: CWE-200
   description: The FortiAuthenticator panel was detected.
   metadata:
-    fofa-query: icon_hash=-1653412201
     max-request: 1
     product: fortiauthenticator
-    runzero-match: service["favicon.ico.image.mmh3"] == "-1653412201"
     shodan-query: http.favicon.hash:-1653412201
     vendor: fortinet
     verified: true
   name: FortiAuthenticator - Detect
   severity: info
-  tags: detect,discovery,fortiauthenticator,fortinet,panel
+  tags: panel,fortinet,fortiauthenticator,detect

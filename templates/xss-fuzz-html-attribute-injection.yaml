@@ -20,13 +20,6 @@ http:
     type: word
     words:
     - text/html
-  - negative: true
-    part: body
-    type: word
-    words:
-    - <title>Access Denied</title>
-    - You don't have permission to access
-    - Roundcube Webmail
   matchers-condition: and
   method: GET
   path:
@@ -41,9 +34,8 @@ http:
     - ''' x=''y'' onfocus=''alert(1)'
 id: xss-fuzz-html-attribute-injection
 info:
-  author: quas,reewardius
+  author: quas
   description: Fuzzes all query parameters for various reflected XSS vulnerabilities
     via HTML attribute injections.
   name: Reflected XSS Checks via HTML attribute injections
   severity: medium
-  tags: fuzzing-xss,fuzzing-req,dast

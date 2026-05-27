@@ -5,10 +5,20 @@ info:
   severity: info
   tags: panel
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - type: word
     words:
     - <title>ManageEngine - ADManager Plus</title>
-  method: GET
-  path:
-  - '{{BaseURL}}/authorization.do'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /authorization.do HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
+    (KHTML, like Gecko)
+
+    '
+  threads: 100

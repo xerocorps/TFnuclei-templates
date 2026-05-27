@@ -1,6 +1,5 @@
 http:
-- host-redirects: true
-  matchers:
+- matchers:
   - part: body_1
     type: word
     words:
@@ -10,7 +9,6 @@ http:
     words:
     - '{{data}}'
   matchers-condition: and
-  max-redirects: 3
   raw:
   - 'POST /modules/blocktestimonial/addtestimonial.php HTTP/1.1
 
@@ -76,23 +74,17 @@ http:
 id: prestashop-blocktestimonial-file-upload
 info:
   author: MaStErChO
-  classification:
-    cwe-id:
-    - CWE-434
   metadata:
     framework: prestashop
     max-request: 2
-    product: ap_pagebuilder
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     shodan-query: http.component:"prestashop"
-    vendor: apollotheme
   name: Prestashop Blocktestimonial Modules - File Upload Vulnerability
   reference:
   - https://3xploit7.blogspot.com/2016/12/pretashop-blocktestimonial-upload-shell.html
   - https://github.com/indoxploit-coders/blocktestimonial-file-upload
   - https://exploit.linuxsec.org/prestashop-module-blocktestimonial-file-upload-auto-exploit
   severity: critical
-  tags: blocktestimonial,file-upload,intrusive,prestashop,vuln
+  tags: intrusive,file-upload,blocktestimonial,prestashop
 variables:
   data: '{{rand_base(6, "abc")}}'
   filename: '{{rand_base(7, "abc")}}'

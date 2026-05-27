@@ -18,59 +18,41 @@ http:
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/?phpinfo=1'
-  - '{{BaseURL}}/_profiler/phpinfo'
-  - '{{BaseURL}}/_profiler/phpinfo.php'
-  - '{{BaseURL}}/`<?php echo phpinfo(); ?>`'
-  - '{{BaseURL}}/asdf.php'
-  - '{{BaseURL}}/cgi-bin/i.php'
-  - '{{BaseURL}}/cgi-bin/info.php'
-  - '{{BaseURL}}/cgi-bin/phpinfo.php'
-  - '{{BaseURL}}/cgi-bin/test.php'
-  - '{{BaseURL}}/dashboard/i.php'
-  - '{{BaseURL}}/dashboard/info.php'
-  - '{{BaseURL}}/dashboard/phpinfo.php'
-  - '{{BaseURL}}/i.php'
-  - '{{BaseURL}}/i.php.'
-  - '{{BaseURL}}/i.php/*'
-  - '{{BaseURL}}/i.php~'
-  - '{{BaseURL}}/index.php'
-  - '{{BaseURL}}/index.php?file=`<?php echo phpinfo(); ?>`'
-  - '{{BaseURL}}/info.php'
-  - '{{BaseURL}}/info.php.'
-  - '{{BaseURL}}/info.php/*'
-  - '{{BaseURL}}/info.php~'
-  - '{{BaseURL}}/info/i.php'
-  - '{{BaseURL}}/infophp.php'
-  - '{{BaseURL}}/infos.php'
-  - '{{BaseURL}}/l.php?act=phpinfo'
-  - '{{BaseURL}}/linusadmin-phpinfo.php'
-  - '{{BaseURL}}/old_phpinfo.php'
-  - '{{BaseURL}}/php-info.php'
   - '{{BaseURL}}/php.php'
-  - '{{BaseURL}}/php_info.php'
   - '{{BaseURL}}/phpinfo.php'
-  - '{{BaseURL}}/phpinfo.php.old'
-  - '{{BaseURL}}/phpinfo.php1'
-  - '{{BaseURL}}/phpinfo.php~'
-  - '{{BaseURL}}/phpversion.php'
-  - '{{BaseURL}}/phpversion.php~'
-  - '{{BaseURL}}/pinfo.php'
-  - '{{BaseURL}}/pinfo.php~'
-  - '{{BaseURL}}/temp.php'
+  - '{{BaseURL}}/info.php'
+  - '{{BaseURL}}/infophp.php'
+  - '{{BaseURL}}/php_info.php'
   - '{{BaseURL}}/test.php'
-  - '{{BaseURL}}/test.php~'
+  - '{{BaseURL}}/i.php'
+  - '{{BaseURL}}/asdf.php'
+  - '{{BaseURL}}/pinfo.php'
+  - '{{BaseURL}}/phpversion.php'
   - '{{BaseURL}}/time.php'
+  - '{{BaseURL}}/index.php'
+  - '{{BaseURL}}/temp.php'
+  - '{{BaseURL}}/old_phpinfo.php'
+  - '{{BaseURL}}/infos.php'
+  - '{{BaseURL}}/linusadmin-phpinfo.php'
+  - '{{BaseURL}}/php-info.php'
+  - '{{BaseURL}}/dashboard/phpinfo.php'
+  - '{{BaseURL}}/_profiler/phpinfo.php'
+  - '{{BaseURL}}/_profiler/phpinfo'
+  - '{{BaseURL}}/?phpinfo=1'
   stop-at-first-match: true
 id: phpinfo-files
 info:
-  author: reewardius
+  author: pdteam,daffainfo,meme-lord,dhiyaneshDK,wabafet
+  classification:
+    cwe-id: CWE-200
   description: 'PHPinfo page was detected. The output of the phpinfo() command can
     reveal sensitive and detailed PHP environment information.
 
     '
+  metadata:
+    max-request: 21
   name: PHPinfo Page - Detect
   remediation: Remove PHP Info pages from publicly accessible sites, or restrict access
     to authorized users only.
   severity: low
-  tags: php,generic,config
+  tags: config,exposure,phpinfo

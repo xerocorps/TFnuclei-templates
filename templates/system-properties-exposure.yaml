@@ -1,25 +1,13 @@
 http:
 - matchers:
-  - case-insensitive: true
-    condition: and
+  - condition: and
     part: body
     type: word
     words:
     - 'System Properties:'
     - 'Environment Variables:'
-  - part: header
-    type: word
-    words:
-    - text/plain
-    - bytes
-  - negative: true
-    part: header
-    type: word
-    words:
-    - text/html
   - status:
     - 200
-    - 206
     type: status
   matchers-condition: and
   method: GET
@@ -34,4 +22,4 @@ info:
     verified: true
   name: System Properties Exposure
   severity: low
-  tags: java,config,generic
+  tags: misconfig,system,exposure

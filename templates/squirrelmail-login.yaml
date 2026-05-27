@@ -21,24 +21,15 @@ id: squirrelmail-login
 info:
   author: dhiyaneshDk,ritikchaddha
   classification:
-    cpe: cpe:2.3:a:squirrelmail:squirrelmail:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: SquirrelMail login panel was detected.
   metadata:
-    fofa-query: title="squirrelmail"
-    google-query: intitle:"squirrelmail"
     max-request: 4
-    product: squirrelmail
-    runzero-match: service["favicon.ico.image.mmh3"] == "1511806001" || any([service["http.body"],
-      service["last.http.body"]], {# matches "(?i)squirrelmail"})
-    shodan-query:
-    - title:"SquirrelMail"
-    - http.title:"squirrelmail"
-    - cpe:"cpe:2.3:a:squirrelmail:squirrelmail"
-    vendor: squirrelmail
+    shodan-query: title:"SquirrelMail"
   name: SquirrelMail Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7407
   severity: info
-  tags: discovery,edb,panel,squirrelmail
+  tags: squirrelmail,edb,panel

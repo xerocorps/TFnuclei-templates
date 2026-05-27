@@ -16,7 +16,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22,CWE-23
+    cwe-id: CWE-22
   description: WordPress Church Admin 0.33.2.1 is vulnerable to local file inclusion
     via the "key" parameter of plugins/church-admin/display/download.php.
   metadata:
@@ -26,4 +26,4 @@ info:
   - https://wpscan.com/vulnerability/8997
   - https://id.wordpress.org/plugins/church-admin/
   severity: high
-  tags: lfi,vuln,wordpress,wp-plugin,wpscan
+  tags: wordpress,wp-plugin,lfi,wpscan

@@ -22,9 +22,6 @@ http:
 id: indonasia-toko-cms-sql
 info:
   author: r3Y3r53
-  classification:
-    cwe-id:
-    - CWE-89
   description: 'Indonesia Toko CMS is susceptible to SQL Injection in its login system,
     enabling attackers to exploit vulnerabilities and bypass authentication by injecting
     malicious SQL code.
@@ -38,4 +35,4 @@ info:
   reference:
   - https://cxsecurity.com/issue/WLB-2019030008
   severity: high
-  tags: cms,sqli,toko,vuln
+  tags: sqli,toko,cms

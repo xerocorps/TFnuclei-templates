@@ -24,19 +24,15 @@ http:
 id: vbulletin-detect
 info:
   author: ricardomaia
-  classification:
-    cpe: cpe:2.3:a:vbulletin:vbulletin:*:*:*:*:*:*:*:*
   description: vBulletin is a proprietary forum and community publishing software
     written in PHP.
   metadata:
     google-query: intext:"Powered By vBulletin"
     max-request: 1
-    product: vbulletin
     shodan-query: title:"Powered By vBulletin"
-    vendor: vbulletin
     verified: true
   name: vBulletin Detect
   reference:
   - https://www.vbulletin.com/
   severity: info
-  tags: tech,vbulletin,discovery
+  tags: tech,vbulletin

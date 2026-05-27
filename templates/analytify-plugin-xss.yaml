@@ -21,7 +21,6 @@ id: analytify-plugin-xss
 info:
   author: Akincibor
   classification:
-    cpe: cpe:2.3:a:analytify:analytify_-_google_analytics_dashboard:*:*:*:*:wordpress:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 5.4
     cwe-id: CWE-80
@@ -33,11 +32,9 @@ info:
   metadata:
     google-query: inurl:/wp-content/plugins/wp-analytify
     max-request: 1
-    product: analytify_-_google_analytics_dashboard
-    vendor: analytify
     verified: true
   name: Analytify <4.2.1 - Cross-Site Scripting
   reference:
   - https://wpscan.com/vulnerability/b8415ed5-6fd0-42fe-9201-73686c1871c5
   severity: medium
-  tags: analytify,vuln,wordpress,wp,wp-plugin,wpscan,xss
+  tags: wp,wordpress,analytify,wpscan,wp-plugin,xss

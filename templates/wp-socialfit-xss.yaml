@@ -4,12 +4,6 @@ http:
     type: word
     words:
     - </script><script>alert(document.domain)</script>
-  - condition: or
-    part: body
-    type: word
-    words:
-    - <title>Google+
-    - window.___gcfg
   - part: header
     type: word
     words:
@@ -35,10 +29,8 @@ info:
     '
   metadata:
     max-request: 1
-    publicwww-query: /wp-content/plugins/socialfit
-    verified: true
   name: WordPress SocialFit - Cross-Site Scripting
   reference:
   - https://www.exploit-db.com/exploits/37481
   severity: high
-  tags: wordpress,wp,xss,wp-plugin,edb,vuln
+  tags: wordpress,xss,wp-plugin,edb

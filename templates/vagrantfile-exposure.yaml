@@ -21,11 +21,10 @@ http:
 id: vagrantfile-exposure
 info:
   author: DhiyaneshDk
-  description: Vagrantfile is exposed to external users.
   metadata:
     max-request: 1
     shodan-query: html:"Vagrantfile"
     verified: true
   name: Vagrantfile Exposure
   severity: low
-  tags: config,exposure,vagrant,oss,files,vuln
+  tags: config,exposure,vagrant,oss,files

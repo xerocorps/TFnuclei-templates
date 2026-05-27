@@ -14,9 +14,6 @@ http:
 id: microstrategy-ssrf
 info:
   author: organiccrap
-  classification:
-    cwe-id:
-    - CWE-918
   description: Blind server-side (SSRF) request forgery vulnerability on MicroStrategy
     URL shortener.
   metadata:
@@ -25,4 +22,4 @@ info:
   reference:
   - https://medium.com/@win3zz/how-i-made-31500-by-submitting-a-bug-to-facebook-d31bb046e204
   severity: high
-  tags: microstrategy,ssrf,vuln
+  tags: microstrategy,ssrf

@@ -20,17 +20,13 @@ http:
 id: sogo-detect
 info:
   author: righettod
-  classification:
-    cpe: cpe:2.3:a:alinto:sogo:*:*:*:*:*:*:*:*
   description: This template will detect a running SOGo instance
   metadata:
     max-request: 2
-    product: sogo
     shodan-query: http.title:"SOGo"
-    vendor: alinto
     verified: true
   name: SOGo Detect
   reference:
   - https://www.sogo.nu/
   severity: info
-  tags: sogo,tech,discovery
+  tags: sogo,tech

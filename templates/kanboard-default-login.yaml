@@ -1,5 +1,5 @@
 http:
-- attack: clusterbomb
+- attack: pitchfork
   cookie-reuse: true
   extractors:
   - group: 1
@@ -23,7 +23,6 @@ http:
   payloads:
     pass:
     - admin
-    - password
     user:
     - admin
   raw:
@@ -58,7 +57,7 @@ info:
     access to user accounts and access sensitive information, modify data, and/or
     execute unauthorized operations.
   metadata:
-    max-request: 6
+    max-request: 3
     shodan-query: http.favicon.hash:2056442365
     verified: true
   name: Kanboard - Default Login

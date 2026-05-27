@@ -21,32 +21,18 @@ id: zimbra-web-client
 info:
   author: dhiyaneshDk,idealphase
   classification:
-    cpe: cpe:2.3:a:synacor:zimbra_collaboration_suite:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Zimbra panel was detected. Zimbra provides open source server and client
     software for messaging and collaboration.
   metadata:
-    fofa-query:
-    - title="zimbra web client sign in"
-    - title="zimbra collaboration suite"
-    google-query:
-    - intitle:"zimbra collaboration suite"
-    - intitle:"zimbra web client sign in"
     max-request: 1
-    product: zimbra_collaboration_suite
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)zimbra collaboration
-      suite"}) || any(each(service["html.titles"]), {# matches "(?i)zimbra web client
-      sign in"})
-    shodan-query:
-    - http.title:"Zimbra Web Client Sign In"
-    - http.title:"zimbra collaboration suite"
-    - http.title:"zimbra web client sign in"
-    vendor: synacor
+    shodan-query: http.title:"Zimbra Web Client Sign In"
     verified: true
   name: Zimbra Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7409
   - https://www.zimbra.com/
   severity: info
-  tags: discovery,edb,panel,synacor,zimbra
+  tags: edb,panel,zimbra

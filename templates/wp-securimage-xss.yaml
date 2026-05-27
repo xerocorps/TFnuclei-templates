@@ -1,18 +1,4 @@
-flow: http(1) && http(2)
 http:
-- matchers:
-  - condition: and
-    internal: true
-    type: word
-    words:
-    - Securimage-WP
-    - 'Tags:'
-  raw:
-  - 'GET /wp-content/plugins/securimage-wp/readme.txt HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 - matchers:
   - part: body
     type: word
@@ -42,10 +28,10 @@ info:
     allow the attacker to steal cookie-based authentication credentials and launch
     other attacks.
   metadata:
-    max-request: 2
+    max-request: 1
   name: WordPress Securimage-WP 3.2.4 - Cross-Site Scripting
   reference:
   - https://www.exploit-db.com/exploits/38510
   - http://web.archive.org/web/20210123054214/https://www.securityfocus.com/bid/59816/info
   severity: high
-  tags: edb,wordpress,xss,wp-plugin,vuln
+  tags: edb,wordpress,xss,wp-plugin

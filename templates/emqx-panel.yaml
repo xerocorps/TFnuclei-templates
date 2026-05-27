@@ -17,20 +17,15 @@ http:
 id: emqx-panel
 info:
   author: righettod
-  classification:
-    cpe: cpe:2.3:a:emqx:emqx:*:*:*:*:*:*:*:*
   description: 'EMQX login panel was detected.
 
     '
   metadata:
     max-request: 1
-    product: emqx
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)EMQX Dashboard"})
     shodan-query: http.title:"EMQX Dashboard"
-    vendor: emqx
     verified: true
   name: EMQX Login Panel - Detect
   reference:
   - https://www.emqx.io/
   severity: info
-  tags: panel,emqx,login,detect,discovery
+  tags: panel,emqx,login,detect

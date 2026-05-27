@@ -1,5 +1,6 @@
 http:
 - attack: pitchfork
+  cookie-reuse: true
   matchers:
   - condition: and
     part: header
@@ -62,4 +63,4 @@ info:
   - https://github.com/vulhub/vulhub/tree/master/weblogic/weak_password
   - https://www.s-squaresystems.com/weblogic-default-admin-users-password-change/
   severity: high
-  tags: default-login,vulhub,vuln,weblogic
+  tags: default-login,weblogic,vulhub

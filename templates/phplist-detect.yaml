@@ -23,19 +23,15 @@ http:
 id: phplist-detect
 info:
   author: ricardomaia
-  classification:
-    cpe: cpe:2.3:a:phplist:phplist:*:*:*:*:*:*:*:*
   description: 'phpList is an open source newsletter manager.
 
     '
   metadata:
     max-request: 1
-    product: phplist
     shodan-query: html:"phplist"
-    vendor: phplist
     verified: true
   name: phpList - Detect
   reference:
   - https://www.phplist.org/
   severity: info
-  tags: tech,phplist,detect,discovery
+  tags: tech,phplist,detect

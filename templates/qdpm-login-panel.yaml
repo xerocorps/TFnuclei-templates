@@ -22,16 +22,12 @@ http:
 id: qdpm-login-panel
 info:
   author: theamanrawat
-  classification:
-    cpe: cpe:2.3:a:qdpm:qdpm:*:*:*:*:*:*:*:*
   metadata:
-    fofa-query: icon_hash=762074255
     max-request: 2
     product: qdpm
-    runzero-match: service["favicon.ico.image.mmh3"] == "762074255"
     shodan-query: http.favicon.hash:762074255
     vendor: qdpm
     verified: 'true'
   name: qdPM Login Panel
   severity: info
-  tags: discovery,login,panel,qdpm
+  tags: panel,qdpm,login

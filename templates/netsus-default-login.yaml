@@ -37,8 +37,7 @@ info:
   description: NetSUS Server default admin credentials were discovered.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "NetSUS Server Login"})
     shodan-query: http.title:"NetSUS Server Login"
   name: NetSUS Server Default Login
   severity: high
-  tags: default-login,netsus,vuln
+  tags: netsus,default-login

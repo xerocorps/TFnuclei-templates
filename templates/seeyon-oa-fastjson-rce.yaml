@@ -23,19 +23,14 @@ http:
 id: seeyon-oa-fastjson-rce
 info:
   author: SleepingBag945
-  classification:
-    cwe-id:
-    - CWE-502
-    - CWE-94
   description: Seeyon OA Fastjson is vulnerable to RCE.
   metadata:
     fofa-query: "app=\"\u81F4\u8FDC\u4E92\u8054-OA\""
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
     verified: true
   name: Seeyon OA Fastjson Remote Code Execution
   reference:
   - https://github.com/achuna33/MYExploit/blob/8ffbf7ee60cbd77ad90b0831b93846aba224ab29/src/main/java/com/achuna33/Controllers/SeeyonController.java
   - https://github.com/hktalent/scan4all/blob/main/pocs_go/seeyon/SeeyonFastjson.go
   severity: critical
-  tags: fastjson,oa,oast,rce,seeyon,vuln
+  tags: seeyon,oa,rce,fastjson,oast

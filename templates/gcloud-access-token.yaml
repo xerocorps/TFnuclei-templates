@@ -21,11 +21,10 @@ http:
 id: gcloud-access-token
 info:
   author: DhiyaneshDK
-  description: Internal Google Cloud access tokens are exposed.
   metadata:
     max-request: 2
     shodan-query: html:"access_tokens.db"
     verified: true
   name: Google Cloud Access Token
   severity: medium
-  tags: google,cloud,devops,exposure,files,vuln
+  tags: google,cloud,devops,exposure,files

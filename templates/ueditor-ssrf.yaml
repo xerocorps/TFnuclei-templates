@@ -19,21 +19,14 @@ http:
 id: ueditor-ssrf
 info:
   author: pwnhxl
-  classification:
-    cpe: cpe:2.3:a:baidu:ueditor:*:*:*:*:*:*:*:*
-    cwe-id:
-    - CWE-918
-    - CWE-99
   description: UEditor contains an Server Side Request Forgery vulnerability.
   metadata:
     max-request: 2
-    product: ueditor
     shodan-query: html:"UEditor"
-    vendor: baidu
     verified: true
   name: UEditor - Server Side Request Forgery
   reference:
   - https://xz.aliyun.com/t/4154
   - https://www.seebug.org/vuldb/ssvid-97311
   severity: medium
-  tags: ssrf,ueditor,vuln
+  tags: ueditor,ssrf

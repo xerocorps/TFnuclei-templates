@@ -1,5 +1,6 @@
 http:
-- extractors:
+- cookie-reuse: true
+  extractors:
   - group: 1
     internal: true
     name: csrf
@@ -48,14 +49,13 @@ info:
   author: DEENA
   classification:
     cvss-metrics: AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-288
   description: A Plastic Admin console was discovered.
   metadata:
     max-request: 3
-    runzero-review: REJECT/2025-11-17/excluding tag intrusive
   name: Plastic Admin Console - Authentication Bypass
   reference:
   - https://infosecwriteups.com/story-of-google-hall-of-fame-and-private-program-bounty-worth-53559a95c468
   severity: critical
-  tags: plastic,misconfig,intrusive,vuln
+  tags: plastic

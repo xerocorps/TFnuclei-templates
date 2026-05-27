@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -23,7 +19,6 @@ http:
 id: wordpress-takeover
 info:
   author: pdteam,geeknik
-  description: Bigcartel takeover was detected.
   metadata:
     max-request: 1
   name: WordPress takeover detection
@@ -31,4 +26,4 @@ info:
   - https://github.com/EdOverflow/can-i-take-over-xyz/pull/176
   - https://hackerone.com/reports/274336
   severity: high
-  tags: takeover,wordpress,hackerone,vuln
+  tags: takeover,wordpress,hackerone

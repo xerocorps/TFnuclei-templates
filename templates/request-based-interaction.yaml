@@ -66,15 +66,11 @@ http:
 id: request-based-interaction
 info:
   author: pdteam
-  classification:
-    cwe-id:
-    - CWE-918
   description: The remote server fetched a spoofed DNS Name from the request.
   metadata:
     max-request: 5
-    runzero-review: REJECT/2025-11-07/uses interactsh
   name: OOB Request Based Interaction
   reference:
   - https://portswigger.net/research/cracking-the-lens-targeting-https-hidden-attack-surface
   severity: info
-  tags: generic,oast,ssrf,vuln
+  tags: oast,ssrf,generic

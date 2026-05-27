@@ -1,16 +1,4 @@
-flow: http(1) && http(2)
 http:
-- matchers:
-  - internal: true
-    type: word
-    words:
-    - /wp-content/plugins/phpfreechat/
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 - matchers:
   - part: body
     type: word
@@ -40,10 +28,10 @@ info:
     can allow the attacker to steal cookie-based authentication credentials and launch
     other attacks.
   metadata:
-    max-request: 2
+    max-request: 1
   name: WordPress PHPFreeChat 0.2.8 - Cross-Site Scripting
   reference:
   - https://www.exploit-db.com/exploits/37485
   - http://web.archive.org/web/20210120061848/https://www.securityfocus.com/bid/54332/info
   severity: high
-  tags: xss,wp-plugin,edb,wordpress,vuln
+  tags: xss,wp-plugin,edb,wordpress

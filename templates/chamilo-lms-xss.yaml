@@ -21,7 +21,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79,CWE-83
+    cwe-id: CWE-79
   description: Chamilo LMS 1.11.14 is vulnerable to cross-site scripting.
   metadata:
     max-request: 1
@@ -30,4 +30,4 @@ info:
   - https://www.netsparker.com/web-applications-advisories/ns-21-001-cross-site-scripting-in-chamilo-lms/
   - https://support.chamilo.org/projects/chamilo-18/wiki/Security_issues#Issue-45-2021-01-21-Moderate-impact-moderate-risk-XSS-vulnerability-in-agenda
   severity: high
-  tags: chamilo,vuln,xss
+  tags: xss,chamilo

@@ -33,13 +33,12 @@ info:
   metadata:
     fofa-query: "app=\"\u7528\u53CB-UFIDA-NC\""
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
   name: Yonyou NC FileReceiveServlet - Aribitrary File Upload
   reference:
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/yonyou-nc-arbitrary-file-upload.yaml
   severity: critical
-  tags: yonyou,file-upload,intrusive,vuln
+  tags: yonyou,file-upload,intrusive
 variables:
   file_content: '{{randstr}}'
   file_name: '{{to_upper(rand_text_alphanumeric(5))}}.jsp'

@@ -18,6 +18,7 @@ info:
   author: idealphase
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'Aqua Enterprise panel was detected.
 
@@ -25,7 +26,6 @@ info:
   metadata:
     google-query: intitle:"Aqua Cloud Native Security Platform"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Aqua Enterprise"})
     shodan-query: http.title:"Aqua Enterprise" || http.title:"Aqua Cloud Native Security
       Platform"
     verified: true
@@ -33,4 +33,4 @@ info:
   reference:
   - https://www.aquasec.com/
   severity: info
-  tags: panel,aqua,aquasec,discovery
+  tags: panel,aqua,aquasec

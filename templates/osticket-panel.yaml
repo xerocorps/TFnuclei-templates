@@ -21,30 +21,14 @@ id: osticket-panel
 info:
   author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:osticket:osticket:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: osTicket login panel was detected.
   metadata:
-    fofa-query:
-    - body="powered by osticket"
-    - title="osticket"
-    - title="osticket installer"
-    google-query:
-    - intitle:"osticket"
-    - intitle:"osticket installer"
     max-request: 2
-    product: osticket
-    runzero-match: service["http.body"] matches "(?i)powered by osticket" || any(each(service["html.titles"]),
-      {# matches "(?i)osticket"}) || any(each(service["html.titles"]), {# matches
-      "(?i)osticket installer"})
-    shodan-query:
-    - http.html:"powered by osTicket"
-    - http.title:"osticket"
-    - http.html:"powered by osticket"
-    - http.title:"osticket installer"
-    vendor: osticket
+    shodan-query: http.html:"powered by osTicket"
     verified: true
   name: osTicket Login Panel - Detect
   severity: info
-  tags: discovery,osticket,panel
+  tags: panel,osticket

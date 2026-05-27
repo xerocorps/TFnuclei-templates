@@ -18,19 +18,15 @@ id: gcloud-config-default
 info:
   author: DhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:google:cloud_platform:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Google Cloud default configuration was detected.
   metadata:
     max-request: 2
-    product: cloud_platform
     shodan-query: html:"access_tokens.db"
-    vendor: google
     verified: true
   name: Google Cloud Default Config - Detect
-  reference:
-  - https://cloud.google.com
+  reference: https://cloud.google.com
   severity: info
-  tags: cloud,devops,exposure,google,vuln
+  tags: google,cloud,devops,exposure

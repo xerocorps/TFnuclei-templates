@@ -15,17 +15,12 @@ http:
 id: librephotos-panel
 info:
   author: ritikchaddha
-  classification:
-    cpe: cpe:2.3:a:librephotos_project:librephotos:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
-    product: librephotos
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)LibrePhotos"})
     shodan-query: title:"LibrePhotos"
-    vendor: librephotos_project
     verified: true
   name: LibrePhotos Panel - Detect
   reference:
   - https://github.com/LibrePhotos/librephotos
   severity: info
-  tags: panel,librephotos,detect,login,discovery
+  tags: panel,librephotos,detect,login

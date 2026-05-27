@@ -1,18 +1,11 @@
 http:
 - attack: pitchfork
   matchers:
-  - condition: or
-    part: body
-    type: word
-    words:
-    - access_token
+  - part: body
+    regex:
     - '{"token":".*"}'
-  - negative: true
-    part: body
-    type: word
-    words:
-    - '"code":1001'
-  - part: content_type
+    type: regex
+  - part: header
     type: word
     words:
     - application/json
@@ -21,37 +14,11 @@ http:
     type: status
   matchers-condition: and
   payloads:
-    password:
+    pass:
     - password123
-    username:
+    user:
     - empireadmin
   raw:
-  - 'POST /token HTTP/1.1
-
-    Host: {{Hostname}}
-
-    Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryoZwyedGcQU4FrcFV
-
-    Accept: application/json, text/plain, */*
-
-
-    ------WebKitFormBoundaryoZwyedGcQU4FrcFV
-
-    Content-Disposition: form-data; name="username"
-
-
-    {{username}}
-
-    ------WebKitFormBoundaryoZwyedGcQU4FrcFV
-
-    Content-Disposition: form-data; name="password"
-
-
-    {{password}}
-
-    ------WebKitFormBoundaryoZwyedGcQU4FrcFV--
-
-    '
   - 'POST /api/admin/login HTTP/1.1
 
     Host: {{Hostname}}
@@ -62,20 +29,22 @@ http:
     {"username":"{{user}}","password":"{{pass}}"}
 
     '
-  stop-at-first-match: true
 id: empirec2-default-login
 info:
-  author: clem9669,parzival
-  description: 'Empire C2 / Starkiller Default Administrator Credentials Discovered.
-
-    '
+  author: clem9669
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+    cvss-score: 8.3
+    cwe-id: CWE-522
+  description: Empire C2 contains a default admin login vulnerability. An attacker
+    can obtain access to user accounts and access sensitive information, modify data,
+    and/or execute unauthorized operations.
   metadata:
-    max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
+    max-request: 1
     verified: true
-  name: Empire C2 / Starkiller Interface - Default Login
+  name: Empire C2 Default Admin Login - Detect
   reference:
   - https://github.com/BC-SECURITY/Empire
-  - https://github.com/BC-SECURITY/empire-docs/blob/main/restful-api/README.md
+  - https://bc-security.gitbook.io/empire-wiki/quickstart/configuration/server
   severity: high
-  tags: c2,default-login,empire,intrusive,vuln
+  tags: default-login,empire

@@ -18,18 +18,13 @@ http:
 id: aem-acs-common
 info:
   author: dhiyaneshDk
-  classification:
-    cpe: cpe:2.3:a:adobe:acs_aem_commons:*:*:*:*:*:*:*:*
-  description: Adobe AEM ACS Common pages exposed.
   metadata:
     max-request: 4
-    product: acs_aem_commons
     shodan-query:
     - http.title:"AEM Sign In"
     - http.component:"Adobe Experience Manager"
-    vendor: adobe
   name: Adobe AEM ACS Common Exposure
   reference:
   - https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/aem2.txt
   severity: medium
-  tags: misconfig,aem,adobe,vuln
+  tags: misconfig,aem,adobe

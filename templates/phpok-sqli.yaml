@@ -13,9 +13,8 @@ id: phpok-sqli
 info:
   author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:phpok:phpok:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-89
   description: PHPOK contains a SQL injection vulnerability via a GET request. An
     attacker can possibly obtain sensitive information from a database, modify data,
@@ -24,13 +23,11 @@ info:
   metadata:
     fofa-query: app="phpok"
     max-request: 1
-    product: phpok
-    vendor: phpok
     verified: true
   name: PHPOK - SQL Injection
   reference:
   - https://cve.report/software/phpok/phpok
   severity: critical
-  tags: phpok,sqli,vuln
+  tags: phpok,sqli
 variables:
   num: '999999999'

@@ -15,21 +15,13 @@ id: netdata-dashboard-detect
 info:
   author: pussycat0x
   classification:
-    cpe: cpe:2.3:a:netdata:netdata:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Netdata Dashboard panel was detected.
   metadata:
-    fofa-query: title="netdata dashboard"
-    google-query: intitle:"netdata dashboard"
     max-request: 1
-    product: netdata
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)netdata dashboard"})
-    shodan-query:
-    - 'Server: NetData Embedded HTTP Server'
-    - http.title:"netdata dashboard"
-    - 'server: netdata embedded http server'
-    vendor: netdata
-  name: Netdata Dashboard Panel - Detect
+    shodan-query: 'Server: NetData Embedded HTTP Server'
+  name: Netdata Dashboard Panel -  Detect
   severity: info
-  tags: discovery,netdata,panel,tech
+  tags: netdata,panel,tech

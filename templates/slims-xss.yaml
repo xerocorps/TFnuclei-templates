@@ -19,8 +19,6 @@ http:
 id: slims-xss
 info:
   author: arafatansari
-  classification:
-    cpe: cpe:2.3:a:slims:senayan_library_management_system:*:*:*:*:*:*:*:*
   description: 'SLIMS 9 was discovered to contain `destination` request parameter
     that copies the value of an HTML tag attribute which is encapsulated in double
     quotation marks.
@@ -28,12 +26,10 @@ info:
     '
   metadata:
     max-request: 1
-    product: senayan_library_management_system
     shodan-query: http.html:"SLIMS"
-    vendor: slims
     verified: true
   name: Senayan Library Management System v9.4.0(SLIMS 9) - Cross Site Scripting
   reference:
   - https://packetstormsecurity.com/files/170182/Senayan-Library-Management-System-9.4.0-Cross-Site-Scripting.html
   severity: medium
-  tags: senayan,packetstorm,xss,slims,vuln
+  tags: senayan,packetstorm,xss,slims

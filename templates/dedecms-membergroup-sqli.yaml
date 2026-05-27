@@ -15,23 +15,19 @@ id: dedecms-membergroup-sqli
 info:
   author: pikpikcu
   classification:
-    cpe: cpe:2.3:a:dedecms:dedecms:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-89
   description: Dede CMS contains a SQL injection vulnerability which allows remote
     unauthenticated users to inject arbitrary SQL statements via the ajax_membergroup.php
     endpoint and the membergroup parameter.
   metadata:
     max-request: 1
-    product: dedecms
-    runzero-match: service["http.body"] matches "(?i)DedeCms"
     shodan-query: http.html:"DedeCms"
-    vendor: dedecms
   name: Dede CMS - SQL Injection
   reference:
   - http://www.dedeyuan.com/xueyuan/wenti/1244.html
   severity: critical
-  tags: dedecms,sqli,vuln
+  tags: sqli,dedecms
 variables:
   num: '999999999'

@@ -19,26 +19,18 @@ id: phppgadmin-panel
 info:
   author: Ganofins,Nullfuzz
   classification:
-    cpe: cpe:2.3:a:phppgadmin_project:phppgadmin:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'phpPgAdmin login ipanel was detected.
 
     '
   metadata:
-    fofa-query: title=phppgadmin
-    google-query: intitle:phppgadmin
     max-request: 2
-    product: phppgadmin
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)phppgadmin"})
-    shodan-query:
-    - http.title:phpPgAdmin
-    - http.title:phppgadmin
-    - cpe:"cpe:2.3:a:phppgadmin_project:phppgadmin"
-    vendor: phppgadmin_project
+    shodan-query: http.title:phpPgAdmin
     verified: true
   name: phpPgAdmin Login Panel - Detect
   reference:
   - https://docs.cpanel.net/cpanel/databases/phppgadmin/
   severity: info
-  tags: discovery,panel,phppgadmin,phppgadmin_project
+  tags: panel,phppgadmin

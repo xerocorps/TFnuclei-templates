@@ -13,21 +13,16 @@ http:
 id: pritunl-panel
 info:
   author: irshad ahamed
-  classification:
-    cpe: cpe:2.3:a:pritunl:pritunl:*:*:*:*:*:*:*:*
   description: 'Realtime website and application monitoring tool
 
     '
   metadata:
     max-request: 1
-    product: pritunl
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Pritunl"})
     shodan-query: title:"Pritunl"
-    vendor: pritunl
     verified: true
   name: Pritunl - Panel
   reference:
   - https://github.com/louislam/uptime-kuma
   - https://uptime.kuma.pet/docs/
   severity: info
-  tags: discovery,login,panel,pritunl
+  tags: pritunl,panel,login

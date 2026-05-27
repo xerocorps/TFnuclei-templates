@@ -17,20 +17,13 @@ id: jeedom-panel
 info:
   author: pikpikcu,daffainfo
   classification:
-    cpe: cpe:2.3:a:jeedom:jeedom:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Jeedom login panel was detected.
   metadata:
-    fofa-query: title="jeedom"
-    google-query: intitle:"jeedom"
     max-request: 1
-    product: jeedom
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)jeedom"})
-    shodan-query:
-    - http.title:"Jeedom"
-    - http.title:"jeedom"
-    vendor: jeedom
+    shodan-query: http.title:"Jeedom"
   name: Jeedom Login Panel - Detect
   severity: info
-  tags: discovery,jeedom,login,panel
+  tags: panel,jeedom,login

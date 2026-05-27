@@ -6,15 +6,16 @@ info:
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
     shodan-query: port:"79" action
     verified: true
   name: Finger Daemon Detection
   severity: info
-  tags: network,finger,detect,detection,tcp,discovery
+  tags: network,finger
 tcp:
 - host:
   - '{{Hostname}}'
+  - '{{Host}}:79'
   inputs:
   - data: '
 
@@ -27,4 +28,3 @@ tcp:
     - User
     - Action
     - Node
-  port: 79

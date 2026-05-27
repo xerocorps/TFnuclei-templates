@@ -35,7 +35,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "GEE Server"})
     shodan-query: title:"GEE Server"
   name: Google Earth Enterprise Default Login
   reference:
@@ -50,4 +49,4 @@ info:
 
     '
   severity: high
-  tags: default-login,google-earth,vuln
+  tags: default-login,google-earth

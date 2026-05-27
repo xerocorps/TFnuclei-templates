@@ -16,11 +16,6 @@ http:
     words:
     - 'login '
     - 'password '
-  - negative: true
-    part: header
-    type: word
-    words:
-    - text/html
   matchers-condition: and
   method: GET
   path:
@@ -36,4 +31,4 @@ info:
   reference:
   - https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html
   severity: high
-  tags: netrc,config,exposure,vuln
+  tags: netrc,config,exposure

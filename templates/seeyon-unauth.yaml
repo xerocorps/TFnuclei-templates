@@ -49,14 +49,13 @@ http:
 id: seeyon-unauth
 info:
   author: pikpikcu
-  description: Seeyon is vulnerable to unauthorised access.
   metadata:
     fofa-query: "app=\"\u81F4\u8FDC\u4E92\u8054-OA\""
     max-request: 2
     verified: true
-  name: Seeyon Unauthorised Access
+  name: Seeyon Unauthoried Access
   reference:
   - https://mp.weixin.qq.com/s/0AqdfTrZUVrwTMbKEKresg
   - https://github.com/chaitin/xray/blob/f90cf321bc4d294bbf6625a9c4853f3bfdf0a384/pocs/seeyon-oa-cookie-leak.yml
   severity: high
-  tags: misconfig,seeyon,unauth,vuln
+  tags: misconfig,seeyon,unauth

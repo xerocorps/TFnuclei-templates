@@ -1,11 +1,5 @@
 http:
-- extractors:
-  - group: 1
-    name: build
-    regex:
-    - \/css\/style\.css\?(\d+)papercut-mf
-    type: regex
-  host-redirects: true
+- host-redirects: true
   matchers:
   - condition: or
     part: body
@@ -23,33 +17,15 @@ http:
   - '{{BaseURL}}/user'
 id: papercut-login-panel
 info:
-  author: ritikchaddha,darses
-  classification:
-    cpe: cpe:2.3:a:papercut:papercut_ng:*:*:*:*:*:*:*:*
+  author: ritikchaddha
   description: 'PaperCut is a print management system. Log in to manage your print
     quotas, see your print history and configure your system.
 
     '
   metadata:
-    fofa-query:
-    - icon_hash="-1142586156"
-    - title="PaperCut Login"
-    - body='content="papercut'
-    - body="content=\"papercut\""
-    google-query:
-    - html:'content="PaperCut'
-    - html:'content="papercut'
+    google-query: html:'content="PaperCut'
     max-request: 1
-    product: papercut_ng
-    shodan-query:
-    - product:"PaperCut MF"
-    - title:"PaperCut Login"
-    - httl.favicon.hash:-1142586156:"
-    - http.html:'content="papercut'
-    - cpe:"cpe:2.3:a:papercut:papercut_ng"
-    - http.html:"content=\"papercut\""
-    vendor: papercut
     verified: true
-  name: PaperCut - Panel
+  name: PaperCut Panel - Detect
   severity: info
   tags: panel,papercut,detect

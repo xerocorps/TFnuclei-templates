@@ -25,23 +25,16 @@ id: projectsend-login
 info:
   author: idealphase
   classification:
-    cpe: cpe:2.3:a:projectsend:projectsend:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: ProjectSend login panel was detected.
   metadata:
-    fofa-query: body=provided by projectsend
-    google-query:
-    - intext:Provided by ProjectSend
-    - intext:provided by projectsend
+    google-query: intext:Provided by ProjectSend
     max-request: 1
-    product: projectsend
-    runzero-match: service["http.body"] matches "(?i)provided"
-    shodan-query: http.html:provided by projectsend
-    vendor: projectsend
   name: ProjectSend Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7380
   - https://github.com/projectsend/projectsend
   severity: info
-  tags: panel,projectsend,edb,discovery
+  tags: panel,projectsend,edb

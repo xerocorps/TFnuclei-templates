@@ -16,23 +16,15 @@ http:
 id: truenas-panel
 info:
   author: rxerium
-  classification:
-    cpe: cpe:2.3:h:ixsystems:truenas:*:*:*:*:*:*:*:*
   description: 'TrueNAS scale is a free and open-source NAS solution
 
     '
   metadata:
-    fofa-query: body="truenas"
     max-request: 1
-    product: truenas
-    runzero-match: service["http.body"] matches "(?i)truenas"
-    shodan-query:
-    - html:"TrueNAS"
-    - http.html:"truenas"
-    vendor: ixsystems
+    shodan-query: html:"TrueNAS"
     verified: true
   name: TrueNAS Panel - Detect
   reference:
   - https://www.truenas.com
   severity: info
-  tags: discovery,ixsystems,login,panel,truenas
+  tags: login,panel,truenas

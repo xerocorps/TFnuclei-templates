@@ -15,17 +15,13 @@ http:
 id: webcalendar-install
 info:
   author: ritikchaddha
-  classification:
-    cpe: cpe:2.3:a:k5n:webcalendar:*:*:*:*:*:*:*:*
   description: WebCalendar is susceptible to the Installation page exposure due to
     misconfiguration.
   metadata:
     fofa-query: title="WebCalendar Setup Wizard"
     max-request: 1
-    product: webcalendar
     shodan-query: title:"WebCalendar Setup Wizard"
-    vendor: k5n
     verified: true
   name: WebCalendar Exposed Installation
   severity: high
-  tags: misconfig,webcalendar,install,vuln
+  tags: misconfig,webcalendar,install

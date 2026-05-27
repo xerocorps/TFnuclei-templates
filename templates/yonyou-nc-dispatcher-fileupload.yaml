@@ -27,22 +27,15 @@ http:
 id: yonyou-nc-dispatcher-fileupload
 info:
   author: SleepingBag945
-  classification:
-    cpe: cpe:2.3:a:yonyou:ufida-nc:*:*:*:*:*:*:*:*
-    cwe-id:
-    - CWE-502
   description: 'Yonyou NC ServiceDispatcherServlet deserialization file upload vulnerability.
 
     '
   metadata:
     fofa-query: icon_hash="1085941792"
     max-request: 2
-    product: ufida-nc
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
-    vendor: yonyou
     verified: true
   name: Yonyou NC ServiceDispatcher Servlet - Arbitrary File Upload
   reference:
   - https://github.com/lal0ne/vulnerability/blob/c0985107adfd91d85fbd76d9a8acf8fbfa98ed41/YonyouNC/ncDecode/README.md
   severity: critical
-  tags: fileupload,intrusive,vuln,yonyou
+  tags: yonyou,intrusive,fileupload

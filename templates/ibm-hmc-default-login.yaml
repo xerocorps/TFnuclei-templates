@@ -35,11 +35,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "262502857"
     shodan-query: http.favicon.hash:262502857
     verified: true
   name: IBM Power HMC - Default Login
   reference:
   - https://www.ibm.com/docs/en/power8?topic=tools-hardware-management-console
   severity: high
-  tags: default-login,hmc,ibm,vuln
+  tags: default-login,ibm,hmc

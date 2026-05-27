@@ -16,14 +16,10 @@ http:
 id: confluence-oauth-admin
 info:
   author: DhiyaneshDK
-  classification:
-    cpe: cpe:2.3:a:atlassian:confluence_server:*:*:*:*:*:*:*:*
   metadata:
     max-request: 2
-    product: confluence_server
     shodan-query: http.component:"Atlassian Confluence"
-    vendor: atlassian
     verified: true
   name: Confluence OAuth Administration Endpoint
   severity: info
-  tags: misconfig,jira,confluence,atlassian,vuln
+  tags: misconfig,jira,confluence,atlassian

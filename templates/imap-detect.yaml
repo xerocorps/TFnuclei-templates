@@ -3,20 +3,22 @@ info:
   author: pussycat0x
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'IMAP was detected.
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
     shodan-query: imap
     verified: true
   name: IMAP - Detect
   severity: info
-  tags: network,detect,imap,mail,detection,tcp,discovery
+  tags: network,detect,imap,mail
 tcp:
 - host:
   - '{{Hostname}}'
+  - '{{Host}}:143'
   inputs:
   - data: '
 
@@ -28,4 +30,3 @@ tcp:
     - 'OK '
     - IMAP4rev1
   matchers-condition: and
-  port: 143

@@ -12,7 +12,7 @@ info:
   reference:
   - https://nmap.org/nsedoc/scripts/mysql-users.html
   severity: high
-  tags: js,mysql,network,enum,discovery
+  tags: js,mysql,network,enum
 javascript:
 - args:
     Host: '{{Host}}'
@@ -50,7 +50,4 @@ javascript:
     - admin
     - mysql
     - test
-  pre-condition: 'isPortOpen(Host,Port);
-
-    '
   stop-at-first-match: true

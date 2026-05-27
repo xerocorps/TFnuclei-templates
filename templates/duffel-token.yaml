@@ -10,9 +10,6 @@ http:
 id: duffel-token
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -21,4 +18,4 @@ info:
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/duffel-api-token.yaml
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/duffel-api-token.go
   severity: info
-  tags: duffel,exposure,tokens,vuln
+  tags: duffel,exposure,tokens

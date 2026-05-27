@@ -23,11 +23,10 @@ info:
   description: Opinio login panel was detected.
   metadata:
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Opinio"})
     shodan-query: http.title:"Opinio"
     verified: true
   name: Opinio Login Panel - Detect
   reference:
   - https://www.objectplanet.com/opinio/
   severity: info
-  tags: panel,opinio,login,detect,discovery
+  tags: panel,opinio,login,detect

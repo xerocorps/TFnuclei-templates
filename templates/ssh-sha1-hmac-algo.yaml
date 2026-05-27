@@ -13,7 +13,7 @@ info:
   reference:
   - https://forums.ivanti.com/s/article/How-to-disable-SSH-SHA-1-HMAC-algorithms?language=en_US
   severity: info
-  tags: enum,js,ssh,misconfig,network,discovery
+  tags: enum,js,ssh,misconfig,network
 javascript:
 - args:
     Host: '{{Host}}'
@@ -24,7 +24,7 @@ javascript:
 
     let response = c.ConnectSSHInfoMode(Host, Port);
 
-    Export(response);
+    to_json(response);
 
     '
   matchers:

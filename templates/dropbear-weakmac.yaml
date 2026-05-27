@@ -7,7 +7,7 @@ info:
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
     shodan-query: product:"Dropbear sshd"
     verified: true
   name: Dropbear Weak MAC Algorithms Enabled
@@ -22,6 +22,7 @@ info:
 tcp:
 - host:
   - '{{Hostname}}'
+  - '{{Host}}:22'
   inputs:
   - data: '
 
@@ -36,4 +37,3 @@ tcp:
     words:
     - SSH-
   matchers-condition: and
-  port: 22

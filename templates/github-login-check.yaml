@@ -1,5 +1,6 @@
 http:
-- extractors:
+- cookie-reuse: true
+  extractors:
   - attribute: value
     internal: true
     name: authenticity_token
@@ -63,11 +64,9 @@ id: github-login-check
 info:
   author: parthmalhotra,pdresearch
   description: Checks for a valid github account.
-  metadata:
-    max-request: 2
   name: Github Login Check
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: cloud,creds-stuffing,login-check,github,vuln
+  tags: login-check,github,creds-stuffing
 self-contained: true

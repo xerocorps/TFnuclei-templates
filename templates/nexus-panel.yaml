@@ -23,12 +23,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Sonatype Nexus
-      Repository"})
     shodan-query: http.title:"Sonatype Nexus Repository"
     verified: true
   name: Nexus Login Panel - Detect
   reference:
   - https://www.sonatype.com/products/sonatype-nexus-repository
   severity: info
-  tags: panel,nexus,login,detect,discovery
+  tags: panel,nexus,login,detect

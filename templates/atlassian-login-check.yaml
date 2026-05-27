@@ -34,11 +34,9 @@ id: atlassian-login-check
 info:
   author: parthmalhotra,pdresearch
   description: Checks for a valid atlassian account.
-  metadata:
-    max-request: 1
   name: Atlassian Login Check
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: cloud,creds-stuffing,login-check,atlassian,vuln
+  tags: login-check,atlassian,creds-stuffing
 self-contained: true

@@ -16,14 +16,14 @@ http:
     - (?m)^(?:Location\s*?:\s*?)(?:https?:\/\/|\/\/|\/\\\\|\/\\)(?:[a-zA-Z0-9\-_\.@]*)interact\.sh\/?(\/|[^.].*)?$
     type: regex
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}///interact.sh/%2F..'
+  raw:
+  - 'GET ///interact.sh/%2F.. HTTP/1.1
+
+    '
 id: icewarp-open-redirect
 info:
   author: uomogrande
   classification:
-    cpe: cpe:2.3:a:icewarp:icewarp:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 6.1
     cwe-id: CWE-601
@@ -32,12 +32,9 @@ info:
     modify data, and/or execute unauthorized operations.
   metadata:
     max-request: 1
-    product: icewarp
-    runzero-review: 'REJECT/2026-04-08/auto: interactsh (OAST callback)'
     shodan-query: title:"icewarp"
-    vendor: icewarp
     verified: true
   name: IceWarp - Open Redirect
   remediation: Fixed in 13.0.2.4.
   severity: medium
-  tags: icewarp,redirect,vuln
+  tags: icewarp,redirect

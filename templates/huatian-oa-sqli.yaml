@@ -24,9 +24,6 @@ http:
 id: huatian-oa-sqli
 info:
   author: ritikchaddha
-  classification:
-    cwe-id:
-    - CWE-89
   description: 'There is a SQL injection vulnerability in the workFlowService interface
     of Huatian Power OA 8000. An attacker can exploit this vulnerability to obtain
     sensitive database information.
@@ -34,10 +31,9 @@ info:
     '
   metadata:
     fofa-query: "app=\"\u534E\u5929\u52A8\u529B-OA8000\""
-    max-request: 1
     verified: true
   name: Huatian Power OA 8000 - SQL Injection
   reference:
   - https://blog.csdn.net/qq_41617034/article/details/124305120
   severity: high
-  tags: huatian,oa,sqli,vuln
+  tags: huatian,oa,sqli

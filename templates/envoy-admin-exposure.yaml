@@ -17,17 +17,12 @@ http:
 id: envoy-admin-exposure
 info:
   author: DhiyaneshDk
-  classification:
-    cpe: cpe:2.3:a:envoyproxy:envoy:*:*:*:*:*:*:*:*
-  description: Envoy Admin page exposed.
   metadata:
     max-request: 1
-    product: envoy
     shodan-query: title:"Envoy Admin"
-    vendor: envoyproxy
     verified: true
   name: Envoy Admin Exposure
   reference:
   - https://www.envoyproxy.io/docs/envoy/latest/
   severity: medium
-  tags: misconfig,envoy,exposure,vuln
+  tags: misconfig,envoy,exposure

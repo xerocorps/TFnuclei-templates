@@ -16,10 +16,6 @@ http:
 id: wanhu-download-old-file-read
 info:
   author: SleepingBag945
-  classification:
-    cwe-id:
-    - CWE-23
-    - CWE-73
   description: 'There is an arbitrary file download vulnerability in the Wanhu OA
     download_old.jsp file. An attacker can download any file on the server through
     the vulnerability.
@@ -35,4 +31,4 @@ info:
     \u610F\u6587\u4EF6\u4E0B\u8F7D\u6F0F\u6D1E.html"
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/wanhu-oa-download-old-file-read.yaml
   severity: high
-  tags: lfi,vuln,wanhu
+  tags: wanhu,lfi

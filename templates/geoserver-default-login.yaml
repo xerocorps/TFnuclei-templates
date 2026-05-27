@@ -1,14 +1,15 @@
 http:
 - attack: pitchfork
-  host-redirects: true
   matchers:
   - condition: and
     dsl:
-    - contains(tolower(location_1), '/geoserver/web') && contains(body_2, '<span>admin</span>')
-    - '!contains(tolower(location_1), ''error=true'')'
-    - status_code_1 == 302
+    - contains(tolower(location), '/geoserver/web')
+    - '!contains(tolower(location), ''error=true'')'
     type: dsl
-  max-redirects: 2
+  - status:
+    - 302
+    type: status
+  matchers-condition: and
   payloads:
     pass:
     - geoserver
@@ -25,29 +26,19 @@ http:
     username={{user}}&password={{pass}}
 
     '
-  - 'GET /geoserver/web/ HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 id: geoserver-default-login
 info:
-  author: For3stCo1d,professorabhay,ritikchaddha
+  author: For3stCo1d
   classification:
-    cpe: cpe:2.3:a:geoserver:geoserver:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
   description: Geoserver default admin credentials were discovered.
   metadata:
     fofa-query: app="GeoServer"
-    max-request: 2
-    product: geoserver
-    runzero-match: 'any(each(service["html.titles"]), {# matches "GeoServer: Welcome"})'
-    vendor: geoserver
-    verified: true
-  name: Geoserver Admin - Default Login
+    max-request: 1
+  name: Geoserver Default Admin Login
   reference:
   - http://geoserver.org/
   severity: high
-  tags: default-login,geoserver,vuln
+  tags: geoserver,default-login

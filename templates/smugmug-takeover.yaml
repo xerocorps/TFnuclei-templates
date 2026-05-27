@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -17,11 +13,10 @@ http:
 id: smugmug-takeover
 info:
   author: pdteam
-  description: Smugmug takeover was detected.
   metadata:
     max-request: 1
   name: Smugmug Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/60
   severity: high
-  tags: takeover,smugmug,vuln
+  tags: takeover,smugmug

@@ -18,7 +18,7 @@ requests:
   - condition: and
     dsl:
     - '!regex(''(?i)cross-origin-embedder-policy'', all_headers)'
-    - status_code != 301 && status_code != 302 && status_code != 404
+    - status_code != 301 && status_code != 302
     name: cross-origin-embedder-policy
     type: dsl
   matchers-condition: or

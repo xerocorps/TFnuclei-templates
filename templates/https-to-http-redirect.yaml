@@ -4,22 +4,14 @@ http:
     dsl:
     - startswith(tolower(location), "http://")
     - startswith(tostring(BaseURL), "https://")
-    - (status_code == 300 || status_code == 301 || status_code == 302 || status_code
-      == 303 || status_code == 307 || status_code == 308)
+    - (status_code == 301 || status_code == 302 || status_code == 307)
     type: dsl
-  - condition: and
-    dsl:
-    - startswith(tostring(BaseURL), "https://")
-    - status_code == 200
-    - contains(tolower(body), "<meta http-equiv=\"refresh\" content=\"0; url=http://")
-    type: dsl
-  matchers-condition: or
   method: GET
   path:
   - '{{BaseURL}}'
 id: https-to-http-redirect
 info:
-  author: kazet,idealphase
+  author: kazet
   description: 'Detects whether there is a redirect from https:// to http://
 
     '
@@ -28,4 +20,4 @@ info:
     verified: true
   name: HTTPS to HTTP redirect Misconfiguration
   severity: info
-  tags: misconfig,http,https,vuln
+  tags: misconfig,http,https

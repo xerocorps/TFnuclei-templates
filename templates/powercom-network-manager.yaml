@@ -16,10 +16,8 @@ info:
   author: pussycat0x
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)PowerCom Network
-      Manager"})
     shodan-query: http.title:"PowerCom Network Manager"
     verified: true
   name: PowerCom Network Manager
   severity: info
-  tags: powercommanager,login,panel,discovery
+  tags: powercommanager,login,panel

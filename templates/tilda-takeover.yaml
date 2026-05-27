@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -21,11 +17,10 @@ http:
 id: tilda-takeover
 info:
   author: pdteam
-  description: Tilda takeover was detected.
   metadata:
     max-request: 1
   name: tilda takeover detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/155
   severity: high
-  tags: takeover,vuln
+  tags: takeover

@@ -2,28 +2,27 @@ http:
 - host-redirects: true
   matchers:
   - condition: or
-    dsl:
-    - "status_code_1 == 200 && contains(body,'Power by DedeCms') || contains(body,'DedeCMS\u6F14\
-      \u793A\u7AD9') || contains(body,'DedeCMS')"
-    - status_code_2 == 200 && contains(body_2,'/plus/search.php')
-    type: dsl
+    part: body
+    type: word
+    words:
+    - Power by DedeCms
+    - "DedeCMS\u6F14\u793A\u7AD9"
+    - DedeCMS
+  - status:
+    - 200
+    type: status
   matchers-condition: and
   max-redirects: 2
   method: GET
   path:
   - '{{BaseURL}}'
-  - '{{BaseURL}}/robots.txt'
 id: dedecms-detect
 info:
-  author: ritikchaddha,pphuahua
-  classification:
-    cpe: cpe:2.3:a:dedecms:dedecms:*:*:*:*:*:*:*:*
+  author: ritikchaddha
   metadata:
-    max-request: 2
-    product: dedecms
+    max-request: 1
     shodan-query: title:"dedecms" || http.html:"power by dedecms"
-    vendor: dedecms
     verified: true
   name: DedeCMS Detect
   severity: info
-  tags: dedecms,tech,discovery
+  tags: dedecms,tech

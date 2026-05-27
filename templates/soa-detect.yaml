@@ -50,75 +50,6 @@ dns:
     type: word
     words:
     - edgecastdns.net
-  - name: csc-corporate-domains
-    type: word
-    words:
-    - cscdns.net
-  - name: network-solutions
-    type: word
-    words:
-    - worldnic.com
-  - name: name-services
-    type: word
-    words:
-    - name-services.com
-  - name: ultradns
-    type: word
-    words:
-    - ultradns.com
-  - name: verisign
-    type: word
-    words:
-    - verisign-grs.com
-  - name: ovh
-    type: word
-    words:
-    - ovh.net
-  - name: comlaude
-    type: word
-    words:
-    - comlaude.com
-    - comlaude-dns.com
-  - name: one-dot-com
-    type: word
-    words:
-    - one.com
-  - name: netnames
-    type: word
-    words:
-    - netnames.net
-  - name: dnsmadeeasy
-    type: word
-    words:
-    - dnsmadeeasy.com
-  - name: bluehost
-    type: word
-    words:
-    - bluehost.com
-  - name: managed-ip
-    type: word
-    words:
-    - managed-ip.com
-  - name: gandi
-    type: word
-    words:
-    - gandi.net
-  - name: brandshelter
-    type: word
-    words:
-    - brandshelter.com
-  - name: hinet
-    type: word
-    words:
-    - hinet.net
-  - name: vultr
-    type: word
-    words:
-    - vultr.com
-  - name: switch-ch
-    type: word
-    words:
-    - switch.ch
   matchers-condition: or
   name: '{{FQDN}}'
   type: SOA
@@ -136,4 +67,4 @@ info:
   reference:
   - https://www.cloudflare.com/learning/dns/dns-records/dns-soa-record/
   severity: info
-  tags: dns,soa,discovery
+  tags: dns,soa

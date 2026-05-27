@@ -10,16 +10,12 @@ http:
 id: nuget-api-key
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-522
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
   name: NuGet API Key
   reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/nuget.yml
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/nuget.yml
   - https://docs.microsoft.com/en-us/nuget/nuget-org/publish-a-package#create-api-keys
   severity: info
-  tags: exposure,nuget,token,vuln
+  tags: nuget,token,exposure

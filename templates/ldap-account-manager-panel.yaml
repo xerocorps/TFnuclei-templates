@@ -18,22 +18,18 @@ id: ldap-account-manager-panel
 info:
   author: DhiyaneshDk
   classification:
-    cpe: cpe:2.3:a:ldap-account-manager:ldap_account_manager:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'LDAP Account Manager login panel was detected.
 
     '
   metadata:
     max-request: 2
-    product: ldap_account_manager
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)LDAP Account
-      Manager"})
     shodan-query: title:"LDAP Account Manager"
-    vendor: ldap-account-manager
     verified: true
   name: LDAP Account Manager Login Panel - Detect
   reference:
   - https://www.ldap-account-manager.org/lamcms/
   severity: info
-  tags: discovery,ldap,panel
+  tags: panel,ldap

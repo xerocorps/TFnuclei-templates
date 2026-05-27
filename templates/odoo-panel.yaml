@@ -1,16 +1,10 @@
 http:
-- host-redirects: true
-  matchers:
-  - condition: or
+- matchers:
+  - condition: and
     part: body
     type: word
     words:
     - <title>Odoo</title>
-    - odoo.session_info
-    - web.layout.odooscript
-  - part: body
-    type: word
-    words:
     - Log in
   - part: header
     type: word
@@ -20,29 +14,16 @@ http:
     - 200
     type: status
   matchers-condition: and
-  max-redirects: 2
   method: GET
   path:
   - '{{BaseURL}}/web/login'
-  - '{{BaseURL}}'
-  stop-at-first-match: true
 id: odoo-panel
 info:
-  author: DhiyaneshDK,righettod
-  classification:
-    cpe: cpe:2.3:a:odoo:odoo:*:*:*:*:*:*:*:*
+  author: DhiyaneshDK
   metadata:
-    fofa-query: title="odoo"
-    google-query: intitle:"odoo"
-    max-request: 2
-    product: odoo
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)odoo"})
-    shodan-query:
-    - title:"Odoo"
-    - http.title:"odoo"
-    - cpe:"cpe:2.3:a:odoo:odoo"
-    vendor: odoo
+    max-request: 1
+    shodan-query: title:"Odoo"
     verified: true
   name: Odoo - Panel Detect
   severity: info
-  tags: discovery,login,odoo,panel
+  tags: login,panel,odoo

@@ -12,10 +12,6 @@ http:
 id: joomla-marvikshop-xss
 info:
   author: r3Y3r53
-  classification:
-    cwe-id:
-    - CWE-79
-    - CWE-83
   description: 'Joomla MarvikShop ShoppingCart 3.4 is vulnerable to reflected xss
     where attacker can send to victim a link containing a malicious URL in an email
     or instant message can perform a wide variety of actions, such as stealing the
@@ -32,4 +28,4 @@ info:
   - https://cxsecurity.com/issue/WLB-2022100015
   - https://extensions.joomla.org/
   severity: medium
-  tags: joomla,marvikshop,packetstorm,unauth,vuln,xss
+  tags: packetstorm,joomla,marvikshop,xss,unauth

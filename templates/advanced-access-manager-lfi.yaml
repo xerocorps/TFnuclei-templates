@@ -19,7 +19,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22,CWE-73
+    cwe-id: CWE-22
   description: 'WordPress Advanced Access Manager versions before 5.9.9 are vulnerable
     to local file inclusion and allows attackers to download the wp-config.php file
     and get access to the database, which is publicly reachable on many servers.
@@ -33,4 +33,4 @@ info:
   - https://id.wordpress.org/plugins/advanced-access-manager/
   - https://wpscan.com/vulnerability/dfe62ff5-956c-4403-b3fd-55677628036b
   severity: high
-  tags: accessmanager,lfi,vuln,wordpress,wp,wp-plugin,wpscan
+  tags: wordpress,wp-plugin,lfi,wp,accessmanager,wpscan

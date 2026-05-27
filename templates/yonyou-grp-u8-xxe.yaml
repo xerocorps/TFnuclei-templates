@@ -24,9 +24,6 @@ http:
 id: yonyou-grp-u8-xxe
 info:
   author: SleepingBag945
-  classification:
-    cwe-id:
-    - CWE-89
   description: UFIDA GRP-u8 has an XXE vulnerability. This vulnerability is caused
     by the application not loading external entities when parsing XML input, resulting
     in the loading of external SQL statements and command execution.
@@ -36,7 +33,7 @@ info:
   reference:
   - http://wiki.peiqi.tech/wiki/oa/%E7%94%A8%E5%8F%8BOA/%E7%94%A8%E5%8F%8B%20GRP-U8%20Proxy%20SQL%E6%B3%A8%E5%85%A5%20CNNVD-201610-923.html
   severity: critical
-  tags: grp,sqli,vuln,xxe,yonyou
+  tags: yonyou,grp,xxe,sqli
 variables:
   num1: '{{rand_int(800000, 999999)}}'
   num2: '{{rand_int(800000, 999999)}}'

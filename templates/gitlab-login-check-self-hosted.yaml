@@ -1,5 +1,6 @@
 http:
 - attack: pitchfork
+  cookie-reuse: true
   extractors:
   - group: 1
     internal: true
@@ -44,19 +45,19 @@ http:
     authenticity_token={{url_encode(authenticity_token)}}&user%5Blogin%5D={{username}}&user%5Bpassword%5D={{password}}&user%5Bremember_me%5D=0
 
     '
+  req-condition: true
 id: gitlab-login-check-self-hosted
 info:
   author: parthmalhotra,pdresearch
-  description: Checks for a valid login on self hosted GitLab instance.
+  description: Checks for a valid login on self hosted Grafana instance.
   metadata:
     fofa-query: product="GitLab"
-    max-request: 2
     shodan-query: product:"GitLab Self-Managed"
   name: Gitlab Login Check Self Hosted
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: creds-stuffing,login-check,self-hosted,gitlab,vuln
+  tags: login-check,gitlab,creds-stuffing,self-hosted
 variables:
   password: '{{password}}'
   username: '{{username}}'

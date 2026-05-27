@@ -10,9 +10,6 @@ http:
 id: figma-personal-token
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -20,6 +17,5 @@ info:
   reference:
   - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/rules/figma.yml
   - https://www.figma.com/developers/api
-  - https://www.figma.com/developers/api#access-tokens
   severity: info
-  tags: exposure,figma,token,vuln
+  tags: figma,exposure,token

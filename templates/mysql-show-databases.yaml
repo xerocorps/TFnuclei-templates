@@ -9,7 +9,7 @@ info:
   reference:
   - https://nmap.org/nsedoc/scripts/mysql-databases.html
   severity: high
-  tags: brute,network,mysql
+  tags: js,mysql,network,enum
 javascript:
 - args:
     Host: '{{Host}}'
@@ -42,7 +42,6 @@ javascript:
     - admin
     - mysql
     - test
-    - null
     usernames:
     - root
     - admin

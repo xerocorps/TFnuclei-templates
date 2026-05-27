@@ -14,17 +14,14 @@ id: minio-console
 info:
   author: pussycat0x
   classification:
-    cpe: cpe:2.3:a:minio:console:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: MinIO Console login panel was detected.
   metadata:
     fofa-query: app="MinIO-Console"
     max-request: 1
-    product: console
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MinIO Console"})
     shodan-query: title:"MinIO Console"
-    vendor: minio
   name: MinIO Console Login Panel - Detect
   severity: info
-  tags: discovery,minio,panel
+  tags: panel,minio

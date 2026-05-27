@@ -9,7 +9,7 @@ requests:
   - group: 1
     part: body
     regex:
-    - content="(.*)- http://www.openx.org">
+    - (.*)- http://www.openx.org
     type: regex
   matchers:
   - part: body
@@ -22,4 +22,6 @@ requests:
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/www/admin/'
+  - '{{BaseURL}}/www/admin/index.php'
+  - '{{BaseURL}}/admin/index.php'
+  stop-at-first-match: true

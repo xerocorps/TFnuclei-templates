@@ -20,25 +20,17 @@ id: gnu-mailman
 info:
   author: Matt Galligan
   classification:
-    cpe: cpe:2.3:a:gnu:mailman:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'GNU Mailman panel was detected. Panel exposes all public mailing lists
     on server.
 
     '
   metadata:
-    fofa-query: title="mailing lists"
-    google-query: intitle:"mailing lists"
     max-request: 2
-    product: mailman
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)mailing lists"})
-    shodan-query:
-    - title:"Mailing Lists"
-    - http.title:"mailing lists"
-    - cpe:"cpe:2.3:a:gnu:mailman"
-    vendor: gnu
+    shodan-query: title:"Mailing Lists"
     verified: true
   name: GNU Mailman Panel - Detect
   severity: info
-  tags: discovery,exposure,gnu,mailman,panel
+  tags: exposure,mailman

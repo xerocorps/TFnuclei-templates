@@ -110,7 +110,6 @@ http:
     - login?to=http://oast.me
     - 1/_https@oast.me
     - redirect?targeturl=https://oast.me
-    - /?url_redirect=https://oast.me
   stop-at-first-match: true
 id: open-redirect-generic
 info:
@@ -126,4 +125,4 @@ info:
     max-request: 93
   name: Open Redirect - Detection
   severity: medium
-  tags: redirect,generic,vuln
+  tags: redirect,generic

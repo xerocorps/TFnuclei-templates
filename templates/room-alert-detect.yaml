@@ -24,19 +24,16 @@ id: room-alert-detect
 info:
   author: gy741
   classification:
-    cpe: cpe:2.3:h:avtech:room_alert_3e:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: AVTECH Room Alert login panel was detected.
   metadata:
     max-request: 2
-    product: room_alert_3e
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Room Alert"})
     shodan-query: title:"Room Alert"
-    vendor: avtech
     verified: true
   name: AVTECH Room Alert Login Panel - Detect
   reference:
   - https://avtech.com/articles/166/how-to-access-a-room-alert-monitors-settings-pages-2/
   severity: info
-  tags: avtech,discovery,panel,room-alert
+  tags: panel,room-alert,avtech

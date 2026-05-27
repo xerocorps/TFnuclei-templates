@@ -20,7 +20,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)Plausible"
     shodan-query: html:"Plausible"
     verified: true
   name: Plausible Panel - Detect
@@ -28,4 +27,4 @@ info:
   - https://plausible.io/
   - https://github.com/plausible/analytics
   severity: info
-  tags: panel,plausible,detect,discovery
+  tags: panel,plausible,detect

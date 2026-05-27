@@ -1,11 +1,8 @@
 http:
 - matchers:
-  - condition: or
-    type: word
+  - type: word
     words:
     - <title>Oracle Commerce Business Control Center</title>
-    - /atg/userprofiling/InternalProfileFormHandler.loginSuccessURL
-    - /atg/userprofiling/InternalProfileFormHandler.loginErrorURL
   - status:
     - 200
     type: status
@@ -13,29 +10,17 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/atg/bcc'
-  - '{{BaseURL}}/atg/user/html/login.jsp'
-  stop-at-first-match: true
 id: oracle-business-control
 info:
-  author: dhiyaneshDk,righettod
+  author: dhiyaneshDk
   classification:
-    cpe: cpe:2.3:a:oracle:commerce:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Oracle Commerce Business Control Center login panel was detected.
   metadata:
-    fofa-query: title="oracle commerce"
-    google-query: intitle:"oracle commerce"
-    max-request: 2
-    product: commerce
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)oracle commerce"})
-    shodan-query:
-    - http.title:"Oracle Commerce"
-    - http.title:"oracle commerce"
-    - cpe:"cpe:2.3:a:oracle:commerce"
-    vendor: oracle
+    max-request: 1
+    shodan-query: http.title:"Oracle Commerce"
   name: Oracle Commerce Business Control Center Login Panel - Detect
-  reference:
-  - https://docs.oracle.com/cd/E23095_01/Platform.93/ATGBCCAdminGuide/html/s0101introductiontotheatgbusinesscont01.html
   severity: info
-  tags: discovery,login,oracle,panel
+  tags: oracle,login,panel

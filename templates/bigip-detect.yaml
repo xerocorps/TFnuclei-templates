@@ -10,28 +10,18 @@ http:
   - part: header
     type: word
     words:
-    - BIGipServer
-  - part: header
-    type: word
-    words:
-    - BigIP
-  - part: body
-    type: word
-    words:
-    - F5 Networks.
+    - BIGipServer~
   method: GET
   path:
   - '{{BaseURL}}'
-  - '{{BaseURL}}/my.policy'
-  stop-at-first-match: true
 id: bigip-detect
 info:
-  author: PR3R00T,0x240x23elu
+  author: PR3R00T
   metadata:
-    max-request: 2
-  name: BIGIP - Detection
+    max-request: 1
+  name: BIGIP Cookie Detection
   reference:
   - https://www.intelisecure.com/how-to-decode-big-ip-f5-persistence-cookie-values
   - https://support.f5.com/csp/article/K23254150
   severity: info
-  tags: bigip,tech,f5,discovery
+  tags: bigip,tech

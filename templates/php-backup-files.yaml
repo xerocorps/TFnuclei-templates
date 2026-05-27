@@ -20,9 +20,6 @@ http:
     - $_POST[
     - $_REQUEST[
     - $_SERVER[
-    - '''DB_PASSWORD'''
-    - '''DBPASS'''
-    - define('DB
   - condition: or
     part: header
     type: word
@@ -38,7 +35,6 @@ http:
     - .~
     - .bk
     - .bak
-    - .bkp
     - .BAK
     - .swp
     - .swo
@@ -63,7 +59,6 @@ http:
     - '.3'
     filepath:
     - /wp-config.php
-    - /wp-config
     - /site/default/settings.php
     - /installation/configuration.php
     - /app/etc/env.php
@@ -80,9 +75,6 @@ http:
     - /caches/configs/database.php
     - /caches/configs/system.php
     - /include/config.inc.php
-    - /include/config.php
-    - /includes/config.php
-    - /includes/config
     - /phpsso_server/caches/configs/database.php
     - /phpsso_server/caches/configs/system.php
     - /zb_users/c_option.php
@@ -107,13 +99,11 @@ http:
     - /404.php
     - /wp-login.php
     - /config.php
-    - /config
-    - /const.DB.php.bak
 id: php-backup-files
 info:
-  author: StreetOfHackerR007,pwnhxl,mastercho,0xpugazh
+  author: StreetOfHackerR007,pwnhxl
   metadata:
-    max-request: 1222
+    max-request: 1025
   name: PHP Source - Backup File Information Disclosure
   severity: medium
   tags: exposure,backup,php,disclosure,fuzz

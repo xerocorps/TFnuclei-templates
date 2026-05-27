@@ -39,10 +39,7 @@ info:
     '
   metadata:
     max-request: 2
-    product: ios_xe
-    runzero-match: service["http.body.mmh3"] == "1076109428"
     shodan-query: http.html_hash:1076109428
-    vendor: cisco
     verified: true
   name: Cisco IOS XE - Impant Detection
   reference:
@@ -56,4 +53,4 @@ info:
 
     '
   severity: critical
-  tags: backdoor,cisco,ios,kev,vuln
+  tags: backdoor,cisco,ios,kev

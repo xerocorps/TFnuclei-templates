@@ -7,20 +7,17 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '<= 2.0.1')
+    - compare_versions(version, '<= 99.x-99.99')
     type: dsl
   matchers:
-  - condition: and
-    part: body
+  - part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - condition: and
-    status:
+  - status:
     - 200
     type: status
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - vendor_stream_wrapper
@@ -32,23 +29,16 @@ http:
   redirects: true
 id: drupal_module-vendor_stream_wrapper-unsupported
 info:
-  author: me
-  description: 'This module provides a stream wrapper for files located in the vendor
-    directory. Even when the vendor directory is moved outside the webroot, it allows
-    providing publically accessible URLs to these files. The module exposes all files
-    that are in the vendor directory, without a site owners knowledge or intention.
-    This could be undesirable behavior, especially since this module is required as
-    a dependency by other modules. Edited October 24, 2023 after the project has been
-    re-supported by new maintainers and this advisory metadata affects composer. The
-    security team is marking this project unsupported. There is a known security issue
-    with the project that has not been fixed by the maintainer. If you would like
-    to maintain this project, please read: https://www.drupal.org/node/251466#procedure---own-project---unsupported'
+  author: Bishopfox
+  description: 'The security team is marking this project unsupported. There is a
+    known security issue with the project that has not been fixed by the maintainer.
+    If you would like to maintain this project, please read: https://www.drupal.org/node/251466#procedure---own-project---unsupported'
   metadata:
-    created_at: '2025-01-09'
+    created_at: '0001-01-01T00:00:00Z'
     fofa-query: /sites/all/modules/vendor_stream_wrapper/
     google-query: inurl:'/sites/all/modules/vendor_stream_wrapper/
     impact: medium
-    security-risk: "Moderately critical 13\u2009\u2215\u200925 AC:Basic/A:None/CI:Some/II:None/E:Theoretical/TD:All"
+    security-risk: "Critical 15\u221525 AC:Basic/A:User/CI:Some/II:Some/E:Proof/TD:All"
     type: indicator
     vulnerability: unsupported
   name: drupal_module-vendor_stream_wrapper-unsupported

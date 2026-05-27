@@ -1,6 +1,9 @@
 http:
 - host-redirects: true
   matchers:
+  - status:
+    - 200
+    type: status
   - condition: and
     type: word
     words:
@@ -11,9 +14,6 @@ http:
     - Time
     - Memory
     - DB
-  - status:
-    - 200
-    type: status
   matchers-condition: and
   max-redirects: 2
   method: GET
@@ -23,22 +23,14 @@ http:
   - '{{BaseURL}}/frontend/web/debug/default/view'
   - '{{BaseURL}}/web/debug/default/view'
   - '{{BaseURL}}/sapi/debug/default/view'
-  - '{{BaseURL}}/debug/default'
   stop-at-first-match: true
 id: yii-debugger
 info:
-  author: geeknik,rumble773
-  classification:
-    cpe: cpe:2.3:a:yii_software:yii:*:*:*:*:*:*:*:*
-  description: Detects potential exposure to Yii Debugger information.
+  author: geeknik
   metadata:
-    max-request: 6
-    product: yii
-    shodan-query: title:"Yii Debugger"
-    vendor: yii_software
-    verified: true
+    max-request: 5
   name: View Yii Debugger Information
   reference:
   - https://yii2-framework.readthedocs.io/en/stable/guide/tool-debugger/
   severity: low
-  tags: yii,debug,exposure,vuln
+  tags: yii,debug,exposure

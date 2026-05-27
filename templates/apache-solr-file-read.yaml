@@ -14,8 +14,7 @@ http:
     - bit app support
     - fonts
     - extensions
-  - part: body
-    regex:
+  - regex:
     - 'root:.*:0:0:'
     type: regex
   matchers-condition: or
@@ -67,4 +66,4 @@ info:
   - https://nsfocusglobal.com/apache-solr-arbitrary-file-read-and-ssrf-vulnerability-threat-alert/
   - https://twitter.com/sec715/status/1373472323538362371
   severity: high
-  tags: apache,lfi,java
+  tags: apache,solr,lfi

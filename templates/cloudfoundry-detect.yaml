@@ -1,7 +1,7 @@
 http:
 - matchers:
   - dsl:
-    - contains(header, "X-Vcap-Request-Id:") || contains(header, "X-Cf-Routererror:")
+    - contains(all_headers, "X-Vcap-Request-Id:") || contains(all_headers, "X-Cf-Routererror:")
     type: dsl
   raw:
   - 'GET / HTTP/1.1
@@ -14,6 +14,7 @@ http:
     Host: {{randstr}}.com
 
     '
+  req-condition: true
   stop-at-first-match: true
 id: cloudfoundry-detect
 info:
@@ -22,7 +23,6 @@ info:
   metadata:
     max-request: 2
   name: Cloudfoundry Detect
-  reference:
-  - https://docs.cloudfoundry.org/concepts/cf-routing-architecture.html
+  reference: https://docs.cloudfoundry.org/concepts/cf-routing-architecture.html
   severity: info
-  tags: cloudfoundry,tech,discovery
+  tags: cloudfoundry,tech

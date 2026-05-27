@@ -33,19 +33,14 @@ http:
 id: ecology-oa-byxml-xxe
 info:
   author: SleepingBag945
-  classification:
-    cwe-id:
-    - CWE-611
-    - CWE-918
   description: 'EcologyOA deleteUserRequestInfoByXml interface has XXE
 
     '
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: ecology_JSessionid
     verified: true
   name: EcologyOA deleteUserRequestInfoByXml - XML External Entity Injection
   severity: high
-  tags: ecology-oa,vuln,xxe
+  tags: ecology-oa,xxe

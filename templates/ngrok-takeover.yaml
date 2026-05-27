@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -18,11 +14,10 @@ http:
 id: ngrok-takeover
 info:
   author: pdteam
-  description: Ngrok takeover was detected.
   metadata:
     max-request: 1
   name: Ngrok Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/92
   severity: high
-  tags: takeover,ngrok,vuln
+  tags: takeover,ngrok

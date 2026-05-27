@@ -14,15 +14,9 @@ http:
 id: splash-render-ssrf
 info:
   author: pwnhxl
-  classification:
-    cwe-id:
-    - CWE-918
-    - CWE-99
-  description: Splash Render is vulnerable to Server-Side Request Forgery (SSRF) Vulnerability.
   metadata:
     hunter-query: web.title="Splash" && header="TwistedWeb"
     max-request: 1
-    runzero-review: 'REJECT/2026-04-14/auto: interactsh (OAST callback)'
     shodan-query: title:"Splash"
     verified: true
   name: Splash Render - SSRF
@@ -30,4 +24,4 @@ info:
   - https://github.com/scrapinghub/splash
   - https://b1ngz.github.io/splash-ssrf-to-get-server-root-privilege/
   severity: high
-  tags: oast,oss,splash,ssrf,vuln
+  tags: splash,ssrf,oast,oss

@@ -18,10 +18,8 @@ http:
   payloads:
     password:
     - admin
-    - admin
     username:
     - admin
-    - admin@{{Host}}
   raw:
   - 'POST /0/Authenticate HTTP/1.1
 
@@ -44,9 +42,9 @@ info:
     cwe-id: CWE-522
   description: IBM Storage Management default admin login credentials were discovered.
   metadata:
-    max-request: 2
+    max-request: 1
   name: IBM Storage Management Default Login
   reference:
   - https://www.ibm.com/docs/en/power-sys-solutions/0008-ESS?topic=5148-starting-elastic-storage-server-management-server-gui
   severity: high
-  tags: default-login,java
+  tags: default-login,ibm,storage

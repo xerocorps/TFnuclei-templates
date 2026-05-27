@@ -1,41 +1,32 @@
 http:
-- extractors:
-  - group: 1
-    part: body
-    regex:
-    - (?i)"harbor_version":\s*"([a-z0-9.\-]+)"
-    type: regex
-  matchers:
+- matchers:
   - condition: and
-    dsl:
-    - status_code == 200
-    - contains_any(to_lower(body), "<title>harbor</title>", "<harbor-app>", "harbor_version")
-    type: dsl
+    part: body
+    type: word
+    words:
+    - <title>Harbor</title>
+    - <harbor-app>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/api/v2.0/systeminfo'
-  - '{{BaseURL}}/api/systeminfo'
-  - '{{BaseURL}}/account/sign-in'
-  - '{{BaseURL}}/harbor/sign-in'
-  stop-at-first-match: true
+  - '{{BaseURL}}'
 id: harbor-panel
 info:
-  author: daffainfo,righettod
+  author: daffainfo
   classification:
-    cpe: cpe:2.3:a:linuxfoundation:harbor:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Harbor login panel was detected.
   metadata:
-    fofa-query: icon_hash=657337228
-    max-request: 4
-    product: harbor
-    runzero-match: service["favicon.ico.image.mmh3"] == "657337228"
+    max-request: 1
     shodan-query: http.favicon.hash:657337228
-    vendor: linuxfoundation
     verified: true
   name: Harbor Login Panel - Detect
   reference:
   - https://github.com/goharbor/harbor
   severity: info
-  tags: detect,discovery,harbor,linuxfoundation,login,panel
+  tags: panel,harbor

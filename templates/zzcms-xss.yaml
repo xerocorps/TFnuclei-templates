@@ -1,8 +1,9 @@
 http:
-- matchers:
+- cookie-reuse: true
+  matchers:
   - condition: and
     dsl:
-    - contains(header_2, 'text/html')
+    - contains(all_headers_2, 'text/html')
     - status_code_2 == 200
     - "contains(body_2, \"\u53C2\u6570 1\\\"+alert(document.domain)+\")"
     type: dsl
@@ -22,6 +23,7 @@ http:
     Host: {{Hostname}}
 
     '
+  req-condition: true
 id: zzcms-xss
 info:
   author: ritikchaddha
@@ -34,10 +36,9 @@ info:
     and launch other attacks.
   metadata:
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     verified: true
   name: ZZCMS - Cross-Site Scripting
   reference:
   - https://github.com/JcQSteven/blog/issues/20
   severity: high
-  tags: zzcms,xss,authenticated,vuln
+  tags: zzcms,xss,authenticated

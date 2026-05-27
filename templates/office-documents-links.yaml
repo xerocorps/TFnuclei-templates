@@ -2,9 +2,9 @@ id: office-documents-links
 info:
   author: Herry
   description: Extract Office Documents links from web page body
-  name: Office Documents Links Extractor
+  name: Office Documents links extractor
   severity: info
-  tags: documents,config,exposure,files,office
+  tags: docuemnts,config,exposure,files,office
 requests:
 - extractors:
   - part: body
@@ -14,7 +14,7 @@ requests:
   matchers:
   - part: body
     regex:
-    - (?i)(?:https?|ftp)://[^\s?#]+\.((xlsx?|csv|pptx?|msg|rtf|pub|rtf|mdb|odp|ods|odt|doc|xls))([#?].*)?
+    - (?:https?|ftp)://\S+\.(xlsx?|csv|pptx?|msg|rtf|pub|rtf|mdb|odp|ods|odt|doc|xls)
     type: regex
   method: GET
   path:

@@ -3,12 +3,10 @@ http:
   - status:
     - 200
     type: status
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - <script>alert(document.cookie)</script>
-    - file not found
   - part: header
     type: word
     words:
@@ -23,7 +21,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79,CWE-80
+    cwe-id: CWE-79
   description: IBM Eclipse Help System 6.1.0 through 6.1.0.6, 6.1.5 through 6.1.5.3,
     7.0 through 7.0.0.2, and 8.0 prior to 8.0.0.1 contains a cross-site scripting
     vulnerability. An attacker can execute arbitrary script in the browser of an unsuspecting
@@ -31,7 +29,6 @@ info:
   metadata:
     max-request: 1
   name: IBM Eclipse Help System - Cross-Site Scripting
-  reference:
-  - https://packetstormsecurity.com/files/131924/IBM-Eclipse-Help-System-IEHS-Cross-Site-Scripting.html
+  reference: https://packetstormsecurity.com/files/131924/IBM-Eclipse-Help-System-IEHS-Cross-Site-Scripting.html
   severity: high
-  tags: ibm,vuln,xss
+  tags: ibm,xss

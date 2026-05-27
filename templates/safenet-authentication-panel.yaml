@@ -23,11 +23,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Self Enrollment"})
     shodan-query: http.title:"Self Enrollment"
     verified: true
   name: SafeNet Authentication Login Panel - Detect
   reference:
   - https://cpl.thalesgroup.com/access-management/safenet-trusted-access
   severity: info
-  tags: panel,safenet,thales,login,detect,discovery
+  tags: panel,safenet,thales,login,detect

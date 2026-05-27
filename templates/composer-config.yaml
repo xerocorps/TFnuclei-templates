@@ -1,14 +1,12 @@
 http:
 - matchers:
-  - condition: and
-    dsl:
-    - contains_all(body, 'packages', 'getcomposer.org') && status_code == 200
-    - contains_any(tolower(header), 'application/octet-stream', 'application/json',
-      'text/plain')
+  - dsl:
+    - contains(body, 'packages') && contains(tolower(all_headers), 'application/octet-stream')
+      && status_code == 200
     name: composer.lock
     type: dsl
   - dsl:
-    - contains_all(body, 'require', 'autoload') && contains(tolower(header), 'application/json')
+    - contains(body, 'require') && contains(tolower(all_headers), 'application/json')
       && status_code == 200
     name: composer.json
     type: dsl
@@ -20,16 +18,15 @@ http:
   - '{{BaseURL}}/vendor/composer/installed.json'
 id: composer-config
 info:
-  author: Mahendra Purbia (Mah3Sec_),TheZakMan
+  author: Mahendra Purbia (Mah3Sec_)
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Composer configuration file detected.
   metadata:
     max-request: 4
   name: Composer Config - Detect
-  reference:
-  - https://getcomposer.org/
+  reference: https://getcomposer.org/
   severity: info
-  tags: config,exposure,vuln
+  tags: config,exposure

@@ -7,7 +7,6 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/sessions/new'
-  - '{{BaseURL}}/api/authentication/login'
 id: sonarqube-login
 info:
   author: dhiyaneshDk
@@ -17,7 +16,7 @@ info:
     cwe-id: CWE-200
   description: SonarQube panel was detected.
   metadata:
-    max-request: 2
+    max-request: 1
   name: SonarQube Panel - Detect
   severity: info
-  tags: panel,sonarqube,cloud
+  tags: panel,sonarqube

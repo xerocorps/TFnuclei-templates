@@ -15,30 +15,17 @@ id: metasploit-panel
 info:
   author: lu4nx
   classification:
-    cpe: cpe:2.3:a:rapid7:metasploit:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
     cwe-id: CWE-200
   description: 'Metasploit Web Panel is detected
 
     '
   metadata:
-    fofa-query:
-    - title="metasploit"
-    - title="metasploit - setup and configuration"
-    google-query:
-    - intitle:"metasploit"
-    - intitle:"metasploit - setup and configuration"
     max-request: 1
-    product: metasploit
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)metasploit"})
-      || any(each(service["html.titles"]), {# matches "(?i)metasploit - setup and
-      configuration"})
-    shodan-query:
-    - http.title:"metasploit"
-    - http.title:"metasploit - setup and configuration"
-    vendor: rapid7
+    shodan-query: http.title:"metasploit"
     verified: true
-    zoomeye-query: app="Metasploit"
+    zoomeye-query: title:'Metasploit'
   name: Metasploit Panel - Detect
   severity: info
-  tags: discovery,login,metasploit,panel,rapid7
+  tags: panel,metasploit,login

@@ -17,19 +17,18 @@ http:
   path:
   - '{{BaseURL}}/.dockerfile'
   - '{{BaseURL}}/.Dockerfile'
-  - '{{BaseURL}}/Dockerfile'
 id: dockerfile-hidden-disclosure
 info:
   author: dhiyaneshDk
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
-    cwe-id: CWE-200,CWE-552
+    cwe-id: CWE-200
   description: Dockerfile was detected.
   metadata:
-    max-request: 3
+    max-request: 2
   name: Dockerfile - Detect
   reference:
   - https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/dockerfile-hidden-disclosure.json
   severity: medium
-  tags: config,exposure,vuln
+  tags: exposure,config

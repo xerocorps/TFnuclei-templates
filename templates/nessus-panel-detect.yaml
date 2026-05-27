@@ -5,10 +5,7 @@ info:
   severity: info
   tags: panel
 requests:
-- headers:
-    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
-      (KHTML, like Gecko)
-  matchers:
+- matchers:
   - part: body
     type: word
     words:

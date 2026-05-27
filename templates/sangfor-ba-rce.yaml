@@ -16,8 +16,8 @@ info:
   author: ritikchaddha
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
-    cwe-id: CWE-77,CWE-78
+    cvss-score: 10.0
+    cwe-id: CWE-77
   description: 'Sangfor products allow remote unauthenticated users to cause the product
     to execute arbitrary commands.
 
@@ -25,10 +25,9 @@ info:
   metadata:
     fofa-query: app="sangfor"
     max-request: 1
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
   name: Sangfor BA - Remote Code Execution
   reference:
   - https://mobile.twitter.com/sec715/status/1406886851072253953
   severity: critical
-  tags: intrusive,rce,sangfor,vuln
+  tags: rce,sangfor

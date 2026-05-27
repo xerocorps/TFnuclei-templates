@@ -15,13 +15,13 @@ info:
   author: gy741
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: OfficeKeeper admin login panel was detected.
   metadata:
     max-request: 2
-    runzero-match: service["favicon.ico.image.mmh3"] == "-800060828"
     shodan-query: http.favicon.hash:-800060828
     verified: true
   name: OfficeKeeper Admin Login Panel - Detect
   severity: info
-  tags: officekeeper,dlp,panel,discovery
+  tags: officekeeper,dlp,panel

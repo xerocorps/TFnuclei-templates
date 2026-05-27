@@ -16,21 +16,18 @@ id: mylittleadmin-panel
 info:
   author: nullfuzz
   classification:
-    cpe: cpe:2.3:a:mylittletools:mylittleadmin:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'myLittleAdmin login panel was detected.
 
     '
   metadata:
     max-request: 2
-    product: mylittleadmin
-    runzero-match: service["http.body"] matches "(?i)myLittleAdmin"
     shodan-query: http.html:"myLittleAdmin"
-    vendor: mylittletools
     verified: true
   name: myLittleAdmin Login Panel - Detect
   reference:
   - http://mylittleadmin.com/en/overview.aspx
   severity: info
-  tags: discovery,login,mylittleadmin,panel
+  tags: panel,mylittleadmin,login

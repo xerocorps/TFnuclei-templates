@@ -1,16 +1,4 @@
-flow: http(1) && http(2)
 http:
-- matchers:
-  - internal: true
-    type: word
-    words:
-    - = NextGEN Gallery
-  raw:
-  - 'GET /wp-content/plugins/nextgen-gallery/readme.txt HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 - matchers:
   - part: body
     type: word
@@ -39,10 +27,10 @@ info:
     user in the context of the affected site. This can allow the attacker to steal
     cookie-based authentication credentials and launch other attacks.
   metadata:
-    max-request: 2
+    max-request: 1
   name: WordPress NextGEN Gallery 1.9.10 - Cross-Site Scripting
   reference:
   - https://www.exploit-db.com/exploits/38178
   - http://web.archive.org/web/20210123110617/https://www.securityfocus.com/bid/57200/info
   severity: high
-  tags: wp-plugin,edb,wordpress,xss,vuln
+  tags: wp-plugin,edb,wordpress,xss

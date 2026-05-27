@@ -36,9 +36,6 @@ http:
 id: tongda-getway-rfi
 info:
   author: SleepingBag945,pussycat0x
-  classification:
-    cwe-id:
-    - CWE-98
   description: 'There is a file inclusion vulnerability in Tongda OA v11.8 getway.php,
     an attacker sends a malicious request to include a log file, resulting in an arbitrary
     file writing vulnerability
@@ -48,8 +45,8 @@ info:
     fofa-query: "app=\"TDXK-\u901A\u8FBEOA\""
     max-request: 2
     verified: true
-  name: Tongda OA v11.8 getway.php - Remote File Inclution
+  name: Tongda OA v11.8 getway.php  - Remote File Inclution
   reference:
   - https://github.com/Threekiii/Awesome-POC/blob/master/OA%E4%BA%A7%E5%93%81%E6%BC%8F%E6%B4%9E/%E9%80%9A%E8%BE%BEOA%20v11.8%20getway.php%20%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E.md
   severity: critical
-  tags: rfi,tongda,vuln
+  tags: tongda,rfi

@@ -1,16 +1,9 @@
 http:
 - extractors:
   - group: 1
-    name: version
     part: body
     regex:
-    - Version</span> ([0-9.]+)
-    type: regex
-  - group: 1
-    name: build
-    part: body
-    regex:
-    - Version</span> [0-9.]+ \(build (.*)\)</span>
+    - Version<\/span> ([0-9. (a-z)]+)<\/span>
     type: regex
   matchers:
   - part: body
@@ -28,22 +21,14 @@ id: teamcity-login-panel
 info:
   author: princechaddha
   classification:
-    cpe: cpe:2.3:a:jetbrains:teamcity:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: TeamCity login panel was detected.
   metadata:
-    fofa-query: title=teamcity
-    google-query: intitle:teamcity
     max-request: 1
-    product: teamcity
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)teamcity"})
-    shodan-query:
-    - http.component:"TeamCity"
-    - http.title:teamcity
-    - http.component:"teamcity"
-    vendor: jetbrains
+    shodan-query: http.component:"TeamCity"
     verified: true
   name: TeamCity Login Panel - Detect
   severity: info
-  tags: detect,discovery,jetbrains,panel,teamcity
+  tags: panel,teamcity,jetbrains

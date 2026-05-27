@@ -40,11 +40,6 @@ http:
 id: yonyou-nc-ncmessageservlet-rce
 info:
   author: SleepingBag945
-  classification:
-    cpe: cpe:2.3:a:yonyou:ufida-nc:*:*:*:*:*:*:*:*
-    cwe-id:
-    - CWE-502
-    - CWE-78
   description: 'UFIDA NC is in the process of processing client request data. Insufficient
     checking and filtering when deserializing user-supplied data can lead to malicious
     deserialization operations and execution of commands on the operating system.
@@ -58,11 +53,9 @@ info:
   metadata:
     fofa-query: "app=\"\u7528\u53CB-UFIDA-NC"
     max-request: 2
-    product: ufida-nc
-    vendor: yonyou
     verified: true
   name: UFIDA NC NCMessageServlet - Deserialization RCE Detection
   reference:
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/yonyou-nc-ncmessageservlet-rce.yaml
   severity: critical
-  tags: deserialization,rce,vuln,yonyou
+  tags: yonyou,rce,deserialization

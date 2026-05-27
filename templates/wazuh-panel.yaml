@@ -3,7 +3,7 @@ http:
   - group: 1
     part: body
     regex:
-    - '&quot;(?:version|wazuhVersion)&quot;:&quot;([0-9.]+)&quot;'
+    - '&quot;version&quot;:&quot;([0-9.]+)&quot;'
     type: regex
   matchers:
   - condition: or
@@ -23,22 +23,13 @@ http:
   - '{{BaseURL}}/app/login'
 id: wazuh-panel
 info:
-  author: cyllective,daffainfo,idealphase
-  classification:
-    cpe: cpe:2.3:a:wazuh:wazuh:*:*:*:*:*:*:*:*
+  author: cyllective,daffainfo
   description: Wazuh - The Open Source Security Platform
   metadata:
-    fofa-query: title="wazuh"
-    google-query: intitle:"wazuh"
     max-request: 1
-    product: wazuh
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)wazuh"})
-    shodan-query:
-    - http.title:"Wazuh"
-    - http.title:"wazuh"
-    vendor: wazuh
+    shodan-query: http.title:"Wazuh"
   name: Wazuh Login Panel
   reference:
   - https://github.com/wazuh/wazuh
   severity: info
-  tags: discovery,login,panel,wazuh
+  tags: panel,wazuh,login

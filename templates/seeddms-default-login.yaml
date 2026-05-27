@@ -29,20 +29,16 @@ id: seeddms-default-login
 info:
   author: alifathi-h1
   classification:
-    cpe: cpe:2.3:a:seeddms:seeddms:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
   description: SeedDMS default admin credentials were discovered.
   metadata:
     max-request: 1
-    product: seeddms
-    runzero-match: any(each(service["html.titles"]), {# matches "SeedDMS"})
     shodan-query: http.title:"SeedDMS"
-    vendor: seeddms
   name: SeedDMS Default Login
   reference:
   - https://www.seeddms.org/index.php?id=2
   - https://www.redhat.com/sysadmin/install-seeddms
   severity: high
-  tags: default-login,seeddms,vuln
+  tags: default-login,seeddms

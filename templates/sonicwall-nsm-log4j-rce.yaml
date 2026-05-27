@@ -51,7 +51,6 @@ id: sonicwall-nsm-log4j-rce
 info:
   author: shaikhyaser
   classification:
-    cpe: cpe:2.3:a:sonicwall:network_security_manager:*:*:*:*:*:*:*:*
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
@@ -64,15 +63,12 @@ info:
     '
   metadata:
     max-request: 1
-    product: network_security_manager
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"SonicWall Network Security"
-    vendor: sonicwall
   name: Sonicwall NSM - Remote Code Execution (Apache Log4j)
   reference:
   - https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0032
   severity: critical
-  tags: cve,cve2021,jndi,kev,log4j,oast,rce,sonicwall,vuln
+  tags: cve,cve2021,rce,jndi,log4j,sonicwall,oast,kev
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

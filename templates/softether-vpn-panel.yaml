@@ -14,19 +14,13 @@ http:
 id: softether-vpn-panel
 info:
   author: bhutch
-  classification:
-    cpe: cpe:2.3:a:softether:vpn:*:*:*:*:*:*:*:*
   description: 'SoftEther VPN panel was detected.
 
     '
   metadata:
     max-request: 1
-    product: vpn
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)SoftEther VPN
-      Server"})
     shodan-query: http.title:"SoftEther VPN Server"
-    vendor: softether
     verified: true
   name: SoftEther VPN Panel - Detect
   severity: info
-  tags: panel,vpn,softether,discovery
+  tags: panel,vpn,softether

@@ -6,15 +6,16 @@ info:
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
     shodan-query: product:"TeamSpeak 3 ServerQuery"
     verified: true
   name: TeamSpeak 3 ServerQuery Detection
   severity: info
-  tags: network,service,teamspeak3,detect,detection,tcp,discovery
+  tags: network,service,teamspeak3
 tcp:
 - host:
   - '{{Hostname}}'
+  - '{{Host}}:2002'
   inputs:
   - data: "\r\n"
   matchers:
@@ -23,4 +24,3 @@ tcp:
     words:
     - TS3
     - TeamSpeak 3 ServerQuery interface
-  port: 2002

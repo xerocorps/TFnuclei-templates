@@ -1,10 +1,16 @@
 id: totemomail-smtp-detect
 info:
   author: princechaddha
-  name: Totemomail SMTP Server Detect
+  description: 'Totemomail is a comprehensive email solution designed to address all
+    aspects of digital communication security.
+
+    '
+  metadata:
+    max-request: 2
+  name: Totemomail SMTP Server Detection
   severity: info
   tags: mail,smtp,network,totemomail
-network:
+tcp:
 - host:
   - '{{Hostname}}'
   - '{{Host}}:25'

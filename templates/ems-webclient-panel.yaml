@@ -23,15 +23,13 @@ id: ems-webclient-panel
 info:
   author: pussycat0x,daffainfo
   classification:
-    cpe: cpe:2.3:a:ems_project:ems:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: EMS Web Client login panel was detected.
   metadata:
     google-query: inurl:EMSWebClient/
     max-request: 2
-    product: ems
-    vendor: ems_project
   name: EMS Web Client Login Panel - Detect
   severity: info
-  tags: discovery,ems,panel
+  tags: panel,ems

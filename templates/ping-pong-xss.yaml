@@ -6,24 +6,15 @@ http:
     words:
     - pong
     - <script>alert(1)</script>
-  - status:
-    - 200
-    type: status
-  - part: header
-    type: word
-    words:
-    - text/html
-  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/ping/"><script>alert(1)</script>'
   - '{{BaseURL}}/ping?jd=a''"><script>alert(1)</script>'
-  stop-at-first-match: true
 id: ping-pong-xss
 info:
-  author: SirBugs,reewardius
+  author: SirBugs
   description: this xss was found by twitter@19who_am_i19 and the template made by
     twitter@SirBagoza
   name: Ping Pong Path Reflected-XSS Check
   severity: medium
-  tags: xss,generic
+  tags: http, xss, rxss, ping

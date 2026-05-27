@@ -1,12 +1,11 @@
 dns:
 - extractors:
-  - group: 1
-    regex:
-    - "IN\tCNAME\t(.+)"
-    type: regex
+  - dsl:
+    - cname
+    type: dsl
   matchers:
   - regex:
-    - CNAME\t[a-z0-9_-]*\.(us|af|ap|ca|eu|me|sa)\-(east|west|south|northeast|southeast|central)\-[1-9]+\.elasticbeanstalk\.com
+    - CNAME\t[a-z0-9_-]*\.(us|af|ap|ca|eu|me|sa|il)\-(north|east|west|south|northeast|southeast|central)\-[1-9]+\.elasticbeanstalk\.com
     type: regex
   - type: word
     words:
@@ -16,13 +15,13 @@ dns:
   type: A
 id: elasticbeanstalk-takeover
 info:
-  author: philippedelteil,rotemreiss,zy9ard3
+  author: philippedelteil,rotemreiss,zy9ard3,joaonevess
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
     cwe-id: CWE-404
-  description: ElasticBeanTalk subdomain takeover detected. A subdomain takeover occurs
-    when an attacker gains control over a subdomain of a target domain. Typically,
+  description: ElasticBeanstalk subdomain takeover detected. A subdomain takeover
+    occurs when an attacker gains control over a subdomain of a target domain. Typically,
     this happens when the subdomain has a canonical name (CNAME) in the Domain Name
     System (DNS), but no host is providing content for it.
   metadata:
@@ -47,10 +46,10 @@ info:
 
       '
     max-request: 1
-  name: ElasticBeanTalk Subdomain Takeover Detection
+  name: ElasticBeanstalk Subdomain Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/147
   - https://twitter.com/payloadartist/status/1362035009863880711
   - https://www.youtube.com/watch?v=srKIqhj_ki8
   severity: high
-  tags: aws,amazon,cloud,takeover
+  tags: dns,takeover,aws,elasticbeanstalk

@@ -38,21 +38,15 @@ http:
 id: junos-xss
 info:
   author: DhiyaneshDK
-  classification:
-    cpe: cpe:2.3:o:juniper:junos:*:*:*:*:*:*:*:*
-    cwe-id:
-    - CWE-80
   metadata:
     fofa-query: title="Juniper Web Device Manager"
     max-request: 2
-    product: junos
     shodan-query: title:"Juniper Web Device Manager"
-    vendor: juniper
     verified: true
   name: JunOS - Cross-Site Scripting
   reference:
   - https://labs.watchtowr.com/the-second-wednesday-of-the-first-month-of-every-quarter-juniper-0day-revisited/
   severity: medium
-  tags: junos,vuln,xss
+  tags: junos,xss
 variables:
   string: '{{to_lower(rand_base(2))}}'

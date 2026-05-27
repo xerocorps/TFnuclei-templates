@@ -5,21 +5,11 @@ info:
   severity: high
 requests:
 - matchers:
-  - status:
-    - 200
-    type: status
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - DB_USERNAME=
     - DB_PASSWORD=
-  - negative: true
-    part: header
-    type: word
-    words:
-    - text/html
-  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/.env'

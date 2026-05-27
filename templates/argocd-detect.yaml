@@ -1,37 +1,25 @@
 http:
-- extractors:
-  - json:
-    - .Version
-    type: json
-  matchers:
-  - condition: and
-    dsl:
-    - contains(to_lower(header_1), 'grpc-metadata-content-type')
-    - status_code_1 == 200
-    type: dsl
-  - condition: and
-    dsl:
-    - contains(body_2, 'appLabelKey')
-    - contains(body_2, 'resourceOverrides')
-    type: dsl
-  matchers-condition: or
+- matchers:
+  - part: body
+    type: word
+    words:
+    - <title>Argo CD</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/api/version'
-  - '{{BaseURL}}/api/v1/settings'
-  stop-at-first-match: true
+  - '{{BaseURL}}/login'
 id: argocd-detect
 info:
-  author: Adam Crosser,daffainfo,aringo
+  author: Adam Crosser,daffainfo
   classification:
-    cpe: cpe:2.3:a:argoproj:argo_cd:*:*:*:*:*:*:*:*
     cwe-id: CWE-200
   description: An Argo CD login panel was discovered.
   metadata:
-    max-request: 2
-    product: argo_cd
+    max-request: 1
     shodan-query: http.title:"Argo CD"
-    vendor: argoproj
   name: Argo CD Login Panel
   reference:
   - https://argoproj.github.io/cd/

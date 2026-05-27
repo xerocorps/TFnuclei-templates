@@ -10,7 +10,7 @@ http:
     part: body
     type: word
     words:
-    - <title>Loading
+    - <title>Loading?</title>
     - ember-basic-dropdown-wormhole
   - status:
     - 200
@@ -21,23 +21,19 @@ http:
   - '{{BaseURL}}'
 id: rancher-panel
 info:
-  author: princechaddha,idealphase,ritikchaddha
+  author: princechaddha, idealphase
   classification:
-    cpe: cpe:2.3:a:suse:rancher:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Rancher login panel was detected.
   metadata:
-    fofa-query: icon_hash=464587962
     max-request: 1
-    product: rancher
-    runzero-match: service["favicon.ico.image.mmh3"] == "464587962"
-    shodan-query: http.favicon.hash:464587962
-    vendor: suse
+    shodan-query: http.title:"Loading?"
     verified: true
   name: Rancher Login Panel - Detect
   reference:
   - https://github.com/rancher/rancher
   - https://rancher.com/
   severity: info
-  tags: cloud,devops,discovery,kubernetes,login,panel,rancher,suse
+  tags: panel,rancher,kubernetes,devops,cloud,login

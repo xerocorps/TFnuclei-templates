@@ -1,5 +1,6 @@
 http:
 - attack: pitchfork
+  cookie-reuse: true
   host-redirects: true
   matchers:
   - condition: and
@@ -41,11 +42,10 @@ info:
     modify data, and/or execute unauthorized operations.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)ruckus"})
     shodan-query: title:"ruckus"
     verified: true
   name: Ruckus Wireless - Default Login
   reference:
   - https://docs.commscope.com/bundle/fastiron-08092-securityguide/page/GUID-32D3BB01-E600-4FBE-B555-7570B5024D34.html
   severity: critical
-  tags: default-login,router,ruckus,vuln
+  tags: default-login,router,ruckus

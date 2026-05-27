@@ -16,15 +16,11 @@ http:
 id: grav-register-admin
 info:
   author: DhiyaneshDk
-  classification:
-    cpe: cpe:2.3:a:getgrav:grav_admin:*:*:*:*:grav:*:*:*
   description: Exposed Grav admin user register page.
   metadata:
     max-request: 1
-    product: grav_admin
     shodan-query: title:"Grav Register Admin User"
-    vendor: getgrav
     verified: true
   name: Grav Register Admin User - Detect
   severity: high
-  tags: grav,register,admin,misconfig,vuln
+  tags: grav,register,admin,misconfig

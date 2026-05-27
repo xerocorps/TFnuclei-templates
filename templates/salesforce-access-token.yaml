@@ -10,17 +10,11 @@ http:
 id: salesforce-access-token
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-522
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
   name: Salesforce Access Token
   reference:
   - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/salesforce.yml
-  - https://help.salesforce.com/s/articleView?id=sf.remoteaccess_access_tokens.htm&type=5
-  - https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_oauth.htm
   severity: info
-  tags: exposure,salesforce,tokens,vuln
+  tags: salesforce,exposure,tokens

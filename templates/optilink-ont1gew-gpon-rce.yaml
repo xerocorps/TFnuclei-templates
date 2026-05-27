@@ -30,17 +30,16 @@ info:
   author: gy741
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-77
   description: OptiLink is susceptible to remote code execution vulnerabilities which
     could allow an authenticated, remote attacker to perform command injection attacks
     against an affected device.
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
   name: OptiLink ONT1GEW GPON Remote Code Execution
   reference:
   - https://packetstormsecurity.com/files/162993/OptiLink-ONT1GEW-GPON-2.1.11_X101-Remote-Code-Execution.html
   - https://www.fortinet.com/blog/threat-research/the-ghosts-of-mirai
   severity: critical
-  tags: optiLink,rce,oast,mirai,packetstorm,vuln
+  tags: optiLink,rce,oast,mirai,packetstorm

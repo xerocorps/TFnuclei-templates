@@ -2,7 +2,7 @@ http:
 - matchers:
   - part: body
     regex:
-    - 'root:.{0,20}:0:0:'
+    - 'root:.*:0:0:'
     type: regex
   method: GET
   path:
@@ -42,4 +42,4 @@ info:
     max-request: 22
   name: Linux - Local File Inclusion Fuzzing
   severity: high
-  tags: linux,lfi,fuzz,fuzzing,vuln
+  tags: linux,lfi,fuzz

@@ -20,17 +20,16 @@ info:
   author: idealphase
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: MSPControl login panel was detected.
   metadata:
     google-query: intitle:"MSPControl - Sign In"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MSPControl -
-      Sign In"})
     shodan-query: http.title:"MSPControl - Sign In"
   name: MSPControl Login Panel - Detect
   reference:
   - https://mspcontrol.org/
   - https://mspcontrol.org/downloads/
   severity: info
-  tags: panel,mspcontrol,discovery
+  tags: panel,mspcontrol

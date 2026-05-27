@@ -21,9 +21,6 @@ http:
 id: sound4-impact-auth-bypass
 info:
   author: r3Y3r53
-  classification:
-    cwe-id:
-    - CWE-89
   description: 'The application suffers from an SQL Injection vulnerability. Input
     passed through the ''username'' POST parameter in ''index.php'' is not properly
     sanitised before being returned to the user or used in SQL queries. This can be
@@ -33,11 +30,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "-1548359600"
     shodan-query: http.favicon.hash:-1548359600
     verified: true
   name: SOUND4 IMPACT/FIRST/PULSE/Eco <= 2.x - Authentication Bypass
   reference:
   - https://www.zeroscience.mk/en/vulnerabilities/ZSL-2022-5727.php
   severity: high
-  tags: auth-bypass,sound4,sqli,vuln,zeroscience
+  tags: sqli,zeroscience,sound4,auth-bypass

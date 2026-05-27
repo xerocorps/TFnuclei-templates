@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -17,11 +13,10 @@ http:
 id: helpjuice-takeover
 info:
   author: pdteam
-  description: helpjuice takeover was detected.
   metadata:
     max-request: 1
   name: helpjuice takeover detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz
   severity: high
-  tags: takeover,vuln
+  tags: takeover

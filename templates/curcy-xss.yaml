@@ -1,5 +1,6 @@
 http:
-- matchers:
+- cookie-reuse: true
+  matchers:
   - part: body
     type: word
     words:
@@ -44,11 +45,10 @@ info:
     cross-site scripting.
   metadata:
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     verified: true
   name: WordPress CURCY - Multi Currency for WooCommerce <2.1.18 - Cross-Site Scripting
   reference:
   - https://wpscan.com/vulnerability/6ebafb52-e167-40bc-a86c-b9840b2b9b37
   - https://wordpress.org/plugins/woo-multi-currency
   severity: medium
-  tags: wp-plugin,xss,wp,wordpress,authenticated,curcy,wpscan,vuln
+  tags: wp-plugin,xss,wp,wordpress,authenticated,curcy,wpscan

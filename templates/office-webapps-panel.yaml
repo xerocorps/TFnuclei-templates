@@ -22,22 +22,15 @@ id: office-webapps-panel
 info:
   author: DhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:microsoft:office_web_apps_server:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-668
   description: Microsoft Office Web App Login Panel was discovered.
   metadata:
-    fofa-query: body="provide a link that opens word"
     max-request: 2
-    product: office_web_apps_server
-    runzero-match: service["http.body"] matches "(?i)provide a link that opens word"
-    shodan-query:
-    - html:"Provide a link that opens Word"
-    - http.html:"provide a link that opens word"
-    vendor: microsoft
+    shodan-query: html:"Provide a link that opens Word"
     verified: true
   name: Office Web Apps Server Panel - Detect
   reference:
   - https://www.microsoft.com/en-in/microsoft-365/free-office-online-for-the-web
   severity: info
-  tags: discovery,login,microsoft,office-webapps,panel
+  tags: panel,office-webapps,login,microsoft

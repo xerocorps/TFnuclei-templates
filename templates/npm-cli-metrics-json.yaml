@@ -17,15 +17,10 @@ http:
 id: npm-cli-metrics-json
 info:
   author: DhiyaneshDK
-  classification:
-    cpe: cpe:2.3:a:npmjs:npm:*:*:*:*:*:*:*:*
-  description: anonymous-cli-metrics.json internal file in NPM is exposed.
   metadata:
     max-request: 2
-    product: npm
     shodan-query: html:"anonymous-cli-metrics.json"
-    vendor: npmjs
     verified: true
   name: NPM Anonymous CLI Metrics Json
   severity: low
-  tags: npm,devops,exposure,files,vuln
+  tags: npm,devops,exposure,files

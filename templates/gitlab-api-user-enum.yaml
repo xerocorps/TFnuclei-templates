@@ -27,7 +27,6 @@ http:
     Referer: {{BaseURL}}
 
     '
-  redirects: true
   stop-at-first-match: true
 id: gitlab-api-user-enum
 info:
@@ -39,4 +38,4 @@ info:
   reference:
   - https://gitlab.com/gitlab-org/gitlab-foss/-/issues/40158
   severity: medium
-  tags: gitlab,cloud
+  tags: gitlab,enum,misconfig,disclosure

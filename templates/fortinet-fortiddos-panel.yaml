@@ -16,24 +16,15 @@ http:
 id: fortinet-fortiddos-panel
 info:
   author: johnk3r
-  classification:
-    cpe: cpe:2.3:a:fortinet:fortiddos:*:*:*:*:*:*:*:*
   description: 'Fortinet FortiDDoS panel was detected.
 
     '
   metadata:
-    fofa-query: title="fortiddos"
-    google-query: intitle:"fortiddos"
     max-request: 1
-    product: fortiddos
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)fortiddos"})
-    shodan-query:
-    - http.title:"FortiDDoS"
-    - http.title:"fortiddos"
-    vendor: fortinet
+    shodan-query: http.title:"FortiDDoS"
     verified: true
   name: Fortinet FortiDDoS Panel
   reference:
   - https://www.fortinet.com/products/ddos/fortiddos
   severity: info
-  tags: discovery,fortiddos,fortinet,login,panel
+  tags: panel,fortinet,fortiddos,login

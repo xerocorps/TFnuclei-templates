@@ -1,85 +1,33 @@
 {
-  "last_updated": "2026-05-26T05:57:54.821676+00:00",
-  "total_templates": 51994,
-  "duplicates_removed": 520763,
+  "last_updated": "2026-05-27T06:03:29.631851+00:00",
+  "total_templates": 52000,
+  "duplicates_removed": 520775,
   "deduplication_breakdown": {
-    "exact_content": 345582,
-    "semantic_fingerprint": 116854,
-    "normalized_id": 58327
+    "exact_content": 345583,
+    "semantic_fingerprint": 116862,
+    "normalized_id": 58330
   },
   "sources": {
-    "total": 443,
-    "successful": 404,
+    "total": 444,
+    "successful": 405,
     "failed": 19,
     "skipped": 20
   },
   "severity_breakdown": {
-    "critical": 5909,
-    "high": 11389,
+    "critical": 5910,
+    "high": 11390,
     "medium": 14726,
-    "low": 12748,
-    "info": 6859,
+    "low": 12747,
+    "info": 6864,
     "unknown": 363
   },
   "failed_sources": [
     {
       "source": {
         "type": "github_repo",
-        "repo": "redteambrasil/nuclei-templates"
+        "repo": "sobinge/nuclei-templates"
       },
-      "error": "Could not download redteambrasil/nuclei-templates from any branch"
-    },
-    {
-      "source": {
-        "type": "github_repo",
-        "repo": "akshayrajs/100K-nuclei-templates",
-        "discovered_at": "2025-12-25T06:43:58.376441+00:00",
-        "stars": 2
-      },
-      "error": "Could not download akshayrajs/100K-nuclei-templates from any branch"
-    },
-    {
-      "source": {
-        "type": "github_repo",
-        "repo": "rix4uni/nucleihub-templates",
-        "discovered_at": "2025-12-25T06:44:10.277079+00:00",
-        "stars": 32
-      },
-      "error": "Could not download rix4uni/nucleihub-templates from any branch"
-    },
-    {
-      "source": {
-        "type": "github_repo",
-        "repo": "MarkBMoss/UpdateNucleiTemplates",
-        "discovered_at": "2025-12-25T06:44:15.432824+00:00",
-        "stars": 2
-      },
-      "error": "Could not download MarkBMoss/UpdateNucleiTemplates from any branch"
-    },
-    {
-      "source": {
-        "type": "github_repo",
-        "repo": "BehiSecc/react2shell-nuclei-template",
-        "discovered_at": "2025-12-25T06:45:34.597905+00:00",
-        "stars": 8
-      },
-      "error": "Could not download BehiSecc/react2shell-nuclei-template from any branch"
-    },
-    {
-      "source": {
-        "type": "github_repo",
-        "repo": "thenawabx/Thenawabx_Nuclei_Templates",
-        "discovered_at": "2026-01-17T03:28:39.487239+00:00",
-        "stars": 1
-      },
-      "error": "Could not download thenawabx/Thenawabx_Nuclei_Templates from any branch"
-    },
-    {
-      "source": {
-        "type": "github_repo",
-        "repo": "Xplo8E/mobile-nuclei-templates"
-      },
-      "error": "Could not download Xplo8E/mobile-nuclei-templates from any branch"
+      "error": "Could not download sobinge/nuclei-templates from any branch"
     },
     {
       "source": {
@@ -147,6 +95,13 @@
     {
       "source": {
         "type": "github_repo",
+        "repo": "rutgerhrm/valid8"
+      },
+      "error": "Could not download rutgerhrm/valid8 from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
         "repo": "lsr00ter/templates"
       },
       "error": "Could not download lsr00ter/templates from any branch"
@@ -154,16 +109,61 @@
     {
       "source": {
         "type": "github_repo",
-        "repo": "sobinge/nuclei-templates"
+        "repo": "akshayrajs/100K-nuclei-templates",
+        "discovered_at": "2025-12-25T06:43:58.376441+00:00",
+        "stars": 2
       },
-      "error": "Could not download sobinge/nuclei-templates from any branch"
+      "error": "Could not download akshayrajs/100K-nuclei-templates from any branch"
     },
     {
       "source": {
         "type": "github_repo",
-        "repo": "rutgerhrm/valid8"
+        "repo": "rix4uni/nucleihub-templates",
+        "discovered_at": "2025-12-25T06:44:10.277079+00:00",
+        "stars": 32
       },
-      "error": "Could not download rutgerhrm/valid8 from any branch"
+      "error": "Could not download rix4uni/nucleihub-templates from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "MarkBMoss/UpdateNucleiTemplates",
+        "discovered_at": "2025-12-25T06:44:15.432824+00:00",
+        "stars": 2
+      },
+      "error": "Could not download MarkBMoss/UpdateNucleiTemplates from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "BehiSecc/react2shell-nuclei-template",
+        "discovered_at": "2025-12-25T06:45:34.597905+00:00",
+        "stars": 8
+      },
+      "error": "Could not download BehiSecc/react2shell-nuclei-template from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "thenawabx/Thenawabx_Nuclei_Templates",
+        "discovered_at": "2026-01-17T03:28:39.487239+00:00",
+        "stars": 1
+      },
+      "error": "Could not download thenawabx/Thenawabx_Nuclei_Templates from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "redteambrasil/nuclei-templates"
+      },
+      "error": "Could not download redteambrasil/nuclei-templates from any branch"
+    },
+    {
+      "source": {
+        "type": "github_repo",
+        "repo": "Xplo8E/mobile-nuclei-templates"
+      },
+      "error": "Could not download Xplo8E/mobile-nuclei-templates from any branch"
     }
   ]
 }

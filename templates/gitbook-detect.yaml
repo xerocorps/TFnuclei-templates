@@ -25,20 +25,15 @@ http:
 id: gitbook-detect
 info:
   author: ffffffff0x,daffainfo
-  classification:
-    cpe: cpe:2.3:a:gitbook:gitbook:*:*:*:*:*:*:*:*
   description: "GitBook is a collaborative documentation tool that allows anyone to\
     \ document anything\u2014such as products and APIs\u2014and share knowledge through\
     \ a user-friendly online platform."
   metadata:
-    fofa-query: app="Introduction-GitBook"
+    fofa: app="Introduction-GitBook"
     max-request: 1
-    product: gitbook
     shodan-query: http.title:"gitbook"
-    vendor: gitbook
     verified: true
   name: GitBook Detect
-  reference:
-  - https://www.gitbook.com/
+  reference: https://www.gitbook.com/
   severity: info
-  tags: tech,gitbook,discovery
+  tags: tech,gitbook

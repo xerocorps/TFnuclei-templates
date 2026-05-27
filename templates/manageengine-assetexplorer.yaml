@@ -14,21 +14,13 @@ id: manageengine-assetexplorer
 info:
   author: dhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:zohocorp:manageengine_assetexplorer:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: ZOHO ManageEngine AssetExplorer panel was detected.
   metadata:
-    fofa-query: title="manageengine assetexplorer"
-    google-query: intitle:"manageengine assetexplorer"
     max-request: 1
-    product: manageengine_assetexplorer
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)manageengine
-      assetexplorer"})
-    shodan-query:
-    - http.title:"ManageEngine AssetExplorer"
-    - http.title:"manageengine assetexplorer"
-    vendor: zohocorp
+    shodan-query: http.title:"ManageEngine AssetExplorer"
   name: ZOHO ManageEngine AssetExplorer Panel - Detect
   severity: info
-  tags: discovery,manageengine,panel,zoho,zohocorp
+  tags: panel,zoho,manageengine

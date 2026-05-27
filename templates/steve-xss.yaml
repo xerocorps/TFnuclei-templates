@@ -21,7 +21,6 @@ id: steve-xss
 info:
   author: clem9669
   classification:
-    cpe: cpe:2.3:a:steve-community:steve:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 5.4
     cwe-id: CWE-80
@@ -34,12 +33,10 @@ info:
   metadata:
     google-query: intitle:"SteVe - Steckdosenverwaltung"
     max-request: 2
-    product: steve
     shodan-query: http.title:"SteVe - Steckdosenverwaltung"
-    vendor: steve-community
     verified: true
   name: SteVe - Cross-Site Scripting
   reference:
   - https://github.com/steve-community/steve
   severity: medium
-  tags: steve,xss,oss,vuln
+  tags: steve,xss,oss

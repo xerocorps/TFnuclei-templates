@@ -12,15 +12,13 @@ info:
     '
   metadata:
     max-request: 1
-    product: dionaea
     shodan-query: port:445
-    vendor: dionaea
     verified: true
   name: SMB - Enumeration
   reference:
   - https://nmap.org/nsedoc/scripts/smb-security-mode.html
   severity: info
-  tags: js,network,smb,enum,discovery
+  tags: js,network,smb,enum
 javascript:
 - args:
     Host: '{{Host}}'
@@ -31,7 +29,7 @@ javascript:
 
     var response = c.ListSMBv2Metadata(Host, Port);
 
-    Export(response);
+    to_json(response);
 
     '
   extractors:
@@ -82,6 +80,3 @@ javascript:
     - len(DNSDomainName) != 0
     - len(ForestName) != 0
     type: dsl
-  pre-condition: 'isPortOpen(Host,Port);
-
-    '

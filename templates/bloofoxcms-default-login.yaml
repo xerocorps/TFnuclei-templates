@@ -13,7 +13,7 @@ http:
     username:
     - admin
   raw:
-  - 'POST /admin/index.php HTTP/1.1
+  - 'POST /admin/index.php HTTP/2
 
     Host: {{Hostname}}
 
@@ -27,8 +27,6 @@ http:
 id: bloofoxcms-default-login
 info:
   author: theamanrawat
-  classification:
-    cpe: cpe:2.3:a:bloofox:bloofoxcms:*:*:*:*:*:*:*:*
   description: 'bloofoxCMS contains default credentials. An attacker can obtain access
     to user accounts and access sensitive information, modify data, and/or execute
     unauthorized operations.
@@ -37,13 +35,10 @@ info:
   metadata:
     fofa-query: Powered by bloofoxCMS
     max-request: 1
-    product: bloofoxcms
-    runzero-match: service["http.body"] matches "(?i)Powered by bloofoxCMS"
-    vendor: bloofox
     verified: 'true'
   name: bloofoxCMS - Default Login
   reference:
   - https://www.bloofox.com/automated_setup.113.html
   - https://www.bloofox.com
   severity: high
-  tags: bloofox,cms,default-login,vuln
+  tags: bloofox,cms,default-login

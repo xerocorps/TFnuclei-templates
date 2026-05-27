@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -17,11 +13,10 @@ http:
 id: readme-takeover
 info:
   author: pdteam
-  description: Readme.io takeover was detected.
   metadata:
     max-request: 1
-  name: Readme.io Takeover Detection
+  name: Readme Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/41
   severity: high
-  tags: takeover,readme,vuln
+  tags: takeover,readme

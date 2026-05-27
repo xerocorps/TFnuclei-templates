@@ -3,19 +3,15 @@ http:
   matchers:
   - type: word
     words:
-    - 'Allow:'
     - 'Disallow:'
-    - 'Sitemap:'
-    - 'User-agent:'
-  - part: content_type
+  - part: header
     type: word
     words:
     - text/plain
-  - status:
-    - 200
-    type: status
+  - dsl:
+    - len(body)>=140 && status_code==200
+    type: dsl
   matchers-condition: and
-  max-redirects: 2
   method: GET
   path:
   - '{{BaseURL}}/robots.txt'
@@ -23,7 +19,7 @@ id: robots-txt
 info:
   author: CasperGN,TheZakMan
   metadata:
-    max-request: 2
+    max-request: 1
   name: robots.txt file
   severity: info
-  tags: miscellaneous,misc,generic,vuln
+  tags: misc,generic

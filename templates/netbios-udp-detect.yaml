@@ -17,7 +17,7 @@ info:
   - https://www.rfc-editor.org/rfc/rfc1002
   - https://nmap.org/nsedoc/scripts/nbstat.html
   severity: info
-  tags: netbios,nbt,nbstat,windows,smb,network,js,udp,detection
+  tags: detection,js,nbstat,nbt,netbios,network,smb,udp,windows
 javascript:
 - args:
     Host: '{{Host}}'

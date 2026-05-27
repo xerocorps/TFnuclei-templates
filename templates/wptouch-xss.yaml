@@ -1,5 +1,6 @@
 http:
-- matchers:
+- cookie-reuse: true
+  matchers:
   - part: body
     type: word
     words:
@@ -52,10 +53,9 @@ info:
     '
   metadata:
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag authenticated
   name: WordPress WPtouch <4.3.44 - Cross-Site Scripting
   reference:
   - https://wpscan.com/vulnerability/7dbd8348-9c5d-4d62-a0f4-2b7c2b7e58e4
   - https://wordpress.org/plugins/wptouch/advanced/
   severity: medium
-  tags: wp-plugin,wp,wordpress,xss,authenticated,wptouch,wpscan,vuln
+  tags: wp-plugin,wp,wordpress,xss,authenticated,wptouch,wpscan

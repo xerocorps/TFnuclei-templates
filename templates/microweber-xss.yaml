@@ -25,15 +25,8 @@ info:
   description: Microweber prior to 1.2.11 is susceptible to reflected cross-site Scripting
     via Packagist microweber/microweber.
   metadata:
-    fofa-query:
-    - icon_hash=780351152
-    - body="microweber"
     max-request: 1
-    product: microweber
-    shodan-query:
-    - http.favicon.hash:780351152
-    - http.html:"microweber"
-    vendor: microweber
+    shodan-query: http.favicon.hash:780351152
   name: Microweber Cross-Site Scripting
   reference:
   - https://github.com/microweber/microweber/issues/809

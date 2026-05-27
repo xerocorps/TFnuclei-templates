@@ -29,17 +29,13 @@ id: huawei-HG532e-default-login
 info:
   author: pussycat0x
   classification:
-    cpe: cpe:2.3:h:huawei:hg532e:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
   description: Huawei HG532e default admin credentials were discovered.
   metadata:
     max-request: 1
-    product: hg532e
-    runzero-match: service["http.body"] matches "HG532e"
     shodan-query: http.html:"HG532e"
-    vendor: huawei
   name: Huawei HG532e Default Credential
   severity: high
-  tags: default-login,huawei,vuln
+  tags: default-login,huawei

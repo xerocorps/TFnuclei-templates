@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -17,11 +13,10 @@ http:
 id: anima-takeover
 info:
   author: pdteam
-  description: Anima takeover was detected.
   metadata:
     max-request: 1
   name: Anima Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/126
   severity: high
-  tags: takeover,vuln
+  tags: takeover

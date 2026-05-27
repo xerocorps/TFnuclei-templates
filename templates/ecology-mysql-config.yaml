@@ -1,28 +1,18 @@
 http:
 - matchers:
-  - case-insensitive: true
-    condition: and
+  - condition: and
     part: body
     type: word
     words:
     - dataurl
     - datapassword
     - datauser
-  - condition: or
-    part: header
+  - part: header
     type: word
     words:
     - text/plain
-    - bytes
-  - negative: true
-    part: header
-    type: word
-    words:
-    - text/html
-  - condition: or
-    status:
+  - status:
     - 200
-    - 206
     type: status
   matchers-condition: and
   method: GET
@@ -38,7 +28,7 @@ info:
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-EOffice\""
     max-request: 1
-    verified: 'true'
+    verified: true
   name: Fanwei OA E-Office - Information Disclosure
   severity: medium
-  tags: generic,config
+  tags: fanwei,ecology,exposure,config

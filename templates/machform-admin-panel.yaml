@@ -19,20 +19,16 @@ id: machform-admin-panel
 info:
   author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:machform:machform:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: MachForm Admin panel was detected.
   metadata:
     max-request: 1
-    product: machform
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MachForm Admin
-      Panel"})
     shodan-query: title:"MachForm Admin Panel"
-    vendor: machform
     verified: true
   name: MachForm Admin Panel - Detect
   reference:
   - https://www.machform.com/
   severity: info
-  tags: admin,discovery,machform,panel
+  tags: panel,machform,admin

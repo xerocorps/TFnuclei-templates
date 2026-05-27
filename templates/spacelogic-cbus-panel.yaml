@@ -16,15 +16,9 @@ id: spacelogic-cbus-panel
 info:
   author: ritikchaddha
   metadata:
-    fofa-query: body="spacelogic c-bus"
     max-request: 1
-    product: spacelogic_c-bus_home_controller_firmware
-    runzero-match: service["http.body"] matches "(?i)spacelogic c-bus"
-    shodan-query:
-    - html:"SpaceLogic C-Bus"
-    - http.html:"spacelogic c-bus"
-    vendor: schneider-electric
+    shodan-query: html:"SpaceLogic C-Bus"
     verified: true
   name: SpaceLogic C-Bus Home Panel - Detect
   severity: info
-  tags: discovery,login,panel,schneider-electric,spacelogic
+  tags: panel,spacelogic,login

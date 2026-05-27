@@ -26,7 +26,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "-902890504"
     shodan-query: http.favicon.hash:-902890504
     verified: true
   name: Universal Media Server v13.2.1 - Cross Site Scripting
@@ -34,4 +33,4 @@ info:
   - https://packetstormsecurity.com/files/171754/Universal-Media-Server-13.2.1-Cross-Site-Scripting.html
   remediation: Fixed in version 13.2.2
   severity: medium
-  tags: xss,universal,media,unauth,packetstorm,vuln
+  tags: xss,universal,media,unauth,packetstorm

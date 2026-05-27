@@ -16,11 +16,7 @@ info:
   description: Drupal Install panel exposed.
   metadata:
     max-request: 2
-    product: drupal
-    shodan-query:
-    - http.component:"drupal"
-    - cpe:"cpe:2.3:a:drupal:drupal"
-    vendor: drupal
+    shodan-query: http.component:"drupal"
   name: Drupal Install
   severity: high
-  tags: misconfig,drupal,install,exposure,vuln
+  tags: misconfig,drupal,install,exposure

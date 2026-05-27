@@ -20,11 +20,10 @@ http:
 id: event-debug-server-status
 info:
   author: pussycat0x
-  description: Exposes server status,logs and internal information.
   metadata:
     max-request: 1
     shodan-query: title:"Event Debug Server"
     verified: true
   name: Event Debug Server Status
   severity: low
-  tags: event,exposure,debug,vuln
+  tags: event,exposure,debug

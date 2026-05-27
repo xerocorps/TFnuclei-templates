@@ -22,18 +22,14 @@ http:
 id: teslamate-unauth-access
 info:
   author: For3stCo1d
-  classification:
-    cpe: cpe:2.3:a:teslamate_project:teslamate:*:*:*:*:*:*:*:*
   description: 'A misconfig in Teslamate allows unauthorized access to /settings endpoint.
 
     '
   metadata:
     fofa-query: title="teslamate"
     max-request: 1
-    product: teslamate
     shodan-query: http.favicon.hash:-1478287554
-    vendor: teslamate_project
     verified: true
   name: TeslaMate - Unauthenticated Access
   severity: medium
-  tags: misconfig,teslamate,unauth,vuln
+  tags: misconfig,teslamate,unauth

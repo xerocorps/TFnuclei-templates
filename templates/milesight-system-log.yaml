@@ -26,15 +26,12 @@ info:
 
     '
   metadata:
-    fofa-query: body=rt_title
     google-query: '"/lang/log/system" ext:log'
     max-request: 1
-    product: ur5x_firmware
     shodan-query: http.html:rt_title
-    vendor: milesight
     verified: true
   name: Milesight Industrial Cellular Routers - Information Disclosure
   reference:
   - https://medium.com/@win3zz/inside-the-router-how-i-accessed-industrial-routers-and-reported-the-flaws-29c34213dfdf
   severity: high
-  tags: exposure,log,milesight,vuln
+  tags: milesight,log,exposure

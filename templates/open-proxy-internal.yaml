@@ -283,8 +283,6 @@ http:
 
 
     '
-  req-condition: true
-  stop-at-first-match: true
   unsafe: true
 id: open-proxy-internal
 info:
@@ -295,6 +293,8 @@ info:
     cwe-id: CWE-441
   description: The host is configured as a proxy which allows access to other hosts
     on the internal network.
+  metadata:
+    max-request: 25
   name: Open Proxy To Internal Network
   reference:
   - https://blog.projectdiscovery.io/abusing-reverse-proxies-internal-access/
@@ -303,4 +303,4 @@ info:
   remediation: Disable the proxy or restrict configuration to only allow access to
     approved hosts/ports.
   severity: high
-  tags: ssrf,generic
+  tags: exposure,config,proxy,misconfig,fuzz

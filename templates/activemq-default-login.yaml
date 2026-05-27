@@ -10,11 +10,9 @@ http:
     password:
     - user
     - admin
-    - admin
     username:
     - user
     - admin
-    - admin@{{Host}}
   raw:
   - 'GET /admin/ HTTP/1.1
 
@@ -28,7 +26,7 @@ info:
   author: pdteam
   description: Apache ActiveMQ default login information was discovered.
   metadata:
-    max-request: 3
+    max-request: 2
   name: Apache ActiveMQ Default Login
   reference:
   - https://knowledge.broadcom.com/external/article/142813/vulnerability-apache-activemq-admin-con.html

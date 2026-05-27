@@ -33,6 +33,7 @@ http:
     Authorization: Basic {{base64(user + '':'' + pass)}}
 
     '
+  req-condition: true
 id: jmx-default-login
 info:
   author: paradessia
@@ -47,4 +48,4 @@ info:
   reference:
   - https://docs.jboss.org/jbossas/6/Admin_Console_Guide/en-US/html/Administration_Console_User_Guide-Accessing_the_Console.html
   severity: high
-  tags: default-login,jboss,jmx,vuln
+  tags: jboss,jmx,default-login

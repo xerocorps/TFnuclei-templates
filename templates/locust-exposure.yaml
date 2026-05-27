@@ -1,9 +1,9 @@
 http:
 - matchers:
   - part: body
-    regex:
-    - '<title>Locust(?: for.+)?</title>'
-    type: regex
+    type: word
+    words:
+    - <title>Locust</title>
   - condition: or
     part: body
     type: word
@@ -19,16 +19,11 @@ http:
   - '{{BaseURL}}'
 id: locust-exposure
 info:
-  author: DhiyaneshDK,bhutch
-  classification:
-    cpe: cpe:2.3:a:locust:locust:*:*:*:*:*:*:*:*
-  description: Locust is exposed.
+  author: DhiyaneshDK
   metadata:
     max-request: 1
-    product: locust
     shodan-query: title:"Locust"
-    vendor: locust
     verified: true
   name: Locust Exposure
   severity: medium
-  tags: exposure,locust,misconfig,vuln
+  tags: exposure,locust,misconfig

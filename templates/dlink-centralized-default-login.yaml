@@ -44,9 +44,7 @@ info:
     fofa-query: "title=\"AC\u96C6\u4E2D\u7BA1\u7406\u5E73\u53F0\" && body=\"D-Link\u8DEF\
       \u7531\u5668\u7BA1\u7406\u9875\""
     max-request: 1
-    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"(?i)AC\u96C6\u4E2D\
-      \u7BA1\u7406\u5E73\u53F0\"})"
     verified: true
   name: D-Link AC Centralized Management System - Default Login
   severity: high
-  tags: default-login,dlink,vuln
+  tags: default-login,dlink

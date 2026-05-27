@@ -25,8 +25,6 @@ http:
 id: sangfor-nextgen-lfi
 info:
   author: DhiyaneshDk
-  classification:
-    cpe: cpe:2.3:a:sangfor:next-gen_application_firewall:*:*:*:*:*:*:*:*
   description: 'Sangfor Next Gen Application Firewall is susceptible to Local File
     Inclusion as it does not validate the file parameter.
 
@@ -34,11 +32,9 @@ info:
   metadata:
     fofa-query: title="SANGFOR | NGAF"
     max-request: 1
-    product: next-gen_application_firewall
-    vendor: sangfor
     verified: true
   name: Sangfor Next Gen Application Firewall - Arbitary File Read
   reference:
   - https://labs.watchtowr.com/yet-more-unauth-remote-command-execution-vulns-in-firewalls-sangfor-edition/
   severity: high
-  tags: lfi,sangfor,vuln
+  tags: sangfor,lfi

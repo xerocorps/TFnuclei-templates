@@ -10,14 +10,10 @@ http:
 id: default-redhat-test-page
 info:
   author: dhiyaneshDk
-  classification:
-    cpe: cpe:2.3:o:redhat:enterprise_linux_server:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
-    product: enterprise_linux_server
     shodan-query: http.title:"Test Page for the Apache HTTP Server on Red Hat Enterprise
       Linux"
-    vendor: redhat
   name: Red Hat Enterprise Linux Test Page
   severity: info
-  tags: tech,redhat,discovery
+  tags: tech,redhat

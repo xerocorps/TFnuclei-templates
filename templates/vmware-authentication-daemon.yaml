@@ -6,12 +6,12 @@ info:
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
     shodan-query: product:"VMware Authentication Daemon"
     verified: true
   name: VMware Authentication Daemon Detection
   severity: info
-  tags: network,vmware,authenticated,detect,detection,tcp,discovery
+  tags: network,vmware,authenticated
 tcp:
 - extractors:
   - regex:
@@ -19,6 +19,7 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
+  - '{{Host}}:902'
   inputs:
   - data: '
 
@@ -29,4 +30,3 @@ tcp:
     words:
     - ServerDaemonProtocol:SOAP
     - MKSDisplayProtocol:VNC
-  port: 902

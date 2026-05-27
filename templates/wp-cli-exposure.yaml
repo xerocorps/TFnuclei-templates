@@ -15,14 +15,10 @@ http:
 id: wp-cli-exposure
 info:
   author: DhiyaneshDk
-  classification:
-    cpe: cpe:2.3:a:wp-cli:wp-cli:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
-    product: wp-cli
     shodan-query: html:"wp-cli.yml"
-    vendor: wp-cli
     verified: true
   name: WP-CLI Yaml File Exposure
   severity: info
-  tags: config,exposure,wp-cli,files,vuln
+  tags: config,exposure,wp-cli,files

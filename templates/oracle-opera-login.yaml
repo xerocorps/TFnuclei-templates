@@ -1,12 +1,10 @@
 http:
 - host-redirects: true
   matchers:
-  - condition: or
-    part: body
+  - part: body
     type: word
     words:
     - <title>Oracle, OPERA</title>
-    - <title>OPERA Login
   - status:
     - 200
     type: status
@@ -15,18 +13,15 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-  - '{{BaseURL}}/OperaLogin/Welcome.do'
-  stop-at-first-match: true
 id: oracle-opera-login
 info:
-  author: DhiyaneshDK,righettod
+  author: DhiyaneshDK
   classification:
     cwe-id: CWE-200
   metadata:
-    max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Oracle Opera"})
-    shodan-query: title:"Oracle Opera" && html:"/OperaLogin/Welcome.do"
+    max-request: 1
+    shodan-query: title:"Oracle Opera"
     verified: true
-  name: Oracle Opera Login - Detect
+  name: Oracle Opera - Login
   severity: info
-  tags: panel,opera,oracle,detect,discovery
+  tags: panel,opera,oracle,detect

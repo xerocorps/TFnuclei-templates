@@ -19,24 +19,15 @@ id: intelbras-panel
 info:
   author: pikpikcu
   classification:
-    cpe: cpe:2.3:o:intelbras:cip_92200_firmware:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Intelbras router panel was detected.
   metadata:
-    fofa-query:
-    - app="Intelbras"
-    - title="intelbras"
-    - app="intelbras"
-    google-query: intitle:"intelbras"
+    fofa-query: app="Intelbras"
     max-request: 1
-    product: cip_92200_firmware
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)intelbras"})
-    shodan-query:
-    - http.title:"Intelbras"
-    - http.title:"intelbras"
-    vendor: intelbras
+    shodan-query: http.title:"Intelbras"
     verified: true
   name: Intelbras Router Panel - Detect
   severity: info
-  tags: discovery,intelbras,panel
+  tags: panel,intelbras

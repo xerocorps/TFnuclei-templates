@@ -18,15 +18,10 @@ http:
 id: apache-drill-exposure
 info:
   author: DhiyaneshDK
-  classification:
-    cpe: cpe:2.3:a:apache:drill:*:*:*:*:*:*:*:*
-  description: Apache Drill is exposed.
   metadata:
     max-request: 1
-    product: drill
     shodan-query: title:"Apache Drill"
-    vendor: apache
     verified: true
   name: Apache Drill Exposure
   severity: low
-  tags: misconfig,exposure,apache,drill,vuln
+  tags: misconfig,exposure,apache,drill

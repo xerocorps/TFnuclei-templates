@@ -33,15 +33,10 @@ http:
 id: elasticsearch
 info:
   author: Shine,c-sh0,geeknik
-  classification:
-    cpe: cpe:2.3:a:elasticsearch:elasticsearch:*:*:*:*:*:*:*:*
-  description: Internal information is exposed in elasticsearch to external users.
   metadata:
     max-request: 4
-    product: elasticsearch
     shodan-query: ElasticSearch
-    vendor: elasticsearch
     verified: true
   name: ElasticSearch Information Disclosure
   severity: low
-  tags: elastic,unauth,elasticsearch,misconfig,vuln
+  tags: elastic,unauth,elasticsearch

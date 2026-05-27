@@ -15,7 +15,6 @@ id: dedecms-openredirect
 info:
   author: pikpikcu
   classification:
-    cpe: cpe:2.3:a:dedecms:dedecms:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 6.1
     cwe-id: CWE-601
@@ -24,13 +23,10 @@ info:
     and/or execute unauthorized operations.
   metadata:
     max-request: 1
-    product: dedecms
-    runzero-review: 'REJECT/2026-04-08/auto: interactsh (OAST callback)'
     shodan-query: http.html:"power by dedecms" || title:"dedecms"
-    vendor: dedecms
     verified: true
   name: DedeCMS - Open Redirect
   reference:
   - https://blog.csdn.net/ystyaoshengting/article/details/82734888
   severity: medium
-  tags: dedecms,redirect,vuln
+  tags: dedecms,redirect

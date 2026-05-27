@@ -11,30 +11,24 @@ http:
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}{{paths}}'
-  payloads:
-    paths:
-    - /.env
-    - /.env.dev.local
-    - /.env.development.local
-    - /.env.prod.local
-    - /.env.production.local
-    - /.env.local
-    - /.env.example
-    - /.env.stage
-    - /.env.live
-    - /.env_1
-    - /.env.old
-    - /.env_sample
+  - '{{BaseURL}}/.env'
+  - '{{BaseURL}}/.env.dev.local'
+  - '{{BaseURL}}/.env.development.local'
+  - '{{BaseURL}}/.env.prod.local'
+  - '{{BaseURL}}/.env.production.local'
+  - '{{BaseURL}}/.env.local'
+  - '{{BaseURL}}/.env.example'
+  - '{{BaseURL}}/.env.stage'
+  - '{{BaseURL}}/.env.live'
+  - '{{BaseURL}}/.env_1'
+  - '{{BaseURL}}/.env.old'
+  - '{{BaseURL}}/.env_sample'
 id: codeigniter-env
 info:
   author: emenalf
-  classification:
-    cwe-id:
-    - CWE-552
   description: Codeigniter .env file was discovered.
   metadata:
     max-request: 12
   name: Codeigniter - .env File Discovery
   severity: high
-  tags: codeigniter,config,exposure,vuln
+  tags: config,exposure,codeigniter

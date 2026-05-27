@@ -28,8 +28,6 @@ http:
 id: unauth-ztp-ping
 info:
   author: dmartyn
-  classification:
-    cpe: cpe:2.3:o:zyxel:usg1000_firmware:*:*:*:*:*:*:*:*
   description: 'Make a ZyXEL USG with ZTP support, pre CVE-2023-28771 patch, do a
     DNS lookup by asking it to make an ICMP request.
 
@@ -39,14 +37,11 @@ info:
     '
   metadata:
     max-request: 1
-    product: usg1000_firmware
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"USG FLEX"
-    vendor: zyxel
     verified: true
   name: Unauthenticated ZyXEL USG ZTP - Detect
   reference:
   - https://www.fullspectrum.dev/the-hunt-for-cve-2023-28771-friends-part-2-fingerprinting-handler/
   - https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-remote-command-injection-vulnerability-of-firewalls
   severity: high
-  tags: misconfig,unauth,zyxel,ztp,rce,oast,vuln
+  tags: misconfig,unauth,zyxel,ztp,rce,oast

@@ -10,9 +10,6 @@ http:
 id: postman-key
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -20,6 +17,5 @@ info:
   reference:
   - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/rules/postman.yml
   - https://learning.postman.com/docs/developer/intro-api/
-  - https://learning.postman.com/docs/developer/postman-api/authentication/
   severity: info
-  tags: api,exposure,keys,postman,token,vuln
+  tags: postman,keys,token,api,exposure

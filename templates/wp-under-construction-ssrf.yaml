@@ -1,23 +1,11 @@
-flow: http(1) && http(2)
 http:
-- matchers:
-  - internal: true
-    type: word
-    words:
-    - = Under Construction
-  raw:
-  - 'GET /wp-content/plugins/under-construction-maintenance-mode/readme.txt HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 - matchers:
   - part: interactsh_protocol
     type: word
     words:
     - http
   raw:
-  - 'POST /wp-admin/admin-ajax.php HTTP/1.1
+  - 'POST /wp-admin/admin-ajax.php HTTP/2
 
     Host: {{Hostname}}
 
@@ -32,10 +20,6 @@ http:
 id: wp-under-construction-ssrf
 info:
   author: Akincibor
-  classification:
-    cwe-id:
-    - CWE-918
-    - CWE-99
   description: 'The includes/mc-get_lists.php file used the ''apiKey'' POST parameter
     to create an https URL from it without sanitisation and called it with cURL, leading
     to a SSRF issue. The issue is exploitable via direct access to the affected file,
@@ -44,8 +28,7 @@ info:
 
     '
   metadata:
-    max-request: 2
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    max-request: 1
     verified: true
   name: Under Construction, Coming Soon & Maintenance Mode < 1.1.2 - Server Side Request
     Forgery (SSRF)
@@ -53,4 +36,4 @@ info:
   - https://wpscan.com/vulnerability/24784c84-3efd-4166-81c1-e5a266562cfc
   - https://packetstormsecurity.com/files/161576/
   severity: high
-  tags: packetstorm,ssrf,unauth,vuln,wordpress,wp,wp-plugin,wpscan
+  tags: ssrf,wp,wp-plugin,wordpress,unauth,wpscan,packetstorm

@@ -7,8 +7,7 @@ info:
   severity: high
   tags: idemia,biometrics,default-login
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - condition: and
     type: word
     words:
@@ -24,16 +23,14 @@ requests:
     type: status
   matchers-condition: and
   payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+    password:
+    - '12345'
   raw:
   - 'POST /cgi-bin/login.cgi HTTP/1.1
 
-    Host: {{Subdomains}}
-
-    Accept-Encoding: gzip, deflate
+    Host: {{Hostname}}
 
 
-    password=12345
+    password={{password}}
 
     '
-  threads: 100
