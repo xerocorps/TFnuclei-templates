@@ -35,8 +35,10 @@ info:
   description: Oracle Business Intelligence default admin credentials were discovered.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)oracle business
+      intelligence sign in"})
   name: Oracle Business Intelligence Default Login
   reference:
   - https://docs.oracle.com/cd/E12096_01/books/AnyDeploy/AnyDeployMisc2.html
   severity: high
-  tags: oracle,default-login
+  tags: default-login,oracle,vuln

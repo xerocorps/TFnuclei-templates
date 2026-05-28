@@ -21,8 +21,10 @@ info:
   description: 'A brave phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: brave phishing Detection
   reference:
   - https://brave.com
   severity: info
-  tags: phishing,brave,osint
+  tags: phishing,brave,osint,discovery

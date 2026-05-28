@@ -25,14 +25,24 @@ id: geoserver-login-panel
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:osgeo:geoserver:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: GeoServer login panel was detected.
   metadata:
+    fofa-query:
+    - app="geoserver"
+    - title="geoserver"
+    google-query: intitle:"geoserver"
     max-request: 2
-    shodan-query: title:"GeoServer"
+    product: geoserver
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)geoserver"})
+      || service["favicon.ico.image.mmh3"] == "97540678"
+    shodan-query:
+    - title:"GeoServer"
+    - http.title:"geoserver"
+    vendor: osgeo
     verified: true
   name: GeoServer Login Panel - Detect
   severity: info
-  tags: panel,geoserver
+  tags: discovery,geoserver,osgeo,panel

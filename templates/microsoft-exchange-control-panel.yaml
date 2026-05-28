@@ -7,8 +7,7 @@ info:
   severity: info
   tags: microsoft,panel
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - status:
     - 200
     type: status
@@ -16,15 +15,6 @@ requests:
     words:
     - Exchange Admin Center
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /owa/auth/logon.aspx?replaceCurrent=1&url={{Subdomains}}/ecp HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
-    (KHTML, like Gecko)
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/owa/auth/logon.aspx?replaceCurrent=1&url={{BaseURL}}/ecp'

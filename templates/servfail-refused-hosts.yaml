@@ -9,5 +9,11 @@ dns:
 id: servfail-refused-hosts
 info:
   author: pdteam
-  name: Servfail Host Finder
+  classification:
+    cwe-id: CWE-200
+  description: A DNS ServFail error occurred. ServFail errors occur when there is
+    an error communicating with a DNS server. This could have a number of causes,
+    including an error on the DNS server itself, or a temporary networking issue.
+  name: DNS Servfail Host Finder
   severity: info
+  tags: dns,takeover

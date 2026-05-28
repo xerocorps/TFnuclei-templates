@@ -34,13 +34,20 @@ http:
 id: photo-gallery-xss
 info:
   author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:10web:photo_gallery:*:*:*:*:wordpress:*:*:*
+    cwe-id:
+    - CWE-80
   description: 'The plugin does not escape some URLs before outputting them back in
     attributes, leading to Reflected Cross-Site Scripting.
 
     '
   metadata:
     max-request: 2
+    product: photo_gallery
     publicwww-query: /wp-content/plugins/photo-gallery
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
+    vendor: 10web
     verified: true
   name: Photo Gallery < 1.7.1 - Cross-Site Scripting
   reference:
@@ -48,4 +55,4 @@ info:
   - https://wordpress.org/plugins/photo-gallery/advanced/
   remediation: This is resolved in release 1.7.1.
   severity: medium
-  tags: wpscan,wp,wp-plugin,wordpress,xss,photo-gallery,authenticated
+  tags: authenticated,photo-gallery,vuln,wordpress,wp,wp-plugin,wpscan,xss

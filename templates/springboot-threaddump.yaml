@@ -6,8 +6,7 @@ http:
     words:
     - '"threads":'
     - '"threadName":'
-  - condition: or
-    part: header
+  - part: header
     type: word
     words:
     - application/json
@@ -28,10 +27,8 @@ info:
   author: philippedelteil
   description: The threaddump endpoint provides a thread dump from the application's
     JVM.
-  metadata:
-    max-request: 2
   name: Detect Springboot Thread Dump page
   reference:
   - https://docs.spring.io/spring-boot/docs/2.4.11-SNAPSHOT/actuator-api/htmlsingle/#threaddump
   severity: low
-  tags: springboot
+  tags: java,generic

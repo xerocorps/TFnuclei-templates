@@ -1,20 +1,12 @@
+file:
+- extensions:
+  - all
+  extractors:
+  - regex:
+    - amzn\.mws\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+    type: regex
 id: amazon-mws-auth-token-value
 info:
-  author: puzzlepeaches
+  author: gaurang
   name: Amazon MWS Auth Token
   severity: medium
-requests:
-- extractors:
-  - part: body
-    regex:
-    - amzn\.mws\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
-    type: regex
-  matchers:
-  - part: body
-    regex:
-    - amzn\.mws\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
-    type: regex
-  matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}'

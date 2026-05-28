@@ -27,6 +27,10 @@ http:
 id: opencpu-rce
 info:
   author: wa1tf0rme
+  classification:
+    cwe-id:
+    - CWE-78
+    - CWE-95
   description: 'Check for remote code execution via OpenCPU was conducted.
 
     '
@@ -37,4 +41,4 @@ info:
   - https://pulsesecurity.co.nz/articles/R-Shells
   - https://github.com/opencpu/opencpu/
   severity: critical
-  tags: rce,opencpu,oss
+  tags: opencpu,oss,rce,vuln

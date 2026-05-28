@@ -15,7 +15,7 @@ http:
     words:
     - variable-inspector
   - dsl:
-    - compare_versions(version, '<= 2.6.3')
+    - compare_versions(version, '< 2.7.1')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/variable-inspector/
     google-query: inurl:"/wp-content/plugins/variable-inspector/"
     shodan-query: http.html:"wp-content/plugins/variable-inspector/"
-  name: 'Variable Inspector <= 2.6.3 - Missing Authorization
+  name: 'Variable Inspector < 2.7.1 - Missing Authorization
 
     '
   reference:

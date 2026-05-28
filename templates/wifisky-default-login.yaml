@@ -48,10 +48,12 @@ info:
   metadata:
     fofa-query: "app=\"WIFISKY-7\u5C42\u6D41\u63A7\u8DEF\u7531\u5668\""
     max-request: 1
+    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"WIFISKY-7\u5C42\
+      \u6D41\u63A7\u8DEF\u7531\u5668\"})"
     shodan-query: "title:\"WIFISKY-7\u5C42\u6D41\u63A7\u8DEF\u7531\u5668\""
     verified: true
   name: Wifisky Default Login
   reference:
   - https://securityforeveryone.com/tools/wifisky-default-password-scanner
   severity: high
-  tags: default-login,wifisky
+  tags: default-login,vuln,wifisky

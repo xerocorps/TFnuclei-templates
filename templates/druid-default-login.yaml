@@ -1,5 +1,5 @@
 http:
-- attack: pitchfork
+- attack: clusterbomb
   matchers:
   - status:
     - 200
@@ -11,6 +11,7 @@ http:
   payloads:
     password:
     - admin
+    - password
     username:
     - admin
   raw:
@@ -37,7 +38,7 @@ info:
     cwe-id: CWE-798
   description: Apache Druid default login information (admin/admin) was discovered.
   metadata:
-    max-request: 2
+    max-request: 6
   name: Apache Druid Default Login
   severity: high
   tags: druid,default-login

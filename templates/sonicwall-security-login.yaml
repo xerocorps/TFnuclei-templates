@@ -17,11 +17,21 @@ http:
 id: sonicwall-security-login
 info:
   author: JustaAcat
+  classification:
+    cpe: cpe:2.3:h:sonicwall:tz_350:*:*:*:*:*:*:*:*
   description: SonicWall Network Security Login panel was detected.
   metadata:
+    fofa-query: title="sonicwall network security login"
+    google-query: intitle:"sonicwall network security login"
     max-request: 2
-    shodan-query: title:"SonicWall Network Security Login"
+    product: tz_350
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)sonicwall network
+      security login"})
+    shodan-query:
+    - title:"SonicWall Network Security Login"
+    - http.title:"sonicwall network security login"
+    vendor: sonicwall
     verified: true
   name: SonicWall Network Security Login - Detect
   severity: info
-  tags: panel,sonicwall,login
+  tags: discovery,login,panel,sonicwall

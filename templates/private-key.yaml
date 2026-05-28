@@ -10,11 +10,9 @@ file:
     - '"BEGIN EC PRIVATE KEY"'
     - '"BEGIN PGP PRIVATE KEY BLOCK"'
     - '"ssh-rsa"'
-    - '"ssh-dsa"'
-    - '"ssh-ed25519"'
     type: regex
 id: private-key
 info:
-  author: gaurang,geeknik
+  author: gaurang
   name: Private Key Detect
   severity: high

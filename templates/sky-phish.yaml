@@ -21,8 +21,10 @@ info:
   description: 'A sky phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: sky phishing Detection
   reference:
   - https://sky.com
   severity: info
-  tags: phishing,sky,osint
+  tags: phishing,sky,osint,discovery

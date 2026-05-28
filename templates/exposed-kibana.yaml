@@ -1,6 +1,7 @@
 http:
 - matchers:
-  - type: word
+  - part: body
+    type: word
     words:
     - kibanaWelcomeView
     - cluster_uuid
@@ -14,11 +15,13 @@ http:
   path:
   - '{{BaseURL}}'
   - '{{BaseURL}}/app/kibana/'
+  - '{{BaseURL}}/kibana/'
 id: exposed-kibana
 info:
-  author: Shine
+  author: shine
   metadata:
     max-request: 2
   name: Exposed Kibana
+  reference: https://thinkloveshare.com/hacking/1001_ways_to_pwn_prod/png-30.png
   severity: medium
-  tags: kibana,unauth
+  tags: cloud,generic,exposed

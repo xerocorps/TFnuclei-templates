@@ -59,9 +59,10 @@ info:
     and secure enterprise Kubernetes.
   metadata:
     max-request: 2
+    runzero-match: service["favicon.ico.image.mmh3"] == "464587962"
   name: Rancher Default Login
   reference:
   - https://github.com/rancher/rancher
   - https://rancher.com/docs/rancher/v2.5/en/admin-settings/authentication/local/
   severity: high
-  tags: default-login,rancher,kubernetes,devops,cloud
+  tags: cloud,default-login,devops,kubernetes,rancher,vuln

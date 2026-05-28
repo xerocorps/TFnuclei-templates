@@ -16,16 +16,17 @@ info:
   author: clem9669
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Eko Charger Management Console login panel was detected.
   metadata:
     google-query: intitle:"Charger Management Console"
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Charger Management
+      Console"})
     shodan-query: http.title:"Charger Management Console"
     verified: true
   name: Eko Charger Management Console Login Panel - Detect
   reference:
   - https://ekoenergetyka.com.pl/software-solutions/
   severity: info
-  tags: panel,eko
+  tags: panel,eko,discovery

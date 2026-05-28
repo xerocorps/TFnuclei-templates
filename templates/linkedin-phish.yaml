@@ -21,8 +21,10 @@ info:
   description: 'A linkedin phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: linkedin phishing Detection
   reference:
   - https://linkedin.com
   severity: info
-  tags: phishing,linkedin,osint
+  tags: phishing,linkedin,osint,discovery

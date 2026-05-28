@@ -21,8 +21,10 @@ info:
   description: 'A gimp phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: gimp phishing Detection
   reference:
   - https://gimp.org
   severity: info
-  tags: phishing,gimp,osint
+  tags: phishing,gimp,osint,discovery

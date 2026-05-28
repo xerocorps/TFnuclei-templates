@@ -22,8 +22,10 @@ info:
   description: 'A ticket-master phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: ticket master phishing Detection
   reference:
   - https://ticketmaster.com
   severity: info
-  tags: phishing,ticket-master,osint
+  tags: phishing,ticket-master,osint,discovery

@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  matchers:
+- matchers:
   - condition: and
     type: word
     words:
@@ -83,7 +82,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79
+    cwe-id: CWE-79,CWE-80
   description: 'Royal Event Management System contains a cross-site scripting vulnerability.
     An attacker can execute arbitrary script in the browser of an unsuspecting user
     in the context of the affected site. This can allow the attacker to steal cookie-based
@@ -92,10 +91,11 @@ info:
     '
   metadata:
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     verified: true
   name: Royal Event Management System - Cross-Site Scripting
   reference:
   - https://www.sourcecodester.com/sites/default/files/download/oretnom23/Royal%20Event.zip
   - https://packetstormsecurity.com/files/166479/Royale-Event-Management-System-1.0-Cross-Site-Scripting.html
   severity: high
-  tags: cms,royalevent,packetstorm,xss,authenticated
+  tags: authenticated,cms,intrusive,packetstorm,royalevent,vuln,xss

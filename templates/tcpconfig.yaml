@@ -1,6 +1,7 @@
 http:
 - matchers:
-  - type: word
+  - part: body
+    type: word
     words:
     - TCP/IP Configuration
   - status:
@@ -25,4 +26,4 @@ info:
   - https://www.rockwellautomation.com/
   - https://www.exploit-db.com/ghdb/6782
   severity: medium
-  tags: config,edb,logs
+  tags: config-files,config

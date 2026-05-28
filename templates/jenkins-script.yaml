@@ -17,21 +17,18 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/script/'
+  - '{{BaseURL}}/jenkins/script/'
+  stop-at-first-match: true
 id: jenkins-script
 info:
   author: philippedelteil
-  classification:
-    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
-    cwe-id: CWE-77
   description: 'Jenkins is susceptible to a remote code execution vulnerability due
     to accessible script functionality.
 
     '
-  metadata:
-    max-request: 1
   name: Jenkins - Remote Code Execution
   reference:
   - https://hackerone.com/reports/403402
+  - https://rohit-soni.medium.com/chaining-multiple-vulnerabilities-leads-to-remote-code-execution-rce-on-paytm-e77f2fd2295e
   severity: critical
-  tags: devops,hackerone,jenkins,rce
+  tags: jenkins,cloud,generic

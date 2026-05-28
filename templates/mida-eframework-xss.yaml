@@ -26,7 +26,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79
+    cwe-id: CWE-79,CWE-80
   description: Mida eFramework contains a cross-site scripting vulnerability. An attacker
     can execute arbitrary script in the browser of an unsuspecting user in the context
     of the affected site. This can allow the attacker to steal cookie-based authentication
@@ -37,4 +37,4 @@ info:
   reference:
   - https://www.exploit-db.com/exploits/48768
   severity: high
-  tags: mida,xss,edb
+  tags: edb,mida,vuln,xss

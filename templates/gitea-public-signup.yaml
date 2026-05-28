@@ -3,7 +3,7 @@ http:
   - condition: and
     type: word
     words:
-    - Powered by Gitea Version
+    - Powered by Gitea
     - Register -
   - negative: true
     part: body
@@ -20,17 +20,21 @@ http:
 id: gitea-public-signup
 info:
   author: edoardottt
+  classification:
+    cpe: cpe:2.3:a:gitea:gitea:*:*:*:*:*:*:*:*
   description: 'A misconfiguration in Gitea allows arbitrary users to sign up and
     read code hosted on the service.
 
     '
   metadata:
     max-request: 1
+    product: gitea
     shodan-query: html:"Powered by Gitea"
+    vendor: gitea
     verified: true
   name: Gitea Public Registration Enabled
   reference:
   - https://www.youtube.com/watch?v=oHhofSj9lEM&t=157s
   - https://gitea.io/en-us/
   severity: high
-  tags: misconfig,gitea
+  tags: misconfig,gitea,vuln

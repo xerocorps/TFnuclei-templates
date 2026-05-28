@@ -13,16 +13,21 @@ http:
 id: uptime-kuma-panel
 info:
   author: irshad ahamed
+  classification:
+    cpe: cpe:2.3:a:uptime.kuma:uptime_kuma:*:*:*:*:*:*:*:*
   description: 'Realtime website and application monitoring tool
 
     '
   metadata:
     max-request: 1
+    product: uptime_kuma
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Uptime Kuma"})
     shodan-query: title:"Uptime Kuma"
+    vendor: uptime.kuma
     verified: true
   name: Uptime Kuma - Panel
   reference:
   - https://github.com/louislam/uptime-kuma
-  - https://uptime.kuma.pet/docs/
+  - https://github.com/louislam/uptime-kuma/wiki
   severity: info
-  tags: uptime,kuma,panel,login
+  tags: uptime,kuma,panel,login,detect,discovery

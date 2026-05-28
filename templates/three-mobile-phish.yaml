@@ -21,8 +21,10 @@ info:
   description: 'A three phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: three phishing Detection
   reference:
   - https://three.co.uk
   severity: info
-  tags: phishing,three,osint
+  tags: phishing,three,osint,discovery

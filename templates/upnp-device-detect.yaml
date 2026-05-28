@@ -23,10 +23,11 @@ http:
 id: upnp-device-detect
 info:
   author: geeknik
+  description: uPNP Device was detected.
   metadata:
     max-request: 1
   name: Detect Basic uPNP Device
   reference:
   - https://www.upnp.org/specs/basic/UPnP-basic-Basic-v1-Device.pdf
   severity: info
-  tags: upnp,iot
+  tags: upnp,iot,discovery

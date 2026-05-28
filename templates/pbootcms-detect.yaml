@@ -20,12 +20,16 @@ http:
 id: pbootcms-detect
 info:
   author: princechaddha,daffainfo
+  classification:
+    cpe: cpe:2.3:a:pbootcms:pbootcms:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: pbootcms
     shodan-query: http.html:"PbootCMS"
+    vendor: pbootcms
     verified: true
   name: PbootCMS Detect
   reference:
   - https://www.pbootcms.com/
   severity: info
-  tags: tech,pbootcms
+  tags: tech,pbootcms,discovery

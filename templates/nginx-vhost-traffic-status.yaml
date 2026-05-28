@@ -16,10 +16,11 @@ http:
 id: nginx-vhost-traffic-status
 info:
   author: geeknik
+  description: Nginx Vhost Traffic status is exposed.
   metadata:
     max-request: 1
   name: Nginx Vhost Traffic Status
   reference:
   - https://github.com/vozlt/nginx-module-vts
   severity: low
-  tags: status,nginx,misconfig
+  tags: status,nginx,misconfig,vuln

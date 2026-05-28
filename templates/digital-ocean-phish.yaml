@@ -23,8 +23,10 @@ info:
   description: 'A digital-ocean phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: digital ocean phishing Detection
   reference:
   - https://digitalocean.com
   severity: info
-  tags: phishing,digital-ocean,osint
+  tags: phishing,digital-ocean,osint,discovery

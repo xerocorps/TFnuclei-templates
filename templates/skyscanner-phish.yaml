@@ -21,8 +21,10 @@ info:
   description: 'A skyscanner phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: skyscanner phishing Detection
   reference:
   - https://skyscanner.net
   severity: info
-  tags: phishing,skyscanner,osint
+  tags: phishing,skyscanner,osint,discovery

@@ -10,12 +10,16 @@ http:
 id: mailgun-api-token
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-522
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
   name: Mailgun API Key
   reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/mailgun.yml
+  - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/mailgun.yml
   - https://documentation.mailgun.com/en/latest/api-intro.html#authentication-1
   severity: info
-  tags: mailgun,token,exposure
+  tags: exposure,mailgun,token,vuln

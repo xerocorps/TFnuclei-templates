@@ -11,13 +11,18 @@ http:
 id: redmine-panel
 info:
   author: righettod
+  classification:
+    cpe: cpe:2.3:a:redmine:redmine:*:*:*:*:*:*:*:*
   description: Redmine login panel was detected.
   metadata:
     max-request: 1
+    product: redmine
+    runzero-match: service["http.body"] matches "(?i)'content=\"Redmine'"
     shodan-query: http.html:'content="Redmine'
+    vendor: redmine
     verified: true
   name: Redmine Login Panel - Detect
   reference:
   - https://www.redmine.org/
   severity: info
-  tags: panel,redmine,login,detect
+  tags: panel,redmine,login,detect,discovery

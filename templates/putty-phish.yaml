@@ -21,8 +21,10 @@ info:
   description: 'A putty phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: putty phishing Detection
   reference:
   - https://putty.org
   severity: info
-  tags: phishing,putty,osint
+  tags: phishing,putty,osint,discovery

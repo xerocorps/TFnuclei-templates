@@ -21,13 +21,20 @@ id: phpcollab-panel
 info:
   author: pikpikcu
   classification:
+    cpe: cpe:2.3:a:phpcollab:phpcollab:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: phpCollab login panel was detected.
   metadata:
+    fofa-query: title="phpcollab"
+    google-query: intitle:"phpcollab"
     max-request: 1
-    shodan-query: http.title:"PhpCollab"
+    product: phpcollab
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)phpcollab"})
+    shodan-query:
+    - http.title:"PhpCollab"
+    - http.title:"phpcollab"
+    vendor: phpcollab
   name: phpCollab Login Panel - Detect
   severity: info
-  tags: panel,phpcollab,login
+  tags: discovery,login,panel,phpcollab

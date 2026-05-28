@@ -21,8 +21,10 @@ info:
   description: 'A nordpass phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: nordpass phishing Detection
   reference:
   - https://nordpass.com
   severity: info
-  tags: phishing,nordpass,osint
+  tags: phishing,nordpass,osint,discovery

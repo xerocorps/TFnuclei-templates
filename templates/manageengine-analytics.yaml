@@ -14,13 +14,22 @@ id: manageengine-analytics
 info:
   author: dhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:zohocorp:manageengine_analytics_plus:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: ZOHO ManageEngine analytics plus panel was detected.
   metadata:
-    fofa-query: "app=\"ZOHO-\u6D41\u91CF\u7BA1\u7406\""
+    fofa-query:
+    - "app=\"ZOHO-\u6D41\u91CF\u7BA1\u7406\""
+    - "app=\"zoho-\u6D41\u91CF\u7BA1\u7406\""
+    - title="apex it help desk"
+    google-query: intitle:"apex it help desk"
     max-request: 1
+    product: manageengine_analytics_plus
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)apex it help
+      desk"})
+    shodan-query: http.title:"apex it help desk"
+    vendor: zohocorp
   name: ZOHO ManageEngine Analytics Plus Panel - Detect
   severity: info
-  tags: panel,zoho,manageengine
+  tags: discovery,manageengine,panel,zoho,zohocorp

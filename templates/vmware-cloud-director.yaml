@@ -15,14 +15,22 @@ id: vmware-cloud-director
 info:
   author: DhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:vmware:cloud_director:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: VMware Cloud Director login panel was detected.
   metadata:
+    fofa-query: title="welcome to vmware cloud director"
+    google-query: intitle:"welcome to vmware cloud director"
     max-request: 1
-    shodan-query: title:"Welcome to VMware Cloud Director"
+    product: cloud_director
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)welcome to vmware
+      cloud director"})
+    shodan-query:
+    - title:"Welcome to VMware Cloud Director"
+    - http.title:"welcome to vmware cloud director"
+    vendor: vmware
     verified: true
   name: VMware Cloud Director Login Panel - Detect
   severity: info
-  tags: panel,vmware
+  tags: discovery,panel,vmware

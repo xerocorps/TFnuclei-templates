@@ -21,13 +21,20 @@ id: seeddms-panel
 info:
   author: pussycat0x,daffainfo
   classification:
+    cpe: cpe:2.3:a:seeddms:seeddms:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: SeedDMS login panel was detected.
   metadata:
+    fofa-query: title="seeddms"
+    google-query: intitle:"seeddms"
     max-request: 2
-    shodan-query: http.title:"SeedDMS"
+    product: seeddms
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)seeddms"})
+    shodan-query:
+    - http.title:"SeedDMS"
+    - http.title:"seeddms"
+    vendor: seeddms
   name: SeedDMS Login Panel - Detect
   severity: info
-  tags: panel,seeddms,login
+  tags: discovery,login,panel,seeddms

@@ -3,69 +3,76 @@ http:
   matchers:
   - condition: and
     dsl:
-    - '!regex(''(?i)strict-transport-security'', all_headers)'
+    - '!regex(''(?i)strict-transport-security'', header)'
     - status_code != 301 && status_code != 302
     name: strict-transport-security
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)content-security-policy'', all_headers)'
+    - '!regex(''(?i)content-security-policy'', header)'
     - status_code != 301 && status_code != 302
     name: content-security-policy
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)permissions-policy'', all_headers)'
+    - '!regex(''(?i)permissions-policy'', header)'
     - status_code != 301 && status_code != 302
     name: permissions-policy
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)x-frame-options'', all_headers)'
+    - '!regex(''(?i)x-frame-options'', header)'
     - status_code != 301 && status_code != 302
     name: x-frame-options
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)x-content-type-options'', all_headers)'
+    - '!regex(''(?i)x-content-type-options'', header)'
     - status_code != 301 && status_code != 302
     name: x-content-type-options
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)x-permitted-cross-domain-policies'', all_headers)'
+    - '!regex(''(?i)x-permitted-cross-domain-policies'', header)'
     - status_code != 301 && status_code != 302
     name: x-permitted-cross-domain-policies
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)referrer-policy'', all_headers)'
+    - '!regex(''(?i)referrer-policy'', header)'
     - status_code != 301 && status_code != 302
     name: referrer-policy
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)clear-site-data'', all_headers)'
-    - status_code != 301 && status_code != 302
-    name: clear-site-data
-    type: dsl
-  - condition: and
-    dsl:
-    - '!regex(''(?i)cross-origin-embedder-policy'', all_headers)'
+    - '!regex(''(?i)cross-origin-embedder-policy'', header)'
     - status_code != 301 && status_code != 302
     name: cross-origin-embedder-policy
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)cross-origin-opener-policy'', all_headers)'
+    - '!regex(''(?i)cross-origin-opener-policy'', header)'
     - status_code != 301 && status_code != 302
     name: cross-origin-opener-policy
     type: dsl
   - condition: and
     dsl:
-    - '!regex(''(?i)cross-origin-resource-policy'', all_headers)'
+    - '!regex(''(?i)cross-origin-resource-policy'', header)'
     - status_code != 301 && status_code != 302
     name: cross-origin-resource-policy
+    type: dsl
+  - condition: and
+    dsl:
+    - '!regex(''(?i)content-type:'', header)'
+    - status_code == 200
+    name: missing-content-type
+    type: dsl
+  - condition: and
+    dsl:
+    - regex('(?i)content-type:\s*text/html', header)
+    - '!regex(''(?i)content-type:.*charset='', header)'
+    - status_code == 200
+    name: content-type-charset-specification
     type: dsl
   matchers-condition: or
   max-redirects: 3
@@ -74,7 +81,10 @@ http:
   - '{{BaseURL}}'
 id: http-missing-security-headers
 info:
-  author: socketz,geeknik,G4L1T0,convisoappsec,kurohost,dawid-czarnecki,forgedhallpass,jub0bs
+  author: socketz,geeknik,G4L1T0,convisoappsec,kurohost,dawid-czarnecki,forgedhallpass,jub0bs,userdehghani,celbahraoui,safejulian
+  classification:
+    cwe-id:
+    - CWE-693
   description: 'This template searches for missing HTTP security headers. The impact
     of these missing headers can vary.
 
@@ -83,4 +93,4 @@ info:
     max-request: 1
   name: HTTP Missing Security Headers
   severity: info
-  tags: misconfig,headers,generic
+  tags: generic,headers,misconfig,vuln

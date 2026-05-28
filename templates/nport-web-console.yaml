@@ -15,16 +15,19 @@ id: nport-web-console
 info:
   author: prajiteshsingh
   classification:
+    cpe: cpe:2.3:o:moxa:nport_6450-t_firmware:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: NPort Web Console login panel was detected.
   metadata:
     max-request: 1
+    product: nport_6450-t_firmware
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)NPort Web Console"})
     shodan-query: title:"NPort Web Console"
+    vendor: moxa
     verified: true
   name: NPort Web Console Login Panel - Detect
   reference:
   - https://www.moxa.com/en/
   severity: info
-  tags: panel,nport
+  tags: discovery,nport,panel

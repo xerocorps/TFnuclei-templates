@@ -16,10 +16,14 @@ http:
 id: jhipster-detect
 info:
   author: righettod
+  classification:
+    cpe: cpe:2.3:a:jhipster:jhipster:*:*:*:*:*:*:*:*
   metadata:
     max-request: 2
+    product: jhipster
     shodan-query: http.html:"JHipster"
+    vendor: jhipster
     verified: true
   name: JHipster Detect
   severity: info
-  tags: tech,jhipster
+  tags: tech,jhipster,discovery

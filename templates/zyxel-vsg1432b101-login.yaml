@@ -16,8 +16,9 @@ info:
   author: princechaddha
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)VSG1432-B101"
     shodan-query: http.html:"VSG1432-B101"
     verified: true
   name: Zyxel VSG1432-B101 - Login Detection
   severity: info
-  tags: tech,zyxel,modem,router
+  tags: tech,zyxel,modem,router,panel,discovery

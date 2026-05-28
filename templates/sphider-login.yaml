@@ -17,14 +17,16 @@ id: sphider-login
 info:
   author: dhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:sphider:sphider:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Sphider admin login panel was detected.
   metadata:
     max-request: 3
+    product: sphider
+    vendor: sphider
   name: Sphider Admin Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/6641
   severity: info
-  tags: edb,panel
+  tags: edb,panel,sphider,discovery

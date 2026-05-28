@@ -22,6 +22,8 @@ http:
 id: cvsweb-detect
 info:
   author: lu4nx
+  classification:
+    cpe: cpe:2.3:a:freebsd:cvsweb:*:*:*:*:*:*:*:*
   description: 'CVSweb is a WWW interface for CVS repositories with which you can
     browse a file hierarchy on your browser to view each file''s revision history
     in a very handy manner.
@@ -30,11 +32,13 @@ info:
   metadata:
     fofa-query: title="cvsweb"
     max-request: 1
+    product: cvsweb
     shodan-query: title:"cvsweb"
+    vendor: freebsd
     verified: true
-    zoomeye-query: title:cvsweb
+    zoomeye-query: title="cvsweb"
   name: CVSweb - Detect
   reference:
   - https://cvsweb.openbsd.org/
   severity: info
-  tags: tech,cvsweb,detect
+  tags: tech,cvsweb,detect,discovery

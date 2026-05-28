@@ -20,16 +20,23 @@ id: totemomail-panel
 info:
   author: johnk3r,daffainfo
   classification:
+    cpe: cpe:2.3:a:totemo:totemomail:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Totemomail login panel was detected.
   metadata:
-    google-query: intext:"totemomail" inurl:responsiveUI
+    fofa-query: body="totemomail" inurl:responsiveui
+    google-query:
+    - intext:"totemomail" inurl:responsiveUI
+    - intext:"totemomail" inurl:responsiveui
     max-request: 2
+    product: totemomail
+    runzero-match: service["http.body"] matches "(?i)totemomail"
+    shodan-query: http.html:"totemomail" inurl:responsiveui
+    vendor: totemo
     verified: true
   name: Totemomail Login Panel - Detect
   reference:
   - https://www.totemo.com/en/products/email-encryption
   severity: info
-  tags: totemomail,panel
+  tags: totemomail,panel,totemo,discovery

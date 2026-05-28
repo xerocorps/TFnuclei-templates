@@ -19,13 +19,14 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79
+    cwe-id: CWE-79,CWE-83
   description: Lucee contains a cross-site scripting vulnerability. It allows remote
     attackers to inject arbitrary JavaScript into the responses returned by the server.
   metadata:
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
   name: Lucee - Cross-Site Scripting
   reference:
   - https://www.acunetix.com/vulnerabilities/web/lucee-server-arbitrary-file-creation/
   severity: high
-  tags: lucee,xss,unauth
+  tags: intrusive,lucee,unauth,vuln,xss

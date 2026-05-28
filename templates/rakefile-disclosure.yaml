@@ -21,15 +21,19 @@ http:
 id: rakefile-disclosure
 info:
   author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:ruby-lang:ruby:*:*:*:*:*:*:*:*
   description: 'Rakefile configuration file was detected.
 
     '
   metadata:
     max-request: 1
+    product: ruby
     shodan-query: html:"Rakefile"
+    vendor: ruby-lang
     verified: true
   name: Rakefile - File Disclosure
   reference:
   - https://ruby.github.io/rake/doc/rakefile_rdoc.html
   severity: info
-  tags: devops,exposure,rakefile,config,ruby,rails
+  tags: devops,exposure,rakefile,config,ruby,rails,vuln

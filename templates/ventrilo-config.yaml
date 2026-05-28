@@ -6,33 +6,32 @@ http:
     - '[Server]'
     - Name
     - Phonetic
-  - part: header
+  - condition: or
+    part: header
     type: word
     words:
     - text/plain
-  - status:
+    - bytes
+  - negative: true
+    part: header
+    type: word
+    words:
+    - text/html
+  - condition: or
+    status:
     - 200
+    - 206
     type: status
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/ventrilo_srv.ini'
+  - '{{BaseURL}}/.ventrilo_srv.ini'
 id: ventrilo-config
 info:
   author: geeknik
-  classification:
-    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
-    cvss-score: 7.5
-    cwe-id: CWE-200
-  description: 'Ventrilo configuration file was detected, The file discloses the application''s
-    Adminpassword and Password.
-
-    '
   metadata:
-    max-request: 1
-    verified: true
-  name: Ventrilo Configuration File - Detect
-  reference:
-  - https://www.ventrilo.com/setup.php
+    max-request: 2
+  name: Ventrilo Configuration File
   severity: high
-  tags: ventrilo,config,exposure
+  tags: generic,config

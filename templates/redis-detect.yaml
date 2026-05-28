@@ -6,18 +6,28 @@ info:
     cwe-id: CWE-200
   description: Redis service was detected.
   metadata:
-    max-request: 4
-    shodan-query: product:"redis"
+    fofa-query:
+    - apache airflow
+    - title="airflow - dags" || http.html:"apache airflow"
+    - title="sign in - airflow"
+    google-query:
+    - intitle:"airflow - dags" || http.html:"apache airflow"
+    - intitle:"sign in - airflow"
+    max-request: 2
+    product: airflow
+    shodan-query:
+    - product:"redis"
+    - http.title:"airflow - dags" || http.html:"apache airflow"
+    - http.title:"sign in - airflow"
+    vendor: apache
     verified: true
   name: Redis Service - Detect
   severity: info
-  tags: network,redis
+  tags: network,redis,detect,detection,tcp,discovery
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:6379'
-  - tls://{Hostname}}
-  - tls://{{Host}}:6380
+  - tls://{{Hostname}}
   inputs:
   - data: "*1\r\n$4\r\ninfo\r\n"
   matchers:
@@ -27,4 +37,5 @@ tcp:
     - DENIED Redis
     - CONFIG REWRITE
     - NOAUTH Authentication
+  port: 6379,6380
   read-size: 1024

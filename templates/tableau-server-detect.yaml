@@ -3,7 +3,7 @@ http:
   - group: 1
     part: body
     regex:
-    - data-buildId="([0-9a-z_]*)
+    - data-build[iI]d="([0-9a-z_]*)
     type: regex
   matchers:
   - condition: or
@@ -24,10 +24,24 @@ http:
   - '{{BaseURL}}'
 id: tableau-server-detect
 info:
-  author: TechbrunchFR
-  description: Detects Tableau Server and extract the buildId
+  author: TechbrunchFR,aringo
+  description: 'Salesforce Tableau Server was detected.
+
+    '
   metadata:
+    fofa-query:
+    - 'X-Tableau: Tableau Server'
+    - server=="Tableau"
+    - icon_hash="-1441956789"
     max-request: 1
-  name: Detect Tableau Server
+    product: tableau_server
+    shodan-query:
+    - product:"Tableau Server"
+    - 'X-Tableau: Tableau Server'
+    - 'Server: Tableau'
+    - http.favicon.hash:-1441956789
+    vendor: salesforce
+    verified: true
+  name: Salesforce Tableau Server - Detect
   severity: info
-  tags: tech,tableau
+  tags: tech,detect,tableau

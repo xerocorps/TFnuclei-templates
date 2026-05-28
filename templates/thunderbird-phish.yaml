@@ -21,8 +21,10 @@ info:
   description: 'A thunderbird phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: thunderbird phishing Detection
   reference:
   - https://thunderbird.net
   severity: info
-  tags: phishing,thunderbird,osint
+  tags: phishing,thunderbird,osint,discovery

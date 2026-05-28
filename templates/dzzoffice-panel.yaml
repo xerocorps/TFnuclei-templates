@@ -24,13 +24,18 @@ info:
   author: ritikchaddha
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: DzzOffice login panel was detected.
   metadata:
+    fofa-query:
+    - title="dzzoffice"
+    - icon_hash=-1961736892
     max-request: 3
+    product: dzzoffice
+    runzero-match: service["favicon.ico.image.mmh3"] == "-1961736892"
     shodan-query: http.favicon.hash:-1961736892
+    vendor: dzzoffice
     verified: true
   name: DzzOffice Login Panel - Detect
   severity: info
-  tags: dzzoffice,panel
+  tags: discovery,dzzoffice,panel

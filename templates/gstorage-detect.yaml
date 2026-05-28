@@ -1,10 +1,11 @@
 http:
 - matchers:
-  - part: header
+  - case-insensitive: true
+    part: header
     type: word
     words:
     - x-goog-metageneration
-    - X-Goog-Metageneration
+    - x-goog-generation
   method: GET
   path:
   - '{{BaseURL}}'
@@ -15,4 +16,4 @@ info:
     max-request: 1
   name: Google Bucket detection
   severity: info
-  tags: tech,gstorage,google,bucket
+  tags: tech,gstorage,google,bucket,discovery

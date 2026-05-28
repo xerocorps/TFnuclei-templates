@@ -23,6 +23,7 @@ id: adiscon-loganalyzer
 info:
   author: geeknik
   classification:
+    cpe: cpe:2.3:a:adiscon:loganalyzer:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
     cwe-id: CWE-200
@@ -31,8 +32,10 @@ info:
     of real-time network events and reporting services.
   metadata:
     max-request: 1
+    product: loganalyzer
+    vendor: adiscon
   name: Adiscon LogAnalyzer - Information Disclosure
   reference:
   - https://loganalyzer.adiscon.com/
   severity: high
-  tags: adiscon,loganalyzer,syslog,exposure,panel
+  tags: adiscon,loganalyzer,syslog,exposure,panel,discovery

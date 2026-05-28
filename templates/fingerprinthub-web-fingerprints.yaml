@@ -676,7 +676,7 @@ http:
     part: header
     type: word
     words:
-    - 'WWW-Authenticate: Basic realm="dubbo"'
+    - 'Www-Authenticate: Basic realm="dubbo"'
   - name: apache-struts
     type: word
     words:
@@ -2811,10 +2811,10 @@ http:
     words:
     - target="_blank" title="affiliate
   - name: embedthis-appweb
-    part: header
+    part: server
     type: word
     words:
-    - 'Server: embedthis-appweb'
+    - Mbedthis-Appweb
   - name: emby
     type: word
     words:
@@ -3379,6 +3379,7 @@ http:
     type: word
     words:
     - <script src="//cdn.foxycart.com
+    - <script src="https://cdn.foxycart.com
   - name: fpoll
     type: word
     words:
@@ -6187,7 +6188,8 @@ http:
     type: word
     words:
     - id="msowebpartpage_postbacksource
-  - name: microsoft-silverlight
+  - case-insensitive: true
+    name: microsoft-silverlight
     type: word
     words:
     - get microsoft silverlight
@@ -9312,7 +9314,8 @@ http:
     type: word
     words:
     - http://www.softbizscripts.com/classified-ads-plus-script-features.php
-  - name: softether-vpn
+  - case-insensitive: true
+    name: softether-vpn
     type: word
     words:
     - <li>manage this vpn server or vpn bridge<ul>
@@ -12249,7 +12252,7 @@ http:
     part: header
     type: word
     words:
-    - 'X-Powered-By: zope'
+    - 'X-Powered-By: Zope'
   - condition: and
     name: zotonic
     type: word
@@ -12310,6 +12313,12 @@ http:
     words:
     - Weblate
     - "<meta name=\"author\" content=\"Michal \u010Ciha\u0159\" />"
+  - case-insensitive: true
+    name: Adobe Experience Manager (AEM)
+    part: header
+    type: word
+    words:
+    - 'x-dispatcher:'
   matchers-condition: or
   max-redirects: 2
   method: GET
@@ -12327,4 +12336,4 @@ info:
   reference:
   - https://github.com/0x727/FingerprintHub
   severity: info
-  tags: tech
+  tags: tech,discovery

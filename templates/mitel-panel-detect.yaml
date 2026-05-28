@@ -19,14 +19,20 @@ id: mitel-panel-detect
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:mitel:cmg_suite:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Mitel login panel was detected.
   metadata:
+    fofa-query: body="mitel networks"
     max-request: 2
-    shodan-query: http.html:"Mitel Networks"
+    product: cmg_suite
+    runzero-match: service["http.body"] matches "(?i)mitel networks"
+    shodan-query:
+    - http.html:"Mitel Networks"
+    - http.html:"mitel networks"
+    vendor: mitel
     verified: true
   name: Mitel Login Panel - Detect
   severity: info
-  tags: panel,mitel
+  tags: discovery,mitel,panel

@@ -21,8 +21,10 @@ info:
   description: 'A microsoft teams phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: microsoft teams phishing Detection
   reference:
   - https://www.microsoft.com/en-gb/microsoft-teams/download-app
   severity: info
-  tags: phishing,microsoft-teams,osint
+  tags: phishing,microsoft-teams,osint,discovery

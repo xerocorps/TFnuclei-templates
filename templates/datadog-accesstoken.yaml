@@ -10,6 +10,10 @@ http:
 id: datadog-accesstoken
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-522
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -18,4 +22,4 @@ info:
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/datadog-access-token.yaml
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/datadog-access-token.go
   severity: info
-  tags: datadog,exposure,tokens
+  tags: datadog,exposure,tokens,vuln

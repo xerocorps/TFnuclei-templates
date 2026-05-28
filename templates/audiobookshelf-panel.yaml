@@ -20,12 +20,17 @@ http:
 id: audiobookshelf-panel
 info:
   author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:audiobookshelf:audiobookshelf:*:*:*:*:*:*:*:*
   metadata:
     max-request: 2
+    product: audiobookshelf
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Audiobookshelf"})
     shodan-query: title:"Audiobookshelf"
+    vendor: audiobookshelf
     verified: true
   name: Audiobookshelf Login Panel - Detect
   reference:
   - https://github.com/advplyr/audiobookshelf
   severity: info
-  tags: panel,audiobookshelf,detect
+  tags: audiobookshelf,detect,discovery,panel

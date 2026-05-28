@@ -26,6 +26,8 @@ http:
 id: tongda-auth-bypass
 info:
   author: HuTa0
+  classification:
+    cpe: cpe:2.3:a:tongda2000:office_anywhere:*:*:*:*:*:*:*:*
   description: 'Tongda OA is a collaborative office automation software independently
     developed by Beijing Tongda Xinke Technology Co., LTD v11.7 has the interface
     query online user function, when the user is online, it will return PHPSESSION
@@ -35,11 +37,15 @@ info:
   metadata:
     fofa-query: "title=\"\u901A\u8FBEOA\""
     max-request: 200
+    product: office_anywhere
+    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"(?i)\u901A\u8FBE\
+      OA\"})"
     shodan-query: "title:\"\u901A\u8FBEOA\""
+    vendor: tongda2000
     verified: true
-    zoomeye-query: "app:\"\u901A\u8FBEOA\""
+    zoomeye-query: "app=\"\u901A\u8FBEOA\""
   name: Tongda OA 11.7 - Authentication Bypass
   reference:
   - https://s1xhcl.github.io/2021/03/13/%E9%80%9A%E8%BE%BEOA-v11-7-%E5%9C%A8%E7%BA%BF%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/
   severity: high
-  tags: tongda,auth-bypass,brute-force
+  tags: tongda,auth-bypass,fuzz,vuln

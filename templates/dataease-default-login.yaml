@@ -21,6 +21,8 @@ http:
 id: dataease-default-login
 info:
   author: DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:dataease_project:dataease:*:*:*:*:*:*:*:*
   description: 'Dataease has a built-in account demo/dataease, and many developers
     forget to delete or change the account password.
 
@@ -29,10 +31,13 @@ info:
     '
   metadata:
     max-request: 1
+    product: dataease
+    runzero-match: service["http.body"] matches "Dataease"
     shodan-query: html:"Dataease"
+    vendor: dataease_project
     verified: true
   name: Dataease - Default Login
   reference:
   - https://github.com/dataease/dataease/issues/5995
   severity: high
-  tags: default-login,dataease
+  tags: dataease,default-login,vuln

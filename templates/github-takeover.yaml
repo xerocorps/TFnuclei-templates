@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -8,7 +12,8 @@ http:
     words:
     - There isn't a GitHub Pages site here.
     - For root URLs (like http://example.com/) you must provide an index.html file
-    - For root URLs (like <code>http://example.com/</code>) you must provide an
+    - The site configured at this address does not contain the requested file.
+    - For root URLs (like <code>http://example.com/</code>)
   - condition: and
     dsl:
     - '!contains(host,"githubapp.com")'
@@ -22,10 +27,11 @@ http:
 id: github-takeover
 info:
   author: pdteam,th3r4id
+  description: Github takeover was detected.
   metadata:
     max-request: 1
   name: Github Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz
   severity: high
-  tags: takeover,github
+  tags: takeover,github,vuln

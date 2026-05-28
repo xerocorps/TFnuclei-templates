@@ -23,7 +23,6 @@ info:
   author: idealphase
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-668
   description: Open Virtualization Userportal & Webadmin panels were detected. Open
     Virtualization Manager is an open-source distributed virtualization solution designed
@@ -33,10 +32,11 @@ info:
   metadata:
     google-query: intitle:"Ovirt-Engine"
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Ovirt-Engine"})
     shodan-query: title:"Ovirt-Engine"
   name: Open Virtualization Userportal & Webadmin Panel Detection
   reference:
   - https://www.ovirt.org/
   - https://www.ovirt.org/dropped/admin-guide/virt/console-client-resources.html
   severity: info
-  tags: panel,ovirt,oss
+  tags: panel,ovirt,oss,discovery

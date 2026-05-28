@@ -18,12 +18,16 @@ http:
 id: lucee-rce
 info:
   author: rootxharsh,iamnoooob,pdresearch
+  classification:
+    cwe-id:
+    - CWE-95
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Lucee"})
     shodan-query: http.title:"Lucee"
     verified: true
   name: Lucee < 6.0.1.59 - Remote Code Execution
   reference:
   - https://blog.projectdiscovery.io/hello-lucee-let-us-hack-apple-again
   severity: critical
-  tags: lucee,rce,oast
+  tags: lucee,oast,rce,vuln

@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -15,10 +19,11 @@ http:
 id: short-io-takeover
 info:
   author: philippedelteil
+  description: Short.io takeover was detected.
   metadata:
     max-request: 1
   name: Short.io takeover detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/260
   severity: high
-  tags: takeover,short.io
+  tags: takeover,short.io,vuln

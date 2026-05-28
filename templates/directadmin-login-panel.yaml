@@ -14,15 +14,22 @@ id: directadmin-login-panel
 info:
   author: idealphase
   classification:
+    cpe: cpe:2.3:a:directadmin:directadmin:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: DirectAdmin login panel was detected.
   metadata:
+    fofa-query: title="directadmin login"
+    google-query: intitle:"directadmin login"
     max-request: 1
-    shodan-query: title:"DirectAdmin Login"
+    product: directadmin
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)directadmin login"})
+    shodan-query:
+    - title:"DirectAdmin Login"
+    - http.title:"directadmin login"
+    vendor: directadmin
   name: DirectAdmin Login Panel - Detect
   reference:
   - https://www.directadmin.com/whats_new.php
   severity: info
-  tags: panel,directadmin
+  tags: directadmin,discovery,panel

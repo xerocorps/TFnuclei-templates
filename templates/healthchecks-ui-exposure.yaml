@@ -18,10 +18,11 @@ http:
 id: healthchecks-ui-exposure
 info:
   author: tess
+  description: Healthchecks UI is exposed.
   metadata:
     max-request: 1
     shodan-query: title:"Health Checks UI"
     verified: true
   name: Healthchecks UI Exposure
   severity: low
-  tags: misconfig,exposure
+  tags: misconfig,exposure,vuln

@@ -20,6 +20,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Scribble Diffusion"})
     shodan-query: title:"Scribble Diffusion"
     verified: true
   name: Scribble Diffusion Panel - Detect
@@ -27,4 +28,4 @@ info:
   - https://scribblediffusion.com/
   - https://github.com/replicate/scribble-diffusion
   severity: info
-  tags: panel,scribble,detect
+  tags: panel,scribble,detect,discovery,ai

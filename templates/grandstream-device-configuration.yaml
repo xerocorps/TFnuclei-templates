@@ -13,9 +13,14 @@ http:
 id: grandstream-device-configuration
 info:
   author: dhiyaneshDK
+  classification:
+    cpe: cpe:2.3:o:grandstream:ht801_firmware:*:*:*:*:*:*:*:*
+  description: Exposed Grandstream device configuration page detected.
   metadata:
     max-request: 1
+    product: ht801_firmware
     shodan-query: http.title:"Grandstream Device Configuration"
+    vendor: grandstream
   name: Grandstream Device Configuration
   severity: info
-  tags: iot
+  tags: iot,discovery

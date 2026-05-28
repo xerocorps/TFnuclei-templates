@@ -4,6 +4,7 @@ info:
   description: A simple workflow that runs all Agentejo Cockpit related nuclei templates
     on a given target.
   name: Agentejo Cockpit Security Checks
+  tags: workflow
 workflows:
 - subtemplates:
   - template: cves/2020/CVE-2020-35846.yaml

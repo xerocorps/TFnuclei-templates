@@ -47,12 +47,13 @@ info:
   metadata:
     fofa-query: icon_hash="-911494769"
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
   name: Hikvision iVMS-8700 - File Upload Remote Code Execution
   reference:
   - https://www.wangan.com/p/11v754aceadb994f
   - https://cn-sec.com/archives/1828326.html
   severity: critical
-  tags: hikvision,ivms,fileupload,rce,intrusive
+  tags: hikvision,ivms,fileupload,rce,intrusive,vuln
 variables:
   str1: '{{rand_base(6)}}'
   str2: '{{rand_base(6)}}'

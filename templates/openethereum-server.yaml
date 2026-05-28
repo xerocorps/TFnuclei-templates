@@ -9,7 +9,7 @@ http:
   - condition: and
     dsl:
     - status_code == 200
-    - contains(all_headers, "application/json")
+    - contains(header, "application/json")
     - contains(body, "OpenEthereum")
     type: dsl
   raw:
@@ -40,4 +40,4 @@ info:
   - https://github.com/openethereum/openethereum
   - https://openethereum.github.io/
   severity: info
-  tags: tech,openethereum,ethereum,web3,blockchain
+  tags: tech,openethereum,ethereum,web3,blockchain,discovery

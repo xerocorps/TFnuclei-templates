@@ -21,8 +21,10 @@ info:
   description: 'A paramountplus phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: paramountplus phishing Detection
   reference:
   - https://paramountplus.com
   severity: info
-  tags: phishing,paramountplus,osint
+  tags: phishing,paramountplus,osint,discovery

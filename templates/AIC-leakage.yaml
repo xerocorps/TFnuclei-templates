@@ -9,12 +9,11 @@ requests:
   - status:
     - 200
     type: status
-  - condition: or
+  - condition: and
     part: body
     type: word
     words:
     - "\u5361\u53F7"
-    - "\u5BC6\u7801"
   matchers-condition: and
   method: GET
   path:

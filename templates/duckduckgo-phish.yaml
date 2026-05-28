@@ -21,8 +21,10 @@ info:
   description: 'A duckduckgo phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: duckduckgo phishing Detection
   reference:
   - https://duckduckgo.com
   severity: info
-  tags: phishing,duckduckgo,osint
+  tags: phishing,duckduckgo,osint,discovery

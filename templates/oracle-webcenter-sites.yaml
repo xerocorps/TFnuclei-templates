@@ -15,10 +15,14 @@ http:
 id: oracle-webcenter-sites
 info:
   author: leovalcante
+  classification:
+    cpe: cpe:2.3:a:oracle:webcenter_sites:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: webcenter_sites
     shodan-query: http.html:"WebCenter"
+    vendor: oracle
     verified: true
   name: Oracle WebCenter Sites
   severity: info
-  tags: tech,oracle,webcenter
+  tags: tech,oracle,webcenter,discovery

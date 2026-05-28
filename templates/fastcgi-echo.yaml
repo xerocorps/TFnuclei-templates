@@ -18,6 +18,8 @@ http:
 id: fastcgi-echo
 info:
   author: powerexploit
+  classification:
+    cpe: cpe:2.3:a:fastcgi:fcgi:*:*:*:*:*:*:*:*
   description: 'FastCGI echo endpoint script was detected, which lists several kinds
     of sensitive information such as port numbers, server software versions, port
     numbers, and IP addresses.
@@ -26,6 +28,8 @@ info:
   metadata:
     google-query: inurl:fcgi-bin/echo
     max-request: 1
+    product: fcgi
+    vendor: fastcgi
     verified: true
   name: FastCGI Echo Endpoint Script - Detect
   reference:
@@ -35,4 +39,4 @@ info:
     which is incorporated into the Oracle Application Server.FastCGI echo programs
     (echo and echo2).
   severity: info
-  tags: exposure,logs,oracle,fastcgi,edb
+  tags: exposure,logs,oracle,fastcgi,edb,vuln

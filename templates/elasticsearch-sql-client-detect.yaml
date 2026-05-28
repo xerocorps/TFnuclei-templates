@@ -14,10 +14,14 @@ http:
 id: elasticsearch-sql-client-detect
 info:
   author: pussycat0x
+  classification:
+    cpe: cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*
   description: Elasticsearch detected SQL client.
   metadata:
     max-request: 1
+    product: elasticsearch
     shodan-query: http.title:"Elasticsearch-sql client"
-  name: Elasticsearch -  SQL Client Detection
+    vendor: elastic
+  name: Elasticsearch - SQL Client Detection
   severity: low
-  tags: elasticsearch,tech,sql
+  tags: elasticsearch,tech,sql,discovery

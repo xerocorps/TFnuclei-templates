@@ -16,10 +16,19 @@ http:
 id: spotweb-login-panel
 info:
   author: theamanrawat
+  classification:
+    cpe: cpe:2.3:a:spotweb_project:spotweb:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: title="spotweb - overview"
+    google-query: intitle:"spotweb - overview"
     max-request: 1
-    shodan-query: title:"SpotWeb - overview"
+    product: spotweb
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)spotweb - overview"})
+    shodan-query:
+    - title:"SpotWeb - overview"
+    - http.title:"spotweb - overview"
+    vendor: spotweb_project
     verified: true
   name: SpotWeb Login Panel - Detect
   severity: info
-  tags: panel,spotweb,detect
+  tags: detect,discovery,panel,spotweb,spotweb_project

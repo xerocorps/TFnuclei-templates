@@ -21,8 +21,10 @@ info:
   description: 'A Facebook phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: Facebook phishing Detection
   reference:
   - https://facebook.com
   severity: info
-  tags: phishing,facebook,osint
+  tags: phishing,facebook,osint,discovery

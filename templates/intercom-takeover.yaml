@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -15,10 +19,11 @@ http:
 id: intercom-takeover
 info:
   author: pdteam
+  description: Intercom takeover was detected.
   metadata:
     max-request: 1
   name: Intercom Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/69
   severity: high
-  tags: takeover,intercom
+  tags: takeover,intercom,vuln

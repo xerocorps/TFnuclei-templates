@@ -1,11 +1,13 @@
 http:
 - host-redirects: true
   matchers:
-  - condition: or
+  - case-insensitive: true
+    condition: or
     part: body
     type: word
     words:
     - Roxy file manager
+    - RoxyFileman
     - '[{"p":"'
   - status:
     - 200
@@ -14,6 +16,7 @@ http:
   max-redirects: 2
   method: GET
   path:
+  - '{{BaseURL}}'
   - '{{BaseURL}}/index.html'
   - '{{BaseURL}}/fileman/index.html'
   - '{{BaseURL}}/fileman/php/fileslist.php'
@@ -21,16 +24,23 @@ http:
   stop-at-first-match: true
 id: roxy-fileman
 info:
-  author: liquidsec,DhiyaneshDk
+  author: liquidsec,DhiyaneshDk,ritikchaddha
   classification:
+    cpe: cpe:2.3:a:roxyfileman:roxy_fileman:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Roxy File Manager panel was detected.
   metadata:
-    google-query: intitle:"Roxy file manager"
-    max-request: 4
+    fofa-query: title="roxy file manager"
+    google-query:
+    - intitle:"Roxy file manager"
+    - intitle:"roxy file manager"
+    max-request: 5
+    product: roxy_fileman
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)roxy file manager"})
+    shodan-query: http.title:"roxy file manager"
+    vendor: roxyfileman
     verified: true
   name: Roxy File Manager - Panel Detect
   severity: info
-  tags: tech,fileupload,roxy,fileman
+  tags: discovery,fileman,panel,roxy,roxyfileman,tech

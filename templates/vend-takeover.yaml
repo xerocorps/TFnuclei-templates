@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -13,10 +17,11 @@ http:
 id: vend-takeover
 info:
   author: pdteam
+  description: vend takeover was detected.
   metadata:
     max-request: 1
   name: vend takeover detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz
   severity: high
-  tags: takeover
+  tags: takeover,vuln

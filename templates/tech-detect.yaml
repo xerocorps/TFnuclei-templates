@@ -837,11 +837,13 @@ http:
     - <div [^>]*id="__nuxt"
     - <script [^>]*>window\.__NUXT__
     type: regex
-  - name: next.js
-    part: body
+  - condition: or
+    name: next.js
+    part: response
     type: word
     words:
     - <script id="__NEXT_DATA__"
+    - 'X-Powered-By: Next.js'
   - condition: or
     name: angular
     part: body
@@ -1117,7 +1119,7 @@ http:
     regex:
     - <link[^>]+ href="/?typo3(?:conf|temp)/
     - <img[^>]+ src="/?typo3(?:conf|temp)/
-    - "<!--\n\tThis website is powered by TYPO3"
+    - This website is powered by TYPO3
     type: regex
   - condition: or
     name: percussion
@@ -1928,6 +1930,20 @@ http:
     - href="(?:\/|[^>]+)webapp\/wcs\/
     type: regex
   - condition: or
+    name: ibm-websphere-application-server
+    part: body
+    type: word
+    words:
+    - 'SRVE0255E:'
+    - A WebGroup/Virtual Host to handle
+  - condition: or
+    name: ibm-websphere-application-server
+    part: all_headers
+    type: word
+    words:
+    - '$wsep:'
+    - '$WSEP:'
+  - condition: or
     name: bootstrap
     part: body
     regex:
@@ -2089,12 +2105,12 @@ http:
     regex:
     - <[^>]*data-headjs-load
     type: regex
-  - condition: or
+  - case-insensitive: true
     name: gitea
     part: body
-    regex:
-    - "<div class=\"ui left\">\\n\\s+\xA9 Gitea Version: ([\\d.]+)"
-    type: regex
+    type: word
+    words:
+    - Powered by Gitea
   - condition: or
     name: all-in-one-seo-pack
     part: body
@@ -2709,6 +2725,11 @@ http:
     type: word
     words:
     - content="InstantCMS"
+  - name: interactsh
+    part: header
+    type: word
+    words:
+    - X-Interactsh-Version
   - name: interred
     type: word
     words:
@@ -3028,10 +3049,20 @@ http:
     words:
     - X-Jenkins
   - name: cloudflare
-    part: header
+    part: server
     type: word
     words:
     - cloudflare
+  - name: cloudflare
+    part: cf_cache_status
+    regex:
+    - .*
+    type: regex
+  - name: cloudflare
+    part: cf_ray
+    regex:
+    - .*
+    type: regex
   - name: akamai
     part: header
     type: word
@@ -3161,6 +3192,104 @@ http:
     type: word
     words:
     - uvicorn
+  - name: istio-envoy
+    part: server
+    type: word
+    words:
+    - istio-envoy
+  - case-insensitive: true
+    name: clickhouse
+    part: header
+    type: word
+    words:
+    - X-ClickHouse-Summary
+  - name: coolify
+    type: word
+    words:
+    - content="Coolify
+  - name: iqmessenger
+    part: body
+    type: word
+    words:
+    - <title>IQ Messenger</title>
+  - name: sagemcom-tr069
+    part: header
+    type: word
+    words:
+    - realm="Sagemcom TR-069"
+  - name: fastpanel
+    part: body
+    type: word
+    words:
+    - <title>FASTPANEL</title>
+  - name: axema-vaka
+    part: body
+    type: word
+    words:
+    - <title>Vaka</title>
+  - name: ksenia-security
+    part: body
+    type: word
+    words:
+    - <title>Ksenia Lares WebServer</title>
+  - condition: or
+    name: topdesk
+    part: body
+    type: word
+    words:
+    - /tas/css/auth.css
+    - topdeskidploginforwardurl
+  - name: usergate-utm
+    part: body
+    type: word
+    words:
+    - <title>UserGate UTM</title>
+  - name: usergate-ngfw
+    part: body
+    type: word
+    words:
+    - <title>UserGate NGFW</title>
+  - name: mikrotik-routeros
+    part: body
+    type: word
+    words:
+    - <title>RouterOS router configuration page</title>
+  - name: satel-ethm1-plus
+    part: body
+    type: word
+    words:
+    - <title>ETHM-1 Plus</title>
+  - name: qlik-sense
+    part: body
+    type: word
+    words:
+    - <title>Qlik Sense login page</title>
+  - name: wit-redy
+    part: header
+    type: word
+    words:
+    - 'Server: REDY-Process'
+  - name: entels-entec
+    part: body
+    type: word
+    words:
+    - href="css/img/ENTEK.ico"
+  - name: macroscop
+    part: body
+    type: word
+    words:
+    - <title>Macroscop Web Client</title>
+    - <title>macroscop</title>
+  - name: etic-telecom
+    part: body
+    type: word
+    words:
+    - <title>Etic Telecom</title>
+  - name: checkpoint-quantum-spark
+    part: body
+    type: word
+    words:
+    - content="Quantum Spark Security Appliance - Login"
   matchers-condition: or
   max-redirects: 2
   method: GET
@@ -3168,9 +3297,9 @@ http:
   - '{{BaseURL}}'
 id: tech-detect
 info:
-  author: hakluke
+  author: hakluke,righettod,matejsmycka
   metadata:
     max-request: 1
   name: Wappalyzer Technology Detection
   severity: info
-  tags: tech
+  tags: tech,discovery

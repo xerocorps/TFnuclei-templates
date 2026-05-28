@@ -14,12 +14,14 @@ id: manageengine-applications-manager
 info:
   author: dhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:zohocorp:manageengine_applications_manager:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: ZOHO ManageEngine panel was detected.
   metadata:
     max-request: 1
+    product: manageengine_applications_manager
+    vendor: zohocorp
   name: ZOHO ManageEngine Applications Manager Panel - Detected
   severity: info
-  tags: panel,zoho,manageengine
+  tags: panel,zoho,manageengine,zohocorp,discovery

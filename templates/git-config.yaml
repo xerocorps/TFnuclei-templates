@@ -1,7 +1,18 @@
 http:
-- matchers:
-  - type: word
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - url ?= ?https?://(.*:.*)@
+    - 'AUTHORIZATION: basic (.*)'
+    - pass = (.*)
+    type: regex
+  matchers:
+  - condition: or
+    part: body
+    type: word
     words:
+    - '[credentials]'
     - '[core]'
   - condition: and
     dsl:
@@ -17,7 +28,7 @@ http:
   - '{{BaseURL}}/.git/config'
 id: git-config
 info:
-  author: pdteam,pikpikcu,Mah3Sec_
+  author: pdteam,pikpikcu,Mah3Sec_,m4lwhere
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
@@ -28,4 +39,4 @@ info:
     max-request: 1
   name: Git Configuration - Detect
   severity: medium
-  tags: config,git,exposure
+  tags: config,git,exposure,vuln

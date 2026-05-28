@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  extractors:
+- extractors:
   - group: 1
     internal: true
     name: seatreg-admin-nonce
@@ -49,9 +48,10 @@ info:
     '
   metadata:
     max-request: 3
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     verified: true
-  name: "WordPress Plugin \u2018SeatReg\u2019  - Open Redirect"
+  name: "WordPress Plugin \u2018SeatReg\u2019 - Open Redirect"
   reference:
   - https://packetstormsecurity.com/files/167888/WordPress-SeatReg-1.23.0-Open-Redirect.html
   severity: medium
-  tags: redirect,packetstorm,seatreg,wp-plugin,wp,wordpress,authenticated
+  tags: redirect,packetstorm,seatreg,wp-plugin,wp,wordpress,authenticated,vuln

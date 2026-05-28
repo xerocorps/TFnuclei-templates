@@ -15,14 +15,22 @@ id: vmware-vcenter-converter-standalone
 info:
   author: DhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:vmware:vcenter_converter_standalone:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: VMware vCenter Converter panel was detected.
   metadata:
+    fofa-query: title="vmware vcenter converter standalone"
+    google-query: intitle:"vmware vcenter converter standalone"
     max-request: 1
-    shodan-query: title:"VMware vCenter Converter Standalone"
+    product: vcenter_converter_standalone
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)vmware vcenter
+      converter standalone"})
+    shodan-query:
+    - title:"VMware vCenter Converter Standalone"
+    - http.title:"vmware vcenter converter standalone"
+    vendor: vmware
     verified: true
   name: VMware vCenter Converter Panel - Detect
   severity: info
-  tags: panel,vmware,vcenter
+  tags: discovery,panel,vcenter,vmware

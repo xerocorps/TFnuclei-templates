@@ -10,16 +10,14 @@ info:
     verified: true
   name: Rsync Version - Detect
   severity: info
-  tags: js,network,rsync,enum
+  tags: js,network,rsync,enum,discovery
 javascript:
 - args:
     Host: '{{Host}}'
-    Port: '873'
+    Port: 873
   code: 'let m = require(''nuclei/rsync'');
 
-    let c = m.RsyncClient();
-
-    let response = c.IsRsync(Host,Port);
+    let response = m.IsRsync(Host,Port);
 
     Export(response);
 
@@ -27,4 +25,12 @@ javascript:
   extractors:
   - json:
     - .Banner
+    name: version
     type: json
+  matchers:
+  - dsl:
+    - len(version) != 0
+    type: dsl
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

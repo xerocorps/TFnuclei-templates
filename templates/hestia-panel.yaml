@@ -17,16 +17,27 @@ id: hestia-panel
 info:
   author: JustaAcat
   classification:
+    cpe: cpe:2.3:a:hestiacp:control_panel:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Hestia Control Panel login was detected.
   metadata:
+    fofa-query:
+    - icon_hash=-476299640
+    - title="hestia control panel"
+    google-query: intitle:"hestia control panel"
     max-request: 1
-    shodan-query: title:"Hestia Control Panel"
+    product: control_panel
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)hestia control
+      panel"}) || service["favicon.ico.image.mmh3"] == "-476299640"
+    shodan-query:
+    - title:"Hestia Control Panel"
+    - http.favicon.hash:-476299640
+    - http.title:"hestia control panel"
+    vendor: hestiacp
     verified: true
   name: Hestia Control Panel Login - Detect
   reference:
   - https://hestiacp.com/
   severity: info
-  tags: panel,hestia,detect
+  tags: detect,discovery,hestia,hestiacp,panel

@@ -19,14 +19,21 @@ info:
   author: ritikchaddha
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: HighMail admin login panel was detected.
   metadata:
-    fofa-query: title="HighMail"
+    fofa-query:
+    - title="HighMail"
+    - title="highmail"
+    google-query: intitle:"highmail"
     max-request: 2
-    shodan-query: title:"HighMail"
+    product: high_cms
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)highmail"})
+    shodan-query:
+    - title:"HighMail"
+    - http.title:"highmail"
+    vendor: aryanic
     verified: true
   name: HighMail Admin Login Panel - Detect
   severity: info
-  tags: highmail,panel
+  tags: aryanic,discovery,highmail,panel

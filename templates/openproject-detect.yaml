@@ -24,13 +24,17 @@ http:
 id: openproject-detect
 info:
   author: ricardomaia
+  classification:
+    cpe: cpe:2.3:a:openproject:openproject:*:*:*:*:*:*:*:*
   description: OpenProject is an open source web-based project management software.
   metadata:
     max-request: 3
+    product: openproject
     shodan-query: title:"openproject"
+    vendor: openproject
     verified: 'true'
   name: OpenProject - Detect
   reference:
   - https://www.openproject.org/
   severity: info
-  tags: tech,openproject,api,detect
+  tags: tech,openproject,api,detect,discovery

@@ -10,9 +10,13 @@ http:
 id: default-fastcgi-page
 info:
   author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:fastcgi:fcgi:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: fcgi
     shodan-query: http.title:"FastCGI"
+    vendor: fastcgi
   name: Fastcgi Default Test Page
   severity: info
-  tags: tech,fastcgi
+  tags: tech,fastcgi,discovery

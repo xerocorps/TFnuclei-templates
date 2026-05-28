@@ -17,6 +17,8 @@ http:
 id: cisco-onprem-panel
 info:
   author: irshad ahamed
+  classification:
+    cpe: cpe:2.3:a:cisco:smart_software_manager_on-prem:*:*:*:*:*:*:*:*
   description: 'Cisco Smart Software Manager On-Prem is an on-premises software license
     management solution offered by Cisco. It enables organizations to manage and optimize
     their Cisco software licenses, entitlements, and usage in their local data centers,
@@ -24,13 +26,22 @@ info:
 
     '
   metadata:
-    fofa-query: title="On-Prem License Workspace"
+    fofa-query:
+    - title="On-Prem License Workspace"
+    - title="on-prem license workspace"
+    google-query: intitle:"on-prem license workspace"
     max-request: 2
-    shodan-query: title:"On-Prem License Workspace"
+    product: smart_software_manager_on-prem
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)on-prem license
+      workspace"})
+    shodan-query:
+    - title:"On-Prem License Workspace"
+    - http.title:"on-prem license workspace"
+    vendor: cisco
     verified: true
   name: Cisco Smart Software Manager On-Prem Panel - Detect
   reference:
   - https://www.cisco.com/c/en/us/products/collateral/cloud-systems-management/smart-software-manager-satellite/datasheet-c78-734539.html
   - https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ssm-sql-X9MmjSYh
   severity: info
-  tags: cisco,manager,login,panel
+  tags: cisco,discovery,login,manager,panel

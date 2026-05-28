@@ -1,7 +1,8 @@
 http:
 - matchers:
-  - regex:
-    - toor:[x*]:0:0
+  - part: body
+    regex:
+    - 'root:.*:0:0:'
     type: regex
   - status:
     - 200
@@ -24,4 +25,4 @@ info:
   reference:
   - https://blog.csdn.net/qq_41901122/article/details/116786883
   severity: high
-  tags: blue-ocean,lfi
+  tags: lfi

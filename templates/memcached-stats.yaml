@@ -7,7 +7,7 @@ info:
 network:
 - host:
   - '{{Hostname}}'
-  - '{{Hostname}}:11211'
+  - '{{Host}}:11211'
   inputs:
   - data: "stats\r\n\r\nquit\r\n"
   matchers:

@@ -16,13 +16,17 @@ http:
 id: perfsonar-toolkit
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:perfsonar:perfsonar:*:*:*:*:*:*:*:*
   description: perfSONAR Toolkit is exposed.
   metadata:
     max-request: 1
+    product: perfsonar
     shodan-query: title:"perfSONAR"
+    vendor: perfsonar
     verified: true
   name: perfSONAR Toolkit - Exposure
   reference:
   - https://www.facebook.com/photo?fbid=619180260252497&set=pcb.619180283585828
   severity: medium
-  tags: misconfig,perfsonar,toolkit
+  tags: misconfig,perfsonar,toolkit,vuln

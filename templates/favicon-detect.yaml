@@ -1,29 +1,44 @@
 http:
-- host-redirects: true
+- extractors:
+  - dsl:
+    - mmh3(base64_py(body))
+    type: dsl
+  host-redirects: true
   matchers:
   - dsl:
-    - len(body)==2336 && status_code==200 && ("02f4db63a9cfb650c05ffd82956cbfd6" ==
-      md5(body))
+    - status_code==200 && ("385597939" == mmh3(base64_py(body)))
+    name: skysea-clientview
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-60395993" == mmh3(base64_py(body)))
+    name: ictbroadcast
+    type: dsl
+  - dsl:
+    - status_code==200 && ("394527072" == mmh3(base64_py(body)))
+    name: brightdata-proxies
+    type: dsl
+  - dsl:
+    - status_code==200 && ("213144638" == mmh3(base64_py(body)))
     name: proxmox
     type: dsl
   - dsl:
-    - len(body)==3638 && status_code==200 && ("59a0c7b6e4848ccdabcea0636efda02b" ==
-      md5(body))
+    - status_code==200 && ("-503480258" == mmh3(base64_py(body)))
     name: blogger
     type: dsl
   - dsl:
-    - len(body)==1150 && status_code==200 && ("421e176ae0837bcc6b879ef55adbc897" ==
-      md5(body))
+    - status_code==200 && ("1414300307" == mmh3(base64_py(body)))
     name: oracle
     type: dsl
   - dsl:
-    - len(body)==894 && status_code==200 && ("41e9c43dc5e994ca7a40f4f92b50d01d" ==
-      md5(body))
+    - status_code==200 && ("92627686" == mmh3(base64_py(body)))
     name: hitachi
     type: dsl
   - dsl:
-    - len(body)==1406 && status_code==200 && ("4b2524b4f28eac7d0e872b0e1323c02d" ==
-      md5(body))
+    - status_code==200 && ("94231047" == mmh3(base64_py(body)))
+    name: hitachi-management
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-676779906" == mmh3(base64_py(body)))
     name: meinberg
     type: dsl
   - dsl:
@@ -33,10 +48,6 @@ http:
   - dsl:
     - status_code==200 && ("116323821" == mmh3(base64_py(body)))
     name: spring-boot
-    type: dsl
-  - dsl:
-    - status_code==200 && ("81586312" == mmh3(base64_py(body)))
-    name: jenkins
     type: dsl
   - dsl:
     - status_code==200 && ("-235701012" == mmh3(base64_py(body)))
@@ -248,7 +259,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-1395400951" == mmh3(base64_py(body)))
-    name: huawei-adsl/router
+    name: huawei-adsl -router
     type: dsl
   - dsl:
     - status_code==200 && ("1601194732" == mmh3(base64_py(body)))
@@ -284,7 +295,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("1045696447" == mmh3(base64_py(body)))
-    name: sophos-user-portal/vpn-portal
+    name: sophos-user-portal
     type: dsl
   - dsl:
     - status_code==200 && ("-297069493" == mmh3(base64_py(body)))
@@ -356,7 +367,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("459900502" == mmh3(base64_py(body)))
-    name: zte-corporation-gateway/appliance
+    name: zte-corporation-gateway-appliance
     type: dsl
   - dsl:
     - status_code==200 && ("-2069844696" == mmh3(base64_py(body)))
@@ -380,7 +391,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-1929912510" == mmh3(base64_py(body)))
-    name: netasq---secure-/-stormshield
+    name: netasq-secure-stormshield
     type: dsl
   - dsl:
     - status_code==200 && ("-1255992602" == mmh3(base64_py(body)))
@@ -448,7 +459,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-1240222446" == mmh3(base64_py(body)))
-    name: zhejiang-uniview-technologies-co.
+    name: zhejiang-uniview-technologies
     type: dsl
   - dsl:
     - status_code==200 && ("-986678507" == mmh3(base64_py(body)))
@@ -568,7 +579,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("1326164945" == mmh3(base64_py(body)))
-    name: shock&innovation!!-netis-setup
+    name: shock&innovation-netis-setup
     type: dsl
   - dsl:
     - status_code==200 && ("-1738184811" == mmh3(base64_py(body)))
@@ -580,7 +591,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("905744673" == mmh3(base64_py(body)))
-    name: hp-printer/server
+    name: hp-printer
     type: dsl
   - dsl:
     - status_code==200 && ("902521196" == mmh3(base64_py(body)))
@@ -592,7 +603,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-1205024243" == mmh3(base64_py(body)))
-    name: lwip-a-lightweight-tcp/ip-stack
+    name: lwip-a-lightweight-tcp-ip-stack
     type: dsl
   - dsl:
     - status_code==200 && ("607846949" == mmh3(base64_py(body)))
@@ -620,7 +631,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("252728887" == mmh3(base64_py(body)))
-    name: dd-wrt-dd-wrt-milli_httpd
+    name: dd-wrt-milli-httpd
     type: dsl
   - dsl:
     - status_code==200 && ("-1922044295" == mmh3(base64_py(body)))
@@ -692,7 +703,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-629047854" == mmh3(base64_py(body)))
-    name: jetty-404
+    name: jetty-
     type: dsl
   - dsl:
     - status_code==200 && ("-1351901211" == mmh3(base64_py(body)))
@@ -704,7 +715,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-2144363468" == mmh3(base64_py(body)))
-    name: hp-printer-/-server
+    name: hp-printer-server
     type: dsl
   - dsl:
     - status_code==200 && ("-127886975" == mmh3(base64_py(body)))
@@ -748,7 +759,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-873627015" == mmh3(base64_py(body)))
-    name: herospeed-digital-technology-co.-nvr/ipc/xvr
+    name: herospeed-digital-technology-co
     type: dsl
   - dsl:
     - status_code==200 && ("2071993228" == mmh3(base64_py(body)))
@@ -812,7 +823,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("711742418" == mmh3(base64_py(body)))
-    name: hitron-technologies-inc.
+    name: hitron-technologies-inc
     type: dsl
   - dsl:
     - status_code==200 && ("728788645" == mmh3(base64_py(body)))
@@ -948,11 +959,11 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-972810761" == mmh3(base64_py(body)))
-    name: hostmonster---web-hosting
+    name: hostmonster-web-hosting
     type: dsl
   - dsl:
     - status_code==200 && ("1703788174" == mmh3(base64_py(body)))
-    name: d-link-router/network
+    name: d-link-router-network
     type: dsl
   - dsl:
     - status_code==200 && ("225632504" == mmh3(base64_py(body)))
@@ -972,7 +983,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-374235895" == mmh3(base64_py(body)))
-    name: ossia-provision-sr-|-webcam/ip-camera
+    name: ossia-provision-sr
     type: dsl
   - dsl:
     - status_code==200 && ("1544230796" == mmh3(base64_py(body)))
@@ -980,7 +991,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("517158172" == mmh3(base64_py(body)))
-    name: d-link-router/network
+    name: d-link-router-network
     type: dsl
   - dsl:
     - status_code==200 && ("462223993" == mmh3(base64_py(body)))
@@ -992,7 +1003,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("1991562061" == mmh3(base64_py(body)))
-    name: niagara-web-server-/-tridium
+    name: niagara-web-server-tridium
     type: dsl
   - dsl:
     - status_code==200 && ("812385209" == mmh3(base64_py(body)))
@@ -1008,7 +1019,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("72005642" == mmh3(base64_py(body)))
-    name: remobjects-sdk-/-remoting-sdk-for-.net-http-server-microsoft
+    name: remobjects-sdk-remoting-sdk
     type: dsl
   - dsl:
     - status_code==200 && ("-484708885" == mmh3(base64_py(body)))
@@ -1124,7 +1135,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-505448917" == mmh3(base64_py(body)))
-    name: discuz!
+    name: discuz
     type: dsl
   - dsl:
     - status_code==200 && ("255892555" == mmh3(base64_py(body)))
@@ -1176,7 +1187,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-35107086" == mmh3(base64_py(body)))
-    name: worldclient-for-mdaemon
+    name: worldclient-mdaemon
     type: dsl
   - dsl:
     - status_code==200 && ("2055322029" == mmh3(base64_py(body)))
@@ -1208,7 +1219,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("156312019" == mmh3(base64_py(body)))
-    name: technicolor-/-thomson-speedtouch-network-/-adsl
+    name: technicolor-thomson-speedtouch-network-adsl
     type: dsl
   - dsl:
     - status_code==200 && ("-560297467" == mmh3(base64_py(body)))
@@ -1236,11 +1247,11 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("224536051" == mmh3(base64_py(body)))
-    name: shenzhen-coship-electronics-co.
+    name: shenzhen-coship-electronics
     type: dsl
   - dsl:
     - status_code==200 && ("1038500535" == mmh3(base64_py(body)))
-    name: d-link-router/network
+    name: d-link-router-network
     type: dsl
   - dsl:
     - status_code==200 && ("-355305208" == mmh3(base64_py(body)))
@@ -1348,7 +1359,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-587741716" == mmh3(base64_py(body)))
-    name: adb-broadband-s.p.a.-network
+    name: adb-broadband-spa-network
     type: dsl
   - dsl:
     - status_code==200 && ("-360566773" == mmh3(base64_py(body)))
@@ -1416,7 +1427,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("1648531157" == mmh3(base64_py(body)))
-    name: infinet-wireless-|-wanflex-network
+    name: infinet-wireless-wanflex-network
     type: dsl
   - dsl:
     - status_code==200 && ("938616453" == mmh3(base64_py(body)))
@@ -1436,7 +1447,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-644617577" == mmh3(base64_py(body)))
-    name: smartlan/g
+    name: smartlang
     type: dsl
   - dsl:
     - status_code==200 && ("-1822098181" == mmh3(base64_py(body)))
@@ -1672,7 +1683,11 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-687783882" == mmh3(base64_py(body)))
-    name: claimtime-ramsell-public-health-&-safety
+    name: claimtime-ramsell-public-health-safety
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-805544463" == mmh3(base64_py(body)))
+    name: clawdbot-control-panel
     type: dsl
   - dsl:
     - status_code==200 && ("-590892202" == mmh3(base64_py(body)))
@@ -1684,7 +1699,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("784872924" == mmh3(base64_py(body)))
-    name: lucee!
+    name: lucee
     type: dsl
   - dsl:
     - status_code==200 && ("1135165421" == mmh3(base64_py(body)))
@@ -1768,7 +1783,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("381100274" == mmh3(base64_py(body)))
-    name: moxapass-iologik-remote-ethernet-i/o-server-
+    name: moxapass-iologik-remote-ethernet-io-server
     type: dsl
   - dsl:
     - status_code==200 && ("2124459909" == mmh3(base64_py(body)))
@@ -1835,6 +1850,10 @@ http:
     name: liquidfiles
     type: dsl
   - dsl:
+    - status_code==200 && ("1906448386" == mmh3(base64_py(body)))
+    name: liquidfiles
+    type: dsl
+  - dsl:
     - status_code==200 && ("-882760066" == mmh3(base64_py(body)))
     name: zyxel-network
     type: dsl
@@ -1848,11 +1867,11 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-647318973" == mmh3(base64_py(body)))
-    name: gm77[.]com
+    name: gm77
     type: dsl
   - dsl:
     - status_code==200 && ("-1583478052" == mmh3(base64_py(body)))
-    name: okazik[.]pl
+    name: okazik
     type: dsl
   - dsl:
     - status_code==200 && ("1969970750" == mmh3(base64_py(body)))
@@ -1900,7 +1919,7 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-166151761" == mmh3(base64_py(body)))
-    name: abilis-network/automation
+    name: abilis-network-automation
     type: dsl
   - dsl:
     - status_code==200 && ("-1231681737" == mmh3(base64_py(body)))
@@ -2035,10 +2054,6 @@ http:
     name: KevinLAB
     type: dsl
   - dsl:
-    - status_code==200 && ("762074255" == mmh3(base64_py(body)))
-    name: qdPM
-    type: dsl
-  - dsl:
     - status_code==200 && ("-521603470" == mmh3(base64_py(body)))
     name: cisco-ucs
     type: dsl
@@ -2112,24 +2127,989 @@ http:
     type: dsl
   - dsl:
     - status_code==200 && ("-1252041730" == mmh3(base64_py(body)))
-    name: Vue.js
+    name: Vue
     type: dsl
   - dsl:
     - status_code==200 && ("-830586692" == mmh3(base64_py(body)))
     name: Sophos Email Appliance
     type: dsl
+  - dsl:
+    - status_code==200 && ("557327884" == mmh3(base64_py(body)))
+    name: Temporal Web UI
+    type: dsl
+  - dsl:
+    - status_code==200 && ("116323821" == mmh3(base64_py(body)))
+    name: Springboot Actuators
+    type: dsl
+  - dsl:
+    - status_code==200 && ("431627549" == mmh3(base64_py(body)))
+    name: Snipe-IT
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1893514038" == mmh3(base64_py(body)))
+    name: RSSHub
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1101206929" == mmh3(base64_py(body)))
+    name: SECUI WAF
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1261322577" == mmh3(base64_py(body)))
+    name: Aqua Enterprise
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1379982221" == mmh3(base64_py(body)))
+    name: Bamboo
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1383463717" == mmh3(base64_py(body)))
+    name: Iparapheur
+    type: dsl
+  - dsl:
+    - status_code==200 && ("419828698" == mmh3(base64_py(body)))
+    name: MonstraCMS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("635899646" == mmh3(base64_py(body)))
+    name: Silverback MDM
+    type: dsl
+  - dsl:
+    - status_code==200 && ("999357577" == mmh3(base64_py(body)))
+    name: Hikvision
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1781653957" == mmh3(base64_py(body)))
+    name: LimeSurvey Survey Software
+    type: dsl
+  - dsl:
+    - status_code==200 && ("81586312" == mmh3(base64_py(body)))
+    name: Jenkins
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1529860313" == mmh3(base64_py(body)))
+    name: OSQuery Fleet
+    type: dsl
+  - dsl:
+    - status_code==200 && ("407286339" == mmh3(base64_py(body)))
+    name: OpenTSDB
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-234335289" == mmh3(base64_py(body)))
+    name: WebMethod Integration Server
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1199592666" == mmh3(base64_py(body)))
+    name: Structurizr
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-670975485" == mmh3(base64_py(body)))
+    name: EmqDefault
+    type: dsl
+  - dsl:
+    - status_code==200 && ("321591353" == mmh3(base64_py(body)))
+    name: Node-Red
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2134367771" == mmh3(base64_py(body)))
+    name: TimeKeeper
+    type: dsl
+  - dsl:
+    - status_code==200 && ("11794165" == mmh3(base64_py(body)))
+    name: Apollo
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1691956220" == mmh3(base64_py(body)))
+    name: XXL-JOB
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-655683626" == mmh3(base64_py(body)))
+    name: PRTG Network Monitor
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-977323269" == mmh3(base64_py(body)))
+    name: Everything Server
+    type: dsl
+  - dsl:
+    - status_code==200 && ("450899026" == mmh3(base64_py(body)))
+    name: Laravel Horizon
+    type: dsl
+  - dsl:
+    - status_code==200 && ("557327884" == mmh3(base64_py(body)))
+    name: Temporal Web UI
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1052926265" == mmh3(base64_py(body)))
+    name: File Browser
+    type: dsl
+  - dsl:
+    - status_code==200 && ("969374472" == mmh3(base64_py(body)))
+    name: RethinkDB Administration Console
+    type: dsl
+  - dsl:
+    - status_code==200 && ("24048806" == mmh3(base64_py(body)))
+    name: Doris Dashboard
+    type: dsl
+  - dsl:
+    - status_code==200 && ("587330928" == mmh3(base64_py(body)))
+    name: Apache Impala
+    type: dsl
+  - dsl:
+    - status_code==200 && ("786533217" == mmh3(base64_py(body)))
+    name: Openstack
+    type: dsl
+  - dsl:
+    - status_code==200 && ("450899026" == mmh3(base64_py(body)))
+    name: Jupyter Lab
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1117549627" == mmh3(base64_py(body)))
+    name: Fastvue
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1478287554" == mmh3(base64_py(body)))
+    name: TeslaMate
+    type: dsl
+  - dsl:
+    - status_code==200 && ("932345713" == mmh3(base64_py(body)))
+    name: Prometheus Promtail
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-374133142" == mmh3(base64_py(body)))
+    name: Celery Flower
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1373456171" == mmh3(base64_py(body)))
+    name: Setup GitHub Enterprise
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1550906681" == mmh3(base64_py(body)))
+    name: OpenBMCS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1550906681" == mmh3(base64_py(body)))
+    name: OpenBMCS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-347188002" == mmh3(base64_py(body)))
+    name: Acuneti360
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2099342476" == mmh3(base64_py(body)))
+    name: Open Journal Systems
+    type: dsl
+  - dsl:
+    - status_code==200 && ("538583492" == mmh3(base64_py(body)))
+    name: ClipBucket
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2115208104" == mmh3(base64_py(body)))
+    name: Bitrix24
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1575154882" == mmh3(base64_py(body)))
+    name: Netsparker Enterprise
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-50306417" == mmh3(base64_py(body)))
+    name: Kyocera Printer
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1595726841" == mmh3(base64_py(body)))
+    name: AceNet AceReporter Report
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1298131932" == mmh3(base64_py(body)))
+    name: jshERP
+    type: dsl
+  - dsl:
+    - status_code==200 && ("965982073" == mmh3(base64_py(body)))
+    name: IBM OpenAdmin Tool
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-81573405" == mmh3(base64_py(body)))
+    name: iSAMS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-749942143" == mmh3(base64_py(body)))
+    name: Sensu by Sumo Logic
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1398055326" == mmh3(base64_py(body)))
+    name: WSO2 Management Console
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-850502287" == mmh3(base64_py(body)))
+    name: Buddy
+    type: dsl
+  - dsl:
+    - status_code==200 && ("824580113" == mmh3(base64_py(body)))
+    name: T-Up OpenFrame
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1653394551" == mmh3(base64_py(body)))
+    name: Dahua Web Service
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-741491222" == mmh3(base64_py(body)))
+    name: Horde
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-919788577" == mmh3(base64_py(body)))
+    name: Vault
+    type: dsl
+  - dsl:
+    - status_code==200 && ("464587962" == mmh3(base64_py(body)))
+    name: Rancher
+    type: dsl
+  - dsl:
+    - status_code==200 && ("816588900" == mmh3(base64_py(body)))
+    name: ShardingSphere ElasticJob UI
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1264095219" == mmh3(base64_py(body)))
+    name: OpenBullet
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1298131932" == mmh3(base64_py(body)))
+    name: JshERP Boot
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1262005940" == mmh3(base64_py(body)))
+    name: Jamf MDM
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1595726841" == mmh3(base64_py(body)))
+    name: AceNet AceReporter Report
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2104916232" == mmh3(base64_py(body)))
+    name: Horde Webmail
+    type: dsl
+  - dsl:
+    - status_code==200 && ("540706145" == mmh3(base64_py(body)))
+    name: Piwigo
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1198579728" == mmh3(base64_py(body)))
+    name: DbGate Web Client Management
+    type: dsl
+  - dsl:
+    - status_code==200 && ("305412257" == mmh3(base64_py(body)))
+    name: Eventum
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1354079303" == mmh3(base64_py(body)))
+    name: Drone CI
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-893681401" == mmh3(base64_py(body)))
+    name: Sophos Web Appliance
+    type: dsl
+  - dsl:
+    - status_code==200 && ("942678640" == mmh3(base64_py(body)))
+    name: Proofpoint Protection Server
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-633108100" == mmh3(base64_py(body)))
+    name: Appwrite
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-417785140" == mmh3(base64_py(body)))
+    name: Homer
+    type: dsl
+  - dsl:
+    - status_code==200 && ("983734701" == mmh3(base64_py(body)))
+    name: Avatier Password Management
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1127895693" == mmh3(base64_py(body)))
+    name: Zuul
+    type: dsl
+  - dsl:
+    - status_code==200 && ("957255151" == mmh3(base64_py(body)))
+    name: SAS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1199592666" == mmh3(base64_py(body)))
+    name: Structurizr
+    type: dsl
+  - dsl:
+    - status_code==200 && ("176427349" == mmh3(base64_py(body)))
+    name: UniboPanel
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1768726119" == mmh3(base64_py(body)))
+    name: Microsoft Exchange Web Service
+    type: dsl
+  - dsl:
+    - status_code==200 && ("698624197" == mmh3(base64_py(body)))
+    name: Redash
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1324930554" == mmh3(base64_py(body)))
+    name: Rancher Dashboard
+    type: dsl
+  - dsl:
+    - status_code==200 && ("967636089" == mmh3(base64_py(body)))
+    name: MobileIron Sentry
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1105083093" == mmh3(base64_py(body)))
+    name: Keycloak Admin
+    type: dsl
+  - dsl:
+    - status_code==200 && ("213144638" == mmh3(base64_py(body)))
+    name: ProxmoVirtual Environment
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2017604252" == mmh3(base64_py(body)))
+    name: Jellyseerr
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1249285083" == mmh3(base64_py(body)))
+    name: airCube
+    type: dsl
+  - dsl:
+    - status_code==200 && ("115295460" == mmh3(base64_py(body)))
+    name: Strider CD
+    type: dsl
+  - dsl:
+    - status_code==200 && ("151132309" == mmh3(base64_py(body)))
+    name: CloudPanel
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2144699833" == mmh3(base64_py(body)))
+    name: Kasm
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-633512412" == mmh3(base64_py(body)))
+    name: Veeam
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1013024216" == mmh3(base64_py(body)))
+    name: Dashy
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1889244460" == mmh3(base64_py(body)))
+    name: ArcServe
+    type: dsl
+  - dsl:
+    - status_code==200 && ("933976300" == mmh3(base64_py(body)))
+    name: Pichome
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1215318992" == mmh3(base64_py(body)))
+    name: Kiteworks PCN
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1691956220" == mmh3(base64_py(body)))
+    name: XXLJOB Admin
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1970367401" == mmh3(base64_py(body)))
+    name: Vidyo Admin
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1552322396" == mmh3(base64_py(body)))
+    name: Seafile
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2056442365" == mmh3(base64_py(body)))
+    name: Kanboard
+    type: dsl
+  - dsl:
+    - status_code==200 && ("876876147" == mmh3(base64_py(body)))
+    name: Virtua Software
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1011076161" == mmh3(base64_py(body)))
+    name: ASPECT Control
+    type: dsl
+  - dsl:
+    - status_code==200 && ("598296063" == mmh3(base64_py(body)))
+    name: Navicat On-Prem Server
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1898583197" == mmh3(base64_py(body)))
+    name: OpenVZ Web
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-800060828" == mmh3(base64_py(body)))
+    name: OfficeKeeper Admin
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1949005079" == mmh3(base64_py(body)))
+    name: Modoboa
+    type: dsl
+  - dsl:
+    - status_code==200 && ("419828698" == mmh3(base64_py(body)))
+    name: Monstra Admin
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-839356603" == mmh3(base64_py(body)))
+    name: Apigee
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-43504595" == mmh3(base64_py(body)))
+    name: Immich
+    type: dsl
+  - dsl:
+    - status_code==200 && ("662709064" == mmh3(base64_py(body)))
+    name: MantisBT
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1074357885" == mmh3(base64_py(body)))
+    name: WD My Cloud
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1701804003" == mmh3(base64_py(body)))
+    name: ServiceNow
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1706783005" == mmh3(base64_py(body)))
+    name: Atlantis
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-578216669" == mmh3(base64_py(body)))
+    name: RaspberryMatic
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1693580324" == mmh3(base64_py(body)))
+    name: Eagle For Apache Kakfa
+    type: dsl
+  - dsl:
+    - status_code==200 && ("129457226" == mmh3(base64_py(body)))
+    name: Liferay
+    type: dsl
+  - dsl:
+    - status_code==200 && ("889652940" == mmh3(base64_py(body)))
+    name: Archibus Web Central
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-629968763" == mmh3(base64_py(body)))
+    name: Shell In A Bo
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1817615343" == mmh3(base64_py(body)))
+    name: Regify
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1416464161" == mmh3(base64_py(body)))
+    name: SolarWinds ARM
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1828614783" == mmh3(base64_py(body)))
+    name: Dynatrace
+    type: dsl
+  - dsl:
+    - status_code==200 && ("781922099" == mmh3(base64_py(body)))
+    name: Sunbird DCIM
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-379154636" == mmh3(base64_py(body)))
+    name: KubeView
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1604363273" == mmh3(base64_py(body)))
+    name: HiveManager
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1663319756" == mmh3(base64_py(body)))
+    name: SAUTER moduWeb Vision
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1090061843" == mmh3(base64_py(body)))
+    name: WebTitan Cloud
+    type: dsl
+  - dsl:
+    - status_code==200 && ("739801466" == mmh3(base64_py(body)))
+    name: Cofense Vision
+    type: dsl
+  - dsl:
+    - status_code==200 && ("24048806" == mmh3(base64_py(body)))
+    name: Doris
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1052926265" == mmh3(base64_py(body)))
+    name: File Browser
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1343712810" == mmh3(base64_py(body)))
+    name: Joget
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-399298961" == mmh3(base64_py(body)))
+    name: IBM Maximo
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1337147129" == mmh3(base64_py(body)))
+    name: IBM WebSphere Application
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-440644339" == mmh3(base64_py(body)))
+    name: Zyxel Firewall
+    type: dsl
+  - dsl:
+    - status_code==200 && ("945408572" == mmh3(base64_py(body)))
+    name: Fortinet FortiOS Management Interface
+    type: dsl
+  - dsl:
+    - status_code==200 && ("945408572" == mmh3(base64_py(body)))
+    name: FortiOS Admin
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1961736892" == mmh3(base64_py(body)))
+    name: DzzOffice
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1961736892" == mmh3(base64_py(body)))
+    name: DzzOffice
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1198579728" == mmh3(base64_py(body)))
+    name: DbGate Web Client
+    type: dsl
+  - dsl:
+    - status_code==200 && ("116323821" == mmh3(base64_py(body)))
+    name: Spring Boot H2 Database
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-902890504" == mmh3(base64_py(body)))
+    name: Universal Media Server
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1548359600" == mmh3(base64_py(body)))
+    name: SOUND4 IMPACTFIRST PULSE Eco
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1950415971" == mmh3(base64_py(body)))
+    name: Joomla JLeReview
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2032163853" == mmh3(base64_py(body)))
+    name: Jorani Benjamin BALET
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2124459909" == mmh3(base64_py(body)))
+    name: HTTP File Server
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2073748627" == mmh3(base64_py(body)))
+    name: MSNSwitch Firmware MNT
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1521640213" == mmh3(base64_py(body)))
+    name: HotelDruid Hotel Management Software
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-582931176" == mmh3(base64_py(body)))
+    name: NexusPHP
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1274798165" == mmh3(base64_py(body)))
+    name: Sophos Mobile managed on-premises
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1398055326" == mmh3(base64_py(body)))
+    name: WSO2 Management
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1474875778" == mmh3(base64_py(body)))
+    name: GLPI
+    type: dsl
+  - dsl:
+    - status_code==200 && ("217119619" == mmh3(base64_py(body)))
+    name: RStudio Connect
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1410071322" == mmh3(base64_py(body)))
+    name: SmarterTools SmarterTrack
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1464851260" == mmh3(base64_py(body)))
+    name: MCMS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("816588900" == mmh3(base64_py(body)))
+    name: Apache ShardingSphere ElasticJob-UI
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-244067125" == mmh3(base64_py(body)))
+    name: SolarView Compact
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1499940355" == mmh3(base64_py(body)))
+    name: Rukovoditel
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1465760059" == mmh3(base64_py(body)))
+    name: RaspAP
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1250474341" == mmh3(base64_py(body)))
+    name: VMware Workspace ONE Access
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1749354953" == mmh3(base64_py(body)))
+    name: Hitachi Pentaho Business Analytics Server
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1624375939" == mmh3(base64_py(body)))
+    name: Zimbra Collaboration Suite
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1250474341" == mmh3(base64_py(body)))
+    name: VMware
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1350437236" == mmh3(base64_py(body)))
+    name: Wavlink
+    type: dsl
+  - dsl:
+    - status_code==200 && ("874152924" == mmh3(base64_py(body)))
+    name: Likeshop
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1170495932" == mmh3(base64_py(body)))
+    name: Fortra GoAnywhere MFT
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1828756398" == mmh3(base64_py(body)))
+    name: GoAnywhere
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1484947000" == mmh3(base64_py(body)))
+    name: GoAnywhere Web Client
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-74348711" == mmh3(base64_py(body)))
+    name: Qlik Sense Enterprise
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2097033750" == mmh3(base64_py(body)))
+    name: VertaAI ModelDB
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-165631681" == mmh3(base64_py(body)))
+    name: Gibbon
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1099097618" == mmh3(base64_py(body)))
+    name: Squide
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1247684400" == mmh3(base64_py(body)))
+    name: Axigen WebMail
+    type: dsl
+  - dsl:
+    - status_code==200 && ("362091310" == mmh3(base64_py(body)))
+    name: Ivanti Endpoint Manager Mobile (EPMM)
+    type: dsl
+  - dsl:
+    - status_code==200 && ("440258421" == mmh3(base64_py(body)))
+    name: Dolibarr
+    type: dsl
+  - dsl:
+    - status_code==200 && ("780351152" == mmh3(base64_py(body)))
+    name: Microweber
+    type: dsl
+  - dsl:
+    - status_code==200 && ("163538942" == mmh3(base64_py(body)))
+    name: CData RSB Connect
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-50306417" == mmh3(base64_py(body)))
+    name: Kyocera TASKalfa printer
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-165631681" == mmh3(base64_py(body)))
+    name: Gibbon
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1469328760" == mmh3(base64_py(body)))
+    name: PMB
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2032163853" == mmh3(base64_py(body)))
+    name: Jorani
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2017596142" == mmh3(base64_py(body)))
+    name: NocoDB version
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1317621215" == mmh3(base64_py(body)))
+    name: D-Link D-View
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1380908726" == mmh3(base64_py(body)))
+    name: JeecgBoot
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-47932290" == mmh3(base64_py(body)))
+    name: CraftCMS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1199592666" == mmh3(base64_py(body)))
+    name: Structurizr on-premises
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1649949475" == mmh3(base64_py(body)))
+    name: Label Studio
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1484947000" == mmh3(base64_py(body)))
+    name: Fortra GoAnywhere MFT
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1680052984" == mmh3(base64_py(body)))
+    name: Web2py URL
+    type: dsl
+  - dsl:
+    - status_code==200 && ("989289239" == mmh3(base64_py(body)))
+    name: MOVEit Transfer
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1540720428" == mmh3(base64_py(body)))
+    name: SysAid Server
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-476299640" == mmh3(base64_py(body)))
+    name: Hestiacp
+    type: dsl
+  - dsl:
+    - status_code==200 && ("463802404" == mmh3(base64_py(body)))
+    name: Anyscale Ray
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1903390397" == mmh3(base64_py(body)))
+    name: MajorDoMo
+    type: dsl
+  - dsl:
+    - status_code==200 && ("475145467" == mmh3(base64_py(body)))
+    name: Zimbra Collaboration Suite
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1381126564" == mmh3(base64_py(body)))
+    name: SonicWall GMS and Analytics Web Services
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2134367771" == mmh3(base64_py(body)))
+    name: TimeKeeper by FSMLabs
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2144485375" == mmh3(base64_py(body)))
+    name: IceWarp Webmail Server
+    type: dsl
+  - dsl:
+    - status_code==200 && ("362091310" == mmh3(base64_py(body)))
+    name: MobileIron Core
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1189292869" == mmh3(base64_py(body)))
+    name: Flatpress
+    type: dsl
+  - dsl:
+    - status_code==200 && ("463802404" == mmh3(base64_py(body)))
+    name: Ray Static File
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1540720428" == mmh3(base64_py(body)))
+    name: SysAid Help Desk
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2019488876" == mmh3(base64_py(body)))
+    name: Dahua Security
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1414548363" == mmh3(base64_py(body)))
+    name: ThinVNC
+    type: dsl
+  - dsl:
+    - status_code==200 && ("762074255" == mmh3(base64_py(body)))
+    name: qdPM
+    type: dsl
+  - dsl:
+    - status_code==200 && ("876876147" == mmh3(base64_py(body)))
+    name: Virtua Software Cobranca
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1606065523" == mmh3(base64_py(body)))
+    name: Cachet
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2098066288" == mmh3(base64_py(body)))
+    name: GenieACS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("698624197" == mmh3(base64_py(body)))
+    name: Redash Setup Configuration
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1582430156" == mmh3(base64_py(body)))
+    name: Apache Superset
+    type: dsl
+  - dsl:
+    - status_code==200 && ("106844876" == mmh3(base64_py(body)))
+    name: Revive Adserver
+    type: dsl
+  - dsl:
+    - status_code==200 && ("999357577" == mmh3(base64_py(body)))
+    name: Hikvision IP camera NVR
+    type: dsl
+  - dsl:
+    - status_code==200 && ("688609340" == mmh3(base64_py(body)))
+    name: Agentejo Cockpit
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-186961397" == mmh3(base64_py(body)))
+    name: Apache Kylin
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-399298961" == mmh3(base64_py(body)))
+    name: IBM Maximo Asset Management
+    type: dsl
+  - dsl:
+    - status_code==200 && ("419828698" == mmh3(base64_py(body)))
+    name: Monstra CMS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1074357885" == mmh3(base64_py(body)))
+    name: Western Digital MyCloud NAS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1599943282" == mmh3(base64_py(body)))
+    name: FileCatalyst
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1728967963" == mmh3(base64_py(body)))
+    name: Veeam Service Provider Console
+    type: dsl
+  - dsl:
+    - status_code==200 && ("702863115" == mmh3(base64_py(body)))
+    name: mooSocial
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-831756631" == mmh3(base64_py(body)))
+    name: n8n
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-130447705" == mmh3(base64_py(body)))
+    name: umami
+    type: dsl
+  - dsl:
+    - status_code==200 && ("307296554" == mmh3(base64_py(body)))
+    name: snowflake
+    type: dsl
+  - dsl:
+    - status_code==200 && ("697691819" == mmh3(base64_py(body)))
+    name: yardi-voyager
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2019488876" == mmh3(base64_py(body)))
+    name: ic-realtime
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1653394551" == mmh3(base64_py(body)))
+    name: lorex
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1862800928" == mmh3(base64_py(body)))
+    name: ivanti-traffic-manager
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1857752096" == mmh3(base64_py(body)))
+    name: searxng-search
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-601917817" == mmh3(base64_py(body)))
+    name: ip-webcam
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-139383140" == mmh3(base64_py(body)))
+    name: schneider-electric
+    type: dsl
+  - dsl:
+    - status_code==200 && ("953127083" == mmh3(base64_py(body)))
+    name: schneider-electric-xflow
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1323738809" == mmh3(base64_py(body)))
+    name: sonatype-nexus-repository-manager
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1294748862" == mmh3(base64_py(body)))
+    name: fastpanel
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1792417660" == mmh3(base64_py(body)))
+    name: oracle-rest-data-services
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1051205943" == mmh3(base64_py(body)))
+    name: siemens-simatic-s7-1200
+    type: dsl
+  - dsl:
+    - status_code==200 && ("607493189" == mmh3(base64_py(body)))
+    name: teltonika-networks
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1308238121" == mmh3(base64_py(body)))
+    name: reolink
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1519363246" == mmh3(base64_py(body)))
+    name: n-central
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1761642992" == mmh3(base64_py(body)))
+    name: vesta-hosting-control-panel
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1398529462" == mmh3(base64_py(body)))
+    name: grandstream
+    type: dsl
+  - dsl:
+    - status_code==200 && ("96215732" == mmh3(base64_py(body)))
+    name: comxchange
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1818779764" == mmh3(base64_py(body)))
+    name: etic-telecom
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1548649046" == mmh3(base64_py(body)))
+    name: sophos
+    type: dsl
+  - dsl:
+    - status_code==200 && ("236252842" == mmh3(base64_py(body)))
+    name: esl-management-system
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1939892142" == mmh3(base64_py(body)))
+    name: sabnzbd
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1463037400" == mmh3(base64_py(body)))
+    name: enghouse-systems-lifesize
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1506998866" == mmh3(base64_py(body)))
+    name: mitsubishi-air-condition
+    type: dsl
+  - dsl:
+    - status_code==200 && ("487597720" == mmh3(base64_py(body)))
+    name: schneider-electric-ecostruxure
+    type: dsl
   max-redirects: 2
   method: GET
   path:
   - '{{BaseURL}}/favicon.ico'
-  - '{{BaseURL}}/{{path}}favicon.ico'
-  payloads:
-    path:
-    - images/
+  - '{{BaseURL}}/images/favicon.ico'
   stop-at-first-match: true
 id: favicon-detect
 info:
-  author: un-fmunozs,DhiyaneshDk
+  author: un-fmunozs,DhiyaneshDk,idealphase,rxerium
   metadata:
     max-request: 2
   name: favicon-detection
@@ -2140,4 +3120,4 @@ info:
   - https://github.com/devanshbatham/FavFreak
   - https://github.com/sansatart/scrapts/blob/master/shodan-favicon-hashes.csv
   severity: info
-  tags: tech,favicon
+  tags: tech,favicon,discovery

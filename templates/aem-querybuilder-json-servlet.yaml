@@ -27,14 +27,18 @@ http:
 id: aem-querybuilder-json-servlet
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:adobe:acs_aem_commons:*:*:*:*:*:*:*:*
   description: Sensitive information might be exposed via AEMs QueryBuilderServlet
     or QueryBuilderFeedServlet.
   metadata:
     max-request: 8
+    product: acs_aem_commons
     shodan-query: http.component:"Adobe Experience Manager"
+    vendor: adobe
   name: AEM QueryBuilder Json Servlet
   reference:
   - https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/querybuilder-predicate-reference.html
   - https://github.com/thomashartm/burp-aem-scanner/blob/master/src/main/java/burp/actions/dispatcher/QueryBuilderExposed.java
   severity: info
-  tags: aem,adobe
+  tags: aem,adobe,misconfig,vuln

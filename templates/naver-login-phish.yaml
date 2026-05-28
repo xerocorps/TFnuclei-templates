@@ -22,9 +22,11 @@ info:
   description: 'A naver login phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: naver login phishing Detection
   reference:
   - https://nid.naver.com
   - https://www.navercorp.com
   severity: info
-  tags: phishing,naver,osint
+  tags: phishing,naver,osint,discovery

@@ -24,9 +24,11 @@ info:
   description: 'A kakao login phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: kakao login phishing Detection
   reference:
   - https://accounts.kakao.com
   - https://www.kakaocorp.com
   severity: info
-  tags: phishing,kakao,osint
+  tags: phishing,kakao,osint,discovery

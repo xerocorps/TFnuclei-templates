@@ -23,15 +23,24 @@ http:
 id: vue-pacs-panel
 info:
   author: righettod
+  classification:
+    cpe: cpe:2.3:a:philips:vue_pacs:*:*:*:*:*:*:*:*
   description: 'Vue PACS was detected.
 
     '
   metadata:
+    fofa-query: title="vue pacs"
+    google-query: intitle:"vue pacs"
     max-request: 1
-    shodan-query: http.title:"Vue PACS"
+    product: vue_pacs
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)vue pacs"})
+    shodan-query:
+    - http.title:"Vue PACS"
+    - http.title:"vue pacs"
+    vendor: philips
     verified: true
   name: Vue PACS - Panel
   reference:
   - https://www.usa.philips.com/healthcare/solutions/diagnostic-informatics/enterprise-imaging-pacs
   severity: info
-  tags: vue,pacs,panel,login
+  tags: discovery,login,pacs,panel,philips,vue

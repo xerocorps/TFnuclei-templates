@@ -46,6 +46,10 @@ http:
 id: weaver-ktreeuploadaction-file-upload
 info:
   author: SleepingBag945
+  classification:
+    cpe: cpe:2.3:a:weaver:e-cology:*:*:*:*:*:*:*:*
+    cwe-id:
+    - CWE-434
   description: 'There is a file upload vulnerability in Weaver E-Cology. An attacker
     can upload any file through KtreeUploadAction.jsp and further exploit it.
 
@@ -53,13 +57,16 @@ info:
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
     max-request: 2
+    product: e-cology
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     shodan-query: ecology_JSessionid
+    vendor: weaver
     verified: true
   name: Weaver E-Cology KtreeUploadAction - Arbitrary File Upload
   reference:
   - https://buaq.net/go-117479.html
   severity: critical
-  tags: weaver,ecology,fileupload,intrusive
+  tags: ecology,fileupload,intrusive,vuln,weaver
 variables:
   num1: '{{rand_int(40000, 50000)}}'
   num2: '{{rand_int(40000, 50000)}}'

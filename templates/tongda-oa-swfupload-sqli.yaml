@@ -49,6 +49,9 @@ http:
 id: tongda-oa-swfupload-sqli
 info:
   author: SleepingBag945
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'There is a SQL injection vulnerability in the swfupload_new.php file
     of Tongda OA v11.5. An attacker can obtain sensitive information of the server
     through the vulnerability.
@@ -57,6 +60,7 @@ info:
   metadata:
     fofa-query: "app=\"TDXK-\u901A\u8FBEOA\""
     max-request: 1
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
   name: Tongda OA v11.5 swfupload_new.php - SQL Injection
   reference:
@@ -64,4 +68,4 @@ info:
     \u5165\u6F0F\u6D1E.html"
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/tongda-swfupload-new-sql-inject.yaml
   severity: high
-  tags: tongda,sqli,intrusive
+  tags: intrusive,sqli,tongda,vuln

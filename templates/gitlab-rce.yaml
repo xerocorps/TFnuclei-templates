@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  extractors:
+- extractors:
   - group: 1
     internal: true
     name: csrf-token
@@ -46,16 +45,20 @@ id: gitlab-rce
 info:
   author: pdteam
   classification:
+    cpe: cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
     cve-id: CVE-2021-22205
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
-    cwe-id: CWE-20
+    cwe-id: CWE-20,CWE-77,CWE-78
   description: GitLab CE/EE contains a vulnreability which allows a specially crafted
     image passed to a file parser to perform a command execution attack. Versions
     impacted are between 11.9-13.8.7, 13.9-13.9.5, and 13.10-13.10.2.
   metadata:
     max-request: 2
+    product: gitlab
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive, uses interactsh
     shodan-query: http.title:"GitLab"
+    vendor: gitlab
   name: GitLab CE/EE Unauthenticated RCE Using ExifTool
   reference:
   - https://security.humanativaspa.it/gitlab-ce-cve-2021-22205-in-the-wild/
@@ -63,4 +66,4 @@ info:
   - https://nvd.nist.gov/vuln/detail/CVE-2021-22205
   remediation: Upgrade to versions 13.10.3, 13.9.6, 13.8.8, or higher.
   severity: critical
-  tags: oast,intrusive,hackerone,cve,cve2021,gitlab,rce,kev
+  tags: cve,cve2021,gitlab,hackerone,intrusive,kev,oast,rce,vuln

@@ -14,13 +14,16 @@ id: mongodb-ops-manager
 info:
   author: dhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:mongodb:ops_manager_server:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: MongoDB Ops Manager login panel was detected.
   metadata:
     max-request: 1
+    product: ops_manager_server
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)MongoDB Ops Manager"})
     shodan-query: http.title:"MongoDB Ops Manager"
+    vendor: mongodb
   name: MongoDB Ops Manager Login Panel - Detect
   severity: info
-  tags: panel,mongodb
+  tags: discovery,mongodb,panel

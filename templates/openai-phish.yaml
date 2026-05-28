@@ -21,8 +21,10 @@ info:
   description: 'A openai phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: openai phishing Detection
   reference:
   - https://openai.com
   severity: info
-  tags: phishing,openai,osint
+  tags: phishing,openai,osint,discovery,ai

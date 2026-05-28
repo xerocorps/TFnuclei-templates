@@ -43,11 +43,16 @@ http:
     - (?i)fortigate.hostname
     - (?i)the.page.cannot.be.displayed..please.contact.[^@]+@[^@]+\.[^@]+.for.additional.information
     type: regex
+  - name: fortiweb
+    part: header
+    regex:
+    - 'Set-Cookie: cookiesession1='
+    type: regex
   - condition: or
     name: teros
-    part: response
+    part: header
     regex:
-    - (?i)st8(id|.wa|.wf)?.?(\d+|\w+)?
+    - (?i)st8(id|.wa|.wf)?.?(\d+|\w+)?=
     type: regex
   - condition: or
     name: stricthttp
@@ -62,7 +67,7 @@ http:
     - (?i)rejected.by.url.scan
     - (?i)/rejected.by.url.scan
     type: regex
-  - condition: or
+  - condition: and
     name: shadowd
     part: response
     regex:
@@ -117,13 +122,6 @@ http:
     regex:
     - (?i)error(s)?.aliyun(dun)?.(com|net)
     - (?i)http(s)?://(www.)?aliyun.(com|net)
-    type: regex
-  - condition: or
-    name: ats
-    part: response
-    regex:
-    - (?i)(\()?apachetrafficserver((\/)?\d+(.\d+(.\d+)?)?)
-    - (?i)ats((\/)?(\d+(.\d+(.\d+)?)?))?
     type: regex
   - condition: or
     name: malcare
@@ -492,7 +490,6 @@ http:
     regex:
     - (?i)This.request.is.blocked.by.the.SonicWALL
     - (?i)Dell.SonicWALL
-    - (?i)\bDell\b
     - (?i)Web.Site.Blocked.+\bnsa.banner
     - (?i)SonicWALL
     - (?i).>policy.this.site.is.blocked<.
@@ -587,7 +584,6 @@ http:
     part: response
     regex:
     - (?i)<h2>error<.h2>
-    - (?i)<title>error<.title>
     - (?i)<b>error<.b>
     - (?i)<td.class="(errormessage|error)".height="[0-9]{1,3}".width="[0-9]{1,3}">
     - (?i)the.incident.id.(is|number.is).
@@ -642,10 +638,57 @@ http:
     name: huaweicloud
     part: response
     regex:
-    - (?)content="CloudWAF"
-    - 'Server: CloudWAF'
+    - (?i)content="CloudWAF"
     - 'Set-Cookie: HWWAFSESID='
+    - 'Set-Cookie: HWWAFSESTIME='
     type: regex
+  - name: safe3webfirewall
+    part: header
+    type: word
+    words:
+    - safe3 Web Firewall
+  - condition: or
+    name: safedog
+    part: header
+    type: word
+    words:
+    - X-Safe-Firewall
+    - safedog-flow
+  - condition: and
+    name: squarespace
+    part: header
+    type: word
+    words:
+    - Squarespace
+    - Firewall_action
+  - name: yunsuo
+    part: body
+    type: word
+    words:
+    - yunsuologo
+  - condition: or
+    name: godaddywebprotection
+    part: body
+    type: word
+    words:
+    - GoDaddy Security
+    - seal.godaddy.com
+    - GoDaddy security
+  - name: transipwebfirewall
+    part: header
+    type: word
+    words:
+    - X-TransIP-Balancer
+  - name: xlabssecuritywaf
+    part: header
+    type: word
+    words:
+    - 'Secured: By XLabs Security'
+  - name: shieldonfirewall
+    part: header
+    type: word
+    words:
+    - 'X-Protected-By: shieldon.io'
   raw:
   - 'POST / HTTP/1.1
 
@@ -669,4 +712,4 @@ info:
   reference:
   - https://github.com/Ekultek/WhatWaf
   severity: info
-  tags: waf,tech,misc
+  tags: waf,tech,misc,discovery

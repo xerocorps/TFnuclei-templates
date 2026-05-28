@@ -34,6 +34,9 @@ http:
 id: contus-video-gallery-sqli
 info:
   author: theamanrawat
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'The plugin does not sanitise and escape a parameter before using it
     in a SQL statement via an AJAX action (available to unauthenticated users), leading
     to an SQL injection.
@@ -48,6 +51,6 @@ info:
   - https://wordpress.org/plugins/photo-gallery/
   remediation: Fixed in version 1.6.3
   severity: critical
-  tags: sqli,wpscan,wordpress,contus-video-gallery,unauth
+  tags: contus-video-gallery,sqli,unauth,vuln,wordpress,wpscan
 variables:
   num: '999999999'

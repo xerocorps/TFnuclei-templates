@@ -18,11 +18,21 @@ http:
 id: evse-web-panel
 info:
   author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:o:schneider-electric:evlink_charging_station_firmware:*:*:*:*:*:*:*:*
   metadata:
-    fofa-query: title="EVSE Web Interface"
+    fofa-query:
+    - title="EVSE Web Interface"
+    - title="evse web interface"
+    google-query: intitle:"evse web interface"
     max-request: 2
-    shodan-query: title:"EVSE Web Interface"
+    product: evlink_charging_station_firmware
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)evse web interface"})
+    shodan-query:
+    - title:"EVSE Web Interface"
+    - http.title:"evse web interface"
+    vendor: schneider-electric
     verified: true
   name: EVSE Web Interface Panel - Detection
   severity: info
-  tags: panel,evlink,evse,login,detect
+  tags: detect,discovery,evlink,evse,login,panel,schneider-electric

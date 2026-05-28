@@ -43,16 +43,21 @@ http:
 id: elasticsearch-default-login
 info:
   author: Mohammad Reza Omrani | @omranisecurity
+  classification:
+    cpe: cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*
   description: 'Elasticsearch default credentials were discovered.
 
     '
   metadata:
     max-request: 1
+    product: elasticsearch
+    runzero-match: any(each(service["html.titles"]), {# matches "Elastic"})
     shodan-query: http.title:"Elastic" || http.favicon.hash:1328449667
+    vendor: elastic
     verified: true
   name: ElasticSearch - Default Login
   reference:
   - https://www.alibabacloud.com/blog/what-is-the-default-username-and-password-for-elasticsearch_599610
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html
   severity: high
-  tags: default-login,elasticsearch
+  tags: default-login,elasticsearch,vuln

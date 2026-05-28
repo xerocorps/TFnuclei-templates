@@ -16,10 +16,14 @@ http:
 id: xerox-workcentre-detect
 info:
   author: pussycat0x
+  classification:
+    cpe: cpe:2.3:h:xerox:workcentre_7970i:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: workcentre_7970i
     shodan-query: title:"XEROX WORKCENTRE"
+    vendor: xerox
     verified: true
   name: Xerox Workcentre Detect
   severity: info
-  tags: tech,xerox,workcentre
+  tags: tech,xerox,workcentre,discovery

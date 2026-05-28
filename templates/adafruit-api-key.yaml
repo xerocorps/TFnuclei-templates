@@ -10,6 +10,10 @@ http:
 id: adafruit-api-key
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-522
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -17,5 +21,6 @@ info:
   reference:
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/adafruit-api-key.yaml
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/adafruit-api-key.go
+  - https://io.adafruit.com/api/docs
   severity: info
-  tags: adafruit,exposure,tokens
+  tags: adafruit,exposure,tokens,vuln

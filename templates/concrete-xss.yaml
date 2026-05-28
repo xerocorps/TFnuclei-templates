@@ -28,10 +28,11 @@ info:
     in preview_as_user function using cID parameter.
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
   name: Concrete CMS <8.5.2 - Cross-Site Scripting
   reference:
   - https://hackerone.com/reports/643442
   - https://github.com/concrete5/concrete5/pull/7999
   - https://twitter.com/JacksonHHax/status/1389222207805661187
   severity: high
-  tags: hackerone,concrete,xss,cms,unauth
+  tags: hackerone,concrete,xss,cms,unauth,intrusive,vuln

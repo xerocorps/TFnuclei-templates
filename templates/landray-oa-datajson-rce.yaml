@@ -16,6 +16,8 @@ http:
 id: landray-oa-datajson-rce
 info:
   author: SleepingBag945
+  classification:
+    cpe: cpe:2.3:a:landray:landray_office_automation:*:*:*:*:*:*:*:*
   description: 'Landray Office Automation (OA) software, specifically in the "s_bean"
     component''s "sysFormulaSimulateByJS" functionality. This vulnerability allows
     remote code execution (RCE), enabling attackers to execute arbitrary code on a
@@ -25,6 +27,9 @@ info:
   metadata:
     fofa-query: "app=\"Landray-OA\u7CFB\u7EDF\""
     max-request: 1
+    product: landray_office_automation
+    runzero-review: REJECT/2025-11-07/uses interactsh
+    vendor: landray
     verified: true
   name: Landray OA Datajson S Bean - Remote Code Execution
   reference:
@@ -32,4 +37,4 @@ info:
   - https://github.com/hktalent/scan4all/blob/main/pocs_go/landray/Landray_RCE.go
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/landray-oa-datajson-rce.yaml
   severity: critical
-  tags: landray,rce,oast
+  tags: landray,rce,oast,vuln

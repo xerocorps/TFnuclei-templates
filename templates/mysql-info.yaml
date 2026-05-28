@@ -12,7 +12,7 @@ info:
   reference:
   - https://nmap.org/nsedoc/scripts/mysql-info.html
   severity: info
-  tags: js,mssql,network
+  tags: js,mysql,network,enum,discovery
 javascript:
 - args:
     Host: '{{Host}}'
@@ -36,3 +36,6 @@ javascript:
   - dsl:
     - success == true
     type: dsl
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -15,6 +19,7 @@ http:
 id: strikingly-takeover
 info:
   author: pdteam
+  description: Strikingly takeover was detected.
   metadata:
     max-request: 1
   name: Strikingly Takeover Detection
@@ -22,4 +27,4 @@ info:
   - https://medium.com/@sherif0x00/takeover-subdomains-pointing-to-strikingly-5e67df80cdfd
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/58
   severity: high
-  tags: takeover,strikingly
+  tags: takeover,strikingly,vuln

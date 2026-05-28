@@ -18,10 +18,11 @@ http:
 id: nextcloud-install
 info:
   author: skeltavik
+  description: Nextcloud installation is exposed.
   metadata:
     max-request: 1
   name: Nextcloud Exposed Installation
   reference:
   - https://docs.nextcloud.com/server/latest/admin_manual/installation/installation_wizard.html
   severity: high
-  tags: tech,nextcloud,storage
+  tags: tech,nextcloud,storage,misconfig,vuln

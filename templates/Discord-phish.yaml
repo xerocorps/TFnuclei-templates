@@ -21,8 +21,10 @@ info:
   description: 'A Discord phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: Discord phishing Detection
   reference:
   - https://discord.com
   severity: info
-  tags: phishing,discord,osint
+  tags: phishing,discord,osint,discovery

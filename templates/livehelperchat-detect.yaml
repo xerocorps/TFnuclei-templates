@@ -26,10 +26,14 @@ http:
 id: livehelperchat-detect
 info:
   author: pikpikcu,ricardomaia
+  classification:
+    cpe: cpe:2.3:a:livehelperchat:live_helper_chat:*:*:*:*:*:*:*:*
   metadata:
     fofa-query: title="Live Helper Chat"
     max-request: 3
+    product: live_helper_chat
+    vendor: livehelperchat
     verified: true
   name: Live Helper Chat Detect
   severity: info
-  tags: livehelperchat,tech
+  tags: livehelperchat,tech,discovery

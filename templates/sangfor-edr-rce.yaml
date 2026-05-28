@@ -21,8 +21,8 @@ info:
   author: pikpikcu
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
-    cwe-id: CWE-77
+    cvss-score: 10
+    cwe-id: CWE-77,CWE-78
   description: Sangfor EDR 3.2.17R1/3.2.21 allows remote unauthenticated users to
     to execute arbitrary commands.
   metadata:
@@ -32,4 +32,4 @@ info:
   reference:
   - https://www.cnblogs.com/0day-li/p/13650452.html
   severity: critical
-  tags: rce,sangfor
+  tags: rce,sangfor,vuln

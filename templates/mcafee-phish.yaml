@@ -21,8 +21,10 @@ info:
   description: 'A mcafee phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: mcafee phishing Detection
   reference:
   - https://mcafee.com
   severity: info
-  tags: phishing,mcafee,osint
+  tags: phishing,mcafee,osint,discovery

@@ -21,6 +21,7 @@ id: liferay-resource-leak
 info:
   author: DhiyaneshDk
   classification:
+    cpe: cpe:2.3:a:liferay:liferay_portal:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
     cwe-id: CWE-22
@@ -31,11 +32,13 @@ info:
     '
   metadata:
     max-request: 1
+    product: liferay_portal
     shodan-query: title:"Liferay"
+    vendor: liferay
     verified: true
   name: Liferay - Local File Inclusion
   reference:
   - https://github.com/ilmila/J2EEScan/blob/master/src/main/java/burp/j2ee/issues/impl/LiferayI18nServletResourceLeaks.java
   remediation: Update Liferay to the latest version
   severity: high
-  tags: liferay,lfi,j2ee
+  tags: j2ee,lfi,liferay,vuln

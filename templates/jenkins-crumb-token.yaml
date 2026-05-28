@@ -10,13 +10,17 @@ http:
 id: jenkins-crumb-token
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-522
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
   name: Jenkins Token or Crumb
   reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/jenkins.yml
+  - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/jenkins.yml
   - https://www.jenkins.io/blog/2018/07/02/new-api-token-system/
   - https://www.jenkins.io/doc/book/security/csrf-protection/
   severity: info
-  tags: jenkins,crumb,token,exposure
+  tags: crumb,exposure,jenkins,token,vuln

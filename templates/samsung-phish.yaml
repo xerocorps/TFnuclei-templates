@@ -21,8 +21,10 @@ info:
   description: 'A samsung phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: samsung phishing Detection
   reference:
   - https://samsung.com
   severity: info
-  tags: phishing,samsung,osint
+  tags: phishing,samsung,osint,discovery

@@ -23,11 +23,15 @@ http:
 id: avideo-detect
 info:
   author: pikpikcu
+  classification:
+    cpe: cpe:2.3:a:wwbn:avideo:*:*:*:*:*:*:*:*
   metadata:
     fofa-query: AVideo
     max-request: 1
+    product: avideo
     shodan-query: http.title:"AVideo"
+    vendor: wwbn
     verified: true
   name: Avideo Detect
   severity: info
-  tags: tech,avideo
+  tags: tech,avideo,discovery

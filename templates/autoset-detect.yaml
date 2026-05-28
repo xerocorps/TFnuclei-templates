@@ -24,10 +24,11 @@ info:
   author: MaStErCho
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)AutoSet"})
     shodan-query: title:"AutoSet"
     verified: true
   name: AutoSet Page - Detect
   reference:
   - http://autoset.net/xe/
   severity: info
-  tags: tech,php,autoset,apache
+  tags: tech,php,autoset,apache,panel,discovery

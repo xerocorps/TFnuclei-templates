@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -13,6 +17,7 @@ http:
 id: hatenablog-takeover
 info:
   author: pdteam
+  description: Hatenablog takeover was detected.
   metadata:
     max-request: 1
   name: Hatenablog Takeover Detection
@@ -20,4 +25,4 @@ info:
   - https://beaglesecurity.com/blog/vulnerability/hatenablog-takeover-detection.html
   - https://github.com/EdOverflow/can-i-take-over-xyz
   severity: high
-  tags: takeover,hatenablog
+  tags: takeover,hatenablog,vuln

@@ -1,6 +1,5 @@
 http:
 - attack: pitchfork
-  cookie-reuse: true
   extractors:
   - group: 1
     internal: true
@@ -29,7 +28,7 @@ http:
     Host: {{Hostname}}
 
     '
-  - 'POST /?/Ajax/&q[]=/0/ HTTP/2
+  - 'POST /?/Ajax/&q[]=/0/ HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -42,13 +41,18 @@ http:
 id: rainloop-default-login
 info:
   author: For3stCo1d
+  classification:
+    cpe: cpe:2.3:a:rainloop:webmail:*:*:*:*:*:*:*:*
   description: Rainloop WebMail default admin login credentials were successful.
   metadata:
     fofa-query: app="RAINLOOP-WebMail"
     max-request: 2
+    product: webmail
+    runzero-match: any(each(service["html.bodies"]), {# matches "rainloop/"})
+    vendor: rainloop
     verified: true
   name: Rainloop WebMail - Default Admin Login
   reference:
   - https://github.com/RainLoop/rainloop-webmail/issues/28
   severity: high
-  tags: default-login,rainloop,webmail,foss
+  tags: default-login,foss,rainloop,vuln,webmail

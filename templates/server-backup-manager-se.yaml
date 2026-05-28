@@ -16,12 +16,13 @@ info:
   author: dhiyaneshDK
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Server Backup Manager SE login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Server Backup
+      Manager SE"})
     shodan-query: http.title:"Server Backup Manager SE"
   name: Server Backup Manager SE Panel - Detect
   severity: info
-  tags: panel,server,backup,manager
+  tags: panel,server,backup,manager,discovery

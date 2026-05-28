@@ -23,12 +23,14 @@ id: labtech-panel
 info:
   author: deFr0ggy
   classification:
+    cpe: cpe:2.3:a:labtech_software:labtech:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: LabTech Web Portal login panel was detected.
   metadata:
     max-request: 1
+    product: labtech
+    vendor: labtech_software
   name: LabTech Web Portal Login Panel - Detect
   severity: info
-  tags: panel,labtech
+  tags: panel,labtech,labtech_software,discovery

@@ -23,6 +23,9 @@ http:
 id: advanced-booking-calendar-sqli
 info:
   author: theamanrawat
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'The AJAX action abc_booking_getBookingResult, available to both authenticated
     and Unauthenticated users did not sanitise the calendarId parameter which was
     then concatenated to a SQL statement, leading an unauthenticated SQL injection
@@ -39,4 +42,4 @@ info:
   - https://wordpress.org/plugins/advanced-booking-calendar/
   remediation: Fixed in version 1.6.2
   severity: critical
-  tags: sqli,wpscan,wordpress,wp-plugin,wp,advanced-booking-calendar,unauthenticated
+  tags: advanced-booking-calendar,sqli,time-based-sqli,unauthenticated,vuln,wordpress,wp,wp-plugin,wpscan

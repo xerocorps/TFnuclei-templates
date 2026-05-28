@@ -13,16 +13,21 @@ http:
 id: speedtest-panel
 info:
   author: rxerium
+  classification:
+    cpe: cpe:2.3:a:speed_test_project:speed_test:*:*:*:*:*:*:*:*
   description: 'Speedtest panel was discovered
 
     '
   metadata:
     max-request: 1
+    product: speed_test
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Speedtest Tracker"})
     shodan-query: title:"Speedtest Tracker"
+    vendor: speed_test_project
     verified: true
   name: Speedtest Panel - Detection
   reference:
   - https://github.com/alexjustesen/speedtest-tracker
   - https://docs.speedtest-tracker.dev/
   severity: info
-  tags: speedtest,tracker,panel,login
+  tags: speedtest,tracker,panel,login,discovery

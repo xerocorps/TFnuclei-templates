@@ -21,14 +21,21 @@ id: icewarp-panel-detect
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:icewarp:icewarp_server:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: IceWarp login panel was detected.
   metadata:
+    fofa-query: title="icewarp"
+    google-query: intitle:"icewarp"
     max-request: 1
-    shodan-query: title:"icewarp"
+    product: icewarp_server
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)icewarp"})
+    shodan-query:
+    - title:"icewarp"
+    - http.title:"icewarp"
+    vendor: icewarp
     verified: true
   name: IceWarp Login Panel - Detect
   severity: info
-  tags: icewarp,panel
+  tags: discovery,icewarp,panel

@@ -21,8 +21,10 @@ info:
   description: 'A ebay phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: ebay phishing Detection
   reference:
   - https://ebay.com
   severity: info
-  tags: phishing,ebay,osint
+  tags: phishing,ebay,osint,discovery

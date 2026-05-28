@@ -20,10 +20,11 @@ http:
 id: codis-dashboard
 info:
   author: tess
+  description: Codis Dashboard is exposed.
   metadata:
     max-request: 1
     shodan-query: "title:\"Codis \u2022 Dashboard\""
     verified: true
   name: Codis Dashboard Exposure
   severity: low
-  tags: misconfig,exposure,codis
+  tags: misconfig,exposure,codis,discovery

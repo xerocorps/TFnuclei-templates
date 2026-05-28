@@ -23,15 +23,19 @@ id: icewarp-webclient-rce
 info:
   author: gy741
   classification:
+    cpe: cpe:2.3:a:icewarp:icewarp:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-77
   description: 'IceWarp WebClient is susceptible to remote code execution.
 
     '
   metadata:
     max-request: 1
+    product: icewarp
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)icewarp"})
     shodan-query: title:"icewarp"
+    vendor: icewarp
   name: IceWarp WebClient - Remote Code Execution
   severity: critical
-  tags: icewarp,rce
+  tags: icewarp,rce,vuln

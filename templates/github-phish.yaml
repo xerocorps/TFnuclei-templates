@@ -21,8 +21,10 @@ info:
   description: 'A github phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: github phishing Detection
   reference:
   - https://github.com
   severity: info
-  tags: phishing,github,osint
+  tags: phishing,github,osint,discovery

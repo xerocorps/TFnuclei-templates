@@ -1,15 +1,14 @@
 http:
 - attack: pitchfork
   matchers:
-  - condition: or
-    status:
+  - name: authresult
+    regex:
+    - '"authResult"\s*:\s*0'
+    type: regex
+  - status:
     - 201
     - 200
     type: status
-  - part: body
-    type: word
-    words:
-    - '"authResult":0'
   matchers-condition: and
   payloads:
     password:
@@ -31,13 +30,15 @@ info:
   author: kophjager007,milo2012
   classification:
     cwe-id: cwe-798
-  description: DELL iDRAC9 default login information was discovered. The default iDRAC
-    username and password are widely known, and any user with access to the server
-    could change the default password.
+  description: 'DELL iDRAC9 default login credentials was discovered.
+
+    '
   metadata:
     max-request: 1
-  name: DELL iDRAC9 Default Login
+    runzero-match: any(each(service["html.titles"]), {# matches "Integrated (?:Dell
+      )?Remote Access Controller"})
+  name: DELL iDRAC9 - Default Login
   reference:
   - https://www.dell.com/support/kbdoc/en-us/000177787/how-to-change-the-default-login-password-of-the-idrac-9
   severity: high
-  tags: dell,idrac,default-login
+  tags: dell,idrac,default-login,vuln

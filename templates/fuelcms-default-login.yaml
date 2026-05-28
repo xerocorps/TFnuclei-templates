@@ -1,6 +1,5 @@
 http:
 - attack: pitchfork
-  cookie-reuse: true
   extractors:
   - group: 1
     internal: true
@@ -57,4 +56,4 @@ info:
   reference:
   - https://docs.getfuelcms.com/general/security
   severity: high
-  tags: fuelcms,default-login,oss
+  tags: default-login,fuelcms,oss,vuln

@@ -15,15 +15,22 @@ id: casdoor-login
 info:
   author: princechaddha
   classification:
+    cpe: cpe:2.3:a:casbin:casdoor:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Casdoor login panel was detected.
   metadata:
+    fofa-query: title="casdoor"
+    google-query: intitle:"casdoor"
     max-request: 1
-    shodan-query: http.title:"Casdoor"
+    product: casdoor
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)casdoor"})
+    shodan-query:
+    - http.title:"Casdoor"
+    - http.title:"casdoor"
+    vendor: casbin
   name: Casdoor Login Panel - Detect
   reference:
   - https://casdoor.org/
   severity: info
-  tags: panel,casdoor
+  tags: casbin,casdoor,discovery,panel

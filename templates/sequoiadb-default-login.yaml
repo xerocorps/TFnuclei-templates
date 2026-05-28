@@ -5,7 +5,7 @@ http:
     - 200
     type: status
   - dsl:
-    - contains(tolower(all_headers), 'sdbsessionid')
+    - contains(tolower(header), 'sdbsessionid')
     type: dsl
   - part: body
     type: word
@@ -51,4 +51,4 @@ info:
   reference:
   - https://www.sequoiadb.com/en/
   severity: high
-  tags: default-login,sequoiadb
+  tags: default-login,sequoiadb,vuln

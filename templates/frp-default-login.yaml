@@ -5,7 +5,7 @@ http:
     part: body
     type: word
     words:
-    - proxies
+    - '"proxies":'
   - status:
     - 200
     type: status
@@ -35,4 +35,4 @@ info:
   reference:
   - https://github.com/fatedier/frp/issues/1840
   severity: high
-  tags: frp,default-login
+  tags: default-login,frp,vuln

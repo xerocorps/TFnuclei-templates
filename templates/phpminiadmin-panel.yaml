@@ -18,18 +18,21 @@ id: phpminiadmin-panel
 info:
   author: nullfuzz
   classification:
+    cpe: cpe:2.3:a:phpminiadmin_project:phpminiadmin:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'phpMiniAdmin login panel was detected.
 
     '
   metadata:
     max-request: 1
+    product: phpminiadmin
+    runzero-match: service["http.body"] matches "(?i)phpMiniAdmin"
     shodan-query: http.html:"phpMiniAdmin"
+    vendor: phpminiadmin_project
     verified: true
   name: phpMiniAdmin Login Panel - Detect
   reference:
   - https://github.com/osalabs/phpminiadmin
   severity: info
-  tags: panel,phpminiadmin
+  tags: discovery,panel,phpminiadmin

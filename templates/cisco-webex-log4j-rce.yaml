@@ -44,10 +44,11 @@ id: cisco-webex-log4j-rce
 info:
   author: shaikhyaser
   classification:
+    cpe: cpe:2.3:a:cisco:webex_meetings_online:*:*:*:*:*:*:*:*
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
-    cwe-id: CWE-77
+    cwe-id: CWE-502,CWE-77
   description: 'Cisco WebEx is susceptible to Log4j JNDI remote code execution. Cisco
     WebEx provides web conferencing, videoconferencing and contact center as a service
     applications.
@@ -55,12 +56,15 @@ info:
     '
   metadata:
     max-request: 1
+    product: webex_meetings_online
+    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"Cisco WebEx"
+    vendor: cisco
   name: Cisco WebEx - Remote Code Execution (Apache Log4j)
   reference:
   - https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,cisco,webex,oast,kev
+  tags: cisco,cve,cve2021,jndi,kev,log4j,oast,rce,vuln,webex
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

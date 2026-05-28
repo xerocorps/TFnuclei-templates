@@ -21,8 +21,10 @@ info:
   description: 'A plusnet phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: plusnet phishing Detection
   reference:
   - https://plus.net
   severity: info
-  tags: phishing,plusnet,osint
+  tags: phishing,plusnet,osint,discovery

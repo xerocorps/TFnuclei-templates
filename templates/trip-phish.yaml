@@ -21,8 +21,10 @@ info:
   description: 'A trip phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: trip phishing Detection
   reference:
   - https://trip.com
   severity: info
-  tags: phishing,trip,osint
+  tags: phishing,trip,osint,discovery

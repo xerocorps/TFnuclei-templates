@@ -24,14 +24,18 @@ http:
 id: symfony-debug
 info:
   author: organiccrap,pdteam
+  classification:
+    cpe: cpe:2.3:a:sensiolabs:symfony:*:*:*:*:*:*:*:*
   description: A Symfony installations 'debug' interface is enabled, allowing the
     disclosure and possible execution of arbitrary code.
   metadata:
     max-request: 4
+    product: symfony
     shodan-query: http.html:"symfony Profiler"
+    vendor: sensiolabs
     verified: true
   name: Symfony Debug Mode
   reference:
   - https://github.com/synacktiv/eos
   severity: high
-  tags: symfony,debug,misconfig
+  tags: symfony,debug,misconfig,vuln

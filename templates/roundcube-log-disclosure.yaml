@@ -11,7 +11,6 @@ http:
     - 'IMAP Error:'
     - Message for
     - 'DB Error:'
-    - 'IMAP Error:'
     - 'PHP Error:'
     - 'PHP Warning:'
   - status:
@@ -25,15 +24,19 @@ http:
   payloads:
     roundcube_path:
     - roundcube/logs/sendmail
+    - roundcube/logs/sendmail.log
     - roundcube/logs/errors.log
     - roundcube/logs/errors
     - webmail/logs/sendmail
+    - webmail/logs/sendmail.log
     - webmail/logs/errors.log
     - webmail/logs/errors
     - mail/logs/sendmail
+    - mail/logs/sendmail.log
     - mail/logs/errors.log
     - mail/logs/errors
     - logs/sendmail
+    - logs/sendmail.log
     - logs/errors.log
     - logs/errors
 id: roundcube-log-disclosure
@@ -41,9 +44,9 @@ info:
   author: dhiyaneshDk,kazet
   description: Roundcube Log file was disclosed.
   metadata:
-    max-request: 12
+    max-request: 16
   name: Roundcube Log Disclosure
   reference:
   - https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/roundcube-log-disclosure.json
   severity: medium
-  tags: exposure,logs
+  tags: exposure,logs,vuln

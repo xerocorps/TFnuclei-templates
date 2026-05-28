@@ -22,14 +22,25 @@ id: kubernetes-web-view
 info:
   author: tess
   classification:
+    cpe: cpe:2.3:a:kubernetes:kubernetes:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N
     cvss-score: 6.5
     cwe-id: CWE-200
   description: Kubernetes local cluster web view panel discovered.
   metadata:
+    fofa-query:
+    - title="kubernetes web view"
+    - app="kubernetes-enterprise-manager"
+    google-query: intitle:"kubernetes web view"
     max-request: 2
-    shodan-query: title:"Kubernetes Web View"
+    product: kubernetes
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)kubernetes web
+      view"})
+    shodan-query:
+    - title:"Kubernetes Web View"
+    - http.title:"kubernetes web view"
+    vendor: kubernetes
     verified: true
   name: Kubernetes Local Cluster Web View Panel- Detect
   severity: medium
-  tags: panel,misconfig,kubernetes,k8s
+  tags: discovery,k8s,kubernetes,misconfig,panel

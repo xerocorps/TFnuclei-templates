@@ -9,10 +9,12 @@ info:
     '
   metadata:
     max-request: 1
+    product: dionaea
     shodan-query: port:445
+    vendor: dionaea
   name: SMB Version - Detection
   severity: info
-  tags: js,network,smb,enum
+  tags: js,network,smb,enum,discovery
 javascript:
 - args:
     Host: '{{Host}}'
@@ -31,7 +33,6 @@ javascript:
     - .Version.VerString
     name: smb-version
     type: json
-  matchers:
-  - dsl:
-    - len(smb-version) != 0
-    type: dsl
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

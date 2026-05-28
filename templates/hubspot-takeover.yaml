@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -12,9 +16,28 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
+- extractors:
+  - kval:
+    - x_hs_reason
+    name: hubspot-reason
+    type: kval
+  host-redirects: true
+  matchers:
+  - condition: and
+    dsl:
+    - status_code == 404
+    - contains(to_lower(header), "x-hubspot-notfound")
+    - contains_all(to_lower(header), "x-hs-cfworker-meta", "{\"resolver\":\"notfoundresolver\"}")
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}'
 id: hubspot-takeover
 info:
   author: pdteam
+  description: hubspot takeover was detected.
   metadata:
     max-request: 1
   name: hubspot takeover detection
@@ -22,4 +45,4 @@ info:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/59
   - https://hackerone.com/reports/335330
   severity: high
-  tags: takeover,hubspot,hackerone
+  tags: hackerone,hubspot,takeover,vuln

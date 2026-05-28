@@ -21,8 +21,10 @@ info:
   description: 'A vlc media phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: vlc media phishing Detection
   reference:
   - https://www.videolan.org
   severity: info
-  tags: phishing,vlc-media,osint
+  tags: phishing,vlc-media,osint,discovery

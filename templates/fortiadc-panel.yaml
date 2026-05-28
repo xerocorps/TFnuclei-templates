@@ -18,16 +18,23 @@ id: fortiadc-panel
 info:
   author: DhiyaneshDk
   classification:
+    cpe: cpe:2.3:a:fortinet:fortiadc:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: FortiADC login panel was detected.
   metadata:
+    fofa-query: title="fortiadc"
+    google-query: intitle:"fortiadc"
     max-request: 1
-    shodan-query: title:"FortiADC"
+    product: fortiadc
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)fortiadc"})
+    shodan-query:
+    - title:"FortiADC"
+    - http.title:"fortiadc"
+    vendor: fortinet
     verified: true
   name: FortiADC Login Panel - Detect
   reference:
   - https://www.fortinet.com/products/application-delivery-controller/fortiadc
   severity: info
-  tags: panel,fortinet
+  tags: discovery,fortinet,panel

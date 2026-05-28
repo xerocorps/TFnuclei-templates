@@ -23,14 +23,18 @@ id: eventum-panel
 info:
   author: princechaddha
   classification:
+    cpe: cpe:2.3:a:mysql:eventum:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Eventum login panel was detected.
   metadata:
+    fofa-query: icon_hash=305412257
     max-request: 1
+    product: eventum
+    runzero-match: service["favicon.ico.image.mmh3"] == "305412257"
     shodan-query: http.favicon.hash:305412257
+    vendor: mysql
     verified: true
   name: Eventum Login Panel - Detect
   severity: info
-  tags: panel,eventum
+  tags: discovery,eventum,mysql,panel

@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -13,8 +17,9 @@ http:
 id: teamwork-takeover
 info:
   author: pdteam
+  description: Teamwork takeover was detected.
   metadata:
     max-request: 1
   name: Teamwork Takeover Detection
   severity: high
-  tags: takeover,teamwork
+  tags: takeover,teamwork,vuln

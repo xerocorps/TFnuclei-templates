@@ -18,12 +18,18 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/users/sign_in'
+  - '{{BaseURL}}/users/sign_up'
+  stop-at-first-match: true
 id: gitlab-public-signup
 info:
-  author: pdteam
+  author: pdteam,axrk
+  classification:
+    cpe: cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
   metadata:
-    max-request: 1
+    max-request: 2
+    product: gitlab
     shodan-query: http.title:"GitLab"
+    vendor: gitlab
   name: GitLab public signup
   severity: info
-  tags: gitlab,misconfig
+  tags: gitlab,misconfig,vuln

@@ -20,14 +20,17 @@ id: icecast-mediaserver-detect
 info:
   author: pussycat0x
   classification:
+    cpe: cpe:2.3:a:xiph:icecast:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: Icecast Streaming Media Server information panel was detected.
   metadata:
     max-request: 1
+    product: icecast
     shodan-query: title:"Icecast Streaming Media Server"
+    vendor: xiph
     verified: true
   name: Icecast Streaming Media Server Information Panel - Detect
   severity: info
-  tags: tech,icecast,media-server,detect
+  tags: detect,discovery,icecast,media-server,tech

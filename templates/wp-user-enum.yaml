@@ -13,7 +13,7 @@ http:
     words:
     - '"id":'
     - '"name":'
-    - '"avatar_urls":'
+    - '"slug":'
   - part: header
     type: word
     words:
@@ -30,6 +30,8 @@ http:
 id: wp-user-enum
 info:
   author: Manas_Harsh,daffainfo,geeknik,dr0pd34d
+  classification:
+    cpe: cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*
   description: 'The REST API exposed user data for all users who had authored a post
     of a public post type. WordPress 4.7.1 limits this to only post types which have
     specified that they should be shown within the REST API.
@@ -42,7 +44,10 @@ info:
   metadata:
     max-request: 2
     product: wordpress
-    shodan-query: http.component:"WordPress"
+    shodan-query:
+    - http.component:"WordPress"
+    - http.component:"wordpress"
+    - cpe:"cpe:2.3:a:wordpress:wordpress"
     vendor: wordpress
     verified: true
   name: WordPress REST API User Enumeration
@@ -56,4 +61,4 @@ info:
 
     '
   severity: low
-  tags: cve2017,cve,wordpress,wp,edb
+  tags: cve2017,cve,wordpress,wp,edb,vuln

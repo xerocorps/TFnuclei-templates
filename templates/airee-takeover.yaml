@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -16,10 +20,11 @@ http:
 id: airee-takeover
 info:
   author: pdteam
+  description: Airee takeover was detected.
   metadata:
     max-request: 1
   name: Airee Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/104
   severity: high
-  tags: takeover,airee
+  tags: takeover,airee,vuln

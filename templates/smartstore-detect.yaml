@@ -20,11 +20,15 @@ http:
 id: smartstore-detect
 info:
   author: princechaddha
+  classification:
+    cpe: cpe:2.3:a:smartstore:smartstore:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: smartstore
     shodan-query: http.html:'content="Smartstore'
+    vendor: smartstore
   name: SmartStore Detect
   reference:
   - https://github.com/smartstore/SmartStoreNET
   severity: info
-  tags: tech,smartstore,oss
+  tags: tech,smartstore,oss,discovery

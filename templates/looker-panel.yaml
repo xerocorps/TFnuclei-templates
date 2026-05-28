@@ -23,13 +23,13 @@ info:
   author: ritikchaddha,daffainfo
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Looker login panel was detected.
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)lookerVersion"
     shodan-query: http.html:"lookerVersion"
     verified: true
   name: Looker Login Panel - Detect
   severity: info
-  tags: panel,login,looker
+  tags: panel,login,looker,discovery

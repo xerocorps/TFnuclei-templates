@@ -23,7 +23,7 @@ info:
   author: brenocss,organiccrap
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: Apache Tomcat Manager Path Normalization login panel was discovered
     via path normalization. Normalizing a path involves modifying the string that
@@ -34,4 +34,4 @@ info:
   name: Apache Tomcat Manager Path Normalization Panel - Detect
   reference: https://i.blackhat.com/us-18/Wed-August-8/us-18-Orange-Tsai-Breaking-Parser-Logic-Take-Your-Path-Normalization-Off-And-Pop-0days-Out-2.pdf
   severity: info
-  tags: panel,tomcat,apache
+  tags: panel,tomcat,apache,misconfig,intrusive

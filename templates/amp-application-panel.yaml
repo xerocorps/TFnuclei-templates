@@ -15,14 +15,22 @@ id: amp-application-panel
 info:
   author: DhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:cubecoders:amp:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Application Management Panel was detected.
   metadata:
+    fofa-query: title="amp - application management panel"
+    google-query: intitle:"amp - application management panel"
     max-request: 1
-    shodan-query: title:"AMP - Application Management Panel"
+    product: amp
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)amp - application
+      management panel"})
+    shodan-query:
+    - title:"AMP - Application Management Panel"
+    - http.title:"amp - application management panel"
+    vendor: cubecoders
     verified: true
   name: Application Management Panel - Detect
   severity: info
-  tags: panel,amp
+  tags: amp,cubecoders,discovery,panel

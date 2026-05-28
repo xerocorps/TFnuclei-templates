@@ -1,10 +1,8 @@
 http:
 - matchers:
-  - condition: and
-    type: word
+  - type: word
     words:
-    - 'heap profile:'
-    - Alloc
+    - heap profile
   - part: header
     type: word
     words:
@@ -17,13 +15,10 @@ http:
   path:
   - '{{BaseURL}}/debug/pprof/heap?debug=1'
   - '{{BaseURL}}/pprof/heap?debug=1'
-  stop-at-first-match: true
 id: go-pprof-debug
 info:
   author: w8ay
   description: go pprof debug page was exposed.
-  metadata:
-    max-request: 2
-  name: Go pprof Debug Page
+  name: go pprof debug page
   severity: low
-  tags: logs,exposure,go,pprof
+  tags: debug

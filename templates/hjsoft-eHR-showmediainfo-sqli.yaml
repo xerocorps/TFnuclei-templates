@@ -1,6 +1,7 @@
 http:
 - matchers:
-  - dsl:
+  - condition: and
+    dsl:
     - duration>=5
     type: dsl
   raw:

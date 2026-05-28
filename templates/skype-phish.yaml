@@ -21,8 +21,10 @@ info:
   description: 'A skype phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: skype phishing Detection
   reference:
   - https://skype.com
   severity: info
-  tags: phishing,skype,osint
+  tags: phishing,skype,osint,discovery

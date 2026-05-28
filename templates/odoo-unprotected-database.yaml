@@ -3,6 +3,10 @@ http:
   - type: word
     words:
     - Warning, your Odoo database manager is not protected.
+  - negative: true
+    type: word
+    words:
+    - The database manager has been disabled by the administrator
   - status:
     - 200
     type: status
@@ -13,13 +17,17 @@ http:
 id: odoo-unprotected-database
 info:
   author: pdteam
+  classification:
+    cpe: cpe:2.3:a:odoo:odoo:*:*:*:*:*:*:*:*
   description: 'The system has an Odoo application whose database manager is unprotected,
     indicating potential unauthorized access.
 
     '
   metadata:
     max-request: 1
+    product: odoo
     shodan-query: title:"Odoo"
+    vendor: odoo
     verified: true
   name: Odoo - Unprotected Database
   remediation: 'Implement and enforce proper authentication and access control measures
@@ -27,4 +35,4 @@ info:
 
     '
   severity: critical
-  tags: odoo,database,unauth,misconfig
+  tags: odoo,database,unauth,misconfig,vuln

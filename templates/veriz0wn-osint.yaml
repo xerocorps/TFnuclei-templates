@@ -16,8 +16,9 @@ info:
   author: pussycat0x
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Veriz0wn"})
     shodan-query: title:"Veriz0wn"
     verified: true
   name: Veriz0wn OSINT - Detect
   severity: info
-  tags: veriz0wn,panel
+  tags: veriz0wn,panel,discovery

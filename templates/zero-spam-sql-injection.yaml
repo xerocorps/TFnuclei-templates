@@ -20,6 +20,9 @@ http:
 id: zero-spam-sql-injection
 info:
   author: theamanrawat
+  classification:
+    cwe-id:
+    - CWE-89
   description: 'The WordPress Zero Spam WordPress plugin was affected by an Unauthenticated
     Blind SQL Injection security vulnerability.
 
@@ -33,4 +36,4 @@ info:
   - https://wordpress.org/plugins/zero-spam/
   remediation: Fixed in version 2.2.0
   severity: critical
-  tags: wpscan,wp,wp-plugin,wordpress,zero-spam,sqli,unauth
+  tags: sqli,time-based-sqli,unauth,vuln,wordpress,wp,wp-plugin,wpscan,zero-spam

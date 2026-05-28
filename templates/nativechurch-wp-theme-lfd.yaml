@@ -15,6 +15,10 @@ http:
 id: nativechurch-wp-theme-lfd
 info:
   author: 0x_Akoko
+  classification:
+    cwe-id:
+    - CWE-23
+    - CWE-73
   description: 'WordPress NativeChurch Theme is vulnerable to local file inclusion
     in the download.php file.
 
@@ -26,4 +30,4 @@ info:
   - https://packetstormsecurity.com/files/132297/WordPress-NativeChurch-Theme-1.0-1.5-Arbitrary-File-Download.html
   - https://wpscan.com/vulnerability/2e1062ed-0c48-473f-aab2-20ac9d4c72b1
   severity: high
-  tags: wp-theme,lfi,wp,packetstorm,wpscan,wordpress
+  tags: lfi,packetstorm,vuln,wordpress,wp,wp-theme,wpscan

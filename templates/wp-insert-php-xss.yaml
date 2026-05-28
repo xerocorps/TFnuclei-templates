@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  matchers:
+- matchers:
   - condition: and
     part: body
     type: word
@@ -48,9 +47,10 @@ info:
     back in an attribute.
   metadata:
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     verified: true
   name: WordPress Woody Code Snippets <2.4.6 - Cross-Site Scripting
   reference:
   - https://wpscan.com/vulnerability/6d6761b7-0c17-4428-8748-2179732030a3
   severity: high
-  tags: xss,wp,wordpress,authenticated,woody,wpscan,wp-plugin
+  tags: xss,wp,wordpress,authenticated,woody,wpscan,wp-plugin,vuln

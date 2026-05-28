@@ -28,8 +28,9 @@ info:
   description: Login page for Eset Protect
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "751911084"
     shodan-query: http.favicon.hash:751911084
     verified: true
   name: Eset Protect Login Panel - Detect
   severity: info
-  tags: login,eset,panel,detect
+  tags: login,eset,panel,detect,discovery

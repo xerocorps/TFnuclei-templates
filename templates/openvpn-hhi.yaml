@@ -1,5 +1,7 @@
 http:
-- matchers:
+- headers:
+    Host: '{{randstr}}.tld'
+  matchers:
   - condition: and
     part: header
     type: word
@@ -10,12 +12,9 @@ http:
     - 302
     type: status
   matchers-condition: and
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{randstr}}.tld
-
-    '
+  method: GET
+  path:
+  - '{{BaseURL}}/'
 id: openvpn-hhi
 info:
   author: twitter.com/Dheerajmadhukar
@@ -25,4 +24,4 @@ info:
     max-request: 1
   name: OpenVPN Host Header Injection
   severity: info
-  tags: openvpn,hostheader-injection
+  tags: openvpn,hostheader-injection,vuln

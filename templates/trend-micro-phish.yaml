@@ -21,8 +21,10 @@ info:
   description: 'A trend micro phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: trend micro phishing Detection
   reference:
   - https://trendmicro.com
   severity: info
-  tags: phishing,trend-micro,osint
+  tags: phishing,trend-micro,osint,discovery

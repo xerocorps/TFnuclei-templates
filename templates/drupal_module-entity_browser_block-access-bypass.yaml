@@ -7,18 +7,20 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '8.x-1.1')
-    - compare_versions(version, '8.x-1.0')
+    - compare_versions(version, '<= 1.2.0')
     type: dsl
   matchers:
-  - part: body
+  - condition: and
+    part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - status:
+  - condition: and
+    status:
     - 200
     type: status
-  - part: body
+  - condition: and
+    part: body
     type: word
     words:
     - entity_browser_block
@@ -30,18 +32,18 @@ http:
   redirects: true
 id: drupal_module-entity_browser_block-access-bypass
 info:
-  author: Bishopfox
+  author: me
   description: Entity Browser Block provides a Block Plugin for every Entity Browser
     on your site. The module didnt sufficiently check entity view access in the block
     form. This vulnerability is mitigated by the fact that an attacker must be able
     to place a block - either through the core Block Layout page or via a module like
     Layout Builder.
   metadata:
-    created_at: '0001-01-01T00:00:00Z'
+    created_at: '2025-01-09'
     fofa-query: /sites/all/modules/entity_browser_block/
     google-query: inurl:'/sites/all/modules/entity_browser_block/
     impact: medium
-    security-risk: "Moderately critical 13\u221525 AC:None/A:User/CI:Some/II:None/E:Theoretical/TD:All"
+    security-risk: "Moderately critical 13\u2009\u2215\u200925 AC:None/A:User/CI:Some/II:None/E:Theoretical/TD:All"
     type: indicator
     vulnerability: access-bypass
   name: drupal_module-entity_browser_block-access-bypass

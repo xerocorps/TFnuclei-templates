@@ -33,7 +33,7 @@ info:
   author: dwisiswant0
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-89
   description: Vehicle Parking Management System 1.0 contains a SQL injection vulnerability
     via the password parameter. An attacker can possibly obtain sensitive information
@@ -45,4 +45,4 @@ info:
   reference:
   - https://www.exploit-db.com/exploits/48877
   severity: critical
-  tags: auth-bypass,edb
+  tags: auth-bypass,edb,sqli,vuln

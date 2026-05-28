@@ -8,5 +8,5 @@ workflows:
 - matchers:
   - name: artifactory
     subtemplates:
-    - null
+    - tags: artifactory
   template: technologies/tech-detect.yaml

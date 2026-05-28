@@ -14,10 +14,14 @@ http:
 id: icecast-server-detect
 info:
   author: theamanrawat
+  classification:
+    cpe: cpe:2.3:a:xiph:icecast:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: icecast
     shodan-query: http.title:"Icecast Streaming Media Server"
+    vendor: xiph
     verified: true
   name: Icecast Streaming Media Server Detection
   severity: info
-  tags: tech,icecast
+  tags: tech,icecast,discovery

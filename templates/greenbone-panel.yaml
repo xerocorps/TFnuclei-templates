@@ -14,14 +14,24 @@ http:
 id: greenbone-panel
 info:
   author: pbuff07
+  classification:
+    cpe: cpe:2.3:a:greenbone:greenbone_security_assistant:*:*:*:*:*:*:*:*
   description: 'Greenbone Security Assistant Web Panel is detected
 
     '
   metadata:
+    fofa-query: title="greenbone security assistant"
+    google-query: intitle:"greenbone security assistant"
     max-request: 1
-    shodan-query: http.title:"Greenbone Security Assistant"
+    product: greenbone_security_assistant
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)greenbone security
+      assistant"})
+    shodan-query:
+    - http.title:"Greenbone Security Assistant"
+    - http.title:"greenbone security assistant"
+    vendor: greenbone
     verified: true
-    zoomeye-query: title:"Greenbone Security Assistant"
-  name: Greenbone Security Assistant Panel  - Detect
+    zoomeye-query: title="Greenbone Security Assistant"
+  name: Greenbone Security Assistant Panel - Detect
   severity: info
-  tags: panel,greenbone,login
+  tags: discovery,greenbone,login,panel

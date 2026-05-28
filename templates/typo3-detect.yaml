@@ -18,9 +18,13 @@ http:
 id: typo3-detect
 info:
   author: dadevel
+  classification:
+    cpe: cpe:2.3:a:typo3:typo3:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: typo3
     shodan-query: http.component:"TYPO3"
+    vendor: typo3
   name: TYPO3 Detection
   severity: info
-  tags: tech,typo3
+  tags: tech,typo3,discovery

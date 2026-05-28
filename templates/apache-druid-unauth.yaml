@@ -13,10 +13,15 @@ http:
 id: apache-druid-unauth
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:apache:druid:*:*:*:*:*:*:*:*
+  description: Apache Druid is exposed to external users.
   metadata:
     max-request: 1
+    product: druid
     shodan-query: title:"Apache Druid"
+    vendor: apache
     verified: true
   name: Apache Druid Unauth
   severity: low
-  tags: misconfig,druid,unauth,apache
+  tags: misconfig,druid,unauth,apache,vuln

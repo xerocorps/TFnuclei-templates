@@ -21,6 +21,7 @@ ssl:
     type: dsl
   matchers:
   - condition: or
+    name: tls-1.0
     part: cipher
     type: word
     words:
@@ -229,6 +230,7 @@ ssl:
     type: dsl
   matchers:
   - condition: or
+    name: tls-1.1
     part: cipher
     type: word
     words:
@@ -437,6 +439,7 @@ ssl:
     type: dsl
   matchers:
   - condition: or
+    name: tls-1.2
     part: cipher
     type: word
     words:
@@ -645,6 +648,7 @@ ssl:
     type: dsl
   matchers:
   - condition: or
+    name: tls-1.3
     part: cipher
     type: word
     words:

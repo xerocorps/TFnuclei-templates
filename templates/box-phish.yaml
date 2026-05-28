@@ -21,8 +21,10 @@ info:
   description: 'A box phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: box phishing Detection
   reference:
   - https://box.com
   severity: info
-  tags: phishing,box-storage,osint
+  tags: phishing,box-storage,osint,discovery

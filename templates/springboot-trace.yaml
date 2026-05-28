@@ -8,15 +8,12 @@ http:
     - '"info"'
     - '"method"'
     - '"path"'
-  - condition: or
-    part: header
+  - part: header
     type: word
     words:
     - application/json
     - application/vnd.spring-boot.actuator
     - application/vnd.spring-boot.actuator.v1+json
-    - application/vnd.spring-boot.actuator.v2+json
-    - application/vnd.spring-boot.actuator.v3+json
   - status:
     - 200
     type: status
@@ -28,8 +25,6 @@ id: springboot-trace
 info:
   author: that_juan_,dwisiswant0,wdahlenb
   description: View recent HTTP requests and responses
-  metadata:
-    max-request: 1
   name: Detect Springboot Trace Actuator
   severity: low
-  tags: misconfig,springboot,exposure
+  tags: java,generic

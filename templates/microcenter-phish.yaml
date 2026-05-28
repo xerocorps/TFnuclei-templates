@@ -21,8 +21,10 @@ info:
   description: 'A microcenter phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: microcenter phishing Detection
   reference:
   - https://microcenter.com
   severity: info
-  tags: phishing,microcenter,osint
+  tags: phishing,microcenter,osint,discovery

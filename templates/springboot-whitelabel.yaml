@@ -1,5 +1,7 @@
 http:
-- host-redirects: true
+- headers:
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+  host-redirects: true
   matchers:
   - part: body
     type: word
@@ -11,23 +13,18 @@ http:
     - text/html
   matchers-condition: and
   max-redirects: 3
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Hostname}}
-
-    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-
-    '
+  method: GET
+  path:
+  - '{{BaseURL}}/'
 id: springboot-whitelabel
 info:
   author: Matt Miller
   metadata:
     max-request: 1
-    shodan:query: html:"Whitelabel Error Page"
+    shodan-query: html:"Whitelabel Error Page"
     verified: true
   name: SpringBoot WhiteLabel Error Page - Detect
   reference:
   - https://codingnconcepts.com/spring-boot/disable-whitelabel-error-page-spring-boot/
   severity: info
-  tags: tech,spring,springboot,errorpage
+  tags: tech,spring,springboot,errorpage,discovery

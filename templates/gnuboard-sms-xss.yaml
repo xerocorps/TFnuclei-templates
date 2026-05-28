@@ -19,19 +19,22 @@ id: gnuboard-sms-xss
 info:
   author: gy741
   classification:
+    cpe: cpe:2.3:a:gnuboard:gnuboard5:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 5.4
-    cwe-id: CWE-80
+    cwe-id: CWE-79,CWE-80,CWE-83
   description: Gnuboard CMS contains a cross-site scripting vulnerability which allows
     remote attackers to inject arbitrary JavaScript into the responses returned by
     the server.
   metadata:
     max-request: 1
+    product: gnuboard5
     shodan-query: http.html:"Gnuboard"
+    vendor: gnuboard
     verified: true
   name: Gnuboard CMS - Cross-Site Scripting
   reference:
   - https://sir.kr/g5_pds/4788?page=5
   - https://github.com/gnuboard/gnuboard5/commit/8182cac90d2ee2f9da06469ecba759170e782ee3
   severity: medium
-  tags: xss,gnuboard
+  tags: gnuboard,vuln,xss

@@ -15,13 +15,20 @@ id: cisco-edge-340
 info:
   author: dhiyaneshDk
   classification:
+    cpe: cpe:2.3:o:cisco:edge_340_firmware:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Cisco Edge 340 panel was detected.
   metadata:
+    fofa-query: title="cisco edge 340"
+    google-query: intitle:"cisco edge 340"
     max-request: 1
-    shodan-query: http.title:"Cisco Edge 340"
+    product: edge_340_firmware
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)cisco edge 340"})
+    shodan-query:
+    - http.title:"Cisco Edge 340"
+    - http.title:"cisco edge 340"
+    vendor: cisco
   name: Cisco Edge 340 Panel - Detect
   severity: info
-  tags: panel,cisco
+  tags: cisco,discovery,panel

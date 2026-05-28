@@ -1,9 +1,7 @@
 http:
 - matchers:
-  - condition: or
-    dsl:
+  - dsl:
     - status_code_1 == 403 && status_code_2 != 403
-    - status_code_1 == 403 && status_code_3 != 403
     type: dsl
   raw:
   - 'GET / HTTP/1.1
@@ -22,16 +20,6 @@ http:
     X-Forwarded-For: 127.0.0.1, 0.0.0.0, 192.168.0.1, 10.0.0.1, 172.16.0.1
 
     '
-  - 'GET /test.txt HTTP/1.1
-
-    Host: {{Hostname}}
-
-    Accept: */*
-
-    X-Forwarded-For: 127.0.0.1, 0.0.0.0, 192.168.0.1, 10.0.0.1, 172.16.0.1
-
-    '
-  req-condition: true
 id: xff-403-bypass
 info:
   author: vavkamil
@@ -41,4 +29,4 @@ info:
     max-request: 3
   name: X-Forwarded-For 403-forbidden bypass
   severity: info
-  tags: fuzz
+  tags: fuzzing,xff-403-bypass,vuln

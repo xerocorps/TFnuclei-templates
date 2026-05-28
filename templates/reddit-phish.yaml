@@ -21,8 +21,10 @@ info:
   description: 'A reddit phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: reddit phishing Detection
   reference:
   - https://reddit.com
   severity: info
-  tags: phishing,reddit,osint
+  tags: phishing,reddit,osint,discovery

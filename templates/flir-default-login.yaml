@@ -6,9 +6,9 @@ http:
     - '"success"'
   - condition: and
     dsl:
-    - contains(tolower(all_headers), 'text/html')
-    - contains(tolower(all_headers), 'phpsessid')
-    - contains(tolower(all_headers), 'showcameraid')
+    - contains(tolower(header), 'text/html')
+    - contains(tolower(header), 'phpsessid')
+    - contains(tolower(header), 'showcameraid')
     type: dsl
   - status:
     - 200
@@ -44,4 +44,4 @@ info:
   reference:
   - https://securitycamcenter.com/flir-default-password/
   severity: medium
-  tags: default-login,flir,camera,iot
+  tags: camera,default-login,flir,iot,vuln

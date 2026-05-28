@@ -42,13 +42,14 @@ info:
   metadata:
     fofa-query: server="H3C-CVM"
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
   name: H3C CVM - Arbitrary File Upload
   reference:
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/h3c-cvm-fileupload.yaml
   - https://github.com/tr0uble-mAker/POC-bomber/blob/main/pocs/redteam/h3c_cvm_fileupload_2022.py
   severity: critical
-  tags: h3c,lfi,instrusive,file-upload,intrusive
+  tags: h3c,lfi,instrusive,file-upload,intrusive,vuln
 variables:
   filename: '{{rand_base(5)}}'
   payload: '{{rand_base(8)}}'

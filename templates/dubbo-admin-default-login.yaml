@@ -1,5 +1,5 @@
 http:
-- attack: pitchfork
+- attack: clusterbomb
   matchers:
   - condition: and
     type: word
@@ -15,9 +15,11 @@ http:
     password:
     - guest
     - root
+    - password
     username:
     - guest
     - root
+    - admin
   raw:
   - 'GET / HTTP/1.1
 
@@ -37,9 +39,9 @@ info:
     cwe-id: CWE-522
   description: Apache Dubbo default admin credentials were discovered.
   metadata:
-    max-request: 2
+    max-request: 9
   name: Apache Dubbo - Default Admin Discovery
   reference:
   - https://www.cnblogs.com/wishwzp/p/9438658.html
   severity: high
-  tags: dubbo,apache,default-login
+  tags: dubbo,apache,default-login,admin

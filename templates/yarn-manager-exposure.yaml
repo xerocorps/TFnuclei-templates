@@ -12,9 +12,13 @@ http:
 id: yarn-manager-exposure
 info:
   author: pdteam
+  classification:
+    cpe: cpe:2.3:a:apache:hadoop:*:*:*:*:*:*:*:*
   description: Apache YARN ResourceManager panel was detected.
   metadata:
     max-request: 1
+    product: hadoop
+    vendor: apache
   name: Apache YARN ResourceManager Panel - Detect
   severity: low
-  tags: panel,apache,yarn,exposure
+  tags: panel,apache,yarn,exposure,discovery

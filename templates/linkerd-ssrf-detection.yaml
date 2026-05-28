@@ -12,10 +12,12 @@ http:
 id: linkerd-ssrf-detection
 info:
   author: dudez
+  description: Linkerd is vulnerable to SSRF.
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-17/uses interactsh
   name: Linkerd SSRF detection
   reference:
   - https://twitter.com/nirvana_msu/status/1084144955034165248
   severity: high
-  tags: ssrf,linkerd,oast
+  tags: ssrf,linkerd,oast,misconfig,vuln

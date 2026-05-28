@@ -1,4 +1,18 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - condition: and
+    internal: true
+    type: word
+    words:
+    - custom tables
+    - 'Tags:'
+  raw:
+  - 'GET /wp-content/plugins/custom-tables/readme.txt HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 - matchers:
   - part: body
     type: word
@@ -25,10 +39,10 @@ info:
   description: WordPress Custom Tables 3.4.4 plugin contains a cross-site scripting
     vulnerability via the key parameter.
   metadata:
-    max-request: 1
+    max-request: 2
   name: WordPress Custom Tables 3.4.4 - Cross-Site Scripting
   reference:
   - https://wpscan.com/vulnerability/211a4286-4747-4b62-acc3-fd9a57b06252
   - https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-custom-tables-key-parameter-cross-site-scripting-3-4-4/
   severity: high
-  tags: wpscan,wordpress,xss,wp-plugin
+  tags: wpscan,wordpress,xss,wp-plugin,vuln

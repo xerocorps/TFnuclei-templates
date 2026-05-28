@@ -20,6 +20,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Homebridge"})
     shodan-query: title:"Homebridge"
     verified: true
   name: Homebridge Panel - Detect
@@ -27,4 +28,4 @@ info:
   - https://homebridge.io/
   - https://github.com/homebridge
   severity: info
-  tags: panel,homebridge,detect
+  tags: panel,homebridge,detect,discovery

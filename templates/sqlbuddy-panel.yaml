@@ -16,18 +16,21 @@ id: sqlbuddy-panel
 info:
   author: nullfuzz
   classification:
+    cpe: cpe:2.3:a:sqlbuddy:sql_buddy:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'SQL Buddy login panel was detected.
 
     '
   metadata:
     max-request: 2
+    product: sql_buddy
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)SQL Buddy"})
     shodan-query: http.title:"SQL Buddy"
+    vendor: sqlbuddy
     verified: true
   name: SQL Buddy Login Panel - Detect
   reference:
   - http://sqlbuddy.com/
   severity: info
-  tags: panel,sqlbuddy
+  tags: discovery,panel,sqlbuddy

@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -15,10 +19,11 @@ http:
 id: canny-takeover
 info:
   author: pdteam
+  description: Canny takeover was detected.
   metadata:
     max-request: 1
   name: Canny Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/114
   severity: high
-  tags: takeover
+  tags: takeover,vuln

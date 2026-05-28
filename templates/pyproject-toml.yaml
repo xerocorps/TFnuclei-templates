@@ -21,7 +21,7 @@ info:
   author: DhiyaneshDK
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: pyproject.toml configuration was detected.
   metadata:
@@ -29,6 +29,7 @@ info:
     shodan-query: html:"pyproject.toml"
     verified: true
   name: pyproject.toml Configuration - Detect
-  reference: https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/
+  reference:
+  - https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/
   severity: info
-  tags: exposure,pyproject,pip,devops,cicd
+  tags: exposure,pyproject,pip,devops,cicd,vuln

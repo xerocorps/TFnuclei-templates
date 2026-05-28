@@ -16,13 +16,17 @@ http:
 id: browserless-debugger
 info:
   author: ggranjus
+  classification:
+    cpe: cpe:2.3:a:browserless:chrome:*:*:*:*:node.js:*:*:*
   description: Browserless instance can be used to make web requests. May worth checking
     /workspace for juicy files.
   metadata:
     max-request: 1
+    product: chrome
     shodan-query: http.title:"browserless debugger"
+    vendor: browserless
   name: Exposed Browserless debugger
   reference:
   - https://docs.browserless.io/docs/docker.html#securing-your-instance
   severity: medium
-  tags: browserless,unauth,debug
+  tags: browserless,unauth,debug,misconfig,vuln

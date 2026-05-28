@@ -40,11 +40,17 @@ http:
 id: apache-solr-rce
 info:
   author: j4vaovo
+  classification:
+    cwe-id:
+    - CWE-15
+    - CWE-94
+    - CWE-99
   description: Apache Solr 9.1 is vulnerable to RCE.
   metadata:
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive, uses interactsh
   name: Apache Solr 9.1 - Remote Code Execution
   reference:
   - https://web.archive.org/web/20230414152023/https://noahblog.360.cn/apache-solr-rce/
   severity: critical
-  tags: solr,apache,rce,oast,intrusive
+  tags: apache,intrusive,oast,rce,solr,vuln

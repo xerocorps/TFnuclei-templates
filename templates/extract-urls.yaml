@@ -11,9 +11,11 @@ headless:
   - action: waitload
   - action: script
     args:
-      code: "() => {\n return '\\n' + [...new Set(Array.from(document.querySelectorAll('[src],\
-        \ [href], [url], [action]')).map(i => i.src || i.href || i.url || i.action))].join('\\\
-        r\\n') + '\\n'\n}\n"
+      code: '''\n'' + [...new Set(Array.from(document.querySelectorAll(''[src], [href],
+        [url], [action]'')).map(i => i.src || i.href || i.url || i.action))].join(''\r\n'')
+        + ''\n''
+
+        '
     name: extract
 id: extract-urls
 info:

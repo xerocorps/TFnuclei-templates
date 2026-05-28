@@ -21,8 +21,10 @@ info:
   description: 'A Wikipedia phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: Wikipedia phishing Detection
   reference:
   - https://wikipedia.com
   severity: info
-  tags: phishing,wikipedia,osint
+  tags: phishing,wikipedia,osint,discovery

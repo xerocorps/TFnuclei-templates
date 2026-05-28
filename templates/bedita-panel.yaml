@@ -21,15 +21,22 @@ id: bedita-panel
 info:
   author: pikpikcu,daffainfo
   classification:
+    cpe: cpe:2.3:a:bedita:bedita:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: BEdita login panel was detected.
   metadata:
+    fofa-query: title="bedita"
+    google-query: intitle:"bedita"
     max-request: 1
-    shodan-query: http.title:"BEdita"
+    product: bedita
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)bedita"})
+    shodan-query:
+    - http.title:"BEdita"
+    - http.title:"bedita"
+    vendor: bedita
   name: BEdita Login Panel - Detect
   reference:
   - https://www.bedita.com/
   severity: info
-  tags: panel,bedita
+  tags: bedita,discovery,panel

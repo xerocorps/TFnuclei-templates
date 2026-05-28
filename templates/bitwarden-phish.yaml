@@ -21,8 +21,10 @@ info:
   description: 'A bitwarden phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: bitwarden phishing Detection
   reference:
   - https://bitwarden.com
   severity: info
-  tags: phishing,bitwarden,osint
+  tags: phishing,bitwarden,osint,discovery

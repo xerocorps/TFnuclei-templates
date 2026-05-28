@@ -16,13 +16,21 @@ id: oracle-people-enterprise
 info:
   author: dhiyaneshDk
   classification:
+    cpe: cpe:2.3:a:oracle:peoplesoft_enterprise:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Oracle PeopleSoft Enterprise login panel detected.
   metadata:
+    fofa-query: title="oracle peoplesoft enterprise"
+    google-query: intitle:"oracle peoplesoft enterprise"
     max-request: 1
-    shodan-query: http.title:"Oracle Peoplesoft Enterprise"
+    product: peoplesoft_enterprise
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)oracle peoplesoft
+      enterprise"})
+    shodan-query:
+    - http.title:"Oracle Peoplesoft Enterprise"
+    - http.title:"oracle peoplesoft enterprise"
+    vendor: oracle
   name: Oracle PeopleSoft Enterprise Login Panel - Detect
   severity: info
-  tags: oracle,login,panel
+  tags: discovery,login,oracle,panel

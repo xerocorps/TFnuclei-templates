@@ -15,7 +15,7 @@ info:
   author: Udyz
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-77
   description: Hasura GraphQL Engine allows remote unauthenticated users to execute
     arbitrary SQL statements via the '/v2/query' endpoint (aka remote code execution).
@@ -25,4 +25,4 @@ info:
   reference:
   - https://www.exploit-db.com/exploits/49802
   severity: critical
-  tags: graphql,edb,hasura,rce
+  tags: graphql,edb,hasura,rce,vuln

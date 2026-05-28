@@ -17,13 +17,20 @@ id: opensis-detect
 info:
   author: pikpikcu
   classification:
+    cpe: cpe:2.3:a:os4ed:opensis:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: OpenSIS login panel was detected.
   metadata:
+    fofa-query: title="opensis"
+    google-query: intitle:"opensis"
     max-request: 2
-    shodan-query: http.title:"openSIS"
+    product: opensis
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)opensis"})
+    shodan-query:
+    - http.title:"openSIS"
+    - http.title:"opensis"
+    vendor: os4ed
   name: OpenSIS Login Panel - Detect
   severity: info
-  tags: panel,opensis,login
+  tags: discovery,login,opensis,os4ed,panel

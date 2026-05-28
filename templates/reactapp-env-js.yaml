@@ -19,13 +19,16 @@ http:
   path:
   - '{{BaseURL}}/env.js'
   - '{{BaseURL}}/config.js'
+  - '{{BaseURL}}/config/env.js'
+  - '{{BaseURL}}/config/runtime-env.js'
+  stop-at-first-match: true
 id: reactapp-env-js
 info:
-  author: random-robbie
+  author: random-robbie,rinolock
   metadata:
     github-query: REACT_APP_
-    max-request: 2
+    max-request: 4
     verified: true
   name: React App Environment Js
   severity: unknown
-  tags: react,exposure,config,js,javascript
+  tags: react,exposure,config,js,javascript,vuln

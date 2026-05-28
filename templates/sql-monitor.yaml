@@ -14,13 +14,19 @@ id: sql-monitor
 info:
   author: dhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:red-gate:sql_monitor:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: SQL Monitor was discovered.
   metadata:
+    fofa-query: body="sql monitor"
     max-request: 1
-    shodan-query: html:"SQL Monitor"
+    product: sql_monitor
+    runzero-match: service["http.body"] matches "(?i)sql monitor"
+    shodan-query:
+    - html:"SQL Monitor"
+    - http.html:"sql monitor"
+    vendor: red-gate
   name: SQL Monitor - Discovery
   severity: info
-  tags: panel
+  tags: discovery,panel,red-gate

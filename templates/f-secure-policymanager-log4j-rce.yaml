@@ -45,13 +45,14 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: html:"F-Secure Policy Manager"
     verified: true
   name: F-Secure Policy Manager - Remote Code Execution (Apache Log4j)
   reference:
   - https://discuss.elastic.co/t/apache-log4j2-remote-code-execution-rce-vulnerability-cve-2021-44228-esa-2021-31/291476
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,fsecure,oast,kev
+  tags: cve,cve2021,rce,jndi,log4j,fsecure,oast,kev,vuln
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

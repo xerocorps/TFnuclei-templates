@@ -1,18 +1,19 @@
 http:
-- host-redirects: true
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - '&#34;version_string&#34;:\s+&#34;([0-9a-z\.\-]+)&#34;'
+    type: regex
+  host-redirects: true
   matchers:
-  - part: body
-    type: word
-    words:
-    - alt="Superset"
-  - part: header
-    type: word
-    words:
-    - text/html
-  - status:
-    - 200
-    type: status
-  matchers-condition: and
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(content_type, "text/html")
+    - contains_any(body, "alt=\"Superset\"", "<title>Superset</title>", "SUPERSET",
+      "superset")
+    type: dsl
   max-redirects: 2
   method: GET
   path:
@@ -21,16 +22,26 @@ http:
   stop-at-first-match: true
 id: superset-login
 info:
-  author: DhiyaneshDk
+  author: DhiyaneshDk,righettod,icarot
   classification:
+    cpe: cpe:2.3:a:apache:superset:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Apache Superset login panel was detected.
   metadata:
+    fofa-query:
+    - body="apache superset"
+    - icon_hash=1582430156
     max-request: 2
-    shodan-query: http.favicon.hash:1582430156
+    product: superset
+    runzero-match: service["favicon.ico.image.mmh3"] == "1582430156" || service["http.body"]
+      matches "(?i)apache superset"
+    shodan-query:
+    - http.favicon.hash:1582430156
+    - http.html:"apache superset"
+    - http.html:"superset"
+    vendor: apache
     verified: true
   name: Apache Superset Login Panel - Detect
   severity: info
-  tags: panel,superset
+  tags: apache,discovery,panel,superset

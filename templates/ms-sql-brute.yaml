@@ -8,6 +8,7 @@ info:
     shodan-query: port:1433
   name: microsoft sql server(mssql) bruteforce
   severity: info
+  tags: brute,network,mssql
 javascript:
 - args:
     Host: '{{Host}}'
@@ -32,6 +33,12 @@ javascript:
     passwords:
     - SqlServer0
     - SqlServer2021
+    - sa
+    - root
+    - admin
+    - RPSsql12345
+    - password
+    - ''
     usernames:
     - sa
     - root

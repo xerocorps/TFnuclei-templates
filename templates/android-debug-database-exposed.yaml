@@ -13,9 +13,10 @@ http:
 id: android-debug-database-exposed
 info:
   author: dhiyaneshDK
+  description: Android Debug Manger is exposed.
   metadata:
     max-request: 1
     shodan-query: http.title:"Android Debug Database"
   name: Android Debug Manager
   severity: low
-  tags: unauth,android
+  tags: unauth,android,misconfig,vuln

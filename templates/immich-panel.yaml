@@ -22,6 +22,7 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-43504595"
     shodan-query: http.favicon.hash:-43504595
     verified: true
   name: Immich Panel - Detect
@@ -29,4 +30,4 @@ info:
   - https://immich.app/
   - https://github.com/immich-app/immich
   severity: info
-  tags: panel,immich,detect
+  tags: panel,immich,detect,discovery

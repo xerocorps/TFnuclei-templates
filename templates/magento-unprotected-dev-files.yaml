@@ -19,6 +19,7 @@ http:
       "application/octet-stream")
     - status_code == 200
     type: dsl
+  matchers-condition: or
   method: GET
   path:
   - '{{BaseURL}}/dev/tests/functional/credentials.xml.dist'
@@ -38,4 +39,4 @@ info:
   reference:
   - https://support.hypernode.com/en/support/solutions/articles/48001153348-how-to-secure-your-data-using-encryption-and-hashing
   severity: high
-  tags: magento
+  tags: magento,exposed,bounty,php

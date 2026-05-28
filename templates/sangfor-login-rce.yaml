@@ -20,6 +20,9 @@ http:
 id: sangfor-login-rce
 info:
   author: SleepingBag945
+  classification:
+    cwe-id:
+    - CWE-78
   description: 'Sangfor application delivery management system login has a remote
     command execution vulnerability, through which an attacker can obtain server privileges
     and execute arbitrary commands
@@ -33,4 +36,4 @@ info:
   reference:
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/sangfor-login-rce.yaml
   severity: critical
-  tags: sangfor,rce
+  tags: rce,sangfor,vuln

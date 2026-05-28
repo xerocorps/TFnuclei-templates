@@ -21,8 +21,10 @@ info:
   description: 'A sophos phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: sophos phishing Detection
   reference:
   - https://sophos.com
   severity: info
-  tags: phishing,sophos,osint
+  tags: phishing,sophos,osint,discovery

@@ -21,8 +21,10 @@ info:
   description: 'A google phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: Google phishing Detection
   reference:
   - https://google.com
   severity: info
-  tags: phishing,google,osint
+  tags: phishing,google,osint,discovery

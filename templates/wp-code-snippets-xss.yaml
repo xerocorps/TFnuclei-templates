@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  matchers:
+- matchers:
   - condition: and
     part: body
     type: word
@@ -50,8 +49,9 @@ info:
     authentication credentials and launch other attacks.
   metadata:
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
   name: WordPress Code Snippets - Cross-Site Scripting
   reference:
   - https://www.securify.nl/en/advisory/cross-site-scripting-in-code-snippets-wordpress-plugin/
   severity: medium
-  tags: wordpress,xss,wp-plugin,authenticated
+  tags: wordpress,xss,wp-plugin,authenticated,vuln

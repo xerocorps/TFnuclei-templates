@@ -21,8 +21,10 @@ info:
   description: 'A evernote phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: evernote phishing Detection
   reference:
   - https://evernote.com
   severity: info
-  tags: phishing,evernote,osint
+  tags: phishing,evernote,osint,discovery

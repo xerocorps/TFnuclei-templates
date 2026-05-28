@@ -20,10 +20,12 @@ http:
     - user
     - shipper
     - admin
+    - password
     user:
     - manager
     - user
     - shipper
+    - admin
     - admin
   raw:
   - 'GET /jbpm-console/app/tasks.jsf HTTP/1.1
@@ -56,11 +58,10 @@ info:
     cwe-id: CWE-522
   description: JBoss jBPM Administration Console default login information was detected.
   metadata:
-    max-request: 12
     shodan-query: html:"JBossWS"
-    verified: true
+    verified: 'true'
   name: JBoss jBPM Administration Console Default Login - Detect
   reference:
   - https://github.com/PortSwigger/j2ee-scan/blob/master/src/main/java/burp/j2ee/issues/impl/JBossjBPMAdminConsole.java
   severity: high
-  tags: jboss,jbpm,default-login
+  tags: jboss,default-login,jboss

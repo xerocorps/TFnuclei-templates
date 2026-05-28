@@ -15,17 +15,23 @@ http:
 id: shell-box
 info:
   author: irshad ahamed
+  classification:
+    cpe: cpe:2.3:a:shellinabox_project:shellinabox:*:*:*:*:*:*:*:*
   description: 'Shell In A Box implements a web server that can export arbitrary command
     line tools to a web based terminal emulator
 
     '
   metadata:
+    fofa-query: icon_hash=-629968763
     max-request: 1
+    product: shellinabox
+    runzero-match: service["favicon.ico.image.mmh3"] == "-629968763"
     shodan-query: http.favicon.hash:-629968763
+    vendor: shellinabox_project
     verified: true
   name: Shell In A Box - Detect
   reference:
   - https://github.com/shellinabox/shellinabox
   - https://www.cvedetails.com/vulnerability-list/vendor_id-15771/product_id-33062/Shellinabox-Project-Shellinabox.html
   severity: info
-  tags: shell,emulator,detect,panel,login
+  tags: detect,discovery,emulator,login,panel,shell,shellinabox_project

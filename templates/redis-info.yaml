@@ -6,13 +6,25 @@ info:
 
     '
   metadata:
+    fofa-query:
+    - apache airflow
+    - title="airflow - dags" || http.html:"apache airflow"
+    - title="sign in - airflow"
+    google-query:
+    - intitle:"airflow - dags" || http.html:"apache airflow"
+    - intitle:"sign in - airflow"
     max-request: 1
-    shodan-query: product:"redis"
+    product: airflow
+    shodan-query:
+    - product:"redis"
+    - http.title:"airflow - dags" || http.html:"apache airflow"
+    - http.title:"sign in - airflow"
+    vendor: apache
   name: Redis Info - Detect
   reference:
   - https://nmap.org/nsedoc/scripts/redis-info.html
   severity: info
-  tags: js,redis,network
+  tags: js,redis,network,enum,discovery
 javascript:
 - args:
     Host: '{{Host}}'
@@ -38,3 +50,6 @@ javascript:
     - used_memory_human:(\d+\.\d+[KMGTPEZY]?)
     - role:(\w+)
     type: regex
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

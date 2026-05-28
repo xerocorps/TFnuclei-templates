@@ -42,6 +42,7 @@ info:
   description: Spring Boot is susceptible to remote code execution via Apache Log4j.
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-07/uses interactsh
   name: Spring Boot - Remote Code Execution (Apache Log4j)
   reference:
   - https://logging.apache.org/log4j/2.x/security.html
@@ -51,7 +52,7 @@ info:
   remediation: Upgrade to Log4j 2.3.1 (for Java 6), 2.12.3 (for Java 7), or 2.17.0
     (for Java 8 and later).
   severity: critical
-  tags: cve,cve2021,springboot,rce,oast,log4j,kev
+  tags: cve,cve2021,springboot,rce,oast,log4j,kev,vuln
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

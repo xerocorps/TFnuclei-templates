@@ -5,7 +5,10 @@ info:
   severity: info
   tags: gitlab,enum
 requests:
-- attack: sniper
+- body: "{\n   \"query\":\"{\\nusers {\\nedges {\\n  node {\\n    username\\n    email\\\
+    n    avatarUrl\\n    }\\n   }\\n  }\\n }\"\n}\n"
+  headers:
+    Content-Type: application/json
   matchers:
   - part: header
     type: word
@@ -21,12 +24,6 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - "POST /api/graphql HTTP/1.1\nHost: {{Subdomains}}\nUser-Agent: Mozilla/5.0 (Windows\
-    \ NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0\nAccept-Encoding: gzip, deflate\n\
-    Accept: */*\nContent-Type: application/json\n\n{\n   \"query\":\"{\\nusers {\\\
-    nedges {\\n  node {\\n    username\\n    email\\n    avatarUrl\\n    }\\n   }\\\
-    n  }\\n }\"\n}\n"
-  threads: 100
+  method: POST
+  path:
+  - '{{BaseURL}}/api/graphql'

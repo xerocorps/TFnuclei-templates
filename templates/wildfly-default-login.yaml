@@ -30,8 +30,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "Welcome to WildFly"})
   name: Wildfly - Default Admin Login
   reference:
   - https://docs.wildfly.org/26.1/#administrator-guides
   severity: high
-  tags: wildfly,default-login
+  tags: default-login,vuln,wildfly

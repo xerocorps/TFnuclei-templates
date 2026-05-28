@@ -21,8 +21,10 @@ info:
   description: 'A keepersecurity phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: keepersecurity phishing Detection
   reference:
   - https://keepersecurity.com
   severity: info
-  tags: phishing,keepersecurity,osint
+  tags: phishing,keepersecurity,osint,discovery

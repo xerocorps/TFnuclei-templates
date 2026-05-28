@@ -29,10 +29,14 @@ http:
 id: pi-hole-panel
 info:
   author: geeknik
+  classification:
+    cpe: cpe:2.3:a:pi-hole:pi-hole:*:*:*:*:*:*:*:*
   metadata:
     max-request: 5
+    product: pi-hole
     shodan-query: title:"Pi-hole"
+    vendor: pi-hole
     verified: true
   name: Pi-hole Login Panel - Detect
   severity: info
-  tags: tech,pihole,detect
+  tags: tech,pihole,detect,discovery

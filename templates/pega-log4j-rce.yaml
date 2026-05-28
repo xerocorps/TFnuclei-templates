@@ -55,6 +55,7 @@ id: pega-log4j-rce
 info:
   author: shaikhyaser
   classification:
+    cpe: cpe:2.3:a:pega:platform:*:*:*:*:*:*:*:*
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
@@ -66,12 +67,15 @@ info:
     '
   metadata:
     max-request: 2
+    product: platform
+    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"Pega"
+    vendor: pega
   name: Pega - Remote Code Execution (Apache Log4j)
   reference:
   - https://docs.pega.com/security-advisory/security-advisory-apache-log4j-zero-day-vulnerability
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,pega,oast,kev
+  tags: cve,cve2021,jndi,kev,log4j,oast,pega,rce,vuln
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

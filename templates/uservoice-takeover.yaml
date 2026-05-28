@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -13,6 +17,7 @@ http:
 id: uservoice-takeover
 info:
   author: MiryangJung
+  description: Uservoice takeover was detected.
   metadata:
     max-request: 1
   name: Uservoice Takeover Detection
@@ -20,4 +25,4 @@ info:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/163
   - https://hackerone.com/reports/269109
   severity: high
-  tags: takeover,uservoice,hackerone
+  tags: takeover,uservoice,hackerone,vuln

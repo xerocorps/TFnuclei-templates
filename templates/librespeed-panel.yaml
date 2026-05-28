@@ -24,10 +24,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)LibreSpeed"})
     shodan-query: title:"LibreSpeed"
     verified: true
   name: LibreSpeed Panel - Detect
   reference:
   - https://github.com/librespeed/speedtest
   severity: info
-  tags: panel,librespeed,detect
+  tags: panel,librespeed,detect,discovery

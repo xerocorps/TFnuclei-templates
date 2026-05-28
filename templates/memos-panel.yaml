@@ -15,16 +15,25 @@ http:
 id: memos-panel
 info:
   author: rxerium
+  classification:
+    cpe: cpe:2.3:a:usememos:memos:*:*:*:*:*:*:*:*
   description: 'Memos is a privacy-first, lightweight note-taking service
 
     '
   metadata:
+    fofa-query: title="memos"
+    google-query: intitle:"memos"
     max-request: 2
-    shodan-query: title:"Memos"
+    product: memos
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)memos"})
+    shodan-query:
+    - title:"Memos"
+    - http.title:"memos"
+    vendor: usememos
     verified: true
   name: Memos Panel - Detect
   reference:
   - https://github.com/usememos/memos
   - https://www.usememos.com/
   severity: info
-  tags: panel,memos,detect
+  tags: detect,discovery,memos,panel,usememos

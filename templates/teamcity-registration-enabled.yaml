@@ -15,6 +15,7 @@ id: teamcity-registration-enabled
 info:
   author: Ph33r
   classification:
+    cpe: cpe:2.3:a:jetbrains:teamcity:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 7.3
     cwe-id: CWE-200
@@ -23,10 +24,13 @@ info:
     '
   metadata:
     max-request: 1
+    product: teamcity
+    runzero-review: REJECT/2025-11-17/excluding tag intrusive
     shodan-query: http.component:"TeamCity"
+    vendor: jetbrains
     verified: true
   name: JetBrains TeamCity - Registration Enabled
   reference:
   - https://ph33r.medium.com/misconfig-in-teamcity-panel-lead-to-auth-bypass-in-apache-org-0day-146f6a1a4e2b
   severity: high
-  tags: misconfig,auth-bypass,teamcity,jetbrains
+  tags: auth-bypass,intrusive,jetbrains,misconfig,teamcity,vuln

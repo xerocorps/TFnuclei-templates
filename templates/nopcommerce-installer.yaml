@@ -21,16 +21,19 @@ id: nopcommerce-installer
 info:
   author: DhiyaneshDk
   classification:
+    cpe: cpe:2.3:a:nopcommerce:nopcommerce:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H
     cvss-score: 9.4
     cwe-id: CWE-284
   description: nopCommerce installer panel was detected.
   metadata:
     max-request: 1
+    product: nopcommerce
     shodan-query: html:"nopCommerce Installation"
+    vendor: nopcommerce
     verified: true
   name: nopCommerce Installer - Detect
   reference:
   - https://www.nopcommerce.com/
   severity: critical
-  tags: misconfig,nopcommerce,install
+  tags: install,misconfig,nopcommerce,vuln

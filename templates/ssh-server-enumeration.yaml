@@ -7,7 +7,7 @@ info:
     verified: true
   name: SSH Server Software Enumeration
   severity: info
-  tags: js,ssh,enum,network
+  tags: js,ssh,enum,network,discovery
 javascript:
 - args:
     Host: '{{Host}}'
@@ -18,7 +18,7 @@ javascript:
 
     var response = c.ConnectSSHInfoMode(Host, Port);
 
-    to_json(response);
+    Export(response);
 
     '
   extractors:

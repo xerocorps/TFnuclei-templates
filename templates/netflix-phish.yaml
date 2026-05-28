@@ -22,8 +22,10 @@ info:
   description: 'A netflix phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: netflix phishing Detection
   reference:
   - https://netflix.com
   severity: info
-  tags: phishing,netflix,osint
+  tags: phishing,netflix,osint,discovery

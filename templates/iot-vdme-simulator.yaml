@@ -18,7 +18,6 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-  - '{{BaseURL}}:9998'
   stop-at-first-match: true
 id: iot-vdme-simulator
 info:
@@ -37,4 +36,4 @@ info:
     verified: true
   name: IoT vDME Simulator Panel - Detect
   severity: medium
-  tags: exposure,misconfig,panel
+  tags: exposure,misconfig,panel,vuln

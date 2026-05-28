@@ -42,9 +42,11 @@ id: codepen-login-check
 info:
   author: parthmalhotra,pdresearch
   description: Checks for a valid codepen account.
+  metadata:
+    max-request: 2
   name: codepen.io Login Check
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: login-check,codepen,creds-stuffing
+  tags: creds-stuffing,login-check,cloud,codepen,vuln
 self-contained: true

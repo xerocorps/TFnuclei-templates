@@ -12,10 +12,14 @@ http:
 id: landesk-ma
 info:
   author: 0xNirvana
+  classification:
+    cpe: cpe:2.3:a:landesk:landesk_management_suite:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: landesk_management_suite
     shodan-query: http.html:"LANDESK(R)"
+    vendor: landesk
     verified: true
   name: LANDESK(R) Management Agent Detect
   severity: info
-  tags: tech,landesk
+  tags: tech,landesk,discovery

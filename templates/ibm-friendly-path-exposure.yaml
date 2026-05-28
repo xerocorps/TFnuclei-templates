@@ -12,6 +12,11 @@ http:
   - status:
     - 200
     type: status
+  - negative: true
+    part: header
+    regex:
+    - 'Content-Location: .+'
+    type: regex
   matchers-condition: and
   method: GET
   path:
@@ -24,13 +29,17 @@ http:
 id: ibm-friendly-path-exposure
 info:
   author: clarkvoss
+  classification:
+    cpe: cpe:2.3:a:ibm:websphere_portal:*:*:*:*:*:*:*:*
   description: Finds friendly path exposed that can be used to access signup page
     and create new user accounts.
   metadata:
     max-request: 5
+    product: websphere_portal
     shodan-query: http.html:"IBM WebSphere Portal"
+    vendor: ibm
   name: IBM Websphere Friendly Path Exposure
   reference:
   - https://clarkvoss.medium.com/how-to-harpon-big-blue-c163722638d8
   severity: medium
-  tags: ibm,exposure,websphere
+  tags: ibm,exposure,websphere,misconfig,vuln

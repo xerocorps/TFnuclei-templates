@@ -15,14 +15,28 @@ id: pulsar-admin-console
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:apache:pulsar:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Pulsar admin console panel was detected.
   metadata:
+    fofa-query:
+    - title="pulsar admin ui"
+    - title="pulsar admin console"
+    google-query:
+    - intitle:"pulsar admin ui"
+    - intitle:"pulsar admin console"
     max-request: 1
-    shodan-query: title:"Pulsar Admin Console"
+    product: pulsar
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)pulsar admin
+      console"}) || any(each(service["html.titles"]), {# matches "(?i)pulsar admin
+      ui"})
+    shodan-query:
+    - title:"Pulsar Admin Console"
+    - http.title:"pulsar admin ui"
+    - http.title:"pulsar admin console"
+    vendor: apache
     verified: true
   name: Pulsar Admin Console Panel - Detect
   severity: info
-  tags: panel,pulsar,console,admin
+  tags: admin,apache,console,discovery,panel,pulsar

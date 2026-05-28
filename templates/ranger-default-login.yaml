@@ -1,5 +1,5 @@
 http:
-- attack: pitchfork
+- attack: clusterbomb
   matchers:
   - condition: and
     part: body
@@ -14,6 +14,7 @@ http:
   payloads:
     pass:
     - admin
+    - password
     user:
     - admin
   raw:
@@ -38,7 +39,7 @@ info:
     obtain access to user accounts and access sensitive information, modify data,
     and/or execute unauthorized operations.
   metadata:
-    max-request: 1
+    max-request: 2
     shodan-query: http.title:"Ranger - Sign In"
   name: Apache Ranger - Default Login
   reference:

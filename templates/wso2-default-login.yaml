@@ -1,5 +1,5 @@
 http:
-- attack: pitchfork
+- attack: clusterbomb
   matchers:
   - condition: and
     part: header
@@ -10,6 +10,7 @@ http:
   payloads:
     password:
     - admin
+    - password
     username:
     - admin
   raw:
@@ -33,7 +34,7 @@ info:
     cwe-id: CWE-522
   description: WSO2 Management Console default admin credentials were discovered.
   metadata:
-    max-request: 1
+    max-request: 2
   name: WSO2 Management Console Default Login
   reference:
   - https://docs.wso2.com/display/UES100/Accessing+the+Management+Console

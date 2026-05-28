@@ -10,6 +10,9 @@ http:
 id: gitter-token
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -18,4 +21,4 @@ info:
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/gitter-access-token.yaml
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/gitter-access-token.go
   severity: info
-  tags: gitter,file,keys
+  tags: exposure,file,gitter,keys,vuln

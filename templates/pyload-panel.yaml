@@ -19,15 +19,34 @@ http:
 id: pyload-panel
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:pyload:pyload:*:*:*:*:*:*:*:*
   description: 'A Pyload Login was detected.
 
     '
   metadata:
+    fofa-query:
+    - body="pyload"
+    - title="login - pyload"
+    - title="pyload"
+    google-query:
+    - intitle:"pyload"
+    - intitle:"login - pyload"
     max-request: 2
-    shodan-query: title:"Login - pyLoad"
+    product: pyload
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)login - pyload"})
+      || service["http.body"] matches "(?i)pyload" || any(each(service["html.titles"]),
+      {# matches "(?i)pyload"})
+    shodan-query:
+    - title:"Login - pyLoad"
+    - http.title:"login - pyload"
+    - http.html:"pyload"
+    - http.title:"pyload"
+    vendor: pyload
     verified: true
+    zoomeye-query: app="pyLoad"
   name: PyLoad Login - Panel
   reference:
   - https://github.com/pyload/pyload
   severity: info
-  tags: panel,pyload,login
+  tags: discovery,login,panel,pyload

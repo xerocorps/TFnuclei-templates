@@ -7,12 +7,14 @@ info:
     '
   metadata:
     max-request: 1
+    product: dionaea
     shodan-query: port:445
+    vendor: dionaea
   name: smb2-capabilities - Enumeration
   reference:
   - https://nmap.org/nsedoc/scripts/smb2-capabilities.html
   severity: info
-  tags: js,network,smb,enum
+  tags: js,network,smb,enum,discovery
 javascript:
 - args:
     Host: '{{Host}}'
@@ -23,7 +25,7 @@ javascript:
 
     var response = c.ConnectSMBInfoMode(Host, Port);
 
-    to_json(response);
+    Export(response);
 
     '
   extractors:
@@ -31,3 +33,6 @@ javascript:
     - .Capabilities | with_entries(select(.value == true)) | keys
     part: response
     type: json
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

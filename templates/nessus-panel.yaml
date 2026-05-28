@@ -19,14 +19,21 @@ id: nessus-panel
 info:
   author: joanbono,tess
   classification:
+    cpe: cpe:2.3:a:tenable:nessus:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Tenable Nessus panel was detected.
   metadata:
+    fofa-query: title="nessus"
+    google-query: intitle:"nessus"
     max-request: 2
-    shodan-query: title:"Nessus"
+    product: nessus
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)nessus"})
+    shodan-query:
+    - title:"Nessus"
+    - http.title:"nessus"
+    vendor: tenable
     verified: true
   name: Tenable Nessus Panel - Detect
   severity: info
-  tags: panel,nessus
+  tags: discovery,nessus,panel,tenable

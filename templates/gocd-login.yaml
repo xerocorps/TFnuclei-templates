@@ -15,13 +15,24 @@ id: gocd-login
 info:
   author: dhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:thoughtworks:gocd:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: GoCD login panel was detected.
   metadata:
+    fofa-query:
+    - title="create a pipeline - go" html:"gocd version"
+    - body="gocd version"
+    google-query: intitle:"create a pipeline - go" html:"gocd version"
     max-request: 1
-    shodan-query: html:"GoCD Version"
+    product: gocd
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)create a pipeline
+      - go"}) || service["http.body"] matches "(?i)gocd version"
+    shodan-query:
+    - html:"GoCD Version"
+    - http.html:"gocd version"
+    - http.title:"create a pipeline - go" html:"gocd version"
+    vendor: thoughtworks
   name: GoCD Login Panel - Detect
   severity: info
-  tags: go,panel,gocd
+  tags: discovery,go,gocd,panel,thoughtworks

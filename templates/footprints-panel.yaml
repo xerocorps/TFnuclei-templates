@@ -17,14 +17,18 @@ id: footprints-panel
 info:
   author: tess
   classification:
+    cpe: cpe:2.3:a:bmc:footprints_service_core:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: FootPrints Service Core login panel was detected.
   metadata:
     max-request: 2
+    product: footprints_service_core
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)FootPrints Service
+      Core Login"})
     shodan-query: title:"FootPrints Service Core Login"
+    vendor: bmc
     verified: true
   name: FootPrints Service Core Login Panel - Detect
   severity: info
-  tags: tech,panel,footprints
+  tags: discovery,footprints,panel,tech

@@ -15,7 +15,7 @@ http:
     username:
     - datahub
   raw:
-  - 'POST /logIn HTTP/2
+  - 'POST /logIn HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -29,6 +29,7 @@ id: datahub-metadata-default-login
 info:
   author: queencitycyber
   classification:
+    cpe: cpe:2.3:a:datahub_project:datahub:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -37,10 +38,13 @@ info:
     and/or execute unauthorized operations.
   metadata:
     max-request: 1
+    product: datahub
+    runzero-match: any(each(service["html.titles"]), {# matches "DataHub"})
     shodan-query: http.title:"DataHub"
+    vendor: datahub_project
     verified: true
   name: DataHub Metadata - Default Login
   reference:
   - https://github.com/datahub-project/datahub/blob/master/docs/rfc/active/access-control/access-control.md
   severity: high
-  tags: datahub,default-login
+  tags: datahub,default-login,vuln

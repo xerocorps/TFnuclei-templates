@@ -22,8 +22,10 @@ info:
   description: 'A battlenet phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: battlenet phishing Detection
   reference:
   - https://eu.account.battle.net/login
   severity: info
-  tags: phishing,battlenet,osint
+  tags: phishing,battlenet,osint,discovery

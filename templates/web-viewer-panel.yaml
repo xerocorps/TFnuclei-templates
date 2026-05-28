@@ -13,10 +13,20 @@ http:
 id: web-viewer-panel
 info:
   author: JustaAcat
+  classification:
+    cpe: cpe:2.3:h:samsung:dvr:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: title="web viewer for samsung dvr"
+    google-query: intitle:"web viewer for samsung dvr"
     max-request: 1
-    shodan-query: title:"Web Viewer for Samsung DVR"
+    product: dvr
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)web viewer for
+      samsung dvr"})
+    shodan-query:
+    - title:"Web Viewer for Samsung DVR"
+    - http.title:"web viewer for samsung dvr"
+    vendor: samsung
     verified: true
   name: Web Viewer for Samsung DVR - Detect
   severity: info
-  tags: panel,web-viewer,detect
+  tags: detect,discovery,panel,samsung,web-viewer

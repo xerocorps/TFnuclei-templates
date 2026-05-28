@@ -22,8 +22,10 @@ info:
   description: 'A Paypal phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: Paypal phishing Detection
   reference:
   - https://paypal.com
   severity: info
-  tags: phishing,paypal,osint
+  tags: phishing,paypal,osint,discovery

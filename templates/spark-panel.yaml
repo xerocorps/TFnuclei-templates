@@ -15,16 +15,27 @@ id: spark-panel
 info:
   author: righettod
   classification:
+    cpe: cpe:2.3:a:apache:spark:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Apache Spark panel was detected.
   metadata:
+    fofa-query:
+    - title="spark master at"
+    - body="/apps/imt/html/"
+    google-query: intitle:"spark master at"
     max-request: 1
-    shodan-query: html:"/apps/IMT/Html/"
+    product: spark
+    runzero-match: service["http.body"] matches "(?i)/apps/imt/html/" || any(each(service["html.titles"]),
+      {# matches "(?i)spark master at"})
+    shodan-query:
+    - html:"/apps/IMT/Html/"
+    - http.html:"/apps/imt/html/"
+    - http.title:"spark master at"
+    vendor: apache
     verified: true
   name: Apache Spark Panel - Detect
   reference:
   - https://www.hypeinnovation.com
   severity: info
-  tags: panel,spark
+  tags: apache,discovery,panel,spark

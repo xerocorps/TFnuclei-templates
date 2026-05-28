@@ -11,15 +11,20 @@ http:
 id: graylog-panel
 info:
   author: righettod
+  classification:
+    cpe: cpe:2.3:a:graylog:graylog:*:*:*:*:*:*:*:*
   description: 'Graylog login panel was detected.
 
     '
   metadata:
     max-request: 1
+    product: graylog
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Graylog Web Interface"})
     shodan-query: http.title:"Graylog Web Interface"
+    vendor: graylog
     verified: true
   name: Graylog Login Panel - Detect
   reference:
   - https://graylog.org/
   severity: info
-  tags: panel,graylog,login,detect
+  tags: panel,graylog,login,detect,discovery

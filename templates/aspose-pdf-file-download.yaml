@@ -19,7 +19,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22
+    cwe-id: CWE-22,CWE-23,CWE-73
   description: WordPress Aspose PDF Exporter is vulnerable to local file inclusion.
   metadata:
     max-request: 1
@@ -28,4 +28,4 @@ info:
   - https://packetstormsecurity.com/files/131161
   - https://wordpress.org/plugins/aspose-pdf-exporter
   severity: high
-  tags: aspose,packetstorm,wordpress,wp-plugin,lfi
+  tags: aspose,lfi,packetstorm,vuln,wordpress,wp-plugin

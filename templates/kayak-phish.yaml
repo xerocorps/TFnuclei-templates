@@ -21,8 +21,10 @@ info:
   description: 'A kayak phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: kayak phishing Detection
   reference:
   - https://kayak.co.uk
   severity: info
-  tags: phishing,kayak,osint
+  tags: phishing,kayak,osint,discovery

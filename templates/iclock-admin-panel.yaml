@@ -31,8 +31,9 @@ info:
   description: An iClock Automatic Data Master Server Admin login panel was detected.
   metadata:
     max-request: 2
+    runzero-match: service["http.body"] matches "(?i)iClock Automatic"
     shodan-query: html:"iClock Automatic"
     verified: true
   name: iClock Automatic Data Master Server Admin Panel - Detect
   severity: info
-  tags: panel,iclock,login,admin
+  tags: panel,iclock,login,admin,discovery

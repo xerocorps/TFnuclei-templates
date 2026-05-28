@@ -1,9 +1,18 @@
 http:
-- matchers:
-  - part: body
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - (?i)"js/dist/([0-9.]+)/decisioncenter"
+    type: regex
+  matchers:
+  - condition: or
+    part: body
     type: word
     words:
     - <title>Decision Center | Business Console</title>
+    - <h1 class="title">Decision Center | Business Console</h1>
+    - com/ibm/rules/decisioncenter/setup/Login
   - status:
     - 200
     type: status
@@ -13,15 +22,24 @@ http:
   - '{{BaseURL}}/decisioncenter/login'
 id: ibm-odm-panel
 info:
-  author: DhiyaneshDK
+  author: DhiyaneshDK,righettod
+  classification:
+    cpe: cpe:2.3:a:ibm:operational_decision_manager:*:*:*:*:*:*:*:*
   description: 'IBM Operational Decision Manager panel was detected.
 
     '
   metadata:
     fofa-query: title="Decision Center | Business Console"
+    max-request: 1
+    product: operational_decision_manager
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Decision Center
+      \\| Business Console"})
+    shodan-query: http.title:"Decision Center | Business Console"
+    vendor: ibm
     verified: true
   name: IBM Operational Decision Manager Panel - Detect
   reference:
   - https://www.ibm.com/docs/en/odm/8.12.0
+  - https://www.ibm.com/products/operational-decision-manager
   severity: info
-  tags: panel,ibm,login,detect,decision-center
+  tags: panel,ibm,login,detect,decision-center,discovery

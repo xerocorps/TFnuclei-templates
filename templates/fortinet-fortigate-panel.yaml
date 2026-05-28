@@ -1,24 +1,36 @@
 http:
-- host-redirects: true
+- extractors:
+  - group: 1
+    internal: true
+    name: etag
+    part: header
+    regex:
+    - '[Ee][Tt]ag: \"[\w\d]*\-([\w\d]{8})\"'
+    type: regex
+  - dsl:
+    - '"Release date: " + date_time("Jan 2, 2006", hex_to_dec(etag))'
+    type: dsl
   matchers:
-  - part: body
-    type: word
-    words:
-    - /remote/fgt_lang
-  max-redirects: 2
+  - dsl:
+    - status_code==200 && contains(body, "top.location=\"/remote/login\";")
+    type: dsl
   method: GET
   path:
-  - '{{BaseURL}}/remote/login'
+  - '{{BaseURL}}'
 id: fortinet-fortigate-panel
 info:
-  author: bsysop
-  classification:
-    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
-    cwe-id: CWE-200
-  description: Fortinet FortiGate SSL VPN login panel was detected.
+  author: bsysop,darses
+  description: 'FortiGate SSL VPN was detected.
+
+    '
   metadata:
     max-request: 1
-  name: Fortinet FortiGate SSL VPN Login Panel - Detect
+    product: fortigate
+    shodan-query:
+    - cpe:"cpe:2.3:o:fortinet:fortios"
+    - http.html_hash:-1454941180
+    vendor: fortinet
+    verified: true
+  name: Fortinet FortiGate SSL VPN Login - Panel
   severity: info
-  tags: panel,fortinet,fortigate
+  tags: detect,panel,fortigate

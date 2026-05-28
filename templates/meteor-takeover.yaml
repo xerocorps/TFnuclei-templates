@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - type: word
     words:
     - '404 Not Found: No applications registered for host '''
@@ -9,6 +13,7 @@ http:
 id: meteor-takeover
 info:
   author: rivalsec
+  description: Meteor takeover was detected.
   metadata:
     max-request: 1
   name: Meteor subdomain takeover
@@ -16,4 +21,4 @@ info:
   - https://rivalsec.github.io/blog/2022/12/02/meteor.html
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/321
   severity: high
-  tags: takeover,meteor
+  tags: takeover,meteor,vuln

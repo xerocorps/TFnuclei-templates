@@ -47,11 +47,17 @@ http:
 id: webmethod-integration-default-login
 info:
   author: ChristianPoeschl,OleWagner,usdAG
+  classification:
+    cpe: cpe:2.3:a:softwareag:webmethods:*:*:*:*:*:*:*:*
   metadata:
+    max-request: 5
+    product: webmethods
+    runzero-match: service["favicon.ico.image.mmh3"] == "-234335289"
     shodan-query: http.favicon.hash:-234335289
+    vendor: softwareag
     verified: true
   name: WebMethod Integration Server Default Login
   reference:
   - https://documentation.softwareag.com/
   severity: high
-  tags: default-login,webmethod
+  tags: default-login,vuln,webmethod

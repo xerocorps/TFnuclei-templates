@@ -14,8 +14,9 @@ id: tamronos-rce
 info:
   author: pikpikcu
   classification:
+    cpe: cpe:2.3:o:tamronos:tamronos:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-78
   description: 'TamronOS IPTV/VOD contains a remote command execution in the ''host''
     parameter of the /api/ping endpoint.
@@ -24,10 +25,14 @@ info:
   metadata:
     fofa-query: "title=\"TamronOS IPTV\u7CFB\u7EDF\""
     max-request: 1
+    product: tamronos
+    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"(?i)TamronOS\
+      \ IPTV\u7CFB\u7EDF\"})"
     shodan-query: "title:\"TamronOS IPTV\u7CFB\u7EDF\""
+    vendor: tamronos
     verified: true
   name: TamronOS IPTV/VOD - Remote Command Execution
   reference:
   - https://twitter.com/sec715/status/1405336456923471874
   severity: critical
-  tags: tamronos,rce
+  tags: rce,tamronos,vuln

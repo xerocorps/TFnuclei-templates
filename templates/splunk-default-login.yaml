@@ -48,7 +48,6 @@ http:
 
     Origin: {{BaseURL}}
 
-
     {{cval}}&username={{username}}&password={{password}}&return_to=%2Fen-US%2F&set_has_logged_in=false
 
     '
@@ -70,7 +69,7 @@ info:
 
     '
   metadata:
-    max-request: 9
+    max-request: 3
     shodan-query: http.title:"Splunk"
     verified: true
   name: Splunk - Default Password

@@ -8,5 +8,5 @@ workflows:
 - matchers:
   - name: skywalking
     subtemplates:
-    - null
+    - tags: skywalking
   template: technologies/fingerprinthub-web-fingerprints.yaml

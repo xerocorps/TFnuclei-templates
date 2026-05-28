@@ -25,6 +25,8 @@ http:
 id: apache-nifi-rce
 info:
   author: arliya
+  classification:
+    cpe: cpe:2.3:a:apache:nifi:*:*:*:*:*:*:*:*
   description: 'Apache NiFi is designed for data streaming. It supports highly configurable
     data routing, transformation, and system mediation logic that indicate graphs.
     The system has unauthorized remote command execution vulnerability.
@@ -32,12 +34,15 @@ info:
     '
   metadata:
     max-request: 1
+    product: nifi
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)NiFi"})
     shodan-query: title:"NiFi"
+    vendor: apache
     verified: true
-  name: Apache NiFi  - Remote Code Execution
+  name: Apache NiFi - Remote Code Execution
   reference:
   - https://github.com/imjdl/Apache-NiFi-Api-RCE
   - https://labs.withsecure.com/tools/metasploit-modules-for-rce-in-apache-nifi-and-kong-api-gateway
   - https://packetstormsecurity.com/files/160260/apache_nifi_processor_rce.rb.txt
   severity: critical
-  tags: packetstorm,apache,nifi,rce
+  tags: apache,nifi,packetstorm,rce,vuln

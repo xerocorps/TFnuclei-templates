@@ -21,8 +21,10 @@ info:
   description: 'A blender phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: blender phishing Detection
   reference:
   - https://blender.org
   severity: info
-  tags: phishing,blender,osint
+  tags: phishing,blender,osint,discovery

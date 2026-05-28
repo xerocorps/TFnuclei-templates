@@ -21,8 +21,10 @@ info:
   description: 'A zoom phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: zoom phishing Detection
   reference:
   - https://zoom.us
   severity: info
-  tags: phishing,zoom,osint
+  tags: phishing,zoom,osint,discovery

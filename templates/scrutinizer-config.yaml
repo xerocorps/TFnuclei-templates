@@ -1,6 +1,7 @@
 http:
 - matchers:
-  - condition: and
+  - case-insensitive: true
+    condition: and
     part: body
     type: word
     words:
@@ -14,21 +15,12 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/.scrutinizer.yml'
+  - '{{BaseURL}}/scrutinizer.yml'
 id: scrutinizer-config
 info:
   author: DhiyaneshDK
-  classification:
-    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
-    cwe-id: CWE-200
-  description: Scrutinizer configuration information was detected.
   metadata:
-    max-request: 1
-    shodan-query: html:"scrutinizer.yml"
-    verified: true
-  name: Scrutinizer Config - Detect
-  reference:
-  - https://scrutinizer-ci.com/docs/configuration
-  - https://scrutinizer-ci.com/
+    max-request: 2
+  name: Scrutinizer Config File Exposure
   severity: info
-  tags: exposure,scrutinizer,config
+  tags: config-files,config

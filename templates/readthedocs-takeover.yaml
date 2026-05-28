@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -13,10 +17,11 @@ http:
 id: readthedocs-takeover
 info:
   author: pdteam
+  description: Read the Docs takeover was detected.
   metadata:
     max-request: 1
   name: Read the Docs Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/160
   severity: high
-  tags: takeover,readthedocs
+  tags: takeover,readthedocs,vuln

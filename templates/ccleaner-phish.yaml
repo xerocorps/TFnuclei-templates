@@ -21,8 +21,10 @@ info:
   description: 'A ccleaner phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: ccleaner phishing Detection
   reference:
   - https://ccleaner.com
   severity: info
-  tags: phishing,ccleaner,osint
+  tags: phishing,ccleaner,osint,discovery

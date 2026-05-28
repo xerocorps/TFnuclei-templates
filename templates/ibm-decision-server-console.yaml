@@ -20,10 +20,13 @@ info:
 
     '
   metadata:
+    max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Rule Execution
+      Server"})
     shodan-query: title:"Rule Execution Server"
     verified: true
   name: IBM Decision Server Console Panel - Detect
   reference:
   - https://www.ibm.com/docs/en/odm/8.12.0?topic=overview-introducing-rule-execution-server
   severity: info
-  tags: panel,ibm,login,detect,decision-server
+  tags: panel,ibm,login,detect,decision-server,discovery

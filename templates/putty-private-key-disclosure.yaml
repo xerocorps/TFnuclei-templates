@@ -14,12 +14,12 @@ http:
   path:
   - '{{BaseURL}}/my.ppk'
   - '{{BaseURL}}/putty.ppk'
-  - '{{BaseURL}}/{{Hostname}}.ppk'
+  - '{{BaseURL}}/{{Host}}.ppk'
   - '{{BaseURL}}/.ssh/putty.ppk'
-  - '{{BaseURL}}/.ssh/{{Hostname}}.ppk'
+  - '{{BaseURL}}/.ssh/{{Host}}.ppk'
   - '{{BaseURL}}/.putty/my.ppk'
   - '{{BaseURL}}/.putty/putty.ppk'
-  - '{{BaseURL}}/.putty/{{Hostname}}.ppk'
+  - '{{BaseURL}}/.putty/{{Host}}.ppk'
   stop-at-first-match: true
 id: putty-private-key-disclosure
 info:
@@ -32,4 +32,4 @@ info:
   reference:
   - https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/putty-private-key-disclosure.json
   severity: medium
-  tags: exposure,files
+  tags: generic,config-files,config

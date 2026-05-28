@@ -19,15 +19,24 @@ id: apache-mesos-panel
 info:
   author: pikpikcu
   classification:
+    cpe: cpe:2.3:a:apache:mesos:*:*:*:*:jenkins:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Apache Mesos panel was detected.
   metadata:
-    fofa-query: app="APACHE-MESOS"
+    fofa-query:
+    - app="APACHE-MESOS"
+    - app="apache-mesos"
+    - title="mesos"
+    google-query: intitle:"mesos"
     max-request: 2
-    shodan-query: http.title:"Mesos"
+    product: mesos
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)mesos"})
+    shodan-query:
+    - http.title:"Mesos"
+    - http.title:"mesos"
+    vendor: apache
     verified: true
   name: Apache Mesos - Panel Detect
   severity: info
-  tags: panel,apache,mesos
+  tags: apache,discovery,mesos,panel

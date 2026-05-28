@@ -19,14 +19,17 @@ id: ez-publish-panel
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:ez:ez_publish:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: eZ Publish login panel was detected.
   metadata:
     max-request: 1
+    product: ez_publish
+    runzero-match: service["http.body"] matches "(?i)eZ Publish"
     shodan-query: http.html:"eZ Publish"
+    vendor: ez
     verified: true
   name: eZ Publish Login Panel - Detect
   severity: info
-  tags: panel,ez
+  tags: discovery,ez,panel

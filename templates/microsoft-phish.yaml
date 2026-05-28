@@ -22,9 +22,11 @@ info:
   description: 'A microsoft phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: Microsoft phishing Detection
   reference:
   - https://office.com
   - https://microsoft.com
   severity: info
-  tags: phishing,microsoft,osint
+  tags: phishing,microsoft,osint,discovery

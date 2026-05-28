@@ -33,13 +33,18 @@ http:
 id: inspur-clusterengine-default-login
 info:
   author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:inspur:clusterengine:*:*:*:*:*:*:*:*
   description: Inspur Clusterengine version 4 default admin login credentials were
     successful.
   metadata:
     fofa-query: title="TSCEV4.0"
     max-request: 1
+    product: clusterengine
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)TSCEV4\\.0"})
+    vendor: inspur
   name: Inspur Clusterengine 4 - Default Admin Login
   reference:
   - https://blog.csdn.net/qq_36197704/article/details/115665793
   severity: high
-  tags: default-login,inspur,clusterengine
+  tags: clusterengine,default-login,inspur,vuln

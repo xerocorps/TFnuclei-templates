@@ -28,8 +28,9 @@ info:
     vulnerabilities via login.php, timeclock.php, reports/audit.php. and reports/timerpt.php
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
   name: PHP Timeclock <=1.04 - Cross-Site Scripting
   reference:
   - https://www.exploit-db.com/exploits/49853
   severity: high
-  tags: xss,php,timeclock,edb
+  tags: xss,php,timeclock,edb,intrusive,vuln

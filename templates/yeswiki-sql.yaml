@@ -15,8 +15,9 @@ id: yeswiki-sql
 info:
   author: arafatansari
   classification:
+    cpe: cpe:2.3:a:yeswiki:cercopitheque:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-89
   description: 'YesWiki before 2022-07-07 contains a SQL injection vulnerability via
     the id parameter in the AccueiL URL. An attacker can possibly obtain sensitive
@@ -26,12 +27,15 @@ info:
     '
   metadata:
     max-request: 1
+    product: cercopitheque
+    runzero-match: service["http.body"] matches "(?i)yeswiki"
     shodan-query: http.html:"yeswiki"
+    vendor: yeswiki
     verified: true
   name: YesWiki <2022-07-07 - SQL Injection
   reference:
   - https://huntr.dev/bounties/32e27955-376a-48fe-9984-87dd77e24985
   severity: critical
-  tags: yeswiki,sqli,huntr
+  tags: huntr,sqli,vuln,yeswiki
 variables:
   num: '999999999'

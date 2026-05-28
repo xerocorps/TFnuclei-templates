@@ -24,12 +24,16 @@ http:
 id: angular-json
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:angularjs:angular:*:*:*:*:node.js:*:*:*
   metadata:
     max-request: 4
+    product: angular
     shodan-query:
     - html:"angular.json"
     - html:"angular-cli.json"
+    vendor: angularjs
     verified: true
   name: Angular JSON File Exposure
   severity: info
-  tags: exposure,angularjs,files
+  tags: exposure,angularjs,files,vuln

@@ -27,12 +27,16 @@ http:
 id: wp-yoast-user-enumeration
 info:
   author: FLX
+  classification:
+    cpe: cpe:2.3:a:yoast:yoast_seo:*:*:*:*:wordpress:*:*:*
   metadata:
-    google-dork: inurl:"/author-sitemap.xml"
+    google-query: inurl:"/author-sitemap.xml"
     max-request: 1
+    product: yoast_seo
+    vendor: yoast
     verified: true
-  name: WordPress Yoast SEO Plugin -  User Enumeration
+  name: WordPress Yoast SEO Plugin - User Enumeration
   reference:
   - https://developer.yoast.com/features/xml-sitemaps/functional-specification/
   severity: info
-  tags: wp,wp-plugin,wordpress,username,disclosure
+  tags: wp,wp-plugin,wordpress,username,disclosure,vuln

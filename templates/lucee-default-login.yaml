@@ -36,10 +36,11 @@ info:
   metadata:
     fofa-query: app="Lucee-Engine"
     max-request: 1
+    runzero-match: service["http.body"] matches "Lucee"
     shodan-query: html:"Lucee"
     verified: true
   name: Lucee - Default Login
   reference:
   - https://support.intranetconnections.com/hc/en-us/articles/115012060627-Lucee-Configuration
   severity: high
-  tags: lucee,default-login
+  tags: default-login,lucee,vuln

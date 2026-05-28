@@ -11,7 +11,7 @@ http:
     - contains(tolower(body), 'metersphere')
     type: dsl
   - dsl:
-    - contains(tolower(all_headers), 'ms_session_id')
+    - contains(tolower(header), 'ms_session_id')
     type: dsl
   matchers-condition: or
   method: GET
@@ -23,14 +23,21 @@ id: metersphere-login
 info:
   author: pdteam
   classification:
+    cpe: cpe:2.3:a:metersphere:metersphere:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: MeterSphere login panel was detected.
   metadata:
+    fofa-query:
+    - body="metersphere"
+    - title="metersphere"
     max-request: 2
+    product: metersphere
+    runzero-match: service["http.body"] matches "(?i)metersphere"
+    shodan-query: http.html:"metersphere"
+    vendor: metersphere
   name: MeterSphere Login Panel - Detect
   reference:
   - https://github.com/metersphere/metersphere
   severity: info
-  tags: panel,metersphere
+  tags: panel,metersphere,discovery

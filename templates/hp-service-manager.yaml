@@ -15,13 +15,20 @@ id: hp-service-manager
 info:
   author: dhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:hp:service_manager:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: HP Service Manager login panel was detected.
   metadata:
+    fofa-query: title="hp service manager"
+    google-query: intitle:"hp service manager"
     max-request: 2
-    shodan-query: http.title:"HP Service Manager"
+    product: service_manager
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)hp service manager"})
+    shodan-query:
+    - http.title:"HP Service Manager"
+    - http.title:"hp service manager"
+    vendor: hp
   name: HP Service Manager Login Panel - Detect
   severity: info
-  tags: panel,hp,service
+  tags: discovery,hp,panel,service

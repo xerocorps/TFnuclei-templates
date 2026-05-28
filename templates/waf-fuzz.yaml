@@ -62,7 +62,7 @@ http:
     - (?i)rejected.by.url.scan
     - (?i)/rejected.by.url.scan
     type: regex
-  - condition: or
+  - condition: and
     name: shadowd
     part: response
     regex:
@@ -706,4 +706,4 @@ info:
   reference:
   - https://github.com/Ekultek/WhatWaf
   severity: info
-  tags: waf,tech,fuzz
+  tags: waf,fuzz,fuzzing,vuln

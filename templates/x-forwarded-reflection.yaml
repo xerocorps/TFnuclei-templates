@@ -1,6 +1,6 @@
 id: x-forwarded-reflection
 info:
-  author: coffin
+  author: SirBugs
   description: This template detects the reflection of X-Forwarded headers in the
     response.
   name: X-Forwarded Header Reflection
@@ -8,28 +8,28 @@ info:
 requests:
 - extractors:
   - regex:
-    - evil.com
-    - evil.com
+    - google.com
+    - google.com
     type: regex
   matchers:
   - part: body
     type: word
     words:
-    - evil.com
-    - evil.com
+    - google.com
+    - google.com
   - part: headers
     type: word
     words:
-    - evil.com
-    - evil.com
+    - google.com
+    - google.com
   raw:
   - 'GET / HTTP/1.1
 
     Host: {{Hostname}}
 
-    X-Forwarded-Host: evil.com
+    X-Forwarded-Host: google.com
 
-    X-Forwarded-For: evil.com
+    X-Forwarded-For: google.com
 
     Connection: close
 

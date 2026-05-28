@@ -21,8 +21,8 @@ id: jboss-juddi-panel
 info:
   author: DhiyaneshDk
   classification:
+    cpe: cpe:2.3:a:redhat:jboss_enterprise_web_platform:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'The jUDDI (Java Universal Description, Discovery and Integration)
     Registry is a core component of the JBoss Enterprise SOA Platform. It is the product''s
@@ -32,12 +32,18 @@ info:
 
     '
   metadata:
+    fofa-query: body="jboss ws"
     max-request: 2
-    shodan-query: html:"JBoss WS"
+    product: jboss_enterprise_web_platform
+    runzero-match: service["http.body"] matches "(?i)jboss ws"
+    shodan-query:
+    - html:"JBoss WS"
+    - http.html:"jboss ws"
+    vendor: redhat
     verified: true
   name: JBoss WS JUDDI Console Panel - Detect
   reference:
   - https://github.com/ilmila/J2EEScan/blob/master/src/main/java/burp/j2ee/issues/impl/JBossJuddi.java
   remediation: Restrict access to the service if not needed.
   severity: info
-  tags: panel,jboss,juddi
+  tags: discovery,jboss,juddi,panel,redhat

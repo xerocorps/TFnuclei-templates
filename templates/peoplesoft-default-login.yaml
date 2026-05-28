@@ -62,6 +62,7 @@ id: peoplesoft-default-login
 info:
   author: LogicalHunter
   classification:
+    cpe: cpe:2.3:a:oracle:peoplesoft_enterprise_peopletools:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -70,11 +71,15 @@ info:
     modify data, and/or execute unauthorized operations.
   metadata:
     max-request: 200
+    product: peoplesoft_enterprise_peopletools
+    runzero-match: any(each(service["html.titles"]), {# matches "Oracle PeopleSoft
+      Sign-in"})
     shodan-query: title:"Oracle PeopleSoft Sign-in"
+    vendor: oracle
     verified: true
   name: Oracle PeopleSoft - Default Login
   reference:
   - https://www.oracle.com/applications/peoplesoft/
   - https://erpscan.io/press-center/blog/peoplesoft-default-accounts/
   severity: high
-  tags: default-login,peoplesoft,oracle,fuzz
+  tags: default-login,fuzz,oracle,peoplesoft,vuln

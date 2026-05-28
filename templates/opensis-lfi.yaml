@@ -15,6 +15,7 @@ id: opensis-lfi
 info:
   author: pikpikcu
   classification:
+    cpe: cpe:2.3:a:os4ed:opensis:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
     cwe-id: CWE-22
@@ -24,9 +25,11 @@ info:
     the application and computer; other attacks are also possible.
   metadata:
     max-request: 2
+    product: opensis
     shodan-query: http.title:"openSIS"
+    vendor: os4ed
   name: openSIS 5.1 - Local File Inclusion
   reference:
   - https://www.exploit-db.com/exploits/38039
   severity: high
-  tags: opensis,lfi,edb
+  tags: edb,lfi,opensis,vuln

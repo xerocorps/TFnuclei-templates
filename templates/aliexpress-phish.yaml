@@ -21,8 +21,10 @@ info:
   description: 'An aliexpress phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: aliexpress phishing Detection
   reference:
   - https://aliexpress.com
   severity: info
-  tags: phishing,aliexpress,osint
+  tags: phishing,aliexpress,osint,discovery

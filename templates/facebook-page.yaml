@@ -9,7 +9,7 @@ http:
     - 'Link: <https://www.facebook.com/{{user}}>'
   matchers-condition: and
   raw:
-  - 'GET https://facebook.com/{{user}} HTTP/2
+  - 'GET https://facebook.com/{{user}} HTTP/1.1
 
     Host: www.facebook.com
 
@@ -36,5 +36,5 @@ info:
     verified: 'true'
   name: Facebook Page Name Information - Detect
   severity: info
-  tags: osint,osint-business,osint-social
+  tags: osint,osint-business,osint-social,discovery
 self-contained: true

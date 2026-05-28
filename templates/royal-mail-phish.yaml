@@ -21,8 +21,10 @@ info:
   description: 'A royal-mail phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: royal-mail phishing Detection
   reference:
   - https://royalmail.com
   severity: info
-  tags: phishing,royal-mail,osint
+  tags: phishing,royal-mail,osint,discovery

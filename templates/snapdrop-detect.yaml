@@ -14,10 +14,11 @@ http:
 id: snapdrop-detect
 info:
   author: tess
+  description: Snapdrop panel was detected.
   metadata:
     max-request: 1
     shodan-query: http.title:"Snapdrop"
     verified: true
   name: Snapdrop Detect
   severity: info
-  tags: iot,snapdrop
+  tags: iot,snapdrop,discovery

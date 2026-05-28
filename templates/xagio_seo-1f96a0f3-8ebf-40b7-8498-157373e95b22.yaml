@@ -15,7 +15,7 @@ http:
     words:
     - xagio-seo
   - dsl:
-    - compare_versions(version, '<= 7.1.0.29')
+    - compare_versions(version, '<= 7.1.0.37')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/xagio-seo/
     google-query: inurl:"/wp-content/plugins/xagio-seo/"
     shodan-query: http.html:"wp-content/plugins/xagio-seo/"
-  name: 'Xagio SEO <= 7.1.0.29 - Missing Authorization
+  name: 'Xagio SEO <= 7.1.0.37 - Missing Authorization
 
     '
   reference:

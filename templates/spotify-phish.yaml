@@ -21,8 +21,10 @@ info:
   description: 'A spotify phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: spotify phishing Detection
   reference:
   - https://spotify.com
   severity: info
-  tags: phishing,spotify,osint
+  tags: phishing,spotify,osint,discovery

@@ -10,12 +10,14 @@ info:
   metadata:
     max-request: 1
     product: mqtt
-    shodan-query: product:"MQTT"
+    shodan-query:
+    - product:"MQTT"
+    - product:"mqtt"
     vendor: dionaea
     verified: true
   name: Dionaea MQTT Honeypot - Detect
   severity: info
-  tags: dionaea,mqtt,honeypot,ir,cti,network
+  tags: dionaea,mqtt,honeypot,ir,cti,network,tcp,discovery
 tcp:
 - host:
   - '{{Hostname}}'

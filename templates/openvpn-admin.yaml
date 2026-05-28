@@ -20,14 +20,26 @@ id: openvpn-admin
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:openvpn:openvpn:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: OpenVPN Admin login panel was detected.
   metadata:
+    fofa-query:
+    - body="router management - server openvpn"
+    - title="openvpn-admin"
+    google-query: intitle:"openvpn-admin"
     max-request: 3
-    shodan-query: http.title:"OpenVPN-Admin"
+    product: openvpn
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)openvpn-admin"})
+      || service["http.body"] matches "(?i)router management - server openvpn"
+    shodan-query:
+    - http.title:"OpenVPN-Admin"
+    - http.html:"router management - server openvpn"
+    - http.title:"openvpn-admin"
+    - cpe:"cpe:2.3:a:openvpn:openvpn"
+    vendor: openvpn
     verified: true
   name: OpenVPN Admin Login Panel - Detect
   severity: info
-  tags: panel,openvpn,admin,config
+  tags: admin,config,discovery,openvpn,panel

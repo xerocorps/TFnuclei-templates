@@ -4,8 +4,10 @@ info:
   description: Jabber is the original name of the Extensible Messaging and Presence
     Protocol (XMPP), the open technology for instant messaging and presence.
   name: Detects Jabber XMPP Instance
-  reference: https://datatracker.ietf.org/doc/html/rfc6120
+  reference:
+  - https://datatracker.ietf.org/doc/html/rfc6120
   severity: info
+  tags: network,jabber,xmpp,messaging
 network:
 - host:
   - '{{Hostname}}'

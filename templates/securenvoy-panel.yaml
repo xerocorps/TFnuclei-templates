@@ -4,6 +4,9 @@ http:
     type: word
     words:
     - <base href="/secadmin/">
+    - SecurEnvoy Portal
+    - SecurEnvoy Tokenless Authentication
+    - 'Manage My Token : Authentication'
   - status:
     - 200
     type: status
@@ -11,16 +14,22 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/secadmin/'
+  - '{{BaseURL}}/securenvoy/'
+  - '{{BaseURL}}/secenrol/'
+  - '{{BaseURL}}/RDWeb'
 id: securenvoy-panel
 info:
-  author: 0xrod
+  author: 0xrod,righettod
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
-  description: SecurEnvoy admin login panel was detected.
+  description: SecurEnvoy login panel was detected.
   metadata:
-    max-request: 1
-  name: SecurEnvoy Admin Login Panel - Detect
+    max-request: 4
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)securenvoy"})
+    shodan-query: http.title:"securenvoy"
+  name: SecurEnvoy Login Panel - Detect
+  reference:
+  - https://securenvoy.com/
   severity: info
-  tags: panel,securenvoy
+  tags: panel,securenvoy,discovery

@@ -21,8 +21,10 @@ info:
   description: 'A norton phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: norton phishing Detection
   reference:
   - https://norton.com
   severity: info
-  tags: phishing,norton,osint
+  tags: phishing,norton,osint,discovery

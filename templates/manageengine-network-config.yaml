@@ -17,14 +17,22 @@ id: manageengine-network-config
 info:
   author: righettod
   classification:
+    cpe: cpe:2.3:a:zohocorp:manageengine_network_configuration_manager:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: ZOHO ManageEngine Network Configuration Manager was detected.
   metadata:
+    fofa-query: title="network configuration manager"
+    google-query: intitle:"network configuration manager"
     max-request: 1
-    shodan-query: http.title:"Network Configuration Manager"
+    product: manageengine_network_configuration_manager
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)network configuration
+      manager"})
+    shodan-query:
+    - http.title:"Network Configuration Manager"
+    - http.title:"network configuration manager"
+    vendor: zohocorp
     verified: true
   name: Zoho ManageEngine Network Configuration Manager Panel - Detect
   severity: info
-  tags: panel,zoho,manageengine
+  tags: discovery,manageengine,panel,zoho,zohocorp

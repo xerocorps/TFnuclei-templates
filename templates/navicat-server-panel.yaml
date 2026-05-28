@@ -30,8 +30,9 @@ info:
   metadata:
     fofa-query: icon_hash="598296063"
     max-request: 2
+    runzero-match: service["favicon.ico.image.mmh3"] == "598296063"
     shodan-query: http.favicon.hash:598296063
     verified: true
   name: Navicat On-Prem Server Panel - Detect
   severity: info
-  tags: panel,navicat,on-prem,detect
+  tags: panel,navicat,on-prem,detect,discovery

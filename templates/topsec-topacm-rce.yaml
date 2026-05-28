@@ -28,6 +28,9 @@ http:
 id: topsec-topacm-rce
 info:
   author: SleepingBag945
+  classification:
+    cwe-id:
+    - CWE-78
   description: 'Tianrongxin Internet Behavior Management System static_convert.php
     remote command execution vulnerability
 
@@ -35,6 +38,7 @@ info:
   metadata:
     fofa-query: body="ActiveXObject" && body="dkey_login" && body="repeat-x"
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
   name: Topsec Topacm - Remote Code Execution
   reference:
@@ -42,4 +46,4 @@ info:
   - "https://github.com/Phuong39/2022-HW-POC/blob/main/\u5929\u878D\u4FE1-\u4E0A\u7F51\
     \u884C\u4E3A\u7BA1\u7406\u7CFB\u7EDFRCE.md"
   severity: critical
-  tags: rce,topsec,topacm,intrusive
+  tags: intrusive,rce,topacm,topsec,vuln

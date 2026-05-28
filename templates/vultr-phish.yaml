@@ -21,8 +21,10 @@ info:
   description: 'A vultr phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: vultr phishing Detection
   reference:
   - https://my.vultr.com/
   severity: info
-  tags: phishing,vultr,osint
+  tags: phishing,vultr,osint,discovery

@@ -11,12 +11,12 @@ info:
   author: Adam Crosser
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Yopass panel was detected.
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Yopass"})
     shodan-query: title:"Yopass"
   name: Yopass Panel - Detect
   severity: info
-  tags: panel,yopass
+  tags: panel,yopass,discovery

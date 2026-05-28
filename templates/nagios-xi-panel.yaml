@@ -21,14 +21,23 @@ id: nagios-xi-panel
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:nagios:nagios_xi:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Nagios XI login panel was detected.
   metadata:
+    fofa-query:
+    - title="nagios xi"
+    - app="nagios-xi"
+    google-query: intitle:"nagios xi"
     max-request: 2
-    shodan-query: http.title:"Nagios XI"
+    product: nagios_xi
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)nagios xi"})
+    shodan-query:
+    - http.title:"Nagios XI"
+    - http.title:"nagios xi"
+    vendor: nagios
     verified: true
   name: Nagios XI Login Panel - Detect
   severity: info
-  tags: panel,nagios,nagios-xi
+  tags: discovery,nagios,nagios-xi,panel

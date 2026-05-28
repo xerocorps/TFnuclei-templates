@@ -20,17 +20,25 @@ id: pfsense-login
 info:
   author: idealphase
   classification:
+    cpe: cpe:2.3:a:pfsense:pfsense:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: pfSense login panel was detected.
   metadata:
-    google-query: intitle:"pfSense - Login"
+    fofa-query: title="pfsense - login"
+    google-query:
+    - intitle:"pfSense - Login"
+    - intitle:"pfsense - login"
     max-request: 1
-    shodan-query: http.title:"pfSense - Login"
+    product: pfsense
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)pfsense - login"})
+    shodan-query:
+    - http.title:"pfSense - Login"
+    - http.title:"pfsense - login"
+    vendor: pfsense
   name: pfSense Login Panel - Detect
   reference:
   - https://www.pfsense.org/download/
   - https://www.pfsense.org/getting-started/
   severity: info
-  tags: panel,pfsense
+  tags: discovery,panel,pfsense

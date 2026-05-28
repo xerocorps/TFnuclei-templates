@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - dsl:
+    - cname
+    type: dsl
+  matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -15,6 +19,7 @@ http:
 id: gitbook-takeover
 info:
   author: philippedelteil
+  description: gitbook takeover was detected.
   metadata:
     max-request: 1
   name: gitbook takeover detection
@@ -22,4 +27,4 @@ info:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/259
   - https://hackerone.com/reports/223625
   severity: high
-  tags: takeover,gitbook,hackerone
+  tags: takeover,gitbook,hackerone,vuln

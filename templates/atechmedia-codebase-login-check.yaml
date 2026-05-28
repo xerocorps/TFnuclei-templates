@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  extractors:
+- extractors:
   - attribute: value
     internal: true
     name: authenticity_token
@@ -47,9 +46,11 @@ id: atechmedia-codebase-login-check
 info:
   author: parthmalhotra,pdresearch
   description: Checks for a valid Atechmedia/Codebase account.
+  metadata:
+    max-request: 2
   name: Atechmedia/Codebase Login Check
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: login-check,atechmedia,codebase,creds-stuffing
+  tags: cloud,creds-stuffing,login-check,atechmedia,codebase,vuln
 self-contained: true

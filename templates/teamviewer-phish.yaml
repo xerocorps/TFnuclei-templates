@@ -21,8 +21,10 @@ info:
   description: 'A teamviewer phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: teamviewer phishing Detection
   reference:
   - https://teamviewer.com
   severity: info
-  tags: phishing,teamviewer,osint
+  tags: phishing,teamviewer,osint,discovery

@@ -22,6 +22,7 @@ id: eol-magento
 info:
   author: dogancanbakir
   classification:
+    cpe: cpe:2.3:a:magento:magento:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: 'Magento end of life detection.
@@ -29,10 +30,12 @@ info:
     '
   metadata:
     max-request: 1
+    product: magento
     shodan-query: http.component:"Magento"
+    vendor: magento
     verified: true
   name: Magento End-of-life Detect
   reference:
   - https://www.magento.com/
   severity: info
-  tags: magento,tech,cms
+  tags: cms,discovery,magento,tech

@@ -15,11 +15,16 @@ http:
 id: cold-fusion-cfcache-map
 info:
   author: geeknik
+  classification:
+    cpe: cpe:2.3:a:adobe:coldfusion:*:*:*:*:*:*:*:*
+  description: Adobe Cold Fusion cfcache.map file is exposed.
   metadata:
     max-request: 1
+    product: coldfusion
     shodan-query: http.component:"Adobe ColdFusion"
+    vendor: adobe
   name: Discover Cold Fusion cfcache.map Files
   reference:
   - https://securiteam.com/windowsntfocus/5bp081f0ac/
   severity: low
-  tags: exposure,coldfusion,adobe,files
+  tags: exposure,coldfusion,adobe,files,vuln

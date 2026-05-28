@@ -32,10 +32,11 @@ id: wordpress-cloudflare
 info:
   author: ricardomaia
   metadata:
+    max-request: 1
     plugin_namespace: cloudflare
     wpscan: https://wpscan.com/plugin/cloudflare
   name: Cloudflare Detection
   reference:
   - https://wordpress.org/plugins/cloudflare/
   severity: info
-  tags: tech,wordpress,wp-plugin,top-200
+  tags: tech,wordpress,wp-plugin,top-200,discovery

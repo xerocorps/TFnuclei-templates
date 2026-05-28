@@ -16,6 +16,8 @@ http:
 id: kube-state-metrics
 info:
   author: ja1sh
+  classification:
+    cpe: cpe:2.3:a:kubernetes:kube-state-metrics:*:*:*:*:*:*:*:*
   description: 'An attacker can detect the public instance of a Kube-State-Metrics
     metrics. The Kubernetes API server exposes data about the count, health, and availability
     of pods, nodes, and other Kubernetes objects.
@@ -23,8 +25,10 @@ info:
     '
   metadata:
     max-request: 1
+    product: kube-state-metrics
     shodan-query: title:Kube-state-metrics
+    vendor: kubernetes
     verified: true
   name: Kube State Metrics Exposure
   severity: low
-  tags: misconfig,exposure,kube-state-metrics,k8s,kubernetes
+  tags: misconfig,exposure,kube-state-metrics,k8s,kubernetes,vuln

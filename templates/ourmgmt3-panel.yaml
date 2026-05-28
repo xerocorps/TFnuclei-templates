@@ -18,13 +18,13 @@ info:
   author: ritikchaddha
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: OurMGMT3 admin login panel was detected.
   metadata:
     max-request: 2
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)OurMGMT3"})
     shodan-query: http.title:"OurMGMT3"
     verified: true
   name: OurMGMT3 Admin Login Panel - Detect
   severity: info
-  tags: panel,ourmgmt3
+  tags: panel,ourmgmt3,discovery

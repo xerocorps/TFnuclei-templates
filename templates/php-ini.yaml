@@ -18,11 +18,17 @@ http:
 id: php-ini
 info:
   author: geeknik,DhiyaneshDK
+  classification:
+    cpe: cpe:2.3:a:php:php:*:*:*:*:*:*:*:*
+  description: php.ini file is exposed.
   metadata:
     max-request: 1
+    product: php
     shodan-query: php.ini
+    vendor: php
     verified: true
   name: Php.ini File Disclosure
-  reference: https://www.php.net/manual/en/configuration.file.php
+  reference:
+  - https://www.php.net/manual/en/configuration.file.php
   severity: low
-  tags: config,exposure,files
+  tags: config,exposure,files,vuln

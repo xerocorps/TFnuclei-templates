@@ -15,8 +15,9 @@ info:
   author: DhiyaneshDK
   metadata:
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "965982073"
     shodan-query: http.favicon.hash:965982073
     verified: 'true'
   name: IBM OpenAdmin Tool - Panel
   severity: info
-  tags: openadmin,login,panel
+  tags: openadmin,login,panel,discovery

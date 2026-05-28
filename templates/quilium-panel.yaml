@@ -30,10 +30,11 @@ info:
     '
   metadata:
     max-request: 2
+    runzero-match: service["http.body"] matches "(?i)CMS Quilium"
     shodan-query: http.html:"CMS Quilium"
     verified: true
   name: Quilium Panel - Detect
   reference:
   - https://www.quilium.io/
   severity: info
-  tags: panel,quilium,login,detect
+  tags: panel,quilium,login,detect,discovery

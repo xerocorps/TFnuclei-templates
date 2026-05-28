@@ -15,13 +15,16 @@ id: snipeit-panel
 info:
   author: pikpikcu
   classification:
+    cpe: cpe:2.3:a:snipeitapp:snipe-it:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: Snipe-IT panel was detected.
   metadata:
     max-request: 1
+    product: snipe-it
     shodan-query: http.favicon.hash:431627549
+    vendor: snipeitapp
   name: Snipe-IT Panel - Detect
   severity: info
-  tags: panel,snipeit,tech
+  tags: discovery,panel,snipeit,tech

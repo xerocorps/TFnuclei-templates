@@ -21,8 +21,10 @@ info:
   description: 'A notion phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: notion phishing Detection
   reference:
   - https://notion.so
   severity: info
-  tags: phishing,notion,osint
+  tags: phishing,notion,osint,discovery

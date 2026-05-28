@@ -15,13 +15,17 @@ id: kerio-connect-client
 info:
   author: dhiyaneshDk
   classification:
+    cpe: cpe:2.3:a:gfi:kerio_connect:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Kerio Connect login panel was detected.
   metadata:
     max-request: 1
+    product: kerio_connect
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Kerio Connect
+      Client"})
     shodan-query: http.title:"Kerio Connect Client"
+    vendor: gfi
   name: Kerio Connect Login Panel - Detect
   severity: info
-  tags: panel,kerio
+  tags: discovery,kerio,panel

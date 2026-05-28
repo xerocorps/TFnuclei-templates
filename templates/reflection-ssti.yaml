@@ -34,12 +34,14 @@ http:
 id: reflection-ssti
 info:
   author: pdteam
+  metadata:
+    max-request: 14
   name: Reflected SSTI Arithmetic Based
   reference:
   - https://github.com/zaproxy/zap-extensions/blob/2d9898900abe85a47b9fe0ceb85ec39070816b98/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/SstiScanRule.java
   - https://github.com/DiogoMRSilva/websitesVulnerableToSSTI#list-of-seversneeds-update
   severity: medium
-  tags: ssti,dast
+  tags: ssti,dast,vuln
 variables:
   first: '{{rand_int(1000, 9999)}}'
   result: '{{to_number(first)*to_number(second)}}'

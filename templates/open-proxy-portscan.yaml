@@ -58,6 +58,7 @@ http:
 
     '
   req-condition: true
+  stop-at-first-match: true
   unsafe: true
 id: open-proxy-portscan
 info:
@@ -68,8 +69,6 @@ info:
     cwe-id: CWE-441
   description: The host is configured as a proxy which allows access to its internal
     interface
-  metadata:
-    max-request: 8
   name: Open Proxy to Ports on the Proxy's localhost Interface
   reference:
   - https://blog.projectdiscovery.io/abusing-reverse-proxies-internal-access/
@@ -78,4 +77,4 @@ info:
   remediation: Disable the proxy or restrict configuration to only allow access to
     approved hosts/ports.
   severity: high
-  tags: exposure,config,proxy,misconfig,fuzz
+  tags: ssrf,generic

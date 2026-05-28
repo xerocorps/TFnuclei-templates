@@ -8,13 +8,15 @@ info:
     '
   metadata:
     max-request: 1
+    product: dionaea
     shodan-query: port:445
+    vendor: dionaea
     verified: true
   name: SMB - Enum Domains
   reference:
   - https://nmap.org/nsedoc/scripts/smb-enum-domains.html
   severity: info
-  tags: js,network,smb,enum
+  tags: js,network,smb,enum,discovery
 javascript:
 - args:
     Host: '{{Host}}'
@@ -41,3 +43,6 @@ javascript:
   - dsl:
     - len(DNSDomainName) != 0
     type: dsl
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

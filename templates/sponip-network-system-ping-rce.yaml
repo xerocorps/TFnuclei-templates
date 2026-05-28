@@ -5,6 +5,11 @@ http:
     type: word
     words:
     - http
+  - part: interactsh_request
+    type: word
+    words:
+    - 'User-Agent: curl'
+  matchers-condition: and
   raw:
   - 'POST /php/ping.php HTTP/1.1
 
@@ -21,15 +26,16 @@ info:
   author: pikpikcu
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-77
   description: 'Sponip Network System Ping is susceptible to remote code execution.
 
     '
   metadata:
     max-request: 1
+    runzero-review: REJECT/2025-11-07/uses interactsh
   name: Sponip Network System Ping - Remote Code Execution
   reference:
   - https://mp.weixin.qq.com/s?__biz=Mzg3NDU2MTg0Ng==&mid=2247486018&idx=1&sn=d744907475a4ea9ebeb26338c735e3e9
   severity: critical
-  tags: sponip,rce,oast,network
+  tags: sponip,rce,oast,vuln

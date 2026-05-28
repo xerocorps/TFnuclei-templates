@@ -5,12 +5,15 @@ http:
     - 'Version: ([0-9.]+) Page:'
     type: regex
   matchers:
-  - condition: and
+  - condition: or
     part: body
     type: word
     words:
-    - <meta property="og:title" content="Gogs
-    - js/gogs.js?v=
+    - <meta property="og:description" content="Gogs is a painless self-hosted Git
+      service.">
+    - <meta name="description" content="Gogs is a painless self-hosted Git service"
+      />
+    - <title>Sign In - Gogs</title>
   - status:
     - 200
     type: status
@@ -22,17 +25,37 @@ id: gogs-panel
 info:
   author: DhiyaneshDk,daffainfo
   classification:
+    cpe: cpe:2.3:a:gogs:gogs:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Gogs login panel was detected.
   metadata:
-    google-query: intitle:"Sign In - Gogs"
+    fofa-query:
+    - title="sign in - gogs"
+    - 'Set-Cookie: i_like_gogs='
+    - icon_hash="-449283196"
+    - icon_hash="917966895"
+    - icon_hash="1935513730"
+    google-query:
+    - intitle:"Sign In - Gogs"
+    - intitle:"sign in - gogs"
     max-request: 1
-    shodan-query: title:"Sign In - Gogs"
+    product: gogs
+    runzero-match: service["favicon.ico.image.mmh3"] == "917966895" || service["favicon.ico.image.mmh3"]
+      == "1935513730" || any(each(service["html.titles"]), {# matches "(?i)sign in
+      - gogs"}) || service["favicon.ico.image.mmh3"] == "-449283196"
+    shodan-query:
+    - title:"Sign In - Gogs"
+    - http.title:"sign in - gogs"
+    - cpe:"cpe:2.3:a:gogs:gogs"
+    - 'Set-Cookie: i_like_gogs='
+    - http.favicon.hash:-449283196
+    - http.favicon.hash:917966895
+    - http.favicon.hash:1935513730
+    vendor: gogs
     verified: true
   name: Gogs Login Panel - Detect
   reference:
   - https://gogs.io/
   severity: info
-  tags: panel,gogs
+  tags: discovery,gogs,panel

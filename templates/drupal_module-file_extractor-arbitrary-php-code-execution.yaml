@@ -7,21 +7,20 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '4.0.0')
-    - compare_versions(version, '3.0.0')
-    - compare_versions(version, '2.0.2')
-    - compare_versions(version, '2.0.1')
-    - compare_versions(version, '2.0.0')
+    - compare_versions(version, '<= 2.0.3 || 3.0.0 || 4.0.0')
     type: dsl
   matchers:
-  - part: body
+  - condition: and
+    part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - status:
+  - condition: and
+    status:
     - 200
     type: status
-  - part: body
+  - condition: and
+    part: body
     type: word
     words:
     - file_extractor
@@ -33,7 +32,7 @@ http:
   redirects: true
 id: drupal_module-file_extractor-arbitrary-php-code-execution
 info:
-  author: Bishopfox
+  author: me
   description: This module enables you to extract the textual content of files for
     use on a website, e.g. to display it or use it in search indexes. The module doesnt
     sufficiently protect the administrator-defined commands that are executed on the
@@ -43,11 +42,11 @@ info:
     form. Sites are encouraged to review which roles have that permission and which
     users have that role, to ensure that only trusted users have that permission.
   metadata:
-    created_at: '0001-01-01T00:00:00Z'
+    created_at: '2025-01-09'
     fofa-query: /sites/all/modules/file_extractor/
     google-query: inurl:'/sites/all/modules/file_extractor/
     impact: medium
-    security-risk: "Critical 15\u221525 AC:Complex/A:Admin/CI:All/II:All/E:Theoretical/TD:Default"
+    security-risk: "Critical 15\u2009\u2215\u200925 AC:Complex/A:Admin/CI:All/II:All/E:Theoretical/TD:Default"
     type: indicator
     vulnerability: arbitrary-php-code-execution
   name: drupal_module-file_extractor-arbitrary-php-code-execution

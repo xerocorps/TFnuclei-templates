@@ -24,8 +24,10 @@ info:
   description: 'A iCloud phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: iCloud phishing Detection
   reference:
   - https://icloud.com
   severity: info
-  tags: phishing,icloud,osint
+  tags: phishing,icloud,osint,discovery

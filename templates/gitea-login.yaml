@@ -2,7 +2,7 @@ http:
 - matchers:
   - type: word
     words:
-    - Powered by Gitea Version
+    - Powered by Gitea
   - status:
     - 200
     type: status
@@ -14,13 +14,25 @@ id: gitea-login
 info:
   author: dhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:gitea:gitea:*:*:*:*:jenkins:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Gitea login panel was detected.
   metadata:
+    fofa-query:
+    - title="gitea"
+    - body="powered by gitea version"
+    google-query: intitle:"gitea"
     max-request: 1
-    shodan-query: html:"Powered by Gitea Version"
+    product: gitea
+    runzero-match: service["http.body"] matches "(?i)powered by gitea version" ||
+      any(each(service["html.titles"]), {# matches "(?i)gitea"})
+    shodan-query:
+    - html:"Powered by Gitea Version"
+    - http.html:"powered by gitea version"
+    - http.title:"gitea"
+    - cpe:"cpe:2.3:a:gitea:gitea"
+    vendor: gitea
   name: Gitea Login Panel - Detect
   severity: info
-  tags: gitea,panel
+  tags: discovery,gitea,panel

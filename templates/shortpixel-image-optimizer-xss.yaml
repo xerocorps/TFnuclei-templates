@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  matchers:
+- matchers:
   - part: body
     type: word
     words:
@@ -46,10 +45,11 @@ info:
     scripting.
   metadata:
     max-request: 2
+    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     verified: true
   name: WordPress ShortPixel Image Optimizer <4.22.10 - Cross-Site Scripting
   reference:
   - https://wpscan.com/vulnerability/8a0ddd14-7260-4fb6-bb87-2916aa41ff01
   - https://wordpress.org/plugins/shortpixel-image-optimiser
   severity: medium
-  tags: shortpixel,authenticated,wpscan,xss,wp-plugin,wp,wordpress
+  tags: shortpixel,authenticated,wpscan,xss,wp-plugin,wp,wordpress,vuln

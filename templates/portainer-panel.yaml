@@ -23,12 +23,21 @@ http:
 id: portainer-panel
 info:
   author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:portainer:portainer:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: title="portainer"
+    google-query: intitle:"portainer"
     max-request: 2
-    shodan-query: title:"Portainer"
+    product: portainer
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)portainer"})
+    shodan-query:
+    - title:"Portainer"
+    - http.title:"portainer"
+    vendor: portainer
     verified: true
   name: Portainer Login Panel - Detect
   reference:
   - https://github.com/portainer/portainer
   severity: info
-  tags: panel,portainer,detect
+  tags: detect,discovery,panel,portainer

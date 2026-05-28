@@ -15,13 +15,20 @@ id: thinfinity-virtualui-panel
 info:
   author: princechaddha
   classification:
+    cpe: cpe:2.3:a:cybelesoft:thinfinity_virtualui:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Thinfinity VirtualUI panel was detected.
   metadata:
+    fofa-query: title="thinfinity virtualui"
+    google-query: intitle:"thinfinity virtualui"
     max-request: 1
-    shodan-query: http.title:"Thinfinity VirtualUI"
+    product: thinfinity_virtualui
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)thinfinity virtualui"})
+    shodan-query:
+    - http.title:"Thinfinity VirtualUI"
+    - http.title:"thinfinity virtualui"
+    vendor: cybelesoft
   name: Thinfinity VirtualUI Panel - Detect
   severity: info
-  tags: panel,thinfinity,virtualui
+  tags: cybelesoft,discovery,panel,thinfinity,virtualui

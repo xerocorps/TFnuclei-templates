@@ -21,8 +21,10 @@ info:
   description: 'A Whatsapp phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: Whatsapp phishing Detection
   reference:
   - https://whatsapp.com
   severity: info
-  tags: phishing,whatsapp,osint
+  tags: phishing,whatsapp,osint,discovery

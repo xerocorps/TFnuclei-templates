@@ -19,10 +19,11 @@ http:
   path:
   - '{{BaseURL}}/.travis.yml'
   - '{{BaseURL}}/matomo/.travis.yml'
+  - '{{BaseURL}}/ckeditor/.travis.yml'
   stop-at-first-match: true
 id: travis-ci-disclosure
 info:
-  author: DhiyaneshDK
+  author: DhiyaneshDK,AmirHossein Raeisi
   description: 'Travis CI is a Software as a Service (SaaS) based continuous integration
     service used to build and test software projects. By defining a configuration
     file named `.travis.yml` in their source code repositories, developers can customize
@@ -45,4 +46,4 @@ info:
 
     '
   severity: high
-  tags: exposure,file,config,tenable
+  tags: exposure,file,config,tenable,vuln

@@ -6,13 +6,15 @@ info:
     '
   metadata:
     max-request: 1
+    product: dionaea
     shodan-query: port:445
+    vendor: dionaea
     verified: true
   name: SMB Anonymous Access Detection
   reference:
   - https://wadcoms.github.io/wadcoms/SMBClient-List-Shares-Anonymous/
   severity: high
-  tags: js,network,smb,enum,misconfig
+  tags: js,network,smb,enum,misconfig,vuln
 javascript:
 - args:
     Host: '{{Host}}'
@@ -25,7 +27,7 @@ javascript:
 
     var response = c.ListShares(Host,Port,User,Pass);
 
-    to_json(response);
+    Export(response);
 
     '
   extractors:
@@ -38,3 +40,6 @@ javascript:
     - success == true
     - contains(response, "IPC$")
     type: dsl
+  pre-condition: 'isPortOpen(Host,Port);
+
+    '

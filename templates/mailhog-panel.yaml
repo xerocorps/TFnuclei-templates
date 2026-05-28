@@ -18,17 +18,17 @@ info:
   author: kh4sh3i
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'MailHog panel was detected.
 
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches "(?i)mailhog"
     shodan-query: http.html:"mailhog"
     verified: true
   name: MailHog Panel - Detect
   reference:
   - https://github.com/mailhog/MailHog
   severity: info
-  tags: panel,mailhog,mail,smtp
+  tags: panel,mailhog,mail,smtp,discovery

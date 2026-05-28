@@ -19,9 +19,10 @@ id: dedecms-config-xss
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:a:dedecms:dedecms:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79
+    cwe-id: CWE-79,CWE-80
   description: 'DeDeCMS 5.7 contains a cross-site scripting vulnerability in the ''/include/dialog/config.php''
     file. An attacker can execute arbitrary script in the browser of an unsuspecting
     user in the context of the affected site.
@@ -29,7 +30,9 @@ info:
     '
   metadata:
     max-request: 1
+    product: dedecms
     shodan-query: http.html:"DedeCms"
+    vendor: dedecms
     verified: true
   name: DedeCMS 5.7 - Cross-Site Scripting
   reference:
@@ -37,4 +40,4 @@ info:
   - https://www.60ru.com/161.html
   - https://www.cnblogs.com/milantgh/p/3615853.html
   severity: high
-  tags: dedecms,xss
+  tags: dedecms,vuln,xss

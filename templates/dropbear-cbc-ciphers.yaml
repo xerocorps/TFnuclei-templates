@@ -7,7 +7,7 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: product:"Dropbear sshd"
     verified: true
   name: Dropbear sshd CBC Mode Ciphers Detection
@@ -18,11 +18,10 @@ info:
 
     '
   severity: low
-  tags: network,ssh,dropbear
+  tags: network,ssh,dropbear,detect
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:22'
   inputs:
   - data: '
 
@@ -33,3 +32,4 @@ tcp:
     words:
     - cbc
     - SSH-
+  port: 22

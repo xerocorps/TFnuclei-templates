@@ -15,16 +15,25 @@ http:
 id: sharefile-panel
 info:
   author: irshad ahamed
+  classification:
+    cpe: cpe:2.3:a:citrix:sharefile:*:*:*:*:*:*:*:*
   description: 'ShareFile is a cloud-based file sharing and collaboration platform
     that provides secure access to files from anywhere.
 
     '
   metadata:
+    fofa-query: title="sharefile login"
+    google-query: intitle:"sharefile login"
     max-request: 1
-    shodan-query: title:"ShareFile Login"
+    product: sharefile
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)sharefile login"})
+    shodan-query:
+    - title:"ShareFile Login"
+    - http.title:"sharefile login"
+    vendor: citrix
     verified: true
   name: Sharefile Login - Panel
   reference:
   - https://www.sharefile.com/
   severity: info
-  tags: sharefile,login,panel,detect
+  tags: citrix,detect,discovery,login,panel,sharefile

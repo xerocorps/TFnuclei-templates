@@ -15,7 +15,7 @@ http:
     words:
     - abandoned-contact-form-7
   - dsl:
-    - compare_versions(version, '<= 2.0')
+    - compare_versions(version, '< 2.9')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -35,7 +35,7 @@ info:
     fofa-query: wp-content/plugins/abandoned-contact-form-7/
     google-query: inurl:"/wp-content/plugins/abandoned-contact-form-7/"
     shodan-query: http.html:"wp-content/plugins/abandoned-contact-form-7/"
-  name: 'Abandoned Contact Form 7 <= 2.0 - Missing Authorization
+  name: 'Abandoned Contact Form 7 < 2.9 - Missing Authorization
 
     '
   reference:

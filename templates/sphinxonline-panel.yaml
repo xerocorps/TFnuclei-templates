@@ -28,10 +28,12 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Connection -
+      SphinxOnline"})
     shodan-query: http.title:"Connection - SphinxOnline"
     verified: true
   name: SphinxOnline Panel - Detect
   reference:
   - https://www.lesphinx-developpement.fr/
   severity: info
-  tags: panel,sphinxonline,login,detect
+  tags: panel,sphinxonline,login,detect,discovery

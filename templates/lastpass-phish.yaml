@@ -22,8 +22,10 @@ info:
   description: 'A lastpass phishing website was detected
 
     '
+  metadata:
+    max-request: 1
   name: lastpass phishing Detection
   reference:
   - https://lastpass.com
   severity: info
-  tags: phishing,lastpass,osint
+  tags: phishing,lastpass,osint,discovery

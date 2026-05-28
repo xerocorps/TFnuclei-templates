@@ -21,12 +21,18 @@ http:
 id: filebrowser-login-panel
 info:
   author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:filebrowser:filebrowser:*:*:*:*:*:*:*:*
   metadata:
+    fofa-query: icon_hash=1052926265
     max-request: 3
+    product: filebrowser
+    runzero-match: service["favicon.ico.image.mmh3"] == "1052926265"
     shodan-query: http.favicon.hash:1052926265
+    vendor: filebrowser
     verified: true
   name: File Browser Login Panel - Detect
   reference:
   - https://filebrowser.org/
   severity: info
-  tags: panel,filebrowser,detect
+  tags: detect,discovery,filebrowser,panel

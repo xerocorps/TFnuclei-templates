@@ -22,15 +22,19 @@ id: wallix-accessmanager-panel
 info:
   author: righettod
   classification:
+    cpe: cpe:2.3:a:wallix:bastion_access_manager:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Wallix Access Manager panel was detected.
   metadata:
     max-request: 2
+    product: bastion_access_manager
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Wallix Access
+      Manager"})
     shodan-query: http.title:"Wallix Access Manager"
+    vendor: wallix
   name: Wallix Access Manager Panel - Detect
   reference:
   - https://www.wallix.com/privileged-access-management/access-manager/
   severity: info
-  tags: panel,wallix
+  tags: discovery,panel,wallix

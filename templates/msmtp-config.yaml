@@ -1,6 +1,7 @@
 http:
 - matchers:
-  - condition: and
+  - case-insensitive: true
+    condition: and
     type: word
     words:
     - account
@@ -27,9 +28,8 @@ info:
   description: Msmtp configuration was discovered.
   metadata:
     max-request: 1
-    verified: true
   name: Msmtp - Config Exposure
   reference:
   - https://wiki.archlinux.org/title/Msmtp
   severity: high
-  tags: exposure,generic,msmtp
+  tags: generic,config

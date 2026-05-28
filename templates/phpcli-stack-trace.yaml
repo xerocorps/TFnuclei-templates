@@ -21,10 +21,15 @@ http:
 id: phpcli-stack-trace
 info:
   author: DhiyaneshDk
+  classification:
+    cpe: cpe:2.3:a:php:php:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
+    product: php
+    runzero-review: REJECT/2025-11-17/excluding tag intrusive
     shodan-query: The requested resource <code class="url">
+    vendor: php
     verified: true
   name: PHP CLI Server Stack Trace
   severity: info
-  tags: misconfig,phpcli
+  tags: misconfig,phpcli,intrusive,vuln

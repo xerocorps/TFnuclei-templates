@@ -18,6 +18,7 @@ http:
 id: jolokia-mbean-search
 info:
   author: pussycat0x
+  description: Unauth users can search Mbeans in Jolokia.
   metadata:
     max-request: 2
   name: Jolokia - Searching MBeans
@@ -25,4 +26,4 @@ info:
   - https://thinkloveshare.com/hacking/ssrf_to_rce_with_jolokia_and_mbeans/
   - https://github.com/laluka/jolokia-exploitation-toolkit
   severity: low
-  tags: jolokia,springboot,mbean,tomcat
+  tags: jolokia,springboot,mbean,tomcat,misconfig,vuln

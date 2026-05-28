@@ -32,6 +32,7 @@ id: magento-config-disclosure
 info:
   author: ptonewreckin,danigoland,geeknik
   classification:
+    cpe: cpe:2.3:a:magento:magento:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
     cwe-id: CWE-200
@@ -42,10 +43,12 @@ info:
     '
   metadata:
     max-request: 3
+    product: magento
     shodan-query: http.component:"Magento"
+    vendor: magento
     verified: true
   name: Magento Configuration Panel - Detect
   reference:
   - https://github.com/ptonewreckin/cmsDetector/blob/master/signatures/magento.py
   severity: high
-  tags: magento,exposure,credential,config
+  tags: config,credential,exposure,magento,vuln

@@ -14,13 +14,23 @@ http:
 id: seagate-nas-login
 info:
   author: JustaAcat
+  classification:
+    cpe: cpe:2.3:o:seagate:nas_os:*:*:*:*:*:*:*:*
   description: 'Seagate NAS - SEAGATE Login was detected.
 
     '
   metadata:
+    fofa-query: title="seagate nas - seagate"
+    google-query: intitle:"seagate nas - seagate"
     max-request: 1
-    shodan-query: title:"Seagate NAS - SEAGATE"
+    product: nas_os
+    runzero-match: any(each(service["html.titles"]), {# matches "(?i)seagate nas -
+      seagate"})
+    shodan-query:
+    - title:"Seagate NAS - SEAGATE"
+    - http.title:"seagate nas - seagate"
+    vendor: seagate
     verified: true
   name: Seagate NAS Login - Detect
   severity: info
-  tags: panel,seagate,login
+  tags: discovery,login,panel,seagate

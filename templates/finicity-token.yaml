@@ -10,6 +10,9 @@ http:
 id: finicity-token
 info:
   author: DhiyaneshDK
+  classification:
+    cwe-id:
+    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -18,4 +21,4 @@ info:
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/finicity-api-token.yaml
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/finicity-api-token.go
   severity: info
-  tags: finicity,file,token
+  tags: exposure,file,finicity,token,vuln
