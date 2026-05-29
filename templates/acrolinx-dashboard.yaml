@@ -23,10 +23,9 @@ info:
     fofa-query: title=="Acrolinx Dashboard"
     google-query: inurl:"Acrolinx Dashboard"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Acrolinx Dashboard"})
     shodan-query: http.title:"Acrolinx Dashboard"
   name: Acrolinx Dashboard
   reference:
   - https://docs.acrolinx.com/coreplatform/latest/en/analytics/acrolinx-analytics-dashboards
   severity: info
-  tags: acrolinx,panel,discovery
+  tags: acrolinx,panel

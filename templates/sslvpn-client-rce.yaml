@@ -28,13 +28,12 @@ info:
   metadata:
     fofa-query: body="/webui/images/default/default/alert_close.jpg"
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
   name: SSL VPN Client - Remote Code Execution
   reference:
   - https://github.com/server2565543706/Poc/blob/master/POC/anquantongsha.py
   - https://github.com/Vme18000yuan/FreePOC/blob/master/poc/pocsuite/security_products_rce.py
   severity: critical
-  tags: sslvpn,rce,intrusive,vuln
+  tags: sslvpn,rce,intrusive
 variables:
   filename: '{{to_lower(rand_text_alpha(5))}}'

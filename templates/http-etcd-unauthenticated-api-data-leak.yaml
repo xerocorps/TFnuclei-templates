@@ -24,11 +24,10 @@ http:
 id: http-etcd-unauthenticated-api-data-leak
 info:
   author: dhiyaneshDk
-  description: etcd HTTP API is exposed.
   metadata:
     max-request: 1
   name: etcd Unauthenticated HTTP API Leak
   reference:
   - https://hackerone.com/reports/1088429
   severity: high
-  tags: misconfig,hackerone,unauth,etcd,vuln
+  tags: misconfig,hackerone,unauth,etcd

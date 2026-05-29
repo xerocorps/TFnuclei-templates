@@ -16,7 +16,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N
     cvss-score: 8.6
-    cwe-id: CWE-22,CWE-23,CWE-73
+    cwe-id: CWE-22
   description: A local file inclusion vulnerability in Accent Microcomputers offerings
     could allow remote attackers to retrieve password files.
   metadata:
@@ -26,4 +26,4 @@ info:
   - https://cxsecurity.com/issue/WLB-2018050036
   - http://www.accent.com.pl
   severity: high
-  tags: accent,lfi,microcomputers,vuln
+  tags: microcomputers,accent,lfi

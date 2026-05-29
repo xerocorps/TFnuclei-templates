@@ -21,21 +21,14 @@ id: qmail-admin-login
 info:
   author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:qmail_project:qmail:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: QmailAdmin login panel was detected.
   metadata:
-    fofa-query: title="qmailadmin"
-    google-query: intitle:"qmailadmin"
     max-request: 5
-    product: qmail
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)qmailadmin"})
-    shodan-query:
-    - title:"QmailAdmin"
-    - http.title:"qmailadmin"
-    vendor: qmail_project
+    shodan-query: title:"QmailAdmin"
     verified: true
   name: QmailAdmin Login Panel - Detect
   severity: info
-  tags: discovery,panel,qmail,qmail_project
+  tags: qmail,panel

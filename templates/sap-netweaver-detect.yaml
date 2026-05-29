@@ -4,43 +4,26 @@ http:
     - server
     part: header
     type: kval
+  host-redirects: true
   matchers:
-  - case-insensitive: true
-    condition: or
-    part: header
-    type: word
-    words:
-    - 'sap-server:'
-    - SAP NetWeaver Application Server
   - condition: or
-    part: body
-    type: word
-    words:
+    part: header
+    regex:
+    - 'sap-server:'
+    - 'Sap-Server:'
     - SAP NetWeaver Application Server
-    - SAP NetWeaver Developer Studio
-    - SAP Management Console
-  matchers-condition: or
+    type: regex
   max-redirects: 2
   method: GET
   path:
   - '{{BaseURL}}'
-  redirects: true
 id: sap-netweaver-detect
 info:
-  author: randomstr1ng,righettod
-  description: 'Detection of SAP NetWeaver ABAP Webserver or Java Application Server
-    (ICM/ICF)
-
-    '
+  author: randomstr1ng
+  description: Detection of SAP NetWeaver ABAP Webserver (ICM/ICF)
   metadata:
-    fofa-query:
-    - 'sap-server:'
-    - icon_hash=-266008933
     max-request: 1
-    product: content_server
     shodan-query: http.favicon.hash:-266008933
-    vendor: sap
-    verified: true
-  name: SAP NetWeaver ICM - Detect
+  name: SAP NetWeaver ICM Detection
   severity: info
-  tags: sap,webserver,tech,detect,discovery
+  tags: sap,webserver,tech

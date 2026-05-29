@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -20,7 +16,6 @@ http:
 id: announcekit-takeover
 info:
   author: melbadry9
-  description: Announcekit takeover was detected.
   metadata:
     max-request: 1
   name: Announcekit Takeover Detection
@@ -28,4 +23,4 @@ info:
   - https://blog.melbadry9.xyz/dangling-dns/xyz-services/dangling-dns-announcekit
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/228
   severity: high
-  tags: takeover,announcekit,vuln
+  tags: takeover,announcekit

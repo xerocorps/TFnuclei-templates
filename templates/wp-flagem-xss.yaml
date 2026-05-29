@@ -1,16 +1,4 @@
-flow: http(1) && http(2)
 http:
-- matchers:
-  - internal: true
-    type: word
-    words:
-    - /wp-content/plugins/FlagEm/
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 - matchers:
   - part: body
     type: word
@@ -39,10 +27,10 @@ info:
     in the context of the affected site. This can allow the attacker to steal cookie-based
     authentication credentials and launch other attacks.
   metadata:
-    max-request: 2
+    max-request: 1
   name: WordPress FlagEm - Cross-Site Scripting
   reference:
   - https://www.exploit-db.com/exploits/38674
   - https://vulners.com/packetstorm/PACKETSTORM:122505
   severity: high
-  tags: wordpress,xss,wp-plugin,edb,vuln
+  tags: wordpress,xss,wp-plugin,edb

@@ -27,10 +27,8 @@ info:
   description: Wiren Board WebUI panel was detected.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Wiren Board Web
-      UI"})
     shodan-query: http.title:"Wiren Board Web UI"
     verified: true
   name: Wiren Board WebUI Panel - Detect
   severity: medium
-  tags: panel,exposure,wiren,discovery
+  tags: panel,exposure,wiren

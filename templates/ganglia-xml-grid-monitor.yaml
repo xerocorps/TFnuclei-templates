@@ -6,11 +6,10 @@ info:
   name: Ganglia XML Grid Monitor
   reference: http://ganglia.info/
   severity: low
-  tags: ganglia,network
 network:
 - host:
   - '{{Hostname}}'
-  - '{{Hostname}}:8649'
+  - '{{Host}}:8649'
   inputs:
   - data: "\r\n"
   matchers:

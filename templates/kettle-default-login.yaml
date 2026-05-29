@@ -1,7 +1,5 @@
 http:
 - attack: pitchfork
-  headers:
-    Authorization: Basic {{base64(username + ':' + password)}}
   matchers:
   - part: body
     type: word
@@ -11,14 +9,19 @@ http:
     - 200
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/'
   payloads:
     password:
     - cluster
     username:
     - cluster
+  raw:
+  - 'GET / HTTP/1.1
+
+    Host: {{Hostname}}
+
+    Authorization: Basic {{base64(username + '':'' + password)}}
+
+    '
 id: kettle-default-login
 info:
   author: For3stCo1d
@@ -31,10 +34,8 @@ info:
     execute unauthorized operations.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["http.head.wwwAuthentications"]), {# contains
-      'realm="Kettle'})
     shodan-query: basic realm="Kettle"
     verified: true
   name: Kettle - Default Login
   severity: medium
-  tags: default-login,kettle,vuln
+  tags: default-login,kettle

@@ -6,11 +6,11 @@ http:
   - part: body
     type: word
     words:
-    - <h1> Interactsh Server </h1>
+    - <title>Example Domain</title>
   matchers-condition: and
   method: GET
   path:
-  - https://api.scraperbox.com/scrape?token={{token}}&url=https://oast.me
+  - https://api.scraperbox.com/scrape?token={{token}}&url=https://example.com
 id: api-scraperbox
 info:
   author: daffainfo

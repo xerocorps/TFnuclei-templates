@@ -16,7 +16,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N
     cvss-score: 8.6
-    cwe-id: CWE-22,CWE-23
+    cwe-id: CWE-22
   description: A local file inclusion vulnerability in the Jvehicles (com_jvehicles)
     component version 1.0 for Joomla! allows remote attackers to load arbitrary files
     via the controller parameter in index.php.
@@ -25,6 +25,6 @@ info:
   name: Joomla! Component com_sef - Local File Inclusion
   reference:
   - https://www.exploit-db.com/exploits/11997
-  remediation: Upgrade to the latest version to mitigate this vulnerability.
+  remediation: Upgrade to a supported version.
   severity: high
-  tags: edb,joomla,lfi,vuln
+  tags: cve,cve2010,joomla,lfi,edb

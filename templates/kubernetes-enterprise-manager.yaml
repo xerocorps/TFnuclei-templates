@@ -15,22 +15,13 @@ id: kubernetes-enterprise-manager
 info:
   author: pussycat0x
   classification:
-    cpe: cpe:2.3:a:kubernetes:kubernetes:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Kubernetes Enterprise Manager panel was detected.
   metadata:
-    fofa-query:
-    - app="Kubernetes-Enterprise-Manager"
-    - title="kubernetes web view"
-    - app="kubernetes-enterprise-manager"
-    google-query: intitle:"kubernetes web view"
+    fofa-query: app="Kubernetes-Enterprise-Manager"
     max-request: 1
-    product: kubernetes
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)kubernetes web
-      view"})
-    shodan-query: http.title:"kubernetes web view"
-    vendor: kubernetes
   name: Kubernetes Enterprise Manager Panel - Detect
   severity: info
-  tags: discovery,kubernetes,panel,tech
+  tags: tech,kubernetes

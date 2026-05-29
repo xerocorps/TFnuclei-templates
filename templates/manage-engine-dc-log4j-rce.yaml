@@ -42,7 +42,6 @@ id: manage-engine-dc-log4j-rce
 info:
   author: shaikhyaser
   classification:
-    cpe: cpe:2.3:a:zohocorp:manageengine_desktop_central:*:*:*:*:*:*:*:*
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
@@ -55,15 +54,12 @@ info:
     '
   metadata:
     max-request: 1
-    product: manageengine_desktop_central
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"ManageEngine Desktop Central"
-    vendor: zohocorp
   name: Manage Engine Desktop Central - Remote Code Execution (Apache Log4j)
   reference:
   - https://pitstop.manageengine.com/portal/en/community/topic/log4j-security-issue
   severity: critical
-  tags: cve,cve2021,engine,jndi,kev,log4j,manage,oast,rce,vuln
+  tags: cve,cve2021,rce,jndi,log4j,manage,engine,oast,kev
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

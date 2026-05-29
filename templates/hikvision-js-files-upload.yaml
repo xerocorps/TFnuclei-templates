@@ -45,7 +45,6 @@ info:
       \u7BA1\u7406\u5E73\u53F0\",title=\"\u7EFC\u5408\u5B89\u9632\u7BA1\u7406\u5E73\
       \u53F0\""
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
   name: Hikvision iSecure Center - File Upload
   reference:
@@ -53,7 +52,7 @@ info:
   - https://mp.weixin.qq.com/s/DR9xbwnrpg6YYSTw5pIAhw
   - https://github.com/zan8in/afrog/blob/main/v2/pocs/afrog-pocs/vulnerability/hikvision-files-upload.yaml
   severity: critical
-  tags: fileupload,iot,hikvision,intrusive,vuln
+  tags: fileupload,iot,hikvision,intrusive
 variables:
   filename: '{{rand_base(6)}}'
   payload: '{{rand_base(6)}}'

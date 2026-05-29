@@ -1,46 +1,28 @@
 http:
-- extractors:
-  - group: 1
-    part: body
-    regex:
-    - (?i)\s+([0-9-]+)\s+Micro\s+Focus
-    type: regex
-  matchers:
-  - condition: or
-    part: body
+- matchers:
+  - part: body
     type: word
     words:
     - Micro Focus Filr
-    - Filr Appliance
-  - condition: or
-    status:
+  - status:
     - 404
-    - 200
     type: status
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/filr/login'
-  - '{{BaseURL}}/login'
-  stop-at-first-match: true
 id: microfocus-filr-panel
 info:
-  author: ritikchaddha,righettod
+  author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:microfocus:filr:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Micro Focus Filr login panel was detected.
   metadata:
-    fofa-query: body="micro focus filr"
-    max-request: 2
-    product: filr
-    runzero-match: service["http.body"] matches "(?i)micro focus filr"
-    shodan-query:
-    - http.html:"Micro Focus Filr"
-    - http.html:"micro focus filr"
-    vendor: microfocus
+    max-request: 1
+    shodan-query: http.html:"Micro Focus Filr"
     verified: true
   name: Micro Focus Filr Login Panel - Detect
   severity: info
-  tags: detect,discovery,filr,microfocus,panel
+  tags: panel,microfocus,filr

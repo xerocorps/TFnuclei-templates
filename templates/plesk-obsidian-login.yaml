@@ -19,25 +19,14 @@ id: plesk-obsidian-login
 info:
   author: dhiyaneshDK,daffainfo
   classification:
-    cpe: cpe:2.3:a:plesk:obsidian:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Plesk Obsidian login panel was detected.
   metadata:
-    fofa-query:
-    - body="plesk obsidian"
-    - title="plesk obsidian"
-    google-query: intitle:"plesk obsidian"
     max-request: 1
-    product: obsidian
-    runzero-match: service["http.body"] matches "(?i)plesk obsidian" || any(each(service["html.titles"]),
-      {# matches "(?i)plesk obsidian"})
-    shodan-query:
-    - http.html:"Plesk Obsidian"
-    - http.html:"plesk obsidian"
-    - http.title:"plesk obsidian"
-    vendor: plesk
+    shodan-query: http.html:"Plesk Obsidian"
     verified: true
   name: Plesk Obsidian Login Panel - Detect
   severity: info
-  tags: discovery,edb,login,panel,plesk
+  tags: panel,plesk,login,edb

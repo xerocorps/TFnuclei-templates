@@ -36,10 +36,6 @@ http:
 id: tongda-insert-sqli
 info:
   author: SleepingBag945
-  classification:
-    cpe: cpe:2.3:a:tongda2000:office_anywhere:*:*:*:*:*:*:*:*
-    cwe-id:
-    - CWE-89
   description: 'Tongda OA v11.6 insert parameters contain SQL injection vulnerabilities,
     through which attackers can obtain sensitive database information
 
@@ -47,12 +43,9 @@ info:
   metadata:
     fofa-query: "app=\"TDXK-\u901A\u8FBEOA\""
     max-request: 2
-    product: office_anywhere
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
-    vendor: tongda2000
     verified: true
   name: Tongda OA v11.6 Insert Parameter - SQL Injection
   reference:
   - https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E9%80%9A%E8%BE%BEOA/%E9%80%9A%E8%BE%BEOA%20v11.6%20insert%20SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.md
   severity: high
-  tags: intrusive,sqli,tongda,vuln
+  tags: tongda,sqli,intrusive

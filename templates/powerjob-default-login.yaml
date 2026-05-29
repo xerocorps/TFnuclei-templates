@@ -32,21 +32,16 @@ http:
 id: powerjob-default-login
 info:
   author: j4vaovo
-  classification:
-    cpe: cpe:2.3:a:powerjob:powerjob:*:*:*:*:*:*:*:*
   description: 'PowerJob default login credentials were discovered.
 
     '
   metadata:
     fofa-query: title="PowerJob"
     max-request: 1
-    product: powerjob
-    runzero-match: any(each(service["html.titles"]), {# matches "PowerJob"})
     shodan-query: http.title:"PowerJob"
-    vendor: powerjob
     verified: true
   name: PowerJob - Default Login
   reference:
   - https://www.yuque.com/powerjob/guidence/trial
   severity: high
-  tags: powerjob,default-login,vuln
+  tags: powerjob,default-login

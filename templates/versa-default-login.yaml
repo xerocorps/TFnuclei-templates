@@ -1,15 +1,16 @@
 http:
 - attack: pitchfork
+  cookie-reuse: true
   matchers:
   - condition: and
     dsl:
     - status_code_2 == 302
-    - contains(tolower(header_2), 'jsessionid')
-    - 'contains(tolower(header_2), ''location: /versa/index.html'')'
+    - contains(tolower(all_headers_2), 'jsessionid')
+    - 'contains(tolower(all_headers_2), ''location: /versa/index.html'')'
     type: dsl
   - dsl:
-    - contains(tolower(header_2), '/login?error=true')
-    - contains(tolower(header_2), '/login?tokenmissingerror=true')
+    - contains(tolower(all_headers_2), '/login?error=true')
+    - contains(tolower(all_headers_2), '/login?tokenmissingerror=true')
     negative: true
     type: dsl
   matchers-condition: and
@@ -36,6 +37,7 @@ http:
     username={{user}}&password={{pass}}&sso=systemRadio
 
     '
+  req-condition: true
 id: versa-default-login
 info:
   author: davidmckennirey
@@ -50,4 +52,4 @@ info:
   reference:
   - https://versa-networks.com/products/sd-wan.php
   severity: high
-  tags: default-login,sdwan,versa,vuln
+  tags: default-login,versa,sdwan

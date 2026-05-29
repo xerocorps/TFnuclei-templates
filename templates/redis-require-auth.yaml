@@ -5,25 +5,13 @@ info:
 
     '
   metadata:
-    fofa-query:
-    - apache airflow
-    - title="airflow - dags" || http.html:"apache airflow"
-    - title="sign in - airflow"
-    google-query:
-    - intitle:"airflow - dags" || http.html:"apache airflow"
-    - intitle:"sign in - airflow"
     max-request: 1
-    product: airflow
-    shodan-query:
-    - product:"redis"
-    - http.title:"airflow - dags" || http.html:"apache airflow"
-    - http.title:"sign in - airflow"
-    vendor: apache
+    shodan-query: product:"redis"
   name: Redis Require Authentication - Detect
   reference:
   - https://docs.projectdiscovery.io/templates/protocols/javascript/modules/redis#isauthenticated
   severity: info
-  tags: js,redis,network,enum
+  tags: js,redis,network
 javascript:
 - args:
     Host: '{{Host}}'
@@ -39,6 +27,3 @@ javascript:
   - dsl:
     - success == true
     type: dsl
-  pre-condition: 'isPortOpen(Host,Port);
-
-    '

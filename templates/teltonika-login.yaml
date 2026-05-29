@@ -14,18 +14,16 @@ id: teltonika-login
 info:
   author: idealphase
   classification:
-    cpe: cpe:2.3:h:teltonika:rut900:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Teltonika login panel was detected.
   metadata:
     google-query: intitle:"Teltonika -Web UI" | intitle:"Teltonika-RUT -Web UI" inurl:"/cgi-bin/luci"
     max-request: 1
-    product: rut900
-    vendor: teltonika
   name: Teltonika Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7819
   - https://teltonika-iot-group.com/
   severity: info
-  tags: discovery,edb,panel,teltonika
+  tags: panel,teltonika,edb

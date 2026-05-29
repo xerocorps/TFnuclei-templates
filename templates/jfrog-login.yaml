@@ -1,34 +1,27 @@
 http:
 - matchers:
-  - condition: or
-    dsl:
-    - status_code==200 && contains(body, "<title>JFrog")
-    - status_code==200 && ("-595620639" == mmh3(base64_py(body)))
-    type: dsl
+  - type: word
+    words:
+    - <title>JFrog</title>
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/ui/login/'
-  - '{{BaseURL}}/ui/favicon.ico'
-  stop-at-first-match: true
 id: jfrog-login
 info:
   author: dhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:jfrog:artifactory:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
-  description: 'JFrog login panel was detected.
-
-    '
+  description: JFrog login panel was detected.
   metadata:
-    max-request: 2
-    product: artifactory
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)JFrog"})
-    shodan-query: http.title:"JFrog"
-    vendor: jfrog
-    verified: true
+    max-request: 1
   name: JFrog Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/6797
   severity: info
-  tags: detect,discovery,edb,jfrog,login,panel
+  tags: panel,jfrog,edb

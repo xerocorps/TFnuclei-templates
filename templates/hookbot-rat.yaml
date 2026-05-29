@@ -14,9 +14,8 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)hookbot"})
     shodan-query: title:"hookbot"
     verified: true
   name: Hookbot Rat Panel - Detect
   severity: info
-  tags: tech,rat,hookbot,c2,panel,detect,vuln
+  tags: tech,rat,hookbot,c2,panel,detect

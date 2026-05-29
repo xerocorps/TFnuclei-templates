@@ -1,7 +1,6 @@
 http:
 - matchers:
-  - part: body
-    type: word
+  - type: word
     words:
     - User sign up completed successfully
   - condition: and
@@ -37,4 +36,4 @@ info:
     shodan-query: title:"Grafana"
   name: Grafana Public Signup
   severity: medium
-  tags: grafana,cloud
+  tags: grafana,intrusive

@@ -1,7 +1,6 @@
 http:
 - matchers:
   - condition: and
-    part: body
     type: word
     words:
     - Cookies Example
@@ -13,16 +12,14 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/examples/servlets/servlet/CookieExample'
-  - '{{BaseURL}}/..;/examples/servlets/servlet/CookieExample'
-  stop-at-first-match: true
 id: tomcat-cookie-exposed
 info:
   author: tess,dk999
   metadata:
-    max-request: 2
+    max-request: 1
     verified: true
   name: Tomcat Cookie Exposed
   reference:
   - https://medium.com/bugbountywriteup/apache-example-servlet-leads-to-61a2720cac20
   severity: low
-  tags: config,exposed,java,tomcat,generic
+  tags: misconfig,apache,tomcat,exposure

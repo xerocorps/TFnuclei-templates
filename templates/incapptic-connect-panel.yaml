@@ -22,25 +22,17 @@ id: incapptic-connect-panel
 info:
   author: righettod
   classification:
-    cpe: cpe:2.3:a:ivanti:incapptic_connect:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Ivanti Incapptic Connect panel was detected.
   metadata:
-    fofa-query:
-    - icon_hash=-1067582922
-    - title="incapptic"
-    google-query: intitle:"incapptic"
     max-request: 2
-    product: incapptic_connect
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)incapptic"})
-      || service["favicon.ico.image.mmh3"] == "-1067582922"
     shodan-query:
     - http.title:"incapptic"
     - http.favicon.hash:-1067582922
-    vendor: ivanti
   name: Ivanti Incapptic Connect Panel - Detect
   reference:
   - https://www.ivanti.com/products/incapptic-connect
   severity: info
-  tags: discovery,incapptic-connect,ivanti,panel
+  tags: panel,ivanti,incapptic-connect

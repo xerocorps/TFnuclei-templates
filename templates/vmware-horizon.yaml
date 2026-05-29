@@ -6,7 +6,8 @@ info:
   severity: info
   tags: panel
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - type: word
     words:
     - <title>VMware Horizon</title>
@@ -14,6 +15,15 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/portal/webclient/index.html'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /portal/webclient/index.html HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
+    (KHTML, like Gecko)
+
+    '
+  threads: 100

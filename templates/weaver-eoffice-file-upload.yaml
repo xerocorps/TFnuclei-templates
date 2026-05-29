@@ -53,8 +53,6 @@ http:
 id: weaver-eoffice-file-upload
 info:
   author: princechaddha
-  classification:
-    cpe: cpe:2.3:a:weaver:e-office:*:*:*:*:*:*:*:*
   description: 'Weaver E-Office version 9.5 is susceptible to an arbitrary file upload
     vulnerability. This flaw allows malicious actors to upload and execute arbitrary
     code or files without proper validation or authorization.
@@ -63,14 +61,11 @@ info:
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-EOffice\""
     max-request: 2
-    product: e-office
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
-    vendor: weaver
     verified: true
   name: Weaver E-Office v9.5 - Arbitrary File Upload
   reference:
   - https://github.com/RCEraser/cve/blob/main/Weaver.md
   severity: high
-  tags: e-office,file-upload,intrusive,vuln,weaver
+  tags: e-office,weaver,intrusive,file-upload
 variables:
   filename: '{{rand_base(7, "abc")}}'

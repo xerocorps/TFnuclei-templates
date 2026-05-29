@@ -20,7 +20,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79,CWE-80
+    cwe-id: CWE-79
   description: JavaMelody contains a cross-site scripting vulnerability via the monitoring
     parameter. An attacker can execute arbitrary script in the context of the affected
     site. This can allow the attacker to steal cookie-based authentication credentials
@@ -32,4 +32,4 @@ info:
   - https://github.com/Hurdano/JavaMelody-XSS
   - https://github.com/javamelody/javamelody/pull/555
   severity: high
-  tags: javamelody,vuln,xss
+  tags: xss,javamelody

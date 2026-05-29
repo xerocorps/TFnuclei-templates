@@ -22,15 +22,10 @@ http:
 id: smarterstats-setup
 info:
   author: tess
-  classification:
-    cpe: cpe:2.3:a:smartertools:smarterstats:*:*:*:*:*:*:*:*
-  description: SmarterStats Setup is exposed.
   metadata:
     max-request: 1
-    product: smarterstats
     shodan-query: title:"Welcome to SmarterStats!"
-    vendor: smartertools
     verified: true
   name: SmarterStats Setup Exposure
   severity: high
-  tags: misconfig,smarterstats,exposure,vuln
+  tags: misconfig,smarterstats,exposure

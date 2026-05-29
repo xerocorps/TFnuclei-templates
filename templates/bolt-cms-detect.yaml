@@ -3,13 +3,12 @@ info:
   author: cyllective
   description: Detects bolt CMS
   name: bolt CMS detect
-  reference:
+  references:
   - https://github.com/bolt/bolt
   severity: info
   tags: tech,bolt,cms
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - condition: or
     part: body
     type: word
@@ -27,18 +26,6 @@ requests:
       corrupt or erase data.
     - "Bolt \xBB Login"
     - Cookies are required to log on to Bolt. Please allow cookies.
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /bolt/login HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
-  threads: 100
+  method: GET
+  path:
+  - '{{BaseURL}}/bolt/login'

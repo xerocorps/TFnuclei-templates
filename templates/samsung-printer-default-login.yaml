@@ -33,7 +33,6 @@ id: samsung-printer-default-login
 info:
   author: gy741
   classification:
-    cpe: cpe:2.3:h:samsung:scx-6555n:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -44,13 +43,10 @@ info:
     '
   metadata:
     max-request: 1
-    product: scx-6555n
-    runzero-match: any(each(service["html.titles"]), {# matches "SyncThru Web Service"})
     shodan-query: title:"SyncThru Web Service"
-    vendor: samsung
     verified: true
   name: Samsung Printer - Default Login
   reference:
   - https://support.hp.com/gb-en/document/c05591673
   severity: high
-  tags: default-login,iot,printer,samsung,vuln
+  tags: default-login,iot,samsung,printer

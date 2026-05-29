@@ -1,21 +1,13 @@
 id: phpmyadmin-panel
 info:
-  author: pdteam
+  author: bauthard
   name: phpMyAdmin Panel
   severity: low
-  tags: panel,phpmyadmin
 requests:
-- extractors:
-  - group: 1
-    part: body
-    regex:
-    - v=([a-z0-9-._]+)
-    type: regex
-  matchers:
+- matchers:
   - type: word
     words:
-    - <title>phpMyAdmin
-    - pmahomme
+    - <title>phpMyAdmin</title>
   method: GET
   path:
   - '{{BaseURL}}/phpmyadmin/'
@@ -29,5 +21,3 @@ requests:
   - '{{BaseURL}}/typo3/phpmyadmin/'
   - '{{BaseURL}}/web/phpmyadmin/'
   - '{{BaseURL}}/xampp/phpmyadmin/'
-  - '{{BaseURL}}/phpMyAdmin/'
-  stop-at-first-match: true

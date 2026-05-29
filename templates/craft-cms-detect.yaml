@@ -9,10 +9,6 @@ http:
     regex:
     - 'Set-Cookie: (Craft|CRAFT)'
     type: regex
-  - part: body
-    regex:
-    - (?i)CRAFT_CSRF_TOKEN
-    type: regex
   max-redirects: 2
   method: GET
   path:
@@ -27,4 +23,4 @@ info:
   reference:
   - https://craftcms.com
   severity: info
-  tags: tech,craftcms,discovery
+  tags: tech,craftcms

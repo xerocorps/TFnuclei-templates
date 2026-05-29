@@ -3,14 +3,11 @@ http:
   - dsl:
     - Host != ip
     type: dsl
-  - type: word
-    words:
-    - herokucdn.com/error-pages/no-such-app.html
-  - condition: or
+  - condition: and
     type: word
     words:
+    - herokucdn.com/error-pages/no-such-app.html
     - <title>No such app</title>
-    - <title>Heroku | Application Error</title>
   matchers-condition: and
   method: GET
   path:

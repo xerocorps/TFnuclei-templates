@@ -16,15 +16,15 @@ info:
   author: c-sh0
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Versa FlexVNF panel was detected.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Flex VNF Web-UI"})
     shodan-query: http.title:"Flex VNF Web-UI"
     verified: true
   name: Versa FlexVNF Panel - Detect
   reference:
   - https://versa-networks.com/products/components/
   severity: info
-  tags: panel,versa,flexvnf,discovery
+  tags: panel,versa,flexvnf

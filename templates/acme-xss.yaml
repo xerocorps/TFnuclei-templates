@@ -17,7 +17,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79,CWE-80
+    cwe-id: CWE-79
   description: Let's Encrypt contains a cross-site scripting vulnerability when using
     the the ACME protocol to issue SSL certificates.
   metadata:
@@ -27,4 +27,4 @@ info:
   - https://www.mike-gualtieri.com/posts/chaining-remote-web-vulnerabilities-to-abuse-lets-encrypt
   - https://community.letsencrypt.org/t/xss-via-acme-implementations/72295
   severity: high
-  tags: acme,vuln,xss
+  tags: xss,acme

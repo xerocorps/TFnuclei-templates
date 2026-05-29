@@ -12,7 +12,7 @@ info:
   reference:
   - https://nmap.org/nsedoc/scripts/smb-brute.html
   severity: high
-  tags: brute,network,smb
+  tags: js,network,smb,enum,default
 javascript:
 - args:
     Host: '{{Host}}'
@@ -40,7 +40,6 @@ javascript:
     - admin
     - password
     - guest
-    - ''
     usernames:
     - admin
     - administrator

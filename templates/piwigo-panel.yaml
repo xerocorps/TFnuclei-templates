@@ -1,18 +1,11 @@
 http:
-- extractors:
-  - group: 1
-    part: body
-    regex:
-    - jquery\.min\.js\?v([0-9.]+)">
-    type: regex
-  matchers:
-  - condition: or
+- matchers:
+  - condition: and
     part: body
     type: word
     words:
-    - content="Piwigo
-    - '>Piwigo</a>'
     - <body id=theIdentificationPage>
+    - piwigo.org">Piwigo</a>
   - status:
     - 200
     type: status
@@ -20,31 +13,21 @@ http:
   max-redirects: 2
   method: GET
   path:
-  - '{{BaseURL}}'
   - '{{BaseURL}}/identification.php'
   redirects: true
-  stop-at-first-match: true
 id: piwigo-panel
 info:
   author: daffainfo
   classification:
-    cpe: cpe:2.3:a:piwigo:piwigo:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Piwigo login panel was detected.
   metadata:
-    fofa-query:
-    - title="piwigo"
-    - icon_hash=540706145
-    google-query:
-    - Powered by Piwigo
-    - powered by piwigo
-    max-request: 2
-    product: piwigo
-    runzero-match: service["favicon.ico.image.mmh3"] == "540706145"
-    shodan-query: http.favicon.hash:540706145
-    vendor: piwigo
+    fofa-query: title="piwigo"
+    google-query: Powered by Piwigo
+    max-request: 1
     verified: true
   name: Piwigo Login Panel - Detect
   severity: info
-  tags: detect,discovery,panel,piwigo
+  tags: panel,piwigo

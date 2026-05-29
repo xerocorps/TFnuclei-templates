@@ -10,10 +10,6 @@ http:
 id: etsy-accesstoken
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-522
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -22,4 +18,4 @@ info:
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/etsy-access-token.yaml
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/etsy-access-token.go
   severity: info
-  tags: accesskey,etsy,exposure,tokens,vuln
+  tags: etsy,exposure,tokens,accesskey

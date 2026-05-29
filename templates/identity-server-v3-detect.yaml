@@ -19,19 +19,15 @@ http:
 id: identity-server-v3-detect
 info:
   author: righettod
-  classification:
-    cpe: cpe:2.3:a:wso2:identity_server:*:*:*:*:*:*:*:*
   description: 'Identity Server V3 technology was detected.
 
     '
   metadata:
     max-request: 1
-    product: identity_server
     shodan-query: http.title:"IdentityServer v3"
-    vendor: wso2
     verified: true
   name: Identity Server V3 - Detect
   reference:
   - https://identityserver.github.io/Documentation/
   severity: info
-  tags: tech,identityserver,detect,discovery
+  tags: tech,identityserver,detect

@@ -1,9 +1,11 @@
 http:
 - matchers:
-  - part: body
+  - condition: and
+    part: body
     type: word
     words:
     - /usr/bin/env php
+    - <?php
   - status:
     - 200
     type: status
@@ -14,14 +16,17 @@ http:
 id: php-composer-binary
 info:
   author: mayank_pandey01
-  description: 'This Nuclei template checks if the specified endpoints have Publically
-    Accessible PHP Composer Binary.
+  description: 'This Nuclei template checks if the specified endpoints have publically
+    accessible PHP Composer Binary.
 
     '
-  name: Publically Accessible PHP Composer Binary
+  metadata:
+    max-request: 1
+    verified: true
+  name: PHP Composer Binary - Exposure
   remediation: 'Restrict access to the PHP Composer binary by implementing proper
     access controls and permissions.
 
     '
   severity: info
-  tags: php,composer,generic
+  tags: php,composer,exposure

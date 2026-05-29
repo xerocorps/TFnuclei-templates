@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - relevanssi
+  - dsl:
+    - compare_versions(version, '<= 3.3')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/relevanssi/readme.txt'
+  redirects: true
+id: relevanssi-8de3ad08c261f0ec237ba4d320a1e2b7
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/relevanssi/
+    google-query: inurl:"/wp-content/plugins/relevanssi/"
+    shodan-query: 'vuln:'
+  name: 'Relevanssi <= 3.3 - SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/4b8d057b-1909-46d4-8e0a-d5c7c9f7001c?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,relevanssi,critical

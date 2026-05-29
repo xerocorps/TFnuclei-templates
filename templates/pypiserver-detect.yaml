@@ -14,14 +14,10 @@ http:
 id: pypiserver-detect
 info:
   author: ritikchaddha
-  classification:
-    cpe: cpe:2.3:a:python:pypiserver:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
-    product: pypiserver
     shodan-query: html:"pypiserver"
-    vendor: python
     verified: true
   name: PyPI Server Detect
   severity: info
-  tags: tech,pypiserver,discovery
+  tags: tech,pypiserver

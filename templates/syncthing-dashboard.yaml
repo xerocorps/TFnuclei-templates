@@ -18,17 +18,12 @@ http:
 id: syncthing-dashboard
 info:
   author: fabaff
-  classification:
-    cpe: cpe:2.3:a:syncthing:syncthing:*:*:*:*:*:*:*:*
-  description: Syncthing Dashboard is exposed.
   metadata:
     max-request: 1
-    product: syncthing
     shodan-query: http.html:'ng-app="syncthing"'
-    vendor: syncthing
     verified: true
   name: Syncthing Dashboard Exposure
   reference:
   - https://syncthing.net/
   severity: medium
-  tags: misconfig,syncthing,exposure,discovery
+  tags: misconfig,syncthing,exposure

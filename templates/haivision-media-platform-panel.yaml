@@ -14,13 +14,10 @@ info:
   author: righettod
   description: Haivision Media Platform login panel was detected.
   metadata:
-    max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Haivision Media
-      Platform"})
     shodan-query: http.title:"Haivision Media Platform"
     verified: true
   name: Haivision Media Platform Login Panel - Detect
   reference:
   - https://www.haivision.com/
   severity: info
-  tags: panel,haivision,login,detect,discovery
+  tags: panel,haivision,login,detect

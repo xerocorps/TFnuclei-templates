@@ -3,8 +3,8 @@ http:
   matchers:
   - condition: and
     dsl:
-    - contains(tolower(header), 'jupyterhub-session-id=')
-    - contains(tolower(header), 'jupyterhub-hub-login=')
+    - contains(tolower(all_headers), 'jupyterhub-session-id=')
+    - contains(tolower(all_headers), 'jupyterhub-hub-login=')
     type: dsl
   - status:
     - 302
@@ -32,19 +32,15 @@ id: jupyterhub-default-login
 info:
   author: For3stCo1d
   classification:
-    cpe: cpe:2.3:a:jupyter:jupyterhub:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
   description: Jupyterhub default admin credentials were discovered.
   metadata:
     max-request: 2
-    product: jupyterhub
-    runzero-match: any(each(service["html.titles"]), {# matches "JupyterHub"})
     shodan-query: http.title:"JupyterHub"
-    vendor: jupyter
   name: Jupyterhub - Default Admin Discovery
   reference:
   - https://github.com/jupyterhub/jupyterhub
   severity: high
-  tags: default-login,jupyterhub,vuln
+  tags: jupyterhub,default-login

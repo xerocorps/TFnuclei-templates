@@ -16,17 +16,13 @@ http:
 id: unauth-celery-flower
 info:
   author: DhiyaneshDK
-  classification:
-    cpe: cpe:2.3:a:flower_project:flower:*:*:*:*:*:*:*:*
   description: 'Celery Flower was able to be accessed with no authentication requirements
     in place.
 
     '
   metadata:
     max-request: 1
-    product: flower
     shodan-query: http.favicon.hash:-374133142
-    vendor: flower_project
   name: Celery Flower - Unauthenticated Access
   severity: high
-  tags: celery,flower,unauth,misconfig,vuln
+  tags: celery,flower,unauth,misconfig

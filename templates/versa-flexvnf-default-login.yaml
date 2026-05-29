@@ -1,5 +1,6 @@
 http:
 - attack: pitchfork
+  cookie-reuse: true
   extractors:
   - group: 1
     internal: true
@@ -47,7 +48,6 @@ id: versa-flexvnf-default-login
 info:
   author: c-sh0
   classification:
-    cpe: cpe:2.3:o:versa-networks:versa_operating_system:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -56,13 +56,10 @@ info:
     and/or execute unauthorized operations.
   metadata:
     max-request: 4
-    product: versa_operating_system
-    runzero-match: any(each(service["html.titles"]), {# matches "Flex VNF Web-UI"})
     shodan-query: title:"Flex VNF Web-UI"
-    vendor: versa-networks
     verified: true
   name: Versa FlexVNF - Default Login
   reference:
   - https://versa-networks.com/products/
   severity: high
-  tags: default-login,flexvnf,versa,vuln
+  tags: default-login,versa,flexvnf

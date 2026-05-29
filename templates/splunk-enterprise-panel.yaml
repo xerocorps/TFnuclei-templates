@@ -23,22 +23,15 @@ id: splunk-enterprise-panel
 info:
   author: praetorian-thendrickson
   classification:
-    cpe: cpe:2.3:a:splunk:splunk:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Splunk Enterprise login panel was detected.
   metadata:
-    fofa-query: title="login - splunk"
-    google-query: intitle:"login - splunk"
     max-request: 1
-    product: splunk
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)login - splunk"})
-    shodan-query:
-    - http.title:"Login - Splunk"
-    - http.title:"login - splunk"
-    vendor: splunk
+    shodan-query: http.title:"Login - Splunk"
   name: Splunk Enterprise Login Panel - Detect
   reference:
   - https://www.splunk.com/en_us/software/splunk-enterprise.html
   severity: info
-  tags: discovery,panel,splunk
+  tags: panel,splunk

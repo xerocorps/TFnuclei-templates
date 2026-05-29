@@ -43,21 +43,16 @@ info:
 
     '
   metadata:
-    fofa-query:
-    - body="genieacs"
-    - icon_hash=-2098066288
     max-request: 1
     product: genieacs
-    shodan-query:
-    - http.html:"genieacs"
-    - http.favicon.hash:-2098066288
+    shodan-query: http.html:"genieacs"
     vendor: genieacs
     verified: true
   name: GenieACS - Authentication Bypass (Default JWT Secret)
   reference:
   - https://0x00sec.org/t/genieacs-and-the-tale-of-default-jwt-secret/32738
   severity: high
-  tags: misconfig,jwt,genieacs,default-jwt,vuln
+  tags: misconfig,jwt,genieacs,default-jwt
 variables:
   cookie_name: genieacs-ui-jwt
   default_jwt_secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYXV0aE1ldGhvZCI6ImxvY2FsIiwiaWF0IjoxNzgyNTc0NDEyfQ.y2JaygP5n4WBYQ_dytgS0qet0b6KvtT31UJWqee4L6c

@@ -1,8 +1,10 @@
 http:
 - extractors:
-  - json:
-    - .data[].attributes.display_name
-    type: json
+  - group: 1
+    part: body
+    regex:
+    - \{"display_name":"([A-Za-z0-9-_]+)"\}
+    type: regex
   matchers:
   - regex:
     - \{"display_name":"([A-Sa-z0-9-_]+)"\}
@@ -24,14 +26,9 @@ info:
   description: Drupal JSON:API username listing was detected via the /user/user endpoint.
   metadata:
     max-request: 1
-    product: drupal
-    shodan-query:
-    - http.component:"drupal"
-    - cpe:"cpe:2.3:a:drupal:drupal"
-    vendor: drupal
     verified: true
   name: Drupal JSON:API Username Listing - Detect
   reference:
   - https://www.drupal.org/project/drupal/issues/3240913
   severity: medium
-  tags: drupal,exposure,discovery
+  tags: drupal,exposure

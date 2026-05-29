@@ -21,22 +21,15 @@ id: avantfax-panel
 info:
   author: pikpikcu,daffainfo
   classification:
-    cpe: cpe:2.3:a:avantfax:avantfax:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-668
   description: An AvantFAX login panel was discovered.
   metadata:
-    fofa-query: title="avantfax - login"
-    google-query: intitle:"avantfax - login"
     max-request: 1
-    product: avantfax
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)avantfax - login"})
-    shodan-query:
-    - http.title:"AvantFAX - Login"
-    - http.title:"avantfax - login"
-    vendor: avantfax
+    shodan-query: http.title:"AvantFAX - Login"
   name: AvantFAX Login Panel
   reference:
   - http://www.avantfax.com/
   severity: info
-  tags: avantfax,discovery,login,panel
+  tags: panel,avantfax,login

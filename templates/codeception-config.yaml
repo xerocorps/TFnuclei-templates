@@ -16,15 +16,11 @@ http:
 id: codeception-config
 info:
   author: DhiyaneshDk
-  classification:
-    cpe: cpe:2.3:a:codeception:codeception:*:*:*:*:*:*:*:*
   description: Codeception YAML configuration file was detected.
   metadata:
     max-request: 1
-    product: codeception
     shodan-query: html:"codeception.yml"
-    vendor: codeception
     verified: true
   name: Codeception YAML Configuration File - Detect
   severity: low
-  tags: cicd,codeception,config,devops,exposure,vuln
+  tags: exposure,devops,codeception,config,cicd

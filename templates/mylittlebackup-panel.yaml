@@ -22,21 +22,18 @@ id: mylittlebackup-panel
 info:
   author: nullfuzz
   classification:
-    cpe: cpe:2.3:a:mylittletools:mylittlebackup:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'myLittleBackup panel was detected.
 
     '
   metadata:
     max-request: 3
-    product: mylittlebackup
-    runzero-match: service["http.body"] matches "(?i)myLittleBackup"
     shodan-query: http.html:"myLittleBackup"
-    vendor: mylittletools
     verified: true
   name: myLittleBackup Panel - Detect
   reference:
   - http://www.mylittlebackup.com/mlb/en/overview.aspx
   severity: info
-  tags: discovery,mylittlebackup,panel
+  tags: panel,mylittlebackup

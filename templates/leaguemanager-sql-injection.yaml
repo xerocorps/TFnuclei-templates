@@ -19,9 +19,6 @@ http:
 id: leaguemanager-sql-injection
 info:
   author: theamanrawat
-  classification:
-    cwe-id:
-    - CWE-89
   description: 'The plugin does not sanitise and escape a parameter before using it
     in a SQL statement via an AJAX action (available to unauthenticated users), leading
     to an SQL injection.
@@ -35,4 +32,4 @@ info:
   - https://wpscan.com/vulnerability/f3be48f5-ae2c-4e27-80ca-664829b8fba3
   - https://wordpress.org/plugins/leaguemanager/
   severity: critical
-  tags: leaguemanager,sqli,time-based-sqli,unauth,vuln,wordpress,wp,wp-plugin,wpscan
+  tags: wpscan,sqli,wp,wp-plugin,wordpress,leaguemanager,unauth

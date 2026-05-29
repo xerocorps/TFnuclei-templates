@@ -18,14 +18,14 @@ http:
     type: word
     words:
     - dns
-  - part: location
-    type: word
-    words:
-    - '{{BaseURL}}/user/error'
   - part: interactsh_request
     regex:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
+  - part: location
+    type: word
+    words:
+    - '{{BaseURL}}/user/error'
   matchers-condition: and
   raw:
   - 'POST /j_security_check HTTP/1.1
@@ -66,7 +66,7 @@ info:
   - https://logging.apache.org/log4j/2.x/security.html
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   severity: critical
-  tags: log4j,rce
+  tags: cve,cve2021,rce,jndi,log4j,rundeck,kev,oast
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

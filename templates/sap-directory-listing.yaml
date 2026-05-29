@@ -16,13 +16,11 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/irj/go/km/navigation/'
-  - '{{BaseURL}}/'
-  - '{{Hostname}}/'
 id: sap-directory-listing
 info:
   author: dhiyaneshDK
   metadata:
-    max-request: 3
+    max-request: 1
   name: SAP Directory Listing
   severity: medium
-  tags: sap,java,generic,listing
+  tags: sap,listing,misconfig

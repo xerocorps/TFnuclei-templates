@@ -20,15 +20,15 @@ info:
   author: geeknik
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Nordex Control Wind Farm Portal login panel was detected.
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)Nordex Control"
     shodan-query: http.html:"Nordex Control"
     verified: true
   name: Nordex Control Wind Farm Portal Login Panel - Detect
   reference:
   - https://www.nordex-online.com/en/
   severity: info
-  tags: panel,nordex,iot,discovery
+  tags: panel,nordex,iot

@@ -23,7 +23,6 @@ info:
     \ data to execute arbitrary commands on a vulnerable server without authorization.\n"
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)nginxWebUI"
     shodan-query: html:"nginxWebUI"
     verified: true
   name: "nginxWebUI \u2264 3.5.0 runCmd - Remote Command Execution"
@@ -32,4 +31,4 @@ info:
   - https://www.ctfiot.com/124166.html
   - https://www.sangfor.com/farsight-labs-threat-intelligence/cybersecurity/nginxwebui-runcmd-remote-command-execution-vulnerability
   severity: critical
-  tags: nginx,nginxwebui,rce,vuln
+  tags: nginx,nginxwebui,rce

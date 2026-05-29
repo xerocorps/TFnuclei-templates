@@ -1,10 +1,8 @@
 http:
 - matchers:
-  - condition: or
-    type: word
+  - type: word
     words:
     - <title>IBM iNotes Login</title>
-    - Lotus iNotes Login Screen
   - status:
     - 200
     type: status
@@ -13,24 +11,18 @@ http:
   path:
   - '{{BaseURL}}'
   - '{{BaseURL}}/names.nsf'
-  - '{{BaseURL}}/webredir.nsf'
-  stop-at-first-match: true
 id: ibm-note-login
 info:
-  author: dhiyaneshDK,righettod
+  author: dhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:ibm:inotes:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: IBM iNotes login panel was detected.
   metadata:
     max-request: 2
-    product: inotes
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)IBM iNotes Login"})
-    shodan-query: http.title:"IBM iNotes Login"
-    vendor: ibm
   name: IBM iNotes Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/7122
   severity: info
-  tags: detect,discovery,edb,ibm,login,panel
+  tags: ibm,edb,panel

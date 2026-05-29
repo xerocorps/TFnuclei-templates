@@ -16,16 +16,12 @@ http:
 id: python-metrics
 info:
   author: dhiyaneshDK
-  classification:
-    cpe: cpe:2.3:a:python:python:*:*:*:*:*:*:*:*
   description: Information Disclosure of Garbage Collection
   metadata:
     max-request: 1
-    product: python
     shodan-query: html:"python_gc_objects_collected_total"
-    vendor: python
   name: Detect Python Exposed Metrics
   reference:
   - https://gist.github.com/ruanbekker/e5b1e7895f62b020ff29b5f40767190c
   severity: low
-  tags: exposure,devops,python,misconfig,vuln
+  tags: exposure,devops,python

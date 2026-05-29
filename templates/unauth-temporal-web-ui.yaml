@@ -17,7 +17,6 @@ id: unauth-temporal-web-ui
 info:
   author: ggranjus
   classification:
-    cpe: cpe:2.3:a:temporal:temporal:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: 'Temporal Web UI was able to be accessed because no authentication
@@ -26,12 +25,10 @@ info:
     '
   metadata:
     max-request: 2
-    product: temporal
     shodan-query: http.favicon.hash:557327884
-    vendor: temporal
     verified: 'true'
   name: Temporal Web UI - Unauthenticated Access
   reference:
   - https://docs.temporal.io/web-ui
   severity: high
-  tags: misconfig,temporal,unauth,vuln
+  tags: temporal,unauth

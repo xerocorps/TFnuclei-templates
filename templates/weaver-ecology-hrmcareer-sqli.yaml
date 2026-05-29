@@ -14,10 +14,6 @@ http:
 id: weaver-ecology-hrmcareer-sqli
 info:
   author: SleepingBag945
-  classification:
-    cpe: cpe:2.3:a:weaver:e-cology:*:*:*:*:*:*:*:*
-    cwe-id:
-    - CWE-89
   description: 'There is a SQL injection vulnerability in the HrmCareerApplyPerView.jsp
     file of Panwei OA E-Cology. An attacker can obtain sensitive files in the server
     database through the vulnerability.
@@ -26,14 +22,12 @@ info:
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
     max-request: 1
-    product: e-cology
     shodan-query: ecology_JSessionid
-    vendor: weaver
     verified: true
   name: Weaver E-Cology HrmCareerApplyPerView - SQL Injection
   reference:
   - https://github.com/ibaiw/2023Hvv/blob/556de69ffc370fd9827e2cf5027373543e2513d4/%E6%B3%9B%E5%BE%AE%20HrmCareerApplyPerView%20SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E.md?plain=1#L3
   severity: high
-  tags: ecology,oa,sqli,vuln,weaver
+  tags: ecology,weaver,oa,sqli
 variables:
   num: '999999999'

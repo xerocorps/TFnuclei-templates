@@ -25,15 +25,10 @@ http:
 id: phpldapadmin-panel
 info:
   author: ritikchaddha,DhiyaneshDk
-  classification:
-    cpe: cpe:2.3:a:phpldapadmin_project:phpldapadmin:*:*:*:*:*:*:*:*
   metadata:
     max-request: 3
-    product: phpldapadmin
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)phpLDAPadmin"})
     shodan-query: title:"phpLDAPadmin"
-    vendor: phpldapadmin_project
     verified: true
   name: PHP LDAP Admin Panel - Detect
   severity: info
-  tags: php,phpldapadmin,panel,detect,discovery
+  tags: php,phpldapadmin,panel,detect

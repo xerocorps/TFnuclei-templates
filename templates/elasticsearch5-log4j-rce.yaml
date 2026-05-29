@@ -33,6 +33,9 @@ http:
 
     Host: {{Hostname}}
 
+
+    {
+
     '
 id: elasticsearch5-log4j-rce
 info:
@@ -51,14 +54,14 @@ info:
   metadata:
     max-request: 1
     shodan-query: elastic indices
-    verified: 'true'
+    verified: true
   name: Elasticsearch 5 - Remote Code Execution (Apache Log4j)
   reference:
   - https://www.horizon3.ai/the-long-tail-of-log4shell-exploitation/
   - https://logging.apache.org/log4j/2.x/security.html
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   severity: critical
-  tags: log4j,rce
+  tags: jndi,log4j,rce,oast,elasticsearch,cve,cve2021,kev
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

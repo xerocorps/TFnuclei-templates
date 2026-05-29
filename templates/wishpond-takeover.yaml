@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -19,11 +15,10 @@ http:
 id: wishpond-takeover
 info:
   author: pdteam
-  description: Wishpond takeover was detected.
   metadata:
     max-request: 1
   name: Wishpond Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz
   severity: high
-  tags: takeover,wishpond,vuln
+  tags: takeover,wishpond

@@ -30,12 +30,13 @@ http:
     or 1=1 -- "]
 
     '
+  req-condition: true
 id: chamilo-lms-sqli
 info:
   author: undefl0w
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-89
   description: Chamilo 1.1.14 contains a SQL injection vulnerability. An attacker
     can possibly obtain sensitive information from a database, modify data, and execute
@@ -43,7 +44,6 @@ info:
   metadata:
     max-request: 2
   name: Chamilo 1.11.14 - SQL Injection
-  reference:
-  - https://packetstormsecurity.com/files/162572/Chamilo-LMS-1.11.14-Remote-Code-Execution.html
+  reference: https://packetstormsecurity.com/files/162572/Chamilo-LMS-1.11.14-Remote-Code-Execution.html
   severity: critical
-  tags: chamilo,sqli,vuln
+  tags: chamilo,sqli

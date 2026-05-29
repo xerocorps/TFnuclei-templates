@@ -15,12 +15,12 @@ info:
   author: ffffffff0x
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: CaseManager login panel was detected.
   metadata:
     fofa-query: title="CaseManager"
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)CaseManager"})
   name: CaseManager Login Panel - Detect
   severity: info
-  tags: casemanager,panel,discovery
+  tags: casemanager,panel

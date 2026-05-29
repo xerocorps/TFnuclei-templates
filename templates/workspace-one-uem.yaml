@@ -5,6 +5,7 @@ http:
     type: word
     words:
     - About VMware AirWatch
+    - content="AirWatch
     - /AirWatch/Images
   method: GET
   path:
@@ -13,22 +14,16 @@ id: workspace-one-uem
 info:
   author: gevakun,hanlaomo
   classification:
-    cpe: cpe:2.3:a:vmware:workspace_one_uem:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: VMware Workspace ONE UEM Airwatch login panel was detected.
   metadata:
-    fofa-query: body="airwatch"
     max-request: 1
-    product: workspace_one_uem
-    runzero-match: service["http.body"] matches "(?i)airwatch"
-    shodan-query:
-    - http.html:"Airwatch"
-    - http.html:"airwatch"
-    vendor: vmware
+    shodan-query: http.html:"Airwatch"
     verified: true
   name: VMware Workspace ONE UEM Airwatch Login Panel - Detect
   reference:
   - https://twitter.com/Jhaddix/status/1295861505963909120
   severity: info
-  tags: discovery,panel,vmware,workspaceone
+  tags: panel,workspaceone,vmware

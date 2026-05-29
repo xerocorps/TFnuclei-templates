@@ -20,11 +20,10 @@ http:
 id: unauth-mautic-upgrade
 info:
   author: huowuzhao
-  description: Upgrade.php page in Mautic is exposed.
   metadata:
     max-request: 1
     shodan-query: title:"Mautic"
     verified: true
   name: Unauthenticated Mautic Upgrade.php Exposure
   severity: high
-  tags: misconfig,unauth,mautic,vuln
+  tags: misconfig,unauth,mautic

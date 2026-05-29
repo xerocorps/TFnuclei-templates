@@ -27,20 +27,16 @@ http:
 id: nextcloud-detect
 info:
   author: skeltavik
-  classification:
-    cpe: cpe:2.3:a:nextcloud:nextcloud_server:*:*:*:*:*:*:*:*
   description: 'Nextcloud is a suite of client-server software for creating and using
     file hosting services
 
     '
   metadata:
     max-request: 4
-    product: nextcloud_server
     shodan-query: http.title:"Nextcloud"
-    vendor: nextcloud
     verified: true
   name: Nextcloud Detect
   reference:
   - https://nextcloud.com
   severity: info
-  tags: discovery,nextcloud,storage,tech
+  tags: tech,nextcloud,storage

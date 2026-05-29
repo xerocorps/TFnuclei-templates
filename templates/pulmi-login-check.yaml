@@ -33,11 +33,9 @@ id: pulmi-login-check
 info:
   author: parthmalhotra,pdresearch
   description: Checks for a valid github account.
-  metadata:
-    max-request: 1
   name: pulmi.com Login Check
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: cloud,creds-stuffing,login-check,pulmi,vuln
+  tags: login-check,pulmi,creds-stuffing
 self-contained: true

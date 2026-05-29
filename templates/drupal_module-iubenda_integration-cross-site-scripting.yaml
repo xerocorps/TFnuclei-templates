@@ -7,20 +7,20 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '<= 4.0.1')
+    - compare_versions(version, '4.0.0')
+    - compare_versions(version, '3.2.0')
+    - compare_versions(version, '3.1.0')
+    - compare_versions(version, '3.0.0')
     type: dsl
   matchers:
-  - condition: and
-    part: body
+  - part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - condition: and
-    status:
+  - status:
     - 200
     type: status
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - iubenda_integration
@@ -32,7 +32,7 @@ http:
   redirects: true
 id: drupal_module-iubenda_integration-cross-site-scripting
 info:
-  author: me
+  author: Bishopfox
   description: The Iubenda Integration module provides a custom block to provide a
     link to the Iubenda privacy policy. On this block, a custom prefix and suffix
     text can be entered. The module does not sufficiently filter the block text fields
@@ -41,11 +41,11 @@ info:
     use the layout builder on content, edit the layout, or with the Administer blocks
     permission.
   metadata:
-    created_at: '2025-01-09'
+    created_at: '0001-01-01T00:00:00Z'
     fofa-query: /sites/all/modules/iubenda_integration/
     google-query: inurl:'/sites/all/modules/iubenda_integration/
     impact: medium
-    security-risk: "Moderately critical 14\u2009\u2215\u200925 AC:Basic/A:User/CI:Some/II:Some/E:Theoretical/TD:All"
+    security-risk: "Moderately critical 14\u221525 AC:Basic/A:User/CI:Some/II:Some/E:Theoretical/TD:All"
     type: indicator
     vulnerability: cross-site-scripting
   name: drupal_module-iubenda_integration-cross-site-scripting

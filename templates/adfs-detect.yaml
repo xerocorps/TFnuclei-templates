@@ -1,12 +1,5 @@
 http:
-- extractors:
-  - group: 1
-    name: domain
-    part: body
-    regex:
-    - var\s+userNameValue\s*=\s*'([^\\]*)\\
-    type: regex
-  matchers:
+- matchers:
   - part: body
     type: word
     words:
@@ -17,10 +10,10 @@ http:
   - '{{BaseURL}}/adfs/ls/idpinitiatedsignon.aspx'
 id: adfs-detect
 info:
-  author: Adam Crosser,Mys7ic
+  author: Adam Crosser
   description: Detects ADFS with forms-based authentication enabled.
   metadata:
     max-request: 1
   name: ADFS Detect
   severity: info
-  tags: tech,adfs,discovery
+  tags: tech,adfs

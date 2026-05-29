@@ -38,7 +38,6 @@ id: logstash-log4j-rce
 info:
   author: shaikhyaser
   classification:
-    cpe: cpe:2.3:a:elastic:logstash:*:*:*:*:*:*:*:*
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
@@ -50,15 +49,12 @@ info:
     '
   metadata:
     max-request: 1
-    product: logstash
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: html:"logstash"
-    vendor: elastic
   name: Logstash - Remote Code Execution (Apache Log4j)
   reference:
   - https://discuss.elastic.co/t/apache-log4j2-remote-code-execution-rce-vulnerability-cve-2021-44228-esa-2021-31/291476
   severity: critical
-  tags: cve,cve2021,jndi,kev,log4j,logstash,oast,rce,vuln
+  tags: cve,cve2021,rce,jndi,log4j,logstash,oast,kev
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

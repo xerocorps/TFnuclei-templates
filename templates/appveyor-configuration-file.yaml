@@ -1,7 +1,6 @@
 http:
 - matchers:
-  - case-insensitive: true
-    condition: and
+  - condition: and
     type: word
     words:
     - 'install:'
@@ -13,46 +12,20 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/.appveyor.yml'
-  - '{{BaseURL}}/.appveyor.yml.1'
-  - '{{BaseURL}}/.appveyor.yml.2'
-  - '{{BaseURL}}/.appveyor.yml.3'
-  - '{{BaseURL}}/.appveyor.yml.back'
-  - '{{BaseURL}}/.appveyor.yml.bak'
-  - '{{BaseURL}}/.appveyor.yml.cmake'
-  - '{{BaseURL}}/.appveyor.yml.old'
-  - '{{BaseURL}}/.appveyor.yml.orig'
-  - '{{BaseURL}}/.appveyor.yml.template'
-  - '{{BaseURL}}/.appveyor.yml.txt'
-  - '{{BaseURL}}/.appveyor.yml1'
-  - '{{BaseURL}}/.appveyor.yml2'
-  - '{{BaseURL}}/.appveyor.yml3'
-  - '{{BaseURL}}/;/.appveyor.yml'
-  - '{{BaseURL}}/;/appveyor.yml'
   - '{{BaseURL}}/appveyor.yml'
-  - '{{BaseURL}}/appveyor.yml.1'
-  - '{{BaseURL}}/appveyor.yml.2'
-  - '{{BaseURL}}/appveyor.yml.3'
-  - '{{BaseURL}}/appveyor.yml.back'
-  - '{{BaseURL}}/appveyor.yml.bak'
-  - '{{BaseURL}}/appveyor.yml.cmake'
-  - '{{BaseURL}}/appveyor.yml.old'
-  - '{{BaseURL}}/appveyor.yml.orig'
-  - '{{BaseURL}}/appveyor.yml.template'
-  - '{{BaseURL}}/appveyor.yml.txt'
-  - '{{BaseURL}}/appveyor.yml1'
-  - '{{BaseURL}}/appveyor.yml2'
-  - '{{BaseURL}}/appveyor.yml3'
-  - '{{BaseURL}}/disabled.appveyor.yml'
-  - '{{BaseURL}}/old.appveyor.yml'
   stop-at-first-match: true
 id: appveyor-configuration-file
 info:
-  author: DhiyaneshDk,reewardius
+  author: DhiyaneshDk
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
     cwe-id: CWE-200
   description: AppVeyor configuration page was detected.
+  metadata:
+    max-request: 2
+    shodan-query: html:"appveyor.yml"
+    verified: true
   name: AppVeyor Configuration Page - Detect
   severity: medium
-  tags: generic,config
+  tags: config,exposure,devops

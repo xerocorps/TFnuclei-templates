@@ -20,22 +20,16 @@ id: jalios-jcms-panel
 info:
   author: righettod
   classification:
-    cpe: cpe:2.3:a:jalios:jcms:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Jalios JCMS login panel was detected.
   metadata:
-    fofa-query: body="jalios jcms"
     max-request: 2
-    product: jcms
-    runzero-match: service["http.body"] matches "(?i)jalios jcms"
-    shodan-query:
-    - html:"Jalios JCMS"
-    - http.html:"jalios jcms"
-    vendor: jalios
+    shodan-query: html:"Jalios JCMS"
     verified: true
   name: Jalios JCMS Login Panel - Detect
   reference:
   - https://www.jalios.com/
   severity: info
-  tags: discovery,jalios,jcms,panel
+  tags: panel,jalios,jcms

@@ -15,20 +15,15 @@ http:
 id: phpsys-info
 info:
   author: fpatrik
-  classification:
-    cpe: cpe:2.3:a:phpsysinfo:phpsysinfo:*:*:*:*:*:*:*:*
   description: 'phpSysInfo: a customizable PHP script that displays information about
     your system nicely
 
     '
   metadata:
     max-request: 1
-    product: phpsysinfo
     shodan-query: html:"phpSysInfo"
-    vendor: phpsysinfo
     verified: true
   name: phpSysInfo Exposure
-  reference:
-  - https://phpsysinfo.github.io/phpsysinfo/
+  reference: https://phpsysinfo.github.io/phpsysinfo/
   severity: low
-  tags: config,exposure,phpsysinfo,vuln
+  tags: config,exposure,phpsysinfo

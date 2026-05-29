@@ -20,16 +20,13 @@ id: nginx-proxy-manager
 info:
   author: dhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:nginxproxymanager:nginx_proxy_manager:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Nginx Proxy Manager login panel was detected.
   metadata:
     max-request: 1
-    product: nginx_proxy_manager
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Nginx Proxy Manager"})
     shodan-query: http.title:"Nginx Proxy Manager"
-    vendor: nginxproxymanager
   name: Nginx Proxy Manager Login Panel - Detect
   severity: info
-  tags: discovery,nginx,panel,proxy
+  tags: panel,nginx,proxy

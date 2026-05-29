@@ -2,70 +2,65 @@ http:
 - attack: pitchfork
   matchers:
   - condition: and
-    dsl:
-    - status_code == 200
-    - contains_all(body, "Apache Tomcat", "Server Information")
-    - contains_any(body, "Tomcat Version", "JVM Version", "JVM Vendor", "OS Name",
-      "OS Version", "OS Architecture", "Hostname", "IP Address")
-    type: dsl
+    part: body
+    type: word
+    words:
+    - Apache Tomcat
+    - Server Information
+  - condition: or
+    part: body
+    type: word
+    words:
+    - Tomcat Version
+    - JVM Version
+    - JVM Vendor
+    - OS Name
+    - OS Version
+    - OS Architecture
+    - Hostname
+    - IP Address
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   payloads:
     password:
     - tomcat
     - admin
-    - manager
-    - s3cret
-    - changethis
-    - tomcat
-    - manager
-    - role1
-    - tomcat
-    - root
-    - r00t
-    - tomcat
-    - ADMIN
     - OvW*busr1
     - j2deployer
     - kdsxc
-    - QLogic66
+    - ADMIN
     - xampp
-    - demo
-    - owaspbwa
-    - changethis
     - s3cret
+    - QLogic66
+    - tomcat
+    - root
+    - role1
     - changethis
-    - Password1
-    - vagrant
-    - password
-    - Password1
-    - admin123
+    - changethis
+    - j5Brn9
+    - tomcat
+    - tomcat
+    - 123456
     username:
     - tomcat
     - admin
-    - admin
-    - admin
-    - admin
-    - admin
-    - manager
-    - role1
-    - role1
-    - root
-    - root
-    - both
-    - ADMIN
     - ovwebusr
     - j2deployer
     - cxsdk
-    - QCC
+    - ADMIN
     - xampp
-    - demo
-    - server_admin
+    - tomcat
+    - QCC
+    - admin
+    - root
+    - role1
     - role
     - tomcat
-    - tomcat
-    - tomcat
-    - vagrant
     - admin
-    - admin
+    - role1
+    - both
     - admin
   raw:
   - 'GET /manager/html HTTP/1.1
@@ -75,23 +70,16 @@ http:
     Authorization: Basic {{base64(username + '':'' + password)}}
 
     '
-  stop-at-first-match: true
-  threads: 30
 id: tomcat-default-login
 info:
-  author: pdteam,sinKettu,nybble04
-  classification:
-    cpe: cpe:2.3:a:apache:tomcat:*:*:*:*:*:*:*:*
-  description: Apache Tomcat Manager default login credentials were discovered.
+  author: pdteam,sinKettu
+  description: Apache Tomcat Manager default login credentials were discovered. This
+    template checks for multiple variations.
   metadata:
-    max-request: 25
-    product: tomcat
-    runzero-match: any(each(service["html.titles"]), {# matches "Apache Tomcat"})
+    max-request: 18
     shodan-query: title:"Apache Tomcat"
-    vendor: apache
   name: Apache Tomcat Manager Default Login
   reference:
   - https://www.rapid7.com/db/vulnerabilities/apache-tomcat-default-ovwebusr-password/
-  - https://github.com/danielmiessler/SecLists/blob/master/Passwords/Default-Credentials/tomcat-betterdefaultpasslist.txt
   severity: high
-  tags: apache,default-login,tomcat,vuln
+  tags: tomcat,apache,default-login

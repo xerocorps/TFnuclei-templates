@@ -20,7 +20,7 @@ info:
   author: gy741
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-77
   description: 'Mirai is susceptible to an unknown exploit that targets the login
     CGI script, where a key parameter is not properly sanitized leading to a command
@@ -29,9 +29,8 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
   name: Mirai - Remote Command Injection
   reference:
   - https://www.fortinet.com/blog/threat-research/the-ghosts-of-mirai
   severity: critical
-  tags: mirai,rce,oast,vuln
+  tags: mirai,rce,oast

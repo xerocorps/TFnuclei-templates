@@ -16,17 +16,12 @@ http:
 id: apache-struts-showcase
 info:
   author: DhiyaneshDK
-  classification:
-    cpe: cpe:2.3:a:apache:struts:*:*:*:*:*:*:*:*
-  description: Apache Structs ShowCase Application is exposed.
   metadata:
     max-request: 2
-    product: struts
     shodan-query: title:"Struts2 Showcase"
-    vendor: apache
     verified: true
   name: Apache Struts - ShowCase Application Exposure
   reference:
   - https://github.com/PortSwigger/j2ee-scan/blob/master/src/main/java/burp/j2ee/issues/impl/ApacheStrutsWebConsole.java
   severity: low
-  tags: apache,struts,showcase,misconfig,exposure,vuln
+  tags: apache,struts,showcase,misconfig,exposure

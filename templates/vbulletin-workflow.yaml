@@ -1,11 +1,13 @@
 id: vbulletin-workflow
 info:
   author: pdteam
-  name: vBulletin workflow
-logic: "vbulletin_tech()\n\nif vbulletin_tech[\"vbulletin\"] {\n\n  vbulletin_cve_1()\n\
-  \  vbulletin_cve_2()\n  vbulletin_cve_3()\n}"
-variables:
-  vbulletin_cve_1: cves/CVE-2019-16759.yaml
-  vbulletin_cve_2: cves/CVE-2019-16759-1.yaml
-  vbulletin_cve_3: cves/CVE-2020-12720.yaml
-  vbulletin_tech: technologies/tech-detect.yaml
+  description: A simple workflow that runs all vBulletin related nuclei templates
+    on a given target.
+  name: vBulletin Security Checks
+workflows:
+- matchers:
+  - name: vbulletin
+    subtemplates:
+    - template: http/cves/2019/CVE-2019-16759.yaml
+    - template: http/cves/2020/CVE-2020-12720.yaml
+  template: http/technologies/tech-detect.yaml

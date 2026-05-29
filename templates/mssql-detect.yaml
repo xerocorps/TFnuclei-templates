@@ -6,7 +6,7 @@ info:
     shodan-query: port:1433
   name: Microsoft SQL(mssql) - Detect
   severity: info
-  tags: js,mssql,detect,network,discovery
+  tags: js,mssql,detect,network
 javascript:
 - args:
     Host: '{{Host}}'

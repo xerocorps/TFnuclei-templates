@@ -7,7 +7,6 @@ http:
     words:
     - content="Rancher Dashboard
     - 'rancherEnv:'
-    - <title>Rancher
   - status:
     - 200
     type: status
@@ -20,25 +19,17 @@ http:
   stop-at-first-match: true
 id: rancher-dashboard
 info:
-  author: ritikchaddha,righettod
+  author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:rancher:rancher:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: Rancher Dashboard was detected.
   metadata:
-    fofa-query: icon_hash=464587962
     max-request: 2
-    product: rancher
-    runzero-match: service["favicon.ico.image.mmh3"] == "-1324930554" || service["favicon.ico.image.mmh3"]
-      == "464587962"
-    shodan-query:
-    - http.favicon.hash:-1324930554
-    - http.favicon.hash:464587962
-    vendor: rancher
+    shodan-query: http.favicon.hash:-1324930554
     verified: 'true'
   name: Rancher Dashboard Panel - Detect
   reference:
   - https://rancher.com/
   severity: info
-  tags: dashboard,discovery,login,panel,rancher
+  tags: panel,rancher,dashboard,login

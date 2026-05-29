@@ -28,28 +28,17 @@ id: glpi-project_glpi
 info:
   author: dogasantos,daffainfo,ricardomaia,dhiyaneshDk
   classification:
-    cpe: cpe:2.3:a:glpi-project:glpi:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: GLPI panel was detected.
   metadata:
-    fofa-query:
-    - title="glpi"
-    - icon_hash="-1474875778"
-    google-query: intitle:"glpi"
     max-request: 3
-    product: glpi
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)glpi"}) || service["favicon.ico.image.mmh3"]
-      == "-1474875778"
-    shodan-query:
-    - http.title:"GLPI"
-    - http.title:"glpi"
-    - http.favicon.hash:"-1474875778"
-    vendor: glpi-project
+    shodan-query: http.title:"GLPI"
     verified: true
   name: GLPI Panel - Detect
   reference:
   - https://glpi-project.org/
   - https://www.exploit-db.com/ghdb/7002
   severity: info
-  tags: discovery,edb,glpi,glpi-project,panel
+  tags: glpi,edb,panel

@@ -29,11 +29,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "1817615343"
     shodan-query: http.favicon.hash:1817615343
     verified: true
   name: Regify Login Panel - Detect
   reference:
   - https://www.regify.com/
   severity: info
-  tags: panel,regify,login,detect,discovery
+  tags: panel,regify,login,detect

@@ -16,12 +16,11 @@ info:
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22,CWE-23
+    cwe-id: CWE-22
   description: Crystal Live HTTP Server 6.01 is vulnerable to local file inclusion.
   metadata:
     max-request: 1
   name: Crystal Live HTTP Server 6.01 - Local File Inclusion
-  reference:
-  - https://cxsecurity.com/issue/WLB-2019110127
+  reference: https://cxsecurity.com/issue/WLB-2019110127
   severity: high
-  tags: crystal,lfi,vuln
+  tags: lfi,crystal

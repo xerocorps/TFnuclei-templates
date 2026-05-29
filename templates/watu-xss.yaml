@@ -1,5 +1,6 @@
 http:
-- matchers:
+- cookie-reuse: true
+  matchers:
   - condition: and
     dsl:
     - status_code_2 == 200
@@ -31,7 +32,6 @@ info:
     '
   metadata:
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     verified: true
   name: Watu Quiz < 3.1.2.6 - Cross Site Scripting
   reference:
@@ -40,4 +40,4 @@ info:
   - https://plugins.trac.wordpress.org/changeset?reponame=&new=2114019%40watu&old=2112579%40watu&
   remediation: Fixed in version 3.1.2.6
   severity: medium
-  tags: watu,quiz,authenticated,wpscan,xss,vuln
+  tags: watu,quiz,authenticated,wpscan,xss

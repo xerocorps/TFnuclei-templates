@@ -21,21 +21,14 @@ id: sap-successfactors-detect
 info:
   author: tess
   classification:
-    cpe: cpe:2.3:a:sap:successfactors:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: SAP SuccessFactors login panel was detected.
   metadata:
-    fofa-query: title="login - sap successfactors"
-    google-query: intitle:"login - sap successfactors"
     max-request: 2
-    product: successfactors
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)login - sap successfactors"})
-    shodan-query:
-    - title:"Login - SAP SuccessFactors"
-    - http.title:"login - sap successfactors"
-    vendor: sap
+    shodan-query: title:"Login - SAP SuccessFactors"
     verified: true
   name: SAP SuccessFactors Login Panel - Detect
   severity: info
-  tags: detect,discovery,panel,sap
+  tags: sap,detect

@@ -33,12 +33,10 @@ id: ibm-dcec-default-login
 info:
   author: DhiyaneshDK
   metadata:
-    max-request: 1
-    runzero-match: service["http.body"] matches "Decision Center Enterprise console"
     shodan-query: html="Decision Center Enterprise console"
     verified: true
   name: IBM Decision Center Enterprise Console - Default Login
   reference:
   - https://www.ibm.com/docs/en/odm/8.5.1?topic=console-tutorial-getting-started-decision-center-enterprise
   severity: high
-  tags: decision-center,default-login,ibm,vuln
+  tags: ibm,default-login,decision-center

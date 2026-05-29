@@ -16,12 +16,8 @@ http:
   payloads:
     password:
     - guest
-    - admin
-    - password
     username:
     - guest
-    - admin
-    - admin
   raw:
   - 'GET /api/whoami HTTP/1.1
 
@@ -41,7 +37,7 @@ info:
     cwe-id: CWE-522
   description: RabbitMQ default admin credentials were discovered.
   metadata:
-    max-request: 3
+    max-request: 1
   name: RabbitMQ Default Login
   reference:
   - https://onlinehelp.coveo.com/en/ces/7.0/administrator/changing_the_rabbitmq_administrator_password.htm

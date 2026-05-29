@@ -21,21 +21,15 @@ http:
 id: kiteworks-pcn-panel
 info:
   author: righettod
-  classification:
-    cpe: cpe:2.3:a:accellion:kiteworks:*:*:*:*:*:*:*:*
   description: 'Kiteworks PCN Login Panel was detected.
 
     '
   metadata:
-    fofa-query: icon_hash=-1215318992
     max-request: 1
-    product: kiteworks
-    runzero-match: service["favicon.ico.image.mmh3"] == "-1215318992"
     shodan-query: http.favicon.hash:-1215318992
-    vendor: accellion
     verified: true
   name: Kiteworks PCN Panel - Detect
   reference:
   - https://www.kiteworks.com/platform/private-content-network/
   severity: info
-  tags: accellion,detect,discovery,kiteworks,login,panel
+  tags: panel,kiteworks,login,detect

@@ -22,16 +22,12 @@ http:
 id: yzmcms-installer
 info:
   author: ritikchaddha
-  classification:
-    cpe: cpe:2.3:a:yzmcms:yzmcms:*:*:*:*:*:*:*:*
   description: YzmCMS is susceptible to the Installation page exposure due to misconfiguration.
   metadata:
     fofa-query: title="YzmCMS"
     max-request: 1
-    product: yzmcms
     shodan-query: title:"YzmCMS"
-    vendor: yzmcms
     verified: true
   name: YzmCMS - Installer
   severity: high
-  tags: misconfig,yzmcms,install,exposure,vuln
+  tags: misconfig,yzmcms,install,exposure

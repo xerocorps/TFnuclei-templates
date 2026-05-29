@@ -3,11 +3,8 @@ http:
   - dsl:
     - Host != ip
     type: dsl
-  - condition: or
-    type: word
+  - type: word
     words:
-    - The page you are looking for doesn't exist or has been moved.
-    - The page you are looking for doesn&#x27;t exist or has been moved
     - <p class="description">The page you are looking for doesn't exist or has been
       moved.</p>
   matchers-condition: and
@@ -16,12 +13,11 @@ http:
   - '{{BaseURL}}'
 id: webflow-takeover
 info:
-  author: pdteam,keni0k
+  author: pdteam
   metadata:
     max-request: 1
   name: webflow takeover detection
   reference:
-  - https://github.com/EdOverflow/can-i-take-over-xyz/issues/44
-  - https://saurabhsanmane.medium.com/subdomain-takeover-using-webflow-service-5a7b9efcf172
+  - https://github.com/EdOverflow/can-i-take-over-xyz
   severity: high
   tags: takeover

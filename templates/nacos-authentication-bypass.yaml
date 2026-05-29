@@ -27,17 +27,13 @@ http:
 id: nacos-authentication-bypass
 info:
   author: Esonhugh
-  classification:
-    cpe: cpe:2.3:a:alibaba:nacos:*:*:*:*:*:*:*:*
   description: 'The authentication function of Nacos is can be bypass through default
     JWT secret.
 
     '
   metadata:
     max-request: 2
-    product: nacos
     shodan-query: title:"Nacos"
-    vendor: alibaba
     verified: true
   name: Nacos < 2.2.0 - Authentication Bypass
   reference:
@@ -46,6 +42,6 @@ info:
   - https://nacos.io/zh-cn/docs/auth.html
   remediation: Change value of jwt secret in the configurations
   severity: critical
-  tags: auth-bypass,jwt,misconfig,nacos,vuln
+  tags: auth-bypass,nacos,misconfig,jwt
 variables:
   token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYWNvcyIsImV4cCI6OTk5OTk5OTk5OTl9.-isk56R8NfioHVYmpj4oz92nUteNBCN3HRd0-Hfk76g

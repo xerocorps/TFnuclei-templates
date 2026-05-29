@@ -7,20 +7,19 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '9.x-99.99')
+    - compare_versions(version, '7.x-1.2')
+    - compare_versions(version, '7.x-1.1')
+    - compare_versions(version, '7.x-1.0')
     type: dsl
   matchers:
-  - condition: and
-    part: body
+  - part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - condition: and
-    status:
+  - status:
     - 200
     type: status
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - role_delegation
@@ -32,7 +31,7 @@ http:
   redirects: true
 id: drupal_module-role_delegation-privilege-escalation
 info:
-  author: me
+  author: Bishopfox
   description: This module allows site administrators to grant specific roles the
     authority to assign selected roles to users, without them needing the administer
     permissions permission. The module contains an access bypass vulnerability when
@@ -42,11 +41,11 @@ info:
     with the views bulk operations module enabled. E.g. The admin_views module provides
     such a view.
   metadata:
-    created_at: '2025-01-09'
+    created_at: '0001-01-01T00:00:00Z'
     fofa-query: /sites/all/modules/role_delegation/
     google-query: inurl:'/sites/all/modules/role_delegation/
     impact: medium
-    security-risk: "Moderately critical 14\u2009\u2215\u200925 AC:Basic/A:User/CI:Some/II:Some/E:Proof/TD:Default"
+    security-risk: "Moderately critical 14\u221525 AC:Basic/A:User/CI:Some/II:Some/E:Proof/TD:Default"
     type: indicator
     vulnerability: privilege-escalation
   name: drupal_module-role_delegation-privilege-escalation

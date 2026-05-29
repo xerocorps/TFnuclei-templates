@@ -1,23 +1,10 @@
 http:
-- extractors:
-  - group: 1
-    internal: true
-    name: raw_version
-    part: body
-    regex:
-    - '"rcversion":(\d+)'
-    type: regex
-  - dsl:
-    - concat(to_number(substr(raw_version, 0, 1)), ".", to_number(substr(raw_version,
-      1, 3)), ".", to_number(substr(raw_version, 3)))
-    type: dsl
-  host-redirects: true
+- host-redirects: true
   matchers:
-  - condition: and
-    regex:
-    - '"rcversion":\d\d\d\d'
-    - (?i)roundcube
-    type: regex
+  - part: body
+    type: word
+    words:
+    - Roundcube Webmail
   - status:
     - 200
     type: status
@@ -31,13 +18,9 @@ http:
 id: roundcube-webmail-portal
 info:
   author: ritikchaddha
-  classification:
-    cpe: cpe:2.3:a:roundcube:webmail:*:*:*:*:*:*:*:*
   metadata:
     max-request: 2
-    product: webmail
     shodan-query: http.component:"RoundCube"
-    vendor: roundcube
   name: Roundcube webmail
   severity: info
-  tags: discovery,portal,roundcube,tech
+  tags: roundcube,portal,tech

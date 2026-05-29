@@ -15,19 +15,13 @@ id: trendnet-tew827dru-login
 info:
   author: princechaddha
   classification:
-    cpe: cpe:2.3:o:trendnet:tew-827dru_firmware:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: TRENDnet TEW-827DRU login panel was detected.
   metadata:
-    fofa-query: body="tew-827dru"
     max-request: 1
-    product: tew-827dru_firmware
-    runzero-match: service["http.body"] matches "(?i)tew-827dru"
-    shodan-query:
-    - http.html:"TEW-827DRU"
-    - http.html:"tew-827dru"
-    vendor: trendnet
+    shodan-query: http.html:"TEW-827DRU"
   name: TRENDnet TEW-827DRU Login Panel - Detect
   severity: info
-  tags: discovery,panel,router,trendnet
+  tags: panel,router,trendnet

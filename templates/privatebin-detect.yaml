@@ -19,24 +19,15 @@ http:
 id: privatebin-detect
 info:
   author: righettod
-  classification:
-    cpe: cpe:2.3:a:privatebin:privatebin:*:*:*:*:*:*:*:*
   description: 'PrivateBin was detected.
 
     '
   metadata:
-    fofa-query:
-    - title="PrivateBin"
-    - icon_hash="1358855492"
     max-request: 1
-    product: privatebin
-    shodan-query:
-    - title:"PrivateBin"
-    - http.favicon.hash:1358855492
-    vendor: privatebin
+    shodan-query: title:"PrivateBin"
     verified: true
   name: PrivateBin - Detect
   reference:
   - https://privatebin.info/
   severity: info
-  tags: tech,privatebin,detect,discovery
+  tags: tech,privatebin,detect

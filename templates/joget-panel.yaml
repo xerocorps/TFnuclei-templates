@@ -20,16 +20,13 @@ id: joget-panel
 info:
   author: Podalirius
   classification:
-    cpe: cpe:2.3:a:joget:joget_dx:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Joget panel was detected.
   metadata:
     max-request: 1
-    product: joget_dx
-    runzero-match: service["favicon.ico.image.mmh3"] == "-1343712810"
     shodan-query: http.favicon.hash:-1343712810
-    vendor: joget
   name: Joget Panel - Detect
   severity: info
-  tags: discovery,joget,panel
+  tags: panel,joget

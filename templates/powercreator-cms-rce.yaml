@@ -37,21 +37,21 @@ http:
     Host: {{Hostname}}
 
     '
+  req-condition: true
 id: powercreator-cms-rce
 info:
   author: pikpikcu
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-77
   description: 'PowerCreator CMS is susceptible to a remote code execution vulnerability.
 
     '
   metadata:
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
   name: PowerCreator CMS - Remote Code Execution
   reference:
   - https://wiki.96.mk/Web%E5%AE%89%E5%85%A8/PowerCreatorCms/PowerCreatorCms%E4%BB%BB%E6%84%8F%E4%B8%8A%E4%BC%A0/
   severity: critical
-  tags: rce,powercreator,intrusive,fileupload,vuln
+  tags: rce,powercreator,intrusive,fileupload

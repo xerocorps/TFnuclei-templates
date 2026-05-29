@@ -14,9 +14,6 @@ http:
 id: shiziyu-cms-apicontroller-sqli
 info:
   author: SleepingBag945
-  classification:
-    cwe-id:
-    - CWE-89
   description: 'Shiziyu CMS ApiController.class.php parameter filtering is not rigorous,
     resulting in SQL injection vulnerability.
 
@@ -24,10 +21,9 @@ info:
   metadata:
     fofa-query: body="/seller.php?s=/Public/login"
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)/seller\\.php\\?s=/Public/login"
     verified: true
   name: Shiziyu CMS Api Controller - SQL Injection
   severity: high
-  tags: sqli,vuln
+  tags: sqli
 variables:
   num: '999999999'

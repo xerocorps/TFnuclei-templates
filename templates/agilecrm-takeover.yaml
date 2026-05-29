@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -24,4 +20,4 @@ info:
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/145
   severity: high
-  tags: takeover,agilecrm,vuln
+  tags: takeover,agilecrm

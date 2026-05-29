@@ -18,11 +18,10 @@ info:
   author: DhiyaneshDk
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Glowroot"})
     shodan-query: title:"Glowroot"
     verified: true
   name: Glowroot - Panel
   reference:
   - https://www.facebook.com/photo?fbid=618105097026680&set=a.467014098802448
   severity: info
-  tags: panel,login,glowroot,discovery
+  tags: panel,login,glowroot

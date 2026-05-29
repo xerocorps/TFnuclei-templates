@@ -1,5 +1,6 @@
 http:
-- extractors:
+- cookie-reuse: true
+  extractors:
   - group: 1
     internal: true
     name: csrf
@@ -37,8 +38,8 @@ info:
   author: leovalcante,kiks7
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
-    cwe-id: CWE-502,CWE-77,CWE-94
+    cvss-score: 10.0
+    cwe-id: CWE-77
   description: 'Joomla! CMS 3.0.0 through the 3.4.6 release contains an unauthenticated
     PHP object injection that leads to remote code execution.
 
@@ -50,4 +51,4 @@ info:
   - https://blog.hacktivesecurity.com/index.php/2019/10/03/rusty-joomla-rce/
   - https://github.com/kiks7/rusty_joomla_rce
   severity: critical
-  tags: cms,joomla,objectinjection,php,rce,unauth,vuln
+  tags: joomla,rce,unauth,php,cms,objectinjection

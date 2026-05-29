@@ -22,12 +22,10 @@ info:
 
     '
   metadata:
-    max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Log in - easyJOB"})
     shodan-query: http.title:"Log in - easyJOB"
     verified: true
   name: EasyJOB Login Panel - Detect
   reference:
   - https://www.en.because-software.com/software/easyjob/
   severity: info
-  tags: panel,easyjob,login,discovery
+  tags: panel,easyjob,login

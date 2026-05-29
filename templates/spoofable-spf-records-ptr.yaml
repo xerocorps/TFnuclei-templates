@@ -1,14 +1,11 @@
 dns:
-- class: inet
-  matchers:
+- matchers:
   - condition: and
     type: word
     words:
     - v=spf1
     - ' ptr '
   name: '{{FQDN}}'
-  recursion: true
-  retries: 3
   type: TXT
 id: spoofable-spf-records-ptr
 info:

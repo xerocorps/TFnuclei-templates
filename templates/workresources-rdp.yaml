@@ -15,12 +15,12 @@ info:
   author: dhiyaneshDK
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: RDWeb RemoteApp and Desktop Connections does not display.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)RD Web Access"})
     shodan-query: http.title:"RD Web Access"
   name: RDWeb RemoteApp and Desktop Connections - Web Access
   severity: info
-  tags: panel,workresources,discovery
+  tags: panel,workresources

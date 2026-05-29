@@ -35,20 +35,16 @@ id: openmediavault-default-login
 info:
   author: DhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:openmediavault:openmediavault:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
   metadata:
     max-request: 1
-    product: openmediavault
-    runzero-match: any(each(service["html.titles"]), {# matches "OpenMediaVault"})
     shodan-query: title:"OpenMediaVault"
-    vendor: openmediavault
     verified: true
   name: OpenMediaVault - Default Login
   reference:
   - https://forum.openmediavault.org/index.php?thread/7784-default-login/
   - https://soltveit.org/openmediavault-default-password/
   severity: high
-  tags: default-login,openmediavault,vuln
+  tags: default-login,openmediavault

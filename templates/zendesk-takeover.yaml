@@ -1,18 +1,13 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
-  - case-insensitive: true
-    condition: or
+  - condition: or
     type: word
     words:
-    - this help centre no longer exists
-    - Help Centre Closed
+    - this help center no longer exists
+    - Help Center Closed
   matchers-condition: and
   method: GET
   path:
@@ -20,7 +15,6 @@ http:
 id: zendesk-takeover
 info:
   author: pdteam
-  description: Zendesk takeover was detected.
   metadata:
     max-request: 1
   name: Zendesk Takeover Detection
@@ -29,4 +23,4 @@ info:
   - https://hackerone.com/reports/869605
   - https://hackerone.com/reports/759454
   severity: high
-  tags: takeover,zendesk,hackerone,vuln
+  tags: takeover,zendesk,hackerone

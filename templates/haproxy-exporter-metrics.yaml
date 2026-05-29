@@ -20,15 +20,10 @@ http:
 id: haproxy-exporter-metrics
 info:
   author: pussycat0x
-  classification:
-    cpe: cpe:2.3:a:haproxy:haproxy:*:*:*:*:*:*:*:*
-  description: Haproxy metrics is exposed.
   metadata:
     max-request: 1
-    product: haproxy
     shodan-query: title:"haproxy exporter"
-    vendor: haproxy
     verified: true
   name: Detect Haproxy Exporter
   severity: low
-  tags: haproxy,exposure,debug,misconfig,vuln
+  tags: haproxy,exposure,debug

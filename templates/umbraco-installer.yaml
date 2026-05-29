@@ -1,33 +1,29 @@
 http:
 - matchers:
-  - condition: or
-    dsl:
-    - contains_all(body, "Install Umbraco", "umbracoInstallPageBody")
-    - contains_all(body, "serverStatus", "Install")
-    type: dsl
   - condition: and
-    dsl:
-    - contains_any(header, "text/html", "application/json")
-    - status_code == 200 || status_code == 503
-    type: dsl
+    part: body
+    type: word
+    words:
+    - Install Umbraco
+    - umbracoInstallPageBody
+  - part: header
+    type: word
+    words:
+    - text/html
+  - status:
+    - 200
+    type: status
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/install'
-  - '{{BaseURL}}/umbraco/management/api/v1/server/status'
-  stop-at-first-match: true
 id: umbraco-installer
 info:
-  author: DhiyaneshDk,stvnhrlnd
-  classification:
-    cpe: cpe:2.3:a:umbraco:umbraco_cms:*:*:*:*:*:*:*:*
-  description: Umbraco is susceptible to the Installation page exposure due to misconfiguration.
+  author: DhiyaneshDk
   metadata:
     max-request: 1
-    product: umbraco_cms
     shodan-query: title:"Install Umbraco"
-    vendor: umbraco
     verified: true
-  name: Umbraco Install - Exposure
+  name: Umbraco Install Exposure
   severity: high
-  tags: misconfig,umbraco,install,oss,vuln
+  tags: misconfig,umbraco,install,oss

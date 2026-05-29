@@ -23,14 +23,10 @@ http:
 id: drupal-user-enum-redirect
 info:
   author: 0w4ys
-  classification:
-    cpe: cpe:2.3:a:drupal:drupal:*:*:*:*:*:*:*:*
   metadata:
     max-request: 4
-    product: drupal
     shodan-query: http.component:"Drupal"
-    vendor: drupal
     verified: true
   name: Drupal User Enumeration [Redirect]
   severity: info
-  tags: drupal,misconfig,vuln
+  tags: drupal,misconfig

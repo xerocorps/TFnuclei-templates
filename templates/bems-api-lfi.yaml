@@ -16,7 +16,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22,CWE-23,CWE-73
+    cwe-id: CWE-22
   description: Longjing Technology BEMS API 1.21 is vulnerable to local file inclusion.
     Input passed through the fileName parameter through the downloads API endpoint
     is not properly verified before being used to download files. This can be exploited
@@ -29,4 +29,4 @@ info:
   - https://www.zeroscience.mk/en/vulnerabilities/ZSL-2021-5657.php
   - https://packetstormsecurity.com/files/163702/
   severity: high
-  tags: lfi,packetstorm,vuln
+  tags: lfi,packetstorm

@@ -21,11 +21,10 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Lomnido Login"})
     shodan-query: http.title:"Lomnido Login"
     verified: true
   name: Lomnido Panel - Detect
   reference:
   - https://lomnido.com/
   severity: info
-  tags: lomnido,panel,login,detect,discovery
+  tags: lomnido,panel,login,detect

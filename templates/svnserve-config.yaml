@@ -5,7 +5,8 @@ info:
   severity: low
   tags: config,exposure,svnserve
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - type: word
     words:
     - This file controls the configuration of the svnserve daemon
@@ -13,6 +14,15 @@ requests:
     - 200
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/svnserve.conf'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /svnserve.conf HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101
+    Firefox/55
+
+    '
+  threads: 100

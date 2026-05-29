@@ -17,17 +17,14 @@ id: ntopng-traffic-dashboard
 info:
   author: theamanrawat
   classification:
-    cpe: cpe:2.3:a:ntop:ntopng:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
     cwe-id: CWE-200
   description: Ntopng traffic dashboard was detected.
   metadata:
     max-request: 1
-    product: ntopng
     shodan-query: http.title:"ntopng - Traffic Dashboard"
-    vendor: ntop
     verified: true
   name: Ntopng Traffic Dashboard - Detect
   severity: medium
-  tags: dashboard,discovery,misconfig,ntopng
+  tags: misconfig,ntopng,dashboard

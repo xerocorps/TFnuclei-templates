@@ -14,18 +14,14 @@ id: ansible-semaphore-panel
 info:
   author: Yuzhe-zhang-0
   classification:
-    cpe: cpe:2.3:a:ansible-semaphore:ansible_semaphore:*:*:*:*:ansible:*:*:*
     cwe-id: CWE-200
   description: An Ansible Semaphore login panel was detected.
   metadata:
     max-request: 1
-    product: ansible_semaphore
-    runzero-match: service["http.body"] matches "(?i)Semaphore</title>"
     shodan-query: http.html:"Semaphore</title>"
-    vendor: ansible-semaphore
   name: Ansible Semaphore Panel Detect
   reference:
   - https://ansible-semaphore.com/
   - https://github.com/ansible-semaphore/semaphore
   severity: info
-  tags: ansible,cicd,discovery,oss,panel,semaphore
+  tags: panel,ansible,semaphore,cicd,oss

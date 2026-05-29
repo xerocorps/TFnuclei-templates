@@ -19,19 +19,17 @@ http:
   - '{{BaseURL}}/package-lock.json'
 id: package-json
 info:
-  author: geeknik,afaq,noraj
-  description: 'All NodeJS packages contain a file, usually in the project root, called
-    package.json - this file holds various metadata relevant to the project generated
-    by package managers such as npm, yarn, pnpm.
-
-    '
+  author: geeknik,afaq
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
+    cwe-id: CWE-200
+  description: npm configuration information was detected. All npm packages contain
+    a file, usually in the project root, called package.json - this file holds various
+    metadata relevant to the project.
   metadata:
     max-request: 2
-    verified: true
-  name: NPM package.json Disclosure
-  reference:
-  - https://docs.npmjs.com/cli/v9/configuring-npm/package-json
-  - https://classic.yarnpkg.com/lang/en/docs/package-json/
-  - https://pnpm.io/package_json
+  name: npm Config - Detect
+  reference: https://www.npmjs.com
   severity: info
-  tags: dependency,config
+  tags: config,exposure

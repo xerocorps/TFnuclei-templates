@@ -22,22 +22,14 @@ id: mybb-forum-install
 info:
   author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:mybb:mybb:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L
     cvss-score: 8.6
     cwe-id: CWE-200
   description: MyBB installation panel was detected.
   metadata:
-    fofa-query: title="mybb"
-    google-query: intitle:"mybb"
     max-request: 1
-    product: mybb
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)mybb"})
-    shodan-query:
-    - http.title:"MyBB"
-    - http.title:"mybb"
-    vendor: mybb
+    shodan-query: http.title:"MyBB"
     verified: true
   name: MyBB Installation Panel - Detect
   severity: high
-  tags: panel,mybb,forum,discovery
+  tags: panel,mybb,forum

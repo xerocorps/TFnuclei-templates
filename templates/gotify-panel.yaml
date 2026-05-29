@@ -17,22 +17,12 @@ http:
 id: gotify-panel
 info:
   author: righettod
-  classification:
-    cpe: cpe:2.3:a:gotify:server:*:*:*:*:*:*:*:*
   description: Gotify login panel was detected.
   metadata:
-    fofa-query: title="gotify"
-    google-query: intitle:"gotify"
-    max-request: 1
-    product: server
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)gotify"})
-    shodan-query:
-    - http.title:"Gotify"
-    - http.title:"gotify"
-    vendor: gotify
+    shodan-query: http.title:"Gotify"
     verified: true
   name: Gotify Login Panel - Detect
   reference:
   - https://github.com/gotify/server
   severity: info
-  tags: detect,discovery,gotify,login,panel
+  tags: panel,gotify,login,detect

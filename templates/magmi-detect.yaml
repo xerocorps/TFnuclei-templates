@@ -14,14 +14,10 @@ http:
 id: magmi-detect
 info:
   author: dwisiswant0
-  classification:
-    cpe: cpe:2.3:a:magmi_project:magmi:*:*:*:*:*:*:*:*
   metadata:
     max-request: 1
-    product: magmi
     shodan-query: http.component:"Magento"
-    vendor: magmi_project
     verified: true
   name: MAGMI (Magento Mass Importer) Plugin Detect
   severity: info
-  tags: magento,magmi,plugin,tech,discovery
+  tags: magento,magmi,plugin,tech

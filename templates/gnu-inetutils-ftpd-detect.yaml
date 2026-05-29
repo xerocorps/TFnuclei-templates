@@ -6,12 +6,12 @@ info:
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
     shodan-query: product:"GNU Inetutils FTPd"
     verified: true
   name: GNU Inetutils FTPd Detect
   severity: info
-  tags: network,ftp,smartgateway,gnu,inetutils,detect,detection,tcp,discovery
+  tags: network,ftp,smartgateway,gnu,inetutils
 tcp:
 - extractors:
   - regex:
@@ -19,6 +19,7 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
+  - '{{Host}}:21'
   inputs:
   - data: '
 
@@ -27,4 +28,3 @@ tcp:
   - type: word
     words:
     - SmartGateway FTP server
-  port: 21

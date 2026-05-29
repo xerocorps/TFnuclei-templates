@@ -1,10 +1,8 @@
 http:
 - matchers:
-  - condition: or
-    type: word
+  - type: word
     words:
     - <title>Cluster Overview | Kubecost</title>
-    - <title>Kubecost</title>
   - part: header
     type: word
     words:
@@ -19,13 +17,11 @@ http:
 id: unauth-kubecost
 info:
   author: pussycat0x
-  description: KubeCost Dashboard is exposed to external users.
   metadata:
     max-request: 1
     shodan-query: title:kubecost
     verified: true
   name: KubeCost - Unauthenticated Dashboard Exposure
-  reference:
-  - https://www.facebook.com/photo?fbid=470414125129112&set=pcb.470413798462478
+  reference: https://www.facebook.com/photo?fbid=470414125129112&set=pcb.470413798462478
   severity: medium
-  tags: misconfig,exposure,unauth,kubecost,vuln
+  tags: misconfig,exposure,unauth,kubecost

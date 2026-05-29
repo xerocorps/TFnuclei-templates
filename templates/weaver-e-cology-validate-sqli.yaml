@@ -22,9 +22,6 @@ http:
 id: weaver-e-cology-validate-sqli
 info:
   author: SleepingBag945
-  classification:
-    cwe-id:
-    - CWE-89
   description: 'In the validate.jsp file of the Panwei e-cology OA system, the parameter
     capitalid is not strictly filtered, which can lead to SQL injection vulnerabilities.
     An attacker can use this vulnerability to remotely send carefully constructed
@@ -35,7 +32,7 @@ info:
     max-request: 1
   name: Weaver e-cology Validate.JSP - SQL Injection
   severity: high
-  tags: ecology,sqli,vuln,weaver
+  tags: ecology,weaver,sqli
 variables:
   num1: '{{rand_int(40000, 44800)}}'
   num2: '{{rand_int(40000, 44800)}}'

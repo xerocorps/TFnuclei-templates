@@ -1,16 +1,4 @@
-flow: http(1) && http(2)
 http:
-- matchers:
-  - internal: true
-    type: word
-    words:
-    - /wp-content/plugins/finder/
-  raw:
-  - 'GET / HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 - matchers:
   - part: body
     type: word
@@ -39,9 +27,9 @@ info:
     of an unsuspecting user in the context of the affected site. This can allow the
     attacker to steal cookie-based authentication credentials and launch other attacks.
   metadata:
-    max-request: 2
+    max-request: 1
   name: WordPress Finder - Cross-Site Scripting
   reference:
   - https://packetstormsecurity.com/files/115902/WordPress-Finder-Cross-Site-Scripting.html
   severity: high
-  tags: xss,wp-plugin,packetstorm,wordpress,vuln
+  tags: xss,wp-plugin,packetstorm,wordpress

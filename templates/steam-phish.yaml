@@ -1,7 +1,8 @@
 http:
 - host-redirects: true
   matchers:
-  - type: word
+  - condition: and
+    type: word
     words:
     - Welcome to Steam
     - Steam is the ultimate destination for playing, discussing, and creating games.
@@ -22,10 +23,8 @@ info:
   description: 'A steam phishing website was detected
 
     '
-  metadata:
-    max-request: 1
   name: steam phishing Detection
   reference:
   - https://steampowered.com
   severity: info
-  tags: phishing,steam,osint,discovery
+  tags: phishing,steam,osint

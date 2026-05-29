@@ -7,15 +7,16 @@ info:
 
     '
   metadata:
-    max-request: 1
+    max-request: 2
     shodan-query: port:23 telnet
     verified: true
   name: Telnet Detection
   severity: info
-  tags: network,telnet,detect,detection,tcp,discovery
+  tags: network,telnet
 tcp:
 - host:
   - '{{Hostname}}'
+  - '{{Host}}:23'
   inputs:
   - data: '
 
@@ -26,4 +27,3 @@ tcp:
     words:
     - Telnet
     - Login authentication
-  port: 23

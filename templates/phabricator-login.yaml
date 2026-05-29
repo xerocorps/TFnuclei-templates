@@ -14,19 +14,13 @@ id: phabricator-login
 info:
   author: dhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:phacility:phabricator:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Phabricator login panel was detected.
   metadata:
-    fofa-query: body="phabricator-standard-page"
     max-request: 1
-    product: phabricator
-    runzero-match: service["http.body"] matches "(?i)phabricator-standard-page"
-    shodan-query:
-    - html:"phabricator-standard-page"
-    - http.html:"phabricator-standard-page"
-    vendor: phacility
+    shodan-query: html:"phabricator-standard-page"
   name: Phabricator Login Panel - Detect
   severity: info
-  tags: discovery,panel,phabricator,phacility
+  tags: panel,phabricator

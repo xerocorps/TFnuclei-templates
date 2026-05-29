@@ -1,31 +1,25 @@
 http:
-- attack: clusterbomb
+- attack: pitchfork
   matchers:
   - condition: and
     dsl:
     - body == "{\"code\":0}"
     - status_code == 200
     type: dsl
-  - condition: and
-    dsl:
-    - contains(body, "\"token\":") && contains(body, "\"license\":")
-    - contains(content_type, 'application/json')
-    - status_code == 200
-    type: dsl
-  matchers-condition: or
   payloads:
-    path:
-    - /api/v4/auth
-    - /api/v5/login
+    pass:
+    - public
+    user:
+    - admin
   raw:
-  - 'POST {{path}} HTTP/1.1
+  - 'POST /api/v4/auth HTTP/1.1
 
     Host: {{Hostname}}
 
-    Content-Type: application/json
+    Content-Type: application/x-www-form-urlencoded
 
 
-    {"username":"{{username}}","password":"{{password}}"}
+    {"username":"{{user}}","password":"{{pass}}"}
 
     '
 id: emqx-default-login
@@ -38,11 +32,7 @@ info:
   description: Emqx default admin credentials were discovered.
   metadata:
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "-670975485"
     shodan-query: http.favicon.hash:"-670975485"
   name: Emqx Default Admin Login
   severity: high
-  tags: default-login,emqx,vuln
-variables:
-  password: public
-  username: admin
+  tags: emqx,default-login

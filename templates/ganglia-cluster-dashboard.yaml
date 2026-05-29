@@ -16,17 +16,13 @@ http:
 id: ganglia-cluster-dashboard
 info:
   author: ritikchaddha
-  classification:
-    cpe: cpe:2.3:a:ganglia:ganglia-web:*:*:*:*:*:*:*:*
   description: 'Ganglia Cluster dashboard was detected.
 
     '
   metadata:
     max-request: 2
-    product: ganglia-web
     shodan-query: html:"ganglia_form.submit()"
-    vendor: ganglia
     verified: true
   name: Ganglia Cluster Dashboard - Detect
   severity: low
-  tags: misconfig,ganglia,dashboard,discovery
+  tags: misconfig,ganglia,dashboard

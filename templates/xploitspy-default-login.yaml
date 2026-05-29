@@ -42,10 +42,9 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "XploitSPY"
     shodan-query: html:XploitSPY
   name: XploitSPY - Default Login
   reference:
   - https://github.com/XploitWizer-Community/XploitSPY
   severity: high
-  tags: default-login,vuln,xploitspy
+  tags: xploitspy,default-login

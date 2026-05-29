@@ -33,8 +33,6 @@ http:
 id: mysql-history
 info:
   author: kazet
-  classification:
-    cpe: cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*
   description: 'The mysql_history file is a history file used by the MySQL command-line
     client (mysql) to store a record of the SQL commands and statements entered by
     a user during their interactive MySQL sessions. It serves as a command history
@@ -44,12 +42,10 @@ info:
     '
   metadata:
     max-request: 1
-    product: mysql
     shodan-query: html:"mysql_history"
-    vendor: oracle
     verified: true
   name: Mysql History - File Disclosure
   reference:
   - http://doc.docs.sk/mysql-refman-5.5/mysql-history-file.html
   severity: low
-  tags: misconfig,disclosure,config,vuln
+  tags: misconfig,disclosure,config

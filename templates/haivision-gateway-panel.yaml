@@ -13,12 +13,10 @@ info:
   author: righettod
   description: Haivision Gateway login panel was detected.
   metadata:
-    max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Haivision Gateway"})
     shodan-query: http.title:"Haivision Gateway"
     verified: true
   name: Haivision Gateway Login Panel - Detect
   reference:
   - https://www.haivision.com/
   severity: info
-  tags: panel,haivision,login,detect,discovery
+  tags: panel,haivision,login,detect

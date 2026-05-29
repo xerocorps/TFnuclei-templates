@@ -7,12 +7,12 @@ info:
 network:
 - host:
   - '{{Hostname}}'
-  - '{{Hostname}}:25'
+  - '{{Host}}:25'
   inputs:
   - data: 65686c6f20636865636b746c730a
-    read-size: 2048
     type: hex
   matchers:
   - type: word
     words:
     - 250-EXPN
+  read-size: 2048

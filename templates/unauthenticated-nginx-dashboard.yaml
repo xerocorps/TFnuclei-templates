@@ -14,12 +14,11 @@ http:
 id: unauthenticated-nginx-dashboard
 info:
   author: BibekSapkota (sar00n)
-  description: Nginx Dashboard is exposed.
   metadata:
     max-request: 1
-    shodan-query: html:"NGINX+ Dashboard"
+    shpdan-query: html:"NGINX+ Dashboard"
   name: Nginx Dashboard
   reference:
   - https://www.acunetix.com/vulnerabilities/web/unrestricted-access-to-nginx-dashboard/
   severity: low
-  tags: misconfig,nginx,discovery
+  tags: misconfig,nginx

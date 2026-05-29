@@ -41,10 +41,10 @@ info:
   metadata:
     max-request: 3
     shodan-query: 'title:"Installation -  Gitea: Git with a cup of tea"'
-    verified: 'true'
+    verified: true
   name: Gitea 1.4.0 - Remote Code Execution
   reference:
   - https://www.exploit-db.com/exploits/44996
   - https://github.com/kacperszurek/exploits/blob/master/Gitea/gitea_lfs_rce.py
   severity: critical
-  tags: rce
+  tags: gitea,rce,unauth,edb

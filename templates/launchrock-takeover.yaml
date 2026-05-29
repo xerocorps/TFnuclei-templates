@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -18,11 +14,10 @@ http:
 id: launchrock-takeover
 info:
   author: pdteam
-  description: Launchrock takeover was detected.
   metadata:
     max-request: 1
   name: Launchrock Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/74
   severity: high
-  tags: takeover,vuln
+  tags: takeover

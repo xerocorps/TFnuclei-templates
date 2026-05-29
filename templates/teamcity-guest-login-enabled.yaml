@@ -20,7 +20,6 @@ id: teamcity-guest-login-enabled
 info:
   author: Ph33r
   classification:
-    cpe: cpe:2.3:a:jetbrains:teamcity:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 7.3
     cwe-id: CWE-200
@@ -30,13 +29,11 @@ info:
     '
   metadata:
     max-request: 1
-    product: teamcity
     shodan-query: http.component:"TeamCity"
-    vendor: jetbrains
     verified: true
   name: JetBrains TeamCity - Guest User Access Enabled
   reference:
   - https://ph33r.medium.com/misconfig-in-teamcity-panel-lead-to-auth-bypass-in-apache-org-exploit-146f6a1a4e2b
   - https://www.jetbrains.com/help/teamcity/guest-user.html
   severity: high
-  tags: jetbrains,misconfig,teamcity,vuln
+  tags: misconfig,teamcity,jetbrains

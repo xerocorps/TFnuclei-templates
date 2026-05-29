@@ -20,15 +20,10 @@ http:
 id: global-traffic-statistics
 info:
   author: tess
-  classification:
-    cpe: cpe:2.3:a:f5:big-ip_global_traffic_manager:*:*:*:*:*:*:*:*
-  description: Global Traffic Statistics page is exposed.
   metadata:
     max-request: 1
-    product: big-ip_global_traffic_manager
     shodan-query: title:"Global Traffic Statistics"
-    vendor: f5
     verified: true
   name: Global Traffic Statistics Exposure
   severity: low
-  tags: misconfig,global,exposure,vuln
+  tags: misconfig,global,exposure

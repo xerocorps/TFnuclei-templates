@@ -3,10 +3,10 @@ info:
   author: tarunKoyalwar
   metadata:
     max-request: 223
-    shodan-query: port:22
+    shodan-query: port:1433
   name: SSH - Default Logins
   severity: critical
-  tags: js,ssh,default-login,network,fuzz,vuln
+  tags: js,ssh,default-login,network,fuzz
 javascript:
 - args:
     Host: '{{Host}}'

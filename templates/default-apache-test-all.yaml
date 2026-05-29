@@ -17,15 +17,11 @@ http:
 id: default-apache-test-all
 info:
   author: andydoering
-  classification:
-    cpe: cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*
   description: Detects default installations of apache (not just apache2 or installations
     on CentOS)
   metadata:
     max-request: 1
-    product: http_server
     shodan-query: http.title:"Apache+Default","Apache+HTTP+Server+Test","Apache2+It+works"
-    vendor: apache
   name: Apache HTTP Server Test Page
   severity: info
-  tags: tech,apache,discovery
+  tags: tech,apache

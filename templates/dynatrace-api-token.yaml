@@ -10,17 +10,11 @@ http:
 id: dynatrace-api-token
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-522
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
   name: Dynatrace API Token
   reference:
-  - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/dynatrace.yml
-  - https://www.dynatrace.com/support/help/dynatrace-api
-  - https://www.dynatrace.com/support/help/dynatrace-api/basics/dynatrace-api-authentication
+  - https://github.com/praetorian-inc/noseyparker/blob/main/data/default/rules/dynatrace.yml
   severity: info
-  tags: dynatrace,exposure,token,vuln
+  tags: dynatrace,token,exposure

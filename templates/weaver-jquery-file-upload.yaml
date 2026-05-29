@@ -52,23 +52,16 @@ http:
 id: weaver-jquery-file-upload
 info:
   author: SleepingBag945
-  classification:
-    cpe: cpe:2.3:a:weaver:e-office:*:*:*:*:*:*:*:*
-    cwe-id:
-    - CWE-434
   description: Arbitrary File Upload in OA E-Office jQuery.
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-EOffice\""
     max-request: 3
-    product: e-office
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
-    vendor: weaver
     verified: true
   name: OA E-Office jQuery - Arbitrary File Upload
   reference:
   - https://github.com/w-digital-scanner/w9scan/blob/master/plugins/weaver_oa/2158.py
   severity: critical
-  tags: e-office,instrusive,intrusive,oa,rce,vuln,weaver
+  tags: weaver,e-office,oa,instrusive,rce,intrusive
 variables:
   filename: '{{to_lower(rand_base(5))}}'
   string: '{{randstr}}'

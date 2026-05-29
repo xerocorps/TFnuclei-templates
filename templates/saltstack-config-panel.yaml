@@ -15,19 +15,16 @@ id: saltstack-config-panel
 info:
   author: pussycat0x
   classification:
-    cpe: cpe:2.3:a:saltstack:saltstack:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'SaltStack config panel was detected.
 
     '
   metadata:
     max-request: 1
-    product: saltstack
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)SaltStack Config"})
     shodan-query: title:"SaltStack Config"
-    vendor: saltstack
     verified: true
   name: SaltStack Config Panel - Detect
   severity: info
-  tags: discovery,login,panel,saltstack,vmware
+  tags: panel,vmware,login,saltstack

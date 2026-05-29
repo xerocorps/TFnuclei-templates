@@ -18,10 +18,6 @@ http:
 id: weaver-ecology-getsqldata-sqli
 info:
   author: SleepingBag945
-  classification:
-    cpe: cpe:2.3:a:weaver:e-cology:*:*:*:*:*:*:*:*
-    cwe-id:
-    - CWE-89
   description: 'When the getSqlData interface of the Panwei e-cology OA system uses
     the mssql database, the built-in SQL statements are not spliced strictly, resulting
     in a SQL injection vulnerability.
@@ -30,14 +26,12 @@ info:
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
     max-request: 2
-    product: e-cology
     shodan-query: ecology_JSessionid
-    vendor: weaver
     verified: true
   name: Weaver E-Cology `getsqldata` - SQL Injection
   reference:
   - https://github.com/Wrin9/weaverOA_sql_RCE/blob/14cca7a6da7a4a81e7c7a7016cb0da75b8b290bc/weaverOA_sql_injection_POC_EXP.py#L46
   severity: high
-  tags: ecology,oa,sqli,vuln,weaver
+  tags: ecology,weaver,oa,sqli
 variables:
   num: '999999999'

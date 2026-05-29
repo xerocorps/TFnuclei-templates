@@ -1,12 +1,11 @@
 http:
-- host-redirects: true
+- cookie-reuse: true
+  host-redirects: true
   matchers:
-  - condition: or
-    part: body
+  - part: body
     type: word
     words:
     - Umbraco.Sys
-    - <umb-auth
   - status:
     - 200
     type: status
@@ -15,28 +14,20 @@ http:
   method: GET
   path:
   - '{{BaseURL}}/umbraco'
-  - '{{BaseURL}}/umbraco/login'
 id: umbraco-login
 info:
-  author: ola456,stvnhrlnd
+  author: ola456
   classification:
-    cpe: cpe:2.3:a:umbraco:umbraco_cms:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Umbraco login panel was detected.
   metadata:
-    fofa-query: title="umbraco"
-    google-query: intitle:"umbraco"
     max-request: 1
-    product: umbraco_cms
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)umbraco"})
-    shodan-query:
-    - http.title:"Umbraco"
-    - http.title:"umbraco"
-    vendor: umbraco
+    shodan-query: http.title:"Umbraco"
     verified: true
   name: Umbraco Login Panel - Detect
   reference:
   - https://our.umbraco.com/documentation/Fundamentals/Backoffice/Login/
   severity: info
-  tags: detect,discovery,panel,umbraco
+  tags: panel,umbraco,detect

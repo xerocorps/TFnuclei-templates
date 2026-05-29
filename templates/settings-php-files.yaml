@@ -16,10 +16,6 @@ http:
   - '{{BaseURL}}/settings.php.old'
   - '{{BaseURL}}/settings.php.save'
   - '{{BaseURL}}/settings.php.swp'
-  - '{{BaseURL}}/settings.php.bkp'
-  - '{{BaseURL}}/settings.php.back'
-  - '{{BaseURL}}/settings.php.bk'
-  - '{{BaseURL}}/settings.php~'
   - '{{BaseURL}}/settings.php.txt'
 id: settings-php-files
 info:
@@ -30,7 +26,7 @@ info:
     cwe-id: CWE-200
   description: settings.php source code was detected via backup files.
   metadata:
-    max-request: 10
+    max-request: 6
   name: settings.php - Information Disclosure
   severity: medium
-  tags: php,generic,config
+  tags: exposure,backup

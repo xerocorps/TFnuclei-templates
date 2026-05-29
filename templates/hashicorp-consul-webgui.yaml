@@ -25,21 +25,13 @@ id: hashicorp-consul-webgui
 info:
   author: c-sh0
   classification:
-    cpe: cpe:2.3:a:hashicorp:consul:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: HashiCorp Consul Web UI login panel was detected,
   metadata:
-    fofa-query: title="consul by hashicorp"
-    google-query: intitle:"consul by hashicorp"
     max-request: 1
-    product: consul
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)consul by hashicorp"})
-    shodan-query:
-    - http.title:"Consul by HashiCorp"
-    - http.title:"consul by hashicorp"
-    - cpe:"cpe:2.3:a:hashicorp:consul"
-    vendor: hashicorp
+    shodan-query: http.title:"Consul by HashiCorp"
   name: HashiCorp Consul Web UI Login Panel - Detect
   severity: info
-  tags: consul,discovery,hashicorp,panel,webserver
+  tags: consul,webserver,panel

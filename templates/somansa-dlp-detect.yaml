@@ -21,15 +21,15 @@ info:
   author: gy741,ritikchaddha
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Somansa DLP login panel was detected.
   metadata:
     max-request: 2
-    runzero-match: service["http.body"] matches "(?i)DLP system"
     shodan-query: http.html:"DLP system"
     verified: true
   name: Somansa DLP Login Panel - Detect
   reference:
   - https://www.somansa.com/solution/integrated_solution/dlp/
   severity: info
-  tags: panel,somansa,dlp,discovery
+  tags: panel,somansa,dlp

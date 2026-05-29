@@ -5,7 +5,13 @@ info:
   severity: info
   tags: tech,avantfax
 requests:
-- matchers:
+- extractors:
+  - group: 1
+    part: body
+    regex:
+    - <p align="center">([0-9.]+)<\/p>
+    type: regex
+  matchers:
   - part: body
     type: word
     words:

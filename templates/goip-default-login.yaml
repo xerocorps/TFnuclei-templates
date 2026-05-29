@@ -2,7 +2,8 @@ http:
 - attack: clusterbomb
   host-redirects: true
   matchers:
-  - condition: and
+  - case-insensitive: true
+    condition: and
     type: word
     words:
     - Status
@@ -53,4 +54,4 @@ info:
   - https://medium.com/@hackatnow/how-to-create-a-python-script-to-find-goip-gsm-gateway-on-shodan-and-send-sms-ussd-via-goip-e2e203f5d339
   - https://www.voip-systems.ru/assets/files/voip/voip-gsm/User_Manual_1_4_8_16.pdf
   severity: high
-  tags: default-login,goip,gsm,vuln
+  tags: default-login,goip,gsm

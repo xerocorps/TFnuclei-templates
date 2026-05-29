@@ -1,24 +1,18 @@
 http:
-- extractors:
-  - group: 1
-    part: body
-    regex:
-    - (?i)\s+\(([0-9.]+)\)
-    type: regex
-  matchers:
+- matchers:
   - part: body
     type: word
     words:
-    - <TITLE>Oracle Application Server
+    - <TITLE>Oracle Application Server Containers for J2EE 10g</TITLE>
   method: GET
   path:
   - '{{BaseURL}}'
 id: default-oracle-application-page
 info:
-  author: dhiyaneshDk,righettod
+  author: dhiyaneshDk
   metadata:
     max-request: 1
     shodan-query: http.title:"Oracle Application Server Containers"
   name: Oracle Application Server Containers
   severity: info
-  tags: tech,oracle,discovery
+  tags: tech,oracle

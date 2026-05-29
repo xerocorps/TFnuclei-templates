@@ -19,21 +19,14 @@ id: xeams-admin-console
 info:
   author: theamanrawat
   classification:
-    cpe: cpe:2.3:a:synametrics:xeams:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Xeams Admin Console login panel was detected.
   metadata:
-    fofa-query: title="xeams admin"
-    google-query: intitle:"xeams admin"
     max-request: 2
-    product: xeams
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)xeams admin"})
-    shodan-query:
-    - http.title:"Xeams Admin"
-    - http.title:"xeams admin"
-    vendor: synametrics
+    shodan-query: http.title:"Xeams Admin"
     verified: true
   name: Xeams Admin Console Login Panel - Detect
   severity: info
-  tags: admin,console,discovery,panel,synametrics,xeams
+  tags: panel,xeams,admin,console

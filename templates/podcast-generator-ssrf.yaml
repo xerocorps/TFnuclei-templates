@@ -169,7 +169,6 @@ info:
     '
   metadata:
     max-request: 3
-    runzero-review: REJECT/2025-11-07/excluding tag authenticated, uses interactsh
     verified: true
   name: PodcastGenerator 3.2.9 - Blind SSRF via XML Injection
   reference:
@@ -177,6 +176,6 @@ info:
   - https://mirabbasagalarov.medium.com/podcastgenerator-3-2-9-blind-ssrf-via-xml-injection-3795804467df
   - https://github.com/PodcastGenerator/PodcastGenerator
   severity: high
-  tags: podcastgenerator,ssrf,authenticated,intrusive,vuln
+  tags: podcastgenerator,ssrf,authenticated,intrusive
 variables:
   string: '{{rand_text_alpha(7)}}'

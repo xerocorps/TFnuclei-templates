@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - sp-client-document-manager
+  - dsl:
+    - compare_versions(version, '< 2.4.4')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/sp-client-document-manager/readme.txt'
+  redirects: true
+id: sp-client-document-manager-24f8c929d3ac8313aedbea837d26f449
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/sp-client-document-manager/
+    google-query: inurl:"/wp-content/plugins/sp-client-document-manager/"
+    shodan-query: 'vuln:'
+  name: 'SP Project & Document Manager < 2.4.4 - Multiple SQL Injection
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3f95f73c-2377-46b7-a96f-6014a5b012c3?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-plugin,sp-client-document-manager,critical

@@ -52,21 +52,17 @@ id: webmin-default-login
 info:
   author: pussycat0x
   classification:
-    cpe: cpe:2.3:a:webmin:webmin:*:*:*:*:*:*:*:*
     cwe-id: CWE-798
   description: 'Webmin default login credentials were discovered.
 
     '
   metadata:
     max-request: 2
-    product: webmin
-    runzero-match: any(each(service["html.titles"]), {# matches "Webmin"})
     shodan-query: title:"Webmin"
-    vendor: webmin
     verified: true
   name: Webmin - Default Login
   reference:
   - https://webmin.com/
   - https://doxfer.webmin.com/Webmin/Installing_Webmin
   severity: high
-  tags: default-login,vuln,webmin
+  tags: webmin,default-login

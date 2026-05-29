@@ -15,8 +15,8 @@ id: tenda-11n-wireless-router-panel
 info:
   author: idealphase
   classification:
-    cpe: cpe:2.3:h:tenda:11n:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-668
   description: 'The administrative panel for a Tenda Technology 11n Wireless Router
     was found.
@@ -25,13 +25,9 @@ info:
   metadata:
     google-query: intitle:"Tenda 11N Wireless Router Login Screen"
     max-request: 1
-    product: 11n
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Tenda 11N Wireless
-      Router Login Screen"})
     shodan-query: http.title:"Tenda 11N Wireless Router Login Screen"
-    vendor: tenda
   name: Tenda 11n Wireless Router - Admin Panel
   reference:
   - https://www.tendacn.com/products/11n-routers.html
   severity: info
-  tags: discovery,panel,tenda
+  tags: panel,tenda

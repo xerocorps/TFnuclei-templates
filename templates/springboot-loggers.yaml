@@ -1,18 +1,21 @@
 http:
 - matchers:
   - condition: and
-    dsl:
-    - status_code == 200
-    - contains(body, "\"loggers\"")
-    - contains_any(tolower(content_type), "application/json", "application/vnd.spring-boot")
-    type: dsl
-  - condition: or
     part: body
     type: word
     words:
+    - '"loggers"'
     - '"levels"'
-    - '"configuredLevel"'
-    - '"effectiveLevel"'
+  - condition: or
+    part: header
+    type: word
+    words:
+    - application/json
+    - application/vnd.spring-boot.actuator
+    - application/vnd.spring-boot.actuator.v1+json
+  - status:
+    - 200
+    type: status
   matchers-condition: and
   method: GET
   path:
@@ -21,11 +24,9 @@ http:
   stop-at-first-match: true
 id: springboot-loggers
 info:
-  author: that_juan_,dwisiswant0,wdahlenb,TheZakMan
-  description: Springboot Loggers is exposed.
+  author: that_juan_,dwisiswant0,wdahlenb
   metadata:
     max-request: 2
-    verified: true
-  name: Springboot Loggers - Exposure
+  name: Detect Springboot Loggers
   severity: low
-  tags: springboot,exposure,misconfig,vuln
+  tags: springboot,exposure

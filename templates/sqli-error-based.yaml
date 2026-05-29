@@ -2,8 +2,8 @@ http:
 - extractors:
   - name: mysql
     regex:
-    - SQL syntax.{0,500}?MySQL
-    - Warning.{0,500}?\Wmysqli?_
+    - SQL syntax.*?MySQL
+    - Warning.*?\Wmysqli?_
     - MySQLSyntaxErrorException
     - valid MySQL result
     - check the manual that (corresponds to|fits) your MySQL server version
@@ -31,8 +31,8 @@ http:
     type: regex
   - name: postgresql
     regex:
-    - PostgreSQL.{0,500}?ERROR
-    - Warning.{0,500}?\Wpg_
+    - PostgreSQL.*?ERROR
+    - Warning.*?\Wpg_
     - valid PostgreSQL result
     - Npgsql\.
     - 'PG::SyntaxError:'
@@ -46,13 +46,13 @@ http:
     type: regex
   - name: microsoftsqlserver
     regex:
-    - Driver.{0,500}? SQL[\-\_\ ]*Server
-    - OLE DB.{0,500}? SQL Server
+    - Driver.*? SQL[\-\_\ ]*Server
+    - OLE DB.*? SQL Server
     - \bSQL Server[^&lt;&quot;]+Driver
-    - Warning.{0,500}?\W(mssql|sqlsrv)_
+    - Warning.*?\W(mssql|sqlsrv)_
     - \bSQL Server[^&lt;&quot;]+[0-9a-fA-F]{8}
     - System\.Data\.SqlClient\.SqlException\.(SqlException|SqlConnection\.OnError)
-    - (?s)Exception.{0,500}?\bRoadhouse\.Cms\.
+    - (?s)Exception.*?\bRoadhouse\.Cms\.
     - Microsoft SQL Native Client error '[0-9a-fA-F]{8}
     - \[SQL Server\]
     - ODBC SQL Server Driver
@@ -78,8 +78,8 @@ http:
     regex:
     - \bORA-\d{5}
     - Oracle error
-    - Oracle.{0,500}?Driver
-    - Warning.{0,500}?\W(oci|ora)_
+    - Oracle.*?Driver
+    - Warning.*?\W(oci|ora)_
     - quoted string not properly terminated
     - SQL command not properly ended
     - macromedia\.jdbc\.oracle
@@ -90,7 +90,7 @@ http:
     type: regex
   - name: ibmdb2
     regex:
-    - CLI Driver.{0,500}?DB2
+    - CLI Driver.*?DB2
     - DB2 SQL error
     - \bdb2_\w+\(
     - SQLCODE[=:\d, -]+SQLSTATE
@@ -102,8 +102,8 @@ http:
     type: regex
   - name: informix
     regex:
-    - Warning.{0,500}?\Wifx_
-    - Exception.{0,500}?Informix
+    - Warning.*?\Wifx_
+    - Exception.*?Informix
     - Informix ODBC Driver
     - ODBC Informix driver
     - com\.informix\.jdbc
@@ -114,7 +114,7 @@ http:
   - name: firebird
     regex:
     - Dynamic SQL Error
-    - Warning.{0,500}?\Wibase_
+    - Warning.*?\Wibase_
     - org\.firebirdsql\.jdbc
     - Pdo[./_\\]Firebird
     type: regex
@@ -123,8 +123,8 @@ http:
     - SQLite/JDBCDriver
     - SQLite\.Exception
     - (Microsoft|System)\.Data\.SQLite\.SQLiteException
-    - Warning.{0,500}?\W(sqlite_|SQLite3::)
-    - SQLITE_ERROR
+    - Warning.*?\W(sqlite_|SQLite3::)
+    - \[SQLITE_ERROR\]
     - 'SQLite error \d+:'
     - 'sqlite3.OperationalError:'
     - SQLite3::SQLException
@@ -134,27 +134,27 @@ http:
     type: regex
   - name: sapmaxdb
     regex:
-    - SQL error.{0,500}?POS([0-9]+)
-    - Warning.{0,500}?\Wmaxdb_
+    - SQL error.*?POS([0-9]+)
+    - Warning.*?\Wmaxdb_
     - DriverSapDB
-    - -3014.{0,500}?Invalid end of SQL statement
+    - -3014.*?Invalid end of SQL statement
     - com\.sap\.dbtech\.jdbc
-    - '\[-3008\].{0,500}?: Invalid keyword or missing delimiter'
+    - '\[-3008\].*?: Invalid keyword or missing delimiter'
     type: regex
   - name: sybase
     regex:
-    - Warning.{0,500}?\Wsybase_
+    - Warning.*?\Wsybase_
     - Sybase message
-    - Sybase.{0,500}?Server message
+    - Sybase.*?Server message
     - SybSQLException
     - Sybase\.Data\.AseClient
     - com\.sybase\.jdbc
     type: regex
   - name: ingres
     regex:
-    - Warning.{0,500}?\Wingres_
+    - Warning.*?\Wingres_
     - Ingres SQLSTATE
-    - Ingres\W.{0,500}?Driver
+    - Ingres\W.*?Driver
     - com\.ingres\.gcf\.jdbc
     type: regex
   - name: frontbase
@@ -167,7 +167,7 @@ http:
   - name: hsqldb
     regex:
     - Unexpected end of command in statement \[
-    - Unexpected token.{0,500}?in statement \[
+    - Unexpected token.*?in statement \[
     - org\.hsqldb\.jdbc
     type: regex
   - name: h2
@@ -242,8 +242,7 @@ http:
   fuzzing:
   - fuzz:
     - '{{injection}}'
-    mode: single
-    part: request
+    part: query
     type: postfix
   matchers:
   - negative: true
@@ -253,8 +252,8 @@ http:
     - Adminer
   - condition: or
     regex:
-    - SQL syntax.{0,500}?MySQL
-    - Warning.{0,500}?\Wmysqli?_
+    - SQL syntax.*?MySQL
+    - Warning.*?\Wmysqli?_
     - MySQLSyntaxErrorException
     - valid MySQL result
     - check the manual that (corresponds to|fits) your MySQL server version
@@ -270,8 +269,8 @@ http:
     - MemSQL does not support this type of query
     - is not supported by MemSQL
     - unsupported nested scalar subselect
-    - PostgreSQL.{0,500}?ERROR
-    - Warning.{0,500}?\Wpg_
+    - PostgreSQL.*?ERROR
+    - Warning.*?\Wpg_
     - valid PostgreSQL result
     - Npgsql\.
     - 'PG::SyntaxError:'
@@ -282,13 +281,13 @@ http:
     - org\.postgresql\.jdbc
     - Pdo[./_\\]Pgsql
     - PSQLException
-    - Driver.{0,500}? SQL[\-\_\ ]*Server
-    - OLE DB.{0,500}? SQL Server
+    - Driver.*? SQL[\-\_\ ]*Server
+    - OLE DB.*? SQL Server
     - \bSQL Server[^&lt;&quot;]+Driver
-    - Warning.{0,500}?\W(mssql|sqlsrv)_
+    - Warning.*?\W(mssql|sqlsrv)_
     - \bSQL Server[^&lt;&quot;]+[0-9a-fA-F]{8}
     - System\.Data\.SqlClient\.SqlException\.(SqlException|SqlConnection\.OnError)
-    - (?s)Exception.{0,500}?\bRoadhouse\.Cms\.
+    - (?s)Exception.*?\bRoadhouse\.Cms\.
     - Microsoft SQL Native Client error '[0-9a-fA-F]{8}
     - \[SQL Server\]
     - ODBC SQL Server Driver
@@ -308,8 +307,8 @@ http:
     - Syntax error \(missing operator\) in query expression
     - \bORA-\d{5}
     - Oracle error
-    - Oracle.{0,500}?Driver
-    - Warning.{0,500}?\W(oci|ora)_
+    - Oracle.*?Driver
+    - Warning.*?\W(oci|ora)_
     - quoted string not properly terminated
     - SQL command not properly ended
     - macromedia\.jdbc\.oracle
@@ -317,7 +316,7 @@ http:
     - Zend_Db_(Adapter|Statement)_Oracle_Exception
     - Pdo[./_\\](Oracle|OCI)
     - OracleException
-    - CLI Driver.{0,500}?DB2
+    - CLI Driver.*?DB2
     - DB2 SQL error
     - \bdb2_\w+\(
     - SQLCODE[=:\d, -]+SQLSTATE
@@ -326,8 +325,8 @@ http:
     - Pdo[./_\\]Ibm
     - DB2Exception
     - ibm_db_dbi\.ProgrammingError
-    - Warning.{0,500}?\Wifx_
-    - Exception.{0,500}?Informix
+    - Warning.*?\Wifx_
+    - Exception.*?Informix
     - Informix ODBC Driver
     - ODBC Informix driver
     - com\.informix\.jdbc
@@ -335,42 +334,42 @@ http:
     - Pdo[./_\\]Informix
     - IfxException
     - Dynamic SQL Error
-    - Warning.{0,500}?\Wibase_
+    - Warning.*?\Wibase_
     - org\.firebirdsql\.jdbc
     - Pdo[./_\\]Firebird
     - SQLite/JDBCDriver
     - SQLite\.Exception
     - (Microsoft|System)\.Data\.SQLite\.SQLiteException
-    - Warning.{0,500}?\W(sqlite_|SQLite3::)
-    - SQLITE_ERROR
+    - Warning.*?\W(sqlite_|SQLite3::)
+    - \[SQLITE_ERROR\]
     - 'SQLite error \d+:'
     - 'sqlite3.OperationalError:'
     - SQLite3::SQLException
     - org\.sqlite\.JDBC
     - Pdo[./_\\]Sqlite
     - SQLiteException
-    - SQL error.{0,500}?POS([0-9]+)
-    - Warning.{0,500}?\Wmaxdb_
+    - SQL error.*?POS([0-9]+)
+    - Warning.*?\Wmaxdb_
     - DriverSapDB
-    - -3014.{0,500}?Invalid end of SQL statement
+    - -3014.*?Invalid end of SQL statement
     - com\.sap\.dbtech\.jdbc
-    - '\[-3008\].{0,500}?: Invalid keyword or missing delimiter'
-    - Warning.{0,500}?\Wsybase_
+    - '\[-3008\].*?: Invalid keyword or missing delimiter'
+    - Warning.*?\Wsybase_
     - Sybase message
-    - Sybase.{0,500}?Server message
+    - Sybase.*?Server message
     - SybSQLException
     - Sybase\.Data\.AseClient
     - com\.sybase\.jdbc
-    - Warning.{0,500}?\Wingres_
+    - Warning.*?\Wingres_
     - Ingres SQLSTATE
-    - Ingres\W.{0,500}?Driver
+    - Ingres\W.*?Driver
     - com\.ingres\.gcf\.jdbc
     - Exception (condition )?\d+\. Transaction rollback
     - com\.frontbase\.jdbc
     - Syntax error 1. Missing
     - (Semantic|Syntax) error [1-4]\d{2}\.
     - Unexpected end of command in statement \[
-    - Unexpected token.{0,500}?in statement \[
+    - Unexpected token.*?in statement \[
     - org\.hsqldb\.jdbc
     - org\.h2\.jdbc
     - \[42000-192\]
@@ -414,7 +413,7 @@ http:
     - ;
   pre-condition:
   - dsl:
-    - method != "OPTIONS"
+    - method == "GET"
     type: dsl
   stop-at-first-match: true
 id: sqli-error-based
@@ -430,8 +429,6 @@ info:
     static parameters to build an SQL query .
 
     '
-  metadata:
-    max-request: 3
   name: Error based SQL Injection
   severity: critical
-  tags: sqli,error,dast,vuln
+  tags: sqli,error,dast

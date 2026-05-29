@@ -20,16 +20,12 @@ http:
 id: idocview-lfi
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-22
-    - CWE-73
   metadata:
     fofa-query: "title==\"\u5728\u7EBF\u6587\u6863\u9884\u89C8 - I Doc View\""
     max-request: 1
     verified: true
   name: IDoc View - Arbitrary File Read
   severity: high
-  tags: file-read,idoc,lfi,vuln
+  tags: idoc,lfi,file-read
 variables:
   file: '{{to_lower(rand_text_alpha(5))}}'

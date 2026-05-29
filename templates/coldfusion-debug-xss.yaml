@@ -20,10 +20,9 @@ id: coldfusion-debug-xss
 info:
   author: dhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:adobe:coldfusion:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
-    cwe-id: CWE-79,CWE-83
+    cwe-id: CWE-79
   description: Adobe ColdFusion debug page contains a cross-site scripting vulnerability
     when the application is running on a remote host. An attacker can execute arbitrary
     script in the browser of an unsuspecting user in the context of the affected site.
@@ -31,11 +30,9 @@ info:
     launch other attacks.
   metadata:
     max-request: 2
-    product: coldfusion
     shodan-query: http.component:"Adobe ColdFusion"
-    vendor: adobe
   name: Adobe ColdFusion - Cross-Site Scripting
   reference:
   - https://github.com/jaeles-project/jaeles-signatures/blob/master/common/coldfusion-debug-xss.yaml
   severity: high
-  tags: adobe,coldfusion,vuln,xss
+  tags: adobe,coldfusion,xss

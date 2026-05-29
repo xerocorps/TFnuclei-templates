@@ -1,5 +1,6 @@
 http:
-- matchers:
+- cookie-reuse: true
+  matchers:
   - part: body
     type: word
     words:
@@ -44,11 +45,10 @@ info:
     outputting them back in attributes, leading to reflected cross-site scripting.
   metadata:
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag authenticated
     verified: true
   name: WordPress Modula Image Gallery <2.6.7 - Cross-Site Scripting
   reference:
   - https://wpscan.com/vulnerability/ee248078-89ee-4cc0-b0fe-e932cd00db3e
   - https://wordpress.org/plugins/modula-best-grid-gallery
   severity: medium
-  tags: authenticated,wpscan,wp-plugin,xss,wp,wordpress,vuln
+  tags: authenticated,wpscan,wp-plugin,xss,wp,wordpress

@@ -44,11 +44,10 @@ id: fortiportal-log4j-rce
 info:
   author: shaikhyaser
   classification:
-    cpe: cpe:2.3:a:fortinet:fortiportal:*:*:*:*:*:*:*:*
     cve-id: CVE-2021-44228
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
     cvss-score: 10
-    cwe-id: CWE-502,CWE-77
+    cwe-id: CWE-77
   description: 'FortiPortal is susceptible to Log4j JNDI remote code execution. FortiPortal
     provides comprehensive security management and analytics within a multi-tenant,
     multi-tier management framework.
@@ -56,15 +55,12 @@ info:
     '
   metadata:
     max-request: 1
-    product: fortiportal
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: html:"FortiPortal"
-    vendor: fortinet
   name: FortiPortal - Remote Code Execution (Apache Log4j)
   reference:
   - https://www.fortiguard.com/psirt/FG-IR-21-245
   severity: critical
-  tags: cve,cve2021,fortiportal,jndi,kev,log4j,oast,rce,vuln
+  tags: cve,cve2021,rce,jndi,log4j,fortiportal,oast,kev
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

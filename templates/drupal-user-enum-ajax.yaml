@@ -30,11 +30,7 @@ info:
   author: 0w4ys
   metadata:
     max-request: 4
-    product: drupal
-    shodan-query:
-    - http.component:"drupal"
-    - cpe:"cpe:2.3:a:drupal:drupal"
-    vendor: drupal
+    shodan-query: http.component:"drupal"
   name: Drupal User Enumration [Ajax]
   severity: info
-  tags: drupal,misconfig,vuln
+  tags: drupal

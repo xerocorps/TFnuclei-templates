@@ -17,16 +17,13 @@ id: dell-openmanager-login
 info:
   author: dhiyaneshDK
   classification:
-    cpe: cpe:2.3:a:dell:openmanage:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Dell OpenManage Switch Administrator login panel was detected.
   metadata:
     max-request: 2
-    product: openmanage
-    runzero-match: service["http.body"] matches "(?i)Dell OpenManage Switch Administrator"
     shodan-query: html:"Dell OpenManage Switch Administrator"
-    vendor: dell
   name: Dell OpenManage Switch Administrator Login Panel - Detect
   severity: info
-  tags: dell,discovery,panel
+  tags: panel,dell

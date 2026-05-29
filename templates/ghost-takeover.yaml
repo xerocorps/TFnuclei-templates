@@ -1,17 +1,11 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
-  - condition: or
-    part: header
+  - part: header
     type: word
     words:
-    - error.ghost.org
     - offline.ghost.org
   - status:
     - 302
@@ -23,11 +17,10 @@ http:
 id: ghost-takeover
 info:
   author: pdteam
-  description: ghost takeover was detected.
   metadata:
     max-request: 1
   name: ghost takeover detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/89
   severity: high
-  tags: takeover,ghost,vuln
+  tags: takeover,ghost

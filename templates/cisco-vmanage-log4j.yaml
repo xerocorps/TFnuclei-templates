@@ -18,14 +18,14 @@ http:
     type: word
     words:
     - dns
-  - part: body
-    type: word
-    words:
-    - <title>Cisco vManage</title>
   - part: interactsh_request
     regex:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
+  - part: body
+    type: word
+    words:
+    - <title>Cisco vManage</title>
   matchers-condition: and
   raw:
   - '@timeout: 20s
@@ -67,7 +67,7 @@ info:
   - https://logging.apache.org/log4j/2.x/security.html
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   severity: critical
-  tags: log4j,rce
+  tags: log4j,cisco,tenable,cve,cve2021,rce,jndi,kev,oast
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

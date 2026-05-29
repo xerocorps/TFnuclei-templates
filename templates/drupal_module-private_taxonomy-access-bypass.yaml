@@ -7,20 +7,22 @@ http:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
   - dsl:
-    - compare_versions(version, '<= 2.6.0')
+    - compare_versions(version, '8.x-2.5')
+    - compare_versions(version, '8.x-2.4')
+    - compare_versions(version, '8.x-2.3')
+    - compare_versions(version, '8.x-2.2')
+    - compare_versions(version, '8.x-2.1')
+    - compare_versions(version, '8.x-2.0')
     type: dsl
   matchers:
-  - condition: and
-    part: body
+  - part: body
     regex:
     - version = "([0-9]+\.x-[0-9]+\.[0-9]+)"
     type: regex
-  - condition: and
-    status:
+  - status:
     - 200
     type: status
-  - condition: and
-    part: body
+  - part: body
     type: word
     words:
     - private_taxonomy
@@ -32,17 +34,17 @@ http:
   redirects: true
 id: drupal_module-private_taxonomy-access-bypass
 info:
-  author: me
+  author: Bishopfox
   description: This module enables users to create private vocabularies. The module
     doesnt enforce permissions appropriately for the taxonomy overview page and overview
     form. This vulnerability is mitigated by the fact that an attacker must have a
     role with the permission Administer own taxonomy or View private taxonomies
   metadata:
-    created_at: '2025-01-09'
+    created_at: '0001-01-01T00:00:00Z'
     fofa-query: /sites/all/modules/private_taxonomy/
     google-query: inurl:'/sites/all/modules/private_taxonomy/
     impact: medium
-    security-risk: "Moderately critical 10\u2009\u2215\u200925 AC:Basic/A:User/CI:Some/II:None/E:Theoretical/TD:Default"
+    security-risk: "Moderately critical 10\u221525 AC:Basic/A:User/CI:Some/II:None/E:Theoretical/TD:Default"
     type: indicator
     vulnerability: access-bypass
   name: drupal_module-private_taxonomy-access-bypass

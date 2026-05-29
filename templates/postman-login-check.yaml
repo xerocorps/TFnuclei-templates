@@ -1,5 +1,6 @@
 http:
 - attack: pitchfork
+  cookie-reuse: true
   extractors:
   - attribute: value
     internal: true
@@ -47,11 +48,9 @@ id: postman-login-check
 info:
   author: parthmalhotra,pdresearch
   description: Checks for a valid postman account.
-  metadata:
-    max-request: 2
   name: Postman Login Check
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
-  tags: cloud,creds-stuffing,login-check,postman,vuln
+  tags: login-check,postman,creds-stuffing
 self-contained: true

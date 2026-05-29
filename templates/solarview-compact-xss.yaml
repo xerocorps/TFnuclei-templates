@@ -19,7 +19,6 @@ id: solarview-compact-xss
 info:
   author: ritikchaddha
   classification:
-    cpe: cpe:2.3:h:contec:solarview_compact:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N
     cvss-score: 7.2
     cwe-id: CWE-79
@@ -29,12 +28,10 @@ info:
     '
   metadata:
     max-request: 1
-    product: solarview_compact
     shodan-query: http.html:"SolarView Compact"
-    vendor: contec
     verified: true
   name: SolarView Compact 6.00 - Cross-Site Scripting
   reference:
   - https://www.exploit-db.com/exploits/50968
   severity: high
-  tags: edb,solarview,vuln,xss
+  tags: xss,solarview,edb

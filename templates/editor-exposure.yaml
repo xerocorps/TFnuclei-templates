@@ -1,11 +1,10 @@
 http:
 - matchers:
-  - condition: and
-    part: body
+  - condition: or
     type: word
     words:
     - = true
-    - indent_style
+    - = space
   - condition: or
     negative: true
     part: header
@@ -22,7 +21,7 @@ http:
   - '{{BaseURL}}/.editorconfig'
 id: editor-exposure
 info:
-  author: DhiyaneshDk,daffainfo
+  author: DhiyaneshDk
   description: Editor configuration file was detected.
   metadata:
     max-request: 1
@@ -30,4 +29,4 @@ info:
     verified: true
   name: Editor Configuration File - Detect
   severity: low
-  tags: config,exposure,vuln
+  tags: config,exposure

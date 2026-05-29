@@ -22,16 +22,13 @@ id: jamf-panel
 info:
   author: pdteam,idealphase
   classification:
-    cpe: cpe:2.3:a:jamf:jamf:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: Jamf Mobile Device Management login panel was detected.
   metadata:
     max-request: 1
-    product: jamf
-    runzero-match: service["favicon.ico.image.mmh3"] == "1262005940"
     shodan-query: http.favicon.hash:1262005940
-    vendor: jamf
   name: Jamf MDM Login Panel - Detect
   severity: info
-  tags: discovery,jamf,mdm,panel
+  tags: jamf,panel,mdm

@@ -19,18 +19,12 @@ http:
 id: kopano-webapp-panel
 info:
   author: righettod
-  classification:
-    cpe: cpe:2.3:a:kopano:webapp:*:*:*:*:*:*:*:*
   description: Kopano WebApp login panel was detected.
   metadata:
-    max-request: 1
-    product: webapp
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Kopano WebApp"})
     shodan-query: http.title:"Kopano WebApp"
-    vendor: kopano
     verified: true
   name: Kopano WebApp Login Panel - Detect
   reference:
   - https://kopano.com/
   severity: info
-  tags: panel,kopano,login,detect,discovery
+  tags: panel,kopano,login,detect

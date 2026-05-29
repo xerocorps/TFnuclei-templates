@@ -6,25 +6,20 @@ http:
     words:
     - TYPO3 Exception
     - Uncaught TYPO3 Exception
-  - dsl:
-    - status_code >= 500 && status_code < 600
-    type: dsl
+  - status:
+    - 500
+    type: status
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}'
 id: typo3-debug-mode
 info:
-  author: tess,FLX
-  classification:
-    cpe: cpe:2.3:a:typo3:typo3:*:*:*:*:*:*:*:*
-  description: TYPO3 Debug Mode is enabled.
+  author: tess
   metadata:
     max-request: 1
-    product: typo3
     shodan-query: http.title:"TYPO3 Exception"
-    vendor: typo3
     verified: true
   name: TYPO3 Debug Mode Enabled
   severity: low
-  tags: typo3,debug,misconfig,vuln
+  tags: typo3,debug,misconfig

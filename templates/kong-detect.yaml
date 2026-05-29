@@ -13,7 +13,6 @@ http:
     - x-kong-response-latency
     - x-kong-upstream-latency
     - x-kong-proxy-latency
-    - x-kong-admin-request-id
   method: GET
   path:
   - '{{BaseURL}}'
@@ -27,4 +26,4 @@ info:
   reference:
   - https://github.com/Kong/kong
   severity: info
-  tags: tech,kong,discovery
+  tags: tech,kong

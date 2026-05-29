@@ -10,10 +10,6 @@ http:
 id: newrelic-api-service-key
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-522
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -23,4 +19,4 @@ info:
   - https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys
   - https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#user-key
   severity: info
-  tags: exposure,newrelic,tokens,vuln
+  tags: newrelic,exposure,tokens

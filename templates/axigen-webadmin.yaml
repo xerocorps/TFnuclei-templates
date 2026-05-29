@@ -14,17 +14,13 @@ id: axigen-webadmin
 info:
   author: dhiyaneshDk
   classification:
-    cpe: cpe:2.3:a:axigen:axigen_mail_server:*:*:*:*:*:*:*:*
     cwe-id: CWE-200
   description: An Axigen Web Admin panel was discovered.
   metadata:
     max-request: 1
-    product: axigen_mail_server
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Axigen\u00a0WebAdmin"})
     shodan-query: "http.title:\"Axigen\_WebAdmin\""
-    vendor: axigen
   name: Axigen Web Admin Detection
   reference:
   - https://www.axigen.com/
   severity: info
-  tags: axigen,discovery,panel
+  tags: axigen,panel

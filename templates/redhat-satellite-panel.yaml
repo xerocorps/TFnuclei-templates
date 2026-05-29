@@ -24,16 +24,13 @@ id: redhat-satellite-panel
 info:
   author: princechaddha
   classification:
-    cpe: cpe:2.3:a:redhat:satellite:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   metadata:
     max-request: 1
-    product: satellite
-    runzero-match: service["http.body"] matches "(?i)redhat"
     shodan-query: http.html:"redhat" "Satellite"
-    vendor: redhat
     verified: true
   name: Red Hat Satellite Panel - Detect
   severity: info
-  tags: discovery,panel,redhat,satellite
+  tags: panel,redhat,satellite

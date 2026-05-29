@@ -4,7 +4,6 @@ info:
   description: A workflow to identify Dell iDRAC instances and run all related nuclei
     templates.
   name: Dell iDRAC Security Checks
-  tags: workflow
 workflows:
 - subtemplates:
   - template: default-logins/dell/dell-idrac-default-login.yaml

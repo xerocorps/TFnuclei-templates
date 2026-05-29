@@ -13,9 +13,9 @@ http:
     words:
     - application/json
   - part: body
-    regex:
-    - '"version"\s:\s"([0-9.]+)"'
-    type: regex
+    type: word
+    words:
+    - '"version"'
   matchers-condition: and
   method: GET
   path:
@@ -29,4 +29,4 @@ info:
   reference:
   - https://puppet.com/docs/puppetdb/7/api/meta/v1/version.html#pdbmetav1version
   severity: info
-  tags: puppet,tech,exposure,discovery
+  tags: puppet,tech,exposure

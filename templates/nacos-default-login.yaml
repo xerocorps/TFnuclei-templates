@@ -49,18 +49,13 @@ http:
 id: nacos-default-login
 info:
   author: SleepingBag945
-  classification:
-    cpe: cpe:2.3:a:alibaba:nacos:*:*:*:*:*:*:*:*
   description: 'The default username and password for Nacos are both nacos.
 
     '
   metadata:
     fofa-query: title=="Nacos"
     max-request: 2
-    product: nacos
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Nacos"})
-    vendor: alibaba
     verified: true
   name: Alibaba Nacos - Default Login
   severity: high
-  tags: alibaba,default-login,nacos,vuln
+  tags: nacos,default-login,alibaba

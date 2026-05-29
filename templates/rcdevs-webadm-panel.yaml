@@ -33,11 +33,10 @@ info:
     '
   metadata:
     max-request: 4
-    runzero-match: service["http.body"] matches "(?i)WebADM"
     shodan-query: http.html:"WebADM"
     verified: true
   name: RCDevs WebADM Panel - Detect
   reference:
   - https://www.rcdevs.com/solutions/
   severity: info
-  tags: panel,rcdevs,webadm,login,detect,discovery
+  tags: panel,rcdevs,webadm,login,detect

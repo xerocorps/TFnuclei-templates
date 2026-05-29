@@ -18,15 +18,10 @@ http:
 id: azure-pipelines-exposed
 info:
   author: DhiyaneshDk
-  classification:
-    cpe: cpe:2.3:a:microsoft:azure_pipelines_agent:*:*:*:*:*:*:*:*
-  description: Azure Pipelines internal critical file is disclosed.
   metadata:
     max-request: 2
-    product: azure_pipelines_agent
     shodan-query: html:"azure-pipelines.yml"
-    vendor: microsoft
     verified: true
   name: Azure Pipelines Configuration File Disclosure
   severity: medium
-  tags: config,exposure,azure,microsoft,cloud,devops,files,vuln
+  tags: config,exposure,azure,microsoft,cloud,devops,files

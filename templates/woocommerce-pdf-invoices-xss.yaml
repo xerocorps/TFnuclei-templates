@@ -1,5 +1,6 @@
 http:
-- matchers:
+- cookie-reuse: true
+  matchers:
   - condition: and
     part: body
     type: word
@@ -47,10 +48,9 @@ info:
     scripting.
   metadata:
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag authenticated
   name: WordPress WooCommerce PDF Invoices & Packing Slips <2.15.0 - Cross-Site Scripting
   reference:
   - https://wpscan.com/vulnerability/bc05dde0-98a2-46e3-b2c8-7bdc8c32394b
   - https://wordpress.org/plugins/woocommerce-pdf-invoices-packing-slips/
   severity: medium
-  tags: xss,wp,wordpress,woocommerce,authenticated,wpscan,wp-plugin,vuln
+  tags: xss,wp,wordpress,woocommerce,authenticated,wpscan,wp-plugin

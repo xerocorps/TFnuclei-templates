@@ -24,7 +24,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22,CWE-73
+    cwe-id: CWE-22
   description: VMware vCenter is vulnerable to local file inclusion.
   metadata:
     max-request: 3
@@ -33,4 +33,4 @@ info:
   - https://kb.vmware.com/s/article/7960893
   - https://twitter.com/ptswarm/status/1316016337550938122
   severity: high
-  tags: lfi,vcenter,vmware,vuln
+  tags: vmware,lfi,vcenter

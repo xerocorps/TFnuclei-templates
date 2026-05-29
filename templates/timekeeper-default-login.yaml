@@ -34,15 +34,11 @@ info:
 
     '
   metadata:
-    fofa-query: icon_hash=2134367771
     max-request: 1
-    product: timekeeper
-    runzero-match: service["favicon.ico.image.mmh3"] == "2134367771"
     shodan-query: http.favicon.hash:2134367771
-    vendor: fsmlabs
     verified: true
   name: TimeKeeper - Default Login
   reference:
   - https://fsmlabs.com
   severity: high
-  tags: default-login,timekeeper,vuln
+  tags: timekeeper,default-login

@@ -23,11 +23,10 @@ info:
     \ and coding standards.\n"
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Coverity"})
     shodan-query: http.title:"Coverity"
     verified: true
   name: Synopsys Coverity Panel
   reference:
   - https://www.synopsys.com/software-integrity/security-testing/static-analysis-sast.html
   severity: info
-  tags: panel,coverity,synopsys,discovery
+  tags: panel,coverity,synopsys

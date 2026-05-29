@@ -31,15 +31,11 @@ http:
 id: sitemap-sql-injection
 info:
   author: Aravind,j4vaovo
-  classification:
-    cwe-id:
-    - CWE-89
   description: Sitemap is vulnerable to SQL Injection.
   metadata:
     google-query: intext:"sitemap" filetype:txt, filetype:xml inurl:sitemap
     max-request: 2
   name: Sitemap - SQL Injection
-  reference:
-  - https://twitter.com/GodfatherOrwa/status/1647406811216072705?t=fbn0Eu34euKdrn4fL8UqfQ&s=19
+  reference: https://twitter.com/GodfatherOrwa/status/1647406811216072705?t=fbn0Eu34euKdrn4fL8UqfQ&s=19
   severity: high
-  tags: misconfig,sitemap,sqli,time-based-sqli,vuln
+  tags: misconfig,sitemap,sqli

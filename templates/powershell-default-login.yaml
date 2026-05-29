@@ -46,11 +46,10 @@ info:
     '
   metadata:
     max-request: 3
-    runzero-match: service["http.body"] matches "PowerShell Universal"
     shodan-query: html:"PowerShell Universal"
     verified: true
   name: PowerShell Universal - Default Login
   reference:
   - https://ironmansoftware.com/powershell-universal
   severity: high
-  tags: default-login,powershell-universal,vuln
+  tags: default-login,powershell-universal

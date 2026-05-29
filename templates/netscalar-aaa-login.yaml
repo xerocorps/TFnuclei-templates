@@ -4,12 +4,23 @@ info:
   name: NetScalar AAA Login Panel
   reference: https://www.exploit-db.com/ghdb/6898
   severity: info
+  tags: panel
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - condition: and
     type: word
     words:
     - NetScaler AAA</title>
-  method: GET
-  path:
-  - '{{BaseURL}}/logon/LogonPoint/tmindex.html'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /logon/LogonPoint/tmindex.html HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
+    (KHTML, like Gecko)
+
+    '
+  threads: 100

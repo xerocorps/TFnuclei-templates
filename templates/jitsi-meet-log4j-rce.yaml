@@ -49,13 +49,12 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"Jitsi Meet"
   name: Jitsi Meet - Remote Code Execution (Apache Log4j)
   reference:
   - https://github.com/jitsi/security-advisories/blob/4e1ab58585a8a0593efccce77d5d0e22c5338605/advisories/JSA-2021-0004.md
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,jitsi,oast,kev,vuln
+  tags: cve,cve2021,rce,jndi,log4j,jitsi,oast,kev
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

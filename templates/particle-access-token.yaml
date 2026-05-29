@@ -11,10 +11,6 @@ http:
 id: particle-access-token
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-522
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -23,4 +19,4 @@ info:
   - https://github.com/praetorian-inc/noseyparker/blob/main/crates/noseyparker/data/default/builtin/rules/particle.io.yml
   - https://docs.particle.io/reference/cloud-apis/api/
   severity: info
-  tags: exposure,particle,tokens,vuln
+  tags: particle,exposure,tokens

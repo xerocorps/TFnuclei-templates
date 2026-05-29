@@ -23,8 +23,8 @@ id: wp-woocommerce-email-verification
 info:
   author: random_robbie,daffianfo
   classification:
-    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-metrics: CVSS:10.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 10.0
     cwe-id: CWE-288
   description: 'Email Verification for WooCommerce Wordpress plugin prior to version
     1.8.2  contains a loose comparison issue which could allow any user to log in
@@ -39,4 +39,4 @@ info:
   - https://wpvulndb.com/vulnerabilities/10318
   - https://wpscan.com/vulnerability/0c93832c-83db-4053-8a11-70de966bb3a8
   severity: critical
-  tags: woocommerce,wp,wpscan,wordpress,wp-plugin,vuln
+  tags: woocommerce,wp,wpscan,wordpress,wp-plugin

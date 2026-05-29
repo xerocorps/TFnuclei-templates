@@ -22,18 +22,15 @@ id: 3cx-management-console
 info:
   author: random-robbie
   classification:
-    cpe: cpe:2.3:a:3cx:3cx:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
-    cwe-id: CWE-22,CWE-23
+    cwe-id: CWE-22
   description: 3CX Management Console is vulnerable to local file inclusion.
   metadata:
     max-request: 2
-    product: 3cx
-    shodan-query: http.title:"3CX Phone System Management Console"
-    vendor: 3cx
+    shoda-query: http.title:"3CX Phone System Management Console"
   name: 3CX Management Console - Local File Inclusion
   reference:
   - https://medium.com/@frycos/pwning-3cx-phone-management-backends-from-the-internet-d0096339dd88
   severity: high
-  tags: 3cx,lfi,voip,vuln
+  tags: 3cx,lfi,voip

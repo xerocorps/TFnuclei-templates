@@ -16,7 +16,7 @@ info:
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
     cvss-score: 6.1
-    cwe-id: CWE-79,CWE-80
+    cwe-id: CWE-79
   description: 'Cross-site scripting is an attack in which an attacker injects malicious
     executable scripts into the code of a trusted application or website.
 
@@ -30,4 +30,4 @@ info:
   - https://www.exploitalert.com/view-details.html?id=36197
   - https://cxsecurity.com/ascii/WLB-2020090139
   severity: medium
-  tags: cms,epweb,unauth,vuln,xss
+  tags: xss,epweb,unauth,cms

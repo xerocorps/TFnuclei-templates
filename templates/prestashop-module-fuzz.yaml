@@ -32,6 +32,7 @@ http:
     Referer: {{BaseURL}}
 
     '
+  threads: 50
 id: prestashop-module-fuzz
 info:
   author: meme-lord
@@ -39,4 +40,4 @@ info:
     max-request: 639
   name: Prestashop Modules Enumeration
   severity: info
-  tags: fuzz,prestashop,fuzzing,vuln
+  tags: fuzz,prestashop

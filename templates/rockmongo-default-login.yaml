@@ -38,9 +38,8 @@ info:
   description: Rockmongo default admin credentials were discovered.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "^RockMongo"})
   name: Rockmongo Default Login
   reference:
   - https://serverfault.com/questions/331315/how-to-change-the-default-admin-username-and-admin-password-in-rockmongo
   severity: high
-  tags: default-login,rockmongo,vuln
+  tags: rockmongo,default-login

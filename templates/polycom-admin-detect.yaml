@@ -5,7 +5,8 @@ info:
   severity: low
   tags: panel
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - status:
     - 200
     type: status
@@ -18,6 +19,15 @@ requests:
     words:
     - 'Server: lighttpd'
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/systemstatus.xml'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /systemstatus.xml HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36
+    (KHTML, like Gecko)
+
+    '
+  threads: 100

@@ -12,9 +12,7 @@ http:
     - 'sudo '
     - 'cd '
     - 'cp '
-    - ps aux
-    - 'ls '
-    - logout
+    - 'ps aux '
   - negative: true
     part: response
     type: word
@@ -46,4 +44,4 @@ info:
     max-request: 4
   name: Shell History
   severity: low
-  tags: misconfig,vuln
+  tags: misconfig

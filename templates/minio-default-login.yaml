@@ -45,20 +45,16 @@ id: minio-default-login
 info:
   author: pikpikcu
   classification:
-    cpe: cpe:2.3:a:minio:minio:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
   description: Minio default admin credentials were discovered.
   metadata:
     max-request: 2
-    product: minio
-    runzero-match: service["http.body"] matches "symfony Profiler"
     shodan-query: http.html:"symfony Profiler"
-    vendor: minio
     verified: true
   name: Minio Default Login
   reference:
   - https://docs.min.io/docs/minio-quickstart-guide.html#
   severity: high
-  tags: default-login,minio,vuln
+  tags: default-login,minio

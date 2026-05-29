@@ -19,7 +19,6 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-match: service["favicon.ico.image.mmh3"] == "-417785140"
     shodan-query: http.favicon.hash:-417785140
     verified: true
   name: Homer Panel - Detect
@@ -27,4 +26,4 @@ info:
   - https://github.com/bastienwirtz/homer
   - https://homer-demo.netlify.app/
   severity: info
-  tags: panel,homer,detect,login,discovery
+  tags: panel,homer,detect,login

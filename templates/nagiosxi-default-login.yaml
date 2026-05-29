@@ -26,11 +26,9 @@ http:
     password:
     - nagiosadmin
     - nagiosxi
-    - admin
     username:
     - nagiosadmin
     - root
-    - admin
   raw:
   - 'GET /nagiosxi/login.php HTTP/1.1
 
@@ -62,9 +60,9 @@ info:
     cwe-id: CWE-1391
   description: Nagios XI default admin login credentials were detected.
   metadata:
-    max-request: 9
+    max-request: 6
     shodan-query: title:"Nagios XI"
-    verified: 'true'
+    verified: true
   name: Nagios XI Default Admin Login - Detect
   reference:
   - https://nagiosxi.demos.nagios.com/nagiosxi/login.php?redirect=/nagiosxi/index.php%3f&noauth=1

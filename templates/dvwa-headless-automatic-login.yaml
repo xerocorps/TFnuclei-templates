@@ -4,6 +4,11 @@ headless:
     type: word
     words:
     - You have logged in as
+  - part: resp
+    type: word
+    words:
+    - First time using DVWA
+  matchers-condition: or
   steps:
   - action: navigate
     args:

@@ -7,9 +7,11 @@ http:
     - _DATABASE</td>
     - _USERNAME</td>
     - _PASSWORD</td>
-  - part: body
+  - condition: or
+    part: body
     type: word
     words:
+    - "<title>\u7CFB\u7EDF\u53D1\u751F\u9519\u8BEF</title>"
     - <title>System Error</title>
   - condition: and
     part: body
@@ -17,7 +19,8 @@ http:
     words:
     - Exception
     - REQUEST_TIME
-  - status:
+  - condition: or
+    status:
     - 200
     - 500
     - 404
@@ -32,7 +35,7 @@ info:
   metadata:
     fofa-query: app="ThinkPHP" && title="System Error"
     max-request: 1
-    verified: 'true'
+    verified: true
   name: ThinkPHP Errors - Sensitive Information Exposure
   severity: medium
-  tags: php
+  tags: thinkphp,misconfig,exposure

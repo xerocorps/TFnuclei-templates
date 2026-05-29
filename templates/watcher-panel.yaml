@@ -16,9 +16,8 @@ info:
   author: DhiyaneshDK
   metadata:
     max-request: 1
-    runzero-match: service["http.body"] matches "(?i)/vsaas/v2/static/"
     shodan-query: html:"/vsaas/v2/static/"
     verified: true
   name: Watcher Panel - Detect
   severity: info
-  tags: panel,watcher,login,discovery
+  tags: panel,watcher,login

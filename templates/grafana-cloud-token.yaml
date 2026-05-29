@@ -10,10 +10,6 @@ http:
 id: grafana-cloud-token
 info:
   author: DhiyaneshDK
-  classification:
-    cwe-id:
-    - CWE-522
-    - CWE-540
   metadata:
     max-request: 1
     verified: true
@@ -21,6 +17,5 @@ info:
   reference:
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/grafana-cloud-api-token.yaml
   - https://github.com/returntocorp/semgrep-rules/blob/develop/generic/secrets/gitleaks/grafana-cloud-api-token.go
-  - https://grafana.com/docs/grafana-cloud/api-reference/cloud-api/
   severity: info
-  tags: exposure,grafana,tokens,vuln
+  tags: grafana,exposure,tokens

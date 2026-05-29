@@ -40,11 +40,10 @@ info:
     '
   metadata:
     max-request: 2
-    runzero-match: service["favicon.ico.image.mmh3"] == "-2144699833"
     shodan-query: http.favicon.hash:-2144699833
     verified: true
   name: Kasm Login Panel - Detect
   reference:
   - https://kasmweb.com/
   severity: info
-  tags: panel,kasm,login,detect,discovery
+  tags: panel,kasm,login,detect

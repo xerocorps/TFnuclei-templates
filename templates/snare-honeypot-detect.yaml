@@ -28,11 +28,9 @@ info:
   metadata:
     max-request: 1
     product: http
-    shodan-query:
-    - '"Python/3.10 aiohttp/3.8.3" && Bad status'
-    - '"python/3.10 aiohttp/3.8.3" && bad status'
+    shodan-query: '"Python/3.10 aiohttp/3.8.3" && Bad status'
     vendor: snare
     verified: true
   name: Snare Honeypot - Detect
   severity: info
-  tags: snare,honeypot,ir,cti,discovery
+  tags: snare,honeypot,ir,cti

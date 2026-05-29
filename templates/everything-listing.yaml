@@ -15,20 +15,16 @@ http:
 id: everything-listing
 info:
   author: pussycat0x
-  classification:
-    cpe: cpe:2.3:a:voidtools:everything:*:*:*:*:*:*:*:*
   description: 'Everything is a freeware desktop search utility for Windows that can
     rapidly find files and folders by name.
 
     '
   metadata:
     max-request: 1
-    product: everything
     shodan-query: http.favicon.hash:-977323269
-    vendor: voidtools
     verified: 'true'
   name: Everything Server Exposure
   reference:
   - https://www.voidtools.com/
   severity: high
-  tags: exposure,everything,listing,voidtools,misconfig,vuln
+  tags: exposure,everything,listing,voidtools

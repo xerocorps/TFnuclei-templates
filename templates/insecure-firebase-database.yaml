@@ -28,6 +28,7 @@ http:
     Host: {{Hostname}}
 
     '
+  req-condition: true
 id: insecure-firebase-database
 info:
   author: rafaelwdornelas
@@ -36,10 +37,9 @@ info:
     to firebase database.
   metadata:
     max-request: 2
-    runzero-review: REJECT/2025-11-17/excluding tag intrusive
     verified: true
   name: Insecure Firebase Database
   reference:
   - https://blog.securitybreached.org/2020/02/04/exploiting-insecure-firebase-database-bugbounty
   severity: high
-  tags: firebase,google,misconfig,intrusive,vuln
+  tags: firebase,google,misconfig

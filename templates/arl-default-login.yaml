@@ -37,8 +37,6 @@ info:
   description: An ARL default admin login was discovered.
   metadata:
     max-request: 1
-    runzero-match: service["http.url"] contains ":5003/" && service["http.body"] contains
-      "Powered by TCC" && service["http.body"] contains "ARL"
   name: ARL Default Admin Login
   severity: high
-  tags: arl,default-login,vuln
+  tags: arl,default-login

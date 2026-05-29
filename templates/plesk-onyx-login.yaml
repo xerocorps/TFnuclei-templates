@@ -4,18 +4,12 @@ http:
     part: body
     regex:
     - alt="Plesk Onyx ([0-9.]+)"
-    - (?i)"urlArgs":"([0-9.-]+)"
     type: regex
   matchers:
-  - case-insensitive: true
-    condition: or
-    part: body
+  - part: body
     type: word
     words:
     - alt="Plesk Onyx
-    - plesk-build
-    - plesk-revision
-    - plesk-root
   - status:
     - 200
     type: status
@@ -25,28 +19,19 @@ http:
   - '{{BaseURL}}/login_up.php'
 id: plesk-onyx-login
 info:
-  author: dhiyaneshDK,daffainfo,righettod
+  author: dhiyaneshDK,daffainfo
   classification:
-    cpe: cpe:2.3:a:plesk:onyx:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
-  description: Plesk login panel was detected.
+  description: Plesk Onyx login panel was detected.
   metadata:
-    fofa-query: body="plesk onyx" http.html:"plesk-build"
-    google-query:
-    - inurl:login_up.php "Plesk Onyx"
-    - inurl:login_up.php "plesk onyx"
+    google-query: inurl:login_up.php "Plesk Onyx"
     max-request: 1
-    product: onyx
-    runzero-match: service["http.body"] matches "(?i)plesk onyx"
-    shodan-query:
-    - http.html:"Plesk Onyx" http.html:"plesk-build"
-    - http.html:"plesk onyx" http.html:"plesk-build"
-    vendor: plesk
+    shodan-query: http.html:"Plesk Onyx"
     verified: true
-  name: Plesk Login Panel - Detect
+  name: Plesk Onyx Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/6501
-  - https://www.plesk.com/
   severity: info
-  tags: discovery,edb,login,panel,plesk
+  tags: panel,plesk,login,edb

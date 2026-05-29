@@ -23,8 +23,8 @@ id: zte-panel
 info:
   author: its0x08,idealphase
   classification:
-    cpe: cpe:2.3:h:zte:nr8120a:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'ZTE panel was detected. ZTE Corporation is a global leader in telecommunications
     and information technology. Founded in 1985 and listed on both the Hong Kong and
@@ -39,13 +39,10 @@ info:
     '
   metadata:
     max-request: 1
-    product: nr8120a
-    runzero-match: service["http.body"] matches "(?i)ZTE Corporation"
     shodan-query: http.html:"ZTE Corporation"
-    vendor: zte
     verified: true
   name: ZTE Panel - Detect
   reference:
   - https://www.zte.com.cn/global/
   severity: info
-  tags: discovery,panel,zte
+  tags: panel,zte

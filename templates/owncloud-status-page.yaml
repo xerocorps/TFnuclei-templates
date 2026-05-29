@@ -1,30 +1,26 @@
 http:
 - extractors:
-  - json:
-    - .version
-    type: json
-  matchers:
-  - condition: and
+  - group: 1
+    name: version
     part: body
-    type: word
-    words:
-    - '"versionstring":'
-    - '"installed":'
-    - '"edition":'
+    regex:
+    - '{[\d\D]*"version":"([0-9\.]+)"'
+    type: regex
+  matchers:
+  - part: body
+    regex:
+    - '{"installed":(?:true|false),"maintenance":(?:true|false),"version":"[0-9\.]*","versionstring":"[a-z-A-Z0-9\.]*","edition":"[\d\D]*"}'
+    type: regex
   method: GET
   path:
   - '{{BaseURL}}/status.php'
 id: owncloud-status-page
 info:
-  author: myztique,invisiblethreat
-  classification:
-    cpe: cpe:2.3:a:owncloud:owncloud:*:*:*:*:*:*:*:*
+  author: myztique
   metadata:
     max-request: 1
-    product: owncloud
     shodan-query: http.html:"owncloud"
-    vendor: owncloud
     verified: true
   name: Owncloud StatusPage detection
   severity: info
-  tags: discovery,owncloud,status,tech
+  tags: tech,owncloud,status

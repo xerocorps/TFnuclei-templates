@@ -67,9 +67,6 @@ http:
 id: yonyou-u8-crm-fileupload
 info:
   author: SleepingBag945,pussycat0x
-  classification:
-    cwe-id:
-    - CWE-434
   description: 'There is an arbitrary file upload vulnerability in the getemaildata.php
     file of UFIDA U8 CRM customer relationship management system. An attacker can
     obtain server permissions through the vulnerability and attack the server.
@@ -78,8 +75,7 @@ info:
   metadata:
     fofa-query: "body=\"\u7528\u53CBU8CRM\""
     max-request: 2
-    runzero-review: REJECT/2025-11-07/excluding tag intrusive
     verified: true
   name: UFIDA U8-CRM getemaildata - Arbitary File Upload
   severity: critical
-  tags: file-upload,intrusive,u8-crm,vuln,yonyou
+  tags: yonyou,file-upload,u8-crm,intrusive

@@ -46,13 +46,12 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
     shodan-query: title:"Okta"
   name: Okta - Remote Code Execution (Apache Log4j)
   reference:
   - https://sec.okta.com/articles/2021/12/log4shell
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,okta,oast,kev,vuln
+  tags: cve,cve2021,rce,jndi,log4j,okta,oast,kev
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

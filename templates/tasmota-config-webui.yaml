@@ -29,6 +29,10 @@ info:
   author: ritikchaddha
   metadata:
     max-request: 1
+    shodan-query: title:"Tasmota"
+    verified: true
   name: Tasmota Configuration Exposure
+  reference:
+  - https://github.com/arendst/Tasmota
   severity: medium
-  tags: panel,config
+  tags: misconfig,tasmota,exposure,config

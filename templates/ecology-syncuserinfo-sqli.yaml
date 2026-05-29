@@ -17,9 +17,8 @@ id: ecology-syncuserinfo-sqli
 info:
   author: ritikchaddha
   classification:
-    cpe: cpe:2.3:a:weaver:e-cology:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10
+    cvss-score: 10.0
     cwe-id: CWE-89
   description: Ecology Syncuserinfo contains a SQL injection vulnerability via a GET
     request. An attacker can possibly obtain sensitive information from a database,
@@ -28,11 +27,9 @@ info:
   metadata:
     fofa-query: "app=\"\u6CDB\u5FAE-\u534F\u540C\u529E\u516COA\""
     max-request: 1
-    product: e-cology
-    vendor: weaver
   name: Ecology Syncuserinfo - SQL Injection
   reference:
   - https://www.weaver.com.cn/
   - https://github.com/chaitin/xray/blob/master/pocs/ecology-syncuserinfo-sqli.yml
   severity: critical
-  tags: ecology,sqli,vuln
+  tags: ecology,sqli

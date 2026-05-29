@@ -23,7 +23,6 @@ id: dataiku-default-login
 info:
   author: random-robbie
   classification:
-    cpe: cpe:2.3:a:dataiku:data_science_studio:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -33,13 +32,10 @@ info:
     request forgery and/or remote code execution.
   metadata:
     max-request: 1
-    product: data_science_studio
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)dataiku"})
     shodan-query: title:"dataiku"
-    vendor: dataiku
     verified: true
   name: Dataiku - Default Login
   reference:
   - https://www.dataiku.com
   severity: high
-  tags: dataiku,default-login,vuln
+  tags: default-login,dataiku

@@ -1,0 +1,52 @@
+http:
+- extractors:
+  - group: 1
+    internal: true
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  - group: 1
+    name: version
+    part: body
+    regex:
+    - '(?mi)Stable tag: ([0-9.]+)'
+    type: regex
+  matchers:
+  - status:
+    - 200
+    type: status
+  - part: body
+    type: word
+    words:
+    - user-rights-access-manager
+  - dsl:
+    - compare_versions(version, '<= 1.1.2')
+    type: dsl
+  matchers-condition: and
+  max-redirects: 3
+  method: GET
+  path:
+  - '{{BaseURL}}/wp-content/plugins/user-rights-access-manager/readme.txt'
+  redirects: true
+id: user-rights-access-manager-a0f9e87a3e5261b248506d9b71b1b279
+info:
+  author: topscoder
+  classification:
+    cve-id: null
+    cvss-metrics: null
+    cvss-score: null
+  description: ''
+  metadata:
+    fofa-query: wp-content/plugins/user-rights-access-manager/
+    google-query: inurl:"/wp-content/plugins/user-rights-access-manager/"
+    shodan-query: 'vuln:'
+  name: 'User Rights Access Manager <= 1.1.2 - Missing Authorization
+
+    '
+  reference:
+  - https://github.com/topscoder/nuclei-wordfence-cve
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/7fe4c0ee-8b85-488f-81be-98316d21e160?source=api-scan
+  severity: high
+  tags: cve,wordpress,wp-plugin,user-rights-access-manager,high

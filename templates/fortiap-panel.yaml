@@ -18,23 +18,16 @@ id: fortiap-panel
 info:
   author: DhiyaneshDk
   classification:
-    cpe: cpe:2.3:a:fortinet:fortiap:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
     cwe-id: CWE-200
   description: FortiAP login panel was detected.
   metadata:
-    fofa-query: title="fortiap"
-    google-query: intitle:"fortiap"
     max-request: 1
-    product: fortiap
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)fortiap"})
-    shodan-query:
-    - title:"FortiAP"
-    - http.title:"fortiap"
-    vendor: fortinet
+    shodan-query: title:"FortiAP"
     verified: true
   name: FortiAP Login Panel - Detect
   reference:
   - https://www.fortinet.com/products/wireless-access-points
   severity: info
-  tags: discovery,fortiap,fortinet,panel
+  tags: panel,fortinet,fortiap

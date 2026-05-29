@@ -2,18 +2,14 @@ id: favicon-detection
 info:
   author: un-fmunozs
   name: favicon-detection
-  reference: '- https://twitter.com/brsn76945860/status/1171233054951501824
-
-    - https://gist.github.com/yehgdotnet/b9dfc618108d2f05845c4d8e28c5fc6a
-
-    - https://medium.com/@Asm0d3us/weaponizing-favicon-ico-for-bugbounties-osint-and-what-not-ace3c214e139
-
-    - https://github.com/devanshbatham/FavFreak
-
-    - https://github.com/sansatart/scrapts/blob/master/shodan-favicon-hashes.csv
-
-    '
+  reference:
+  - https://twitter.com/brsn76945860/status/1171233054951501824
+  - https://gist.github.com/yehgdotnet/b9dfc618108d2f05845c4d8e28c5fc6a
+  - https://medium.com/@Asm0d3us/weaponizing-favicon-ico-for-bugbounties-osint-and-what-not-ace3c214e139
+  - https://github.com/devanshbatham/FavFreak
+  - https://github.com/sansatart/scrapts/blob/master/shodan-favicon-hashes.csv
   severity: info
+  tags: tech,favicon
 requests:
 - matchers:
   - dsl:
@@ -2024,6 +2020,78 @@ requests:
   - dsl:
     - status_code==200 && ("983384876" == mmh3(base64_py(body)))
     name: One Identity Password Manager
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1445519482" == mmh3(base64_py(body)))
+    name: Kaseya
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1167011145" == mmh3(base64_py(body)))
+    name: OpenSNS
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1000719429" == mmh3(base64_py(body)))
+    name: SpamSniper
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-41369781" == mmh3(base64_py(body)))
+    name: Selea-ANPR-Camera
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-656528622" == mmh3(base64_py(body)))
+    name: Selea-CarPlateServer
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1650202746" == mmh3(base64_py(body)))
+    name: KevinLAB
+    type: dsl
+  - dsl:
+    - status_code==200 && ("762074255" == mmh3(base64_py(body)))
+    name: qdPM
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-521603470" == mmh3(base64_py(body)))
+    name: cisco-ucs
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1250474341" == mmh3(base64_py(body)))
+    name: vmware-Workspace-ONE-Access
+    type: dsl
+  - dsl:
+    - status_code==200 && ("331817455" == mmh3(base64_py(body)))
+    name: mspcontrol
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1698328762" == mmh3(base64_py(body)))
+    name: Ionic
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-1238669242" == mmh3(base64_py(body)))
+    name: Tufin-SecureTrack
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1398055326" == mmh3(base64_py(body)))
+    name: WSO2-api-manager
+    type: dsl
+  - dsl:
+    - status_code==200 && ("-2015389528" == mmh3(base64_py(body)))
+    name: Synapse-Mobility
+    type: dsl
+  - dsl:
+    - status_code==200 && ("1614287628" == mmh3(base64_py(body)))
+    name: Gradle-enterprise
+    type: dsl
+  - dsl:
+    - status_code==200 && ("2130463260" == mmh3(base64_py(body)))
+    name: Kubernetes-Operational-View
+    type: dsl
+  - dsl:
+    - status_code==200 && ("464587962" == mmh3(base64_py(body)))
+    name: Rancher
+    type: dsl
+  - dsl:
+    - status_code==200 && ("902188936" == mmh3(base64_py(body)))
+    name: Emby
     type: dsl
   max-redirects: 2
   method: GET

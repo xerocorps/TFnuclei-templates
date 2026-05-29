@@ -17,12 +17,8 @@ http:
   payloads:
     pass:
     - admin
-    - admin
-    - admin
     user:
     - apollo
-    - admin
-    - admin@{{Host}}
   raw:
   - 'POST /signin HTTP/1.1
 
@@ -53,7 +49,7 @@ info:
     cwe-id: CWE-522
   description: An Apollo default login was discovered.
   metadata:
-    max-request: 6
+    max-request: 2
     shodan-query: http.favicon.hash:11794165
   name: Apollo Default Login
   reference:

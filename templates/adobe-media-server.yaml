@@ -18,10 +18,9 @@ info:
   description: An Adobe Media Server login panel was detected.
   metadata:
     max-request: 1
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Adobe Media Server"})
     shodan-query: http.title:"Adobe Media Server"
   name: Adobe Media Server Login Panel
   reference:
   - https://helpx.adobe.com/support/adobe-media-server.html
   severity: info
-  tags: panel,adobe,discovery
+  tags: panel,adobe

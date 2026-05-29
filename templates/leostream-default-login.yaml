@@ -34,7 +34,6 @@ id: leostream-default-login
 info:
   author: bhutch
   classification:
-    cpe: cpe:2.3:a:leostream:connection_broker:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -43,11 +42,8 @@ info:
     '
   metadata:
     max-request: 1
-    product: connection_broker
-    runzero-match: any(each(service["html.titles"]), {# matches "Leostream"})
     shodan-query: http.title:"Leostream"
-    vendor: leostream
     verified: true
   name: Leostream Default Login
   severity: high
-  tags: default-login,leostream,vuln
+  tags: leostream,default-login

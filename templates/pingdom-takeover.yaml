@@ -1,9 +1,5 @@
 http:
-- extractors:
-  - dsl:
-    - cname
-    type: dsl
-  matchers:
+- matchers:
   - dsl:
     - Host != ip
     type: dsl
@@ -18,11 +14,10 @@ http:
 id: pingdom-takeover
 info:
   author: pdteam
-  description: Pingdom takeover was detected.
   metadata:
     max-request: 1
   name: Pingdom Takeover Detection
   reference:
   - https://github.com/EdOverflow/can-i-take-over-xyz/issues/144
   severity: high
-  tags: takeover,pingdom,vuln
+  tags: takeover,pingdom
