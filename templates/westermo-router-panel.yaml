@@ -25,6 +25,7 @@ info:
   metadata:
     max-request: 1
     product: lynx-router
+    runzero-match: any(each(service["html.titles"]), {# matches "^lynx - westermo"})
     shodan-query: http.html:"Westermo"
     vendor: Westermo
     verified: true
@@ -32,4 +33,4 @@ info:
   reference:
   - https://www.westermo.com/
   severity: info
-  tags: panel,westermo,router,ics,discovery
+  tags: discovery,ics,panel,router,westermo

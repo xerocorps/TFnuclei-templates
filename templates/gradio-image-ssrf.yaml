@@ -2,9 +2,9 @@ http:
 - matchers:
   - condition: and
     dsl:
-    - contains(body, '{"event_id":')
-    - contains(interactsh_protocol, 'http')
-    - contains(content_type, 'application/json')
+    - contains(body, "{\"event_id\":")
+    - contains(interactsh_protocol, "http")
+    - contains(content_type, "application/json")
     type: dsl
   raw:
   - 'POST /queue/join? HTTP/1.1

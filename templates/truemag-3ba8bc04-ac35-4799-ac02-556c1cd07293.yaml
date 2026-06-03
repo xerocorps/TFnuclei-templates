@@ -1,17 +1,10 @@
 http:
 - extractors:
   - group: 1
-    internal: true
     name: version
     part: body
     regex:
-    - '(?mi)Version: ([0-9.]+)'
-    type: regex
-  - group: 1
-    name: version
-    part: body
-    regex:
-    - '(?mi)Version: ([0-9.]+)'
+    - (?mi)Version:\s*([0-9.]+)
     type: regex
   matchers:
   - status:
@@ -22,7 +15,7 @@ http:
     words:
     - truemag
   - dsl:
-    - compare_versions(version, '<= *')
+    - compare_versions(version, '<= 4.3.14.2')
     type: dsl
   matchers-condition: and
   max-redirects: 3
@@ -30,7 +23,7 @@ http:
   path:
   - '{{BaseURL}}/wp-content/themes/truemag/style.css'
   redirects: true
-id: truemag-7536c0181b9af29ddf0d013b3cf7579d
+id: truemag-3ba8bc04-ac35-4799-ac02-556c1cd07293
 info:
   author: topscoder
   classification:
@@ -41,12 +34,12 @@ info:
   metadata:
     fofa-query: wp-content/themes/truemag/
     google-query: inurl:"/wp-content/themes/truemag/"
-    shodan-query: 'vuln:'
-  name: 'Truemag (Unknown Versions) - Reflected Cross-Site Scripting
+    shodan-query: http.html:"wp-content/themes/truemag/"
+  name: 'Truemag <= 4.3.14.2 - Unauthenticated Local File Inclusion
 
     '
   reference:
   - https://github.com/topscoder/nuclei-wordfence-cve
-  - https://www.wordfence.com/threat-intel/vulnerabilities/id/25250755-0d22-44f4-8930-3a60efd61e32?source=api-scan
-  severity: medium
-  tags: cve,wordpress,wp-theme,truemag,medium
+  - https://www.wordfence.com/threat-intel/vulnerabilities/id/3ba8bc04-ac35-4799-ac02-556c1cd07293?source=api-scan
+  severity: critical
+  tags: cve,wordpress,wp-theme,truemag,critical,candidate

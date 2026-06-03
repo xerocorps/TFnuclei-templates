@@ -27,6 +27,7 @@ info:
   metadata:
     max-request: 1
     product: vanna
+    runzero-match: any(each(service["html.titles"]), {# matches "Vanna Agents Chat"})
     shodan-query: http.title:"Vanna"
     vendor: vanna-ai
     verified: true
@@ -35,4 +36,4 @@ info:
   - https://github.com/vanna-ai/vanna
   - https://vanna.ai
   severity: info
-  tags: panel,vanna,ai,sql,chat,detect,discovery
+  tags: ai,chat,detect,discovery,panel,sql,vanna

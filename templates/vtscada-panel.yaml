@@ -31,6 +31,8 @@ info:
   metadata:
     max-request: 1
     product: vtscada
+    runzero-match: any(each(service["html.titles"]), {# matches "VTScada Internet
+      Client from Trihedral"})
     shodan-query: http.title:"VTScada Internet Client from Trihedral"
     vendor: Trihedral
     verified: true
@@ -38,4 +40,4 @@ info:
   reference:
   - https://www.trihedral.com/vtscada/
   severity: info
-  tags: panel,scada,ics,vtscada,trihedral,utilities,water,oil-gas,discovery
+  tags: discovery,ics,oil-gas,panel,scada,trihedral,utilities,vtscada,water

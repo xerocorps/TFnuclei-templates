@@ -22,8 +22,9 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: any(each(service["html.titles"]), {# matches `^UISP\s*Fiber\s*-\s*Login`})
     shodan-query: html:"UISP Fiber - Login"
     verified: true
   name: UISP Fiber Panel - Detect
   severity: info
-  tags: panel,login,uisp,fiber,discovery
+  tags: discovery,fiber,login,panel,uisp

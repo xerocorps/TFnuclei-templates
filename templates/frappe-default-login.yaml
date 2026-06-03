@@ -33,10 +33,11 @@ info:
     '
   metadata:
     max-request: 1
+    runzero-match: service["http.body"] matches `(?i)Login to Frappe|frappe(?:\.(?:csrf_token|boot)|-web\.bundle)`
     verified: true
   name: Frappe Framework - Default Login Credentials
   reference:
   - https://frappeframework.com
   - https://docs.erpnext.com
   severity: high
-  tags: default-login,frappe,erpnext
+  tags: default-login,erpnext,frappe

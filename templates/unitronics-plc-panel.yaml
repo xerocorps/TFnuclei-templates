@@ -25,6 +25,7 @@ info:
   metadata:
     max-request: 1
     product: plc
+    runzero-match: any(each(service["html.titles"]), {# matches "^Unitronics"})
     shodan-query: http.html:"Unitronics"
     vendor: Unitronics
     verified: true
@@ -32,4 +33,4 @@ info:
   reference:
   - https://www.unitronicsplc.com/
   severity: info
-  tags: panel,unitronics,plc,ics,discovery
+  tags: discovery,ics,panel,plc,unitronics
