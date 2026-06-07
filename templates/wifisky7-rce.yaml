@@ -25,7 +25,8 @@ info:
   metadata:
     fofa-query: "title=\"WIFISKY 7\u5C42\u6D41\u63A7\u8DEF\u7531\u5668\""
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    runzero-match: "any(each(service[\"html.titles\"]), {# matches \"WIFISKY 7\u5C42\
+      \u6D41\u63A7\u8DEF\u7531\u5668\"})"
     verified: true
   name: WIFISKY-7 Layer Flow Control Router - Remote Code Execution
   reference:

@@ -35,7 +35,7 @@ info:
     fofa-query: title="Dagu"
     max-request: 1
     product: dagu
-    runzero-review: REJECT/2026-03-03/uses interactsh
+    runzero-match: any(each(service["html.titles"]), {# matches "Dagu"})
     shodan-query: title:"Dagu"
     vendor: dagu-org
     verified: true

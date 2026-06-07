@@ -68,7 +68,7 @@ info:
   metadata:
     max-request: 1
     product: graylog
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    runzero-match: any(each(service["html.titles"]), {# matches "Graylog Web Interface"})
     shodan-query: title:"Graylog Web Interface"
     vendor: graylog
     verified: true

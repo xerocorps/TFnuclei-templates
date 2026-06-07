@@ -44,7 +44,7 @@ info:
     or execute arbitrary code.
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    runzero-match: any(each(service["html.titles"]), {# matches "Metabase"})
     shodan-query: title:"Metabase"
     verified: true
   name: Metabase - Remote Code Execution (Apache Log4j)

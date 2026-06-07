@@ -40,7 +40,7 @@ info:
     fofa-query: body="BentoML"
     max-request: 1
     product: bentoml
-    runzero-review: REJECT/2025-11-10/uses interactsh
+    runzero-match: service["http.body"] matches "BentoML"
     shodan-query: html:"BentoML"
     vendor: bentoml
   name: Bentoml - Server Side Request Forgery

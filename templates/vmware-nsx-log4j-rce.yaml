@@ -58,7 +58,7 @@ info:
     credentials.
   metadata:
     max-request: 1
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    runzero-match: service["http.body"] matches "vmw_nsx_logo-black-triangle-500w\\.png"
     shodan-query: html:"vmw_nsx_logo-black-triangle-500w.png"
     verified: true
   name: VMware NSX - Remote Code Execution (Apache Log4j)

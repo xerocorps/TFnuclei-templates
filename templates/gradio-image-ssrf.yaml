@@ -41,7 +41,7 @@ info:
     google-query: intitle:"gradio"
     max-request: 1
     product: gradio
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    runzero-match: service["http.body"] matches "__gradio_mode__"
     shodan-query:
     - http.html:"__gradio_mode__"
     - http.title:"gradio"

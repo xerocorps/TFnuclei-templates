@@ -65,7 +65,7 @@ info:
     google-query: intitle:"gitea"
     max-request: 2
     product: gitea
-    runzero-review: 'REJECT/2026-04-23/auto: interactsh (OAST callback)'
+    runzero-match: any(each(service["html.titles"]), {# matches "Gitea"})
     shodan-query:
     - title:"Gitea"
     - http.html:"powered by gitea version"

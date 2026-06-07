@@ -59,7 +59,7 @@ info:
     fofa-query: http.title:"vlife"
     max-request: 2
     product: vlife
-    runzero-review: REJECT/2026-03-13/uses interactsh
+    runzero-match: any(each(service["html.titles"]), {# matches "vlife"})
     shodan-query: http.title:"vlife"
     vendor: vlife
     verified: true

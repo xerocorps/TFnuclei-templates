@@ -17,7 +17,7 @@ info:
     '
   metadata:
     max-request: 1
-    runzero-review: 'REJECT/2026-04-16/auto: interactsh (OAST callback)'
+    runzero-match: service["product"] matches "(?i)Odoo"
     shodan-query: http.component:"Odoo" html:"web/login"
     verified: true
   name: Reflected Odoo - Open Redirect

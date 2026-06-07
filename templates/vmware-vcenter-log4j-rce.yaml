@@ -41,7 +41,7 @@ info:
   metadata:
     max-request: 1
     product: vcenter_server
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    runzero-match: any(each(service["html.titles"]), {# matches "VMware VCenter"})
     shodan-query: title:"VMware VCenter"
     vendor: vmware
   name: VMware VCenter - Remote Code Execution (Apache Log4j)

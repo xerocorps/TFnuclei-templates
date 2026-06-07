@@ -73,7 +73,7 @@ info:
   metadata:
     max-request: 2
     product: gradio
-    runzero-review: 'REJECT/2026-04-08/auto: interactsh (OAST callback)'
+    runzero-match: service["http.body"] matches "__gradio_mode__"
     shodan-query: html:"__gradio_mode__"
     vendor: gradio_project
     verified: true

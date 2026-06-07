@@ -28,7 +28,7 @@ info:
   metadata:
     max-request: 1
     product: druid
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    runzero-match: any(each(service["html.titles"]), {# matches "Apache Druid"})
     shodan-query: title:"Apache Druid"
     vendor: apache
     verified: true

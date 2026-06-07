@@ -52,7 +52,7 @@ info:
   metadata:
     max-request: 1
     product: horizon
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    runzero-match: any(each(service["html.titles"]), {# matches "OpenNMS Web Console"})
     shodan-query: title:"OpenNMS Web Console"
     vendor: opennms
     verified: true

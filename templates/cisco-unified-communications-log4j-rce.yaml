@@ -54,7 +54,7 @@ info:
   metadata:
     max-request: 1
     product: unified_communications_domain_manager
-    runzero-review: REJECT/2025-11-07/uses interactsh
+    runzero-match: any(each(service["html.titles"]), {# matches "Cisco Unified"})
     shodan-query: title:"Cisco Unified"
     vendor: cisco
     verified: true
