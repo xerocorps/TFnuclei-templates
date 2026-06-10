@@ -20,6 +20,7 @@ info:
     fofa-query: title="Ligolo-ng"
     max-request: 1
     product: ligolo-ng
+    runzero-match: any(each(service["html.titles"]), {# matches "^Ligolo-ng"})
     shodan-query: http.title:"Ligolo-ng"
     vendor: ligolo-ng
     verified: true
@@ -27,4 +28,4 @@ info:
   reference:
   - https://github.com/nicocha30/ligolo-ng
   severity: info
-  tags: panel,ligolo-ng,login,detect,discovery
+  tags: detect,discovery,ligolo-ng,login,panel

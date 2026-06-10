@@ -5,6 +5,10 @@ http:
     words:
     - <td><h1>Application Trace</h1></td>
     - <title>Trace Error</title>
+  - negative: true
+    type: word
+    words:
+    - The current trace settings prevent trace.axd from being viewed
   - status:
     - 200
     - 403

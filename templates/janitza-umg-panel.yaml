@@ -1,17 +1,12 @@
 http:
 - host-redirects: true
   matchers:
-  - condition: or
-    part: body
-    type: word
-    words:
-    - Janitza electronics
-    - UMG
-    - janitza.de
-  - status:
-    - 200
-    type: status
-  matchers-condition: and
+  - condition: and
+    dsl:
+    - status_code == 200
+    - contains(body, "Janitza electronics")
+    - contains_any(body, "UMG", "janitza.de")
+    type: dsl
   max-redirects: 2
   method: GET
   path:
