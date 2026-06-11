@@ -32,6 +32,8 @@ info:
     fofa-query: title="Homarr"
     max-request: 1
     product: homarr
+    runzero-match: any(each(service["html.titles"]), {# matches "^Homarr$"}) || service["http.body"]
+      matches `Homarr`
     shodan-query: http.title:"Homarr"
     vendor: homarr
     verified: true
@@ -40,4 +42,4 @@ info:
   - https://github.com/homarr-labs/homarr
   - https://homarr.dev
   severity: info
-  tags: panel,homarr,dashboard,oss,discovery
+  tags: dashboard,discovery,homarr,oss,panel
