@@ -20,13 +20,15 @@ id: public-tomcat-manager
 info:
   author: Ahmed Sherif,geeknik,sinKettu
   classification:
+    cpe: cpe:2.3:a:apache:tomcat:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Apache Tomcat Manager login panel was detected.
   metadata:
     max-request: 2
+    product: tomcat
     shodan-query: title:"Apache Tomcat"
+    vendor: apache
   name: Apache Tomcat Manager Login Panel - Detect
   severity: info
   tags: panel,tomcat,apache

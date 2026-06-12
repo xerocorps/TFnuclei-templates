@@ -3,7 +3,7 @@ http:
   - group: 1
     part: body
     regex:
-    - data-buildId="([0-9a-z_]*)
+    - data-build[iI]d="([0-9a-z_]*)
     type: regex
   matchers:
   - condition: or
@@ -24,8 +24,8 @@ http:
   - '{{BaseURL}}'
 id: tableau-server-detect
 info:
-  author: TechbrunchFR
-  description: Detects Tableau Server and extract the buildId
+  author: TechbrunchFR,aringo
+  description: Detects Tableau Server and extracts the buildid
   metadata:
     max-request: 1
   name: Detect Tableau Server

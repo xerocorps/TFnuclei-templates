@@ -1,7 +1,7 @@
 http:
 - matchers:
   - dsl:
-    - contains(all_headers, "X-Vcap-Request-Id:") || contains(all_headers, "X-Cf-Routererror:")
+    - contains(header, "X-Vcap-Request-Id:") || contains(header, "X-Cf-Routererror:")
     type: dsl
   raw:
   - 'GET / HTTP/1.1
@@ -14,7 +14,6 @@ http:
     Host: {{randstr}}.com
 
     '
-  req-condition: true
   stop-at-first-match: true
 id: cloudfoundry-detect
 info:

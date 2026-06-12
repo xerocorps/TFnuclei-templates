@@ -8,9 +8,20 @@ http:
     type: regex
   iterate-all: true
   matchers:
+  - part: body
+    type: word
+    words:
+    - 'User-agent:'
+    - 'Disallow:'
+    - 'Allow:'
+  - part: header
+    type: word
+    words:
+    - text/plain
   - status:
     - 200
     type: status
+  matchers-condition: and
   method: GET
   path:
   - '{{RootURL}}/robots.txt'
@@ -22,4 +33,4 @@ info:
     max-request: 2
   name: robots.txt endpoint prober
   severity: info
-  tags: misc,generic
+  tags: miscellaneous,misc,generic

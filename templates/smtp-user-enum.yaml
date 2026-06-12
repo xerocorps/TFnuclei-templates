@@ -5,7 +5,7 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: smtp
     verified: true
   name: SMTP User Enumeration
@@ -17,7 +17,6 @@ tcp:
 - attack: batteringram
   host:
   - '{{Hostname}}'
-  - '{{Host}}:25'
   inputs:
   - data: 'VRFY {{useraccounts}}
 
@@ -38,3 +37,4 @@ tcp:
     - msfadmin
     - admin
     - root
+  port: 25

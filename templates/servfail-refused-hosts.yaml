@@ -1,13 +1,16 @@
 dns:
-- matchers:
+- class: inet
+  matchers:
   - type: word
     words:
     - SERVFAIL
     - REFUSED
   name: '{{FQDN}}'
+  recursion: true
+  retries: 3
   type: A
 id: servfail-refused-hosts
 info:
-  author: pdteam
+  author: mzack9999
   name: Servfail Host Finder
   severity: info

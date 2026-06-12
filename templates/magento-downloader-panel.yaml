@@ -26,6 +26,8 @@ http:
 id: magento-downloader-panel
 info:
   author: 5up3r541y4n
+  classification:
+    cpe: cpe:2.3:a:magento:magento:*:*:*:*:*:*:*:*
   description: 'Magento Connect Manager installer was detected. The software, available
     via /downloader/ location, requires Magento admin rights and uses the same authorization
     methods as for backend. If an attacker locates a matching pair of login/password,
@@ -37,11 +39,13 @@ info:
     '
   metadata:
     max-request: 1
+    product: magento
     shodan-query: http.component:"Magento"
+    vendor: magento
     verified: true
   name: Magento Connect Manager Installer - Detect
   reference:
   - https://magentary.com/kb/restrict-access-to-magento-downloader/
   - https://www.mageplaza.com/kb/how-to-stop-brute-force-attacks-magento.html#solution-3
   severity: info
-  tags: magento,exposure
+  tags: magento,exposure,panel

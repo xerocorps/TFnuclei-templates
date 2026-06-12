@@ -18,14 +18,14 @@ http:
     type: word
     words:
     - dns
-  - part: interactsh_request
-    regex:
-    - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
-    type: regex
   - part: header
     type: word
     words:
     - X-RateLimit-Limit-suite-gateway_suite-auth
+  - part: interactsh_request
+    regex:
+    - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
   matchers-condition: and
   raw:
   - '@timeout: 10s

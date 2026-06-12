@@ -16,6 +16,7 @@ http:
 id: aem-wcm-suggestions-servlet
 info:
   author: DhiyaneshDk
+  description: AEM WCM Suggestions Servlet is exposed.
   metadata:
     max-request: 1
     shodan-query: http.component:"Adobe Experience Manager"
@@ -23,4 +24,4 @@ info:
   reference:
   - https://speakerdeck.com/0ang3el/hunting-for-security-bugs-in-aem-webapps?slide=96
   severity: low
-  tags: aem
+  tags: aem,misconfig,intrusive

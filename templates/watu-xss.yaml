@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  matchers:
+- matchers:
   - condition: and
     dsl:
     - status_code_2 == 200

@@ -3,7 +3,6 @@ http:
   - condition: and
     dsl:
     - regex('root:.*:0:0:', body)
-    - contains(body, '\"id\":')
     - status_code == 200
     type: dsl
   method: GET
@@ -12,7 +11,6 @@ http:
 id: alibaba-anyproxy-lfi
 info:
   author: DhiyaneshDk
-  description: Alibaba Anyproxy is vulnerable to Path Traversal.
   metadata:
     max-request: 1
     shodan-query: html:"anyproxy"

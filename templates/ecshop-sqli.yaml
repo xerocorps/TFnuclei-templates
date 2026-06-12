@@ -3,16 +3,9 @@ http:
   - condition: and
     type: word
     words:
-    - 'XPATH syntax error:'
     - '[error] =>'
     - '[0] => Array'
     - MySQL server error report:Array
-  - condition: and
-    type: word
-    words:
-    - PHP Extension
-    - PHP Version
-  matchers-condition: or
   raw:
   - 'GET /user.php?act=login HTTP/1.1
 
@@ -40,7 +33,7 @@ info:
   author: Lark-lab,ImNightmaree,ritikchaddha
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-89
   description: 'ECShop 2.x and 3.x contains a SQL injection vulnerability which can
     allow an attacker to inject arbitrary SQL statements via the referer header field

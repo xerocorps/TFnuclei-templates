@@ -6,16 +6,15 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: Microsoft FTP Service
     verified: true
   name: Microsoft FTP Service Detect
   severity: info
-  tags: network,ftp,microsoft
+  tags: network,ftp,microsoft,detect
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:21'
   inputs:
   - data: '
 
@@ -24,3 +23,4 @@ tcp:
   - type: word
     words:
     - Microsoft FTP Service
+  port: 21

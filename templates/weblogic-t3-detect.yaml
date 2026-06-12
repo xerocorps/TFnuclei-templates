@@ -1,47 +1,15 @@
 id: weblogic-t3-detect
 info:
-  author: F1tz,milo2012,wdahlenb
+  author: F1tz
   description: Check T3 protocol status.
   name: Detect Weblogic T3 Protocol
   severity: info
   tags: network,weblogic
 network:
-- extractors:
-  - group: 1
-    part: body
-    regex:
-    - HELO:(.*).false
-    type: regex
-  host:
+- host:
   - '{{Hostname}}'
   inputs:
   - data: 't3 12.2.1
-
-      AS:255
-
-      HL:19
-
-      MS:10000000
-
-      PU:t3://us-l-breens:7001
-
-
-      '
-  matchers:
-  - type: word
-    words:
-    - HELO
-  read-size: 1024
-- extractors:
-  - group: 1
-    part: body
-    regex:
-    - HELO:(.*).false
-    type: regex
-  host:
-  - tls://{{Hostname}}
-  inputs:
-  - data: 't3s 12.2.1
 
       AS:255
 

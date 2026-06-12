@@ -1,9 +1,5 @@
 dns:
-- extractors:
-  - group: 1
-    regex:
-    - "IN\tCNAME\t(.+)"
-    type: regex
+- class: inet
   matchers:
   - type: word
     words:
@@ -24,16 +20,18 @@ dns:
     - redis.cache.windows.net
     - search.windows.net
     - servicebus.windows.net
+    - trafficmanager.net
     - visualstudio.com
   - type: word
     words:
     - NXDOMAIN
   matchers-condition: and
   name: '{{FQDN}}'
+  recursion: true
+  retries: 3
   type: A
 id: azure-takeover-detection
 info:
-  author: pdteam
+  author: pdnuclei - projectdiscovery.io
   name: Azure takeover detection
-  reference: https://godiego.co/posts/STO/
   severity: high

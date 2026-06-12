@@ -14,6 +14,7 @@ http:
 id: splash-render-ssrf
 info:
   author: pwnhxl
+  description: Splash Render is vulnerable to Server-Side Request Forgery (SSRF) Vulnerability.
   metadata:
     hunter-query: web.title="Splash" && header="TwistedWeb"
     max-request: 1

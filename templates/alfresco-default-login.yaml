@@ -48,8 +48,6 @@ info:
     fofa-query: title="Alfresco" || body="/share/res/js/alfresco"
     max-request: 2
     product: alfresco-content-services
-    runzero-match: any(each(service["html.titles"]), {# matches "Alfresco"}) && service["http.body"]
-      contains "/share/res/js/alfresco"
     shodan-query: http.title:"Alfresco" http.html:"alfresco"
     vendor: alfresco
     verified: true
@@ -58,7 +56,7 @@ info:
   - https://docs.alfresco.com/content-services/community/admin/admin-console/
   - https://docs.alfresco.com/community5.0/references/RESTful-RepositoryLoginPost.html
   severity: high
-  tags: alfresco,auth,default-login,vuln
+  tags: alfresco,default-login,auth,vuln
 variables:
   password: admin
   username: admin

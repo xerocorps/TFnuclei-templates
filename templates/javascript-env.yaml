@@ -4,7 +4,7 @@ http:
     - 200
     type: status
   - dsl:
-    - 'contains(tolower(all_headers), ''content-type: application/javascript'')'
+    - 'contains(tolower(header), ''content-type: application/javascript'')'
     type: dsl
   - condition: or
     part: body

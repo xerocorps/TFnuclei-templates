@@ -6,5 +6,5 @@ info:
   name: Sidekiq Security Checks
 workflows:
 - subtemplates:
-  - null
+  - tags: sidekiq
   template: exposed-panels/sidekiq-dashboard.yaml

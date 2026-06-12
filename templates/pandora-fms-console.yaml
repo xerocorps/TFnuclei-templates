@@ -15,14 +15,16 @@ id: pandora-fms-console
 info:
   author: dhiyaneshDk
   classification:
+    cpe: cpe:2.3:a:pandorafms:pandora_fms:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Pandora FMS Mobile Console login panel was detected.
   metadata:
     max-request: 1
+    product: pandora_fms
+    vendor: pandorafms
   name: Pandora FMS Mobile Console Login Panel - Detect
   reference:
   - https://www.exploit-db.com/ghdb/6827
   severity: info
-  tags: panel,edb
+  tags: panel,edb,pandorafms

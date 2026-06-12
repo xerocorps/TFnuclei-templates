@@ -17,14 +17,16 @@ id: webuzo-admin-panel
 info:
   author: theamanrawat
   classification:
+    cpe: cpe:2.3:a:softaculous:webuzo:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Webuzo admin login panel was detected.
   metadata:
     max-request: 1
+    product: webuzo
     shodan-query: http.title:"Webuzo - Admin Panel"
+    vendor: softaculous
     verified: true
   name: Webuzo Admin Login Panel - Detect
   severity: info
-  tags: panel,webuzo,admin
+  tags: panel,webuzo,admin,softaculous

@@ -2,7 +2,7 @@ http:
 - extractors:
   - part: body
     regex:
-    - 'Powered by Gitea Version: ([0-9.]+)'
+    - Powered by Gitea(\s*)Version:(\s*)([\d.]+)
     type: regex
   matchers:
   - part: body

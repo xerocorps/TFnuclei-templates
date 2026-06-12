@@ -3,13 +3,12 @@ info:
   author: pussycat0x
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'POP3 protocol was detected.
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: pop3 port:110
     verified: true
   name: POP3 Protocol - Detect
@@ -20,7 +19,6 @@ info:
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:110'
   inputs:
   - data: '
 
@@ -31,3 +29,4 @@ tcp:
     words:
     - +OK Dovecot ready
     - POP3
+  port: 110

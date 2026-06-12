@@ -12,12 +12,14 @@ info:
   author: organiccrap
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: SAP NetWeaver Portal login has been detected. Note that NetWeaver has
     multiple default passwords as listed in the references.
   metadata:
     max-request: 1
+    product: netweaver_portal
+    vendor: sap
   name: SAP NetWeaver Portal - Detect
   reference:
   - https://www.sap.com/products/technology-platform/netweaver.html

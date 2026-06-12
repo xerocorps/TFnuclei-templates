@@ -14,12 +14,15 @@ id: arcgis-rest-api
 info:
   author: Podalirius
   classification:
+    cpe: cpe:2.3:a:esri:arcgis_engine:*:*:*:*:*:*:*:*
     cwe-id: CWE-200
-  description: ArcGIS documents were discovered.
+  description: ArcGIS REST API documentation was discovered.
   metadata:
     max-request: 1
-  name: ArcGIS Exposed Docs
+    product: arcgis_engine
+    vendor: esri
+  name: ArcGIS Exposed REST API documentation
   reference:
   - https://enterprise.arcgis.com/en/
   severity: info
-  tags: api,arcgis,cms
+  tags: api,arcgis,cms,tech

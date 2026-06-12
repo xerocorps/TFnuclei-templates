@@ -1,9 +1,17 @@
 http:
 - matchers:
+  - status:
+    - 200
+    type: status
   - part: body
     type: word
     words:
     - <?php
+  - negative: true
+    part: header
+    type: word
+    words:
+    - text/html
   matchers-condition: and
   method: GET
   path:

@@ -5,7 +5,7 @@ http:
     - 200
     type: status
   - dsl:
-    - contains(tolower(all_headers), 'sdbsessionid')
+    - contains(tolower(header), 'sdbsessionid')
     type: dsl
   - part: body
     type: word

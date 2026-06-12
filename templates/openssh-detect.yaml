@@ -3,13 +3,12 @@ info:
   author: r3dg33k,daffainfo,iamthefrogy
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'OpenSSH service was detected.
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
   name: OpenSSH Service - Detect
   reference:
   - http://www.openwall.com/lists/oss-security/2016/08/01/2
@@ -18,7 +17,7 @@ info:
   - https://nvd.nist.gov/vuln/detail/CVE-2016-6210
   - https://nvd.nist.gov/vuln/detail/CVE-2018-15473
   severity: info
-  tags: seclists,network,ssh,openssh
+  tags: seclists,network,ssh,openssh,detect
 tcp:
 - extractors:
   - regex:
@@ -26,8 +25,8 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:22'
   matchers:
   - regex:
     - (?i)OpenSSH
     type: regex
+  port: 22

@@ -8,7 +8,8 @@ info:
   severity: info
   tags: adobe,coldfusion
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - part: body
     type: word
     words:
@@ -17,6 +18,18 @@ requests:
     - 404
     type: status
   matchers-condition: and
-  method: GET
-  path:
-  - '{{BaseURL}}/_something_.cfm'
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /_something_.cfm HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+
+    Accept-Encoding: gzip, deflate
+
+    Accept: */*
+
+    '
+  threads: 100

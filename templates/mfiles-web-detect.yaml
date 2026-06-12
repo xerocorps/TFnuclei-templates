@@ -21,12 +21,14 @@ info:
   author: Nodauf
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: M-Files Web login panel was detected.
   metadata:
     max-request: 2
+    product: m-files
     shodan-query: http.html:"M-Files Web"
+    vendor: m-files
     verified: true
   name: M-Files Web Login Panel - Detect
   reference:

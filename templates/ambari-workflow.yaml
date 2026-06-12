@@ -6,5 +6,5 @@ info:
   name: Ambari Security Checks
 workflows:
 - subtemplates:
-  - null
+  - tags: ambari
   template: exposed-panels/ambari-exposure.yaml

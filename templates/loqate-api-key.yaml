@@ -1,4 +1,12 @@
-http:
+id: loqate-api-key
+info:
+  author: realexp3rt
+  name: Loqate API Key
+  reference:
+  - https://www.loqate.com/en-gb/home/
+  severity: low
+  tags: exposure,token,loqate
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,13 +15,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: loqate-api-key
-info:
-  author: realexp3rt
-  metadata:
-    max-request: 1
-  name: Loqate API Key
-  reference:
-  - https://www.loqate.com/en-gb/home/
-  severity: low
-  tags: exposure,token,loqate

@@ -1,9 +1,6 @@
 http:
 - host-redirects: true
   matchers:
-  - status:
-    - 200
-    type: status
   - condition: and
     type: word
     words:
@@ -14,6 +11,9 @@ http:
     - Time
     - Memory
     - DB
+  - status:
+    - 200
+    type: status
   matchers-condition: and
   max-redirects: 2
   method: GET
@@ -23,12 +23,16 @@ http:
   - '{{BaseURL}}/frontend/web/debug/default/view'
   - '{{BaseURL}}/web/debug/default/view'
   - '{{BaseURL}}/sapi/debug/default/view'
+  - '{{BaseURL}}/debug/default'
   stop-at-first-match: true
 id: yii-debugger
 info:
-  author: geeknik
+  author: geeknik,rumble773
+  description: Detects potential exposure to Yii Debugger information.
   metadata:
-    max-request: 5
+    max-request: 6
+    shodan-query: title:"Yii Debugger"
+    verified: true
   name: View Yii Debugger Information
   reference:
   - https://yii2-framework.readthedocs.io/en/stable/guide/tool-debugger/

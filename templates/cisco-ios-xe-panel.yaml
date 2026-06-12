@@ -16,6 +16,7 @@ id: cisco-ios-xe-panel
 info:
   author: bhutch
   classification:
+    cpe: cpe:2.3:o:cisco:ios_xe:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
     cwe-id: CWE-200
   description: 'Cisco IOS XE login panel was detected.
@@ -31,6 +32,6 @@ info:
   reference:
   - https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-iosxe-webui-privesc-j22SaA4z
   severity: info
-  tags: panel,cisco
+  tags: panel,cisco,ssl
 ssl:
 - address: '{{Host}}:{{Port}}'

@@ -1,6 +1,7 @@
 http:
 - matchers:
   - condition: and
+    part: body
     type: word
     words:
     - name
@@ -19,11 +20,15 @@ http:
   - '{{BaseURL}}/bower.json'
 id: bower-json
 info:
-  author: oppsec
-  description: Bower is a package manager which stores package information in the
+  author: oppsec,noraj
+  description: 'Bower is a package manager which stores package information in the
     bower.json file
+
+    '
   metadata:
     max-request: 1
-  name: bower.json file disclosure
+  name: bower.json File Disclosure
+  reference:
+  - https://github.com/bower/spec/blob/master/json.md
   severity: info
-  tags: exposure,files
+  tags: exposure,files,bower

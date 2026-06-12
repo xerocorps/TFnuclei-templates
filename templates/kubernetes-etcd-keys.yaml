@@ -1,11 +1,16 @@
 http:
 - matchers:
+  - part: body
+    regex:
+    - (?m)^-----BEGIN PRIVATE KEY-----
+    type: regex
   - condition: and
-    part: body
+    negative: true
+    part: header
     type: word
     words:
-    - BEGIN RSA PRIVATE KEY
-    - END RSA PRIVATE KEY
+    - application/json
+    - application/html
   - status:
     - 200
     type: status
@@ -16,11 +21,12 @@ http:
 id: kubernetes-etcd-keys
 info:
   author: Hardik-Solanki
+  description: Kubernetes private etcd keys are exposed.
   metadata:
     github-query: filename:apiserver-etcd-client.key
     max-request: 1
     verified: true
-  name: Kubernetes etcd Keys Exposure
+  name: Kubernetes etcd Keys - Exposure
   reference:
   - https://github.com/maurosoria/dirsearch/blob/master/db/dicc.txt
   severity: medium

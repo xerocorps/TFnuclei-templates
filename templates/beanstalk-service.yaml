@@ -22,7 +22,7 @@ tcp:
     - '([a-z-A-Z: 0-9]+)'
     type: regex
   host:
-  - '{{Host}}:11300'
+  - '{{Hostname}}'
   inputs:
   - data: "stats\r\n"
     read: 8
@@ -31,3 +31,4 @@ tcp:
     type: word
     words:
     - OK
+  port: 11300

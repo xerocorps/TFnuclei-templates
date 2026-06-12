@@ -4,11 +4,13 @@ http:
   headers:
     Content-Type: application/json
   matchers:
-  - negative: true
+  - case-insensitive: true
+    negative: true
     part: body
     type: word
     words:
     - does not exist
+    - Invalid authorization
   method: POST
   path:
   - https://api.weglot.com/translate?api_key={{token}}

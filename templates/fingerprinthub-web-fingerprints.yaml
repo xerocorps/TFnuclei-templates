@@ -676,7 +676,7 @@ http:
     part: header
     type: word
     words:
-    - 'WWW-Authenticate: Basic realm="dubbo"'
+    - 'Www-Authenticate: Basic realm="dubbo"'
   - name: apache-struts
     type: word
     words:
@@ -9312,7 +9312,8 @@ http:
     type: word
     words:
     - http://www.softbizscripts.com/classified-ads-plus-script-features.php
-  - name: softether-vpn
+  - case-insensitive: true
+    name: softether-vpn
     type: word
     words:
     - <li>manage this vpn server or vpn bridge<ul>
@@ -12310,6 +12311,12 @@ http:
     words:
     - Weblate
     - "<meta name=\"author\" content=\"Michal \u010Ciha\u0159\" />"
+  - case-insensitive: true
+    name: Adobe Experience Manager (AEM)
+    part: header
+    type: word
+    words:
+    - 'x-dispatcher:'
   matchers-condition: or
   max-redirects: 2
   method: GET

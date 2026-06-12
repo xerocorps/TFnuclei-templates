@@ -70,6 +70,31 @@ headless:
     regex:
     - ^(0|[1-9]\d*)(?:\.(0|[1-9]\d*))?(?:\.(0|[1-9]\d*))?(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
     type: regex
+  - name: d3
+    part: fingerprintD3
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    type: regex
+  - name: threejs
+    part: fingerprintThreeJs
+    regex:
+    - ^(0|[1-9]\d*)$
+    type: regex
+  - name: chartjs
+    part: fingerprintChartJs
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$
+    type: regex
+  - name: slick
+    part: fingerprintSlick
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$
+    type: regex
+  - name: select2
+    part: fingerprintSelect2
+    regex:
+    - ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$
+    type: regex
   matchers:
   - dsl:
     - len(fingerprintAxios) > 0
@@ -86,6 +111,11 @@ headless:
     - len(fingerprintDojoJs) > 0
     - len(fingerprintDomPurify) > 0
     - len(fingerprintModernizr) > 0
+    - len(fingerprintD3) > 0
+    - len(fingerprintThreeJs) > 0
+    - len(fingerprintChartJs) > 0
+    - len(fingerprintSlick) > 0
+    - len(fingerprintSelect2) > 0
     type: dsl
   matchers-condition: or
   steps:
@@ -181,9 +211,36 @@ headless:
       code: "() => {\n  try {\n    return Modernizr._version || \"\"\n  } catch (e)\
         \ {}\n  return \"\"\n}\n"
     name: fingerprintModernizr
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return d3.version || \"\";\n  } catch (e) {}\n\
+        \  return \"\";\n}\n"
+    name: fingerprintD3
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return THREE.REVISION || \"\";\n  } catch (e) {}\n\
+        \  return \"\";\n}\n"
+    name: fingerprintThreeJs
+  - action: script
+    args:
+      code: "() => {\n  try {\n    return Chart.version || \"\";\n  } catch (e) {}\n\
+        \  return \"\";\n}\n"
+    name: fingerprintChartJs
+  - action: script
+    args:
+      code: "() => {\n  try {\n    // Assuming Slick Carousel is used as a jQuery\
+        \ plugin\n    return $.fn.slick.version || \"\";\n  } catch (e) {}\n  return\
+        \ \"\";\n}\n"
+    name: fingerprintSlick
+  - action: script
+    args:
+      code: "() => {\n  try {\n    // Assuming Select2 is used as a jQuery plugin\n\
+        \    return $.fn.select2.version || \"\";\n  } catch (e) {}\n  return \"\"\
+        ;\n}\n"
+    name: fingerprintSelect2
 id: js-libraries-detect
 info:
-  author: adamparsons,cbadke,ChetGan,ErikOwen,jacalynli
+  author: adamparsons,cbadke,ChetGan,ErikOwen,jacalynli,geeknik
   description: Checks a target web app for inclusion of common JavaScript libraries
   metadata:
     max-request: 1

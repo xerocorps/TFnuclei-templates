@@ -12,6 +12,11 @@ http:
   - status:
     - 200
     type: status
+  - negative: true
+    part: header
+    regex:
+    - 'Content-Location: .+'
+    type: regex
   matchers-condition: and
   method: GET
   path:
@@ -33,4 +38,4 @@ info:
   reference:
   - https://clarkvoss.medium.com/how-to-harpon-big-blue-c163722638d8
   severity: medium
-  tags: ibm,exposure,websphere
+  tags: ibm,exposure,websphere,misconfig

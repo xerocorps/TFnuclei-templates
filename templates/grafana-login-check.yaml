@@ -44,12 +44,13 @@ info:
   description: Checks for a valid login on self hosted Grafana instance.
   metadata:
     fofa-query: title="Grafana"
+    max-request: 1
     shodan-query: title:"Grafana"
-    tags: login-check,grafana,creds-stuffing,self-hosted
   name: Grafana Login Check
   reference:
   - https://owasp.org/www-community/attacks/Credential_stuffing
   severity: critical
+  tags: self-hosted,creds-stuffing,login-check,grafana
 variables:
   password: '{{password}}'
   username: '{{username}}'

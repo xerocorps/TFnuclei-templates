@@ -25,12 +25,16 @@ http:
 id: appspace-panel
 info:
   author: ritikchaddha
+  classification:
+    cpe: cpe:2.3:a:appspace:appspace:*:*:*:*:*:*:*:*
   description: "Appspace is the workplace experience platform for your whole team\
     \ that lets you manage it all \u2013 from employee communications to your physical\
     \ office spaces."
   metadata:
     max-request: 3
+    product: appspace
     shodan-query: title:"Appspace"
+    vendor: appspace
     verified: true
   name: Appspace Login Panel - Detect
   reference:

@@ -6,12 +6,12 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: product:"Xlight ftpd"
     verified: true
   name: Xlight FTP Service Detect
   severity: info
-  tags: network,ftp,xlight
+  tags: network,ftp,xlight,detect
 tcp:
 - extractors:
   - regex:
@@ -19,7 +19,6 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:21'
   inputs:
   - data: '
 
@@ -29,3 +28,4 @@ tcp:
     type: word
     words:
     - Xlight FTP Server
+  port: 21

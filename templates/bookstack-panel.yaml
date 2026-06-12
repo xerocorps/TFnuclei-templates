@@ -28,12 +28,14 @@ info:
   author: cyllective,daffainfo
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: Bookstack login panel was detected.
   metadata:
     max-request: 1
+    product: bookstack
     shodan-query: http.title:"BookStack"
+    vendor: bookstackapp
   name: BookStack Login Panel - Detect
   reference:
   - https://github.com/BookStackApp/BookStack

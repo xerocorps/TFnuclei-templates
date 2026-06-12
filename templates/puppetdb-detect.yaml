@@ -13,9 +13,9 @@ http:
     words:
     - application/json
   - part: body
-    type: word
-    words:
-    - '"version"'
+    regex:
+    - '"version"\s:\s"([0-9.]+)"'
+    type: regex
   matchers-condition: and
   method: GET
   path:

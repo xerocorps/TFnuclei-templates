@@ -6,31 +6,19 @@ http:
     - <script[^>]*src=['"](http[^s'">][^'">]*)['"]
     - <iframe[^>]*src=['"](http[^s'">][^'">]*)['"]
     - <object[^>]*data=['"](http[^s'">][^'">]*)['"]
-    - <link[^>]*href=['"](http[^s'">][^'">]*)['"]
     type: regex
   host-redirects: true
   matchers:
-  - name: script
-    part: body
+  - part: body
     regex:
     - <script[^>]*src=['"]http://[^'">]+['"]
-    type: regex
-  - name: iframe
-    part: body
-    regex:
     - <iframe[^>]*src=['"]http://[^'">]+['"]
-    type: regex
-  - name: object
-    part: body
-    regex:
     - <object[^>]*data=['"]http://[^'">]+['"]
     type: regex
-  - name: link
-    part: body
-    regex:
-    - <link[^>]*href=['"]http://[^'">]+['"]
-    type: regex
-  matchers-condition: or
+  - dsl:
+    - startswith(tostring(BaseURL), "https://")
+    type: dsl
+  matchers-condition: and
   max-redirects: 3
   method: GET
   path:

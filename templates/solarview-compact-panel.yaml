@@ -15,14 +15,16 @@ id: solarview-compact-panel
 info:
   author: princechaddha
   classification:
+    cpe: cpe:2.3:o:contec:solarview_compact_firmware:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: SolarView Compact panel was detected.
   metadata:
     max-request: 1
+    product: solarview_compact_firmware
     shodan-query: http.html:"SolarView Compact"
+    vendor: contec
     verified: true
   name: SolarView Compact Panel - Detect
   severity: info
-  tags: panel,solarview,iot
+  tags: panel,solarview,iot,contec

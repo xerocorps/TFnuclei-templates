@@ -1,7 +1,6 @@
 http:
 - matchers:
-  - condition: or
-    type: word
+  - type: word
     words:
     - <span class="gl-button-text">Register</span>
     - data-qa-selector="new_user_register_button"
@@ -25,6 +24,6 @@ info:
   metadata:
     max-request: 1
     shodan-query: http.title:"GitLab"
-  name: GitLab public registration of new user - Detect
+  name: GitLab public registration of new user
   severity: info
   tags: gitlab,misconfig

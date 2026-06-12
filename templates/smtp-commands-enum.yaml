@@ -6,7 +6,7 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: smtp
     verified: true
   name: SMTP Commands Enumeration
@@ -21,7 +21,6 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:25'
   inputs:
   - data: "EHLO x\r\n"
     read: 1024
@@ -33,3 +32,4 @@ tcp:
     words:
     - '214'
     - This server supports
+  port: 25

@@ -1,10 +1,11 @@
 http:
 - matchers:
-  - condition: or
+  - condition: and
+    part: body
     type: word
     words:
     - = true
-    - = space
+    - indent_style
   - condition: or
     negative: true
     part: header
@@ -21,7 +22,7 @@ http:
   - '{{BaseURL}}/.editorconfig'
 id: editor-exposure
 info:
-  author: DhiyaneshDk
+  author: DhiyaneshDk,daffainfo
   description: Editor configuration file was detected.
   metadata:
     max-request: 1

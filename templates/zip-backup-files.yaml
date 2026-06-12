@@ -2,6 +2,8 @@ http:
 - attack: clusterbomb
   matchers:
   - binary:
+    - '7573746172202000'
+    - '7573746172003030'
     - 377ABCAF271C
     - '314159265359'
     - 53514c69746520666f726d6174203300
@@ -30,6 +32,7 @@ http:
   - '{{BaseURL}}/{{FILENAME}}.{{EXT}}'
   payloads:
     EXT:
+    - tar
     - 7z
     - bz2
     - gz
@@ -40,8 +43,11 @@ http:
     - xz
     - zip
     - z
+    - Z
     - tar.z
+    - tgz
     - db
+    - jar
     - sqlite
     - sqlitedb
     - sql.7z
@@ -76,20 +82,41 @@ http:
     - test
     - app
     - backup
+    - backup_1
+    - backup_2
+    - backup_3
+    - backup_4
+    - backups
     - bin
+    - temp
     - bak
-    - old
+    - db
+    - sql
+    - dump
+    - database
     - Release
+    - inetpub
+    - package
+    - tmp
+    - db
+    - data
+    - ftp
+    - output
+    - admin
+    - upload
+    - src
+    - conf/conf
+    - old
 id: zip-backup-files
 info:
-  author: toufik-airane,dwisiswant0,ffffffff0x,pwnhxl
+  author: toufik-airane,dwisiswant0,ffffffff0x,pwnhxl,mastercho
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
     cwe-id: CWE-200
   description: Multiple compressed backup files were detected.
   metadata:
-    max-request: 600
+    max-request: 1305
   name: Compressed Backup File - Detect
   severity: medium
   tags: exposure,backup

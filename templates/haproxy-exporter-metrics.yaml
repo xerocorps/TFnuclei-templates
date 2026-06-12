@@ -20,10 +20,11 @@ http:
 id: haproxy-exporter-metrics
 info:
   author: pussycat0x
+  description: Haproxy metrics is exposed.
   metadata:
     max-request: 1
     shodan-query: title:"haproxy exporter"
     verified: true
   name: Detect Haproxy Exporter
   severity: low
-  tags: haproxy,exposure,debug
+  tags: haproxy,exposure,debug,misconfig

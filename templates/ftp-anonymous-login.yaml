@@ -7,14 +7,12 @@ info:
     is not recommended.
 
     '
-  metadata:
-    max-request: 2
   name: FTP Anonymous Login
   reference:
   - https://tools.ietf.org/html/rfc2577
   severity: medium
   tags: network,ftp,default-login
-tcp:
+network:
 - host:
   - '{{Host}}:21'
   - '{{Hostname}}'

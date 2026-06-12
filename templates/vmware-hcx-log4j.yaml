@@ -43,14 +43,14 @@ info:
   metadata:
     max-request: 1
     shodan-query: title:"VMware HCX"
-    verified: true
+    verified: 'true'
   name: VMware HCX - Remote Code Execution (Apache Log4j)
   reference:
   - https://www.vmware.com/security/advisories/VMSA-2021-0028.html
   - https://logging.apache.org/log4j/2.x/security.html
   - https://nvd.nist.gov/vuln/detail/CVE-2021-44228
   severity: critical
-  tags: cve,cve2021,rce,jndi,log4j,vmware,kev,oast
+  tags: blind,fuzzing
 variables:
   rand1: '{{rand_int(111, 999)}}'
   rand2: '{{rand_int(111, 999)}}'

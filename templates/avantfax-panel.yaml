@@ -22,12 +22,14 @@ info:
   author: pikpikcu,daffainfo
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-668
   description: An AvantFAX login panel was discovered.
   metadata:
     max-request: 1
+    product: avantfax
     shodan-query: http.title:"AvantFAX - Login"
+    vendor: avantfax
   name: AvantFAX Login Panel
   reference:
   - http://www.avantfax.com/

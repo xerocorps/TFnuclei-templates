@@ -16,7 +16,7 @@ info:
   author: ritikchaddha
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-89
   description: Dotnet CMS contains a SQL injection vulnerability. An attacker can
     possibly obtain sensitive information from a database, modify data, and execute
@@ -30,4 +30,4 @@ info:
   - https://www.cnblogs.com/rebeyond/p/4951418.html
   - http://wy.zone.ci/bug_detail.php?wybug_id=wooyun-2015-0150742
   severity: critical
-  tags: dotnetcms,dotnet,sqli
+  tags: dotnetcms,dotnet,sqli,intrusive

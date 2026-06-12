@@ -5,20 +5,20 @@ http:
     - contains(body, "searchCriteria")
     - contains(body, "parameters")
     - contains(body, "message")
-    - contains(tolower(all_headers), "application/json")
+    - contains(tolower(header), "application/json")
     type: dsl
   - condition: and
     dsl:
     - contains(body, "secure_base_link_url")
     - contains(body, "timezone")
-    - contains(tolower(all_headers), "application/json")
+    - contains(tolower(header), "application/json")
     - status_code == 200
     type: dsl
   - condition: and
     dsl:
     - contains(body, "name")
     - contains(body, "website_id")
-    - contains(tolower(all_headers), "application/json")
+    - contains(tolower(header), "application/json")
     - status_code == 200
     type: dsl
   matchers-condition: or

@@ -24,14 +24,16 @@ id: manageengine-adselfservice
 info:
   author: dhiyaneshDK,SaK1
   classification:
+    cpe: cpe:2.3:a:zohocorp:manageengine_adselfservice_plus:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: ZOHO ManageEngine ADSelfService panel was detected.
   metadata:
     max-request: 2
+    product: manageengine_adselfservice_plus
     shodan-query: http.title:"ADSelfService Plus"
+    vendor: zohocorp
     verified: true
   name: ZOHO ManageEngine ADSelfService Plus - Detect
   severity: info
-  tags: panel,zoho,manageengine
+  tags: panel,zoho,manageengine,zohocorp

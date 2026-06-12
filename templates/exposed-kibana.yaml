@@ -3,7 +3,6 @@ http:
   - type: word
     words:
     - kibanaWelcomeView
-    - cluster_uuid
     - kibanaWelcomeLogo
     - kibanaWelcomeTitle
   - status:
@@ -13,12 +12,14 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
+  - '{{BaseURL}}/app/kibana'
   - '{{BaseURL}}/app/kibana/'
 id: exposed-kibana
 info:
   author: Shine
+  description: Kibana is exposed.
   metadata:
-    max-request: 2
+    max-request: 3
   name: Exposed Kibana
   severity: medium
-  tags: kibana,unauth
+  tags: kibana,unauth,misconfig

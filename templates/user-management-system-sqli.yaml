@@ -32,9 +32,6 @@ http:
 id: user-management-system-sqli
 info:
   author: f0xy
-  classification:
-    cwe-id:
-    - CWE-89
   description: 'User Registration & Login and User Management System v3.0 admin panel
     has SQL vulnerability. Even though the person who discovered the vulnerability
     tested it in version 3.0, version 3.2 also contains the same vulnerability. It
@@ -44,8 +41,6 @@ info:
     '
   metadata:
     max-request: 2
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Registration
-      and Login System"})
     shodan-query: title:"Registration and Login System"
     verified: true
   name: User Management/Registration & Login v3.0 - SQL Injection
@@ -53,4 +48,4 @@ info:
   - https://www.exploit-db.com/exploits/51695
   - https://phpgurukul.com/user-registration-login-and-user-management-system-with-admin-panel/
   severity: high
-  tags: auth-bypass,sqli,user-management,vuln
+  tags: sqli,auth-bypass,user-management

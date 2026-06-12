@@ -1,13 +1,19 @@
 http:
 - matchers:
-  - status:
-    - 200
-    type: status
   - condition: and
     type: word
     words:
     - ManageEngine
-    - ADManager
+    - Showing Objects Of
+    - Export as
+  - negative: true
+    part: body
+    type: word
+    words:
+    - This search has been disabled
+  - status:
+    - 200
+    type: status
   matchers-condition: and
   method: GET
   path:
@@ -19,6 +25,8 @@ info:
     users to browse the AD list remotely.
   metadata:
     max-request: 1
+    shodan-query: title:"ManageEngine"
+    verified: true
   name: Manage Engine AD Search
   severity: high
-  tags: unauth
+  tags: unauth,misconfig

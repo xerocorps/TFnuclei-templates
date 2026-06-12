@@ -18,12 +18,16 @@ http:
 id: ms-exchange-web-service
 info:
   author: bhutch
+  classification:
+    cpe: cpe:2.3:a:microsoft:exchange_server:*:*:*:*:*:*:*:*
   description: 'Microsoft Exchange Web Services was detected.
 
     '
   metadata:
     max-request: 1
+    product: exchange_server
     shodan-query: http.favicon.hash:1768726119
+    vendor: microsoft
     verified: true
   name: Microsoft Exchange Web Service - Detect
   reference:

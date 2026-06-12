@@ -1,33 +1,38 @@
 http:
-- matchers:
+- extractors:
+  - json:
+    - .version
+    name: version
+    part: body_1
+    type: json
+  matchers:
   - condition: and
     type: word
     words:
     - <title>Vault</title>
     - vault/
-  - part: header
-    type: word
-    words:
-    - text/html
   - status:
     - 200
     type: status
   matchers-condition: and
   method: GET
   path:
+  - '{{BaseURL}}/v1/sys/health'
   - '{{BaseURL}}/ui/vault/auth?with=oidc%2F'
 id: vault-panel
 info:
   author: DhiyaneshDK
   classification:
+    cpe: cpe:2.3:a:hashicorp:vault:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Vault login panel was detected.
   metadata:
-    max-request: 1
+    max-request: 2
+    product: vault
     shodan-query: http.favicon.hash:-919788577
+    vendor: hashicorp
     verified: true
   name: Vault Login Panel - Detect
   severity: info
-  tags: panel,vault
+  tags: panel,vault,detect,hashicorp

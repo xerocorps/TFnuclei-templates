@@ -1,5 +1,12 @@
 http:
-- matchers:
+- extractors:
+  - group: 1
+    name: version_by_install
+    part: body
+    regex:
+    - class="site-version">([0-9.x-]+)
+    type: regex
+  matchers:
   - condition: and
     part: body
     type: word
@@ -15,11 +22,12 @@ http:
   path:
   - '{{BaseURL}}'
   - '{{BaseURL}}/CHANGELOG.txt'
+  - '{{BaseURL}}/core/install.php'
 id: drupal-detect
 info:
   author: 1nf1n7y
   metadata:
-    max-request: 2
+    max-request: 3
     shodan-query: http.component:"Drupal"
     verified: true
   name: Drupal Detection

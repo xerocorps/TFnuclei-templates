@@ -16,6 +16,7 @@ http:
 id: sitecore-lfi
 info:
   author: DhiyaneshDK
+  description: SiteCore 9.3 is vulnerable to LFI.
   metadata:
     max-request: 1
     shodan-query: title:"Sitecore"
@@ -24,4 +25,4 @@ info:
   reference:
   - https://blog.assetnote.io/2023/05/10/sitecore-round-two/
   severity: high
-  tags: sitecore,lfi
+  tags: sitecore,lfi,misconfig

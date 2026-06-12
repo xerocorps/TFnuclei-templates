@@ -14,6 +14,10 @@ http:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
   matchers:
+  - part: header
+    type: word
+    words:
+    - 'X-Graylog-Node-Id:'
   - part: interactsh_protocol
     type: word
     words:
@@ -22,10 +26,6 @@ http:
     regex:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
-  - part: header
-    type: word
-    words:
-    - 'X-Graylog-Node-Id:'
   matchers-condition: and
   raw:
   - 'POST /api/system/sessions HTTP/1.1

@@ -1,6 +1,5 @@
 http:
-- attack: pitchfork
-  cookie-reuse: true
+- attack: clusterbomb
   headers:
     Content-Type: application/x-www-form-urlencode
     Referer: '{{BaseURL}}/login.html'
@@ -15,6 +14,7 @@ http:
   payloads:
     password:
     - calvin
+    - root
     username:
     - root
   raw:
@@ -28,14 +28,14 @@ http:
     '
 id: dell-idrac-default-login
 info:
-  author: kophjager007
+  author: kophjager007,megamansec
   classification:
     cwe-id: CWE-798
   description: Dell iDRAC6/7/8 default login information was discovered. The default
     iDRAC username and password are widely known, and any user with access to the
     server could change the default password.
   metadata:
-    max-request: 1
+    max-request: 2
   name: Dell iDRAC6/7/8 Default Login
   reference:
   - https://securityforeveryone.com/tools/dell-idrac6-7-8-default-login-scanner

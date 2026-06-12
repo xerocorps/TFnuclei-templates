@@ -4,6 +4,11 @@ http:
     type: word
     words:
     - <title>Install AVideo</title>
+  - negative: true
+    part: body
+    type: word
+    words:
+    - Your system is installed, remove the
   - status:
     - 200
     type: status
@@ -26,4 +31,4 @@ info:
     verified: true
   name: AVideo Installer - Detect
   severity: high
-  tags: panel,install,avideo
+  tags: panel,install,avideo,misconfig

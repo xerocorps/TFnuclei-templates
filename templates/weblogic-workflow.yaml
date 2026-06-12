@@ -1,10 +1,15 @@
 id: weblogic-workflow
 info:
-  author: dr_set
-  description: A simple workflow that runs all WebLogic related nuclei templates on
-    a given target.
-  name: WebLogic Security Checks
-workflows:
-- subtemplates:
-  - tags: weblogic
-  template: http/technologies/weblogic-detect.yaml
+  author: foulenzer
+  name: Weblogic workflow
+logic: 'cve_2020_2551()
+
+  cve_2019_2725()
+
+  cve_2020_14882()
+
+  '
+variables:
+  cve_2019_2725: cves/CVE-2019-2725.yaml
+  cve_2020_14882: cves/CVE-2020-14882.yaml
+  cve_2020_2551: cves/CVE-2020-2551.yaml

@@ -20,10 +20,11 @@ http:
 id: kubeflow-dashboard-unauth
 info:
   author: dhiyaneshDk
+  description: Kubeflow internal data is exposed.
   metadata:
     max-request: 1
   name: Kubeflow Unauth
   reference:
   - https://github.com/kubeflow/kubeflow
   severity: high
-  tags: kubeflow,unauth
+  tags: kubeflow,unauth,misconfig

@@ -4,7 +4,8 @@ info:
   description: The plugin does not sanitise and escape the error parameter before
     outputting it back in admin dashboard, leading to a Reflected Cross-Site Scripting
   name: WHMCS Bridge < 6.4b - Reflected Cross-Site Scripting (XSS)
-  reference: https://wpscan.com/vulnerability/4aae2dd9-8d51-4633-91bc-ddb53ca3471c
+  reference:
+  - https://wpscan.com/vulnerability/4aae2dd9-8d51-4633-91bc-ddb53ca3471c
   severity: medium
   tags: wordpress,wp-plugin,authenticated,whmcs,xss
 requests:

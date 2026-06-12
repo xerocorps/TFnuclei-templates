@@ -29,6 +29,7 @@ id: sonarqube-default-login
 info:
   author: Ep1cSage
   classification:
+    cpe: cpe:2.3:a:sonarsource:sonarqube:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -39,10 +40,12 @@ info:
     '
   metadata:
     max-request: 4
+    product: sonarqube
     shodan-query: title:"Sonarqube"
+    vendor: sonarsource
     verified: true
   name: SonarQube Default Login - Detect
   reference:
   - https://docs.sonarsource.com/sonarqube/9.6/instance-administration/security/#:~:text=When%20installing%20SonarQube%2C%20a%20default,Password%3A%20admin
   severity: high
-  tags: default-login,sonarqube
+  tags: default-login,sonarqube,vuln

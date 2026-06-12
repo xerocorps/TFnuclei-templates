@@ -1,27 +1,33 @@
 http:
 - host-redirects: true
   matchers:
-  - dsl:
-    - status_code==200 && ("1552322396" == mmh3(base64_py(body)))
+  - condition: and
+    dsl:
+    - status_code==200
+    - contains(body, "SEAFILE_GLOBAL") && contains(body, "seafile-ui.css")
     type: dsl
+  matchers-condition: and
   max-redirects: 2
   method: GET
   path:
-  - '{{BaseURL}}/media/favicons/favicon.png'
+  - '{{BaseURL}}/accounts/login/'
 id: seafile-panel
 info:
-  author: TechbrunchFR
+  author: TechbrunchFR,righettod
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: Seafile panel was detected.
   metadata:
     max-request: 1
+    product: seafile
     shodan-query: http.favicon.hash:1552322396
+    vendor: seafile
+    verified: true
   name: Seafile Panel - Detect
   reference:
   - https://www.seafile.com/en/home/
   - https://github.com/haiwen/seafile
   severity: info
-  tags: sefile,panel
+  tags: sefile,panel,login

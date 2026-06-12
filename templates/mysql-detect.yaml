@@ -3,22 +3,20 @@ info:
   author: pussycat0x
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'MySQL instance was detected.
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: product:"MySQL"
     verified: true
   name: MySQL - Detect
   severity: info
-  tags: network,mysql,db
+  tags: network,mysql,db,detect
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:3306'
   inputs:
   - data: '
 
@@ -29,3 +27,4 @@ tcp:
     type: word
     words:
     - mysql
+  port: 3306

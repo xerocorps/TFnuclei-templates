@@ -1,19 +1,23 @@
 http:
 - matchers:
-  - part: body
+  - condition: or
+    part: body
     type: word
     words:
     - <title>Sidekiq</title>
+    - <title>Sidekiq Enterprise</title>
   - status:
     - 200
     type: status
   matchers-condition: and
+  max-redirects: 3
   method: GET
   path:
   - '{{BaseURL}}/sidekiq'
+  redirects: true
 id: sidekiq-dashboard
 info:
-  author: dhiyaneshDK
+  author: dhiyaneshDK,AmirMSafari
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
     cvss-score: 5.3
@@ -21,6 +25,8 @@ info:
   description: Sidekiq Dashboard panel was detected.
   metadata:
     max-request: 1
+    product: sidekiq
+    vendor: contribsys
   name: Sidekiq Dashboard Panel - Detect
   reference:
   - https://sidekiq.org

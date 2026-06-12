@@ -8,18 +8,17 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: product:"RabbitMQ"
     verified: true
   name: RabbitMQ Detection
   reference:
   - https://nmap.org/nsedoc/scripts/amqp-info.html
   severity: info
-  tags: network,rabbitmq,oss
+  tags: network,rabbitmq,oss,detect
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:5672'
   inputs:
   - data: "AMQP\0\0\t\x01"
   matchers:
@@ -29,3 +28,4 @@ tcp:
     - publisher_confirmst
     - RabbitMQ
   matchers-condition: and
+  port: 5672

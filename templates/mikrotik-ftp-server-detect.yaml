@@ -6,12 +6,12 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: product:"MikroTik router ftpd"
     verified: true
   name: MikroTik FTP server Detect
   severity: info
-  tags: network,ftp,mikrotik,router
+  tags: network,ftp,mikrotik,router,detect
 tcp:
 - extractors:
   - regex:
@@ -19,7 +19,6 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:21'
   inputs:
   - data: '
 
@@ -29,3 +28,4 @@ tcp:
     type: word
     words:
     - MikroTik FTP
+  port: 21

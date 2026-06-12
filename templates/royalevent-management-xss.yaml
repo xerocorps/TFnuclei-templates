@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  matchers:
+- matchers:
   - condition: and
     type: word
     words:
@@ -98,4 +97,4 @@ info:
   - https://www.sourcecodester.com/sites/default/files/download/oretnom23/Royal%20Event.zip
   - https://packetstormsecurity.com/files/166479/Royale-Event-Management-System-1.0-Cross-Site-Scripting.html
   severity: high
-  tags: cms,royalevent,packetstorm,xss,authenticated
+  tags: cms,royalevent,packetstorm,xss,authenticated,intrusive

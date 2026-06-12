@@ -3,14 +3,14 @@ info:
   author: its0x08
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-912
   description: 'Multiple ZTE router panels were detected. These routers have a telnet-hardcoded
     backdoor account that spawns root shell.
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: http.html:"ZTE Corporation"
     verified: true
   name: ZTE Router Panel - Detect
@@ -25,7 +25,6 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:23'
   inputs:
   - data: "root\r\n"
   - data: "Zte521\r\n\r\n"
@@ -34,3 +33,4 @@ tcp:
   - type: word
     words:
     - BusyBox
+  port: 23

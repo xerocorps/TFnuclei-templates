@@ -1,18 +1,12 @@
 id: printers-info-leak
 info:
   author: pussycat0x
-  description: 'Unauthorized access to printers allows attackers to print, eavesdrop
-    sensitive documents.
-
-    '
-  metadata:
-    max-request: 1
   name: Unauthorized Printer Access
   reference:
   - https://book.hacktricks.xyz/pentesting/9100-pjl
   severity: info
   tags: network,iot,printer
-tcp:
+network:
 - host:
   - '{{Host}}:9100'
   inputs:

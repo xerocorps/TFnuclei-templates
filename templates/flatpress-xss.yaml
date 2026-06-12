@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  matchers:
+- matchers:
   - condition: and
     type: word
     words:
@@ -74,4 +73,4 @@ info:
   reference:
   - https://github.com/flatpressblog/flatpress/issues/153
   severity: medium
-  tags: flatpress,xss,authenticated,oss
+  tags: flatpress,xss,authenticated,oss,intrusive

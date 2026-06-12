@@ -1,4 +1,10 @@
-http:
+id: stripe-restricted-key
+info:
+  author: Ice3man
+  name: Stripe Restricted Key Disclosure
+  severity: info
+  tags: exposure,token,stripe
+requests:
 - extractors:
   - part: body
     regex:
@@ -7,11 +13,3 @@ http:
   method: GET
   path:
   - '{{BaseURL}}'
-id: stripe-restricted-key
-info:
-  author: Ice3man
-  metadata:
-    max-request: 1
-  name: Stripe Restricted Key Disclosure
-  severity: info
-  tags: exposure,token,stripe

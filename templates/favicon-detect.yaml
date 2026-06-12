@@ -2114,24 +2114,13 @@ http:
     - status_code==200 && ("-1252041730" == mmh3(base64_py(body)))
     name: Vue.js
     type: dsl
-  - dsl:
-    - status_code==200 && ("-830586692" == mmh3(base64_py(body)))
-    name: Sophos Email Appliance
-    type: dsl
   max-redirects: 2
   method: GET
   path:
   - '{{BaseURL}}/favicon.ico'
-  - '{{BaseURL}}/{{path}}favicon.ico'
-  payloads:
-    path:
-    - images/
-  stop-at-first-match: true
 id: favicon-detect
 info:
   author: un-fmunozs,DhiyaneshDk
-  metadata:
-    max-request: 2
   name: favicon-detection
   reference:
   - https://twitter.com/brsn76945860/status/1171233054951501824

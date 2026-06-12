@@ -17,6 +17,7 @@ http:
   - '{{BaseURL}}/settings.php.save'
   - '{{BaseURL}}/settings.php.swp'
   - '{{BaseURL}}/settings.php.txt'
+  - '{{BaseURL}}config/settings.old.php'
 id: settings-php-files
 info:
   author: sheikhrishad
@@ -26,7 +27,7 @@ info:
     cwe-id: CWE-200
   description: settings.php source code was detected via backup files.
   metadata:
-    max-request: 6
+    max-request: 7
   name: settings.php - Information Disclosure
   severity: medium
   tags: exposure,backup

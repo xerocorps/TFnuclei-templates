@@ -24,12 +24,14 @@ info:
   author: praetorian-thendrickson
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: Splunk Enterprise login panel was detected.
   metadata:
     max-request: 1
+    product: splunk
     shodan-query: http.title:"Login - Splunk"
+    vendor: splunk
   name: Splunk Enterprise Login Panel - Detect
   reference:
   - https://www.splunk.com/en_us/software/splunk-enterprise.html

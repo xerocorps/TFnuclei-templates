@@ -62,7 +62,7 @@ http:
     - (?i)rejected.by.url.scan
     - (?i)/rejected.by.url.scan
     type: regex
-  - condition: or
+  - condition: and
     name: shadowd
     part: response
     regex:

@@ -14,6 +14,10 @@ http:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
   matchers:
+  - part: location
+    type: word
+    words:
+    - '{{BaseURL}}/user/error'
   - part: interactsh_protocol
     type: word
     words:
@@ -22,10 +26,6 @@ http:
     regex:
     - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
     type: regex
-  - part: location
-    type: word
-    words:
-    - '{{BaseURL}}/user/error'
   matchers-condition: and
   raw:
   - 'POST /j_security_check HTTP/1.1

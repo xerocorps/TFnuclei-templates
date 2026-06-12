@@ -16,10 +16,11 @@ http:
 id: rabbitmq-exporter-metrics
 info:
   author: DhiyaneshDk
+  description: RabbitMQ Exporter is exposed.
   metadata:
     max-request: 1
     shodan-query: title:"RabbitMQ Exporter"
     verified: true
   name: RabbitMQ Exporter
   severity: low
-  tags: rabbitmq,exposure,debug
+  tags: rabbitmq,exposure,debug,misconfig

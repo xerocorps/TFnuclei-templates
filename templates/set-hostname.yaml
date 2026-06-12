@@ -12,14 +12,15 @@ file:
 id: set-hostname
 info:
   author: pussycat0x
-  description: 'Ensure Hostname is set is a process that helps to ensure that the
-    computer or device is being identified correctly on a network.
-
-    The hostname is a unique identifier for the device, and it is important that it
-    is properly set so that other devices on the network can identify it.
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0
+    cwe-id: CWE-200
+  description: 'PfSense Hostname should be set so that other devices on the network
+    can correctly identify it. The hostname is a unique identifier for the device.
 
     '
-  name: Ensure Hostname is Set
+  name: PfSense Hostname Not Set - Detect
   reference: 'https://docs.netgate.com/pfsense/en/latest/config/general.html
 
     '

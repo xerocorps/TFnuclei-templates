@@ -23,6 +23,8 @@ http:
 id: onlyoffice-login-panel
 info:
   author: eremit4
+  classification:
+    cpe: cpe:2.3:a:onlyoffice:onlyoffice:*:*:*:*:*:*:*:*
   description: 'ONLYOFFICE Community Server is a free open-source collaborative system
     developed to manage documents, projects, customer relationship and email correspondence.
 
@@ -31,6 +33,8 @@ info:
     fofa-query: app="ONLYOFFICE" && (icon_hash="1928933157" || icon_hash="826083956"
       || icon_hash="-1380930248" || icon_hash="-285544629" || icon_hash="812741391")
     max-request: 2
+    product: onlyoffice
+    vendor: onlyoffice
     verified: true
   name: ONLYOFFICE Login Panel - Detect
   severity: info

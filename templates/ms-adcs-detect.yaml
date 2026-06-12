@@ -10,7 +10,7 @@ http:
     - 301
     type: status
   - dsl:
-    - contains(tolower(all_headers), '/certsrv')
+    - contains(tolower(header), '/certsrv')
     type: dsl
   matchers-condition: and
   method: GET
@@ -21,7 +21,6 @@ info:
   author: divya_mudgal
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: Microsoft Active Directory Certificate Services panel was detected.
   metadata:

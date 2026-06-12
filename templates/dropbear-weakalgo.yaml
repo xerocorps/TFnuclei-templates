@@ -9,7 +9,7 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: product:"Dropbear sshd"
     verified: true
   name: Dropbear sshd Weak Key Exchange Algorithms Enabled
@@ -24,7 +24,6 @@ info:
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:22'
   inputs:
   - data: '
 
@@ -35,3 +34,4 @@ tcp:
     words:
     - diffie-hellman-group-exchange-sha1
     - diffie-hellman-group1-sha1
+  port: 22

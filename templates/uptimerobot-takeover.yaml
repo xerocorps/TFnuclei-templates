@@ -6,6 +6,11 @@ http:
   - regex:
     - ^page not found$
     type: regex
+  - case-insensitive: true
+    part: header
+    type: word
+    words:
+    - 'Server: Caddy'
   - status:
     - 404
     type: status

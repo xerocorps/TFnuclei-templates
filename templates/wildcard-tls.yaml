@@ -9,9 +9,9 @@ info:
     max-request: 1
   name: Wildcard TLS Certificate
   reference:
-  - https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html#carefully-consider-the-use-of-wildcard-certificates
+  - https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html#carefully-consider-the-use-of-wildcard-certificates
   severity: info
-  tags: ssl,wildcard,tls
+  tags: ssl,tls,wildcard
 ssl:
 - address: '{{Host}}:{{Port}}'
   extractors:

@@ -1117,7 +1117,7 @@ http:
     regex:
     - <link[^>]+ href="/?typo3(?:conf|temp)/
     - <img[^>]+ src="/?typo3(?:conf|temp)/
-    - "<!--\n\tThis website is powered by TYPO3"
+    - This website is powered by TYPO3
     type: regex
   - condition: or
     name: percussion
@@ -2089,12 +2089,12 @@ http:
     regex:
     - <[^>]*data-headjs-load
     type: regex
-  - condition: or
+  - case-insensitive: true
     name: gitea
     part: body
-    regex:
-    - "<div class=\"ui left\">\\n\\s+\xA9 Gitea Version: ([\\d.]+)"
-    type: regex
+    type: word
+    words:
+    - Powered by Gitea
   - condition: or
     name: all-in-one-seo-pack
     part: body
@@ -2709,6 +2709,11 @@ http:
     type: word
     words:
     - content="InstantCMS"
+  - name: interactsh
+    part: header
+    type: word
+    words:
+    - X-Interactsh-Version
   - name: interred
     type: word
     words:
@@ -3161,6 +3166,11 @@ http:
     type: word
     words:
     - uvicorn
+  - name: istio-envoy
+    part: server
+    type: word
+    words:
+    - istio-envoy
   matchers-condition: or
   max-redirects: 2
   method: GET

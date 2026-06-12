@@ -16,7 +16,7 @@ info:
   - https://snyk.io/blog/setting-up-ssl-tls-for-kubernetes-ingress/
   remediation: Purchase or generate a proper SSL certificate for this service.
   severity: low
-  tags: ssl,kubernetes,tls,self-signed
+  tags: ssl,tls,kubernetes,self-signed
 ssl:
 - address: '{{Host}}:{{Port}}'
   extractors:

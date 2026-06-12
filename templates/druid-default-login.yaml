@@ -1,4 +1,16 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - internal: true
+    type: word
+    words:
+    - error
+  raw:
+  - 'GET /druid/submitLogin HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 - attack: pitchfork
   matchers:
   - status:
@@ -22,22 +34,15 @@ http:
     loginUsername={{username}}&loginPassword={{password}}
 
     '
-  - 'POST /submitLogin HTTP/1.1
-
-    Host: {{Hostname}}
-
-
-    loginUsername={{username}}&loginPassword={{password}}
-
-    '
 id: druid-default-login
 info:
-  author: pikpikcu
+  author: pikpikcu,j4vaovo
   classification:
     cwe-id: CWE-798
-  description: Apache Druid default login information (admin/admin) was discovered.
+  description: Alibaba Druid Monitor default login information (admin/admin) was discovered.
   metadata:
+    fofa-query: title="druid monitor"
     max-request: 2
-  name: Apache Druid Default Login
+  name: Alibaba Druid Monitor Default Login
   severity: high
-  tags: druid,default-login
+  tags: druid,alibaba,default-login

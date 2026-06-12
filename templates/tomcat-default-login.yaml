@@ -1,5 +1,5 @@
 http:
-- attack: pitchfork
+- attack: clusterbomb
   matchers:
   - condition: and
     part: body
@@ -25,43 +25,49 @@ http:
   matchers-condition: and
   payloads:
     password:
-    - tomcat
-    - admin
+    - ADMIN
     - OvW*busr1
+    - Password1
+    - QLogic66
+    - admanager
+    - admin
+    - adrole1
+    - adroot
+    - ads3cret
+    - adtomcat
+    - advagrant
+    - changethis
+    - demo
     - j2deployer
     - kdsxc
-    - ADMIN
-    - xampp
-    - s3cret
-    - QLogic66
-    - tomcat
-    - root
+    - manager
+    - owaspbwa
+    - password
+    - password1
+    - r00t
     - role1
-    - changethis
-    - changethis
-    - j5Brn9
+    - root
+    - s3cret
     - tomcat
-    - tomcat
-    - 123456
-    username:
-    - tomcat
-    - admin
-    - ovwebusr
-    - j2deployer
-    - cxsdk
-    - ADMIN
+    - toor
+    - vagrant
     - xampp
-    - tomcat
+    username:
+    - ADMIN
     - QCC
     - admin
-    - root
-    - role1
-    - role
-    - tomcat
-    - admin
-    - role1
     - both
-    - admin
+    - cxsdk
+    - demo
+    - j2deployer
+    - manager
+    - ovwebusr
+    - role
+    - role1
+    - root
+    - server_admin
+    - tomcat
+    - xampp
   raw:
   - 'GET /manager/html HTTP/1.1
 
@@ -70,16 +76,18 @@ http:
     Authorization: Basic {{base64(username + '':'' + password)}}
 
     '
+  threads: 30
 id: tomcat-default-login
 info:
-  author: pdteam,sinKettu
+  author: pdteam,sinKettu,nybble04
   description: Apache Tomcat Manager default login credentials were discovered. This
     template checks for multiple variations.
   metadata:
-    max-request: 18
+    max-request: 405
     shodan-query: title:"Apache Tomcat"
   name: Apache Tomcat Manager Default Login
   reference:
   - https://www.rapid7.com/db/vulnerabilities/apache-tomcat-default-ovwebusr-password/
+  - https://github.com/danielmiessler/SecLists/blob/master/Passwords/Default-Credentials/tomcat-betterdefaultpasslist.txt
   severity: high
   tags: tomcat,apache,default-login

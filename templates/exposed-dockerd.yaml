@@ -6,16 +6,15 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: port:2375 product:"docker"
     verified: true
   name: Docker Daemon Exposed
   severity: critical
-  tags: network,docker
+  tags: network,docker,exposure
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:2375'
   inputs:
   - data: 'Docker:
 
@@ -26,3 +25,4 @@ tcp:
   - type: word
     words:
     - 'Server: Docker'
+  port: 2375

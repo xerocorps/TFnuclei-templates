@@ -22,13 +22,15 @@ info:
   author: dhiyaneshDk,idealphase
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: Zimbra panel was detected. Zimbra provides open source server and client
     software for messaging and collaboration.
   metadata:
     max-request: 1
+    product: zimbra_collaboration_suite
     shodan-query: http.title:"Zimbra Web Client Sign In"
+    vendor: synacor
     verified: true
   name: Zimbra Panel - Detect
   reference:

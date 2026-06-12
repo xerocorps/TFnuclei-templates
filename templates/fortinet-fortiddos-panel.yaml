@@ -16,12 +16,16 @@ http:
 id: fortinet-fortiddos-panel
 info:
   author: johnk3r
+  classification:
+    cpe: cpe:2.3:a:fortinet:fortiddos:*:*:*:*:*:*:*:*
   description: 'Fortinet FortiDDoS panel was detected.
 
     '
   metadata:
     max-request: 1
+    product: fortiddos
     shodan-query: http.title:"FortiDDoS"
+    vendor: fortinet
     verified: true
   name: Fortinet FortiDDoS Panel
   reference:

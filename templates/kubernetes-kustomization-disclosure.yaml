@@ -10,7 +10,7 @@ http:
     - 'commonLabels:'
     - Kustomization
   - dsl:
-    - contains(tolower(all_headers), 'application/yaml')
+    - contains(tolower(header), 'application/yaml')
     type: dsl
   - status:
     - 200

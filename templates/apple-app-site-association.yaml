@@ -1,5 +1,9 @@
 http:
-- matchers:
+- extractors:
+  - json:
+    - .applinks.details[].appID
+    type: json
+  matchers:
   - condition: and
     part: body
     type: word
@@ -28,4 +32,4 @@ info:
     max-request: 3
   name: Apple app site association for harvesting end points
   severity: info
-  tags: misc,apple
+  tags: miscellaneous,misc,apple

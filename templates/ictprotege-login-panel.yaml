@@ -15,13 +15,15 @@ id: ictprotege-login-panel
 info:
   author: ritikchaddha
   classification:
+    cpe: cpe:2.3:o:ict:protege_wx_firmware:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   metadata:
     max-request: 1
+    product: protege_wx_firmware
     shodan-query: title:"ICT Protege WX&reg;"
+    vendor: ict
     verified: true
   name: ICT Protege WX Login Panel - Detect
   severity: info
-  tags: panel,ictprotege
+  tags: panel,ictprotege,ict

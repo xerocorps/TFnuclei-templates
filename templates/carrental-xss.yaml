@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  host-redirects: true
+- host-redirects: true
   matchers:
   - part: body
     type: word
@@ -80,4 +79,4 @@ info:
   - https://www.exploit-db.com/exploits/49546
   - https://www.sourcecodester.com/
   severity: medium
-  tags: xss,cms,authenticated,edb
+  tags: xss,cms,authenticated,edb,intrusive

@@ -1,6 +1,5 @@
 http:
 - attack: pitchfork
-  cookie-reuse: true
   extractors:
   - group: 1
     internal: true
@@ -10,16 +9,11 @@ http:
     - hidden" name="csrf_token" value="([0-9a-z]+)"
     type: regex
   matchers:
-  - case-insensitive: true
-    condition: and
-    type: word
-    words:
-    - New project
-    - Project management
-  - status:
-    - 200
-    type: status
-  matchers-condition: and
+  - condition: and
+    dsl:
+    - contains(location, 'controller=DashboardController&action=show')
+    - status_code == 302
+    type: dsl
   payloads:
     pass:
     - admin
@@ -41,11 +35,6 @@ http:
     username={{user}}&password={{pass}}&csrf_token={{csrf_token}}
 
     '
-  - 'GET /?controller=DashboardController&action=show HTTP/1.1
-
-    Host: {{Hostname}}
-
-    '
 id: kanboard-default-login
 info:
   author: shelled
@@ -57,8 +46,8 @@ info:
     access to user accounts and access sensitive information, modify data, and/or
     execute unauthorized operations.
   metadata:
-    max-request: 3
-    shodan-query: http.favicon.hash:2056442365
+    fofa-query: app="Kanboard"
+    max-request: 2
     verified: true
   name: Kanboard - Default Login
   reference:

@@ -4,12 +4,12 @@ info:
   description: Riak is a distributed NoSQL key-value data store that offers high availability,
     fault tolerance, operational simplicity, and scalability.
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: product:"Riak"
     verified: true
   name: Riak Detection
   severity: info
-  tags: network,oss
+  tags: network,oss,detect,riak,nosql
 tcp:
 - extractors:
   - regex:
@@ -17,7 +17,6 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:8087'
   inputs:
   - data: 71
     type: hex
@@ -25,4 +24,5 @@ tcp:
   - type: word
     words:
     - riak
+  port: 8087
   read-size: 2048

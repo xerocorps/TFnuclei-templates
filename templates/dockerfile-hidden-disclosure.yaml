@@ -17,6 +17,7 @@ http:
   path:
   - '{{BaseURL}}/.dockerfile'
   - '{{BaseURL}}/.Dockerfile'
+  - '{{BaseURL}}/Dockerfile'
 id: dockerfile-hidden-disclosure
 info:
   author: dhiyaneshDk
@@ -26,7 +27,7 @@ info:
     cwe-id: CWE-200
   description: Dockerfile was detected.
   metadata:
-    max-request: 2
+    max-request: 3
   name: Dockerfile - Detect
   reference:
   - https://github.com/detectify/ugly-duckling/blob/master/modules/crowdsourced/dockerfile-hidden-disclosure.json

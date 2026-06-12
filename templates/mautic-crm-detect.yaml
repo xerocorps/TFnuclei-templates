@@ -3,13 +3,12 @@ info:
   author: cyllective
   description: Detects Mautic CRM
   name: mautic crm detect
-  reference:
+  references:
   - https://github.com/mautic/mautic
   severity: info
   tags: tech,mautic,crm
 requests:
-- attack: sniper
-  matchers:
+- matchers:
   - condition: or
     part: body
     type: word
@@ -22,19 +21,7 @@ requests:
     - var\s+?mautic(?:BasePath|BaseUrl|AjaxUrl|AjaxCsrf|AssetPrefix|Content|Env|Lang)\s+?=
     - Copyright \d{4} Mautic\. All Rights Reserved\.
     type: regex
-  matchers-condition: and
-  payloads:
-    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-  raw:
-  - 'GET /s/login HTTP/1.1
-
-    Host: {{Subdomains}}
-
-    User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
-
-    Accept-Encoding: gzip, deflate
-
-    Accept: */*
-
-    '
-  threads: 100
+  matcherscondition: or
+  method: GET
+  path:
+  - '{{BaseURL}}/s/login'

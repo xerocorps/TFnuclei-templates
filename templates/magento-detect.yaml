@@ -2,7 +2,7 @@ http:
 - matchers:
   - condition: and
     dsl:
-    - contains(tolower(all_headers), "x-magento")
+    - contains(tolower(header), "x-magento")
     - status_code == 200
     type: dsl
   - condition: and

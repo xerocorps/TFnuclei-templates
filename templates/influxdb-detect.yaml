@@ -1,21 +1,11 @@
 id: influxdb-detect
 info:
-  author: pikpikcu,idealphase
-  description: Open Source Time Series Database, high-speed read and write database.
-  metadata:
-    shodan-query: http.title:"InfluxDB - Admin Interface"
+  author: pikpikcu
   name: InfluxDB Detect
-  reference:
-  - https://www.influxdata.com/
   severity: info
   tags: tech,influxdb
 requests:
-- extractors:
-  - group: 1
-    regex:
-    - <b>InfluxDB<\/b> v([\d.]+)<\/p>
-    type: regex
-  matchers:
+- matchers:
   - part: body
     type: word
     words:

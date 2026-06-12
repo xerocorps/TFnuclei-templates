@@ -21,7 +21,7 @@ tcp:
     - ([a-z.A-Z_0-9-]+)
     type: regex
   host:
-  - '{{Host}}:9092'
+  - '{{Hostname}}'
   inputs:
   - data: 00000020000300000000000200126b61666b612d707974686f6e2d322e302e3200000000
     read: 1024
@@ -40,3 +40,4 @@ tcp:
     - (?:[0-9]{1,3}\.){3}[0-9]{1,3}
     type: regex
   matchers-condition: or
+  port: 9092

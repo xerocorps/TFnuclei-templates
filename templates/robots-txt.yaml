@@ -3,7 +3,9 @@ http:
   matchers:
   - type: word
     words:
+    - 'User-agent:'
     - 'Disallow:'
+    - 'Allow:'
   - part: header
     type: word
     words:
@@ -12,6 +14,7 @@ http:
     - len(body)>=140 && status_code==200
     type: dsl
   matchers-condition: and
+  max-redirects: 2
   method: GET
   path:
   - '{{BaseURL}}/robots.txt'
@@ -22,4 +25,4 @@ info:
     max-request: 1
   name: robots.txt file
   severity: info
-  tags: misc,generic
+  tags: miscellaneous,misc,generic

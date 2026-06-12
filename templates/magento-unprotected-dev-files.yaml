@@ -5,8 +5,7 @@ http:
     - contains(body, "Magento")
     - contains(body, "replace xmlns:xsi=")
     - contains(body, "<field path=")
-    - contains(tolower(all_headers), "application/xml") || contains(tolower(all_headers),
-      "application/octet-stream")
+    - contains(tolower(header), "application/xml") || contains(tolower(header), "application/octet-stream")
     - status_code == 200
     type: dsl
   - condition: and
@@ -15,8 +14,7 @@ http:
     - contains(body, "config xmlns:xsi")
     - contains(body, "<application>")
     - contains(body, "<install>")
-    - contains(tolower(all_headers), "application/xml") || contains(tolower(all_headers),
-      "application/octet-stream")
+    - contains(tolower(header), "application/xml") || contains(tolower(header), "application/octet-stream")
     - status_code == 200
     type: dsl
   method: GET

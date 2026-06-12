@@ -16,10 +16,9 @@ http:
     - (?m)^(?:Location\s*?:\s*?)(?:https?:\/\/|\/\/|\/\\\\|\/\\)(?:[a-zA-Z0-9\-_\.@]*)interact\.sh\/?(\/|[^.].*)?$
     type: regex
   matchers-condition: and
-  raw:
-  - 'GET ///interact.sh/%2F.. HTTP/1.1
-
-    '
+  method: GET
+  path:
+  - '{{BaseURL}}///interact.sh/%2F..'
 id: icewarp-open-redirect
 info:
   author: uomogrande

@@ -17,10 +17,11 @@ http:
 id: ffserver-status
 info:
   author: notnotnotveg,tess
+  description: FFserver status panel exposed.
   metadata:
     max-request: 1
     shodan-query: title:"ffserver Status"
     verified: true
   name: FFserver Status Detect
   severity: low
-  tags: exposures,logs,ffserver
+  tags: exposure,exposures,logs,ffserver

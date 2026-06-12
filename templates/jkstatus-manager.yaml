@@ -19,6 +19,11 @@ http:
 id: jkstatus-manager
 info:
   author: pdteam,DhiyaneshDk
+  description: 'Exposed JKStatus manager which is a web-based tool that allows administrators
+    to monitor and manage the connections between the Apache HTTP Server and the Tomcat
+    application server.
+
+    '
   metadata:
     max-request: 8
     shodan-query: html:"JK Status Manager"
@@ -27,4 +32,4 @@ info:
   reference:
   - https://github.com/PortSwigger/j2ee-scan/blob/master/src/main/java/burp/j2ee/issues/impl/JKStatus.java
   severity: low
-  tags: config,jk,status
+  tags: config,jk,status,exposure

@@ -406,15 +406,14 @@ http:
     - \[(Virtuoso Driver|Virtuoso iODBC Driver)\]\[Virtuoso Server\]
     type: regex
   matchers-condition: and
+  method: GET
+  path:
+  - '{{BaseURL}}'
   payloads:
     injection:
     - ''''
     - '"'
     - ;
-  pre-condition:
-  - dsl:
-    - method == "GET"
-    type: dsl
   stop-at-first-match: true
 id: sqli-error-based
 info:

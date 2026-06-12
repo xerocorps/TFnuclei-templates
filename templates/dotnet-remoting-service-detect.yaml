@@ -3,18 +3,17 @@ info:
   author: pussycat0x
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'Microsoft .NET Remoting httpd was detected.
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: product:"MS .NET Remoting httpd"
     verified: true
   name: Microsoft .NET Remoting httpd - Detect
   severity: info
-  tags: network,detect,microsoft
+  tags: network,detect,microsoft,dotnet
 tcp:
 - extractors:
   - regex:
@@ -22,7 +21,6 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:8080'
   inputs:
   - data: '
 
@@ -32,3 +30,4 @@ tcp:
     words:
     - 'Server: MS .NET Remoting'
   matchers-condition: and
+  port: 8080

@@ -1,4 +1,21 @@
-http:
+id: liferay-portal
+info:
+  author: organiccrap,dwisiswant0,ricardomaia
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
+    cwe-id: CWE-200
+  description: Liferay login panel was detected,
+  metadata:
+    shodan-query: http.favicon.hash:129457226
+    verified: true
+  name: Liferay Login Panel - Detect
+  reference:
+  - https://www.liferay.com/
+  - https://github.com/mzer0one/CVE-2020-7961-POC
+  severity: info
+  tags: panel,liferay,portal
+requests:
 - extractors:
   - group: 2
     name: version
@@ -26,21 +43,3 @@ http:
   - '{{BaseURL}}/api/jsonws'
   - '{{BaseURL}}/api/jsonws/invoke'
   stop-at-first-match: true
-id: liferay-portal
-info:
-  author: organiccrap,dwisiswant0,ricardomaia
-  classification:
-    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
-    cwe-id: CWE-200
-  description: Liferay login panel was detected,
-  metadata:
-    max-request: 3
-    shodan-query: http.favicon.hash:129457226
-    verified: true
-  name: Liferay Login Panel - Detect
-  reference:
-  - https://www.liferay.com/
-  - https://github.com/mzer0one/CVE-2020-7961-POC
-  severity: info
-  tags: panel,liferay,portal

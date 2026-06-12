@@ -41,7 +41,6 @@ info:
     fofa-query: title="Casdoor" || body="casdoor"
     max-request: 2
     product: casdoor
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Casdoor"})
     shodan-query: http.title:"Casdoor"
     vendor: casdoor
     verified: true
@@ -50,7 +49,7 @@ info:
   - https://casdoor.org/docs/basic/core-concepts/
   - https://github.com/casdoor/casdoor
   severity: high
-  tags: auth,casdoor,default-login,vuln
+  tags: casdoor,default-login,auth,vuln
 variables:
   password: '123'
   username: admin

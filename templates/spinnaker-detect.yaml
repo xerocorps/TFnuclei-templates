@@ -5,7 +5,7 @@ http:
     words:
     - <spinnaker ng-if="!authenticating"></spinnaker>
   - dsl:
-    - contains(tolower(all_headers), 'x-spinnaker-priority')
+    - contains(tolower(header), 'x-spinnaker-priority')
     type: dsl
   matchers-condition: or
   method: GET

@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  extractors:
+- extractors:
   - group: 1
     internal: true
     name: group_id
@@ -98,7 +97,7 @@ info:
   author: pikpikcu
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-77
   description: Yapi allows remote unauthenticated attackers to cause the product to
     execute arbitrary code.
@@ -111,4 +110,4 @@ info:
   - https://twitter.com/sec715/status/1415484190561161216
   - https://github.com/YMFE/yapi
   severity: critical
-  tags: yapi,rce
+  tags: yapi,rce,intrusive

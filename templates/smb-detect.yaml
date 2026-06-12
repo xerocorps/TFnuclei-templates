@@ -8,14 +8,13 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
   name: SMB Detection
   severity: low
-  tags: network,windows,smb,service
+  tags: network,windows,smb,service,detect
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:445'
   inputs:
   - data: 00000031ff534d4272000000001845680000000000000000000000000000be2200000100000e00024e54204c4d20302e3132000200
     type: hex
@@ -25,3 +24,4 @@ tcp:
     words:
     - SMBr
     - NT LM
+  port: 445

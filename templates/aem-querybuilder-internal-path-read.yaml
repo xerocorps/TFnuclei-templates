@@ -19,6 +19,7 @@ http:
 id: aem-querybuilder-internal-path-read
 info:
   author: DhiyaneshDk
+  description: AEM QueryBuilder is vulnerable to LFI.
   metadata:
     max-request: 4
     shodan-query: http.component:"Adobe Experience Manager"
@@ -26,4 +27,4 @@ info:
   reference:
   - https://speakerdeck.com/0ang3el/aem-hacker-approaching-adobe-experience-manager-webapps-in-bug-bounty-programs?slide=91
   severity: medium
-  tags: aem
+  tags: aem,misconfig

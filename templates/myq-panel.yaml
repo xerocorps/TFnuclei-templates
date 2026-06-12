@@ -21,9 +21,6 @@ http:
 id: myq-panel
 info:
   author: darses
-  description: 'MyQ Print Server login panel was detected.
-
-    '
   metadata:
     fofa-query:
     - icon_hash="864100810"
@@ -32,6 +29,10 @@ info:
     - icon_hash="-924708843"
     - title="MyQ"
     max-request: 1
+    runzero-match: service["favicon.ico.image.mmh3"] == "-924708843" || any(each(service["html.titles"]),
+      {# matches "(?i)MyQ"}) || service["favicon.ico.image.mmh3"] == "864100810" ||
+      service["favicon.ico.image.mmh3"] == "784616151" || service["favicon.ico.image.mmh3"]
+      == "-2012429205"
     shodan-query:
     - http.favicon.hash:864100810
     - http.favicon.hash:784616151
@@ -40,6 +41,6 @@ info:
     - title:"MyQ"
     vendor: MyQ
     verified: true
-  name: MyQ Print Server - Panel
+  name: MyQ Print Server Panel - Detect
   severity: info
-  tags: panel,myq,detect
+  tags: panel,myq,detect,discovery

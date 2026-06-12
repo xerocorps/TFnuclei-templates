@@ -1,4 +1,18 @@
+flow: http(1) && http(2)
 http:
+- matchers:
+  - condition: and
+    internal: true
+    type: word
+    words:
+    - WP Ticket
+    - 'Tags:'
+  raw:
+  - 'GET /wp-content/plugins/wp-ticket/readme.txt HTTP/1.1
+
+    Host: {{Hostname}}
+
+    '
 - matchers:
   - part: body
     type: word
@@ -54,4 +68,4 @@ info:
   - https://blog.wpscan.com/2021/02/15/zebra-form-xss-wordpress-vulnerability-affects-multiple-plugins.html
   - https://wpscan.com/vulnerability/e4b796fa-3215-43ff-a6aa-71f6e1db25e5
   severity: medium
-  tags: wordpress,xss,wp,wpscan
+  tags: wordpress,xss,wp,wpscan,intrusive

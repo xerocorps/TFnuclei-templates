@@ -16,12 +16,14 @@ info:
   author: pdteam
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
+    cvss-score: 0
     cwe-id: CWE-200
   description: Kiwi TCMS login panel was detected.
   metadata:
     max-request: 1
+    product: kiwi_tcms
     shodan-query: title:"Kiwi TCMS - Login",http.favicon.hash:-1909533337
+    vendor: kiwitcms
   name: Kiwi TCMS Login Panel - Detect
   reference:
   - https://kiwitcms.org

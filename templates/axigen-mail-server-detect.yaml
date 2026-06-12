@@ -6,16 +6,15 @@ info:
     '
   metadata:
     fofa-query: app="axigen-Mail-Server"
-    max-request: 2
+    max-request: 1
     shodan-query: product:"Axigen"
     verified: true
   name: Axigen Mail Server Detection
   severity: info
-  tags: network,axigen
+  tags: network,axigen,detect,smtp
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:25'
   inputs:
   - data: '
 
@@ -25,3 +24,4 @@ tcp:
     words:
     - Axigen ESMTP
     - AXIGEN
+  port: 25

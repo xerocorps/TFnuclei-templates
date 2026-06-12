@@ -3,18 +3,17 @@ info:
   author: pdteam,pikpikcu
   description: An exposed Android debug bridge was discovered.
   metadata:
-    max-request: 2
+    max-request: 1
   name: Exposed Android Debug Bridge
   reference:
   - https://doublepulsar.com/root-bridge-how-thousands-of-internet-connected-android-devices-now-have-no-security-and-are-b46a68cb0f20
   - https://www.hackeracademy.org/how-to-hack-android-device-with-adb-android-debugging-bridge
   - https://www.securezoo.com/2018/06/thousands-of-android-devices-leave-debug-port-5555-exposed/
   severity: critical
-  tags: network,adb,rce,android
+  tags: network,adb,rce,android,exposure
 tcp:
 - host:
   - '{{Hostname}}'
-  - '{{Host}}:5555'
   inputs:
   - data: 434e584e0100000100001000ea000000445b0000bcb1a7b1
     type: hex
@@ -26,3 +25,4 @@ tcp:
     words:
     - device
     - product
+  port: 5555

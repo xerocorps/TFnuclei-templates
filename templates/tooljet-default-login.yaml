@@ -21,7 +21,7 @@ http:
     username:
     - dev@tooljet.io
   raw:
-  - 'POST /api/authenticate HTTP/2
+  - 'POST /api/authenticate HTTP/1.1
 
     Host: {{Hostname}}
 
@@ -35,6 +35,7 @@ id: tooljet-default-login
 info:
   author: random-robbie
   classification:
+    cpe: cpe:2.3:a:tooljet:tooljet:*:*:*:*:*:*:*:*
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
@@ -45,10 +46,12 @@ info:
     '
   metadata:
     max-request: 1
+    product: tooljet
     shodan-query: title:"tooljet"
+    vendor: tooljet
     verified: true
   name: ToolJet - Default Login
   reference:
   - https://docs.tooljet.com/docs/contributing-guide/setup/docker/
   severity: high
-  tags: default-login,tooljet
+  tags: default-login,tooljet,vuln

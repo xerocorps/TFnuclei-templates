@@ -1,6 +1,5 @@
 http:
-- cookie-reuse: true
-  extractors:
+- extractors:
   - group: 1
     internal: true
     name: csrf
@@ -38,7 +37,7 @@ info:
   author: leovalcante,kiks7
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
-    cvss-score: 10.0
+    cvss-score: 10
     cwe-id: CWE-77
   description: 'Joomla! CMS 3.0.0 through the 3.4.6 release contains an unauthenticated
     PHP object injection that leads to remote code execution.

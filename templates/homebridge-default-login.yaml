@@ -47,7 +47,6 @@ info:
     fofa-query: title="Homebridge"
     max-request: 1
     product: homebridge-config-ui-x
-    runzero-match: any(each(service["html.titles"]), {# matches "(?i)Homebridge"})
     shodan-query: http.title:"Homebridge"
     vendor: homebridge
     verified: true

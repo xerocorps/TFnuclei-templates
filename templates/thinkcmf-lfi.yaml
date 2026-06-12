@@ -1,21 +1,23 @@
 http:
 - matchers:
   - condition: and
+    part: body
     type: word
     words:
+    - '# valid login shells'
+    - /bin/sh
+    - /bin/ash
+    - /bin/bash
     - ThinkCMF
     - '## README'
     - '## UPDATE'
-  - status:
-    - 200
-    type: status
   matchers-condition: and
   method: GET
   path:
   - '{{BaseURL}}/?a=display&templateFile=README.md'
 id: thinkcmf-lfi
 info:
-  author: pikpikcu
+  author: 0x71rex
   classification:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
     cvss-score: 7.5
@@ -23,7 +25,7 @@ info:
   description: ThinkCMF is vulnerable to local file inclusion.
   metadata:
     max-request: 1
-    unix-payload: ../../../../../../../../../../../../../../../../etc/passwd
+    unix-payload: ../../../../../../../../../../../../../../../../etc/shells
     win-payload: ../../../../../../../../../../../../../../../../windows/win.ini
   name: ThinkCMF - Local File Inclusion
   reference:

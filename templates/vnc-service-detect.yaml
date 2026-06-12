@@ -5,10 +5,10 @@ info:
     cwe-id: CWE-200
   description: A Virtual Network Computing (VNC) service was detected.
   metadata:
-    max-request: 2
+    max-request: 1
   name: VNC Service Detection
   severity: info
-  tags: network,vnc,service
+  tags: network,vnc,service,detect
 tcp:
 - extractors:
   - part: body
@@ -16,7 +16,6 @@ tcp:
     - RFB ([0-9.]+)
     type: regex
   host:
-  - '{{Host}}:5900'
   - '{{Hostname}}'
   inputs:
   - data: "\r\n"
@@ -24,3 +23,4 @@ tcp:
   - type: word
     words:
     - RFB
+  port: 5900

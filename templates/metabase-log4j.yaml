@@ -18,14 +18,14 @@ http:
     type: word
     words:
     - dns
-  - part: interactsh_request
-    regex:
-    - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
-    type: regex
   - part: body
     type: word
     words:
     - 'Invalid GeoJSON file location:'
+  - part: interactsh_request
+    regex:
+    - \d{6}\.([a-zA-Z0-9\.\-]+)\.([a-z0-9]+)\.([a-z0-9]+)\.([a-z0-9]+)\.\w+
+    type: regex
   matchers-condition: and
   method: GET
   path:

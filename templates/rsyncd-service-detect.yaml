@@ -3,18 +3,17 @@ info:
   author: vsh00t,geeknik
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
   description: 'Rsyncd service was detected.
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
   name: Rsyncd Service - Detect
   reference:
   - https://linux.die.net/man/1/rsync
   severity: info
-  tags: network,rsyncd
+  tags: network,rsyncd,detect
 tcp:
 - extractors:
   - regex:
@@ -22,7 +21,6 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:873'
   inputs:
   - data: "?\r\n"
   matchers:
@@ -31,3 +29,4 @@ tcp:
     words:
     - 'RSYNCD: '
     - 'ERROR: protocol startup error'
+  port: 873

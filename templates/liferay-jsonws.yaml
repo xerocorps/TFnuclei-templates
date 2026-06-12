@@ -18,6 +18,7 @@ http:
 id: liferay-jsonws
 info:
   author: DhiyaneshDk
+  description: Liferay /api/jsonws - API is Exposed.
   metadata:
     max-request: 1
     shodan-query: title:"Liferay"
@@ -27,4 +28,4 @@ info:
   - https://github.com/ilmila/J2EEScan/blob/master/src/main/java/burp/j2ee/issues/impl/LiferayAPI.java
   - https://liferay.dev/blogs/-/blogs/securing-the-api-jsonws-ui?_com_liferay_blogs_web_portlet_BlogsPortlet_showFlags=true&scroll=_com_liferay_blogs_web_portlet_BlogsPortlet_discussionContainer
   severity: low
-  tags: liferay,exposure,api
+  tags: liferay,exposure,api,misconfig

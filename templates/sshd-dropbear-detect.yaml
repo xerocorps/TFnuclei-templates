@@ -8,12 +8,12 @@ info:
 
     '
   metadata:
-    max-request: 2
+    max-request: 1
     shodan-query: product:"Dropbear sshd"
     verified: true
   name: Dropbear sshd Detection
   severity: info
-  tags: network,ssh,dropbear
+  tags: network,ssh,dropbear,detect
 tcp:
 - extractors:
   - regex:
@@ -21,7 +21,6 @@ tcp:
     type: regex
   host:
   - '{{Hostname}}'
-  - '{{Host}}:22'
   inputs:
   - data: '
 
@@ -30,3 +29,4 @@ tcp:
   - type: word
     words:
     - dropbear
+  port: 22
